@@ -1,0 +1,3785 @@
+                       Das Entwicklungs-System
+
+                                ACSpro
+
+                            Version V3.0.0
+                              12.11.2003
+
+                                 von
+
+                           Martin Els„sser
+                            Garten„cker 30
+                         86938 Schondorf a.A.
+                             Deutschland
+
+
+
+======================================================================
+History & ToDo-Liste
+======================================================================
+
+In der ToDo-Liste habe ich alle  momentan  geplanten  Korrekturen  und
+Erweiterungen aufgefhrt. Die Liste ist nach Priorit„t sortiert.
+
+Ferner habe  ich  die  sog.  History zusammengetragen, die Liste aller
+nderungen und Neuerungen, die es in ACSpro gibt bzw. gab. Wie  solche
+History-Listen  normalerweise  ist  auch diese chronologisch geordnet,
+die letzten Neuerungen stehen zuerst in der Liste.
+
+Hinweis: Die Versionsnummer der n„chsten ACSpro-Version wurde nun  von
+V2.40  auf  V3.0.0  erh”ht,  da  sich doch zum Teil grundlegende Dinge
+ge„ndert haben.
+
+Hinweis: Diese Listen enthalten den Stand vom 12. November 2003.  šber
+das  Internet oder ber den Hilfe-D„mon der Maus LL (siehe "Der Hilfe-
+D„mon der Maus LL") erhalten Sie stets die neueste Version der History
+und der ToDo-Liste. Die Adresse der ACSpro-Seiten lautet
+
+     http://acspro.atari.org/
+
+
+8.1  ToDo-Liste
+===============
+
+Hier habe  ich alle bislang geplanten Korrekturen und Erweiterungen in
+ihrer bisher bewerteten Priorit„t (Je wichtiger ein  Punkt  ist,  umso
+weiter steht er oben) aufgelistet.
+
+Stand der  Liste ist der 12. November 2003. Eine i.a. aktuellere Liste
+kann ber den Hilfe-D„mon der Maus LL (siehe "Der Hilfe-D„mon der Maus
+LL") abgerufen werden.
+
+  1. ACSpro und   ACSpro-"Erzeugnisse"   sollen   auch   unter  Memory
+     Protection laufen. (U. Kaiser)
+
+     ACSpro sollte hier eigentlich laufen,  bislang  gab  es  bei  den
+     Tests  noch  keine  Probleme  unter  MultiTOS.  Ich bitte hier um
+     weitere Tests unter N.AES und Milan-MultiOS (die habe  ich  beide
+     nicht zur Verfgung) sowie Rckmeldung der Ergebnisse - Danke!
+
+  2. Transparente  und  komfortable  Untersttzung  bereits im ACSpro-
+     GUI-Editor (soweit m”glich und sinnvoll) und in den  Bibliotheken
+     von  allen  modernen  Protokolle  wie  z.B.  AV- & XAcc-Protokoll
+     (komplett, nicht nur rudiment„r  wie  bisher),  OLGA,  GEMScript,
+     ST-Guide,  PureC-Hilfe-Protokoll,  DHST-Protokoll,  SE-Protokoll,
+     Men-Protokoll, SSP, etc. (M. Els„sser)
+
+     Ein Groteil der genannten Protokolle  wird  bereits  passiv  von
+     ACSpro untersttzt,  d.h.  die  entsprechenden Nachrichten werden
+     empfangen  und  verarbeitet.  Die  aktive  Untersttzung  ist  in
+     Vorbereitung  und  wird  in  einer  der Versionen nach der V3.0.0
+     realisiert werden.
+
+  3. Als Compiler soll auch  der  GCC  verwendet  werden  k”nnen.  (U.
+     Kaiser)
+
+     Eine Portierung  auf  GNU-C ist mit der Version 3.0.0 geplant und
+     in Arbeit.
+
+  4. Bei mehr als 256 Farben erh„lt man  entweder  schwarz/wei  Icons
+     oder Pixelmll. (H. Achilles)
+
+  5. Wenn  ACSpro-eigene  UserDefs ber den allgemeinen UserDef-Editor
+     mit einer anderen Service-Routine  versehen  werden,  wird  diese
+     wieder  durch die Standard-Routine ersetzt, wenn man den Userdef-
+     Objekt-Editor  mit  'OK'  verl„t.  Eine  eigene  Service-Routine
+     sollte  vom  Userdef-Objekt-Editor  erhalten  bleiben  oder sogar
+     darin eingetragen werden k”nnen!
+
+  6. Das Backdropping wird bislang automatisch durch  MagiC  (Backdrop
+     des  Fensters  nicht  angemeldet) bzw. durch ACSpro (Backdrop des
+     Fensters angemeldet) erledigt und  ist  nicht  beeinflubar.  (M.
+     Els„sser)
+
+     In einer  der  n„chsten  Versionen  wird  die Struktur Awindow um
+     einen Zeiger fr das Backdropping erweitert, so da man hier auch
+     eigene Routinen hinterlegen kann.
+
+  7. Die Nachricht WM_MOUSEWHEEL wird empfangen und durch Scrollen des
+     Fensters  umgesetzt.  Hier  sollte   ein   optimiertes   Scrollen
+     erfolgen, indem ggf. unter der Maus befindliche Objekte gescrollt
+     werden sollten.
+
+     Dies wird in einer der n„chsten Versionen  optimiert  untersttzt
+     werden,  d.h.  da bei Aktionen des Mausrades Edit-Felder, Cycle-
+     Buttons, Popups, etc. gescrollt werden.
+
+  8. Eine Untersttzung der  WDIALOG-Druckdialoge,  des  (MagiC-)Font-
+     Selectors  und  des  (MagiC-)Fileselectors  jeweils  als Fenster-
+     Dialog und modaler  Dialog  sollte  ACSpro in  gewohntem  Komfort
+     komplett zur Verfgung stellen.
+
+     Der (MagiC-)Fileselector  sowie  der (MagiC-)Font-Selector werden
+     in der Version 3.0.0 in vollem Umfang  in  allen  m”glichen  (und
+     unm”glichen  ;-)  Varianten  untersttzt. Der WDIALOG-Druckdialog
+     wird  in  Version  3.0.0   untersttzt,   allerdings   kann   der
+     Druckdialog noch nicht durch eigene Objektb„ume erweitert werden.
+     Das Einbinden eigener Objektb„ume  in  den  Druckdialog  wird  in
+     einer der n„chsten Versionen enthalten sein.
+
+  9. Die  einzelnen Konfigurationsdateien, die es im Moment gibt, sind
+     zum groen Teil bin„r abgelegt.
+
+     Es ist geplant, alle  Konfigurationsdateien  durch  entsprechende
+     Cfg-Strings  zu  ersetzen.  Das  Laden von anwendungseigenen Cfg-
+     Strings erfolgt  bereits  automatisch.  Die  Steuerung  ber  die
+     Struktur   CfgInfo  in  ACSconfig  soll  ber  den  GUI-Editor im
+     Hauptmodul geschehen.
+
+     Alle Module sollen ihre Daten aus dieser einen  Cfg-Datei  laden.
+     Die Idee ist hierbei, pro ACS-Modul eine Cfg-Gruppe zu verwenden.
+     Daher sind die Gruppennamen, die mit "ACS-" beginnen, fr  ACSpro
+     reserviert!  Erst  wenn  die  modul-eigene Gruppe nicht vorhanden
+     ist, sollte das Modul auf eigene  Cfg-Strings  zurckgreifen  und
+     diese   in   die  Cfg-Strings  der  Anwendung  bertragen.  Diese
+     šbertragung wird von ACSpro untersttzt werden, sobald  die  Cfg-
+     Strings von allen ACS-Modulen verwendet werden.
+
+ 10. Die  vom  GUI-Editor generierte  Struktur  Aconfig  enth„lt  noch
+     Dummy-Werte fr die Komponenten CfgInfo und basename.
+
+     Die hier  abgelegten  Werte  sollen  fr  das  Hauptmodul  ebenso
+     komfortabel  im  GUI-Editor eingegeben  werden  k”nnen,  wie  die
+     anderen Werte der Struktur.
+
+ 11. In die Struktur Aconfig sollten alle wichtigen  Initialisierungs-
+     Daten   aufgenommen   werden   -   z.B.   fehlt  die  Angabe  der
+     freigeschalteten Dead-Keys, die nun neu hinzugekommen  ist.  Alle
+     diese  Intialisierungs-Werte  sollen vom GUI-Editor aus verwaltet
+     werden k”nnen.
+
+ 12. Nach der linearen unsortierten Liste fehlen noch so  nette  Dinge
+     wie  die  lineare  sortierte  Liste, Stack, Bin„rb„ume, AB-B„ume,
+     Hashtables, etc.
+
+ 13. ACSpro und   mittels   ACSpro entwickelte   Anwendungen    sollen
+     problemlos  unter  MagiC  6  und N.AES mit jeweils proportionalen
+     AES-Font laufen. (U. Kaiser)
+
+ 14. Fr   Pure-Pascal-Output   sollten   die    Forward-Deklarationen
+     ebenfalls ausgegeben werden. (K. Kroll)
+
+ 15. Der  Icon-Editor  sollte  berarbeitet,  am  Besten  komplett neu
+     geschrieben werden. Z.B. sollten bei 256 Farben  auch  die  Icons
+     fr 16, 4 und 2 Farben bearbeitet werden k”nnen...
+
+ 16. Die  implementierten Cfg-Strings sollten nach Vorhandensein eines
+     Bin„rbaumes oder  einer  Hashtable  umgestellt  werden,  um  eine
+     wesentlich  bessere  Performance  als mit der bisherigen linearen
+     Suche zu erzielen.
+
+ 17. Routinen zur Bearbeitung und Auswertung von Objektb„umen wie z.B.
+     Ausschnitte  von B„umen kopieren, Objekte im Baum z„hlen etc. (H.
+     Achilles)
+
+ 18. In ACSpro sollten auch  Submens  implementiert  werden.  Derzeit
+     sind ja leider nur Subpopups m”glich. (D. K”nig)
+
+ 19. Um  Eingaben  m”glichst  sofort  plausibilisieren  zu k”nnen, ist
+     einiges   an   Programmieraufwand   notwendig,   besonders   wenn
+     Eingabefelder   voneinander   abh„ngen.  Hier  soll  ACSpro einen
+     Mechanismus  bieten,  der  ohne  groen  Aufwand  auch   komplexe
+     Plausibilisierungen erm”glicht.
+
+ 20. Bessere  Untersttzung der Mehrsprachigkeit! Bisher mu jede ACS-
+     Datei im ACSpro-GUI-Editor ge”ffnet  und  auf  die  neue  Sprache
+     umgestellt werden. Nach einem Generieren der Compiler-Sourcen mu
+     erneut compiliert werden. (M. Els„sser)
+
+     Hier wird ACSpro in Zukunft  alle  Sprach-Varianten  exportieren.
+     Durch  Compiler-Macros  wird dann die gewnschte eingebunden, man
+     mu z.B. in Pure-C nur das passende Sprach-Makro definieren.  Wie
+     dies  allerdings  in Pure Pascal funktionieren wird, mu ich erst
+     noch "erforschen"... ;-/
+
+     Als weitere  Variante  k”nnen  die  Strings  natrlich  aus   der
+     Anwendung  ausgelagert  werden.  Wie  dann  allerdings aus vielen
+     Modulen bestehende Anwendungen zu einer "Text-Ressource"  kommen,
+     ist  leider  noch  nicht  ganz  klar.  Diese  letzte Methode wird
+     favorisiert und in einer der  Versionen  nach  V3.0.0  realisiert
+     werden,  da  hierdurch auch unabh„ngige šbersetzer Anwendungen in
+     andere Sprachen bersetzen k”nnen.
+
+ 21. Beim  Kopieren  von  Objekten  im  GUI-Editor (Shift-Taste   beim
+     Draggen  gedrckt)  werden  abh„ngige Objekte (meist Strings) nur
+     referenziert. Durch zus„tzliches Drcken der Control-Taste werden
+     diese dann auch kopiert. Diese momentane Standard-Einstellung der
+     ausschlielichen Referenzierung beim  Kopieren  von  Objekten  im
+     GUI-Editor sollte  umgekehrt  durch  Control aktivierbar sein, da
+     die Referenzierung eher als Sonderfall von Nutzen ist.
+
+     Im Normalfall zieht man ein z.B.  Button-Objekt  aus  dem  Teile-
+     Fenste und stellt die Gr”e, Farbe etc. ein. Wenn man nun z.B. 10
+     von diesen Objekten ben”tigt, konnte man frher  die  Anzahl  von
+     Kopien   anlegen   und   danach  die  unterschiedlichen  Boxtexte
+     eingeben. Nun jedoch mu dieser Arbeitsgang  fr  jedes  einzelne
+     Objekt   erneut   ausgefhrt  werden.  Das  ist  ein  erheblicher
+     Mehraufwand und spart auch nicht ein Byte  an  redundantem  Code.
+     V”llig  identische  Objekte sind hingegen nur selten gefragt. (D.
+     K”nig)
+
+ 22. Moderne AES k”nnen im Men eine ansprechende Trennlinie zeichnen.
+     Diese sollte gegenber der ACSpro-L”sung eines UserDef vorgezogen
+     werden. (U. Kaiser)
+
+     In ACSpro 3.0.0 ist nun das Aussehen der Mens an die unter MagiC
+     bei   proportionalem   Systemzeichensatz  dargestellten  3D-Mens
+     angepat worden. Der 3D-Look der Mens ist allerdings  unabh„ngig
+     vom  proportionalen Systemzeichensatz. Der 3D-Look der Mens kann
+     ebenso abgeschaltet werden.
+
+ 23. Im    Sinne    eines    einheitlichen    und    damit    wirklich
+     benutzerfreundlichen   GUI  sollte  sich  der  Look  von  ACSpro-
+     Anwendungen unbedingt an den g„ngigen Look anpassen. (U. Kaiser)
+
+     Dies sollte im Groen und Ganzen  fr  magiC  bereits  realisiert
+     sein.  Noch  fehlende  Punkte m”chte ich natrlich noch anpassen.
+     ACSpro-Anwendungen sollten von der Optik her wie  andere  moderne
+     Anwendungen  auch  erscheinen  - dies ist auch unter „lteren TOS-
+     Versionen so.
+
+     Allerdings m”chte ich optional die ACS-Userdefs in  entsprechende
+     GEM-Objekte  wandeln,  falls  diese  zur  Verfgung  stehen, z.B.
+     sollten die Checkboxen in  MagiC-Checkboxen  umgewandelt  werden.
+     Allerdings ist hier zun„chst aufgrund der ACS-Funktionalit„t ber
+     Service-Routinen noch konzeptionelle Arbeit notwendig.
+
+ 24. ACSpro soll   entweder   die   MT_AES.LIB   oder   ein    eigenes
+     (optimiertes?)  Multithreading-festes  Binding  verwenden. Ferner
+     sind  komfortable  M”glichkeiten  fr   Threads   ntzlich.   (H.
+     Achilles)
+
+     ACSpro enth„lt   nun   ein  eigenes  TOS-  und  GEM-Binding.  Das
+     verwendete GEM-Binding ist allerdings noch nicht die  fr  ACSpro
+     optimierte, multithreadingfeste Version.
+
+ 25. Das  Cycle-Objekt liefert leider bei Aufruf von identischen Text-
+     Eintr„gen mittels AUO_CYGETINDEX immer nur den Index  des  ersten
+     vorkommenden  Eintrags.  Das  ist nicht WYSIWYG. Wenn ich z.B. 10
+     mal "Test|" als String bergebe und auf den 10.  Eintrag  klicke,
+     darf  nicht  der  Index  0  zurckgegeben  werden. Hier mte der
+     Such-Algorithmus die Position im Objektbaum ermitteln  und  nicht
+     die erste String-Position im Popupstring. hnliches Fehlverhalten
+     ist bei Subpopups zu  bem„ngeln.  Vorerst  mu  man  also  darauf
+     achten,  da  keine  identischen Strings in den Popups vorkommen.
+     Eine l„stige Einschr„nkung. (D. K”nig)
+
+ 26. Die Funktion Ame_strpopup ”ffnet bei šbergabe  des  Pointers  chk
+     das  Popup  mit  der Maus ber diesem Popup-Objekt. Leider trifft
+     das nicht zu,  wenn  das  gewnschte  Objekt  in  einem  Subpopup
+     vorkommt.  Die  Routine  k”nnte  so umprogrammiert werden, da in
+     diesem Fall die Subpopups automatisch aufgeklappt werden und  die
+     Maus  dann  auch  ber diesem gewnschten Objekt steht. Das sieht
+     erheblich professioneller aus und man mu sich nicht jedesmal mit
+     der  Maus  zu  diesem  "Ausgangspunkt"  hindurchhangeln, wenn man
+     innerhalb einer "Gruppe" von  Sub(subsub)popups  etwas  ausw„hlen
+     will. (D. K”nig)
+
+
+8.2  nderungen Version V2.32 auf V3.0.0
+========================================
+
+Hier sind  die nderungen und Erweiterungen von V2.32 zur - noch nicht
+ver”ffentlichten - V3.0.0 in umgekehrter  chronologischer  Reihenfolge
+aufgelistet.
+
+Hinweis: nderungen  an  den  C-Bibliotheken  betreffen stets auch die
+Pascal-Bibliothek. Von Bugfixes und Erweiterungen in den  Bibliotheken
+hat  stets auch der GUI-Editor profitiert, da dieser ja mittels ACSpro
+entwickelt wurde.
+
+Stand der Liste ist der 12. November 2003. Eine i.a. aktuellere  Liste
+kann ber den Hilfe-D„mon der Maus LL (siehe "Der Hilfe-D„mon der Maus
+LL") abgerufen werden.
+
+ 10.11.2003 GUI-Editor
+
+           ù Die Texte des GUI-Editors wurden ins Englische bersetzt,
+             so  da nun auch eine Beta-Version der englischen Version
+             bereitsteht.
+
+ 30.07.2003 ACS.LIB
+
+           ù Die Bibliotheken PCGEM.LIB (GEM-Binding)  und  ACSTOS.LIB
+             (TOS-Binding) sind nicht mehr in ACS.LIB enthalten. Damit
+             k”nnen die Bindings jederzeit gegen aktuellere  Versionen
+             ausgetausht  werden.  Alle  Anwendungen  mssen daher die
+             PCTOS.LIB und die PCGEM.LIB linken, die ab  jetzt  ACSpro
+             beiliegen.
+
+           ù ACSpro wurde   nun   komplett   auf   die  TOS-Bibliothek
+             PCTOS.LIB umgestellt. Bei  den  TOS-Bindings  bringt  die
+             optimierte  Version  nicht  wirklich viel, dafr wird die
+             Kompatibilit„t  mit  div.   Dokumentationen   aufgegeben.
+             Nachdem  es nur um ein paar Funktionen geht, sollte diese
+             Umstellung kein Problem bereiten.
+
+ 29.12.2002 ACS.LIB, ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die neue Funktion Avdi_getRGB liefert fr die 256  Farben
+             der  NVDI-Palette  die  passenden RGB-Werte zurck. Damit
+             stehen die Farb-Informationen fr Objekte, die "nur"  256
+             Farben  kennen, auch unter Hi- oder Truecolor-Aufl”sungen
+             zur Verfgung fr ein korrektes  Zeichnen.  Die  Funktion
+             steht auch ber die Modul-Schnittstelle zur Verfgung.
+
+           ù Die  Funktion  Af_2path  liefert anstelle des Root-Pfades
+             "\"  den  Defaultpfad  des   Defaultlaufwerkes   -   also
+             Dgetpath(dest, 0) -, falls kein Pfad im Parameter erkannt
+             wird.  Erstens  entspricht  dieses  Verhalten   dem   der
+             Funktion  Af_2drv.  Und zweitens ist dieses Verhalten bei
+             relativen Pfadangaben auch gewnscht.
+
+ 22.11.2002 ACS.LIB, ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die neue Funktion Aob_count z„hlt die Anzahl der  OBJECT-
+             Strukturen  eines  Objektbaumes.  Das Ende wird - wie bei
+             GEM  blich  -  durch  das  Flag   LASTOB   in   ob_flags
+             signalisiert.  Die  AOBJECT-Strukturen werden beim Z„hlen
+             je nach bergebenem Flag  bersprungen  oder  mitgez„hlt.
+             Die  Funktion steht auch ber die Modul-Schnittstelle zur
+             Verfgung.
+
+ 13.11.2002 ACS.LIB
+
+           ù Beim Versand von Daten per D&D an andere Anwendungen  war
+             noch  ein  dicker  Bug:  die L„nge der verschickten Daten
+             wurde bei Strings  (ACS-DD-Type  AT_STRING,  AT_TEXT  und
+             AT_FILE)  falsch  verschickt,  so  da  der Empf„nger nur
+             einen Teil der Daten verwendet hat.
+
+           ù Das Auswahl-Popup, in dem die  Ziel-Anwendung  ausgesucht
+             werden  mu,  erscheint nun nur noch, wenn der Eigentmer
+             des Ziel-Fensters nicht  per  WF_OWNER  ermittelt  werden
+             kann (WF_OWNER gibt es nicht bzw. liefert Fehler).
+
+           ù Von  anderen Anwendungen empfangene Strings, die ber die
+             Drag-Routine eingespielt werden, werden nun  korrekt  als
+             AT_STRING oder AT_TEXT deklariert, jenachdem ob eines der
+             Zeichen '\n' (CR)  oder  '\r'  (LF)  enthalten  ist  oder
+             nicht.
+
+           ù Per  XAcc-Protokoll  empfangene  Strings werden nun nicht
+             nur als AT_STRING, sondern auch als  AT_FILE  deklariert,
+             falls  es  sich  bei  dem  String gem. Af_length() um den
+             Namen einer existierenden Datei bzw. eines  existierenden
+             Ordners handelt. Die Unterscheidung in AT_TEXT oder nicht
+             hat allerdings Vorrang.
+
+           ù Korrektur beim Verarbeiten einer  D&D-Message:  das  D&D-
+             Protokoll sieht einen Header vor, der mind. die folgenden
+             Angaben  enth„lt:  Header-L„nge  (2  Byte),  Datentyp  (4
+             Byte),  Datenl„nge  (4  Byte).  ACSpro meldete  bei einer
+             Headerl„nge von weniger als  10  Byte  dem  Absender  der
+             Daten  einen  Fehler.  Bei Tests hat sich herausgestellt,
+             da MagicDesk eine L„nge  von  9  eintr„gt.  Die  Prfung
+             wurde daher auf mind 8 Zeichen ge„ndert. Anscheinend sind
+             sich die "Gelehrten" nicht einig, ob die L„ngenangabe zum
+             Header  geh”rt oder nicht! ACSpro geht nun davon aus, da
+             die  zwei  Byte  Headerl„nge  nicht zum  Header  geh”ren,
+             sondern  die  Headerl„nge  angibt,  wie viele Byte danach
+             kommen.
+
+ 21.09.2002 ACS.LIB
+
+           ù Die  Bearbeitung  der  GEMScript-Meldung   GS_ACK   wurde
+             korrigiert.
+
+           ù Durch    interne    Optimierungen    bei   den   diversen
+             untersttzten   Protokollen   konnte   etwas   ben”tigter
+             Speicher eingespart werden.
+
+ 13.09.2002 ACS.LIB, ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die  aktuelle  PCGEM.LIB  wurde  eingebunden.  Die  neuen
+             Funktionen  (bis  NVDI  5)  stehen  auch  in  der  Modul-
+             Schnittstelle zur Verfgung.
+
+           ù Die   Modul-Schnittstelle  fr  vsf_updat  war  nicht  in
+             Ordnung, dadurch gab es einige Verschiebungen, so da  im
+             Zweifelsfall  falsche  VDI-Funktionen  aufgerufen wurden.
+             Dies wurde nun behoben!
+
+           ù Die  aktuelle  KEYTAB-Bibliothek  wurde  integriert,  die
+             neuen  Funktionen  stehen  auch in der Modulschnittstelle
+             fr Module bereit.
+
+ 31.08.2002 ACS.LIB
+
+           ù Die  Funktion  appl_xgetinfo  prft  nun  auch,  ob  WINX
+             vorhanden  ist,  da  auch  dann  appl_getinfo  aufgerufen
+             werden kann.
+
+ 06.08.2002 ACS.LIB
+
+           ù Die Nachricht COLORS_CHANGED (s. Dokumentation zu NVDI 5)
+             wird  verarbeitet  und  ein  komplettes  Neuzeichnen  des
+             Bildschirms ausgel”st.
+
+ 22.07.2002 ACS.LIB, ACSTOOLS.LIB, ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die neuen Funktionen von KEYTAB und der KEYTAB-Bibliothek
+             wurden  in  ACSpro integriert. Die Funktionen stehen auch
+             ber die Modul-Schnittstelle fr Module zur Verfgung.
+
+           ù Die neue  Funktionen  Ax_recycle,  Ax_setRecycleSize  und
+             Ax_getRecycleStat    stehen    auch   ber   die   Modul-
+             Schnittstelle fr Module zur Verfgung.
+
+ 04.07.2002 ACS.LIB
+
+           ù Die  neue  Funktion   Ax_getRecycleStat()   liefert   die
+             aktuelle  Statistik  der  Speicher-Verwaltung  der freien
+             Listen.  Mit  den  hier  gelieferten   Daten   kann   die
+             Konfiguration  der  Speicher-Verwaltung  in der ACSinit0-
+             Routine optimiert werden.
+
+           ù Die  neue  Funktion  Ax_setRecycleSize()  verwaltet   die
+             Listen der freien Speicherbl”cke:
+
+                - Wenn eine unbekannte Gr”e bergeben wird, wird eine
+                  neue Liste angelegt.
+
+                - Eine  ACSpro bekannte  Gr”e  wird  auf  den   neuen
+                  Maximalwert  gesetzt (falls  die  Liste  verkleinert
+                  wird, werden alle Bl”cke, die nun zu viel  gepuffert
+                  werden, frei gegeben).
+
+                - Falls  fr eine bekannte Blockgr”e die Anzahlder zu
+                  puffernden Bl”cke auf  0  gesetzt  wird,  so  werden
+                  Speicherbl”cke dieser Gr”e nicht mehr gepuffert und
+                  die Liste dazu gel”scht.
+
+           ù Die neue Funktion Ax_recycle() fgt  einen  Speicherblock
+             einer Liste freier Bl”cke an, sofern die bergebene Gr”e
+             des Blockes von ACSpro in  einer  Liste  verwaltet  wird.
+             Falls die fr die Blockgr”e eingestellte Maximalzahl von
+             aufzubewahrenden Bl”cken erreicht  ist,  wird  der  Block
+             ebenso  wie  bei einer nicht verwaltete Blockgr”e direkt
+             per Ax_free frei gegeben.
+
+           ù Das Speicher-Management um die Funktionen Ax_malloc() und
+             Ax_free()   wurde   um   Verwaltung   von  leeren  Listen
+             erweitert.
+
+             Wie funktioniert das?
+             Nun,  es  gibt  eine  interne  Funktion,  die  ACSpro zur
+             Freigabe   der   eigenen  Strukturen  wie  z.B.  Awindow,
+             TEDINFO,  BITBLK,   AUSERBLK,   ULinListe   oder   intern
+             gekapselter  Strukturen  verwendet. Diese Funktion prft,
+             ob es fr die entsprechende  Blockgr”e  eine  Liste  fr
+             freie  Bl”cke  gibt.  Falls  dies  der Fall ist, wird der
+             Block  nicht  freigegeben,  sondern   in   dieser   Liste
+             aufbewahrt  - allerdings wird fr jede dieser Listen eine
+             Obergrenze beachtet, ab der der  Speicher  -  wie  bisher
+             auch  -  per  Ax_free  freigegeben wird. Falls danach ein
+             Block dieser Gr”e angefordert wird, wird er  direkt  aus
+             dieser  Liste genommen und braucht nicht erneut alloziert
+             werden.
+
+             Da die  Speicherverwaltung  der   Pure-C-Bibliothek   die
+             Bl”cke  nicht  sofoert  an das Betriebssystem zurckgibt,
+             sondern gr”ere Bl”cke anfordert, diese verwaltet und auf
+             Anforderung an die Anwendung gibt, ergibt sich eigentlich
+             kein nennenswerter Mehrverbrauch an Speicher.  Da  ACSpro
+             jedoch  die  Gr”e  der  eigenen  Strukturen  kennt, kann
+             ACSpro hier viel effizienter die  Verwaltung  bernehmen.
+             Besonders  bei  den  Strukturen  AUSERBLK macht sich dies
+             positiv  bemerkbar,  da  diese  bei   allen   ACS-eigenen
+             Objekten verwendet werden.
+
+ 03.07.2002 GUI-Editor
+
+           ù Der  GUI-Editor verwendet  nun  Version  1.4 des Startup-
+             Codes von Stefan Kuhr @ OS. Im ReadMe dazu steht:
+
+                - Die  Zeiger   auf   die   Environmentvariablen   und
+                  Kommandozeilenargumente  verringern  die Stack-Gr”e
+                  nun nur noch bei Accessories oder  zu  kleiner  TPA.
+                  Ein minimaler Stack bleibt immer frei.
+
+                - Wenn   der  Heap  zu  klein  ist  -  TPA  ist  schon
+                  geschrumpft  und  der  Stack  ist  kleiner  als  ein
+                  Mindestwert -, beendet der Startup-Code das Programm
+                  mit dem Exit-Code 0x4150.
+
+                - Auch bei viel zu  vielen  Environmentvariablen  oder
+                  Argumenten    wird   niemals   ber   das   TPA-Ende
+                  hinausgeschrieben.  Gleich  zu   Beginn   wird   der
+                  maximale Heap berechnet: MaxHeapSize = TPA - BSSEnde
+                  - MinimalStack. Mit  dem  Schreiben  der  argv-  und
+                  envp-Zeiger  wird der Heap gefllt und bei Erreichen
+                  der  maximalen  Heap-Gr”e   wird   die   Auswertung
+                  abgebrochen.   Auf  das  reele  Heap-Ende  wird  die
+                  Stack-Gr”e addiert und so das gewnschte  Ende  der
+                  TPA  bestimmt.  Falls m”glich wird dann noch die TPA
+                  geschrumpft.
+
+                - Die Basepagekommandozeile wird nun ins  BSS  kopiert
+                  und  nicht  mehr  direkt in der Basepage geparst, da
+                  ein  Fsfirst()   ohne   vorheriges   Fsetdta()   die
+                  Kommandozeile zerst”rt.
+
+                - Bei     einem     zu     hohen    Wert    fr    die
+                  Basepagekommadozeilenl„nge  wurde  an  eine  falsche
+                  Position  gesprungen und dadurch ein RTS ausgefhrt,
+                  ohne das  eine  gltige  Rcksprungadresse  auf  dem
+                  Stack war.
+
+                - Durch  einen  falschen  Vergleichen  mit  '0' wurden
+                  leere  ARGV-Argumente  ab  dem  zehnten  nicht  mehr
+                  geleert.
+
+                - Den    kleinen   Startup-Code   habe   ich   nochmal
+                  berarbeitet und ein wenig optimiert. Unter  anderem
+                  habe   ich   argv[0],   argv[1]   und  envp  bereits
+                  initialisiert ins Datensegment gelegt.
+
+             Ein dickes Danke an Stefan Kuhr @ OS fr seinen  Startup-
+             Code  und  dessen  Pflege. Besonders natrlich ein dickes
+             Danke, da ich ihn ACSpro beilegen darf!
+
+ 24.06.2002 ACS.LIB
+
+           ù Die Funktion Af_fileselect() hat einen weiteren Parameter
+             bekommen.   Nach  dem  Extensions-Pattern  wird  nun  die
+             Sortierung des File-Selectors angegeben. Diese Sortierung
+             wird  nur  fr  die  FSLX-Funktionen verwendet. Falls die
+             FSLX-Funktionen  nicht  verfgbar  sind  und  daher   auf
+             Af_select()   bzw.   Af_first_fsel()  und  Af_next_fsel()
+             zurckgegriffen werden  mu,  so  wird  diese  Sortierung
+             nicht bercksichtigt.
+
+ 23.06.2002 ACS.LIB
+
+           ù Die  Funktion  Ash_font  liefert  nun  bei Verwendung des
+             modalen  Font-Selektors  in  der   bergebenen   Struktur
+             A_FontSel die Ergebnisse zurck.
+
+           ù In  der  Funktion  Af_fileselect wurde die Verwendung der
+             Extensions-Patterns nochmals berarbeitet und korrigiert.
+             Nun sollte alles korrekt laufen.
+
+ 05.06.2002 GUI-Editor
+
+           ù Der  GUI-Editor verwendet  nun  Version  1.3 des Startup-
+             Codes von Stefan Kuhr @ OS. Im ReadMe dazu steht:
+
+                - Der Parser hat nun eine C-Schnittstelle, so  da  er
+                  nun  auch fr z.B. AV_START genutzt werden kann. Die
+                  Schnittstelle ist wie folgt definiert:
+
+                  unsinged long parse_cmdline( char *cmdline,
+                                   char *cmdarg, char **argv,
+                                   unsigned long max_argc );
+
+                   cmdline  ist ein Zeiger auf eine Kommandozeile, die
+                            durch  ein Nullbyte abgeschlossen ist, und
+                            kein L„ngenbyte besitzt.
+
+                   cmdarg   verweist auf einen Speicher,  in  dem  die
+                            geparsten    Argumente   abgelegt   werden
+                            sollen.  Ist  dieser  Zeiger  NULL,   wird
+                            cmdline als Zielspeicher verwendet.
+
+                   argv     bestimmt   die  Adresse,  an  der  bis  zu
+                            max_argc   Zeiger   auf   die    einzelnen
+                            Argumente der Kommandozeile hintereinander
+                            abgelegt  werden.  Sofern  das  Feld  gro
+                            genug  ist,  ist  argv[Ergebnis]==NULL. Es
+                            ist aber auch m”glich,  einen  Nullpointer
+                            an argv zu bergeben.
+
+                   max_argc beschreibt die Gr”e des Feldes argv.
+
+                  Ergebnis ist   die   Anzahl  der  Argumente  in  der
+                  Kommandozeile.
+
+                  Die Parameterbergabe erfolgt in  Pure-C-Manier,  es
+                  werden dazu die Register D0, A0, A1 und ein Argument
+                  auf dem Stack genutzt. Alle anderen Register bleiben
+                  unver„ndert.
+
+                - Bei   einer   defekten,  erweiterten  ARGV-šbergabe,
+                  konnte es zu Speicherschreibern kommen. Ich habe nun
+                  alle unsicheren Stellen abgedichtet.
+
+                - Ein  ARGV=NULL:0  wurde  nicht  ausgewertet.  (Naja,
+                  macht eh keinen groen  Sinn  den  Programmnamen  zu
+                  l”schen; aber nun geht auch das.)
+
+                - Die  Register  werden  nun  als unsigned betrachtet,
+                  dass  heit  es   k”nnen   theoretisch   ber   vier
+                  Milliarden    Argumente   und   Environmentvariablen
+                  gehandhabt werden. Auch argc wird als unsigned  long
+                  an main() bergeben.
+
+                - Die Baspagekommandozeile wird nun nicht mehr auf den
+                  Heap kopiert  (was  dem  Stack  128  Byte  kostete),
+                  sondern direkt in der Basepage geparst.
+
+                - Nach  wie  vor wird der Speicher fr die Felder envp
+                  und argv vom Stack abgeknappst. Das sollte  bei  der
+                  Wahl  der  Stackgr”e  bedacht  werden.  Vorsichtige
+                  Naturen k”nnen  die  unterste  Stackadresse  _StkLim
+                  entnehmen.
+
+                - Selbst   bei  korrupter  Argumentbergabe  sind  die
+                  Parameter an main() konsistent.
+
+                - Der kleine Startup-Code ist noch um eine Kleinigkeit
+                  geschrumpft.
+
+             Ein dickes  Danke an Stefan Kuhr @ OS fr seinen Startup-
+             Code und dessen Pflege. Besonders  natrlich  ein  dickes
+             Danke, da ich ihn ACSpro beilegen darf!
+
+ 30.05.2002 ACS.LIB
+
+           ù Die Funktion Awi_obfind() strzte mit einem Bus-Error ab,
+             wenn als **tree der Zeiger NULL bzw. NIL bergeben wurde.
+
+           ù Die  Funktion  nkc_kstate()  brachte  ebenfalls  hin  und
+             wieder einen Bus-Error zustande.
+
+ 26.05.2002 ACS.LIB
+
+           ù Bei  den  Funktionen  A_dialog und A_dialog2 wird nun wie
+             bei Awi_dialog das Hauptmen deaktiviert.
+
+           ù Falls bei A_dialog oder A_dialog2 ein Dialog  ohne  Edit-
+             Felder  verwendet  wurde, gab es einen blen Absturz, der
+             nun behoben sein sollte.
+
+           ù Aktuelle PCGEM.LIB mit Fehlerkorrektur  fr  fsel_exinput
+             sowie  Untersttzung  der Mausr„der gem„ TORG 105 (siehe
+             http://www.tosgroup.org - wie z.B. von MWheel  von  Armin
+             Diedering verwendet - wird verwendet.
+
+ 23.05.2002 ACS.LIB
+
+           ù Die HOT-Close-Box wird ggf. abgeschaltet, wenn das System
+             sie gem„ appl_getinfo nicht kennt.
+
+ 22.05.2002 ACS.LIB
+
+           ù Probleme  bei  Parameterbergabe  via  VA_START  und  D&D
+             korrigiert.
+
+ 06.05.2002 ACSPLUS.LIB
+
+           ù Der   DESKTOP   hatte   noch   einen  kleinen  Bug:  beim
+             Doppelklick   auf   das   NEU-Icon   wurde   ein    nicht
+             initialisierter   String   anstelle   des   Wertes   NULL
+             bergeben.
+
+ 04.04.2002 ACS.LIB
+
+           ù Bei Verwendung des "alten  Men-Layoutes"  gab  es  einen
+             Absturz, der nun behoben sein sollte.
+
+ 01.04.2002 ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die  neue  Funktion  Ash_getOSHeader  steht auch ber die
+             Modul-Schnittstelle fr Module zur Verfgung.
+
+           ù Die Kompatibilit„ts-Funktionen Aob_create und  Aus_create
+             fr   Module  der  ACS-Versionen  2.30  bis  2.3.4  waren
+             fehlerhaft in die Schnittstelle eingebunden. Module,  die
+             nur   Awi_create  verwendet  haben,  haben  funktioniert.
+             Sobald allerdings Aob_create  oder  Aus_create  verwendet
+             wurde  -  z.B. beim Austausch des Work-Objektes -, gab es
+             Probleme.
+
+ 26.03.2002 ACS.LIB, ACSPLUS.LIB,
+
+           ù Die  von  der  Funktion  Af_fileselect  intern  benutzten
+             Wrapper-Funktionen   fr  die  Funktionen  Af_fileselect,
+             Af_select, Af_first_fsel und Af_next_fsel wurden komplett
+             berarbeitet.   Dadurch   wurde  der  Parameter  patterns
+             ge„ndert!
+
+             In dem Parameter  patterns  werden  jetzt  Endungs-Muster
+             bergeben.  Mehrere Endungen in einem Muster werden durch
+             ','  getrennt,  mehrere  Muster  durch   ein   Null-Byte.
+             Abgeschlossen    werden    die    Muster    durch    zwei
+             aufeinanderfolgende Null-Bytes. Der  GUI-Editor verwendet
+             z.B.    beim   ™ffnen   die   Patterns   (als   C-String)
+             "ACS,acs\0RSC,rsc\0\0".
+
+             Falls die  FSLX-Funktionen  verfgbar  sind,  werden  die
+             Extensionen     direkt     verwendet     (incl.    Gro-/
+             Kleinschreibungsvarianten),  falls  auf  Af_select   bzw.
+             Af_first_fsel und Af_next_fsel zurckgegriffen wird, wird
+             nur die erste Extension (unver„ndert) verwendet.
+
+           ù Die neue Funktion Ash_getOSHeader  liefert  einen  Zeiger
+             auf  die Struktur SYSHDR (manchmal auch OSHEADER genannt)
+             zurck.
+
+ 20.03.2002 ACS.LIB, ACSTOOLS.LIB, ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die neue Funktion Ast_istr sucht  analog  zur  C-Funktion
+             strstr  einen  Substring  in einem String - allerdings im
+             Gegensatz zu strstr ohne  Unterscheidung  zwischen  Gro-
+             und  Kleinschreibung. Die Funktion ist auch in der Modul-
+             Schnittstelle enthalten.
+
+ 16.03.2002 ACS.LIB, ACSTOOLS.LIB
+
+           ù Wenn im Dateinamen das Quote-Zeichen  selbst  vorkam  und
+             daher verdoppelt wurde, so funktionierte nichts mehr. Die
+             Funktionen Af_quote und Af_unquote arbeiten nun  korrekt.
+             Als Quote-Zeichen erkennt Af_unquote sowohl die einfachen
+             als  auch  die   doppelten   Anfhrungszeichen,   w„hrend
+             Af_quote   selbst  nur  die  einfachen  Anfhrungszeichen
+             verwendet.
+
+           ù Die   neue   Funktion   Af_parseCmdLine   zerlegt    eine
+             Kommandozeile  und  liefert  eine lineare Liste ULinListe
+             mit den  Dateinamen  zurck.  Hierbei  wird  das  Quoting
+             korrekt behandelt, d.h. aus den String
+
+                  "'Param Leer.txt' Param_no_Leer.txt 'Param Leer
+                  und `` darin.txt`"
+
+             wird eine lineare Liste mit den Eintr„gen
+
+                  Param Leer.txt
+                  Param_no_Leer.txt
+                  Param Leer und ` darin.txt
+
+             gebildet. Die Namen liegen also nicht gequoted vor!
+
+           ù Die Dateinamen, die von auerhalb der Anwendung ber  die
+             Drag-Routinen  als  AT_FILE  geliefert werden, liegen nun
+             gequoted vor. Ggf. k”nnen  mehrere  Dateinamen  geliefert
+             worden  sein, die ber getrennte Aufrufe der Drag-Routine
+             bergeben werden. Intern wird der gelieferte String  ber
+             Af_parseCmdLine  in  ie  Dateinamen zerlegt, die dann per
+             Af_quote gequoted und an an  die  Drag-Routine  bzw.  dem
+             Fenster  mittels  der Nachricht AS_DRAGGED weiter gegeben
+             werden.
+
+             Damit sollten  nun  lange  Dateinamen  -  besonders   mit
+             Leerzeichen oder einfachen Anfhrungszeichen - wesentlich
+             komfortabler m”glich sein, als es bisher der Fall war.
+
+             Zur Erinnerung: Wenn keines der im  C-String  "  \t\n\r'"
+             enthaltenen  Zeichen  im bergebenen Dateinamen vorkommt,
+             so macht Af_quote nichts!
+
+ 14.03.2002 ACS.LIB, ACSPLUS.LIB
+
+           ù Bei meinen Tests habe ich leider feststellen mssen,  da
+             das  ™ffnen  von  Dateien  im  PUR_DESK  nun  nicht  mehr
+             reibungslos klappte.  Jetzt  geht  (endlich)  sowohl  das
+             ™ffnen im PUR_DESK, als auch die šbergabe von Dateien per
+             AV-Protokoll oder Drag&Drop-Protokoll
+
+ 03.03.2002 ACS.LIB, ACSPLUS.LIB
+
+           ù Der PUR_DESK und der DESKTOP untersttzen nun Quoting von
+             Dateinamen  auch  bei bergebenen Namen beim AV-Protokoll
+             oder Atari-Drag&Drop-Protokoll.
+
+           ù Beim Drag&Drop-Protokoll war noch ein  Fehler  enthalten,
+             so  da  eine  Parameter-šbergabe von z.B. jinnee an ACS-
+             Anwendungen nicht richtig funktionierte.
+
+           ù Bei  meinen  Tests  der  Parameter-šbergabe  stellte  ich
+             erstaunt  fest,  da jinnee beim ™ffnen von mehreren ACS-
+             Dateien (im jinnee-Fenster z.B. zwei  Dateien  selektiert
+             und    "Datei\Objekte   ”ffnen"   ausw„hlen) den   ersten
+             Parameter an den GUI-Editor bergeben hat und den zweiten
+             je   nach  Anmeldung  des  GUI-Editor per  VA-START  oder
+             Drag&Drop bergab. In  der  frhen  Initialisierungsphase
+             von  ACSpro ging  das  schief  und  wurde mit einem Crash
+             quittiert, der nun ausger„umt ist.
+
+ 01.03.2002 ACSPLUS.LIB
+
+           ù Sowohl der PUR_DESK als auch der  DESKTOP  verwenden  nun
+             Af_unquote vor Aufruf der der hinterlegten Neu-Routine.
+
+ 28.02.2002 ACS.LIB, ACSTOOLS.LIB, ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die  neue  Funktion  Af_quote prft, ob ein Dateiname mit
+             Quote-Zeichen  versehen   mu,   bevor   er   an   andere
+             Anwendungen  gesandt werden kann (z.B. fr AV-Protokoll).
+             Umgekehrt   entfernt   ggf.   die   Funktion   Af_unquote
+             vorhandene Quote-Zeichen.
+
+ 24.02.2002 ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die neuen Funktionen fr die KEYTAB-Ansteuerung sowie das
+             Setzen  der  Icons  sind   in   die   Modul-Schnittstelle
+             aufgenommen worden.
+
+ 24.02.2002 ACS.LIB, ACSTOOLS.LIB
+
+           ù Der  Druck-Dialog  sowie  der File- und der Font-Selector
+             verwenden  nun  kein  Icon  mehr.  šber  die   Funktionen
+             Ash_printSetIcon,   Ash_fileSetIcon  und  Ash_fontSetIcon
+             kann das zu verwendende Icon gesetzt oder durch NULL bzw.
+             NIL  gel”scht  werden.  Der  Parameter  ghost  setzt oder
+             l”scht   bei   vorhandenem    Icon    das    "Ghost-Flag"
+             AW_GHOSTICON.
+
+           ù Die  Bibliothek  KEYTAB.LIB  wurde  in ACSpro integriert.
+             Mittels dieser Bibliothek wird  KEYTAB  zur  Zeichensatz-
+             Konversion  angesteuert.  Die dazu notwendigen Funktionen
+             sind
+
+                  Akt_getKeyTab, Akt_getRelease,     Akt_getEuro,
+                  Akt_getExpMaxNr,               Akt_getImpMaxNr,
+                  Akt_getExpNameFromNr,     Akt_getImpNameFromNr,
+                  Akt_getExpShortNameFromNr,
+                  Akt_getImpShortNameFromNr,  Akt_getExpNrFromId,
+                  Akt_getImpNrFromId,         Akt_getExpIdFromNr,
+                  Akt_getImpIdFromNr,       Akt_getExpNrFromName,
+                  Akt_getImpNrFromName,          Akt_CharAtari2X,
+                  Akt_CharX2Atari,              Akt_BlockAtari2X,
+                  Akt_BlockX2Atari,     Akt_StringAtari2X     und
+                  Akt_StringX2Atari.
+
+             In der Bibliothek ACS.LIB sind zus„tzlich die Funktionen
+
+                  Akt_popExpName, Akt_popImpName, Akt_chooseExpNr
+                  und Akt_chooseImpNr
+
+             enthalten, die eine komfortable Auswahl  des  Ziel-  bzw.
+             Quell-Zeichensatzes ber Popups erm”glichen.
+
+             Die Einbindung   der   Bibliothek   KEYTAB.LIB  oder  der
+             Header-Datei KEYTAB.H ist damit berflssig geworden.
+
+             Genauere Informationen ber  KEYTAB  und  die  KEYTAB.LIB
+             liegen  zusammen  mit allen(!) Sourcen KEYTAB bei. KEYTAB
+             kann aus der Maus LL (Telefonnummer 0 81 92 / 99 6 99 99,
+             V.34     und    X.75)    oder    vom    Internet    unter
+             http://acspro.atari.org/ geladen werden.
+
+ 15.12.2001 ACSTOOLS.LIB
+
+           ù Es gibt nun eine weitere  Bibliothek:  ACSTOOLS.LIB.  Sie
+             ist  fr  TOS/TTP-Programme  und  stellt  einige Utility-
+             Funktionen aus ACSpro zur Verfgung.
+
+             Auch hier erfolgt die Initialisierung ber die  bekannten
+             Funktionen   ACSinit0   und   ACSinit.   Die  wichtigsten
+             Initialisierungs-Daten   mssen   ber   eine    Variable
+             ACSconfig  vom Typ Aconfig zur Verfgung gestellt werden.
+             Die Dokumentation dieser Bibliothek wird in  die  ACSpro-
+             Dokumentation eingearbeitet werden.
+
+             Hinweis: Die  Struktur von Aconfig, Ablk etc. ist fr die
+             TOS-/TTP-Programme  entsprechend  angepat  worden,  d.h.
+             GEM-Anwendungen   ben”tigen   ACS.LIB,  TOS/TTP-Programme
+             ACSTOOLS.LIB. Beide Bibliotheken schlieen sich aus.
+
+ 28.11.2001 ACS.LIB
+
+           ù Beim  Erstellen  der  Cfg-Struktur  UConfig   wurde   die
+             Komponente  env_praefix  der Info-Struktur UCfgInfo nicht
+             korrekt ausgewertet: wenn env_praefix  gleich  NULL  bzw.
+             NIL  ist,  so  wurde  ein  leerer  String  erzeugt. Durch
+             env_praefix gleich NULL bzw. NIL wird  signalisiert,  da
+             nicht im  Environment  nach  einer  Cfg-Variablen gesucht
+             werden soll, wenn sie in den Cfg-Strings  nicht  gefunden
+             wird.
+
+ 27.11.2001 ACS.LIB
+
+           ù Nach  einigen  Tests  hat  sich  ein bler Absturz in den
+             Cfg-Strings gezeigt, der nun korrigiert ist. Er trat auf,
+             wenn  ein  gesuchter  String  nicht  gefunden  wurde  und
+             versucht wurde, im Environment den  gewnschten  Wert  zu
+             finden.
+
+ 26.10.2001 ACSPLUS.LIB
+
+           ù Der  PUR_DESK  wurde  um  ein  paar interne šberprfungen
+             erg„nzt, die den  Betrieb  gegenber  Programmier-Fehlern
+             stabiler machen drften.
+
+ 17.10.2001 ACS.LIB, ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die  neue  Funktion  Ash_gettimer  liefert  den  Wert des
+             200Hz-Timers zurck. Bevorzugt wird der Wert ber Ssystem
+             ermittelt,  falls  dies nicht geht, wird der Timer direkt
+             ausgelesen. Die  Funktion  steht  auch  ber  die  Modul-
+             Schnittstelle zur Verfgung.
+
+ 25.09.2001 ACS.LIB
+
+           ù In  ACSpro wurden die nderungen aus PCGEM.LIB bernommen
+             (Binding  v_opnwk   erweitert,   Binding   fr   v_copies
+             nachgerstet).
+
+ 18.09.2001 ACS.LIB
+
+           ù Kleinere   Umstellungen   und   Optimierungen   bei   der
+             Initialisierung des ACS-Systems - z.B. sollte jetzt  nach
+             der Initialisierung der normale Mauszeiger erscheinen.
+
+           ù Kleinere  Optimierungen  in  Amo_busy()  und Amo_unbusy()
+             sowie Amo_hide() und Amo_show().
+
+ 06.09.2001 ACS.LIB
+
+           ù Der Font-Selektor hatte keinen Fenster-Titel. Dieser wird
+             jetzt  an  die  Funktion Ash_font bergeben. Daher erh„lt
+             die Funktion Ash_font  als  neuen  ersten  Parameter  den
+             Fenster-Titel, die restlichen Parameter sind wie gewohnt.
+
+           ù Beim  Aufruf  der  Druck-Dialog  im nicht-modalen Fenster
+             erfuhr  man  in  der  Nachricht  AS_PRINT,  welche  Daten
+             eingestellt    wurden.   Allerdings   fehlte   hier   die
+             Information, ob "OK", "Drucken" oder "Abbrechen"  gew„hlt
+             worden  war.  Daher  wurde die Struktur A_PrintSel um die
+             Angabe des  Buttons  erweitert.  Wenn  der  Button  nicht
+             PDLG_OK  ist,  so  wurde  Abbrechen  gew„hlt, bei PDLG-OK
+             entweder OK oder Drucken, was durch  options  (der  Wert,
+             der Ash_print mitgegeben wurde) bestimmt wird.
+
+ 21.08.2001 ACS.LIB
+
+           ù Wenn    in   Fenster-Dialogen   ein   Tastendruck   nicht
+             verarbeitet werden kann  -  z.B.  weil  kein  Eingabefeld
+             existiert  und  es kein passendes Tastenkrzel gibt -, so
+             passierte gar nichts.
+
+             Jetzt kann bei Tastendrcken ohne Ctrl oder Alt  versucht
+             werden,  ein Tastenkrzel mit Ctrl oder Alt zu verwenden.
+             šber die Variable  ACSblk->keyAltCtrlSwitch  wird  global
+             fr  die  Anwendung  das  Verhalten  definiert.  Folgende
+             Varianten sind m”glich:
+
+                - Suche im Work-Objekt getrennt einschaltbar
+
+                - Suche in der Toolbar getrennt einschaltbar
+
+                - Suche nach Alt+Key getrennt einschaltbar
+
+                - Suche nach Ctrl+Key getrennt einschaltbar
+
+                - Suche nach Ctrl+Alt+Key getrennt einschaltbar
+
+                - Zuerst im Work-Objekt suchen, dann in der Toolbar
+
+                - Zuerst in der Toolbar suchen, dann im Work-Objekt
+
+             Hierfr sind einige Konstanten definiert:
+
+              KEY_AC_NONE            bisheriges    Verhalten    (keine
+                                     Variante probieren)
+
+              KEY_AC_ALT_WORK        Alt+Key  im Work-Objekt versuchen
+                                     (defaultm„ig aktiviert)
+
+              KEY_AC_CTRL_WORK       Ctrl+Key im Work-Objekt versuchen
+                                     (defaultm„ig nicht aktiviert)
+
+              KEY_AC_CTRL_FIRST_WORK Fr    das    Work-Objekt    erst
+                                     Ctrl+Key, dann Alt+Key  versuchen
+                                     (Standard: erst Alt, dann Ctrl)
+
+              KEY_AC_ALT_CTRL_WORK   Ctrl+Alt+Key    im    Work-Objekt
+                                     versuchen   (defaultm„ig   nicht
+                                     aktiviert)
+
+              KEY_AC_ALT_TOOL        Alt+Key  in der Toolbar versuchen
+                                     (defaultm„ig nicht aktiviert)
+
+              KEY_AC_CTRL_TOOL       Ctrl+Key in der Toolbar versuchen
+                                     (defaultm„ig nicht aktiviert)
+
+              KEY_AC_CTRL_FIRST_TOOL Fr  die  Toolbar  erst Ctrl+Key,
+                                     dann Alt+Key versuchen (Standard:
+                                     erst Alt, dann Ctrl)
+
+              KEY_AC_ALT_CTRL_TOOL   Ctrl+Alt+Key   in   der   Toolbar
+                                     versuchen   (defaultm„ig   nicht
+                                     aktiviert)
+
+              KEY_AC_TOOL_FIRST      Zuerst  in  der  Toolbar, dann im
+                                     Work-Objekt nachsehen  (Standard:
+                                     erst Work-Objekt, dann Toolbar)
+
+ 08.08.2001 GUI-Editor
+
+           ù Das  Generieren  der  Sourcen  wurde  korrigiert. Wenn in
+             Strings Sonderzeichen wie  z.B.  Linefeed  oder  Formfeed
+             enthalten  waren,  so  sind  diese  direkt  so ausgegeben
+             worden.
+
+                - In  C-Strings  werden  diese  Zeichen  korrekt   als
+                  Escape-Sequenz  ausgegeben.  Beispielsweise wird der
+                  String "Zeilen-umbruch" mit dem  Zeichen  '\n'  nach
+                  dem   Trennstrich  (l„t  sich  hier  nicht  passend
+                  wiedergeben)  dann  korrekt  als  "Zeilen-\numbruch"
+                  geschrieben.
+
+                - Fr  Pascal werden diese Zeichen bis auf das Pascal-
+                  Zeichen "'" ber  ihren  ASCII-Code  in  den  String
+                  geschrieben.
+
+ 25.06.2001 ACSPLUS.LIB
+
+           ù Die Funktionen wputs, wprintf und wvprintf prfen nun, ob
+             das bergebene Fenster ungleich NULL bzw. NIL ist.
+
+             Tip: Damit lassen sich Debug-Ausgaben in  ein  Protokoll-
+             Fenster   umleiten.  Fr  die  Release-Version  wird  das
+             globale Debug-Fenster nicht mehr  angelegt,  sondern  die
+             globale  Debug-Fenster-Variable auf NULL bzw. NIL gesetzt
+             - und schon sind alle Debug-Ausgaben quasi wirkungslos.
+
+ 14.06.2001 GUI-Editor
+
+           ù Beim Zeichnen von Icons im Icon-Editor  nimmt  der  Maus-
+             Pfeil die gew„hlte Farbe an. Bei hellen Farben - speziell
+             Hellgrau - war der Maus-Zeiger auf dem hellen  Untergrund
+             nicht mehr erkennbar. Jetzt wird anhand einer empirischen
+             "Helligkeits-Bestimmung" (Der Name klingt nach wesentlich
+             mehr,  als  es  ist) die  Umrahmung  des Maus-Zeigers bei
+             dunklen Farben auf wei, bei hellen  Farben  auf  schwarz
+             gestellt.
+
+ 05.06.2001 ACSPLUS.LIB
+
+           ù Der  Slider-Balken  wird  nun auch wie die Pfeile deaktiv
+             dargestellt, wenn der Slider den gesamten Bereich bereits
+             anzeigt, d.h. wenn der Balken bisher nicht zu verschieben
+             war.
+
+ 01.06.2001 ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die Funktionen Acfg_getChar, Acfg_setChar,  Acfg_getLong,
+             Acfg_setLong,      Acfg_getBool,     Acfg_setBool     und
+             Acfg_getString  sind  auch  in  der   Modul-Schnittstelle
+             enthalten.
+
+ 01.06.2001 ACS.LIB
+
+           ù Die  Cfg-Strings haben die neuen Funktionen Acfg_setChar,
+             Acfg_getChar,  Acfg_getLong,  Acfg_setLong,  Acfg_getBool
+             und   Acfg_getBool   erhalten.   Diese  nehmen  ggf.  die
+             Umwandlung der  Werte  von  char,  INT32  bzw.  Logischen
+             Werten in Strings und umgekehrt vor.
+
+           ù Die neue Funktion Acfg_getString stellt eine Abkrzung zu
+             Acfg_getValue dar, der  Wert  wird  in  einem  statischen
+             String zurckgegeben.
+
+             Hinweis: Die  Funktion  Acfg_getString  ist  nicht multi-
+             threading-fest!
+
+           ù Die neue Funktion  Acfg_clearGroup  l”scht  eine  einzige
+             Gruppe.
+
+           ù Die Funktion Acfg_clearGroup wurde in Acfg_clearAllGroups
+             umbenannt.
+
+ 27.05.2001 ACS.LIB
+
+           ù Es gibt zwei neue Funktionen, um  zu  berprfen,  ob  es
+             eine   Parameter-Gruppe   bzw.   einen  Cfg-String  gibt.
+             Acfg_isGroupPresent  liefert  TRUE,  wenn  die   genannte
+             Gruppe existiert, anderfalls wird FALSE geliefert. Ebenso
+             liefert Acfg_isStringPresent bei existierendem  Parameter
+             TRUE, andernfalls FALSE.
+
+             Hinweis: Die   beiden   Funktionen   betrachten  nur  die
+             bergebene    UConfig-Struktur,    nicht    evtl.     von
+             Acfg_getValue untersuchte Environment-Strings!
+
+           ù Die  Funktionen  Acfg_getBool  und Acfg_setBool verwenden
+             nun  andere  Werte.  Acfg_setBool  gibt  dem  bergebenen
+             Parameter  je  nach  Flag  die Werte "True" oder "False".
+             Acfg_getBool konvertiert den Wert "True" nach TRUE, alles
+             andere wird FALSE.
+
+ 25.05.2001 ACSMOD.LIB, ACSMOD01.LIB, ACS_LOAD.O
+
+           ù Die   Modul-Schnittstelle   ist  nun  um  die  kompletten
+             Bindings der VDI- und  AES-Funktionen  erweitert  worden.
+             Damit  wird  das  applikations-globale  AES-Array ACSblk-
+             >AESglobal  bei  AES-Aufrufen  der  Module  benutzt,  was
+             bislang  bei  Modulen  zu  Problemen  gefhrt hat (Module
+             hatten bislang die GEM-Bibliothek  ebenfals  gelinkt  und
+             damit  ein  eigenes  und  damit uninitialisiertes global-
+             Array benutzt).
+
+ 06.05.2001 GUI-Editor
+
+           ù Der GUI-Editor hat bislang in  die  exportierte  UConfig-
+             Struktur,  die in der exportierten Variable ACSconfig des
+             Hauptmoduls enthalten ist, als Dateiname der  Cfg-Strings
+             "PUR_DESK"   geschrieben.   Nun  wird  dieser  Text  leer
+             gelassen.
+
+             Damit wird fr das Laden der in ACSblk->basename stehende
+             Name  verwendet. In sp„teren Versionn ist geplant, die in
+             ACSconfig enthaltene Struktur CfgInfo auch im  GUI-Editor
+             bereits bearbeiten zu k”nnen.
+
+ 06.05.2001 ACS.LIB
+
+           ù Die   Cfg-Strings   werden   nun   beim  Anwendungs-Start
+             automatisch geladen. Die  Cfg-Strings  stehen  danach  in
+             ACSblk->cfg  zur Verfgung und k”nnen mit den zugeh”rigen
+             Funktionen bearbeitet und ausgewertet werden.
+
+             Der Dateiname fr das Laden wird aus ACSconfig  genommen.
+             Falls  der  dort notierte Name leer sein sollte, wird der
+             Dateiname     anhand      ACSblk->basename      gebildet:
+             Af_cfgfile(&ACSblk->basename[2]) (die  2  wegen  der zwei
+             fhrenden Leerzeichen in ACSblk->basename).
+
+             Das Laden  der  Cfg-Strings  geschieht  unmittelbar  nach
+             Aufruf  der  ACSinit0-Funktion,  so  da  der  dort  ggf.
+             manipulierte Name in ACSblk->basename verwendet wird.
+
+ 28.04.2001 ACS.LIB
+
+           ù Das Thermometer  kann  nun  auch  nicht-modal  aufgerufen
+             werden,  indem  der Funktion Ash_thermometer im Parameter
+             kind das neue Flag THERMO_NONMODAL bergeben wird.
+
+             Hinweis:Das modale Thermometer setzt allerdings den  Wert
+             fr   ACSblk->ev_mtcount   auf   1,  damit  die  Schleife
+             schnellstm”glich durchl„uft. Dies  passiert  beim  nicht-
+             modalen  Thermometer  natrlich  nicht.  Damit  l„uft das
+             Thermometer nicht mehr gleichm„ig, wenn  z.B.  die  Maus
+             bewegt  wird. Normalerweise wird wohl auerdem das modale
+             Thermometer zum Einsatz kommen... ;-)
+
+ 27.04.2001 ACSPLUS.LIB
+
+           ù Der  Slider-Balken  wird  nun  wie  die  Pfeile   deaktiv
+             dargestellt, wenn das Objekt im Status DISABLED ist.
+
+ 22.04.2001 ACS.LIB
+
+           ù Die   Funktion   Aev_WmRedraw   verschickt  eine  Redraw-
+             Nachricht. ACSpro verwendet diese Funktion, um in einigen
+             F„llen  ein  Neuzeichnen  von  Fenstern  oder  sogar  des
+             gesamten   Bildschirmes   zu   veranlassen    (z.B.    in
+             Awi_layout).
+
+           ù Die  Funktion  Awi_alert  hat  den Alert-String direkt an
+             form_alert weitergegeben, wenn der  ACSpro-eigene  modale
+             Alert-Fenster-Dialog  nicht  verwendet werden konnte. Nun
+             wird das  Icon  '4'  auf  das  Icon  '1'  fr  form_alert
+             umgesetzt.
+
+ 19.04.2001 ACS.LIB
+
+           ù Die Funktionen Awi_redraw zeichnet den Fenster-Inhalt nur
+             noch, wenn das Fenster nicht im Zustand  AWS_SHADED  ist.
+             Da  hin  und wieder die Redraw-Message vor dem "Unshaden"
+             eintrifft, wird bei Erhalt der Nachricht WM_UNSHADED  das
+             Fenster  davon  informiert,  das Flag AWS_SHADED gel”scht
+             und dann ein Neuzeichnen angestoen.
+
+           ù Die Funktionen Awi_obchange und  Awi_obredraw  rufen  bei
+             gesetztem  Flag  AWS_SHADED  direkt  die  normale Redraw-
+             Routine des Fensters auf. Diese ist in den meisten F„llen
+             Awi_redraw,   welche   in   diesem   Zustand  die  Arbeit
+             verweigert - das Fenster ist ja  eingeklappt  und  nichts
+             auer der Titelzeile zu sehen.
+
+ 17.04.2001 GUI-Editor
+
+           ù Der  GUI-Editor ”ffnet  nun Module nicht mehr als Text im
+             Editor, sondern startet sie per Ash_module nach.
+
+           ù Im Eigenschaften-Dialog jeder  ACS-Datei  wurden  bereits
+             die  Optionen  fr  das  Exportieren  und Importieren der
+             Texte vorgesehen. Das Importieren  der  Texte  sowie  das
+             Zusammenbinden  und  Verwenden der generierten Texte wird
+             noch nicht in Version 3.0.0 enthalten sein.
+
+ 17.04.2001 ACSPLUS.LIB
+
+           ù Der pure Desktop verwendet nun zum Nachladen von  Modulen
+             die  Funktion  Af_fileselect,  d.h.  die Auswahlbox wird,
+             sofern m”glich, in ein  modales  Fenster  gelegt,  Multi-
+             Selektion wird ebenfalls untersttzt.
+
+ 14.04.2001 ACS.LIB
+
+           ù Die   neue   Funktion   Ast_reverse  dreht  einen  String
+             zeichenweise um,  d.h.  im  bergebenen  Puffer  ist  das
+             letzte Zeichen das erste und das erste das letzte.
+
+           ù Die   Funktion   Aob_visible  prft,  ob  ein  Objekt  im
+             Objektbaum sichtbar ist, oder ob eines der Eltern-Objekte
+             unsichtbar ist.
+
+           ù Ebenso   prft   die   Funktion   Awi_obvisible,  ob  das
+             angegebene Objekt im Fenster sichtbar sein  k”nnte,  d.h.
+             ob  das  Fester  ge”ffnet,  nicht  ikonifiziert und nicht
+             "shaded" ist und keines der Eltern-Objekte  des  Objektes
+             unsichtbar  ist.  Es  wird nicht geprft, ob der passende
+             Ausschnitt im Fenster sichtbar ist.
+
+ 14.04.2001 GUI-Editor
+
+           ù Der GUI-Editor generiert beim Erzeugen  der  Dateien  fr
+             den  Compiler  nun  auch eine neue Datei fr die Strings.
+             Diese Datei ist im Format der Cfg-Strings aufgebaut.  Pro
+             ACS-Datei  wird  eine  ASCII-Datei  generiert,  wobei der
+             Dateiname aus dem Namen der ACS-Datei durch Ersetzen  von
+             ".acs"  durch ".stn" hervorgeht - n ist hierbei eine Zahl
+             von 0 bis 3 je nach  aktueller  Sprach-Einstellung.  Dies
+             vereinfacht  das šbersetzen von Anwendungen erheblich, da
+             beim  Editieren  der  Texte  nur  die  aktuelle   Sprache
+             verwendet  wird  und  nun  die generierte ASCII-Datei der
+             Original-Sprache parallel in den  Editor  geladen  werden
+             kann.
+
+             Diese ASCII-Dateien  werden  bislang nur erzeugt und noch
+             nicht verwendet. Es ist geplant, diese  ASCII-Dateien  zu
+             einer   einzigen  Datei  pro  Anwendung  zusammenzusetzen
+             (entweder durch ein extra Merge-Programm oder  durch  den
+             GUI-Editor.  Diese  eine groe Datei soll dann die Endung
+             ".str" haben, im Verzeichnis der  compilierten  Anwendung
+             stehen, alle Strings der Anwendung enthalten und ber die
+             Mechanismen der Cfg-Strings ACS-intern verwendet  werden.
+             Ein  Umschalten  der  Sprache  soll  dann durch Austausch
+             dieser Datei gegen  eine  Datei  mit  bersetzten  Texten
+             m”glich  sein.  Auch das bisherige Verfahren, die Strings
+             in die  Anwendung  zu  compilieren  (quasi  als  Default-
+             Strings),   soll   m”glich   sein.   Aber  das  ist  noch
+             Zukunftsmusik (siehe ToDo-Liste).
+
+ 07.04.2001 ACS.LIB
+
+           ù Die  Nachricht  WM_MOUSEWHEEL   wird   nun   ausgewertet.
+             Allerdings  wird  "nur"  das Fenster gescrollt. Da es nur
+             eine  Scroll-Information  gibt,  wird  zuerst   versucht,
+             vertikal zu scrollen. Wenn es die Scroll-Elemente bei dem
+             Fenster nicht gibt oder bereits alles dargestellt  werden
+             sollte,  wird  versucht,  horizontal  zu scrollen, sofern
+             dies m”glich ist. Wenn die  Control-Taste  gedrckt  ist,
+             wird  das  Verhalten  umgedreht, d.h. erst wird versucht,
+             horizontal zu scrollen, dann ggf. vertikal.
+
+ 03.04.2001 ACSMOD.LIB
+
+           ù Die  Modul-Schnittstelle   hat   eine   abw„rtskompatible
+             Schnittstellenfunktion  bekommen,  die die Schrittweite 1
+             fr die Funktion Awi_arrowed bei  Modulen  von  ACS  2.3x
+             einsetzt.  Module,  die  bereits  mittels  Version  3.0.0
+             geschrieben wurden, mssen allerdings angepat werden.
+
+ 03.04.2001 ACS.LIB
+
+           ù ACSpro untersttzt  nun  das  erweiterte  Scrollen  gem„
+             WINX. Dazu ist einiges passiert...
+
+           ù Die  Routine  Awi_arrowed  hat  als dritten Parameter die
+             Scroll-Schrittweite bekommen  und  bercksichtigt  diesen
+             auch.
+
+           ù Die  Fenster-Routine Awindow.arrowed hat ebenfalls diesen
+             Parameter bekommen.
+
+ 29.03.2001 ACS.LIB
+
+           ù ACSpro beherrscht nun auch die von  NKCC  gewohnten  sog.
+             Dead-Keys.  Wie  funktionieren  diese? Ganz einfach: nach
+             Eingabe  eines  Dead-Keys  geschieht  gar   nichts,   der
+             Tastendruck   wird   zun„chst   gepuffert  und  scheinbar
+             ignoriert. Beim n„chsten Zeichen wird dann versucht,  das
+             erste und das zweite Zeichen zu einem einzigen Zeichen zu
+             kombinieren. Genauer l„uft hier folgendes ab:
+
+               1. Wenn kein Dead-Key gepuffert ist, wird  geprft,  ob
+                  ein  Dead-Key  eingegeben wurde. Ein Dead-Key stammt
+                  aus der Menge ^ '`¹"ø,/ und mu freigeschaltet  sein
+                  (s.u.).
+
+               2. Falls  kein  Dead-Key  eingegeben  wurde oder dieser
+                  gesperrt sein sollte, so  wird  das  Zeichen  normal
+                  weitergereicht.
+
+               3. Handelt  es  sich  jedoch  bei  dem Zeichen um einen
+                  freigegebenen  Dead-Key,   so   wird   das   Zeichen
+                  gepuffert  und  die  Verarbeitung  des Tastendruckes
+                  abgebrochen.  ACSpro wartet  nun  auf  den  n„chsten
+                  Tastendruck.
+
+               4. Wenn   ein   Dead-Key   gepuffert   ist,   so   wird
+                  nachgeschlage, ob fr  die  vorliegende  Kombination
+                  Dead-Key  plus  das  neu  eingegebene  Zeichen  eine
+                  Ersetzung hinterlegt ist. Wenn dies  der  Fall  ist,
+                  wird  das  zuletzt  eingegebene  Zeichen  durch  das
+                  Ersatz-Zeichen ersetzt. Andernfalls wird zuerst  der
+                  gepufferte Dead-Key und danach das zweite Zeichen in
+                  die normale  Tastatur-Verarbeitung  gespielt  -  wie
+                  wenn  es  keine  Dead-Keys g„be. Der Dead-Key-Puffer
+                  ist nach dieser Verarbeitung wieder leer.
+
+             Die Dead-Keys mssen natrlich individuell freigeschaltet
+             werden.   Hierzu  wird  in  der  neuen  Variable  ACSblk-
+             >ev_mkdead die Zeichen eingetragen, die die Anwendung als
+             Dead-Keys  betrachtet haben m”chte. Wie in der ToDo-Liste
+             vermerkt,  wird  dies  als  Erweiterung  des   GUI-Editor
+             vorgesehen.
+
+             Folgende Ersetzungs-Varianten werden untersttzt:
+
+
+        Akzent       Dead-Key     Zweite Zeichen     Ersetzung 
+       --------------------------------------------------------
+        Circumflex      ^      +  aeiou           =  ƒˆŒ“–     
+        Tilde           ~      +  nNaoAo          =  ¤¥°±·¸    
+        Akut            '      +  eEaiou          =  ‚ ¡¢£    
+        Gravis          `      +  aeiouA          =  …Š•—¶    
+        Umlaut          ¹      +  aeiouyAOU       =  „‰‹”˜™š 
+        Umlaut          "      +  aeiouyAOU       =  „‰‹”˜™š 
+        Angstr”m        ø      +  aA              =  †        
+        Cedille         ,      +  cC              =  ‡€        
+        kein Akzent     /      +  oO24            =  ³²«¬      
+
+             Die fr  eine  Anwendung zu verwendenden Dead-Keys mssen
+             per Programm z.B. in ACSinit0  oder  ACSinit  in  ACSblk-
+             >ev_mkdead  eingetragen werden. In sp„teren ACS-Versionen
+             wird dies bereits im GUI-Editor m”glich sein.
+
+ 17.03.2001 ACSPLUS.LIB
+
+           ù Auch die Toolbars der anderen Fensters  wurden  etwas  zu
+             klein,  wenn  der  Systemzeichensatz zu klein eingestellt
+             war. Jetzt ist die Gr”e aller Toolbars von der Gr”e des
+             Systemzeichensatzes unabh„ngig.
+
+ 16.02.2001 ACSPLUS.LIB
+
+           ù Die  neue  Funktion  Awi_layout  schaltet  ggf. die Flags
+             AB_NO3D und AB_OLDMENU  um.  Beim  Umschalten  des  Flags
+             AB_OLDMENU   werden  -  nach  Rckfrage  beim  jeweiligen
+             Fenster ber die Nachricht AS_CHANGE_LAYOUT - alle  Mens
+             auf das jeweils gewnschte Layout umgestellt.
+
+ 16.02.2001 ACSPLUS.LIB
+
+           ù Das  Editor-Fenster  EDITOR  hat  beim  Kopieren  auf das
+             Klemmbrett den gesamten und nicht nur den markierten Text
+             geschrieben. Das sollte nun abgestellt sein...
+
+ 12.02.2001 ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die  Funktionen  Aev_DhstAdd und Aev_DhstSaved stehen nun
+             auch in der Modul-Schnittstelle zur Verfgung.
+
+ 10.02.2001 GUI-Editor
+
+           ù Auch der GUI-Editor verschickt  mittels  Aev_DhstAdd  die
+             Namen der gespeicherten ACS-Dateien an den DHST-Server.
+
+ 10.02.2001 ACSPLUS.LIB
+
+           ù Der  Editor  informiert  nun beim Speichern nicht nur den
+             OLGA-Manager,  sondern  auch  den  DHST-Server  ber  die
+             gespeicherte Datei.
+
+ 10.02.2001 ACS.LIB
+
+           ù Die  Funktion Aev_DhstSaved ermittelt aus dem bergebenen
+             Dateinamen incl. Pfad den reinen  namen  incl.  Endung  -
+             z.B.  "Doku.TXT"  - und verwendet diesen bei einem Aufruf
+             von Aev_DhstAdd als Dokumentennamen.
+
+           ù ACSpro beherrscht nun das  DHST-Protokoll,  bei  dem  ein
+             Document-History-Server   (z.B.  SMU)  ber  die  letzten
+             gesicherten Dateien informiert wird.
+
+             Die neue Funktion Aev_DhstAdd  sendet  Dokument-Name  und
+             -Pfad  an  den  DHST-Server.  Der Anwendungsname wird aus
+             ACSblk->AppLongName,  der  Anwendungspfad   aus   ACSblk-
+             >appname  verwendet.  Die komplette Kommunikation mit dem
+             DHST-Server bernimmt ACSpro.
+
+ 05.02.2001 ACS.LIB
+
+           ù Der Bug beim nicht-modalen  WDIALOG-Druckdialog  ist  nun
+             behoben. Der Druckdialog steht also "in voller Sch”nheit"
+             zur Verfgung.
+
+ 03.02.2001 ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die Funktionen Ash_font und  Ash_print  stehen  nun  auch
+             ber die Modul-Schnittstelle allen Modulen zur Verfgung.
+
+           ù Die  Funktion  A_fileselect  wurde  auch  in  der  Modul-
+             Schnittstelle in Ash_fileselect umbenannt.
+
+ 03.02.2001 ACS.LIB
+
+           ù Die  neue  Funktion  Ash_font  ”ffnet  den  (MagiC-)Font-
+             Selector.  Je  nach Parametern kann der Font-Selector als
+             modales oder auch nicht-modales Fenster ge”ffnet  werden.
+             Wenn  der  Font-Selector als nicht-modales Fenster l„uft,
+             wird  beim  Schlieen  des  Selektors  dem  beim   Aufruf
+             mitgegebenen  Fenster  die Nachricht AS_FONT zusammen mit
+             den  gew„hlten  Daten   ber   die   Struktur   A_FontSel
+             mitgegeben.
+
+             Auch hier ist es nicht unbedingt der MagiC-Font-Selector,
+             es ist der Font-Selector, der  ber  die  FNTS-Funktionen
+             bedient  wird...  ;-)  Daraus folgt aber auch: ohne FNTS-
+             Funktionen (Abfrage erfolgt per  appl_xgetinfo)  gibt  es
+             hier nichts!
+
+           ù Die Funktion A_print wurde konsequenterweise in Ash_print
+             umbenannt.
+
+           ù Ebenso wurde die Funktion A_fileselect in  Ash_fileselect
+             umbenannt.
+
+           ù Der  Parameter  flag3D  in  der  Funktion  Ash_print  ist
+             entfallen.  Die  3D-Einstellung  wird  nun  aus   ACSblk-
+             >description->flags&AB_NO3D gewonnen - eine konsistentere
+             Umsetzung...
+
+ 01.02.2001 ACS.LIB
+
+           ù Neue Klick-Routine Aob_help fr  beliebige  Objekte,  die
+             einfach  die  ST-Guide-Hilfe-Seite  des Fensters anzeigen
+             l„t.  Damit  lassen  sich  "Hilfe-Buttons"  blitzschnell
+             realisieren.
+
+           ù Bei der Umwandlung der Mens in das "moderne Layout" wird
+             vor der Umwandlung des Hintergrundes  auf  den  3D-Effekt
+             per  appl_xgetinfo(13,...)  geprft,  ob  das  System die
+             AES-4-Hintergrund-Flags kennt. Dies ist  nun  nicht  mehr
+             von  der Anzahl der Farben abh„ngig. Falls das System die
+             AES-4-Hintergrund-Flags  nicht  kennt,  wird   das   Flag
+             FL3DBAK  nicht  gesetzt,  die Umwandlung der Men-Trenner
+             "-" in Linien wird denoch durchgefhrt.
+
+ 19.01.2001 ACSPLUS.LIB
+
+           ù Schreibfehler  in  der  englischen  Version  im  PUR_DESK
+             korrigiert, es heit nun einmal "module"... ;-)
+
+ 19.01.2001 ACS.LIB
+
+           ù Der  PUR_DESK  leitet nun komplett alle Nachrichten auer
+             AS_TERM an das Module-Fenster zur Bearbeitung weiter.
+
+           ù Das Module-Fenster  versteht  nun  die  vom  DESKTOP  her
+             bekannte   Nachricht   AS_BACKOBJECT.   Damit   kann  der
+             Hintergrund im Module-Fenster wie vom DESKTOP hr  gewohnt
+             ver„ndert  werden. Das Module-Fenster bernimmt die Werte
+             ob_type und ob_spec  des  bergebenen  Objektes  fr  den
+             Hintergrund.
+
+             Hinweis: Als    Objekt    sollte    bei   der   Nachricht
+             AS_BACKOBJECT im Moment nur eines verwendet  werden,  das
+             keine   Substrukturen   (Strings,  etc.)  hat,  da  keine
+             Unterstrukturen dynamisch neu angelegt werden.  Es  wrde
+             sonst  zu  Problemen beim Terminieren des Module-Fensters
+             (am Programm-Ende) fhren, da Daten, die nicht  alloziert
+             wurden, per Ax_free freigegeben werden mten!
+
+ 19.01.2001 ACS.LIB
+
+           ù ACSpro hatte  bislang  die  Nachricht  WM_UNTOPPED  nicht
+             verarbeitet. Jetzt wird sie "gezielt" ignoriert... ;-)
+
+           ù Die Nachricht WM_TOOLBAR wird  nun  von  ACSpro ebenfalls
+             "gezielt"  ignoriert.  Sp„ter,  wenn  ich  herausgefunden
+             habe, wann diese Nachricht wozu verschickt wird, soll sie
+             jedoch passend ausgewertet werden.
+
+ 18.01.2001 ACSPLUS.LIB
+
+           ù Die  Titelzeile  des  Module-Fensters  kann  nun ge„ndert
+             werden. Dazu mu in ACSinit0 -  oder  der  entsprechenden
+             Routine  -  der  Name  des Desktops ge„ndert werden, in C
+             z.B. durch PUR_DESK.name = " <Neuer Name> ". Das  Module-
+             Fenster   bernimmt   diesen  Namen,  sobald  dieser  vom
+             Standard-Namen abweicht.
+
+           ù Die Toolbar des Module-Fensters  wurde  etwas  zu  klein,
+             wenn  der  Systemzeichensatz  zu  klein  eingestellt war.
+             Jetzt ist  die  Gr”e  der  Toolbar  von  der  Gr”e  des
+             Systemzeichensatzes unabh„ngig.
+
+ 08.01.2001 ACS.LIB
+
+           ù Das Thermometer Ash_thermometer ist berarbeitet worden
+
+               1. Die  Optik  ist berarbeitet worden - der Laufbalken
+                  ist nicht mehr so "dick", was sich nicht nur bei der
+                  besseren  proportionerten  Optik,  sondern auch beim
+                  Neuzeichnen bemerkbar macht.
+
+               2. Das  von  Ash_thermometer  zur  Verfgung   gestellt
+                  Schleifen-Konstrukt  wurde  ausgebaut.  Die Schleife
+                  heit jetzt prinzipiell:
+
+                       init(data);
+                       if( start(data) )
+                       {
+                          while( cont(data) )
+                             fkt(data);
+                          stop(data);
+                       }
+                       quit(data);
+
+                  šber den neu zu  bergebenden  Funktionszeiger  cont
+                  wird  die  Abbruchbedingung  -  bzw.  korrekter  die
+                  "Weiterlauf-Bedingung"  realisiert.  Dies  hat  zwei
+                  Auswirkungen.  Die  hier  bergebene  Funktion  kann
+                  ebenso in stop genutzt werden, um die Unterscheidung
+                  "vorzeitiger  Abbruch"  oder "Ende" zu unterscheiden
+                  (siehe  Ash_thermometer).  Ferner  wird  der   evtl.
+                  anzuzeigende  Text  durch  die  in  cont  bergebene
+                  Funktion definiert, er wird also bei der eigentlichn
+                  Aktion (in fkt bergeben) bereits angezeigt!
+
+                  Hinweis: Falls  in  cont  der  Wert  NULL  bzw.  NIL
+                  bergeben wird, wird die Schleife nicht ausgefhrt.
+
+               3. Die  Struktur  ThermoData  wurde   in   A_ThermoData
+                  umbenannt.    Ferner    wurde    sie   um   die   an
+                  Ash_thermometer     bergebenen      Funktionszeiger
+                  erweitert   -  hiermit  sind  also  z.B.  generische
+                  "Stop-Nachfrage-Routinen" m”glich,  die  anhand  des
+                  dort   bergebenen   Zeigers   die   oben   erw„hnte
+                  Unterscheidung treffen.
+
+ 08.01.2001 ACS.LIB
+
+           ù Die  Nachricht   FNT_CHANGED   wird   untersttzt.   Alle
+             Zeichens„tze      werden     mittels     vst_unload_fonts
+             "weggeworfen" und  mittels  vst_load_fonts  neu  geladen.
+             Dann  wird  allen  Fenstern  die Nachricht AS_FONT_UPDATE
+             gesendet.
+
+           ù Die  Nachricht  PRN_CHANGED   wird   untersttzt.   Allen
+             Fenstern  wird  die  Nachricht AS_PRN_UPDATE gesendet. In
+             der ber in_out mitgegebenen Struktur A_PrnUpd stehen die
+             Informationen ber den treiber und die Art der nderung.
+
+ 01.01.2001 GUI-Editor
+
+           ù Anpassung der Jahreszahl-Daten im Copyright.
+
+ 30.12.2000 ACS.LIB
+
+           ù ACSpro untersttzt   nun  die  WDialog-Druckdialoge.  Die
+             Funktion  A_print  stellt  die  Schnittstelle  dazu  dar.
+             šbergeben   werden   die   Drucker-Einstellungen   (siehe
+             WDialog-Dokumentation), die Position  des  Fensters,  die
+             zwei  Flags  flag3D (siehe pdlg_create) und option (siehe
+             pdlg_open), der Titel des Fensters sowie ganz  analog  zu
+             Af_fileselect  das  Fenster, dem bei Erfolg die Nachricht
+             AS_PRINT gesendet werden soll. Der Dialog  erscheint  als
+             nicht  modaler-Dialog,  wenn  das Fenster angegeben wird,
+             und als modaler Fenster-Dialog (sofern m”glich ;-),  wenn
+             als Fenster NULL bzw. NIL bergeben wird.
+
+             Hinweis: Allerdings  ist hier noch ein Bug fr den nicht-
+             modalen  Betrieb,  aber  zun„chst   kann   einmal   damit
+             experimentiert  werden. Der Bug ist etwas merkwrdig, die
+             Anwendung strzt gnadenlos ab,  da  der  AES-Aufruf  K„se
+             macht.  Warum  das  aber  nur  im  nicht-modalen  Betrieb
+             passiert und mit modalen Fenster-Dialogen klappt, mu ich
+             noch herausbekommen...
+
+             Hinweis: Eine Erweiterung des Druck-Dialoges durch eigene
+             Objektb„ume ist in der Planung und wird nach der  Version
+             3.0.0  realisiert.  Wichtig  war  erst  einmal,  da  der
+             Druckdialog berhaupt untersttzt wird... ;-)
+
+ 22.12.2000 ACS.LIB
+
+           ù Erste Vorbereitungen, um auch das im Entstehen begriffene
+             SSP  (System  Service  Protocol - siehe im Internet unter
+             http://www.therapy-seriouz.de/ssp/) transparent in ACSpro
+             einzubinden.
+
+ 12.12.2000 ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die  neuen  Funktionen  Ast_ncmp und Ast_incmp stehen nun
+             auch in der Modulschnittstelle zur Verfgung.
+
+ 12.12.2000 ACS.LIB
+
+           ù Es gibt zwei neue Funktionen fr  String-Vergleiche.  Die
+             Funktion Ast_ncmp vergleicht zwei Strings, jedoch maximal
+             n  Zeichen,  bei  Ast_incmp  spielt  dabei   die   Gro-/
+             Kleinschreibung keine Rolle.
+
+           ù Im  Standard-AboutMe-Dialog von ACSpro wird nun das Datum
+             der Version "ordentlich" als "tt.mm.jjjj" (deutsch)  bzw.
+             "mm-tt-jjjj"(englisch)  dargestellt.  Die "elende Krcke"
+             mit der Abkrzung des Monatsnamens als "Oct"  oder  "Dec"
+             hat also ein Ende... ;-)
+
+ 11.12.2000 ACSMOD.LIB, ACSMOD01.LIB
+
+           ù Die  Funktion  appl_xgetinfo  steht  nun  auch  ber  die
+             Modul-Schnittstelle allen Modulen zur Verfgung.
+
+           ù Die Funktion Awi_ontop fehlte in der  Modul-Schnittstelle
+             und ist nachgerstet worden.
+
+ 03.12.2000 ACS.LIB
+
+           ù Der letzte Parameter von Af_fileselect wurde ge„ndert: es
+             wird nun nicht mehr TRUE oder FALSE  als  Kennung  modal/
+             nicht-modal  bergeben,  sondern  das  Fenster,  da  die
+             Antwort  AS_FILESELECT  im  nicht-modalen  Fall  erhalten
+             soll, bzw. NULL/NIL fr den modalen File-Selector.
+
+ 02.11.2000 GUI-Editor
+
+           ù Bei  der  direkten  Positionseingabe  fr  ein  Objekt im
+             Objekt-Editor konnten zu groe oder zu kleine  Werte  fr
+             die Zeichen- und Pixel-Komponenten eingegeben werden. Die
+             Zeichenkoordinaten sind auf 0..255, die Pixel-Korrekturen
+             auf  -128..127  festgelegt.  Gr”ere  oder kleinere Werte
+             werden passend auf den Rand des Intervalls gesetzt.
+
+ 30.10.2000 PCGEM.LIB, ACSGEM.LIB
+
+           ù Die GEM-Bibliotheken sind  nun  aus  ACSpro ausgegliedert
+             worden  und  laufen  ab jetzt als eigenst„ndige Projekte.
+             Sie erhalten eine eigene History und entfallen  ab  jetzt
+             in dieser Liste komplett.
+
+             Die GEM-Bibliotheken sind Freeware und wie ACSpro auch in
+             der Maus LL und auf dem Internet verfgbar.
+
+             Alle "Bestandteile" von ACSpro ab Version 3.0.0  sind  ab
+             jetzt immer mit der jeweils neuesten Bibliothek PCGEM.LIB
+             compiliert bzw. gelinkt.
+
+ 26.10.2000 ACS.LIB
+
+           ù Die   Nachricht   WM_MOUSEWHEEL   wird   von   ACSpro nun
+             empfangen,  allerdings  noch nicht groartig ausgewertet.
+             Dies ist ein einer sp„teren  Version  allerdings  geplant
+             (siehe ToDo-Liste).
+
+ 26.10.2000 PCGEM.LIB, ACSGEM.LIB
+
+           ù Die  Nachricht  WM_MOUSEWHEEL  ist  nun  in die Liste der
+             Nachrichten mit aufgenommen worden.
+
+ 25.10.2000 PCTOS.LIB, ACSTOS.LIB
+
+           ù Die TOS-Bibliotheken sind  nun  aus  ACSpro ausgegliedert
+             worden  und  laufen  ab jetzt als eigenst„ndige Projekte.
+             Sie erhalten eine eigene History und entfallen  ab  jetzt
+             in dieser Liste komplett.
+
+             Die TOS-Bibliotheken sind Freeware und wie ACSpro auch in
+             der Maus LL und auf dem Internet verfgbar.
+
+             Alle "Bestandteile" von ACSpro ab Version 3.0.0  sind  ab
+             jetzt   immer   mit   der   jeweils  neuesten  Bibliothek
+             ACSTOS.LIB compiliert bzw. gelinkt.
+
+ 19.10.2000 PCGEM.LIB, ACSGEM.LIB
+
+           ù Aus  der   N.AES-Entwickler-Dokumentation   sind   einige
+             N.AES-spezifische    Funktionen   in   die   Bibliotheken
+             eingeflossen,   wie   z.B.    appl_control,    wind_draw,
+             shel_help, objc_xfind etc.
+
+ 18.10.2000 ACSPLUS.LIB
+
+           ù Der   "pure"  Desktop  reagiert  nun  auf  die  Nachricht
+             AS_DRAGGED, indem die Auswahlliste nach Objekten vom  Typ
+             AT_FILE  durchsucht  wird. Wenn diese gefunden werden und
+             eine  Neu-Routine  hinterlegt  wurde,  wird   fr   jedes
+             AT_FILE-Objekt die Neu-Routine aufgerufen.
+
+             Hinweis: Damit  kann  z.B. jede ACSpro-Anwendung, die den
+             PUR_DESK verwendet,  -  wie  z.B.  der  GUI-Editor -  per
+             Drag&Drop von jinnee Dateien empfangen und ”ffnen (sofern
+             dies in jinnee entsprechend eingestellt ist natrlich ;-)
+
+ 18.10.2000 ACS.LIB
+
+           ù Die Behandlung des Drag&Drop-Protokolles  fr  Text-Daten
+             wurde  verbessert.  Wenn  eine  laufende ACSpro-Anwendung
+             Daten per Drag&Drop gesendet bekommt (z.B. von jinnee bei
+             einem  Mehrfachstart - mu in jinnee eingestellt werden),
+             so werden der Reihe  nach  die  einzelnen  Text-Daten  in
+             Objekte  vom  Typ  AT_FILE  (D&D-Typ ARGS) oder AT_STRING
+             (sonst) "gesteckt" und an eine Drag-Routine gesendet.
+
+             Bislang wurden    empfangene    Text-Daten    ber    die
+             Awindow.keys-Routine eingespielt, wenn das Empfangsobjekt
+             nicht identifiziert werden konnte. Dies ist  nicht  immer
+             das  Gewnschte,  denn  da  in dieser Situation auch kein
+             Empfangsfenster bekannt ist, verwendet ACSpro automagisch
+             das   Root-Fenster   und  bertr„gt  die  Dateinamen  per
+             Awindow.keys-Routine... ;-/
+
+             Wenn jetzt das Objekt nicht bestimmt  werden  kann,  wird
+             dem  Empfangsfenster  -  nach erfolgreicher Prfung durch
+             die Nachricht AS_CHECKDRAGGED - die Nachricht  AS_DRAGGED
+             gesendet,  als  wenn  das D&D-Objekt aus der Auswahlliste
+             auf das Fenster-Icon gezogen worden  w„ren.  Das  Fenster
+             kann nun geeignet darauf reagieren.
+
+             Hinweis: Falls   das  Empfangsobjekt  lokalisiert  werden
+             kann, aber kein erweitertes AOBJECT ist oder keine  Drag-
+             Routine  besitzt,  bleibt alles so wie bisher: die "Text-
+             Daten" werden per Awindow.keys-Routine eingespielt.
+
+ 16.10.2000 ACS.LIB
+
+           ù Nachdem ich selbst beim Entwickeln  von  und  mit  ACSpro
+             immer  wieder  in die Situation komme, wo es heit "jetzt
+             mu ich nur noch schnell eine Nachricht an das Objekt xyz
+             schicken"  und  dann  der  Zirkus  mit  dem Bestimmen der
+             AUSERBLK-Struktur und dem Versand der Nachricht  losgeht,
+             gibt es jetzt (endlich ;-) zwei neue Funktionen:
+
+               1. Die  Funktion  Aob_service  leitet eine Nachricht an
+                  ein  Objekt  eines  Objektbaumes  weiter.  Wenn  das
+                  (globale) Flag AB_LAZYEVAL gesetzt ist, werden keine
+                  šberprfungen  mehr  vorgenommen.  Andernfalls  wird
+                  geprft,  da  der  Objektbaum vorhanden ist, da es
+                  ein UserDef ist und eine  Service-Routine  vorhanden
+                  ist...
+
+               2. Die  Funktion Awi_observice leitet eine Nachricht an
+                  ein Fenster-Objekt weiter. Auch hier  wird  nur  bei
+                  gel”schtem Flag AB_LAZYEVAL geprft, da das Fenster
+                  existiert. Die Funktion  selbst  ist  recht  billig,
+                  denn  sie  l„t - mit dem passenden Objektbaum - die
+                  Arbeit von Aob_service erledigen... ;-)
+
+ 15.10.2000 ACS.LIB
+
+           ù Wenn der Dateiname bei der Funktion Af_fileselect nur aus
+             dem  String  "*" besteht,  so  wird der Dateiname fr den
+             FSLX-File-Selector A_fileselect geleert -  sieht  einfach
+             besser aus als ein Dateiname "*"... ;-)
+
+           ù Die  Funktion Aob_state wurde etwas berarbeitet, sie hat
+             nicht immer das getan, was sie sollte. Das  Ergebnis  war
+             von  der Uhrzeit, der Wetterlage und der Luftfeuchtigkeit
+             abh„ngig - na ja, sooo schlimm  war  es  nicht,  aber  je
+             nachdem,  ob  das Fenster ge”ffnet war oder nicht, ob der
+             Zustand gesetzt werden sollte oder gel”scht, gab  es  hin
+             und wieder unterschiedliche Ergebnisse... Jetzt sollte es
+             funktionieren...
+
+           ù Die Nachricht AS_FILESELECT war leider  falsch  definiert
+             und  hat  sich  mit  AS_ALLOWBUBBLE  berschnitten. Damit
+             funktionierte BubbleGEM nicht mehr,  wenn  die  Nachricht
+             AS_FILESELECT von der Service-Routine bearbeitet wurde...
+             AS_FILESELECT hat nun eine neue Nummer bekommen... Sorry!
+
+ 15.10.2000 ACS_LOAD.O
+
+           ù Die  Funktion  Af_fileselect  war  im  Modul-Startup-Code
+             fehlerhaft  implementiert und hat im ACSpro-Hauptprogramm
+             die falsche Funktion aufgerufen - - Folge: Crash... ;-/
+
+ 13.10.2000 ACSPLUS.LIB, ACS.LIB
+
+           ù Die Funktion Ash_thermometer ist nun aus  der  Bibliothek
+             ACSPLUS.LIB  in  die Bibliothek ACS.LIB gewandert, da sie
+             dort eher pat als in die "Erg„nzungsbibliothek".
+
+ 12.10.2000 ACS_LOAD.O
+
+           ù Der Startup-Code fr ACSpro-Module  wurde  um  die  neuen
+             Funktionen      Af_fileselect,      A_fileselect      und
+             Ash_thermometer  erweitert,  so  da  auch  Module  diese
+             Funktionen nutzen k”nnen, ohne da ACS.LIB gelinkt werden
+             mu.
+
+ 08.10.2000 GUI-Editor
+
+           ù Nachdem ich in Krze umziehen  werde,  ist  nun  im  GUI-
+             Editor beim   Info-Dialog,   der   auf   die   Shareware-
+             Einsch„nkung  hinweist,  bereits   meine   neue   Adresse
+             enthalten  - so wie auf den Internetseiten und in der ST-
+             Guide-Hilfe auch... ;-)
+
+ 06.10.2000 ACS.LIB
+
+           ù Der nicht-modale  File-Selector  hatte  noch  einen  Bug,
+             durch   den   u.U.  auf  bereits  freigegebenen  Speicher
+             zugegriffen wurde.
+
+ 25.09.2000 ACS.LIB
+
+           ù Bei der Umwandlung der Mens in das "moderne Layout"  war
+             noch ein kleiner Fehler enthalten, so da unter Umst„nden
+             nicht angeforderte Strings freigegeben wurden.
+
+ 25.09.2000 ACSPLUS.LIB
+
+           ù Die  neue  Funktion  Ash_thermometer  stellt   ein   sog.
+             Thermometer (Woher  der  Name  dafr stammt, wei ich gar
+             nicht  mehr  -  ich  nenne  es  schon  "ewig"  so...) zur
+             Verfgung.  Ich habe diese Funktion nach etwas Z”gern aus
+             meiner langj„hrigen "ACSpro-Bibliothek-Sammlung"  geholt,
+             sie  etwas verallgemeinert und berarbeitet, damit sie in
+             der Bibliothek ACSPLUS.LIB nun allen zur Verfgung steht.
+
+             Die Funktion  Ash_thermometer  stellt   prinzipiell   ein
+             Programm der Form
+
+                  init(data);
+                  if( start(data) )
+                  {
+                     while( fkt(data) );
+                     stop(data);
+                  }
+                  quit(data);
+
+             dar. Der  Arbeitsfortschritt  der  Schleifen-Funktion fkt
+             wird durch einen Laufbalken mit  zugeh”riger  Prozentzahl
+             in  einem  modalen  Fenster-Dialog  darstellt.  Falls das
+             Fenster fr  den  Fenster-Dialog  nicht  erstellt  werden
+             kann,  l„uft  fast die dargestellte Schleifenkonstruktion
+             ohne optische Rckmeldung durch.
+
+             Die in   dieser   Schleifenkonstruktrion    dargestellten
+             Funktionen  werden als Funktionszeiger, die brigens auch
+             NULL sein drfen, an Ash_thermometer bergeben:
+
+                  Ash_thermometer(
+                     THERMO_CANCEL|THERMO_TEXT|THERMO_PERCENT,
+                     " Ein kleines Beispiel... ", color, data, init,
+                     start, zaehlfkt, stop, quit);
+
+             Das Thermometer gibt es in  insgesamt  4  Varianten.  Das
+             Fenster  kann  einen  Info-Text  anzeigen, oder der Platz
+             dafr wird eingespart. Ferner kann die Aktion abgebrochen
+             werden,  oder es ist kein Abbrechen-Button vorhanden. Die
+             in der Mitte des Laufbalkens plazierte  Prozentzahl  kann
+             bei jeder der Varianten ausgeblendet werden.
+
+ 22.09.2000 ACS.LIB
+
+           ù Die  bisher  intern genutzte Funktion appl_xgetinfo wurde
+             berarbeitet und steht nun "offiziell" zur Verfgung. Die
+             Funktion  prft,  ob  appl_getinfo verfgbar ist und ruft
+             diese ggf. auf.
+
+ 22.09.2000 GUI-Editor
+
+           ù Der  GUI-Editor verwendet  nun  die  neue  Funktion   zur
+             Dateiauswahl.  Die  Routine  zum  ™ffnen  der ACS-Dateien
+             wurde  berarbeitet  und  auf   die   neue   Dateiauswahl
+             angepat.  Zum  ™ffnen  von  ACS-Dateien wurde der modale
+             Fileselector mit Multi-Select-F„higkeiten gew„hlt.
+
+             Fr Interessierte:
+             Das Code-Fragment im GUI-Editor lautet
+
+                  liste=Af_fileselect(ttl_open, last_path, "acs",
+                     TRUE, FALSE);
+                  if( liste!=NULL )
+                  {
+                     (liste->doFor)(liste, &window, NO_FOR,
+                        (A_ListWork)openFile);
+                     Alu_delete(liste);
+                  }
+
+             Der letzte Parameter von Af_fileselect gibt  an,  ob  der
+             Dialog  modal sein soll, der vorletzte steuert die Multi-
+             Selektion.
+
+ 22.09.2000 ACSPLUS.LIB
+
+           ù Der Desktop PUR_DESK  versteht  nun  die  neue  Nachricht
+             AS_FILESELECT,  die  von  dem  nicht-modalen Fileselector
+             verschickt wird. Wenn eine Neu-Routine angemeldet  wurde,
+             so werden dieser der Reihe nach die Dateinamen zum ™ffnen
+             bergeben.
+
+ 21.09.2000 ACS.LIB
+
+           ù Die   neue    Funktion    Ash_fileselect    ”ffnet    den
+             (MagiC-)Fileselector.   Je   nach   Parametern  kann  der
+             Fileselector als modales oder auch nicht-modales  Fenster
+             ge”ffnet  werden. Wenn der Fileselector als nicht-modales
+             Fenster l„uft, wird beim Schlieen des Selektors dem beim
+             Aufruf  mitgegebenen  Fenster die Nachricht AS_FILESELECT
+             zusammen mit einer linearen Liste ULinListe an  Pfadnamen
+             geschickt   (das   Freigeben  der  Liste  bernimmt  hier
+             ACSpro).
+
+             Na ja, es ist nicht unbedingt der MagiC-Fileselector,  es
+             ist   der  Fileselector,  der  ber  die  FSLX-Funktionen
+             bedient wird... ;-) Daraus folgt aber  auch:  ohne  FSLX-
+             Funktionen  (Abfrage  erfolgt  per appl_xgetinfo) gibt es
+             hier nichts!
+
+           ù Um bei allen Varianten der Dateiauswahl immer ein Optimum
+             zu  erzielen, gibt es nun die Funktion Af_fileselect, die
+             direkt  eine  lineare  Liste  ULinListe  von   Dateinamen
+             zurckliefert  -  wie  daher  zu  erwarten ist, wird eine
+             Mehrfach-Selektion untersttzt. Die Funktion  greift  auf
+             die  Funktion  Ash_fileselect  zurck,  sofern  die FSLX-
+             Funktionen   vorhanden   sind.   Andernfalls   wird   Die
+             Kombination  Af_first_fsel/Af_next_fsel (Multi-Selektion)
+             bzw.     Af_select     (Single-Selektion)      verwendet.
+             Af_fileselect  erlaubt  auch den Aufruf des nicht-modalen
+             Fileselectors.  In  diesem  Falle  wird   die   Nachricht
+             AS_FILESELECT an das Root-Fenster gesendet.
+
+             Hinweis: Die   Verwendung   der   Funktionen   Af_select,
+             Af_first_fsel und Af_next_fsel sollte m”glichst zugunsten
+             der neuen Funktion Af_fileselect aufgegeben werden.
+
+ 17.09.2000 GUI-Editor
+
+           ù Der  GUI-Editor kam  nicht so recht mit langen Dateinamen
+             klar.  Besonders  problematisch  waren   Dateinamen   mit
+             Leerzeichen  darin.  Der  GUI-Editor versteht nun korrekt
+             gequote   Dateinamen,   sowohl   beim   Start   in    der
+             Kommandozeile als auch beim AV-Protokoll per VA_START.
+
+           ù Die    Dateinamen    wurden   stets   in   Grobuchstaben
+             umgewandelt.  Das  ist  etwas   l„stig,   besonders   bei
+             casesensitiven  Filesystemen.  Die  Dateinamen werden nun
+             nicht mehr umgewandelt, sondern bleiben so, wie sie  sind
+             - sowohl beim ™ffnen von Dateien als auch beim Neuanlegen
+             von Dateien.
+
+           ù Beim Start werden bergebene  Optionen  der  Form  "-..."
+             bzw.  "/.."  erkannt, wobei nach den Zeichen '-' bzw. '/'
+             beliebig  viele  Zeichen  folgen  k”nnen.  Bisher   wurde
+             versucht,  diesen  Parameter als Datei zu ”ffnen. Nachdem
+             der  GUI-Editor (noch;-)  keine  Optionen  kennt,  werden
+             diese Argumente schlichtweg ignoriert.
+
+ 15.09.2000 ACS.LIB
+
+           ù Die  Bibliothek  ACS.LIB  enth„lt  nun  auch  die  beiden
+             Bibliotheken ACSTOS.LIB und PCGEM.LIB. Das Einbinden  der
+             Bibliotheken   PCTOS.LIB,  PCTOSLIB.LIB,  PCGEM.LIB  oder
+             PCGEMLIB.LIB entf„llt somit v”llig  und  ist  nicht  mehr
+             notwendig.
+
+             Bisher mute   die   Bibliothek   ACSTOS.LIB  im  Projekt
+             enthalten sein. Falls dies vergessen wurde und  eine  der
+             Bibliotheken   PCTOS.LIB   oder   PCTOSLIB.LIB   (Pure-C-
+             Biblitohek) verwendet wurde,  kam  es  zu  Abstrzen,  da
+             ACSpro ab  Version  3.0.0 bereits die optimierten Aufrufe
+             aus ACSTOS.LIB verwendet.
+
+ 05.09.2000 ACS.LIB
+
+           ù Die Flags in der  Struktur  Adescr  wurde  um  AB_OLDMENU
+             erweitert.
+
+           ù Die  Mens  k”nnen  -  falls  das  Flag  AB_OLDMENU nicht
+             gesetzt ist - in das "moderne Layout" umgewandelt werden,
+             so  da  die  Mens  dreidimensional erscheinen. Folgende
+             Umwandlungen werden vorgenommen:
+
+               1. Alle G_BOX-Objekte werden bei mindestens  16  Farben
+                  mit   Hintergrund  LWHITE  und  Fllmuster  IP_SOLID
+                  versehen. Der 3D-Effekt wird durch das Flag  FL3DBAK
+                  in ob_flags bewirkt.
+
+                  Diese Effekte  wirken also nur auf Systemen, die die
+                  AES-4-Objekt-Flags kennen...
+
+               2. Alle Strings G_STRING, die disabled sind und nur das
+                  Zeichen  '-' enthalten, werden in das Userdef-Arrows
+                  umgewandelt. Bei mindestens 16 Farben wird die Linie
+                  in der Farbe LBLACK mit der St„rke 1, andernfalls in
+                  der Farbe BLACK mit St„rke 3 gezeichnet.
+
+               3. Alle Arrow-Userdefs, die disabled sind  und  in  den
+                  AUSERBLK-Strukturen  die  Default-Werte des Userdef-
+                  Arrows in Mens enthalten, werden bei mindestens  16
+                  Farben  umgesetzt  auf Linienfarbe LBLACK und St„rke
+                  1.
+
+           ù Das Userdef-Arrows verh„lt sich nun beim Status  DISABLED
+             etwas  anders. Wenn die St„rke 3 verwendet wird, wird das
+             Userdef  wie  bisher   gezeichnet   (die   Zeichenroutine
+             bearbeitet  nur  den  Status  SELECTED). Falls jedoch die
+             St„rke 1  verwendet  wird,  wird  zus„tzlich  der  Status
+             DISABLED  durch  die  Zeichen-Routine  bearbeitet.  Damit
+             sieht das Userdef als Trennlinie bei Mens besser  aus...
+             ;-)
+
+             Hinweis: Der  Status  SELECTED  bzw.  DISABLED hat jedoch
+             keine Auswirkung auf das Aussehen des Userdefs!
+
+ 03.09.2000 ACSGEM.LIB, PCGEM.LIB
+
+           ù Das VDI-Binding wurde berarbeitet.  Die  auf  dem  Stack
+             angelegten   šbergabe-Arrays   sind   nun   etwas  gr”er
+             dimensioniert - evtl. waren sie einfach zu klein, so  da
+             es beim Aufruf "krachte".
+
+ 03.09.2000 ACS.PAS, ACS.PPU
+
+           ù Bei der Pure-Pascal-Unit wurde kein Environment an ACSpro
+             bergeben.  Damit  lieferte   die   Funktion   Ash_getenv
+             natrlich  nur  "K„se"  ;-) Dies ist jetzt korrigiert, so
+             da nun alle Environment-Variablen unter Pure-Pascal  zur
+             Verfgung stehen...
+
+ 29.07.2000 ACS.LIB
+
+           ù Die   šberprfungen  des  Speichers  beim  Anfordern  und
+             freigeben per Ax_malloc,  Ax_free  bzw.  Ax_ifree  wurden
+             komplett   berarbeitet.   Wenn  das  Flag  AB_NOMEMCHECK
+             gesetzt ist, findet jetzt keinerlei Prfung  mehr  statt.
+             Das  Beschreiben  des  Speichers  vor  dem  von Ax_malloc
+             gelieferten Blockes mit einer ACSpro-eigenen Kennung  ist
+             nun  zusammen mit der zugeh”rigen šberprfung der Kennung
+             in Ax_free bzw. Ax_ifree auch weggefallen - bei  mir  hat
+             dies  nicht  korrekt  funktioniert, nach mehreren Crashes
+             von MagiC habe ich es herausgeworfen,  denn  MagiC  macht
+             intern genau so etwas auch... ;-)
+
+             Wenn diese  Art  der Speicher-šberprfung denoch ben”tigt
+             wird, dann werde ich eben  wieder  so  eine  nette  Sache
+             einbauen... ;-)
+
+           ù Die  Funktion  nkc_gconv wurde in nkc_gem2n, die Funktion
+             nkc_tconv in  nkc_tos2n  umbenannt.  Damit  alte  Sourcen
+             nicht  angefat  werden  mssen,  werden  ber Makros die
+             alten in die neuen Namen bersetzt.
+
+           ù ACSpro verwendet nun nicht mehr direkt die NKCC-Routinen,
+             sondern  die  von  Christian Felsch berarbeitete Version
+             aus der CF-Lib.
+
+             Da dort die Funktionen nkc_n2gem, nkc_gem2n, nkc_cmp  und
+             nkc_kstate  nicht  enthalten  sind,  wurden  diese  in  C
+             entsprechend nachprogrammiert.
+
+           ù Neu  dazu  gekommen  sind  die  Funktionen   nkc_gemks2n,
+             nkc_n2gemks und nkc_n2kstate.
+
+ 12.07.2000 ACS.LIB
+
+           ù Die  Modul-Schnittstelle wurde nun komplett berarbeitet.
+             In Zukunft sollten also  abw„rtskompatible  Erweiterungen
+             wesentlich leichter zu realisieren sein.
+
+             Da es   bestimmt  einige  Module  gibt,  die  nicht  mehr
+             weitergepflegt werden, habe ich mich  entschlossen,  hier
+             zu  tricksen und etwas mehr Aufwand zu treiben: wird eine
+             alte Modul-Schnittstelle erkannt  (also  von  ACSpro 2.3x
+             bzw. 2.3.x), so werden die Daten vor dem Weiterreichen an
+             die Anwendung konvertiert. Damit k”nnen auch  Module  von
+             ACSpro 2.3x/2.3.x   geladen   werden   und   scheinen  zu
+             funktionieren - jedenfalls soweit ich sie habe und testen
+             kann...
+
+             Da das   nicht   jeder   ben”tigt,   gibt   es  nun  drei
+             Bibliotheken,  von  denen  genau  eine   zus„tzlich   zur
+             Bibliothek ACS.LIB in Projekte eingebunden werden mu:
+
+              ACSMODNO.LIB  Die  Funktion Ash_module existiert nur als
+                            Dummy-Funktion.   Module   werden    nicht
+                            geladen, eine Schnittstelle wird nicht zur
+                            Verfgung   gestellt.   Durch   Verwendung
+                            dieser   Bibliothek  werden  nun  von  der
+                            Anwendung  nicht  ben”tigte  Routinen  vom
+                            Linker   nicht   mehr   eingebunden,   die
+                            andernfalls   nur   wegen    der    Modul-
+                            Schnittstelle denoch hinzugelinkt wrden..
+
+              ACSMOD01.LIB  Die  Modul-Schnittstelle  Version  1 (neue
+                            Versionierung der Schnittstelle unabh„ngig
+                            von der ACSpro-Version) wird zur Verfgung
+                            gestellt. Die Funktion Ash_module l„dt nur
+                            die  neuen  Module  nach,  die  mit dieser
+                            Schnittstellen-Version erstellt wurden.
+
+              ACSMOD.LIB    Die    Modul-Schnittstelle    steht     in
+                            abw„rtskompatibler  Form zur Verfgung. Es
+                            werden  auch  die   Module   der   ACSpro-
+                            Versionen  2.30,  2.31,  2.32,  2.3.3  und
+                            2.3.4  geladen  und  gestartet.   In   der
+                            Schnittstelle stehen fr die Erweiterungen
+                            der  Strukturen  Awindows   und   AUSERBLK
+                            entsprechende       Konvertierungsroutinen
+                            bereit,  die  v”llig  unbemerkt  fr   die
+                            Kompatibilit„t sorgen.
+
+ 09.07.2000 ACS.LIB
+
+           ù Die  Modul-Schnittstelle  ist  nun  in eine eigenst„ndige
+             Bibliothek  ausgelagert  worden.  Die   neue   Bibliothek
+             ACSMOD01.LIB  mu  zus„tzlich  zur  Bibliothek ACS.LIB in
+             Projekte eingebunden werden.
+
+             Fr Anwendungen, die keine Modulschnittstelle  ben”tigen,
+             existiert  die  Bibliothek  ACSMODNO.LIB,  die eine leere
+             Schnittstelle enth„lt. Damit bindet der Linker  auch  nur
+             die wirklich ben”tigten ACSpro-Funktionen ein.
+
+             Dank an Rainer Mannigel fr diese Anregung!
+
+ 08.07.2000 ACS.LIB
+
+           ù Anwendungen,  die  mit ACSpro entwickelt werden, brauchen
+             nun nicht mehr die Line-A-Bibliothek von Pure-C  -  auer
+             wenn  der  Entwickler  selbst irgendetwas davon ben”tigt,
+             wovon  allerdings   dringendst abgeraten   wird.   ACSpro
+             verwendet hier nur die sog. "Initialisierung" ($A000) zur
+             Ermittelung der Line-A-Variablen. Diese werden  nun  ber
+             eine eigene "Mini-Funktion" beschafft.
+
+             Ben”tigt werden die Line-A-Variablen nur in Abp_start und
+             Abp_end. Diese  beiden  Routinen  sollten  sowie  so  nur
+             verwendet  werden,  wenn  alle  anderen Stricke reien...
+             (siehe auch die Dokumentation der beiden Funktionen ;-)
+
+ 06.07.2000 ACS.LIB
+
+           ù Interne Aufr„umarbeiten in Af_select und Af_first_fsel...
+
+ 02.07.2000 GUI-Editor
+
+           ù Der GUI-Editor verwendet nun den Startup-Code von  Stefan
+             Kuhr   @  OS.  Vielen  Dank,  Stefan!  Bisher  wurde  der
+             Startup-Code von Behne&Behne verwendet.
+
+             Beide Startup-Codes  sind  an  PowerMacs  unter  MagiCMac
+             angepat  und liegen ACSpro bei. Die Original-Archive der
+             Startup-Codes   sind   u.a.   in   der   Maus    LL    im
+             Gruppenprogrammteil  Maus.Computer.Atari.Programmieren zu
+             finden.
+
+             Hier ein kleiner Vergleich (unvollst„ndig  und  natrlich
+             subjektiv!) der beiden Startup-Codes:
+
+             Der Startup-Code von Stefan Kuhr untersttzt:
+
+                - Quoting (Komandozeilenparameter mit Leerzeichen)
+
+                - ARGV   (Komandozeilenparameter   mit  mehr  als  125
+                  Zeichen werden im Environment bergeben)
+
+                - erweitertes ARGV (šbergabe von leeren Parametern)
+
+                - Workaround fr PATH
+
+                - Shared  Text  (Programm  mehrfach  starten,   dessen
+                  Text-Segment aber nur einmal im Speicher liegt)
+
+                - keine FPU-Initialisierung
+
+             Der Startup-Code von Behne&Behne untersttzt:
+
+                - Quoting (Komandozeilenparameter mit Leerzeichen)
+
+                - ARGV   (Komandozeilenparameter   mit  mehr  als  125
+                  Zeichen werden im Environment bergeben)
+
+                - keine FPU-Initialisierung
+
+ 26.06.2000 ACS.LIB
+
+           ù Die Funktion Ax_memCheck prft,  ob  ein  Speicherbereich
+             les-  und/oder  beschreibbar  ist.  Da  bei  den diversen
+             Protokollen diese Funktion verwendet wird, sollten ACSpro
+             und  alle  mittels  ACSpro entwickelten Anwendungen nicht
+             mehr  abstrzen,  wenn  der   Kommunikationspartner   bei
+             eingeschaltetem  Speicherschutz  den  "Transfer-Speicher"
+             nicht global alloziert hat.
+
+             Dank an Thomas Binder fr die geniale Routine im  MausNet
+             in der Gruppe Maus.Computer.Atari.Programmieren!
+
+ 26.06.2000 ACSGEM.LIB, PCGEM.LIB
+
+           ù Fehler  bei  appl_search  korrigiert,  die  Rckgabewerte
+             wurden  nicht  ordentlich  gesetzt.  Damit  klappte   die
+             Kommunikation per XAcc-Protokoll etc. nicht mehr... ;-/
+
+           ù Die   PDLG-Routinen  von  WDialog  wurden  nun  ebenfalls
+             implementiert.
+
+ 25.06.2000 ACSGEM.LIB, PCGEM.LIB
+
+           ù In die Bibliothek wurden die LBOX-Funktionen fr  WDialog
+             aufgenommen.
+
+ 23.06.2000 ACS.LIB
+
+           ù Neue  Funktionen,  die  fr  den Umgang mit NVDI ntzlich
+             sind,  wurden   implementiert.   Es   handelt   sich   um
+             Ash_NVDICookie,    Ash_CallEdDI,    Ash_NVDIVersion   und
+             Ash_NVDIDatum.
+
+ 23.06.2000 ACSGEM.LIB, PCGEM.LIB
+
+           ù Die Bibliothek wurde noch etwas berarbeitet.  Die  EdDI-
+             Funktionen v_opnbm, v_clsbm und vq_scrninfo wurden in die
+             Bibliothek aufgenommen.
+
+           ù In die Bibliothek wurden die FNTS-Funktionen fr  WDialog
+             aufgenommen.
+
+           ù In  die Bibliothek wurden die FSLX-Funktionen fr WDialog
+             aufgenommen.
+
+ 22.06.2000 ACS.LIB
+
+           ù Der  Fenster-Editor  erlaubt  nun  auch  das  Setzen  des
+             Fenster-Elementes  HOTCLOSEBOX,  das  in MagiC ab Version
+             1.0 und in KAOS 1.4.2 (auerdem ab  PC-GEM  2)  vorhanden
+             ist.  Damit  wird das Schlieen des Fensters bereits beim
+             Anklicken der Schliebox und nicht  erst  beim  Loslassen
+             ausgel”st.
+
+ 18.06.2000 ACS.LIB, GUI-Editor
+
+           ù Ash_getcookie verwendet nun Ssystem zum Lesen der Cookies
+             - falls die Funktion verfgbar ist.
+
+           ù Der Editor des Cycle-Button hatte einen kleinen Bug,  der
+             nun  behoben  ist.  Wenn  als "Cycle-Zeichen" ein Zeichen
+             gr”er 127 gew„hlt wurde, wurde  der  Parameter-Wert  des
+             Userdef  falsch  gesetzt  -  d.h. das Vorzeichen des char
+             wurde auf den long bertragen... ;-)
+
+ 13.06.2000 PCTOS.LIB
+
+           ù In der Bibliothek PCTOS.LIB hatte sich  fr  Mshrink  ein
+             Fehler  eingeschlichen,  der  Parameter  zero  war  nicht
+             vorhanden. Auswirkungen hatte dies  natrlich  bei  allen
+             Anwendungen,  die  diese  Bibliothek  verwenden,  u.a. im
+             GUI-Editor beim Laden von Modulen.
+
+ 02.06.2000 GUI-Editor
+
+           ù Der  GUI-Editor hat  fr  Pure-Pascal   die   Texte   des
+             Hauptmoduls  nicht  exportiert (Der  Bug  war  eigentlich
+             immer  schon  so  drin,  das   hat   noch   nie   richtig
+             funktioniert...  ;-/).  Damit strzten Programme ab, wenn
+             per Ash_error  oder  Awi_alert  eine  Meldung  ausgegeben
+             werden sollte, ohne da alert_name gesetzt war.
+
+ 19.05.2000 Bibliothek ACS.LIB
+
+           ù Die   Konstanten-Definitionen  der  MiNTLib  fr  Cookies
+             wurden   in   ACSpro bernommen.   Damit    stehen    die
+             sprechenderen  "Namen"  der  Cookies auch unter GNU-C und
+             Pure-Pascal zur Verfgung.
+
+           ù Kleineren Bug behoben: Die Funktion Awi_ontop()  lieferte
+             nach  der  Nachricht WM_ONTOP f„lschlicherweise das Root-
+             Fenster zurck... ;-/
+
+ 18.05.2000 Bibliothek ACS.LIB, GUI-Editor
+
+           ù Die Versionsnummern wurden nun umbenannt. Aus  V3.00  ist
+             V3.0.0  geworden. Damit kann ich auch nun auch mehr als 9
+             BugFixes durchfhren... ;-)
+
+ 11.05.2000 Bibliothek ACS.LIB
+
+           ù Die  untersttzten  GEMScript-Kommandos  wurden  um   die
+             Kommandos 'KeyPress' und 'GetAllCommands' erweitert. Hier
+             wird ein Tastendruck  simuliert  bzw.  eine  alphabetisch
+             sortierte  Liste  aller untersttzten GEMScript-Kommandos
+             ausgegeben.
+
+             Genaueres ist  in  der   Dokumentation   der   GEMScript-
+             Funktionen Aev_GEMScript und Awi_gemscript zu finden.
+
+ 11.05.2000 Bibliothek ACSTOS.LIB, PCTOS.LIB
+
+           ù Weitere Fehlerkorrekturen in der TOS-Bibliothek
+
+           ù Die   Bibliothek   ACSTOS.LIB   gibt   es  nun  auch  als
+             kompatiblen  Ersatz  der  Pure-C  Bibliothek.  Die   neue
+             Bibliothek   PCTOS.LIB   sollte   zur  bisherigen  Pure-C
+             Bibliothek  kompatibel  sein,  aber  alle  mir  bekannten
+             BIOS-, XBIOS- und GEMDOS-Funktionen enthalten.
+
+           ù Die  ACSTOS.LIB gibt es ferner als kompatible Bibliothek,
+             die zu 100% kompatibel zur von CAT verwendeten Bibliothek
+             ist - eine kleinere "Spielerei", diese Variante, ich gebe
+             es zu... ;-)
+
+ 04.04.2000 Bibliothek ACS.LIB
+
+           ù Die Routine Awi_doform warf B”mbchen, wenn  das  Erzeugen
+             des  Fensters  nicht  funktioniert  hat  und auf A_dialog
+             ausgewichen werden mute.
+
+ 12.03.2000 GUI-Editor
+
+           ù Im allgemeinen USERDEF-Editor (also Klick  mit  Ctrl  auf
+             "Objekt-Editor)  gab  es  einen Absturz, wenn die Strings
+             fr BubbleGEM und das Context-Popup nicht leer waren.
+
+ 12.03.2000 Bibliothek ACS.LIB
+
+           ù In Ast_ltrim - und damit auch in Ast_alltrim -  war  noch
+             ein  Bug,  der  das  Ende des korrigierten Strings falsch
+             setzte.
+
+ 05.03.2000 Bibliothek ACS.LIB
+
+           ù Die Funktion Awi_obchange funktionierte bei einem Wechsel
+             des Objekt-Status von DISABLED auf ENABLED nicht richtig.
+             Das Objekt war zwar  enabled,  wurde  aber  z.T  disabled
+             gezeichnet.   Meine   Untersuchungen   haben   ein  etwas
+             merkwrdiges  Verhalten  von  objc_change  ergeben.   Das
+             Problem wurde durch einen Workaround umschifft.
+
+ 13.02.2000 Bibliothek ACS.LIB
+
+           ù Im  Dialog  "Allgemein" des Module-Fensters funktionierte
+             die Einstellung "Kopiere Bildteil"  nicht  richtig.  Wenn
+             die  Option  umgestellt  wurde, wurde stets das Gegenteil
+             durchgefhrt. Wenn die Option in der  Default-Einstellung
+             belassen wurde, klappte alles wie es sollte. Dies ist nun
+             korrigiert! Die Einstellungen in  diesem  Dialog  sollten
+             daher nochmals kontrolliert werden.
+
+ 31.01.2000 GUI-Editor
+
+           ù Bei  Hauptmodulen wurde fr Pure-Pascal in der Komponente
+             acc_reg  ein  Char  zuviel  ausgegeben.  Dies   ist   nun
+             korrigiert!
+
+ 25.01.2000 Bibliothek ACS.LIB
+
+           ù Die  Funktion  Af_readdir  -  und damit auch Af_first und
+             Af_next - funktionierte nicht korrekt, wenn Dxreaddir und
+             Dreaddir  (MagiC  bzw.  MiNT)  nicht  vorhanden  sind und
+             intern Fsfirst/Fsnext  verwendet  wurde.  Die  Dateinamen
+             wurden mit "*.*" aufgebl„ht:
+
+                       Laufwerk:\ORDNER1\...\*.*\DATEI.XYZ
+
+             Das Problem ist nun behoben!
+
+ 05.01.2000 Bibliothek ACSTOS.LIB, PCGEM.LIB, ACSGEM.LIB
+
+           ù Diverse  Optimierungen  in  den  Bibliotheken  fr  BIOS,
+             XBIOS, GEMDOS, VDI & AES.
+
+ 23.12.1999 Bibliothek ACS.LIB
+
+           ù Das Backdropping wird nun in der Version 3.0.0 noch nicht
+             ber  einen  Zeiger  in  der Struktur Awindow aufgerufen,
+             sondern noch automatisch  und  nicht  beeinflubar.  Dies
+             wird sich nach der Version 3.0.0 allerdings „ndern (steht
+             schon auf der ToDo-Liste (siehe "ToDo-Liste")).
+
+ 16.12.1999 GUI-Editor
+
+           ù Die   Objekt-Editoren    (3D-Button-Dialog,    Checkbox-/
+             Radiobutton-Dialog,  etc.)  rufen  nun die ST-Guide-Hilfe
+             ebenfalls ber die neue Schnittstelle auf.
+
+           ù Der Objektbaum-Editor hat nun ebenso wie der Popup-Editor
+             und der Men-Editor eine Hilfe-Seite erhalten.
+
+ 14.12.1999 GUI-Editor
+
+           ù Der   Fenster-Editor  ist  nun  komplett  mit  BubbleGEM-
+             Informationen ausgerstet worden.
+
+ 10.12.1999 Neue Bibliotheken ACSGEM.LIB und PCGEM.LIB
+
+           ù ACSpro ist nun auch um eine eigene GEM-Bibliothek erg„nzt
+             worden. Diese deckt zun„chst alle VDI- und AES-Funktionen
+             bis  zum  TT-TOS  ab.  Weitere  werden  allerdings   noch
+             "nachgerstet".  Diese  Bibliothek  ersetzt  die  Pure-C-
+             Bibliothek PCGEMLIB.LIB  vollst„ndig  und  sollte  v”llig
+             kompatibel (aber bei wind_get/wind_set sauberer ;-) sein.
+
+             Diese Bibliothek  gibt  es  demn„chst  auch  in einer fr
+             ACSpro optimierten und multithreading-festen Form.
+
+           ù Damit wird es auch demn„chst (also dann, wenn ich  einmal
+             dazu  komme ;-)) zwei Versionen der ACS-Bibliothek geben.
+             Die  eine  baut  wie  bisher  auf  der  Pure-C-Bibliothek
+             PCGEMLIB.LIB  (bzw.  wahlweise  auf  der Ersatzbibliothek
+             PCGEM.LIB)  auf,  die  andere  ist  fr  die   Bibliothek
+             ACSGEM.LIB  optimiert,  enth„lt  also zum Teil wesentlich
+             weniger Overhead.
+
+ 08.09.1999 Bibliothek ACS.LIB
+
+           ù Bei mehr als 256 Farben sollte zumindest  kein  Pixelmll
+             kommen.  Bei Checkboxen oder Radiobuttons wird allerdings
+             die  Schwarz-Wei-Darstellung  verwendet  -  ein  kleiner
+             Kompromis,  bis ich eine vernnftige L”sung gefunden habe
+             ...
+
+ 30.08.1999 GUI-Editor
+
+           ù Der  GUI-Editor fgt  nun   selbstt„tig   zwei   fhrende
+             Leerzeichen  beim Accessory-Meneintrag ein, damit dieser
+             im Men richtig positioniert wird. Bei der Anzeige werden
+             diese fhrenden Leerzeichen wieder entfernt. Man mu also
+             nicht  mehr   selbst   darauf   aufpassen,   da   dieser
+             Meneintrag richtig dargestellt wird.
+
+ 19.08.1999 Bibliothek ACS.LIB
+
+           ù Die    Konfigurationsdatei   fr   den   GUI-Editor wurde
+             erweitert, die Seriennummer und der  Schlssel  sind  nun
+             auf   10   Zeichen   erweitert  worden.  Ebenso  ist  der
+             (Fenster-)Dialog entsprechend erweitert worden.
+
+ 08.08.1999 Bibliothek ACS.LIB
+
+           ù Die ACSpro-eigenen  Checkbox-  und  Radio-Button-Userdefs
+             waren im Zustand disabled noch nicht an die Checkbox- und
+             Radio-Button-Objekte   von   MagiC   6   angepat.    Die
+             Darstellung  wurde  korrigiert  und  weiter  angeglichen.
+             Ferner  wird   nun   im   Zustand   disabled   auch   der
+             Beschriftungstext hell gezeichnet, wie es bei MagiC 6 der
+             Fall ist. Die Checkbox kann nun nicht mehr fr  ein  Tri-
+             State-Objekt  verwendet  werden,  dafr  ist  die v”llige
+             MagiC-Anpassung erreicht.
+
+             Bei mehr  als  256  Farben   sowie   bei   proportionalen
+             Systemzeichens„tzen  gibt  es  jedoch  leider  immer noch
+             Probleme mit den Chechbox- und Radio-Buttons.
+
+ 01.08.1999 Bibliothek ACS.LIB
+
+           ù Das GEMScript-Protokoll wurde nun passiv  in  der  ersten
+             Stufe   implementiert.   Damit   funktioniert   nun   die
+             Fernsteuerung      von       ACS-Applikationen!       Die
+             Aufnahmef„higkeit  sowie  die  aktive Ansteuerung anderer
+             Applikationen ist noch nicht implementiert,  beides  wird
+             jedoch noch "nachgerstet".
+
+             Bislang werden   nur   ein   paar   Standard-GS-Kommandos
+             untersttzt, die Liste wird aber noch wachsen.
+
+             Die Standard-Funktion fr allgemeine  GEMScript-Kommandos
+             heit  Aev_GEMScript,  fr  GEMScript-Kommandos mit Bezug
+             auf Fenster wird die  in  Awindow.gemscript  eingetragene
+             Funktion   aufgerufen   -   Default-Funktion   ist   hier
+             Awi_gemscript.
+
+ 24.07.1999 Bibliothek ACS.LIB, GUI-Editor
+
+           ù Fr jedes Fenster kann nun der Hilfe-Titel  fr  die  ST-
+             Guide-Hilfe  direkt im GUI-Editor eingetragen werden. Dem
+             Fenster   wird   durch   die   Nachricht   AS_ASK_STGUIDE
+             Gelegenheit gegeben, das Hilfethema zu ver„ndern.
+
+             Falls noch  nichts  selekiert  wurde,  so  selektiert zum
+             Beispiel das Editor-Fenster das Wort  unter  dem  Cursor.
+             Als Hilfe-Thema wird der selektierten Bereich verwendet.
+
+ 22.07.1999 Bibliothek ACS.LIB, GUI-Editor
+
+           ù V”llig  analog  zur  BubbleGEM-Hilfe  kann nun bereits im
+             GUI-Editor fr jedes ACSpro-Userdef,  das  eine  Service-
+             Routine besitzt, das Kontext-Men angegeben werden.
+
+           ù Alle  Daten,  die  das Hauptmodul betreffen, sind nun ein
+             einem neuen Fensterdialog zusammengefat.  Der  bisherige
+             Verhalten-Dialog  wurde  damit wesentlich bersichtlicher
+             gestaltet.
+
+             In diesen neuen Fensterdialog gelangt man, indem man  das
+             neue  Icon  HAUPTMODUL  links  neben  dem bisherigen Icon
+             VERHALTEN ausw„hlt.
+
+           ù Der Verhalten-Dialog wurde zusammen mit  seinem  Icon  in
+             "Eigenschaft" umbenannt und ist nun fr die Eigenschaften
+             wie  z.B.  die  Programmiersprache   jeder   ACSpro-Datei
+             zust„ndig,  w„hrend  die  Daten  des Hauptmoduls getrennt
+             davon im Hauptmodul-Dialog zusammengefat sind.
+
+           ù Neu ist die Struktur Aconfig.  In  ihr  werden  vom  GUI-
+             Editor wichtige   Konfigurationsdaten   des   Hauptmoduls
+             exportiert und in der  globalen  Variable  ACSconfig  dem
+             Compiler  bzw.  Linker  zur Verfgung gestellt. Dies sind
+             z.B. die verschiedenen Funktionszeiger, die von ACSpro in
+             die  Struktur  Ablk, auf die ACSblk verweist, eingetragen
+             werden.
+
+           ù Die wichtigen Funktionszeiger in der Struktur Ablk k”nnen
+             nun bereits im GUI-Editor belegt werden.
+
+           ù Ferner  kann  nun auch die Funktion ACSinit einen anderen
+             Namen  tragen.  Der   Default-Name   ist   ACSinit,   ein
+             abweichender  Name  kann  im Hauptmodul-Dialog vorgegeben
+             werden.
+
+ 22.07.1999 Bibliothek ACS.LIB
+
+           ù Analog  zur  BubbleGEM-Hilfe   wurde   ein   Kontext-Men
+             realisiert.   ACSpro unterscheidet  zwischen  langen  und
+             kurzen Klicks  mit  der  rechten  Maustaste.  Bei  kurzen
+             Klicks  erscheint  die BubbleGEM-Hilfe, bei langen Klicks
+             das Kontext-Men. Das Kontext-Men kann vom  Userdef  und
+             vom Fenster kontrolliert werden.
+
+           ù Die  Strategie  zur Behandlung von Klicks mit der rechten
+             Maustaste ist nun wie folgt:
+
+               1. Falls nach einer Zeit von im Moment festen 250 msec.
+                  die  rechte  Maustaste noch gedrckt ist, handelt es
+                  sich um einen langen  Klick,  andernfalls  um  einen
+                  kurzen Klick.
+
+               2. Bei  einem  kurzen  Klick  wird  die BubbleGEM-Hilfe
+                  aufgerufen, andernfalls das Kontext-Men.
+
+               3. Falls keine BubbleGEM-Hilfe verfgbar war, wird  das
+                  Kontext-Men verwendet.
+
+               4. Falls kein Kontext-Men verfgbar war, wird nach der
+                  Wartezeit zur Ermittlung eines langen Klicks  (s.o.)
+                  die BubbleGEM-Hilfe angezeigt.
+
+           ù Es  wurden  zwei neue Funktionen implementiert, Aob_state
+             und Aob_flags. Sie dienen zur einfachen Manipulation  der
+             Komponenten ob_state bzw. ob_flags der Struktur OBJECT in
+             einem  Objektbaum   (Workobjekt   oder   Toolbar)   eines
+             Fensters.
+
+ 20.07.1999 GUI-Editor
+
+           ù Die Texte fr BubbleGEM k”nnen nun fr jedes ACS-Userdef,
+             das eine Service-Routine besitzt, komfortabel bereits  im
+             GUI-Editor angegeben   werden.   Als  besonderes  Feature
+             k”nnen die BubbleGEM-Strings am  Beispiel-Objekt  in  der
+             linken  oberen  Ecke  direkt  beim  Editieren ausprobiert
+             werden, es wird sofort der eingegebene Text verwendet.
+
+ 27.06.1999 Bibliotheken ACS.LIB & ACSPLUS.LIB, GUI-Editor
+
+           ù Die Struktur Awindow wurde erweitert:
+
+               1. Es sind zwei Funktionszeiger hinzugekommen, die  fr
+                  Iconify  ben”tigt  werden. Die Default-Routinen sind
+                  Awi_iconify und Awi_uniconify.
+
+               2. Fr die ST-Guide-Untersttzung sind ferner zwei neue
+                  Strings  vorhanden.  Hier  kann  das Hilfe-Thema fr
+                  dieses  Fenster  sowie  ggf.   der   Dateiname   des
+                  Hypertextes angegeben werden.
+
+               3. Zur  Untersttzung des GEMScript-Protokolles ist ein
+                  Funktionszeiger definiert, der  auf  die  GEMScript-
+                  Routine  des  Fensters  zeigt.  Default-Funktion ist
+                  hier Awi_gemscript. Im Moment  macht  diese  Routine
+                  noch nichts, aber das „ndert sich bald... ;-)
+
+           ù Die  Struktur  AUSERBLK  der  Userdefs  wurde um folgende
+             Komponenten erweitert:
+
+               1. Ein neuer String enth„lt den  ggf.  zu  verwendenden
+                  Text fr eine BubbleGEM-Hilfe.
+
+               2. Ein  weiterer String steht fr ein kontextsensitives
+                  Popup zur Verfgung.
+
+           ù Ebenso hat die Struktur  AUSER_DEF  ebenfalls  zwei  neue
+             Zeiger bekommen, einen fr die BubbleGEM-Hilfe, einen fr
+             das Kontext-Popup. Damit mssen alle vorhandenen Editoren
+             an diese nderung angepat werden - sorry!
+
+ 27.06.1999 GUI-Editor
+
+           ù Das Dateiformat ist nun umgestellt worden. Der GUI-Editor
+             liest weiterhin alle alten Formate und konvertiert sie in
+             das   neue  Format,  allerdings  werden  diese  nach  der
+             Umwandlung als ver„ndert gekennzeichnet.  Daraufhin  wird
+             beim  Beenden des GUI-Editor gefragt, ob die ACSpro-Datei
+             gesichert werden soll.
+
+             Alle ACSpro-Dateien im alten Format mssen  aufgrund  der
+             neuen  Komponenten in den Strukturen Awindow und AUSERBLK
+             umgestellt werden. Andernfalls drohen Abstrze (zwei oder
+             drei  B”mbchen)  unter  anderem  bei  der ST-Guide-Hilfe,
+             Iconify und GEMScript.
+
+ 17.06.1999 Bibliothek ACSPLUS.LIB & GUI-Editor
+
+           ù Das Editor-Fenster und der GUI-Editor senden nun nach dem
+             Speichern  per  Aev_OlgaUpdate eine entsprechende Message
+             an den OLGA-Manager.
+
+             Damit kann z.B. der GUI-Editor mit Hilfe des integrierten
+             Editor-Fensters  als  OLGA-f„higer  Texteditor eingesetzt
+             werden -  das  habe  ich  natrlich  gleich  ausprobieren
+             mssen... ;-)
+
+ 17.06.1999 Bibliothek ACS.LIB
+
+           ù Das  OLGA-Protokoll wird nun als OLGA-Server untersttzt.
+             Das Nachstarten  des  OLGA-Managers  sowie  das  An-  und
+             Abmelden  am  OLGA-Manager funktionieren vollautomatisch.
+             Die   Funktionen   Aev_OlgaUpdate,   Aev_OlgaRename   und
+             Aev_OlgaBreaklink   stehen   bereits  zur  Verfgung  und
+             arbeiten korrekt.
+
+             Eine komfortablere Variante  ist  in  Grundzgen  bereits
+             implementiert  und  wird  gerade  ausgebaut.  Wesentliche
+             Teile  der  OLGA-Client-Seite  sind   ebenfalls   fertig,
+             allerdings wird hier noch gefeilt... ;-)
+
+             Die volle  OLGA-Untersttzung auch als Client wird in der
+             Version 3.0.0 noch nicht zur Verfgung  stehen.  Sie  ist
+             jedoch  in  Arbeit und steht auch weiterhin auf der ToDo-
+             Liste.
+
+ 30.05.1999 Bibliothek ACS.LIB
+
+           ù Das  komplette  PureC-Hilfe-Protokoll   steht   nun   zur
+             Verfgung.
+
+             Allerdings habe  ich bei den diversen Tests festgestellt,
+             da PC_HELP.ACC die Rckmeldung stets an die  Applikation
+             0   meldet.   In  Multitasking-Systemen  geht  dies  dann
+             "daneben".
+
+             Dies ist ein Bug in PC_HELP.ACC und kann von ACSpro nicht
+             umgangen  werden. Wenn der ST-Guide ber dieses Protokoll
+             angesteuert wird, funktioniert alles reibungslos!
+
+           ù Der ST-Guide von Holger Weets kann  nicht  nur  ber  das
+             PureC-Hilfe-Protokoll    angesteuert    werden,   sondern
+             versteht   auch   das    AV-Protokoll.    Die    Funktion
+             Aev_STGuideHelp  stellt das komfortable Inferface fr die
+             Ansteuerung des ST-Guide dar.
+
+             Der ST-Guide scheint  nach  der  Nachricht  VA_START  die
+             Antwort  VA_STARTED  an den AV-Server zu senden und nicht
+             an die absendende Anwendung. Damit ist keine  M”glichkeit
+             gegeben, komfortable Rckmeldungen zu bekommen. Zum Glck
+             klappt mit dem PureC-Hilfe-Protokoll alles bestens... ;-)
+
+             Dies ist ein Bug im ST-Guide und  kann  von  ACSpro nicht
+             umgangen  werden.  Fr  beide Varianten, die Online-Hilfe
+             anzusprechen,   habe   ich   entsprechende    Workarounds
+             implementiert.  ACSpro ist  also  auf  dieses  "besondere
+             Verhalten"  beider  Hilfe-Accessories   vorbereitet   und
+             sollte richtig darauf reagieren... ;-)
+
+           ù Die  Strategie,  um  den AV-Server zu finden, wurde etwas
+             ge„ndert. Zuerst wird die  Environment-Variable  AVSERVER
+             ausgewertet.  Falls  diese  nicht existiert oder der dort
+             angegebene AV-Server nicht gefunden werden  kann,  werden
+             (in  dieser  Reihenfolge)  jinnee,  Gemini,  AVServer und
+             MagxDesk als AV-Server versucht.
+
+ 18.05.1999 Bibliothek ACS.LIB
+
+           ù Neue Funktion Awi_ontop liefert das oberste Fenster. Dies
+             wird   auch  behalten,  wenn  ACSpro-Anwendungen  in  den
+             Hintergrund treten.
+
+           ù Wenn ACSpro in Multitasking-Systemen  wieder  nach  vorne
+             kam,  wurde direkt ein Maus-Klick ausgel”st. Dies ist nun
+             abgestellt!
+
+ 08.05.1999 Bibliothek ACS.LIB
+
+           ù Iconify in allen Varianten wird nun  direkt  vom  ACSpro-
+             System  erledigt.  Die  Realisierung  ber  die  Service-
+             Routine ist somit hinf„llig.  Demn„chst  werden  bei  der
+             sowieso   anstehenden   nderung   der   Awindow-Struktur
+             entsprechende   Funktionszeiger   fr   die   Nachrichten
+             WM_ICONIFY,  WM_ALLICONIFY  und  WM_UNICONIFY aufgenommen
+             werden.
+
+ 04.05.1999 Bibliothek ACS.LIB
+
+           ù Die XAcc-Empfangsroutinen  wurden  komplett  berarbeitet
+             und diverse kleinere Bugs ausgebaut.
+
+ 04.05.1999 Bibliothek ACS.LIB
+
+           ù Durch  die  Nachricht AS_ACC_ACK wird mitgeteilt, da ein
+             von ACSpro ausgel”ster XAcc-Transfer abgeschlossen wurde.
+             Zugleich   wird   der  Status  des  Transfers  mitgeteilt
+             (Erfolg/Mierfolg). Das Fenster kann dann geeignet darauf
+             reagieren  (etwa  nach  einiger Zeit einen neuen Transfer
+             versuchen o.„.).
+
+             Die ausl”senden  Routinen  werden   demn„chst (Allerdings
+             noch  nicht  in  Version  3.0.0) in  ACSpro zur Verfgung
+             stehen, so da dann auch der "aktive  Datentransfer"  per
+             XAcc-Protokoll direkt untersttzt wird.
+
+ 02.05.1999 Bibliothek ACS.LIB
+
+           ù Beim L”schen einer linearen Liste gab es einen Crash. Die
+             Routine strzte ab, wenn ACSpro beendet  wird  und  dabei
+             Alu_delete aufgerufen wurde. Der Bug ist behoben.
+
+           ù Optimierung:    Umstellen   der   ACS-internen   Message-
+             Verarbeitung    auf    Bin„rsuche.    Damit    ist    die
+             Erweiterungsf„higkeit fr GEMScript, OLGA, BubbleGEM o.„.
+             (siehe ToDo-Liste) gegeben, da  sich  bei  diesen  vielen
+             Nachrichten, auf die es zu reagieren gilt, die Vergleiche
+             bis   zur   Identifikation   der   Nachricht    drastisch
+             reduzieren.  Bei  61 Nachrichten (Stand 17.04.2001) w„ren
+             es  nach  dem  bis  einschl.  Version  2.3.x  verwendeten
+             Verfahren  im Mittel 30 Vergleiche, jetzt sind es maximal
+             nur  7  Vergleiche,   bis   die   Nachricht   einwandfrei
+             identifiziert ist.
+
+             Die Funktionen   fr   die   Drag&Drop-Protokolle  werden
+             allerdings noch komplett berarbeitet, damit ACSpro nicht
+             nur den eher "passiven Empfang", sondern auch das "aktive
+             Senden" in gewohntem Komfort beherrscht.
+
+ 14.04.1999 Bibliothek ACS.LIB
+
+           ù Die Routine ACSinit0 wird nun vor der Initialisierung der
+             XAcc-Daten  und dem Anmelden bei den diversen Protokollen
+             (XAcc, VA, etc.) aufgerufen.
+
+
+8.3  nderungen Version V2.3.3 auf V2.3.4
+=========================================
+
+Hier sind die nderungen und Erweiterungen von V2.3.3  zur  V2.3.4  in
+umgekehrter chronologischer Reihenfolge aufgelistet.
+
+Hinweis: Die  Version  2.3.4  enth„lt  nur  wichtige  Korrekturen  von
+Fehlern der Version 2.3.3.
+
+Hinweis: nderungen an den C-Bibliotheken  betreffen  stets  auch  die
+Pascal-Bibliothek.  Von Bugfixes und Erweiterungen in den Bibliotheken
+hat stets auch der GUI-Editor profitiert, da dieser ja mittels  ACSpro
+entwickelt wurde.
+
+Stand der Liste ist der 01.01.2001.
+
+ 01.01.2001 ACS.LIB, GUI-Editor
+
+           ù Anpassung der Jahreszahl-Daten im Copyright.
+
+           ù Erstellung  des  Releases  2.3.4,  d.h.  entfernen  aller
+             "Beta-Angaben" in den Versionsnummern.
+
+ 01.01.2001 ACS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Im Standard-AboutMe-Dialog von ACSpro wird nun das  Datum
+             der  Version "ordentlich" als "tt.mm.jjjj" (deutsch) bzw.
+             "mm-tt-jjjj"(englisch) dargestellt. Die  "elende  Krcke"
+             mit  der  Abkrzung des Monatsnamens als "Oct" oder "Dec"
+             hat also ein Ende... ;-)
+
+ 02.11.2000 GUI-Editor
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Bei der  direkten  Positionseingabe  fr  ein  Objekt  im
+             Objekt-Editor  konnten  zu groe oder zu kleine Werte fr
+             die Zeichen- und Pixel-Komponenten eingegeben werden. Die
+             Zeichenkoordinaten sind auf 0..255, die Pixel-Korrekturen
+             auf -128..127 festgelegt.  Gr”ere  oder  kleinere  Werte
+             werden passend auf den Rand des Intervalls gesetzt.
+
+ 30.10.2000 PCGEM.LIB, ACSGEM.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Die GEM-Bibliotheken  sind  nun  aus ACSpro ausgegliedert
+             worden und laufen ab jetzt  als  eigenst„ndige  Projekte.
+             Sie  erhalten  eine eigene History und entfallen ab jetzt
+             in dieser Liste komplett.
+
+             Die GEM-Bibliotheken sind Freeware und wie ACSpro auch in
+             der Maus LL und auf dem Internet verfgbar.
+
+             Alle "Bestandteile"  von ACSpro der Version 2.x.x sind ab
+             jetzt immer mit der jeweils neuesten Bibliothek PCGEM.LIB
+             compiliert bzw. gelinkt.
+
+ 25.10.2000 PCTOS.LIB, ACSTOS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Die TOS-Bibliotheken  sind  nun  aus ACSpro ausgegliedert
+             worden und laufen ab jetzt  als  eigenst„ndige  Projekte.
+             Sie  erhalten  eine eigene History und entfallen ab jetzt
+             in dieser Liste komplett.
+
+             Die TOS-Bibliotheken sind Freeware und wie ACSpro auch in
+             der Maus LL und auf dem Internet verfgbar.
+
+             Alle "Bestandteile"  von ACSpro der Version 2.x.x sind ab
+             jetzt immer mit der jeweils neuesten Bibliothek PCTOS.LIB
+             compiliert bzw. gelinkt.
+
+ 16.10.2000 PCGEM.LIB, ACSGEM.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Aus der    N.AES-Entwickler-Dokumentation   sind   einige
+             N.AES-spezifische   Funktionen   in   die    Bibliotheken
+             eingeflossen,    wie    z.B.   appl_control,   wind_draw,
+             shel_help, objc_xfind etc.
+
+ 16.10.2000 ACS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Die Utility-Funktionen Aob_flags, Aob_state,  Aob_service
+             und  Awi_observice sind nun ganz analog zu V3.0.0 auch in
+             der  Version  V2.3.4  vorhanden.  Schlielich   mu   ein
+             gewisser Komfort sein... ;-)
+
+ 08.10.2000 GUI-Editor
+
+           ù Nachdem  ich  in  Krze  umziehen  werde, ist nun im GUI-
+             Editor beim   Info-Dialog,   der   auf   die   Shareware-
+             Einsch„nkung   hinweist,   bereits   meine  neue  Adresse
+             enthalten.
+
+ 08.10.2000 ACS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Die Bibliothek  ACS.LIB  enth„lt  nun  auch  die   beiden
+             Bibliotheken  PCTOS.LIB  und PCGEM.LIB. Das Einbinden der
+             Bibliotheken  PCTOS.LIB,  PCTOSLIB.LIB,  PCGEM.LIB   oder
+             PCGEMLIB.LIB  entf„llt  somit  v”llig  und ist nicht mehr
+             notwendig.
+
+             Bisher mute  die   Bibliothek   PCTOS.LIB   im   Projekt
+             enthalten  sein.  Falls dies vergessen wurde und eine die
+             Bibliothek  ACSTOS.LIB  verwendet  wurde,   kam   es   zu
+             Abstrzen,  da  ACSpro in  Version  2.3.3  noch nicht die
+             optimierten Aufrufe aus ACSTOS.LIB verwendet.
+
+ 17.09.2000 GUI-Editor
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Der GUI-Editor kam nicht so recht mit  langen  Dateinamen
+             klar.   Besonders   problematisch  waren  Dateinamen  mit
+             Leerzeichen darin. Der  GUI-Editor versteht  nun  korrekt
+             gequote Dateinamen sowohl beim Start in der Kommandozeile
+             als auch per AV-Protokoll per VA_START bergebene.
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Die Dateinamen    wurden    stets    in    Grobuchstaben
+             umgewandelt.   Das   ist   etwas  l„stig,  besonders  bei
+             casesensitiven Filesystemen. Die  Dateinamen  werden  nun
+             nicht  mehr umgewandelt, sondern bleiben so, wie sie sind
+             - sowohl beim ™ffnen von Dateien als auch beim Neuanlegen
+             von Dateien.
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Der (Builder)  kann  beim  Start  bergebene Optionen der
+             Form "-..." bzw. "/.." erkennen, wobei nach  den  Zeichen
+             '-'  bzw.  '/'  beliebig  viel  folgen kann. Bisher wurde
+             versucht, diesen Parameter als Datei zu  ”ffnen.  Nachdem
+             der  GUI-Editor (noch;-)  keine  Optionen  kennt,  werden
+             diese Argumente schlichtweg ignoriert.
+
+ 03.09.2000 ACSGEM.LIB, PCGEM.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Das VDI-Binding wurde berarbeitet.  Die  auf  dem  Stack
+             angelegten   šbergabe-Arrays   sind   nun   etwas  gr”er
+             dimensioniert - evtl. waren sie einfach zu klein, so  da
+             es beim Aufruf "krachte".
+
+ 03.09.2000 ACS.PPU
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Bei der Pure-Pascal-Unit wurde kein Environment an ACSpro
+             bergeben.  Damit  lieferte   die   Funktion   Ash_getenv
+             natrlich  nur  "K„se"  ;-) Dies ist jetzt korrigiert, so
+             da nun alle Environment-Variablen unter Pure-Pascal  zur
+             Verfgung stehen...
+
+ 12.07.2000 ACS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Da es   bestimmt  einige  Module  gibt,  die  nicht  mehr
+             weitergepflegt werden, habe ich  mich  entschlossen,  bei
+             der   Modul-Schnittstelle  zu  tricksen  und  etwas  mehr
+             Aufwand zu treiben: wird  eine  alte  Modul-Schnittstelle
+             erkannt  (also  von ACSpro 2.30 oder 2.31), so werden die
+             Daten vor dem Weiterreichen an die Anwendung konvertiert.
+             Die  Erweiterung war relativ einfach zu machen - wenn man
+             den notwendigen Trick heraus bekommen hat...
+
+             Damit k”nnen auch Module  von  ACSpro 2.3x/2.3.3  geladen
+             werden  und scheinen zu funktionieren - jedenfalls soweit
+             ich sie habe und testen kann...
+
+             Hinweis: Die Versionsnummer der Modul-Schnittstelle wurde
+             fr  ACSpro 2.31 f„lschlicherweise nicht angepat, obwohl
+             die  Funktionen   Af_first   und   Af_next   inkompatibel
+             erweitert  wurden. Dies geschah leider erst in der ACSpro
+             2.31. ACSpro geht in der Version 2.3.4 nun davon aus, da
+             Module,  die  die  „ltere der beiden Modul-Schnittstellen
+             ben”tigen, die "alten" Aufrufe von Af_first  und  Af_next
+             machen  und pat diese an. Sollten also Module mit ACSpro
+             2.31 entwickelt worden sein, so sollten diese mit Version
+             2.3.4 sicherheitshalber recompiliert werden.
+
+ 08.07.2000 ACS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Anwendungen, die  mit  ACSpro entwickelt werden, brauchen
+             nun nicht mehr die Line-A-Bibliothek von Pure-C  -  auer
+             wenn  der  Entwickler  selbst irgendetwas davon ben”tigt,
+             wovon allerdings dringend abgeraten wird.
+
+             ACSpro verwendet  hier  nur  die  sog.  "Initialisierung"
+             ($A000)   zur  Ermittelung  der  Line-A-Variablen.  Diese
+             werden nun ber eine eigene "Mini-Funktion" beschafft.
+
+             Ben”tigt werden die Line-A-Variablen nur in Abp_start und
+             Abp_end.  Diese  beiden  Routinen  sollten  sowie  so nur
+             verwendet werden, wenn  alle  anderen  Stricke  reien...
+             (siehe Dokumentation der beiden Funktionen ;-)
+
+ 06.07.2000 ACS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Interne Aufr„umarbeiten in Af_select und Af_first_fsel...
+
+ 02.07.2000 GUI-Editor
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Der GUI-Editor verwendet  nun den Startup-Code von Stefan
+             Kuhr @ OS. Vielen Dank, Stefan!
+
+             Beide Startup-Codes  sind  an  PowerMacs  unter  MagiCMac
+             angepat  und liegen ACSpro bei. Die Original-Archive der
+             Startup-Codes sind in der Maus LL im  Gruppenprogrammteil
+             Maus.Computer.Atari.Programmieren zu finden.
+
+             Hier ein  kleiner Vergleich (unvollst„ndig!) der Startup-
+             Codes:
+
+             Der Startup-Code von Stefan Kuhr untersttzt:
+
+                - Quoting (Komandozeilenparameter mit Leerzeichen)
+
+                - ARGV  (Komandozeilenparameter  mit  mehr   als   125
+                  Zeichen werden im Environment bergeben)
+
+                - erweitertes ARGV (šbergabe von leeren Parametern)
+
+                - Workaround fr PATH
+
+                - Shared   Text  (Programm  mehrfach  starten,  dessen
+                  Text-Segment aber nur einmal im Speicher liegt)
+
+                - keine FPU-Initialisierung
+
+             Der Startup-Code von Behne&Behne untersttzt:
+
+                - Quoting (Komandozeilenparameter mit Leerzeichen)
+
+                - ARGV  (Komandozeilenparameter  mit  mehr   als   125
+                  Zeichen werden im Environment bergeben)
+
+                - keine FPU-Initialisierung
+
+           ù Nachgezogene Korrektur fr V2.3.3 (analog zu V3.0.0):
+
+             Der Editor  des Cycle-Button hatte einen kleinen Bug, der
+             nun behoben ist. Wenn  als  "Cycle-Zeichen"  ein  Zeichen
+             gr”er  127  gew„hlt wurde, wurde der Parameter- Wert des
+             Userdef falsch gesetzt - d.h.  das  Vorzeichen  des  char
+             wurde auf den long bertragen... ;-)
+
+ 02.07.2000 ACS.LIB
+
+           ù Nachgezogene nderung fr V2.3.3 (analog zu V3.0.0):
+
+             Ash_getcookie verwendet nun Ssystem zum Lesen der Cookies
+             - falls die Funktion verfgbar ist.
+
+           ù Die Korrektur fr die  Funktion  Awi_obchange  war  nicht
+             ganz  so  richtig,  da ist mir ein "Hund" beim Nachziehen
+             der    Korrektur    von    V3.0.0    fr    die    V2.3.3
+             hineingerutscht... ;-/
+
+             Jetzt sollte die Funktion wieder korrekt arbeiten.
+
+
+8.4  nderungen Version V2.32 auf V2.3.3
+========================================
+
+Hier sind  die  nderungen  und  Erweiterungen von V2.32 zur V2.3.3 in
+umgekehrter chronologischer Reihenfolge aufgelistet.
+
+Hinweis: Die  Version  2.3.3  enth„lt  nur  wichtige  Korrekturen  von
+Fehlern der Version 2.32.
+
+Hinweis: nderungen  an  den  C-Bibliotheken  betreffen stets auch die
+Pascal-Bibliothek. Von Bugfixes und Erweiterungen in den  Bibliotheken
+hat  stets auch der GUI-Editor profitiert, da dieser ja mittels ACSpro
+entwickelt wurde.
+
+Stand der Liste ist der 13.06.2000.
+
+ 13.06.2000 PCTOS.LIB
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             In der Bibliothek PCTOS.LIB hatte sich  fr  Mshrink  ein
+             Fehler  eingeschlichen,  der  Parameter  zero  war  nicht
+             vorhanden. Auswirkungen hatte dies  natrlich  bei  allen
+             Anwendungen,  die  diese  Bibliothek  verwenden,  u.a. im
+             GUI-Editor beim Laden von Modulen.
+
+ 09.06.2000 GUI-Editor
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Beim L”schen einer linearen Liste gab es einen Crash. Die
+             Routine  strzte  ab,  wenn ACSpro beendet wird und dabei
+             Alu_delete aufgerufen wurde. Der Bug ist behoben.
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Kleineren Bug behoben: Die Funktion Awi_ontop()  lieferte
+             nach  der  Nachricht WM_ONTOP f„lschlicherweise das Root-
+             Fenster zurck... ;-/
+
+ 02.06.2000 GUI-Editor
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Der GUI-Editor hat  fr   Pure-Pascal   die   Texte   des
+             Hauptmoduls  nicht  exportiert (Der  Bug  war  eigentlich
+             immer  schon  so  drin,  das   hat   noch   nie   richtig
+             funktioniert...  ;-/).  Damit strzten Programme ab, wenn
+             per Ash_error oder Awi_alert Meldungen ausgegeben  werden
+             sollte, ohne da alert_name gesetzt war.
+
+ 18.05.2000 Bibliothek ACS.LIB, GUI-Editor
+
+           ù Die  Versionsnummern  wurden nun umbenannt. Aus V2.33 ist
+             V2.3.3 geworden.
+
+ 04.04.2000 Bibliothek ACS.LIB
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Die Routine Awi_doform warf B”mbchen, wenn  das  Erzeugen
+             des  Fensters  nicht  funktioniert  hat  und auf A_dialog
+             ausgewichen werden mute.
+
+ 29.03.2000 Bibliothek ACS.LIB
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Die Funktion Awi_obchange funktionierte bei einem Wechsel
+             des Objekt-Status von DISABLED auf ENABLED nicht richtig.
+             Das Objekt war zwar  enabled,  wurde  aber  z.T  disabled
+             gezeichnet.   Meine   Untersuchungen   haben   ein  etwas
+             merkwrdiges  Verhalten  von  objc_change  ergeben.   Das
+             Problem wurde durch einen Workaround umschifft.
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             In Ast_ltrim  -  und damit auch in Ast_alltrim - war noch
+             ein Bug, der das Ende  des  korrigierten  Strings  falsch
+             setzte.
+
+ 13.02.2000 Bibliothek ACS.LIB
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Wenn ACSpro in  Multitasking-Systemen  wieder  nach vorne
+             kam, wurde direkt ein Maus-Klick ausgel”st. Dies ist  nun
+             abgestellt!
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Im Dialog  "Allgemein"  des Module-Fensters funktionierte
+             die Einstellung "Kopiere Bildteil"  nicht  richtig.  Wenn
+             die  Option  umgestellt  wurde, wurde stets das Gegenteil
+             durchgefhrt. Wenn die Option in der  Default-Einstellung
+             belassen wurde, klappte alles wie es sollte. Dies ist nun
+             korrigiert! Die Einstellungen in  diesem  Dialog  sollten
+             daher nochmals kontrolliert werden.
+
+ 25.01.2000 Bibliothek ACS.LIB
+
+           ù Nachgezogene Korrektur fr V2.32 (analog zu V3.0.0):
+
+             Die Funktion  Af_readdir  -  und  damit auch Af_first und
+             Af_next - funktionierte nicht korrekt, wenn Dxreaddir und
+             Dreaddirr  (MagiC  bzw.  MiNT)  nicht  vorhanden sind und
+             intern Fsfirst/Fsnext  verwendet  wurde.  Die  Dateinamen
+             wurden mit "*.*" aufgebl„ht:
+
+                       Laufwerk:\ORDNER1\...\*.*\DATEI.XYZ
+
+             Das Problem ist nun behoben!
+
+
+8.5  nderungen Version V2.31 auf V2.32
+=======================================
+
+Hier sind  die  nderungen  und  Erweiterungen  von V2.31 zur V2.32 in
+umgekehrter chronologischer Reihenfolge aufgelistet.
+
+Zwei Probleme existieren noch (siehe  "ToDo-Liste"):  ACSpro hat  noch
+Schwierigkeiten  mit  mehr als 256 Farben und mit einem proportionalen
+Systemzeichensatz. Beides sind etwas aufwendigere Korrekturen, die ich
+aus diesem Grunde nach hinten verschoben habe.
+
+nderungen an  den  C-Bibliotheken  betreffen  stets  auch die Pascal-
+Bibliothek. Von Bugfixes und Erweiterungen  in  den  Bibliotheken  hat
+stets  auch  der  GUI-Editor profitiert,  da  dieser ja mittels ACSpro
+entwickelt wurde.
+
+Stand der Liste ist der 09.04.1999.
+
+ 09.04.1999 ACSpro-GUI-Editor
+
+           ù Im  Fenster-Editor  konnten  die  Grenzen  zwischen   den
+             verschiedenen Fenterelementen verschwinden. Bei kleinerem
+             Rahmen  stand  unter  MultiTOS  kein  Text  mehr  in  den
+             Elementen.  Die  gesamte  Darstellung der Fensterelemente
+             ist nun v”llig berarbeitet worden.
+
+ 09.04.1999 Bibliothek ACS.LIB & ACS_LOAD.O
+
+           ù Die  Modul-Schnittstelle  enth„lt  nun  auch  alle  neuen
+             Funktionen.   Sie  ist  abw„rtskompatibel  erweitert  und
+             optimiert worden.
+
+ 09.04.1999 Bibliothek ACS.LIB
+
+           ù Interne Optimierungen  in  der  Event-Schleife  und  beim
+             Draggen der Auswahlliste.
+
+ 01.04.1999 Bibliothek ACSPLUS.LIB
+
+           ù Der  Desktop  PUR_DESK  hat  unter gewissen Umst„nden die
+             internen Flags "verpfuscht". Damit ist  das  Flag  Smart-
+             Redraw  wieder  ausgeschaltet  worden.  Ein bedauerliches
+             Versehen, welches nun korrigiert ist.
+
+ 29.03.1999 Bibliothek ACS.LIB & GUI-Editor
+
+           ù Das  Backdropping  von  angemeldeten  Fenstern  wird  nun
+             automatisch  erledigt,  die entsprechenden Fenster mssen
+             im GUI-Editor mit Backdrop-Element angemeldet  sein.  Bei
+             Systemen   ohne   Backdrop-Funktion  werden  die  Fenster
+             automatisch ohne dieses Fensterelement angelegt.
+
+             Bei modalen  Fenster-Dialogen   wird   bei   angemeldetem
+             Backdrop  das  Fenster natrlich nicht in den Hintergrund
+             gelegt (Ich  suche  noch  nach  einer  M”glichkeit,   bei
+             modalen Fenstern nicht das Fenster, sondern die Anwendung
+             in den Hintergrund zu bringen.).
+
+             Bei Fenster, die  den  Backdrop-Button  nicht  angemeldet
+             haben,  wird  der  Button unter MagiC hinzugefgt und von
+             MagiC bedient. In diesem Fall kann ein  modaler  Fenster-
+             Dialog   in   den   Hintergrund  geklickt  werden.  Bevor
+             allerdings ein anderes Fenster getoppt werden kann,  wird
+             automatisch  wieder  der modale Fenster-Dialog nach vorne
+             gebracht - ein unsch”nes Flackern ist die Folge.
+
+             In der Version 3.0 wird  es  hier  eine  Erweiterung  der
+             Awindow-Struktur  geben,  in  der  auch  das Backdropping
+             bercksichtigt ist!
+
+             Es ist dringendst anzuraten, die Backdrop-Komponente  fr
+             alle   Fenster   anzumelden,  da  dann  ACSpro  bzw.  die
+             Anwendung die Kontrolle ber das Verhalten beim  Backdrop
+             hat.
+
+ 27.03.1999 Bibliothek ACS.LIB
+
+           ù Die  ACSpro-eigenen  Checkbox-  und Radio-Button-Userdefs
+             wurden vom Aussehen  her  an  die  Checkbox-  und  Radio-
+             Button-Objekte  von  MagiC  6  angepat. Das Aussehen der
+             Userdefs entspricht nun sowohl im 3D-Modus  als  auch  im
+             2D-Modus  genau  den  MagiC-Objekten.  Bei  mehr  als 256
+             Farben gibt es jedoch leider immer noch Probleme mit  den
+             Chechbox- und Radio-Buttons.
+
+ 26.03.1999 Bibliothek ACS.LIB
+
+           ù Ein  kleiner  Bug  war  noch  in  Af_readdir:  die  Root-
+             Verzeichnisse wurden nicht  korrekt  behandelt  (ein  '\'
+             zuviel hinten abgeschnitten). Das ist nun behoben.
+
+ 24.03.1999 Bibliothek ACS.LIB
+
+           ù Der   Vergleich   der   Dateiextension   beim  Laden  der
+             (Autostart-)Module  wurde  intern  von  strcmp  auf   die
+             Funktion  Ast_icmp  umgestellt,  damit  spielt die Gro-/
+             Kleinschreibung der Extension beim Laden der Module keine
+             Rolle  mehr!  Das  Laden  von Modulen sollte nun auch auf
+             casesensitiven Systemen (MiNT mit MinixFS) funktionieren.
+
+ 19.03.1999 Bibliothek ACS.LIB
+
+           ù Die Funktion Af_readdir  zum  Einlesen  eines  kompletten
+             Verzeichnisinhaltes  wurde  komplett neu programmiert und
+             optimiert.  Sie  benutzt  nun  nicht  mehr   die   beiden
+             archaischen  Funktionen  Af_first  und Af_next und sollte
+             gegenber diesen beiden auch bevorzugt werden!
+
+           ù Die Funktionen Af_first und Af_next wurden  komplett  neu
+             programmiert und nutzen jetzt die Funktion Af_readdir.
+
+             Hinweis: Af_first     und    Af_next    sind    nur    zu
+             Kompatibilit„tszwecken   noch   vorhanden   und    werden
+             wahrscheinlich (wenn sich kein zu groer Widerspruch regt
+             ;-) in einer der n„chsten Versionen wegfallen.
+
+ 14.02.1999 Bibliothek ACS.LIB
+
+           ù Die Untersttzung  von  Konfigurationsdateien  im  ASCII-
+             Format  wurde  implementiert  -  der Datentyp UConfig mit
+             einigen Funktionen zur Bearbeitung.  Diese  ASCII-Dateien
+             besitzen einen Aufbau analog zu den bekannten INI-Dateien
+             in der Windows-Welt. Ab der Version 2.4 von ACSpro werden
+             diese   von   mir  Konfigurations-Strings  (oder  Config-
+             Strings,              Cfg-Strings)              genannten
+             Konfigurationsm”glichkeiten   vollkommen  transparent  in
+             ACSpro integriert  sein  und   vom   GUI-Editor mit   den
+             zugeh”rigen Initialisierungsdaten versehen werden k”nnen.
+             Noch ist dies nicht der Fall, dafr mte ich das  Format
+             der  *.ACS-Dateien  inkompatibel „ndern. Das wird erst in
+             V2.4   (incl.   automatischer   Konversion    natrlich!)
+             geschehen.
+
+ 01.02.1999 Bibliothek ACS.LIB
+
+           ù Es  wurden einige ntzliche Funktionen fr den Umgang mit
+             Strings implementiert. Diese sind:
+
+              Ach_tolower  Buchstaben  in  Kleinbuchstaben  wandeln  -
+                           Umlaute werden korrekt bercksichtigt
+
+              Ach_toupper  Buchstaben   in  Grobuchstaben  wandeln  -
+                           Umlaute werden korrekt bercksichtigt
+
+              Ach_isWhite  Zeichen      auf      "Blank" (Leerzeichen,
+                           Tabulator,    Carriage-Return,   Line-Feed)
+                           berprfen
+
+              Ast_cmp      Zwei    Strings     vergleichen,     Gro-/
+                           Kleinschreibung  wird nicht bercksichtigt,
+                           die Umlaute werden korrekt behandelt
+
+              Ast_icmp     Zwei    Strings     vergleichen,     Gro-/
+                           Kleinschreibung   wird bercksichtigt,  die
+                           Umlaute werden korrekt behandelt
+
+              Ast_isEmpty  Prfen, ob ein String nur Blanks  (bestimmt
+                           durch Ach_isWhite) enth„lt, also eigentlich
+                           "leer" ist
+
+              Ast_add      Strings   hintereinanderh„ngen   und    auf
+                           bestimmte L„nge mit Leerzeichen auffllen
+
+              Ast_adl      String    linksbndig    mit    Leerzeichen
+                           auffllen
+
+              Ast_adr      String   rechtsbndig    mit    Leerzeichen
+                           auffllen
+
+              Ast_adc      String zentriert mit Leerzeichen auffllen
+
+              Ast_filter   "Nicht   erlaubte"   Zeichen   aus   String
+                           herausnehmen
+
+              Ast_count    H„ufigkeit von Zeichen im String z„hlen
+
+              Ast_fcmp     Dateinamen vergleichen, der erste darf  die
+                           blichen     Wildcards    '*'    und    '?'
+                           enthalten (Der zweite Dateiname darf  keine
+                           Wildcards  enthalten, evtl. werde ich diese
+                           aber doch noch einbauen, 'mal sehen... ;-))
+
+ 31.01.1999 Bibliothek ACS.LIB
+
+           ù Die Service-Funktionen der unsortierten,  linearen  Liste
+             ULinListe  sind nun nur noch ber die Zeiger der Struktur
+             ULinListe verfgbar. Sie sind dem direkten Zugriff  durch
+             die  Realisierung als static-Funktionen verborgen worden.
+             Dies schtzt vor f„lschlichem Gebrauch der Funktionen und
+             schtzt  einmal  entwickelten  Code  vor  Arbeiten an der
+             Liste und den Service-Funktionen.
+
+ 28.01.1999 Bibliothek ACS.LIB
+
+           ù Die Funktion Ast_ltrim wurde implementiert. Sie  entfernt
+             fhrende Leerzeichen, d.h. entfernt Leerzeichen links vom
+             "eigentlichen String".
+
+           ù Die  Funktion  Ast_rtrim  entfernt  analog  abschlieende
+             Leerzeichen,  d.h. Leerzeichen, d.h. entfernt Leerzeichen
+             rechts vom "eigentlichen String".
+
+           ù Die Funktion Ast_alltrim ist die Kombination  der  beiden
+             Funktionen  Ast_ltrim und Ast_rtrim und entfernt fhrende
+             und abschlieende Leerzeichen eines Strings.
+
+ 21.01.1999 Bibliothek ACS.LIB
+
+           ù Das  "Shaden"  der   Fenster   unter   WINX   und   MagiC
+             funktioniert nun. Hier gab es Fehler mit den Maus-Formen.
+             War z.B. im obersten Fenster ein editierbares Objekt,  so
+             wurde  die  Maus-Form  auch  dann  noch  auf den "Cursor"
+             gesetzt, wenn das Fenster  unter  MagiC  per  Doppelklick
+             zusammengeklappt wurde.
+
+             ACSpro kann  nun  mit  dem  Shaded-Zustand  umgehen.  Die
+             Meldungen WM_SHADED und WM_UNSHADED  werden  ausgewertet.
+             Der   neue   Fenster-Zustand   AWS_SHADED  gibt  Auskunft
+             darber, ob das Fenster  zusammengeklappt  wurde.  Ferner
+             werden  dem Fenster die (neuen) Nachrichten AS_SHADED und
+             AS_UNSHADED gesandt, um es davon zu informieren.
+
+           ù Das Flag  AB_SMARTREDRAW  wird  nun  beim  Initialisieren
+             gesetzt.  In ACSinit0 oder durch das Modul Ab_Cfg kann es
+             wieder  abgeschaltet  werden.  Unter   MagiC   (MagiCMac,
+             MagiCPC)  und N.AES werden so Redraw-Fehler vermieden, da
+             hier meist das sog.  Smart-Redraw  aktiviert  ist.  Unter
+             MagiC  k”nnte  zwar abgefragt werden, ob es eingeschaltet
+             ist, aber diese L”sung ist auf MagiC beschr„nkt.
+
+             In Zukunft  wird  u.a.  das   Konfigurieren   der   Flags
+             wesentlich   einfacher  gestaltet,  ich  bin  bereits  am
+             tfteln und programmieren... ;-)
+
+ 21.01.1999 ACSpro-GUI-Editor
+
+           ù Optimierung:    Der    GUI-Editor hatte    beim     Start
+             Einstellungen  gesetzt,  die  beim  Start bereits von den
+             Routinen der ACS.LIB durchgefhrt wurden.
+
+ 19.01.1999 Bibliotheken ACS.LIB und ACSPLUS.LIB, ACSpro-GUI-Editor
+
+           ù Die  Optik  der   Dialoge   und   Fenster   wurde   etwas
+             berarbeitet und vereinheitlicht. Dies betrifft besonders
+             die als "Untergrund" eingesetzten 3D-Buttons, die nun ein
+             durchg„ngigeres Aussehen haben.
+
+ 15.01.1999 Der ACSpro-GUI-Editor
+
+           ù Der   GUI-Editor besitzt   nun  in  der  freigeschalteten
+             Version  einen  eigenen  Info-Dialog.  Dieser  wird   per
+             Awi_doform   dargestellt.   Durch   Weiterverzweigen   in
+             Unterdialoge  kann   die   Versionsnummer   sowie   Kurz-
+             Informationen  zum Update bzw. Upgrade - u.a. die Stellen
+             zum Download - angezeigt werden.
+
+ 15.01.1999 Bibliothek ACS.LIB
+
+           ù Es wurde die neue Funktion Awi_doform implementiert.  Die
+             Funktion   verwendet   Awi_dialog.   Falls  kein  Fenster
+             erstellt   werden   kann,   wird   automatisch   A_dialog
+             verwendet.  Das  verwendete  Fenster wird ohne Fuller und
+             Sizer dargestellt. Die Scrollbalken  fr  vertikales  und
+             horizontales Scrollen werden nur dann verwendet, wenn der
+             Dialog nicht komplett angezeigt werden kann.
+
+ 02.01.1999 Bibliothek ACS.LIB
+
+           ù ACSpro verwendet  nun  die  NKCC-Bibliothek  (von  Harald
+             Siegmund) in der Version 2.94 vom 21.09.1998.
+
+ 22.10.1998 Bibliothek ACSPLUS.LIB
+
+           ù Der    pure    Desktop    sucht    und   schreibt   seine
+             Konfigurationsdatei nun  mit  Kleinbuchstaben,  d.h.  sie
+             wird  als  "pdesk.cfg"  gesucht.  Damit  sollte  der pure
+             Desktop    seine    Konfigurationsdatei    auch     unter
+             casesensitiven  Dateisystemen  (unter  MiNT  auf MinixFS)
+             finden.
+
+ 11.10.1998 Bibliothek ACS.LIB
+
+           ù Neue  String-Funktion  Ast_toupper  und  Ast_tolower  zur
+             Konversion von Strings implementiert.
+
+
+8.6  nderungen Version V2.3 auf V2.31
+======================================
+
+Hier sind  die  nderungen  und  Erweiterungen  von  V2.3 zur V2.31 in
+umgekehrter chronologischer Reihenfolge aufgelistet. Momentan sieht es
+noch  nach  recht  wenig  aus,  doch  mu  hier  auch  ein gutes Stck
+Einarbeitungszeit in die Sourcen von ACSpro einkalkuliert  werden.  Da
+der  Atari-Sektor  recht  klein geworden ist, mu ich anderweitig Geld
+verdienen, so da ACSpro - leider - nur mein Hobby ist.
+
+Hier sind  also  die  nderungen!  nderungen  an  den  C-Bibliotheken
+betreffen   stets   auch   die  Pascal-Bibliothek.  Von  Bugfixes  und
+Erweiterungen in  den  Bibliotheken  hat  stets  auch  der  GUI-Editor
+profitiert, da dieser ja mittels ACSpro entwickelt wurde.
+
+Stand der Liste ist der 30.09.1998.
+
+ 30.09.1998 Bibliothek ACS.LIB
+
+           ù Die  neue Funktion Awi_diaabort kann als Click-Routine in
+             einem der modalen Fensterdialogen eingesetzt werden.  Sie
+             setzt  das  Flag ACSblk->dia_abort auf TRUE und tut sonst
+             nichts weiter. Auch kurze Meldungen, die in einem Fenster
+             mit  einem  OK-Button  dargestellt  werden,  k”nnen diese
+             Routine einsetzen.
+
+             Sie wird beispielsweise in der Info-Box  eingesetzt,  die
+             jedes   mittels  ACSpro erstellte  Programm  defaultm„ig
+             anzeigt - sofern die in  ACSblk->ACSaboutme  eingetragene
+             Routine  nicht  berschrieben  wird.  Der hier verwendete
+             3D-Button im Hintergrund hat das Flag  TOUCHEXIT  gesetzt
+             und als Click-Routine Awi_diaabort eingetragen bekommen.
+
+ 31.08.1998 GUI-Editor
+
+           ù Die    Text-Eingabe   im   GUI-Editor zur   Eingabe   von
+             Texten/freien  Strings  nimmt  nun   auch   Sonderzeichen
+             (speziell  <32)  an.  Damit  sind  z.B. das Ordner-Symbol
+             sowie  die  Pfeil-Symbole  m”glich.  (fr  nderungen  an
+             Men-Eintr„gen sehr ntzlich ;-)
+
+ 28.08.1998 Bibliothek ACS.LIB
+
+           ù Die  Routine  Awi_topped  beachtet  fr  modale  Fenster-
+             Dialoge nun die Flags AB_CENTERDIALOG und AB_ACUSTIC.
+
+             Damit verhalten sich modale Fenster-Dialoge  (Awi_dialog)
+             so  wie  die  modalen Dialoge (A_dialog): Ein Klick neben
+             den Dialog  bringt  bei  gel”schtem  AB_CENTERDIALOG  den
+             Dialog    an    die    Mausposititon,    bei    gesetztem
+             AB_CENTERDIALOG wird ein "Pling" Bconin(2,7)  ausgegeben,
+             falls auch AB_ACUSTIC gesetzt ist,
+
+ 27.08.1998 Bibliothek ACS.LIB
+
+           ù Die  unsortierte,  lineare  und  doppelt verkettete Liste
+             ULinListe mit einigen netten Funktionen ist dazugekommen.
+             Das  Objekt hat keine visuelle Komponente (wozu auch) und
+             stellt die Funktionalit„t  einer  dynamischen,  linearen,
+             unsortierten  Liste  zur  Verfgung.  Die Liste verwaltet
+             Zeiger auf Daten (in Pure- C:  void  *,  in  Pure-Pascal:
+             Pointer).  Zus„tzlich  sind  einige  ntzliche Funktionen
+             enthalten, die man im Zusammenhang  mit  linearen  Listen
+             immer wieder einmal ben”tigt.
+
+ 21.08.1998 Bibliothek ACS.LIB
+
+           ù Die Funktion Awi_keys wurde in Awi_keysend umbenannt.
+
+           ù Es  gibt eine neue Routine Awi_keys, die den Rckgabewert
+             -2 nicht mehr liefert. Da intern  Awi_keysend  aufgerufen
+             wird,  stellt  Awi_keys  die  gewohnte Funktionalit„t zur
+             Verfgung. Allerdings werden Tastendrcke nicht  mehr  an
+             den  AV-Server weitergemeldet. Wer dies unbedingt m”chte,
+             sollte auf Awi_keysend zurckgreifen.
+
+           ù Awi_nokey liefert nun stets den  Rckgabewert  -1  (zuvor
+             war  es  -2) und leitet damit die Tastendrcke nicht mehr
+             an den AV-Server weiter.
+
+           ù Die  neue  Routine  Awi_sendkey  liefert  nun  stets  den
+             Rckgabewert  -2 und veranlat damit, da Tastendrcke an
+             den AV-Server weitergeleitet werden.
+
+             Es gibt damit vier Key-Routinen  fr  Fenster:  Awi_keys,
+             Awi_keysend, Awi_sendkey und Awi_nokey.
+
+             Kurz zur Namensgebung der vier Routinen:
+
+              Awi_keys     Key auswerten
+
+              Awi_keysend  Zuerst    Key    auswerten,    dann    ggf.
+                           weitersenden
+
+              Awi_sendkey  Sende den Key sofort weiter
+
+              Awi_nokey    Key "schlucken" und ignorieren
+
+           ù Redraw-Probleme in der Toolbar  beim  Smart-Redraw  unter
+             MagiC  auf  "drastische"  Weise behoben (ggf. Neuzeichnen
+             des Fensters). Zuvor blieben evtl. Streifen des  Toolbar-
+             Randes stehen.
+
+ 02.08.1998 Bibliothek ACS.LIB
+
+           ù Die  Funktion  Dxreaddir  aus ACS.LIB herausgenommen. Der
+             ACSpro-GUI-Editor verwendet    nun     die     Bibliothek
+             ACSTOS.LIB.  Dort  sind  alle  BIOS-,  XBIOS- und GEMDOS-
+             Aufrufe abgelegt, die ich im Profibuch und im  Compendium
+             gefunden  habe.  Die MagiC-spezifischen Funktionen fehlen
+             noch, werden aber noch nachgerstet!
+
+           ù Af_first und Af_next  sowie  Af_readdir  lieferten  etwas
+             drftige  Informationen  ber  die Dateien, es war gerade
+             einmal der Name. Da innerhalb dieser Funktionen die Daten
+             sowieso   zur   Verfgung   stehen,   werden   nun   alle
+             interessanten Daten  der  gefundenen  Dateien  geliefert.
+             Hierzu  wurde  die Struktur A_FileList um eine Komponente
+             vom Datentyp XATTR erweitert, in der die  Dateiattribute,
+             Gr”e,   etc.  zu  finden  sind.  Die  Werte  werden  per
+             Dxreaddir  bzw.  Dreaddir/Fxattr  bestimmt.  Falls  diese
+             Funktionen  nicht  zur Verfgung stehen (z.B. unter TOS),
+             werden  die  Daten  der  DTA  nach   den   Aufrufen   von
+             Fsfirst/Fsnext in diese Struktur kopiert.
+
+             Die XATTR-Struktur   wurde   zwar  hinten  an  A_FileList
+             angefgt, da jedoch Af_first und Af_next nun einen Zeiger
+             auf  eine A_FileList-Struktur oder NULL erwarten, um dort
+             diese Daten einzutragen, mten alte Module trotzdem  neu
+             compiliert werden, sorry!
+
+ 31.07.1998 Bibliothek ACS.LIB
+
+           ù Bug  behoben,  durch den ab ca. dem 100-ten Eintrag eines
+             Popups keine Subpopups mehr ge”ffnet wurden.
+
+           ù Fehlverhalten von Ame_strpopup korrigiert. Es wurde evtl.
+             ein falscher Teilstring geliefert. Beim Popup-String
+
+                  "Test 1|Test 2|Test"
+
+             wurde beim Klick auf "Test" der Teilstring
+
+                  "Test 1|Test 2|Test"
+
+             geliefert, also   die   erste  Fundstelle  des  gew„hlten
+             Teilstrings. Jetzt wird -  wie  es  sein  soll  -  "Test"
+             geliefert.
+
+
+8.7  nderungen bis zur Version V2.3
+====================================
+
+Dies sind  Korrekturen und Erweiterungen, die noch von Oliver Michalak
+gemacht wurden.
+
+Hier eine Auflistung der Korrekturen  innerhalb  diverser  Module  von
+ACSpro.  Das  Datum  der  nderung  und  das  betroffene  Modul werden
+aufgelistet. Korrekturen an ACS.LIB oder ACSPLUS.LIB  betreffen  immer
+auch die Pascal-Library.
+
+   ù 20.8.96
+
+      ACSPLUS.LIB: Der  EDITOR  verkraftet  nun  eine  andere Toolbar.
+          Auerdem kann sein Dateipfad per Nachricht ermittelt werden.
+          Die Cursorposition oder Blockausmae werden angezeigt.
+
+   ù 12.8.96
+
+      purer Desktop: Unter  SingleTOS  wird  nun  ein blau-gemusterter
+          Hintergrund angemeldet. Auerdem beendet  sich  der  Desktop
+          nur noch, wenn 'appexit' auf TRUE steht.
+
+   ù 6.8.96
+
+      ACS.LIB: Das  letzte nicht-3-dimensionale Objekt A_cycle enth„lt
+          nun Paramater, die eine 3D-Optik erm”glichen, dazu wurde ein
+          neuer  A_cycle-Editor  entworfen.  Dementsprechend  wird das
+          Popup wenn m”glich nun ebenfalls 3-dimensional  dargestellt.
+          Dies  hat  unmittelbare Auswirkungen auf Ame_strpopup dessen
+          sich die Click-Routine von Aus_cycle bedient. Weiterhin kann
+          das Cycle- Zeichen nun frei gew„hlt werden.
+
+      ACSPLUS.LIB: Es   wurde   die   neue  Fensterklasse  LIST-Window
+          implementiert.  Diese  verwaltet   dynamisch   viele,   frei
+          definierbare  Datentypen  einer festen Gr”e. šber Callback-
+          Routinen kann der  Erzeuger  die  einzelnen  Datenstrukturen
+          editieren,   einsortieren,  per  Drag&Drop  bedienen  lassen
+          u.v.a.m. - inklusive von Blockfunktionen. Unge”ffnet erlaubt
+          das Fenster ber einige Nachrichten, Elemente aus der intern
+          verwalteten   Liste   zu    extrahieren,    neue    Elemente
+          hinzuzufgen, etc.
+
+          Davon profitiert  zun„chst  der  EDITOR,  der nun eine freie
+          Funktionstastenbelegung anbietet. Auf  bis  zu  40  F-Tasten
+          kann  nun  ein  Text gelegt werden, der intuitiv per Listen-
+          Fenster zu verarbeiten ist. Hinzu kamen weitere Feinheiten:
+
+           Control-BS/-DEL              beachtet nun die Worttrenner
+
+           SHIFT-BS/-DEL                l”scht bis zum  Zeilenanfang/-
+                                        ende
+
+           freie Online-Hilfe
+
+           manuelle Optionen-Sicherung
+
+           Cursorpositionsanzeige
+
+          Gleichzeitig wurde  der  Fehler  eliminiert,  das  in  einem
+          einzeiligen Text per Aed_selall nichts selektiert wurde.
+
+          Aufgrund interner  Umstellungen  ist  auch   die   A_editor-
+          Nachricht  AUO_EDPUTINFO  weggefallen. Dafr kann der EDITOR
+          per AS_EDGETFNAME gefragt werden, wie der Dateiname fr  den
+          aktuellen Text lautet.
+
+   ù 29.7.96
+
+      ACS-Doku: Die  Dokumentation  wurde um die letzten Erweiterungen
+          erg„nzt -zus„tzlich sind nun die  Strukturen  der  ACS-PLUS-
+          Library dokumentiert.
+
+      ACS.LIB: Bei Popups konnte die Maus busy bleiben - dieser Fehler
+          ist behoben. Zus„tzlich gibt es nun  analog  zu  der  Popup-
+          Bedienung Nachrichten w„hrend der Menbedienung.
+
+   ù 22.7.96
+
+      ACS-Builder: Ganz  selten wurden Prototypen in der Referenzliste
+          angelegt, wo kein ersichtlicher  Bezug  zu  existierte  (vor
+          allem bei A_arrows).
+
+   ù 21.7.96
+
+      ACS-Builder: Tasten     lernen funktionierte    nicht    sauber.
+          Zus„tzlich konnte man  nicht  korrekt  Objekte  verschieben.
+          Schlielich    konnten    manche    den    Hinweistext    im
+          Informationsdialog der unregistrierten Version nicht lesen.
+
+      ACS.LIB: Fehlerhafte Auswertung der Indizees bei Sub-Popups  mit
+          Tastatursteuerung.
+
+   ù 17.7.96
+
+      ACS.LIB: In Awi_dialog wurde nach dem Setzen von dia_abort nicht
+          ein eventuell gedrckter Button-Index  zurckgegeben.  Zudem
+          wurde   ein  Edit-Feld-  Wechsel  per  Maus  nicht  von  der
+          Nachricht AS_FOCUSCHG begleitet.
+
+   ù 11.7.96
+
+      ACS-Builder: Es konnte kurzfristig  kein  Objekt  kopiert  (wohl
+          aber dupliziert) werden.
+
+          Im Icon-Editor hat der Farbpinsel bei mehr als 16 Farben die
+          aktuelle Farbe nicht dargestellt. OBJECTs  k”nnen  nun  auch
+          mit  allen  Komponenten  dupliziert werden, so da Teile des
+          OBJECTs nicht mehr referenziert werden.
+
+   ù 1.7.96
+
+      ACSpro hat einen neuen Status.
+
+   ù 30.6.96
+
+      ACS.LIB: Ein  Objektbaum  mit  defautable-Objekten,   der   kein
+          Default  enth„lt,  konnte  bei Control-Tab ACS zum abstrzen
+          bringen.
+
+   ù 21.6.96
+
+      ACS.LIB: In einigen (N)VDI-Versionen erscheint die Textselektion
+          im  A_boxed-  Objekt  zumindest  bei  der Verwendung von 256
+          Farben  als  schwarzes  Rechteck,  ohne  da  der   darunter
+          liegende   Text   invers  dargestellt  wird.  Trotz  einiger
+          Versuche, diesen Fehler zu umschiffen, habe ich ad hoc keine
+          L”sung gefunden.
+
+   ù 13.6.96
+
+      ACS.LIB: Es  konnte kurzfristig per MultiDateiAuswahl nicht mehr
+          als eine Datei eingelesen werden.
+
+          Ist AB_LAZYEVAL gesetzt, wird  in  Ash_prog nicht  mehr  der
+          Standardpfad selber gesetzt.
+
+          Auerdem konnte  es  in  Awi_alert vorkommen,  da  die Maus
+          dauerhaft als Biene angezeigt wurde.
+
+   ù 3.6.96
+
+      ACS-Builder: Die Minimal- und  Maximalrechtecke  beim  Ver„ndern
+          der  Objektgr”e  konnten insbesondere beim Popup-Editor mit
+          Sub-Popups merkwrdige Ausmae annehmen. šbrigens:  Mit  der
+          rechten Maustaste kann man das "Aufziehen" abbrechen.
+
+      purer Desktop: Wenn  sich  die  Anordnung  der  Fenstericons  im
+          Module-Fenster „nderte, wurden die  Stati  der  Icons  nicht
+          mitverschoben,  woduch  pl”tzlich Icons nicht mehr als Ghost
+          erschienen oder umgekehrt.
+
+   ù 30.5.96
+
+      ACS-Builder: Fr  Pascal  wurde  eine   fehlerhafte   Oberfl„che
+          exportiert (kein ob_len).
+
+   ù 28.5.96
+
+      ACS-Builder: Eine Tastendruck im Icon-Editor fhrte zum Absturz.
+
+   ù 26.5.96
+
+      ACS-Builder: Einstellungen um Schlsselregistrierung erweitert.
+
+   ù 22.5.96
+
+      purer Desktop: Ein   Icon-Fenster  konnte  nicht  per  Menpunkt
+          "™ffnen" ge”ffnet werden.
+
+   ù 16.5.96
+
+      ACS.LIB: Ein Fehler im MagiCMac-OS lief darauf hinaus,  da  ein
+          ikonifiziertes   Fenster   ohne   Anmeldung   wieder  normal
+          dargestellt wurde. ACS versucht dies nun abzufangen.
+
+          Bei A_boxed wurde der Cursor nicht immer in  den  sichtbaren
+          Bereich verschoben.
+
+   ù 13.5.96
+
+      ACS.LIB: A_boxed-Click-Routine    fr    Fenster   mit   Slidern
+          korrigiert.
+
+          Es versteht nun diverse Datum- und Zeitformate.
+
+          Peinliche Debug-Printf-Ausgaben unterbunden.
+
+   ù 9.5.96
+
+      ACS.PAS: Korrekturen in einigen Definitionen.
+
+   ù 8.5.96
+
+      ACS.LIB: Farbicons wurden unter MagiC nicht  automatisch  farbig
+          dargestellt,  entweder man setzt AB_NOTRANSICON manuell oder
+          nimmt die neue Library.
+

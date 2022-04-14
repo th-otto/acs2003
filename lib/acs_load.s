@@ -1,0 +1,3885 @@
+* Object File "acs_load.o"
+
+
+
+          .TEXT   
+
+          .MODULE LOCAL
+
+compiler:
+T000000:   CLR.W     -(A7)
+T000002:   TRAP      #1
+T000004:   Illegal
+T000006:   SUBQ.B    #1,$00000000
+ACSblk:
+T00000c:   ORI.B     #$00,D0
+T000010:   ORI.B     #$19,D0
+funcAbp:
+T000014:   ORI.B     #$00,D0
+T000018:   ORI.B     #$00,D0
+T00001c:   ORI.B     #$00,D0
+funcAch:
+T000020:   ORI.B     #$00,D0
+T000024:   ORI.B     #$00,D0
+T000028:   ORI.B     #$00,D0
+funcAev:
+T00002c:   ORI.B     #$00,D0
+T000030:   ORI.B     #$00,D0
+T000034:   ORI.B     #$00,D0
+funcAic:
+T000038:   ORI.B     #$00,D0
+T00003c:   ORI.B     #$00,D0
+T000040:   ORI.B     #$00,D0
+funcAlu:
+T000044:   ORI.B     #$00,D0
+T000048:   ORI.B     #$00,D0
+T00004c:   ORI.B     #$00,D0
+funcAmo:
+T000050:   ORI.B     #$00,D0
+T000054:   ORI.B     #$00,D0
+T000058:   ORI.B     #$00,D0
+funcAscrp:
+T00005c:   ORI.B     #$00,D0
+T000060:   ORI.B     #$00,D0
+T000064:   ORI.B     #$00,D0
+funcAst:
+T000068:   ORI.B     #$00,D0
+T00006c:   ORI.B     #$00,D0
+T000070:   ORI.B     #$00,D0
+funcAuo:
+T000074:   ORI.B     #$00,D0
+T000078:   ORI.B     #$00,D0
+T00007c:   ORI.B     #$00,D0
+funcAwi:
+T000080:   ORI.B     #$00,D0
+T000084:   ORI.B     #$00,D0
+T000088:   ORI.B     #$00,D0
+funcSonst:
+T00008c:   ORI.B     #$00,D0
+T000090:   ORI.B     #$00,D0
+T000094:   ORI.B     #$00,D0
+funcAes:
+T000098:   ORI.B     #$00,D0
+T00009c:   ORI.B     #$00,D0
+T0000a0:   ORI.B     #$00,D0
+funcMtAes:
+T0000a4:   ORI.B     #$00,D0
+T0000a8:   ORI.B     #$00,D0
+T0000ac:   ORI.B     #$00,D0
+T0000b0:   ORI.B     #$08,D0
+T0000b4:   MOVEA.L   $0004(A7),A0
+T0000b8:   ADDA.L    $0008(A7),A0
+T0000bc:   MOVE.L    (A0),$0008(A7)
+T0000c0:   MOVEA.L   (A7)+,A0
+T0000c2:   ADDQ.L    #4,A7
+T0000c4:   RTS
+Abp_create:
+T0000c6:   MOVE.L    #$00000000,-(A7)
+T0000cc:   MOVE.L    T010014(PC),-(A7)
+T0000d0:   BRA.B     T0000B2
+Abp_delete:
+T0000d2:   MOVE.L    #$00000004,-(A7)
+T0000d8:   MOVE.L    T010014(PC),-(A7)
+T0000dc:   BRA.B     T0000B2
+Abp_start:
+T0000de:   MOVE.L    #$00000008,-(A7)
+T0000e4:   MOVE.L    T010014(PC),-(A7)
+T0000e8:   BRA.B     T0000B2
+Abp_end:
+T0000ea:   MOVE.L    #$0000000C,-(A7)
+T0000f0:   MOVE.L    T010014(PC),-(A7)
+T0000f4:   BRA.B     T0000B2
+Abp_mfdb2img:
+T0000f6:   MOVE.L    #$00000010,-(A7)
+T0000fc:   MOVE.L    T010014(PC),-(A7)
+T000100:   BRA.B     T0000B2
+Abp_img2mfdb:
+T000102:   MOVE.L    #$00000014,-(A7)
+T000108:   MOVE.L    T010014(PC),-(A7)
+T00010c:   BRA.B     T0000B2
+Acfg_create:
+T00010e:   MOVE.L    #$00000000,-(A7)
+T000114:   MOVE.L    T01001A(PC),-(A7)
+T000118:   BRA.B     T0000B2
+Acfg_delete:
+T00011a:   MOVE.L    #$00000004,-(A7)
+T000120:   MOVE.L    T01001A(PC),-(A7)
+T000124:   BRA.B     T0000B2
+Acfg_clear:
+T000126:   MOVE.L    #$00000008,-(A7)
+T00012c:   MOVE.L    T01001A(PC),-(A7)
+T000130:   BRA.B     T0000B2
+Acfg_clearAllGroups:
+T000132:   MOVE.L    #$0000000C,-(A7)
+T000138:   MOVE.L    T01001A(PC),-(A7)
+T00013c:   BRA       T0100B2
+Acfg_clearGroup:
+T000140:   MOVE.L    #$00000010,-(A7)
+T000146:   MOVE.L    T01001A(PC),-(A7)
+T00014a:   BRA       T0100B2
+Acfg_load:
+T00014e:   MOVE.L    #$00000014,-(A7)
+T000154:   MOVE.L    T01001A(PC),-(A7)
+T000158:   BRA       T0100B2
+Acfg_save:
+T00015c:   MOVE.L    #$00000018,-(A7)
+T000162:   MOVE.L    T01001A(PC),-(A7)
+T000166:   BRA       T0100B2
+Acfg_isChanged:
+T00016a:   MOVE.L    #$0000001C,-(A7)
+T000170:   MOVE.L    T01001A(PC),-(A7)
+T000174:   BRA       T0100B2
+Acfg_getValue:
+T000178:   MOVE.L    #$00000020,-(A7)
+T00017e:   MOVE.L    T01001A(PC),-(A7)
+T000182:   BRA       T0100B2
+Acfg_setValue:
+T000186:   MOVE.L    #$00000024,-(A7)
+T00018c:   MOVE.L    T01001A(PC),-(A7)
+T000190:   BRA       T0100B2
+Acfg_clearValue:
+T000194:   MOVE.L    #$00000028,-(A7)
+T00019a:   MOVE.L    T01001A(PC),-(A7)
+T00019e:   BRA       T0100B2
+Acfg_getChar:
+T0001a2:   MOVE.L    #$0000002C,-(A7)
+T0001a8:   MOVE.L    T01001A(PC),-(A7)
+T0001ac:   BRA       T0100B2
+Acfg_setChar:
+T0001b0:   MOVE.L    #$00000030,-(A7)
+T0001b6:   MOVE.L    T01001A(PC),-(A7)
+T0001ba:   BRA       T0100B2
+Acfg_getLong:
+T0001be:   MOVE.L    #$00000034,-(A7)
+T0001c4:   MOVE.L    T01001A(PC),-(A7)
+T0001c8:   BRA       T0100B2
+Acfg_setLong:
+T0001cc:   MOVE.L    #$00000038,-(A7)
+T0001d2:   MOVE.L    T01001A(PC),-(A7)
+T0001d6:   BRA       T0100B2
+Acfg_getString:
+T0001da:   MOVE.L    #$0000003C,-(A7)
+T0001e0:   MOVE.L    T01001A(PC),-(A7)
+T0001e4:   BRA       T0100B2
+Acfg_getBool:
+T0001e8:   MOVE.L    #$00000040,-(A7)
+T0001ee:   MOVE.L    T01001A(PC),-(A7)
+T0001f2:   BRA       T0100B2
+Acfg_setBool:
+T0001f6:   MOVE.L    #$00000044,-(A7)
+T0001fc:   MOVE.L    T01001A(PC),-(A7)
+T000200:   BRA       T0100B2
+Acfg_clearHeader:
+T000204:   MOVE.L    #$00000048,-(A7)
+T00020a:   MOVE.L    T01001A(PC),-(A7)
+T00020e:   BRA       T0100B2
+Acfg_headAnzahl:
+T000212:   MOVE.L    #$0000004C,-(A7)
+T000218:   MOVE.L    T01001A(PC),-(A7)
+T00021c:   BRA       T0100B2
+Acfg_setHeader:
+T000220:   MOVE.L    #$00000050,-(A7)
+T000226:   MOVE.L    T01001A(PC),-(A7)
+T00022a:   BRA       T0100B2
+Acfg_getHeader:
+T00022e:   MOVE.L    #$00000054,-(A7)
+T000234:   MOVE.L    T01001A(PC),-(A7)
+T000238:   BRA       T0100B2
+Acfg_grpAnzahl:
+T00023c:   MOVE.L    #$00000058,-(A7)
+T000242:   MOVE.L    T01001A(PC),-(A7)
+T000246:   BRA       T0100B2
+Acfg_grpName:
+T00024a:   MOVE.L    #$0000005C,-(A7)
+T000250:   MOVE.L    T01001A(PC),-(A7)
+T000254:   BRA       T0100B2
+Acfg_strAnzahl:
+T000258:   MOVE.L    #$00000060,-(A7)
+T00025e:   MOVE.L    T01001A(PC),-(A7)
+T000262:   BRA       T0100B2
+Acfg_strName:
+T000266:   MOVE.L    #$00000064,-(A7)
+T00026c:   MOVE.L    T01001A(PC),-(A7)
+T000270:   BRA       T0100B2
+Acfg_strValue:
+T000274:   MOVE.L    #$00000068,-(A7)
+T00027a:   MOVE.L    T01001A(PC),-(A7)
+T00027e:   BRA       T0100B2
+Acfg_strIsComment:
+T000282:   MOVE.L    #$0000006C,-(A7)
+T000288:   MOVE.L    T01001A(PC),-(A7)
+T00028c:   BRA       T0100B2
+Acfg_isCfgfile:
+T000290:   MOVE.L    #$00000070,-(A7)
+T000296:   MOVE.L    T01001A(PC),-(A7)
+T00029a:   BRA       T0100B2
+Acfg_createInfo:
+T00029e:   MOVE.L    #$00000074,-(A7)
+T0002a4:   MOVE.L    T01001A(PC),-(A7)
+T0002a8:   BRA       T0100B2
+Acfg_deleteInfo:
+T0002ac:   MOVE.L    #$00000078,-(A7)
+T0002b2:   MOVE.L    T01001A(PC),-(A7)
+T0002b6:   BRA       T0100B2
+Acfg_setInfo:
+T0002ba:   MOVE.L    #$0000007C,-(A7)
+T0002c0:   MOVE.L    T01001A(PC),-(A7)
+T0002c4:   BRA       T0100B2
+Acfg_getInfo:
+T0002c8:   MOVE.L    #$00000080,-(A7)
+T0002ce:   MOVE.L    T01001A(PC),-(A7)
+T0002d2:   BRA       T0100B2
+Acfg_copyInfo:
+T0002d6:   MOVE.L    #$00000084,-(A7)
+T0002dc:   MOVE.L    T01001A(PC),-(A7)
+T0002e0:   BRA       T0100B2
+Acfg_flags:
+T0002e4:   MOVE.L    #$00000088,-(A7)
+T0002ea:   MOVE.L    T01001A(PC),-(A7)
+T0002ee:   BRA       T0100B2
+Acfg_isGroupPresent:
+T0002f2:   MOVE.L    #$0000008C,-(A7)
+T0002f8:   MOVE.L    T01001A(PC),-(A7)
+T0002fc:   BRA       T0100B2
+Acfg_isStringPresent:
+T000300:   MOVE.L    #$00000090,-(A7)
+T000306:   MOVE.L    T01001A(PC),-(A7)
+T00030a:   BRA       T0100B2
+Ach_tolower:
+T00030e:   MOVE.L    #$00000000,-(A7)
+T000314:   MOVE.L    T010020(PC),-(A7)
+T000318:   BRA       T0100B2
+Ach_toupper:
+T00031c:   MOVE.L    #$00000004,-(A7)
+T000322:   MOVE.L    T010020(PC),-(A7)
+T000326:   BRA       T0100B2
+Ach_isWhite:
+T00032a:   MOVE.L    #$00000008,-(A7)
+T000330:   MOVE.L    T010020(PC),-(A7)
+T000334:   BRA       T0100B2
+Adr_box:
+T000338:   MOVE.L    #$00000000,-(A7)
+T00033e:   MOVE.L    T010026(PC),-(A7)
+T000342:   BRA       T0100B2
+Adr_drag:
+T000346:   MOVE.L    #$00000004,-(A7)
+T00034c:   MOVE.L    T010026(PC),-(A7)
+T000350:   BRA       T0100B2
+Adr_next:
+T000354:   MOVE.L    #$00000008,-(A7)
+T00035a:   MOVE.L    T010026(PC),-(A7)
+T00035e:   BRA       T0100B2
+Adr_add:
+T000362:   MOVE.L    #$0000000C,-(A7)
+T000368:   MOVE.L    T010026(PC),-(A7)
+T00036c:   BRA       T0100B2
+Adr_del:
+T000370:   MOVE.L    #$00000010,-(A7)
+T000376:   MOVE.L    T010026(PC),-(A7)
+T00037a:   BRA       T0100B2
+Adr_unselect:
+T00037e:   MOVE.L    #$00000014,-(A7)
+T000384:   MOVE.L    T010026(PC),-(A7)
+T000388:   BRA       T0100B2
+Adr_start:
+T00038c:   MOVE.L    #$00000018,-(A7)
+T000392:   MOVE.L    T010026(PC),-(A7)
+T000396:   BRA       T0100B2
+Aev_quit:
+T00039a:   MOVE.L    #$00000000,-(A7)
+T0003a0:   MOVE.L    T01002C(PC),-(A7)
+T0003a4:   BRA       T0100B2
+Aev_release:
+T0003a8:   MOVE.L    #$00000004,-(A7)
+T0003ae:   MOVE.L    T01002C(PC),-(A7)
+T0003b2:   BRA       T0100B2
+Aev_mess:
+T0003b6:   MOVE.L    #$00000008,-(A7)
+T0003bc:   MOVE.L    T01002C(PC),-(A7)
+T0003c0:   BRA       T0100B2
+Aev_unhidepointer:
+T0003c4:   MOVE.L    #$0000000C,-(A7)
+T0003ca:   MOVE.L    T01002C(PC),-(A7)
+T0003ce:   BRA       T0100B2
+Aev_DhstAdd:
+T0003d2:   MOVE.L    #$00000010,-(A7)
+T0003d8:   MOVE.L    T01002C(PC),-(A7)
+T0003dc:   BRA       T0100B2
+Aev_DhstSaved:
+T0003e0:   MOVE.L    #$00000014,-(A7)
+T0003e6:   MOVE.L    T01002C(PC),-(A7)
+T0003ea:   BRA       T0100B2
+Aev_WmRedraw:
+T0003ee:   MOVE.L    #$00000018,-(A7)
+T0003f4:   MOVE.L    T01002C(PC),-(A7)
+T0003f8:   BRA       T0100B2
+Af_cfgfile:
+T0003fc:   MOVE.L    #$00000000,-(A7)
+T000402:   MOVE.L    T010032(PC),-(A7)
+T000406:   BRA       T0100B2
+Af_select:
+T00040a:   MOVE.L    #$00000004,-(A7)
+T000410:   MOVE.L    T010032(PC),-(A7)
+T000414:   BRA       T0100B2
+Af_2drv:
+T000418:   MOVE.L    #$00000008,-(A7)
+T00041e:   MOVE.L    T010032(PC),-(A7)
+T000422:   BRA       T0100B2
+Af_2path:
+T000426:   MOVE.L    #$0000000C,-(A7)
+T00042c:   MOVE.L    T010032(PC),-(A7)
+T000430:   BRA       T0100B2
+Af_2name:
+T000434:   MOVE.L    #$00000010,-(A7)
+T00043a:   MOVE.L    T010032(PC),-(A7)
+T00043e:   BRA       T0100B2
+Af_2fullname:
+T000442:   MOVE.L    #$00000014,-(A7)
+T000448:   MOVE.L    T010032(PC),-(A7)
+T00044c:   BRA       T0100B2
+Af_2ext:
+T000450:   MOVE.L    #$00000018,-(A7)
+T000456:   MOVE.L    T010032(PC),-(A7)
+T00045a:   BRA       T0100B2
+Af_buildname:
+T00045e:   MOVE.L    #$0000001C,-(A7)
+T000464:   MOVE.L    T010032(PC),-(A7)
+T000468:   BRA       T0100B2
+Af_length:
+T00046c:   MOVE.L    #$00000020,-(A7)
+T000472:   MOVE.L    T010032(PC),-(A7)
+T000476:   BRA       T0100B2
+Af_first_fsel:
+T00047a:   MOVE.L    #$00000024,-(A7)
+T000480:   MOVE.L    T010032(PC),-(A7)
+T000484:   BRA       T0100B2
+Af_next_fsel:
+T000488:   MOVE.L    #$00000028,-(A7)
+T00048e:   MOVE.L    T010032(PC),-(A7)
+T000492:   BRA       T0100B2
+Af_first:
+T000496:   MOVE.L    #$0000002C,-(A7)
+T00049c:   MOVE.L    T010032(PC),-(A7)
+T0004a0:   BRA       T0100B2
+Af_next:
+T0004a4:   MOVE.L    #$00000030,-(A7)
+T0004aa:   MOVE.L    T010032(PC),-(A7)
+T0004ae:   BRA       T0100B2
+Af_readdir:
+T0004b2:   MOVE.L    #$00000034,-(A7)
+T0004b8:   MOVE.L    T010032(PC),-(A7)
+T0004bc:   BRA       T0100B2
+Af_freedir:
+T0004c0:   MOVE.L    #$00000038,-(A7)
+T0004c6:   MOVE.L    T010032(PC),-(A7)
+T0004ca:   BRA       T0100B2
+Af_fileselect:
+T0004ce:   MOVE.L    #$0000003C,-(A7)
+T0004d4:   MOVE.L    T010032(PC),-(A7)
+T0004d8:   BRA       T0100B2
+Af_quote:
+T0004dc:   MOVE.L    #$00000040,-(A7)
+T0004e2:   MOVE.L    T010032(PC),-(A7)
+T0004e6:   BRA       T0100B2
+Af_unquote:
+T0004ea:   MOVE.L    #$00000044,-(A7)
+T0004f0:   MOVE.L    T010032(PC),-(A7)
+T0004f4:   BRA       T0100B2
+Aic_create:
+T0004f8:   MOVE.L    #$00000000,-(A7)
+T0004fe:   MOVE.L    T010038(PC),-(A7)
+T000502:   BRA       T0100B2
+Aic_delete:
+T000506:   MOVE.L    #$00000004,-(A7)
+T00050c:   MOVE.L    T010038(PC),-(A7)
+T000510:   BRA       T0100B2
+Aim_create:
+T000514:   MOVE.L    #$00000000,-(A7)
+T00051a:   MOVE.L    T01003E(PC),-(A7)
+T00051e:   BRA       T0100B2
+Aim_delete:
+T000522:   MOVE.L    #$00000004,-(A7)
+T000528:   MOVE.L    T01003E(PC),-(A7)
+T00052c:   BRA       T0100B2
+Alu_create:
+T000530:   MOVE.L    #$00000000,-(A7)
+T000536:   MOVE.L    T010044(PC),-(A7)
+T00053a:   BRA       T0100B2
+Alu_delete:
+T00053e:   MOVE.L    #$00000004,-(A7)
+T000544:   MOVE.L    T010044(PC),-(A7)
+T000548:   BRA       T0100B2
+Ame_namefix:
+T00054c:   MOVE.L    #$00000000,-(A7)
+T000552:   MOVE.L    T01004A(PC),-(A7)
+T000556:   BRA       T0100B2
+Ame_popup:
+T00055a:   MOVE.L    #$00000004,-(A7)
+T000560:   MOVE.L    T01004A(PC),-(A7)
+T000564:   BRA       T0100B2
+Amo_new:
+T000568:   MOVE.L    #$00000000,-(A7)
+T00056e:   MOVE.L    T010050(PC),-(A7)
+T000572:   BRA       T0100B2
+Amo_busy:
+T000576:   MOVE.L    #$00000004,-(A7)
+T00057c:   MOVE.L    T010050(PC),-(A7)
+T000580:   BRA       T0100B2
+Amo_unbusy:
+T000584:   MOVE.L    #$00000008,-(A7)
+T00058a:   MOVE.L    T010050(PC),-(A7)
+T00058e:   BRA       T0100B2
+Amo_hide:
+T000592:   MOVE.L    #$0000000C,-(A7)
+T000598:   MOVE.L    T010050(PC),-(A7)
+T00059c:   BRA       T0100B2
+Amo_show:
+T0005a0:   MOVE.L    #$00000010,-(A7)
+T0005a6:   MOVE.L    T010050(PC),-(A7)
+T0005aa:   BRA       T0100B2
+Aob_create:
+T0005ae:   MOVE.L    #$00000000,-(A7)
+T0005b4:   MOVE.L    T010056(PC),-(A7)
+T0005b8:   BRA       T0100B2
+Aob_delete:
+T0005bc:   MOVE.L    #$00000004,-(A7)
+T0005c2:   MOVE.L    T010056(PC),-(A7)
+T0005c6:   BRA       T0100B2
+Aob_fix:
+T0005ca:   MOVE.L    #$00000008,-(A7)
+T0005d0:   MOVE.L    T010056(PC),-(A7)
+T0005d4:   BRA       T0100B2
+Aob_offset:
+T0005d8:   MOVE.L    #$0000000C,-(A7)
+T0005de:   MOVE.L    T010056(PC),-(A7)
+T0005e2:   BRA       T0100B2
+Aob_save:
+T0005e6:   MOVE.L    #$00000010,-(A7)
+T0005ec:   MOVE.L    T010056(PC),-(A7)
+T0005f0:   BRA       T0100B2
+Aob_restore:
+T0005f4:   MOVE.L    #$00000014,-(A7)
+T0005fa:   MOVE.L    T010056(PC),-(A7)
+T0005fe:   BRA       T0100B2
+Aob_watch:
+T000602:   MOVE.L    #$00000018,-(A7)
+T000608:   MOVE.L    T010056(PC),-(A7)
+T00060c:   BRA       T0100B2
+Aob_findflag:
+T000610:   MOVE.L    #$0000001C,-(A7)
+T000616:   MOVE.L    T010056(PC),-(A7)
+T00061a:   BRA       T0100B2
+Aob_alias:
+T00061e:   MOVE.L    #$00000020,-(A7)
+T000624:   MOVE.L    T010056(PC),-(A7)
+T000628:   BRA       T0100B2
+Aob_up:
+T00062c:   MOVE.L    #$00000024,-(A7)
+T000632:   MOVE.L    T010056(PC),-(A7)
+T000636:   BRA       T0100B2
+Aob_icon:
+T00063a:   MOVE.L    #$00000028,-(A7)
+T000640:   MOVE.L    T010056(PC),-(A7)
+T000644:   BRA       T0100B2
+Aob_puttext:
+T000648:   MOVE.L    #$0000002C,-(A7)
+T00064e:   MOVE.L    T010056(PC),-(A7)
+T000652:   BRA       T0100B2
+Aob_gettext:
+T000656:   MOVE.L    #$00000030,-(A7)
+T00065c:   MOVE.L    T010056(PC),-(A7)
+T000660:   BRA       T0100B2
+Aob_within:
+T000664:   MOVE.L    #$00000034,-(A7)
+T00066a:   MOVE.L    T010056(PC),-(A7)
+T00066e:   BRA       T0100B2
+Aob_printf:
+T000672:   MOVE.L    #$00000038,-(A7)
+T000678:   MOVE.L    T010056(PC),-(A7)
+T00067c:   BRA       T0100B2
+Aob_scanf:
+T000680:   MOVE.L    #$0000003C,-(A7)
+T000686:   MOVE.L    T010056(PC),-(A7)
+T00068a:   BRA       T0100B2
+Aob_flags:
+T00068e:   MOVE.L    #$00000040,-(A7)
+T000694:   MOVE.L    T010056(PC),-(A7)
+T000698:   BRA       T0100B2
+Aob_state:
+T00069c:   MOVE.L    #$00000044,-(A7)
+T0006a2:   MOVE.L    T010056(PC),-(A7)
+T0006a6:   BRA       T0100B2
+Aob_service:
+T0006aa:   MOVE.L    #$00000048,-(A7)
+T0006b0:   MOVE.L    T010056(PC),-(A7)
+T0006b4:   BRA       T0100B2
+Aob_visible:
+T0006b8:   MOVE.L    #$0000004C,-(A7)
+T0006be:   MOVE.L    T010056(PC),-(A7)
+T0006c2:   BRA       T0100B2
+Aob_count:
+T0006c6:   MOVE.L    #$00000050,-(A7)
+T0006cc:   MOVE.L    T010056(PC),-(A7)
+T0006d0:   BRA       T0100B2
+Ascrp_clear:
+T0006d4:   MOVE.L    #$00000000,-(A7)
+T0006da:   MOVE.L    T01005C(PC),-(A7)
+T0006de:   BRA       T0100B2
+Ascrp_get:
+T0006e2:   MOVE.L    #$00000004,-(A7)
+T0006e8:   MOVE.L    T01005C(PC),-(A7)
+T0006ec:   BRA       T0100B2
+Ascrp_put:
+T0006f0:   MOVE.L    #$00000008,-(A7)
+T0006f6:   MOVE.L    T01005C(PC),-(A7)
+T0006fa:   BRA       T0100B2
+Ash_prog:
+T0006fe:   MOVE.L    #$00000000,-(A7)
+T000704:   MOVE.L    T010062(PC),-(A7)
+T000708:   BRA       T0100B2
+Ash_error:
+T00070c:   MOVE.L    #$00000004,-(A7)
+T000712:   MOVE.L    T010062(PC),-(A7)
+T000716:   BRA       T0100B2
+Ash_getcookie:
+T00071a:   MOVE.L    #$00000008,-(A7)
+T000720:   MOVE.L    T010062(PC),-(A7)
+T000724:   BRA       T0100B2
+Ash_getenv:
+T000728:   MOVE.L    #$0000000C,-(A7)
+T00072e:   MOVE.L    T010062(PC),-(A7)
+T000732:   BRA       T0100B2
+Ash_nextdd:
+T000736:   MOVE.L    #$00000010,-(A7)
+T00073c:   MOVE.L    T010062(PC),-(A7)
+T000740:   BRA       T0100B2
+Ash_sendall:
+T000744:   MOVE.L    #$00000014,-(A7)
+T00074a:   MOVE.L    T010062(PC),-(A7)
+T00074e:   BRA       T0100B2
+Ash_CallEdDI:
+T000752:   MOVE.L    #$00000018,-(A7)
+T000758:   MOVE.L    T010062(PC),-(A7)
+T00075c:   BRA       T0100B2
+Ash_NVDICookie:
+T000760:   MOVE.L    #$0000001C,-(A7)
+T000766:   MOVE.L    T010062(PC),-(A7)
+T00076a:   BRA       T0100B2
+Ash_NVDIVersion:
+T00076e:   MOVE.L    #$00000020,-(A7)
+T000774:   MOVE.L    T010062(PC),-(A7)
+T000778:   BRA       T0100B2
+Ash_NVDIDatum:
+T00077c:   MOVE.L    #$00000024,-(A7)
+T000782:   MOVE.L    T010062(PC),-(A7)
+T000786:   BRA       T0100B2
+Ash_thermometer:
+T00078a:   MOVE.L    #$00000028,-(A7)
+T000790:   MOVE.L    T010062(PC),-(A7)
+T000794:   BRA       T0100B2
+Ash_fileselect:
+T000798:   MOVE.L    #$0000002C,-(A7)
+T00079e:   MOVE.L    T010062(PC),-(A7)
+T0007a2:   BRA       T0100B2
+Ash_font:
+T0007a6:   MOVE.L    #$00000030,-(A7)
+T0007ac:   MOVE.L    T010062(PC),-(A7)
+T0007b0:   BRA       T0100B2
+Ash_print:
+T0007b4:   MOVE.L    #$00000034,-(A7)
+T0007ba:   MOVE.L    T010062(PC),-(A7)
+T0007be:   BRA       T0100B2
+Ash_gettimer:
+T0007c2:   MOVE.L    #$00000038,-(A7)
+T0007c8:   MOVE.L    T010062(PC),-(A7)
+T0007cc:   BRA       T0100B2
+Ash_printSetIcon:
+T0007d0:   MOVE.L    #$0000003C,-(A7)
+T0007d6:   MOVE.L    T010062(PC),-(A7)
+T0007da:   BRA       T0100B2
+Ash_fontSetIcon:
+T0007de:   MOVE.L    #$00000040,-(A7)
+T0007e4:   MOVE.L    T010062(PC),-(A7)
+T0007e8:   BRA       T0100B2
+Ash_fileSetIcon:
+T0007ec:   MOVE.L    #$00000044,-(A7)
+T0007f2:   MOVE.L    T010062(PC),-(A7)
+T0007f6:   BRA       T0100B2
+Ash_getOSHeader:
+T0007fa:   MOVE.L    #$00000048,-(A7)
+T000800:   MOVE.L    T010062(PC),-(A7)
+T000804:   BRA       T0100B2
+Ash_getMagiC:
+T000808:   MOVE.L    #$0000004C,-(A7)
+T00080e:   MOVE.L    T010062(PC),-(A7)
+T000812:   BRA       T0100B2
+Ash_getNAES:
+T000816:   MOVE.L    #$00000050,-(A7)
+T00081c:   MOVE.L    T010062(PC),-(A7)
+T000820:   BRA       T0100B2
+Ash_getMagiCVersion:
+T000824:   MOVE.L    #$00000054,-(A7)
+T00082a:   MOVE.L    T010062(PC),-(A7)
+T00082e:   BRA       T0100B2
+Ash_getMagiCAESVars:
+T000832:   MOVE.L    #$00000058,-(A7)
+T000838:   MOVE.L    T010062(PC),-(A7)
+T00083c:   BRA       T0100B2
+Ast_create:
+T000840:   MOVE.L    #$00000000,-(A7)
+T000846:   MOVE.L    T010068(PC),-(A7)
+T00084a:   BRA       T0100B2
+Ast_delete:
+T00084e:   MOVE.L    #$00000004,-(A7)
+T000854:   MOVE.L    T010068(PC),-(A7)
+T000858:   BRA       T0100B2
+Ast_tolower:
+T00085c:   MOVE.L    #$00000008,-(A7)
+T000862:   MOVE.L    T010068(PC),-(A7)
+T000866:   BRA       T0100B2
+Ast_toupper:
+T00086a:   MOVE.L    #$0000000C,-(A7)
+T000870:   MOVE.L    T010068(PC),-(A7)
+T000874:   BRA       T0100B2
+Ast_ltrim:
+T000878:   MOVE.L    #$00000010,-(A7)
+T00087e:   MOVE.L    T010068(PC),-(A7)
+T000882:   BRA       T0100B2
+Ast_rtrim:
+T000886:   MOVE.L    #$00000014,-(A7)
+T00088c:   MOVE.L    T010068(PC),-(A7)
+T000890:   BRA       T0100B2
+Ast_alltrim:
+T000894:   MOVE.L    #$00000018,-(A7)
+T00089a:   MOVE.L    T010068(PC),-(A7)
+T00089e:   BRA       T0100B2
+Ast_cmp:
+T0008a2:   MOVE.L    #$0000001C,-(A7)
+T0008a8:   MOVE.L    T010068(PC),-(A7)
+T0008ac:   BRA       T0100B2
+Ast_icmp:
+T0008b0:   MOVE.L    #$00000020,-(A7)
+T0008b6:   MOVE.L    T010068(PC),-(A7)
+T0008ba:   BRA       T0100B2
+Ast_isEmpty:
+T0008be:   MOVE.L    #$00000024,-(A7)
+T0008c4:   MOVE.L    T010068(PC),-(A7)
+T0008c8:   BRA       T0100B2
+Ast_add:
+T0008cc:   MOVE.L    #$00000028,-(A7)
+T0008d2:   MOVE.L    T010068(PC),-(A7)
+T0008d6:   BRA       T0100B2
+Ast_adl:
+T0008da:   MOVE.L    #$0000002C,-(A7)
+T0008e0:   MOVE.L    T010068(PC),-(A7)
+T0008e4:   BRA       T0100B2
+Ast_adr:
+T0008e8:   MOVE.L    #$00000030,-(A7)
+T0008ee:   MOVE.L    T010068(PC),-(A7)
+T0008f2:   BRA       T0100B2
+Ast_adc:
+T0008f6:   MOVE.L    #$00000034,-(A7)
+T0008fc:   MOVE.L    T010068(PC),-(A7)
+T000900:   BRA       T0100B2
+Ast_filter:
+T000904:   MOVE.L    #$00000038,-(A7)
+T00090a:   MOVE.L    T010068(PC),-(A7)
+T00090e:   BRA       T0100B2
+Ast_count:
+T000912:   MOVE.L    #$0000003C,-(A7)
+T000918:   MOVE.L    T010068(PC),-(A7)
+T00091c:   BRA       T0100B2
+Ast_fcmp:
+T000920:   MOVE.L    #$00000040,-(A7)
+T000926:   MOVE.L    T010068(PC),-(A7)
+T00092a:   BRA       T0100B2
+Ast_ncmp:
+T00092e:   MOVE.L    #$00000044,-(A7)
+T000934:   MOVE.L    T010068(PC),-(A7)
+T000938:   BRA       T0100B2
+Ast_incmp:
+T00093c:   MOVE.L    #$00000048,-(A7)
+T000942:   MOVE.L    T010068(PC),-(A7)
+T000946:   BRA       T0100B2
+Ast_istr:
+T00094a:   MOVE.L    #$0000004C,-(A7)
+T000950:   MOVE.L    T010068(PC),-(A7)
+T000954:   BRA       T0100B2
+Ate_create:
+T000958:   MOVE.L    #$00000000,-(A7)
+T00095e:   MOVE.L    T01006E(PC),-(A7)
+T000962:   BRA       T0100B2
+Ate_delete:
+T000966:   MOVE.L    #$00000004,-(A7)
+T00096c:   MOVE.L    T01006E(PC),-(A7)
+T000970:   BRA       T0100B2
+Auo_ftext:
+T000974:   MOVE.L    #$00000000,-(A7)
+T00097a:   MOVE.L    T010074(PC),-(A7)
+T00097e:   BRA       T0100B2
+Auo_string:
+T000982:   MOVE.L    #$00000004,-(A7)
+T000988:   MOVE.L    T010074(PC),-(A7)
+T00098c:   BRA       T0100B2
+Auo_cycle:
+T000990:   MOVE.L    #$00000008,-(A7)
+T000996:   MOVE.L    T010074(PC),-(A7)
+T00099a:   BRA       T0100B2
+Auo_picture:
+T00099e:   MOVE.L    #$0000000C,-(A7)
+T0009a4:   MOVE.L    T010074(PC),-(A7)
+T0009a8:   BRA       T0100B2
+Auo_boxed:
+T0009ac:   MOVE.L    #$00000010,-(A7)
+T0009b2:   MOVE.L    T010074(PC),-(A7)
+T0009b6:   BRA       T0100B2
+Aus_create:
+T0009ba:   MOVE.L    #$00000000,-(A7)
+T0009c0:   MOVE.L    T01007A(PC),-(A7)
+T0009c4:   BRA       T0100B2
+Aus_delete:
+T0009c8:   MOVE.L    #$00000004,-(A7)
+T0009ce:   MOVE.L    T01007A(PC),-(A7)
+T0009d2:   BRA       T0100B2
+Aus_boxed:
+T0009d6:   MOVE.L    #$00000008,-(A7)
+T0009dc:   MOVE.L    T01007A(PC),-(A7)
+T0009e0:   BRA       T0100B2
+Aus_cycle:
+T0009e4:   MOVE.L    #$0000000C,-(A7)
+T0009ea:   MOVE.L    T01007A(PC),-(A7)
+T0009ee:   BRA       T0100B2
+Awi_wid:
+T0009f2:   MOVE.L    #$00000000,-(A7)
+T0009f8:   MOVE.L    T010080(PC),-(A7)
+T0009fc:   BRA       T0100B2
+Awi_root:
+T000a00:   MOVE.L    #$00000004,-(A7)
+T000a06:   MOVE.L    T010080(PC),-(A7)
+T000a0a:   BRA       T0100B2
+Awi_list:
+T000a0e:   MOVE.L    #$00000008,-(A7)
+T000a14:   MOVE.L    T010080(PC),-(A7)
+T000a18:   BRA       T0100B2
+Awi_sendall:
+T000a1c:   MOVE.L    #$0000000C,-(A7)
+T000a22:   MOVE.L    T010080(PC),-(A7)
+T000a26:   BRA       T0100B2
+Awi_down:
+T000a2a:   MOVE.L    #$00000010,-(A7)
+T000a30:   MOVE.L    T010080(PC),-(A7)
+T000a34:   BRA       T0100B2
+Awi_up:
+T000a38:   MOVE.L    #$00000014,-(A7)
+T000a3e:   MOVE.L    T010080(PC),-(A7)
+T000a42:   BRA       T0100B2
+Awi_show:
+T000a46:   MOVE.L    #$00000018,-(A7)
+T000a4c:   MOVE.L    T010080(PC),-(A7)
+T000a50:   BRA       T0100B2
+Awi_init:
+T000a54:   MOVE.L    #$0000001C,-(A7)
+T000a5a:   MOVE.L    T010080(PC),-(A7)
+T000a5e:   BRA       T0100B2
+Awi_create:
+T000a62:   MOVE.L    #$00000020,-(A7)
+T000a68:   MOVE.L    T010080(PC),-(A7)
+T000a6c:   BRA       T0100B2
+Awi_open:
+T000a70:   MOVE.L    #$00000024,-(A7)
+T000a76:   MOVE.L    T010080(PC),-(A7)
+T000a7a:   BRA       T0100B2
+Awi_closed:
+T000a7e:   MOVE.L    #$00000028,-(A7)
+T000a84:   MOVE.L    T010080(PC),-(A7)
+T000a88:   BRA       T0100B2
+Awi_delete:
+T000a8c:   MOVE.L    #$0000002C,-(A7)
+T000a92:   MOVE.L    T010080(PC),-(A7)
+T000a96:   BRA       T0100B2
+Awi_topped:
+T000a9a:   MOVE.L    #$00000030,-(A7)
+T000aa0:   MOVE.L    T010080(PC),-(A7)
+T000aa4:   BRA       T0100B2
+Awi_fulled:
+T000aa8:   MOVE.L    #$00000034,-(A7)
+T000aae:   MOVE.L    T010080(PC),-(A7)
+T000ab2:   BRA       T0100B2
+Awi_sized:
+T000ab6:   MOVE.L    #$00000038,-(A7)
+T000abc:   MOVE.L    T010080(PC),-(A7)
+T000ac0:   BRA       T0100B2
+Awi_moved:
+T000ac4:   MOVE.L    #$0000003C,-(A7)
+T000aca:   MOVE.L    T010080(PC),-(A7)
+T000ace:   BRA       T0100B2
+Awi_diaend:
+T000ad2:   MOVE.L    #$00000040,-(A7)
+T000ad8:   MOVE.L    T010080(PC),-(A7)
+T000adc:   BRA       T0100B2
+Awi_diastart:
+T000ae0:   MOVE.L    #$00000044,-(A7)
+T000ae6:   MOVE.L    T010080(PC),-(A7)
+T000aea:   BRA       T0100B2
+Awi_keys:
+T000aee:   MOVE.L    #$00000048,-(A7)
+T000af4:   MOVE.L    T010080(PC),-(A7)
+T000af8:   BRA       T0100B2
+Awi_obview:
+T000afc:   MOVE.L    #$0000004C,-(A7)
+T000b02:   MOVE.L    T010080(PC),-(A7)
+T000b06:   BRA       T0100B2
+Awi_service:
+T000b0a:   MOVE.L    #$00000050,-(A7)
+T000b10:   MOVE.L    T010080(PC),-(A7)
+T000b14:   BRA       T0100B2
+Awi_scroll:
+T000b18:   MOVE.L    #$00000054,-(A7)
+T000b1e:   MOVE.L    T010080(PC),-(A7)
+T000b22:   BRA       T0100B2
+Awi_obchange:
+T000b26:   MOVE.L    #$00000058,-(A7)
+T000b2c:   MOVE.L    T010080(PC),-(A7)
+T000b30:   BRA       T0100B2
+Awi_obredraw:
+T000b34:   MOVE.L    #$0000005C,-(A7)
+T000b3a:   MOVE.L    T010080(PC),-(A7)
+T000b3e:   BRA       T0100B2
+Awi_redraw:
+T000b42:   MOVE.L    #$00000060,-(A7)
+T000b48:   MOVE.L    T010080(PC),-(A7)
+T000b4c:   BRA       T0100B2
+Awi_arrowed:
+T000b50:   MOVE.L    #$00000064,-(A7)
+T000b56:   MOVE.L    T010080(PC),-(A7)
+T000b5a:   BRA       T0100B2
+Awi_hslid:
+T000b5e:   MOVE.L    #$00000068,-(A7)
+T000b64:   MOVE.L    T010080(PC),-(A7)
+T000b68:   BRA       T0100B2
+Awi_vslid:
+T000b6c:   MOVE.L    #$0000006C,-(A7)
+T000b72:   MOVE.L    T010080(PC),-(A7)
+T000b76:   BRA       T0100B2
+Awi_iconify:
+T000b7a:   MOVE.L    #$00000070,-(A7)
+T000b80:   MOVE.L    T010080(PC),-(A7)
+T000b84:   BRA       T0100B2
+Awi_uniconify:
+T000b88:   MOVE.L    #$00000074,-(A7)
+T000b8e:   MOVE.L    T010080(PC),-(A7)
+T000b92:   BRA       T0100B2
+Awi_gemscript:
+T000b96:   MOVE.L    #$00000078,-(A7)
+T000b9c:   MOVE.L    T010080(PC),-(A7)
+T000ba0:   BRA       T0100B2
+Awi_modal:
+T000ba4:   MOVE.L    #$0000007C,-(A7)
+T000baa:   MOVE.L    T010080(PC),-(A7)
+T000bae:   BRA       T0100B2
+Awi_dialog:
+T000bb2:   MOVE.L    #$00000080,-(A7)
+T000bb8:   MOVE.L    T010080(PC),-(A7)
+T000bbc:   BRA       T0100B2
+Awi_alert:
+T000bc0:   MOVE.L    #$00000084,-(A7)
+T000bc6:   MOVE.L    T010080(PC),-(A7)
+T000bca:   BRA       T0100B2
+Awi_selfcreate:
+T000bce:   MOVE.L    #$00000088,-(A7)
+T000bd4:   MOVE.L    T010080(PC),-(A7)
+T000bd8:   BRA       T0100B2
+Awi_nokey:
+T000bdc:   MOVE.L    #$0000008C,-(A7)
+T000be2:   MOVE.L    T010080(PC),-(A7)
+T000be6:   BRA       T0100B2
+Awi_update:
+T000bea:   MOVE.L    #$00000090,-(A7)
+T000bf0:   MOVE.L    T010080(PC),-(A7)
+T000bf4:   BRA       T0100B2
+Awi_uoself:
+T000bf8:   MOVE.L    #$00000094,-(A7)
+T000bfe:   MOVE.L    T010080(PC),-(A7)
+T000c02:   BRA       T0100B2
+Awi_doform:
+T000c06:   MOVE.L    #$00000098,-(A7)
+T000c0c:   MOVE.L    T010080(PC),-(A7)
+T000c10:   BRA       T0100B2
+Awi_observice:
+T000c14:   MOVE.L    #$0000009C,-(A7)
+T000c1a:   MOVE.L    T010080(PC),-(A7)
+T000c1e:   BRA       T0100B2
+Awi_ontop:
+T000c22:   MOVE.L    #$000000A0,-(A7)
+T000c28:   MOVE.L    T010080(PC),-(A7)
+T000c2c:   BRA       T0100B2
+Awi_layout:
+T000c30:   MOVE.L    #$000000A4,-(A7)
+T000c36:   MOVE.L    T010080(PC),-(A7)
+T000c3a:   BRA       T0100B2
+Awi_obvisible:
+T000c3e:   MOVE.L    #$000000A8,-(A7)
+T000c44:   MOVE.L    T010080(PC),-(A7)
+T000c48:   BRA       T0100B2
+A_dialog:
+T000c4c:   MOVE.L    #$00000000,-(A7)
+T000c52:   MOVE.L    T010086(PC),-(A7)
+T000c56:   BRA       T0100B2
+A_checkbox:
+T000c5a:   MOVE.L    #$00000004,-(A7)
+T000c60:   MOVE.L    T010086(PC),-(A7)
+T000c64:   BRA       T0100B2
+A_radiobutton:
+T000c68:   MOVE.L    #$00000008,-(A7)
+T000c6e:   MOVE.L    T010086(PC),-(A7)
+T000c72:   BRA       T0100B2
+A_innerframe:
+T000c76:   MOVE.L    #$0000000C,-(A7)
+T000c7c:   MOVE.L    T010086(PC),-(A7)
+T000c80:   BRA       T0100B2
+A_pattern:
+T000c84:   MOVE.L    #$00000010,-(A7)
+T000c8a:   MOVE.L    T010086(PC),-(A7)
+T000c8e:   BRA       T0100B2
+A_arrows:
+T000c92:   MOVE.L    #$00000014,-(A7)
+T000c98:   MOVE.L    T010086(PC),-(A7)
+T000c9c:   BRA       T0100B2
+A_select:
+T000ca0:   MOVE.L    #$00000018,-(A7)
+T000ca6:   MOVE.L    T010086(PC),-(A7)
+T000caa:   BRA       T0100B2
+A_ftext:
+T000cae:   MOVE.L    #$0000001C,-(A7)
+T000cb4:   MOVE.L    T010086(PC),-(A7)
+T000cb8:   BRA       T0100B2
+A_title:
+T000cbc:   MOVE.L    #$00000020,-(A7)
+T000cc2:   MOVE.L    T010086(PC),-(A7)
+T000cc6:   BRA       T0100B2
+A_3Dbutton:
+T000cca:   MOVE.L    #$00000024,-(A7)
+T000cd0:   MOVE.L    T010086(PC),-(A7)
+T000cd4:   BRA       T0100B2
+A_cycle:
+T000cd8:   MOVE.L    #$00000028,-(A7)
+T000cde:   MOVE.L    T010086(PC),-(A7)
+T000ce2:   BRA       T0100B2
+A_picture:
+T000ce6:   MOVE.L    #$0000002C,-(A7)
+T000cec:   MOVE.L    T010086(PC),-(A7)
+T000cf0:   BRA       T0100B2
+A_dialog2:
+T000cf4:   MOVE.L    #$00000030,-(A7)
+T000cfa:   MOVE.L    T010086(PC),-(A7)
+T000cfe:   BRA       T0100B2
+A_boxed:
+T000d02:   MOVE.L    #$00000034,-(A7)
+T000d08:   MOVE.L    T010086(PC),-(A7)
+T000d0c:   BRA       T0100B2
+Ax_malloc:
+T000d10:   MOVE.L    #$00000000,-(A7)
+T000d16:   MOVE.L    T01008C(PC),-(A7)
+T000d1a:   BRA       T0100B2
+Ax_free:
+T000d1e:   MOVE.L    #$00000004,-(A7)
+T000d24:   MOVE.L    T01008C(PC),-(A7)
+T000d28:   BRA       T0100B2
+Ax_ifree:
+T000d2c:   MOVE.L    #$00000008,-(A7)
+T000d32:   MOVE.L    T01008C(PC),-(A7)
+T000d36:   BRA       T0100B2
+Ax_glmalloc:
+T000d3a:   MOVE.L    #$0000000C,-(A7)
+T000d40:   MOVE.L    T01008C(PC),-(A7)
+T000d44:   BRA       T0100B2
+Ax_glfree:
+T000d48:   MOVE.L    #$00000010,-(A7)
+T000d4e:   MOVE.L    T01008C(PC),-(A7)
+T000d52:   BRA       T0100B2
+ACSmoduleterm:
+T000d56:   MOVEA.L   #compiler+$FFFFFF00,A0
+T000d5c:   MOVE.L    #$00000014,-(A7)
+T000d62:   MOVE.L    T01008C(PC),-(A7)
+T000d66:   BRA       T0100B2
+alert_str:
+T000d6a:   MOVE.L    #$00000018,-(A7)
+T000d70:   MOVE.L    T01008C(PC),-(A7)
+T000d74:   BRA       T0100B2
+intersect:
+T000d78:   MOVE.L    #$0000001C,-(A7)
+T000d7e:   MOVE.L    T01008C(PC),-(A7)
+T000d82:   BRA       T0100B2
+xywh2array:
+T000d86:   MOVE.L    #$00000020,-(A7)
+T000d8c:   MOVE.L    T01008C(PC),-(A7)
+T000d90:   BRA       T0100B2
+array2xywh:
+T000d94:   MOVE.L    #$00000024,-(A7)
+T000d9a:   MOVE.L    T01008C(PC),-(A7)
+T000d9e:   BRA       T0100B2
+dotted_xline:
+T000da2:   MOVE.L    #$00000028,-(A7)
+T000da8:   MOVE.L    T01008C(PC),-(A7)
+T000dac:   BRA       T0100B2
+dotted_yline:
+T000db0:   MOVE.L    #$0000002C,-(A7)
+T000db6:   MOVE.L    T01008C(PC),-(A7)
+T000dba:   BRA       T0100B2
+nkc_tos2n:
+T000dbe:   MOVE.L    #$00000030,-(A7)
+T000dc4:   MOVE.L    T01008C(PC),-(A7)
+T000dc8:   BRA       T0100B2
+nkc_n2tos:
+T000dcc:   MOVE.L    #$00000034,-(A7)
+T000dd2:   MOVE.L    T01008C(PC),-(A7)
+T000dd6:   BRA       T0100B2
+nkc_gem2n:
+T000dda:   MOVE.L    #$00000038,-(A7)
+T000de0:   MOVE.L    T01008C(PC),-(A7)
+T000de4:   BRA       T0100B2
+nkc_n2gem:
+T000de8:   MOVE.L    #$0000003C,-(A7)
+T000dee:   MOVE.L    T01008C(PC),-(A7)
+T000df2:   BRA       T0100B2
+nkc_gemks2n:
+T000df6:   MOVE.L    #$00000040,-(A7)
+T000dfc:   MOVE.L    T01008C(PC),-(A7)
+T000e00:   BRA       T0100B2
+nkc_n2gemks:
+T000e04:   MOVE.L    #$00000044,-(A7)
+T000e0a:   MOVE.L    T01008C(PC),-(A7)
+T000e0e:   BRA       T0100B2
+nkc_n2kstate:
+T000e12:   MOVE.L    #$00000048,-(A7)
+T000e18:   MOVE.L    T01008C(PC),-(A7)
+T000e1c:   BRA       T0100B2
+nkc_kstate:
+T000e20:   MOVE.L    #$0000004C,-(A7)
+T000e26:   MOVE.L    T01008C(PC),-(A7)
+T000e2a:   BRA       T0100B2
+nkc_cmp:
+T000e2e:   MOVE.L    #$00000050,-(A7)
+T000e34:   MOVE.L    T01008C(PC),-(A7)
+T000e38:   BRA       T0100B2
+nkc_tolower:
+T000e3c:   MOVE.L    #$00000054,-(A7)
+T000e42:   MOVE.L    T01008C(PC),-(A7)
+T000e46:   BRA       T0100B2
+nkc_toupper:
+T000e4a:   MOVE.L    #$00000058,-(A7)
+T000e50:   MOVE.L    T01008C(PC),-(A7)
+T000e54:   BRA       T0100B2
+appl_xgetinfo:
+T000e58:   MOVE.L    #$0000005C,-(A7)
+T000e5e:   MOVE.L    T01008C(PC),-(A7)
+T000e62:   BRA       T0100B2
+Ax_setRecycleSize:
+T000e66:   MOVE.L    #$00000060,-(A7)
+T000e6c:   MOVE.L    T01008C(PC),-(A7)
+T000e70:   BRA       T0100B2
+Ax_getRecycleStat:
+T000e74:   MOVE.L    #$00000064,-(A7)
+T000e7a:   MOVE.L    T01008C(PC),-(A7)
+T000e7e:   BRA       T0100B2
+Ax_recycle:
+T000e82:   MOVE.L    #$00000068,-(A7)
+T000e88:   MOVE.L    T01008C(PC),-(A7)
+T000e8c:   BRA       T0100B2
+Avdi_getRGB:
+T000e90:   MOVE.L    #$0000006C,-(A7)
+T000e96:   MOVE.L    T01008C(PC),-(A7)
+T000e9a:   BRA       T0100B2
+vdi:
+T000e9e:   MOVE.L    #$00000000,-(A7)
+T000ea4:   MOVE.L    T010092(PC),-(A7)
+T000ea8:   BRA       T0100B2
+vdi_:
+T000eac:   MOVE.L    #$00000004,-(A7)
+T000eb2:   MOVE.L    T010092(PC),-(A7)
+T000eb6:   BRA       T0100B2
+v_opnwk:
+T000eba:   MOVE.L    #$00000008,-(A7)
+T000ec0:   MOVE.L    T010092(PC),-(A7)
+T000ec4:   BRA       T0100B2
+v_clswk:
+T000ec8:   MOVE.L    #$0000000C,-(A7)
+T000ece:   MOVE.L    T010092(PC),-(A7)
+T000ed2:   BRA       T0100B2
+v_opnvwk:
+T000ed6:   MOVE.L    #$00000010,-(A7)
+T000edc:   MOVE.L    T010092(PC),-(A7)
+T000ee0:   BRA       T0100B2
+v_clsvwk:
+T000ee4:   MOVE.L    #$00000014,-(A7)
+T000eea:   MOVE.L    T010092(PC),-(A7)
+T000eee:   BRA       T0100B2
+v_clrwk:
+T000ef2:   MOVE.L    #$00000018,-(A7)
+T000ef8:   MOVE.L    T010092(PC),-(A7)
+T000efc:   BRA       T0100B2
+v_updwk:
+T000f00:   MOVE.L    #$0000001C,-(A7)
+T000f06:   MOVE.L    T010092(PC),-(A7)
+T000f0a:   BRA       T0100B2
+v_opnbm:
+T000f0e:   MOVE.L    #$00000020,-(A7)
+T000f14:   MOVE.L    T010092(PC),-(A7)
+T000f18:   BRA       T0100B2
+v_clsbm:
+T000f1c:   MOVE.L    #$00000024,-(A7)
+T000f22:   MOVE.L    T010092(PC),-(A7)
+T000f26:   BRA       T0100B2
+vst_load_fonts:
+T000f2a:   MOVE.L    #$00000028,-(A7)
+T000f30:   MOVE.L    T010092(PC),-(A7)
+T000f34:   BRA       T0100B2
+vst_unload_fonts:
+T000f38:   MOVE.L    #$0000002C,-(A7)
+T000f3e:   MOVE.L    T010092(PC),-(A7)
+T000f42:   BRA       T0100B2
+vs_clip:
+T000f46:   MOVE.L    #$00000030,-(A7)
+T000f4c:   MOVE.L    T010092(PC),-(A7)
+T000f50:   BRA       T0100B2
+v_pline:
+T000f54:   MOVE.L    #$00000034,-(A7)
+T000f5a:   MOVE.L    T010092(PC),-(A7)
+T000f5e:   BRA       T0100B2
+v_pmarker:
+T000f62:   MOVE.L    #$00000038,-(A7)
+T000f68:   MOVE.L    T010092(PC),-(A7)
+T000f6c:   BRA       T0100B2
+v_gtext:
+T000f70:   MOVE.L    #$0000003C,-(A7)
+T000f76:   MOVE.L    T010092(PC),-(A7)
+T000f7a:   BRA       T0100B2
+v_fillarea:
+T000f7e:   MOVE.L    #$00000040,-(A7)
+T000f84:   MOVE.L    T010092(PC),-(A7)
+T000f88:   BRA       T0100B2
+v_cellarray:
+T000f8c:   MOVE.L    #$00000044,-(A7)
+T000f92:   MOVE.L    T010092(PC),-(A7)
+T000f96:   BRA       T0100B2
+v_contourfill:
+T000f9a:   MOVE.L    #$00000048,-(A7)
+T000fa0:   MOVE.L    T010092(PC),-(A7)
+T000fa4:   BRA       T0100B2
+v_bar:
+T000fa8:   MOVE.L    #$0000004C,-(A7)
+T000fae:   MOVE.L    T010092(PC),-(A7)
+T000fb2:   BRA       T0100B2
+v_arc:
+T000fb6:   MOVE.L    #$00000050,-(A7)
+T000fbc:   MOVE.L    T010092(PC),-(A7)
+T000fc0:   BRA       T0100B2
+v_pieslice:
+T000fc4:   MOVE.L    #$00000054,-(A7)
+T000fca:   MOVE.L    T010092(PC),-(A7)
+T000fce:   BRA       T0100B2
+v_circle:
+T000fd2:   MOVE.L    #$00000058,-(A7)
+T000fd8:   MOVE.L    T010092(PC),-(A7)
+T000fdc:   BRA       T0100B2
+v_ellipse:
+T000fe0:   MOVE.L    #$0000005C,-(A7)
+T000fe6:   MOVE.L    T010092(PC),-(A7)
+T000fea:   BRA       T0100B2
+v_ellarc:
+T000fee:   MOVE.L    #$00000060,-(A7)
+T000ff4:   MOVE.L    T010092(PC),-(A7)
+T000ff8:   BRA       T0100B2
+v_ellpie:
+T000ffc:   MOVE.L    #$00000064,-(A7)
+T001002:   MOVE.L    T010092(PC),-(A7)
+T001006:   BRA       T0100B2
+v_justified:
+T00100a:   MOVE.L    #$00000068,-(A7)
+T001010:   MOVE.L    T010092(PC),-(A7)
+T001014:   BRA       T0100B2
+vr_recfl:
+T001018:   MOVE.L    #$0000006C,-(A7)
+T00101e:   MOVE.L    T010092(PC),-(A7)
+T001022:   BRA       T0100B2
+v_rfbox:
+T001026:   MOVE.L    #$00000070,-(A7)
+T00102c:   MOVE.L    T010092(PC),-(A7)
+T001030:   BRA       T0100B2
+v_rbox:
+T001034:   MOVE.L    #$00000074,-(A7)
+T00103a:   MOVE.L    T010092(PC),-(A7)
+T00103e:   BRA       T0100B2
+vq_gdos:
+T001042:   MOVE.L    #$00000078,-(A7)
+T001048:   MOVE.L    T010092(PC),-(A7)
+T00104c:   BRA       T0100B2
+vswr_mode:
+T001050:   MOVE.L    #$0000007C,-(A7)
+T001056:   MOVE.L    T010092(PC),-(A7)
+T00105a:   BRA       T0100B2
+vsl_type:
+T00105e:   MOVE.L    #$00000080,-(A7)
+T001064:   MOVE.L    T010092(PC),-(A7)
+T001068:   BRA       T0100B2
+vsl_udsty:
+T00106c:   MOVE.L    #$00000084,-(A7)
+T001072:   MOVE.L    T010092(PC),-(A7)
+T001076:   BRA       T0100B2
+vsl_width:
+T00107a:   MOVE.L    #$00000088,-(A7)
+T001080:   MOVE.L    T010092(PC),-(A7)
+T001084:   BRA       T0100B2
+vsl_color:
+T001088:   MOVE.L    #$0000008C,-(A7)
+T00108e:   MOVE.L    T010092(PC),-(A7)
+T001092:   BRA       T0100B2
+vsl_ends:
+T001096:   MOVE.L    #$00000090,-(A7)
+T00109c:   MOVE.L    T010092(PC),-(A7)
+T0010a0:   BRA       T0100B2
+vsm_type:
+T0010a4:   MOVE.L    #$00000094,-(A7)
+T0010aa:   MOVE.L    T010092(PC),-(A7)
+T0010ae:   BRA       T0100B2
+vsm_height:
+T0010b2:   MOVE.L    #$00000098,-(A7)
+T0010b8:   MOVE.L    T010092(PC),-(A7)
+T0010bc:   BRA       T0100B2
+vsm_color:
+T0010c0:   MOVE.L    #$0000009C,-(A7)
+T0010c6:   MOVE.L    T010092(PC),-(A7)
+T0010ca:   BRA       T0100B2
+vst_height:
+T0010ce:   MOVE.L    #$000000A0,-(A7)
+T0010d4:   MOVE.L    T010092(PC),-(A7)
+T0010d8:   BRA       T0100B2
+vst_point:
+T0010dc:   MOVE.L    #$000000A4,-(A7)
+T0010e2:   MOVE.L    T010092(PC),-(A7)
+T0010e6:   BRA       T0100B2
+vst_rotation:
+T0010ea:   MOVE.L    #$000000A8,-(A7)
+T0010f0:   MOVE.L    T010092(PC),-(A7)
+T0010f4:   BRA       T0100B2
+vst_font:
+T0010f8:   MOVE.L    #$000000AC,-(A7)
+T0010fe:   MOVE.L    T010092(PC),-(A7)
+T001102:   BRA       T0100B2
+vst_color:
+T001106:   MOVE.L    #$000000B0,-(A7)
+T00110c:   MOVE.L    T010092(PC),-(A7)
+T001110:   BRA       T0100B2
+vst_effects:
+T001114:   MOVE.L    #$000000B4,-(A7)
+T00111a:   MOVE.L    T010092(PC),-(A7)
+T00111e:   BRA       T0100B2
+vst_alignment:
+T001122:   MOVE.L    #$000000B8,-(A7)
+T001128:   MOVE.L    T010092(PC),-(A7)
+T00112c:   BRA       T0100B2
+vsf_interior:
+T001130:   MOVE.L    #$000000BC,-(A7)
+T001136:   MOVE.L    T010092(PC),-(A7)
+T00113a:   BRA       T0100B2
+vsf_style:
+T00113e:   MOVE.L    #$000000C0,-(A7)
+T001144:   MOVE.L    T010092(PC),-(A7)
+T001148:   BRA       T0100B2
+vsf_color:
+T00114c:   MOVE.L    #$000000C4,-(A7)
+T001152:   MOVE.L    T010092(PC),-(A7)
+T001156:   BRA       T0100B2
+vsf_perimeter:
+T00115a:   MOVE.L    #$000000C8,-(A7)
+T001160:   MOVE.L    T010092(PC),-(A7)
+T001164:   BRA       T0100B2
+vsf_udpat:
+T001168:   MOVE.L    #$000000CC,-(A7)
+T00116e:   MOVE.L    T010092(PC),-(A7)
+T001172:   BRA       T0100B2
+vsf_updat:
+T001176:   MOVE.L    #$000000D0,-(A7)
+T00117c:   MOVE.L    T010092(PC),-(A7)
+T001180:   BRA       T0100B2
+vs_color:
+T001184:   MOVE.L    #$000000D4,-(A7)
+T00118a:   MOVE.L    T010092(PC),-(A7)
+T00118e:   BRA       T0100B2
+vr_trnfm:
+T001192:   MOVE.L    #$000000D8,-(A7)
+T001198:   MOVE.L    T010092(PC),-(A7)
+T00119c:   BRA       T0100B2
+vro_cpyfm:
+T0011a0:   MOVE.L    #$000000DC,-(A7)
+T0011a6:   MOVE.L    T010092(PC),-(A7)
+T0011aa:   BRA       T0100B2
+vrt_cpyfm:
+T0011ae:   MOVE.L    #$000000E0,-(A7)
+T0011b4:   MOVE.L    T010092(PC),-(A7)
+T0011b8:   BRA       T0100B2
+v_get_pixel:
+T0011bc:   MOVE.L    #$000000E4,-(A7)
+T0011c2:   MOVE.L    T010092(PC),-(A7)
+T0011c6:   BRA       T0100B2
+vsin_mode:
+T0011ca:   MOVE.L    #$000000E8,-(A7)
+T0011d0:   MOVE.L    T010092(PC),-(A7)
+T0011d4:   BRA       T0100B2
+vrq_locator:
+T0011d8:   MOVE.L    #$000000EC,-(A7)
+T0011de:   MOVE.L    T010092(PC),-(A7)
+T0011e2:   BRA       T0100B2
+vsm_locator:
+T0011e6:   MOVE.L    #$000000F0,-(A7)
+T0011ec:   MOVE.L    T010092(PC),-(A7)
+T0011f0:   BRA       T0100B2
+vrq_valuator:
+T0011f4:   MOVE.L    #$000000F4,-(A7)
+T0011fa:   MOVE.L    T010092(PC),-(A7)
+T0011fe:   BRA       T0100B2
+vsm_valuator:
+T001202:   MOVE.L    #$000000F8,-(A7)
+T001208:   MOVE.L    T010092(PC),-(A7)
+T00120c:   BRA       T0100B2
+vrq_choice:
+T001210:   MOVE.L    #$000000FC,-(A7)
+T001216:   MOVE.L    T010092(PC),-(A7)
+T00121a:   BRA       T0100B2
+vsm_choice:
+T00121e:   MOVE.L    #$00000100,-(A7)
+T001224:   MOVE.L    T010092(PC),-(A7)
+T001228:   BRA       T0100B2
+vrq_string:
+T00122c:   MOVE.L    #$00000104,-(A7)
+T001232:   MOVE.L    T010092(PC),-(A7)
+T001236:   BRA       T0100B2
+vsm_string:
+T00123a:   MOVE.L    #$00000108,-(A7)
+T001240:   MOVE.L    T010092(PC),-(A7)
+T001244:   BRA       T0100B2
+vex_timv:
+T001248:   MOVE.L    #$0000010C,-(A7)
+T00124e:   MOVE.L    T010092(PC),-(A7)
+T001252:   BRA       T0100B2
+v_show_c:
+T001256:   MOVE.L    #$00000110,-(A7)
+T00125c:   MOVE.L    T010092(PC),-(A7)
+T001260:   BRA       T0100B2
+v_hide_c:
+T001264:   MOVE.L    #$00000114,-(A7)
+T00126a:   MOVE.L    T010092(PC),-(A7)
+T00126e:   BRA       T0100B2
+vq_mouse:
+T001272:   MOVE.L    #$00000118,-(A7)
+T001278:   MOVE.L    T010092(PC),-(A7)
+T00127c:   BRA       T0100B2
+vex_butv:
+T001280:   MOVE.L    #$0000011C,-(A7)
+T001286:   MOVE.L    T010092(PC),-(A7)
+T00128a:   BRA       T0100B2
+vex_motv:
+T00128e:   MOVE.L    #$00000120,-(A7)
+T001294:   MOVE.L    T010092(PC),-(A7)
+T001298:   BRA       T0100B2
+vex_curv:
+T00129c:   MOVE.L    #$00000124,-(A7)
+T0012a2:   MOVE.L    T010092(PC),-(A7)
+T0012a6:   BRA       T0100B2
+vq_key_s:
+T0012aa:   MOVE.L    #$00000128,-(A7)
+T0012b0:   MOVE.L    T010092(PC),-(A7)
+T0012b4:   BRA       T0100B2
+vq_extnd:
+T0012b8:   MOVE.L    #$0000012C,-(A7)
+T0012be:   MOVE.L    T010092(PC),-(A7)
+T0012c2:   BRA       T0100B2
+vql_attributes:
+T0012c6:   MOVE.L    #$00000130,-(A7)
+T0012cc:   MOVE.L    T010092(PC),-(A7)
+T0012d0:   BRA       T0100B2
+vqm_attributes:
+T0012d4:   MOVE.L    #$00000134,-(A7)
+T0012da:   MOVE.L    T010092(PC),-(A7)
+T0012de:   BRA       T0100B2
+vqf_attributes:
+T0012e2:   MOVE.L    #$00000138,-(A7)
+T0012e8:   MOVE.L    T010092(PC),-(A7)
+T0012ec:   BRA       T0100B2
+vqt_attributes:
+T0012f0:   MOVE.L    #$0000013C,-(A7)
+T0012f6:   MOVE.L    T010092(PC),-(A7)
+T0012fa:   BRA       T0100B2
+vqt_extent:
+T0012fe:   MOVE.L    #$00000140,-(A7)
+T001304:   MOVE.L    T010092(PC),-(A7)
+T001308:   BRA       T0100B2
+vqt_width:
+T00130c:   MOVE.L    #$00000144,-(A7)
+T001312:   MOVE.L    T010092(PC),-(A7)
+T001316:   BRA       T0100B2
+vqt_name:
+T00131a:   MOVE.L    #$00000148,-(A7)
+T001320:   MOVE.L    T010092(PC),-(A7)
+T001324:   BRA       T0100B2
+vqin_mode:
+T001328:   MOVE.L    #$0000014C,-(A7)
+T00132e:   MOVE.L    T010092(PC),-(A7)
+T001332:   BRA       T0100B2
+vqt_fontinfo:
+T001336:   MOVE.L    #$00000150,-(A7)
+T00133c:   MOVE.L    T010092(PC),-(A7)
+T001340:   BRA       T0100B2
+vq_scrninfo:
+T001344:   MOVE.L    #$00000154,-(A7)
+T00134a:   MOVE.L    T010092(PC),-(A7)
+T00134e:   BRA       T0100B2
+vq_color:
+T001352:   MOVE.L    #$00000158,-(A7)
+T001358:   MOVE.L    T010092(PC),-(A7)
+T00135c:   BRA       T0100B2
+vq_cellarray:
+T001360:   MOVE.L    #$0000015C,-(A7)
+T001366:   MOVE.L    T010092(PC),-(A7)
+T00136a:   BRA       T0100B2
+vq_chcells:
+T00136e:   MOVE.L    #$00000160,-(A7)
+T001374:   MOVE.L    T010092(PC),-(A7)
+T001378:   BRA       T0100B2
+v_exit_cur:
+T00137c:   MOVE.L    #$00000164,-(A7)
+T001382:   MOVE.L    T010092(PC),-(A7)
+T001386:   BRA       T0100B2
+v_enter_cur:
+T00138a:   MOVE.L    #$00000168,-(A7)
+T001390:   MOVE.L    T010092(PC),-(A7)
+T001394:   BRA       T0100B2
+v_curup:
+T001398:   MOVE.L    #$0000016C,-(A7)
+T00139e:   MOVE.L    T010092(PC),-(A7)
+T0013a2:   BRA       T0100B2
+v_curdown:
+T0013a6:   MOVE.L    #$00000170,-(A7)
+T0013ac:   MOVE.L    T010092(PC),-(A7)
+T0013b0:   BRA       T0100B2
+v_curright:
+T0013b4:   MOVE.L    #$00000174,-(A7)
+T0013ba:   MOVE.L    T010092(PC),-(A7)
+T0013be:   BRA       T0100B2
+v_curleft:
+T0013c2:   MOVE.L    #$00000178,-(A7)
+T0013c8:   MOVE.L    T010092(PC),-(A7)
+T0013cc:   BRA       T0100B2
+v_curhome:
+T0013d0:   MOVE.L    #$0000017C,-(A7)
+T0013d6:   MOVE.L    T010092(PC),-(A7)
+T0013da:   BRA       T0100B2
+v_eeos:
+T0013de:   MOVE.L    #$00000180,-(A7)
+T0013e4:   MOVE.L    T010092(PC),-(A7)
+T0013e8:   BRA       T0100B2
+v_eeol:
+T0013ec:   MOVE.L    #$00000184,-(A7)
+T0013f2:   MOVE.L    T010092(PC),-(A7)
+T0013f6:   BRA       T0100B2
+v_curaddress:
+T0013fa:   MOVE.L    #$00000188,-(A7)
+T001400:   MOVE.L    T010092(PC),-(A7)
+T001404:   BRA       T0100B2
+v_curtext:
+T001408:   MOVE.L    #$0000018C,-(A7)
+T00140e:   MOVE.L    T010092(PC),-(A7)
+T001412:   BRA       T0100B2
+v_rvon:
+T001416:   MOVE.L    #$00000190,-(A7)
+T00141c:   MOVE.L    T010092(PC),-(A7)
+T001420:   BRA       T0100B2
+v_rvoff:
+T001424:   MOVE.L    #$00000194,-(A7)
+T00142a:   MOVE.L    T010092(PC),-(A7)
+T00142e:   BRA       T0100B2
+vq_curaddress:
+T001432:   MOVE.L    #$00000198,-(A7)
+T001438:   MOVE.L    T010092(PC),-(A7)
+T00143c:   BRA       T0100B2
+vq_tabstatus:
+T001440:   MOVE.L    #$0000019C,-(A7)
+T001446:   MOVE.L    T010092(PC),-(A7)
+T00144a:   BRA       T0100B2
+v_hardcopy:
+T00144e:   MOVE.L    #$000001A0,-(A7)
+T001454:   MOVE.L    T010092(PC),-(A7)
+T001458:   BRA       T0100B2
+v_dspcur:
+T00145c:   MOVE.L    #$000001A4,-(A7)
+T001462:   MOVE.L    T010092(PC),-(A7)
+T001466:   BRA       T0100B2
+v_rmcur:
+T00146a:   MOVE.L    #$000001A8,-(A7)
+T001470:   MOVE.L    T010092(PC),-(A7)
+T001474:   BRA       T0100B2
+v_form_adv:
+T001478:   MOVE.L    #$000001AC,-(A7)
+T00147e:   MOVE.L    T010092(PC),-(A7)
+T001482:   BRA       T0100B2
+v_clear_disp_list:
+T001486:   MOVE.L    #$000001B0,-(A7)
+T00148c:   MOVE.L    T010092(PC),-(A7)
+T001490:   BRA       T0100B2
+vq_scan:
+T001494:   MOVE.L    #$000001B4,-(A7)
+T00149a:   MOVE.L    T010092(PC),-(A7)
+T00149e:   BRA       T0100B2
+v_alpha_text:
+T0014a2:   MOVE.L    #$000001B8,-(A7)
+T0014a8:   MOVE.L    T010092(PC),-(A7)
+T0014ac:   BRA       T0100B2
+vs_palette:
+T0014b0:   MOVE.L    #$000001BC,-(A7)
+T0014b6:   MOVE.L    T010092(PC),-(A7)
+T0014ba:   BRA       T0100B2
+v_sound:
+T0014be:   MOVE.L    #$000001C0,-(A7)
+T0014c4:   MOVE.L    T010092(PC),-(A7)
+T0014c8:   BRA       T0100B2
+vs_mute:
+T0014cc:   MOVE.L    #$000001C4,-(A7)
+T0014d2:   MOVE.L    T010092(PC),-(A7)
+T0014d6:   BRA       T0100B2
+vt_resolution:
+T0014da:   MOVE.L    #$000001C8,-(A7)
+T0014e0:   MOVE.L    T010092(PC),-(A7)
+T0014e4:   BRA       T0100B2
+vt_axis:
+T0014e8:   MOVE.L    #$000001CC,-(A7)
+T0014ee:   MOVE.L    T010092(PC),-(A7)
+T0014f2:   BRA       T0100B2
+vt_origin:
+T0014f6:   MOVE.L    #$000001D0,-(A7)
+T0014fc:   MOVE.L    T010092(PC),-(A7)
+T001500:   BRA       T0100B2
+vq_tdimensions:
+T001504:   MOVE.L    #$000001D4,-(A7)
+T00150a:   MOVE.L    T010092(PC),-(A7)
+T00150e:   BRA       T0100B2
+vt_alignment:
+T001512:   MOVE.L    #$000001D8,-(A7)
+T001518:   MOVE.L    T010092(PC),-(A7)
+T00151c:   BRA       T0100B2
+vsp_film:
+T001520:   MOVE.L    #$000001DC,-(A7)
+T001526:   MOVE.L    T010092(PC),-(A7)
+T00152a:   BRA       T0100B2
+vqp_filmname:
+T00152e:   MOVE.L    #$000001E0,-(A7)
+T001534:   MOVE.L    T010092(PC),-(A7)
+T001538:   BRA       T0100B2
+vsc_expose:
+T00153c:   MOVE.L    #$000001E4,-(A7)
+T001542:   MOVE.L    T010092(PC),-(A7)
+T001546:   BRA       T0100B2
+v_meta_extents:
+T00154a:   MOVE.L    #$000001E8,-(A7)
+T001550:   MOVE.L    T010092(PC),-(A7)
+T001554:   BRA       T0100B2
+v_write_meta:
+T001558:   MOVE.L    #$000001EC,-(A7)
+T00155e:   MOVE.L    T010092(PC),-(A7)
+T001562:   BRA       T0100B2
+vm_pagesize:
+T001566:   MOVE.L    #$000001F0,-(A7)
+T00156c:   MOVE.L    T010092(PC),-(A7)
+T001570:   BRA       T0100B2
+vm_coords:
+T001574:   MOVE.L    #$000001F4,-(A7)
+T00157a:   MOVE.L    T010092(PC),-(A7)
+T00157e:   BRA       T0100B2
+vm_filename:
+T001582:   MOVE.L    #$000001F8,-(A7)
+T001588:   MOVE.L    T010092(PC),-(A7)
+T00158c:   BRA       T0100B2
+v_offset:
+T001590:   MOVE.L    #$000001FC,-(A7)
+T001596:   MOVE.L    T010092(PC),-(A7)
+T00159a:   BRA       T0100B2
+v_fontinit:
+T00159e:   MOVE.L    #$00000200,-(A7)
+T0015a4:   MOVE.L    T010092(PC),-(A7)
+T0015a8:   BRA       T0100B2
+v_escape2000:
+T0015ac:   MOVE.L    #$00000204,-(A7)
+T0015b2:   MOVE.L    T010092(PC),-(A7)
+T0015b6:   BRA       T0100B2
+v_output_window:
+T0015ba:   MOVE.L    #$00000208,-(A7)
+T0015c0:   MOVE.L    T010092(PC),-(A7)
+T0015c4:   BRA       T0100B2
+v_bit_image:
+T0015c8:   MOVE.L    #$0000020C,-(A7)
+T0015ce:   MOVE.L    T010092(PC),-(A7)
+T0015d2:   BRA       T0100B2
+fix31ToPixel:
+T0015d6:   MOVE.L    #$00000210,-(A7)
+T0015dc:   MOVE.L    T010092(PC),-(A7)
+T0015e0:   BRA       T0100B2
+v_opnprn:
+T0015e4:   MOVE.L    #$00000214,-(A7)
+T0015ea:   MOVE.L    T010092(PC),-(A7)
+T0015ee:   BRA       T0100B2
+v_opnmeta:
+T0015f2:   MOVE.L    #$00000218,-(A7)
+T0015f8:   MOVE.L    T010092(PC),-(A7)
+T0015fc:   BRA       T0100B2
+vq_devinfo:
+T001600:   MOVE.L    #$0000021C,-(A7)
+T001606:   MOVE.L    T010092(PC),-(A7)
+T00160a:   BRA       T0100B2
+vq_ext_devinfo:
+T00160e:   MOVE.L    #$00000220,-(A7)
+T001614:   MOVE.L    T010092(PC),-(A7)
+T001618:   BRA       T0100B2
+vs_calibrate:
+T00161c:   MOVE.L    #$00000224,-(A7)
+T001622:   MOVE.L    T010092(PC),-(A7)
+T001626:   BRA       T0100B2
+vq_calibrate:
+T00162a:   MOVE.L    #$00000228,-(A7)
+T001630:   MOVE.L    T010092(PC),-(A7)
+T001634:   BRA       T0100B2
+v_bez:
+T001638:   MOVE.L    #$0000022C,-(A7)
+T00163e:   MOVE.L    T010092(PC),-(A7)
+T001642:   BRA       T0100B2
+v_bez_on:
+T001646:   MOVE.L    #$00000230,-(A7)
+T00164c:   MOVE.L    T010092(PC),-(A7)
+T001650:   BRA       T0100B2
+v_bez_off:
+T001654:   MOVE.L    #$00000234,-(A7)
+T00165a:   MOVE.L    T010092(PC),-(A7)
+T00165e:   BRA       T0100B2
+v_bez_qual:
+T001662:   MOVE.L    #$00000238,-(A7)
+T001668:   MOVE.L    T010092(PC),-(A7)
+T00166c:   BRA       T0100B2
+v_bez_fill:
+T001670:   MOVE.L    #$0000023C,-(A7)
+T001676:   MOVE.L    T010092(PC),-(A7)
+T00167a:   BRA       T0100B2
+vqt_ext_name:
+T00167e:   MOVE.L    #$00000240,-(A7)
+T001684:   MOVE.L    T010092(PC),-(A7)
+T001688:   BRA       T0100B2
+vqt_char_index:
+T00168c:   MOVE.L    #$00000244,-(A7)
+T001692:   MOVE.L    T010092(PC),-(A7)
+T001696:   BRA       T0100B2
+vqt_isCharAvailable:
+T00169a:   MOVE.L    #$00000248,-(A7)
+T0016a0:   MOVE.L    T010092(PC),-(A7)
+T0016a4:   BRA       T0100B2
+vqt_xfntinfo:
+T0016a8:   MOVE.L    #$0000024C,-(A7)
+T0016ae:   MOVE.L    T010092(PC),-(A7)
+T0016b2:   BRA       T0100B2
+vst_name:
+T0016b6:   MOVE.L    #$00000250,-(A7)
+T0016bc:   MOVE.L    T010092(PC),-(A7)
+T0016c0:   BRA       T0100B2
+vqt_name_and_id:
+T0016c4:   MOVE.L    #$00000254,-(A7)
+T0016ca:   MOVE.L    T010092(PC),-(A7)
+T0016ce:   BRA       T0100B2
+vqt_fontheader:
+T0016d2:   MOVE.L    #$00000258,-(A7)
+T0016d8:   MOVE.L    T010092(PC),-(A7)
+T0016dc:   BRA       T0100B2
+vqt_trackkern:
+T0016e0:   MOVE.L    #$0000025C,-(A7)
+T0016e6:   MOVE.L    T010092(PC),-(A7)
+T0016ea:   BRA       T0100B2
+vqt_pairkern:
+T0016ee:   MOVE.L    #$00000260,-(A7)
+T0016f4:   MOVE.L    T010092(PC),-(A7)
+T0016f8:   BRA       T0100B2
+vst_charmap:
+T0016fc:   MOVE.L    #$00000264,-(A7)
+T001702:   MOVE.L    T010092(PC),-(A7)
+T001706:   BRA       T0100B2
+vst_kern:
+T00170a:   MOVE.L    #$00000268,-(A7)
+T001710:   MOVE.L    T010092(PC),-(A7)
+T001714:   BRA       T0100B2
+vst_kern_offset:
+T001718:   MOVE.L    #$0000026C,-(A7)
+T00171e:   MOVE.L    T010092(PC),-(A7)
+T001722:   BRA       T0100B2
+v_getbitmap_info:
+T001726:   MOVE.L    #$00000270,-(A7)
+T00172c:   MOVE.L    T010092(PC),-(A7)
+T001730:   BRA       T0100B2
+vqt_f_extent:
+T001734:   MOVE.L    #$00000274,-(A7)
+T00173a:   MOVE.L    T010092(PC),-(A7)
+T00173e:   BRA       T0100B2
+vqt_real_extent:
+T001742:   MOVE.L    #$00000278,-(A7)
+T001748:   MOVE.L    T010092(PC),-(A7)
+T00174c:   BRA       T0100B2
+v_ftext:
+T001750:   MOVE.L    #$0000027C,-(A7)
+T001756:   MOVE.L    T010092(PC),-(A7)
+T00175a:   BRA       T0100B2
+v_ftext_offset:
+T00175e:   MOVE.L    #$00000280,-(A7)
+T001764:   MOVE.L    T010092(PC),-(A7)
+T001768:   BRA       T0100B2
+v_getoutline:
+T00176c:   MOVE.L    #$00000284,-(A7)
+T001772:   MOVE.L    T010092(PC),-(A7)
+T001776:   BRA       T0100B2
+vst_arbpt32:
+T00177a:   MOVE.L    #$00000288,-(A7)
+T001780:   MOVE.L    T010092(PC),-(A7)
+T001784:   BRA       T0100B2
+vqt_advance32:
+T001788:   MOVE.L    #$0000028C,-(A7)
+T00178e:   MOVE.L    T010092(PC),-(A7)
+T001792:   BRA       T0100B2
+vst_setsize32:
+T001796:   MOVE.L    #$00000290,-(A7)
+T00179c:   MOVE.L    T010092(PC),-(A7)
+T0017a0:   BRA       T0100B2
+vst_skew:
+T0017a4:   MOVE.L    #$00000294,-(A7)
+T0017aa:   MOVE.L    T010092(PC),-(A7)
+T0017ae:   BRA       T0100B2
+v_orient:
+T0017b2:   MOVE.L    #$00000298,-(A7)
+T0017b8:   MOVE.L    T010092(PC),-(A7)
+T0017bc:   BRA       T0100B2
+v_trays:
+T0017c0:   MOVE.L    #$0000029C,-(A7)
+T0017c6:   MOVE.L    T010092(PC),-(A7)
+T0017ca:   BRA       T0100B2
+vq_tray_names:
+T0017ce:   MOVE.L    #$000002A0,-(A7)
+T0017d4:   MOVE.L    T010092(PC),-(A7)
+T0017d8:   BRA       T0100B2
+v_page_size:
+T0017dc:   MOVE.L    #$000002A4,-(A7)
+T0017e2:   MOVE.L    T010092(PC),-(A7)
+T0017e6:   BRA       T0100B2
+vq_page_name:
+T0017ea:   MOVE.L    #$000002A8,-(A7)
+T0017f0:   MOVE.L    T010092(PC),-(A7)
+T0017f4:   BRA       T0100B2
+vst_fg_color:
+T0017f8:   MOVE.L    #$000002AC,-(A7)
+T0017fe:   MOVE.L    T010092(PC),-(A7)
+T001802:   BRA       T0100B2
+vsf_fg_color:
+T001806:   MOVE.L    #$000002B0,-(A7)
+T00180c:   MOVE.L    T010092(PC),-(A7)
+T001810:   BRA       T0100B2
+vsl_fg_color:
+T001814:   MOVE.L    #$000002B4,-(A7)
+T00181a:   MOVE.L    T010092(PC),-(A7)
+T00181e:   BRA       T0100B2
+vsm_fg_color:
+T001822:   MOVE.L    #$000002B8,-(A7)
+T001828:   MOVE.L    T010092(PC),-(A7)
+T00182c:   BRA       T0100B2
+vsr_fg_color:
+T001830:   MOVE.L    #$000002BC,-(A7)
+T001836:   MOVE.L    T010092(PC),-(A7)
+T00183a:   BRA       T0100B2
+vst_bg_color:
+T00183e:   MOVE.L    #$000002C0,-(A7)
+T001844:   MOVE.L    T010092(PC),-(A7)
+T001848:   BRA       T0100B2
+vsf_bg_color:
+T00184c:   MOVE.L    #$000002C4,-(A7)
+T001852:   MOVE.L    T010092(PC),-(A7)
+T001856:   BRA       T0100B2
+vsl_bg_color:
+T00185a:   MOVE.L    #$000002C8,-(A7)
+T001860:   MOVE.L    T010092(PC),-(A7)
+T001864:   BRA       T0100B2
+vsm_bg_color:
+T001868:   MOVE.L    #$000002CC,-(A7)
+T00186e:   MOVE.L    T010092(PC),-(A7)
+T001872:   BRA       T0100B2
+vsr_bg_color:
+T001876:   MOVE.L    #$000002D0,-(A7)
+T00187c:   MOVE.L    T010092(PC),-(A7)
+T001880:   BRA       T0100B2
+vqt_fg_color:
+T001884:   MOVE.L    #$000002D4,-(A7)
+T00188a:   MOVE.L    T010092(PC),-(A7)
+T00188e:   BRA       T0100B2
+vqf_fg_color:
+T001892:   MOVE.L    #$000002D8,-(A7)
+T001898:   MOVE.L    T010092(PC),-(A7)
+T00189c:   BRA       T0100B2
+vql_fg_color:
+T0018a0:   MOVE.L    #$000002DC,-(A7)
+T0018a6:   MOVE.L    T010092(PC),-(A7)
+T0018aa:   BRA       T0100B2
+vqm_fg_color:
+T0018ae:   MOVE.L    #$000002E0,-(A7)
+T0018b4:   MOVE.L    T010092(PC),-(A7)
+T0018b8:   BRA       T0100B2
+vqr_fg_color:
+T0018bc:   MOVE.L    #$000002E4,-(A7)
+T0018c2:   MOVE.L    T010092(PC),-(A7)
+T0018c6:   BRA       T0100B2
+vqt_bg_color:
+T0018ca:   MOVE.L    #$000002E8,-(A7)
+T0018d0:   MOVE.L    T010092(PC),-(A7)
+T0018d4:   BRA       T0100B2
+vqf_bg_color:
+T0018d8:   MOVE.L    #$000002EC,-(A7)
+T0018de:   MOVE.L    T010092(PC),-(A7)
+T0018e2:   BRA       T0100B2
+vql_bg_color:
+T0018e6:   MOVE.L    #$000002F0,-(A7)
+T0018ec:   MOVE.L    T010092(PC),-(A7)
+T0018f0:   BRA       T0100B2
+vqm_bg_color:
+T0018f4:   MOVE.L    #$000002F4,-(A7)
+T0018fa:   MOVE.L    T010092(PC),-(A7)
+T0018fe:   BRA       T0100B2
+vqr_bg_color:
+T001902:   MOVE.L    #$000002F8,-(A7)
+T001908:   MOVE.L    T010092(PC),-(A7)
+T00190c:   BRA       T0100B2
+v_color2value:
+T001910:   MOVE.L    #$000002FC,-(A7)
+T001916:   MOVE.L    T010092(PC),-(A7)
+T00191a:   BRA       T0100B2
+v_value2color:
+T00191e:   MOVE.L    #$00000300,-(A7)
+T001924:   MOVE.L    T010092(PC),-(A7)
+T001928:   BRA       T0100B2
+v_color2nearest:
+T00192c:   MOVE.L    #$00000304,-(A7)
+T001932:   MOVE.L    T010092(PC),-(A7)
+T001936:   BRA       T0100B2
+vq_px_format:
+T00193a:   MOVE.L    #$00000308,-(A7)
+T001940:   MOVE.L    T010092(PC),-(A7)
+T001944:   BRA       T0100B2
+vs_ctab:
+T001948:   MOVE.L    #$0000030C,-(A7)
+T00194e:   MOVE.L    T010092(PC),-(A7)
+T001952:   BRA       T0100B2
+vs_ctab_entry:
+T001956:   MOVE.L    #$00000310,-(A7)
+T00195c:   MOVE.L    T010092(PC),-(A7)
+T001960:   BRA       T0100B2
+vs_dflt_ctab:
+T001964:   MOVE.L    #$00000314,-(A7)
+T00196a:   MOVE.L    T010092(PC),-(A7)
+T00196e:   BRA       T0100B2
+vq_ctab:
+T001972:   MOVE.L    #$00000318,-(A7)
+T001978:   MOVE.L    T010092(PC),-(A7)
+T00197c:   BRA       T0100B2
+vq_ctab_entry:
+T001980:   MOVE.L    #$0000031C,-(A7)
+T001986:   MOVE.L    T010092(PC),-(A7)
+T00198a:   BRA       T0100B2
+vq_ctab_id:
+T00198e:   MOVE.L    #$00000320,-(A7)
+T001994:   MOVE.L    T010092(PC),-(A7)
+T001998:   BRA       T0100B2
+v_ctab_idx2vdi:
+T00199c:   MOVE.L    #$00000324,-(A7)
+T0019a2:   MOVE.L    T010092(PC),-(A7)
+T0019a6:   BRA       T0100B2
+v_ctab_vdi2idx:
+T0019aa:   MOVE.L    #$00000328,-(A7)
+T0019b0:   MOVE.L    T010092(PC),-(A7)
+T0019b4:   BRA       T0100B2
+v_ctab_idx2value:
+T0019b8:   MOVE.L    #$0000032C,-(A7)
+T0019be:   MOVE.L    T010092(PC),-(A7)
+T0019c2:   BRA       T0100B2
+v_get_ctab_id:
+T0019c6:   MOVE.L    #$00000330,-(A7)
+T0019cc:   MOVE.L    T010092(PC),-(A7)
+T0019d0:   BRA       T0100B2
+vq_dflt_ctab:
+T0019d4:   MOVE.L    #$00000334,-(A7)
+T0019da:   MOVE.L    T010092(PC),-(A7)
+T0019de:   BRA       T0100B2
+v_create_itab:
+T0019e2:   MOVE.L    #$00000338,-(A7)
+T0019e8:   MOVE.L    T010092(PC),-(A7)
+T0019ec:   BRA       T0100B2
+v_delete_itab:
+T0019f0:   MOVE.L    #$0000033C,-(A7)
+T0019f6:   MOVE.L    T010092(PC),-(A7)
+T0019fa:   BRA       T0100B2
+vr_transfer_bits:
+T0019fe:   MOVE.L    #$00000340,-(A7)
+T001a04:   MOVE.L    T010092(PC),-(A7)
+T001a08:   BRA       T0100B2
+vs_hilite_color:
+T001a0c:   MOVE.L    #$00000344,-(A7)
+T001a12:   MOVE.L    T010092(PC),-(A7)
+T001a16:   BRA       T0100B2
+vs_min_color:
+T001a1a:   MOVE.L    #$00000348,-(A7)
+T001a20:   MOVE.L    T010092(PC),-(A7)
+T001a24:   BRA       T0100B2
+vs_max_color:
+T001a28:   MOVE.L    #$0000034C,-(A7)
+T001a2e:   MOVE.L    T010092(PC),-(A7)
+T001a32:   BRA       T0100B2
+vs_weight_color:
+T001a36:   MOVE.L    #$00000350,-(A7)
+T001a3c:   MOVE.L    T010092(PC),-(A7)
+T001a40:   BRA       T0100B2
+vq_hilite_color:
+T001a44:   MOVE.L    #$00000354,-(A7)
+T001a4a:   MOVE.L    T010092(PC),-(A7)
+T001a4e:   BRA       T0100B2
+vq_min_color:
+T001a52:   MOVE.L    #$00000358,-(A7)
+T001a58:   MOVE.L    T010092(PC),-(A7)
+T001a5c:   BRA       T0100B2
+vq_max_color:
+T001a60:   MOVE.L    #$0000035C,-(A7)
+T001a66:   MOVE.L    T010092(PC),-(A7)
+T001a6a:   BRA       T0100B2
+vq_weight_color:
+T001a6e:   MOVE.L    #$00000360,-(A7)
+T001a74:   MOVE.L    T010092(PC),-(A7)
+T001a78:   BRA       T0100B2
+vs_document_info:
+T001a7c:   MOVE.L    #$00000364,-(A7)
+T001a82:   MOVE.L    T010092(PC),-(A7)
+T001a86:   BRA       T0100B2
+vq_prn_scaling:
+T001a8a:   MOVE.L    #$00000368,-(A7)
+T001a90:   MOVE.L    T010092(PC),-(A7)
+T001a94:   BRA       T0100B2
+v_open_bm:
+T001a98:   MOVE.L    #$0000036C,-(A7)
+T001a9e:   MOVE.L    T010092(PC),-(A7)
+T001aa2:   BRA       T0100B2
+v_resize_bm:
+T001aa6:   MOVE.L    #$00000370,-(A7)
+T001aac:   MOVE.L    T010092(PC),-(A7)
+T001ab0:   BRA       T0100B2
+v_get_outline:
+T001ab4:   MOVE.L    #$00000374,-(A7)
+T001aba:   MOVE.L    T010092(PC),-(A7)
+T001abe:   BRA       T0100B2
+vst_track_offset:
+T001ac2:   MOVE.L    #$00000378,-(A7)
+T001ac8:   MOVE.L    T010092(PC),-(A7)
+T001acc:   BRA       T0100B2
+vst_arbpt:
+T001ad0:   MOVE.L    #$0000037C,-(A7)
+T001ad6:   MOVE.L    T010092(PC),-(A7)
+T001ada:   BRA       T0100B2
+vqt_advance:
+T001ade:   MOVE.L    #$00000380,-(A7)
+T001ae4:   MOVE.L    T010092(PC),-(A7)
+T001ae8:   BRA       T0100B2
+vst_setsize:
+T001aec:   MOVE.L    #$00000384,-(A7)
+T001af2:   MOVE.L    T010092(PC),-(A7)
+T001af6:   BRA       T0100B2
+vq_vgdos:
+T001afa:   MOVE.L    #$00000388,-(A7)
+T001b00:   MOVE.L    T010092(PC),-(A7)
+T001b04:   BRA       T0100B2
+vst_width:
+T001b08:   MOVE.L    #$0000038C,-(A7)
+T001b0e:   MOVE.L    T010092(PC),-(A7)
+T001b12:   BRA       T0100B2
+vst_scratch:
+T001b16:   MOVE.L    #$00000390,-(A7)
+T001b1c:   MOVE.L    T010092(PC),-(A7)
+T001b20:   BRA       T0100B2
+vst_error:
+T001b24:   MOVE.L    #$00000394,-(A7)
+T001b2a:   MOVE.L    T010092(PC),-(A7)
+T001b2e:   BRA       T0100B2
+v_savecache:
+T001b32:   MOVE.L    #$00000398,-(A7)
+T001b38:   MOVE.L    T010092(PC),-(A7)
+T001b3c:   BRA       T0100B2
+v_loadcache:
+T001b40:   MOVE.L    #$0000039C,-(A7)
+T001b46:   MOVE.L    T010092(PC),-(A7)
+T001b4a:   BRA       T0100B2
+v_flushcache:
+T001b4e:   MOVE.L    #$000003A0,-(A7)
+T001b54:   MOVE.L    T010092(PC),-(A7)
+T001b58:   BRA       T0100B2
+vqt_cachesize:
+T001b5c:   MOVE.L    #$000003A4,-(A7)
+T001b62:   MOVE.L    T010092(PC),-(A7)
+T001b66:   BRA       T0100B2
+vqt_get_table:
+T001b6a:   MOVE.L    #$000003A8,-(A7)
+T001b70:   MOVE.L    T010092(PC),-(A7)
+T001b74:   BRA       T0100B2
+vs_curaddress:
+T001b78:   MOVE.L    #$000003AC,-(A7)
+T001b7e:   MOVE.L    T010092(PC),-(A7)
+T001b82:   BRA       T0100B2
+vsf_perimeter3:
+T001b86:   MOVE.L    #$000003B0,-(A7)
+T001b8c:   MOVE.L    T010092(PC),-(A7)
+T001b90:   BRA       T0100B2
+vqt_justified:
+T001b94:   MOVE.L    #$000003B4,-(A7)
+T001b9a:   MOVE.L    T010092(PC),-(A7)
+T001b9e:   BRA       T0100B2
+v_opnprnwrk:
+T001ba2:   MOVE.L    #$000003B8,-(A7)
+T001ba8:   MOVE.L    T010092(PC),-(A7)
+T001bac:   BRA       T0100B2
+v_opnmatrixprn:
+T001bb0:   MOVE.L    #$000003BC,-(A7)
+T001bb6:   MOVE.L    T010092(PC),-(A7)
+T001bba:   BRA       T0100B2
+v_set_app_buff:
+T001bbe:   MOVE.L    #$000003C0,-(A7)
+T001bc4:   MOVE.L    T010092(PC),-(A7)
+T001bc8:   BRA       T0100B2
+vqt_devinfo:
+T001bcc:   MOVE.L    #$000003C4,-(A7)
+T001bd2:   MOVE.L    T010092(PC),-(A7)
+T001bd6:   BRA       T0100B2
+v_create_ctab:
+T001bda:   MOVE.L    #$000003C8,-(A7)
+T001be0:   MOVE.L    T010092(PC),-(A7)
+T001be4:   BRA       T0100B2
+v_delete_ctab:
+T001be8:   MOVE.L    #$000003CC,-(A7)
+T001bee:   MOVE.L    T010092(PC),-(A7)
+T001bf2:   BRA       T0100B2
+v_setrgb:
+T001bf6:   MOVE.L    #$000003D0,-(A7)
+T001bfc:   MOVE.L    T010092(PC),-(A7)
+T001c00:   BRA       T0100B2
+aes:
+T001c04:   MOVE.L    #$00000000,-(A7)
+T001c0a:   MOVE.L    T010098(PC),-(A7)
+T001c0e:   BRA       T0100B2
+appl_init:
+T001c12:   MOVE.L    #$00000004,-(A7)
+T001c18:   MOVE.L    T010098(PC),-(A7)
+T001c1c:   BRA       T0100B2
+appl_read:
+T001c20:   MOVE.L    #$00000008,-(A7)
+T001c26:   MOVE.L    T010098(PC),-(A7)
+T001c2a:   BRA       T0100B2
+appl_write:
+T001c2e:   MOVE.L    #$0000000C,-(A7)
+T001c34:   MOVE.L    T010098(PC),-(A7)
+T001c38:   BRA       T0100B2
+appl_find:
+T001c3c:   MOVE.L    #$00000010,-(A7)
+T001c42:   MOVE.L    T010098(PC),-(A7)
+T001c46:   BRA       T0100B2
+appl_search:
+T001c4a:   MOVE.L    #$00000014,-(A7)
+T001c50:   MOVE.L    T010098(PC),-(A7)
+T001c54:   BRA       T0100B2
+appl_tplay:
+T001c58:   MOVE.L    #$00000018,-(A7)
+T001c5e:   MOVE.L    T010098(PC),-(A7)
+T001c62:   BRA       T0100B2
+appl_trecord:
+T001c66:   MOVE.L    #$0000001C,-(A7)
+T001c6c:   MOVE.L    T010098(PC),-(A7)
+T001c70:   BRA       T0100B2
+appl_yield:
+T001c74:   MOVE.L    #$00000020,-(A7)
+T001c7a:   MOVE.L    T010098(PC),-(A7)
+T001c7e:   BRA       T0100B2
+appl_exit:
+T001c82:   MOVE.L    #$00000024,-(A7)
+T001c88:   MOVE.L    T010098(PC),-(A7)
+T001c8c:   BRA       T0100B2
+appl_getinfo:
+T001c90:   MOVE.L    #$00000028,-(A7)
+T001c96:   MOVE.L    T010098(PC),-(A7)
+T001c9a:   BRA       T0100B2
+appl_control:
+T001c9e:   MOVE.L    #$0000002C,-(A7)
+T001ca4:   MOVE.L    T010098(PC),-(A7)
+T001ca8:   BRA       T0100B2
+evnt_keybd:
+T001cac:   MOVE.L    #$00000030,-(A7)
+T001cb2:   MOVE.L    T010098(PC),-(A7)
+T001cb6:   BRA       T0100B2
+evnt_button:
+T001cba:   MOVE.L    #$00000034,-(A7)
+T001cc0:   MOVE.L    T010098(PC),-(A7)
+T001cc4:   BRA       T0100B2
+evnt_mouse:
+T001cc8:   MOVE.L    #$00000038,-(A7)
+T001cce:   MOVE.L    T010098(PC),-(A7)
+T001cd2:   BRA       T0100B2
+evnt_mesag:
+T001cd6:   MOVE.L    #$0000003C,-(A7)
+T001cdc:   MOVE.L    T010098(PC),-(A7)
+T001ce0:   BRA       T0100B2
+evnt_timer:
+T001ce4:   MOVE.L    #$00000040,-(A7)
+T001cea:   MOVE.L    T010098(PC),-(A7)
+T001cee:   BRA       T0100B2
+evnt_event:
+T001cf2:   MOVE.L    #$00000044,-(A7)
+T001cf8:   MOVE.L    T010098(PC),-(A7)
+T001cfc:   BRA       T0100B2
+evnt_multi:
+T001d00:   MOVE.L    #$00000048,-(A7)
+T001d06:   MOVE.L    T010098(PC),-(A7)
+T001d0a:   BRA       T0100B2
+evnt_dclick:
+T001d0e:   MOVE.L    #$0000004C,-(A7)
+T001d14:   MOVE.L    T010098(PC),-(A7)
+T001d18:   BRA       T0100B2
+menu_bar:
+T001d1c:   MOVE.L    #$00000050,-(A7)
+T001d22:   MOVE.L    T010098(PC),-(A7)
+T001d26:   BRA       T0100B2
+menu_icheck:
+T001d2a:   MOVE.L    #$00000054,-(A7)
+T001d30:   MOVE.L    T010098(PC),-(A7)
+T001d34:   BRA       T0100B2
+menu_ienable:
+T001d38:   MOVE.L    #$00000058,-(A7)
+T001d3e:   MOVE.L    T010098(PC),-(A7)
+T001d42:   BRA       T0100B2
+menu_tnormal:
+T001d46:   MOVE.L    #$0000005C,-(A7)
+T001d4c:   MOVE.L    T010098(PC),-(A7)
+T001d50:   BRA       T0100B2
+menu_text:
+T001d54:   MOVE.L    #$00000060,-(A7)
+T001d5a:   MOVE.L    T010098(PC),-(A7)
+T001d5e:   BRA       T0100B2
+menu_register:
+T001d62:   MOVE.L    #$00000064,-(A7)
+T001d68:   MOVE.L    T010098(PC),-(A7)
+T001d6c:   BRA       T0100B2
+menu_unregister:
+T001d70:   MOVE.L    #$00000068,-(A7)
+T001d76:   MOVE.L    T010098(PC),-(A7)
+T001d7a:   BRA       T0100B2
+menu_click:
+T001d7e:   MOVE.L    #$0000006C,-(A7)
+T001d84:   MOVE.L    T010098(PC),-(A7)
+T001d88:   BRA       T0100B2
+menu_attach:
+T001d8c:   MOVE.L    #$00000070,-(A7)
+T001d92:   MOVE.L    T010098(PC),-(A7)
+T001d96:   BRA       T0100B2
+menu_istart:
+T001d9a:   MOVE.L    #$00000074,-(A7)
+T001da0:   MOVE.L    T010098(PC),-(A7)
+T001da4:   BRA       T0100B2
+menu_popup:
+T001da8:   MOVE.L    #$00000078,-(A7)
+T001dae:   MOVE.L    T010098(PC),-(A7)
+T001db2:   BRA       T0100B2
+menu_settings:
+T001db6:   MOVE.L    #$0000007C,-(A7)
+T001dbc:   MOVE.L    T010098(PC),-(A7)
+T001dc0:   BRA       T0100B2
+objc_add:
+T001dc4:   MOVE.L    #$00000080,-(A7)
+T001dca:   MOVE.L    T010098(PC),-(A7)
+T001dce:   BRA       T0100B2
+objc_delete:
+T001dd2:   MOVE.L    #$00000084,-(A7)
+T001dd8:   MOVE.L    T010098(PC),-(A7)
+T001ddc:   BRA       T0100B2
+objc_draw:
+T001de0:   MOVE.L    #$00000088,-(A7)
+T001de6:   MOVE.L    T010098(PC),-(A7)
+T001dea:   BRA       T0100B2
+objc_find:
+T001dee:   MOVE.L    #$0000008C,-(A7)
+T001df4:   MOVE.L    T010098(PC),-(A7)
+T001df8:   BRA       T0100B2
+objc_offset:
+T001dfc:   MOVE.L    #$00000090,-(A7)
+T001e02:   MOVE.L    T010098(PC),-(A7)
+T001e06:   BRA       T0100B2
+objc_order:
+T001e0a:   MOVE.L    #$00000094,-(A7)
+T001e10:   MOVE.L    T010098(PC),-(A7)
+T001e14:   BRA       T0100B2
+objc_edit:
+T001e18:   MOVE.L    #$00000098,-(A7)
+T001e1e:   MOVE.L    T010098(PC),-(A7)
+T001e22:   BRA       T0100B2
+objc_change:
+T001e26:   MOVE.L    #$0000009C,-(A7)
+T001e2c:   MOVE.L    T010098(PC),-(A7)
+T001e30:   BRA       T0100B2
+objc_sysvar:
+T001e34:   MOVE.L    #$000000A0,-(A7)
+T001e3a:   MOVE.L    T010098(PC),-(A7)
+T001e3e:   BRA       T0100B2
+form_do:
+T001e42:   MOVE.L    #$000000A4,-(A7)
+T001e48:   MOVE.L    T010098(PC),-(A7)
+T001e4c:   BRA       T0100B2
+form_dial:
+T001e50:   MOVE.L    #$000000A8,-(A7)
+T001e56:   MOVE.L    T010098(PC),-(A7)
+T001e5a:   BRA       T0100B2
+form_alert:
+T001e5e:   MOVE.L    #$000000AC,-(A7)
+T001e64:   MOVE.L    T010098(PC),-(A7)
+T001e68:   BRA       T0100B2
+form_error:
+T001e6c:   MOVE.L    #$000000B0,-(A7)
+T001e72:   MOVE.L    T010098(PC),-(A7)
+T001e76:   BRA       T0100B2
+form_center:
+T001e7a:   MOVE.L    #$000000B4,-(A7)
+T001e80:   MOVE.L    T010098(PC),-(A7)
+T001e84:   BRA       T0100B2
+form_keybd:
+T001e88:   MOVE.L    #$000000B8,-(A7)
+T001e8e:   MOVE.L    T010098(PC),-(A7)
+T001e92:   BRA       T0100B2
+form_button:
+T001e96:   MOVE.L    #$000000BC,-(A7)
+T001e9c:   MOVE.L    T010098(PC),-(A7)
+T001ea0:   BRA       T0100B2
+graf_rubbox:
+T001ea4:   MOVE.L    #$000000C0,-(A7)
+T001eaa:   MOVE.L    T010098(PC),-(A7)
+T001eae:   BRA       T0100B2
+graf_rubberbox:
+T001eb2:   MOVE.L    #$000000C4,-(A7)
+T001eb8:   MOVE.L    T010098(PC),-(A7)
+T001ebc:   BRA       T0100B2
+graf_dragbox:
+T001ec0:   MOVE.L    #$000000C8,-(A7)
+T001ec6:   MOVE.L    T010098(PC),-(A7)
+T001eca:   BRA       T0100B2
+graf_mbox:
+T001ece:   MOVE.L    #$000000CC,-(A7)
+T001ed4:   MOVE.L    T010098(PC),-(A7)
+T001ed8:   BRA       T0100B2
+graf_movebox:
+T001edc:   MOVE.L    #$000000D0,-(A7)
+T001ee2:   MOVE.L    T010098(PC),-(A7)
+T001ee6:   BRA       T0100B2
+graf_growbox:
+T001eea:   MOVE.L    #$000000D4,-(A7)
+T001ef0:   MOVE.L    T010098(PC),-(A7)
+T001ef4:   BRA       T0100B2
+graf_shrinkbox:
+T001ef8:   MOVE.L    #$000000D8,-(A7)
+T001efe:   MOVE.L    T010098(PC),-(A7)
+T001f02:   BRA       T0100B2
+graf_watchbox:
+T001f06:   MOVE.L    #$000000DC,-(A7)
+T001f0c:   MOVE.L    T010098(PC),-(A7)
+T001f10:   BRA       T0100B2
+graf_slidebox:
+T001f14:   MOVE.L    #$000000E0,-(A7)
+T001f1a:   MOVE.L    T010098(PC),-(A7)
+T001f1e:   BRA       T0100B2
+graf_handle:
+T001f22:   MOVE.L    #$000000E4,-(A7)
+T001f28:   MOVE.L    T010098(PC),-(A7)
+T001f2c:   BRA       T0100B2
+graf_mouse:
+T001f30:   MOVE.L    #$000000E8,-(A7)
+T001f36:   MOVE.L    T010098(PC),-(A7)
+T001f3a:   BRA       T0100B2
+graf_mkstate:
+T001f3e:   MOVE.L    #$000000EC,-(A7)
+T001f44:   MOVE.L    T010098(PC),-(A7)
+T001f48:   BRA       T0100B2
+graf_multirubber:
+T001f4c:   MOVE.L    #$000000F0,-(A7)
+T001f52:   MOVE.L    T010098(PC),-(A7)
+T001f56:   BRA       T0100B2
+scrp_read:
+T001f5a:   MOVE.L    #$000000F4,-(A7)
+T001f60:   MOVE.L    T010098(PC),-(A7)
+T001f64:   BRA       T0100B2
+scrp_write:
+T001f68:   MOVE.L    #$000000F8,-(A7)
+T001f6e:   MOVE.L    T010098(PC),-(A7)
+T001f72:   BRA       T0100B2
+fsel_input:
+T001f76:   MOVE.L    #$000000FC,-(A7)
+T001f7c:   MOVE.L    T010098(PC),-(A7)
+T001f80:   BRA       T0100B2
+fsel_exinput:
+T001f84:   MOVE.L    #$00000100,-(A7)
+T001f8a:   MOVE.L    T010098(PC),-(A7)
+T001f8e:   BRA       T0100B2
+fsel_boxinput:
+T001f92:   MOVE.L    #$00000104,-(A7)
+T001f98:   MOVE.L    T010098(PC),-(A7)
+T001f9c:   BRA       T0100B2
+fslx_open:
+T001fa0:   MOVE.L    #$00000108,-(A7)
+T001fa6:   MOVE.L    T010098(PC),-(A7)
+T001faa:   BRA       T0100B2
+fslx_close:
+T001fae:   MOVE.L    #$0000010C,-(A7)
+T001fb4:   MOVE.L    T010098(PC),-(A7)
+T001fb8:   BRA       T0100B2
+fslx_getnxtfile:
+T001fbc:   MOVE.L    #$00000110,-(A7)
+T001fc2:   MOVE.L    T010098(PC),-(A7)
+T001fc6:   BRA       T0100B2
+fslx_evnt:
+T001fca:   MOVE.L    #$00000114,-(A7)
+T001fd0:   MOVE.L    T010098(PC),-(A7)
+T001fd4:   BRA       T0100B2
+fslx_do:
+T001fd8:   MOVE.L    #$00000118,-(A7)
+T001fde:   MOVE.L    T010098(PC),-(A7)
+T001fe2:   BRA       T0100B2
+fslx_set_flags:
+T001fe6:   MOVE.L    #$0000011C,-(A7)
+T001fec:   MOVE.L    T010098(PC),-(A7)
+T001ff0:   BRA       T0100B2
+wind_create:
+T001ff4:   MOVE.L    #$00000120,-(A7)
+T001ffa:   MOVE.L    T010098(PC),-(A7)
+T001ffe:   BRA       T0100B2
+wind_open:
+T002002:   MOVE.L    #$00000124,-(A7)
+T002008:   MOVE.L    T010098(PC),-(A7)
+T00200c:   BRA       T0100B2
+wind_close:
+T002010:   MOVE.L    #$00000128,-(A7)
+T002016:   MOVE.L    T010098(PC),-(A7)
+T00201a:   BRA       T0100B2
+wind_delete:
+T00201e:   MOVE.L    #$0000012C,-(A7)
+T002024:   MOVE.L    T010098(PC),-(A7)
+T002028:   BRA       T0100B2
+wind_get:
+T00202c:   MOVE.L    #$00000130,-(A7)
+T002032:   MOVE.L    T010098(PC),-(A7)
+T002036:   BRA       T0100B2
+wind_getQSB:
+T00203a:   MOVE.L    #$00000134,-(A7)
+T002040:   MOVE.L    T010098(PC),-(A7)
+T002044:   BRA       T0100B2
+wind_set:
+T002048:   MOVE.L    #$00000138,-(A7)
+T00204e:   MOVE.L    T010098(PC),-(A7)
+T002052:   BRA       T0100B2
+wind_find:
+T002056:   MOVE.L    #$0000013C,-(A7)
+T00205c:   MOVE.L    T010098(PC),-(A7)
+T002060:   BRA       T0100B2
+wind_update:
+T002064:   MOVE.L    #$00000140,-(A7)
+T00206a:   MOVE.L    T010098(PC),-(A7)
+T00206e:   BRA       T0100B2
+wind_calc:
+T002072:   MOVE.L    #$00000144,-(A7)
+T002078:   MOVE.L    T010098(PC),-(A7)
+T00207c:   BRA       T0100B2
+wind_new:
+T002080:   MOVE.L    #$00000148,-(A7)
+T002086:   MOVE.L    T010098(PC),-(A7)
+T00208a:   BRA       T0100B2
+rsrc_load:
+T00208e:   MOVE.L    #$0000014C,-(A7)
+T002094:   MOVE.L    T010098(PC),-(A7)
+T002098:   BRA       T0100B2
+rsrc_free:
+T00209c:   MOVE.L    #$00000150,-(A7)
+T0020a2:   MOVE.L    T010098(PC),-(A7)
+T0020a6:   BRA       T0100B2
+rsrc_gaddr:
+T0020aa:   MOVE.L    #$00000154,-(A7)
+T0020b0:   MOVE.L    T010098(PC),-(A7)
+T0020b4:   BRA       T0100B2
+rsrc_saddr:
+T0020b8:   MOVE.L    #$00000158,-(A7)
+T0020be:   MOVE.L    T010098(PC),-(A7)
+T0020c2:   BRA       T0100B2
+rsrc_obfix:
+T0020c6:   MOVE.L    #$0000015C,-(A7)
+T0020cc:   MOVE.L    T010098(PC),-(A7)
+T0020d0:   BRA       T0100B2
+rsrc_rcfix:
+T0020d4:   MOVE.L    #$00000160,-(A7)
+T0020da:   MOVE.L    T010098(PC),-(A7)
+T0020de:   BRA       T0100B2
+shel_read:
+T0020e2:   MOVE.L    #$00000164,-(A7)
+T0020e8:   MOVE.L    T010098(PC),-(A7)
+T0020ec:   BRA       T0100B2
+shel_write:
+T0020f0:   MOVE.L    #$00000168,-(A7)
+T0020f6:   MOVE.L    T010098(PC),-(A7)
+T0020fa:   BRA       T0100B2
+shel_get:
+T0020fe:   MOVE.L    #$0000016C,-(A7)
+T002104:   MOVE.L    T010098(PC),-(A7)
+T002108:   BRA       T0100B2
+shel_put:
+T00210c:   MOVE.L    #$00000170,-(A7)
+T002112:   MOVE.L    T010098(PC),-(A7)
+T002116:   BRA       T0100B2
+shel_find:
+T00211a:   MOVE.L    #$00000174,-(A7)
+T002120:   MOVE.L    T010098(PC),-(A7)
+T002124:   BRA       T0100B2
+shel_envrn:
+T002128:   MOVE.L    #$00000178,-(A7)
+T00212e:   MOVE.L    T010098(PC),-(A7)
+T002132:   BRA       T0100B2
+shel_help:
+T002136:   MOVE.L    #$0000017C,-(A7)
+T00213c:   MOVE.L    T010098(PC),-(A7)
+T002140:   BRA       T0100B2
+fnts_add:
+T002144:   MOVE.L    #$00000180,-(A7)
+T00214a:   MOVE.L    T010098(PC),-(A7)
+T00214e:   BRA       T0100B2
+fnts_close:
+T002152:   MOVE.L    #$00000184,-(A7)
+T002158:   MOVE.L    T010098(PC),-(A7)
+T00215c:   BRA       T0100B2
+fnts_create:
+T002160:   MOVE.L    #$00000188,-(A7)
+T002166:   MOVE.L    T010098(PC),-(A7)
+T00216a:   BRA       T0100B2
+fnts_delete:
+T00216e:   MOVE.L    #$0000018C,-(A7)
+T002174:   MOVE.L    T010098(PC),-(A7)
+T002178:   BRA       T0100B2
+fnts_do:
+T00217c:   MOVE.L    #$00000190,-(A7)
+T002182:   MOVE.L    T010098(PC),-(A7)
+T002186:   BRA       T0100B2
+fnts_evnt:
+T00218a:   MOVE.L    #$00000194,-(A7)
+T002190:   MOVE.L    T010098(PC),-(A7)
+T002194:   BRA       T0100B2
+fnts_get_info:
+T002198:   MOVE.L    #$00000198,-(A7)
+T00219e:   MOVE.L    T010098(PC),-(A7)
+T0021a2:   BRA       T0100B2
+fnts_get_name:
+T0021a6:   MOVE.L    #$0000019C,-(A7)
+T0021ac:   MOVE.L    T010098(PC),-(A7)
+T0021b0:   BRA       T0100B2
+fnts_get_no_styles:
+T0021b4:   MOVE.L    #$000001A0,-(A7)
+T0021ba:   MOVE.L    T010098(PC),-(A7)
+T0021be:   BRA       T0100B2
+fnts_get_style:
+T0021c2:   MOVE.L    #$000001A4,-(A7)
+T0021c8:   MOVE.L    T010098(PC),-(A7)
+T0021cc:   BRA       T0100B2
+fnts_open:
+T0021d0:   MOVE.L    #$000001A8,-(A7)
+T0021d6:   MOVE.L    T010098(PC),-(A7)
+T0021da:   BRA       T0100B2
+fnts_remove:
+T0021de:   MOVE.L    #$000001AC,-(A7)
+T0021e4:   MOVE.L    T010098(PC),-(A7)
+T0021e8:   BRA       T0100B2
+fnts_update:
+T0021ec:   MOVE.L    #$000001B0,-(A7)
+T0021f2:   MOVE.L    T010098(PC),-(A7)
+T0021f6:   BRA       T0100B2
+lbox_ascroll_to:
+T0021fa:   MOVE.L    #$000001B4,-(A7)
+T002200:   MOVE.L    T010098(PC),-(A7)
+T002204:   BRA       T0100B2
+lbox_scroll_to:
+T002208:   MOVE.L    #$000001B8,-(A7)
+T00220e:   MOVE.L    T010098(PC),-(A7)
+T002212:   BRA       T0100B2
+lbox_bscroll_to:
+T002216:   MOVE.L    #$000001BC,-(A7)
+T00221c:   MOVE.L    T010098(PC),-(A7)
+T002220:   BRA       T0100B2
+lbox_cnt_items:
+T002224:   MOVE.L    #$000001C0,-(A7)
+T00222a:   MOVE.L    T010098(PC),-(A7)
+T00222e:   BRA       T0100B2
+lbox_create:
+T002232:   MOVE.L    #$000001C4,-(A7)
+T002238:   MOVE.L    T010098(PC),-(A7)
+T00223c:   BRA       T0100B2
+lbox_delete:
+T002240:   MOVE.L    #$000001C8,-(A7)
+T002246:   MOVE.L    T010098(PC),-(A7)
+T00224a:   BRA       T0100B2
+lbox_do:
+T00224e:   MOVE.L    #$000001CC,-(A7)
+T002254:   MOVE.L    T010098(PC),-(A7)
+T002258:   BRA       T0100B2
+lbox_free_items:
+T00225c:   MOVE.L    #$000001D0,-(A7)
+T002262:   MOVE.L    T010098(PC),-(A7)
+T002266:   BRA       T0100B2
+lbox_free_list:
+T00226a:   MOVE.L    #$000001D4,-(A7)
+T002270:   MOVE.L    T010098(PC),-(A7)
+T002274:   BRA       T0100B2
+lbox_get_afirst:
+T002278:   MOVE.L    #$000001D8,-(A7)
+T00227e:   MOVE.L    T010098(PC),-(A7)
+T002282:   BRA       T0100B2
+lbox_get_first:
+T002286:   MOVE.L    #$000001DC,-(A7)
+T00228c:   MOVE.L    T010098(PC),-(A7)
+T002290:   BRA       T0100B2
+lbox_get_avis:
+T002294:   MOVE.L    #$000001E0,-(A7)
+T00229a:   MOVE.L    T010098(PC),-(A7)
+T00229e:   BRA       T0100B2
+lbox_get_visible:
+T0022a2:   MOVE.L    #$000001E4,-(A7)
+T0022a8:   MOVE.L    T010098(PC),-(A7)
+T0022ac:   BRA       T0100B2
+lbox_get_bentries:
+T0022b0:   MOVE.L    #$000001E8,-(A7)
+T0022b6:   MOVE.L    T010098(PC),-(A7)
+T0022ba:   BRA       T0100B2
+lbox_get_bfirst:
+T0022be:   MOVE.L    #$000001EC,-(A7)
+T0022c4:   MOVE.L    T010098(PC),-(A7)
+T0022c8:   BRA       T0100B2
+lbox_get_idx:
+T0022cc:   MOVE.L    #$000001F0,-(A7)
+T0022d2:   MOVE.L    T010098(PC),-(A7)
+T0022d6:   BRA       T0100B2
+lbox_get_item:
+T0022da:   MOVE.L    #$000001F4,-(A7)
+T0022e0:   MOVE.L    T010098(PC),-(A7)
+T0022e4:   BRA       T0100B2
+lbox_get_items:
+T0022e8:   MOVE.L    #$000001F8,-(A7)
+T0022ee:   MOVE.L    T010098(PC),-(A7)
+T0022f2:   BRA       T0100B2
+lbox_get_slct_idx:
+T0022f6:   MOVE.L    #$000001FC,-(A7)
+T0022fc:   MOVE.L    T010098(PC),-(A7)
+T002300:   BRA       T0100B2
+lbox_get_slct_item:
+T002304:   MOVE.L    #$00000200,-(A7)
+T00230a:   MOVE.L    T010098(PC),-(A7)
+T00230e:   BRA       T0100B2
+lbox_get_tree:
+T002312:   MOVE.L    #$00000204,-(A7)
+T002318:   MOVE.L    T010098(PC),-(A7)
+T00231c:   BRA       T0100B2
+lbox_get_udata:
+T002320:   MOVE.L    #$00000208,-(A7)
+T002326:   MOVE.L    T010098(PC),-(A7)
+T00232a:   BRA       T0100B2
+lbox_set_asldr:
+T00232e:   MOVE.L    #$0000020C,-(A7)
+T002334:   MOVE.L    T010098(PC),-(A7)
+T002338:   BRA       T0100B2
+lbox_set_slider:
+T00233c:   MOVE.L    #$00000210,-(A7)
+T002342:   MOVE.L    T010098(PC),-(A7)
+T002346:   BRA       T0100B2
+lbox_set_bentries:
+T00234a:   MOVE.L    #$00000214,-(A7)
+T002350:   MOVE.L    T010098(PC),-(A7)
+T002354:   BRA       T0100B2
+lbox_set_bsldr:
+T002358:   MOVE.L    #$00000218,-(A7)
+T00235e:   MOVE.L    T010098(PC),-(A7)
+T002362:   BRA       T0100B2
+lbox_set_items:
+T002366:   MOVE.L    #$0000021C,-(A7)
+T00236c:   MOVE.L    T010098(PC),-(A7)
+T002370:   BRA       T0100B2
+lbox_update:
+T002374:   MOVE.L    #$00000220,-(A7)
+T00237a:   MOVE.L    T010098(PC),-(A7)
+T00237e:   BRA       T0100B2
+pdlg_add_printers:
+T002382:   MOVE.L    #$00000224,-(A7)
+T002388:   MOVE.L    T010098(PC),-(A7)
+T00238c:   BRA       T0100B2
+pdlg_add_sub_dialogs:
+T002390:   MOVE.L    #$00000228,-(A7)
+T002396:   MOVE.L    T010098(PC),-(A7)
+T00239a:   BRA       T0100B2
+pdlg_close:
+T00239e:   MOVE.L    #$0000022C,-(A7)
+T0023a4:   MOVE.L    T010098(PC),-(A7)
+T0023a8:   BRA       T0100B2
+pdlg_create:
+T0023ac:   MOVE.L    #$00000230,-(A7)
+T0023b2:   MOVE.L    T010098(PC),-(A7)
+T0023b6:   BRA       T0100B2
+pdlg_delete:
+T0023ba:   MOVE.L    #$00000234,-(A7)
+T0023c0:   MOVE.L    T010098(PC),-(A7)
+T0023c4:   BRA       T0100B2
+pdlg_dflt_settings:
+T0023c8:   MOVE.L    #$00000238,-(A7)
+T0023ce:   MOVE.L    T010098(PC),-(A7)
+T0023d2:   BRA       T0100B2
+pdlg_do:
+T0023d6:   MOVE.L    #$0000023C,-(A7)
+T0023dc:   MOVE.L    T010098(PC),-(A7)
+T0023e0:   BRA       T0100B2
+pdlg_evnt:
+T0023e4:   MOVE.L    #$00000240,-(A7)
+T0023ea:   MOVE.L    T010098(PC),-(A7)
+T0023ee:   BRA       T0100B2
+pdlg_free_settings:
+T0023f2:   MOVE.L    #$00000244,-(A7)
+T0023f8:   MOVE.L    T010098(PC),-(A7)
+T0023fc:   BRA       T0100B2
+pdlg_get_setsize:
+T002400:   MOVE.L    #$00000248,-(A7)
+T002406:   MOVE.L    T010098(PC),-(A7)
+T00240a:   BRA       T0100B2
+pdlg_new_settings:
+T00240e:   MOVE.L    #$0000024C,-(A7)
+T002414:   MOVE.L    T010098(PC),-(A7)
+T002418:   BRA       T0100B2
+pdlg_open:
+T00241c:   MOVE.L    #$00000250,-(A7)
+T002422:   MOVE.L    T010098(PC),-(A7)
+T002426:   BRA       T0100B2
+pdlg_remove_printers:
+T00242a:   MOVE.L    #$00000254,-(A7)
+T002430:   MOVE.L    T010098(PC),-(A7)
+T002434:   BRA       T0100B2
+pdlg_remove_sub_dialogs:
+T002438:   MOVE.L    #$00000258,-(A7)
+T00243e:   MOVE.L    T010098(PC),-(A7)
+T002442:   BRA       T0100B2
+pdlg_update:
+T002446:   MOVE.L    #$0000025C,-(A7)
+T00244c:   MOVE.L    T010098(PC),-(A7)
+T002450:   BRA       T0100B2
+pdlg_use_settings:
+T002454:   MOVE.L    #$00000260,-(A7)
+T00245a:   MOVE.L    T010098(PC),-(A7)
+T00245e:   BRA       T0100B2
+pdlg_validate_settings:
+T002462:   MOVE.L    #$00000264,-(A7)
+T002468:   MOVE.L    T010098(PC),-(A7)
+T00246c:   BRA       T0100B2
+edit_create:
+T002470:   MOVE.L    #$00000268,-(A7)
+T002476:   MOVE.L    T010098(PC),-(A7)
+T00247a:   BRA       T0100B2
+edit_set_buf:
+T00247e:   MOVE.L    #$0000026C,-(A7)
+T002484:   MOVE.L    T010098(PC),-(A7)
+T002488:   BRA       T0100B2
+edit_open:
+T00248c:   MOVE.L    #$00000270,-(A7)
+T002492:   MOVE.L    T010098(PC),-(A7)
+T002496:   BRA       T0100B2
+edit_close:
+T00249a:   MOVE.L    #$00000274,-(A7)
+T0024a0:   MOVE.L    T010098(PC),-(A7)
+T0024a4:   BRA       T0100B2
+edit_delete:
+T0024a8:   MOVE.L    #$00000278,-(A7)
+T0024ae:   MOVE.L    T010098(PC),-(A7)
+T0024b2:   BRA       T0100B2
+edit_cursor:
+T0024b6:   MOVE.L    #$0000027C,-(A7)
+T0024bc:   MOVE.L    T010098(PC),-(A7)
+T0024c0:   BRA       T0100B2
+edit_evnt:
+T0024c4:   MOVE.L    #$00000280,-(A7)
+T0024ca:   MOVE.L    T010098(PC),-(A7)
+T0024ce:   BRA       T0100B2
+edit_get_buf:
+T0024d2:   MOVE.L    #$00000284,-(A7)
+T0024d8:   MOVE.L    T010098(PC),-(A7)
+T0024dc:   BRA       T0100B2
+edit_get_format:
+T0024e0:   MOVE.L    #$00000288,-(A7)
+T0024e6:   MOVE.L    T010098(PC),-(A7)
+T0024ea:   BRA       T0100B2
+edit_get_colour:
+T0024ee:   MOVE.L    #$0000028C,-(A7)
+T0024f4:   MOVE.L    T010098(PC),-(A7)
+T0024f8:   BRA       T0100B2
+edit_get_color:
+T0024fc:   MOVE.L    #$00000290,-(A7)
+T002502:   MOVE.L    T010098(PC),-(A7)
+T002506:   BRA       T0100B2
+edit_get_font:
+T00250a:   MOVE.L    #$00000294,-(A7)
+T002510:   MOVE.L    T010098(PC),-(A7)
+T002514:   BRA       T0100B2
+edit_get_cursor:
+T002518:   MOVE.L    #$00000298,-(A7)
+T00251e:   MOVE.L    T010098(PC),-(A7)
+T002522:   BRA       T0100B2
+edit_get_dirty:
+T002526:   MOVE.L    #$0000029C,-(A7)
+T00252c:   MOVE.L    T010098(PC),-(A7)
+T002530:   BRA       T0100B2
+edit_get_sel:
+T002534:   MOVE.L    #$000002A0,-(A7)
+T00253a:   MOVE.L    T010098(PC),-(A7)
+T00253e:   BRA       T0100B2
+edit_get_scrollinfo:
+T002542:   MOVE.L    #$000002A4,-(A7)
+T002548:   MOVE.L    T010098(PC),-(A7)
+T00254c:   BRA       T0100B2
+edit_set_format:
+T002550:   MOVE.L    #$000002A8,-(A7)
+T002556:   MOVE.L    T010098(PC),-(A7)
+T00255a:   BRA       T0100B2
+edit_set_colour:
+T00255e:   MOVE.L    #$000002AC,-(A7)
+T002564:   MOVE.L    T010098(PC),-(A7)
+T002568:   BRA       T0100B2
+edit_set_color:
+T00256c:   MOVE.L    #$000002B0,-(A7)
+T002572:   MOVE.L    T010098(PC),-(A7)
+T002576:   BRA       T0100B2
+edit_set_font:
+T00257a:   MOVE.L    #$000002B4,-(A7)
+T002580:   MOVE.L    T010098(PC),-(A7)
+T002584:   BRA       T0100B2
+edit_set_cursor:
+T002588:   MOVE.L    #$000002B8,-(A7)
+T00258e:   MOVE.L    T010098(PC),-(A7)
+T002592:   BRA       T0100B2
+edit_resized:
+T002596:   MOVE.L    #$000002BC,-(A7)
+T00259c:   MOVE.L    T010098(PC),-(A7)
+T0025a0:   BRA       T0100B2
+edit_set_dirty:
+T0025a4:   MOVE.L    #$000002C0,-(A7)
+T0025aa:   MOVE.L    T010098(PC),-(A7)
+T0025ae:   BRA       T0100B2
+edit_scroll:
+T0025b2:   MOVE.L    #$000002C4,-(A7)
+T0025b8:   MOVE.L    T010098(PC),-(A7)
+T0025bc:   BRA       T0100B2
+EvntMulti:
+T0025c0:   MOVE.L    #$000002C8,-(A7)
+T0025c6:   MOVE.L    T010098(PC),-(A7)
+T0025ca:   BRA       T0100B2
+form_wbutton:
+T0025ce:   MOVE.L    #$000002CC,-(A7)
+T0025d4:   MOVE.L    T010098(PC),-(A7)
+T0025d8:   BRA       T0100B2
+form_xdial:
+T0025dc:   MOVE.L    #$000002D0,-(A7)
+T0025e2:   MOVE.L    T010098(PC),-(A7)
+T0025e6:   BRA       T0100B2
+form_xdo:
+T0025ea:   MOVE.L    #$000002D4,-(A7)
+T0025f0:   MOVE.L    T010098(PC),-(A7)
+T0025f4:   BRA       T0100B2
+form_xerr:
+T0025f8:   MOVE.L    #$000002D8,-(A7)
+T0025fe:   MOVE.L    T010098(PC),-(A7)
+T002602:   BRA       T0100B2
+_crystal:
+T002606:   MOVE.L    #$000002DC,-(A7)
+T00260c:   MOVE.L    T010098(PC),-(A7)
+T002610:   BRA       T0100B2
+graf_wwatchbox:
+T002614:   MOVE.L    #$000002E0,-(A7)
+T00261a:   MOVE.L    T010098(PC),-(A7)
+T00261e:   BRA       T0100B2
+graf_xhandle:
+T002622:   MOVE.L    #$000002E4,-(A7)
+T002628:   MOVE.L    T010098(PC),-(A7)
+T00262c:   BRA       T0100B2
+wdlg_create:
+T002630:   MOVE.L    #$000002E8,-(A7)
+T002636:   MOVE.L    T010098(PC),-(A7)
+T00263a:   BRA       T0100B2
+wdlg_open:
+T00263e:   MOVE.L    #$000002EC,-(A7)
+T002644:   MOVE.L    T010098(PC),-(A7)
+T002648:   BRA       T0100B2
+wdlg_close:
+T00264c:   MOVE.L    #$000002F0,-(A7)
+T002652:   MOVE.L    T010098(PC),-(A7)
+T002656:   BRA       T0100B2
+wdlg_delete:
+T00265a:   MOVE.L    #$000002F4,-(A7)
+T002660:   MOVE.L    T010098(PC),-(A7)
+T002664:   BRA       T0100B2
+wdlg_get_tree:
+T002668:   MOVE.L    #$000002F8,-(A7)
+T00266e:   MOVE.L    T010098(PC),-(A7)
+T002672:   BRA       T0100B2
+wdlg_get_edit:
+T002676:   MOVE.L    #$000002FC,-(A7)
+T00267c:   MOVE.L    T010098(PC),-(A7)
+T002680:   BRA       T0100B2
+wdlg_get_udata:
+T002684:   MOVE.L    #$00000300,-(A7)
+T00268a:   MOVE.L    T010098(PC),-(A7)
+T00268e:   BRA       T0100B2
+wdlg_get_handle:
+T002692:   MOVE.L    #$00000304,-(A7)
+T002698:   MOVE.L    T010098(PC),-(A7)
+T00269c:   BRA       T0100B2
+wdlg_set_edit:
+T0026a0:   MOVE.L    #$00000308,-(A7)
+T0026a6:   MOVE.L    T010098(PC),-(A7)
+T0026aa:   BRA       T0100B2
+wdlg_set_tree:
+T0026ae:   MOVE.L    #$0000030C,-(A7)
+T0026b4:   MOVE.L    T010098(PC),-(A7)
+T0026b8:   BRA       T0100B2
+wdlg_set_size:
+T0026bc:   MOVE.L    #$00000310,-(A7)
+T0026c2:   MOVE.L    T010098(PC),-(A7)
+T0026c6:   BRA       T0100B2
+wdlg_set_iconify:
+T0026ca:   MOVE.L    #$00000314,-(A7)
+T0026d0:   MOVE.L    T010098(PC),-(A7)
+T0026d4:   BRA       T0100B2
+wdlg_set_uniconify:
+T0026d8:   MOVE.L    #$00000318,-(A7)
+T0026de:   MOVE.L    T010098(PC),-(A7)
+T0026e2:   BRA       T0100B2
+wdlg_evnt:
+T0026e6:   MOVE.L    #$0000031C,-(A7)
+T0026ec:   MOVE.L    T010098(PC),-(A7)
+T0026f0:   BRA       T0100B2
+wdlg_redraw:
+T0026f4:   MOVE.L    #$00000320,-(A7)
+T0026fa:   MOVE.L    T010098(PC),-(A7)
+T0026fe:   BRA       T0100B2
+wind_draw:
+T002702:   MOVE.L    #$00000324,-(A7)
+T002708:   MOVE.L    T010098(PC),-(A7)
+T00270c:   BRA       T0100B2
+scrp_clear:
+T002710:   MOVE.L    #$00000328,-(A7)
+T002716:   MOVE.L    T010098(PC),-(A7)
+T00271a:   BRA       T0100B2
+objc_xedit:
+T00271e:   MOVE.L    #$0000032C,-(A7)
+T002724:   MOVE.L    T010098(PC),-(A7)
+T002728:   BRA       T0100B2
+graf_rubbbox:
+T00272c:   MOVE.L    #$00000330,-(A7)
+T002732:   MOVE.L    T010098(PC),-(A7)
+T002736:   BRA       T0100B2
+Akt_getKeyTab:
+T00273a:   MOVE.L    #$00000000,-(A7)
+T002740:   MOVE.L    T01009E(PC),-(A7)
+T002744:   BRA       T0100B2
+Akt_getRelease:
+T002748:   MOVE.L    #$00000004,-(A7)
+T00274e:   MOVE.L    T01009E(PC),-(A7)
+T002752:   BRA       T0100B2
+Akt_getEuro:
+T002756:   MOVE.L    #$00000008,-(A7)
+T00275c:   MOVE.L    T01009E(PC),-(A7)
+T002760:   BRA       T0100B2
+Akt_getExpMaxNr:
+T002764:   MOVE.L    #$0000000C,-(A7)
+T00276a:   MOVE.L    T01009E(PC),-(A7)
+T00276e:   BRA       T0100B2
+Akt_getImpMaxNr:
+T002772:   MOVE.L    #$00000010,-(A7)
+T002778:   MOVE.L    T01009E(PC),-(A7)
+T00277c:   BRA       T0100B2
+Akt_getExpNameFromNr:
+T002780:   MOVE.L    #$00000014,-(A7)
+T002786:   MOVE.L    T01009E(PC),-(A7)
+T00278a:   BRA       T0100B2
+Akt_getImpNameFromNr:
+T00278e:   MOVE.L    #$00000018,-(A7)
+T002794:   MOVE.L    T01009E(PC),-(A7)
+T002798:   BRA       T0100B2
+Akt_getExpShortNameFromNr:
+T00279c:   MOVE.L    #$0000001C,-(A7)
+T0027a2:   MOVE.L    T01009E(PC),-(A7)
+T0027a6:   BRA       T0100B2
+Akt_getImpShortNameFromNr:
+T0027aa:   MOVE.L    #$00000020,-(A7)
+T0027b0:   MOVE.L    T01009E(PC),-(A7)
+T0027b4:   BRA       T0100B2
+Akt_getExpNrFromId:
+T0027b8:   MOVE.L    #$00000024,-(A7)
+T0027be:   MOVE.L    T01009E(PC),-(A7)
+T0027c2:   BRA       T0100B2
+Akt_getImpNrFromId:
+T0027c6:   MOVE.L    #$00000028,-(A7)
+T0027cc:   MOVE.L    T01009E(PC),-(A7)
+T0027d0:   BRA       T0100B2
+Akt_getExpIdFromNr:
+T0027d4:   MOVE.L    #$0000002C,-(A7)
+T0027da:   MOVE.L    T01009E(PC),-(A7)
+T0027de:   BRA       T0100B2
+Akt_getImpIdFromNr:
+T0027e2:   MOVE.L    #$00000030,-(A7)
+T0027e8:   MOVE.L    T01009E(PC),-(A7)
+T0027ec:   BRA       T0100B2
+Akt_getExpNrFromName:
+T0027f0:   MOVE.L    #$00000034,-(A7)
+T0027f6:   MOVE.L    T01009E(PC),-(A7)
+T0027fa:   BRA       T0100B2
+Akt_getImpNrFromName:
+T0027fe:   MOVE.L    #$00000038,-(A7)
+T002804:   MOVE.L    T01009E(PC),-(A7)
+T002808:   BRA       T0100B2
+Akt_CharAtari2X:
+T00280c:   MOVE.L    #$0000003C,-(A7)
+T002812:   MOVE.L    T01009E(PC),-(A7)
+T002816:   BRA       T0100B2
+Akt_CharX2Atari:
+T00281a:   MOVE.L    #$00000040,-(A7)
+T002820:   MOVE.L    T01009E(PC),-(A7)
+T002824:   BRA       T0100B2
+Akt_BlockAtari2X:
+T002828:   MOVE.L    #$00000044,-(A7)
+T00282e:   MOVE.L    T01009E(PC),-(A7)
+T002832:   BRA       T0100B2
+Akt_BlockX2Atari:
+T002836:   MOVE.L    #$00000048,-(A7)
+T00283c:   MOVE.L    T01009E(PC),-(A7)
+T002840:   BRA       T0100B2
+Akt_StringAtari2X:
+T002844:   MOVE.L    #$0000004C,-(A7)
+T00284a:   MOVE.L    T01009E(PC),-(A7)
+T00284e:   BRA       T0100B2
+Akt_StringX2Atari:
+T002852:   MOVE.L    #$00000050,-(A7)
+T002858:   MOVE.L    T01009E(PC),-(A7)
+T00285c:   BRA       T0100B2
+Akt_CharX2Unicode:
+T002860:   MOVE.L    #$00000054,-(A7)
+T002866:   MOVE.L    T01009E(PC),-(A7)
+T00286a:   BRA       T0100B2
+Akt_CharUnicode2X:
+T00286e:   MOVE.L    #$00000058,-(A7)
+T002874:   MOVE.L    T01009E(PC),-(A7)
+T002878:   BRA       T0100B2
+Akt_BlockX2Unicode:
+T00287c:   MOVE.L    #$0000005C,-(A7)
+T002882:   MOVE.L    T01009E(PC),-(A7)
+T002886:   BRA       T0100B2
+Akt_BlockUnicode2X:
+T00288a:   MOVE.L    #$00000060,-(A7)
+T002890:   MOVE.L    T01009E(PC),-(A7)
+T002894:   BRA       T0100B2
+Akt_StringX2Unicode:
+T002898:   MOVE.L    #$00000064,-(A7)
+T00289e:   MOVE.L    T01009E(PC),-(A7)
+T0028a2:   BRA       T0100B2
+Akt_popExpName:
+T0028a6:   MOVE.L    #$00000068,-(A7)
+T0028ac:   MOVE.L    T01009E(PC),-(A7)
+T0028b0:   BRA       T0100B2
+Akt_popImpName:
+T0028b4:   MOVE.L    #$0000006C,-(A7)
+T0028ba:   MOVE.L    T01009E(PC),-(A7)
+T0028be:   BRA       T0100B2
+Akt_chooseExpNr:
+T0028c2:   MOVE.L    #$00000070,-(A7)
+T0028c8:   MOVE.L    T01009E(PC),-(A7)
+T0028cc:   BRA       T0100B2
+Akt_chooseImpNr:
+T0028d0:   MOVE.L    #$00000074,-(A7)
+T0028d6:   MOVE.L    T01009E(PC),-(A7)
+T0028da:   BRA       T0100B2
+Akt_getExpMinNr:
+T0028de:   MOVE.L    #$00000078,-(A7)
+T0028e4:   MOVE.L    T01009E(PC),-(A7)
+T0028e8:   BRA       T0100B2
+Akt_getImpMinNr:
+T0028ec:   MOVE.L    #$0000007C,-(A7)
+T0028f2:   MOVE.L    T01009E(PC),-(A7)
+T0028f6:   BRA       T0100B2
+Akt_BlockXUtf2Unicode:
+T0028fa:   MOVE.L    #$00000080,-(A7)
+T002900:   MOVE.L    T01009E(PC),-(A7)
+T002904:   BRA       T0100B2
+Akt_BlockUnicode2XUtf:
+T002908:   MOVE.L    #$00000084,-(A7)
+T00290e:   MOVE.L    T01009E(PC),-(A7)
+T002912:   BRA       T0100B2
+Akt_StringXUtf2Unicode:
+T002916:   MOVE.L    #$00000088,-(A7)
+T00291c:   MOVE.L    T01009E(PC),-(A7)
+T002920:   BRA       T0100B2
+Akt_BlockXUtf2U2XUtf:
+T002924:   MOVE.L    #$0000008C,-(A7)
+T00292a:   MOVE.L    T01009E(PC),-(A7)
+T00292e:   BRA       T0100B2
+Akt_BlockXUtf2XUtf:
+T002932:   MOVE.L    #$00000090,-(A7)
+T002938:   MOVE.L    T01009E(PC),-(A7)
+T00293c:   BRA       T0100B2
+Akt_StringXUtf2U2XUtf:
+T002940:   MOVE.L    #$00000094,-(A7)
+T002946:   MOVE.L    T01009E(PC),-(A7)
+T00294a:   BRA       T0100B2
+Akt_StringXUtf2XUtf:
+T00294e:   MOVE.L    #$00000098,-(A7)
+T002954:   MOVE.L    T01009E(PC),-(A7)
+T002958:   BRA       T0100B2
+mt_appl_init:
+T00295c:   MOVE.L    #$00000000,-(A7)
+T002962:   MOVE.L    T0100A4(PC),-(A7)
+T002966:   BRA       T0100B2
+mt_appl_read:
+T00296a:   MOVE.L    #$00000004,-(A7)
+T002970:   MOVE.L    T0100A4(PC),-(A7)
+T002974:   BRA       T0100B2
+mt_appl_write:
+T002978:   MOVE.L    #$00000008,-(A7)
+T00297e:   MOVE.L    T0100A4(PC),-(A7)
+T002982:   BRA       T0100B2
+mt_appl_find:
+T002986:   MOVE.L    #$0000000C,-(A7)
+T00298c:   MOVE.L    T0100A4(PC),-(A7)
+T002990:   BRA       T0100B2
+mt_appl_search:
+T002994:   MOVE.L    #$00000010,-(A7)
+T00299a:   MOVE.L    T0100A4(PC),-(A7)
+T00299e:   BRA       T0100B2
+mt_appl_tplay:
+T0029a2:   MOVE.L    #$00000014,-(A7)
+T0029a8:   MOVE.L    T0100A4(PC),-(A7)
+T0029ac:   BRA       T0100B2
+mt_appl_trecord:
+T0029b0:   MOVE.L    #$00000018,-(A7)
+T0029b6:   MOVE.L    T0100A4(PC),-(A7)
+T0029ba:   BRA       T0100B2
+mt_appl_yield:
+T0029be:   MOVE.L    #$0000001C,-(A7)
+T0029c4:   MOVE.L    T0100A4(PC),-(A7)
+T0029c8:   BRA       T0100B2
+mt_appl_exit:
+T0029cc:   MOVE.L    #$00000020,-(A7)
+T0029d2:   MOVE.L    T0100A4(PC),-(A7)
+T0029d6:   BRA       T0100B2
+mt_appl_getinfo:
+T0029da:   MOVE.L    #$00000024,-(A7)
+T0029e0:   MOVE.L    T0100A4(PC),-(A7)
+T0029e4:   BRA       T0100B2
+mt_appl_control:
+T0029e8:   MOVE.L    #$00000028,-(A7)
+T0029ee:   MOVE.L    T0100A4(PC),-(A7)
+T0029f2:   BRA       T0100B2
+mt_evnt_keybd:
+T0029f6:   MOVE.L    #$00000334,-(A7)
+T0029fc:   MOVE.L    T010098(PC),-(A7)
+T002a00:   BRA       T0100B2
+mt_evnt_button:
+T002a04:   MOVE.L    #$0000002C,-(A7)
+T002a0a:   MOVE.L    T0100A4(PC),-(A7)
+T002a0e:   BRA       T0100B2
+mt_evnt_mouse:
+T002a12:   MOVE.L    #$00000030,-(A7)
+T002a18:   MOVE.L    T0100A4(PC),-(A7)
+T002a1c:   BRA       T0100B2
+mt_evnt_mesag:
+T002a20:   MOVE.L    #$00000034,-(A7)
+T002a26:   MOVE.L    T0100A4(PC),-(A7)
+T002a2a:   BRA       T0100B2
+mt_evnt_timer:
+T002a2e:   MOVE.L    #$00000038,-(A7)
+T002a34:   MOVE.L    T0100A4(PC),-(A7)
+T002a38:   BRA       T0100B2
+mt_evnt_event:
+T002a3c:   MOVE.L    #$0000003C,-(A7)
+T002a42:   MOVE.L    T0100A4(PC),-(A7)
+T002a46:   BRA       T0100B2
+mt_evnt_multi:
+T002a4a:   MOVE.L    #$00000040,-(A7)
+T002a50:   MOVE.L    T0100A4(PC),-(A7)
+T002a54:   BRA       T0100B2
+mt_evnt_dclick:
+T002a58:   MOVE.L    #$00000044,-(A7)
+T002a5e:   MOVE.L    T0100A4(PC),-(A7)
+T002a62:   BRA       T0100B2
+mt_menu_bar:
+T002a66:   MOVE.L    #$00000048,-(A7)
+T002a6c:   MOVE.L    T0100A4(PC),-(A7)
+T002a70:   BRA       T0100B2
+mt_menu_icheck:
+T002a74:   MOVE.L    #$0000004C,-(A7)
+T002a7a:   MOVE.L    T0100A4(PC),-(A7)
+T002a7e:   BRA       T0100B2
+mt_menu_ienable:
+T002a82:   MOVE.L    #$00000050,-(A7)
+T002a88:   MOVE.L    T0100A4(PC),-(A7)
+T002a8c:   BRA       T0100B2
+mt_menu_tnormal:
+T002a90:   MOVE.L    #$00000054,-(A7)
+T002a96:   MOVE.L    T0100A4(PC),-(A7)
+T002a9a:   BRA       T0100B2
+mt_menu_text:
+T002a9e:   MOVE.L    #$00000058,-(A7)
+T002aa4:   MOVE.L    T0100A4(PC),-(A7)
+T002aa8:   BRA       T0100B2
+mt_menu_register:
+T002aac:   MOVE.L    #$0000005C,-(A7)
+T002ab2:   MOVE.L    T0100A4(PC),-(A7)
+T002ab6:   BRA       T0100B2
+mt_menu_unregister:
+T002aba:   MOVE.L    #$00000060,-(A7)
+T002ac0:   MOVE.L    T0100A4(PC),-(A7)
+T002ac4:   BRA       T0100B2
+mt_menu_click:
+T002ac8:   MOVE.L    #$00000064,-(A7)
+T002ace:   MOVE.L    T0100A4(PC),-(A7)
+T002ad2:   BRA       T0100B2
+mt_menu_attach:
+T002ad6:   MOVE.L    #$00000068,-(A7)
+T002adc:   MOVE.L    T0100A4(PC),-(A7)
+T002ae0:   BRA       T0100B2
+mt_menu_istart:
+T002ae4:   MOVE.L    #$0000006C,-(A7)
+T002aea:   MOVE.L    T0100A4(PC),-(A7)
+T002aee:   BRA       T0100B2
+mt_menu_popup:
+T002af2:   MOVE.L    #$00000070,-(A7)
+T002af8:   MOVE.L    T0100A4(PC),-(A7)
+T002afc:   BRA       T0100B2
+mt_menu_settings:
+T002b00:   MOVE.L    #$00000074,-(A7)
+T002b06:   MOVE.L    T0100A4(PC),-(A7)
+T002b0a:   BRA       T0100B2
+mt_objc_add:
+T002b0e:   MOVE.L    #$00000078,-(A7)
+T002b14:   MOVE.L    T0100A4(PC),-(A7)
+T002b18:   BRA       T0100B2
+mt_objc_delete:
+T002b1c:   MOVE.L    #$0000007C,-(A7)
+T002b22:   MOVE.L    T0100A4(PC),-(A7)
+T002b26:   BRA       T0100B2
+mt_objc_draw:
+T002b2a:   MOVE.L    #$00000338,-(A7)
+T002b30:   MOVE.L    T010098(PC),-(A7)
+T002b34:   BRA       T0100B2
+mt_objc_find:
+T002b38:   MOVE.L    #$00000080,-(A7)
+T002b3e:   MOVE.L    T0100A4(PC),-(A7)
+T002b42:   BRA       T0100B2
+mt_objc_offset:
+T002b46:   MOVE.L    #$00000084,-(A7)
+T002b4c:   MOVE.L    T0100A4(PC),-(A7)
+T002b50:   BRA       T0100B2
+mt_objc_order:
+T002b54:   MOVE.L    #$00000088,-(A7)
+T002b5a:   MOVE.L    T0100A4(PC),-(A7)
+T002b5e:   BRA       T0100B2
+mt_objc_edit:
+T002b62:   MOVE.L    #$0000008C,-(A7)
+T002b68:   MOVE.L    T0100A4(PC),-(A7)
+T002b6c:   BRA       T0100B2
+mt_objc_change:
+T002b70:   MOVE.L    #$00000090,-(A7)
+T002b76:   MOVE.L    T0100A4(PC),-(A7)
+T002b7a:   BRA       T0100B2
+mt_objc_sysvar:
+T002b7e:   MOVE.L    #$00000094,-(A7)
+T002b84:   MOVE.L    T0100A4(PC),-(A7)
+T002b88:   BRA       T0100B2
+mt_form_do:
+T002b8c:   MOVE.L    #$00000098,-(A7)
+T002b92:   MOVE.L    T0100A4(PC),-(A7)
+T002b96:   BRA       T0100B2
+mt_form_dial:
+T002b9a:   MOVE.L    #$0000009C,-(A7)
+T002ba0:   MOVE.L    T0100A4(PC),-(A7)
+T002ba4:   BRA       T0100B2
+mt_form_alert:
+T002ba8:   MOVE.L    #$000000A0,-(A7)
+T002bae:   MOVE.L    T0100A4(PC),-(A7)
+T002bb2:   BRA       T0100B2
+mt_form_error:
+T002bb6:   MOVE.L    #$000000A4,-(A7)
+T002bbc:   MOVE.L    T0100A4(PC),-(A7)
+T002bc0:   BRA       T0100B2
+mt_form_center:
+T002bc4:   MOVE.L    #$000000A8,-(A7)
+T002bca:   MOVE.L    T0100A4(PC),-(A7)
+T002bce:   BRA       T0100B2
+mt_form_keybd:
+T002bd2:   MOVE.L    #$000000AC,-(A7)
+T002bd8:   MOVE.L    T0100A4(PC),-(A7)
+T002bdc:   BRA       T0100B2
+mt_form_button:
+T002be0:   MOVE.L    #$000000B0,-(A7)
+T002be6:   MOVE.L    T0100A4(PC),-(A7)
+T002bea:   BRA       T0100B2
+mt_graf_rubbox:
+T002bee:   MOVE.L    #$000000B4,-(A7)
+T002bf4:   MOVE.L    T0100A4(PC),-(A7)
+T002bf8:   BRA       T0100B2
+mt_graf_rubberbox:
+T002bfc:   MOVE.L    #$000000B8,-(A7)
+T002c02:   MOVE.L    T0100A4(PC),-(A7)
+T002c06:   BRA       T0100B2
+mt_graf_dragbox:
+T002c0a:   MOVE.L    #$000000BC,-(A7)
+T002c10:   MOVE.L    T0100A4(PC),-(A7)
+T002c14:   BRA       T0100B2
+mt_graf_mbox:
+T002c18:   MOVE.L    #$000000C0,-(A7)
+T002c1e:   MOVE.L    T0100A4(PC),-(A7)
+T002c22:   BRA       T0100B2
+mt_graf_movebox:
+T002c26:   MOVE.L    #$000000C4,-(A7)
+T002c2c:   MOVE.L    T0100A4(PC),-(A7)
+T002c30:   BRA       T0100B2
+mt_graf_growbox:
+T002c34:   MOVE.L    #$000000C8,-(A7)
+T002c3a:   MOVE.L    T0100A4(PC),-(A7)
+T002c3e:   BRA       T0100B2
+mt_graf_shrinkbox:
+T002c42:   MOVE.L    #$000000CC,-(A7)
+T002c48:   MOVE.L    T0100A4(PC),-(A7)
+T002c4c:   BRA       T0100B2
+mt_graf_watchbox:
+T002c50:   MOVE.L    #$000000D0,-(A7)
+T002c56:   MOVE.L    T0100A4(PC),-(A7)
+T002c5a:   BRA       T0100B2
+mt_graf_slidebox:
+T002c5e:   MOVE.L    #$000000D4,-(A7)
+T002c64:   MOVE.L    T0100A4(PC),-(A7)
+T002c68:   BRA       T0100B2
+mt_graf_handle:
+T002c6c:   MOVE.L    #$000000D8,-(A7)
+T002c72:   MOVE.L    T0100A4(PC),-(A7)
+T002c76:   BRA       T0100B2
+mt_graf_mouse:
+T002c7a:   MOVE.L    #$000000DC,-(A7)
+T002c80:   MOVE.L    T0100A4(PC),-(A7)
+T002c84:   BRA       T0100B2
+mt_graf_mkstate:
+T002c88:   MOVE.L    #$000000E0,-(A7)
+T002c8e:   MOVE.L    T0100A4(PC),-(A7)
+T002c92:   BRA       T0100B2
+mt_graf_multirubber:
+T002c96:   MOVE.L    #$000000E4,-(A7)
+T002c9c:   MOVE.L    T0100A4(PC),-(A7)
+T002ca0:   BRA       T0100B2
+mt_scrp_read:
+T002ca4:   MOVE.L    #$000000E8,-(A7)
+T002caa:   MOVE.L    T0100A4(PC),-(A7)
+T002cae:   BRA       T0100B2
+mt_scrp_write:
+T002cb2:   MOVE.L    #$000000EC,-(A7)
+T002cb8:   MOVE.L    T0100A4(PC),-(A7)
+T002cbc:   BRA       T0100B2
+mt_fsel_input:
+T002cc0:   MOVE.L    #$000000F0,-(A7)
+T002cc6:   MOVE.L    T0100A4(PC),-(A7)
+T002cca:   BRA       T0100B2
+mt_fsel_exinput:
+T002cce:   MOVE.L    #$000000F4,-(A7)
+T002cd4:   MOVE.L    T0100A4(PC),-(A7)
+T002cd8:   BRA       T0100B2
+mt_fsel_boxinput:
+T002cdc:   MOVE.L    #$000000F8,-(A7)
+T002ce2:   MOVE.L    T0100A4(PC),-(A7)
+T002ce6:   BRA       T0100B2
+mt_fslx_open:
+T002cea:   MOVE.L    #$000000FC,-(A7)
+T002cf0:   MOVE.L    T0100A4(PC),-(A7)
+T002cf4:   BRA       T0100B2
+mt_fslx_close:
+T002cf8:   MOVE.L    #$00000100,-(A7)
+T002cfe:   MOVE.L    T0100A4(PC),-(A7)
+T002d02:   BRA       T0100B2
+mt_fslx_getnxtfile:
+T002d06:   MOVE.L    #$00000104,-(A7)
+T002d0c:   MOVE.L    T0100A4(PC),-(A7)
+T002d10:   BRA       T0100B2
+mt_fslx_evnt:
+T002d14:   MOVE.L    #$00000108,-(A7)
+T002d1a:   MOVE.L    T0100A4(PC),-(A7)
+T002d1e:   BRA       T0100B2
+mt_fslx_do:
+T002d22:   MOVE.L    #$0000010C,-(A7)
+T002d28:   MOVE.L    T0100A4(PC),-(A7)
+T002d2c:   BRA       T0100B2
+mt_fslx_set_flags:
+T002d30:   MOVE.L    #$00000110,-(A7)
+T002d36:   MOVE.L    T0100A4(PC),-(A7)
+T002d3a:   BRA       T0100B2
+mt_wind_create:
+T002d3e:   MOVE.L    #$0000033C,-(A7)
+T002d44:   MOVE.L    T010098(PC),-(A7)
+T002d48:   BRA       T0100B2
+mt_wind_open:
+T002d4c:   MOVE.L    #$00000114,-(A7)
+T002d52:   MOVE.L    T0100A4(PC),-(A7)
+T002d56:   BRA       T0100B2
+mt_wind_close:
+T002d5a:   MOVE.L    #$00000118,-(A7)
+T002d60:   MOVE.L    T0100A4(PC),-(A7)
+T002d64:   BRA       T0100B2
+mt_wind_delete:
+T002d68:   MOVE.L    #$0000011C,-(A7)
+T002d6e:   MOVE.L    T0100A4(PC),-(A7)
+T002d72:   BRA       T0100B2
+mt_wind_get:
+T002d76:   MOVE.L    #$00000120,-(A7)
+T002d7c:   MOVE.L    T0100A4(PC),-(A7)
+T002d80:   BRA       T0100B2
+mt_wind_getQSB:
+T002d84:   MOVE.L    #$00000124,-(A7)
+T002d8a:   MOVE.L    T0100A4(PC),-(A7)
+T002d8e:   BRA       T0100B2
+mt_wind_set:
+T002d92:   MOVE.L    #$00000128,-(A7)
+T002d98:   MOVE.L    T0100A4(PC),-(A7)
+T002d9c:   BRA       T0100B2
+mt_wind_find:
+T002da0:   MOVE.L    #$0000012C,-(A7)
+T002da6:   MOVE.L    T0100A4(PC),-(A7)
+T002daa:   BRA       T0100B2
+mt_wind_update:
+T002dae:   MOVE.L    #$00000130,-(A7)
+T002db4:   MOVE.L    T0100A4(PC),-(A7)
+T002db8:   BRA       T0100B2
+mt_wind_calc:
+T002dbc:   MOVE.L    #$00000134,-(A7)
+T002dc2:   MOVE.L    T0100A4(PC),-(A7)
+T002dc6:   BRA       T0100B2
+mt_wind_new:
+T002dca:   MOVE.L    #$00000138,-(A7)
+T002dd0:   MOVE.L    T0100A4(PC),-(A7)
+T002dd4:   BRA       T0100B2
+mt_rsrc_load:
+T002dd8:   MOVE.L    #$0000013C,-(A7)
+T002dde:   MOVE.L    T0100A4(PC),-(A7)
+T002de2:   BRA       T0100B2
+mt_rsrc_free:
+T002de6:   MOVE.L    #$00000140,-(A7)
+T002dec:   MOVE.L    T0100A4(PC),-(A7)
+T002df0:   BRA       T0100B2
+mt_rsrc_gaddr:
+T002df4:   MOVE.L    #$00000144,-(A7)
+T002dfa:   MOVE.L    T0100A4(PC),-(A7)
+T002dfe:   BRA       T0100B2
+mt_rsrc_saddr:
+T002e02:   MOVE.L    #$00000148,-(A7)
+T002e08:   MOVE.L    T0100A4(PC),-(A7)
+T002e0c:   BRA       T0100B2
+mt_rsrc_obfix:
+T002e10:   MOVE.L    #$0000014C,-(A7)
+T002e16:   MOVE.L    T0100A4(PC),-(A7)
+T002e1a:   BRA       T0100B2
+mt_rsrc_rcfix:
+T002e1e:   MOVE.L    #$00000150,-(A7)
+T002e24:   MOVE.L    T0100A4(PC),-(A7)
+T002e28:   BRA       T0100B2
+mt_shel_read:
+T002e2c:   MOVE.L    #$00000154,-(A7)
+T002e32:   MOVE.L    T0100A4(PC),-(A7)
+T002e36:   BRA       T0100B2
+mt_shel_write:
+T002e3a:   MOVE.L    #$00000158,-(A7)
+T002e40:   MOVE.L    T0100A4(PC),-(A7)
+T002e44:   BRA       T0100B2
+mt_shel_get:
+T002e48:   MOVE.L    #$0000015C,-(A7)
+T002e4e:   MOVE.L    T0100A4(PC),-(A7)
+T002e52:   BRA       T0100B2
+mt_shel_put:
+T002e56:   MOVE.L    #$00000160,-(A7)
+T002e5c:   MOVE.L    T0100A4(PC),-(A7)
+T002e60:   BRA       T0100B2
+mt_shel_find:
+T002e64:   MOVE.L    #$00000164,-(A7)
+T002e6a:   MOVE.L    T0100A4(PC),-(A7)
+T002e6e:   BRA       T0100B2
+mt_shel_envrn:
+T002e72:   MOVE.L    #$00000168,-(A7)
+T002e78:   MOVE.L    T0100A4(PC),-(A7)
+T002e7c:   BRA       T0100B2
+mt_shel_help:
+T002e80:   MOVE.L    #$0000016C,-(A7)
+T002e86:   MOVE.L    T0100A4(PC),-(A7)
+T002e8a:   BRA       T0100B2
+mt_fnts_add:
+T002e8e:   MOVE.L    #$00000170,-(A7)
+T002e94:   MOVE.L    T0100A4(PC),-(A7)
+T002e98:   BRA       T0100B2
+mt_fnts_close:
+T002e9c:   MOVE.L    #$00000174,-(A7)
+T002ea2:   MOVE.L    T0100A4(PC),-(A7)
+T002ea6:   BRA       T0100B2
+mt_fnts_create:
+T002eaa:   MOVE.L    #$00000178,-(A7)
+T002eb0:   MOVE.L    T0100A4(PC),-(A7)
+T002eb4:   BRA       T0100B2
+mt_fnts_delete:
+T002eb8:   MOVE.L    #$0000017C,-(A7)
+T002ebe:   MOVE.L    T0100A4(PC),-(A7)
+T002ec2:   BRA       T0100B2
+mt_fnts_do:
+T002ec6:   MOVE.L    #$00000180,-(A7)
+T002ecc:   MOVE.L    T0100A4(PC),-(A7)
+T002ed0:   BRA       T0100B2
+mt_fnts_evnt:
+T002ed4:   MOVE.L    #$00000184,-(A7)
+T002eda:   MOVE.L    T0100A4(PC),-(A7)
+T002ede:   BRA       T0100B2
+mt_fnts_get_info:
+T002ee2:   MOVE.L    #$00000188,-(A7)
+T002ee8:   MOVE.L    T0100A4(PC),-(A7)
+T002eec:   BRA       T0100B2
+mt_fnts_get_name:
+T002ef0:   MOVE.L    #$0000018C,-(A7)
+T002ef6:   MOVE.L    T0100A4(PC),-(A7)
+T002efa:   BRA       T0100B2
+mt_fnts_get_no_styles:
+T002efe:   MOVE.L    #$00000190,-(A7)
+T002f04:   MOVE.L    T0100A4(PC),-(A7)
+T002f08:   BRA       T0100B2
+mt_fnts_get_style:
+T002f0c:   MOVE.L    #$00000194,-(A7)
+T002f12:   MOVE.L    T0100A4(PC),-(A7)
+T002f16:   BRA       T0100B2
+mt_fnts_open:
+T002f1a:   MOVE.L    #$00000198,-(A7)
+T002f20:   MOVE.L    T0100A4(PC),-(A7)
+T002f24:   BRA       T0100B2
+mt_fnts_remove:
+T002f28:   MOVE.L    #$0000019C,-(A7)
+T002f2e:   MOVE.L    T0100A4(PC),-(A7)
+T002f32:   BRA       T0100B2
+mt_fnts_update:
+T002f36:   MOVE.L    #$000001A0,-(A7)
+T002f3c:   MOVE.L    T0100A4(PC),-(A7)
+T002f40:   BRA       T0100B2
+mt_lbox_ascroll_to:
+T002f44:   MOVE.L    #$000001A4,-(A7)
+T002f4a:   MOVE.L    T0100A4(PC),-(A7)
+T002f4e:   BRA       T0100B2
+mt_lbox_scroll_to:
+T002f52:   MOVE.L    #$000001A8,-(A7)
+T002f58:   MOVE.L    T0100A4(PC),-(A7)
+T002f5c:   BRA       T0100B2
+mt_lbox_bscroll_to:
+T002f60:   MOVE.L    #$000001AC,-(A7)
+T002f66:   MOVE.L    T0100A4(PC),-(A7)
+T002f6a:   BRA       T0100B2
+mt_lbox_cnt_items:
+T002f6e:   MOVE.L    #$000001B0,-(A7)
+T002f74:   MOVE.L    T0100A4(PC),-(A7)
+T002f78:   BRA       T0100B2
+mt_lbox_create:
+T002f7c:   MOVE.L    #$000001B4,-(A7)
+T002f82:   MOVE.L    T0100A4(PC),-(A7)
+T002f86:   BRA       T0100B2
+mt_lbox_delete:
+T002f8a:   MOVE.L    #$000001B8,-(A7)
+T002f90:   MOVE.L    T0100A4(PC),-(A7)
+T002f94:   BRA       T0100B2
+mt_lbox_do:
+T002f98:   MOVE.L    #$000001BC,-(A7)
+T002f9e:   MOVE.L    T0100A4(PC),-(A7)
+T002fa2:   BRA       T0100B2
+mt_lbox_free_items:
+T002fa6:   MOVE.L    #$000001C0,-(A7)
+T002fac:   MOVE.L    T0100A4(PC),-(A7)
+T002fb0:   BRA       T0100B2
+mt_lbox_free_list:
+T002fb4:   MOVE.L    #$000001C4,-(A7)
+T002fba:   MOVE.L    T0100A4(PC),-(A7)
+T002fbe:   BRA       T0100B2
+mt_lbox_get_afirst:
+T002fc2:   MOVE.L    #$000001C8,-(A7)
+T002fc8:   MOVE.L    T0100A4(PC),-(A7)
+T002fcc:   BRA       T0100B2
+mt_lbox_get_first:
+T002fd0:   MOVE.L    #$000001CC,-(A7)
+T002fd6:   MOVE.L    T0100A4(PC),-(A7)
+T002fda:   BRA       T0100B2
+mt_lbox_get_avis:
+T002fde:   MOVE.L    #$000001D0,-(A7)
+T002fe4:   MOVE.L    T0100A4(PC),-(A7)
+T002fe8:   BRA       T0100B2
+mt_lbox_get_visible:
+T002fec:   MOVE.L    #$000001D4,-(A7)
+T002ff2:   MOVE.L    T0100A4(PC),-(A7)
+T002ff6:   BRA       T0100B2
+mt_lbox_get_bentries:
+T002ffa:   MOVE.L    #$000001D8,-(A7)
+T003000:   MOVE.L    T0100A4(PC),-(A7)
+T003004:   BRA       T0100B2
+mt_lbox_get_bfirst:
+T003008:   MOVE.L    #$000001DC,-(A7)
+T00300e:   MOVE.L    T0100A4(PC),-(A7)
+T003012:   BRA       T0100B2
+mt_lbox_get_idx:
+T003016:   MOVE.L    #$000001E0,-(A7)
+T00301c:   MOVE.L    T0100A4(PC),-(A7)
+T003020:   BRA       T0100B2
+mt_lbox_get_item:
+T003024:   MOVE.L    #$000001E4,-(A7)
+T00302a:   MOVE.L    T0100A4(PC),-(A7)
+T00302e:   BRA       T0100B2
+mt_lbox_get_items:
+T003032:   MOVE.L    #$000001E8,-(A7)
+T003038:   MOVE.L    T0100A4(PC),-(A7)
+T00303c:   BRA       T0100B2
+mt_lbox_get_slct_idx:
+T003040:   MOVE.L    #$000001EC,-(A7)
+T003046:   MOVE.L    T0100A4(PC),-(A7)
+T00304a:   BRA       T0100B2
+mt_lbox_get_slct_item:
+T00304e:   MOVE.L    #$000001F0,-(A7)
+T003054:   MOVE.L    T0100A4(PC),-(A7)
+T003058:   BRA       T0100B2
+mt_lbox_get_tree:
+T00305c:   MOVE.L    #$000001F4,-(A7)
+T003062:   MOVE.L    T0100A4(PC),-(A7)
+T003066:   BRA       T0100B2
+mt_lbox_get_udata:
+T00306a:   MOVE.L    #$000001F8,-(A7)
+T003070:   MOVE.L    T0100A4(PC),-(A7)
+T003074:   BRA       T0100B2
+mt_lbox_set_asldr:
+T003078:   MOVE.L    #$000001FC,-(A7)
+T00307e:   MOVE.L    T0100A4(PC),-(A7)
+T003082:   BRA       T0100B2
+mt_lbox_set_slider:
+T003086:   MOVE.L    #$00000200,-(A7)
+T00308c:   MOVE.L    T0100A4(PC),-(A7)
+T003090:   BRA       T0100B2
+mt_lbox_set_bentries:
+T003094:   MOVE.L    #$00000204,-(A7)
+T00309a:   MOVE.L    T0100A4(PC),-(A7)
+T00309e:   BRA       T0100B2
+mt_lbox_set_bsldr:
+T0030a2:   MOVE.L    #$00000208,-(A7)
+T0030a8:   MOVE.L    T0100A4(PC),-(A7)
+T0030ac:   BRA       T0100B2
+mt_lbox_set_items:
+T0030b0:   MOVE.L    #$0000020C,-(A7)
+T0030b6:   MOVE.L    T0100A4(PC),-(A7)
+T0030ba:   BRA       T0100B2
+mt_lbox_update:
+T0030be:   MOVE.L    #$00000210,-(A7)
+T0030c4:   MOVE.L    T0100A4(PC),-(A7)
+T0030c8:   BRA       T0100B2
+mt_pdlg_add_printers:
+T0030cc:   MOVE.L    #$00000214,-(A7)
+T0030d2:   MOVE.L    T0100A4(PC),-(A7)
+T0030d6:   BRA       T0100B2
+mt_pdlg_add_sub_dialogs:
+T0030da:   MOVE.L    #$00000218,-(A7)
+T0030e0:   MOVE.L    T0100A4(PC),-(A7)
+T0030e4:   BRA       T0100B2
+mt_pdlg_close:
+T0030e8:   MOVE.L    #$0000021C,-(A7)
+T0030ee:   MOVE.L    T0100A4(PC),-(A7)
+T0030f2:   BRA       T0100B2
+mt_pdlg_create:
+T0030f6:   MOVE.L    #$00000220,-(A7)
+T0030fc:   MOVE.L    T0100A4(PC),-(A7)
+T003100:   BRA       T0100B2
+mt_pdlg_delete:
+T003104:   MOVE.L    #$00000224,-(A7)
+T00310a:   MOVE.L    T0100A4(PC),-(A7)
+T00310e:   BRA       T0100B2
+mt_pdlg_dflt_settings:
+T003112:   MOVE.L    #$00000228,-(A7)
+T003118:   MOVE.L    T0100A4(PC),-(A7)
+T00311c:   BRA       T0100B2
+mt_pdlg_do:
+T003120:   MOVE.L    #$0000022C,-(A7)
+T003126:   MOVE.L    T0100A4(PC),-(A7)
+T00312a:   BRA       T0100B2
+mt_pdlg_evnt:
+T00312e:   MOVE.L    #$00000230,-(A7)
+T003134:   MOVE.L    T0100A4(PC),-(A7)
+T003138:   BRA       T0100B2
+mt_pdlg_free_settings:
+T00313c:   MOVE.L    #$00000234,-(A7)
+T003142:   MOVE.L    T0100A4(PC),-(A7)
+T003146:   BRA       T0100B2
+mt_pdlg_get_setsize:
+T00314a:   MOVE.L    #$00000238,-(A7)
+T003150:   MOVE.L    T0100A4(PC),-(A7)
+T003154:   BRA       T0100B2
+mt_pdlg_new_settings:
+T003158:   MOVE.L    #$0000023C,-(A7)
+T00315e:   MOVE.L    T0100A4(PC),-(A7)
+T003162:   BRA       T0100B2
+mt_pdlg_open:
+T003166:   MOVE.L    #$00000240,-(A7)
+T00316c:   MOVE.L    T0100A4(PC),-(A7)
+T003170:   BRA       T0100B2
+mt_pdlg_remove_printers:
+T003174:   MOVE.L    #$00000244,-(A7)
+T00317a:   MOVE.L    T0100A4(PC),-(A7)
+T00317e:   BRA       T0100B2
+mt_pdlg_remove_sub_dialogs:
+T003182:   MOVE.L    #$00000248,-(A7)
+T003188:   MOVE.L    T0100A4(PC),-(A7)
+T00318c:   BRA       T0100B2
+mt_pdlg_update:
+T003190:   MOVE.L    #$0000024C,-(A7)
+T003196:   MOVE.L    T0100A4(PC),-(A7)
+T00319a:   BRA       T0100B2
+mt_pdlg_use_settings:
+T00319e:   MOVE.L    #$00000250,-(A7)
+T0031a4:   MOVE.L    T0100A4(PC),-(A7)
+T0031a8:   BRA       T0100B2
+mt_pdlg_validate_settings:
+T0031ac:   MOVE.L    #$00000254,-(A7)
+T0031b2:   MOVE.L    T0100A4(PC),-(A7)
+T0031b6:   BRA       T0100B2
+mt_edit_create:
+T0031ba:   MOVE.L    #$00000258,-(A7)
+T0031c0:   MOVE.L    T0100A4(PC),-(A7)
+T0031c4:   BRA       T0100B2
+mt_edit_set_buf:
+T0031c8:   MOVE.L    #$0000025C,-(A7)
+T0031ce:   MOVE.L    T0100A4(PC),-(A7)
+T0031d2:   BRA       T0100B2
+mt_edit_open:
+T0031d6:   MOVE.L    #$00000260,-(A7)
+T0031dc:   MOVE.L    T0100A4(PC),-(A7)
+T0031e0:   BRA       T0100B2
+mt_edit_close:
+T0031e4:   MOVE.L    #$00000264,-(A7)
+T0031ea:   MOVE.L    T0100A4(PC),-(A7)
+T0031ee:   BRA       T0100B2
+mt_edit_delete:
+T0031f2:   MOVE.L    #$00000268,-(A7)
+T0031f8:   MOVE.L    T0100A4(PC),-(A7)
+T0031fc:   BRA       T0100B2
+mt_edit_cursor:
+T003200:   MOVE.L    #$0000026C,-(A7)
+T003206:   MOVE.L    T0100A4(PC),-(A7)
+T00320a:   BRA       T0100B2
+mt_edit_evnt:
+T00320e:   MOVE.L    #$00000270,-(A7)
+T003214:   MOVE.L    T0100A4(PC),-(A7)
+T003218:   BRA       T0100B2
+mt_edit_get_buf:
+T00321c:   MOVE.L    #$00000274,-(A7)
+T003222:   MOVE.L    T0100A4(PC),-(A7)
+T003226:   BRA       T0100B2
+mt_edit_get_format:
+T00322a:   MOVE.L    #$00000278,-(A7)
+T003230:   MOVE.L    T0100A4(PC),-(A7)
+T003234:   BRA       T0100B2
+mt_edit_get_colour:
+T003238:   MOVE.L    #$0000027C,-(A7)
+T00323e:   MOVE.L    T0100A4(PC),-(A7)
+T003242:   BRA       T0100B2
+mt_edit_get_color:
+T003246:   MOVE.L    #$00000280,-(A7)
+T00324c:   MOVE.L    T0100A4(PC),-(A7)
+T003250:   BRA       T0100B2
+mt_edit_get_font:
+T003254:   MOVE.L    #$00000284,-(A7)
+T00325a:   MOVE.L    T0100A4(PC),-(A7)
+T00325e:   BRA       T0100B2
+mt_edit_get_cursor:
+T003262:   MOVE.L    #$00000288,-(A7)
+T003268:   MOVE.L    T0100A4(PC),-(A7)
+T00326c:   BRA       T0100B2
+mt_edit_get_dirty:
+T003270:   MOVE.L    #$0000028C,-(A7)
+T003276:   MOVE.L    T0100A4(PC),-(A7)
+T00327a:   BRA       T0100B2
+mt_edit_get_sel:
+T00327e:   MOVE.L    #$00000290,-(A7)
+T003284:   MOVE.L    T0100A4(PC),-(A7)
+T003288:   BRA       T0100B2
+mt_edit_get_scrollinfo:
+T00328c:   MOVE.L    #$00000294,-(A7)
+T003292:   MOVE.L    T0100A4(PC),-(A7)
+T003296:   BRA       T0100B2
+mt_edit_set_format:
+T00329a:   MOVE.L    #$00000298,-(A7)
+T0032a0:   MOVE.L    T0100A4(PC),-(A7)
+T0032a4:   BRA       T0100B2
+mt_edit_set_colour:
+T0032a8:   MOVE.L    #$0000029C,-(A7)
+T0032ae:   MOVE.L    T0100A4(PC),-(A7)
+T0032b2:   BRA       T0100B2
+mt_edit_set_color:
+T0032b6:   MOVE.L    #$000002A0,-(A7)
+T0032bc:   MOVE.L    T0100A4(PC),-(A7)
+T0032c0:   BRA       T0100B2
+mt_edit_set_font:
+T0032c4:   MOVE.L    #$000002A4,-(A7)
+T0032ca:   MOVE.L    T0100A4(PC),-(A7)
+T0032ce:   BRA       T0100B2
+mt_edit_set_cursor:
+T0032d2:   MOVE.L    #$000002A8,-(A7)
+T0032d8:   MOVE.L    T0100A4(PC),-(A7)
+T0032dc:   BRA       T0100B2
+mt_edit_resized:
+T0032e0:   MOVE.L    #$000002AC,-(A7)
+T0032e6:   MOVE.L    T0100A4(PC),-(A7)
+T0032ea:   BRA       T0100B2
+mt_edit_set_dirty:
+T0032ee:   MOVE.L    #$000002B0,-(A7)
+T0032f4:   MOVE.L    T0100A4(PC),-(A7)
+T0032f8:   BRA       T0100B2
+mt_edit_scroll:
+T0032fc:   MOVE.L    #$000002B4,-(A7)
+T003302:   MOVE.L    T0100A4(PC),-(A7)
+T003306:   BRA       T0100B2
+mt_EvntMulti:
+T00330a:   MOVE.L    #$000002B8,-(A7)
+T003310:   MOVE.L    T0100A4(PC),-(A7)
+T003314:   BRA       T0100B2
+mt_form_wbutton:
+T003318:   MOVE.L    #$000002BC,-(A7)
+T00331e:   MOVE.L    T0100A4(PC),-(A7)
+T003322:   BRA       T0100B2
+mt_form_xdial:
+T003326:   MOVE.L    #$000002C0,-(A7)
+T00332c:   MOVE.L    T0100A4(PC),-(A7)
+T003330:   BRA       T0100B2
+mt_form_xdo:
+T003334:   MOVE.L    #$000002C4,-(A7)
+T00333a:   MOVE.L    T0100A4(PC),-(A7)
+T00333e:   BRA       T0100B2
+mt_form_xerr:
+T003342:   MOVE.L    #$000002C8,-(A7)
+T003348:   MOVE.L    T0100A4(PC),-(A7)
+T00334c:   BRA       T0100B2
+mt_graf_wwatchbox:
+T003350:   MOVE.L    #$000002CC,-(A7)
+T003356:   MOVE.L    T0100A4(PC),-(A7)
+T00335a:   BRA       T0100B2
+mt_graf_xhandle:
+T00335e:   MOVE.L    #$000002D0,-(A7)
+T003364:   MOVE.L    T0100A4(PC),-(A7)
+T003368:   BRA       T0100B2
+mt_wdlg_create:
+T00336c:   MOVE.L    #$000002D4,-(A7)
+T003372:   MOVE.L    T0100A4(PC),-(A7)
+T003376:   BRA       T0100B2
+mt_wdlg_open:
+T00337a:   MOVE.L    #$000002D8,-(A7)
+T003380:   MOVE.L    T0100A4(PC),-(A7)
+T003384:   BRA       T0100B2
+mt_wdlg_close:
+T003388:   MOVE.L    #$000002DC,-(A7)
+T00338e:   MOVE.L    T0100A4(PC),-(A7)
+T003392:   BRA       T0100B2
+mt_wdlg_delete:
+T003396:   MOVE.L    #$000002E0,-(A7)
+T00339c:   MOVE.L    T0100A4(PC),-(A7)
+T0033a0:   BRA       T0100B2
+mt_wdlg_get_tree:
+T0033a4:   MOVE.L    #$000002E4,-(A7)
+T0033aa:   MOVE.L    T0100A4(PC),-(A7)
+T0033ae:   BRA       T0100B2
+mt_wdlg_get_edit:
+T0033b2:   MOVE.L    #$000002E8,-(A7)
+T0033b8:   MOVE.L    T0100A4(PC),-(A7)
+T0033bc:   BRA       T0100B2
+mt_wdlg_get_udata:
+T0033c0:   MOVE.L    #$000002EC,-(A7)
+T0033c6:   MOVE.L    T0100A4(PC),-(A7)
+T0033ca:   BRA       T0100B2
+mt_wdlg_get_handle:
+T0033ce:   MOVE.L    #$000002F0,-(A7)
+T0033d4:   MOVE.L    T0100A4(PC),-(A7)
+T0033d8:   BRA       T0100B2
+mt_wdlg_set_edit:
+T0033dc:   MOVE.L    #$000002F4,-(A7)
+T0033e2:   MOVE.L    T0100A4(PC),-(A7)
+T0033e6:   BRA       T0100B2
+mt_wdlg_set_tree:
+T0033ea:   MOVE.L    #$000002F8,-(A7)
+T0033f0:   MOVE.L    T0100A4(PC),-(A7)
+T0033f4:   BRA       T0100B2
+mt_wdlg_set_size:
+T0033f8:   MOVE.L    #$000002FC,-(A7)
+T0033fe:   MOVE.L    T0100A4(PC),-(A7)
+T003402:   BRA       T0100B2
+mt_wdlg_set_iconify:
+T003406:   MOVE.L    #$00000300,-(A7)
+T00340c:   MOVE.L    T0100A4(PC),-(A7)
+T003410:   BRA       T0100B2
+mt_wdlg_set_uniconify:
+T003414:   MOVE.L    #$00000304,-(A7)
+T00341a:   MOVE.L    T0100A4(PC),-(A7)
+T00341e:   BRA       T0100B2
+mt_wdlg_evnt:
+T003422:   MOVE.L    #$00000308,-(A7)
+T003428:   MOVE.L    T0100A4(PC),-(A7)
+T00342c:   BRA       T0100B2
+mt_wdlg_redraw:
+T003430:   MOVE.L    #$0000030C,-(A7)
+T003436:   MOVE.L    T0100A4(PC),-(A7)
+T00343a:   BRA       T0100B2
+mt_wind_draw:
+T00343e:   MOVE.L    #$00000310,-(A7)
+T003444:   MOVE.L    T0100A4(PC),-(A7)
+T003448:   BRA       T0100B2
+mt_scrp_clear:
+T00344c:   MOVE.L    #$00000314,-(A7)
+T003452:   MOVE.L    T0100A4(PC),-(A7)
+T003456:   BRA       T0100B2
+mt_objc_xedit:
+T00345a:   MOVE.L    #$00000318,-(A7)
+T003460:   MOVE.L    T0100A4(PC),-(A7)
+T003464:   BRA       T0100B2
+mt_graf_rubbbox:
+T003468:   MOVE.L    #$0000031C,-(A7)
+T00346e:   MOVE.L    T0100A4(PC),-(A7)
+T003472:   BRA       T0100B2
+
+          .ENDMOD
+
+
+
+          .DATA   
+
+          .MODULE LOCAL
+
+errno::
+D000000:   .DC.W   $0000
+_FilSysVec::
+D000002:   .DC.W   $0000, $0000
+
+          .ENDMOD
+
+
+
+          .BSS    
+
+
+          .OFFSET 
+
+
+          .END
