@@ -3,7 +3,7 @@ Akt_getKeyTab:
 [0005c904] 662a                      bne.s      $0005C930
 [0005c906] 41f9 000e 146a            lea.l      kt,a0
 [0005c90c] 203c 4b45 5954            move.l     #$4B455954,d0
-[0005c912] 4eb9 0008 0ec4            jsr        Ash_getc
+[0005c912] 4eb9 0008 0ec4            jsr        Ash_getcookie
 [0005c918] 4a40                      tst.w      d0
 [0005c91a] 670e                      beq.s      $0005C92A
 [0005c91c] 2079 000e 146a            movea.l    kt,a0
@@ -348,7 +348,7 @@ Akt_getEuro:
 [0005cc5e] 6020                      bra.s      $0005CC80
 [0005cc60] 41d7                      lea.l      (a7),a0
 [0005cc62] 203c 4555 524f            move.l     #$4555524F,d0
-[0005cc68] 4eb9 0008 0ec4            jsr        Ash_getc
+[0005cc68] 4eb9 0008 0ec4            jsr        Ash_getcookie
 [0005cc6e] 4a40                      tst.w      d0
 [0005cc70] 6706                      beq.s      $0005CC78
 [0005cc72] 2017                      move.l     (a7),d0

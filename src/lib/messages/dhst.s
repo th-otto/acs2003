@@ -120,7 +120,7 @@ Aev_DhstAdd:
 [000603fc] 2f49 001a                 move.l     a1,26(a7)
 [00060400] 41d7                      lea.l      (a7),a0
 [00060402] 203c 4448 5354            move.l     #$44485354,d0
-[00060408] 4eb9 0008 0ec4            jsr        Ash_getc
+[00060408] 4eb9 0008 0ec4            jsr        Ash_getcookie
 [0006040e] 4a40                      tst.w      d0
 [00060410] 670c                      beq.s      $0006041E
 [00060412] 70ff                      moveq.l    #-1,d0

@@ -2797,7 +2797,7 @@ Aed_font:
 [0003ef72] 6600 0084                 bne        $0003EFF8
 [0003ef76] 41ef 0008                 lea.l      8(a7),a0
 [0003ef7a] 203c 7846 534c            move.l     #$7846534C,d0
-[0003ef80] 4eb9 0008 0ec4            jsr        Ash_getc
+[0003ef80] 4eb9 0008 0ec4            jsr        Ash_getcookie
 [0003ef86] 4a40                      tst.w      d0
 [0003ef88] 676e                      beq.s      $0003EFF8
 [0003ef8a] 3f6b 017c 0002            move.w     380(a3),2(a7)

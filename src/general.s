@@ -1622,7 +1622,7 @@ ACSinit:
 [0001579a] 70ff                      moveq.l    #-1,d0
 [0001579c] 6000 00ca                 bra        $00015868
 [000157a0] 91c8                      suba.l     a0,a0
-[000157a2] 2279 0008 6164            movea.l    $00086164,a1
+[000157a2] 2279 0008 6164            movea.l    WI_COMMON+8,a1
 [000157a8] 4e91                      jsr        (a1)
 [000157aa] 23c8 000e 76ca            move.l     a0,base_window
 [000157b0] 2039 000e 76ca            move.l     base_window,d0

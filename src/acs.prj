@@ -1,6 +1,17 @@
 acs.app
-
+;
+; Not nice to use absolute paths here,
+; but we must ensure that we use the current versions
+; of acs header files, not the ones that are already installed in
+; the default directory.
+; For the same reason, we have to add the default include directory
+; here.
+; Important: make sure to *not* use any include directory
+; in your shell directory settings,
+; because that would be looked up first.
+;
 .C[-IC:\src\acs\include]
+.C[-IC:\pc\include]
 
 .C[ -A- ]		; no strict ANSI
 .C[ -C- ]		; no nested comments
@@ -22,10 +33,12 @@ acs.app
 ;.C[ -M- ]		; String Merging
 ;.C[ -R- ]		; Register Variables
 
+.S[-U]
+
 =
 stupargv.s
 
-acsbase.c
+acsbase.s
 palette.c
 ebdehave.c
 general.c
@@ -204,5 +217,11 @@ aes\purec\pdlg_pc.c
 aes\purec\wdlg_pc.c
 aes\purec\edit_pc.c
 
+tos\bios.s
+tos\xbios.s
+tos\gemdos.s
+tos\mintnet.s
+tos\pamsnet.s
+tos\tos_util.c
 
 pcstdlib.lib

@@ -5324,7 +5324,7 @@ _init_alert:
 [0005a4f0] 6000 0106                 bra        $0005A5F8
 [0005a4f4] 206f 000a                 movea.l    10(a7),a0
 [0005a4f8] 0068 0020 0056            ori.w      #$0020,86(a0)
-[0005a4fe] 4eb9 0008 0f6c            jsr        Ash_gett
+[0005a4fe] 4eb9 0008 0f6c            jsr        Ash_gettimer
 [0005a504] 23c0 0011 3aea            move.l     d0,timer1
 [0005a50a] 2039 0011 3aea            move.l     timer1,d0
 [0005a510] 90b9 0011 3aee            sub.l      timer2,d0
@@ -5556,7 +5556,7 @@ J45:
 [0005a858] 0268 ff7f 0140            andi.w     #$FF7F,320(a0)
 [0005a85e] 206f 003a                 movea.l    58(a7),a0
 [0005a862] 20bc 0000 0001            move.l     #$00000001,(a0)
-[0005a868] 4eb9 0008 0f6c            jsr        Ash_gett
+[0005a868] 4eb9 0008 0f6c            jsr        Ash_gettimer
 [0005a86e] 23c0 0011 3aee            move.l     d0,timer2
 [0005a874] 23c0 0011 3aea            move.l     d0,timer1
 [0005a87a] 206f 003a                 movea.l    58(a7),a0

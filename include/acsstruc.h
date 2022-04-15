@@ -212,8 +212,6 @@ typedef struct
 	INT16 file_buffer;
 } UCfgInfo;
 
-typedef void *UConfig;
-
 /******************************************************************************/
 
 /* Description start */

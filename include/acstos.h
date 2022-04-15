@@ -1,10 +1,10 @@
 /******************************************************************************/
-/*																										*/
+/*                                                                            */
 /*          Eine handoptimierte Bibliothek fÅr Pure-C und GNU-C               */
-/*																										*/
-/*          Die BIOS-, XBIOS- & GEMDOS-Funktionen - Headerdatei					*/
-/*																										*/
-/*	(c) 1999-2003 by Martin ElsÑsser									1 Tab = 3 Spaces	*/
+/*                                                                            */
+/*          Die BIOS-, XBIOS- & GEMDOS-Funktionen - Headerdatei               */
+/*                                                                            */
+/* (c) 1999-2003 by Martin ElsÑsser                         1 Tab = 3 Spaces  */
 /******************************************************************************/
 
 #ifndef __ACSTOS__
@@ -15,7 +15,7 @@
 #endif
 
 #ifndef __ACSTYPE__
-	#include <acstype.h>
+   #include <acstype.h>
 #endif
 
 /******************************************************************************/
@@ -25,162 +25,162 @@ extern "C" {
 #endif
 
 /******************************************************************************/
-/*																										*/
-/* Die Konstanten & Definitionen																*/
-/*																										*/
+/*                                                                            */
+/* Die Konstanten & Definitionen                                              */
+/*                                                                            */
 /******************************************************************************/
 
 /* Die Prototypen der TOS-Funktionen werden "verziert", */
 /* damit GNU-C keine eigenstÑndigen Funktionen erzeugt, */
 /* sondern echte inline-Funktionen verwendet... ;-)     */
 #ifndef __GNUC__
-	#define TOSFKT
+   #define TOSFKT
 #else
-	#define TOSFKT static
+   #define TOSFKT static
 #endif
 
 /******************************************************************************/
 
 /* Die TOS-Fehlernummern */
-#define E_OK		0					/* success, no error							*/
+#define E_OK      0              /* success, no error                   */
 
 /* BIOS errors */
-#define ERROR		-1					/* generic error								*/
-#define EDRVNR		-2					/* drive not ready							*/
-#define EUNCMD		-3					/* unknown command							*/
-#define E_CRC		-4					/* crc error									*/
-#define EBADRQ		-5					/* bad request									*/
-#define E_SEEK		-6					/* seek error									*/
-#define EMEDIA		-7					/* unknown media								*/
-#define ESECNF		-8					/* sector not found							*/
-#define EPAPER		-9					/* out of paper								*/
-#define EWRITF		-10				/* write fault									*/
-#define EREADF		-11				/* read fault									*/
-#define EGENRL		-12				/* general error								*/
-#define EWRPRO		-13				/* device write protected					*/
-#define E_CHNG		-14				/* media change detected					*/
-#define EUNDEV		-15				/* unknown device								*/
-#define EBADSF		-16				/* bad sectors on format					*/
-#define EOTHER		-17				/* insert other disk request				*/
+#define ERROR     -1             /* generic error                       */
+#define EDRVNR    -2             /* drive not ready                     */
+#define EUNCMD    -3             /* unknown command                     */
+#define E_CRC     -4             /* crc error                           */
+#define EBADRQ    -5             /* bad request                         */
+#define E_SEEK    -6             /* seek error                          */
+#define EMEDIA    -7             /* unknown media                       */
+#define ESECNF    -8             /* sector not found                    */
+#define EPAPER    -9             /* out of paper                        */
+#define EWRITF    -10            /* write fault                         */
+#define EREADF    -11            /* read fault                          */
+#define EGENRL    -12            /* general error                       */
+#define EWRPRO    -13            /* device write protected              */
+#define E_CHNG    -14            /* media change detected               */
+#define EUNDEV    -15            /* unknown device                      */
+#define EBADSF    -16            /* bad sectors on format               */
+#define EOTHER    -17            /* insert other disk request           */
 
 /* GEMDOS errors */
-#define EINVFN		-32				/* invalid function							*/
-#define EFILNF		-33				/* file not found								*/
-#define EPTHNF		-34				/* path not found								*/
-#define ENHNDL		-35				/* no more handles							*/
-#define EACCDN		-36				/* access denied								*/
-#define EIHNDL		-37				/* invalid handle								*/
-#define ENSMEM		-39				/* insufficient memory						*/
-#define EIMBA		-40				/* invalid memory block address			*/
-#define EDRIVE		-46				/* invalid drive specification			*/
-#define EXDEV		-48				/* cross device rename						*/
-#define ENSAME		-48				/* MV between two different drives		*/
-#define ENMFIL		-49				/* no more files (from fsnext)			*/
-#define ELOCKED	-58				/* record is locked already				*/
-#define ENSLOCK	-59				/* invalid lock removal request			*/
-#define ERANGE		-64				/* range error									*/
-#define EINTRN		-65				/* internal error								*/
-#define EPLFMT		-66				/* invalid program load format			*/
-#define EGSBF		-67				/* memory block growth failure			*/
-#define EBREAK		-68				/* user break (^C)							*/
-#define EXCPT		-69				/* 68000- exception ("bombs")				*/
-#define EPTHOV		-70				/* path overflow        MAG!X				*/
-#define ELOOP		-80				/* too many symbolic links					*/
+#define EINVFN    -32            /* invalid function                    */
+#define EFILNF    -33            /* file not found                      */
+#define EPTHNF    -34            /* path not found                      */
+#define ENHNDL    -35            /* no more handles                     */
+#define EACCDN    -36            /* access denied                       */
+#define EIHNDL    -37            /* invalid handle                      */
+#define ENSMEM    -39            /* insufficient memory                 */
+#define EIMBA     -40            /* invalid memory block address        */
+#define EDRIVE    -46            /* invalid drive specification         */
+#define EXDEV     -48            /* cross device rename                 */
+#define ENSAME    -48            /* MV between two different drives     */
+#define ENMFIL    -49            /* no more files (from fsnext)         */
+#define ELOCKED   -58            /* record is locked already            */
+#define ENSLOCK   -59            /* invalid lock removal request        */
+#define ERANGE    -64            /* range error                         */
+#define EINTRN    -65            /* internal error                      */
+#define EPLFMT    -66            /* invalid program load format         */
+#define EGSBF     -67            /* memory block growth failure         */
+#define EBREAK    -68            /* user break (^C)                     */
+#define EXCPT     -69            /* 68000- exception ("bombs")          */
+#define EPTHOV    -70            /* path overflow        MAG!X          */
+#define ELOOP     -80            /* too many symbolic links             */
 
 /* Eigentlich kein Fehler, sondern nur ein Hinweis an den Kernel: */
-#define EMOUNT		-200				/* "Mount Point may have been crossed"	*/
+#define EMOUNT    -200           /* "Mount Point may have been crossed" */
 
-#define ENOEXEC		EPLFMT
-#define ENAMETOOLONG	ERANGE		/* a filename component is too long */
+#define ENOEXEC      EPLFMT
+#define ENAMETOOLONG ERANGE      /* a filename component is too long */
 
 /******************************************************************************/
 
 /* Mode fÅr Mxalloc */
-#define MONLYST				0x00
-#define MONLYTT				0x01
-#define MEGALST				0x02
-#define MEGALTT				0x03
-#define MPRIVATE				0x10
-#define MGLOBAL				0x20
+#define MONLYST            0x00
+#define MONLYTT            0x01
+#define MEGALST            0x02
+#define MEGALTT            0x03
+#define MPRIVATE           0x10
+#define MGLOBAL            0x20
 
 /******************************************************************************/
 
 /* Konstanten fÅr 'mode' der Struktur XATTR */
-#define S_IFMT				0170000       /* mask to select file type */
-#define S_IFCHR			0020000       /* BIOS special file        */
-#define S_IFDIR			0040000       /* directory file           */
-#define S_IFREG			0100000       /* regular file             */
-#define S_IFIFO			0120000       /* FIFO                     */
-#define S_IMEM 			0140000       /* memory region or process */
-#define S_IFLNK			0160000       /* symbolic link            */
+#define S_IFMT          0170000       /* mask to select file type */
+#define S_IFCHR         0020000       /* BIOS special file        */
+#define S_IFDIR         0040000       /* directory file           */
+#define S_IFREG         0100000       /* regular file             */
+#define S_IFIFO         0120000       /* FIFO                     */
+#define S_IMEM          0140000       /* memory region or process */
+#define S_IFLNK         0160000       /* symbolic link            */
 
 /* special bits: setuid, setgid, sticky bit */
-#define S_ISUID			04000
-#define S_ISGID			02000
-#define S_ISVTX			01000
+#define S_ISUID         04000
+#define S_ISGID         02000
+#define S_ISVTX         01000
 
 /* file access modes for user, group, and other*/
-#define S_IRUSR			0400
-#define S_IWUSR			0200
-#define S_IXUSR			0100
-#define S_IRGRP			0040
-#define S_IWGRP			0020
-#define S_IXGRP			0010
-#define S_IROTH			0004
-#define S_IWOTH			0002
-#define S_IXOTH			0001
-#define DEFAULT_DIRMODE	(0777)
-#define DEFAULT_MODE		(0666)
+#define S_IRUSR         0400
+#define S_IWUSR         0200
+#define S_IXUSR         0100
+#define S_IRGRP         0040
+#define S_IWGRP         0020
+#define S_IXGRP         0010
+#define S_IROTH         0004
+#define S_IWOTH         0002
+#define S_IXOTH         0001
+#define DEFAULT_DIRMODE (0777)
+#define DEFAULT_MODE    (0666)
 
 /******************************************************************************/
 
 /* Modus fÅr Ssystem */
-#define S_INQUIRE 		 -1
-#define S_OSNAME			  0
-#define S_OSXNAME			  1
-#define S_OSVERSION		  2
-#define S_OSHEADER		  3
-#define S_OSBUILDDATE	  4
-#define S_OSBUILDTIME	  5
-#define S_OSCOMPILE		  6
-#define S_OSFEATURES		  7
-#define S_GETCOOKIE		  8
-#define S_SETCOOKIE		  9
-#define S_GETLVAL			 10
-#define S_GETWVAL			 11
-#define S_GETBVAL			 12
-#define S_SETLVAL			 13
-#define S_SETWVAL			 14
-#define S_SETBVAL			 15
-#define S_SECLEVEL		 16
-#define S_RUNLEVEL		 17	/* currently disabled, reserved */
-#define S_TSLICE			 18
-#define S_FASTLOAD		 19
-#define S_FORCEFASTLOAD	 S_FASTLOAD
-#define S_SYNCTIME		 20	/* reserved, use Dcntl */
-#define S_BLOCKCACHE		 21
-#define S_FLUSHCACHE		 22
-#define S_CTRLCACHE		 23
-#define S_CLOCKUTC		100
-#define S_CLOCKMODE		S_CLOCK_UTC
-#define S_TIOCMGET  		0x54f8 /* reserved for MiNT-Lib */
+#define S_INQUIRE        -1
+#define S_OSNAME          0
+#define S_OSXNAME         1
+#define S_OSVERSION       2
+#define S_OSHEADER        3
+#define S_OSBUILDDATE     4
+#define S_OSBUILDTIME     5
+#define S_OSCOMPILE       6
+#define S_OSFEATURES      7
+#define S_GETCOOKIE       8
+#define S_SETCOOKIE       9
+#define S_GETLVAL        10
+#define S_GETWVAL        11
+#define S_GETBVAL        12
+#define S_SETLVAL        13
+#define S_SETWVAL        14
+#define S_SETBVAL        15
+#define S_SECLEVEL       16
+#define S_RUNLEVEL       17   /* currently disabled, reserved */
+#define S_TSLICE         18
+#define S_FASTLOAD       19
+#define S_FORCEFASTLOAD  S_FASTLOAD
+#define S_SYNCTIME       20   /* reserved, use Dcntl */
+#define S_BLOCKCACHE     21
+#define S_FLUSHCACHE     22
+#define S_CTRLCACHE      23
+#define S_CLOCKUTC      100
+#define S_CLOCKMODE     S_CLOCK_UTC
+#define S_TIOCMGET      0x54f8 /* reserved for MiNT-Lib */
 
 /* experimental - need feedback additional informations about the kernel */
-/* reserved 900 - 999																	 */
-#define S_KNAME			900	/* kernel name - arg1 pointer to a buffer of arg2 len */
-#define S_CNAME			910	/* compiler name - arg1 pointer to a buffer of arg2 len */
-#define S_CVERSION		911	/* compiler version - arg1 pointer to a buffer of arg2 len */
-#define S_CDEFINES		912	/* compiler definitions - arg1 pointer to a buffer of arg2 len */
-#define S_COPTIM			913	/* compiler flags - arg1 pointer to a buffer of arg2 len */
+/* reserved 900 - 999                                                    */
+#define S_KNAME         900   /* kernel name - arg1 pointer to a buffer of arg2 len */
+#define S_CNAME         910   /* compiler name - arg1 pointer to a buffer of arg2 len */
+#define S_CVERSION      911   /* compiler version - arg1 pointer to a buffer of arg2 len */
+#define S_CDEFINES      912   /* compiler definitions - arg1 pointer to a buffer of arg2 len */
+#define S_COPTIM        913   /* compiler flags - arg1 pointer to a buffer of arg2 len */
 
 /* Debug Section (reserved 1000 - 1999) */
-#define S_DEBUGLEVEL		1000	/* debug level */
-#define S_DEBUGDEVICE	1001	/* BIOS device number */
+#define S_DEBUGLEVEL    1000  /* debug level */
+#define S_DEBUGDEVICE   1001  /* BIOS device number */
 
 /******************************************************************************/
 
-#define FEAT_MP	1	/* memory protection enabled */
-#define FEAT_VM	2	/* virtual memory manager enabled */
+#define FEAT_MP   1  /* memory protection enabled */
+#define FEAT_VM   2  /* virtual memory manager enabled */
 
 /******************************************************************************/
 
@@ -195,18 +195,18 @@ extern "C" {
 
 /* Bezeichnungen aus dem Profibuch */
 #ifndef FA_RDONLY
-	#define FA_RDONLY			FA_READONLY
+   #define FA_RDONLY       FA_READONLY
 #endif
 #ifndef FA_LABEL
-	#define FA_LABEL			FA_VOLUME
+   #define FA_LABEL        FA_VOLUME
 #endif
 #ifndef FA_DIREC
-	#define FA_DIREC			FA_SUBDIR
+   #define FA_DIREC        FA_SUBDIR
 #endif
 #ifndef FA_ARCH
-	#define FA_ARCH			FA_ARCHIVE
+   #define FA_ARCH         FA_ARCHIVE
 #endif
-#define FA_ATTRIB				(FA_SUMDIR|FA_READONLY|FA_HIDDEN|FA_SYSTEM)
+#define FA_ATTRIB          (FA_SUMDIR|FA_READONLY|FA_HIDDEN|FA_SYSTEM)
 
 /******************************************************************************/
 
@@ -320,31 +320,31 @@ extern "C" {
 /******************************************************************************/
 
 /* Codes used with Cursconf() */
-#define CURS_HIDE			0
-#define CURS_SHOW			1
-#define CURS_BLINK		2
-#define CURS_NOBLINK		3
-#define CURS_SETRATE		4
-#define CURS_GETRATE		5
+#define CURS_HIDE       0
+#define CURS_SHOW       1
+#define CURS_BLINK      2
+#define CURS_NOBLINK    3
+#define CURS_SETRATE    4
+#define CURS_GETRATE    5
 
 /******************************************************************************/
-/*																										*/
-/* Die verschiedenen Datenstrukturen														*/
-/*																										*/
+/*                                                                            */
+/* Die verschiedenen Datenstrukturen                                          */
+/*                                                                            */
 /******************************************************************************/
 
 /* Der BIOS-Parameterblock eines GerÑtes (siehe Getbpb) */
 typedef struct
 {
-	int16 recsiz;       /* Bytes pro Sektor      */
-	int16 clsiz;        /* Sektoren pro Cluster  */
-	int16 clsizb;       /* Bytes pro Cluster     */
-	int16 rdlen;        /* VerzeichnislÑnge      */
-	int16 fsiz;         /* LÑnge der FAT         */
-	int16 fatrec;       /* Start der 2. FAT      */
-	int16 datrec;       /* 1. freier Sektor      */
-	int16 numcl;        /* Gesamtzahl an Cluster */
-	int16 bflags;       /* Flags                 */
+   int16 recsiz;       /* Bytes pro Sektor      */
+   int16 clsiz;        /* Sektoren pro Cluster  */
+   int16 clsizb;       /* Bytes pro Cluster     */
+   int16 rdlen;        /* VerzeichnislÑnge      */
+   int16 fsiz;         /* LÑnge der FAT         */
+   int16 fatrec;       /* Start der 2. FAT      */
+   int16 datrec;       /* 1. freier Sektor      */
+   int16 numcl;        /* Gesamtzahl an Cluster */
+   int16 bflags;       /* Flags                 */
 } BPB;
 
 /******************************************************************************/
@@ -352,13 +352,13 @@ typedef struct
 /* CD-Info-Struktur (siehe Metadiscinfo) */
 typedef struct
 {
-	UCHAR disctype;
-	UCHAR firsttrack, lasttrack, curtrack;
-	UCHAR relposz, relposm, relposs, relposf;
-	UCHAR absposz, absposm, absposs, absposf;
-	UCHAR endposz, endposm, endposs, endposf;
-	UCHAR index, res[3];
-	uint32 reserved[123];
+   UCHAR disctype;
+   UCHAR firsttrack, lasttrack, curtrack;
+   UCHAR relposz, relposm, relposs, relposf;
+   UCHAR absposz, absposm, absposs, absposf;
+   UCHAR endposz, endposm, endposs, endposf;
+   UCHAR index, res[3];
+   uint32 reserved[123];
 } CD_DISC_INFO;
 
 /******************************************************************************/
@@ -366,10 +366,10 @@ typedef struct
 /* Struktur fÅr CD-Verzeichnis (siehe Metagettoc) */
 typedef struct
 {
-	UCHAR trackno;
-	UCHAR minute;
-	UCHAR second;
-	UCHAR frame;
+   UCHAR trackno;
+   UCHAR minute;
+   UCHAR second;
+   UCHAR frame;
 } CD_TOC_ENTRY;
 
 /******************************************************************************/
@@ -377,9 +377,9 @@ typedef struct
 /* Struktur fÅr Cconrs */
 typedef struct
 {
-	UCHAR maxlen;
-	UCHAR actuallen;
-	char buffer[255];
+   UCHAR maxlen;
+   UCHAR actuallen;
+   char buffer[255];
 } LINE;
 
 /******************************************************************************/
@@ -387,12 +387,12 @@ typedef struct
 /* Disk-Transfer-Area (siehe Fsetdta, Fgetdta, Fsfirst, Fsnext) */
 typedef struct
 {
-	CHAR		d_reserved[21];
-	UCHAR		d_attrib;
-	uint16	d_time;
-	uint16	d_date;
-	uint32	d_length;
-	char		d_fname[14];
+   CHAR     d_reserved[21];
+   UCHAR    d_attrib;
+   uint16   d_time;
+   uint16   d_date;
+   uint32   d_length;
+   char     d_fname[14];
 } DTA;
 
 /******************************************************************************/
@@ -400,14 +400,14 @@ typedef struct
 /* ProgramHeader, Programmkopf fÅr ausfÅhrbare Dateien */
 typedef struct
 {
-	int16 ph_branch;			/* 0x00: muû 0x601A sein!!               */
-	int32 ph_tlen;				/* 0x02: LÑnge  des TEXT - Segments      */
-	int32 ph_dlen;				/* 0x06: LÑnge  des DATA - Segments      */
-	int32 ph_blen;				/* 0x0A: LÑnge  des BSS  - Segments      */
-	int32 ph_slen;				/* 0x0E: LÑnge  der Symboltabelle        */
-	int32 ph_res1;				/* 0x12: reserviert, sollte 0 sein       */
-	int32 ph_prgflags;		/* 0x16: Programmflags                   */
-	int16 ph_absflag;			/* 0x1A: 0 = RelozierungsInfos vorhanden */
+   int16 ph_branch;        /* 0x00: muû 0x601A sein!!               */
+   int32 ph_tlen;          /* 0x02: LÑnge  des TEXT - Segments      */
+   int32 ph_dlen;          /* 0x06: LÑnge  des DATA - Segments      */
+   int32 ph_blen;          /* 0x0A: LÑnge  des BSS  - Segments      */
+   int32 ph_slen;          /* 0x0E: LÑnge  der Symboltabelle        */
+   int32 ph_res1;          /* 0x12: reserviert, sollte 0 sein       */
+   int32 ph_prgflags;      /* 0x16: Programmflags                   */
+   int16 ph_absflag;       /* 0x1A: 0 = RelozierungsInfos vorhanden */
 } PH;
 
 /******************************************************************************/
@@ -415,23 +415,23 @@ typedef struct
 /* Die Basepage des Prozesses */
 typedef struct baspag
 {
-	void	*p_lowtpa;          /* Start der TPA              */
-	void	*p_hitpa;           /* Ende der TPA               */
-	void	*p_tbase;           /* Start des Textsegments     */
-	int32	p_tlen;             /* LÑnge des Textsegments     */
-	void	*p_dbase;           /* Start des Datasegments     */
-	int32	p_dlen;             /* LÑnge des Datasegments     */
-	void	*p_bbase;           /* Start des BSS              */
-	int32	p_blen;             /* LÑnge des BSS              */
-	DTA	*p_dta;             /* Start der DTA              */
-	struct baspag *p_parent;    /* Start des aufrufenden Prg. */
-	int32	p_resrvd0;          /* reserviert                 */
-	char	*p_env;             /* Start des Environments     */
-	char	p_stdfh[6];         /* Standardhandles            */
-	char	p_resrvd1;          /* reserviert                 */
-	char	p_curdrv;           /* aktuelles Laufwerk         */
-	int32	p_resrvd2[18];      /* reserviert                 */
-	char	p_cmdlin[128];      /* Kommandozeile              */
+   void  *p_lowtpa;          /* Start der TPA              */
+   void  *p_hitpa;           /* Ende der TPA               */
+   void  *p_tbase;           /* Start des Textsegments     */
+   int32 p_tlen;             /* LÑnge des Textsegments     */
+   void  *p_dbase;           /* Start des Datasegments     */
+   int32 p_dlen;             /* LÑnge des Datasegments     */
+   void  *p_bbase;           /* Start des BSS              */
+   int32 p_blen;             /* LÑnge des BSS              */
+   DTA   *p_dta;             /* Start der DTA              */
+   struct baspag *p_parent;    /* Start des aufrufenden Prg. */
+   int32 p_resrvd0;          /* reserviert                 */
+   char  *p_env;             /* Start des Environments     */
+   char  p_stdfh[6];         /* Standardhandles            */
+   char  p_resrvd1;          /* reserviert                 */
+   char  p_curdrv;           /* aktuelles Laufwerk         */
+   int32 p_resrvd2[18];      /* reserviert                 */
+   char  p_cmdlin[128];      /* Kommandozeile              */
 } BASPAG;
 
 /* Anderer Name der Basepage bei MagiC */
@@ -442,10 +442,10 @@ typedef BASPAG PD;
 /* Memory Descriptor */
 typedef struct __md
 {
-	struct __md *m_link;
-	void        *m_start;
-	long        m_length;
-	BASPAG      *m_own;
+   struct __md *m_link;
+   void        *m_start;
+   long        m_length;
+   BASPAG      *m_own;
 } MD;
 
 /******************************************************************************/
@@ -453,9 +453,9 @@ typedef struct __md
 /* Memory Parameter Block */
 typedef struct
 {
-	MD *mp_mfl;
-	MD *mp_mal;
-	MD *mp_rover;
+   MD *mp_mfl;
+   MD *mp_mal;
+   MD *mp_rover;
 } MPB;
 
 /******************************************************************************/
@@ -463,10 +463,10 @@ typedef struct
 /* Struktur fÅr Buffptr (siehe Buffptr) */
 typedef struct
 {
-	void *playptr;
-	void *recordptr;
-	void *reserved1;
-	void *reserved2;
+   void *playptr;
+   void *recordptr;
+   void *reserved1;
+   void *reserved2;
 } SBUFPTR;
 
 /******************************************************************************/
@@ -474,12 +474,12 @@ typedef struct
 /* (siehe Dsp_MultBlocks) */
 typedef struct
 {
-	int16	blocktype;		/* Typ der Daten im Puffer: */
-								/*   0 : LongInt            */
-								/*   1 : Integer            */
-								/*   2 : Byte               */
-	int32	blocksize;		/* Puffergrîûe              */
-	void	*blockaddr;		/* Zeiger auf den Puffer    */
+   int16 blocktype;     /* Typ der Daten im Puffer: */
+                        /*   0 : LongInt            */
+                        /*   1 : Integer            */
+                        /*   2 : Byte               */
+   int32 blocksize;     /* Puffergrîûe              */
+   void  *blockaddr;    /* Zeiger auf den Puffer    */
 } DSPBLOCK;
 
 /******************************************************************************/
@@ -487,14 +487,14 @@ typedef struct
 /* Struktur zur Initialisierung der Maus (siehe Initmouse) */
 typedef struct
 {
-	CHAR topmode;
-	CHAR buttons;
-	CHAR xparam;
-	CHAR yparam;
-	int16 xmax;
-	int16 ymax;
-	int16 xinitial;
-	int16 yinitial;
+   CHAR topmode;
+   CHAR buttons;
+   CHAR xparam;
+   CHAR yparam;
+   int16 xmax;
+   int16 ymax;
+   int16 xinitial;
+   int16 yinitial;
 } InitMouseParam;
 
 /* AbwÑrtskompatibilitÑt mit PureC */
@@ -505,12 +505,12 @@ typedef struct
 /* Struktur fÅr die seriellen Schnittstellen (siehe Iorec) */
 typedef struct
 {
-	void	*ibuf;		/* Zeiger auf den Buffer   */
-	int16	ibufsiz;		/* Grîûe des Buffers       */
-	int16	ibufhd;		/* nÑchste Schreibposition */
-	int16	ibuftl;		/* nÑchste Leseposition    */
-	int16	ibuflow;		/* Marke fÅr Xon           */
-	int16	ibufhi;		/* Marke fÅr Xoff          */
+   void  *ibuf;      /* Zeiger auf den Buffer   */
+   int16 ibufsiz;    /* Grîûe des Buffers       */
+   int16 ibufhd;     /* nÑchste Schreibposition */
+   int16 ibuftl;     /* nÑchste Leseposition    */
+   int16 ibuflow;    /* Marke fÅr Xon           */
+   int16 ibufhi;     /* Marke fÅr Xoff          */
 } _IOREC;
 #define IOREC _IOREC
 
@@ -519,12 +519,12 @@ typedef struct
 /* Struktur fÅr die seriellen Schnittstellen (siehe BCONMAP, Bconmap) */
 typedef struct
 {
-	int16 (*Bconstat)(void);
-	int32 (*Bconin)(void);
-	int16 (*Bcostat)(void);
-	void  (*Bconout)(void);
-	int32 (*Rsconf)(void);
-	IOREC *iorec;
+   int16 (*Bconstat)(void);
+   int32 (*Bconin)(void);
+   int16 (*Bcostat)(void);
+   void  (*Bconout)(void);
+   int32 (*Rsconf)(void);
+   IOREC *iorec;
 } MAPTAB;
 
 /******************************************************************************/
@@ -532,8 +532,8 @@ typedef struct
 /* Beschreibung der seriellen SChnittstellen (siehe Bconmap) */
 typedef struct
 {
-	MAPTAB *maptab;
-	int16 mabtabsize;
+   MAPTAB *maptab;
+   int16 mabtabsize;
 } BCONMAP;
 
 /******************************************************************************/
@@ -541,16 +541,16 @@ typedef struct
 /* Funktionstabelle fÅr den Tastaturprozessor (siehe Kbdvbase) */
 typedef struct
 {
-	void (*kb_midivec)( UCHAR data );
-	void (*kb_vkbderr)( UCHAR data );
-	void (*kb_vmiderr)( UCHAR data );
-	void (*kb_statvec)(CHAR *buf);
-	void (*kb_mousevec)(CHAR *buf);
-	void (*kb_clockvec)(CHAR *buf);
-	void (*kb_joyvec)(CHAR *buf);
-	void (*kb_midisys)( void );
-	void (*kb_ikbdsys)( void );
-	CHAR ikbdstate;
+   void (*kb_midivec)( UCHAR data );
+   void (*kb_vkbderr)( UCHAR data );
+   void (*kb_vmiderr)( UCHAR data );
+   void (*kb_statvec)(CHAR *buf);
+   void (*kb_mousevec)(CHAR *buf);
+   void (*kb_clockvec)(CHAR *buf);
+   void (*kb_joyvec)(CHAR *buf);
+   void (*kb_midisys)( void );
+   void (*kb_ikbdsys)( void );
+   CHAR ikbdstate;
 } KBDVECS;
 
 /******************************************************************************/
@@ -558,26 +558,26 @@ typedef struct
 /* Tastatur-Belegung (siehe Keytbl) */
 typedef struct
 {
-	CHAR *unshift;
-	CHAR *shift;
-	CHAR *capslock;
+   CHAR *unshift;
+   CHAR *shift;
+   CHAR *capslock;
 } KEYTAB;
 
 /******************************************************************************/
 
 typedef struct
 {
-	uint32 drivemap;		/* Bitmap of drives (Bit 0 = A, 1 = B, etc... */
-	CHAR *version;			/* String containing name and version */
-	int32 reserved[2];	/* Currently unused */
+   uint32 drivemap;     /* Bitmap of drives (Bit 0 = A, 1 = B, etc... */
+   CHAR *version;       /* String containing name and version */
+   int32 reserved[2];   /* Currently unused */
 } METAINFO;
 
 /******************************************************************************/
 
 typedef struct
 {
-	CHAR *mdr_name;
-	int32 reserved[3];
+   CHAR *mdr_name;
+   int32 reserved[3];
 } META_DRVINFO;
 
 /******************************************************************************/
@@ -585,18 +585,18 @@ typedef struct
 /* Beschreibung des zu druckenden Bildschirmausschnittes (siehe Prtblk) */
 typedef struct
 {
-	void	*pb_scrptr;
-	int16	pb_offset;
-	int16	pb_width;
-	int16	pb_height;
-	int16	pb_left;
-	int16	pb_right;
-	int16	pb_screz;
-	int16	pb_prrez;
-	void	*pb_colptr;
-	int16	pb_prtype;
-	int16	pb_prport;
-	void	*pb_mask;
+   void  *pb_scrptr;
+   int16 pb_offset;
+   int16 pb_width;
+   int16 pb_height;
+   int16 pb_left;
+   int16 pb_right;
+   int16 pb_screz;
+   int16 pb_prrez;
+   void  *pb_colptr;
+   int16 pb_prtype;
+   int16 pb_prport;
+   void  *pb_mask;
 } PBDEF;
 
 /******************************************************************************/
@@ -604,10 +604,10 @@ typedef struct
 /* Info-Struktur Åber Partitionen (siehe Dfree) */
 typedef struct
 {
-	uint32 b_free;
-	uint32 b_total;
-	uint32 b_secsiz;
-	uint32 b_clsiz;
+   uint32 b_free;
+   uint32 b_total;
+   uint32 b_secsiz;
+   uint32 b_clsiz;
 } DISKINFO;
 
 /******************************************************************************/
@@ -615,26 +615,26 @@ typedef struct
 /* Informationen Åber Dateien und Verzeichnisse (siehe Fxattr, Dxreaddir) */
 typedef struct
 {
-	uint16 mode;
-	int32 index;
-	uint16 dev;
-	uint16 reserved1;
-	uint16 nlink;
-	uint16 uid;
-	uint16 gid;
-	int32 size;
-	int32 blksize;
-	int32 nblocks;
-	int16 mtime;
-	int16 mdate;
-	int16 atime;
-	int16 adate;
-	int16 ctime;
-	int16 cdate;
-	int16 attr;
-	int16 reserved2;
-	int32 reserved3;
-	int32 reserved4;
+   uint16 mode;
+   int32 index;
+   uint16 dev;
+   uint16 reserved1;
+   uint16 nlink;
+   uint16 uid;
+   uint16 gid;
+   int32 size;
+   int32 blksize;
+   int32 nblocks;
+   int16 mtime;
+   int16 mdate;
+   int16 atime;
+   int16 adate;
+   int16 ctime;
+   int16 cdate;
+   int16 attr;
+   int16 reserved2;
+   int32 reserved3;
+   int32 reserved4;
 } XATTR;
 
 /******************************************************************************/
@@ -642,8 +642,8 @@ typedef struct
 /* Struktur fÅÅr Fdatime gem. PureC und TOS.HYP */
 typedef struct
 {
-	uint16 time;
-	uint16 date;
+   uint16 time;
+   uint16 date;
 } DOSTIME;
 
 /******************************************************************************/
@@ -651,12 +651,12 @@ typedef struct
 /* Struktur fÅr Fdatime gem. Kompendium */
 typedef struct
 {
-	unsigned hour:5;
-	unsigned minute:6;
-	unsigned second:5;
-	unsigned year:7;
-	unsigned month:4;
-	unsigned day:5;
+   unsigned hour:5;
+   unsigned minute:6;
+   unsigned second:5;
+   unsigned year:7;
+   unsigned month:4;
+   unsigned day:5;
 } DATETIME;
 
 /******************************************************************************/
@@ -664,17 +664,17 @@ typedef struct
 /* Kommandozeile zum Start von Programmen (siehe Pexec) */
 typedef struct
 {
-	UCHAR length;
-	CHAR command[126];
+   UCHAR length;
+   CHAR command[126];
 } COMMAND;
 
 /******************************************************************************/
 
 typedef struct
 {
-	int32 userlong1;
-	int32 userlong2;
-	int16 pid;
+   int32 userlong1;
+   int32 userlong2;
+   int16 pid;
 } MSG;
 
 /******************************************************************************/
@@ -682,25 +682,25 @@ typedef struct
 /* (siehe ) */
 typedef struct
 {
-	int32 sa_handler;
-	int16 sa_mask;
-	int16 sa_flags;
+   int32 sa_handler;
+   int16 sa_mask;
+   int16 sa_flags;
 } SIGACTION;
 
 /******************************************************************************/
 
 struct timezone
 {
-	int16 tz_minuteswest;
-	int16 tz_dsttime;
+   int16 tz_minuteswest;
+   int16 tz_dsttime;
 };
 
 /******************************************************************************/
 
 struct timeval
 {
-	int32 tv_sec;
-	int32 tv_usec;
+   int32 tv_sec;
+   int32 tv_usec;
 };
 
 /******************************************************************************/
@@ -708,22 +708,22 @@ struct timeval
 /* system variable _sysbase (0x4F2L) points to next structure         */
 typedef struct _syshdr
 {
-	uint16 os_entry;				/* $00 BRA zum Reset-Handler            */
-	uint16 os_version;			/* $02 TOS-Versionsnummer               */
-	void *os_start;				/* $04 -> Reset-Handler                 */
-	struct _syshdr *os_base;	/* $08 -> baseof OS                     */
-	void *os_memboot;				/* $0C -> Ende des BIOS/GEMDOS/VDI RAM  */
-	void *os_rsv1;					/* $10 << unbenutzt, reserviert >>      */
-	int32 *os_magic;				/* $14 -> GEM memoryusage parm. block   */
-	int32 os_gendat;				/* $18 Datum des Systems ($MMDDYYYY)    */
-	int16 os_palmode;				/* $1C OS-Konfiguration-Bits            */
-	int16 os_gendatg;				/* $1e Dateum des Systems (DOS-Format)  */
-	
-	/* Diese Komponenten sind erst am TOS 1.02 verfÅgbar */
-	void *_root;					/* $20 -> base of OS pool               */
-	int32 *kbshift;				/* $24 -> keyboard shift state variable */
-	BASPAG **_run;					/* $28 -> GEMDOS PID of current process */
-	void *p_rsv2;					/* $2C << unbenutzt, reserviert >>      */
+   uint16 os_entry;           /* $00 BRA zum Reset-Handler            */
+   uint16 os_version;         /* $02 TOS-Versionsnummer               */
+   void *os_start;            /* $04 -> Reset-Handler                 */
+   struct _syshdr *os_base;   /* $08 -> baseof OS                     */
+   void *os_memboot;          /* $0C -> Ende des BIOS/GEMDOS/VDI RAM  */
+   void *os_rsv1;             /* $10 << unbenutzt, reserviert >>      */
+   int32 *os_magic;           /* $14 -> GEM memoryusage parm. block   */
+   int32 os_gendat;           /* $18 Datum des Systems ($MMDDYYYY)    */
+   int16 os_palmode;          /* $1C OS-Konfiguration-Bits            */
+   int16 os_gendatg;          /* $1e Dateum des Systems (DOS-Format)  */
+   
+   /* Diese Komponenten sind erst am TOS 1.02 verfÅgbar */
+   void *_root;               /* $20 -> base of OS pool               */
+   int32 *kbshift;            /* $24 -> keyboard shift state variable */
+   BASPAG **_run;             /* $28 -> GEMDOS PID of current process */
+   void *p_rsv2;              /* $2C << unbenutzt, reserviert >>      */
 } SYSHDR;
 
 /* Dieser Header ist auch unter dem Namen OSHEADER bekannt */
@@ -733,15 +733,15 @@ typedef SYSHDR OSHEADER;
 
 typedef struct
 {
-	int16	mwhl_version;
-	char*	mwhl_info;
-	int16	(*mwhl_wheeled)(int16 Value[16]);
-	int16	(*mwhl_service)(int32 Opcode, ...);
-	int16	mwhl_wheels;
-	int32	mwhl_control;
-	int16	mwhl_step[16];
-	int16	mwhl_direction;
-	int16	mwhl_delay;
+   int16 mwhl_version;
+   char* mwhl_info;
+   int16 (*mwhl_wheeled)(int16 Value[16]);
+   int16 (*mwhl_service)(int32 Opcode, ...);
+   int16 mwhl_wheels;
+   int32 mwhl_control;
+   int16 mwhl_step[16];
+   int16 mwhl_direction;
+   int16 mwhl_delay;
 } MWHL_Cookie;
 
 /******************************************************************************/
@@ -754,58 +754,58 @@ typedef LONG cdecl (*SLB_EXEC)( SHARED_LIB *sl, LONG fn, WORD nargs, ... );
 
 /* Socket -- MiNTNet/MagiCNet only */
 #ifndef __SOCKET_H__
-	typedef unsigned long socklen_t;
-	typedef long ssize_t;
-	typedef void *sockaddrPtr;
-	typedef void *iovecPtr;
-	typedef void *msghdrPtr;
+   typedef unsigned long socklen_t;
+   typedef long ssize_t;
+   typedef void *sockaddrPtr;
+   typedef void *iovecPtr;
+   typedef void *msghdrPtr;
 #endif
 
 /******************************************************************************/
-/*																										*/
-/* Cookie-Strukturen von MagiC																*/
-/*																										*/
+/*                                                                            */
+/* Cookie-Strukturen von MagiC                                                */
+/*                                                                            */
 /******************************************************************************/
 
 typedef struct
 {
-	char	*in_dos;							/* Adresse der DOS- Semaphore */
-	int16	*dos_time;						/* Adresse der DOS- Zeit      */
-	int16	*dos_date;						/* Adresse des DOS- Datums    */
-	int32	res1;								/*                            */
-	int32	res2;								/*                            */
-	int32	res3;								/* ist 0L                     */
-	void	*act_pd;							/* Laufendes Programm         */
-	int32	res4;								/*                            */
-	int16	res5;								/*                            */
-	void	*res6;							/*                            */
-	void	*res7;							/* interne DOS- Speicherliste */
-	void	(*resv_intmem)();				/* DOS- Speicher erweitern    */
-	int32	(*etv_critic)();				/* etv_critic des GEMDOS      */
-	char	*((*err_to_str)(char e));	/* Umrechnung Code->Klartext  */
-	int32	res8;								/*                            */
-	int32	res9;								/*                            */
-	int32	res10;							/*                            */
+   char  *in_dos;                   /* Adresse der DOS- Semaphore */
+   int16 *dos_time;                 /* Adresse der DOS- Zeit      */
+   int16 *dos_date;                 /* Adresse des DOS- Datums    */
+   int32 res1;                      /*                            */
+   int32 res2;                      /*                            */
+   int32 res3;                      /* ist 0L                     */
+   void  *act_pd;                   /* Laufendes Programm         */
+   int32 res4;                      /*                            */
+   int16 res5;                      /*                            */
+   void  *res6;                     /*                            */
+   void  *res7;                     /* interne DOS- Speicherliste */
+   void  (*resv_intmem)();          /* DOS- Speicher erweitern    */
+   int32 (*etv_critic)();           /* etv_critic des GEMDOS      */
+   char  *((*err_to_str)(char e));  /* Umrechnung Code->Klartext  */
+   int32 res8;                      /*                            */
+   int32 res9;                      /*                            */
+   int32 res10;                     /*                            */
 } DOSVARS;
 
 /******************************************************************************/
 
 typedef struct
 {
-	int32	magic;									/* muû $87654321 sein              */
-	void	*membot;									/* Ende der AES- Variablen         */
-	void	*aes_start;								/* Startadresse                    */
-	int32	magic2;									/* ist 'MAGX'                      */
-	int32	date;										/* Erstelldatum ttmmjjjj           */
-	void	(*chgres)(int res, int txt);		/* Auflîsung Ñndern           */
-	int32	(**shel_vector)(void);				/* residentes Desktop              */
-	char	*aes_bootdrv;							/* von hieraus wurde gebootet      */
-	int16	*vdi_device;							/* vom AES benutzter VDI-Treiber   */
-	void	*reservd1;
-	void	*reservd2;
-	void	*reservd3;
-	int16	version;									/* z.B. $0201 ist V2.1             */
-	int16	release;									/* 0=alpha..3=release              */
+   int32 magic;                           /* muû $87654321 sein              */
+   void  *membot;                         /* Ende der AES- Variablen         */
+   void  *aes_start;                      /* Startadresse                    */
+   int32 magic2;                          /* ist 'MAGX'                      */
+   int32 date;                            /* Erstelldatum ttmmjjjj           */
+   void  (*chgres)(int res, int txt);     /* Auflîsung Ñndern           */
+   int32 (**shel_vector)(void);           /* residentes Desktop              */
+   char  *aes_bootdrv;                    /* von hieraus wurde gebootet      */
+   int16 *vdi_device;                     /* vom AES benutzter VDI-Treiber   */
+   void  *reservd1;
+   void  *reservd2;
+   void  *reservd3;
+   int16 version;                         /* z.B. $0201 ist V2.1             */
+   int16 release;                         /* 0=alpha..3=release              */
 } AESVARS;
 
 /******************************************************************************/
@@ -813,18 +813,18 @@ typedef struct
 /* Cookie-Struktur des Cookies MagX */
 typedef struct
 {
-	int32		config_status;
-	DOSVARS	*dosvars;
-	AESVARS	*aesvars;
-	void		*res1;
-	void		*hddrv_functions;
-	int32		status_bits;             /* MagiC 3 ab 24.5.95         */
+   int32    config_status;
+   DOSVARS  *dosvars;
+   AESVARS  *aesvars;
+   void     *res1;
+   void     *hddrv_functions;
+   int32    status_bits;             /* MagiC 3 ab 24.5.95         */
 } MAGX_COOKIE;
 
 /******************************************************************************/
-/*																										*/
-/* Cookie-Strukturen von N.AES																*/
-/*																										*/
+/*                                                                            */
+/* Cookie-Strukturen von N.AES                                                */
+/*                                                                            */
 /******************************************************************************/
 
 /* Konstanten fÅr typ in CNF_VAR */
@@ -838,13 +838,13 @@ typedef struct
 /* Struktur fÅr eine Variable */
 typedef struct
 {
-	union cnf_typ
-	{
-		int16 w;
-		int32 l;
-	} val;						/* Der Inhalt             */
-	int16	typ;					/* Typ, CNF_T...          */
-	char	text[22];			/* Name, wie in N_AES.CNF */
+   union cnf_typ
+   {
+      int16 w;
+      int32 l;
+   } val;                  /* Der Inhalt             */
+   int16 typ;              /* Typ, CNF_T...          */
+   char  text[22];         /* Name, wie in N_AES.CNF */
 } CNF_INF;
 
 /******************************************************************************/
@@ -852,9 +852,9 @@ typedef struct
 /* Struktur fÅr Variablen-Gruppen */
 typedef struct
 {
-	char	typ[16];			/* Kategorie, Text aus den Strings des Dialog-Baums CNF_TREE der */
-								/* N_AESSYS.RSC, z.B. "Fenster" oder "System".                   */
-	CNF_INF *cnf_inf;		/* Die Variablen eben                                            */
+   char  typ[16];       /* Kategorie, Text aus den Strings des Dialog-Baums CNF_TREE der */
+                        /* N_AESSYS.RSC, z.B. "Fenster" oder "System".                   */
+   CNF_INF *cnf_inf;    /* Die Variablen eben                                            */
 } CNF_VAR;
 
 /******************************************************************************/
@@ -862,39 +862,39 @@ typedef struct
 /* Die Cookie-Struktur des N.AES-Cookies */
 typedef struct
 {
-	uint16	version;
-	uint16	date;
-	uint16	time;
-	uint16	flags;
-	CNF_VAR	**config;
-	uint32	unused_2;
+   uint16   version;
+   uint16   date;
+   uint16   time;
+   uint16   flags;
+   CNF_VAR  **config;
+   uint32   unused_2;
 } N_AESINFO;
 
 /******************************************************************************/
-/*																										*/
-/* Globale Variablen																				*/
-/*																										*/
+/*                                                                            */
+/* Globale Variablen                                                          */
+/*                                                                            */
 /******************************************************************************/
 
 /* Basepage des Programmes */
-extern BASPAG *_BasPag;			/* Im Startup-Code definiert */
+extern BASPAG *_BasPag;       /* Im Startup-Code definiert */
 
 /* Programmgrîûe (fÅr Ptermres interessant ;-) */
-extern long _PgmSize;			/* Im Startup-Code definiert */
+extern long _PgmSize;         /* Im Startup-Code definiert */
 
 /******************************************************************************/
-/*																										*/
-/* Die BIOS-Funktionen																			*/
-/*																										*/
+/*                                                                            */
+/* Die BIOS-Funktionen                                                        */
+/*                                                                            */
 /******************************************************************************/
 
 #ifndef __GNUC__
-	#define TOSFKT
-	
-	/* Achtung: Diese Funktion ist NICHT multithreading-fest! */
-	int32 cdecl bios( int16 fkt_nr, ... );
+   #define TOSFKT
+   
+   /* Achtung: Diese Funktion ist NICHT multithreading-fest! */
+   int32 cdecl bios( int16 fkt_nr, ... );
 #else
-	#define TOSFKT static
+   #define TOSFKT static
 #endif
 
 /******************************************************************************/
@@ -909,19 +909,19 @@ TOSFKT int32 Getmpb( const MPB *p_mpb );
 TOSFKT int32 Kbshift( const int16 mode );
 TOSFKT int32 Mediach( const int16 dev );
 TOSFKT int32 Rwabs( const int16 rwflag, const void *buf, const int16 count,
-			const int16 recno, const int16 dev, const int32 lrecno );
+         const int16 recno, const int16 dev, const int32 lrecno );
 TOSFKT void (*Setexc( const int16 vecnum, const void (*vec)(void) ))(void);
 TOSFKT int32 Tickcal( void );
 
 /******************************************************************************/
-/*																										*/
-/* Die XBIOS-Funktionen																			*/
-/*																										*/
+/*                                                                            */
+/* Die XBIOS-Funktionen                                                       */
+/*                                                                            */
 /******************************************************************************/
 
 #ifndef __GNUC__
-	/* Achtung: Diese Funktion ist NICHT multithreading-fest! */
-	int32 cdecl xbios( int16 fkt_nr, ... );
+   /* Achtung: Diese Funktion ist NICHT multithreading-fest! */
+   int32 cdecl xbios( int16 fkt_nr, ... );
 #endif
 
 /******************************************************************************/
@@ -957,13 +957,13 @@ TOSFKT CHAR Dsp_HStat( void );
 TOSFKT CHAR Dsp_InqSubrAbility( int16 ability );
 TOSFKT void Dsp_InStream( char *data_in, int32 block_size, int32 num_blocks, int32 *blocks_done );
 TOSFKT void Dsp_IOStream( char *data_in, char *data_out, int32 block_insize, int32 block_outsize,
-			int32 num_blocks, int32 *blocks_done );
+         int32 num_blocks, int32 *blocks_done );
 TOSFKT int16 Dsp_LoadProg( char *file, int16 ability, char *buf );
 TOSFKT int16 Dsp_LoadSubroutine( char *ptr, int32 size, int16 ability );
 TOSFKT CHAR Dsp_Lock( void );
 TOSFKT int32 Dsp_LodToBinary( char *file, char *codeptr );
 TOSFKT CHAR Dsp_MultBlocks( int32 numsend, int32 numreceive, DSPBLOCK *sendblk,
-			DSPBLOCK *receiveblock );
+         DSPBLOCK *receiveblock );
 TOSFKT void Dsp_OutStream( char *data_out, int32 block_size, int32 num_blocks, int32 *blocks_done );
 TOSFKT void Dsp_RemoveInterrupts( int16 mask );
 TOSFKT int16 Dsp_RequestUniqueAbility( void );
@@ -982,14 +982,14 @@ void EsetPalette( int16 colorNum, int16 count, int16 *palettePtr );
 int16 EsetShift( int16 shftMode );
 int16 EsetSmear( int16 swtch );
 int16 Flopfmt( void *buf, void *sect, int16 devno, int16 spt, int16 trackno, int16 sideno,
-			int16 interlv, int32 magic, int16 virgin );
+         int16 interlv, int32 magic, int16 virgin );
 int16 Floprate( int16 drive, int16 seekrate );
 int16 Floprd( void *buf, int32 filler, int16 devno, int16 sectno, int16 trackno,
-			int16 sideno, int16 count );
+         int16 sideno, int16 count );
 int16 Flopver( void *buf, int32 filler, int16 devno, int16 sectno, int16 trackno,
-			int16 sideno, int16 count );
+         int16 sideno, int16 count );
 int16 Flopwr( void *buf, int32 filler, int16 devno, int16 sectno, int16 trackno,
-			int16 sideno, int16 count );
+         int16 sideno, int16 count );
 int16 Getrez( void );
 int32 Gettime( void );
 char Giaccess( int16 c, int16 recno );
@@ -1060,9 +1060,9 @@ void WdgCtrl( int16 opcode );
 void ExtRsConf( int16 command, int16 dev, int32 param );
 
 /******************************************************************************/
-/*																										*/
-/* Die GEMDOS-Funktionen																		*/
-/*																										*/
+/*                                                                            */
+/* Die GEMDOS-Funktionen                                                      */
+/*                                                                            */
 /******************************************************************************/
 
 /* Achtung: Diese Funktion ist NICHT multithreading-fest! */
@@ -1211,23 +1211,22 @@ uint16 Sversion( void );
 void Syield( void );
 int32 Sync( void );
 int32 Sysconf( int16 inq );
-int32 Tadjtime( int32 adj );
+int32 Tadjtime( const void /* struct timeval */ *delta, void /* struct timeval */ *olddelta);
 int32 Talarm( int32 time );
 uint16 Tgetdate( void );
 uint16 Tgettime( void );
 int32 Tgettimeofday( struct timeval *tv, struct timezone *tz );
 uint32 Tmalarm( uint32 millisecs );
 int16 Tsetdate( uint16 date );
-int32 Tsetitimer( int32 which, int32 *interval, int32 *value,
-			int32 *ointeral, int32 *ovalue );
+int32 Tsetitimer( int16 which, int32 *interval, int32 *value, int32 *ointeral, int32 *ovalue );
 int16 Tsettime( uint16 time );
 int32 Tsettimeofday( struct timeval *tv, struct timezone *tz );
 int32 Unlock( const char *path );
 
 /******************************************************************************/
-/*																										*/
-/* Utility-Funktionen																			*/
-/*																										*/
+/*                                                                            */
+/* Utility-Funktionen                                                         */
+/*                                                                            */
 /******************************************************************************/
 
 /* Liefert Maske fÅr Mxalloc() - siehe Maus.Computer.Atari.Programmieren */
@@ -1259,18 +1258,18 @@ int16 Ash_getMagiCVersion( void );
 AESVARS *Ash_getMagiCAESVars( void );
 
 /******************************************************************************/
-/*																										*/
-/* Funktionen nur in MiNT																		*/
-/*																										*/
+/*                                                                            */
+/* Funktionen nur in MiNT                                                     */
+/*                                                                            */
 /******************************************************************************/
 
 int32 Dchroot( const char *path );
 int32 Dwritelabel( const char *path, const char *label );
 
 /******************************************************************************/
-/*																										*/
-/* MiNTNet-Funktionen im MiNT-Kernel														*/
-/*																										*/
+/*                                                                            */
+/* MiNTNet-Funktionen im MiNT-Kernel                                          */
+/*                                                                            */
 /******************************************************************************/
 
 int32 Faccept( int16 fd, sockaddrPtr name, socklen_t *namelen );
@@ -1279,25 +1278,25 @@ int32 Fconnect( int16 fd, const sockaddrPtr name, socklen_t namelen );
 int32 Fgetpeername( int16 fd, sockaddrPtr addr, socklen_t *addrlen );
 int32 Fgetsockname( int16 fd, sockaddrPtr addr, socklen_t *addrlen );
 int32 Fgetsockopt( int16 fd, int32 level, int32 optname,
-						void *optval, socklen_t *optlen );
+                  void *optval, socklen_t *optlen );
 int32 Flisten( int16 fd, int32 backlog );
 int32 Freadv( int16 fd, const iovecPtr iovp, ssize_t iovcnt );
 int32 Frecvfrom( int16 fd, void *buf, ssize_t buflen, int32 flags,
-						sockaddrPtr from, socklen_t *fromlen );
+                  sockaddrPtr from, socklen_t *fromlen );
 int32 Frecvmsg( int16 fd, msghdrPtr msg, int32 flags );
 int32 Fsendto( int16 fd, const void *buf, ssize_t buflen, int32 flags,
-						const sockaddrPtr addr, socklen_t addrlen );
+                  const sockaddrPtr addr, socklen_t addrlen );
 int32 Fsetsockopt( int16 fd, int32 level, int32 optname,
-						void *optval, socklen_t optlen );
+                  void *optval, socklen_t optlen );
 int32 Fshutdown( int16 fh, int32 how );
 int32 Fsocket( int32 domain, int32 type, int32 protocol );
 int32 Fsocketpair( int32 domain, int32 type, int32 protocol, int16 rsv[2] );
 int32 Fwritev( int16 fd, const iovecPtr iov, ssize_t niov );
 
 /******************************************************************************/
-/*																										*/
-/* PAMsNet-Funktionen																			*/
-/*																										*/
+/*                                                                            */
+/* PAMsNet-Funktionen                                                         */
+/*                                                                            */
 /******************************************************************************/
 
 int16 Nactive( void );
@@ -1317,7 +1316,7 @@ int32 Nversion( void );
 /******************************************************************************/
 
 #ifdef __GNUC__
-	#include <acstosi.h>
+   #include <acstosi.h>
 #endif
 
 #ifdef __cplusplus

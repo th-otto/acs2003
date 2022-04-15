@@ -16,7 +16,7 @@ Af_select:
 [0006cf22] 661c                      bne.s      $0006CF40
 [0006cf24] 41f9 000e 2882            lea.l      multi_cook,a0
 [0006cf2a] 203c 4653 454c            move.l     #$4653454C,d0
-[0006cf30] 4eb9 0008 0ec4            jsr        Ash_getc
+[0006cf30] 4eb9 0008 0ec4            jsr        Ash_getcookie
 [0006cf36] 4a40                      tst.w      d0
 [0006cf38] 6606                      bne.s      $0006CF40
 [0006cf3a] 42b9 000e 2882            clr.l      multi_cook
@@ -24,7 +24,7 @@ Af_select:
 [0006cf46] 661c                      bne.s      $0006CF64
 [0006cf48] 41f9 000e 288e            lea.l      bkhndler,a0
 [0006cf4e] 203c 4842 4653            move.l     #$48424653,d0
-[0006cf54] 4eb9 0008 0ec4            jsr        Ash_getc
+[0006cf54] 4eb9 0008 0ec4            jsr        Ash_getcookie
 [0006cf5a] 4a40                      tst.w      d0
 [0006cf5c] 6606                      bne.s      $0006CF64
 [0006cf5e] 42b9 000e 288e            clr.l      bkhndler
@@ -209,7 +209,7 @@ Af_first_fsel:
 [0006d21e] 6612                      bne.s      $0006D232
 [0006d220] 41f9 000e 2882            lea.l      multi_cook,a0
 [0006d226] 203c 4653 454c            move.l     #$4653454C,d0
-[0006d22c] 4eb9 0008 0ec4            jsr        Ash_getc
+[0006d22c] 4eb9 0008 0ec4            jsr        Ash_getcookie
 [0006d232] 2039 000e 2882            move.l     multi_cook,d0
 [0006d238] 6700 00b8                 beq        $0006D2F2
 [0006d23c] 2039 000e 2886            move.l     multi_files,d0
