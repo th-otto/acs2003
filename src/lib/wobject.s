@@ -4193,3 +4193,26 @@ Awi_obvisible:
 [00054afc] 4e71                      nop
 [00054afe] 5c4f                      addq.w     #6,a7
 [00054b00] 4e75                      rts
+
+	.data
+
+open_dialog:
+[000e0cb2]                           dc.w $0000
+[000e0cb4]                           dc.w $0000
+last_edit:
+[000e0cb6]                           dc.w $0000
+[000e0cb8]                           dc.w $0000
+[000e0cba]                           dc.w $0000
+[000e0cbc]                           dc.w $0000
+[000e0cbe]                           dc.w $0000
+[000e0cc0]                           dc.w $ffff
+[000e0cc2]                           dc.w $ffff
+[000e0cc4]                           dc.w $ffff
+[000e0cc6]                           dc.w $ffff
+[000e0cc8]                           dc.w $2000
+[000e0cca]                           dc.b 'Window-Lib',0
+[000e0cd5]                           dc.b 'Window-Lib',0
+[000e0ce0]                           dc.b 'txt',0
+[000e0ce4]                           dc.w $0074
+[000e0ce6]                           dc.w $7874
+[000e0ce8]                           dc.w $0000

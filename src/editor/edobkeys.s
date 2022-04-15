@@ -99,3 +99,98 @@ key_string:
 [00033374] 204a                      movea.l    a2,a0
 [00033376] 4cdf 0c38                 movem.l    (a7)+,d3-d5/a2-a3
 [0003337a] 4e75                      rts
+
+	.data
+
+nktab:
+[000ccd3a] 000ccdd6                  dc.l $000ccdd6
+[000ccd3e]                           dc.w $0008
+[000ccd40] 000ccdd9                  dc.l $000ccdd9
+[000ccd44]                           dc.w $000c
+[000ccd46] 000ccddd                  dc.l $000ccddd
+[000ccd4a]                           dc.w $001f
+[000ccd4c] 000ccde1                  dc.l $000ccde1
+[000ccd50]                           dc.w $0002
+[000ccd52] 000ccde6                  dc.l $000ccde6
+[000ccd56]                           dc.w $000a
+[000ccd58] 000ccdec                  dc.l $000ccdec
+[000ccd5c]                           dc.w $001b
+[000ccd5e] 000ccdf0                  dc.l $000ccdf0
+[000ccd62]                           dc.w $0010
+[000ccd64] 000ccdf3                  dc.l $000ccdf3
+[000ccd68]                           dc.w $0019
+[000ccd6a] 000ccdf7                  dc.l $000ccdf7
+[000ccd6e]                           dc.w $0011
+[000ccd70] 000ccdfa                  dc.l $000ccdfa
+[000ccd74]                           dc.w $0012
+[000ccd76] 000ccdfd                  dc.l $000ccdfd
+[000ccd7a]                           dc.w $0013
+[000ccd7c] 000cce00                  dc.l $000cce00
+[000ccd80]                           dc.w $0014
+[000ccd82] 000cce03                  dc.l $000cce03
+[000ccd86]                           dc.w $0015
+[000ccd88] 000cce06                  dc.l $000cce06
+[000ccd8c]                           dc.w $0016
+[000ccd8e] 000cce09                  dc.l $000cce09
+[000ccd92]                           dc.w $0017
+[000ccd94] 000cce0c                  dc.l $000cce0c
+[000ccd98]                           dc.w $0018
+[000ccd9a] 000cce0f                  dc.l $000cce0f
+[000ccd9e]                           dc.w $000e
+[000ccda0] 000cce14                  dc.l $000cce14
+[000ccda4]                           dc.w $000c
+[000ccda6] 000cce19                  dc.l $000cce19
+[000ccdaa]                           dc.w $000b
+[000ccdac] 000cce1d                  dc.l $000cce1d
+[000ccdb0]                           dc.w $0004
+[000ccdb2] 000cce22                  dc.l $000cce22
+[000ccdb6]                           dc.w $000d
+[000ccdb8] 000cce26                  dc.l $000cce26
+[000ccdbc]                           dc.w $000d
+[000ccdbe] 000cce2d                  dc.l $000cce2d
+[000ccdc2]                           dc.w $0003
+[000ccdc4] 000cce33                  dc.l $000cce33
+[000ccdc8]                           dc.w $0009
+[000ccdca] 000cce37                  dc.l $000cce37
+[000ccdce]                           dc.w $000f
+[000ccdd0] 000cce3c                  dc.l $000cce3c
+[000ccdd4]                           dc.w $0001
+[000ccdd6]                           dc.w $4253
+[000ccdd8]                           dc.w $0043
+[000ccdda]                           dc.w $4c52
+[000ccddc]                           dc.w $0044
+[000ccdde]                           dc.w $454c
+[000ccde0]                           dc.w $0044
+[000ccde2]                           dc.b 'OWN',0
+[000ccde6]                           dc.b 'ENTER',0
+[000ccdec]                           dc.b 'ESC',0
+[000ccdf0]                           dc.w $4631
+[000ccdf2]                           dc.w $0046
+[000ccdf4]                           dc.w $3130
+[000ccdf6]                           dc.w $0046
+[000ccdf8]                           dc.w $3200
+[000ccdfa]                           dc.w $4633
+[000ccdfc]                           dc.w $0046
+[000ccdfe]                           dc.w $3400
+[000cce00]                           dc.w $4635
+[000cce02]                           dc.w $0046
+[000cce04]                           dc.w $3600
+[000cce06]                           dc.w $4637
+[000cce08]                           dc.w $0046
+[000cce0a]                           dc.w $3800
+[000cce0c]                           dc.w $4639
+[000cce0e]                           dc.w $0048
+[000cce10]                           dc.b 'ELP',0
+[000cce14]                           dc.b 'HOME',0
+[000cce19]                           dc.b 'INS',0
+[000cce1d]                           dc.b 'LEFT',0
+[000cce22]                           dc.b 'RET',0
+[000cce26]                           dc.b 'RETURN',0
+[000cce2d]                           dc.b 'RIGHT',0
+[000cce33]                           dc.b 'TAB',0
+[000cce37]                           dc.b 'UNDO',0
+[000cce3c]                           dc.w $5550
+[000cce3e]                           dc.w $0001
+[000cce40]                           dc.w $005e
+[000cce42]                           dc.w $0007
+[000cce44]                           dc.w $0000

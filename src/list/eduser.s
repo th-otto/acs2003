@@ -814,3 +814,334 @@ new_work:
 [00035762] 2279 000b 3270            movea.l    $000B3270,a1
 [00035768] 4eb9 0003 3dd6            jsr        work_icon
 [0003576e] 4e75                      rts
+
+	.data
+
+list_user:
+[000ce550]                           dc.w $0000
+[000ce552]                           dc.w $0000
+[000ce554]                           dc.w $0000
+[000ce556]                           dc.w $0000
+[000ce558] 000b3216                  dc.l WI_USER
+[000ce55c] 000cd12c                  dc.l us_list
+[000ce560] 000cd13c                  dc.l us_name
+[000ce564]                           dc.w $271f
+[000ce566]                           dc.w $0000
+[000ce568]                           dc.w $0000
+[000ce56a] 00035122                  dc.l copy_user
+[000ce56e] 00035084                  dc.l del_user
+[000ce572] 0003575e                  dc.l new_work
+[000ce576]                           dc.w $0000
+[000ce578]                           dc.w $0000
+bubble_len:
+[000ce57a]                           dc.w $0102
+context_len:
+[000ce57c]                           dc.w $0102
+call:
+[000ce57e]                           dc.w $0000
+[000ce580]                           dc.w $0000
+[000ce582]                           dc.w $0000
+[000ce584]                           dc.w $0000
+[000ce586]                           dc.w $0000
+[000ce588]                           dc.w $0000
+[000ce58a]                           dc.w $0000
+[000ce58c]                           dc.w $0000
+[000ce58e]                           dc.w $0000
+[000ce590]                           dc.w $0000
+[000ce592]                           dc.w $0000
+[000ce594]                           dc.w $0000
+[000ce596]                           dc.w $0000
+[000ce598]                           dc.w $0000
+[000ce59a]                           dc.w $0000
+[000ce59c]                           dc.w $0000
+[000ce59e]                           dc.w $0000
+[000ce5a0]                           dc.w $0000
+[000ce5a2]                           dc.w $0000
+[000ce5a4]                           dc.w $0000
+[000ce5a6]                           dc.w $0000
+[000ce5a8]                           dc.w $0000
+[000ce5aa]                           dc.w $0000
+[000ce5ac]                           dc.w $0000
+[000ce5ae]                           dc.w $0000
+[000ce5b0]                           dc.w $0000
+[000ce5b2]                           dc.w $0000
+[000ce5b4]                           dc.w $0001
+[000ce5b6]                           dc.w $0003
+[000ce5b8]                           dc.w $0000
+[000ce5ba]                           dc.w $0000
+[000ce5bc]                           dc.w $0000
+[000ce5be]                           dc.w $0000
+parm:
+[000ce5c0]                           dc.w $0000
+[000ce5c2]                           dc.w $0000
+[000ce5c4]                           dc.w $0000
+[000ce5c6]                           dc.w $0000
+[000ce5c8]                           dc.w $0000
+[000ce5ca]                           dc.w $0000
+[000ce5cc]                           dc.w $0000
+[000ce5ce]                           dc.w $0000
+[000ce5d0]                           dc.w $0000
+[000ce5d2]                           dc.w $0000
+[000ce5d4]                           dc.w $0000
+[000ce5d6]                           dc.w $0000
+[000ce5d8]                           dc.w $0000
+[000ce5da]                           dc.w $0000
+[000ce5dc]                           dc.w $0000
+[000ce5de]                           dc.w $0000
+[000ce5e0]                           dc.w $0000
+[000ce5e2]                           dc.w $0000
+[000ce5e4]                           dc.w $0000
+[000ce5e6]                           dc.w $0000
+[000ce5e8]                           dc.w $0000
+[000ce5ea]                           dc.w $0000
+[000ce5ec]                           dc.w $0000
+[000ce5ee]                           dc.w $0000
+[000ce5f0]                           dc.w $0000
+[000ce5f2]                           dc.w $0000
+[000ce5f4]                           dc.w $0000
+[000ce5f6]                           dc.w $0001
+[000ce5f8]                           dc.w $0000
+[000ce5fa]                           dc.w $0000
+[000ce5fc]                           dc.w $0000
+[000ce5fe]                           dc.w $0000
+[000ce600]                           dc.w $0000
+serv:
+[000ce602]                           dc.w $0000
+[000ce604]                           dc.w $0000
+[000ce606]                           dc.w $0000
+[000ce608]                           dc.w $0000
+[000ce60a]                           dc.w $0000
+[000ce60c]                           dc.w $0000
+[000ce60e]                           dc.w $0000
+[000ce610]                           dc.w $0000
+[000ce612]                           dc.w $0000
+[000ce614]                           dc.w $0000
+[000ce616]                           dc.w $0000
+[000ce618]                           dc.w $0000
+[000ce61a]                           dc.w $0000
+[000ce61c]                           dc.w $0000
+[000ce61e]                           dc.w $0000
+[000ce620]                           dc.w $0000
+[000ce622]                           dc.w $0000
+[000ce624]                           dc.w $0000
+[000ce626]                           dc.w $0000
+[000ce628]                           dc.w $0000
+[000ce62a]                           dc.w $0000
+[000ce62c]                           dc.w $0000
+[000ce62e]                           dc.w $0000
+[000ce630]                           dc.w $0000
+[000ce632]                           dc.w $0000
+[000ce634]                           dc.w $0000
+[000ce636]                           dc.w $0000
+[000ce638]                           dc.w $0001
+[000ce63a]                           dc.w $0004
+[000ce63c]                           dc.w $0000
+[000ce63e]                           dc.w $0000
+[000ce640]                           dc.w $0000
+[000ce642]                           dc.w $0000
+ptr1:
+[000ce644]                           dc.w $0000
+[000ce646]                           dc.w $0000
+[000ce648]                           dc.w $0000
+[000ce64a]                           dc.w $0000
+[000ce64c]                           dc.w $0000
+[000ce64e]                           dc.w $0000
+[000ce650]                           dc.w $0000
+[000ce652]                           dc.w $0000
+[000ce654]                           dc.w $0000
+[000ce656]                           dc.w $0000
+[000ce658]                           dc.w $0000
+[000ce65a]                           dc.w $0000
+[000ce65c]                           dc.w $0000
+[000ce65e]                           dc.w $0000
+[000ce660]                           dc.w $0000
+[000ce662]                           dc.w $0000
+[000ce664]                           dc.w $0000
+[000ce666]                           dc.w $0000
+[000ce668]                           dc.w $0000
+[000ce66a]                           dc.w $0000
+[000ce66c]                           dc.w $0000
+[000ce66e]                           dc.w $0000
+[000ce670]                           dc.w $0000
+[000ce672]                           dc.w $0000
+[000ce674]                           dc.w $0000
+[000ce676]                           dc.w $0000
+[000ce678]                           dc.w $0000
+[000ce67a]                           dc.w $0001
+[000ce67c]                           dc.w $0000
+[000ce67e]                           dc.w $0000
+[000ce680]                           dc.w $0000
+[000ce682]                           dc.w $0000
+[000ce684]                           dc.w $0000
+ptr2:
+[000ce686]                           dc.w $0000
+[000ce688]                           dc.w $0000
+[000ce68a]                           dc.w $0000
+[000ce68c]                           dc.w $0000
+[000ce68e]                           dc.w $0000
+[000ce690]                           dc.w $0000
+[000ce692]                           dc.w $0000
+[000ce694]                           dc.w $0000
+[000ce696]                           dc.w $0000
+[000ce698]                           dc.w $0000
+[000ce69a]                           dc.w $0000
+[000ce69c]                           dc.w $0000
+[000ce69e]                           dc.w $0000
+[000ce6a0]                           dc.w $0000
+[000ce6a2]                           dc.w $0000
+[000ce6a4]                           dc.w $0000
+[000ce6a6]                           dc.w $0000
+[000ce6a8]                           dc.w $0000
+[000ce6aa]                           dc.w $0000
+[000ce6ac]                           dc.w $0000
+[000ce6ae]                           dc.w $0000
+[000ce6b0]                           dc.w $0000
+[000ce6b2]                           dc.w $0000
+[000ce6b4]                           dc.w $0000
+[000ce6b6]                           dc.w $0000
+[000ce6b8]                           dc.w $0000
+[000ce6ba]                           dc.w $0000
+[000ce6bc]                           dc.w $0001
+[000ce6be]                           dc.w $0000
+[000ce6c0]                           dc.w $0000
+[000ce6c2]                           dc.w $0000
+[000ce6c4]                           dc.w $0000
+[000ce6c6]                           dc.w $0000
+ptr3:
+[000ce6c8]                           dc.w $0000
+[000ce6ca]                           dc.w $0000
+[000ce6cc]                           dc.w $0000
+[000ce6ce]                           dc.w $0000
+[000ce6d0]                           dc.w $0000
+[000ce6d2]                           dc.w $0000
+[000ce6d4]                           dc.w $0000
+[000ce6d6]                           dc.w $0000
+[000ce6d8]                           dc.w $0000
+[000ce6da]                           dc.w $0000
+[000ce6dc]                           dc.w $0000
+[000ce6de]                           dc.w $0000
+[000ce6e0]                           dc.w $0000
+[000ce6e2]                           dc.w $0000
+[000ce6e4]                           dc.w $0000
+[000ce6e6]                           dc.w $0000
+[000ce6e8]                           dc.w $0000
+[000ce6ea]                           dc.w $0000
+[000ce6ec]                           dc.w $0000
+[000ce6ee]                           dc.w $0000
+[000ce6f0]                           dc.w $0000
+[000ce6f2]                           dc.w $0000
+[000ce6f4]                           dc.w $0000
+[000ce6f6]                           dc.w $0000
+[000ce6f8]                           dc.w $0000
+[000ce6fa]                           dc.w $0000
+[000ce6fc]                           dc.w $0000
+[000ce6fe]                           dc.w $0001
+[000ce700]                           dc.w $0000
+[000ce702]                           dc.w $0000
+[000ce704]                           dc.w $0000
+[000ce706]                           dc.w $0000
+[000ce708]                           dc.w $0000
+bubble:
+[000ce70a]                           dc.w $0000
+[000ce70c]                           dc.w $0000
+[000ce70e] 0010c62e                  dc.l bubble_string
+[000ce712]                           dc.w $0000
+[000ce714]                           dc.w $0000
+[000ce716]                           dc.w $0000
+[000ce718]                           dc.w $0000
+[000ce71a]                           dc.w $0000
+[000ce71c]                           dc.w $0000
+[000ce71e]                           dc.w $0000
+[000ce720]                           dc.b 'BUBBLE_01',0
+[000ce72a]                           dc.w $0000
+[000ce72c]                           dc.w $0000
+[000ce72e]                           dc.w $0000
+[000ce730]                           dc.w $0000
+[000ce732]                           dc.w $0000
+[000ce734]                           dc.w $0000
+[000ce736]                           dc.w $0000
+[000ce738]                           dc.w $0000
+[000ce73a]                           dc.w $0000
+[000ce73c]                           dc.w $0000
+[000ce73e]                           dc.w $0000
+[000ce740]                           dc.w $0001
+[000ce742]                           dc.w $0000
+[000ce744]                           dc.w $0000
+[000ce746]                           dc.w $0000
+[000ce748]                           dc.w $0000
+[000ce74a]                           dc.w $0000
+context:
+[000ce74c]                           dc.w $0000
+[000ce74e]                           dc.w $0000
+[000ce750] 0010c730                  dc.l context_string
+[000ce754]                           dc.w $0000
+[000ce756]                           dc.w $0000
+[000ce758]                           dc.w $0000
+[000ce75a]                           dc.w $0000
+[000ce75c]                           dc.w $0000
+[000ce75e]                           dc.w $0000
+[000ce760]                           dc.w $0000
+[000ce762]                           dc.b 'CONTEXT_01',0
+[000ce76d]                           dc.b $00
+[000ce76e]                           dc.w $0000
+[000ce770]                           dc.w $0000
+[000ce772]                           dc.w $0000
+[000ce774]                           dc.w $0000
+[000ce776]                           dc.w $0000
+[000ce778]                           dc.w $0000
+[000ce77a]                           dc.w $0000
+[000ce77c]                           dc.w $0000
+[000ce77e]                           dc.w $0000
+[000ce780]                           dc.w $0000
+[000ce782]                           dc.w $0001
+[000ce784]                           dc.w $0000
+[000ce786]                           dc.w $0000
+[000ce788]                           dc.w $0000
+[000ce78a]                           dc.w $0000
+[000ce78c]                           dc.w $0000
+us_blk:
+[000ce78e] 000ce57e                  dc.l call
+[000ce792] 000ce5c0                  dc.l parm
+[000ce796]                           dc.w $0000
+[000ce798]                           dc.w $0000
+[000ce79a]                           dc.w $0000
+[000ce79c]                           dc.w $0000
+[000ce79e]                           dc.w $0000
+[000ce7a0]                           dc.w $0000
+[000ce7a2]                           dc.w $0000
+[000ce7a4]                           dc.w $0000
+[000ce7a6] 000ce70a                  dc.l bubble
+[000ce7aa] 000ce74c                  dc.l context
+new_user:
+[000ce7ae]                           dc.w $0000
+[000ce7b0]                           dc.w $0000
+[000ce7b2] 000ce78e                  dc.l us_blk
+[000ce7b6]                           dc.w $0000
+[000ce7b8]                           dc.w $0000
+[000ce7ba]                           dc.w $0020
+[000ce7bc]                           dc.w $0000
+[000ce7be]                           dc.w $0020
+[000ce7c0]                           dc.w $0000
+[000ce7c2]                           dc.w $0000
+[000ce7c4]                           dc.b 'USERBLK_01',0
+[000ce7cf]                           dc.b $00
+[000ce7d0]                           dc.w $0000
+[000ce7d2]                           dc.w $0000
+[000ce7d4]                           dc.w $0000
+[000ce7d6]                           dc.w $0000
+[000ce7d8]                           dc.w $0000
+[000ce7da]                           dc.w $0000
+[000ce7dc]                           dc.w $0000
+[000ce7de]                           dc.w $0000
+[000ce7e0]                           dc.w $0000
+[000ce7e2]                           dc.w $0000
+[000ce7e4]                           dc.w $0001
+[000ce7e6]                           dc.w $0000
+[000ce7e8]                           dc.w $0000
+[000ce7ea]                           dc.w $0000
+[000ce7ec]                           dc.w $0000
+[000ce7ee]                           dc.w $0000
+[000ce7f0]                           dc.b 'TEXT_01',0
+[000ce7f8]                           dc.b 'DATAS_01',0
+[000ce801]                           dc.b $00
+

@@ -1328,3 +1328,24 @@ Aus_cycle:
 [00067ec6] 4fef 002a                 lea.l      42(a7),a7
 [00067eca] 245f                      movea.l    (a7)+,a2
 [00067ecc] 4e75                      rts
+
+a3dproto:
+[000e1d98] 00064a22                  dc.l A_3Dbutton
+[000e1d9c]                           dc.w $09f1
+[000e1d9e]                           dc.w $0178
+[000e1da0] 000630f2                  dc.l Auo_string
+[000e1da4] 000e1dba                  dc.l $000e1dba
+[000e1da8]                           dc.w $0000
+[000e1daa]                           dc.w $0000
+[000e1dac]                           dc.w $0000
+[000e1dae]                           dc.w $0000
+[000e1db0]                           dc.w $0000
+[000e1db2]                           dc.w $0000
+[000e1db4]                           dc.w $0000
+[000e1db6]                           dc.w $0000
+[000e1db8]                           dc.w $0200
+[000e1dba]                           dc.w $007c
+[000e1dbc]                           dc.w $5d00
+[000e1dbe]                           dc.w $0000
+[000e1dc0]                           dc.w $0000
+[000e1dc2]                           dc.b '[]|',0

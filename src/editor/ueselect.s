@@ -34,3 +34,86 @@ abort:
 [00027470] 2050                      movea.l    (a0),a0
 [00027472] 4e90                      jsr        (a0)
 [00027474] 4e75                      rts
+
+	.data
+
+visual:
+[000bce88]                           dc.w $ffff
+[000bce8a]                           dc.w $ffff
+[000bce8c]                           dc.w $ffff
+[000bce8e]                           dc.w $001a
+[000bce90]                           dc.w $0000
+[000bce92]                           dc.w $0000
+[000bce94] 000bcf36                  dc.l $000bcf36
+[000bce98]                           dc.w $0000
+[000bce9a]                           dc.w $0000
+[000bce9c]                           dc.w $0008
+[000bce9e]                           dc.w $0002
+logical:
+[000bcea0]                           dc.w $ffff
+[000bcea2]                           dc.w $ffff
+[000bcea4]                           dc.w $ffff
+[000bcea6]                           dc.w $0018
+[000bcea8]                           dc.w $0000
+[000bceaa]                           dc.w $0000
+[000bceac]                           dc.w $0000
+[000bceae]                           dc.w $0000
+[000bceb0]                           dc.w $0000
+[000bceb2]                           dc.w $0000
+[000bceb4]                           dc.w $0008
+[000bceb6]                           dc.w $0002
+aud:
+[000bceb8] 000bcf3d                  dc.l $000bcf3d
+[000bcebc] 000bcf3c                  dc.l $000bcf3c
+[000bcec0]                           dc.w $0000
+[000bcec2]                           dc.w $0000
+[000bcec4]                           dc.w $0000
+[000bcec6]                           dc.w $0000
+[000bcec8]                           dc.w $0000
+[000bceca]                           dc.w $0000
+[000bcecc]                           dc.w $0000
+[000bcece]                           dc.w $0000
+[000bced0]                           dc.w $0000
+[000bced2]                           dc.w $0000
+[000bced4]                           dc.w $0000
+[000bced6]                           dc.w $0000
+[000bced8]                           dc.w $0000
+[000bceda]                           dc.w $0000
+[000bcedc]                           dc.w $0000
+[000bcede]                           dc.w $0000
+[000bcee0]                           dc.w $0000
+[000bcee2]                           dc.w $0000
+[000bcee4]                           dc.w $0000
+data:
+[000bcee6]                           dc.b 'A_select',0
+[000bceef]                           dc.b $00
+[000bcef0]                           dc.w $0000
+[000bcef2]                           dc.w $0000
+[000bcef4]                           dc.w $0000
+[000bcef6]                           dc.w $0000
+[000bcef8]                           dc.w $0000
+[000bcefa]                           dc.w $0000
+[000bcefc]                           dc.w $0000
+[000bcefe]                           dc.w $0000
+[000bcf00]                           dc.w $0000
+[000bcf02]                           dc.w $0000
+[000bcf04]                           dc.w $0000
+[000bcf06] 00027444                  dc.l object_tree
+[000bcf0a] 00027448                  dc.l test_it
+[000bcf0e] 0002746a                  dc.l abort
+[000bcf12] 0004f20a                  dc.l Aob_delete
+[000bcf16] 000bce88                  dc.l visual
+[000bcf1a] 000bcea0                  dc.l logical
+[000bcf1e] 000bceb8                  dc.l aud
+[000bcf22] 0002742a                  dc.l minsize
+[000bcf26]                           dc.w $0000
+[000bcf28]                           dc.w $0000
+[000bcf2a] 000bcf42                  dc.l $000bcf42
+[000bcf2e] 000bcf4b                  dc.l $000bcf4b
+[000bcf32]                           dc.w $0000
+[000bcf34]                           dc.w $0000
+[000bcf36]                           dc.b 'SELECT',0
+[000bcf3d]                           dc.b '0x0L',0
+[000bcf42]                           dc.b 'SELECT |',0
+[000bcf4b]                           dc.b 'Der Select-Editor',0
+[000bcf5d]                           dc.b $00

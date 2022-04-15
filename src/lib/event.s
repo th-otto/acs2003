@@ -1199,3 +1199,90 @@ ACSeventhandler:
 [0004b48e] 4fef 003e                 lea.l      62(a7),a7
 [0004b492] 245f                      movea.l    (a7)+,a2
 [0004b494] 4e75                      rts
+
+	.data
+
+exitapp:
+[000e073a]                           dc.w $0000
+hidepointer:
+[000e073c]                           dc.w $0000
+DeadKeys:
+[000e073e]                           dc.b '^~'`'
+[000e0742]                           dc.w $b922
+[000e0744]                           dc.w $f82c
+[000e0746]                           dc.w $2f00
+CombKeys:
+[000e0748] 000e07a6                  dc.l $000e07a6
+[000e074c] 000e07ad                  dc.l $000e07ad
+[000e0750] 000e07b4                  dc.l $000e07b4
+[000e0754] 000e07bc                  dc.l $000e07bc
+[000e0758] 000e07c4                  dc.l $000e07c4
+[000e075c] 000e07cc                  dc.l $000e07cc
+[000e0760] 000e07d4                  dc.l $000e07d4
+[000e0764] 000e07dc                  dc.l $000e07dc
+[000e0768] 000e07e4                  dc.l $000e07e4
+[000e076c] 000e07ef                  dc.l $000e07ef
+[000e0770] 000e07fa                  dc.l $000e07fa
+[000e0774] 000e0805                  dc.l $000e0805
+[000e0778] 000e0810                  dc.l $000e0810
+[000e077c] 000e0814                  dc.l $000e0814
+[000e0780] 000e0818                  dc.l $000e0818
+[000e0784] 000e081c                  dc.l $000e081c
+[000e0788] 000e0820                  dc.l $000e0820
+[000e078c] 000e0826                  dc.l $000e0826
+dead_handling:
+[000e0790]                           dc.w $0000
+dead_key:
+[000e0792]                           dc.w $0000
+[000e0794]                           dc.w $0000
+[000e0796]                           dc.w $0000
+[000e0798]                           dc.w $0000
+[000e079a]                           dc.w $0000
+[000e079c]                           dc.w $0000
+[000e079e]                           dc.w $0000
+[000e07a0]                           dc.w $0000
+[000e07a2]                           dc.w $0000
+quote:
+[000e07a4]                           dc.w $0000
+[000e07a6]                           dc.b ' aeiou',0
+[000e07ad]                           dc.b $5e
+[000e07ae]                           dc.w $8388
+[000e07b0]                           dc.w $8c93
+[000e07b2]                           dc.w $9600
+[000e07b4]                           dc.b ' nNaoAo',0
+[000e07bc]                           dc.w $7ea4
+[000e07be]                           dc.w $a5b0
+[000e07c0]                           dc.w $b1b7
+[000e07c2]                           dc.w $b800
+[000e07c4]                           dc.b ' eEaiou',0
+[000e07cc]                           dc.w $2782
+[000e07ce]                           dc.w $90a0
+[000e07d0]                           dc.w $a1a2
+[000e07d2]                           dc.w $a300
+[000e07d4]                           dc.b ' aeiouA',0
+[000e07dc]                           dc.w $6085
+[000e07de]                           dc.w $8a8d
+[000e07e0]                           dc.w $9597
+[000e07e2]                           dc.w $b600
+[000e07e4]                           dc.b ' aeiouyAOU',0
+[000e07ef]                           dc.b $b9
+[000e07f0]                           dc.w $8489
+[000e07f2]                           dc.w $8b94
+[000e07f4]                           dc.w $8198
+[000e07f6]                           dc.b 'Ž™š',0
+[000e07fa]                           dc.b ' aeiouyAOU',0
+[000e0805]                           dc.b $22
+[000e0806]                           dc.w $8489
+[000e0808]                           dc.w $8b94
+[000e080a]                           dc.w $8198
+[000e080c]                           dc.b 'Ž™š',0
+[000e0810]                           dc.b ' aA',0
+[000e0814]                           dc.w $f886
+[000e0816]                           dc.w $8f00
+[000e0818]                           dc.b ' cC',0
+[000e081c]                           dc.w $2c87
+[000e081e]                           dc.w $8000
+[000e0820]                           dc.b ' oO24',0
+[000e0826]                           dc.w $2fb3
+[000e0828]                           dc.w $b2ab
+[000e082a]                           dc.w $ac00

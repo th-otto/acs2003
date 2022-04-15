@@ -256,3 +256,322 @@ new_work:
 [00034746] 2279 000b 79c8            movea.l    $000B79C8,a1
 [0003474c] 4eb9 0003 3dd6            jsr        work_icon
 [00034752] 4e75                      rts
+
+	.data
+
+protodata:
+[000cde78]                           dc.w $0000
+[000cde7a]                           dc.w $0000
+[000cde7c]                           dc.w $0000
+[000cde7e]                           dc.w $0000
+[000cde80]                           dc.w $0000
+[000cde82]                           dc.w $0000
+[000cde84]                           dc.w $0000
+[000cde86]                           dc.w $0000
+[000cde88]                           dc.w $0000
+[000cde8a]                           dc.w $0000
+[000cde8c]                           dc.w $0000
+[000cde8e]                           dc.b 'DATAS_01',0
+[000cde97]                           dc.b $00
+[000cde98]                           dc.w $0000
+[000cde9a]                           dc.w $0000
+[000cde9c]                           dc.w $0000
+[000cde9e]                           dc.w $0000
+[000cdea0]                           dc.w $0000
+[000cdea2]                           dc.w $0000
+[000cdea4]                           dc.w $0000
+[000cdea6]                           dc.w $0000
+[000cdea8]                           dc.w $0000
+[000cdeaa]                           dc.w $0000
+[000cdeac]                           dc.w $0000
+[000cdeae]                           dc.w $0001
+[000cdeb0]                           dc.w $0000
+[000cdeb2]                           dc.w $0000
+[000cdeb4]                           dc.w $0000
+[000cdeb6]                           dc.w $0000
+[000cdeb8]                           dc.w $0000
+list_data:
+[000cdeba]                           dc.w $0000
+[000cdebc]                           dc.w $0000
+[000cdebe]                           dc.w $0000
+[000cdec0]                           dc.w $0000
+[000cdec2] 000a9428                  dc.l WI_DATA
+[000cdec6] 000cd014                  dc.l if_list
+[000cdeca] 000cd022                  dc.l if_name
+[000cdece]                           dc.w $2724
+[000cded0] 000cde78                  dc.l protodata
+[000cded4] 00034350                  dc.l copy_data
+[000cded8] 000343b6                  dc.l del_data
+[000cdedc] 000343fe                  dc.l new_work
+[000cdee0]                           dc.w $0000
+[000cdee2]                           dc.w $0000
+free_data:
+[000cdee4]                           dc.w $0000
+[000cdee6]                           dc.w $0000
+[000cdee8]                           dc.w $0000
+[000cdeea]                           dc.w $0000
+[000cdeec]                           dc.w $0000
+[000cdeee]                           dc.w $0000
+[000cdef0]                           dc.w $0000
+[000cdef2]                           dc.w $0000
+[000cdef4]                           dc.w $0000
+[000cdef6]                           dc.w $0000
+[000cdef8]                           dc.w $0000
+[000cdefa]                           dc.b 'DATAS_01',0
+[000cdf03]                           dc.b $00
+[000cdf04]                           dc.w $0000
+[000cdf06]                           dc.w $0000
+[000cdf08]                           dc.w $0000
+[000cdf0a]                           dc.w $0000
+[000cdf0c]                           dc.w $0000
+[000cdf0e]                           dc.w $0000
+[000cdf10]                           dc.w $0000
+[000cdf12]                           dc.w $0000
+[000cdf14]                           dc.w $0000
+[000cdf16]                           dc.w $0000
+[000cdf18]                           dc.w $0000
+[000cdf1a]                           dc.w $0001
+[000cdf1c]                           dc.w $0000
+[000cdf1e]                           dc.w $0000
+[000cdf20]                           dc.w $0000
+[000cdf22]                           dc.w $0000
+[000cdf24]                           dc.w $0000
+NameObj:
+[000cdf26]                           dc.w $0000
+[000cdf28]                           dc.w $0000
+[000cdf2a] 000cd0b3                  dc.l proto_winame
+[000cdf2e]                           dc.w $0000
+[000cdf30]                           dc.w $0000
+[000cdf32]                           dc.w $000a
+[000cdf34]                           dc.w $0000
+[000cdf36]                           dc.w $000a
+[000cdf38]                           dc.w $0000
+[000cdf3a]                           dc.w $0000
+[000cdf3c]                           dc.b 'TEXT_01',0
+[000cdf44]                           dc.w $0000
+[000cdf46]                           dc.w $0000
+[000cdf48]                           dc.w $0000
+[000cdf4a]                           dc.w $0000
+[000cdf4c]                           dc.w $0000
+[000cdf4e]                           dc.w $0000
+[000cdf50]                           dc.w $0000
+[000cdf52]                           dc.w $0000
+[000cdf54]                           dc.w $0000
+[000cdf56]                           dc.w $0000
+[000cdf58]                           dc.w $0000
+[000cdf5a]                           dc.w $0000
+[000cdf5c]                           dc.w $0001
+[000cdf5e]                           dc.w $0000
+[000cdf60]                           dc.w $0000
+[000cdf62]                           dc.w $0000
+[000cdf64]                           dc.w $0000
+[000cdf66]                           dc.w $0000
+InfoObj:
+[000cdf68]                           dc.w $0000
+[000cdf6a]                           dc.w $0000
+[000cdf6c] 000cd0b2                  dc.l proto_wiinfo
+[000cdf70]                           dc.w $0000
+[000cdf72]                           dc.w $0000
+[000cdf74]                           dc.w $0001
+[000cdf76]                           dc.w $0000
+[000cdf78]                           dc.w $0001
+[000cdf7a]                           dc.w $0000
+[000cdf7c]                           dc.w $0000
+[000cdf7e]                           dc.b 'TEXT_01',0
+[000cdf86]                           dc.w $0000
+[000cdf88]                           dc.w $0000
+[000cdf8a]                           dc.w $0000
+[000cdf8c]                           dc.w $0000
+[000cdf8e]                           dc.w $0000
+[000cdf90]                           dc.w $0000
+[000cdf92]                           dc.w $0000
+[000cdf94]                           dc.w $0000
+[000cdf96]                           dc.w $0000
+[000cdf98]                           dc.w $0000
+[000cdf9a]                           dc.w $0000
+[000cdf9c]                           dc.w $0000
+[000cdf9e]                           dc.w $0001
+[000cdfa0]                           dc.w $0000
+[000cdfa2]                           dc.w $0000
+[000cdfa4]                           dc.w $0000
+[000cdfa6]                           dc.w $0000
+[000cdfa8]                           dc.w $0000
+HelpFileObj:
+[000cdfaa]                           dc.w $0000
+[000cdfac]                           dc.w $0000
+[000cdfae] 000cd0b0                  dc.l proto_wihelpfile
+[000cdfb2]                           dc.w $0000
+[000cdfb4]                           dc.w $0000
+[000cdfb6]                           dc.w $0001
+[000cdfb8]                           dc.w $0000
+[000cdfba]                           dc.w $0001
+[000cdfbc]                           dc.w $0000
+[000cdfbe]                           dc.w $0000
+[000cdfc0]                           dc.b 'HELPFILE_01',0
+[000cdfcc]                           dc.w $0000
+[000cdfce]                           dc.w $0000
+[000cdfd0]                           dc.w $0000
+[000cdfd2]                           dc.w $0000
+[000cdfd4]                           dc.w $0000
+[000cdfd6]                           dc.w $0000
+[000cdfd8]                           dc.w $0000
+[000cdfda]                           dc.w $0000
+[000cdfdc]                           dc.w $0000
+[000cdfde]                           dc.w $0000
+[000cdfe0]                           dc.w $0001
+[000cdfe2]                           dc.w $0000
+[000cdfe4]                           dc.w $0000
+[000cdfe6]                           dc.w $0000
+[000cdfe8]                           dc.w $0000
+[000cdfea]                           dc.w $0000
+HelpTitleObj:
+[000cdfec]                           dc.w $0000
+[000cdfee]                           dc.w $0000
+[000cdff0] 000cd0b1                  dc.l proto_wihelptitle
+[000cdff4]                           dc.w $0000
+[000cdff6]                           dc.w $0000
+[000cdff8]                           dc.w $0001
+[000cdffa]                           dc.w $0000
+[000cdffc]                           dc.w $0001
+[000cdffe]                           dc.w $0000
+[000ce000]                           dc.w $0000
+[000ce002]                           dc.b 'STGUIDE_01',0
+[000ce00d]                           dc.b $00
+[000ce00e]                           dc.w $0000
+[000ce010]                           dc.w $0000
+[000ce012]                           dc.w $0000
+[000ce014]                           dc.w $0000
+[000ce016]                           dc.w $0000
+[000ce018]                           dc.w $0000
+[000ce01a]                           dc.w $0000
+[000ce01c]                           dc.w $0000
+[000ce01e]                           dc.w $0000
+[000ce020]                           dc.w $0000
+[000ce022]                           dc.w $0001
+[000ce024]                           dc.w $0000
+[000ce026]                           dc.w $0000
+[000ce028]                           dc.w $0000
+[000ce02a]                           dc.w $0000
+[000ce02c]                           dc.w $0000
+window_obj:
+[000ce02e]                           dc.w $0000
+[000ce030]                           dc.w $0000
+[000ce032]                           dc.w $0000
+[000ce034]                           dc.w $0000
+[000ce036]                           dc.w $0000
+[000ce038]                           dc.w $0000
+[000ce03a]                           dc.w $0000
+[000ce03c]                           dc.w $0000
+[000ce03e]                           dc.w $0000
+[000ce040]                           dc.w $0000
+[000ce042]                           dc.w $0000
+[000ce044]                           dc.w $0000
+[000ce046]                           dc.w $0000
+[000ce048]                           dc.w $0000
+[000ce04a]                           dc.w $0000
+[000ce04c]                           dc.w $0000
+[000ce04e]                           dc.w $ffff
+[000ce050]                           dc.w $6fff
+[000ce052]                           dc.w $0000
+[000ce054]                           dc.w $0000
+[000ce056]                           dc.w $0078
+[000ce058]                           dc.w $0032
+[000ce05a]                           dc.w $0000
+[000ce05c]                           dc.w $0000
+[000ce05e]                           dc.w $0000
+[000ce060]                           dc.w $0000
+[000ce062]                           dc.w $0000
+[000ce064]                           dc.w $0000
+[000ce066]                           dc.w $0000
+[000ce068]                           dc.w $0000
+[000ce06a]                           dc.w $ffff
+[000ce06c]                           dc.w $ffff
+[000ce06e]                           dc.w $ffff
+[000ce070]                           dc.w $ffff
+[000ce072]                           dc.w $0000
+[000ce074]                           dc.w $0000
+[000ce076]                           dc.w $f8f8
+[000ce078] 000cdf26                  dc.l NameObj
+[000ce07c] 000cdf68                  dc.l InfoObj
+[000ce080]                           dc.w $0000
+[000ce082]                           dc.w $0103
+[000ce084]                           dc.w $0000
+[000ce086]                           dc.w $ffff
+[000ce088]                           dc.w $0000
+[000ce08a]                           dc.w $0000
+[000ce08c]                           dc.w $0000
+[000ce08e]                           dc.w $0000
+[000ce090]                           dc.w $0000
+[000ce092]                           dc.w $0000
+[000ce094]                           dc.w $0000
+[000ce096]                           dc.w $0000
+[000ce098]                           dc.w $0000
+[000ce09a]                           dc.w $0000
+[000ce09c]                           dc.w $0000
+[000ce09e]                           dc.w $0000
+[000ce0a0]                           dc.w $0000
+[000ce0a2]                           dc.w $0000
+[000ce0a4]                           dc.w $0000
+[000ce0a6]                           dc.w $0000
+[000ce0a8]                           dc.w $0000
+[000ce0aa]                           dc.w $0000
+[000ce0ac]                           dc.w $0000
+[000ce0ae]                           dc.w $0000
+[000ce0b0]                           dc.w $0000
+[000ce0b2]                           dc.w $0000
+[000ce0b4]                           dc.w $0000
+[000ce0b6]                           dc.w $0000
+[000ce0b8]                           dc.w $0000
+[000ce0ba]                           dc.w $0000
+[000ce0bc]                           dc.w $0000
+[000ce0be]                           dc.w $0000
+[000ce0c0]                           dc.w $0000
+[000ce0c2]                           dc.w $0000
+[000ce0c4]                           dc.w $0000
+[000ce0c6]                           dc.w $0000
+[000ce0c8] 000cdfaa                  dc.l HelpFileObj
+[000ce0cc] 000cdfec                  dc.l HelpTitleObj
+protowindow:
+[000ce0d0]                           dc.w $0000
+[000ce0d2]                           dc.w $0000
+[000ce0d4] 000ce02e                  dc.l window_obj
+[000ce0d8]                           dc.w $0000
+[000ce0da]                           dc.w $0000
+[000ce0dc]                           dc.w $00a2
+[000ce0de]                           dc.w $0000
+[000ce0e0]                           dc.w $00a2
+[000ce0e2]                           dc.w $0000
+[000ce0e4]                           dc.w $0000
+[000ce0e6]                           dc.b 'WINDOW_01',0
+[000ce0f0]                           dc.w $0000
+[000ce0f2]                           dc.w $0000
+[000ce0f4]                           dc.w $0000
+[000ce0f6]                           dc.w $0000
+[000ce0f8]                           dc.w $0000
+[000ce0fa]                           dc.w $0000
+[000ce0fc]                           dc.w $0000
+[000ce0fe]                           dc.w $0000
+[000ce100]                           dc.w $0000
+[000ce102]                           dc.w $0000
+[000ce104]                           dc.w $0000
+[000ce106]                           dc.w $0001
+[000ce108]                           dc.w $0000
+[000ce10a]                           dc.w $0000
+[000ce10c]                           dc.w $0000
+[000ce10e]                           dc.w $0000
+[000ce110]                           dc.w $0000
+list_window:
+[000ce112]                           dc.w $0000
+[000ce114]                           dc.w $0000
+[000ce116]                           dc.w $0000
+[000ce118]                           dc.w $0000
+[000ce11a] 000b796e                  dc.l WI_WINDOW
+[000ce11e] 000cd149                  dc.l wi_list
+[000ce122] 000cd159                  dc.l wi_name
+[000ce126]                           dc.w $2717
+[000ce128] 000ce0d0                  dc.l protowindow
+[000ce12c] 00034426                  dc.l copy_window
+[000ce130] 000345c6                  dc.l del_window
+[000ce134] 00034742                  dc.l new_work
+[000ce138]                           dc.w $0000
+[000ce13a]                           dc.w $0000

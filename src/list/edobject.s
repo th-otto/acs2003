@@ -114,3 +114,79 @@ new_work:
 [00035b22] 2279 000c 8e36            movea.l    $000C8E36,a1
 [00035b28] 4eb9 0003 3dd6            jsr        work_icon
 [00035b2e] 4e75                      rts
+
+	.data
+
+protoobj:
+[000ced12]                           dc.w $0000
+[000ced14]                           dc.w $0000
+[000ced16]                           dc.w $0000
+[000ced18]                           dc.w $0000
+[000ced1a]                           dc.w $ffff
+[000ced1c]                           dc.w $ffff
+[000ced1e]                           dc.w $ffff
+[000ced20]                           dc.w $0014
+[000ced22]                           dc.w $0000
+[000ced24]                           dc.w $0010
+[000ced26]                           dc.w $0002
+[000ced28]                           dc.w $1100
+[000ced2a]                           dc.w $0000
+[000ced2c]                           dc.w $0000
+[000ced2e]                           dc.w $0020
+[000ced30]                           dc.w $000c
+[000ced32]                           dc.w $0000
+[000ced34]                           dc.w $0000
+[000ced36]                           dc.w $0000
+[000ced38]                           dc.w $0000
+[000ced3a]                           dc.w $8000
+[000ced3c]                           dc.w $0000
+[000ced3e]                           dc.w $0000
+[000ced40]                           dc.w $0000
+[000ced42]                           dc.w $0000
+[000ced44]                           dc.w $0000
+[000ced46]                           dc.w $0000
+[000ced48]                           dc.w $0000
+protoobject:
+[000ced4a]                           dc.w $0000
+[000ced4c]                           dc.w $0000
+[000ced4e] 000ced12                  dc.l protoobj
+[000ced52]                           dc.w $0000
+[000ced54]                           dc.w $0000
+[000ced56]                           dc.w $0038
+[000ced58]                           dc.w $0000
+[000ced5a]                           dc.w $0038
+[000ced5c]                           dc.w $0000
+[000ced5e]                           dc.w $0000
+[000ced60]                           dc.b 'OBJECT_01',0
+[000ced6a]                           dc.w $0000
+[000ced6c]                           dc.w $0000
+[000ced6e]                           dc.w $0000
+[000ced70]                           dc.w $0000
+[000ced72]                           dc.w $0000
+[000ced74]                           dc.w $0000
+[000ced76]                           dc.w $0000
+[000ced78]                           dc.w $0000
+[000ced7a]                           dc.w $0000
+[000ced7c]                           dc.w $0000
+[000ced7e]                           dc.w $0000
+[000ced80]                           dc.w $0001
+[000ced82]                           dc.w $0000
+[000ced84]                           dc.w $0000
+[000ced86]                           dc.w $0000
+[000ced88]                           dc.w $0000
+[000ced8a]                           dc.w $0000
+list_object:
+[000ced8c]                           dc.w $0000
+[000ced8e]                           dc.w $0000
+[000ced90]                           dc.w $0000
+[000ced92]                           dc.w $0000
+[000ced94] 000c8ddc                  dc.l WI_OBJECT
+[000ced98] 000cd07e                  dc.l ob_list
+[000ced9c] 000cd092                  dc.l ob_name
+[000ceda0]                           dc.w $2710
+[000ceda2] 000ced4a                  dc.l protoobject
+[000ceda6] 00035a3a                  dc.l copy_obj
+[000cedaa] 00035aa2                  dc.l del_object
+[000cedae] 00035b1e                  dc.l new_work
+[000cedb2]                           dc.w $0000
+[000cedb4]                           dc.w $0000

@@ -2210,3 +2210,20 @@ undraw:
 [0002f270] 4eb9 0005 1b80            jsr        Awi_obredraw
 [0002f276] 4cdf 0c08                 movem.l    (a7)+,d3/a2-a3
 [0002f27a] 4e75                      rts
+
+	.data
+
+WARN_SAME:
+[000c49bd]                           dc.b '[2][| Das Objekt soll auf sich| selbst kopiert werden!| Operation abbrechen?][ JA | NEIN ]',0
+WARN_XSHRINK:
+[000c4a18]                           dc.b '[2][| Kindobjekt ist breiter | als das Elternobjekt.| Kind verkleinern ?][ JA | NEIN ]',0
+WARN_YSHRINK:
+[000c4a6f]                           dc.b '[2][| Kindobjekt ist hîher| als das Elternobjekt. | Kind verkleinern ?][ JA | NEIN ]',0
+STGUIDE_01:
+[000c4ac4]                           dc.b 'Der Objektbaum-Editor',0
+STGUIDE_02:
+[000c4ada]                           dc.b 'Der MenÅ-Editor',0
+STGUIDE_03:
+[000c4aea]                           dc.b 'Der Popup-Editor',0
+STGUIDE_04:
+[000c4afb]                           dc.b 'Eingabe der Objekt-Position',0

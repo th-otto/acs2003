@@ -845,3 +845,1204 @@ ok:
 [00029a88] 4fef 0032                 lea.l      50(a7),a7
 [00029a8c] 4cdf 3c08                 movem.l    (a7)+,d3/a2-a5
 [00029a90] 4e75                      rts
+
+	.data
+
+BUBBLE_01:
+[000c155a]                           dc.b 'Hier wird der Titel eingegeben',0
+BUBBLE_03:
+[000c1579]                           dc.b 'Hier kann der String, der fÅr BubbleGEM verwendet werden soll, eingegeben werden.',0
+BUBBLE_05:
+[000c15cb]                           dc.b 'Hier kann der String eingegeben werden, der das aufzurufende Context-Popup beschreibt (siehe in der Dokumentation zu Ame_strpopup).',0
+POS_TEXT0:
+[000c164f]                           dc.b 'l/o',0
+POS_TEXT1:
+[000c1653]                           dc.b 'm/o',0
+POS_TEXT2:
+[000c1657]                           dc.b 'r/o',0
+POS_TEXT3:
+[000c165b]                           dc.b 'l/u',0
+POS_TEXT4:
+[000c165f]                           dc.b 'm/u',0
+POS_TEXT5:
+[000c1663]                           dc.b 'r/u',0
+TEXT_001:
+[000c1667]                           dc.b 'TITEL',0
+TEXT_005:
+[000c166d]                           dc.b $4f
+[000c166e]                           dc.w $4b00
+TEXT_009:
+[000c1670]                           dc.b 'Abbruch',0
+TEXT_05:
+[000c1678]                           dc.b 'Sonstiges',0
+TEXT_06:
+[000c1682]                           dc.b 'BubbleGEM-Text',0
+TEXT_07:
+[000c1691]                           dc.b 'Context-Popup',0
+TEXT_09:
+[000c169f]                           dc.b 'unten:',0
+TEXT_10:
+[000c16a6]                           dc.b 'Farbe:',0
+TEXT_12:
+[000c16ad]                           dc.b 'Grîûe:',0
+TEXT_13:
+[000c16b4]                           dc.b 'Muster:',0
+TEXT_14:
+[000c16bc]                           dc.b 'Rahmen-Farbe:',0
+TEXT_15:
+[000c16ca]                           dc.b 'InnenflÑche:',0
+TEXT_16:
+[000c16d7]                           dc.b 'Text:',0
+TEXT_18:
+[000c16dd]                           dc.b 'Pos:',0
+TEXT_19:
+[000c16e2]                           dc.b 'oben:',0
+TEXT_20:
+[000c16e8]                           dc.b 'DitherModus',0
+TEXT_21:
+[000c16f4]                           dc.b 'links/',0
+TEXT_22:
+[000c16fb]                           dc.b 'rechts/',0
+TEXT_23:
+[000c1703]                           dc.b ' XXX ',0
+help_title:
+[000c1709]                           dc.b 'Der Innerframe-Editor',0
+title:
+[000c171f]                           dc.b 'INNERFRAME -',0
+A_3DBUTTON01:
+[000c172c] 00064a22                  dc.l A_3Dbutton
+[000c1730]                           dc.w $29c1
+[000c1732]                           dc.w $0178
+[000c1734] 000630f2                  dc.l Auo_string
+[000c1738] 000c166d                  dc.l TEXT_005
+[000c173c]                           dc.w $0000
+[000c173e]                           dc.w $0000
+[000c1740]                           dc.w $0000
+[000c1742]                           dc.w $0000
+[000c1744]                           dc.w $0000
+[000c1746]                           dc.w $0000
+[000c1748]                           dc.w $0000
+[000c174a]                           dc.w $0000
+A_3DBUTTON02:
+[000c174c] 00064a22                  dc.l A_3Dbutton
+[000c1750]                           dc.w $29c1
+[000c1752]                           dc.w $0178
+[000c1754] 000630f2                  dc.l Auo_string
+[000c1758] 000c1670                  dc.l TEXT_009
+[000c175c]                           dc.w $0000
+[000c175e]                           dc.w $0000
+[000c1760]                           dc.w $0000
+[000c1762]                           dc.w $0000
+[000c1764]                           dc.w $0000
+[000c1766]                           dc.w $0000
+[000c1768]                           dc.w $0000
+[000c176a]                           dc.w $0000
+A_3DBUTTON05:
+[000c176c] 00064a22                  dc.l A_3Dbutton
+[000c1770]                           dc.w $29f1
+[000c1772]                           dc.w $0178
+[000c1774] 000630f2                  dc.l Auo_string
+[000c1778]                           dc.w $0000
+[000c177a]                           dc.w $0000
+[000c177c]                           dc.w $0000
+[000c177e]                           dc.w $0000
+[000c1780]                           dc.w $0000
+[000c1782]                           dc.w $0000
+[000c1784]                           dc.w $0000
+[000c1786]                           dc.w $0000
+[000c1788]                           dc.w $0000
+[000c178a]                           dc.w $0000
+A_3DBUTTON06:
+[000c178c] 00064a22                  dc.l A_3Dbutton
+[000c1790]                           dc.w $29f1
+[000c1792]                           dc.w $0178
+[000c1794] 000630f2                  dc.l Auo_string
+[000c1798]                           dc.w $0000
+[000c179a]                           dc.w $0000
+[000c179c]                           dc.w $0000
+[000c179e]                           dc.w $0000
+[000c17a0]                           dc.w $0000
+[000c17a2]                           dc.w $0000
+[000c17a4]                           dc.w $0000
+[000c17a6]                           dc.w $0000
+[000c17a8]                           dc.w $0000
+[000c17aa]                           dc.w $0000
+A_3DBUTTON27:
+[000c17ac] 00064a22                  dc.l A_3Dbutton
+[000c17b0]                           dc.w $09f1
+[000c17b2]                           dc.w $0178
+[000c17b4] 000630f2                  dc.l Auo_string
+[000c17b8]                           dc.w $0000
+[000c17ba]                           dc.w $0000
+[000c17bc]                           dc.w $0000
+[000c17be]                           dc.w $0000
+[000c17c0]                           dc.w $0000
+[000c17c2]                           dc.w $0000
+[000c17c4]                           dc.w $0000
+[000c17c6]                           dc.w $0000
+[000c17c8]                           dc.w $0000
+[000c17ca]                           dc.w $0000
+A_ARROWS02:
+[000c17cc] 00065c72                  dc.l A_arrows
+[000c17d0]                           dc.w $1301
+[000c17d2]                           dc.w $0001
+[000c17d4]                           dc.w $0000
+[000c17d6]                           dc.w $0000
+[000c17d8]                           dc.w $0000
+[000c17da]                           dc.w $0000
+[000c17dc]                           dc.w $0000
+[000c17de]                           dc.w $0000
+[000c17e0]                           dc.w $0000
+[000c17e2]                           dc.w $0000
+[000c17e4]                           dc.w $0000
+[000c17e6]                           dc.w $0000
+[000c17e8]                           dc.w $0000
+[000c17ea]                           dc.w $0000
+A_BOXED02:
+[000c17ec] 0006afea                  dc.l A_boxed
+[000c17f0]                           dc.w $9000
+[000c17f2]                           dc.w $ff12
+[000c17f4] 0006a068                  dc.l Auo_boxed
+[000c17f8]                           dc.w $0000
+[000c17fa]                           dc.w $0000
+[000c17fc]                           dc.w $0000
+[000c17fe]                           dc.w $0000
+[000c1800]                           dc.w $0000
+[000c1802]                           dc.w $0000
+[000c1804] 000c155a                  dc.l BUBBLE_01
+[000c1808]                           dc.w $0000
+[000c180a]                           dc.w $0000
+A_BOXED03:
+[000c180c] 0006afea                  dc.l A_boxed
+[000c1810]                           dc.w $9038
+[000c1812]                           dc.w $ff12
+[000c1814] 0006a068                  dc.l Auo_boxed
+[000c1818]                           dc.w $0000
+[000c181a]                           dc.w $0000
+[000c181c]                           dc.w $0000
+[000c181e]                           dc.w $0000
+[000c1820]                           dc.w $0000
+[000c1822]                           dc.w $0000
+[000c1824] 000c1579                  dc.l BUBBLE_03
+[000c1828]                           dc.w $0000
+[000c182a]                           dc.w $0000
+A_BOXED04:
+[000c182c] 0006afea                  dc.l A_boxed
+[000c1830]                           dc.w $9038
+[000c1832]                           dc.w $ff12
+[000c1834] 0006a068                  dc.l Auo_boxed
+[000c1838]                           dc.w $0000
+[000c183a]                           dc.w $0000
+[000c183c]                           dc.w $0000
+[000c183e]                           dc.w $0000
+[000c1840]                           dc.w $0000
+[000c1842]                           dc.w $0000
+[000c1844] 000c15cb                  dc.l BUBBLE_05
+[000c1848]                           dc.w $0000
+[000c184a]                           dc.w $0000
+A_CHECKBOX01:
+[000c184c] 0006323e                  dc.l A_checkbox
+[000c1850]                           dc.w $0000
+[000c1852]                           dc.w $0001
+[000c1854] 000630f2                  dc.l Auo_string
+[000c1858] 000c16e8                  dc.l TEXT_20
+[000c185c]                           dc.w $0000
+[000c185e]                           dc.w $0000
+[000c1860]                           dc.w $0000
+[000c1862]                           dc.w $0000
+[000c1864]                           dc.w $0000
+[000c1866]                           dc.w $0000
+[000c1868]                           dc.w $0000
+[000c186a]                           dc.w $0000
+A_INNERFRAME01:
+[000c186c] 00064256                  dc.l A_innerframe
+[000c1870]                           dc.w $1400
+[000c1872]                           dc.w $8f11
+[000c1874] 000630f2                  dc.l Auo_string
+[000c1878]                           dc.w $0000
+[000c187a]                           dc.w $0000
+[000c187c]                           dc.w $0000
+[000c187e]                           dc.w $0000
+[000c1880]                           dc.w $0000
+[000c1882]                           dc.w $0000
+[000c1884]                           dc.w $0000
+[000c1886]                           dc.w $0000
+[000c1888]                           dc.w $0000
+[000c188a]                           dc.w $0000
+A_INNERFRAME02:
+[000c188c] 00064256                  dc.l A_innerframe
+[000c1890]                           dc.w $1800
+[000c1892]                           dc.w $8f19
+[000c1894] 000630f2                  dc.l Auo_string
+[000c1898] 000c16d7                  dc.l TEXT_16
+[000c189c]                           dc.w $0000
+[000c189e]                           dc.w $0000
+[000c18a0]                           dc.w $0000
+[000c18a2]                           dc.w $0000
+[000c18a4]                           dc.w $0000
+[000c18a6]                           dc.w $0000
+[000c18a8]                           dc.w $0000
+[000c18aa]                           dc.w $0000
+A_INNERFRAME03:
+[000c18ac] 00064256                  dc.l A_innerframe
+[000c18b0]                           dc.w $1800
+[000c18b2]                           dc.w $8f19
+[000c18b4] 000630f2                  dc.l Auo_string
+[000c18b8] 000c1678                  dc.l TEXT_05
+[000c18bc]                           dc.w $0000
+[000c18be]                           dc.w $0000
+[000c18c0]                           dc.w $0000
+[000c18c2]                           dc.w $0000
+[000c18c4]                           dc.w $0000
+[000c18c6]                           dc.w $0000
+[000c18c8]                           dc.w $0000
+[000c18ca]                           dc.w $0000
+A_INNERFRAME04:
+[000c18cc] 00064256                  dc.l A_innerframe
+[000c18d0]                           dc.w $1800
+[000c18d2]                           dc.w $8f19
+[000c18d4] 000630f2                  dc.l Auo_string
+[000c18d8] 000c1667                  dc.l TEXT_001
+[000c18dc]                           dc.w $0000
+[000c18de]                           dc.w $0000
+[000c18e0]                           dc.w $0000
+[000c18e2]                           dc.w $0000
+[000c18e4]                           dc.w $0000
+[000c18e6]                           dc.w $0000
+[000c18e8]                           dc.w $0000
+[000c18ea]                           dc.w $0000
+A_INNERFRAME05:
+[000c18ec] 00064256                  dc.l A_innerframe
+[000c18f0]                           dc.w $1800
+[000c18f2]                           dc.w $8f19
+[000c18f4] 000630f2                  dc.l Auo_string
+[000c18f8] 000c16ca                  dc.l TEXT_15
+[000c18fc]                           dc.w $0000
+[000c18fe]                           dc.w $0000
+[000c1900]                           dc.w $0000
+[000c1902]                           dc.w $0000
+[000c1904]                           dc.w $0000
+[000c1906]                           dc.w $0000
+[000c1908]                           dc.w $0000
+[000c190a]                           dc.w $0000
+A_INNERFRAME06:
+[000c190c] 00064256                  dc.l A_innerframe
+[000c1910]                           dc.w $1800
+[000c1912]                           dc.w $8f19
+[000c1914] 000630f2                  dc.l Auo_string
+[000c1918] 000c16bc                  dc.l TEXT_14
+[000c191c]                           dc.w $0000
+[000c191e]                           dc.w $0000
+[000c1920]                           dc.w $0000
+[000c1922]                           dc.w $0000
+[000c1924]                           dc.w $0000
+[000c1926]                           dc.w $0000
+[000c1928]                           dc.w $0000
+[000c192a]                           dc.w $0000
+POP_POSSEL:
+[000c192c]                           dc.w $ffff
+[000c192e]                           dc.w $0001
+[000c1930]                           dc.w $0001
+[000c1932]                           dc.w $0014
+[000c1934]                           dc.w $0000
+[000c1936]                           dc.w $0020
+[000c1938]                           dc.w $00ff
+[000c193a]                           dc.w $1100
+[000c193c]                           dc.w $0000
+[000c193e]                           dc.w $0000
+[000c1940]                           dc.w $000f
+[000c1942]                           dc.w $0002
+_01_POP_POSSEL:
+[000c1944]                           dc.w $0000
+[000c1946]                           dc.w $0002
+[000c1948]                           dc.w $0007
+[000c194a]                           dc.w $0018
+[000c194c]                           dc.w $0000
+[000c194e]                           dc.w $0000
+[000c1950] 000c186c                  dc.l A_INNERFRAME01
+[000c1954]                           dc.w $0000
+[000c1956]                           dc.w $0000
+[000c1958]                           dc.w $000f
+[000c195a]                           dc.w $0002
+_02_POP_POSSEL:
+[000c195c]                           dc.w $0003
+[000c195e]                           dc.w $ffff
+[000c1960]                           dc.w $ffff
+[000c1962]                           dc.w $001c
+[000c1964]                           dc.w $0001
+[000c1966]                           dc.w $0000
+[000c1968] 000c1703                  dc.l TEXT_23
+[000c196c]                           dc.w $0000
+[000c196e]                           dc.w $0000
+[000c1970]                           dc.w $0005
+[000c1972]                           dc.w $0001
+_03_POP_POSSEL:
+[000c1974]                           dc.w $0004
+[000c1976]                           dc.w $ffff
+[000c1978]                           dc.w $ffff
+[000c197a]                           dc.w $001c
+[000c197c]                           dc.w $0001
+[000c197e]                           dc.w $0000
+[000c1980] 000c1703                  dc.l TEXT_23
+[000c1984]                           dc.w $0005
+[000c1986]                           dc.w $0000
+[000c1988]                           dc.w $0005
+[000c198a]                           dc.w $0001
+_04_POP_POSSEL:
+[000c198c]                           dc.w $0005
+[000c198e]                           dc.w $ffff
+[000c1990]                           dc.w $ffff
+[000c1992]                           dc.w $001c
+[000c1994]                           dc.w $0001
+[000c1996]                           dc.w $0000
+[000c1998] 000c1703                  dc.l TEXT_23
+[000c199c]                           dc.w $000a
+[000c199e]                           dc.w $0000
+[000c19a0]                           dc.w $0005
+[000c19a2]                           dc.w $0001
+_05_POP_POSSEL:
+[000c19a4]                           dc.w $0006
+[000c19a6]                           dc.w $ffff
+[000c19a8]                           dc.w $ffff
+[000c19aa]                           dc.w $001c
+[000c19ac]                           dc.w $0001
+[000c19ae]                           dc.w $0000
+[000c19b0] 000c1703                  dc.l TEXT_23
+[000c19b4]                           dc.w $0000
+[000c19b6]                           dc.w $0001
+[000c19b8]                           dc.w $0005
+[000c19ba]                           dc.w $0001
+_06_POP_POSSEL:
+[000c19bc]                           dc.w $0007
+[000c19be]                           dc.w $ffff
+[000c19c0]                           dc.w $ffff
+[000c19c2]                           dc.w $001c
+[000c19c4]                           dc.w $0001
+[000c19c6]                           dc.w $0000
+[000c19c8] 000c1703                  dc.l TEXT_23
+[000c19cc]                           dc.w $0005
+[000c19ce]                           dc.w $0001
+[000c19d0]                           dc.w $0005
+[000c19d2]                           dc.w $0001
+_07_POP_POSSEL:
+[000c19d4]                           dc.w $0001
+[000c19d6]                           dc.w $ffff
+[000c19d8]                           dc.w $ffff
+[000c19da]                           dc.w $001c
+[000c19dc]                           dc.w $0021
+[000c19de]                           dc.w $0000
+[000c19e0] 000c1703                  dc.l TEXT_23
+[000c19e4]                           dc.w $000a
+[000c19e6]                           dc.w $0001
+[000c19e8]                           dc.w $0005
+[000c19ea]                           dc.w $0001
+ED_INNER:
+[000c19ec]                           dc.w $ffff
+[000c19ee]                           dc.w $0001
+[000c19f0]                           dc.w $0035
+[000c19f2]                           dc.w $0018
+[000c19f4]                           dc.w $0040
+[000c19f6]                           dc.w $0010
+[000c19f8] 000c178c                  dc.l A_3DBUTTON06
+[000c19fc]                           dc.w $0000
+[000c19fe]                           dc.w $0000
+[000c1a00]                           dc.w $003a
+[000c1a02]                           dc.w $0014
+_01_ED_INNER:
+[000c1a04]                           dc.w $0003
+[000c1a06]                           dc.w $0002
+[000c1a08]                           dc.w $0002
+[000c1a0a]                           dc.w $0018
+[000c1a0c]                           dc.w $0040
+[000c1a0e]                           dc.w $0000
+[000c1a10] 000c176c                  dc.l A_3DBUTTON05
+[000c1a14]                           dc.w $0000
+[000c1a16]                           dc.w $0000
+[000c1a18]                           dc.w $0016
+[000c1a1a]                           dc.w $0004
+_02_ED_INNER:
+[000c1a1c]                           dc.w $0001
+[000c1a1e]                           dc.w $ffff
+[000c1a20]                           dc.w $ffff
+[000c1a22]                           dc.w $0018
+[000c1a24]                           dc.w $0000
+[000c1a26]                           dc.w $0000
+[000c1a28] 000c18cc                  dc.l A_INNERFRAME04
+[000c1a2c]                           dc.w $0002
+[000c1a2e]                           dc.w $0001
+[000c1a30]                           dc.w $0012
+[000c1a32]                           dc.w $0002
+_03_ED_INNER:
+[000c1a34]                           dc.w $0005
+[000c1a36]                           dc.w $ffff
+[000c1a38]                           dc.w $ffff
+[000c1a3a]                           dc.w $0018
+[000c1a3c]                           dc.w $4007
+[000c1a3e]                           dc.w $0010
+[000c1a40] 000c172c                  dc.l A_3DBUTTON01
+[000c1a44]                           dc.w $001f
+[000c1a46]                           dc.w $0001
+[000c1a48]                           dc.w $000c
+[000c1a4a]                           dc.w $0002
+_03aED_INNER:
+[000c1a4c] 00029984                  dc.l ok
+[000c1a50]                           dc.w $0000
+[000c1a52]                           dc.w $0000
+[000c1a54]                           dc.w $8000
+[000c1a56]                           dc.w $884f
+[000c1a58]                           dc.w $0000
+[000c1a5a]                           dc.w $0000
+[000c1a5c]                           dc.w $0000
+[000c1a5e]                           dc.w $0000
+[000c1a60]                           dc.w $0000
+[000c1a62]                           dc.w $0000
+_05_ED_INNER:
+[000c1a64]                           dc.w $0007
+[000c1a66]                           dc.w $ffff
+[000c1a68]                           dc.w $ffff
+[000c1a6a]                           dc.w $0018
+[000c1a6c]                           dc.w $4005
+[000c1a6e]                           dc.w $0010
+[000c1a70] 000c174c                  dc.l A_3DBUTTON02
+[000c1a74]                           dc.w $002d
+[000c1a76]                           dc.w $0001
+[000c1a78]                           dc.w $000c
+[000c1a7a]                           dc.w $0002
+_05aED_INNER:
+[000c1a7c] 0002995e                  dc.l abort
+[000c1a80]                           dc.w $0000
+[000c1a82]                           dc.w $0000
+[000c1a84]                           dc.w $8000
+[000c1a86]                           dc.w $8841
+[000c1a88]                           dc.w $0000
+[000c1a8a]                           dc.w $0000
+[000c1a8c]                           dc.w $0000
+[000c1a8e]                           dc.w $0000
+[000c1a90]                           dc.w $0000
+[000c1a92]                           dc.w $0000
+_07_ED_INNER:
+[000c1a94]                           dc.w $0019
+[000c1a96]                           dc.w $0008
+[000c1a98]                           dc.w $0016
+[000c1a9a]                           dc.w $0018
+[000c1a9c]                           dc.w $0040
+[000c1a9e]                           dc.w $0000
+[000c1aa0] 000c188c                  dc.l A_INNERFRAME02
+[000c1aa4]                           dc.w $0001
+[000c1aa6]                           dc.w $0004
+[000c1aa8]                           dc.w $0038
+[000c1aaa]                           dc.w $0005
+_08_ED_INNER:
+[000c1aac]                           dc.w $000a
+[000c1aae]                           dc.w $0009
+[000c1ab0]                           dc.w $0009
+[000c1ab2]                           dc.w $001c
+[000c1ab4]                           dc.w $0040
+[000c1ab6]                           dc.w $0000
+[000c1ab8] 000c16a6                  dc.l TEXT_10
+[000c1abc]                           dc.w $0001
+[000c1abe]                           dc.w $0001
+[000c1ac0]                           dc.w $0006
+[000c1ac2]                           dc.w $0001
+_09_ED_INNER:
+[000c1ac4]                           dc.w $0008
+[000c1ac6]                           dc.w $ffff
+[000c1ac8]                           dc.w $ffff
+[000c1aca]                           dc.w $0018
+[000c1acc]                           dc.w $0040
+[000c1ace]                           dc.w $0000
+[000c1ad0] 000c17cc                  dc.l A_ARROWS02
+[000c1ad4]                           dc.w $0000
+[000c1ad6]                           dc.w $0000
+[000c1ad8]                           dc.w $0001
+[000c1ada]                           dc.w $0001
+_10_ED_INNER:
+[000c1adc]                           dc.w $000e
+[000c1ade]                           dc.w $000c
+[000c1ae0]                           dc.w $000d
+[000c1ae2]                           dc.w $0014
+[000c1ae4]                           dc.w $0040
+[000c1ae6]                           dc.w $0020
+[000c1ae8]                           dc.w $00ff
+[000c1aea]                           dc.w $1101
+[000c1aec]                           dc.w $0008
+[000c1aee]                           dc.w $0001
+[000c1af0]                           dc.w $0012
+[000c1af2]                           dc.w $0001
+_10aED_INNER:
+[000c1af4] 00029520                  dc.l edin_textcol
+[000c1af8]                           dc.w $0000
+[000c1afa]                           dc.w $0000
+[000c1afc]                           dc.w $8000
+[000c1afe]                           dc.w $8846
+[000c1b00]                           dc.w $0000
+[000c1b02]                           dc.w $0000
+[000c1b04]                           dc.w $0000
+[000c1b06]                           dc.w $0000
+[000c1b08]                           dc.w $0000
+[000c1b0a]                           dc.w $0000
+_12_ED_INNER:
+[000c1b0c]                           dc.w $000d
+[000c1b0e]                           dc.w $ffff
+[000c1b10]                           dc.w $ffff
+[000c1b12]                           dc.w $0014
+[000c1b14]                           dc.w $0000
+[000c1b16]                           dc.w $0000
+[000c1b18]                           dc.w $0001
+[000c1b1a]                           dc.w $1171
+[000c1b1c]                           dc.w $0010
+[000c1b1e]                           dc.w $0000
+[000c1b20]                           dc.w $0002
+[000c1b22]                           dc.w $0001
+_13_ED_INNER:
+[000c1b24]                           dc.w $000a
+[000c1b26]                           dc.w $ffff
+[000c1b28]                           dc.w $ffff
+[000c1b2a]                           dc.w $0018
+[000c1b2c]                           dc.w $0000
+[000c1b2e]                           dc.w $0000
+[000c1b30] 000c17ac                  dc.l A_3DBUTTON27
+[000c1b34]                           dc.w $0000
+[000c1b36]                           dc.w $0000
+[000c1b38]                           dc.w $0010
+[000c1b3a]                           dc.w $0001
+_14_ED_INNER:
+[000c1b3c]                           dc.w $000f
+[000c1b3e]                           dc.w $ffff
+[000c1b40]                           dc.w $ffff
+[000c1b42]                           dc.w $0018
+[000c1b44]                           dc.w $0008
+[000c1b46]                           dc.w $0010
+[000c1b48] 000c17ec                  dc.l A_BOXED02
+[000c1b4c]                           dc.w $0001
+[000c1b4e]                           dc.w $0003
+[000c1b50]                           dc.w $0036
+[000c1b52]                           dc.w $0001
+_15_ED_INNER:
+[000c1b54]                           dc.w $0011
+[000c1b56]                           dc.w $0010
+[000c1b58]                           dc.w $0010
+[000c1b5a]                           dc.w $001c
+[000c1b5c]                           dc.w $0040
+[000c1b5e]                           dc.w $0000
+[000c1b60] 000c16dd                  dc.l TEXT_18
+[000c1b64]                           dc.w $002d
+[000c1b66]                           dc.w $0001
+[000c1b68]                           dc.w $0004
+[000c1b6a]                           dc.w $0001
+_16_ED_INNER:
+[000c1b6c]                           dc.w $000f
+[000c1b6e]                           dc.w $ffff
+[000c1b70]                           dc.w $ffff
+[000c1b72]                           dc.w $0018
+[000c1b74]                           dc.w $0040
+[000c1b76]                           dc.w $0000
+[000c1b78] 000c17cc                  dc.l A_ARROWS02
+[000c1b7c]                           dc.w $0000
+[000c1b7e]                           dc.w $0000
+[000c1b80]                           dc.w $0001
+[000c1b82]                           dc.w $0001
+_17_ED_INNER:
+[000c1b84]                           dc.w $0014
+[000c1b86]                           dc.w $0013
+[000c1b88]                           dc.w $0013
+[000c1b8a]                           dc.w $0014
+[000c1b8c]                           dc.w $0040
+[000c1b8e]                           dc.w $0020
+[000c1b90]                           dc.w $00ff
+[000c1b92]                           dc.w $1101
+[000c1b94]                           dc.w $0032
+[000c1b96]                           dc.w $0001
+[000c1b98]                           dc.w $0005
+[000c1b9a]                           dc.w $0001
+_17aED_INNER:
+[000c1b9c] 000292aa                  dc.l edin_pos
+[000c1ba0]                           dc.w $0000
+[000c1ba2]                           dc.w $0000
+[000c1ba4]                           dc.w $8000
+[000c1ba6]                           dc.w $8850
+[000c1ba8]                           dc.w $0000
+[000c1baa]                           dc.w $0000
+[000c1bac]                           dc.w $0000
+[000c1bae]                           dc.w $0000
+[000c1bb0]                           dc.w $0000
+[000c1bb2]                           dc.w $0000
+_19_ED_INNER:
+[000c1bb4]                           dc.w $0011
+[000c1bb6]                           dc.w $ffff
+[000c1bb8]                           dc.w $ffff
+[000c1bba]                           dc.w $0018
+[000c1bbc]                           dc.w $0000
+[000c1bbe]                           dc.w $0000
+[000c1bc0] 000c17ac                  dc.l A_3DBUTTON27
+[000c1bc4]                           dc.w $0000
+[000c1bc6]                           dc.w $0000
+[000c1bc8]                           dc.w $0005
+[000c1bca]                           dc.w $0001
+_20_ED_INNER:
+[000c1bcc]                           dc.w $0016
+[000c1bce]                           dc.w $0015
+[000c1bd0]                           dc.w $0015
+[000c1bd2]                           dc.w $001c
+[000c1bd4]                           dc.w $0040
+[000c1bd6]                           dc.w $0000
+[000c1bd8] 000c16ad                  dc.l TEXT_12
+[000c1bdc]                           dc.w $001c
+[000c1bde]                           dc.w $0001
+[000c1be0]                           dc.w $0006
+[000c1be2]                           dc.w $0001
+_21_ED_INNER:
+[000c1be4]                           dc.w $0014
+[000c1be6]                           dc.w $ffff
+[000c1be8]                           dc.w $ffff
+[000c1bea]                           dc.w $0018
+[000c1bec]                           dc.w $0040
+[000c1bee]                           dc.w $0000
+[000c1bf0] 000c17cc                  dc.l A_ARROWS02
+[000c1bf4]                           dc.w $0000
+[000c1bf6]                           dc.w $0000
+[000c1bf8]                           dc.w $0001
+[000c1bfa]                           dc.w $0001
+_22_ED_INNER:
+[000c1bfc]                           dc.w $0007
+[000c1bfe]                           dc.w $0018
+[000c1c00]                           dc.w $0018
+[000c1c02]                           dc.w $0014
+[000c1c04]                           dc.w $0040
+[000c1c06]                           dc.w $0020
+[000c1c08]                           dc.w $00ff
+[000c1c0a]                           dc.w $1101
+[000c1c0c]                           dc.w $0023
+[000c1c0e]                           dc.w $0001
+[000c1c10]                           dc.w $0008
+[000c1c12]                           dc.w $0001
+_22aED_INNER:
+[000c1c14] 00029414                  dc.l edin_size
+[000c1c18]                           dc.w $0000
+[000c1c1a]                           dc.w $0000
+[000c1c1c]                           dc.w $8000
+[000c1c1e]                           dc.w $8847
+[000c1c20]                           dc.w $0000
+[000c1c22]                           dc.w $0000
+[000c1c24]                           dc.w $0000
+[000c1c26]                           dc.w $0000
+[000c1c28]                           dc.w $0000
+[000c1c2a]                           dc.w $0000
+_24_ED_INNER:
+[000c1c2c]                           dc.w $0016
+[000c1c2e]                           dc.w $ffff
+[000c1c30]                           dc.w $ffff
+[000c1c32]                           dc.w $0018
+[000c1c34]                           dc.w $0000
+[000c1c36]                           dc.w $0000
+[000c1c38] 000c176c                  dc.l A_3DBUTTON05
+[000c1c3c]                           dc.w $0000
+[000c1c3e]                           dc.w $0000
+[000c1c40]                           dc.w $0008
+[000c1c42]                           dc.w $0001
+_25_ED_INNER:
+[000c1c44]                           dc.w $0028
+[000c1c46]                           dc.w $001a
+[000c1c48]                           dc.w $0024
+[000c1c4a]                           dc.w $0018
+[000c1c4c]                           dc.w $0040
+[000c1c4e]                           dc.w $0000
+[000c1c50] 000c190c                  dc.l A_INNERFRAME06
+[000c1c54]                           dc.w $0001
+[000c1c56]                           dc.w $0009
+[000c1c58]                           dc.w $001c
+[000c1c5a]                           dc.w $0006
+_26_ED_INNER:
+[000c1c5c]                           dc.w $001c
+[000c1c5e]                           dc.w $001b
+[000c1c60]                           dc.w $001b
+[000c1c62]                           dc.w $001c
+[000c1c64]                           dc.w $0040
+[000c1c66]                           dc.w $0000
+[000c1c68] 000c16f4                  dc.l TEXT_21
+[000c1c6c]                           dc.w $0002
+[000c1c6e]                           dc.w $0001
+[000c1c70]                           dc.w $0006
+[000c1c72]                           dc.w $0001
+_27_ED_INNER:
+[000c1c74]                           dc.w $001a
+[000c1c76]                           dc.w $ffff
+[000c1c78]                           dc.w $ffff
+[000c1c7a]                           dc.w $0018
+[000c1c7c]                           dc.w $0040
+[000c1c7e]                           dc.w $0000
+[000c1c80] 000c17cc                  dc.l A_ARROWS02
+[000c1c84]                           dc.w $0000
+[000c1c86]                           dc.w $0000
+[000c1c88]                           dc.w $0001
+[000c1c8a]                           dc.w $0001
+_28_ED_INNER:
+[000c1c8c]                           dc.w $0020
+[000c1c8e]                           dc.w $001e
+[000c1c90]                           dc.w $001f
+[000c1c92]                           dc.w $0014
+[000c1c94]                           dc.w $0040
+[000c1c96]                           dc.w $0020
+[000c1c98]                           dc.w $00ff
+[000c1c9a]                           dc.w $1101
+[000c1c9c]                           dc.w $0009
+[000c1c9e]                           dc.w $0002
+[000c1ca0]                           dc.w $0012
+[000c1ca2]                           dc.w $0001
+_28aED_INNER:
+[000c1ca4] 00029150                  dc.l edin_outcol
+[000c1ca8]                           dc.w $0000
+[000c1caa]                           dc.w $0000
+[000c1cac]                           dc.w $8000
+[000c1cae]                           dc.w $884c
+[000c1cb0]                           dc.w $0000
+[000c1cb2]                           dc.w $0000
+[000c1cb4]                           dc.w $0000
+[000c1cb6]                           dc.w $0000
+[000c1cb8]                           dc.w $0000
+[000c1cba]                           dc.w $0000
+_30_ED_INNER:
+[000c1cbc]                           dc.w $001f
+[000c1cbe]                           dc.w $ffff
+[000c1cc0]                           dc.w $ffff
+[000c1cc2]                           dc.w $0014
+[000c1cc4]                           dc.w $0000
+[000c1cc6]                           dc.w $0000
+[000c1cc8]                           dc.w $4301
+[000c1cca]                           dc.w $1371
+[000c1ccc]                           dc.w $0010
+[000c1cce]                           dc.w $0000
+[000c1cd0]                           dc.w $0002
+[000c1cd2]                           dc.w $0001
+_31_ED_INNER:
+[000c1cd4]                           dc.w $001c
+[000c1cd6]                           dc.w $ffff
+[000c1cd8]                           dc.w $ffff
+[000c1cda]                           dc.w $0018
+[000c1cdc]                           dc.w $0000
+[000c1cde]                           dc.w $0000
+[000c1ce0] 000c17ac                  dc.l A_3DBUTTON27
+[000c1ce4]                           dc.w $0000
+[000c1ce6]                           dc.w $0000
+[000c1ce8]                           dc.w $0010
+[000c1cea]                           dc.w $0001
+_32_ED_INNER:
+[000c1cec]                           dc.w $0021
+[000c1cee]                           dc.w $ffff
+[000c1cf0]                           dc.w $ffff
+[000c1cf2]                           dc.w $001c
+[000c1cf4]                           dc.w $0040
+[000c1cf6]                           dc.w $0000
+[000c1cf8] 000c16e2                  dc.l TEXT_19
+[000c1cfc]                           dc.w $0003
+[000c1cfe]                           dc.w $0002
+[000c1d00]                           dc.w $0005
+[000c1d02]                           dc.w $0001
+_33_ED_INNER:
+[000c1d04]                           dc.w $0023
+[000c1d06]                           dc.w $0022
+[000c1d08]                           dc.w $0022
+[000c1d0a]                           dc.w $001c
+[000c1d0c]                           dc.w $0040
+[000c1d0e]                           dc.w $0000
+[000c1d10] 000c16fb                  dc.l TEXT_22
+[000c1d14]                           dc.w $0001
+[000c1d16]                           dc.w $0003
+[000c1d18]                           dc.w $0007
+[000c1d1a]                           dc.w $0001
+_34_ED_INNER:
+[000c1d1c]                           dc.w $0021
+[000c1d1e]                           dc.w $ffff
+[000c1d20]                           dc.w $ffff
+[000c1d22]                           dc.w $0018
+[000c1d24]                           dc.w $0040
+[000c1d26]                           dc.w $0000
+[000c1d28] 000c17cc                  dc.l A_ARROWS02
+[000c1d2c]                           dc.w $0000
+[000c1d2e]                           dc.w $0000
+[000c1d30]                           dc.w $0001
+[000c1d32]                           dc.w $0001
+_35_ED_INNER:
+[000c1d34]                           dc.w $0024
+[000c1d36]                           dc.w $ffff
+[000c1d38]                           dc.w $ffff
+[000c1d3a]                           dc.w $001c
+[000c1d3c]                           dc.w $0040
+[000c1d3e]                           dc.w $0000
+[000c1d40] 000c169f                  dc.l TEXT_09
+[000c1d44]                           dc.w $0002
+[000c1d46]                           dc.w $0004
+[000c1d48]                           dc.w $0006
+[000c1d4a]                           dc.w $0001
+_36_ED_INNER:
+[000c1d4c]                           dc.w $0019
+[000c1d4e]                           dc.w $0026
+[000c1d50]                           dc.w $0027
+[000c1d52]                           dc.w $0014
+[000c1d54]                           dc.w $0040
+[000c1d56]                           dc.w $0020
+[000c1d58]                           dc.w $00ff
+[000c1d5a]                           dc.w $1101
+[000c1d5c]                           dc.w $0009
+[000c1d5e]                           dc.w $0004
+[000c1d60]                           dc.w $0012
+[000c1d62]                           dc.w $0001
+_36aED_INNER:
+[000c1d64] 00029080                  dc.l edin_incol
+[000c1d68]                           dc.w $0000
+[000c1d6a]                           dc.w $0000
+[000c1d6c]                           dc.w $8000
+[000c1d6e]                           dc.w $8852
+[000c1d70]                           dc.w $0000
+[000c1d72]                           dc.w $0000
+[000c1d74]                           dc.w $0000
+[000c1d76]                           dc.w $0000
+[000c1d78]                           dc.w $0000
+[000c1d7a]                           dc.w $0000
+_38_ED_INNER:
+[000c1d7c]                           dc.w $0027
+[000c1d7e]                           dc.w $ffff
+[000c1d80]                           dc.w $ffff
+[000c1d82]                           dc.w $0014
+[000c1d84]                           dc.w $0000
+[000c1d86]                           dc.w $0000
+[000c1d88]                           dc.w $4301
+[000c1d8a]                           dc.w $1371
+[000c1d8c]                           dc.w $0010
+[000c1d8e]                           dc.w $0000
+[000c1d90]                           dc.w $0002
+[000c1d92]                           dc.w $0001
+_39_ED_INNER:
+[000c1d94]                           dc.w $0024
+[000c1d96]                           dc.w $ffff
+[000c1d98]                           dc.w $ffff
+[000c1d9a]                           dc.w $0018
+[000c1d9c]                           dc.w $0000
+[000c1d9e]                           dc.w $0000
+[000c1da0] 000c17ac                  dc.l A_3DBUTTON27
+[000c1da4]                           dc.w $0000
+[000c1da6]                           dc.w $0000
+[000c1da8]                           dc.w $0010
+[000c1daa]                           dc.w $0001
+_40_ED_INNER:
+[000c1dac]                           dc.w $0035
+[000c1dae]                           dc.w $0029
+[000c1db0]                           dc.w $0031
+[000c1db2]                           dc.w $0018
+[000c1db4]                           dc.w $0040
+[000c1db6]                           dc.w $0000
+[000c1db8] 000c18ec                  dc.l A_INNERFRAME05
+[000c1dbc]                           dc.w $001d
+[000c1dbe]                           dc.w $0009
+[000c1dc0]                           dc.w $001c
+[000c1dc2]                           dc.w $0006
+_41_ED_INNER:
+[000c1dc4]                           dc.w $002b
+[000c1dc6]                           dc.w $ffff
+[000c1dc8]                           dc.w $ffff
+[000c1dca]                           dc.w $0018
+[000c1dcc]                           dc.w $0041
+[000c1dce]                           dc.w $0001
+[000c1dd0] 000c184c                  dc.l A_CHECKBOX01
+[000c1dd4]                           dc.w $0001
+[000c1dd6]                           dc.w $0001
+[000c1dd8]                           dc.w $000e
+[000c1dda]                           dc.w $0001
+_41aED_INNER:
+[000c1ddc] 0002900e                  dc.l edin_dither
+[000c1de0]                           dc.w $0000
+[000c1de2]                           dc.w $0000
+[000c1de4]                           dc.w $8000
+[000c1de6]                           dc.w $8844
+[000c1de8]                           dc.w $0000
+[000c1dea]                           dc.w $0000
+[000c1dec]                           dc.w $0000
+[000c1dee]                           dc.w $0000
+[000c1df0]                           dc.w $0000
+[000c1df2]                           dc.w $0000
+_43_ED_INNER:
+[000c1df4]                           dc.w $002d
+[000c1df6]                           dc.w $ffff
+[000c1df8]                           dc.w $ffff
+[000c1dfa]                           dc.w $0014
+[000c1dfc]                           dc.w $0040
+[000c1dfe]                           dc.w $0020
+[000c1e00]                           dc.w $00ff
+[000c1e02]                           dc.w $1101
+[000c1e04]                           dc.w $0009
+[000c1e06]                           dc.w $0002
+[000c1e08]                           dc.w $0012
+[000c1e0a]                           dc.w $0001
+_43aED_INNER:
+[000c1e0c] 000291ac                  dc.l edin_pattern
+[000c1e10]                           dc.w $0000
+[000c1e12]                           dc.w $0000
+[000c1e14]                           dc.w $8000
+[000c1e16]                           dc.w $884d
+[000c1e18]                           dc.w $0000
+[000c1e1a]                           dc.w $0000
+[000c1e1c]                           dc.w $0000
+[000c1e1e]                           dc.w $0000
+[000c1e20]                           dc.w $0000
+[000c1e22]                           dc.w $0000
+_45_ED_INNER:
+[000c1e24]                           dc.w $002f
+[000c1e26]                           dc.w $002e
+[000c1e28]                           dc.w $002e
+[000c1e2a]                           dc.w $001c
+[000c1e2c]                           dc.w $0040
+[000c1e2e]                           dc.w $0000
+[000c1e30] 000c16b4                  dc.l TEXT_13
+[000c1e34]                           dc.w $0001
+[000c1e36]                           dc.w $0002
+[000c1e38]                           dc.w $0008
+[000c1e3a]                           dc.w $0001
+_46_ED_INNER:
+[000c1e3c]                           dc.w $002d
+[000c1e3e]                           dc.w $ffff
+[000c1e40]                           dc.w $ffff
+[000c1e42]                           dc.w $0018
+[000c1e44]                           dc.w $0040
+[000c1e46]                           dc.w $0000
+[000c1e48] 000c17cc                  dc.l A_ARROWS02
+[000c1e4c]                           dc.w $0000
+[000c1e4e]                           dc.w $0000
+[000c1e50]                           dc.w $0001
+[000c1e52]                           dc.w $0001
+_47_ED_INNER:
+[000c1e54]                           dc.w $0031
+[000c1e56]                           dc.w $0030
+[000c1e58]                           dc.w $0030
+[000c1e5a]                           dc.w $001c
+[000c1e5c]                           dc.w $0040
+[000c1e5e]                           dc.w $0000
+[000c1e60] 000c16a6                  dc.l TEXT_10
+[000c1e64]                           dc.w $0002
+[000c1e66]                           dc.w $0004
+[000c1e68]                           dc.w $0006
+[000c1e6a]                           dc.w $0001
+_48_ED_INNER:
+[000c1e6c]                           dc.w $002f
+[000c1e6e]                           dc.w $ffff
+[000c1e70]                           dc.w $ffff
+[000c1e72]                           dc.w $0018
+[000c1e74]                           dc.w $0040
+[000c1e76]                           dc.w $0000
+[000c1e78] 000c17cc                  dc.l A_ARROWS02
+[000c1e7c]                           dc.w $0003
+[000c1e7e]                           dc.w $0000
+[000c1e80]                           dc.w $0001
+[000c1e82]                           dc.w $0001
+_49_ED_INNER:
+[000c1e84]                           dc.w $0028
+[000c1e86]                           dc.w $0033
+[000c1e88]                           dc.w $0034
+[000c1e8a]                           dc.w $0014
+[000c1e8c]                           dc.w $0040
+[000c1e8e]                           dc.w $0020
+[000c1e90]                           dc.w $00ff
+[000c1e92]                           dc.w $1101
+[000c1e94]                           dc.w $0009
+[000c1e96]                           dc.w $0004
+[000c1e98]                           dc.w $0012
+[000c1e9a]                           dc.w $0001
+_49aED_INNER:
+[000c1e9c] 000290e8                  dc.l edin_intercol
+[000c1ea0]                           dc.w $0000
+[000c1ea2]                           dc.w $0000
+[000c1ea4]                           dc.w $8000
+[000c1ea6]                           dc.w $8842
+[000c1ea8]                           dc.w $0000
+[000c1eaa]                           dc.w $0000
+[000c1eac]                           dc.w $0000
+[000c1eae]                           dc.w $0000
+[000c1eb0]                           dc.w $0000
+[000c1eb2]                           dc.w $0000
+_51_ED_INNER:
+[000c1eb4]                           dc.w $0034
+[000c1eb6]                           dc.w $ffff
+[000c1eb8]                           dc.w $ffff
+[000c1eba]                           dc.w $0014
+[000c1ebc]                           dc.w $0000
+[000c1ebe]                           dc.w $0000
+[000c1ec0]                           dc.w $0001
+[000c1ec2]                           dc.w $1171
+[000c1ec4]                           dc.w $0010
+[000c1ec6]                           dc.w $0000
+[000c1ec8]                           dc.w $0002
+[000c1eca]                           dc.w $0001
+_52_ED_INNER:
+[000c1ecc]                           dc.w $0031
+[000c1ece]                           dc.w $ffff
+[000c1ed0]                           dc.w $ffff
+[000c1ed2]                           dc.w $0018
+[000c1ed4]                           dc.w $0000
+[000c1ed6]                           dc.w $0000
+[000c1ed8] 000c17ac                  dc.l A_3DBUTTON27
+[000c1edc]                           dc.w $0000
+[000c1ede]                           dc.w $0000
+[000c1ee0]                           dc.w $0010
+[000c1ee2]                           dc.w $0001
+_53_ED_INNER:
+[000c1ee4]                           dc.w $0000
+[000c1ee6]                           dc.w $0036
+[000c1ee8]                           dc.w $0039
+[000c1eea]                           dc.w $0018
+[000c1eec]                           dc.w $0040
+[000c1eee]                           dc.w $0000
+[000c1ef0] 000c18ac                  dc.l A_INNERFRAME03
+[000c1ef4]                           dc.w $0001
+[000c1ef6]                           dc.w $000f
+[000c1ef8]                           dc.w $0038
+[000c1efa]                           dc.w $0005
+_54_ED_INNER:
+[000c1efc]                           dc.w $0037
+[000c1efe]                           dc.w $ffff
+[000c1f00]                           dc.w $ffff
+[000c1f02]                           dc.w $001c
+[000c1f04]                           dc.w $0000
+[000c1f06]                           dc.w $0000
+[000c1f08] 000c1682                  dc.l TEXT_06
+[000c1f0c]                           dc.w $0001
+[000c1f0e]                           dc.w $0001
+[000c1f10]                           dc.w $000e
+[000c1f12]                           dc.w $0001
+_55_ED_INNER:
+[000c1f14]                           dc.w $0038
+[000c1f16]                           dc.w $ffff
+[000c1f18]                           dc.w $ffff
+[000c1f1a]                           dc.w $001c
+[000c1f1c]                           dc.w $0000
+[000c1f1e]                           dc.w $0000
+[000c1f20] 000c1691                  dc.l TEXT_07
+[000c1f24]                           dc.w $0001
+[000c1f26]                           dc.w $0003
+[000c1f28]                           dc.w $000d
+[000c1f2a]                           dc.w $0001
+_56_ED_INNER:
+[000c1f2c]                           dc.w $0039
+[000c1f2e]                           dc.w $ffff
+[000c1f30]                           dc.w $ffff
+[000c1f32]                           dc.w $0018
+[000c1f34]                           dc.w $0008
+[000c1f36]                           dc.w $0010
+[000c1f38] 000c180c                  dc.l A_BOXED03
+[000c1f3c]                           dc.w $0010
+[000c1f3e]                           dc.w $0001
+[000c1f40]                           dc.w $0027
+[000c1f42]                           dc.w $0001
+_57_ED_INNER:
+[000c1f44]                           dc.w $0035
+[000c1f46]                           dc.w $ffff
+[000c1f48]                           dc.w $ffff
+[000c1f4a]                           dc.w $0018
+[000c1f4c]                           dc.w $0028
+[000c1f4e]                           dc.w $0010
+[000c1f50] 000c182c                  dc.l A_BOXED04
+[000c1f54]                           dc.w $0010
+[000c1f56]                           dc.w $0003
+[000c1f58]                           dc.w $0027
+[000c1f5a]                           dc.w $0001
+INNER1:
+[000c1f5c] 00064256                  dc.l A_innerframe
+[000c1f60]                           dc.w $1800
+[000c1f62]                           dc.w $8f19
+[000c1f64] 000630f2                  dc.l Auo_string
+[000c1f68] 000c204a                  dc.l $000c204a
+[000c1f6c]                           dc.w $0000
+[000c1f6e]                           dc.w $0000
+[000c1f70]                           dc.w $0000
+[000c1f72]                           dc.w $0000
+[000c1f74]                           dc.w $0000
+[000c1f76]                           dc.w $0000
+[000c1f78]                           dc.w $0000
+[000c1f7a]                           dc.w $0000
+INNER2:
+[000c1f7c] 00064256                  dc.l A_innerframe
+[000c1f80]                           dc.w $1000
+[000c1f82]                           dc.w $8f19
+[000c1f84] 000630f2                  dc.l Auo_string
+[000c1f88] 000c204a                  dc.l $000c204a
+[000c1f8c]                           dc.w $0000
+[000c1f8e]                           dc.w $0000
+[000c1f90]                           dc.w $0000
+[000c1f92]                           dc.w $0000
+[000c1f94]                           dc.w $0000
+[000c1f96]                           dc.w $0000
+[000c1f98]                           dc.w $0000
+[000c1f9a]                           dc.w $0000
+visual:
+[000c1f9c]                           dc.w $ffff
+[000c1f9e]                           dc.w $ffff
+[000c1fa0]                           dc.w $ffff
+[000c1fa2]                           dc.w $0018
+[000c1fa4]                           dc.w $2001
+[000c1fa6]                           dc.w $0010
+[000c1fa8] 000c1f5c                  dc.l INNER1
+[000c1fac]                           dc.w $0000
+[000c1fae]                           dc.w $0000
+[000c1fb0]                           dc.w $000a
+[000c1fb2]                           dc.w $0002
+logical:
+[000c1fb4]                           dc.w $ffff
+[000c1fb6]                           dc.w $ffff
+[000c1fb8]                           dc.w $ffff
+[000c1fba]                           dc.w $0018
+[000c1fbc]                           dc.w $0040
+[000c1fbe]                           dc.w $0000
+[000c1fc0] 000c1f7c                  dc.l INNER2
+[000c1fc4]                           dc.w $0000
+[000c1fc6]                           dc.w $0000
+[000c1fc8]                           dc.w $0007
+[000c1fca]                           dc.w $0002
+aud:
+[000c1fcc] 000c2050                  dc.l $000c2050
+[000c1fd0] 000c205c                  dc.l $000c205c
+[000c1fd4]                           dc.w $0002
+[000c1fd6] 000c204a                  dc.l $000c204a
+[000c1fda]                           dc.w $0000
+[000c1fdc]                           dc.w $0000
+[000c1fde]                           dc.w $0000
+[000c1fe0]                           dc.w $0000
+[000c1fe2]                           dc.w $0000
+[000c1fe4]                           dc.w $0000
+[000c1fe6]                           dc.w $0000
+[000c1fe8]                           dc.w $0000
+[000c1fea]                           dc.w $0000
+[000c1fec]                           dc.w $0000
+[000c1fee]                           dc.w $0000
+[000c1ff0]                           dc.w $0000
+[000c1ff2]                           dc.w $0000
+[000c1ff4]                           dc.w $0000
+[000c1ff6]                           dc.w $0000
+[000c1ff8]                           dc.w $0000
+data:
+[000c1ffa]                           dc.b 'A_innerframe',0
+[000c2007]                           dc.b $00
+[000c2008]                           dc.w $0000
+[000c200a]                           dc.w $0000
+[000c200c]                           dc.w $0000
+[000c200e]                           dc.w $0000
+[000c2010]                           dc.w $0000
+[000c2012]                           dc.w $0000
+[000c2014]                           dc.w $0000
+[000c2016]                           dc.w $0000
+[000c2018]                           dc.w $0000
+[000c201a] 000295e8                  dc.l object_tree
+[000c201e] 000298dc                  dc.l test_it
+[000c2022] 00029984                  dc.l ok
+[000c2026] 0004f20a                  dc.l Aob_delete
+[000c202a] 000c1f9c                  dc.l visual
+[000c202e] 000c1fb4                  dc.l logical
+[000c2032] 000c1fcc                  dc.l aud
+[000c2036] 000295a0                  dc.l minsize
+[000c203a]                           dc.w $0000
+[000c203c]                           dc.w $0000
+[000c203e] 000c171f                  dc.l title
+[000c2042] 000c1709                  dc.l help_title
+[000c2046]                           dc.w $0000
+[000c2048]                           dc.w $0000
+[000c204a]                           dc.b 'Titel',0
+[000c2050]                           dc.b '0x10008f19L',0
+[000c205c]                           dc.b 'Auo_string',0
+[000c2067]                           dc.b '0x%lxL',0

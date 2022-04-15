@@ -132,3 +132,170 @@ new_work:
 [00034da6] 2279 000b 1db8            movea.l    $000B1DB8,a1
 [00034dac] 4eb9 0003 3dd6            jsr        work_icon
 [00034db2] 4e75                      rts
+
+	.data
+
+bitblk_obj:
+[000ce3f6]                           dc.w $0000
+[000ce3f8]                           dc.w $000e
+[000ce3fa]                           dc.w $0006
+[000ce3fc]                           dc.w $0018
+[000ce3fe]                           dc.w $0000
+[000ce400]                           dc.w $0000
+[000ce402]                           dc.w $0001
+imagedata:
+[000ce404]                           dc.w $07ff
+[000ce406]                           dc.w $ffff
+[000ce408]                           dc.w $ff80
+[000ce40a]                           dc.w $0c00
+[000ce40c]                           dc.w $0000
+[000ce40e]                           dc.w $00c0
+[000ce410]                           dc.w $183f
+[000ce412]                           dc.w $f03f
+[000ce414]                           dc.w $f060
+[000ce416]                           dc.w $187f
+[000ce418]                           dc.w $f860
+[000ce41a]                           dc.w $1860
+[000ce41c]                           dc.w $187f
+[000ce41e]                           dc.w $f860
+[000ce420]                           dc.w $1860
+[000ce422]                           dc.w $187f
+[000ce424]                           dc.w $f860
+[000ce426]                           dc.w $1860
+[000ce428]                           dc.w $187f
+[000ce42a]                           dc.w $f860
+[000ce42c]                           dc.w $1860
+[000ce42e]                           dc.w $187f
+[000ce430]                           dc.w $f860
+[000ce432]                           dc.w $1860
+[000ce434]                           dc.w $187f
+[000ce436]                           dc.w $f860
+[000ce438]                           dc.w $1860
+[000ce43a]                           dc.w $187f
+[000ce43c]                           dc.w $f860
+[000ce43e]                           dc.w $1860
+[000ce440]                           dc.w $187f
+[000ce442]                           dc.w $f860
+[000ce444]                           dc.w $1860
+[000ce446]                           dc.w $187f
+[000ce448]                           dc.w $f860
+[000ce44a]                           dc.w $1860
+[000ce44c]                           dc.w $187f
+[000ce44e]                           dc.w $f860
+[000ce450]                           dc.w $1860
+[000ce452]                           dc.w $187f
+[000ce454]                           dc.w $f860
+[000ce456]                           dc.w $1860
+[000ce458]                           dc.w $183f
+[000ce45a]                           dc.w $f03f
+[000ce45c]                           dc.w $f060
+[000ce45e]                           dc.w $0c00
+[000ce460]                           dc.w $0000
+[000ce462]                           dc.w $00c0
+[000ce464]                           dc.w $07ff
+[000ce466]                           dc.w $ffff
+[000ce468]                           dc.w $ff80
+[000ce46a]                           dc.w $0000
+[000ce46c]                           dc.w $0000
+[000ce46e]                           dc.w $0000
+[000ce470]                           dc.w $3f30
+[000ce472]                           dc.w $c787
+[000ce474]                           dc.w $8fe0
+[000ce476]                           dc.w $0c39
+[000ce478]                           dc.w $cccc
+[000ce47a]                           dc.w $cc00
+[000ce47c]                           dc.w $0c36
+[000ce47e]                           dc.w $cfcc
+[000ce480]                           dc.w $0f80
+[000ce482]                           dc.w $0c30
+[000ce484]                           dc.w $cccd
+[000ce486]                           dc.w $cc00
+[000ce488]                           dc.w $3f30
+[000ce48a]                           dc.w $ccc7
+[000ce48c]                           dc.w $cfe0
+[000ce48e]                           dc.w $0000
+[000ce490]                           dc.w $0000
+[000ce492]                           dc.w $0000
+protoimage:
+[000ce494]                           dc.w $0000
+[000ce496]                           dc.w $0000
+[000ce498] 000ce3f6                  dc.l bitblk_obj
+[000ce49c]                           dc.w $0000
+[000ce49e]                           dc.w $0000
+[000ce4a0]                           dc.w $009e
+[000ce4a2]                           dc.w $0000
+[000ce4a4]                           dc.w $009e
+[000ce4a6]                           dc.w $0000
+[000ce4a8]                           dc.w $0000
+[000ce4aa]                           dc.b 'IMAGE_01',0
+[000ce4b3]                           dc.b $00
+[000ce4b4]                           dc.w $0000
+[000ce4b6]                           dc.w $0000
+[000ce4b8]                           dc.w $0000
+[000ce4ba]                           dc.w $0000
+[000ce4bc]                           dc.w $0000
+[000ce4be]                           dc.w $0000
+[000ce4c0]                           dc.w $0000
+[000ce4c2]                           dc.w $0000
+[000ce4c4]                           dc.w $0000
+[000ce4c6]                           dc.w $0000
+[000ce4c8]                           dc.w $0000
+[000ce4ca]                           dc.w $0001
+[000ce4cc]                           dc.w $0000
+[000ce4ce]                           dc.w $0000
+[000ce4d0]                           dc.w $0000
+[000ce4d2]                           dc.w $0000
+[000ce4d4]                           dc.w $0000
+list_image:
+[000ce4d6]                           dc.w $0000
+[000ce4d8]                           dc.w $0000
+[000ce4da]                           dc.w $0000
+[000ce4dc]                           dc.w $0000
+[000ce4de] 000b1d5e                  dc.l WI_IMAGE
+[000ce4e2] 000cd02d                  dc.l im_list
+[000ce4e6] 000cd03c                  dc.l im_name
+[000ce4ea]                           dc.w $2721
+[000ce4ec] 000ce494                  dc.l protoimage
+[000ce4f0] 00034ca6                  dc.l copy_image
+[000ce4f4] 00034d5a                  dc.l del_image
+[000ce4f8] 00034da2                  dc.l new_work
+[000ce4fc]                           dc.w $0000
+[000ce4fe]                           dc.w $0000
+my_image:
+[000ce500]                           dc.w $0000
+[000ce502]                           dc.w $0000
+[000ce504]                           dc.w $0000
+[000ce506]                           dc.w $0000
+[000ce508]                           dc.w $0000
+[000ce50a]                           dc.w $0000
+[000ce50c]                           dc.w $0000
+free_image:
+[000ce50e]                           dc.w $0000
+[000ce510]                           dc.w $0000
+[000ce512] 000ce500                  dc.l my_image
+[000ce516]                           dc.w $0000
+[000ce518]                           dc.w $0000
+[000ce51a]                           dc.w $0000
+[000ce51c]                           dc.w $0000
+[000ce51e]                           dc.w $0000
+[000ce520]                           dc.w $0000
+[000ce522]                           dc.w $0000
+[000ce524]                           dc.b 'IMAGE_01',0
+[000ce52d]                           dc.b $00
+[000ce52e]                           dc.w $0000
+[000ce530]                           dc.w $0000
+[000ce532]                           dc.w $0000
+[000ce534]                           dc.w $0000
+[000ce536]                           dc.w $0000
+[000ce538]                           dc.w $0000
+[000ce53a]                           dc.w $0000
+[000ce53c]                           dc.w $0000
+[000ce53e]                           dc.w $0000
+[000ce540]                           dc.w $0000
+[000ce542]                           dc.w $0000
+[000ce544]                           dc.w $0001
+[000ce546]                           dc.w $0000
+[000ce548]                           dc.w $0000
+[000ce54a]                           dc.w $0000
+[000ce54c]                           dc.w $0000
+[000ce54e]                           dc.w $0000

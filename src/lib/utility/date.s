@@ -97,3 +97,20 @@ Adate_getMonth:
 [0006cee6] 3017                      move.w     (a7),d0
 [0006cee8] 4fef 000a                 lea.l      10(a7),a7
 [0006ceec] 4e75                      rts
+
+	.data
+
+[000e20fc]                           dc.b 'JAN',0
+[000e2100]                           dc.b 'FEB',0
+[000e2104]                           dc.b 'MAR',0
+[000e2108]                           dc.b 'APR',0
+[000e210c]                           dc.b 'MAY',0
+[000e2110]                           dc.b 'JUN',0
+[000e2114]                           dc.b 'JUL',0
+[000e2118]                           dc.b 'AUG',0
+[000e211c]                           dc.b 'SEP',0
+[000e2120]                           dc.b 'OCT',0
+[000e2124]                           dc.b 'NOV',0
+[000e2128]                           dc.b 'DEC',0
+[000e212c]                           dc.b '%02i',0
+[000e2131]                           dc.b $00

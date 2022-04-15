@@ -262,3 +262,140 @@ new_work:
 [000342c6] 2279 000a d794            movea.l    $000AD794,a1
 [000342cc] 4eb9 0003 3dd6            jsr        work_icon
 [000342d2] 4e75                      rts
+
+	.data
+
+dither:
+[000cdd38] 00064a22                  dc.l A_3Dbutton
+[000cdd3c]                           dc.w $0000
+[000cdd3e]                           dc.w $0078
+[000cdd40] 000630f2                  dc.l Auo_string
+[000cdd44]                           dc.w $0000
+[000cdd46]                           dc.w $0000
+[000cdd48]                           dc.w $0000
+[000cdd4a]                           dc.w $0000
+[000cdd4c]                           dc.w $0000
+[000cdd4e]                           dc.w $0000
+[000cdd50]                           dc.w $0000
+[000cdd52]                           dc.w $0000
+[000cdd54]                           dc.w $0000
+[000cdd56]                           dc.w $0000
+inner:
+[000cdd58]                           dc.w $ffff
+[000cdd5a]                           dc.w $ffff
+[000cdd5c]                           dc.w $ffff
+[000cdd5e]                           dc.w $0018
+[000cdd60]                           dc.w $1800
+[000cdd62]                           dc.w $0000
+[000cdd64] 000cdd38                  dc.l dither
+[000cdd68]                           dc.w $0000
+[000cdd6a]                           dc.w $0000
+[000cdd6c]                           dc.w $0064
+[000cdd6e]                           dc.w $0064
+pra00:
+[000cdd70]                           dc.w $0000
+[000cdd72]                           dc.w $0000
+[000cdd74]                           dc.w $0000
+[000cdd76]                           dc.w $0000
+[000cdd78]                           dc.w $8000
+[000cdd7a]                           dc.w $0000
+[000cdd7c]                           dc.w $0000
+[000cdd7e]                           dc.w $0000
+[000cdd80]                           dc.w $0000
+[000cdd82]                           dc.w $0000
+[000cdd84]                           dc.w $0000
+[000cdd86]                           dc.w $0000
+proto:
+[000cdd88]                           dc.w $0000
+[000cdd8a]                           dc.w $ffff
+[000cdd8c]                           dc.w $ffff
+[000cdd8e]                           dc.w $001f
+[000cdd90]                           dc.w $2005
+[000cdd92]                           dc.w $0000
+[000cdd94]                           dc.w $0000
+[000cdd96]                           dc.w $0000
+[000cdd98]                           dc.w $0008
+[000cdd9a]                           dc.w $0008
+[000cdd9c]                           dc.w $0048
+[000cdd9e]                           dc.w $0028
+pra02:
+[000cdda0]                           dc.w $0000
+[000cdda2]                           dc.w $0000
+[000cdda4]                           dc.w $0000
+[000cdda6]                           dc.w $0000
+[000cdda8]                           dc.w $8000
+[000cddaa]                           dc.w $0000
+[000cddac]                           dc.w $0000
+[000cddae]                           dc.w $0000
+[000cddb0]                           dc.w $0000
+[000cddb2]                           dc.w $0000
+[000cddb4]                           dc.w $0000
+[000cddb6]                           dc.w $0000
+[000cddb8]                           dc.b '%li',0
+[000cddbc]                           dc.w $2569
+[000cddbe]                           dc.w $0000
+protoalert:
+[000cddc0]                           dc.w $0000
+[000cddc2]                           dc.w $0000
+[000cddc4] 000cce46                  dc.l proto_alert
+[000cddc8]                           dc.w $0000
+[000cddca]                           dc.w $0000
+[000cddcc]                           dc.w $0014
+[000cddce]                           dc.w $0000
+[000cddd0]                           dc.w $0014
+[000cddd2]                           dc.w $0000
+[000cddd4]                           dc.w $0000
+[000cddd6]                           dc.b 'ALERTBOX_01',0
+[000cdde2]                           dc.w $0000
+[000cdde4]                           dc.w $0000
+[000cdde6]                           dc.w $0000
+[000cdde8]                           dc.w $0000
+[000cddea]                           dc.w $0000
+[000cddec]                           dc.w $0000
+[000cddee]                           dc.w $0000
+[000cddf0]                           dc.w $0000
+[000cddf2]                           dc.w $0000
+[000cddf4]                           dc.w $0000
+[000cddf6]                           dc.w $0001
+[000cddf8]                           dc.w $0000
+[000cddfa]                           dc.w $0000
+[000cddfc]                           dc.w $0000
+[000cddfe]                           dc.w $0000
+[000cde00]                           dc.w $0000
+list_alert:
+[000cde02]                           dc.w $0000
+[000cde04]                           dc.w $0000
+[000cde06]                           dc.w $0000
+[000cde08]                           dc.w $0000
+[000cde0a] 000ad73a                  dc.l WI_ALERT
+[000cde0e] 000ccfda                  dc.l al_list
+[000cde12] 000ccfeb                  dc.l al_name
+[000cde16]                           dc.w $271e
+[000cde18] 000cddc0                  dc.l protoalert
+[000cde1c] 00033ffe                  dc.l copy_alert
+[000cde20] 00033faa                  dc.l del_alert
+[000cde24] 000342c2                  dc.l new_work
+[000cde28] 0003403c                  dc.l serv_alert
+[000cde2c]                           dc.w $0000
+[000cde2e]                           dc.w $0000
+[000cde30]                           dc.w $0000
+[000cde32]                           dc.w $0000
+[000cde34]                           dc.w $0000
+[000cde36]                           dc.w $0000
+[000cde38]                           dc.w $0000
+[000cde3a]                           dc.w $0000
+[000cde3c]                           dc.w $0000
+[000cde3e]                           dc.w $0000
+[000cde40]                           dc.w $0000
+[000cde42]                           dc.b '                               ',0
+[000cde62]                           dc.w $0001
+[000cde64]                           dc.w $0000
+[000cde66]                           dc.w $0000
+[000cde68]                           dc.w $0000
+[000cde6a]                           dc.w $0000
+[000cde6c]                           dc.w $0000
+[000cde6e]                           dc.b '%.28s'
+[000cde73]                           dc.b $01
+[000cde74]                           dc.w $2564
+[000cde76]                           dc.w $0100
+

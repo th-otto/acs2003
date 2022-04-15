@@ -1257,3 +1257,392 @@ GetTxtIntoObj:
 [0005e626] 4fef 0432                 lea.l      1074(a7),a7
 [0005e62a] 245f                      movea.l    (a7)+,a2
 [0005e62c] 4e75                      rts
+
+	.data
+
+globProtData:
+[000e147e]                           dc.w $0000
+[000e1480]                           dc.w $0000
+MsgListe:
+[000e1482]                           dc.w $0400
+[000e1484] 0005ed4a                  dc.l Aev_GetAccID
+[000e1488]                           dc.w $ffff
+[000e148a]                           dc.w $ffff
+[000e148c]                           dc.w $ff00
+[000e148e]                           dc.w $ffff
+[000e1490]                           dc.w $0403
+[000e1492] 0005eeda                  dc.l Aev_GetAccAcc
+[000e1496]                           dc.w $ffff
+[000e1498]                           dc.w $ffff
+[000e149a]                           dc.w $ff00
+[000e149c]                           dc.w $ffff
+[000e149e]                           dc.w $0500
+[000e14a0] 0005edf4                  dc.l Aev_GetAccAck
+[000e14a4]                           dc.w $ffff
+[000e14a6]                           dc.w $ffff
+[000e14a8]                           dc.w $ff00
+[000e14aa]                           dc.w $ffff
+[000e14ac]                           dc.w $0502
+[000e14ae] 0005ef96                  dc.l Aev_GetAccKey
+[000e14b2]                           dc.w $ffff
+[000e14b4]                           dc.w $ffff
+[000e14b6]                           dc.w $ff01
+[000e14b8]                           dc.w $ffff
+[000e14ba]                           dc.w $0501
+[000e14bc] 0005f02e                  dc.l Aev_GetAccText
+[000e14c0]                           dc.w $ffff
+[000e14c2]                           dc.w $ffff
+[000e14c4]                           dc.w $ff02
+[000e14c6]                           dc.w $ffff
+[000e14c8]                           dc.w $0504
+[000e14ca] 0005f0f6                  dc.l Aev_GetAccImg
+[000e14ce]                           dc.w $ffff
+[000e14d0]                           dc.w $ffff
+[000e14d2]                           dc.w $ff02
+[000e14d4]                           dc.w $ffff
+[000e14d6]                           dc.w $0503
+[000e14d8] 0005f34a                  dc.l Aev_GetAccMeta
+[000e14dc]                           dc.w $ffff
+[000e14de]                           dc.w $ffff
+[000e14e0]                           dc.w $ff02
+[000e14e2]                           dc.w $ffff
+[000e14e4]                           dc.w $4701
+[000e14e6] 0005f92e                  dc.l Aev_GetVaProtoStatus
+[000e14ea]                           dc.w $ffff
+[000e14ec]                           dc.w $ffff
+[000e14ee]                           dc.w $ff00
+[000e14f0]                           dc.w $ffff
+[000e14f2]                           dc.w $4736
+[000e14f4] 0005f8de                  dc.l Aev_GetAvExit
+[000e14f8]                           dc.w $ffff
+[000e14fa]                           dc.w $ffff
+[000e14fc]                           dc.w $ff00
+[000e14fe]                           dc.w $ffff
+[000e1500]                           dc.w $4711
+[000e1502] 0005f980                  dc.l Aev_GetVaStart
+[000e1506]                           dc.w $ffff
+[000e1508]                           dc.w $ffff
+[000e150a]                           dc.w $ff00
+[000e150c]                           dc.w $ffff
+[000e150e]                           dc.w $4738
+[000e1510] 0005f9f8                  dc.l Aev_GetAvStarted
+[000e1514]                           dc.w $ffff
+[000e1516]                           dc.w $ffff
+[000e1518]                           dc.w $ff00
+[000e151a]                           dc.w $ffff
+[000e151c]                           dc.w $4710
+[000e151e] 0005fad6                  dc.l Aev_GetAvSendKey
+[000e1522]                           dc.w $ffff
+[000e1524]                           dc.w $ffff
+[000e1526]                           dc.w $ff00
+[000e1528]                           dc.w $ffff
+[000e152a]                           dc.w $4709
+[000e152c] 0005fb54                  dc.l Aev_GetAvSendClick
+[000e1530]                           dc.w $ffff
+[000e1532]                           dc.w $ffff
+[000e1534]                           dc.w $ff00
+[000e1536]                           dc.w $ffff
+[000e1538]                           dc.w $4730
+[000e153a] 0005fbce                  dc.l Aev_GetVaPathUpdate
+[000e153e]                           dc.w $ffff
+[000e1540]                           dc.w $ffff
+[000e1542]                           dc.w $ff00
+[000e1544]                           dc.w $ffff
+[000e1546]                           dc.w $003f
+[000e1548] 0005fe8e                  dc.l Aev_GetAPDragDrop
+[000e154c]                           dc.w $03ff
+[000e154e]                           dc.w $ffff
+[000e1550]                           dc.w $ff02
+[000e1552]                           dc.w $ffff
+[000e1554]                           dc.w $1236
+[000e1556] 00061aee                  dc.l Aev_GetOlgaInit
+[000e155a]                           dc.w $ffff
+[000e155c]                           dc.w $ffff
+[000e155e]                           dc.w $ff00
+[000e1560]                           dc.w $ffff
+[000e1562]                           dc.w $4951
+[000e1564] 00061b72                  dc.l Aev_GetOleExit
+[000e1568]                           dc.w $ffff
+[000e156a]                           dc.w $ffff
+[000e156c]                           dc.w $ff00
+[000e156e]                           dc.w $ffff
+[000e1570]                           dc.w $4952
+[000e1572] 00061bcc                  dc.l Aev_GetOleNew
+[000e1576]                           dc.w $ffff
+[000e1578]                           dc.w $ffff
+[000e157a]                           dc.w $ff00
+[000e157c]                           dc.w $ffff
+[000e157e]                           dc.w $1239
+[000e1580] 00061bf6                  dc.l Aev_GetOlgaAck
+[000e1584]                           dc.w $ffff
+[000e1586]                           dc.w $ffff
+[000e1588]                           dc.w $ff00
+[000e158a]                           dc.w $ffff
+[000e158c]                           dc.w $123f
+[000e158e] 00061d66                  dc.l Aev_GetOlgaUpdated
+[000e1592]                           dc.w $ffff
+[000e1594]                           dc.w $ffff
+[000e1596]                           dc.w $ff00
+[000e1598]                           dc.w $ffff
+[000e159a]                           dc.w $1247
+[000e159c] 00061dcc                  dc.l Aev_GetOlgaGetInfo
+[000e15a0]                           dc.w $ffff
+[000e15a2]                           dc.w $ffff
+[000e15a4]                           dc.w $ff00
+[000e15a6]                           dc.w $ffff
+[000e15a8]                           dc.w $1249
+[000e15aa] 00061e3e                  dc.l Aev_GetOlgaIdle
+[000e15ae]                           dc.w $ffff
+[000e15b0]                           dc.w $ffff
+[000e15b2]                           dc.w $ff00
+[000e15b4]                           dc.w $ffff
+[000e15b6]                           dc.w $1255
+[000e15b8] 00061e3a                  dc.l Aev_GetOlgaClientTerminated
+[000e15bc]                           dc.w $ffff
+[000e15be]                           dc.w $ffff
+[000e15c0]                           dc.w $ff00
+[000e15c2]                           dc.w $ffff
+[000e15c4]                           dc.w $babc
+[000e15c6] 000606ea                  dc.l Aev_GetAckBubbleGEM
+[000e15ca]                           dc.w $ffff
+[000e15cc]                           dc.w $ffff
+[000e15ce]                           dc.w $ff00
+[000e15d0]                           dc.w $ffff
+[000e15d2]                           dc.w $baba
+[000e15d4] 0006072e                  dc.l Aev_GetRequestBubbleGEM
+[000e15d8]                           dc.w $0304
+[000e15da]                           dc.w $0504
+[000e15dc]                           dc.w $0500
+[000e15de]                           dc.w $ffff
+[000e15e0]                           dc.w $1350
+[000e15e2] 00060cb8                  dc.l Aev_GetGSRequest
+[000e15e6]                           dc.w $ffff
+[000e15e8]                           dc.w $ffff
+[000e15ea]                           dc.w $ff00
+[000e15ec]                           dc.w $ffff
+[000e15ee]                           dc.w $1354
+[000e15f0] 00060dc2                  dc.l Aev_GetGSQuit
+[000e15f4]                           dc.w $ffff
+[000e15f6]                           dc.w $ffff
+[000e15f8]                           dc.w $ff00
+[000e15fa]                           dc.w $ffff
+[000e15fc]                           dc.w $1352
+[000e15fe] 00060e34                  dc.l Aev_GetGSCommand
+[000e1602]                           dc.w $ffff
+[000e1604]                           dc.w $ffff
+[000e1606]                           dc.w $ff00
+[000e1608]                           dc.w $ffff
+[000e160a]                           dc.w $1353
+[000e160c] 00060f8e                  dc.l Aev_GetGSAck
+[000e1610]                           dc.w $ffff
+[000e1612]                           dc.w $ffff
+[000e1614]                           dc.w $ff00
+[000e1616]                           dc.w $ffff
+[000e1618]                           dc.w $0402
+[000e161a] 00062488                  dc.l Aev_GetAcReply
+[000e161e]                           dc.w $ffff
+[000e1620]                           dc.w $ffff
+[000e1622]                           dc.w $ff00
+[000e1624]                           dc.w $ffff
+[000e1626]                           dc.w $dadd
+[000e1628] 00060338                  dc.l Aev_GetDhstAdd
+[000e162c]                           dc.w $ffff
+[000e162e]                           dc.w $ffff
+[000e1630]                           dc.w $ff00
+[000e1632]                           dc.w $ffff
+[000e1634]                           dc.w $dade
+[000e1636] 0006033c                  dc.l Aev_GetDhstAck
+[000e163a]                           dc.w $ffff
+[000e163c]                           dc.w $ffff
+[000e163e]                           dc.w $ff00
+[000e1640]                           dc.w $ffff
+[000e1642]                           dc.w $000a
+[000e1644] 0005e62e                  dc.l Aev_GetMnSelected
+[000e1648]                           dc.w $ffff
+[000e164a]                           dc.w $ffff
+[000e164c]                           dc.w $ff00
+[000e164e]                           dc.w $ffff
+[000e1650]                           dc.w $0014
+[000e1652] 0005e64e                  dc.l Aev_GetWmRedraw
+[000e1656]                           dc.w $0304
+[000e1658]                           dc.w $0506
+[000e165a]                           dc.w $0700
+[000e165c]                           dc.w $ffff
+[000e165e]                           dc.w $0015
+[000e1660] 0005e672                  dc.l Aev_GetWmTopped
+[000e1664]                           dc.w $03ff
+[000e1666]                           dc.w $ffff
+[000e1668]                           dc.w $ff00
+[000e166a]                           dc.w $ffff
+[000e166c]                           dc.w $0016
+[000e166e] 0005e6fc                  dc.l Aev_GetWmClosed
+[000e1672]                           dc.w $03ff
+[000e1674]                           dc.w $ffff
+[000e1676]                           dc.w $ff00
+[000e1678]                           dc.w $ffff
+[000e167a]                           dc.w $0017
+[000e167c] 0005e76c                  dc.l Aev_GetWmFulled
+[000e1680]                           dc.w $03ff
+[000e1682]                           dc.w $ffff
+[000e1684]                           dc.w $ff00
+[000e1686]                           dc.w $ffff
+[000e1688]                           dc.w $0018
+[000e168a] 0005e788                  dc.l Aev_GetWmArrowed
+[000e168e]                           dc.w $03ff
+[000e1690]                           dc.w $ffff
+[000e1692]                           dc.w $ff00
+[000e1694]                           dc.w $ffff
+[000e1696]                           dc.w $0019
+[000e1698] 0005e85c                  dc.l Aev_GetWmHSlid
+[000e169c]                           dc.w $03ff
+[000e169e]                           dc.w $ffff
+[000e16a0]                           dc.w $ff00
+[000e16a2]                           dc.w $ffff
+[000e16a4]                           dc.w $001a
+[000e16a6] 0005e880                  dc.l Aev_GetWmVSlid
+[000e16aa]                           dc.w $03ff
+[000e16ac]                           dc.w $ffff
+[000e16ae]                           dc.w $ff00
+[000e16b0]                           dc.w $ffff
+[000e16b2]                           dc.w $001b
+[000e16b4] 0005e8a4                  dc.l Aev_GetWmSized
+[000e16b8]                           dc.w $0304
+[000e16ba]                           dc.w $0506
+[000e16bc]                           dc.w $0700
+[000e16be]                           dc.w $ffff
+[000e16c0]                           dc.w $001c
+[000e16c2] 0005e8c8                  dc.l Aev_GetWmMoved
+[000e16c6]                           dc.w $0304
+[000e16c8]                           dc.w $0506
+[000e16ca]                           dc.w $0700
+[000e16cc]                           dc.w $ffff
+[000e16ce]                           dc.w $0064
+[000e16d0] 0005e8ec                  dc.l Aev_GetWmBottomed
+[000e16d4]                           dc.w $03ff
+[000e16d6]                           dc.w $ffff
+[000e16d8]                           dc.w $ff00
+[000e16da]                           dc.w $ffff
+[000e16dc]                           dc.w $0021
+[000e16de] 0005e8ec                  dc.l Aev_GetWmBottomed
+[000e16e2]                           dc.w $03ff
+[000e16e4]                           dc.w $ffff
+[000e16e6]                           dc.w $ff00
+[000e16e8]                           dc.w $ffff
+[000e16ea]                           dc.w $001f
+[000e16ec] 0005e902                  dc.l Aev_GetWmOnTop
+[000e16f0]                           dc.w $03ff
+[000e16f2]                           dc.w $ffff
+[000e16f4]                           dc.w $ff00
+[000e16f6]                           dc.w $ffff
+[000e16f8]                           dc.w $001e
+[000e16fa] 0005e932                  dc.l Aev_GetWmUnTopped
+[000e16fe]                           dc.w $03ff
+[000e1700]                           dc.w $ffff
+[000e1702]                           dc.w $ff00
+[000e1704]                           dc.w $ffff
+[000e1706]                           dc.w $001d
+[000e1708]                           dc.w $0000
+[000e170a]                           dc.w $0000
+[000e170c]                           dc.w $ffff
+[000e170e]                           dc.w $ffff
+[000e1710]                           dc.w $ff00
+[000e1712]                           dc.w $ffff
+[000e1714]                           dc.w $0020
+[000e1716]                           dc.w $0000
+[000e1718]                           dc.w $0000
+[000e171a]                           dc.w $ffff
+[000e171c]                           dc.w $ffff
+[000e171e]                           dc.w $ff00
+[000e1720]                           dc.w $ffff
+[000e1722]                           dc.w $5758
+[000e1724] 0005e93a                  dc.l Aev_GetWmShaded
+[000e1728]                           dc.w $03ff
+[000e172a]                           dc.w $ffff
+[000e172c]                           dc.w $ff00
+[000e172e]                           dc.w $ffff
+[000e1730]                           dc.w $5759
+[000e1732] 0005e96a                  dc.l Aev_GetWmUnshaded
+[000e1736]                           dc.w $03ff
+[000e1738]                           dc.w $ffff
+[000e173a]                           dc.w $ff00
+[000e173c]                           dc.w $ffff
+[000e173e]                           dc.w $0930
+[000e1740] 0005e812                  dc.l Aev_GetWmMouseWheel
+[000e1744]                           dc.w $0305
+[000e1746]                           dc.w $06ff
+[000e1748]                           dc.w $ff00
+[000e174a]                           dc.w $0004
+[000e174c]                           dc.w $0025
+[000e174e] 0005e936                  dc.l Aev_GetWmToolbar
+[000e1752]                           dc.w $03ff
+[000e1754]                           dc.w $ffff
+[000e1756]                           dc.w $ff00
+[000e1758]                           dc.w $ffff
+[000e175a]                           dc.w $0032
+[000e175c] 0005ea0a                  dc.l Aev_GetApTerm
+[000e1760]                           dc.w $ffff
+[000e1762]                           dc.w $ffff
+[000e1764]                           dc.w $ff00
+[000e1766]                           dc.w $ffff
+[000e1768]                           dc.w $0050
+[000e176a] 0005ea20                  dc.l Aev_GetScChanged
+[000e176e]                           dc.w $ffff
+[000e1770]                           dc.w $ffff
+[000e1772]                           dc.w $ff00
+[000e1774]                           dc.w $ffff
+[000e1776]                           dc.w $0053
+[000e1778] 0005ea2e                  dc.l Aev_GetFntChanged
+[000e177c]                           dc.w $ffff
+[000e177e]                           dc.w $ffff
+[000e1780]                           dc.w $ff00
+[000e1782]                           dc.w $ffff
+[000e1784]                           dc.w $0052
+[000e1786] 0005ea92                  dc.l Aev_GetPrnChanged
+[000e178a]                           dc.w $ffff
+[000e178c]                           dc.w $ffff
+[000e178e]                           dc.w $ff00
+[000e1790]                           dc.w $ffff
+[000e1792]                           dc.w $0054
+[000e1794] 0005eaaa                  dc.l Aev_GetColorsChanged
+[000e1798]                           dc.w $ffff
+[000e179a]                           dc.w $ffff
+[000e179c]                           dc.w $ff00
+[000e179e]                           dc.w $ffff
+[000e17a0]                           dc.w $0028
+[000e17a2] 0005eb44                  dc.l Aev_GetAcOpen
+[000e17a6]                           dc.w $ffff
+[000e17a8]                           dc.w $ffff
+[000e17aa]                           dc.w $ff00
+[000e17ac]                           dc.w $ffff
+[000e17ae]                           dc.w $0029
+[000e17b0] 0005ead4                  dc.l Aev_GetAcClose
+[000e17b4]                           dc.w $ffff
+[000e17b6]                           dc.w $ffff
+[000e17b8]                           dc.w $ff00
+[000e17ba]                           dc.w $ffff
+[000e17bc]                           dc.w $0022
+[000e17be] 0005e9b2                  dc.l Aev_GetWmIconify
+[000e17c2]                           dc.w $03ff
+[000e17c4]                           dc.w $ffff
+[000e17c6]                           dc.w $ff00
+[000e17c8]                           dc.w $ffff
+[000e17ca]                           dc.w $0024
+[000e17cc] 0005e9d0                  dc.l Aev_GetWmAllIconify
+[000e17d0]                           dc.w $03ff
+[000e17d2]                           dc.w $ffff
+[000e17d4]                           dc.w $ff00
+[000e17d6]                           dc.w $ffff
+[000e17d8]                           dc.w $0023
+[000e17da] 0005e9ee                  dc.l Aev_GetWmUnIconify
+[000e17de]                           dc.w $03ff
+[000e17e0]                           dc.w $ffff
+[000e17e2]                           dc.w $ff00
+[000e17e4]                           dc.w $ffff
+MsgListeLen:
+[000e17e6]                           dc.w $003e
+[000e17e8]                           dc.b 'ARGS',0
+[000e17ed]                           dc.b $0a
+[000e17ee]                           dc.w $0d00
+[000e17f0]                           dc.b 'XAccTxt',0
+[000e17f8]                           dc.b 'ARGS',0
+[000e17fd]                           dc.b '.TXT',0

@@ -259,3 +259,21 @@ J25:
 [00037b12] 584f                      addq.w     #4,a7
 [00037b14] 4cdf 1c38                 movem.l    (a7)+,d3-d5/a2-a4
 [00037b18] 4e75                      rts
+
+	.data
+
+proto:
+[000cf1ae]                           dc.w $0000
+[000cf1b0]                           dc.w $0064
+[000cf1b2]                           dc.w $0000
+[000cf1b4]                           dc.w $000a
+[000cf1b6]                           dc.w $0000
+[000cf1b8]                           dc.w $0014
+[000cf1ba]                           dc.w $0000
+[000cf1bc]                           dc.w $0001
+[000cf1be]                           dc.w $0000
+[000cf1c0]                           dc.w $0000
+[000cf1c2]                           dc.w $0000
+[000cf1c4]                           dc.w $0000
+[000cf1c6]                           dc.w $0000
+[000cf1c8]                           dc.w $0000

@@ -641,3 +641,24 @@ Alu_doForElem:
 [000713b8] 4fef 0010                 lea.l      16(a7),a7
 [000713bc] 245f                      movea.l    (a7)+,a2
 [000713be] 4e75                      rts
+
+	.data
+
+empty:
+[000e3298]                           dc.l 0
+[000e329c] 0004c7c8                  dc.l Ax_free
+[000e32a0] 00070caa                  dc.l Alu_clearElem
+[000e32a4] 00070d0a                  dc.l Alu_appendElem
+[000e32a8] 00070d9e                  dc.l Alu_insertElem
+[000e32ac] 00070e9c                  dc.l Alu_deleteElem
+[000e32b0] 00070fa0                  dc.l Alu_deleteForElem
+[000e32b4] 0007108a                  dc.l Alu_searchElem
+[000e32b8] 000710fa                  dc.l Alu_searchForElem
+[000e32bc] 00071192                  dc.l Alu_firstElem
+[000e32c0] 000711c6                  dc.l Alu_lastElem
+[000e32c4] 0007122e                  dc.l Alu_aktElem
+[000e32c8] 00071208                  dc.l Alu_aktNrElem
+[000e32cc] 00071258                  dc.l Alu_skipElem
+[000e32d0] 000712ee                  dc.l Alu_countElem
+[000e32d4] 000712fe                  dc.l Alu_countForElem
+[000e32d8] 0007135c                  dc.l Alu_doForElem

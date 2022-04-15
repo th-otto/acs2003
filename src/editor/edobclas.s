@@ -1681,3 +1681,9 @@ user_dummy:
 [0002cf40] 504f                      addq.w     #8,a7
 [0002cf42] 4cdf 1404                 movem.l    (a7)+,d2/a2/a4
 [0002cf46] 4e75                      rts
+
+	.data
+
+	.globl NEW_POPUP
+NEW_POPUP:
+[000c497c]                           dc.b '[2][ Wollen Sie ein neues | PopUp-MenÅ erzeugen? ][OK| Abbruch ]',0

@@ -117,3 +117,18 @@ Aev_STGuideHelp:
 [00062334] 4eb9 0005 fd30            jsr        Aev_VaStart
 [0006233a] 4fef 000e                 lea.l      14(a7),a7
 [0006233e] 4e75                      rts
+
+	.data
+
+help_string:
+[000e1b9c]                           dc.w $0000
+[000e1b9e]                           dc.w $0000
+help_meldung:
+[000e1ba0]                           dc.w $0000
+[000e1ba2]                           dc.w $0000
+[000e1ba4]                           dc.b 'ST-GUIDE',0
+[000e1bad]                           dc.b 'ST-GUIDE',0
+[000e1bb6]                           dc.b '*:\',0
+[000e1bba]                           dc.b '.REF',0
+[000e1bbf]                           dc.b $20
+[000e1bc0]                           dc.w $0000

@@ -3364,3 +3364,60 @@ A_title:
 [000659e4] 245f                      movea.l    (a7)+,a2
 [000659e6] 241f                      move.l     (a7)+,d2
 [000659e8] 4e75                      rts
+
+	.data
+
+icn_count:
+[000e1bfa]                           dc.w $0000
+icn_chk_sel:
+[000e1bfc]                           dc.w $0000
+[000e1bfe]                           dc.w $0000
+icn_chk_un:
+[000e1c00]                           dc.w $0000
+[000e1c02]                           dc.w $0000
+icn_chk_dissel:
+[000e1c04]                           dc.w $0000
+[000e1c06]                           dc.w $0000
+icn_chk_disun:
+[000e1c08]                           dc.w $0000
+[000e1c0a]                           dc.w $0000
+icn_rad_sel:
+[000e1c0c]                           dc.w $0000
+[000e1c0e]                           dc.w $0000
+icn_rad_un:
+[000e1c10]                           dc.w $0000
+[000e1c12]                           dc.w $0000
+icn_rad_dissel:
+[000e1c14]                           dc.w $0000
+[000e1c16]                           dc.w $0000
+icn_rad_disun:
+[000e1c18]                           dc.w $0000
+[000e1c1a]                           dc.w $0000
+icn_mask:
+[000e1c1c]                           dc.w $0000
+[000e1c1e]                           dc.w $0000
+icn_tmp:
+[000e1c20]                           dc.w $0000
+[000e1c22]                           dc.w $0000
+save:
+[000e1c24]                           dc.w $2000
+save:
+[000e1c26]                           dc.w $2000
+rad:
+[000e1c28]                           dc.w $0000
+[000e1c2a]                           dc.w $0000
+[000e1c2c]                           dc.w $0010
+[000e1c2e]                           dc.w $0010
+[000e1c30]                           dc.w $0001
+[000e1c32]                           dc.w $0001
+[000e1c34]                           dc.w $0001
+[000e1c36]                           dc.w $0000
+[000e1c38]                           dc.w $0000
+[000e1c3a]                           dc.w $0000
+col:
+[000e1c3c]                           dc.w $0001
+[000e1c3e]                           dc.w $0000
+col2:
+[000e1c40]                           dc.w $0000
+[000e1c42]                           dc.w $0001
+[000e1c44]                           dc.w $0000

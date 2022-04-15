@@ -1086,3 +1086,52 @@ gs_GetAllCommands:
 [00061704] 4fef 001e                 lea.l      30(a7),a7
 [00061708] 245f                      movea.l    (a7)+,a2
 [0006170a] 4e75                      rts
+
+	.data
+
+gs_infodata:
+[000e1ab2]                           dc.w $0000
+[000e1ab4]                           dc.w $0000
+gs_connect:
+[000e1ab6]                           dc.w $0000
+[000e1ab8]                           dc.w $0000
+[000e1aba]                           dc.w $0000
+[000e1abc]                           dc.w $0000
+[000e1abe]                           dc.w $0002
+[000e1ac0]                           dc.w $0001
+_gs_commands:
+[000e1ac2] 000e1b07                  dc.l $000e1b07
+[000e1ac6] 000613c4                  dc.l gs_CheckCommand
+[000e1aca] 000e1b14                  dc.l $000e1b14
+[000e1ace] 00061352                  dc.l gs_SendToTopWindow
+[000e1ad2] 000e1b1d                  dc.l $000e1b1d
+[000e1ad6] 00061476                  dc.l gs_Quit
+[000e1ada] 000e1b22                  dc.l $000e1b22
+[000e1ade] 00061390                  dc.l gs_AppGetLongName
+[000e1ae2] 000e1b31                  dc.l $000e1b31
+[000e1ae6] 00061352                  dc.l gs_SendToTopWindow
+[000e1aea] 000e1b3a                  dc.l $000e1b3a
+[000e1aee] 000614ac                  dc.l gs_GetAllCommands
+_gs_cmd_anzahl:
+[000e1af2]                           dc.w $0006
+_gs_sorted:
+[000e1af4]                           dc.w $0000
+[000e1af6]                           dc.w $3000
+[000e1af8]                           dc.w $0001
+[000e1afa]                           dc.w $0203
+[000e1afc]                           dc.w $0405
+[000e1afe]                           dc.w $0600
+[000e1b00]                           dc.w $0030
+[000e1b02]                           dc.w $0031
+[000e1b04]                           dc.w $0000
+[000e1b06]                           dc.w $0043
+[000e1b08]                           dc.b 'heckCommand',0
+[000e1b14]                           dc.b 'GetFront',0
+[000e1b1d]                           dc.b 'Quit',0
+[000e1b22]                           dc.b 'AppGetLongName',0
+[000e1b31]                           dc.b 'KeyPress',0
+[000e1b3a]                           dc.b 'GetAllCommands',0
+[000e1b49]                           dc.b $31
+[000e1b4a]                           dc.w $0031
+[000e1b4c]                           dc.w $0000
+

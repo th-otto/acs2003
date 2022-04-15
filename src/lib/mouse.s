@@ -166,3 +166,12 @@ Amo_return:
 [0004f05e] 5c4f                      addq.w     #6,a7
 [0004f060] 245f                      movea.l    (a7)+,a2
 [0004f062] 4e75                      rts
+
+	.data
+
+init:
+[000e0c50]                           dc.w $0000
+prevmouse:
+[000e0c52]                           dc.w $ffff
+[000e0c54]                           dc.w $0000
+[000e0c56]                           dc.w $0000

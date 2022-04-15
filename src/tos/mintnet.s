@@ -48,7 +48,8 @@ _rsv EQU 4
 	ENDM
 
 		; ************************************************************
-		; int32 Faccept( int16 fd, struct sockaddr *name, socklen_t *namelen );		; ************************************************************
+		; int32 Faccept( int16 fd, struct sockaddr *name, socklen_t *namelen );
+		; ************************************************************
 		
 	EXPORT Faccept
 	MODULE Faccept
@@ -64,7 +65,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fbind( int16 fd, const struct sockaddr *name, socklen_t namelen );		; ************************************************************
+		; int32 Fbind( int16 fd, const struct sockaddr *name, socklen_t namelen );
+		; ************************************************************
 		
 	EXPORT Fbind
 	MODULE Fbind
@@ -80,7 +82,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fconnect( int16 fd, const struct sockaddr *name, socklen_t namelen );		; ************************************************************
+		; int32 Fconnect( int16 fd, const struct sockaddr *name, socklen_t namelen );
+		; ************************************************************
 		
 	EXPORT Fconnect
 	MODULE Fconnect
@@ -96,7 +99,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fgetpeername( int16 fd, struct sockaddr *addr, socklen_t *addrlen );		; ************************************************************
+		; int32 Fgetpeername( int16 fd, struct sockaddr *addr, socklen_t *addrlen );
+		; ************************************************************
 		
 	EXPORT Fgetpeername
 	MODULE Fgetpeername
@@ -112,7 +116,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fgetsockname( int16 fd, sockaddr *addr, socklen_t *addrlen );		; ************************************************************
+		; int32 Fgetsockname( int16 fd, sockaddr *addr, socklen_t *addrlen );
+		; ************************************************************
 		
 	EXPORT Fgetsockname
 	MODULE Fgetsockname
@@ -129,7 +134,8 @@ _rsv EQU 4
 
 		; ************************************************************
 		; int32 Fgetsockopt( int16 fd, int32 level, int32 optname,
-		;             void *optval, socklen_t *optlen );		; ************************************************************
+		;             void *optval, socklen_t *optlen );
+		; ************************************************************
 		
 	EXPORT Fgetsockopt
 	MODULE Fgetsockopt
@@ -147,7 +153,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Flisten( int16 fd, int32 backlog );		; ************************************************************
+		; int32 Flisten( int16 fd, int32 backlog );
+		; ************************************************************
 		
 	EXPORT Flisten
 	MODULE Flisten
@@ -179,7 +186,9 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Frecvfrom( int16 fd, void *buf, ssize_t buflen, int32 flags,		;                  sockaddr *from, socklen_t *fromlen);		; ************************************************************
+		; int32 Frecvfrom( int16 fd, void *buf, ssize_t buflen, int32 flags,
+		;                  sockaddr *from, socklen_t *fromlen);
+		; ************************************************************
 		
 	EXPORT Frecvfrom
 	MODULE Frecvfrom
@@ -215,7 +224,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fsendmsg( int16 fd, const msghdr *msg, long flags);		; ************************************************************
+		; int32 Fsendmsg( int16 fd, const msghdr *msg, long flags);
+		; ************************************************************
 		
 	EXPORT Fsendmsg
 	MODULE Fsendmsg
@@ -231,7 +241,9 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fsendto( int16 fd, const void *buf, ssize_t buflen, int32 flags,		;						const sockaddrPtr addr, socklen_t addrlen);		; ************************************************************
+		; int32 Fsendto( int16 fd, const void *buf, ssize_t buflen, int32 flags,
+		;						const sockaddrPtr addr, socklen_t addrlen);
+		; ************************************************************
 		
 	EXPORT Fsendto
 	MODULE Fsendto
@@ -251,7 +263,8 @@ _rsv EQU 4
 
 		; ************************************************************
 		; int32 Fsetsockopt( int16 fd, int32 level, int32 optname,
-		;							void *optval, socklen_t optlen);		; ************************************************************
+		;							void *optval, socklen_t optlen);
+		; ************************************************************
 		
 	EXPORT Fsetsockopt
 	MODULE Fsetsockopt
@@ -269,7 +282,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fshutdown( int16 fh, int32 how);		; ************************************************************
+		; int32 Fshutdown( int16 fh, int32 how);
+		; ************************************************************
 		
 	EXPORT Fshutdown
 	MODULE Fshutdown
@@ -284,7 +298,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fsocket( int32 domain, int32 type, int32 protocol);		; ************************************************************
+		; int32 Fsocket( int32 domain, int32 type, int32 protocol);
+		; ************************************************************
 		
 	EXPORT Fsocket
 	MODULE Fsocket
@@ -300,7 +315,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fsocketpair( int32 domain, int32 type, int32 protocol, int16 rsv[2] );		; ************************************************************
+		; int32 Fsocketpair( int32 domain, int32 type, int32 protocol, int16 rsv[2] );
+		; ************************************************************
 		
 	EXPORT Fsocketpair
 	MODULE Fsocketpair
@@ -317,7 +333,8 @@ _rsv EQU 4
 	ENDMOD
 
 		; ************************************************************
-		; int32 Fwritev( int16 fd, const iovec *iov, ssize_t niov );		; ************************************************************
+		; int32 Fwritev( int16 fd, const iovec *iov, ssize_t niov );
+		; ************************************************************
 		
 	EXPORT Fwritev
 	MODULE Fwritev

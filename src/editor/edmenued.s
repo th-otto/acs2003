@@ -1435,3 +1435,66 @@ title_dragsize:
 [000264a2] 4fef 000c                 lea.l      12(a7),a7
 [000264a6] 4cdf 1c18                 movem.l    (a7)+,d3-d4/a2-a4
 [000264aa] 4e75                      rts
+
+	.data
+
+droptree:
+[000bb5ca]                           dc.w $0000
+[000bb5cc]                           dc.w $0000
+[000bb5ce]                           dc.w $0000
+[000bb5d0]                           dc.w $0000
+[000bb5d2]                           dc.w $ffff
+[000bb5d4]                           dc.w $ffff
+[000bb5d6]                           dc.w $ffff
+[000bb5d8]                           dc.w $0014
+[000bb5da]                           dc.w $0000
+[000bb5dc]                           dc.w $0000
+[000bb5de]                           dc.w $00ff
+[000bb5e0]                           dc.w $1101
+[000bb5e2]                           dc.w $0000
+[000bb5e4]                           dc.w $0000
+[000bb5e6]                           dc.w $000c
+[000bb5e8]                           dc.w $0001
+[000bb5ea]                           dc.w $0000
+[000bb5ec]                           dc.w $0000
+[000bb5ee]                           dc.w $0000
+[000bb5f0]                           dc.w $0000
+[000bb5f2]                           dc.w $8000
+[000bb5f4]                           dc.w $0000
+[000bb5f6]                           dc.w $0000
+[000bb5f8]                           dc.w $0000
+[000bb5fa]                           dc.w $0000
+[000bb5fc]                           dc.w $0000
+[000bb5fe]                           dc.w $0000
+[000bb600]                           dc.w $0000
+protodrop:
+[000bb602]                           dc.w $0000
+[000bb604]                           dc.w $0000
+[000bb606] 000bb5ca                  dc.l droptree
+[000bb60a]                           dc.w $0000
+[000bb60c]                           dc.w $0000
+[000bb60e]                           dc.w $0038
+[000bb610]                           dc.w $0000
+[000bb612]                           dc.w $0038
+[000bb614]                           dc.w $0000
+[000bb616]                           dc.w $0000
+[000bb618]                           dc.b 'DROPPROTO',0
+[000bb622]                           dc.w $0000
+[000bb624]                           dc.w $0000
+[000bb626]                           dc.w $0000
+[000bb628]                           dc.w $0000
+[000bb62a]                           dc.w $0000
+[000bb62c]                           dc.w $0000
+[000bb62e]                           dc.w $0000
+[000bb630]                           dc.w $0000
+[000bb632]                           dc.w $0000
+[000bb634]                           dc.w $0000
+[000bb636]                           dc.w $0000
+[000bb638]                           dc.w $0001
+[000bb63a]                           dc.w $0000
+[000bb63c]                           dc.w $0000
+[000bb63e]                           dc.w $0000
+[000bb640]                           dc.w $0000
+[000bb642]                           dc.w $0000
+[000bb644]                           dc.b ' NAME',0
+[000bb64a]                           dc.b '  ACC EINTRAG',0

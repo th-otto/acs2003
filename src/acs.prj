@@ -42,7 +42,7 @@ acsbase.s
 palette.c
 ebdehave.c
 general.c
-about.c
+about.s
 edutil.c
 io\protocol.c
 io\fixacs.c
@@ -122,6 +122,7 @@ acsplus\editor.c
 acsplus\pur_desk.c
 acsplus\editwi.c
 acsplus\fontsel.c
+acsplus\list.s
 acsplus\proto.c
 
 lib\main.c

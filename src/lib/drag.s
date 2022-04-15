@@ -3200,3 +3200,14 @@ Adr_drag:
 [0004a2f2] 245f                      movea.l    (a7)+,a2
 [0004a2f4] 361f                      move.w     (a7)+,d3
 [0004a2f6] 4e75                      rts
+
+	.data
+
+[000e0706]                           dc.b 'U:\PIPE\DRAGDROP.AA',0
+[000e071a]                           dc.w $7c00
+[000e071c]                           dc.b 'U:\PIPE',0
+[000e0724]                           dc.b '.TXT    ',0
+[000e072d]                           dc.b $00
+[000e072e]                           dc.b 0
+[000e072f]                           dc.b 'ARGS    ',0
+[000e0738]                           dc.w $0000

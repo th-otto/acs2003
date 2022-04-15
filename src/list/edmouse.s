@@ -95,3 +95,89 @@ new_work:
 [000359d0] 2279 000b 28e2            movea.l    $000B28E2,a1
 [000359d6] 4eb9 0003 3dd6            jsr        work_icon
 [000359dc] 4e75                      rts
+
+	.data
+
+mouse_obj:
+[000cec5c]                           dc.w $0007
+[000cec5e]                           dc.w $0007
+[000cec60]                           dc.w $0001
+[000cec62]                           dc.w $0000
+[000cec64]                           dc.w $0001
+[000cec66]                           dc.w $0100
+[000cec68]                           dc.w $0100
+[000cec6a]                           dc.w $0100
+[000cec6c]                           dc.w $0100
+[000cec6e]                           dc.w $0100
+[000cec70]                           dc.w $0100
+[000cec72]                           dc.w $0380
+[000cec74]                           dc.w $fffe
+[000cec76]                           dc.w $0380
+[000cec78]                           dc.w $0100
+[000cec7a]                           dc.w $0100
+[000cec7c]                           dc.w $0100
+[000cec7e]                           dc.w $0100
+[000cec80]                           dc.w $0100
+[000cec82]                           dc.w $0100
+[000cec84]                           dc.w $0000
+[000cec86]                           dc.w $0100
+[000cec88]                           dc.w $0100
+[000cec8a]                           dc.w $0100
+[000cec8c]                           dc.w $0100
+[000cec8e]                           dc.w $0100
+[000cec90]                           dc.w $0100
+[000cec92]                           dc.w $0280
+[000cec94]                           dc.w $fc7e
+[000cec96]                           dc.w $0280
+[000cec98]                           dc.w $0100
+[000cec9a]                           dc.w $0100
+[000cec9c]                           dc.w $0100
+[000cec9e]                           dc.w $0100
+[000ceca0]                           dc.w $0100
+[000ceca2]                           dc.w $0100
+[000ceca4]                           dc.w $0000
+protomouse:
+[000ceca6]                           dc.w $0000
+[000ceca8]                           dc.w $0000
+[000cecaa] 000cec5c                  dc.l mouse_obj
+[000cecae]                           dc.w $0000
+[000cecb0]                           dc.w $0000
+[000cecb2]                           dc.w $004a
+[000cecb4]                           dc.w $0000
+[000cecb6]                           dc.w $004a
+[000cecb8]                           dc.w $0000
+[000cecba]                           dc.w $0000
+[000cecbc]                           dc.b 'MOUSE_01',0
+[000cecc5]                           dc.b $00
+[000cecc6]                           dc.w $0000
+[000cecc8]                           dc.w $0000
+[000cecca]                           dc.w $0000
+[000ceccc]                           dc.w $0000
+[000cecce]                           dc.w $0000
+[000cecd0]                           dc.w $0000
+[000cecd2]                           dc.w $0000
+[000cecd4]                           dc.w $0000
+[000cecd6]                           dc.w $0000
+[000cecd8]                           dc.w $0000
+[000cecda]                           dc.w $0000
+[000cecdc]                           dc.w $0001
+[000cecde]                           dc.w $0000
+[000cece0]                           dc.w $0000
+[000cece2]                           dc.w $0000
+[000cece4]                           dc.w $0000
+[000cece6]                           dc.w $0000
+list_mouse:
+[000cece8]                           dc.w $0000
+[000cecea]                           dc.w $0000
+[000cecec]                           dc.w $0000
+[000cecee]                           dc.w $0000
+[000cecf0] 000b2888                  dc.l WI_MOUSE
+[000cecf4] 000cd05d                  dc.l mf_list
+[000cecf8] 000cd070                  dc.l mf_name
+[000cecfc]                           dc.w $2722
+[000cecfe] 000ceca6                  dc.l protomouse
+[000ced02] 0003594e                  dc.l copy_mouse
+[000ced06] 0003598a                  dc.l del_mouse
+[000ced0a] 000359cc                  dc.l new_work
+[000ced0e]                           dc.w $0000
+[000ced10]                           dc.w $0000

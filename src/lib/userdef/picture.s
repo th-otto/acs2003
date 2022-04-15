@@ -602,3 +602,9 @@ Auo_picture:
 [000687ae] 7001                      moveq.l    #1,d0
 [000687b0] 4fef 001e                 lea.l      30(a7),a7
 [000687b4] 4e75                      rts
+
+	.data
+
+color:
+[000e1dc6]                           dc.w $0001
+[000e1dc8]                           dc.w $0000

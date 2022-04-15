@@ -83,3 +83,80 @@ new_work:
 [00035c18] 2279 000c 8ed8            movea.l    $000C8ED8,a1
 [00035c1e] 4eb9 0003 3dd6            jsr        work_icon
 [00035c24] 4e75                      rts
+
+	.data
+
+protopup:
+[000cedb6]                           dc.w $0000
+[000cedb8]                           dc.w $0000
+[000cedba]                           dc.w $0000
+[000cedbc]                           dc.w $0000
+[000cedbe]                           dc.w $ffff
+[000cedc0]                           dc.w $ffff
+[000cedc2]                           dc.w $ffff
+[000cedc4]                           dc.w $0014
+[000cedc6]                           dc.w $0000
+[000cedc8]                           dc.w $0020
+[000cedca]                           dc.w $00ff
+[000cedcc]                           dc.w $1100
+[000cedce]                           dc.w $0000
+[000cedd0]                           dc.w $0000
+[000cedd2]                           dc.w $000c
+[000cedd4]                           dc.w $0006
+[000cedd6]                           dc.w $0000
+[000cedd8]                           dc.w $0000
+[000cedda]                           dc.w $0000
+[000ceddc]                           dc.w $0000
+[000cedde]                           dc.w $8000
+[000cede0]                           dc.w $0000
+[000cede2]                           dc.w $0000
+[000cede4]                           dc.w $0000
+[000cede6]                           dc.w $0000
+[000cede8]                           dc.w $0000
+[000cedea]                           dc.w $0000
+[000cedec]                           dc.w $0000
+protopopup:
+[000cedee]                           dc.w $0000
+[000cedf0]                           dc.w $0000
+[000cedf2] 000cedb6                  dc.l protopup
+[000cedf6]                           dc.w $0000
+[000cedf8]                           dc.w $0000
+[000cedfa]                           dc.w $0038
+[000cedfc]                           dc.w $0000
+[000cedfe]                           dc.w $0038
+[000cee00]                           dc.w $0000
+[000cee02]                           dc.w $0000
+[000cee04]                           dc.b 'POPUP_01',0
+[000cee0d]                           dc.b $00
+[000cee0e]                           dc.w $0000
+[000cee10]                           dc.w $0000
+[000cee12]                           dc.w $0000
+[000cee14]                           dc.w $0000
+[000cee16]                           dc.w $0000
+[000cee18]                           dc.w $0000
+[000cee1a]                           dc.w $0000
+[000cee1c]                           dc.w $0000
+[000cee1e]                           dc.w $0000
+[000cee20]                           dc.w $0000
+[000cee22]                           dc.w $0000
+[000cee24]                           dc.w $0001
+[000cee26]                           dc.w $0000
+[000cee28]                           dc.w $0000
+[000cee2a]                           dc.w $0000
+[000cee2c]                           dc.w $0000
+[000cee2e]                           dc.w $0000
+list_popup:
+[000cee30]                           dc.w $0000
+[000cee32]                           dc.w $0000
+[000cee34]                           dc.w $0000
+[000cee36]                           dc.w $0000
+[000cee38] 000c8e7e                  dc.l WI_POPUP
+[000cee3c] 000cd0bd                  dc.l pu_list
+[000cee40] 000cd0cb                  dc.l pu_name
+[000cee44]                           dc.w $2712
+[000cee46] 000cedee                  dc.l protopopup
+[000cee4a] 00035b30                  dc.l copy_pup
+[000cee4e] 00035b98                  dc.l del_pup
+[000cee52] 00035c14                  dc.l new_work
+[000cee56]                           dc.w $0000
+[000cee58]                           dc.w $0000

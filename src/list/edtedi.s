@@ -180,3 +180,66 @@ new_work:
 [000367be] 2279 000b 39f2            movea.l    $000B39F2,a1
 [000367c4] 4eb9 0003 3dd6            jsr        work_icon
 [000367ca] 4e75                      rts
+
+	.data
+
+list_tedi:
+[000cf0d0]                           dc.w $0000
+[000cf0d2]                           dc.w $0000
+[000cf0d4]                           dc.w $0000
+[000cf0d6]                           dc.w $0000
+[000cf0d8] 000b3998                  dc.l WI_TEDI
+[000cf0dc] 000cd10f                  dc.l te_list
+[000cf0e0] 000cd11f                  dc.l te_name
+[000cf0e4]                           dc.w $271b
+[000cf0e6]                           dc.w $0000
+[000cf0e8]                           dc.w $0000
+[000cf0ea] 00036750                  dc.l copy_tedi
+[000cf0ee] 00036686                  dc.l del_tedinfo
+[000cf0f2] 000367ba                  dc.l new_work
+[000cf0f6]                           dc.w $0000
+[000cf0f8]                           dc.w $0000
+my_ted:
+[000cf0fa]                           dc.w $0000
+[000cf0fc]                           dc.w $0000
+[000cf0fe]                           dc.w $0000
+[000cf100]                           dc.w $0000
+[000cf102]                           dc.w $0000
+[000cf104]                           dc.w $0000
+[000cf106]                           dc.w $0000
+[000cf108]                           dc.w $0000
+[000cf10a]                           dc.w $0000
+[000cf10c]                           dc.w $0000
+[000cf10e]                           dc.w $0000
+[000cf110]                           dc.w $0000
+[000cf112]                           dc.w $0000
+[000cf114]                           dc.w $0000
+free_tedi:
+[000cf116]                           dc.w $0000
+[000cf118]                           dc.w $0000
+[000cf11a] 000cf0fa                  dc.l my_ted
+[000cf11e]                           dc.w $0000
+[000cf120]                           dc.w $0000
+[000cf122]                           dc.w $001c
+[000cf124]                           dc.w $0000
+[000cf126]                           dc.w $001c
+[000cf128]                           dc.w $0000
+[000cf12a]                           dc.w $0000
+[000cf12c]                           dc.b 'TEDINFO_01',0
+[000cf137]                           dc.b $00
+[000cf138]                           dc.w $0000
+[000cf13a]                           dc.w $0000
+[000cf13c]                           dc.w $0000
+[000cf13e]                           dc.w $0000
+[000cf140]                           dc.w $0000
+[000cf142]                           dc.w $0000
+[000cf144]                           dc.w $0000
+[000cf146]                           dc.w $0000
+[000cf148]                           dc.w $0000
+[000cf14a]                           dc.w $0000
+[000cf14c]                           dc.w $0001
+[000cf14e]                           dc.w $0000
+[000cf150]                           dc.w $0000
+[000cf152]                           dc.w $0000
+[000cf154]                           dc.w $0000
+[000cf156]                           dc.w $0000

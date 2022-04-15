@@ -746,3 +746,506 @@ ThermoClosed:
 ThermoGEMScript:
 [0005c8fa] 7001                      moveq.l    #1,d0
 [0005c8fc] 4e75                      rts
+
+	.data
+
+TEXT_02:
+[000e1008]                           dc.w $0049
+[000e100a]                           dc.b 'nitialisierung...                                ',0
+TEXT_04:
+[000e103c]                           dc.b 'Abbrechen',0
+TEXT_05:
+[000e1046]                           dc.w $0031
+[000e1048]                           dc.b '00 %',0
+[000e104d]                           dc.b $00
+[000e104e] 000e1047                  dc.l TEXT_06
+[000e1052] 000e1008                  dc.l TEXT_02
+[000e1056] 000e1008                  dc.l TEXT_02
+[000e105a]                           dc.w $0003
+[000e105c]                           dc.w $0006
+[000e105e]                           dc.w $0002
+[000e1060]                           dc.w $1100
+[000e1062]                           dc.w $0000
+[000e1064]                           dc.w $0000
+[000e1066]                           dc.w $0006
+[000e1068]                           dc.w $0001
+TEDINFO_03:
+[000e106a] 000e1047                  dc.l TEXT_06
+[000e106e] 000e1008                  dc.l TEXT_02
+[000e1072] 000e1008                  dc.l TEXT_02
+[000e1076]                           dc.w $0003
+[000e1078]                           dc.w $0006
+[000e107a]                           dc.w $0002
+[000e107c]                           dc.w $1100
+[000e107e]                           dc.w $0000
+[000e1080]                           dc.w $ffff
+[000e1082]                           dc.w $0006
+[000e1084]                           dc.w $0001
+TEDINFO_04:
+[000e1086] 000e1009                  dc.l TEXT_03
+[000e108a] 000e1008                  dc.l TEXT_02
+[000e108e] 000e1008                  dc.l TEXT_02
+[000e1092]                           dc.w $0005
+[000e1094]                           dc.w $0006
+[000e1096]                           dc.w $0000
+[000e1098]                           dc.w $1100
+[000e109a]                           dc.w $0000
+[000e109c]                           dc.w $ffff
+[000e109e]                           dc.w $0033
+[000e10a0]                           dc.w $0001
+A_3DBUTTON01:
+[000e10a2] 00064a22                  dc.l A_3Dbutton
+[000e10a6]                           dc.w $29f1
+[000e10a8]                           dc.w $0178
+[000e10aa] 000630f2                  dc.l Auo_string
+[000e10ae]                           dc.w $0000
+[000e10b0]                           dc.w $0000
+[000e10b2]                           dc.w $0000
+[000e10b4]                           dc.w $0000
+[000e10b6]                           dc.w $0000
+[000e10b8]                           dc.w $0000
+[000e10ba]                           dc.w $0000
+[000e10bc]                           dc.w $0000
+[000e10be]                           dc.w $0000
+[000e10c0]                           dc.w $0000
+A_3DBUTTON02:
+[000e10c2] 00064a22                  dc.l A_3Dbutton
+[000e10c6]                           dc.w $2001
+[000e10c8]                           dc.w $9178
+[000e10ca] 000630f2                  dc.l Auo_string
+[000e10ce]                           dc.w $0000
+[000e10d0]                           dc.w $0000
+[000e10d2]                           dc.w $0000
+[000e10d4]                           dc.w $0000
+[000e10d6]                           dc.w $0000
+[000e10d8]                           dc.w $0000
+[000e10da]                           dc.w $0000
+[000e10dc]                           dc.w $0000
+[000e10de]                           dc.w $0000
+[000e10e0]                           dc.w $0000
+A_3DBUTTON04:
+[000e10e2] 00064a22                  dc.l A_3Dbutton
+[000e10e6]                           dc.w $2901
+[000e10e8]                           dc.w $0178
+[000e10ea] 000630f2                  dc.l Auo_string
+[000e10ee] 000e103c                  dc.l TEXT_04
+[000e10f2]                           dc.w $0000
+[000e10f4]                           dc.w $0000
+[000e10f6]                           dc.w $0000
+[000e10f8]                           dc.w $0000
+[000e10fa]                           dc.w $0000
+[000e10fc]                           dc.w $0000
+[000e10fe]                           dc.w $0000
+[000e1100]                           dc.w $0000
+A_3DBUTTON05:
+[000e1102] 00064a22                  dc.l A_3Dbutton
+[000e1106]                           dc.w $29f1
+[000e1108]                           dc.w $0178
+[000e110a] 000630f2                  dc.l Auo_string
+[000e110e]                           dc.w $0000
+[000e1110]                           dc.w $0000
+[000e1112]                           dc.w $0000
+[000e1114]                           dc.w $0000
+[000e1116]                           dc.w $0000
+[000e1118]                           dc.w $0000
+[000e111a]                           dc.w $0000
+[000e111c]                           dc.w $0000
+[000e111e]                           dc.w $0000
+[000e1120]                           dc.w $0000
+A_3DBUTTON06:
+[000e1122] 00064a22                  dc.l A_3Dbutton
+[000e1126]                           dc.w $29f1
+[000e1128]                           dc.w $0178
+[000e112a] 000630f2                  dc.l Auo_string
+[000e112e]                           dc.w $0000
+[000e1130]                           dc.w $0000
+[000e1132]                           dc.w $0000
+[000e1134]                           dc.w $0000
+[000e1136]                           dc.w $0000
+[000e1138]                           dc.w $0000
+[000e113a]                           dc.w $0000
+[000e113c]                           dc.w $0000
+[000e113e]                           dc.w $0000
+[000e1140]                           dc.w $0000
+A_3DBUTTON07:
+[000e1142] 00064a22                  dc.l A_3Dbutton
+[000e1146]                           dc.w $29f1
+[000e1148]                           dc.w $0178
+[000e114a] 000630f2                  dc.l Auo_string
+[000e114e]                           dc.w $0000
+[000e1150]                           dc.w $0000
+[000e1152]                           dc.w $0000
+[000e1154]                           dc.w $0000
+[000e1156]                           dc.w $0000
+[000e1158]                           dc.w $0000
+[000e115a]                           dc.w $0000
+[000e115c]                           dc.w $0000
+[000e115e]                           dc.w $0000
+[000e1160]                           dc.w $0000
+A_3DBUTTON08:
+[000e1162] 00064a22                  dc.l A_3Dbutton
+[000e1166]                           dc.w $29f1
+[000e1168]                           dc.w $0178
+[000e116a] 000630f2                  dc.l Auo_string
+[000e116e]                           dc.w $0000
+[000e1170]                           dc.w $0000
+[000e1172]                           dc.w $0000
+[000e1174]                           dc.w $0000
+[000e1176]                           dc.w $0000
+[000e1178]                           dc.w $0000
+[000e117a]                           dc.w $0000
+[000e117c]                           dc.w $0000
+[000e117e]                           dc.w $0000
+[000e1180]                           dc.w $0000
+ThermAObj:
+[000e1182]                           dc.w $ffff
+[000e1184]                           dc.w $0001
+[000e1186]                           dc.w $0003
+[000e1188]                           dc.w $0018
+[000e118a]                           dc.w $0000
+[000e118c]                           dc.w $0000
+[000e118e] 000e10a2                  dc.l A_3DBUTTON01
+[000e1192]                           dc.w $0000
+[000e1194]                           dc.w $0000
+[000e1196]                           dc.w $0029
+[000e1198]                           dc.w $0404
+_01_ThermAObj:
+[000e119a]                           dc.w $0003
+[000e119c]                           dc.w $ffff
+[000e119e]                           dc.w $ffff
+[000e11a0]                           dc.w $0018
+[000e11a2]                           dc.w $0045
+[000e11a4]                           dc.w $0000
+[000e11a6] 000e10e2                  dc.l A_3DBUTTON04
+[000e11aa]                           dc.w $000d
+[000e11ac]                           dc.w $0c02
+[000e11ae]                           dc.w $0010
+[000e11b0]                           dc.w $0001
+_01aThermAObj:
+[000e11b2] 0005c840                  dc.l ThermCancel
+[000e11b6]                           dc.w $0000
+[000e11b8]                           dc.w $0000
+[000e11ba]                           dc.w $8000
+[000e11bc]                           dc.w $8841
+[000e11be]                           dc.w $0000
+[000e11c0]                           dc.w $0000
+[000e11c2]                           dc.w $0000
+[000e11c4]                           dc.w $0000
+[000e11c6]                           dc.w $0000
+[000e11c8]                           dc.w $0000
+_03_ThermAObj:
+[000e11ca]                           dc.w $0000
+[000e11cc]                           dc.w $0004
+[000e11ce]                           dc.w $0005
+[000e11d0]                           dc.w $0018
+[000e11d2]                           dc.w $0000
+[000e11d4]                           dc.w $0000
+[000e11d6] 000e10c2                  dc.l A_3DBUTTON02
+[000e11da]                           dc.w $0001
+[000e11dc]                           dc.w $0001
+[000e11de]                           dc.w $0027
+[000e11e0]                           dc.w $0401
+_04_ThermAObj:
+[000e11e2]                           dc.w $0005
+[000e11e4]                           dc.w $ffff
+[000e11e6]                           dc.w $ffff
+[000e11e8]                           dc.w $0018
+[000e11ea]                           dc.w $0000
+[000e11ec]                           dc.w $0000
+[000e11ee] 000e1102                  dc.l A_3DBUTTON05
+[000e11f2]                           dc.w $0000
+[000e11f4]                           dc.w $0000
+[000e11f6]                           dc.w $000b
+[000e11f8]                           dc.w $0401
+_05_ThermAObj:
+[000e11fa]                           dc.w $0003
+[000e11fc]                           dc.w $ffff
+[000e11fe]                           dc.w $ffff
+[000e1200]                           dc.w $0015
+[000e1202]                           dc.w $0020
+[000e1204]                           dc.w $0000
+[000e1206] 000e106a                  dc.l TEDINFO_03
+[000e120a]                           dc.w $0011
+[000e120c]                           dc.w $0200
+[000e120e]                           dc.w $0005
+[000e1210]                           dc.w $0001
+ThermObj:
+[000e1212]                           dc.w $ffff
+[000e1214]                           dc.w $0001
+[000e1216]                           dc.w $0001
+[000e1218]                           dc.w $0018
+[000e121a]                           dc.w $0000
+[000e121c]                           dc.w $0000
+[000e121e] 000e10a2                  dc.l A_3DBUTTON01
+[000e1222]                           dc.w $0000
+[000e1224]                           dc.w $0000
+[000e1226]                           dc.w $0029
+[000e1228]                           dc.w $0403
+_01_ThermObj:
+[000e122a]                           dc.w $0000
+[000e122c]                           dc.w $0002
+[000e122e]                           dc.w $0003
+[000e1230]                           dc.w $0018
+[000e1232]                           dc.w $0000
+[000e1234]                           dc.w $0000
+[000e1236] 000e10c2                  dc.l A_3DBUTTON02
+[000e123a]                           dc.w $0001
+[000e123c]                           dc.w $0001
+[000e123e]                           dc.w $0027
+[000e1240]                           dc.w $0401
+_02_ThermObj:
+[000e1242]                           dc.w $0003
+[000e1244]                           dc.w $ffff
+[000e1246]                           dc.w $ffff
+[000e1248]                           dc.w $0018
+[000e124a]                           dc.w $0000
+[000e124c]                           dc.w $0000
+[000e124e] 000e1122                  dc.l A_3DBUTTON06
+[000e1252]                           dc.w $0000
+[000e1254]                           dc.w $0000
+[000e1256]                           dc.w $000b
+[000e1258]                           dc.w $0401
+_03_ThermObj:
+[000e125a]                           dc.w $0001
+[000e125c]                           dc.w $ffff
+[000e125e]                           dc.w $ffff
+[000e1260]                           dc.w $0015
+[000e1262]                           dc.w $0020
+[000e1264]                           dc.w $0000
+[000e1266] 000e106a                  dc.l TEDINFO_03
+[000e126a]                           dc.w $0011
+[000e126c]                           dc.w $0200
+[000e126e]                           dc.w $0005
+[000e1270]                           dc.w $0001
+ThermTAObj:
+[000e1272]                           dc.w $ffff
+[000e1274]                           dc.w $0001
+[000e1276]                           dc.w $0005
+[000e1278]                           dc.w $0018
+[000e127a]                           dc.w $0000
+[000e127c]                           dc.w $0000
+[000e127e] 000e10a2                  dc.l A_3DBUTTON01
+[000e1282]                           dc.w $0000
+[000e1284]                           dc.w $0000
+[000e1286]                           dc.w $0029
+[000e1288]                           dc.w $0405
+_01_ThermTAObj:
+[000e128a]                           dc.w $0002
+[000e128c]                           dc.w $ffff
+[000e128e]                           dc.w $ffff
+[000e1290]                           dc.w $0015
+[000e1292]                           dc.w $0000
+[000e1294]                           dc.w $0000
+[000e1296] 000e1086                  dc.l TEDINFO_04
+[000e129a]                           dc.w $0001
+[000e129c]                           dc.w $0000
+[000e129e]                           dc.w $0027
+[000e12a0]                           dc.w $0002
+_02_ThermTAObj:
+[000e12a2]                           dc.w $0005
+[000e12a4]                           dc.w $0003
+[000e12a6]                           dc.w $0004
+[000e12a8]                           dc.w $0018
+[000e12aa]                           dc.w $0000
+[000e12ac]                           dc.w $0000
+[000e12ae] 000e10c2                  dc.l A_3DBUTTON02
+[000e12b2]                           dc.w $0001
+[000e12b4]                           dc.w $0002
+[000e12b6]                           dc.w $0027
+[000e12b8]                           dc.w $0401
+_03_ThermTAObj:
+[000e12ba]                           dc.w $0004
+[000e12bc]                           dc.w $ffff
+[000e12be]                           dc.w $ffff
+[000e12c0]                           dc.w $0018
+[000e12c2]                           dc.w $0000
+[000e12c4]                           dc.w $0000
+[000e12c6] 000e1142                  dc.l A_3DBUTTON07
+[000e12ca]                           dc.w $0000
+[000e12cc]                           dc.w $0000
+[000e12ce]                           dc.w $000b
+[000e12d0]                           dc.w $0401
+_04_ThermTAObj:
+[000e12d2]                           dc.w $0002
+[000e12d4]                           dc.w $ffff
+[000e12d6]                           dc.w $ffff
+[000e12d8]                           dc.w $0015
+[000e12da]                           dc.w $0000
+[000e12dc]                           dc.w $0000
+[000e12de] 000e106a                  dc.l TEDINFO_03
+[000e12e2]                           dc.w $0011
+[000e12e4]                           dc.w $0200
+[000e12e6]                           dc.w $0005
+[000e12e8]                           dc.w $0001
+_05_ThermTAObj:
+[000e12ea]                           dc.w $0000
+[000e12ec]                           dc.w $ffff
+[000e12ee]                           dc.w $ffff
+[000e12f0]                           dc.w $0018
+[000e12f2]                           dc.w $0045
+[000e12f4]                           dc.w $0000
+[000e12f6] 000e10e2                  dc.l A_3DBUTTON04
+[000e12fa]                           dc.w $000d
+[000e12fc]                           dc.w $0c03
+[000e12fe]                           dc.w $0010
+[000e1300]                           dc.w $0001
+_05aThermTAObj:
+[000e1302] 0005c840                  dc.l ThermCancel
+[000e1306]                           dc.w $0000
+[000e1308]                           dc.w $0000
+[000e130a]                           dc.w $8020
+[000e130c]                           dc.w $8841
+[000e130e]                           dc.w $0000
+[000e1310]                           dc.w $0000
+[000e1312]                           dc.w $0000
+[000e1314]                           dc.w $0000
+[000e1316]                           dc.w $0000
+[000e1318]                           dc.w $0000
+ThermTObj:
+[000e131a]                           dc.w $ffff
+[000e131c]                           dc.w $0001
+[000e131e]                           dc.w $0002
+[000e1320]                           dc.w $0018
+[000e1322]                           dc.w $0000
+[000e1324]                           dc.w $0000
+[000e1326] 000e10a2                  dc.l A_3DBUTTON01
+[000e132a]                           dc.w $0000
+[000e132c]                           dc.w $0000
+[000e132e]                           dc.w $0029
+[000e1330]                           dc.w $0404
+_01_ThermTObj:
+[000e1332]                           dc.w $0002
+[000e1334]                           dc.w $ffff
+[000e1336]                           dc.w $ffff
+[000e1338]                           dc.w $0015
+[000e133a]                           dc.w $0000
+[000e133c]                           dc.w $0000
+[000e133e] 000e1086                  dc.l TEDINFO_04
+[000e1342]                           dc.w $0001
+[000e1344]                           dc.w $0000
+[000e1346]                           dc.w $0027
+[000e1348]                           dc.w $0002
+_02_ThermTObj:
+[000e134a]                           dc.w $0000
+[000e134c]                           dc.w $0003
+[000e134e]                           dc.w $0004
+[000e1350]                           dc.w $0018
+[000e1352]                           dc.w $0000
+[000e1354]                           dc.w $0000
+[000e1356] 000e10c2                  dc.l A_3DBUTTON02
+[000e135a]                           dc.w $0001
+[000e135c]                           dc.w $0002
+[000e135e]                           dc.w $0027
+[000e1360]                           dc.w $0401
+_03_ThermTObj:
+[000e1362]                           dc.w $0004
+[000e1364]                           dc.w $ffff
+[000e1366]                           dc.w $ffff
+[000e1368]                           dc.w $0018
+[000e136a]                           dc.w $0000
+[000e136c]                           dc.w $0000
+[000e136e] 000e1162                  dc.l A_3DBUTTON08
+[000e1372]                           dc.w $0000
+[000e1374]                           dc.w $0000
+[000e1376]                           dc.w $000b
+[000e1378]                           dc.w $0401
+_04_ThermTObj:
+[000e137a]                           dc.w $0002
+[000e137c]                           dc.w $ffff
+[000e137e]                           dc.w $ffff
+[000e1380]                           dc.w $0015
+[000e1382]                           dc.w $0020
+[000e1384]                           dc.w $0000
+[000e1386] 000e104e                  dc.l TEDINFO_02
+[000e138a]                           dc.w $0011
+[000e138c]                           dc.w $0200
+[000e138e]                           dc.w $0005
+[000e1390]                           dc.w $0001
+ThermWind:
+[000e1392]                           dc.w $0000
+[000e1394]                           dc.w $0000
+[000e1396] 0005c50e                  dc.l ThermoService
+[000e139a] 0005c28e                  dc.l ThermoCreate
+[000e139e] 00057428                  dc.l Awi_open
+[000e13a2] 0005c60c                  dc.l ThermoInit
+[000e13a6]                           dc.w $0000
+[000e13a8]                           dc.w $0000
+[000e13aa]                           dc.w $0000
+[000e13ac]                           dc.w $0000
+[000e13ae]                           dc.w $0000
+[000e13b0]                           dc.w $0000
+[000e13b2]                           dc.w $ffff
+[000e13b4]                           dc.w $2009
+[000e13b6]                           dc.w $0000
+[000e13b8]                           dc.w $0000
+[000e13ba]                           dc.w $0078
+[000e13bc]                           dc.w $0032
+[000e13be]                           dc.w $0000
+[000e13c0]                           dc.w $0000
+[000e13c2]                           dc.w $0000
+[000e13c4]                           dc.w $0000
+[000e13c6]                           dc.w $0000
+[000e13c8]                           dc.w $0000
+[000e13ca]                           dc.w $0000
+[000e13cc]                           dc.w $0000
+[000e13ce]                           dc.w $ffff
+[000e13d0]                           dc.w $ffff
+[000e13d2]                           dc.w $ffff
+[000e13d4]                           dc.w $ffff
+[000e13d6]                           dc.w $0000
+[000e13d8]                           dc.w $0000
+[000e13da]                           dc.w $f8f8
+[000e13dc] 000e1046                  dc.l TEXT_05
+[000e13e0] 000e1008                  dc.l TEXT_02
+[000e13e4]                           dc.w $0000
+[000e13e6]                           dc.w $0000
+[000e13e8]                           dc.w $0000
+[000e13ea]                           dc.w $ffff
+[000e13ec]                           dc.w $0000
+[000e13ee]                           dc.w $0000
+[000e13f0]                           dc.w $0000
+[000e13f2]                           dc.w $0000
+[000e13f4] 0006b744                  dc.l Awi_keys
+[000e13f8] 00051852                  dc.l Awi_obchange
+[000e13fc] 00051c46                  dc.l Awi_redraw
+[000e1400] 000587a4                  dc.l Awi_topped
+[000e1404] 0005c8f8                  dc.l ThermoClosed
+[000e1408] 000587ec                  dc.l Awi_fulled
+[000e140c] 0005217c                  dc.l Awi_arrowed
+[000e1410] 000524b4                  dc.l Awi_hslid
+[000e1414] 0005255e                  dc.l Awi_vslid
+[000e1418] 00058bb0                  dc.l Awi_sized
+[000e141c] 00058d50                  dc.l Awi_moved
+[000e1420] 0005998a                  dc.l Awi_iconify
+[000e1424] 00059c6c                  dc.l Awi_uniconify
+[000e1428] 0005c8fa                  dc.l ThermoGEMScript
+[000e142c]                           dc.w $0000
+[000e142e]                           dc.w $0000
+[000e1430]                           dc.w $0000
+[000e1432]                           dc.w $0000
+ThermObjs:
+[000e1434] 000e1212                  dc.l ThermObj
+[000e1438] 000e131a                  dc.l ThermTObj
+[000e143c] 000e1182                  dc.l ThermAObj
+[000e1440] 000e1272                  dc.l ThermTAObj
+textNr:
+[000e1444]                           dc.w $ffff
+[000e1446]                           dc.w $0001
+[000e1448]                           dc.w $ffff
+[000e144a]                           dc.w $0001
+laufBNr:
+[000e144c]                           dc.w $0002
+[000e144e]                           dc.w $0003
+[000e1450]                           dc.w $0004
+[000e1452]                           dc.w $0003
+fixBNr:
+[000e1454]                           dc.w $0001
+[000e1456]                           dc.w $0002
+[000e1458]                           dc.w $0003
+[000e145a]                           dc.w $0002
+prozNr:
+[000e145c]                           dc.w $0003
+[000e145e]                           dc.w $0004
+[000e1460]                           dc.w $0005
+[000e1462]                           dc.w $0004
+[000e1464]                           dc.b '%i %%',0

@@ -467,3 +467,52 @@ Aev_AvStarted:
 [0005fe54] 4240                      clr.w      d0
 [0005fe56] 4fef 0016                 lea.l      22(a7),a7
 [0005fe5a] 4e75                      rts
+
+	.data
+
+[000e19ac]                           dc.w $0000
+[000e19ae]                           dc.w $0000
+[000e19b0]                           dc.w $0000
+[000e19b2]                           dc.w $0000
+[000e19b4]                           dc.w $0000
+[000e19b6]                           dc.w $0000
+[000e19b8]                           dc.w $0000
+[000e19ba]                           dc.w $0000
+[000e19bc]                           dc.w $0000
+[000e19be]                           dc.w $0000
+[000e19c0]                           dc.w $0000
+[000e19c2]                           dc.w $0000
+[000e19c4]                           dc.w $0000
+[000e19c6]                           dc.w $0000
+[000e19c8]                           dc.w $0000
+[000e19ca]                           dc.w $0000
+[000e19cc]                           dc.w $0000
+[000e19ce]                           dc.w $0000
+[000e19d0]                           dc.w $0000
+[000e19d2]                           dc.w $0000
+[000e19d4]                           dc.w $0000
+[000e19d6]                           dc.w $0000
+[000e19d8]                           dc.w $0000
+[000e19da]                           dc.w $0000
+[000e19dc]                           dc.w $0000
+[000e19de]                           dc.w $0000
+[000e19e0]                           dc.w $0000
+[000e19e2]                           dc.w $0000
+[000e19e4]                           dc.w $0000
+[000e19e6]                           dc.w $0000
+[000e19e8]                           dc.w $0000
+[000e19ea]                           dc.w $0000
+[000e19ec]                           dc.w $0000
+[000e19ee]                           dc.w $0000
+[000e19f0]                           dc.w $0000
+[000e19f2]                           dc.w $0000
+[000e19f4]                           dc.w $0000
+[000e19f6]                           dc.w $0000
+[000e19f8]                           dc.w $0000
+[000e19fa]                           dc.w $0000
+[000e19fc]                           dc.b 'AVSERVER',0
+[000e1a05]                           dc.b 'JINNEE  ',0
+[000e1a0e]                           dc.b 'GEMINI  ',0
+[000e1a17]                           dc.b 'AVSERVER',0
+[000e1a20]                           dc.b 'MAGXDESK',0
+[000e1a29]                           dc.b $00

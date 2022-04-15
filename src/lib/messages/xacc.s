@@ -840,3 +840,59 @@ Aev_AccAck:
 [0005f7fc] 4240                      clr.w      d0
 [0005f7fe] 4fef 0014                 lea.l      20(a7),a7
 [0005f802] 4e75                      rts
+
+	.data
+
+GetXAccData:
+[000e1802]                           dc.w $0000
+[000e1804]                           dc.w $0000
+GetXAccID:
+[000e1806]                           dc.w $ffff
+[000e1808]                           dc.w $0000
+[000e180a]                           dc.w $0000
+[000e180c]                           dc.w $0000
+[000e180e]                           dc.w $0000
+[000e1810]                           dc.w $0000
+[000e1812]                           dc.w $0000
+[000e1814]                           dc.w $0000
+[000e1816]                           dc.w $0000
+[000e1818]                           dc.w $0000
+[000e181a]                           dc.w $0000
+[000e181c]                           dc.w $0000
+[000e181e]                           dc.w $0000
+[000e1820]                           dc.w $0000
+[000e1822]                           dc.w $0000
+[000e1824]                           dc.w $0000
+[000e1826]                           dc.w $0000
+[000e1828]                           dc.w $0000
+[000e182a]                           dc.w $0000
+[000e182c]                           dc.w $0000
+[000e182e]                           dc.w $0000
+[000e1830]                           dc.w $0000
+[000e1832]                           dc.w $0000
+[000e1834]                           dc.w $0000
+[000e1836]                           dc.w $0000
+[000e1838]                           dc.w $0000
+[000e183a]                           dc.w $0000
+[000e183c]                           dc.w $0000
+[000e183e]                           dc.w $0000
+[000e1840]                           dc.w $0000
+[000e1842]                           dc.w $0000
+[000e1844]                           dc.w $0000
+[000e1846]                           dc.w $0000
+[000e1848]                           dc.b 'XAccTxt',0
+[000e1850]                           dc.b '[4][Bei einem XAcc-Transfer|konnte auf den Speicher|nicht zugegriffen|werden (Speicherschutz)!][OK]',0
+[000e18b4]                           dc.b 'img',0
+[000e18b8]                           dc.b 'img',0
+[000e18bc]                           dc.b 'IMG',0
+[000e18c0]                           dc.b 'img',0
+[000e18c4]                           dc.b 'img',0
+[000e18c8]                           dc.b '[4][Bei einem XAcc-Transfer|konnte auf den Speicher|nicht zugegriffen|werden (Speicherschutz)!][OK]',0
+[000e192c]                           dc.b 'img',0
+[000e1930]                           dc.b 'gem',0
+[000e1934]                           dc.b 'gem',0
+[000e1938]                           dc.b 'gem',0
+[000e193c]                           dc.b 'gem',0
+[000e1940]                           dc.b 'gem',0
+[000e1944]                           dc.b '[4][Bei einem XAcc-Transfer|konnte auf den Speicher|nicht zugegriffen|werden (Speicherschutz)!][OK]',0
+[000e19a8]                           dc.b 'gem',0

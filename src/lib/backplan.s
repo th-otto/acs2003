@@ -997,3 +997,16 @@ uncompress_image:
 [00055934] 6e00 fe14                 bgt        $0005574A
 [00055938] 4fef 00a2                 lea.l      162(a7),a7
 [0005593c] 4e75                      rts
+
+	.data
+
+init:
+[000e0cea]                           dc.w $0000
+pxy:
+[000e0cec]                           dc.w $0000
+[000e0cee]                           dc.w $0000
+[000e0cf0]                           dc.w $0000
+[000e0cf2]                           dc.w $0000
+color:
+[000e0cf4]                           dc.w $0001
+[000e0cf6]                           dc.w $0000

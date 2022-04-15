@@ -285,3 +285,24 @@ Aev_GetAPDragDrop:
 [0006025a] 4fef 0054                 lea.l      84(a7),a7
 [0006025e] 245f                      movea.l    (a7)+,a2
 [00060260] 4e75                      rts
+
+	.data
+
+[000e1a2a]                           dc.b 'U:\PIPE\DRAGDROP.AA',0
+[000e1a3e]                           dc.w $0000
+[000e1a40]                           dc.w $0000
+[000e1a42]                           dc.w $0055
+[000e1a44]                           dc.b ':\PIPE\DRAGDROP.AA',0
+[000e1a57]                           dc.b $00
+[000e1a58]                           dc.b '.TXT.IMG',0
+[000e1a61]                           dc.b 'PATH',0
+[000e1a66]                           dc.b '.IMG',0
+[000e1a6b]                           dc.b '.TXT',0
+[000e1a70]                           dc.b 'ARGS',0
+[000e1a75]                           dc.b '.TMP',0
+[000e1a7a]                           dc.b 'U:\PIPE',0
+[000e1a82]                           dc.b '    ',0
+[000e1a87]                           dc.b $00
+[000e1a88]                           dc.w $0050
+[000e1a8a]                           dc.b 'ATH',0
+

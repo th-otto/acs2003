@@ -251,3 +251,8 @@ Ash_getenv:
 [0005be78] 91c8                      suba.l     a0,a0
 [0005be7a] 4fef 0010                 lea.l      16(a7),a7
 [0005be7e] 4e75                      rts
+
+	.data
+
+[000e0fda]                           dc.b '[| Internal errors! | Take care! |][  OK  ]',0
+[000e1006]                           dc.w $0000

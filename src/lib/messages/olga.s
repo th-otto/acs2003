@@ -760,3 +760,40 @@ Aev_OlgaInfo:
 [00062176] 3017                      move.w     (a7),d0
 [00062178] 4fef 0018                 lea.l      24(a7),a7
 [0006217c] 4e75                      rts
+
+	.data
+
+olga_connection:
+[000e1b4e]                           dc.w $0000
+[000e1b50]                           dc.w $0000
+olga_id:
+[000e1b52]                           dc.w $ffff
+olga_infos:
+[000e1b54]                           dc.w $0000
+olga_stufe:
+[000e1b56]                           dc.w $ffff
+olga_version:
+[000e1b58]                           dc.w $0000
+use_olga:
+[000e1b5a]                           dc.w $0000
+idle_message:
+[000e1b5c]                           dc.w $ffff
+[000e1b5e]                           dc.w $ffff
+[000e1b60]                           dc.w $ffff
+[000e1b62]                           dc.w $ffff
+[000e1b64]                           dc.w $ffff
+[000e1b66]                           dc.w $ffff
+[000e1b68]                           dc.w $ffff
+[000e1b6a]                           dc.w $ffff
+max_id:
+[000e1b6c]                           dc.w $0000
+max_grp_id:
+[000e1b6e]                           dc.w $0000
+phase:
+[000e1b70]                           dc.w $ffff
+[000e1b72]                           dc.w $004f
+[000e1b74]                           dc.b 'LGA    ',0
+[000e1b7c]                           dc.b 'OLGAMANAGER',0
+[000e1b88]                           dc.b 'OLEMANGR',0
+[000e1b91]                           dc.b 'OLEMANAGER',0
+

@@ -290,3 +290,562 @@ ok:
 [0002ac9c] 4fef 0032                 lea.l      50(a7),a7
 [0002aca0] 4cdf 3c08                 movem.l    (a7)+,d3/a2-a5
 [0002aca4] 4e75                      rts
+
+	.data
+
+BUBBLE_01:
+[000c2d14]                           dc.b 'Die énderungen werden Åbernommen und Åberschreiben die alten Einstellungen.',0
+BUBBLE_02:
+[000c2d60]                           dc.b 'Die énderungen werden verworfen, die alten Einstellungen bleiben erhalten.',0
+BUBBLE_03:
+[000c2dab]                           dc.b 'Hier kann der String, der fÅr BubbleGEM verwendet werden soll, eingegeben werden.',0
+BUBBLE_04:
+[000c2dfd]                           dc.b 'Hier kann der String eingegeben werden, der das aufzurufende Context-Popup beschreibt (siehe in der Dokumentation zu Ame_strpopup).',0
+BUBBLE_05:
+[000c2e81]                           dc.b 'Hier wird die Beschriftung der Checkbox eingegeben.',0
+BUBBLE_06:
+[000c2eb5]                           dc.b 'Durch diese Checkbox kann die 3D-Darstellung ein- und ausgeschaltet werden. Das Ergebnis wird direkt an der Beispiel-Checkbox oben links dargestellt.',0
+TEXT_005:
+[000c2f4b]                           dc.b $4f
+[000c2f4c]                           dc.w $4b00
+TEXT_009:
+[000c2f4e]                           dc.b 'Abbruch',0
+TEXT_02:
+[000c2f56]                           dc.b 'Text:',0
+TEXT_05:
+[000c2f5c]                           dc.b 'Sonstiges',0
+TEXT_06:
+[000c2f66]                           dc.b 'Text',0
+TEXT_08:
+[000c2f6b]                           dc.b '3D-Darstellung (sonst flach)',0
+TEXT_09:
+[000c2f88]                           dc.b 'BubbleGEM-Text',0
+TEXT_16:
+[000c2f97]                           dc.b 'Context-Popup',0
+help_title:
+[000c2fa5]                           dc.b 'Der Checkbox-/Radiobutton-Editor',0
+title:
+[000c2fc6]                           dc.b 'CHECKBUTTON -',0
+A_3DBUTTON02:
+[000c2fd4] 00064a22                  dc.l A_3Dbutton
+[000c2fd8]                           dc.w $29f1
+[000c2fda]                           dc.w $0178
+[000c2fdc] 000630f2                  dc.l Auo_string
+[000c2fe0]                           dc.w $0000
+[000c2fe2]                           dc.w $0000
+[000c2fe4]                           dc.w $0000
+[000c2fe6]                           dc.w $0000
+[000c2fe8]                           dc.w $0000
+[000c2fea]                           dc.w $0000
+[000c2fec]                           dc.w $0000
+[000c2fee]                           dc.w $0000
+[000c2ff0]                           dc.w $0000
+[000c2ff2]                           dc.w $0000
+A_3DBUTTON04:
+[000c2ff4] 00064a22                  dc.l A_3Dbutton
+[000c2ff8]                           dc.w $29c1
+[000c2ffa]                           dc.w $0178
+[000c2ffc] 000630f2                  dc.l Auo_string
+[000c3000] 000c2f4b                  dc.l TEXT_005
+[000c3004]                           dc.w $0000
+[000c3006]                           dc.w $0000
+[000c3008]                           dc.w $0000
+[000c300a]                           dc.w $0000
+[000c300c] 000c2d14                  dc.l BUBBLE_01
+[000c3010]                           dc.w $0000
+[000c3012]                           dc.w $0000
+A_3DBUTTON05:
+[000c3014] 00064a22                  dc.l A_3Dbutton
+[000c3018]                           dc.w $21f1
+[000c301a]                           dc.w $0178
+[000c301c] 000630f2                  dc.l Auo_string
+[000c3020]                           dc.w $0000
+[000c3022]                           dc.w $0000
+[000c3024]                           dc.w $0000
+[000c3026]                           dc.w $0000
+[000c3028]                           dc.w $0000
+[000c302a]                           dc.w $0000
+[000c302c]                           dc.w $0000
+[000c302e]                           dc.w $0000
+[000c3030]                           dc.w $0000
+[000c3032]                           dc.w $0000
+A_3DBUTTON06:
+[000c3034] 00064a22                  dc.l A_3Dbutton
+[000c3038]                           dc.w $29c1
+[000c303a]                           dc.w $0178
+[000c303c] 000630f2                  dc.l Auo_string
+[000c3040] 000c2f4e                  dc.l TEXT_009
+[000c3044]                           dc.w $0000
+[000c3046]                           dc.w $0000
+[000c3048]                           dc.w $0000
+[000c304a]                           dc.w $0000
+[000c304c] 000c2d60                  dc.l BUBBLE_02
+[000c3050]                           dc.w $0000
+[000c3052]                           dc.w $0000
+A_BOXED02:
+[000c3054] 0006afea                  dc.l A_boxed
+[000c3058]                           dc.w $9000
+[000c305a]                           dc.w $ff12
+[000c305c] 0006a068                  dc.l Auo_boxed
+[000c3060]                           dc.w $0000
+[000c3062]                           dc.w $0000
+[000c3064]                           dc.w $0000
+[000c3066]                           dc.w $0000
+[000c3068]                           dc.w $0000
+[000c306a]                           dc.w $0000
+[000c306c] 000c2e81                  dc.l BUBBLE_05
+[000c3070]                           dc.w $0000
+[000c3072]                           dc.w $0000
+A_BOXED04:
+[000c3074] 0006afea                  dc.l A_boxed
+[000c3078]                           dc.w $9038
+[000c307a]                           dc.w $ff12
+[000c307c] 0006a068                  dc.l Auo_boxed
+[000c3080]                           dc.w $0000
+[000c3082]                           dc.w $0000
+[000c3084]                           dc.w $0000
+[000c3086]                           dc.w $0000
+[000c3088]                           dc.w $0000
+[000c308a]                           dc.w $0000
+[000c308c] 000c2dab                  dc.l BUBBLE_03
+[000c3090]                           dc.w $0000
+[000c3092]                           dc.w $0000
+A_BOXED05:
+[000c3094] 0006afea                  dc.l A_boxed
+[000c3098]                           dc.w $9038
+[000c309a]                           dc.w $ff12
+[000c309c] 0006a068                  dc.l Auo_boxed
+[000c30a0]                           dc.w $0000
+[000c30a2]                           dc.w $0000
+[000c30a4]                           dc.w $0000
+[000c30a6]                           dc.w $0000
+[000c30a8]                           dc.w $0000
+[000c30aa]                           dc.w $0000
+[000c30ac] 000c2dfd                  dc.l BUBBLE_04
+[000c30b0]                           dc.w $0000
+[000c30b2]                           dc.w $0000
+A_CHECKBOX01:
+[000c30b4] 0006323e                  dc.l A_checkbox
+[000c30b8]                           dc.w $0000
+[000c30ba]                           dc.w $0001
+[000c30bc] 000630f2                  dc.l Auo_string
+[000c30c0] 000c2f6b                  dc.l TEXT_08
+[000c30c4]                           dc.w $0000
+[000c30c6]                           dc.w $0000
+[000c30c8]                           dc.w $0000
+[000c30ca]                           dc.w $0000
+[000c30cc] 000c2eb5                  dc.l BUBBLE_06
+[000c30d0]                           dc.w $0000
+[000c30d2]                           dc.w $0000
+A_CHECKBOX03:
+[000c30d4] 0006323e                  dc.l A_checkbox
+[000c30d8]                           dc.w $0000
+[000c30da]                           dc.w $0001
+[000c30dc] 000630f2                  dc.l Auo_string
+[000c30e0] 000c2f66                  dc.l TEXT_06
+[000c30e4]                           dc.w $0000
+[000c30e6]                           dc.w $0000
+[000c30e8]                           dc.w $0000
+[000c30ea]                           dc.w $0000
+[000c30ec]                           dc.w $0000
+[000c30ee]                           dc.w $0000
+[000c30f0]                           dc.w $0000
+[000c30f2]                           dc.w $0000
+A_INNERFRAME02:
+[000c30f4] 00064256                  dc.l A_innerframe
+[000c30f8]                           dc.w $1000
+[000c30fa]                           dc.w $8f19
+[000c30fc] 000630f2                  dc.l Auo_string
+[000c3100] 000c2f56                  dc.l TEXT_02
+[000c3104]                           dc.w $0000
+[000c3106]                           dc.w $0000
+[000c3108]                           dc.w $0000
+[000c310a]                           dc.w $0000
+[000c310c]                           dc.w $0000
+[000c310e]                           dc.w $0000
+[000c3110]                           dc.w $0000
+[000c3112]                           dc.w $0000
+A_INNERFRAME03:
+[000c3114] 00064256                  dc.l A_innerframe
+[000c3118]                           dc.w $1800
+[000c311a]                           dc.w $8f19
+[000c311c] 000630f2                  dc.l Auo_string
+[000c3120] 000c2f5c                  dc.l TEXT_05
+[000c3124]                           dc.w $0000
+[000c3126]                           dc.w $0000
+[000c3128]                           dc.w $0000
+[000c312a]                           dc.w $0000
+[000c312c]                           dc.w $0000
+[000c312e]                           dc.w $0000
+[000c3130]                           dc.w $0000
+[000c3132]                           dc.w $0000
+ED_CHECKBOX:
+[000c3134]                           dc.w $ffff
+[000c3136]                           dc.w $0001
+[000c3138]                           dc.w $000b
+[000c313a]                           dc.w $0018
+[000c313c]                           dc.w $0040
+[000c313e]                           dc.w $0010
+[000c3140] 000c3014                  dc.l A_3DBUTTON05
+[000c3144]                           dc.w $0000
+[000c3146]                           dc.w $0000
+[000c3148]                           dc.w $0028
+[000c314a]                           dc.w $000c
+_01_ED_CHECKBOX:
+[000c314c]                           dc.w $0003
+[000c314e]                           dc.w $0002
+[000c3150]                           dc.w $0002
+[000c3152]                           dc.w $0018
+[000c3154]                           dc.w $0040
+[000c3156]                           dc.w $0000
+[000c3158] 000c2fd4                  dc.l A_3DBUTTON02
+[000c315c]                           dc.w $0000
+[000c315e]                           dc.w $0000
+[000c3160]                           dc.w $0009
+[000c3162]                           dc.w $0003
+_02_ED_CHECKBOX:
+[000c3164]                           dc.w $0001
+[000c3166]                           dc.w $ffff
+[000c3168]                           dc.w $ffff
+[000c316a]                           dc.w $0018
+[000c316c]                           dc.w $0000
+[000c316e]                           dc.w $0000
+[000c3170] 000c30d4                  dc.l A_CHECKBOX03
+[000c3174]                           dc.w $0001
+[000c3176]                           dc.w $0001
+[000c3178]                           dc.w $0007
+[000c317a]                           dc.w $0001
+_03_ED_CHECKBOX:
+[000c317c]                           dc.w $0005
+[000c317e]                           dc.w $ffff
+[000c3180]                           dc.w $ffff
+[000c3182]                           dc.w $0018
+[000c3184]                           dc.w $4007
+[000c3186]                           dc.w $0000
+[000c3188] 000c2ff4                  dc.l A_3DBUTTON04
+[000c318c]                           dc.w $000d
+[000c318e]                           dc.w $0001
+[000c3190]                           dc.w $000c
+[000c3192]                           dc.w $0002
+_03aED_CHECKBOX:
+[000c3194] 0002ab92                  dc.l ok
+[000c3198]                           dc.w $0000
+[000c319a]                           dc.w $0000
+[000c319c]                           dc.w $8000
+[000c319e]                           dc.w $884f
+[000c31a0]                           dc.w $0000
+[000c31a2]                           dc.w $0000
+[000c31a4]                           dc.w $0000
+[000c31a6]                           dc.w $0000
+[000c31a8]                           dc.w $0000
+[000c31aa]                           dc.w $0000
+_05_ED_CHECKBOX:
+[000c31ac]                           dc.w $0007
+[000c31ae]                           dc.w $ffff
+[000c31b0]                           dc.w $ffff
+[000c31b2]                           dc.w $0018
+[000c31b4]                           dc.w $4005
+[000c31b6]                           dc.w $0000
+[000c31b8] 000c3034                  dc.l A_3DBUTTON06
+[000c31bc]                           dc.w $001b
+[000c31be]                           dc.w $0001
+[000c31c0]                           dc.w $000c
+[000c31c2]                           dc.w $0002
+_05aED_CHECKBOX:
+[000c31c4] 0002ab6c                  dc.l abort
+[000c31c8]                           dc.w $0000
+[000c31ca]                           dc.w $0000
+[000c31cc]                           dc.w $8000
+[000c31ce]                           dc.w $8841
+[000c31d0]                           dc.w $0000
+[000c31d2]                           dc.w $0000
+[000c31d4]                           dc.w $0000
+[000c31d6]                           dc.w $0000
+[000c31d8]                           dc.w $0000
+[000c31da]                           dc.w $0000
+_07_ED_CHECKBOX:
+[000c31dc]                           dc.w $0009
+[000c31de]                           dc.w $0008
+[000c31e0]                           dc.w $0008
+[000c31e2]                           dc.w $0018
+[000c31e4]                           dc.w $0040
+[000c31e6]                           dc.w $0000
+[000c31e8] 000c30f4                  dc.l A_INNERFRAME02
+[000c31ec]                           dc.w $0001
+[000c31ee]                           dc.w $0003
+[000c31f0]                           dc.w $0026
+[000c31f2]                           dc.w $0003
+_08_ED_CHECKBOX:
+[000c31f4]                           dc.w $0007
+[000c31f6]                           dc.w $ffff
+[000c31f8]                           dc.w $ffff
+[000c31fa]                           dc.w $0018
+[000c31fc]                           dc.w $0008
+[000c31fe]                           dc.w $0010
+[000c3200] 000c3054                  dc.l A_BOXED02
+[000c3204]                           dc.w $0001
+[000c3206]                           dc.w $0001
+[000c3208]                           dc.w $0024
+[000c320a]                           dc.w $0001
+_09_ED_CHECKBOX:
+[000c320c]                           dc.w $000b
+[000c320e]                           dc.w $ffff
+[000c3210]                           dc.w $ffff
+[000c3212]                           dc.w $0018
+[000c3214]                           dc.w $0041
+[000c3216]                           dc.w $0001
+[000c3218] 000c30b4                  dc.l A_CHECKBOX01
+[000c321c]                           dc.w $0002
+[000c321e]                           dc.w $0006
+[000c3220]                           dc.w $001f
+[000c3222]                           dc.w $0001
+_09aED_CHECKBOX:
+[000c3224] 0002a8da                  dc.l do3d
+[000c3228]                           dc.w $0000
+[000c322a]                           dc.w $0000
+[000c322c]                           dc.w $8000
+[000c322e]                           dc.w $8844
+[000c3230]                           dc.w $0000
+[000c3232]                           dc.w $0000
+[000c3234]                           dc.w $0000
+[000c3236]                           dc.w $0000
+[000c3238]                           dc.w $0000
+[000c323a]                           dc.w $0000
+_11_ED_CHECKBOX:
+[000c323c]                           dc.w $0000
+[000c323e]                           dc.w $000c
+[000c3240]                           dc.w $000f
+[000c3242]                           dc.w $0018
+[000c3244]                           dc.w $0040
+[000c3246]                           dc.w $0000
+[000c3248] 000c3114                  dc.l A_INNERFRAME03
+[000c324c]                           dc.w $0001
+[000c324e]                           dc.w $0007
+[000c3250]                           dc.w $0026
+[000c3252]                           dc.w $0005
+_12_ED_CHECKBOX:
+[000c3254]                           dc.w $000d
+[000c3256]                           dc.w $ffff
+[000c3258]                           dc.w $ffff
+[000c325a]                           dc.w $001c
+[000c325c]                           dc.w $0000
+[000c325e]                           dc.w $0000
+[000c3260] 000c2f88                  dc.l TEXT_09
+[000c3264]                           dc.w $0001
+[000c3266]                           dc.w $0001
+[000c3268]                           dc.w $000e
+[000c326a]                           dc.w $0001
+_13_ED_CHECKBOX:
+[000c326c]                           dc.w $000e
+[000c326e]                           dc.w $ffff
+[000c3270]                           dc.w $ffff
+[000c3272]                           dc.w $0018
+[000c3274]                           dc.w $0008
+[000c3276]                           dc.w $0010
+[000c3278] 000c3074                  dc.l A_BOXED04
+[000c327c]                           dc.w $0010
+[000c327e]                           dc.w $0001
+[000c3280]                           dc.w $0015
+[000c3282]                           dc.w $0001
+_14_ED_CHECKBOX:
+[000c3284]                           dc.w $000f
+[000c3286]                           dc.w $ffff
+[000c3288]                           dc.w $ffff
+[000c328a]                           dc.w $001c
+[000c328c]                           dc.w $0000
+[000c328e]                           dc.w $0000
+[000c3290] 000c2f97                  dc.l TEXT_16
+[000c3294]                           dc.w $0001
+[000c3296]                           dc.w $0003
+[000c3298]                           dc.w $000d
+[000c329a]                           dc.w $0001
+_15_ED_CHECKBOX:
+[000c329c]                           dc.w $000b
+[000c329e]                           dc.w $ffff
+[000c32a0]                           dc.w $ffff
+[000c32a2]                           dc.w $0018
+[000c32a4]                           dc.w $0028
+[000c32a6]                           dc.w $0010
+[000c32a8] 000c3094                  dc.l A_BOXED05
+[000c32ac]                           dc.w $0010
+[000c32ae]                           dc.w $0003
+[000c32b0]                           dc.w $0015
+[000c32b2]                           dc.w $0001
+aucheck:
+[000c32b4] 0006323e                  dc.l A_checkbox
+[000c32b8]                           dc.w $0000
+[000c32ba]                           dc.w $0001
+[000c32bc] 000630f2                  dc.l Auo_string
+[000c32c0] 000c3450                  dc.l $000c3450
+[000c32c4]                           dc.w $0000
+[000c32c6]                           dc.w $0000
+[000c32c8]                           dc.w $0000
+[000c32ca]                           dc.w $0000
+[000c32cc]                           dc.w $0000
+[000c32ce]                           dc.w $0000
+[000c32d0]                           dc.w $0000
+[000c32d2]                           dc.w $0000
+auradio:
+[000c32d4] 0006323e                  dc.l A_checkbox
+[000c32d8]                           dc.w $0000
+[000c32da]                           dc.w $0001
+[000c32dc] 000630f2                  dc.l Auo_string
+[000c32e0] 000c3456                  dc.l $000c3456
+[000c32e4]                           dc.w $0000
+[000c32e6]                           dc.w $0000
+[000c32e8]                           dc.w $0000
+[000c32ea]                           dc.w $0000
+[000c32ec]                           dc.w $0000
+[000c32ee]                           dc.w $0000
+[000c32f0]                           dc.w $0000
+[000c32f2]                           dc.w $0000
+visual:
+[000c32f4]                           dc.w $ffff
+[000c32f6]                           dc.w $ffff
+[000c32f8]                           dc.w $ffff
+[000c32fa]                           dc.w $0018
+[000c32fc]                           dc.w $2001
+[000c32fe]                           dc.w $0010
+[000c3300] 000c32b4                  dc.l aucheck
+[000c3304]                           dc.w $0000
+[000c3306]                           dc.w $0000
+[000c3308]                           dc.w $0008
+[000c330a]                           dc.w $0001
+logical:
+[000c330c]                           dc.w $ffff
+[000c330e]                           dc.w $ffff
+[000c3310]                           dc.w $ffff
+[000c3312]                           dc.w $0018
+[000c3314]                           dc.w $0001
+[000c3316]                           dc.w $0000
+[000c3318] 000c32b4                  dc.l aucheck
+[000c331c]                           dc.w $0000
+[000c331e]                           dc.w $0000
+[000c3320]                           dc.w $0008
+[000c3322]                           dc.w $0001
+radvisual:
+[000c3324]                           dc.w $ffff
+[000c3326]                           dc.w $ffff
+[000c3328]                           dc.w $ffff
+[000c332a]                           dc.w $0018
+[000c332c]                           dc.w $2011
+[000c332e]                           dc.w $0010
+[000c3330] 000c32d4                  dc.l auradio
+[000c3334]                           dc.w $0000
+[000c3336]                           dc.w $0000
+[000c3338]                           dc.w $0008
+[000c333a]                           dc.w $0001
+radlogical:
+[000c333c]                           dc.w $ffff
+[000c333e]                           dc.w $ffff
+[000c3340]                           dc.w $ffff
+[000c3342]                           dc.w $0018
+[000c3344]                           dc.w $0011
+[000c3346]                           dc.w $0000
+[000c3348] 000c32d4                  dc.l auradio
+[000c334c]                           dc.w $0000
+[000c334e]                           dc.w $0000
+[000c3350]                           dc.w $0008
+[000c3352]                           dc.w $0001
+aud:
+[000c3354] 000c345c                  dc.l $000c345c
+[000c3358] 000c3461                  dc.l $000c3461
+[000c335c]                           dc.w $0002
+[000c335e] 000c3450                  dc.l $000c3450
+[000c3362]                           dc.w $0000
+[000c3364]                           dc.w $0000
+[000c3366]                           dc.w $0000
+[000c3368]                           dc.w $0000
+[000c336a]                           dc.w $0000
+[000c336c]                           dc.w $0000
+[000c336e]                           dc.w $0000
+[000c3370]                           dc.w $0000
+[000c3372]                           dc.w $0000
+[000c3374]                           dc.w $0000
+[000c3376]                           dc.w $0000
+[000c3378]                           dc.w $0000
+[000c337a]                           dc.w $0000
+[000c337c]                           dc.w $0000
+[000c337e]                           dc.w $0000
+[000c3380]                           dc.w $0000
+radaud:
+[000c3382] 000c345c                  dc.l $000c345c
+[000c3386] 000c3461                  dc.l $000c3461
+[000c338a]                           dc.w $0002
+[000c338c] 000c3456                  dc.l $000c3456
+[000c3390]                           dc.w $0000
+[000c3392]                           dc.w $0000
+[000c3394]                           dc.w $0000
+[000c3396]                           dc.w $0000
+[000c3398]                           dc.w $0000
+[000c339a]                           dc.w $0000
+[000c339c]                           dc.w $0000
+[000c339e]                           dc.w $0000
+[000c33a0]                           dc.w $0000
+[000c33a2]                           dc.w $0000
+[000c33a4]                           dc.w $0000
+[000c33a6]                           dc.w $0000
+[000c33a8]                           dc.w $0000
+[000c33aa]                           dc.w $0000
+[000c33ac]                           dc.w $0000
+[000c33ae]                           dc.w $0000
+data:
+[000c33b0]                           dc.b 'A_checkbox',0
+[000c33bb]                           dc.b $00
+[000c33bc]                           dc.w $0000
+[000c33be]                           dc.w $0000
+[000c33c0]                           dc.w $0000
+[000c33c2]                           dc.w $0000
+[000c33c4]                           dc.w $0000
+[000c33c6]                           dc.w $0000
+[000c33c8]                           dc.w $0000
+[000c33ca]                           dc.w $0000
+[000c33cc]                           dc.w $0000
+[000c33ce]                           dc.w $0000
+[000c33d0] 0002a9c0                  dc.l object_tree
+[000c33d4] 0002ab16                  dc.l test_it
+[000c33d8] 0002ab92                  dc.l ok
+[000c33dc] 0004f20a                  dc.l Aob_delete
+[000c33e0] 000c32f4                  dc.l visual
+[000c33e4] 000c330c                  dc.l logical
+[000c33e8] 000c3354                  dc.l aud
+[000c33ec] 0002a976                  dc.l minsize
+[000c33f0]                           dc.w $0000
+[000c33f2]                           dc.w $0000
+[000c33f4] 000c2fc6                  dc.l title
+[000c33f8] 000c2fa5                  dc.l help_title
+[000c33fc]                           dc.w $0000
+[000c33fe]                           dc.w $0000
+raddata:
+[000c3400]                           dc.b 'A_checkbox',0
+[000c340b]                           dc.b $00
+[000c340c]                           dc.w $0000
+[000c340e]                           dc.w $0000
+[000c3410]                           dc.w $0000
+[000c3412]                           dc.w $0000
+[000c3414]                           dc.w $0000
+[000c3416]                           dc.w $0000
+[000c3418]                           dc.w $0000
+[000c341a]                           dc.w $0000
+[000c341c]                           dc.w $0000
+[000c341e]                           dc.w $0000
+[000c3420] 0002a9c0                  dc.l object_tree
+[000c3424] 0002ab16                  dc.l test_it
+[000c3428] 0002ab92                  dc.l ok
+[000c342c] 0004f20a                  dc.l Aob_delete
+[000c3430] 000c3324                  dc.l radvisual
+[000c3434] 000c333c                  dc.l radlogical
+[000c3438] 000c3382                  dc.l radaud
+[000c343c] 0002a976                  dc.l minsize
+[000c3440]                           dc.w $0000
+[000c3442]                           dc.w $0000
+[000c3444] 000c2fc6                  dc.l title
+[000c3448] 000c2fa5                  dc.l help_title
+[000c344c]                           dc.w $0000
+[000c344e]                           dc.w $0000
+[000c3450]                           dc.b 'Check',0
+[000c3456]                           dc.b 'Radio',0
+[000c345c]                           dc.b '0x1L',0
+[000c3461]                           dc.b 'Auo_string',0
+[000c346c]                           dc.b '0x%lxL',0
+[000c3473]                           dc.b $00

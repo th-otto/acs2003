@@ -669,3 +669,93 @@ A_select:
 [00066392] 4fef 001e                 lea.l      30(a7),a7
 [00066396] 241f                      move.l     (a7)+,d2
 [00066398] 4e75                      rts
+
+	.data
+
+quer:
+[000e1c46]                           dc.w $0000
+[000e1c48]                           dc.w $ffff
+[000e1c4a]                           dc.w $0000
+[000e1c4c]                           dc.w $ffff
+[000e1c4e]                           dc.w $0000
+[000e1c50]                           dc.w $ffff
+[000e1c52]                           dc.w $0000
+[000e1c54]                           dc.w $ffff
+[000e1c56]                           dc.w $0000
+[000e1c58]                           dc.w $ffff
+[000e1c5a]                           dc.w $0000
+[000e1c5c]                           dc.w $ffff
+[000e1c5e]                           dc.w $0000
+[000e1c60]                           dc.w $ffff
+[000e1c62]                           dc.w $0000
+[000e1c64]                           dc.w $ffff
+quer2:
+[000e1c66]                           dc.w $0000
+[000e1c68]                           dc.w $ffff
+[000e1c6a]                           dc.w $0000
+[000e1c6c]                           dc.w $0000
+[000e1c6e]                           dc.w $ffff
+[000e1c70]                           dc.w $0000
+[000e1c72]                           dc.w $0000
+[000e1c74]                           dc.w $ffff
+[000e1c76]                           dc.w $0000
+[000e1c78]                           dc.w $0000
+[000e1c7a]                           dc.w $ffff
+[000e1c7c]                           dc.w $0000
+[000e1c7e]                           dc.w $0000
+[000e1c80]                           dc.w $ffff
+[000e1c82]                           dc.w $0000
+[000e1c84]                           dc.w $0000
+quer3:
+[000e1c86]                           dc.w $0000
+[000e1c88]                           dc.w $0000
+[000e1c8a]                           dc.w $ffff
+[000e1c8c]                           dc.w $ffff
+[000e1c8e]                           dc.w $0000
+[000e1c90]                           dc.w $0000
+[000e1c92]                           dc.w $ffff
+[000e1c94]                           dc.w $ffff
+[000e1c96]                           dc.w $0000
+[000e1c98]                           dc.w $0000
+[000e1c9a]                           dc.w $ffff
+[000e1c9c]                           dc.w $ffff
+[000e1c9e]                           dc.w $0000
+[000e1ca0]                           dc.w $0000
+[000e1ca2]                           dc.w $ffff
+[000e1ca4]                           dc.w $ffff
+senk:
+[000e1ca6]                           dc.b 'UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD33333333333333333333333333333333'
+
+up:
+[000e1d06]                           dc.l quer
+[000e1d0a] 000e1c46                  dc.l quer
+[000e1d0e] 000e1c66                  dc.l quer2
+[000e1d12] 000e1c86                  dc.l quer3
+[000e1d16] 000e1ca6                  dc.l senk
+[000e1d1a] 000e1cc6                  dc.l senk2
+[000e1d1e] 000e1ce6                  dc.l senk3
+[000e1d22] 000e1c46                  dc.l quer
+[000e1d26] 000e1c46                  dc.l quer
+[000e1d2a] 000e1c46                  dc.l quer
+[000e1d2e] 000e1c46                  dc.l quer
+[000e1d32] 000e1c46                  dc.l quer
+[000e1d36] 000e1c46                  dc.l quer
+[000e1d3a] 000e1c46                  dc.l quer
+[000e1d3e] 000e1c46                  dc.l quer
+[000e1d42] 000e1c46                  dc.l quer
+[000e1d46] 000e1c46                  dc.l quer
+[000e1d4a] 000e1c46                  dc.l quer
+[000e1d4e] 000e1c46                  dc.l quer
+[000e1d52] 000e1c46                  dc.l quer
+[000e1d56] 000e1c46                  dc.l quer
+[000e1d5a] 000e1c46                  dc.l quer
+[000e1d5e] 000e1c46                  dc.l quer
+[000e1d62] 000e1c46                  dc.l quer
+[000e1d66] 000e1c46                  dc.l quer
+[000e1d6a] 000e1c46                  dc.l quer
+[000e1d6e] 000e1c46                  dc.l quer
+[000e1d72] 000e1c46                  dc.l quer
+[000e1d76] 000e1c46                  dc.l quer
+[000e1d7a] 000e1c46                  dc.l quer
+[000e1d7e] 000e1c46                  dc.l quer
+[000e1d82] 000e1c46                  dc.l quer

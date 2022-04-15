@@ -169,3 +169,24 @@ Aev_AcHelp:
 [000625b4] 4240                      clr.w      d0
 [000625b6] 4fef 001a                 lea.l      26(a7),a7
 [000625ba] 4e75                      rts
+
+	.data
+
+help_string:
+[000e1bc2]                           dc.w $0000
+[000e1bc4]                           dc.w $0000
+help_version:
+[000e1bc6]                           dc.w $0000
+help_meldung:
+[000e1bc8]                           dc.w $0000
+[000e1bca]                           dc.w $0000
+help_name:
+[000e1bcc]                           dc.w $0000
+[000e1bce]                           dc.w $0000
+[000e1bd0]                           dc.w $0000
+[000e1bd2]                           dc.w $0000
+[000e1bd4]                           dc.w $0000
+[000e1bd6]                           dc.b 'PC_HELP ',0
+[000e1bdf]                           dc.b 'PC_HELP ',0
+[000e1be8]                           dc.b 'ST-GUIDE',0
+[000e1bf1]                           dc.b 'ST-GUIDE',0

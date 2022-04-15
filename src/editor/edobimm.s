@@ -142,3 +142,234 @@ edoim_list:
 [0003198c] 265f                      movea.l    (a7)+,a3
 [0003198e] 245f                      movea.l    (a7)+,a2
 [00031990] 4e75                      rts
+
+	.data
+
+ERR_IM_DEL:
+[000ca99a]                           dc.b '[3][ Das Bild| '%s' | ist nicht (mehr) Teil | dieser Datei][ OK ]',0
+TEXT_001:
+[000ca9dc]                           dc.b 'Abbruch',0
+TEXT_002:
+[000ca9e4]                           dc.w $004f
+[000ca9e6]                           dc.w $4b00
+TEXT_004:
+[000ca9e8]                           dc.b 'Edit',0
+TEXT_005:
+[000ca9ed]                           dc.b '1234567890123456789012345678901',0
+TEXT_03:
+[000caa0d]                           dc.b 'Bild (aus Liste ablegen):',0
+help_title:
+[000caa27]                           dc.b 'Die Graphik-Zuordnung',0
+title:
+[000caa3d]                           dc.b ' BILD -',0
+[000caa45]                           dc.b $00
+[000caa46] 000ca9ed                  dc.l TEXT_005
+[000caa4a] 000ca9e4                  dc.l TEXT_002
+[000caa4e] 000ca9e4                  dc.l TEXT_002
+[000caa52]                           dc.w $0003
+[000caa54]                           dc.w $0006
+[000caa56]                           dc.w $0002
+[000caa58]                           dc.w $1180
+[000caa5a]                           dc.w $0000
+[000caa5c]                           dc.w $0000
+[000caa5e]                           dc.w $0020
+[000caa60]                           dc.w $0001
+A_3DBUTTON01:
+[000caa62] 00064a22                  dc.l A_3Dbutton
+[000caa66]                           dc.w $29c1
+[000caa68]                           dc.w $0178
+[000caa6a] 000630f2                  dc.l Auo_string
+[000caa6e] 000ca9e8                  dc.l TEXT_004
+[000caa72]                           dc.w $0000
+[000caa74]                           dc.w $0000
+[000caa76]                           dc.w $0000
+[000caa78]                           dc.w $0000
+[000caa7a]                           dc.w $0000
+[000caa7c]                           dc.w $0000
+[000caa7e]                           dc.w $0000
+[000caa80]                           dc.w $0000
+A_3DBUTTON02:
+[000caa82] 00064a22                  dc.l A_3Dbutton
+[000caa86]                           dc.w $21f1
+[000caa88]                           dc.w $0178
+[000caa8a] 000630f2                  dc.l Auo_string
+[000caa8e]                           dc.w $0000
+[000caa90]                           dc.w $0000
+[000caa92]                           dc.w $0000
+[000caa94]                           dc.w $0000
+[000caa96]                           dc.w $0000
+[000caa98]                           dc.w $0000
+[000caa9a]                           dc.w $0000
+[000caa9c]                           dc.w $0000
+[000caa9e]                           dc.w $0000
+[000caaa0]                           dc.w $0000
+A_3DBUTTON03:
+[000caaa2] 00064a22                  dc.l A_3Dbutton
+[000caaa6]                           dc.w $29c1
+[000caaa8]                           dc.w $0178
+[000caaaa] 000630f2                  dc.l Auo_string
+[000caaae] 000ca9dc                  dc.l TEXT_001
+[000caab2]                           dc.w $0000
+[000caab4]                           dc.w $0000
+[000caab6]                           dc.w $0000
+[000caab8]                           dc.w $0000
+[000caaba]                           dc.w $0000
+[000caabc]                           dc.w $0000
+[000caabe]                           dc.w $0000
+[000caac0]                           dc.w $0000
+A_3DBUTTON04:
+[000caac2] 00064a22                  dc.l A_3Dbutton
+[000caac6]                           dc.w $29c1
+[000caac8]                           dc.w $0178
+[000caaca] 000630f2                  dc.l Auo_string
+[000caace] 000ca9e5                  dc.l TEXT_003
+[000caad2]                           dc.w $0000
+[000caad4]                           dc.w $0000
+[000caad6]                           dc.w $0000
+[000caad8]                           dc.w $0000
+[000caada]                           dc.w $0000
+[000caadc]                           dc.w $0000
+[000caade]                           dc.w $0000
+[000caae0]                           dc.w $0000
+A_INNERFRAME02:
+[000caae2] 00064256                  dc.l A_innerframe
+[000caae6]                           dc.w $1800
+[000caae8]                           dc.w $8f19
+[000caaea] 000630f2                  dc.l Auo_string
+[000caaee] 000caa0d                  dc.l TEXT_03
+[000caaf2]                           dc.w $0000
+[000caaf4]                           dc.w $0000
+[000caaf6]                           dc.w $0000
+[000caaf8]                           dc.w $0000
+[000caafa]                           dc.w $0000
+[000caafc]                           dc.w $0000
+[000caafe]                           dc.w $0000
+[000cab00]                           dc.w $0000
+ED_IMAGE:
+[000cab02]                           dc.w $ffff
+[000cab04]                           dc.w $0001
+[000cab06]                           dc.w $0008
+[000cab08]                           dc.w $0018
+[000cab0a]                           dc.w $0040
+[000cab0c]                           dc.w $0010
+[000cab0e] 000caa82                  dc.l A_3DBUTTON02
+[000cab12]                           dc.w $0000
+[000cab14]                           dc.w $0000
+[000cab16]                           dc.w $0024
+[000cab18]                           dc.w $0006
+_01_ED_IMAGE:
+[000cab1a]                           dc.w $0004
+[000cab1c]                           dc.w $0002
+[000cab1e]                           dc.w $0002
+[000cab20]                           dc.w $0018
+[000cab22]                           dc.w $0040
+[000cab24]                           dc.w $0000
+[000cab26] 000caae2                  dc.l A_INNERFRAME02
+[000cab2a]                           dc.w $0001
+[000cab2c]                           dc.w $0000
+[000cab2e]                           dc.w $0022
+[000cab30]                           dc.w $0003
+_02_ED_IMAGE:
+[000cab32]                           dc.w $0001
+[000cab34]                           dc.w $ffff
+[000cab36]                           dc.w $ffff
+[000cab38]                           dc.w $0016
+[000cab3a]                           dc.w $1005
+[000cab3c]                           dc.w $0000
+[000cab3e] 000caa46                  dc.l TEDI_001
+[000cab42]                           dc.w $0001
+[000cab44]                           dc.w $0001
+[000cab46]                           dc.w $0020
+[000cab48]                           dc.w $0001
+_02aED_IMAGE:
+[000cab4a] 00031956                  dc.l edoim_list
+[000cab4e] 000317c8                  dc.l edoim_new
+[000cab52]                           dc.w $8000
+[000cab54]                           dc.w $0000
+[000cab56]                           dc.w $0000
+[000cab58]                           dc.w $0000
+[000cab5a]                           dc.w $0000
+[000cab5c]                           dc.w $0000
+[000cab5e]                           dc.w $0000
+[000cab60]                           dc.w $0000
+_04_ED_IMAGE:
+[000cab62]                           dc.w $0006
+[000cab64]                           dc.w $ffff
+[000cab66]                           dc.w $ffff
+[000cab68]                           dc.w $0018
+[000cab6a]                           dc.w $4007
+[000cab6c]                           dc.w $0010
+[000cab6e] 000caac2                  dc.l A_3DBUTTON04
+[000cab72]                           dc.w $0001
+[000cab74]                           dc.w $0003
+[000cab76]                           dc.w $000a
+[000cab78]                           dc.w $0002
+_04aED_IMAGE:
+[000cab7a] 00031898                  dc.l edoim_ok
+[000cab7e]                           dc.w $0000
+[000cab80]                           dc.w $0000
+[000cab82]                           dc.w $8000
+[000cab84]                           dc.w $884f
+[000cab86]                           dc.w $0000
+[000cab88]                           dc.w $0000
+[000cab8a]                           dc.w $0000
+[000cab8c]                           dc.w $0000
+[000cab8e]                           dc.w $0000
+[000cab90]                           dc.w $0000
+_06_ED_IMAGE:
+[000cab92]                           dc.w $0008
+[000cab94]                           dc.w $ffff
+[000cab96]                           dc.w $ffff
+[000cab98]                           dc.w $0018
+[000cab9a]                           dc.w $4005
+[000cab9c]                           dc.w $0010
+[000cab9e] 000caaa2                  dc.l A_3DBUTTON03
+[000caba2]                           dc.w $000d
+[000caba4]                           dc.w $0003
+[000caba6]                           dc.w $000a
+[000caba8]                           dc.w $0002
+_06aED_IMAGE:
+[000cabaa] 0002f27c                  dc.l ed_abort
+[000cabae]                           dc.w $0000
+[000cabb0]                           dc.w $0000
+[000cabb2]                           dc.w $8000
+[000cabb4]                           dc.w $8841
+[000cabb6]                           dc.w $0000
+[000cabb8]                           dc.w $0000
+[000cabba]                           dc.w $0000
+[000cabbc]                           dc.w $0000
+[000cabbe]                           dc.w $0000
+[000cabc0]                           dc.w $0000
+_08_ED_IMAGE:
+[000cabc2]                           dc.w $0000
+[000cabc4]                           dc.w $ffff
+[000cabc6]                           dc.w $ffff
+[000cabc8]                           dc.w $0018
+[000cabca]                           dc.w $4005
+[000cabcc]                           dc.w $0010
+[000cabce] 000caa62                  dc.l A_3DBUTTON01
+[000cabd2]                           dc.w $0019
+[000cabd4]                           dc.w $0003
+[000cabd6]                           dc.w $000a
+[000cabd8]                           dc.w $0002
+_08aED_IMAGE:
+[000cabda] 00031848                  dc.l edoim_edit
+[000cabde]                           dc.w $0000
+[000cabe0]                           dc.w $0000
+[000cabe2]                           dc.w $8020
+[000cabe4]                           dc.w $8845
+[000cabe6]                           dc.w $0000
+[000cabe8]                           dc.w $0000
+[000cabea]                           dc.w $0000
+[000cabec]                           dc.w $0000
+[000cabee]                           dc.w $0000
+[000cabf0]                           dc.w $0000
+sm:
+[000cabf2]                           dc.w $0000
+[000cabf4]                           dc.w $0000
+[000cabf6] 00031898                  dc.l edoim_ok
+[000cabfa] 0004f20a                  dc.l Aob_delete
+[000cabfe] 000caa3d                  dc.l title
+[000cac02] 000caa27                  dc.l help_title
+[000cac06]                           dc.w $0000
+[000cac08]                           dc.w $0000

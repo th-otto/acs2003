@@ -437,3 +437,65 @@ set_menu:
 [00026992] 3743 0004                 move.w     d3,4(a3)
 [00026996] 4cdf 0c18                 movem.l    (a7)+,d3-d4/a2-a3
 [0002699a] 4e75                      rts
+
+	.data
+
+subtree:
+[000bb658]                           dc.w $0000
+[000bb65a]                           dc.w $0000
+[000bb65c]                           dc.w $0000
+[000bb65e]                           dc.w $0000
+[000bb660]                           dc.w $ffff
+[000bb662]                           dc.w $ffff
+[000bb664]                           dc.w $ffff
+[000bb666]                           dc.w $0014
+[000bb668]                           dc.w $0080
+[000bb66a]                           dc.w $0020
+[000bb66c]                           dc.w $00ff
+[000bb66e]                           dc.w $1101
+[000bb670]                           dc.w $0000
+[000bb672]                           dc.w $0000
+[000bb674]                           dc.w $000c
+[000bb676]                           dc.w $0004
+[000bb678]                           dc.w $0000
+[000bb67a]                           dc.w $0000
+[000bb67c]                           dc.w $0000
+[000bb67e]                           dc.w $0000
+[000bb680]                           dc.w $8000
+[000bb682]                           dc.w $0000
+[000bb684]                           dc.w $0000
+[000bb686]                           dc.w $0000
+[000bb688]                           dc.w $0000
+[000bb68a]                           dc.w $0000
+[000bb68c]                           dc.w $0000
+[000bb68e]                           dc.w $0000
+protosub:
+[000bb690]                           dc.w $0000
+[000bb692]                           dc.w $0000
+[000bb694] 000bb658                  dc.l subtree
+[000bb698]                           dc.w $0000
+[000bb69a]                           dc.w $0000
+[000bb69c]                           dc.w $0038
+[000bb69e]                           dc.w $0000
+[000bb6a0]                           dc.w $0038
+[000bb6a2]                           dc.w $0000
+[000bb6a4]                           dc.w $0000
+[000bb6a6]                           dc.b 'SUBPROTO',0
+[000bb6af]                           dc.b $00
+[000bb6b0]                           dc.w $0000
+[000bb6b2]                           dc.w $0000
+[000bb6b4]                           dc.w $0000
+[000bb6b6]                           dc.w $0000
+[000bb6b8]                           dc.w $0000
+[000bb6ba]                           dc.w $0000
+[000bb6bc]                           dc.w $0000
+[000bb6be]                           dc.w $0000
+[000bb6c0]                           dc.w $0000
+[000bb6c2]                           dc.w $0000
+[000bb6c4]                           dc.w $0000
+[000bb6c6]                           dc.w $0001
+[000bb6c8]                           dc.w $0000
+[000bb6ca]                           dc.w $0000
+[000bb6cc]                           dc.w $0000
+[000bb6ce]                           dc.w $0000
+[000bb6d0]                           dc.w $0000

@@ -193,3 +193,16 @@ Aev_ShowBubbleGEM:
 [00060864] 4240                      clr.w      d0
 [00060866] 4fef 001e                 lea.l      30(a7),a7
 [0006086a] 4e75                      rts
+
+	.data
+
+bubble_string:
+[000e1a8e]                           dc.w $0000
+[000e1a90]                           dc.w $0000
+phase:
+[000e1a92]                           dc.w $ffff
+[000e1a94]                           dc.b 'BUBBLE  ',0
+[000e1a9d]                           dc.b 'BUBBLEGEM',0
+[000e1aa7]                           dc.b $00
+[000e1aa8]                           dc.b 'BUBBLE  ',0
+[000e1ab1]                           dc.b $00
