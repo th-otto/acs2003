@@ -3,6 +3,7 @@ editte_ok:
 [00023220] 2068 0258                 movea.l    600(a0),a0
 [00023224] 4eb9 0002 335a            jsr        term
 [0002322a] 4e75                      rts
+
 tedi_make:
 [0002322c] 48e7 0038                 movem.l    a2-a4,-(a7)
 [00023230] 594f                      subq.w     #4,a7
@@ -10,15 +11,16 @@ tedi_make:
 [00023234] 266a 0004                 movea.l    4(a2),a3
 [00023238] 286b 0012                 movea.l    18(a3),a4
 [0002323c] 200c                      move.l     a4,d0
-[0002323e] 670a                      beq.s      $0002324A
+[0002323e] 670a                      beq.s      tedi_make_1
 [00023240] 204c                      movea.l    a4,a0
 [00023242] 4eb9 0005 6bea            jsr        Awi_show
-[00023248] 6074                      bra.s      $000232BE
+[00023248] 6074                      bra.s      tedi_make_2
+tedi_make_1:
 [0002324a] 7008                      moveq.l    #8,d0
 [0002324c] 4eb9 0004 c608            jsr        Ax_malloc
 [00023252] 2e88                      move.l     a0,(a7)
 [00023254] 2008                      move.l     a0,d0
-[00023256] 6762                      beq.s      $000232BA
+[00023256] 6762                      beq.s      tedi_make_3
 [00023258] 2092                      move.l     (a2),(a0)
 [0002325a] 216a 0004 0004            move.l     4(a2),4(a0)
 [00023260] 43eb 0016                 lea.l      22(a3),a1
@@ -29,7 +31,7 @@ tedi_make:
 [0002327a] 4eb9 0005 7052            jsr        Awi_create
 [00023280] 2848                      movea.l    a0,a4
 [00023282] 200c                      move.l     a4,d0
-[00023284] 6734                      beq.s      $000232BA
+[00023284] 6734                      beq.s      tedi_make_3
 [00023286] 2252                      movea.l    (a2),a1
 [00023288] 4869 0168                 pea.l      360(a1)
 [0002328c] 43eb 003a                 lea.l      58(a3),a1
@@ -43,15 +45,19 @@ tedi_make:
 [000232a8] 226c 000c                 movea.l    12(a4),a1
 [000232ac] 4e91                      jsr        (a1)
 [000232ae] 4a40                      tst.w      d0
-[000232b0] 670c                      beq.s      $000232BE
+[000232b0] 670c                      beq.s      tedi_make_2
 [000232b2] 204c                      movea.l    a4,a0
 [000232b4] 4eb9 0002 335a            jsr        term
+tedi_make_3:
 [000232ba] 91c8                      suba.l     a0,a0
-[000232bc] 6002                      bra.s      $000232C0
+[000232bc] 6002                      bra.s      tedi_make_4
+tedi_make_2:
 [000232be] 204c                      movea.l    a4,a0
+tedi_make_4:
 [000232c0] 584f                      addq.w     #4,a7
 [000232c2] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [000232c6] 4e75                      rts
+
 tedi_service:
 [000232c8] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
 [000232cc] 2448                      movea.l    a0,a2
@@ -59,25 +65,31 @@ tedi_service:
 [000232d0] 2849                      movea.l    a1,a4
 [000232d2] 2650                      movea.l    (a0),a3
 [000232d4] 5540                      subq.w     #2,d0
-[000232d6] 6708                      beq.s      $000232E0
+[000232d6] 6708                      beq.s      tedi_service_1
 [000232d8] 907c 270e                 sub.w      #$270E,d0
-[000232dc] 670c                      beq.s      $000232EA
-[000232de] 6018                      bra.s      $000232F8
+[000232dc] 670c                      beq.s      tedi_service_2
+[000232de] 6018                      bra.s      tedi_service_3
+tedi_service_1:
 [000232e0] 204a                      movea.l    a2,a0
 [000232e2] 4eb9 0002 335a            jsr        term
-[000232e8] 601c                      bra.s      $00023306
+[000232e8] 601c                      bra.s      tedi_service_4
+tedi_service_2:
 [000232ea] 226b 0004                 movea.l    4(a3),a1
 [000232ee] 204a                      movea.l    a2,a0
 [000232f0] 4eb9 0001 60ea            jsr        new_name
-[000232f6] 600e                      bra.s      $00023306
+[000232f6] 600e                      bra.s      tedi_service_4
+tedi_service_3:
 [000232f8] 224c                      movea.l    a4,a1
 [000232fa] 3003                      move.w     d3,d0
 [000232fc] 204a                      movea.l    a2,a0
 [000232fe] 4eb9 0005 9dd0            jsr        Awi_service
-[00023304] 6002                      bra.s      $00023308
+[00023304] 6002                      bra.s      tedi_service_5
+tedi_service_4:
 [00023306] 7001                      moveq.l    #1,d0
+tedi_service_5:
 [00023308] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
 [0002330c] 4e75                      rts
+
 set_tedi:
 [0002330e] 2f0a                      move.l     a2,-(a7)
 [00023310] 2f0b                      move.l     a3,-(a7)
@@ -103,6 +115,7 @@ set_tedi:
 [00023354] 265f                      movea.l    (a7)+,a3
 [00023356] 245f                      movea.l    (a7)+,a2
 [00023358] 4e75                      rts
+
 term:
 [0002335a] 2f0a                      move.l     a2,-(a7)
 [0002335c] 2f0b                      move.l     a3,-(a7)
@@ -113,18 +126,20 @@ term:
 [0002336c] 42a9 0012                 clr.l      18(a1)
 [00023370] 302a 0056                 move.w     86(a2),d0
 [00023374] c07c 0800                 and.w      #$0800,d0
-[00023378] 6716                      beq.s      $00023390
+[00023378] 6716                      beq.s      term_1
 [0002337a] 43ea 002c                 lea.l      44(a2),a1
 [0002337e] 206b 0004                 movea.l    4(a3),a0
 [00023382] 41e8 003a                 lea.l      58(a0),a0
 [00023386] 7008                      moveq.l    #8,d0
 [00023388] 4eb9 0008 3500            jsr        memcpy
-[0002338e] 6014                      bra.s      $000233A4
+[0002338e] 6014                      bra.s      term_2
+term_1:
 [00023390] 7008                      moveq.l    #8,d0
 [00023392] 43ea 0024                 lea.l      36(a2),a1
 [00023396] 206b 0004                 movea.l    4(a3),a0
 [0002339a] 41e8 003a                 lea.l      58(a0),a0
 [0002339e] 4eb9 0008 3500            jsr        memcpy
+term_2:
 [000233a4] 204b                      movea.l    a3,a0
 [000233a6] 4eb9 0004 c7c8            jsr        Ax_free
 [000233ac] 204a                      movea.l    a2,a0

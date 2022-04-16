@@ -27,15 +27,17 @@ edus_ok:
 [00030d2a] 2056                      movea.l    (a6),a0
 [00030d2c] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [00030d32] 4a40                      tst.w      d0
-[00030d34] 660e                      bne.s      $00030D44
+[00030d34] 660e                      bne.s      edus_ok_1
 [00030d36] 206e 0004                 movea.l    4(a6),a0
 [00030d3a] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [00030d40] 4a40                      tst.w      d0
-[00030d42] 6712                      beq.s      $00030D56
+[00030d42] 6712                      beq.s      edus_ok_2
+edus_ok_1:
 [00030d44] 41f9 000c 91d8            lea.l      ERR_MUST,a0
 [00030d4a] 7001                      moveq.l    #1,d0
 [00030d4c] 4eb9 0005 a600            jsr        Awi_alert
-[00030d52] 6000 0082                 bra        $00030DD6
+[00030d52] 6000 0082                 bra        edus_ok_3
+edus_ok_2:
 [00030d56] 43ee 0008                 lea.l      8(a6),a1
 [00030d5a] 7003                      moveq.l    #3,d0
 [00030d5c] 41eb 01c8                 lea.l      456(a3),a0
@@ -67,12 +69,15 @@ edus_ok:
 [00030dc4] 584f                      addq.w     #4,a7
 [00030dc6] 2a48                      movea.l    a0,a5
 [00030dc8] 200d                      move.l     a5,d0
-[00030dca] 6704                      beq.s      $00030DD0
+[00030dca] 6704                      beq.s      edus_ok_4
 [00030dcc] 2940 0014                 move.l     d0,20(a4)
+edus_ok_4:
 [00030dd0] 4eb9 0002 f27c            jsr        ed_abort
+edus_ok_3:
 [00030dd6] 4fef 0024                 lea.l      36(a7),a7
 [00030dda] 4cdf 7c00                 movem.l    (a7)+,a2-a6
 [00030dde] 4e75                      rts
+
 edus_list:
 [00030de0] 2f0a                      move.l     a2,-(a7)
 [00030de2] 2f0b                      move.l     a3,-(a7)
@@ -91,6 +96,7 @@ edus_list:
 [00030e16] 265f                      movea.l    (a7)+,a3
 [00030e18] 245f                      movea.l    (a7)+,a2
 [00030e1a] 4e75                      rts
+
 accept:
 [00030e1c] 48e7 183c                 movem.l    d3-d4/a2-a5,-(a7)
 [00030e20] 594f                      subq.w     #4,a7
@@ -102,7 +108,7 @@ accept:
 [00030e36] 4268 0248                 clr.w      584(a0)
 [00030e3a] 4eb9 0004 7e2a            jsr        Adr_next
 [00030e40] 3600                      move.w     d0,d3
-[00030e42] 6f74                      ble.s      $00030EB8
+[00030e42] 6f74                      ble.s      accept_1
 [00030e44] 48c0                      ext.l      d0
 [00030e46] 2200                      move.l     d0,d1
 [00030e48] d281                      add.l      d1,d1
@@ -111,13 +117,14 @@ accept:
 [00030e4e] 246d 0014                 movea.l    20(a5),a2
 [00030e52] 45f2 1818                 lea.l      24(a2,d1.l),a2
 [00030e56] 0c6a 271c 0016            cmpi.w     #$271C,22(a2)
-[00030e5c] 6714                      beq.s      $00030E72
+[00030e5c] 6714                      beq.s      accept_2
 [00030e5e] 4a44                      tst.w      d4
-[00030e60] 6756                      beq.s      $00030EB8
+[00030e60] 6756                      beq.s      accept_1
 [00030e62] 0c6a 2724 0016            cmpi.w     #$2724,22(a2)
-[00030e68] 6708                      beq.s      $00030E72
+[00030e68] 6708                      beq.s      accept_2
 [00030e6a] 0c6a 271a 0016            cmpi.w     #$271A,22(a2)
-[00030e70] 6646                      bne.s      $00030EB8
+[00030e70] 6646                      bne.s      accept_1
+accept_2:
 [00030e72] 2eaa 000c                 move.l     12(a2),(a7)
 [00030e76] 4eb9 0005 1388            jsr        Awi_diaend
 [00030e7c] 2257                      movea.l    (a7),a1
@@ -136,17 +143,21 @@ accept:
 [00030eae] 3003                      move.w     d3,d0
 [00030eb0] 204d                      movea.l    a5,a0
 [00030eb2] 4eb9 0004 7f76            jsr        Adr_del
+accept_1:
 [00030eb8] 584f                      addq.w     #4,a7
 [00030eba] 4cdf 3c18                 movem.l    (a7)+,d3-d4/a2-a5
 [00030ebe] 4e75                      rts
+
 edus_ref:
 [00030ec0] 4240                      clr.w      d0
 [00030ec2] 6100 ff58                 bsr        accept
 [00030ec6] 4e75                      rts
+
 edus_ptr:
 [00030ec8] 7001                      moveq.l    #1,d0
 [00030eca] 6100 ff50                 bsr        accept
 [00030ece] 4e75                      rts
+
 set_user:
 [00030ed0] 48e7 003c                 movem.l    a2-a5,-(a7)
 [00030ed4] 4fef fefe                 lea.l      -258(a7),a7
@@ -156,9 +167,10 @@ set_user:
 [00030ee4] 4eb9 0004 f064            jsr        Aob_create
 [00030eea] 2448                      movea.l    a0,a2
 [00030eec] 200a                      move.l     a2,d0
-[00030eee] 6606                      bne.s      $00030EF6
+[00030eee] 6606                      bne.s      set_user_1
 [00030ef0] 91c8                      suba.l     a0,a0
-[00030ef2] 6000 0162                 bra        $00031056
+[00030ef2] 6000 0162                 bra        set_user_2
+set_user_1:
 [00030ef6] 286c 0014                 movea.l    20(a4),a4
 [00030efa] 47f9 0010 ee4e            lea.l      ACSblk,a3
 [00030f00] 700f                      moveq.l    #15,d0
@@ -260,6 +272,7 @@ set_user:
 [0003104c] 4eb9 0006 a068            jsr        Auo_boxed
 [00031052] 2a8a                      move.l     a2,(a5)
 [00031054] 204d                      movea.l    a5,a0
+set_user_2:
 [00031056] 4fef 0102                 lea.l      258(a7),a7
 [0003105a] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [0003105e] 4e75                      rts

@@ -9,9 +9,10 @@ Ash_thermometer:
 [0005be98] 4eb9 0004 c608            jsr        Ax_malloc
 [0005be9e] 2f48 0006                 move.l     a0,6(a7)
 [0005bea2] 202f 0006                 move.l     6(a7),d0
-[0005bea6] 6606                      bne.s      $0005BEAE
+[0005bea6] 6606                      bne.s      Ash_thermometer_1
 [0005bea8] 70ff                      moveq.l    #-1,d0
-[0005beaa] 6000 017a                 bra        $0005C026
+[0005beaa] 6000 017a                 bra        Ash_thermometer_2
+Ash_thermometer_1:
 [0005beae] 7272                      moveq.l    #114,d1
 [0005beb0] 4240                      clr.w      d0
 [0005beb2] 206f 0006                 movea.l    6(a7),a0
@@ -41,16 +42,17 @@ Ash_thermometer:
 [0005bf2a] 4e91                      jsr        (a1)
 [0005bf2c] 2f48 0002                 move.l     a0,2(a7)
 [0005bf30] 202f 0002                 move.l     2(a7),d0
-[0005bf34] 6778                      beq.s      $0005BFAE
+[0005bf34] 6778                      beq.s      Ash_thermometer_3
 [0005bf36] 7008                      moveq.l    #8,d0
 [0005bf38] c06f 0014                 and.w      20(a7),d0
-[0005bf3c] 6714                      beq.s      $0005BF52
+[0005bf3c] 6714                      beq.s      Ash_thermometer_4
 [0005bf3e] 206f 0002                 movea.l    2(a7),a0
 [0005bf42] 226f 0002                 movea.l    2(a7),a1
 [0005bf46] 2269 000c                 movea.l    12(a1),a1
 [0005bf4a] 4e91                      jsr        (a1)
 [0005bf4c] 3ebc 0002                 move.w     #$0002,(a7)
-[0005bf50] 6058                      bra.s      $0005BFAA
+[0005bf50] 6058                      bra.s      Ash_thermometer_5
+Ash_thermometer_4:
 [0005bf52] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005bf58] 226f 0006                 movea.l    6(a7),a1
 [0005bf5c] 2368 0232 006a            move.l     562(a0),106(a1)
@@ -71,49 +73,61 @@ Ash_thermometer:
 [0005bf9e] 7072                      moveq.l    #114,d0
 [0005bfa0] 206f 0006                 movea.l    6(a7),a0
 [0005bfa4] 4eb9 0004 cc28            jsr        Ax_recycle
-[0005bfaa] 6000 0078                 bra.w      $0005C024
+Ash_thermometer_5:
+[0005bfaa] 6000 0078                 bra.w      Ash_thermometer_6
+Ash_thermometer_3:
 [0005bfae] 202f 001e                 move.l     30(a7),d0
-[0005bfb2] 670a                      beq.s      $0005BFBE
+[0005bfb2] 670a                      beq.s      Ash_thermometer_7
 [0005bfb4] 206f 0006                 movea.l    6(a7),a0
 [0005bfb8] 226f 001e                 movea.l    30(a7),a1
 [0005bfbc] 4e91                      jsr        (a1)
+Ash_thermometer_7:
 [0005bfbe] 202f 0022                 move.l     34(a7),d0
-[0005bfc2] 670e                      beq.s      $0005BFD2
+[0005bfc2] 670e                      beq.s      Ash_thermometer_8
 [0005bfc4] 206f 0006                 movea.l    6(a7),a0
 [0005bfc8] 226f 0022                 movea.l    34(a7),a1
 [0005bfcc] 4e91                      jsr        (a1)
 [0005bfce] 4a40                      tst.w      d0
-[0005bfd0] 6736                      beq.s      $0005C008
+[0005bfd0] 6736                      beq.s      Ash_thermometer_9
+Ash_thermometer_8:
 [0005bfd2] 202f 0026                 move.l     38(a7),d0
-[0005bfd6] 6720                      beq.s      $0005BFF8
-[0005bfd8] 6010                      bra.s      $0005BFEA
+[0005bfd6] 6720                      beq.s      Ash_thermometer_10
+[0005bfd8] 6010                      bra.s      Ash_thermometer_11
 [0005bfda] 202f 002a                 move.l     42(a7),d0
-[0005bfde] 670a                      beq.s      $0005BFEA
+Ash_thermometer_12:
+[0005bfde] 670a                      beq.s      Ash_thermometer_11
 [0005bfe0] 206f 0006                 movea.l    6(a7),a0
 [0005bfe4] 226f 002a                 movea.l    42(a7),a1
 [0005bfe8] 4e91                      jsr        (a1)
+Ash_thermometer_11:
 [0005bfea] 206f 0006                 movea.l    6(a7),a0
 [0005bfee] 226f 0026                 movea.l    38(a7),a1
 [0005bff2] 4e91                      jsr        (a1)
 [0005bff4] 4a40                      tst.w      d0
-[0005bff6] 66e2                      bne.s      $0005BFDA
+[0005bff6] 66e2                      bne.s      Ash_thermometer_12
+Ash_thermometer_10:
 [0005bff8] 202f 002e                 move.l     46(a7),d0
-[0005bffc] 670a                      beq.s      $0005C008
+[0005bffc] 670a                      beq.s      Ash_thermometer_9
 [0005bffe] 206f 0006                 movea.l    6(a7),a0
 [0005c002] 226f 002e                 movea.l    46(a7),a1
 [0005c006] 4e91                      jsr        (a1)
+Ash_thermometer_9:
 [0005c008] 202f 0032                 move.l     50(a7),d0
-[0005c00c] 670a                      beq.s      $0005C018
+[0005c00c] 670a                      beq.s      Ash_thermometer_13
 [0005c00e] 206f 0006                 movea.l    6(a7),a0
 [0005c012] 226f 0032                 movea.l    50(a7),a1
 [0005c016] 4e91                      jsr        (a1)
+Ash_thermometer_13:
 [0005c018] 7072                      moveq.l    #114,d0
 [0005c01a] 206f 0006                 movea.l    6(a7),a0
 [0005c01e] 4eb9 0004 cc28            jsr        Ax_recycle
+Ash_thermometer_6:
 [0005c024] 3017                      move.w     (a7),d0
+Ash_thermometer_2:
 [0005c026] 4fef 0016                 lea.l      22(a7),a7
 [0005c02a] 245f                      movea.l    (a7)+,a2
 [0005c02c] 4e75                      rts
+
 Prozent:
 [0005c02e] 4fef ffe8                 lea.l      -24(a7),a7
 [0005c032] 2f48 0014                 move.l     a0,20(a7)
@@ -160,9 +174,10 @@ Prozent:
 [0005c0b8] 206f 0008                 movea.l    8(a7),a0
 [0005c0bc] 3028 0014                 move.w     20(a0),d0
 [0005c0c0] b06f 0002                 cmp.w      2(a7),d0
-[0005c0c4] 6d06                      blt.s      $0005C0CC
+[0005c0c4] 6d06                      blt.s      Prozent_1
 [0005c0c6] 302f 0002                 move.w     2(a7),d0
-[0005c0ca] 665a                      bne.s      $0005C126
+[0005c0ca] 665a                      bne.s      Prozent_2
+Prozent_1:
 [0005c0cc] 206f 0008                 movea.l    8(a7),a0
 [0005c0d0] 316f 0002 0014            move.w     2(a7),20(a0)
 [0005c0d6] 206f 0014                 movea.l    20(a7),a0
@@ -183,10 +198,11 @@ Prozent:
 [0005c118] 206f 0014                 movea.l    20(a7),a0
 [0005c11c] 4eb9 0005 1852            jsr        Awi_obchange
 [0005c122] 3ebc 0001                 move.w     #$0001,(a7)
+Prozent_2:
 [0005c126] 7004                      moveq.l    #4,d0
 [0005c128] 206f 000c                 movea.l    12(a7),a0
 [0005c12c] c068 0064                 and.w      100(a0),d0
-[0005c130] 6700 00ca                 beq        $0005C1FC
+[0005c130] 6700 00ca                 beq        Prozent_3
 [0005c134] 222f 0010                 move.l     16(a7),d1
 [0005c138] 2001                      move.l     d1,d0
 [0005c13a] d080                      add.l      d0,d0
@@ -198,21 +214,24 @@ Prozent:
 [0005c146] e2a0                      asr.l      d1,d0
 [0005c148] 3f40 0002                 move.w     d0,2(a7)
 [0005c14c] 3017                      move.w     (a7),d0
-[0005c14e] 6616                      bne.s      $0005C166
+[0005c14e] 6616                      bne.s      Prozent_4
 [0005c150] 206f 000c                 movea.l    12(a7),a0
 [0005c154] 302f 0002                 move.w     2(a7),d0
 [0005c158] b068 0060                 cmp.w      96(a0),d0
-[0005c15c] 6e08                      bgt.s      $0005C166
+[0005c15c] 6e08                      bgt.s      Prozent_4
 [0005c15e] 302f 0002                 move.w     2(a7),d0
-[0005c162] 6600 0098                 bne        $0005C1FC
+[0005c162] 6600 0098                 bne        Prozent_3
+Prozent_4:
 [0005c166] 206f 000c                 movea.l    12(a7),a0
 [0005c16a] 302f 0002                 move.w     2(a7),d0
 [0005c16e] b068 0060                 cmp.w      96(a0),d0
-[0005c172] 6e06                      bgt.s      $0005C17A
+[0005c172] 6e06                      bgt.s      Prozent_5
 [0005c174] 302f 0002                 move.w     2(a7),d0
-[0005c178] 660a                      bne.s      $0005C184
+[0005c178] 660a                      bne.s      Prozent_6
+Prozent_5:
 [0005c17a] 206f 000c                 movea.l    12(a7),a0
 [0005c17e] 316f 0002 0060            move.w     2(a7),96(a0)
+Prozent_6:
 [0005c184] 3f2f 0002                 move.w     2(a7),-(a7)
 [0005c188] 43f9 000e 1464            lea.l      $000E1464,a1
 [0005c18e] 206f 000e                 movea.l    14(a7),a0
@@ -240,8 +259,10 @@ Prozent:
 [0005c1ee] 3030 1000                 move.w     0(a0,d1.w),d0
 [0005c1f2] 206f 0014                 movea.l    20(a7),a0
 [0005c1f6] 4eb9 0005 1b80            jsr        Awi_obredraw
+Prozent_3:
 [0005c1fc] 4fef 0018                 lea.l      24(a7),a7
 [0005c200] 4e75                      rts
+
 TextUpdate:
 [0005c202] 4fef fff4                 lea.l      -12(a7),a7
 [0005c206] 2f48 0008                 move.l     a0,8(a7)
@@ -251,7 +272,7 @@ TextUpdate:
 [0005c214] 7001                      moveq.l    #1,d0
 [0005c216] 2057                      movea.l    (a7),a0
 [0005c218] c068 0064                 and.w      100(a0),d0
-[0005c21c] 676a                      beq.s      $0005C288
+[0005c21c] 676a                      beq.s      TextUpdate_1
 [0005c21e] 226f 0004                 movea.l    4(a7),a1
 [0005c222] 2057                      movea.l    (a7),a0
 [0005c224] 3228 0062                 move.w     98(a0),d1
@@ -277,17 +298,20 @@ TextUpdate:
 [0005c27a] 3030 1000                 move.w     0(a0,d1.w),d0
 [0005c27e] 206f 0008                 movea.l    8(a7),a0
 [0005c282] 4eb9 0005 1b80            jsr        Awi_obredraw
+TextUpdate_1:
 [0005c288] 4fef 000c                 lea.l      12(a7),a7
 [0005c28c] 4e75                      rts
+
 ThermoCreate:
 [0005c28e] 2f0a                      move.l     a2,-(a7)
 [0005c290] 4fef ffee                 lea.l      -18(a7),a7
 [0005c294] 2f48 000a                 move.l     a0,10(a7)
 [0005c298] 2f6f 000a 0002            move.l     10(a7),2(a7)
 [0005c29e] 202f 0002                 move.l     2(a7),d0
-[0005c2a2] 6606                      bne.s      $0005C2AA
+[0005c2a2] 6606                      bne.s      ThermoCreate_1
 [0005c2a4] 91c8                      suba.l     a0,a0
-[0005c2a6] 6000 025e                 bra        $0005C506
+[0005c2a6] 6000 025e                 bra        ThermoCreate_2
+ThermoCreate_1:
 [0005c2aa] 7003                      moveq.l    #3,d0
 [0005c2ac] 206f 0002                 movea.l    2(a7),a0
 [0005c2b0] c068 0064                 and.w      100(a0),d0
@@ -304,9 +328,10 @@ ThermoCreate:
 [0005c2e6] 4eb9 0005 7052            jsr        Awi_create
 [0005c2ec] 2f48 0006                 move.l     a0,6(a7)
 [0005c2f0] 202f 0006                 move.l     6(a7),d0
-[0005c2f4] 6606                      bne.s      $0005C2FC
+[0005c2f4] 6606                      bne.s      ThermoCreate_3
 [0005c2f6] 91c8                      suba.l     a0,a0
-[0005c2f8] 6000 020c                 bra        $0005C506
+[0005c2f8] 6000 020c                 bra        ThermoCreate_2
+ThermoCreate_3:
 [0005c2fc] 206f 0006                 movea.l    6(a7),a0
 [0005c300] 2068 0014                 movea.l    20(a0),a0
 [0005c304] 226f 0006                 movea.l    6(a7),a1
@@ -363,15 +388,15 @@ ThermoCreate:
 [0005c3ce] 6100 fc5e                 bsr        Prozent
 [0005c3d2] 206f 0002                 movea.l    2(a7),a0
 [0005c3d6] 3028 0066                 move.w     102(a0),d0
-[0005c3da] 6b74                      bmi.s      $0005C450
+[0005c3da] 6b74                      bmi.s      ThermoCreate_4
 [0005c3dc] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c3e2] 0c68 0010 001a            cmpi.w     #$0010,26(a0)
-[0005c3e8] 6d66                      blt.s      $0005C450
+[0005c3e8] 6d66                      blt.s      ThermoCreate_4
 [0005c3ea] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c3f0] 2068 023c                 movea.l    572(a0),a0
 [0005c3f4] 3028 000e                 move.w     14(a0),d0
 [0005c3f8] c07c 0100                 and.w      #$0100,d0
-[0005c3fc] 6652                      bne.s      $0005C450
+[0005c3fc] 6652                      bne.s      ThermoCreate_4
 [0005c3fe] 206f 0002                 movea.l    2(a7),a0
 [0005c402] 3228 0062                 move.w     98(a0),d1
 [0005c406] d241                      add.w      d1,d1
@@ -394,28 +419,30 @@ ThermoCreate:
 [0005c442] 80bc 0000 0070            or.l       #$00000070,d0
 [0005c448] 206f 000e                 movea.l    14(a7),a0
 [0005c44c] 81a8 0004                 or.l       d0,4(a0)
+ThermoCreate_4:
 [0005c450] 206f 0002                 movea.l    2(a7),a0
 [0005c454] 2010                      move.l     (a0),d0
-[0005c456] 6a2e                      bpl.s      $0005C486
+[0005c456] 6a2e                      bpl.s      ThermoCreate_5
 [0005c458] 206f 0002                 movea.l    2(a7),a0
 [0005c45c] 2028 0044                 move.l     68(a0),d0
-[0005c460] 6724                      beq.s      $0005C486
+[0005c460] 6724                      beq.s      ThermoCreate_5
 [0005c462] 206f 0002                 movea.l    2(a7),a0
 [0005c466] 226f 0002                 movea.l    2(a7),a1
 [0005c46a] 2269 0044                 movea.l    68(a1),a1
 [0005c46e] 4e91                      jsr        (a1)
 [0005c470] 4a40                      tst.w      d0
-[0005c472] 6612                      bne.s      $0005C486
+[0005c472] 6612                      bne.s      ThermoCreate_5
 [0005c474] 93c9                      suba.l     a1,a1
 [0005c476] 7002                      moveq.l    #2,d0
 [0005c478] 206f 0006                 movea.l    6(a7),a0
 [0005c47c] 246f 0006                 movea.l    6(a7),a2
 [0005c480] 246a 0004                 movea.l    4(a2),a2
 [0005c484] 4e92                      jsr        (a2)
+ThermoCreate_5:
 [0005c486] 7001                      moveq.l    #1,d0
 [0005c488] 206f 0002                 movea.l    2(a7),a0
 [0005c48c] c068 0064                 and.w      100(a0),d0
-[0005c490] 672a                      beq.s      $0005C4BC
+[0005c490] 672a                      beq.s      ThermoCreate_6
 [0005c492] 226f 0002                 movea.l    2(a7),a1
 [0005c496] 43e9 000c                 lea.l      12(a1),a1
 [0005c49a] 206f 0002                 movea.l    2(a7),a0
@@ -426,13 +453,16 @@ ThermoCreate:
 [0005c4ae] 206f 0006                 movea.l    6(a7),a0
 [0005c4b2] 2068 0014                 movea.l    20(a0),a0
 [0005c4b6] 4eb9 0005 0fd8            jsr        Aob_puttext
+ThermoCreate_6:
 [0005c4bc] 7004                      moveq.l    #4,d0
 [0005c4be] 206f 0002                 movea.l    2(a7),a0
 [0005c4c2] c068 0064                 and.w      100(a0),d0
-[0005c4c6] 6604                      bne.s      $0005C4CC
+[0005c4c6] 6604                      bne.s      ThermoCreate_7
 [0005c4c8] 7401                      moveq.l    #1,d2
-[0005c4ca] 6002                      bra.s      $0005C4CE
+[0005c4ca] 6002                      bra.s      ThermoCreate_8
+ThermoCreate_7:
 [0005c4cc] 4242                      clr.w      d2
+ThermoCreate_8:
 [0005c4ce] 323c 0080                 move.w     #$0080,d1
 [0005c4d2] 206f 0002                 movea.l    2(a7),a0
 [0005c4d6] 3028 0062                 move.w     98(a0),d0
@@ -446,9 +476,11 @@ ThermoCreate:
 [0005c4fa] 206f 0002                 movea.l    2(a7),a0
 [0005c4fe] 4268 0068                 clr.w      104(a0)
 [0005c502] 206f 0006                 movea.l    6(a7),a0
+ThermoCreate_2:
 [0005c506] 4fef 0012                 lea.l      18(a7),a7
 [0005c50a] 245f                      movea.l    (a7)+,a2
 [0005c50c] 4e75                      rts
+
 ThermoService:
 [0005c50e] 4fef fff6                 lea.l      -10(a7),a7
 [0005c512] 2f48 0006                 move.l     a0,6(a7)
@@ -457,29 +489,31 @@ ThermoService:
 [0005c51e] 2e90                      move.l     (a0),(a7)
 [0005c520] 302f 0004                 move.w     4(a7),d0
 [0005c524] 5540                      subq.w     #2,d0
-[0005c526] 6704                      beq.s      $0005C52C
-[0005c528] 6000 00da                 bra        $0005C604
+[0005c526] 6704                      beq.s      ThermoService_1
+[0005c528] 6000 00da                 bra        ThermoService_2
+ThermoService_1:
 [0005c52c] 206f 0006                 movea.l    6(a7),a0
 [0005c530] 3028 0056                 move.w     86(a0),d0
 [0005c534] c07c 0200                 and.w      #$0200,d0
-[0005c538] 6600 00c6                 bne        $0005C600
+[0005c538] 6600 00c6                 bne        ThermoService_3
 [0005c53c] 206f 0006                 movea.l    6(a7),a0
 [0005c540] 0068 0200 0056            ori.w      #$0200,86(a0)
 [0005c546] 206f 0006                 movea.l    6(a7),a0
 [0005c54a] 0268 ffdf 0056            andi.w     #$FFDF,86(a0)
 [0005c550] 2057                      movea.l    (a7),a0
 [0005c552] 3028 0068                 move.w     104(a0),d0
-[0005c556] 6742                      beq.s      $0005C59A
+[0005c556] 6742                      beq.s      ThermoService_4
 [0005c558] 2057                      movea.l    (a7),a0
 [0005c55a] 2028 0054                 move.l     84(a0),d0
-[0005c55e] 673a                      beq.s      $0005C59A
+[0005c55e] 673a                      beq.s      ThermoService_4
 [0005c560] 7008                      moveq.l    #8,d0
 [0005c562] 2057                      movea.l    (a7),a0
 [0005c564] c068 0064                 and.w      100(a0),d0
-[0005c568] 660e                      bne.s      $0005C578
+[0005c568] 660e                      bne.s      ThermoService_5
 [0005c56a] 2057                      movea.l    (a7),a0
 [0005c56c] 2279 0010 ee4e            movea.l    ACSblk,a1
 [0005c572] 2368 006a 0232            move.l     106(a0),562(a1)
+ThermoService_5:
 [0005c578] 2057                      movea.l    (a7),a0
 [0005c57a] 2257                      movea.l    (a7),a1
 [0005c57c] 2269 0054                 movea.l    84(a1),a1
@@ -487,23 +521,25 @@ ThermoService:
 [0005c582] 7008                      moveq.l    #8,d0
 [0005c584] 2057                      movea.l    (a7),a0
 [0005c586] c068 0064                 and.w      100(a0),d0
-[0005c58a] 660e                      bne.s      $0005C59A
+[0005c58a] 660e                      bne.s      ThermoService_4
 [0005c58c] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c592] 217c 0000 0001 0232       move.l     #$00000001,562(a0)
+ThermoService_4:
 [0005c59a] 206f 0006                 movea.l    6(a7),a0
 [0005c59e] 4eb9 0005 85f2            jsr        Awi_delete
 [0005c5a4] 2057                      movea.l    (a7),a0
 [0005c5a6] 42a8 006e                 clr.l      110(a0)
 [0005c5aa] 2057                      movea.l    (a7),a0
 [0005c5ac] 2028 0058                 move.l     88(a0),d0
-[0005c5b0] 673a                      beq.s      $0005C5EC
+[0005c5b0] 673a                      beq.s      ThermoService_6
 [0005c5b2] 7008                      moveq.l    #8,d0
 [0005c5b4] 2057                      movea.l    (a7),a0
 [0005c5b6] c068 0064                 and.w      100(a0),d0
-[0005c5ba] 660e                      bne.s      $0005C5CA
+[0005c5ba] 660e                      bne.s      ThermoService_7
 [0005c5bc] 2057                      movea.l    (a7),a0
 [0005c5be] 2279 0010 ee4e            movea.l    ACSblk,a1
 [0005c5c4] 2368 006a 0232            move.l     106(a0),562(a1)
+ThermoService_7:
 [0005c5ca] 2057                      movea.l    (a7),a0
 [0005c5cc] 2257                      movea.l    (a7),a1
 [0005c5ce] 2269 0058                 movea.l    88(a1),a1
@@ -511,21 +547,26 @@ ThermoService:
 [0005c5d4] 7008                      moveq.l    #8,d0
 [0005c5d6] 2057                      movea.l    (a7),a0
 [0005c5d8] c068 0064                 and.w      100(a0),d0
-[0005c5dc] 660e                      bne.s      $0005C5EC
+[0005c5dc] 660e                      bne.s      ThermoService_6
 [0005c5de] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c5e4] 217c 0000 0001 0232       move.l     #$00000001,562(a0)
+ThermoService_6:
 [0005c5ec] 7008                      moveq.l    #8,d0
 [0005c5ee] 2057                      movea.l    (a7),a0
 [0005c5f0] c068 0064                 and.w      100(a0),d0
-[0005c5f4] 670a                      beq.s      $0005C600
+[0005c5f4] 670a                      beq.s      ThermoService_3
 [0005c5f6] 7072                      moveq.l    #114,d0
 [0005c5f8] 2057                      movea.l    (a7),a0
 [0005c5fa] 4eb9 0004 cc28            jsr        Ax_recycle
+ThermoService_3:
 [0005c600] 7001                      moveq.l    #1,d0
-[0005c602] 6002                      bra.s      $0005C606
+[0005c602] 6002                      bra.s      ThermoService_8
+ThermoService_2:
 [0005c604] 4240                      clr.w      d0
+ThermoService_8:
 [0005c606] 4fef 000a                 lea.l      10(a7),a7
 [0005c60a] 4e75                      rts
+
 ThermoInit:
 [0005c60c] 2f0a                      move.l     a2,-(a7)
 [0005c60e] 4fef ffea                 lea.l      -22(a7),a7
@@ -535,55 +576,60 @@ ThermoInit:
 [0005c61e] 3ebc 0001                 move.w     #$0001,(a7)
 [0005c622] 206f 0006                 movea.l    6(a7),a0
 [0005c626] 3028 0068                 move.w     104(a0),d0
-[0005c62a] 6700 0132                 beq        $0005C75E
+[0005c62a] 6700 0132                 beq        ThermoInit_1
 [0005c62e] 7008                      moveq.l    #8,d0
 [0005c630] 206f 0006                 movea.l    6(a7),a0
 [0005c634] c068 0064                 and.w      100(a0),d0
-[0005c638] 6610                      bne.s      $0005C64A
+[0005c638] 6610                      bne.s      ThermoInit_2
 [0005c63a] 206f 0006                 movea.l    6(a7),a0
 [0005c63e] 2279 0010 ee4e            movea.l    ACSblk,a1
 [0005c644] 2368 006a 0232            move.l     106(a0),562(a1)
+ThermoInit_2:
 [0005c64a] 206f 000a                 movea.l    10(a7),a0
 [0005c64e] 0268 ffdf 0056            andi.w     #$FFDF,86(a0)
 [0005c654] 206f 0006                 movea.l    6(a7),a0
 [0005c658] 2028 004c                 move.l     76(a0),d0
-[0005c65c] 6716                      beq.s      $0005C674
+[0005c65c] 6716                      beq.s      ThermoInit_3
 [0005c65e] 206f 0006                 movea.l    6(a7),a0
 [0005c662] 226f 0006                 movea.l    6(a7),a1
 [0005c666] 2269 004c                 movea.l    76(a1),a1
 [0005c66a] 4e91                      jsr        (a1)
 [0005c66c] 4a40                      tst.w      d0
-[0005c66e] 6704                      beq.s      $0005C674
+[0005c66e] 6704                      beq.s      ThermoInit_3
 [0005c670] 7001                      moveq.l    #1,d0
-[0005c672] 6002                      bra.s      $0005C676
+[0005c672] 6002                      bra.s      ThermoInit_4
+ThermoInit_3:
 [0005c674] 4240                      clr.w      d0
+ThermoInit_4:
 [0005c676] 3e80                      move.w     d0,(a7)
 [0005c678] 226f 0006                 movea.l    6(a7),a1
 [0005c67c] 43e9 000c                 lea.l      12(a1),a1
 [0005c680] 206f 000a                 movea.l    10(a7),a0
 [0005c684] 6100 fb7c                 bsr        TextUpdate
 [0005c688] 3017                      move.w     (a7),d0
-[0005c68a] 6718                      beq.s      $0005C6A4
+[0005c68a] 6718                      beq.s      ThermoInit_5
 [0005c68c] 206f 0006                 movea.l    6(a7),a0
 [0005c690] 2028 0050                 move.l     80(a0),d0
-[0005c694] 670e                      beq.s      $0005C6A4
+[0005c694] 670e                      beq.s      ThermoInit_5
 [0005c696] 206f 0006                 movea.l    6(a7),a0
 [0005c69a] 226f 0006                 movea.l    6(a7),a1
 [0005c69e] 2269 0050                 movea.l    80(a1),a1
 [0005c6a2] 4e91                      jsr        (a1)
+ThermoInit_5:
 [0005c6a4] 206f 0006                 movea.l    6(a7),a0
 [0005c6a8] 5290                      addq.l     #1,(a0)
 [0005c6aa] 7008                      moveq.l    #8,d0
 [0005c6ac] 206f 0006                 movea.l    6(a7),a0
 [0005c6b0] c068 0064                 and.w      100(a0),d0
-[0005c6b4] 660e                      bne.s      $0005C6C4
+[0005c6b4] 660e                      bne.s      ThermoInit_6
 [0005c6b6] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c6bc] 217c 0000 0001 0232       move.l     #$00000001,562(a0)
+ThermoInit_6:
 [0005c6c4] 3017                      move.w     (a7),d0
-[0005c6c6] 6764                      beq.s      $0005C72C
+[0005c6c6] 6764                      beq.s      ThermoInit_7
 [0005c6c8] 206f 0006                 movea.l    6(a7),a0
 [0005c6cc] 2028 0008                 move.l     8(a0),d0
-[0005c6d0] 675a                      beq.s      $0005C72C
+[0005c6d0] 675a                      beq.s      ThermoInit_7
 [0005c6d2] 206f 0006                 movea.l    6(a7),a0
 [0005c6d6] 2028 0004                 move.l     4(a0),d0
 [0005c6da] c0bc fff0 0000            and.l      #$FFF00000,d0
@@ -607,34 +653,40 @@ ThermoInit:
 [0005c722] e2a8                      lsr.l      d1,d0
 [0005c724] d09f                      add.l      (a7)+,d0
 [0005c726] 2f40 0002                 move.l     d0,2(a7)
-[0005c72a] 6008                      bra.s      $0005C734
+[0005c72a] 6008                      bra.s      ThermoInit_8
+ThermoInit_7:
 [0005c72c] 2f7c 0000 1000 0002       move.l     #$00001000,2(a7)
+ThermoInit_8:
 [0005c734] 202f 0002                 move.l     2(a7),d0
-[0005c738] 6a06                      bpl.s      $0005C740
+[0005c738] 6a06                      bpl.s      ThermoInit_9
 [0005c73a] 42af 0002                 clr.l      2(a7)
-[0005c73e] 6012                      bra.s      $0005C752
+[0005c73e] 6012                      bra.s      ThermoInit_10
+ThermoInit_9:
 [0005c740] 0caf 0000 1000 0002       cmpi.l     #$00001000,2(a7)
-[0005c748] 6f08                      ble.s      $0005C752
+[0005c748] 6f08                      ble.s      ThermoInit_10
 [0005c74a] 2f7c 0000 1000 0002       move.l     #$00001000,2(a7)
+ThermoInit_10:
 [0005c752] 202f 0002                 move.l     2(a7),d0
 [0005c756] 206f 000a                 movea.l    10(a7),a0
 [0005c75a] 6100 f8d2                 bsr        Prozent
+ThermoInit_1:
 [0005c75e] 206f 0006                 movea.l    6(a7),a0
 [0005c762] 3028 0068                 move.w     104(a0),d0
-[0005c766] 6600 007e                 bne.w      $0005C7E6
+[0005c766] 6600 007e                 bne.w      ThermoInit_11
 [0005c76a] 206f 000a                 movea.l    10(a7),a0
 [0005c76e] 3028 0020                 move.w     32(a0),d0
-[0005c772] 6b72                      bmi.s      $0005C7E6
+[0005c772] 6b72                      bmi.s      ThermoInit_11
 [0005c774] 206f 0006                 movea.l    6(a7),a0
 [0005c778] 2028 0048                 move.l     72(a0),d0
-[0005c77c] 6750                      beq.s      $0005C7CE
+[0005c77c] 6750                      beq.s      ThermoInit_12
 [0005c77e] 7008                      moveq.l    #8,d0
 [0005c780] 206f 0006                 movea.l    6(a7),a0
 [0005c784] c068 0064                 and.w      100(a0),d0
-[0005c788] 6610                      bne.s      $0005C79A
+[0005c788] 6610                      bne.s      ThermoInit_13
 [0005c78a] 206f 0006                 movea.l    6(a7),a0
 [0005c78e] 2279 0010 ee4e            movea.l    ACSblk,a1
 [0005c794] 2368 006a 0232            move.l     106(a0),562(a1)
+ThermoInit_13:
 [0005c79a] 206f 000a                 movea.l    10(a7),a0
 [0005c79e] 0268 ffdf 0056            andi.w     #$FFDF,86(a0)
 [0005c7a4] 206f 0006                 movea.l    6(a7),a0
@@ -645,45 +697,52 @@ ThermoInit:
 [0005c7b4] 7008                      moveq.l    #8,d0
 [0005c7b6] 206f 0006                 movea.l    6(a7),a0
 [0005c7ba] c068 0064                 and.w      100(a0),d0
-[0005c7be] 660e                      bne.s      $0005C7CE
+[0005c7be] 660e                      bne.s      ThermoInit_12
 [0005c7c0] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c7c6] 217c 0000 0001 0232       move.l     #$00000001,562(a0)
+ThermoInit_12:
 [0005c7ce] 226f 0006                 movea.l    6(a7),a1
 [0005c7d2] 43e9 000c                 lea.l      12(a1),a1
 [0005c7d6] 206f 000a                 movea.l    10(a7),a0
 [0005c7da] 6100 fa26                 bsr        TextUpdate
 [0005c7de] 206f 0006                 movea.l    6(a7),a0
 [0005c7e2] 3157 0068                 move.w     (a7),104(a0)
+ThermoInit_11:
 [0005c7e6] 206f 000a                 movea.l    10(a7),a0
 [0005c7ea] 3028 0056                 move.w     86(a0),d0
 [0005c7ee] c07c 0200                 and.w      #$0200,d0
-[0005c7f2] 6642                      bne.s      $0005C836
+[0005c7f2] 6642                      bne.s      ThermoInit_14
 [0005c7f4] 206f 000a                 movea.l    10(a7),a0
 [0005c7f8] 0068 0020 0056            ori.w      #$0020,86(a0)
 [0005c7fe] 7008                      moveq.l    #8,d0
 [0005c800] 206f 0006                 movea.l    6(a7),a0
 [0005c804] c068 0064                 and.w      100(a0),d0
-[0005c808] 6616                      bne.s      $0005C820
+[0005c808] 6616                      bne.s      ThermoInit_15
 [0005c80a] 3017                      move.w     (a7),d0
-[0005c80c] 6604                      bne.s      $0005C812
+[0005c80c] 6604                      bne.s      ThermoInit_16
 [0005c80e] 7001                      moveq.l    #1,d0
-[0005c810] 6002                      bra.s      $0005C814
+[0005c810] 6002                      bra.s      ThermoInit_17
+ThermoInit_16:
 [0005c812] 4240                      clr.w      d0
+ThermoInit_17:
 [0005c814] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c81a] 3140 0268                 move.w     d0,616(a0)
-[0005c81e] 6016                      bra.s      $0005C836
+[0005c81e] 6016                      bra.s      ThermoInit_14
+ThermoInit_15:
 [0005c820] 3017                      move.w     (a7),d0
-[0005c822] 6612                      bne.s      $0005C836
+[0005c822] 6612                      bne.s      ThermoInit_14
 [0005c824] 93c9                      suba.l     a1,a1
 [0005c826] 7002                      moveq.l    #2,d0
 [0005c828] 206f 000a                 movea.l    10(a7),a0
 [0005c82c] 246f 000a                 movea.l    10(a7),a2
 [0005c830] 246a 0004                 movea.l    4(a2),a2
 [0005c834] 4e92                      jsr        (a2)
+ThermoInit_14:
 [0005c836] 4240                      clr.w      d0
 [0005c838] 4fef 0016                 lea.l      22(a7),a7
 [0005c83c] 245f                      movea.l    (a7)+,a2
 [0005c83e] 4e75                      rts
+
 ThermCancel:
 [0005c840] 2f0a                      move.l     a2,-(a7)
 [0005c842] 514f                      subq.w     #8,a7
@@ -693,14 +752,15 @@ ThermCancel:
 [0005c854] 2e90                      move.l     (a0),(a7)
 [0005c856] 2057                      movea.l    (a7),a0
 [0005c858] 2028 0054                 move.l     84(a0),d0
-[0005c85c] 6700 0094                 beq        $0005C8F2
+[0005c85c] 6700 0094                 beq        ThermCancel_1
 [0005c860] 7008                      moveq.l    #8,d0
 [0005c862] 2057                      movea.l    (a7),a0
 [0005c864] c068 0064                 and.w      100(a0),d0
-[0005c868] 660e                      bne.s      $0005C878
+[0005c868] 660e                      bne.s      ThermCancel_2
 [0005c86a] 2057                      movea.l    (a7),a0
 [0005c86c] 2279 0010 ee4e            movea.l    ACSblk,a1
 [0005c872] 2368 006a 0232            move.l     106(a0),562(a1)
+ThermCancel_2:
 [0005c878] 206f 0004                 movea.l    4(a7),a0
 [0005c87c] 0268 ffdf 0056            andi.w     #$FFDF,86(a0)
 [0005c882] 2057                      movea.l    (a7),a0
@@ -708,7 +768,7 @@ ThermCancel:
 [0005c886] 2269 0054                 movea.l    84(a1),a1
 [0005c88a] 4e91                      jsr        (a1)
 [0005c88c] 4a40                      tst.w      d0
-[0005c88e] 6740                      beq.s      $0005C8D0
+[0005c88e] 6740                      beq.s      ThermCancel_3
 [0005c890] 2257                      movea.l    (a7),a1
 [0005c892] 43e9 000c                 lea.l      12(a1),a1
 [0005c896] 206f 0004                 movea.l    4(a7),a0
@@ -716,33 +776,40 @@ ThermCancel:
 [0005c89e] 7008                      moveq.l    #8,d0
 [0005c8a0] 2057                      movea.l    (a7),a0
 [0005c8a2] c068 0064                 and.w      100(a0),d0
-[0005c8a6] 6714                      beq.s      $0005C8BC
+[0005c8a6] 6714                      beq.s      ThermCancel_4
 [0005c8a8] 93c9                      suba.l     a1,a1
 [0005c8aa] 7002                      moveq.l    #2,d0
 [0005c8ac] 206f 0004                 movea.l    4(a7),a0
 [0005c8b0] 246f 0004                 movea.l    4(a7),a2
 [0005c8b4] 246a 0004                 movea.l    4(a2),a2
 [0005c8b8] 4e92                      jsr        (a2)
-[0005c8ba] 600c                      bra.s      $0005C8C8
+[0005c8ba] 600c                      bra.s      ThermCancel_5
+ThermCancel_4:
 [0005c8bc] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005c8c2] 317c 0001 0268            move.w     #$0001,616(a0)
+ThermCancel_5:
 [0005c8c8] 2057                      movea.l    (a7),a0
 [0005c8ca] 4268 0068                 clr.w      104(a0)
-[0005c8ce] 600a                      bra.s      $0005C8DA
+[0005c8ce] 600a                      bra.s      ThermCancel_6
+ThermCancel_3:
 [0005c8d0] 206f 0004                 movea.l    4(a7),a0
 [0005c8d4] 0068 0020 0056            ori.w      #$0020,86(a0)
+ThermCancel_6:
 [0005c8da] 7008                      moveq.l    #8,d0
 [0005c8dc] 2057                      movea.l    (a7),a0
 [0005c8de] c068 0064                 and.w      100(a0),d0
-[0005c8e2] 660e                      bne.s      $0005C8F2
+[0005c8e2] 660e                      bne.s      ThermCancel_1
 [0005c8e4] 2057                      movea.l    (a7),a0
 [0005c8e6] 2279 0010 ee4e            movea.l    ACSblk,a1
 [0005c8ec] 2368 006a 0232            move.l     106(a0),562(a1)
+ThermCancel_1:
 [0005c8f2] 504f                      addq.w     #8,a7
 [0005c8f4] 245f                      movea.l    (a7)+,a2
 [0005c8f6] 4e75                      rts
+
 ThermoClosed:
 [0005c8f8] 4e75                      rts
+
 ThermoGEMScript:
 [0005c8fa] 7001                      moveq.l    #1,d0
 [0005c8fc] 4e75                      rts

@@ -5,7 +5,7 @@ edti_pos:
 [0002b3bc] 4eb9 0004 f064            jsr        Aob_create
 [0002b3c2] 2448                      movea.l    a0,a2
 [0002b3c4] 200a                      move.l     a2,d0
-[0002b3c6] 6700 0122                 beq        $0002B4EA
+[0002b3c6] 6700 0122                 beq        edti_pos_1
 [0002b3ca] 47f9 0010 ee4e            lea.l      ACSblk,a3
 [0002b3d0] 7019                      moveq.l    #25,d0
 [0002b3d2] 2053                      movea.l    (a3),a0
@@ -26,17 +26,21 @@ edti_pos:
 [0002b402] 2069 003c                 movea.l    60(a1),a0
 [0002b406] c468 0006                 and.w      6(a0),d2
 [0002b40a] 4a42                      tst.w      d2
-[0002b40c] 670a                      beq.s      $0002B418
+[0002b40c] 670a                      beq.s      edti_pos_2
 [0002b40e] 5342                      subq.w     #1,d2
-[0002b410] 670e                      beq.s      $0002B420
+[0002b410] 670e                      beq.s      edti_pos_3
 [0002b412] 5342                      subq.w     #1,d2
-[0002b414] 6712                      beq.s      $0002B428
-[0002b416] 6016                      bra.s      $0002B42E
+[0002b414] 6712                      beq.s      edti_pos_4
+[0002b416] 6016                      bra.s      edti_pos_5
+edti_pos_2:
 [0002b418] 006a 0004 0022            ori.w      #$0004,34(a2)
-[0002b41e] 600e                      bra.s      $0002B42E
+[0002b41e] 600e                      bra.s      edti_pos_5
+edti_pos_3:
 [0002b420] 006a 0004 003a            ori.w      #$0004,58(a2)
-[0002b426] 6006                      bra.s      $0002B42E
+[0002b426] 6006                      bra.s      edti_pos_5
+edti_pos_4:
 [0002b428] 006a 0004 0052            ori.w      #$0004,82(a2)
+edti_pos_5:
 [0002b42e] 322f 0002                 move.w     2(a7),d1
 [0002b432] 3017                      move.w     (a7),d0
 [0002b434] 224a                      movea.l    a2,a1
@@ -44,7 +48,7 @@ edti_pos:
 [0002b438] 2068 0258                 movea.l    600(a0),a0
 [0002b43c] 4eb9 0004 e84a            jsr        Ame_popup
 [0002b442] 4a40                      tst.w      d0
-[0002b444] 6f00 009c                 ble        $0002B4E2
+[0002b444] 6f00 009c                 ble        edti_pos_6
 [0002b448] 2053                      movea.l    (a3),a0
 [0002b44a] 2268 025c                 movea.l    604(a0),a1
 [0002b44e] 2869 003c                 movea.l    60(a1),a4
@@ -52,31 +56,35 @@ edti_pos:
 [0002b454] 0294 ffff fffc            andi.l     #$FFFFFFFC,(a4)
 [0002b45a] 3200                      move.w     d0,d1
 [0002b45c] 5341                      subq.w     #1,d1
-[0002b45e] 670a                      beq.s      $0002B46A
+[0002b45e] 670a                      beq.s      edti_pos_7
 [0002b460] 5341                      subq.w     #1,d1
-[0002b462] 671c                      beq.s      $0002B480
+[0002b462] 671c                      beq.s      edti_pos_8
 [0002b464] 5341                      subq.w     #1,d1
-[0002b466] 6734                      beq.s      $0002B49C
-[0002b468] 604c                      bra.s      $0002B4B6
+[0002b466] 6734                      beq.s      edti_pos_9
+[0002b468] 604c                      bra.s      edti_pos_10
+edti_pos_7:
 [0002b46a] 43f9 000c 9769            lea.l      HPOS_TEXT1,a1
 [0002b470] 701b                      moveq.l    #27,d0
 [0002b472] 2053                      movea.l    (a3),a0
 [0002b474] 2068 025c                 movea.l    604(a0),a0
 [0002b478] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b47e] 6036                      bra.s      $0002B4B6
+[0002b47e] 6036                      bra.s      edti_pos_10
+edti_pos_8:
 [0002b480] 0094 0000 0001            ori.l      #$00000001,(a4)
 [0002b486] 43f9 000c 9771            lea.l      HPOS_TEXT2,a1
 [0002b48c] 701b                      moveq.l    #27,d0
 [0002b48e] 2053                      movea.l    (a3),a0
 [0002b490] 2068 025c                 movea.l    604(a0),a0
 [0002b494] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b49a] 601a                      bra.s      $0002B4B6
+[0002b49a] 601a                      bra.s      edti_pos_10
+edti_pos_9:
 [0002b49c] 0094 0000 0002            ori.l      #$00000002,(a4)
 [0002b4a2] 43f9 000c 9779            lea.l      HPOS_TEXT3,a1
 [0002b4a8] 701b                      moveq.l    #27,d0
 [0002b4aa] 2053                      movea.l    (a3),a0
 [0002b4ac] 2068 025c                 movea.l    604(a0),a0
 [0002b4b0] 4eb9 0005 0fd8            jsr        Aob_puttext
+edti_pos_10:
 [0002b4b6] 72ff                      moveq.l    #-1,d1
 [0002b4b8] 701b                      moveq.l    #27,d0
 [0002b4ba] 2053                      movea.l    (a3),a0
@@ -93,11 +101,14 @@ edti_pos:
 [0002b4d8] 2869 0258                 movea.l    600(a1),a4
 [0002b4dc] 226c 0066                 movea.l    102(a4),a1
 [0002b4e0] 4e91                      jsr        (a1)
+edti_pos_6:
 [0002b4e2] 204a                      movea.l    a2,a0
 [0002b4e4] 4eb9 0004 f20a            jsr        Aob_delete
+edti_pos_1:
 [0002b4ea] 504f                      addq.w     #8,a7
 [0002b4ec] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [0002b4f0] 4e75                      rts
+
 edti_replace:
 [0002b4f2] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0002b4f8] 2268 025c                 movea.l    604(a0),a1
@@ -108,6 +119,7 @@ edti_replace:
 [0002b510] 2068 0258                 movea.l    600(a0),a0
 [0002b514] 4eb9 0005 1b80            jsr        Awi_obredraw
 [0002b51a] 4e75                      rts
+
 edti_size:
 [0002b51c] 48e7 0038                 movem.l    a2-a4,-(a7)
 [0002b520] 514f                      subq.w     #8,a7
@@ -115,7 +127,7 @@ edti_size:
 [0002b528] 4eb9 0004 f064            jsr        Aob_create
 [0002b52e] 2448                      movea.l    a0,a2
 [0002b530] 200a                      move.l     a2,d0
-[0002b532] 6700 00ea                 beq        $0002B61E
+[0002b532] 6700 00ea                 beq        edti_size_1
 [0002b536] 47f9 0010 ee4e            lea.l      ACSblk,a3
 [0002b53c] 700b                      moveq.l    #11,d0
 [0002b53e] 2053                      movea.l    (a3),a0
@@ -149,26 +161,28 @@ edti_size:
 [0002b594] 2068 0258                 movea.l    600(a0),a0
 [0002b598] 4eb9 0004 e84a            jsr        Ame_popup
 [0002b59e] 4a40                      tst.w      d0
-[0002b5a0] 6f74                      ble.s      $0002B616
+[0002b5a0] 6f74                      ble.s      edti_size_2
 [0002b5a2] 2053                      movea.l    (a3),a0
 [0002b5a4] 2268 025c                 movea.l    604(a0),a1
 [0002b5a8] 2869 003c                 movea.l    60(a1),a4
 [0002b5ac] 584c                      addq.w     #4,a4
 [0002b5ae] b07c 0001                 cmp.w      #$0001,d0
-[0002b5b2] 661c                      bne.s      $0002B5D0
+[0002b5b2] 661c                      bne.s      edti_size_3
 [0002b5b4] 0294 ffff fffb            andi.l     #$FFFFFFFB,(a4)
 [0002b5ba] 43f9 000c 9782            lea.l      SIZE_TEXT0,a1
 [0002b5c0] 700d                      moveq.l    #13,d0
 [0002b5c2] 2053                      movea.l    (a3),a0
 [0002b5c4] 2068 025c                 movea.l    604(a0),a0
 [0002b5c8] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b5ce] 601a                      bra.s      $0002B5EA
+[0002b5ce] 601a                      bra.s      edti_size_4
+edti_size_3:
 [0002b5d0] 0094 0000 0004            ori.l      #$00000004,(a4)
 [0002b5d6] 43f9 000c 9787            lea.l      SIZE_TEXT1,a1
 [0002b5dc] 700d                      moveq.l    #13,d0
 [0002b5de] 2053                      movea.l    (a3),a0
 [0002b5e0] 2068 025c                 movea.l    604(a0),a0
 [0002b5e4] 4eb9 0005 0fd8            jsr        Aob_puttext
+edti_size_4:
 [0002b5ea] 72ff                      moveq.l    #-1,d1
 [0002b5ec] 700d                      moveq.l    #13,d0
 [0002b5ee] 2053                      movea.l    (a3),a0
@@ -185,11 +199,14 @@ edti_size:
 [0002b60c] 2869 0258                 movea.l    600(a1),a4
 [0002b610] 226c 0066                 movea.l    102(a4),a1
 [0002b614] 4e91                      jsr        (a1)
+edti_size_2:
 [0002b616] 204a                      movea.l    a2,a0
 [0002b618] 4eb9 0004 f20a            jsr        Aob_delete
+edti_size_1:
 [0002b61e] 504f                      addq.w     #8,a7
 [0002b620] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [0002b624] 4e75                      rts
+
 edti_trans:
 [0002b626] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0002b62c] 2268 025c                 movea.l    604(a0),a1
@@ -200,8 +217,6 @@ edti_trans:
 [0002b644] 2068 0258                 movea.l    600(a0),a0
 [0002b648] 4eb9 0005 1b80            jsr        Awi_obredraw
 [0002b64e] 4e75                      rts
-
-; start editor\uetitle.c
 
 init_title:
 [0002b650] 2f0a                      move.l     a2,-(a7)
@@ -214,6 +229,7 @@ init_title:
 [0002b666] 265f                      movea.l    (a7)+,a3
 [0002b668] 245f                      movea.l    (a7)+,a2
 [0002b66a] 4e75                      rts
+
 minsize:
 [0002b66c] 2f0a                      move.l     a2,-(a7)
 [0002b66e] 2f0b                      move.l     a3,-(a7)
@@ -230,6 +246,7 @@ minsize:
 [0002b698] 265f                      movea.l    (a7)+,a3
 [0002b69a] 245f                      movea.l    (a7)+,a2
 [0002b69c] 4e75                      rts
+
 object_tree:
 [0002b69e] 48e7 003e                 movem.l    a2-a6,-(a7)
 [0002b6a2] 594f                      subq.w     #4,a7
@@ -239,9 +256,10 @@ object_tree:
 [0002b6ae] 4eb9 0004 f064            jsr        Aob_create
 [0002b6b4] 2448                      movea.l    a0,a2
 [0002b6b6] 200a                      move.l     a2,d0
-[0002b6b8] 6606                      bne.s      $0002B6C0
+[0002b6b8] 6606                      bne.s      object_tree_1
 [0002b6ba] 91c8                      suba.l     a0,a0
-[0002b6bc] 6000 0194                 bra        $0002B852
+[0002b6bc] 6000 0194                 bra        object_tree_2
+object_tree_1:
 [0002b6c0] 47ea 0030                 lea.l      48(a2),a3
 [0002b6c4] 7016                      moveq.l    #22,d0
 [0002b6c6] c06c 0008                 and.w      8(a4),d0
@@ -278,12 +296,13 @@ object_tree:
 [0002b732] 584f                      addq.w     #4,a7
 [0002b734] 2957 0004                 move.l     (a7),4(a4)
 [0002b738] 0c6d 0002 0008            cmpi.w     #$0002,8(a5)
-[0002b73e] 6610                      bne.s      $0002B750
+[0002b73e] 6610                      bne.s      object_tree_3
 [0002b740] 226d 000a                 movea.l    10(a5),a1
 [0002b744] 700e                      moveq.l    #14,d0
 [0002b746] 204a                      movea.l    a2,a0
 [0002b748] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b74e] 6020                      bra.s      $0002B770
+[0002b74e] 6020                      bra.s      object_tree_4
+object_tree_3:
 [0002b750] 43f9 000c 4963            lea.l      $000C4963,a1
 [0002b756] 7004                      moveq.l    #4,d0
 [0002b758] 204b                      movea.l    a3,a0
@@ -293,75 +312,88 @@ object_tree:
 [0002b766] 700e                      moveq.l    #14,d0
 [0002b768] 204a                      movea.l    a2,a0
 [0002b76a] 4eb9 0005 0fd8            jsr        Aob_puttext
+object_tree_4:
 [0002b770] 7004                      moveq.l    #4,d0
 [0002b772] c097                      and.l      (a7),d0
-[0002b774] 6712                      beq.s      $0002B788
+[0002b774] 6712                      beq.s      object_tree_5
 [0002b776] 43f9 000c 9787            lea.l      SIZE_TEXT1,a1
 [0002b77c] 204a                      movea.l    a2,a0
 [0002b77e] 700d                      moveq.l    #13,d0
 [0002b780] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b786] 6010                      bra.s      $0002B798
+[0002b786] 6010                      bra.s      object_tree_6
+object_tree_5:
 [0002b788] 43f9 000c 9782            lea.l      SIZE_TEXT0,a1
 [0002b78e] 700d                      moveq.l    #13,d0
 [0002b790] 204a                      movea.l    a2,a0
 [0002b792] 4eb9 0005 0fd8            jsr        Aob_puttext
+object_tree_6:
 [0002b798] 7003                      moveq.l    #3,d0
 [0002b79a] c06f 0002                 and.w      2(a7),d0
 [0002b79e] 4a40                      tst.w      d0
-[0002b7a0] 670a                      beq.s      $0002B7AC
+[0002b7a0] 670a                      beq.s      object_tree_7
 [0002b7a2] 5340                      subq.w     #1,d0
-[0002b7a4] 6718                      beq.s      $0002B7BE
+[0002b7a4] 6718                      beq.s      object_tree_8
 [0002b7a6] 5340                      subq.w     #1,d0
-[0002b7a8] 6726                      beq.s      $0002B7D0
-[0002b7aa] 6034                      bra.s      $0002B7E0
+[0002b7a8] 6726                      beq.s      object_tree_9
+[0002b7aa] 6034                      bra.s      object_tree_10
+object_tree_7:
 [0002b7ac] 43f9 000c 9769            lea.l      HPOS_TEXT1,a1
 [0002b7b2] 701b                      moveq.l    #27,d0
 [0002b7b4] 204a                      movea.l    a2,a0
 [0002b7b6] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b7bc] 6022                      bra.s      $0002B7E0
+[0002b7bc] 6022                      bra.s      object_tree_10
+object_tree_8:
 [0002b7be] 43f9 000c 9771            lea.l      HPOS_TEXT2,a1
 [0002b7c4] 701b                      moveq.l    #27,d0
 [0002b7c6] 204a                      movea.l    a2,a0
 [0002b7c8] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b7ce] 6010                      bra.s      $0002B7E0
+[0002b7ce] 6010                      bra.s      object_tree_10
+object_tree_9:
 [0002b7d0] 43f9 000c 9779            lea.l      HPOS_TEXT3,a1
 [0002b7d6] 701b                      moveq.l    #27,d0
 [0002b7d8] 204a                      movea.l    a2,a0
 [0002b7da] 4eb9 0005 0fd8            jsr        Aob_puttext
+object_tree_10:
 [0002b7e0] 206a 0234                 movea.l    564(a2),a0
 [0002b7e4] 2968 000c 0018            move.l     12(a0),24(a4)
 [0002b7ea] 206d 0026                 movea.l    38(a5),a0
 [0002b7ee] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0002b7f4] 4a40                      tst.w      d0
-[0002b7f6] 6712                      beq.s      $0002B80A
+[0002b7f6] 6712                      beq.s      object_tree_11
 [0002b7f8] 43f9 000c 4963            lea.l      $000C4963,a1
 [0002b7fe] 7017                      moveq.l    #23,d0
 [0002b800] 204a                      movea.l    a2,a0
 [0002b802] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b808] 600e                      bra.s      $0002B818
+[0002b808] 600e                      bra.s      object_tree_12
+object_tree_11:
 [0002b80a] 226d 0026                 movea.l    38(a5),a1
 [0002b80e] 7017                      moveq.l    #23,d0
 [0002b810] 204a                      movea.l    a2,a0
 [0002b812] 4eb9 0005 0fd8            jsr        Aob_puttext
+object_tree_12:
 [0002b818] 206a 024c                 movea.l    588(a2),a0
 [0002b81c] 2968 000c 001c            move.l     12(a0),28(a4)
 [0002b822] 206d 002a                 movea.l    42(a5),a0
 [0002b826] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0002b82c] 4a40                      tst.w      d0
-[0002b82e] 6712                      beq.s      $0002B842
+[0002b82e] 6712                      beq.s      object_tree_13
 [0002b830] 43f9 000c 4963            lea.l      $000C4963,a1
 [0002b836] 7018                      moveq.l    #24,d0
 [0002b838] 204a                      movea.l    a2,a0
 [0002b83a] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002b840] 600e                      bra.s      $0002B850
+[0002b840] 600e                      bra.s      object_tree_14
+object_tree_13:
 [0002b842] 226d 002a                 movea.l    42(a5),a1
 [0002b846] 7018                      moveq.l    #24,d0
 [0002b848] 204a                      movea.l    a2,a0
 [0002b84a] 4eb9 0005 0fd8            jsr        Aob_puttext
+object_tree_14:
 [0002b850] 204a                      movea.l    a2,a0
+object_tree_2:
 [0002b852] 584f                      addq.w     #4,a7
 [0002b854] 4cdf 7c00                 movem.l    (a7)+,a2-a6
 [0002b858] 4e75                      rts
+
 test_it:
 [0002b85a] 2f0a                      move.l     a2,-(a7)
 [0002b85c] 2f0b                      move.l     a3,-(a7)
@@ -375,32 +407,39 @@ test_it:
 [0002b87a] 584f                      addq.w     #4,a7
 [0002b87c] 257c 0006 30f2 0008       move.l     #Auo_string,8(a2)
 [0002b884] 0c6b 0002 0008            cmpi.w     #$0002,8(a3)
-[0002b88a] 6608                      bne.s      $0002B894
+[0002b88a] 6608                      bne.s      test_it_1
 [0002b88c] 256b 000a 000c            move.l     10(a3),12(a2)
-[0002b892] 6004                      bra.s      $0002B898
+[0002b892] 6004                      bra.s      test_it_2
+test_it_1:
 [0002b894] 42aa 000c                 clr.l      12(a2)
+test_it_2:
 [0002b898] 7000                      moveq.l    #0,d0
 [0002b89a] 2540 0014                 move.l     d0,20(a2)
 [0002b89e] 2540 0010                 move.l     d0,16(a2)
 [0002b8a2] 206b 0026                 movea.l    38(a3),a0
 [0002b8a6] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0002b8ac] 4a40                      tst.w      d0
-[0002b8ae] 6704                      beq.s      $0002B8B4
+[0002b8ae] 6704                      beq.s      test_it_3
 [0002b8b0] 91c8                      suba.l     a0,a0
-[0002b8b2] 6004                      bra.s      $0002B8B8
+[0002b8b2] 6004                      bra.s      test_it_4
+test_it_3:
 [0002b8b4] 206b 0026                 movea.l    38(a3),a0
+test_it_4:
 [0002b8b8] 2548 0018                 move.l     a0,24(a2)
 [0002b8bc] 206b 002a                 movea.l    42(a3),a0
 [0002b8c0] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0002b8c6] 4a40                      tst.w      d0
-[0002b8c8] 6704                      beq.s      $0002B8CE
+[0002b8c8] 6704                      beq.s      test_it_5
 [0002b8ca] 91c8                      suba.l     a0,a0
-[0002b8cc] 6004                      bra.s      $0002B8D2
+[0002b8cc] 6004                      bra.s      test_it_6
+test_it_5:
 [0002b8ce] 206b 002a                 movea.l    42(a3),a0
+test_it_6:
 [0002b8d2] 2548 001c                 move.l     a0,28(a2)
 [0002b8d6] 265f                      movea.l    (a7)+,a3
 [0002b8d8] 245f                      movea.l    (a7)+,a2
 [0002b8da] 4e75                      rts
+
 abort:
 [0002b8dc] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0002b8e2] 2268 0258                 movea.l    600(a0),a1
@@ -412,6 +451,7 @@ abort:
 [0002b8fc] 2050                      movea.l    (a0),a0
 [0002b8fe] 4e90                      jsr        (a0)
 [0002b900] 4e75                      rts
+
 ok:
 [0002b902] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
 [0002b906] 4fef ffce                 lea.l      -50(a7),a7
@@ -459,8 +499,9 @@ ok:
 [0002b9ac] 206c 0026                 movea.l    38(a4),a0
 [0002b9b0] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0002b9b6] 4a40                      tst.w      d0
-[0002b9b8] 6704                      beq.s      $0002B9BE
+[0002b9b8] 6704                      beq.s      ok_1
 [0002b9ba] 42ac 0026                 clr.l      38(a4)
+ok_1:
 [0002b9be] 43ec 002a                 lea.l      42(a4),a1
 [0002b9c2] 7003                      moveq.l    #3,d0
 [0002b9c4] 41ea 0240                 lea.l      576(a2),a0
@@ -468,8 +509,9 @@ ok:
 [0002b9ce] 206c 002a                 movea.l    42(a4),a0
 [0002b9d2] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0002b9d8] 4a40                      tst.w      d0
-[0002b9da] 6704                      beq.s      $0002B9E0
+[0002b9da] 6704                      beq.s      ok_2
 [0002b9dc] 42ac 002a                 clr.l      42(a4)
+ok_2:
 [0002b9e0] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0002b9e6] 3228 0014                 move.w     20(a0),d1
 [0002b9ea] 3003                      move.w     d3,d0

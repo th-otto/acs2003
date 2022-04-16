@@ -1,3 +1,4 @@
+
 edal_try:
 [0001da2a] 4fef ff00                 lea.l      -256(a7),a7
 [0001da2e] 43d7                      lea.l      (a7),a1
@@ -7,17 +8,20 @@ edal_try:
 [0001da40] 7004                      moveq.l    #4,d0
 [0001da42] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0001da48] c068 0266                 and.w      614(a0),d0
-[0001da4c] 6712                      beq.s      $0001DA60
+[0001da4c] 6712                      beq.s      edal_try_1
 [0001da4e] 2279 000e 692a            movea.l    _globl,a1
 [0001da54] 41d7                      lea.l      (a7),a0
 [0001da56] 7001                      moveq.l    #1,d0
 [0001da58] 4eb9 0007 a146            jsr        mt_form_alert
-[0001da5e] 600a                      bra.s      $0001DA6A
+[0001da5e] 600a                      bra.s      edal_try_2
+edal_try_1:
 [0001da60] 41d7                      lea.l      (a7),a0
 [0001da62] 7001                      moveq.l    #1,d0
 [0001da64] 4eb9 0005 a600            jsr        Awi_alert
+edal_try_2:
 [0001da6a] 4fef 0100                 lea.l      256(a7),a7
 [0001da6e] 4e75                      rts
+
 edal_newim:
 [0001da70] 48e7 1030                 movem.l    d3/a2-a3,-(a7)
 [0001da74] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -29,7 +33,7 @@ edal_newim:
 [0001da8a] 204a                      movea.l    a2,a0
 [0001da8c] 4eb9 0004 e84a            jsr        Ame_popup
 [0001da92] 3600                      move.w     d0,d3
-[0001da94] 6b1e                      bmi.s      $0001DAB4
+[0001da94] 6b1e                      bmi.s      edal_newim_1
 [0001da96] 48c0                      ext.l      d0
 [0001da98] 2200                      move.l     d0,d1
 [0001da9a] d281                      add.l      d1,d1
@@ -40,8 +44,10 @@ edal_newim:
 [0001daaa] 204a                      movea.l    a2,a0
 [0001daac] 7002                      moveq.l    #2,d0
 [0001daae] 4eb9 0005 1b80            jsr        Awi_obredraw
+edal_newim_1:
 [0001dab4] 4cdf 0c08                 movem.l    (a7)+,d3/a2-a3
 [0001dab8] 4e75                      rts
+
 edal_ok:
 [0001daba] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0001dac0] 2068 0258                 movea.l    600(a0),a0
@@ -50,11 +56,13 @@ edal_ok:
 [0001dad0] 2068 0258                 movea.l    600(a0),a0
 [0001dad4] 4eb9 0001 e00a            jsr        term
 [0001dada] 4e75                      rts
+
 edal_abort:
 [0001dadc] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0001dae2] 2068 0258                 movea.l    600(a0),a0
 [0001dae6] 4eb9 0001 e00a            jsr        term
 [0001daec] 4e75                      rts
+
 get_alert:
 [0001daee] 48e7 0038                 movem.l    a2-a4,-(a7)
 [0001daf2] 594f                      subq.w     #4,a7
@@ -67,24 +75,29 @@ get_alert:
 [0001db0a] 41f9 000a d346            lea.l      IM_NONE,a0
 [0001db10] 226a 003c                 movea.l    60(a2),a1
 [0001db14] b3c8                      cmpa.l     a0,a1
-[0001db16] 6606                      bne.s      $0001DB1E
+[0001db16] 6606                      bne.s      get_alert_1
 [0001db18] 197c 0030 0001            move.b     #$30,1(a4)
+get_alert_1:
 [0001db1e] 226a 003c                 movea.l    60(a2),a1
 [0001db22] b3fc 000a d2b8            cmpa.l     #IM_EXCLAM,a1
-[0001db28] 6606                      bne.s      $0001DB30
+[0001db28] 6606                      bne.s      get_alert_2
 [0001db2a] 197c 0031 0001            move.b     #$31,1(a4)
+get_alert_2:
 [0001db30] 226a 003c                 movea.l    60(a2),a1
 [0001db34] b3fc 000a d3d4            cmpa.l     #IM_QUEST,a1
-[0001db3a] 6606                      bne.s      $0001DB42
+[0001db3a] 6606                      bne.s      get_alert_3
 [0001db3c] 197c 0032 0001            move.b     #$32,1(a4)
+get_alert_3:
 [0001db42] 226a 003c                 movea.l    60(a2),a1
 [0001db46] b3fc 000a d462            cmpa.l     #IM_STOP,a1
-[0001db4c] 6606                      bne.s      $0001DB54
+[0001db4c] 6606                      bne.s      get_alert_4
 [0001db4e] 197c 0033 0001            move.b     #$33,1(a4)
+get_alert_4:
 [0001db54] 226a 003c                 movea.l    60(a2),a1
 [0001db58] b3fc 000a d4ec            cmpa.l     #IM_TIME,a1
-[0001db5e] 6606                      bne.s      $0001DB66
+[0001db5e] 6606                      bne.s      get_alert_5
 [0001db60] 197c 0034 0001            move.b     #$34,1(a4)
+get_alert_5:
 [0001db66] 584c                      addq.w     #4,a4
 [0001db68] 43d7                      lea.l      (a7),a1
 [0001db6a] 7003                      moveq.l    #3,d0
@@ -92,58 +105,63 @@ get_alert:
 [0001db70] 4eb9 0006 a068            jsr        Auo_boxed
 [0001db76] 2057                      movea.l    (a7),a0
 [0001db78] 1010                      move.b     (a0),d0
-[0001db7a] 670a                      beq.s      $0001DB86
+[0001db7a] 670a                      beq.s      get_alert_6
 [0001db7c] 2248                      movea.l    a0,a1
 [0001db7e] 204c                      movea.l    a4,a0
 [0001db80] 4eb9 0008 2e42            jsr        strcat
+get_alert_6:
 [0001db86] 43d7                      lea.l      (a7),a1
 [0001db88] 7003                      moveq.l    #3,d0
 [0001db8a] 41ea 0078                 lea.l      120(a2),a0
 [0001db8e] 4eb9 0006 a068            jsr        Auo_boxed
 [0001db94] 2057                      movea.l    (a7),a0
 [0001db96] 1010                      move.b     (a0),d0
-[0001db98] 6714                      beq.s      $0001DBAE
+[0001db98] 6714                      beq.s      get_alert_7
 [0001db9a] 43eb 0005                 lea.l      5(a3),a1
 [0001db9e] 204c                      movea.l    a4,a0
 [0001dba0] 4eb9 0008 2e42            jsr        strcat
 [0001dba6] 2257                      movea.l    (a7),a1
 [0001dba8] 4eb9 0008 2e42            jsr        strcat
+get_alert_7:
 [0001dbae] 43d7                      lea.l      (a7),a1
 [0001dbb0] 7003                      moveq.l    #3,d0
 [0001dbb2] 41ea 0090                 lea.l      144(a2),a0
 [0001dbb6] 4eb9 0006 a068            jsr        Auo_boxed
 [0001dbbc] 2057                      movea.l    (a7),a0
 [0001dbbe] 1010                      move.b     (a0),d0
-[0001dbc0] 6714                      beq.s      $0001DBD6
+[0001dbc0] 6714                      beq.s      get_alert_8
 [0001dbc2] 43eb 0005                 lea.l      5(a3),a1
 [0001dbc6] 204c                      movea.l    a4,a0
 [0001dbc8] 4eb9 0008 2e42            jsr        strcat
 [0001dbce] 2257                      movea.l    (a7),a1
 [0001dbd0] 4eb9 0008 2e42            jsr        strcat
+get_alert_8:
 [0001dbd6] 43d7                      lea.l      (a7),a1
 [0001dbd8] 7003                      moveq.l    #3,d0
 [0001dbda] 41ea 00a8                 lea.l      168(a2),a0
 [0001dbde] 4eb9 0006 a068            jsr        Auo_boxed
 [0001dbe4] 2057                      movea.l    (a7),a0
 [0001dbe6] 1010                      move.b     (a0),d0
-[0001dbe8] 6714                      beq.s      $0001DBFE
+[0001dbe8] 6714                      beq.s      get_alert_9
 [0001dbea] 43eb 0005                 lea.l      5(a3),a1
 [0001dbee] 204c                      movea.l    a4,a0
 [0001dbf0] 4eb9 0008 2e42            jsr        strcat
 [0001dbf6] 2257                      movea.l    (a7),a1
 [0001dbf8] 4eb9 0008 2e42            jsr        strcat
+get_alert_9:
 [0001dbfe] 43d7                      lea.l      (a7),a1
 [0001dc00] 7003                      moveq.l    #3,d0
 [0001dc02] 41ea 00c0                 lea.l      192(a2),a0
 [0001dc06] 4eb9 0006 a068            jsr        Auo_boxed
 [0001dc0c] 2057                      movea.l    (a7),a0
 [0001dc0e] 1010                      move.b     (a0),d0
-[0001dc10] 6714                      beq.s      $0001DC26
+[0001dc10] 6714                      beq.s      get_alert_10
 [0001dc12] 43eb 0005                 lea.l      5(a3),a1
 [0001dc16] 204c                      movea.l    a4,a0
 [0001dc18] 4eb9 0008 2e42            jsr        strcat
 [0001dc1e] 2257                      movea.l    (a7),a1
 [0001dc20] 4eb9 0008 2e42            jsr        strcat
+get_alert_10:
 [0001dc26] 43eb 0002                 lea.l      2(a3),a1
 [0001dc2a] 204c                      movea.l    a4,a0
 [0001dc2c] 4eb9 0008 2e42            jsr        strcat
@@ -153,40 +171,44 @@ get_alert:
 [0001dc3a] 4eb9 0006 a068            jsr        Auo_boxed
 [0001dc40] 2057                      movea.l    (a7),a0
 [0001dc42] 1010                      move.b     (a0),d0
-[0001dc44] 670a                      beq.s      $0001DC50
+[0001dc44] 670a                      beq.s      get_alert_11
 [0001dc46] 2248                      movea.l    a0,a1
 [0001dc48] 204c                      movea.l    a4,a0
 [0001dc4a] 4eb9 0008 2e42            jsr        strcat
+get_alert_11:
 [0001dc50] 43d7                      lea.l      (a7),a1
 [0001dc52] 7003                      moveq.l    #3,d0
 [0001dc54] 41ea 00f0                 lea.l      240(a2),a0
 [0001dc58] 4eb9 0006 a068            jsr        Auo_boxed
 [0001dc5e] 2057                      movea.l    (a7),a0
 [0001dc60] 1010                      move.b     (a0),d0
-[0001dc62] 6714                      beq.s      $0001DC78
+[0001dc62] 6714                      beq.s      get_alert_12
 [0001dc64] 43eb 0005                 lea.l      5(a3),a1
 [0001dc68] 204c                      movea.l    a4,a0
 [0001dc6a] 4eb9 0008 2e42            jsr        strcat
 [0001dc70] 2257                      movea.l    (a7),a1
 [0001dc72] 4eb9 0008 2e42            jsr        strcat
+get_alert_12:
 [0001dc78] 43d7                      lea.l      (a7),a1
 [0001dc7a] 7003                      moveq.l    #3,d0
 [0001dc7c] 41ea 0108                 lea.l      264(a2),a0
 [0001dc80] 4eb9 0006 a068            jsr        Auo_boxed
 [0001dc86] 2057                      movea.l    (a7),a0
 [0001dc88] 1010                      move.b     (a0),d0
-[0001dc8a] 6714                      beq.s      $0001DCA0
+[0001dc8a] 6714                      beq.s      get_alert_13
 [0001dc8c] 43eb 0005                 lea.l      5(a3),a1
 [0001dc90] 204c                      movea.l    a4,a0
 [0001dc92] 4eb9 0008 2e42            jsr        strcat
 [0001dc98] 2257                      movea.l    (a7),a1
 [0001dc9a] 4eb9 0008 2e42            jsr        strcat
+get_alert_13:
 [0001dca0] 43eb 0007                 lea.l      7(a3),a1
 [0001dca4] 204c                      movea.l    a4,a0
 [0001dca6] 4eb9 0008 2e42            jsr        strcat
 [0001dcac] 584f                      addq.w     #4,a7
 [0001dcae] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [0001dcb2] 4e75                      rts
+
 acc_alert:
 [0001dcb4] 48e7 1028                 movem.l    d3/a2/a4,-(a7)
 [0001dcb8] 4fef ff00                 lea.l      -256(a7),a7
@@ -204,7 +226,7 @@ acc_alert:
 [0001dcdc] 4eb9 0004 c608            jsr        Ax_malloc
 [0001dce2] 2848                      movea.l    a0,a4
 [0001dce4] 200c                      move.l     a4,d0
-[0001dce6] 672e                      beq.s      $0001DD16
+[0001dce6] 672e                      beq.s      acc_alert_1
 [0001dce8] 43d7                      lea.l      (a7),a1
 [0001dcea] 4eb9 0008 2f0c            jsr        strcpy
 [0001dcf0] 206a 0004                 movea.l    4(a2),a0
@@ -216,9 +238,11 @@ acc_alert:
 [0001dd0a] 2143 000a                 move.l     d3,10(a0)
 [0001dd0e] 206a 0004                 movea.l    4(a2),a0
 [0001dd12] 2143 000e                 move.l     d3,14(a0)
+acc_alert_1:
 [0001dd16] 4fef 0100                 lea.l      256(a7),a7
 [0001dd1a] 4cdf 1408                 movem.l    (a7)+,d3/a2/a4
 [0001dd1e] 4e75                      rts
+
 al_make:
 [0001dd20] 48e7 0038                 movem.l    a2-a4,-(a7)
 [0001dd24] 594f                      subq.w     #4,a7
@@ -226,14 +250,15 @@ al_make:
 [0001dd28] 266a 0004                 movea.l    4(a2),a3
 [0001dd2c] 286b 0012                 movea.l    18(a3),a4
 [0001dd30] 200c                      move.l     a4,d0
-[0001dd32] 670a                      beq.s      $0001DD3E
+[0001dd32] 670a                      beq.s      al_make_1
 [0001dd34] 204c                      movea.l    a4,a0
 [0001dd36] 4eb9 0005 6bea            jsr        Awi_show
-[0001dd3c] 6074                      bra.s      $0001DDB2
+[0001dd3c] 6074                      bra.s      al_make_2
+al_make_1:
 [0001dd3e] 7008                      moveq.l    #8,d0
 [0001dd40] 4eb9 0004 c608            jsr        Ax_malloc
 [0001dd46] 2e88                      move.l     a0,(a7)
-[0001dd48] 6764                      beq.s      $0001DDAE
+[0001dd48] 6764                      beq.s      al_make_3
 [0001dd4a] 7008                      moveq.l    #8,d0
 [0001dd4c] 224a                      movea.l    a2,a1
 [0001dd4e] 4eb9 0008 3500            jsr        memcpy
@@ -245,7 +270,7 @@ al_make:
 [0001dd6e] 4eb9 0005 7052            jsr        Awi_create
 [0001dd74] 2848                      movea.l    a0,a4
 [0001dd76] 200c                      move.l     a4,d0
-[0001dd78] 6734                      beq.s      $0001DDAE
+[0001dd78] 6734                      beq.s      al_make_3
 [0001dd7a] 2252                      movea.l    (a2),a1
 [0001dd7c] 4869 0168                 pea.l      360(a1)
 [0001dd80] 43eb 003a                 lea.l      58(a3),a1
@@ -259,15 +284,19 @@ al_make:
 [0001dd9c] 226c 000c                 movea.l    12(a4),a1
 [0001dda0] 4e91                      jsr        (a1)
 [0001dda2] 4a40                      tst.w      d0
-[0001dda4] 670c                      beq.s      $0001DDB2
+[0001dda4] 670c                      beq.s      al_make_2
 [0001dda6] 204c                      movea.l    a4,a0
 [0001dda8] 4eb9 0001 e00a            jsr        term
+al_make_3:
 [0001ddae] 91c8                      suba.l     a0,a0
-[0001ddb0] 6002                      bra.s      $0001DDB4
+[0001ddb0] 6002                      bra.s      al_make_4
+al_make_2:
 [0001ddb2] 204c                      movea.l    a4,a0
+al_make_4:
 [0001ddb4] 584f                      addq.w     #4,a7
 [0001ddb6] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [0001ddba] 4e75                      rts
+
 al_service:
 [0001ddbc] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
 [0001ddc0] 2448                      movea.l    a0,a2
@@ -275,50 +304,62 @@ al_service:
 [0001ddc4] 2849                      movea.l    a1,a4
 [0001ddc6] 2650                      movea.l    (a0),a3
 [0001ddc8] 5540                      subq.w     #2,d0
-[0001ddca] 6708                      beq.s      $0001DDD4
+[0001ddca] 6708                      beq.s      al_service_1
 [0001ddcc] 907c 270e                 sub.w      #$270E,d0
-[0001ddd0] 6712                      beq.s      $0001DDE4
-[0001ddd2] 601e                      bra.s      $0001DDF2
+[0001ddd0] 6712                      beq.s      al_service_2
+[0001ddd2] 601e                      bra.s      al_service_3
+al_service_1:
 [0001ddd4] 204a                      movea.l    a2,a0
 [0001ddd6] 6100 fedc                 bsr        acc_alert
 [0001ddda] 204a                      movea.l    a2,a0
 [0001dddc] 4eb9 0001 e00a            jsr        term
-[0001dde2] 601c                      bra.s      $0001DE00
+[0001dde2] 601c                      bra.s      al_service_4
+al_service_2:
 [0001dde4] 226b 0004                 movea.l    4(a3),a1
 [0001dde8] 204a                      movea.l    a2,a0
 [0001ddea] 4eb9 0001 60ea            jsr        new_name
-[0001ddf0] 600e                      bra.s      $0001DE00
+[0001ddf0] 600e                      bra.s      al_service_4
+al_service_3:
 [0001ddf2] 224c                      movea.l    a4,a1
 [0001ddf4] 3003                      move.w     d3,d0
 [0001ddf6] 204a                      movea.l    a2,a0
 [0001ddf8] 4eb9 0005 9dd0            jsr        Awi_service
-[0001ddfe] 6002                      bra.s      $0001DE02
+[0001ddfe] 6002                      bra.s      al_service_5
+al_service_4:
 [0001de00] 7001                      moveq.l    #1,d0
+al_service_5:
 [0001de02] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
 [0001de06] 4e75                      rts
+
 find_brk:
 [0001de08] 5348                      subq.w     #1,a0
 [0001de0a] 5248                      addq.w     #1,a0
+find_brk_2:
 [0001de0c] 1010                      move.b     (a0),d0
-[0001de0e] 670c                      beq.s      $0001DE1C
+[0001de0e] 670c                      beq.s      find_brk_1
 [0001de10] b03c 007c                 cmp.b      #$7C,d0
-[0001de14] 6706                      beq.s      $0001DE1C
+[0001de14] 6706                      beq.s      find_brk_1
 [0001de16] b03c 005d                 cmp.b      #$5D,d0
-[0001de1a] 66ee                      bne.s      $0001DE0A
+[0001de1a] 66ee                      bne.s      find_brk_2
+find_brk_1:
 [0001de1c] 1010                      move.b     (a0),d0
-[0001de1e] 670e                      beq.s      $0001DE2E
+[0001de1e] 670e                      beq.s      find_brk_3
 [0001de20] b03c 005d                 cmp.b      #$5D,d0
-[0001de24] 6608                      bne.s      $0001DE2E
+[0001de24] 6608                      bne.s      find_brk_3
 [0001de26] 0c28 005b ffff            cmpi.b     #$5B,-1(a0)
-[0001de2c] 67dc                      beq.s      $0001DE0A
+[0001de2c] 67dc                      beq.s      find_brk_2
+find_brk_3:
 [0001de2e] 0c10 007c                 cmpi.b     #$7C,(a0)
-[0001de32] 6604                      bne.s      $0001DE38
+[0001de32] 6604                      bne.s      find_brk_4
 [0001de34] 7001                      moveq.l    #1,d0
-[0001de36] 6002                      bra.s      $0001DE3A
+[0001de36] 6002                      bra.s      find_brk_5
+find_brk_4:
 [0001de38] 4240                      clr.w      d0
+find_brk_5:
 [0001de3a] 3280                      move.w     d0,(a1)
 [0001de3c] 4210                      clr.b      (a0)
 [0001de3e] 4e75                      rts
+
 set_alert:
 [0001de40] 48e7 003c                 movem.l    a2-a5,-(a7)
 [0001de44] 4fef fefe                 lea.l      -258(a7),a7
@@ -334,25 +375,31 @@ set_alert:
 [0001de6c] 4880                      ext.w      d0
 [0001de6e] 907c 0030                 sub.w      #$0030,d0
 [0001de72] b07c 0004                 cmp.w      #$0004,d0
-[0001de76] 6240                      bhi.s      $0001DEB8
+[0001de76] 6240                      bhi.s      set_alert_1
 [0001de78] d040                      add.w      d0,d0
 [0001de7a] 303b 0006                 move.w     $0001DE82(pc,d0.w),d0
 [0001de7e] 4efb 0002                 jmp        $0001DE82(pc,d0.w)
 J8:
-[0001de82] 000a                      dc.w $000a   ; $0001de8c-$0001de82
-[0001de84] 0010                      dc.w $0010   ; $0001de92-$0001de82
-[0001de86] 001a                      dc.w $001a   ; $0001de9c-$0001de82
-[0001de88] 0024                      dc.w $0024   ; $0001dea6-$0001de82
-[0001de8a] 002e                      dc.w $002e   ; $0001deb0-$0001de82
+[0001de82] 000a                      dc.w $000a   ; set_alert_2-J8
+[0001de84] 0010                      dc.w $0010   ; set_alert_3-J8
+[0001de86] 001a                      dc.w $001a   ; set_alert_4-J8
+[0001de88] 0024                      dc.w $0024   ; set_alert_5-J8
+[0001de8a] 002e                      dc.w $002e   ; set_alert_6-J8
+set_alert_2:
 [0001de8c] 2548 003c                 move.l     a0,60(a2)
-[0001de90] 6026                      bra.s      $0001DEB8
+[0001de90] 6026                      bra.s      set_alert_1
+set_alert_3:
 [0001de92] 257c 000a d2b8 003c       move.l     #IM_EXCLAM,60(a2)
-[0001de9a] 601c                      bra.s      $0001DEB8
+[0001de9a] 601c                      bra.s      set_alert_1
+set_alert_4:
 [0001de9c] 257c 000a d3d4 003c       move.l     #IM_QUEST,60(a2)
-[0001dea4] 6012                      bra.s      $0001DEB8
+[0001dea4] 6012                      bra.s      set_alert_1
+set_alert_5:
 [0001dea6] 257c 000a d462 003c       move.l     #IM_STOP,60(a2)
-[0001deae] 6008                      bra.s      $0001DEB8
+[0001deae] 6008                      bra.s      set_alert_1
+set_alert_6:
 [0001deb0] 257c 000a d4ec 003c       move.l     #IM_TIME,60(a2)
+set_alert_1:
 [0001deb8] 7004                      moveq.l    #4,d0
 [0001deba] 224a                      movea.l    a2,a1
 [0001debc] 204c                      movea.l    a4,a0
@@ -395,7 +442,7 @@ J8:
 [0001df2a] 204a                      movea.l    a2,a0
 [0001df2c] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001df32] 3017                      move.w     (a7),d0
-[0001df34] 6774                      beq.s      $0001DFAA
+[0001df34] 6774                      beq.s      set_alert_7
 [0001df36] 47ed 0001                 lea.l      1(a5),a3
 [0001df3a] 43d7                      lea.l      (a7),a1
 [0001df3c] 204b                      movea.l    a3,a0
@@ -406,7 +453,7 @@ J8:
 [0001df48] 204a                      movea.l    a2,a0
 [0001df4a] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001df50] 3017                      move.w     (a7),d0
-[0001df52] 6756                      beq.s      $0001DFAA
+[0001df52] 6756                      beq.s      set_alert_7
 [0001df54] 47ed 0001                 lea.l      1(a5),a3
 [0001df58] 43d7                      lea.l      (a7),a1
 [0001df5a] 204b                      movea.l    a3,a0
@@ -417,7 +464,7 @@ J8:
 [0001df66] 204a                      movea.l    a2,a0
 [0001df68] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001df6e] 3017                      move.w     (a7),d0
-[0001df70] 6738                      beq.s      $0001DFAA
+[0001df70] 6738                      beq.s      set_alert_7
 [0001df72] 47ed 0001                 lea.l      1(a5),a3
 [0001df76] 43d7                      lea.l      (a7),a1
 [0001df78] 204b                      movea.l    a3,a0
@@ -428,7 +475,7 @@ J8:
 [0001df84] 204a                      movea.l    a2,a0
 [0001df86] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001df8c] 3017                      move.w     (a7),d0
-[0001df8e] 671a                      beq.s      $0001DFAA
+[0001df8e] 671a                      beq.s      set_alert_7
 [0001df90] 47ed 0001                 lea.l      1(a5),a3
 [0001df94] 43d7                      lea.l      (a7),a1
 [0001df96] 204b                      movea.l    a3,a0
@@ -438,6 +485,7 @@ J8:
 [0001dfa0] 7008                      moveq.l    #8,d0
 [0001dfa2] 204a                      movea.l    a2,a0
 [0001dfa4] 4eb9 0005 0fd8            jsr        Aob_puttext
+set_alert_7:
 [0001dfaa] 47ed 0002                 lea.l      2(a5),a3
 [0001dfae] 43d7                      lea.l      (a7),a1
 [0001dfb0] 204b                      movea.l    a3,a0
@@ -448,7 +496,7 @@ J8:
 [0001dfbc] 204a                      movea.l    a2,a0
 [0001dfbe] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001dfc4] 3017                      move.w     (a7),d0
-[0001dfc6] 6738                      beq.s      $0001E000
+[0001dfc6] 6738                      beq.s      set_alert_8
 [0001dfc8] 47ed 0001                 lea.l      1(a5),a3
 [0001dfcc] 43d7                      lea.l      (a7),a1
 [0001dfce] 204b                      movea.l    a3,a0
@@ -459,7 +507,7 @@ J8:
 [0001dfda] 204a                      movea.l    a2,a0
 [0001dfdc] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001dfe2] 3017                      move.w     (a7),d0
-[0001dfe4] 671a                      beq.s      $0001E000
+[0001dfe4] 671a                      beq.s      set_alert_8
 [0001dfe6] 47ed 0001                 lea.l      1(a5),a3
 [0001dfea] 43d7                      lea.l      (a7),a1
 [0001dfec] 204b                      movea.l    a3,a0
@@ -469,9 +517,11 @@ J8:
 [0001dff6] 700b                      moveq.l    #11,d0
 [0001dff8] 204a                      movea.l    a2,a0
 [0001dffa] 4eb9 0005 0fd8            jsr        Aob_puttext
+set_alert_8:
 [0001e000] 4fef 0102                 lea.l      258(a7),a7
 [0001e004] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [0001e008] 4e75                      rts
+
 term:
 [0001e00a] 2f0a                      move.l     a2,-(a7)
 [0001e00c] 2f0b                      move.l     a3,-(a7)
@@ -481,18 +531,20 @@ term:
 [0001e016] 42a9 0012                 clr.l      18(a1)
 [0001e01a] 302a 0056                 move.w     86(a2),d0
 [0001e01e] c07c 0800                 and.w      #$0800,d0
-[0001e022] 6716                      beq.s      $0001E03A
+[0001e022] 6716                      beq.s      term_1
 [0001e024] 43ea 002c                 lea.l      44(a2),a1
 [0001e028] 206b 0004                 movea.l    4(a3),a0
 [0001e02c] 41e8 003a                 lea.l      58(a0),a0
 [0001e030] 7008                      moveq.l    #8,d0
 [0001e032] 4eb9 0008 3500            jsr        memcpy
-[0001e038] 6014                      bra.s      $0001E04E
+[0001e038] 6014                      bra.s      term_2
+term_1:
 [0001e03a] 7008                      moveq.l    #8,d0
 [0001e03c] 43ea 0024                 lea.l      36(a2),a1
 [0001e040] 206b 0004                 movea.l    4(a3),a0
 [0001e044] 41e8 003a                 lea.l      58(a0),a0
 [0001e048] 4eb9 0008 3500            jsr        memcpy
+term_2:
 [0001e04e] 204b                      movea.l    a3,a0
 [0001e050] 4eb9 0004 c7c8            jsr        Ax_free
 [0001e056] 204a                      movea.l    a2,a0

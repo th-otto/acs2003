@@ -9,7 +9,7 @@ edoic_new:
 [00031624] 4269 0248                 clr.w      584(a1)
 [00031628] 4eb9 0004 7e2a            jsr        Adr_next
 [0003162e] 3600                      move.w     d0,d3
-[00031630] 6f44                      ble.s      $00031676
+[00031630] 6f44                      ble.s      edoic_new_1
 [00031632] 48c0                      ext.l      d0
 [00031634] 2200                      move.l     d0,d1
 [00031636] d281                      add.l      d1,d1
@@ -18,7 +18,7 @@ edoic_new:
 [0003163c] 206c 0014                 movea.l    20(a4),a0
 [00031640] 41f0 1818                 lea.l      24(a0,d1.l),a0
 [00031644] 0c68 2720 0016            cmpi.w     #$2720,22(a0)
-[0003164a] 662a                      bne.s      $00031676
+[0003164a] 662a                      bne.s      edoic_new_1
 [0003164c] 2ea8 000c                 move.l     12(a0),(a7)
 [00031650] 2257                      movea.l    (a7),a1
 [00031652] 43e9 0016                 lea.l      22(a1),a1
@@ -33,9 +33,11 @@ edoic_new:
 [0003166c] 3003                      move.w     d3,d0
 [0003166e] 204c                      movea.l    a4,a0
 [00031670] 4eb9 0004 7f76            jsr        Adr_del
+edoic_new_1:
 [00031676] 584f                      addq.w     #4,a7
 [00031678] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
 [0003167c] 4e75                      rts
+
 edoic_edit:
 [0003167e] 2f0a                      move.l     a2,-(a7)
 [00031680] 2f0b                      move.l     a3,-(a7)
@@ -50,7 +52,7 @@ edoic_edit:
 [0003169c] 2068 002c                 movea.l    44(a0),a0
 [000316a0] 4eb9 0003 337c            jsr        find_entry
 [000316a6] 2008                      move.l     a0,d0
-[000316a8] 671c                      beq.s      $000316C6
+[000316a8] 671c                      beq.s      edoic_edit_1
 [000316aa] 006a 0004 0054            ori.w      #$0004,84(a2)
 [000316b0] 2e93                      move.l     (a3),(a7)
 [000316b2] 2f40 0004                 move.l     d0,4(a7)
@@ -58,10 +60,12 @@ edoic_edit:
 [000316b8] 2279 000b 0cee            movea.l    $000B0CEE,a1
 [000316be] 4e91                      jsr        (a1)
 [000316c0] 026a fffb 0054            andi.w     #$FFFB,84(a2)
+edoic_edit_1:
 [000316c6] 504f                      addq.w     #8,a7
 [000316c8] 265f                      movea.l    (a7)+,a3
 [000316ca] 245f                      movea.l    (a7)+,a2
 [000316cc] 4e75                      rts
+
 edoic_ok:
 [000316ce] 48e7 003c                 movem.l    a2-a5,-(a7)
 [000316d2] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -86,22 +90,26 @@ edoic_ok:
 [0003170e] 4eb9 0003 337c            jsr        find_entry
 [00031714] 2848                      movea.l    a0,a4
 [00031716] 200c                      move.l     a4,d0
-[00031718] 6610                      bne.s      $0003172A
+[00031718] 6610                      bne.s      edoic_ok_1
 [0003171a] 224d                      movea.l    a5,a1
 [0003171c] 41f9 000c a72a            lea.l      ERR_IC_DEL,a0
 [00031722] 4eb9 0006 b80c            jsr        alert_str
-[00031728] 6020                      bra.s      $0003174A
+[00031728] 6020                      bra.s      edoic_ok_2
+edoic_ok_1:
 [0003172a] 2a6b 0014                 movea.l    20(a3),a5
 [0003172e] bbcc                      cmpa.l     a4,a5
-[00031730] 6712                      beq.s      $00031744
+[00031730] 6712                      beq.s      edoic_ok_3
 [00031732] 526c 0036                 addq.w     #1,54(a4)
 [00031736] 274c 0014                 move.l     a4,20(a3)
 [0003173a] 224d                      movea.l    a5,a1
 [0003173c] 204a                      movea.l    a2,a0
 [0003173e] 4eb9 0003 4b40            jsr        del_icon
+edoic_ok_3:
 [00031744] 4eb9 0002 f27c            jsr        ed_abort
+edoic_ok_2:
 [0003174a] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [0003174e] 4e75                      rts
+
 set_icon:
 [00031750] 48e7 0038                 movem.l    a2-a4,-(a7)
 [00031754] 2648                      movea.l    a0,a3
@@ -110,9 +118,10 @@ set_icon:
 [00031760] 4eb9 0004 f064            jsr        Aob_create
 [00031766] 2448                      movea.l    a0,a2
 [00031768] 200a                      move.l     a2,d0
-[0003176a] 6604                      bne.s      $00031770
+[0003176a] 6604                      bne.s      set_icon_1
 [0003176c] 91c8                      suba.l     a0,a0
-[0003176e] 6016                      bra.s      $00031786
+[0003176e] 6016                      bra.s      set_icon_2
+set_icon_1:
 [00031770] 266b 0014                 movea.l    20(a3),a3
 [00031774] 43eb 0016                 lea.l      22(a3),a1
 [00031778] 7002                      moveq.l    #2,d0
@@ -120,8 +129,10 @@ set_icon:
 [0003177c] 4eb9 0005 0fd8            jsr        Aob_puttext
 [00031782] 288a                      move.l     a2,(a4)
 [00031784] 204c                      movea.l    a4,a0
+set_icon_2:
 [00031786] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [0003178a] 4e75                      rts
+
 edoic_list:
 [0003178c] 2f0a                      move.l     a2,-(a7)
 [0003178e] 2f0b                      move.l     a3,-(a7)

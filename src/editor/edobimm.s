@@ -9,7 +9,7 @@ edoim_new:
 [000317e2] 4269 0248                 clr.w      584(a1)
 [000317e6] 4eb9 0004 7e2a            jsr        Adr_next
 [000317ec] 3600                      move.w     d0,d3
-[000317ee] 6f50                      ble.s      $00031840
+[000317ee] 6f50                      ble.s      edoim_new_1
 [000317f0] 48c0                      ext.l      d0
 [000317f2] 2200                      move.l     d0,d1
 [000317f4] d281                      add.l      d1,d1
@@ -18,7 +18,7 @@ edoim_new:
 [000317fa] 206c 0014                 movea.l    20(a4),a0
 [000317fe] 41f0 1818                 lea.l      24(a0,d1.l),a0
 [00031802] 0c68 2721 0016            cmpi.w     #$2721,22(a0)
-[00031808] 6636                      bne.s      $00031840
+[00031808] 6636                      bne.s      edoim_new_1
 [0003180a] 2ea8 000c                 move.l     12(a0),(a7)
 [0003180e] 4eb9 0005 1388            jsr        Awi_diaend
 [00031814] 2257                      movea.l    (a7),a1
@@ -35,9 +35,11 @@ edoim_new:
 [00031836] 3003                      move.w     d3,d0
 [00031838] 204c                      movea.l    a4,a0
 [0003183a] 4eb9 0004 7f76            jsr        Adr_del
+edoim_new_1:
 [00031840] 584f                      addq.w     #4,a7
 [00031842] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
 [00031846] 4e75                      rts
+
 edoim_edit:
 [00031848] 2f0a                      move.l     a2,-(a7)
 [0003184a] 2f0b                      move.l     a3,-(a7)
@@ -52,7 +54,7 @@ edoim_edit:
 [00031866] 2068 0030                 movea.l    48(a0),a0
 [0003186a] 4eb9 0003 337c            jsr        find_entry
 [00031870] 2008                      move.l     a0,d0
-[00031872] 671c                      beq.s      $00031890
+[00031872] 671c                      beq.s      edoim_edit_1
 [00031874] 006a 0004 0054            ori.w      #$0004,84(a2)
 [0003187a] 2e93                      move.l     (a3),(a7)
 [0003187c] 2f40 0004                 move.l     d0,4(a7)
@@ -60,10 +62,12 @@ edoim_edit:
 [00031882] 2279 000b 1d66            movea.l    $000B1D66,a1
 [00031888] 4e91                      jsr        (a1)
 [0003188a] 026a fffb 0054            andi.w     #$FFFB,84(a2)
+edoim_edit_1:
 [00031890] 504f                      addq.w     #8,a7
 [00031892] 265f                      movea.l    (a7)+,a3
 [00031894] 245f                      movea.l    (a7)+,a2
 [00031896] 4e75                      rts
+
 edoim_ok:
 [00031898] 48e7 003c                 movem.l    a2-a5,-(a7)
 [0003189c] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -88,22 +92,26 @@ edoim_ok:
 [000318d8] 4eb9 0003 337c            jsr        find_entry
 [000318de] 2848                      movea.l    a0,a4
 [000318e0] 200c                      move.l     a4,d0
-[000318e2] 6610                      bne.s      $000318F4
+[000318e2] 6610                      bne.s      edoim_ok_1
 [000318e4] 224d                      movea.l    a5,a1
 [000318e6] 41f9 000c a99a            lea.l      ERR_IM_DEL,a0
 [000318ec] 4eb9 0006 b80c            jsr        alert_str
-[000318f2] 6020                      bra.s      $00031914
+[000318f2] 6020                      bra.s      edoim_ok_2
+edoim_ok_1:
 [000318f4] 2a6b 0014                 movea.l    20(a3),a5
 [000318f8] bbcc                      cmpa.l     a4,a5
-[000318fa] 6712                      beq.s      $0003190E
+[000318fa] 6712                      beq.s      edoim_ok_3
 [000318fc] 526c 0036                 addq.w     #1,54(a4)
 [00031900] 274c 0014                 move.l     a4,20(a3)
 [00031904] 224d                      movea.l    a5,a1
 [00031906] 204a                      movea.l    a2,a0
 [00031908] 4eb9 0003 4d5a            jsr        del_image
+edoim_ok_3:
 [0003190e] 4eb9 0002 f27c            jsr        ed_abort
+edoim_ok_2:
 [00031914] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [00031918] 4e75                      rts
+
 set_image:
 [0003191a] 48e7 0038                 movem.l    a2-a4,-(a7)
 [0003191e] 2648                      movea.l    a0,a3
@@ -112,9 +120,10 @@ set_image:
 [0003192a] 4eb9 0004 f064            jsr        Aob_create
 [00031930] 2448                      movea.l    a0,a2
 [00031932] 200a                      move.l     a2,d0
-[00031934] 6604                      bne.s      $0003193A
+[00031934] 6604                      bne.s      set_image_1
 [00031936] 91c8                      suba.l     a0,a0
-[00031938] 6016                      bra.s      $00031950
+[00031938] 6016                      bra.s      set_image_2
+set_image_1:
 [0003193a] 266b 0014                 movea.l    20(a3),a3
 [0003193e] 43eb 0016                 lea.l      22(a3),a1
 [00031942] 7002                      moveq.l    #2,d0
@@ -122,8 +131,10 @@ set_image:
 [00031946] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0003194c] 288a                      move.l     a2,(a4)
 [0003194e] 204c                      movea.l    a4,a0
+set_image_2:
 [00031950] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [00031954] 4e75                      rts
+
 edoim_list:
 [00031956] 2f0a                      move.l     a2,-(a7)
 [00031958] 2f0b                      move.l     a3,-(a7)

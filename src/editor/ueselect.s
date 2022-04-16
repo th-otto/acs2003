@@ -9,6 +9,7 @@ init_select:
 [00027424] 265f                      movea.l    (a7)+,a3
 [00027426] 245f                      movea.l    (a7)+,a2
 [00027428] 4e75                      rts
+
 minsize:
 [0002742a] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00027430] 32a8 0012                 move.w     18(a0),(a1)
@@ -16,9 +17,11 @@ minsize:
 [0002743a] 226f 0004                 movea.l    4(a7),a1
 [0002743e] 32a8 0014                 move.w     20(a0),(a1)
 [00027442] 4e75                      rts
+
 object_tree:
 [00027444] 91c8                      suba.l     a0,a0
 [00027446] 4e75                      rts
+
 test_it:
 [00027448] 22bc 0006 61d6            move.l     #A_select,(a1)
 [0002744e] 42a9 0008                 clr.l      8(a1)
@@ -29,6 +32,7 @@ test_it:
 [00027460] 42a9 0018                 clr.l      24(a1)
 [00027464] 42a9 001c                 clr.l      28(a1)
 [00027468] 4e75                      rts
+
 abort:
 [0002746a] 2079 000b cf26            movea.l    $000BCF26,a0
 [00027470] 2050                      movea.l    (a0),a0

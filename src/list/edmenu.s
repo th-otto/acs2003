@@ -8,15 +8,17 @@ add_men:
 [00035784] 204b                      movea.l    a3,a0
 [00035786] 4eb9 0001 8028            jsr        objextent
 [0003578c] 4a40                      tst.w      d0
-[0003578e] 6610                      bne.s      $000357A0
+[0003578e] 6610                      bne.s      add_men_1
 [00035790] 224c                      movea.l    a4,a1
 [00035792] 204a                      movea.l    a2,a0
 [00035794] 4eb9 0003 57cc            jsr        copy_men
 [0003579a] 2a48                      movea.l    a0,a5
 [0003579c] 200d                      move.l     a5,d0
-[0003579e] 6604                      bne.s      $000357A4
+[0003579e] 6604                      bne.s      add_men_2
+add_men_1:
 [000357a0] 91c8                      suba.l     a0,a0
-[000357a2] 6022                      bra.s      $000357C6
+[000357a2] 6022                      bra.s      add_men_3
+add_men_2:
 [000357a4] 2f39 000c ec42            move.l     $000CEC42,-(a7)
 [000357aa] 486c 0016                 pea.l      22(a4)
 [000357ae] 224d                      movea.l    a5,a1
@@ -27,8 +29,10 @@ add_men:
 [000357bc] 204b                      movea.l    a3,a0
 [000357be] 4eb9 0003 33b4            jsr        add_entry
 [000357c4] 204d                      movea.l    a5,a0
+add_men_3:
 [000357c6] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [000357ca] 4e75                      rts
+
 copy_men:
 [000357cc] 48e7 183e                 movem.l    d3-d4/a2-a6,-(a7)
 [000357d0] 2648                      movea.l    a0,a3
@@ -37,9 +41,10 @@ copy_men:
 [000357d8] 4eb9 0001 7fae            jsr        objmalloc
 [000357de] 2848                      movea.l    a0,a4
 [000357e0] 200c                      move.l     a4,d0
-[000357e2] 6604                      bne.s      $000357E8
+[000357e2] 6604                      bne.s      copy_men_1
 [000357e4] 91c8                      suba.l     a0,a0
-[000357e6] 6046                      bra.s      $0003582E
+[000357e6] 6046                      bra.s      copy_men_2
+copy_men_1:
 [000357e8] 202a 000e                 move.l     14(a2),d0
 [000357ec] 7238                      moveq.l    #56,d1
 [000357ee] 4eb9 0008 3c5a            jsr        _uldiv
@@ -47,8 +52,9 @@ copy_men:
 [000357f6] 2a6a 0004                 movea.l    4(a2),a5
 [000357fa] 2c6c 0004                 movea.l    4(a4),a6
 [000357fe] 4244                      clr.w      d4
-[00035800] 6020                      bra.s      $00035822
+[00035800] 6020                      bra.s      copy_men_3
 [00035802] 3204                      move.w     d4,d1
+copy_men_4:
 [00035804] 48c1                      ext.l      d1
 [00035806] 2001                      move.l     d1,d0
 [00035808] e788                      lsl.l      #3,d0
@@ -60,12 +66,15 @@ copy_men:
 [00035818] 4eb9 0002 cf48            jsr        copy_ob
 [0003581e] 584f                      addq.w     #4,a7
 [00035820] 5244                      addq.w     #1,d4
+copy_men_3:
 [00035822] b644                      cmp.w      d4,d3
-[00035824] 6edc                      bgt.s      $00035802
+[00035824] 6edc                      bgt.s      copy_men_4
 [00035826] 296a 000e 000e            move.l     14(a2),14(a4)
 [0003582c] 204c                      movea.l    a4,a0
+copy_men_2:
 [0003582e] 4cdf 7c18                 movem.l    (a7)+,d3-d4/a2-a6
 [00035832] 4e75                      rts
+
 del_men:
 [00035834] 48e7 183c                 movem.l    d3-d4/a2-a5,-(a7)
 [00035838] 2448                      movea.l    a0,a2
@@ -73,23 +82,25 @@ del_men:
 [0003583c] 006a 0001 0006            ori.w      #$0001,6(a2)
 [00035842] 536b 0036                 subq.w     #1,54(a3)
 [00035846] 302b 0036                 move.w     54(a3),d0
-[0003584a] 6e5e                      bgt.s      $000358AA
+[0003584a] 6e5e                      bgt.s      del_men_1
 [0003584c] 286b 0012                 movea.l    18(a3),a4
 [00035850] 220c                      move.l     a4,d1
-[00035852] 670c                      beq.s      $00035860
+[00035852] 670c                      beq.s      del_men_2
 [00035854] 2a6c 0004                 movea.l    4(a4),a5
 [00035858] 204c                      movea.l    a4,a0
 [0003585a] 7002                      moveq.l    #2,d0
 [0003585c] 93c9                      suba.l     a1,a1
 [0003585e] 4e95                      jsr        (a5)
+del_men_2:
 [00035860] 202b 000e                 move.l     14(a3),d0
 [00035864] 7238                      moveq.l    #56,d1
 [00035866] 4eb9 0008 3c5a            jsr        _uldiv
 [0003586c] 2600                      move.l     d0,d3
 [0003586e] 286b 0004                 movea.l    4(a3),a4
 [00035872] 4244                      clr.w      d4
-[00035874] 601a                      bra.s      $00035890
+[00035874] 601a                      bra.s      del_men_3
 [00035876] 3204                      move.w     d4,d1
+del_men_4:
 [00035878] 48c1                      ext.l      d1
 [0003587a] 2001                      move.l     d1,d0
 [0003587c] e788                      lsl.l      #3,d0
@@ -99,16 +110,19 @@ del_men:
 [00035886] 204a                      movea.l    a2,a0
 [00035888] 4eb9 0002 d214            jsr        del_ob
 [0003588e] 5244                      addq.w     #1,d4
+del_men_3:
 [00035890] b644                      cmp.w      d4,d3
-[00035892] 6ee2                      bgt.s      $00035876
+[00035892] 6ee2                      bgt.s      del_men_4
 [00035894] 224b                      movea.l    a3,a1
 [00035896] 206a 001c                 movea.l    28(a2),a0
 [0003589a] 4eb9 0003 3420            jsr        del_entry
 [000358a0] 224b                      movea.l    a3,a1
 [000358a2] 204a                      movea.l    a2,a0
 [000358a4] 4eb9 0001 7f52            jsr        objfree
+del_men_1:
 [000358aa] 4cdf 3c18                 movem.l    (a7)+,d3-d4/a2-a5
 [000358ae] 4e75                      rts
+
 new_work:
 [000358b0] 303c 2711                 move.w     #$2711,d0
 [000358b4] 2279 000c 8d94            movea.l    $000C8D94,a1

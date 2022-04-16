@@ -16,11 +16,13 @@ edbh_list:
 [00012642] 0268 fffb 0054            andi.w     #$FFFB,84(a0)
 [00012648] 504f                      addq.w     #8,a7
 [0001264a] 4e75                      rts
+
 edbh_abort:
 [0001264c] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00012652] 2068 0258                 movea.l    600(a0),a0
 [00012656] 4eb9 0001 2cf2            jsr        term
 [0001265c] 4e75                      rts
+
 edbh_ok:
 [0001265e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00012664] 2068 0258                 movea.l    600(a0),a0
@@ -29,49 +31,57 @@ edbh_ok:
 [00012674] 2068 0258                 movea.l    600(a0),a0
 [00012678] 4eb9 0001 2cf2            jsr        term
 [0001267e] 4e75                      rts
+
 add_wi:
 [00012680] 4fef fff4                 lea.l      -12(a7),a7
 [00012684] 2f48 0008                 move.l     a0,8(a7)
 [00012688] 2f49 0004                 move.l     a1,4(a7)
 [0001268c] 206f 0010                 movea.l    16(a7),a0
 [00012690] 1010                      move.b     (a0),d0
-[00012692] 6734                      beq.s      $000126C8
+[00012692] 6734                      beq.s      add_wi_1
 [00012694] 226f 0010                 movea.l    16(a7),a1
 [00012698] 206f 0008                 movea.l    8(a7),a0
 [0001269c] 2068 0014                 movea.l    20(a0),a0
 [000126a0] 4eb9 0003 337c            jsr        find_entry
 [000126a6] 2e88                      move.l     a0,(a7)
 [000126a8] 2017                      move.l     (a7),d0
-[000126aa] 6614                      bne.s      $000126C0
+[000126aa] 6614                      bne.s      add_wi_2
 [000126ac] 4240                      clr.w      d0
 [000126ae] 226f 0010                 movea.l    16(a7),a1
 [000126b2] 206f 0008                 movea.l    8(a7),a0
 [000126b6] 4eb9 0003 5de0            jsr        dup_ref
 [000126bc] 2e88                      move.l     a0,(a7)
-[000126be] 6006                      bra.s      $000126C6
+[000126be] 6006                      bra.s      add_wi_3
+add_wi_2:
 [000126c0] 2057                      movea.l    (a7),a0
 [000126c2] 5268 0036                 addq.w     #1,54(a0)
-[000126c6] 6002                      bra.s      $000126CA
+add_wi_3:
+[000126c6] 6002                      bra.s      add_wi_4
+add_wi_1:
 [000126c8] 4297                      clr.l      (a7)
+add_wi_4:
 [000126ca] 202f 0004                 move.l     4(a7),d0
-[000126ce] 6738                      beq.s      $00012708
+[000126ce] 6738                      beq.s      add_wi_5
 [000126d0] 226f 0004                 movea.l    4(a7),a1
 [000126d4] 43e9 0016                 lea.l      22(a1),a1
 [000126d8] 206f 0008                 movea.l    8(a7),a0
 [000126dc] 2068 0014                 movea.l    20(a0),a0
 [000126e0] 4eb9 0003 337c            jsr        find_entry
 [000126e6] 2008                      move.l     a0,d0
-[000126e8] 6710                      beq.s      $000126FA
+[000126e8] 6710                      beq.s      add_wi_6
 [000126ea] 226f 0004                 movea.l    4(a7),a1
 [000126ee] 206f 0008                 movea.l    8(a7),a0
 [000126f2] 4eb9 0003 45c6            jsr        del_window
-[000126f8] 600e                      bra.s      $00012708
+[000126f8] 600e                      bra.s      add_wi_5
+add_wi_6:
 [000126fa] 226f 0004                 movea.l    4(a7),a1
 [000126fe] 206f 0008                 movea.l    8(a7),a0
 [00012702] 4eb9 0003 5dae            jsr        del_ref
+add_wi_5:
 [00012708] 2057                      movea.l    (a7),a0
 [0001270a] 4fef 000c                 lea.l      12(a7),a7
 [0001270e] 4e75                      rts
+
 add_fkt:
 [00012710] 4fef fff2                 lea.l      -14(a7),a7
 [00012714] 2f48 000a                 move.l     a0,10(a7)
@@ -79,32 +89,38 @@ add_fkt:
 [0001271c] 3f40 0004                 move.w     d0,4(a7)
 [00012720] 206f 0012                 movea.l    18(a7),a0
 [00012724] 1010                      move.b     (a0),d0
-[00012726] 6736                      beq.s      $0001275E
+[00012726] 6736                      beq.s      add_fkt_1
 [00012728] 226f 0012                 movea.l    18(a7),a1
 [0001272c] 206f 000a                 movea.l    10(a7),a0
 [00012730] 2068 003c                 movea.l    60(a0),a0
 [00012734] 4eb9 0003 337c            jsr        find_entry
 [0001273a] 2e88                      move.l     a0,(a7)
 [0001273c] 2017                      move.l     (a7),d0
-[0001273e] 6616                      bne.s      $00012756
+[0001273e] 6616                      bne.s      add_fkt_2
 [00012740] 302f 0004                 move.w     4(a7),d0
 [00012744] 226f 0012                 movea.l    18(a7),a1
 [00012748] 206f 000a                 movea.l    10(a7),a0
 [0001274c] 4eb9 0003 5de0            jsr        dup_ref
 [00012752] 2e88                      move.l     a0,(a7)
-[00012754] 6006                      bra.s      $0001275C
+[00012754] 6006                      bra.s      add_fkt_3
+add_fkt_2:
 [00012756] 2057                      movea.l    (a7),a0
 [00012758] 5268 0036                 addq.w     #1,54(a0)
-[0001275c] 6002                      bra.s      $00012760
+add_fkt_3:
+[0001275c] 6002                      bra.s      add_fkt_4
+add_fkt_1:
 [0001275e] 4297                      clr.l      (a7)
+add_fkt_4:
 [00012760] 202f 0006                 move.l     6(a7),d0
-[00012764] 670e                      beq.s      $00012774
+[00012764] 670e                      beq.s      add_fkt_5
 [00012766] 226f 0006                 movea.l    6(a7),a1
 [0001276a] 206f 000a                 movea.l    10(a7),a0
 [0001276e] 4eb9 0003 5dae            jsr        del_ref
+add_fkt_5:
 [00012774] 2057                      movea.l    (a7),a0
 [00012776] 4fef 000e                 lea.l      14(a7),a7
 [0001277a] 4e75                      rts
+
 swap_obj:
 [0001277c] 4fef ffe0                 lea.l      -32(a7),a7
 [00012780] 2f48 001c                 move.l     a0,28(a7)
@@ -116,8 +132,9 @@ swap_obj:
 [0001279a] e488                      lsr.l      #2,d0
 [0001279c] 3f40 000e                 move.w     d0,14(a7)
 [000127a0] 426f 000c                 clr.w      12(a7)
-[000127a4] 6000 0082                 bra        $00012828
+[000127a4] 6000 0082                 bra        swap_obj_1
 [000127a8] 302f 000c                 move.w     12(a7),d0
+swap_obj_2:
 [000127ac] 48c0                      ext.l      d0
 [000127ae] e588                      lsl.l      #2,d0
 [000127b0] 206f 0004                 movea.l    4(a7),a0
@@ -149,11 +166,13 @@ swap_obj:
 [0001281a] 206f 0008                 movea.l    8(a7),a0
 [0001281e] 216f 0014 000e            move.l     20(a7),14(a0)
 [00012824] 526f 000c                 addq.w     #1,12(a7)
+swap_obj_1:
 [00012828] 302f 000c                 move.w     12(a7),d0
 [0001282c] b06f 000e                 cmp.w      14(a7),d0
-[00012830] 6d00 ff76                 blt        $000127A8
+[00012830] 6d00 ff76                 blt        swap_obj_2
 [00012834] 4fef 0020                 lea.l      32(a7),a7
 [00012838] 4e75                      rts
+
 acc_behave:
 [0001283a] 2f0a                      move.l     a2,-(a7)
 [0001283c] 4fef ffea                 lea.l      -22(a7),a7
@@ -161,8 +180,9 @@ acc_behave:
 [00012844] 206f 0012                 movea.l    18(a7),a0
 [00012848] 3028 0056                 move.w     86(a0),d0
 [0001284c] c07c 0200                 and.w      #$0200,d0
-[00012850] 6704                      beq.s      $00012856
-[00012852] 6000 0202                 bra        $00012A56
+[00012850] 6704                      beq.s      acc_behave_1
+[00012852] 6000 0202                 bra        acc_behave_2
+acc_behave_1:
 [00012856] 206f 0012                 movea.l    18(a7),a0
 [0001285a] 0068 0200 0056            ori.w      #$0200,86(a0)
 [00012860] 206f 0012                 movea.l    18(a7),a0
@@ -183,41 +203,47 @@ acc_behave:
 [0001289e] 7001                      moveq.l    #1,d0
 [000128a0] 206f 0006                 movea.l    6(a7),a0
 [000128a4] c068 02c2                 and.w      706(a0),d0
-[000128a8] 670a                      beq.s      $000128B4
+[000128a8] 670a                      beq.s      acc_behave_3
 [000128aa] 206f 000a                 movea.l    10(a7),a0
 [000128ae] 0068 4000 0006            ori.w      #$4000,6(a0)
+acc_behave_3:
 [000128b4] 7001                      moveq.l    #1,d0
 [000128b6] 206f 0006                 movea.l    6(a7),a0
 [000128ba] c068 00fa                 and.w      250(a0),d0
-[000128be] 670a                      beq.s      $000128CA
+[000128be] 670a                      beq.s      acc_behave_4
 [000128c0] 206f 000a                 movea.l    10(a7),a0
 [000128c4] 0068 2000 0006            ori.w      #$2000,6(a0)
+acc_behave_4:
 [000128ca] 7001                      moveq.l    #1,d0
 [000128cc] 206f 0006                 movea.l    6(a7),a0
 [000128d0] c068 012a                 and.w      298(a0),d0
-[000128d4] 670a                      beq.s      $000128E0
+[000128d4] 670a                      beq.s      acc_behave_5
 [000128d6] 206f 000a                 movea.l    10(a7),a0
 [000128da] 0068 1000 0006            ori.w      #$1000,6(a0)
+acc_behave_5:
 [000128e0] 7001                      moveq.l    #1,d0
 [000128e2] 206f 0006                 movea.l    6(a7),a0
 [000128e6] c068 0052                 and.w      82(a0),d0
-[000128ea] 670a                      beq.s      $000128F6
+[000128ea] 670a                      beq.s      acc_behave_6
 [000128ec] 206f 000a                 movea.l    10(a7),a0
 [000128f0] 0068 0800 0006            ori.w      #$0800,6(a0)
+acc_behave_6:
 [000128f6] 206f 000a                 movea.l    10(a7),a0
 [000128fa] 42a8 0170                 clr.l      368(a0)
 [000128fe] 7001                      moveq.l    #1,d0
 [00012900] 206f 0006                 movea.l    6(a7),a0
 [00012904] c068 02f2                 and.w      754(a0),d0
-[00012908] 670c                      beq.s      $00012916
+[00012908] 670c                      beq.s      acc_behave_7
 [0001290a] 206f 000a                 movea.l    10(a7),a0
 [0001290e] 00a8 0000 0002 0170       ori.l      #$00000002,368(a0)
+acc_behave_7:
 [00012916] 7001                      moveq.l    #1,d0
 [00012918] 206f 0006                 movea.l    6(a7),a0
 [0001291c] c068 015a                 and.w      346(a0),d0
-[00012920] 670c                      beq.s      $0001292E
+[00012920] 670c                      beq.s      acc_behave_8
 [00012922] 206f 000a                 movea.l    10(a7),a0
 [00012926] 00a8 0000 0001 0170       ori.l      #$00000001,368(a0)
+acc_behave_8:
 [0001292e] 206f 0006                 movea.l    6(a7),a0
 [00012932] 41e8 0078                 lea.l      120(a0),a0
 [00012936] 2f48 0002                 move.l     a0,2(a7)
@@ -247,15 +273,17 @@ acc_behave:
 [00012996] 206f 000a                 movea.l    10(a7),a0
 [0001299a] 3017                      move.w     (a7),d0
 [0001299c] b068 01f4                 cmp.w      500(a0),d0
-[000129a0] 6700 00b4                 beq        $00012A56
+[000129a0] 6700 00b4                 beq        acc_behave_2
 [000129a4] 4240                      clr.w      d0
 [000129a6] 206f 000a                 movea.l    10(a7),a0
 [000129aa] 4eb9 0001 8230            jsr        acs_closewi
 [000129b0] 3017                      move.w     (a7),d0
 [000129b2] 4a40                      tst.w      d0
-[000129b4] 6702                      beq.s      $000129B8
-[000129b6] 6002                      bra.s      $000129BA
-[000129b8] 6040                      bra.s      $000129FA
+[000129b4] 6702                      beq.s      acc_behave_9
+[000129b6] 6002                      bra.s      acc_behave_10
+acc_behave_9:
+[000129b8] 6040                      bra.s      acc_behave_11
+acc_behave_10:
 [000129ba] 3017                      move.w     (a7),d0
 [000129bc] 48c0                      ext.l      d0
 [000129be] e588                      lsl.l      #2,d0
@@ -276,12 +304,15 @@ acc_behave:
 [000129ee] 2068 0024                 movea.l    36(a0),a0
 [000129f2] 2068 0004                 movea.l    4(a0),a0
 [000129f6] 6100 fd84                 bsr        swap_obj
+acc_behave_11:
 [000129fa] 206f 000a                 movea.l    10(a7),a0
 [000129fe] 3028 01f4                 move.w     500(a0),d0
 [00012a02] 4a40                      tst.w      d0
-[00012a04] 6702                      beq.s      $00012A08
-[00012a06] 6002                      bra.s      $00012A0A
-[00012a08] 604c                      bra.s      $00012A56
+[00012a04] 6702                      beq.s      acc_behave_12
+[00012a06] 6002                      bra.s      acc_behave_13
+acc_behave_12:
+[00012a08] 604c                      bra.s      acc_behave_2
+acc_behave_13:
 [00012a0a] 206f 000a                 movea.l    10(a7),a0
 [00012a0e] 3028 01f4                 move.w     500(a0),d0
 [00012a12] 48c0                      ext.l      d0
@@ -304,22 +335,25 @@ acc_behave:
 [00012a4a] 2068 0024                 movea.l    36(a0),a0
 [00012a4e] 2068 0004                 movea.l    4(a0),a0
 [00012a52] 6100 fd28                 bsr        swap_obj
+acc_behave_2:
 [00012a56] 4fef 0016                 lea.l      22(a7),a7
 [00012a5a] 245f                      movea.l    (a7)+,a2
 [00012a5c] 4e75                      rts
+
 bh_make:
 [00012a5e] 4fef ff70                 lea.l      -144(a7),a7
 [00012a62] 2f48 008c                 move.l     a0,140(a7)
 [00012a66] 2f6f 008c 0088            move.l     140(a7),136(a7)
 [00012a6c] 206f 0088                 movea.l    136(a7),a0
 [00012a70] 2028 0148                 move.l     328(a0),d0
-[00012a74] 671a                      beq.s      $00012A90
+[00012a74] 671a                      beq.s      bh_make_1
 [00012a76] 206f 0088                 movea.l    136(a7),a0
 [00012a7a] 2068 0148                 movea.l    328(a0),a0
 [00012a7e] 4eb9 0005 6bea            jsr        Awi_show
 [00012a84] 206f 0088                 movea.l    136(a7),a0
 [00012a88] 2068 0148                 movea.l    328(a0),a0
-[00012a8c] 6000 00bc                 bra        $00012B4A
+[00012a8c] 6000 00bc                 bra        bh_make_2
+bh_make_1:
 [00012a90] 1f7c 0020 0004            move.b     #$20,4(a7)
 [00012a96] 206f 0088                 movea.l    136(a7),a0
 [00012a9a] 2268 0008                 movea.l    8(a0),a1
@@ -331,20 +365,23 @@ bh_make:
 [00012ab4] 4eb9 0008 2e9e            jsr        strrchr
 [00012aba] 2e88                      move.l     a0,(a7)
 [00012abc] 2017                      move.l     (a7),d0
-[00012abe] 6704                      beq.s      $00012AC4
+[00012abe] 6704                      beq.s      bh_make_3
 [00012ac0] 5297                      addq.l     #1,(a7)
-[00012ac2] 6006                      bra.s      $00012ACA
+[00012ac2] 6006                      bra.s      bh_make_4
+bh_make_3:
 [00012ac4] 41ef 0004                 lea.l      4(a7),a0
 [00012ac8] 2e88                      move.l     a0,(a7)
+bh_make_4:
 [00012aca] 2079 0008 ae18            movea.l    $0008AE18,a0
 [00012ad0] 2157 0008                 move.l     (a7),8(a0)
 [00012ad4] 41f9 0008 adbe            lea.l      WI_BEHAVE,a0
 [00012ada] 4eb9 0005 7052            jsr        Awi_create
 [00012ae0] 2f48 0084                 move.l     a0,132(a7)
 [00012ae4] 202f 0084                 move.l     132(a7),d0
-[00012ae8] 6604                      bne.s      $00012AEE
+[00012ae8] 6604                      bne.s      bh_make_5
 [00012aea] 91c8                      suba.l     a0,a0
-[00012aec] 605c                      bra.s      $00012B4A
+[00012aec] 605c                      bra.s      bh_make_2
+bh_make_5:
 [00012aee] 206f 0088                 movea.l    136(a7),a0
 [00012af2] 4868 0168                 pea.l      360(a0)
 [00012af6] 226f 008c                 movea.l    140(a7),a1
@@ -363,14 +400,17 @@ bh_make:
 [00012b2e] 2269 000c                 movea.l    12(a1),a1
 [00012b32] 4e91                      jsr        (a1)
 [00012b34] 4a40                      tst.w      d0
-[00012b36] 670e                      beq.s      $00012B46
+[00012b36] 670e                      beq.s      bh_make_6
 [00012b38] 206f 0084                 movea.l    132(a7),a0
 [00012b3c] 4eb9 0001 2cf2            jsr        term
 [00012b42] 91c8                      suba.l     a0,a0
-[00012b44] 6004                      bra.s      $00012B4A
+[00012b44] 6004                      bra.s      bh_make_2
+bh_make_6:
 [00012b46] 206f 0084                 movea.l    132(a7),a0
+bh_make_2:
 [00012b4a] 4fef 0090                 lea.l      144(a7),a7
 [00012b4e] 4e75                      rts
+
 bh_service:
 [00012b50] 4fef fff6                 lea.l      -10(a7),a7
 [00012b54] 2f48 0006                 move.l     a0,6(a7)
@@ -378,30 +418,37 @@ bh_service:
 [00012b5c] 2e89                      move.l     a1,(a7)
 [00012b5e] 302f 0004                 move.w     4(a7),d0
 [00012b62] 5540                      subq.w     #2,d0
-[00012b64] 6708                      beq.s      $00012B6E
+[00012b64] 6708                      beq.s      bh_service_1
 [00012b66] 907c 000d                 sub.w      #$000D,d0
-[00012b6a] 672e                      beq.s      $00012B9A
-[00012b6c] 602e                      bra.s      $00012B9C
+[00012b6a] 672e                      beq.s      bh_service_2
+[00012b6c] 602e                      bra.s      bh_service_3
+bh_service_1:
 [00012b6e] 206f 0006                 movea.l    6(a7),a0
 [00012b72] 3028 0056                 move.w     86(a0),d0
 [00012b76] c07c 0200                 and.w      #$0200,d0
-[00012b7a] 661c                      bne.s      $00012B98
+[00012b7a] 661c                      bne.s      bh_service_4
 [00012b7c] 206f 0006                 movea.l    6(a7),a0
 [00012b80] 0068 0200 0056            ori.w      #$0200,86(a0)
 [00012b86] 206f 0006                 movea.l    6(a7),a0
 [00012b8a] 6100 fcae                 bsr        acc_behave
 [00012b8e] 206f 0006                 movea.l    6(a7),a0
 [00012b92] 4eb9 0001 2cf2            jsr        term
-[00012b98] 6014                      bra.s      $00012BAE
-[00012b9a] 6012                      bra.s      $00012BAE
+bh_service_4:
+[00012b98] 6014                      bra.s      bh_service_5
+bh_service_2:
+[00012b9a] 6012                      bra.s      bh_service_5
+bh_service_3:
 [00012b9c] 2257                      movea.l    (a7),a1
 [00012b9e] 302f 0004                 move.w     4(a7),d0
 [00012ba2] 206f 0006                 movea.l    6(a7),a0
 [00012ba6] 4eb9 0005 9dd0            jsr        Awi_service
-[00012bac] 6002                      bra.s      $00012BB0
+[00012bac] 6002                      bra.s      bh_service_6
+bh_service_5:
 [00012bae] 7001                      moveq.l    #1,d0
+bh_service_6:
 [00012bb0] 4fef 000a                 lea.l      10(a7),a7
 [00012bb4] 4e75                      rts
+
 set_behave:
 [00012bb6] 2f0a                      move.l     a2,-(a7)
 [00012bb8] 4fef ffec                 lea.l      -20(a7),a7
@@ -445,10 +492,12 @@ set_behave:
 [00012c58] 7001                      moveq.l    #1,d0
 [00012c5a] 206f 0010                 movea.l    16(a7),a0
 [00012c5e] c0a8 0170                 and.l      368(a0),d0
-[00012c62] 6704                      beq.s      $00012C68
+[00012c62] 6704                      beq.s      set_behave_1
 [00012c64] 7001                      moveq.l    #1,d0
-[00012c66] 6002                      bra.s      $00012C6A
+[00012c66] 6002                      bra.s      set_behave_2
+set_behave_1:
 [00012c68] 4240                      clr.w      d0
+set_behave_2:
 [00012c6a] 205f                      movea.l    (a7)+,a0
 [00012c6c] 4eb9 0001 58a2            jsr        set_flag
 [00012c72] 206f 0004                 movea.l    4(a7),a0
@@ -457,10 +506,12 @@ set_behave:
 [00012c7c] 7002                      moveq.l    #2,d0
 [00012c7e] 206f 0010                 movea.l    16(a7),a0
 [00012c82] c0a8 0170                 and.l      368(a0),d0
-[00012c86] 6704                      beq.s      $00012C8C
+[00012c86] 6704                      beq.s      set_behave_3
 [00012c88] 7001                      moveq.l    #1,d0
-[00012c8a] 6002                      bra.s      $00012C8E
+[00012c8a] 6002                      bra.s      set_behave_4
+set_behave_3:
 [00012c8c] 4240                      clr.w      d0
+set_behave_4:
 [00012c8e] 205f                      movea.l    (a7)+,a0
 [00012c90] 4eb9 0001 58a2            jsr        set_flag
 [00012c96] 206f 0004                 movea.l    4(a7),a0
@@ -490,6 +541,7 @@ set_behave:
 [00012cea] 4fef 0014                 lea.l      20(a7),a7
 [00012cee] 245f                      movea.l    (a7)+,a2
 [00012cf0] 4e75                      rts
+
 term:
 [00012cf2] 514f                      subq.w     #8,a7
 [00012cf4] 2f48 0004                 move.l     a0,4(a7)
@@ -498,26 +550,29 @@ term:
 [00012cfe] 206f 0004                 movea.l    4(a7),a0
 [00012d02] 3028 0056                 move.w     86(a0),d0
 [00012d06] c07c 0800                 and.w      #$0800,d0
-[00012d0a] 6718                      beq.s      $00012D24
+[00012d0a] 6718                      beq.s      term_1
 [00012d0c] 7008                      moveq.l    #8,d0
 [00012d0e] 226f 0004                 movea.l    4(a7),a1
 [00012d12] 43e9 002c                 lea.l      44(a1),a1
 [00012d16] 2057                      movea.l    (a7),a0
 [00012d18] 41e8 015c                 lea.l      348(a0),a0
 [00012d1c] 4eb9 0008 3500            jsr        memcpy
-[00012d22] 6016                      bra.s      $00012D3A
+[00012d22] 6016                      bra.s      term_2
+term_1:
 [00012d24] 7008                      moveq.l    #8,d0
 [00012d26] 226f 0004                 movea.l    4(a7),a1
 [00012d2a] 43e9 0024                 lea.l      36(a1),a1
 [00012d2e] 2057                      movea.l    (a7),a0
 [00012d30] 41e8 015c                 lea.l      348(a0),a0
 [00012d34] 4eb9 0008 3500            jsr        memcpy
+term_2:
 [00012d3a] 206f 0004                 movea.l    4(a7),a0
 [00012d3e] 4eb9 0005 85f2            jsr        Awi_delete
 [00012d44] 2057                      movea.l    (a7),a0
 [00012d46] 42a8 0148                 clr.l      328(a0)
 [00012d4a] 504f                      addq.w     #8,a7
 [00012d4c] 4e75                      rts
+
 edmm_setflag:
 [00012d4e] 4fef fff2                 lea.l      -14(a7),a7
 [00012d52] 2f48 000a                 move.l     a0,10(a7)
@@ -534,30 +589,36 @@ edmm_setflag:
 [00012d72] e789                      lsl.l      #3,d1
 [00012d74] 206f 000a                 movea.l    10(a7),a0
 [00012d78] c070 180a                 and.w      10(a0,d1.l),d0
-[00012d7c] 671e                      beq.s      $00012D9C
+[00012d7c] 671e                      beq.s      edmm_setflag_1
 [00012d7e] 3017                      move.w     (a7),d0
-[00012d80] 670e                      beq.s      $00012D90
+[00012d80] 670e                      beq.s      edmm_setflag_2
 [00012d82] 302f 0002                 move.w     2(a7),d0
 [00012d86] 4640                      not.w      d0
 [00012d88] 206f 0004                 movea.l    4(a7),a0
 [00012d8c] c150                      and.w      d0,(a0)
-[00012d8e] 600a                      bra.s      $00012D9A
+[00012d8e] 600a                      bra.s      edmm_setflag_3
+edmm_setflag_2:
 [00012d90] 302f 0002                 move.w     2(a7),d0
 [00012d94] 206f 0004                 movea.l    4(a7),a0
 [00012d98] 8150                      or.w       d0,(a0)
-[00012d9a] 601c                      bra.s      $00012DB8
+edmm_setflag_3:
+[00012d9a] 601c                      bra.s      edmm_setflag_4
+edmm_setflag_1:
 [00012d9c] 3017                      move.w     (a7),d0
-[00012d9e] 670c                      beq.s      $00012DAC
+[00012d9e] 670c                      beq.s      edmm_setflag_5
 [00012da0] 302f 0002                 move.w     2(a7),d0
 [00012da4] 206f 0004                 movea.l    4(a7),a0
 [00012da8] 8150                      or.w       d0,(a0)
-[00012daa] 600c                      bra.s      $00012DB8
+[00012daa] 600c                      bra.s      edmm_setflag_4
+edmm_setflag_5:
 [00012dac] 302f 0002                 move.w     2(a7),d0
 [00012db0] 4640                      not.w      d0
 [00012db2] 206f 0004                 movea.l    4(a7),a0
 [00012db6] c150                      and.w      d0,(a0)
+edmm_setflag_4:
 [00012db8] 4fef 000e                 lea.l      14(a7),a7
 [00012dbc] 4e75                      rts
+
 edmm_enable:
 [00012dbe] 4fef fff4                 lea.l      -12(a7),a7
 [00012dc2] 2f48 0008                 move.l     a0,8(a7)
@@ -573,163 +634,199 @@ edmm_enable:
 [00012de8] 3e80                      move.w     d0,(a7)
 [00012dea] 4eb9 0005 5c5a            jsr        Awi_ontop
 [00012df0] b1ef 0008                 cmpa.l     8(a7),a0
-[00012df4] 6606                      bne.s      $00012DFC
+[00012df4] 6606                      bne.s      edmm_enable_1
 [00012df6] 4eb9 0005 1388            jsr        Awi_diaend
+edmm_enable_1:
 [00012dfc] 7001                      moveq.l    #1,d0
 [00012dfe] 206f 0004                 movea.l    4(a7),a0
 [00012e02] c068 0022                 and.w      34(a0),d0
 [00012e06] 3f40 0002                 move.w     d0,2(a7)
 [00012e0a] 302f 0002                 move.w     2(a7),d0
-[00012e0e] 6604                      bne.s      $00012E14
+[00012e0e] 6604                      bne.s      edmm_enable_2
 [00012e10] 7401                      moveq.l    #1,d2
-[00012e12] 6002                      bra.s      $00012E16
+[00012e12] 6002                      bra.s      edmm_enable_3
+edmm_enable_2:
 [00012e14] 4242                      clr.w      d2
+edmm_enable_3:
 [00012e16] 7208                      moveq.l    #8,d1
 [00012e18] 7004                      moveq.l    #4,d0
 [00012e1a] 206f 0008                 movea.l    8(a7),a0
 [00012e1e] 4eb9 0005 484e            jsr        Aob_state
 [00012e24] 302f 0002                 move.w     2(a7),d0
-[00012e28] 6704                      beq.s      $00012E2E
+[00012e28] 6704                      beq.s      edmm_enable_4
 [00012e2a] 3017                      move.w     (a7),d0
-[00012e2c] 6604                      bne.s      $00012E32
+[00012e2c] 6604                      bne.s      edmm_enable_5
+edmm_enable_4:
 [00012e2e] 7401                      moveq.l    #1,d2
-[00012e30] 6002                      bra.s      $00012E34
+[00012e30] 6002                      bra.s      edmm_enable_6
+edmm_enable_5:
 [00012e32] 4242                      clr.w      d2
+edmm_enable_6:
 [00012e34] 7208                      moveq.l    #8,d1
 [00012e36] 700a                      moveq.l    #10,d0
 [00012e38] 206f 0008                 movea.l    8(a7),a0
 [00012e3c] 4eb9 0005 484e            jsr        Aob_state
 [00012e42] 302f 0002                 move.w     2(a7),d0
-[00012e46] 6604                      bne.s      $00012E4C
+[00012e46] 6604                      bne.s      edmm_enable_7
 [00012e48] 7401                      moveq.l    #1,d2
-[00012e4a] 6002                      bra.s      $00012E4E
+[00012e4a] 6002                      bra.s      edmm_enable_8
+edmm_enable_7:
 [00012e4c] 4242                      clr.w      d2
+edmm_enable_8:
 [00012e4e] 7208                      moveq.l    #8,d1
 [00012e50] 7006                      moveq.l    #6,d0
 [00012e52] 206f 0008                 movea.l    8(a7),a0
 [00012e56] 4eb9 0005 484e            jsr        Aob_state
 [00012e5c] 302f 0002                 move.w     2(a7),d0
-[00012e60] 6604                      bne.s      $00012E66
+[00012e60] 6604                      bne.s      edmm_enable_9
 [00012e62] 7401                      moveq.l    #1,d2
-[00012e64] 6002                      bra.s      $00012E68
+[00012e64] 6002                      bra.s      edmm_enable_10
+edmm_enable_9:
 [00012e66] 4242                      clr.w      d2
+edmm_enable_10:
 [00012e68] 7208                      moveq.l    #8,d1
 [00012e6a] 7008                      moveq.l    #8,d0
 [00012e6c] 206f 0008                 movea.l    8(a7),a0
 [00012e70] 4eb9 0005 484e            jsr        Aob_state
 [00012e76] 302f 0002                 move.w     2(a7),d0
-[00012e7a] 6604                      bne.s      $00012E80
+[00012e7a] 6604                      bne.s      edmm_enable_11
 [00012e7c] 7401                      moveq.l    #1,d2
-[00012e7e] 6002                      bra.s      $00012E82
+[00012e7e] 6002                      bra.s      edmm_enable_12
+edmm_enable_11:
 [00012e80] 4242                      clr.w      d2
+edmm_enable_12:
 [00012e82] 7208                      moveq.l    #8,d1
 [00012e84] 7028                      moveq.l    #40,d0
 [00012e86] 206f 0008                 movea.l    8(a7),a0
 [00012e8a] 4eb9 0005 484e            jsr        Aob_state
 [00012e90] 302f 0002                 move.w     2(a7),d0
-[00012e94] 6604                      bne.s      $00012E9A
+[00012e94] 6604                      bne.s      edmm_enable_13
 [00012e96] 7401                      moveq.l    #1,d2
-[00012e98] 6002                      bra.s      $00012E9C
+[00012e98] 6002                      bra.s      edmm_enable_14
+edmm_enable_13:
 [00012e9a] 4242                      clr.w      d2
+edmm_enable_14:
 [00012e9c] 7208                      moveq.l    #8,d1
 [00012e9e] 702a                      moveq.l    #42,d0
 [00012ea0] 206f 0008                 movea.l    8(a7),a0
 [00012ea4] 4eb9 0005 484e            jsr        Aob_state
 [00012eaa] 302f 0002                 move.w     2(a7),d0
-[00012eae] 6604                      bne.s      $00012EB4
+[00012eae] 6604                      bne.s      edmm_enable_15
 [00012eb0] 7401                      moveq.l    #1,d2
-[00012eb2] 6002                      bra.s      $00012EB6
+[00012eb2] 6002                      bra.s      edmm_enable_16
+edmm_enable_15:
 [00012eb4] 4242                      clr.w      d2
+edmm_enable_16:
 [00012eb6] 7208                      moveq.l    #8,d1
 [00012eb8] 702c                      moveq.l    #44,d0
 [00012eba] 206f 0008                 movea.l    8(a7),a0
 [00012ebe] 4eb9 0005 484e            jsr        Aob_state
 [00012ec4] 302f 0002                 move.w     2(a7),d0
-[00012ec8] 6604                      bne.s      $00012ECE
+[00012ec8] 6604                      bne.s      edmm_enable_17
 [00012eca] 7401                      moveq.l    #1,d2
-[00012ecc] 6002                      bra.s      $00012ED0
+[00012ecc] 6002                      bra.s      edmm_enable_18
+edmm_enable_17:
 [00012ece] 4242                      clr.w      d2
+edmm_enable_18:
 [00012ed0] 7208                      moveq.l    #8,d1
 [00012ed2] 702e                      moveq.l    #46,d0
 [00012ed4] 206f 0008                 movea.l    8(a7),a0
 [00012ed8] 4eb9 0005 484e            jsr        Aob_state
 [00012ede] 302f 0002                 move.w     2(a7),d0
-[00012ee2] 6604                      bne.s      $00012EE8
+[00012ee2] 6604                      bne.s      edmm_enable_19
 [00012ee4] 7401                      moveq.l    #1,d2
-[00012ee6] 6002                      bra.s      $00012EEA
+[00012ee6] 6002                      bra.s      edmm_enable_20
+edmm_enable_19:
 [00012ee8] 4242                      clr.w      d2
+edmm_enable_20:
 [00012eea] 7208                      moveq.l    #8,d1
 [00012eec] 7024                      moveq.l    #36,d0
 [00012eee] 206f 0008                 movea.l    8(a7),a0
 [00012ef2] 4eb9 0005 484e            jsr        Aob_state
 [00012ef8] 302f 0002                 move.w     2(a7),d0
-[00012efc] 6604                      bne.s      $00012F02
+[00012efc] 6604                      bne.s      edmm_enable_21
 [00012efe] 7401                      moveq.l    #1,d2
-[00012f00] 6002                      bra.s      $00012F04
+[00012f00] 6002                      bra.s      edmm_enable_22
+edmm_enable_21:
 [00012f02] 4242                      clr.w      d2
+edmm_enable_22:
 [00012f04] 7208                      moveq.l    #8,d1
 [00012f06] 7026                      moveq.l    #38,d0
 [00012f08] 206f 0008                 movea.l    8(a7),a0
 [00012f0c] 4eb9 0005 484e            jsr        Aob_state
 [00012f12] 302f 0002                 move.w     2(a7),d0
-[00012f16] 6604                      bne.s      $00012F1C
+[00012f16] 6604                      bne.s      edmm_enable_23
 [00012f18] 7401                      moveq.l    #1,d2
-[00012f1a] 6002                      bra.s      $00012F1E
+[00012f1a] 6002                      bra.s      edmm_enable_24
+edmm_enable_23:
 [00012f1c] 4242                      clr.w      d2
+edmm_enable_24:
 [00012f1e] 7208                      moveq.l    #8,d1
 [00012f20] 7030                      moveq.l    #48,d0
 [00012f22] 206f 0008                 movea.l    8(a7),a0
 [00012f26] 4eb9 0005 484e            jsr        Aob_state
 [00012f2c] 302f 0002                 move.w     2(a7),d0
-[00012f30] 6604                      bne.s      $00012F36
+[00012f30] 6604                      bne.s      edmm_enable_25
 [00012f32] 7401                      moveq.l    #1,d2
-[00012f34] 6002                      bra.s      $00012F38
+[00012f34] 6002                      bra.s      edmm_enable_26
+edmm_enable_25:
 [00012f36] 4242                      clr.w      d2
+edmm_enable_26:
 [00012f38] 7208                      moveq.l    #8,d1
 [00012f3a] 7032                      moveq.l    #50,d0
 [00012f3c] 206f 0008                 movea.l    8(a7),a0
 [00012f40] 4eb9 0005 484e            jsr        Aob_state
 [00012f46] 302f 0002                 move.w     2(a7),d0
-[00012f4a] 6604                      bne.s      $00012F50
+[00012f4a] 6604                      bne.s      edmm_enable_27
 [00012f4c] 7401                      moveq.l    #1,d2
-[00012f4e] 6002                      bra.s      $00012F52
+[00012f4e] 6002                      bra.s      edmm_enable_28
+edmm_enable_27:
 [00012f50] 4242                      clr.w      d2
+edmm_enable_28:
 [00012f52] 7208                      moveq.l    #8,d1
 [00012f54] 7034                      moveq.l    #52,d0
 [00012f56] 206f 0008                 movea.l    8(a7),a0
 [00012f5a] 4eb9 0005 484e            jsr        Aob_state
 [00012f60] 302f 0002                 move.w     2(a7),d0
-[00012f64] 6604                      bne.s      $00012F6A
+[00012f64] 6604                      bne.s      edmm_enable_29
 [00012f66] 7401                      moveq.l    #1,d2
-[00012f68] 6002                      bra.s      $00012F6C
+[00012f68] 6002                      bra.s      edmm_enable_30
+edmm_enable_29:
 [00012f6a] 4242                      clr.w      d2
+edmm_enable_30:
 [00012f6c] 7208                      moveq.l    #8,d1
 [00012f6e] 7036                      moveq.l    #54,d0
 [00012f70] 206f 0008                 movea.l    8(a7),a0
 [00012f74] 4eb9 0005 484e            jsr        Aob_state
 [00012f7a] 302f 0002                 move.w     2(a7),d0
-[00012f7e] 6604                      bne.s      $00012F84
+[00012f7e] 6604                      bne.s      edmm_enable_31
 [00012f80] 7401                      moveq.l    #1,d2
-[00012f82] 6002                      bra.s      $00012F86
+[00012f82] 6002                      bra.s      edmm_enable_32
+edmm_enable_31:
 [00012f84] 4242                      clr.w      d2
+edmm_enable_32:
 [00012f86] 7208                      moveq.l    #8,d1
 [00012f88] 7038                      moveq.l    #56,d0
 [00012f8a] 206f 0008                 movea.l    8(a7),a0
 [00012f8e] 4eb9 0005 484e            jsr        Aob_state
 [00012f94] 302f 0002                 move.w     2(a7),d0
-[00012f98] 6604                      bne.s      $00012F9E
+[00012f98] 6604                      bne.s      edmm_enable_33
 [00012f9a] 7401                      moveq.l    #1,d2
-[00012f9c] 6002                      bra.s      $00012FA0
+[00012f9c] 6002                      bra.s      edmm_enable_34
+edmm_enable_33:
 [00012f9e] 4242                      clr.w      d2
+edmm_enable_34:
 [00012fa0] 7208                      moveq.l    #8,d1
 [00012fa2] 7021                      moveq.l    #33,d0
 [00012fa4] 206f 0008                 movea.l    8(a7),a0
 [00012fa8] 4eb9 0005 484e            jsr        Aob_state
 [00012fae] 302f 0002                 move.w     2(a7),d0
-[00012fb2] 6604                      bne.s      $00012FB8
+[00012fb2] 6604                      bne.s      edmm_enable_35
 [00012fb4] 7401                      moveq.l    #1,d2
-[00012fb6] 6002                      bra.s      $00012FBA
+[00012fb6] 6002                      bra.s      edmm_enable_36
+edmm_enable_35:
 [00012fb8] 4242                      clr.w      d2
+edmm_enable_36:
 [00012fba] 7208                      moveq.l    #8,d1
 [00012fbc] 7010                      moveq.l    #16,d0
 [00012fbe] 206f 0008                 movea.l    8(a7),a0
@@ -740,10 +837,12 @@ edmm_enable:
 [00012fd0] 206f 0008                 movea.l    8(a7),a0
 [00012fd4] 4eb9 0005 4784            jsr        Aob_flags
 [00012fda] 302f 0002                 move.w     2(a7),d0
-[00012fde] 6604                      bne.s      $00012FE4
+[00012fde] 6604                      bne.s      edmm_enable_37
 [00012fe0] 7401                      moveq.l    #1,d2
-[00012fe2] 6002                      bra.s      $00012FE6
+[00012fe2] 6002                      bra.s      edmm_enable_38
+edmm_enable_37:
 [00012fe4] 4242                      clr.w      d2
+edmm_enable_38:
 [00012fe6] 7208                      moveq.l    #8,d1
 [00012fe8] 7011                      moveq.l    #17,d0
 [00012fea] 206f 0008                 movea.l    8(a7),a0
@@ -754,10 +853,12 @@ edmm_enable:
 [00012ffc] 206f 0008                 movea.l    8(a7),a0
 [00013000] 4eb9 0005 4784            jsr        Aob_flags
 [00013006] 302f 0002                 move.w     2(a7),d0
-[0001300a] 6604                      bne.s      $00013010
+[0001300a] 6604                      bne.s      edmm_enable_39
 [0001300c] 7401                      moveq.l    #1,d2
-[0001300e] 6002                      bra.s      $00013012
+[0001300e] 6002                      bra.s      edmm_enable_40
+edmm_enable_39:
 [00013010] 4242                      clr.w      d2
+edmm_enable_40:
 [00013012] 7208                      moveq.l    #8,d1
 [00013014] 7013                      moveq.l    #19,d0
 [00013016] 206f 0008                 movea.l    8(a7),a0
@@ -768,10 +869,12 @@ edmm_enable:
 [00013028] 206f 0008                 movea.l    8(a7),a0
 [0001302c] 4eb9 0005 4784            jsr        Aob_flags
 [00013032] 302f 0002                 move.w     2(a7),d0
-[00013036] 6604                      bne.s      $0001303C
+[00013036] 6604                      bne.s      edmm_enable_41
 [00013038] 7401                      moveq.l    #1,d2
-[0001303a] 6002                      bra.s      $0001303E
+[0001303a] 6002                      bra.s      edmm_enable_42
+edmm_enable_41:
 [0001303c] 4242                      clr.w      d2
+edmm_enable_42:
 [0001303e] 7208                      moveq.l    #8,d1
 [00013040] 701d                      moveq.l    #29,d0
 [00013042] 206f 0008                 movea.l    8(a7),a0
@@ -782,10 +885,12 @@ edmm_enable:
 [00013054] 206f 0008                 movea.l    8(a7),a0
 [00013058] 4eb9 0005 4784            jsr        Aob_flags
 [0001305e] 302f 0002                 move.w     2(a7),d0
-[00013062] 6604                      bne.s      $00013068
+[00013062] 6604                      bne.s      edmm_enable_43
 [00013064] 7401                      moveq.l    #1,d2
-[00013066] 6002                      bra.s      $0001306A
+[00013066] 6002                      bra.s      edmm_enable_44
+edmm_enable_43:
 [00013068] 4242                      clr.w      d2
+edmm_enable_44:
 [0001306a] 7208                      moveq.l    #8,d1
 [0001306c] 701e                      moveq.l    #30,d0
 [0001306e] 206f 0008                 movea.l    8(a7),a0
@@ -796,10 +901,12 @@ edmm_enable:
 [00013080] 206f 0008                 movea.l    8(a7),a0
 [00013084] 4eb9 0005 4784            jsr        Aob_flags
 [0001308a] 302f 0002                 move.w     2(a7),d0
-[0001308e] 6604                      bne.s      $00013094
+[0001308e] 6604                      bne.s      edmm_enable_45
 [00013090] 7401                      moveq.l    #1,d2
-[00013092] 6002                      bra.s      $00013096
+[00013092] 6002                      bra.s      edmm_enable_46
+edmm_enable_45:
 [00013094] 4242                      clr.w      d2
+edmm_enable_46:
 [00013096] 7208                      moveq.l    #8,d1
 [00013098] 703e                      moveq.l    #62,d0
 [0001309a] 206f 0008                 movea.l    8(a7),a0
@@ -810,10 +917,12 @@ edmm_enable:
 [000130ac] 206f 0008                 movea.l    8(a7),a0
 [000130b0] 4eb9 0005 4784            jsr        Aob_flags
 [000130b6] 302f 0002                 move.w     2(a7),d0
-[000130ba] 6604                      bne.s      $000130C0
+[000130ba] 6604                      bne.s      edmm_enable_47
 [000130bc] 7401                      moveq.l    #1,d2
-[000130be] 6002                      bra.s      $000130C2
+[000130be] 6002                      bra.s      edmm_enable_48
+edmm_enable_47:
 [000130c0] 4242                      clr.w      d2
+edmm_enable_48:
 [000130c2] 7208                      moveq.l    #8,d1
 [000130c4] 703f                      moveq.l    #63,d0
 [000130c6] 206f 0008                 movea.l    8(a7),a0
@@ -824,10 +933,12 @@ edmm_enable:
 [000130d8] 206f 0008                 movea.l    8(a7),a0
 [000130dc] 4eb9 0005 4784            jsr        Aob_flags
 [000130e2] 302f 0002                 move.w     2(a7),d0
-[000130e6] 6604                      bne.s      $000130EC
+[000130e6] 6604                      bne.s      edmm_enable_49
 [000130e8] 7401                      moveq.l    #1,d2
-[000130ea] 6002                      bra.s      $000130EE
+[000130ea] 6002                      bra.s      edmm_enable_50
+edmm_enable_49:
 [000130ec] 4242                      clr.w      d2
+edmm_enable_50:
 [000130ee] 7208                      moveq.l    #8,d1
 [000130f0] 7040                      moveq.l    #64,d0
 [000130f2] 206f 0008                 movea.l    8(a7),a0
@@ -838,10 +949,12 @@ edmm_enable:
 [00013104] 206f 0008                 movea.l    8(a7),a0
 [00013108] 4eb9 0005 4784            jsr        Aob_flags
 [0001310e] 302f 0002                 move.w     2(a7),d0
-[00013112] 6604                      bne.s      $00013118
+[00013112] 6604                      bne.s      edmm_enable_51
 [00013114] 7401                      moveq.l    #1,d2
-[00013116] 6002                      bra.s      $0001311A
+[00013116] 6002                      bra.s      edmm_enable_52
+edmm_enable_51:
 [00013118] 4242                      clr.w      d2
+edmm_enable_52:
 [0001311a] 7208                      moveq.l    #8,d1
 [0001311c] 7041                      moveq.l    #65,d0
 [0001311e] 206f 0008                 movea.l    8(a7),a0
@@ -852,10 +965,12 @@ edmm_enable:
 [00013130] 206f 0008                 movea.l    8(a7),a0
 [00013134] 4eb9 0005 4784            jsr        Aob_flags
 [0001313a] 302f 0002                 move.w     2(a7),d0
-[0001313e] 6604                      bne.s      $00013144
+[0001313e] 6604                      bne.s      edmm_enable_53
 [00013140] 7401                      moveq.l    #1,d2
-[00013142] 6002                      bra.s      $00013146
+[00013142] 6002                      bra.s      edmm_enable_54
+edmm_enable_53:
 [00013144] 4242                      clr.w      d2
+edmm_enable_54:
 [00013146] 7208                      moveq.l    #8,d1
 [00013148] 7042                      moveq.l    #66,d0
 [0001314a] 206f 0008                 movea.l    8(a7),a0
@@ -866,10 +981,12 @@ edmm_enable:
 [0001315c] 206f 0008                 movea.l    8(a7),a0
 [00013160] 4eb9 0005 4784            jsr        Aob_flags
 [00013166] 302f 0002                 move.w     2(a7),d0
-[0001316a] 6604                      bne.s      $00013170
+[0001316a] 6604                      bne.s      edmm_enable_55
 [0001316c] 7401                      moveq.l    #1,d2
-[0001316e] 6002                      bra.s      $00013172
+[0001316e] 6002                      bra.s      edmm_enable_56
+edmm_enable_55:
 [00013170] 4242                      clr.w      d2
+edmm_enable_56:
 [00013172] 7208                      moveq.l    #8,d1
 [00013174] 704b                      moveq.l    #75,d0
 [00013176] 206f 0008                 movea.l    8(a7),a0
@@ -880,10 +997,12 @@ edmm_enable:
 [00013188] 206f 0008                 movea.l    8(a7),a0
 [0001318c] 4eb9 0005 4784            jsr        Aob_flags
 [00013192] 302f 0002                 move.w     2(a7),d0
-[00013196] 6604                      bne.s      $0001319C
+[00013196] 6604                      bne.s      edmm_enable_57
 [00013198] 7401                      moveq.l    #1,d2
-[0001319a] 6002                      bra.s      $0001319E
+[0001319a] 6002                      bra.s      edmm_enable_58
+edmm_enable_57:
 [0001319c] 4242                      clr.w      d2
+edmm_enable_58:
 [0001319e] 7208                      moveq.l    #8,d1
 [000131a0] 704c                      moveq.l    #76,d0
 [000131a2] 206f 0008                 movea.l    8(a7),a0
@@ -894,10 +1013,12 @@ edmm_enable:
 [000131b4] 206f 0008                 movea.l    8(a7),a0
 [000131b8] 4eb9 0005 4784            jsr        Aob_flags
 [000131be] 302f 0002                 move.w     2(a7),d0
-[000131c2] 6604                      bne.s      $000131C8
+[000131c2] 6604                      bne.s      edmm_enable_59
 [000131c4] 7401                      moveq.l    #1,d2
-[000131c6] 6002                      bra.s      $000131CA
+[000131c6] 6002                      bra.s      edmm_enable_60
+edmm_enable_59:
 [000131c8] 4242                      clr.w      d2
+edmm_enable_60:
 [000131ca] 7208                      moveq.l    #8,d1
 [000131cc] 704d                      moveq.l    #77,d0
 [000131ce] 206f 0008                 movea.l    8(a7),a0
@@ -908,10 +1029,12 @@ edmm_enable:
 [000131e0] 206f 0008                 movea.l    8(a7),a0
 [000131e4] 4eb9 0005 4784            jsr        Aob_flags
 [000131ea] 302f 0002                 move.w     2(a7),d0
-[000131ee] 6604                      bne.s      $000131F4
+[000131ee] 6604                      bne.s      edmm_enable_61
 [000131f0] 7401                      moveq.l    #1,d2
-[000131f2] 6002                      bra.s      $000131F6
+[000131f2] 6002                      bra.s      edmm_enable_62
+edmm_enable_61:
 [000131f4] 4242                      clr.w      d2
+edmm_enable_62:
 [000131f6] 7208                      moveq.l    #8,d1
 [000131f8] 704e                      moveq.l    #78,d0
 [000131fa] 206f 0008                 movea.l    8(a7),a0
@@ -922,10 +1045,12 @@ edmm_enable:
 [0001320c] 206f 0008                 movea.l    8(a7),a0
 [00013210] 4eb9 0005 4784            jsr        Aob_flags
 [00013216] 302f 0002                 move.w     2(a7),d0
-[0001321a] 6604                      bne.s      $00013220
+[0001321a] 6604                      bne.s      edmm_enable_63
 [0001321c] 7401                      moveq.l    #1,d2
-[0001321e] 6002                      bra.s      $00013222
+[0001321e] 6002                      bra.s      edmm_enable_64
+edmm_enable_63:
 [00013220] 4242                      clr.w      d2
+edmm_enable_64:
 [00013222] 7208                      moveq.l    #8,d1
 [00013224] 704f                      moveq.l    #79,d0
 [00013226] 206f 0008                 movea.l    8(a7),a0
@@ -936,10 +1061,12 @@ edmm_enable:
 [00013238] 206f 0008                 movea.l    8(a7),a0
 [0001323c] 4eb9 0005 4784            jsr        Aob_flags
 [00013242] 302f 0002                 move.w     2(a7),d0
-[00013246] 6604                      bne.s      $0001324C
+[00013246] 6604                      bne.s      edmm_enable_65
 [00013248] 7401                      moveq.l    #1,d2
-[0001324a] 6002                      bra.s      $0001324E
+[0001324a] 6002                      bra.s      edmm_enable_66
+edmm_enable_65:
 [0001324c] 4242                      clr.w      d2
+edmm_enable_66:
 [0001324e] 7208                      moveq.l    #8,d1
 [00013250] 705f                      moveq.l    #95,d0
 [00013252] 206f 0008                 movea.l    8(a7),a0
@@ -950,10 +1077,12 @@ edmm_enable:
 [00013264] 206f 0008                 movea.l    8(a7),a0
 [00013268] 4eb9 0005 4784            jsr        Aob_flags
 [0001326e] 302f 0002                 move.w     2(a7),d0
-[00013272] 6604                      bne.s      $00013278
+[00013272] 6604                      bne.s      edmm_enable_67
 [00013274] 7401                      moveq.l    #1,d2
-[00013276] 6002                      bra.s      $0001327A
+[00013276] 6002                      bra.s      edmm_enable_68
+edmm_enable_67:
 [00013278] 4242                      clr.w      d2
+edmm_enable_68:
 [0001327a] 7208                      moveq.l    #8,d1
 [0001327c] 7056                      moveq.l    #86,d0
 [0001327e] 206f 0008                 movea.l    8(a7),a0
@@ -964,10 +1093,12 @@ edmm_enable:
 [00013290] 206f 0008                 movea.l    8(a7),a0
 [00013294] 4eb9 0005 4784            jsr        Aob_flags
 [0001329a] 302f 0002                 move.w     2(a7),d0
-[0001329e] 6604                      bne.s      $000132A4
+[0001329e] 6604                      bne.s      edmm_enable_69
 [000132a0] 7401                      moveq.l    #1,d2
-[000132a2] 6002                      bra.s      $000132A6
+[000132a2] 6002                      bra.s      edmm_enable_70
+edmm_enable_69:
 [000132a4] 4242                      clr.w      d2
+edmm_enable_70:
 [000132a6] 7208                      moveq.l    #8,d1
 [000132a8] 7058                      moveq.l    #88,d0
 [000132aa] 206f 0008                 movea.l    8(a7),a0
@@ -979,10 +1110,12 @@ edmm_enable:
 [000132c0] 4eb9 0005 4784            jsr        Aob_flags
 [000132c6] 4eb9 0005 5c5a            jsr        Awi_ontop
 [000132cc] b1ef 0008                 cmpa.l     8(a7),a0
-[000132d0] 6606                      bne.s      $000132D8
+[000132d0] 6606                      bne.s      edmm_enable_71
 [000132d2] 4eb9 0005 147c            jsr        Awi_diastart
+edmm_enable_71:
 [000132d8] 4fef 000c                 lea.l      12(a7),a7
 [000132dc] 4e75                      rts
+
 edmm_setval:
 [000132de] 4fef ffe8                 lea.l      -24(a7),a7
 [000132e2] 2f48 0014                 move.l     a0,20(a7)
@@ -999,10 +1132,12 @@ edmm_setval:
 [0001330e] 206f 0010                 movea.l    16(a7),a0
 [00013312] 3028 0006                 move.w     6(a0),d0
 [00013316] c07c 8000                 and.w      #$8000,d0
-[0001331a] 6604                      bne.s      $00013320
+[0001331a] 6604                      bne.s      edmm_setval_1
 [0001331c] 7401                      moveq.l    #1,d2
-[0001331e] 6002                      bra.s      $00013322
+[0001331e] 6002                      bra.s      edmm_setval_2
+edmm_setval_1:
 [00013320] 4242                      clr.w      d2
+edmm_setval_2:
 [00013322] 7201                      moveq.l    #1,d1
 [00013324] 7001                      moveq.l    #1,d0
 [00013326] 206f 0014                 movea.l    20(a7),a0
@@ -1080,10 +1215,12 @@ edmm_setval:
 [00013422] 206f 0010                 movea.l    16(a7),a0
 [00013426] 3028 005a                 move.w     90(a0),d0
 [0001342a] c07c 0100                 and.w      #$0100,d0
-[0001342e] 6604                      bne.s      $00013434
+[0001342e] 6604                      bne.s      edmm_setval_3
 [00013430] 7401                      moveq.l    #1,d2
-[00013432] 6002                      bra.s      $00013436
+[00013432] 6002                      bra.s      edmm_setval_4
+edmm_setval_3:
 [00013434] 4242                      clr.w      d2
+edmm_setval_4:
 [00013436] 7201                      moveq.l    #1,d1
 [00013438] 7030                      moveq.l    #48,d0
 [0001343a] 206f 0014                 movea.l    20(a7),a0
@@ -1098,10 +1235,12 @@ edmm_setval:
 [0001345c] 206f 0010                 movea.l    16(a7),a0
 [00013460] 3028 005a                 move.w     90(a0),d0
 [00013464] c07c 0400                 and.w      #$0400,d0
-[00013468] 6604                      bne.s      $0001346E
+[00013468] 6604                      bne.s      edmm_setval_5
 [0001346a] 7401                      moveq.l    #1,d2
-[0001346c] 6002                      bra.s      $00013470
+[0001346c] 6002                      bra.s      edmm_setval_6
+edmm_setval_5:
 [0001346e] 4242                      clr.w      d2
+edmm_setval_6:
 [00013470] 7201                      moveq.l    #1,d1
 [00013472] 7034                      moveq.l    #52,d0
 [00013474] 206f 0014                 movea.l    20(a7),a0
@@ -1109,10 +1248,12 @@ edmm_setval:
 [0001347e] 206f 0010                 movea.l    16(a7),a0
 [00013482] 3028 005a                 move.w     90(a0),d0
 [00013486] c07c 0200                 and.w      #$0200,d0
-[0001348a] 6604                      bne.s      $00013490
+[0001348a] 6604                      bne.s      edmm_setval_7
 [0001348c] 7401                      moveq.l    #1,d2
-[0001348e] 6002                      bra.s      $00013492
+[0001348e] 6002                      bra.s      edmm_setval_8
+edmm_setval_7:
 [00013490] 4242                      clr.w      d2
+edmm_setval_8:
 [00013492] 7201                      moveq.l    #1,d1
 [00013494] 7036                      moveq.l    #54,d0
 [00013496] 206f 0014                 movea.l    20(a7),a0
@@ -1120,10 +1261,12 @@ edmm_setval:
 [000134a0] 206f 0010                 movea.l    16(a7),a0
 [000134a4] 3028 005a                 move.w     90(a0),d0
 [000134a8] c07c 1000                 and.w      #$1000,d0
-[000134ac] 6604                      bne.s      $000134B2
+[000134ac] 6604                      bne.s      edmm_setval_9
 [000134ae] 7401                      moveq.l    #1,d2
-[000134b0] 6002                      bra.s      $000134B4
+[000134b0] 6002                      bra.s      edmm_setval_10
+edmm_setval_9:
 [000134b2] 4242                      clr.w      d2
+edmm_setval_10:
 [000134b4] 7201                      moveq.l    #1,d1
 [000134b6] 7038                      moveq.l    #56,d0
 [000134b8] 206f 0014                 movea.l    20(a7),a0
@@ -1136,165 +1279,195 @@ edmm_setval:
 [000134d4] 206f 0004                 movea.l    4(a7),a0
 [000134d8] 2f68 0034 000c            move.l     52(a0),12(a7)
 [000134de] 202f 000c                 move.l     12(a7),d0
-[000134e2] 6608                      bne.s      $000134EC
+[000134e2] 6608                      bne.s      edmm_setval_11
 [000134e4] 43f9 0008 af8a            lea.l      $0008AF8A,a1
-[000134ea] 6008                      bra.s      $000134F4
+[000134ea] 6008                      bra.s      edmm_setval_12
+edmm_setval_11:
 [000134ec] 226f 000c                 movea.l    12(a7),a1
 [000134f0] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_12:
 [000134f4] 7011                      moveq.l    #17,d0
 [000134f6] 2057                      movea.l    (a7),a0
 [000134f8] 4eb9 0005 0fd8            jsr        Aob_puttext
 [000134fe] 206f 0004                 movea.l    4(a7),a0
 [00013502] 2f68 0030 000c            move.l     48(a0),12(a7)
 [00013508] 202f 000c                 move.l     12(a7),d0
-[0001350c] 6608                      bne.s      $00013516
+[0001350c] 6608                      bne.s      edmm_setval_13
 [0001350e] 43f9 0008 af8b            lea.l      $0008AF8B,a1
-[00013514] 6008                      bra.s      $0001351E
+[00013514] 6008                      bra.s      edmm_setval_14
+edmm_setval_13:
 [00013516] 226f 000c                 movea.l    12(a7),a1
 [0001351a] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_14:
 [0001351e] 7013                      moveq.l    #19,d0
 [00013520] 2057                      movea.l    (a7),a0
 [00013522] 4eb9 0005 0fd8            jsr        Aob_puttext
 [00013528] 206f 0008                 movea.l    8(a7),a0
 [0001352c] 2f68 0016 000c            move.l     22(a0),12(a7)
 [00013532] 202f 000c                 move.l     12(a7),d0
-[00013536] 6608                      bne.s      $00013540
+[00013536] 6608                      bne.s      edmm_setval_15
 [00013538] 43f9 0008 af8c            lea.l      $0008AF8C,a1
-[0001353e] 6008                      bra.s      $00013548
+[0001353e] 6008                      bra.s      edmm_setval_16
+edmm_setval_15:
 [00013540] 226f 000c                 movea.l    12(a7),a1
 [00013544] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_16:
 [00013548] 7042                      moveq.l    #66,d0
 [0001354a] 2057                      movea.l    (a7),a0
 [0001354c] 4eb9 0005 0fd8            jsr        Aob_puttext
 [00013552] 206f 0008                 movea.l    8(a7),a0
 [00013556] 2f68 001a 000c            move.l     26(a0),12(a7)
 [0001355c] 202f 000c                 move.l     12(a7),d0
-[00013560] 6608                      bne.s      $0001356A
+[00013560] 6608                      bne.s      edmm_setval_17
 [00013562] 43f9 0008 af8d            lea.l      $0008AF8D,a1
-[00013568] 6008                      bra.s      $00013572
+[00013568] 6008                      bra.s      edmm_setval_18
+edmm_setval_17:
 [0001356a] 226f 000c                 movea.l    12(a7),a1
 [0001356e] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_18:
 [00013572] 703e                      moveq.l    #62,d0
 [00013574] 2057                      movea.l    (a7),a0
 [00013576] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001357c] 206f 0008                 movea.l    8(a7),a0
 [00013580] 2f68 001e 000c            move.l     30(a0),12(a7)
 [00013586] 202f 000c                 move.l     12(a7),d0
-[0001358a] 6608                      bne.s      $00013594
+[0001358a] 6608                      bne.s      edmm_setval_19
 [0001358c] 43f9 0008 af8e            lea.l      $0008AF8E,a1
-[00013592] 6008                      bra.s      $0001359C
+[00013592] 6008                      bra.s      edmm_setval_20
+edmm_setval_19:
 [00013594] 226f 000c                 movea.l    12(a7),a1
 [00013598] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_20:
 [0001359c] 703f                      moveq.l    #63,d0
 [0001359e] 2057                      movea.l    (a7),a0
 [000135a0] 4eb9 0005 0fd8            jsr        Aob_puttext
 [000135a6] 206f 0008                 movea.l    8(a7),a0
 [000135aa] 2f68 0022 000c            move.l     34(a0),12(a7)
 [000135b0] 202f 000c                 move.l     12(a7),d0
-[000135b4] 6608                      bne.s      $000135BE
+[000135b4] 6608                      bne.s      edmm_setval_21
 [000135b6] 43f9 0008 af8f            lea.l      $0008AF8F,a1
-[000135bc] 6008                      bra.s      $000135C6
+[000135bc] 6008                      bra.s      edmm_setval_22
+edmm_setval_21:
 [000135be] 226f 000c                 movea.l    12(a7),a1
 [000135c2] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_22:
 [000135c6] 7040                      moveq.l    #64,d0
 [000135c8] 2057                      movea.l    (a7),a0
 [000135ca] 4eb9 0005 0fd8            jsr        Aob_puttext
 [000135d0] 206f 0008                 movea.l    8(a7),a0
 [000135d4] 2f68 0026 000c            move.l     38(a0),12(a7)
 [000135da] 202f 000c                 move.l     12(a7),d0
-[000135de] 6608                      bne.s      $000135E8
+[000135de] 6608                      bne.s      edmm_setval_23
 [000135e0] 43f9 0008 af90            lea.l      $0008AF90,a1
-[000135e6] 6008                      bra.s      $000135F0
+[000135e6] 6008                      bra.s      edmm_setval_24
+edmm_setval_23:
 [000135e8] 226f 000c                 movea.l    12(a7),a1
 [000135ec] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_24:
 [000135f0] 704b                      moveq.l    #75,d0
 [000135f2] 2057                      movea.l    (a7),a0
 [000135f4] 4eb9 0005 0fd8            jsr        Aob_puttext
 [000135fa] 206f 0008                 movea.l    8(a7),a0
 [000135fe] 2f68 002a 000c            move.l     42(a0),12(a7)
 [00013604] 202f 000c                 move.l     12(a7),d0
-[00013608] 6608                      bne.s      $00013612
+[00013608] 6608                      bne.s      edmm_setval_25
 [0001360a] 43f9 0008 af91            lea.l      $0008AF91,a1
-[00013610] 6008                      bra.s      $0001361A
+[00013610] 6008                      bra.s      edmm_setval_26
+edmm_setval_25:
 [00013612] 226f 000c                 movea.l    12(a7),a1
 [00013616] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_26:
 [0001361a] 7041                      moveq.l    #65,d0
 [0001361c] 2057                      movea.l    (a7),a0
 [0001361e] 4eb9 0005 0fd8            jsr        Aob_puttext
 [00013624] 206f 0008                 movea.l    8(a7),a0
 [00013628] 2f68 002e 000c            move.l     46(a0),12(a7)
 [0001362e] 202f 000c                 move.l     12(a7),d0
-[00013632] 6608                      bne.s      $0001363C
+[00013632] 6608                      bne.s      edmm_setval_27
 [00013634] 43f9 0008 af92            lea.l      $0008AF92,a1
-[0001363a] 6008                      bra.s      $00013644
+[0001363a] 6008                      bra.s      edmm_setval_28
+edmm_setval_27:
 [0001363c] 226f 000c                 movea.l    12(a7),a1
 [00013640] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_28:
 [00013644] 704c                      moveq.l    #76,d0
 [00013646] 2057                      movea.l    (a7),a0
 [00013648] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0001364e] 206f 0008                 movea.l    8(a7),a0
 [00013652] 2f68 0032 000c            move.l     50(a0),12(a7)
 [00013658] 202f 000c                 move.l     12(a7),d0
-[0001365c] 6608                      bne.s      $00013666
+[0001365c] 6608                      bne.s      edmm_setval_29
 [0001365e] 43f9 0008 af93            lea.l      $0008AF93,a1
-[00013664] 6008                      bra.s      $0001366E
+[00013664] 6008                      bra.s      edmm_setval_30
+edmm_setval_29:
 [00013666] 226f 000c                 movea.l    12(a7),a1
 [0001366a] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_30:
 [0001366e] 704e                      moveq.l    #78,d0
 [00013670] 2057                      movea.l    (a7),a0
 [00013672] 4eb9 0005 0fd8            jsr        Aob_puttext
 [00013678] 206f 0008                 movea.l    8(a7),a0
 [0001367c] 2f68 0036 000c            move.l     54(a0),12(a7)
 [00013682] 202f 000c                 move.l     12(a7),d0
-[00013686] 6608                      bne.s      $00013690
+[00013686] 6608                      bne.s      edmm_setval_31
 [00013688] 43f9 0008 af94            lea.l      $0008AF94,a1
-[0001368e] 6008                      bra.s      $00013698
+[0001368e] 6008                      bra.s      edmm_setval_32
+edmm_setval_31:
 [00013690] 226f 000c                 movea.l    12(a7),a1
 [00013694] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_32:
 [00013698] 704f                      moveq.l    #79,d0
 [0001369a] 2057                      movea.l    (a7),a0
 [0001369c] 4eb9 0005 0fd8            jsr        Aob_puttext
 [000136a2] 206f 0008                 movea.l    8(a7),a0
 [000136a6] 2f68 003a 000c            move.l     58(a0),12(a7)
 [000136ac] 202f 000c                 move.l     12(a7),d0
-[000136b0] 6608                      bne.s      $000136BA
+[000136b0] 6608                      bne.s      edmm_setval_33
 [000136b2] 43f9 0008 af95            lea.l      $0008AF95,a1
-[000136b8] 6008                      bra.s      $000136C2
+[000136b8] 6008                      bra.s      edmm_setval_34
+edmm_setval_33:
 [000136ba] 226f 000c                 movea.l    12(a7),a1
 [000136be] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_34:
 [000136c2] 704d                      moveq.l    #77,d0
 [000136c4] 2057                      movea.l    (a7),a0
 [000136c6] 4eb9 0005 0fd8            jsr        Aob_puttext
 [000136cc] 206f 0008                 movea.l    8(a7),a0
 [000136d0] 2f68 0042 000c            move.l     66(a0),12(a7)
 [000136d6] 202f 000c                 move.l     12(a7),d0
-[000136da] 6608                      bne.s      $000136E4
+[000136da] 6608                      bne.s      edmm_setval_35
 [000136dc] 43f9 0008 af96            lea.l      $0008AF96,a1
-[000136e2] 6008                      bra.s      $000136EC
+[000136e2] 6008                      bra.s      edmm_setval_36
+edmm_setval_35:
 [000136e4] 226f 000c                 movea.l    12(a7),a1
 [000136e8] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_36:
 [000136ec] 705f                      moveq.l    #95,d0
 [000136ee] 2057                      movea.l    (a7),a0
 [000136f0] 4eb9 0005 0fd8            jsr        Aob_puttext
 [000136f6] 206f 0008                 movea.l    8(a7),a0
 [000136fa] 2f68 0046 000c            move.l     70(a0),12(a7)
 [00013700] 202f 000c                 move.l     12(a7),d0
-[00013704] 6608                      bne.s      $0001370E
+[00013704] 6608                      bne.s      edmm_setval_37
 [00013706] 43f9 0008 af97            lea.l      $0008AF97,a1
-[0001370c] 6008                      bra.s      $00013716
+[0001370c] 6008                      bra.s      edmm_setval_38
+edmm_setval_37:
 [0001370e] 226f 000c                 movea.l    12(a7),a1
 [00013712] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_38:
 [00013716] 701d                      moveq.l    #29,d0
 [00013718] 2057                      movea.l    (a7),a0
 [0001371a] 4eb9 0005 0fd8            jsr        Aob_puttext
 [00013720] 206f 0008                 movea.l    8(a7),a0
 [00013724] 2f68 004a 000c            move.l     74(a0),12(a7)
 [0001372a] 202f 000c                 move.l     12(a7),d0
-[0001372e] 6608                      bne.s      $00013738
+[0001372e] 6608                      bne.s      edmm_setval_39
 [00013730] 43f9 0008 af98            lea.l      $0008AF98,a1
-[00013736] 6008                      bra.s      $00013740
+[00013736] 6008                      bra.s      edmm_setval_40
+edmm_setval_39:
 [00013738] 226f 000c                 movea.l    12(a7),a1
 [0001373c] 43e9 0016                 lea.l      22(a1),a1
+edmm_setval_40:
 [00013740] 701e                      moveq.l    #30,d0
 [00013742] 2057                      movea.l    (a7),a0
 [00013744] 4eb9 0005 0fd8            jsr        Aob_puttext
@@ -1320,6 +1493,7 @@ edmm_setval:
 [00013794] 4eb9 0006 7456            jsr        Auo_cycle
 [0001379a] 4fef 0018                 lea.l      24(a7),a7
 [0001379e] 4e75                      rts
+
 edmm_getval:
 [000137a0] 4fef ffe2                 lea.l      -30(a7),a7
 [000137a4] 2f48 001a                 move.l     a0,26(a7)
@@ -1336,34 +1510,39 @@ edmm_getval:
 [000137d2] 7001                      moveq.l    #1,d0
 [000137d4] 206f 0006                 movea.l    6(a7),a0
 [000137d8] c068 0022                 and.w      34(a0),d0
-[000137dc] 6716                      beq.s      $000137F4
+[000137dc] 6716                      beq.s      edmm_getval_1
 [000137de] 206f 0016                 movea.l    22(a7),a0
 [000137e2] 0268 7fff 0006            andi.w     #$7FFF,6(a0)
 [000137e8] 206f 0016                 movea.l    22(a7),a0
 [000137ec] 4eb9 0001 89ca            jsr        init_mess
-[000137f2] 6042                      bra.s      $00013836
+[000137f2] 6042                      bra.s      edmm_getval_2
+edmm_getval_1:
 [000137f4] 206f 0016                 movea.l    22(a7),a0
 [000137f8] 3028 0006                 move.w     6(a0),d0
 [000137fc] c07c 8000                 and.w      #$8000,d0
-[00013800] 6634                      bne.s      $00013836
+[00013800] 6634                      bne.s      edmm_getval_2
 [00013802] 41f9 0008 759e            lea.l      A_DELMESS,a0
 [00013808] 7001                      moveq.l    #1,d0
 [0001380a] 4eb9 0005 a600            jsr        Awi_alert
 [00013810] 3e80                      move.w     d0,(a7)
 [00013812] 3017                      move.w     (a7),d0
 [00013814] 5340                      subq.w     #1,d0
-[00013816] 670a                      beq.s      $00013822
+[00013816] 670a                      beq.s      edmm_getval_3
 [00013818] 5340                      subq.w     #1,d0
-[0001381a] 6712                      beq.s      $0001382E
+[0001381a] 6712                      beq.s      edmm_getval_4
 [0001381c] 5340                      subq.w     #1,d0
-[0001381e] 6710                      beq.s      $00013830
-[00013820] 6014                      bra.s      $00013836
+[0001381e] 6710                      beq.s      edmm_getval_5
+[00013820] 6014                      bra.s      edmm_getval_2
+edmm_getval_3:
 [00013822] 206f 0016                 movea.l    22(a7),a0
 [00013826] 4eb9 0001 8902            jsr        del_mess
-[0001382c] 6008                      bra.s      $00013836
-[0001382e] 6006                      bra.s      $00013836
+[0001382c] 6008                      bra.s      edmm_getval_2
+edmm_getval_4:
+[0001382e] 6006                      bra.s      edmm_getval_2
+edmm_getval_5:
 [00013830] 4240                      clr.w      d0
-[00013832] 6000 0594                 bra        $00013DC8
+[00013832] 6000 0594                 bra        edmm_getval_6
+edmm_getval_2:
 [00013836] 206f 0016                 movea.l    22(a7),a0
 [0001383a] 0068 0001 0006            ori.w      #$0001,6(a0)
 [00013840] 7401                      moveq.l    #1,d2
@@ -1733,22 +1912,26 @@ edmm_getval:
 [00013d86] 206f 0016                 movea.l    22(a7),a0
 [00013d8a] 2068 0034                 movea.l    52(a0),a0
 [00013d8e] 2028 0012                 move.l     18(a0),d0
-[00013d92] 6712                      beq.s      $00013DA6
+[00013d92] 6712                      beq.s      edmm_getval_7
 [00013d94] 206f 0016                 movea.l    22(a7),a0
 [00013d98] 2068 0034                 movea.l    52(a0),a0
 [00013d9c] 2068 0012                 movea.l    18(a0),a0
 [00013da0] 0068 0020 0056            ori.w      #$0020,86(a0)
+edmm_getval_7:
 [00013da6] 206f 0016                 movea.l    22(a7),a0
 [00013daa] 2068 0024                 movea.l    36(a0),a0
 [00013dae] 2028 0012                 move.l     18(a0),d0
-[00013db2] 6712                      beq.s      $00013DC6
+[00013db2] 6712                      beq.s      edmm_getval_8
 [00013db4] 206f 0016                 movea.l    22(a7),a0
 [00013db8] 2068 0024                 movea.l    36(a0),a0
 [00013dbc] 2068 0012                 movea.l    18(a0),a0
 [00013dc0] 0068 0020 0056            ori.w      #$0020,86(a0)
+edmm_getval_8:
 [00013dc6] 7001                      moveq.l    #1,d0
+edmm_getval_6:
 [00013dc8] 4fef 001e                 lea.l      30(a7),a7
 [00013dcc] 4e75                      rts
+
 edmm_create:
 [00013dce] 2f0a                      move.l     a2,-(a7)
 [00013dd0] 4fef fff4                 lea.l      -12(a7),a7
@@ -1756,20 +1939,22 @@ edmm_create:
 [00013dd8] 2f6f 0008 0004            move.l     8(a7),4(a7)
 [00013dde] 206f 0004                 movea.l    4(a7),a0
 [00013de2] 2028 0210                 move.l     528(a0),d0
-[00013de6] 6718                      beq.s      $00013E00
+[00013de6] 6718                      beq.s      edmm_create_1
 [00013de8] 206f 0004                 movea.l    4(a7),a0
 [00013dec] 2068 0210                 movea.l    528(a0),a0
 [00013df0] 4eb9 0005 6bea            jsr        Awi_show
 [00013df6] 206f 0004                 movea.l    4(a7),a0
 [00013dfa] 2068 0210                 movea.l    528(a0),a0
-[00013dfe] 6052                      bra.s      $00013E52
+[00013dfe] 6052                      bra.s      edmm_create_2
+edmm_create_1:
 [00013e00] 41f9 0008 ae60            lea.l      WI_MAINMOD,a0
 [00013e06] 4eb9 0005 7052            jsr        Awi_create
 [00013e0c] 2e88                      move.l     a0,(a7)
 [00013e0e] 2017                      move.l     (a7),d0
-[00013e10] 6604                      bne.s      $00013E16
+[00013e10] 6604                      bne.s      edmm_create_3
 [00013e12] 91c8                      suba.l     a0,a0
-[00013e14] 603c                      bra.s      $00013E52
+[00013e14] 603c                      bra.s      edmm_create_2
+edmm_create_3:
 [00013e16] 2057                      movea.l    (a7),a0
 [00013e18] 20af 0004                 move.l     4(a7),(a0)
 [00013e1c] 206f 0004                 movea.l    4(a7),a0
@@ -1783,7 +1968,7 @@ edmm_create:
 [00013e34] 2269 000c                 movea.l    12(a1),a1
 [00013e38] 4e91                      jsr        (a1)
 [00013e3a] 4a40                      tst.w      d0
-[00013e3c] 6712                      beq.s      $00013E50
+[00013e3c] 6712                      beq.s      edmm_create_4
 [00013e3e] 93c9                      suba.l     a1,a1
 [00013e40] 7002                      moveq.l    #2,d0
 [00013e42] 2057                      movea.l    (a7),a0
@@ -1791,11 +1976,14 @@ edmm_create:
 [00013e46] 246a 0004                 movea.l    4(a2),a2
 [00013e4a] 4e92                      jsr        (a2)
 [00013e4c] 91c8                      suba.l     a0,a0
-[00013e4e] 6002                      bra.s      $00013E52
+[00013e4e] 6002                      bra.s      edmm_create_2
+edmm_create_4:
 [00013e50] 2057                      movea.l    (a7),a0
+edmm_create_2:
 [00013e52] 4fef 000c                 lea.l      12(a7),a7
 [00013e56] 245f                      movea.l    (a7)+,a2
 [00013e58] 4e75                      rts
+
 edmm_service:
 [00013e5a] 4fef fff2                 lea.l      -14(a7),a7
 [00013e5e] 2f48 000a                 move.l     a0,10(a7)
@@ -1805,36 +1993,44 @@ edmm_service:
 [00013e6e] 2e90                      move.l     (a0),(a7)
 [00013e70] 302f 0008                 move.w     8(a7),d0
 [00013e74] 5540                      subq.w     #2,d0
-[00013e76] 6708                      beq.s      $00013E80
+[00013e76] 6708                      beq.s      edmm_service_1
 [00013e78] 907c 000d                 sub.w      #$000D,d0
-[00013e7c] 672c                      beq.s      $00013EAA
-[00013e7e] 602c                      bra.s      $00013EAC
+[00013e7c] 672c                      beq.s      edmm_service_2
+[00013e7e] 602c                      bra.s      edmm_service_3
+edmm_service_1:
 [00013e80] 206f 000a                 movea.l    10(a7),a0
 [00013e84] 3028 0056                 move.w     86(a0),d0
 [00013e88] c07c 0200                 and.w      #$0200,d0
-[00013e8c] 661a                      bne.s      $00013EA8
+[00013e8c] 661a                      bne.s      edmm_service_4
 [00013e8e] 206f 000a                 movea.l    10(a7),a0
 [00013e92] 0068 0200 0056            ori.w      #$0200,86(a0)
 [00013e98] 2057                      movea.l    (a7),a0
 [00013e9a] 42a8 0210                 clr.l      528(a0)
 [00013e9e] 206f 000a                 movea.l    10(a7),a0
 [00013ea2] 4eb9 0005 85f2            jsr        Awi_delete
-[00013ea8] 6016                      bra.s      $00013EC0
-[00013eaa] 6014                      bra.s      $00013EC0
+edmm_service_4:
+[00013ea8] 6016                      bra.s      edmm_service_5
+edmm_service_2:
+[00013eaa] 6014                      bra.s      edmm_service_5
+edmm_service_3:
 [00013eac] 226f 0004                 movea.l    4(a7),a1
 [00013eb0] 302f 0008                 move.w     8(a7),d0
 [00013eb4] 206f 000a                 movea.l    10(a7),a0
 [00013eb8] 4eb9 0005 9dd0            jsr        Awi_service
-[00013ebe] 6002                      bra.s      $00013EC2
+[00013ebe] 6002                      bra.s      edmm_service_6
+edmm_service_5:
 [00013ec0] 7001                      moveq.l    #1,d0
+edmm_service_6:
 [00013ec2] 4fef 000e                 lea.l      14(a7),a7
 [00013ec6] 4e75                      rts
+
 edmm_ismain:
 [00013ec8] 4eb9 0005 0c80            jsr        Aev_release
 [00013ece] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00013ed4] 2068 0258                 movea.l    600(a0),a0
 [00013ed8] 6100 eee4                 bsr        edmm_enable
 [00013edc] 4e75                      rts
+
 edmm_init_olga:
 [00013ede] 514f                      subq.w     #8,a7
 [00013ee0] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1850,12 +2046,15 @@ edmm_init_olga:
 [00013f08] 3e80                      move.w     d0,(a7)
 [00013f0a] 4eb9 0005 0c80            jsr        Aev_release
 [00013f10] 302f 0002                 move.w     2(a7),d0
-[00013f14] 6704                      beq.s      $00013F1A
+[00013f14] 6704                      beq.s      edmm_init_olga_1
 [00013f16] 3017                      move.w     (a7),d0
-[00013f18] 6604                      bne.s      $00013F1E
+[00013f18] 6604                      bne.s      edmm_init_olga_2
+edmm_init_olga_1:
 [00013f1a] 7401                      moveq.l    #1,d2
-[00013f1c] 6002                      bra.s      $00013F20
+[00013f1c] 6002                      bra.s      edmm_init_olga_3
+edmm_init_olga_2:
 [00013f1e] 4242                      clr.w      d2
+edmm_init_olga_3:
 [00013f20] 7208                      moveq.l    #8,d1
 [00013f22] 700a                      moveq.l    #10,d0
 [00013f24] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1863,13 +2062,14 @@ edmm_init_olga:
 [00013f2e] 4eb9 0005 484e            jsr        Aob_state
 [00013f34] 504f                      addq.w     #8,a7
 [00013f36] 4e75                      rts
+
 edmm_ok:
 [00013f38] 2f0a                      move.l     a2,-(a7)
 [00013f3a] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00013f40] 2068 0258                 movea.l    600(a0),a0
 [00013f44] 6100 f85a                 bsr        edmm_getval
 [00013f48] 4a40                      tst.w      d0
-[00013f4a] 671e                      beq.s      $00013F6A
+[00013f4a] 671e                      beq.s      edmm_ok_1
 [00013f4c] 93c9                      suba.l     a1,a1
 [00013f4e] 7002                      moveq.l    #2,d0
 [00013f50] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1878,8 +2078,10 @@ edmm_ok:
 [00013f60] 246a 0258                 movea.l    600(a2),a2
 [00013f64] 246a 0004                 movea.l    4(a2),a2
 [00013f68] 4e92                      jsr        (a2)
+edmm_ok_1:
 [00013f6a] 245f                      movea.l    (a7)+,a2
 [00013f6c] 4e75                      rts
+
 edmm_cancel:
 [00013f6e] 2f0a                      move.l     a2,-(a7)
 [00013f70] 93c9                      suba.l     a1,a1

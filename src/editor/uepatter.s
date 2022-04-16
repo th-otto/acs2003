@@ -14,7 +14,7 @@ edpa_col:
 [00028d86] 4eb9 0003 0bde            jsr        oe_colsel
 [00028d8c] 544f                      addq.w     #2,a7
 [00028d8e] 3600                      move.w     d0,d3
-[00028d90] 6b28                      bmi.s      $00028DBA
+[00028d90] 6b28                      bmi.s      edpa_col_1
 [00028d92] 72f0                      moveq.l    #-16,d1
 [00028d94] c292                      and.l      (a2),d1
 [00028d96] 48c0                      ext.l      d0
@@ -28,9 +28,11 @@ edpa_col:
 [00028db4] 7001                      moveq.l    #1,d0
 [00028db6] 72ff                      moveq.l    #-1,d1
 [00028db8] 4e91                      jsr        (a1)
+edpa_col_1:
 [00028dba] 245f                      movea.l    (a7)+,a2
 [00028dbc] 361f                      move.w     (a7)+,d3
 [00028dbe] 4e75                      rts
+
 edpa_frame:
 [00028dc0] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00028dc6] 2268 025c                 movea.l    604(a0),a1
@@ -45,6 +47,7 @@ edpa_frame:
 [00028dee] 2269 0066                 movea.l    102(a1),a1
 [00028df2] 4e91                      jsr        (a1)
 [00028df4] 4e75                      rts
+
 edpa_pattern:
 [00028df6] 2f0a                      move.l     a2,-(a7)
 [00028df8] 2f0b                      move.l     a3,-(a7)
@@ -78,8 +81,6 @@ edpa_pattern:
 [00028e4c] 245f                      movea.l    (a7)+,a2
 [00028e4e] 4e75                      rts
 
-; start editor\uepatter.c
-
 init_pattern:
 [00028e50] 2f0a                      move.l     a2,-(a7)
 [00028e52] 2f0b                      move.l     a3,-(a7)
@@ -91,6 +92,7 @@ init_pattern:
 [00028e66] 265f                      movea.l    (a7)+,a3
 [00028e68] 245f                      movea.l    (a7)+,a2
 [00028e6a] 4e75                      rts
+
 minsize:
 [00028e6c] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00028e72] 32a8 0012                 move.w     18(a0),(a1)
@@ -98,6 +100,7 @@ minsize:
 [00028e7c] 226f 0004                 movea.l    4(a7),a1
 [00028e80] 32a8 0014                 move.w     20(a0),(a1)
 [00028e84] 4e75                      rts
+
 object_tree:
 [00028e86] 48e7 0034                 movem.l    a2-a3/a5,-(a7)
 [00028e8a] 594f                      subq.w     #4,a7
@@ -107,7 +110,7 @@ object_tree:
 [00028e96] 4eb9 0004 f064            jsr        Aob_create
 [00028e9c] 2448                      movea.l    a0,a2
 [00028e9e] 200a                      move.l     a2,d0
-[00028ea0] 6700 0080                 beq        $00028F22
+[00028ea0] 6700 0080                 beq        object_tree_1
 [00028ea4] 41ea 0030                 lea.l      48(a2),a0
 [00028ea8] 7216                      moveq.l    #22,d1
 [00028eaa] c26b 0008                 and.w      8(a3),d1
@@ -124,8 +127,9 @@ object_tree:
 [00028ed2] 2757 0004                 move.l     (a7),4(a3)
 [00028ed6] 2017                      move.l     (a7),d0
 [00028ed8] c0bc 0020 0000            and.l      #$00200000,d0
-[00028ede] 6706                      beq.s      $00028EE6
+[00028ede] 6706                      beq.s      object_tree_2
 [00028ee0] 006a 0001 00b2            ori.w      #$0001,178(a2)
+object_tree_2:
 [00028ee6] 700f                      moveq.l    #15,d0
 [00028ee8] c06f 0002                 and.w      2(a7),d0
 [00028eec] 48c0                      ext.l      d0
@@ -143,10 +147,12 @@ object_tree:
 [00028f18] 7000                      moveq.l    #0,d0
 [00028f1a] 2740 001c                 move.l     d0,28(a3)
 [00028f1e] 2740 0018                 move.l     d0,24(a3)
+object_tree_1:
 [00028f22] 204a                      movea.l    a2,a0
 [00028f24] 584f                      addq.w     #4,a7
 [00028f26] 4cdf 2c00                 movem.l    (a7)+,a2-a3/a5
 [00028f2a] 4e75                      rts
+
 test_it:
 [00028f2c] 2f0a                      move.l     a2,-(a7)
 [00028f2e] 2449                      movea.l    a1,a2
@@ -165,11 +171,13 @@ test_it:
 [00028f60] 42aa 001c                 clr.l      28(a2)
 [00028f64] 245f                      movea.l    (a7)+,a2
 [00028f66] 4e75                      rts
+
 abort:
 [00028f68] 2079 000c 1538            movea.l    $000C1538,a0
 [00028f6e] 2050                      movea.l    (a0),a0
 [00028f70] 4e90                      jsr        (a0)
 [00028f72] 4e75                      rts
+
 ok:
 [00028f74] 2f0a                      move.l     a2,-(a7)
 [00028f76] 2f0b                      move.l     a3,-(a7)

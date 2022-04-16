@@ -2,12 +2,14 @@ copyref:
 [00034410] 2f0a                      move.l     a2,-(a7)
 [00034412] 2449                      movea.l    a1,a2
 [00034414] 2011                      move.l     (a1),d0
-[00034416] 670a                      beq.s      $00034422
+[00034416] 670a                      beq.s      copyref_1
 [00034418] 2240                      movea.l    d0,a1
 [0003441a] 4eb9 0003 5c26            jsr        add_ref
 [00034420] 2488                      move.l     a0,(a2)
+copyref_1:
 [00034422] 245f                      movea.l    (a7)+,a2
 [00034424] 4e75                      rts
+
 copy_window:
 [00034426] 48e7 003c                 movem.l    a2-a5,-(a7)
 [0003442a] 2648                      movea.l    a0,a3
@@ -16,9 +18,10 @@ copy_window:
 [00034432] 4eb9 0001 7fae            jsr        objmalloc
 [00034438] 2848                      movea.l    a0,a4
 [0003443a] 200c                      move.l     a4,d0
-[0003443c] 6606                      bne.s      $00034444
+[0003443c] 6606                      bne.s      copy_window_1
 [0003443e] 91c8                      suba.l     a0,a0
-[00034440] 6000 016a                 bra        $000345AC
+[00034440] 6000 016a                 bra        copy_window_2
+copy_window_1:
 [00034444] 296a 000e 000e            move.l     14(a2),14(a4)
 [0003444a] 2a6c 0004                 movea.l    4(a4),a5
 [0003444e] 202a 000e                 move.l     14(a2),d0
@@ -38,17 +41,19 @@ copy_window:
 [0003447e] 204b                      movea.l    a3,a0
 [00034480] 6100 ff8e                 bsr.w      copyref
 [00034484] 202d 0014                 move.l     20(a5),d0
-[00034488] 670e                      beq.s      $00034498
+[00034488] 670e                      beq.s      copy_window_3
 [0003448a] 2240                      movea.l    d0,a1
 [0003448c] 204b                      movea.l    a3,a0
 [0003448e] 4eb9 0003 59de            jsr        add_object
 [00034494] 2b48 0014                 move.l     a0,20(a5)
+copy_window_3:
 [00034498] 202d 0018                 move.l     24(a5),d0
-[0003449c] 670e                      beq.s      $000344AC
+[0003449c] 670e                      beq.s      copy_window_4
 [0003449e] 2240                      movea.l    d0,a1
 [000344a0] 204b                      movea.l    a3,a0
 [000344a2] 4eb9 0003 59de            jsr        add_object
 [000344a8] 2b48 0018                 move.l     a0,24(a5)
+copy_window_4:
 [000344ac] 226d 004a                 movea.l    74(a5),a1
 [000344b0] 204b                      movea.l    a3,a0
 [000344b2] 4eb9 0003 5f3e            jsr        add_string
@@ -58,17 +63,19 @@ copy_window:
 [000344c2] 4eb9 0003 5f3e            jsr        add_string
 [000344c8] 2b48 004e                 move.l     a0,78(a5)
 [000344cc] 202d 005a                 move.l     90(a5),d0
-[000344d0] 670e                      beq.s      $000344E0
+[000344d0] 670e                      beq.s      copy_window_5
 [000344d2] 2240                      movea.l    d0,a1
 [000344d4] 204b                      movea.l    a3,a0
 [000344d6] 4eb9 0003 4754            jsr        add_icon
 [000344dc] 2b48 005a                 move.l     a0,90(a5)
+copy_window_5:
 [000344e0] 202d 005e                 move.l     94(a5),d0
-[000344e4] 670e                      beq.s      $000344F4
+[000344e4] 670e                      beq.s      copy_window_6
 [000344e6] 2240                      movea.l    d0,a1
 [000344e8] 204b                      movea.l    a3,a0
 [000344ea] 4eb9 0003 5770            jsr        add_men
 [000344f0] 2b48 005e                 move.l     a0,94(a5)
+copy_window_6:
 [000344f4] 43ed 0010                 lea.l      16(a5),a1
 [000344f8] 204b                      movea.l    a3,a0
 [000344fa] 6100 ff14                 bsr        copyref
@@ -123,32 +130,37 @@ copy_window:
 [000345a0] 4eb9 0003 5f3e            jsr        add_string
 [000345a6] 2b48 009a                 move.l     a0,154(a5)
 [000345aa] 204c                      movea.l    a4,a0
+copy_window_2:
 [000345ac] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [000345b0] 4e75                      rts
+
 delref:
 [000345b2] 2f0a                      move.l     a2,-(a7)
 [000345b4] 2449                      movea.l    a1,a2
 [000345b6] 2011                      move.l     (a1),d0
-[000345b8] 6708                      beq.s      $000345C2
+[000345b8] 6708                      beq.s      delref_1
 [000345ba] 2240                      movea.l    d0,a1
 [000345bc] 4eb9 0003 5dae            jsr        del_ref
+delref_1:
 [000345c2] 245f                      movea.l    (a7)+,a2
 [000345c4] 4e75                      rts
+
 del_window:
 [000345c6] 48e7 003c                 movem.l    a2-a5,-(a7)
 [000345ca] 2848                      movea.l    a0,a4
 [000345cc] 2449                      movea.l    a1,a2
 [000345ce] 536a 0036                 subq.w     #1,54(a2)
 [000345d2] 302a 0036                 move.w     54(a2),d0
-[000345d6] 6e00 0164                 bgt        $0003473C
+[000345d6] 6e00 0164                 bgt        del_window_1
 [000345da] 266a 0012                 movea.l    18(a2),a3
 [000345de] 220b                      move.l     a3,d1
-[000345e0] 670c                      beq.s      $000345EE
+[000345e0] 670c                      beq.s      del_window_2
 [000345e2] 2a6b 0004                 movea.l    4(a3),a5
 [000345e6] 204b                      movea.l    a3,a0
 [000345e8] 7002                      moveq.l    #2,d0
 [000345ea] 93c9                      suba.l     a1,a1
 [000345ec] 4e95                      jsr        (a5)
+del_window_2:
 [000345ee] 266a 0004                 movea.l    4(a2),a3
 [000345f2] 224b                      movea.l    a3,a1
 [000345f4] 204c                      movea.l    a4,a0
@@ -163,15 +175,17 @@ del_window:
 [00034612] 204c                      movea.l    a4,a0
 [00034614] 6100 ff9c                 bsr.w      delref
 [00034618] 202b 0014                 move.l     20(a3),d0
-[0003461c] 670a                      beq.s      $00034628
+[0003461c] 670a                      beq.s      del_window_3
 [0003461e] 2240                      movea.l    d0,a1
 [00034620] 204c                      movea.l    a4,a0
 [00034622] 4eb9 0003 5aa2            jsr        del_object
+del_window_3:
 [00034628] 202b 0018                 move.l     24(a3),d0
-[0003462c] 670a                      beq.s      $00034638
+[0003462c] 670a                      beq.s      del_window_4
 [0003462e] 2240                      movea.l    d0,a1
 [00034630] 204c                      movea.l    a4,a0
 [00034632] 4eb9 0003 5aa2            jsr        del_object
+del_window_4:
 [00034638] 226b 004a                 movea.l    74(a3),a1
 [0003463c] 204c                      movea.l    a4,a0
 [0003463e] 4eb9 0003 6108            jsr        del_string
@@ -179,15 +193,17 @@ del_window:
 [00034648] 204c                      movea.l    a4,a0
 [0003464a] 4eb9 0003 6108            jsr        del_string
 [00034650] 202b 005a                 move.l     90(a3),d0
-[00034654] 670a                      beq.s      $00034660
+[00034654] 670a                      beq.s      del_window_5
 [00034656] 2240                      movea.l    d0,a1
 [00034658] 204c                      movea.l    a4,a0
 [0003465a] 4eb9 0003 4b40            jsr        del_icon
+del_window_5:
 [00034660] 202b 005e                 move.l     94(a3),d0
-[00034664] 670a                      beq.s      $00034670
+[00034664] 670a                      beq.s      del_window_6
 [00034666] 2240                      movea.l    d0,a1
 [00034668] 204c                      movea.l    a4,a0
 [0003466a] 4eb9 0003 5834            jsr        del_men
+del_window_6:
 [00034670] 43eb 0010                 lea.l      16(a3),a1
 [00034674] 204c                      movea.l    a4,a0
 [00034676] 6100 ff3a                 bsr        delref
@@ -234,23 +250,27 @@ del_window:
 [00034700] 204c                      movea.l    a4,a0
 [00034702] 6100 feae                 bsr        delref
 [00034706] 202b 009e                 move.l     158(a3),d0
-[0003470a] 670a                      beq.s      $00034716
+[0003470a] 670a                      beq.s      del_window_7
 [0003470c] 2240                      movea.l    d0,a1
 [0003470e] 204c                      movea.l    a4,a0
 [00034710] 4eb9 0003 6108            jsr        del_string
+del_window_7:
 [00034716] 202b 009a                 move.l     154(a3),d0
-[0003471a] 670a                      beq.s      $00034726
+[0003471a] 670a                      beq.s      del_window_8
 [0003471c] 2240                      movea.l    d0,a1
 [0003471e] 204c                      movea.l    a4,a0
 [00034720] 4eb9 0003 6108            jsr        del_string
+del_window_8:
 [00034726] 224a                      movea.l    a2,a1
 [00034728] 206c 0014                 movea.l    20(a4),a0
 [0003472c] 4eb9 0003 3420            jsr        del_entry
 [00034732] 224a                      movea.l    a2,a1
 [00034734] 204c                      movea.l    a4,a0
 [00034736] 4eb9 0001 7f52            jsr        objfree
+del_window_1:
 [0003473c] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [00034740] 4e75                      rts
+
 new_work:
 [00034742] 303c 2717                 move.w     #$2717,d0
 [00034746] 2279 000b 79c8            movea.l    $000B79C8,a1

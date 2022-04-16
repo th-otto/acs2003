@@ -5,7 +5,7 @@ proto_fulled:
 [000422f8] 49ea 002c                 lea.l      44(a2),a4
 [000422fc] 7001                      moveq.l    #1,d0
 [000422fe] c06a 0056                 and.w      86(a2),d0
-[00042302] 6724                      beq.s      $00042328
+[00042302] 6724                      beq.s      proto_fulled_1
 [00042304] 3694                      move.w     (a4),(a3)
 [00042306] 376c 0002 0002            move.w     2(a4),2(a3)
 [0004230c] 376c 0004 0004            move.w     4(a4),4(a3)
@@ -13,7 +13,8 @@ proto_fulled:
 [00042318] 224c                      movea.l    a4,a1
 [0004231a] 4eb9 0004 27da            jsr        proto_sized
 [00042320] 026a fffe 0056            andi.w     #$FFFE,86(a2)
-[00042326] 602a                      bra.s      $00042352
+[00042326] 602a                      bra.s      proto_fulled_2
+proto_fulled_1:
 [00042328] 3893                      move.w     (a3),(a4)
 [0004232a] 396b 0002 0002            move.w     2(a3),2(a4)
 [00042330] 396b 0004 0004            move.w     4(a3),4(a4)
@@ -23,6 +24,7 @@ proto_fulled:
 [00042344] 204a                      movea.l    a2,a0
 [00042346] 4eb9 0004 27da            jsr        proto_sized
 [0004234c] 006a 0001 0056            ori.w      #$0001,86(a2)
+proto_fulled_2:
 [00042352] 3f2b 0006                 move.w     6(a3),-(a7)
 [00042356] 3f2b 0004                 move.w     4(a3),-(a7)
 [0004235a] 3f2b 0002                 move.w     2(a3),-(a7)
@@ -34,6 +36,7 @@ proto_fulled:
 [0004236e] 4eb9 0004 b086            jsr        Aev_mess
 [00042374] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [00042378] 4e75                      rts
+
 proto_arrowed:
 [0004237a] 48e7 1c3c                 movem.l    d3-d5/a2-a5,-(a7)
 [0004237e] 514f                      subq.w     #8,a7
@@ -46,81 +49,95 @@ proto_arrowed:
 [00042396] 2f6c 000c 0004            move.l     12(a4),4(a7)
 [0004239c] 4243                      clr.w      d3
 [0004239e] 3004                      move.w     d4,d0
+proto_arrowed_18:
 [000423a0] b07c 0007                 cmp.w      #$0007,d0
-[000423a4] 6200 00a2                 bhi        $00042448
+[000423a4] 6200 00a2                 bhi        proto_arrowed_1
 [000423a8] d040                      add.w      d0,d0
 [000423aa] 303b 0006                 move.w     $000423B2(pc,d0.w),d0
 [000423ae] 4efb 0002                 jmp        $000423B2(pc,d0.w)
 J34:
-[000423b2] 0034                      dc.w $0034   ; $000423e6-$000423b2
-[000423b4] 0046                      dc.w $0046   ; $000423f8-$000423b2
-[000423b6] 0010                      dc.w $0010   ; $000423c2-$000423b2
-[000423b8] 0022                      dc.w $0022   ; $000423d4-$000423b2
-[000423ba] 005c                      dc.w $005c   ; $0004240e-$000423b2
-[000423bc] 006a                      dc.w $006a   ; $0004241c-$000423b2
-[000423be] 007a                      dc.w $007a   ; $0004242c-$000423b2
-[000423c0] 0088                      dc.w $0088   ; $0004243a-$000423b2
+[000423b2] 0034                      dc.w $0034   ; proto_arrowed_2-J34
+[000423b4] 0046                      dc.w $0046   ; proto_arrowed_3-J34
+[000423b6] 0010                      dc.w $0010   ; proto_arrowed_4-J34
+[000423b8] 0022                      dc.w $0022   ; proto_arrowed_5-J34
+[000423ba] 005c                      dc.w $005c   ; proto_arrowed_6-J34
+[000423bc] 006a                      dc.w $006a   ; proto_arrowed_7-J34
+[000423be] 007a                      dc.w $007a   ; proto_arrowed_8-J34
+[000423c0] 0088                      dc.w $0088   ; proto_arrowed_9-J34
+proto_arrowed_4:
 [000423c2] 93c9                      suba.l     a1,a1
 [000423c4] 700b                      moveq.l    #11,d0
 [000423c6] 204c                      movea.l    a4,a0
 [000423c8] 2a6f 0004                 movea.l    4(a7),a5
 [000423cc] 2a6d 0008                 movea.l    8(a5),a5
 [000423d0] 4e95                      jsr        (a5)
-[000423d2] 6036                      bra.s      $0004240A
+[000423d2] 6036                      bra.s      proto_arrowed_10
+proto_arrowed_5:
 [000423d4] 93c9                      suba.l     a1,a1
 [000423d6] 700a                      moveq.l    #10,d0
 [000423d8] 204c                      movea.l    a4,a0
 [000423da] 2a6f 0004                 movea.l    4(a7),a5
 [000423de] 2a6d 0008                 movea.l    8(a5),a5
 [000423e2] 4e95                      jsr        (a5)
-[000423e4] 6024                      bra.s      $0004240A
+[000423e4] 6024                      bra.s      proto_arrowed_10
+proto_arrowed_2:
 [000423e6] 93c9                      suba.l     a1,a1
 [000423e8] 700d                      moveq.l    #13,d0
 [000423ea] 204c                      movea.l    a4,a0
 [000423ec] 2a6f 0004                 movea.l    4(a7),a5
 [000423f0] 2a6d 0008                 movea.l    8(a5),a5
 [000423f4] 4e95                      jsr        (a5)
-[000423f6] 6010                      bra.s      $00042408
+[000423f6] 6010                      bra.s      proto_arrowed_11
+proto_arrowed_3:
 [000423f8] 93c9                      suba.l     a1,a1
 [000423fa] 700c                      moveq.l    #12,d0
 [000423fc] 204c                      movea.l    a4,a0
 [000423fe] 2a6f 0004                 movea.l    4(a7),a5
 [00042402] 2a6d 0008                 movea.l    8(a5),a5
 [00042406] 4e95                      jsr        (a5)
+proto_arrowed_11:
 [00042408] 4243                      clr.w      d3
+proto_arrowed_10:
 [0004240a] 7a01                      moveq.l    #1,d5
-[0004240c] 603a                      bra.s      $00042448
+[0004240c] 603a                      bra.s      proto_arrowed_1
+proto_arrowed_6:
 [0004240e] 93c9                      suba.l     a1,a1
 [00042410] 700d                      moveq.l    #13,d0
 [00042412] 204a                      movea.l    a2,a0
 [00042414] 2a6b 0008                 movea.l    8(a3),a5
 [00042418] 4e95                      jsr        (a5)
-[0004241a] 600c                      bra.s      $00042428
+[0004241a] 600c                      bra.s      proto_arrowed_12
+proto_arrowed_7:
 [0004241c] 93c9                      suba.l     a1,a1
 [0004241e] 700c                      moveq.l    #12,d0
 [00042420] 204a                      movea.l    a2,a0
 [00042422] 2a6b 0008                 movea.l    8(a3),a5
 [00042426] 4e95                      jsr        (a5)
+proto_arrowed_12:
 [00042428] 4243                      clr.w      d3
-[0004242a] 601a                      bra.s      $00042446
+[0004242a] 601a                      bra.s      proto_arrowed_13
+proto_arrowed_8:
 [0004242c] 93c9                      suba.l     a1,a1
 [0004242e] 700b                      moveq.l    #11,d0
 [00042430] 204a                      movea.l    a2,a0
 [00042432] 2a6b 0008                 movea.l    8(a3),a5
 [00042436] 4e95                      jsr        (a5)
-[00042438] 600c                      bra.s      $00042446
+[00042438] 600c                      bra.s      proto_arrowed_13
+proto_arrowed_9:
 [0004243a] 93c9                      suba.l     a1,a1
 [0004243c] 700a                      moveq.l    #10,d0
 [0004243e] 204a                      movea.l    a2,a0
 [00042440] 2a6b 0008                 movea.l    8(a3),a5
 [00042444] 4e95                      jsr        (a5)
+proto_arrowed_13:
 [00042446] 4245                      clr.w      d5
+proto_arrowed_1:
 [00042448] 4a45                      tst.w      d5
-[0004244a] 672c                      beq.s      $00042478
+[0004244a] 672c                      beq.s      proto_arrowed_14
 [0004244c] 3003                      move.w     d3,d0
 [0004244e] 5343                      subq.w     #1,d3
 [00042450] 4a40                      tst.w      d0
-[00042452] 6612                      bne.s      $00042466
+[00042452] 6612                      bne.s      proto_arrowed_15
 [00042454] 93c9                      suba.l     a1,a1
 [00042456] 7005                      moveq.l    #5,d0
 [00042458] 204c                      movea.l    a4,a0
@@ -128,28 +145,32 @@ J34:
 [0004245e] 2a6d 0008                 movea.l    8(a5),a5
 [00042462] 4e95                      jsr        (a5)
 [00042464] 7604                      moveq.l    #4,d3
+proto_arrowed_15:
 [00042466] 93c9                      suba.l     a1,a1
 [00042468] 7069                      moveq.l    #105,d0
 [0004246a] 204c                      movea.l    a4,a0
 [0004246c] 2a6f 0004                 movea.l    4(a7),a5
 [00042470] 2a6d 0008                 movea.l    8(a5),a5
 [00042474] 4e95                      jsr        (a5)
-[00042476] 6022                      bra.s      $0004249A
+[00042476] 6022                      bra.s      proto_arrowed_16
+proto_arrowed_14:
 [00042478] 3003                      move.w     d3,d0
 [0004247a] 5343                      subq.w     #1,d3
 [0004247c] 4a40                      tst.w      d0
-[0004247e] 660e                      bne.s      $0004248E
+[0004247e] 660e                      bne.s      proto_arrowed_17
 [00042480] 93c9                      suba.l     a1,a1
 [00042482] 7005                      moveq.l    #5,d0
 [00042484] 204a                      movea.l    a2,a0
 [00042486] 2a6b 0008                 movea.l    8(a3),a5
 [0004248a] 4e95                      jsr        (a5)
 [0004248c] 7604                      moveq.l    #4,d3
+proto_arrowed_17:
 [0004248e] 93c9                      suba.l     a1,a1
 [00042490] 7069                      moveq.l    #105,d0
 [00042492] 204a                      movea.l    a2,a0
 [00042494] 2a6b 0008                 movea.l    8(a3),a5
 [00042498] 4e95                      jsr        (a5)
+proto_arrowed_16:
 [0004249a] 2f39 000e 692a            move.l     _globl,-(a7)
 [000424a0] 486f 0006                 pea.l      6(a7)
 [000424a4] 486f 0008                 pea.l      8(a7)
@@ -159,26 +180,29 @@ J34:
 [000424b6] 4fef 000c                 lea.l      12(a7),a7
 [000424ba] 7001                      moveq.l    #1,d0
 [000424bc] c057                      and.w      (a7),d0
-[000424be] 6600 fede                 bne        $0004239E
+[000424be] 6600 fede                 bne        proto_arrowed_18
 [000424c2] b67c 0004                 cmp.w      #$0004,d3
-[000424c6] 6722                      beq.s      $000424EA
+[000424c6] 6722                      beq.s      proto_arrowed_19
 [000424c8] 4a45                      tst.w      d5
-[000424ca] 6712                      beq.s      $000424DE
+[000424ca] 6712                      beq.s      proto_arrowed_20
 [000424cc] 93c9                      suba.l     a1,a1
 [000424ce] 204c                      movea.l    a4,a0
 [000424d0] 246f 0004                 movea.l    4(a7),a2
 [000424d4] 246a 0008                 movea.l    8(a2),a2
 [000424d8] 7005                      moveq.l    #5,d0
 [000424da] 4e92                      jsr        (a2)
-[000424dc] 600c                      bra.s      $000424EA
+[000424dc] 600c                      bra.s      proto_arrowed_19
+proto_arrowed_20:
 [000424de] 93c9                      suba.l     a1,a1
 [000424e0] 7005                      moveq.l    #5,d0
 [000424e2] 204c                      movea.l    a4,a0
 [000424e4] 246b 0008                 movea.l    8(a3),a2
 [000424e8] 4e92                      jsr        (a2)
+proto_arrowed_19:
 [000424ea] 504f                      addq.w     #8,a7
 [000424ec] 4cdf 3c38                 movem.l    (a7)+,d3-d5/a2-a5
 [000424f0] 4e75                      rts
+
 proto_hslid:
 [000424f2] 48e7 0038                 movem.l    a2-a4,-(a7)
 [000424f6] 554f                      subq.w     #2,a7
@@ -204,6 +228,7 @@ proto_hslid:
 [0004252a] 544f                      addq.w     #2,a7
 [0004252c] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [00042530] 4e75                      rts
+
 proto_make:
 [00042532] 48e7 003e                 movem.l    a2-a6,-(a7)
 [00042536] 4fef ffec                 lea.l      -20(a7),a7
@@ -213,21 +238,24 @@ proto_make:
 [0004254c] 4eb9 0005 7052            jsr        Awi_create
 [00042552] 2648                      movea.l    a0,a3
 [00042554] 200b                      move.l     a3,d0
-[00042556] 6606                      bne.s      $0004255E
+[00042556] 6606                      bne.s      proto_make_1
 [00042558] 91c8                      suba.l     a0,a0
-[0004255a] 6000 017c                 bra        $000426D8
+[0004255a] 6000 017c                 bra        proto_make_2
+proto_make_1:
 [0004255e] 006b 0060 0054            ori.w      #$0060,84(a3)
 [00042564] 286b 0014                 movea.l    20(a3),a4
 [00042568] 4df9 0010 ee4e            lea.l      ACSblk,a6
 [0004256e] 200a                      move.l     a2,d0
-[00042570] 6704                      beq.s      $00042576
+[00042570] 6704                      beq.s      proto_make_3
 [00042572] 2a4a                      movea.l    a2,a5
-[00042574] 6014                      bra.s      $0004258A
+[00042574] 6014                      bra.s      proto_make_4
+proto_make_3:
 [00042576] 4bf9 000d 65e4            lea.l      def,a5
 [0004257c] 2056                      movea.l    (a6),a0
 [0004257e] 3aa8 0290                 move.w     656(a0),(a5)
 [00042582] 2056                      movea.l    (a6),a0
 [00042584] 3b68 0292 0002            move.w     658(a0),2(a5)
+proto_make_4:
 [0004258a] 376d 000c 0024            move.w     12(a5),36(a3)
 [00042590] 376d 000e 0026            move.w     14(a5),38(a3)
 [00042596] 3215                      move.w     (a5),d1
@@ -257,8 +285,9 @@ proto_make:
 [000425ec] 3e80                      move.w     d0,(a7)
 [000425ee] 322c 0014                 move.w     20(a4),d1
 [000425f2] b240                      cmp.w      d0,d1
-[000425f4] 6f04                      ble.s      $000425FA
+[000425f4] 6f04                      ble.s      proto_make_5
 [000425f6] 3940 0014                 move.w     d0,20(a4)
+proto_make_5:
 [000425fa] 2056                      movea.l    (a6),a0
 [000425fc] 3028 000e                 move.w     14(a0),d0
 [00042600] 3428 0014                 move.w     20(a0),d2
@@ -269,8 +298,9 @@ proto_make:
 [0004260c] 3e80                      move.w     d0,(a7)
 [0004260e] 302c 0016                 move.w     22(a4),d0
 [00042612] b057                      cmp.w      (a7),d0
-[00042614] 6f04                      ble.s      $0004261A
+[00042614] 6f04                      ble.s      proto_make_6
 [00042616] 3957 0016                 move.w     (a7),22(a4)
+proto_make_6:
 [0004261a] 224d                      movea.l    a5,a1
 [0004261c] 303c 00cf                 move.w     #$00CF,d0
 [00042620] 204c                      movea.l    a4,a0
@@ -323,34 +353,40 @@ proto_make:
 [000426ce] 204c                      movea.l    a4,a0
 [000426d0] 4eb9 0003 a772            jsr        Auo_editor
 [000426d6] 204b                      movea.l    a3,a0
+proto_make_2:
 [000426d8] 4fef 0014                 lea.l      20(a7),a7
 [000426dc] 4cdf 7c00                 movem.l    (a7)+,a2-a6
 [000426e0] 4e75                      rts
+
 term:
 [000426e2] 4eb9 0005 85f2            jsr        Awi_delete
 [000426e8] 4e75                      rts
+
 proto_service:
 [000426ea] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
 [000426ee] 2448                      movea.l    a0,a2
 [000426f0] 3600                      move.w     d0,d3
 [000426f2] 2649                      movea.l    a1,a3
 [000426f4] 5540                      subq.w     #2,d0
-[000426f6] 6712                      beq.s      $0004270A
+[000426f6] 6712                      beq.s      proto_service_1
 [000426f8] 907c 0009                 sub.w      #$0009,d0
-[000426fc] 6724                      beq.s      $00042722
+[000426fc] 6724                      beq.s      proto_service_2
 [000426fe] 5940                      subq.w     #4,d0
-[00042700] 6746                      beq.s      $00042748
+[00042700] 6746                      beq.s      proto_service_3
 [00042702] 907c 00b9                 sub.w      #$00B9,d0
-[00042706] 673a                      beq.s      $00042742
-[00042708] 6062                      bra.s      $0004276C
+[00042706] 673a                      beq.s      proto_service_4
+[00042708] 6062                      bra.s      proto_service_5
+proto_service_1:
 [0004270a] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00042710] 3028 023a                 move.w     570(a0),d0
-[00042714] 6604                      bne.s      $0004271A
+[00042714] 6604                      bne.s      proto_service_6
 [00042716] b5cb                      cmpa.l     a3,a2
-[00042718] 6660                      bne.s      $0004277A
+[00042718] 6660                      bne.s      proto_service_7
+proto_service_6:
 [0004271a] 204a                      movea.l    a2,a0
 [0004271c] 6100 ffc4                 bsr.w      term
-[00042720] 6058                      bra.s      $0004277A
+[00042720] 6058                      bra.s      proto_service_7
+proto_service_2:
 [00042722] 93c9                      suba.l     a1,a1
 [00042724] 303c 00ce                 move.w     #$00CE,d0
 [00042728] 206a 0014                 movea.l    20(a2),a0
@@ -359,27 +395,33 @@ proto_service:
 [00042734] 7006                      moveq.l    #6,d0
 [00042736] 206a 0014                 movea.l    20(a2),a0
 [0004273a] 4eb9 0003 a772            jsr        Auo_editor
-[00042740] 6038                      bra.s      $0004277A
+[00042740] 6038                      bra.s      proto_service_7
+proto_service_4:
 [00042742] 26aa 0014                 move.l     20(a2),(a3)
-[00042746] 6032                      bra.s      $0004277A
+[00042746] 6032                      bra.s      proto_service_7
+proto_service_3:
 [00042748] 41f9 000d 6482            lea.l      WIPR_INFO,a0
 [0004274e] 2279 000d 648a            movea.l    $000D648A,a1
 [00042754] 4e91                      jsr        (a1)
 [00042756] 2848                      movea.l    a0,a4
 [00042758] 200c                      move.l     a4,d0
-[0004275a] 671e                      beq.s      $0004277A
+[0004275a] 671e                      beq.s      proto_service_7
 [0004275c] 4eb9 0005 9df4            jsr        Awi_dialog
 [00042762] 204c                      movea.l    a4,a0
 [00042764] 4eb9 0005 85f2            jsr        Awi_delete
-[0004276a] 600e                      bra.s      $0004277A
+[0004276a] 600e                      bra.s      proto_service_7
+proto_service_5:
 [0004276c] 224b                      movea.l    a3,a1
 [0004276e] 3003                      move.w     d3,d0
 [00042770] 204a                      movea.l    a2,a0
 [00042772] 4eb9 0005 9dd0            jsr        Awi_service
-[00042778] 6002                      bra.s      $0004277C
+[00042778] 6002                      bra.s      proto_service_8
+proto_service_7:
 [0004277a] 7001                      moveq.l    #1,d0
+proto_service_8:
 [0004277c] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
 [00042780] 4e75                      rts
+
 proto_moved:
 [00042782] 2f0b                      move.l     a3,-(a7)
 [00042784] 2f0c                      move.l     a4,-(a7)
@@ -411,6 +453,7 @@ proto_moved:
 [000427d4] 285f                      movea.l    (a7)+,a4
 [000427d6] 265f                      movea.l    (a7)+,a3
 [000427d8] 4e75                      rts
+
 proto_sized:
 [000427da] 48e7 003c                 movem.l    a2-a5,-(a7)
 [000427de] 594f                      subq.w     #4,a7
@@ -437,7 +480,7 @@ proto_sized:
 [00042826] 906f 0002                 sub.w      2(a7),d0
 [0004282a] 3a80                      move.w     d0,(a5)
 [0004282c] 220c                      move.l     a4,d1
-[0004282e] 6716                      beq.s      $00042846
+[0004282e] 6716                      beq.s      proto_sized_1
 [00042830] 302c 0002                 move.w     2(a4),d0
 [00042834] 48c0                      ext.l      d0
 [00042836] 2400                      move.l     d0,d2
@@ -446,11 +489,13 @@ proto_sized:
 [0004283c] e78a                      lsl.l      #3,d2
 [0004283e] 3234 2816                 move.w     22(a4,d2.l),d1
 [00042842] 936b 0016                 sub.w      d1,22(a3)
+proto_sized_1:
 [00042846] 202a 0018                 move.l     24(a2),d0
-[0004284a] 670a                      beq.s      $00042856
+[0004284a] 670a                      beq.s      proto_sized_2
 [0004284c] 2040                      movea.l    d0,a0
 [0004284e] 3228 0016                 move.w     22(a0),d1
 [00042852] 936b 0016                 sub.w      d1,22(a3)
+proto_sized_2:
 [00042856] 93c9                      suba.l     a1,a1
 [00042858] 303c 00ee                 move.w     #$00EE,d0
 [0004285c] 204b                      movea.l    a3,a0
@@ -465,6 +510,7 @@ proto_sized:
 [0004287c] 584f                      addq.w     #4,a7
 [0004287e] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [00042882] 4e75                      rts
+
 proto_vslid:
 [00042884] 48e7 0038                 movem.l    a2-a4,-(a7)
 [00042888] 554f                      subq.w     #2,a7
@@ -490,18 +536,20 @@ proto_vslid:
 [000428bc] 544f                      addq.w     #2,a7
 [000428be] 4cdf 1c00                 movem.l    (a7)+,a2-a4
 [000428c2] 4e75                      rts
+
 wprintf:
 [000428c4] 48e7 1030                 movem.l    d3/a2-a3,-(a7)
 [000428c8] 2448                      movea.l    a0,a2
 [000428ca] 76ff                      moveq.l    #-1,d3
 [000428cc] 200a                      move.l     a2,d0
-[000428ce] 6714                      beq.s      $000428E4
+[000428ce] 6714                      beq.s      wprintf_1
 [000428d0] 47ef 0010                 lea.l      16(a7),a3
 [000428d4] 2f0b                      move.l     a3,-(a7)
 [000428d6] 206a 0014                 movea.l    20(a2),a0
 [000428da] 4eb9 0003 b7b0            jsr        uvprintf
 [000428e0] 584f                      addq.w     #4,a7
 [000428e2] 3600                      move.w     d0,d3
+wprintf_1:
 [000428e4] 3003                      move.w     d3,d0
 [000428e6] 4cdf 0c08                 movem.l    (a7)+,d3/a2-a3
 [000428ea] 4e75                      rts

@@ -1,42 +1,48 @@
 _ACSmessage:
-[000428ec] 4e75                      rts
+		rts
+
 _ACSclose:
-[000428ee] 4eb9 0004 a2f8            jsr        Aev_unhidepointer
-[000428f4] 2079 0010 ee4e            movea.l    ACSblk,a0
-[000428fa] 3028 0236                 move.w     566(a0),d0
-[000428fe] 660c                      bne.s      $0004290C
-[00042900] 2079 0010 ee4e            movea.l    ACSblk,a0
-[00042906] 3028 027e                 move.w     638(a0),d0
-[0004290a] 6708                      beq.s      $00042914
-[0004290c] 4eb9 0004 a30e            jsr        Aev_quit
-[00042912] 4e75                      rts
-[00042914] 91c8                      suba.l     a0,a0
-[00042916] 7002                      moveq.l    #2,d0
-[00042918] 4eb9 0005 6a20            jsr        Awi_sendall
-[0004291e] 4e75                      rts
+		jsr        Aev_unhidepointer
+		movea.l    ACSblk,a0
+		move.w     566(a0),d0
+		bne.s      _ACSclose_1
+		movea.l    ACSblk,a0
+		move.w     638(a0),d0
+		beq.s      _ACSclose_2
+_ACSclose_1:
+		jsr        Aev_quit
+		rts
+_ACSclose_2:
+		suba.l     a0,a0
+		moveq.l    #2,d0
+		jsr        Awi_sendall
+		rts
+
 _ACSaboutme:
 [00042920] 594f                      subq.w     #4,a7
 [00042922] 41f9 000d fa62            lea.l      _W_ABOUT,a0
-[00042928] 2279 000d fa6a            movea.l    _W_ABOUT+8,a1
+[00042928] 2279 000d fa6a            movea.l    $000DFA6A,a1
 [0004292e] 4e91                      jsr        (a1)
 [00042930] 2e88                      move.l     a0,(a7)
 [00042932] 2017                      move.l     (a7),d0
-[00042934] 6700 00ca                 beq        $00042A00
+[00042934] 6700 00ca                 beq        _ACSaboutme_1
 [00042938] 43f9 000d fbea            lea.l      _c_version,a1
 [0004293e] 7007                      moveq.l    #7,d0
 [00042940] 2057                      movea.l    (a7),a0
 [00042942] 2068 0014                 movea.l    20(a0),a0
 [00042946] 4eb9 0005 0fd8            jsr        Aob_puttext
 [0004294c] 1039 000d fc05            move.b     lib_date,d0
-[00042952] 6600 007e                 bne.w      $000429D2
+[00042952] 6600 007e                 bne.w      _ACSaboutme_2
 [00042956] 1039 000d fbfd            move.b     $000DFBFD,d0
 [0004295c] 4880                      ext.w      d0
 [0004295e] 4eb9 0008 37f6            jsr        isspace
 [00042964] 4a40                      tst.w      d0
-[00042966] 6704                      beq.s      $0004296C
+[00042966] 6704                      beq.s      _ACSaboutme_3
 [00042968] 7030                      moveq.l    #48,d0
-[0004296a] 6006                      bra.s      $00042972
+[0004296a] 6006                      bra.s      _ACSaboutme_4
+_ACSaboutme_3:
 [0004296c] 1039 000d fbfd            move.b     $000DFBFD,d0
+_ACSaboutme_4:
 [00042972] 13c0 000d fc05            move.b     d0,lib_date
 [00042978] 13f9 000d fbfe 000d fc06  move.b     $000DFBFE,$000DFC06
 [00042982] 13fc 002e 000d fc07       move.b     #$2E,$000DFC07
@@ -49,6 +55,7 @@ _ACSaboutme:
 [000429b8] 13f9 000d fc02 000d fc0d  move.b     $000DFC02,$000DFC0D
 [000429c2] 13f9 000d fc03 000d fc0e  move.b     $000DFC03,$000DFC0E
 [000429cc] 4239 000d fc0f            clr.b      $000DFC0F
+_ACSaboutme_2:
 [000429d2] 4879 000d fc05            pea.l      lib_date
 [000429d8] 43f9 000d fc10            lea.l      $000DFC10,a1
 [000429de] 7006                      moveq.l    #6,d0
@@ -60,19 +67,24 @@ _ACSaboutme:
 [000429f2] 4eb9 0005 9df4            jsr        Awi_dialog
 [000429f8] 2057                      movea.l    (a7),a0
 [000429fa] 4eb9 0005 85f2            jsr        Awi_delete
+_ACSaboutme_1:
 [00042a00] 584f                      addq.w     #4,a7
 [00042a02] 4e75                      rts
+
 dummy:
 [00042a04] 4e75                      rts
+
 ok:
 [00042a06] 4240                      clr.w      d0
 [00042a08] 4e75                      rts
+
 DEBUG_MEM:
 [00042a0a] 594f                      subq.w     #4,a7
 [00042a0c] 2e88                      move.l     a0,(a7)
 [00042a0e] 23d7 0010 f558            move.l     (a7),DEBUG_DEFECT_MEM
 [00042a14] 584f                      addq.w     #4,a7
 [00042a16] 4e75                      rts
+
 acs_call:
 [00042a18] 4fef fff6                 lea.l      -10(a7),a7
 [00042a1c] 3f40 0008                 move.w     d0,8(a7)
@@ -86,17 +98,20 @@ acs_call:
 [00042a44] 2157 028c                 move.l     (a7),652(a0)
 [00042a48] 4eb9 0004 2d7c            jsr        ACSinitialize
 [00042a4e] 4a40                      tst.w      d0
-[00042a50] 6612                      bne.s      $00042A64
+[00042a50] 6612                      bne.s      acs_call_1
 [00042a52] 4eb9 0004 b150            jsr        ACSeventhandler
 [00042a58] 4eb9 0004 2f2c            jsr        ACSterminate
 [00042a5e] 4240                      clr.w      d0
-[00042a60] 600c                      bra.s      $00042A6E
-[00042a62] 600a                      bra.s      $00042A6E
+[00042a60] 600c                      bra.s      acs_call_2
+[00042a62] 600a                      bra.s      acs_call_2
+acs_call_1:
 [00042a64] 4eb9 0004 2f2c            jsr        ACSterminate
 [00042a6a] 70ff                      moveq.l    #-1,d0
 [00042a6c] 4e71                      nop
+acs_call_2:
 [00042a6e] 4fef 000a                 lea.l      10(a7),a7
 [00042a72] 4e75                      rts
+
 get_acsblk:
 [00042a74] 23fc 0010 ee52 0010 ee4e  move.l     #_ACSblk,ACSblk
 [00042a7e] 223c 0000 0506            move.l     #$00000506,d1
@@ -139,89 +154,113 @@ get_acsblk:
 [00042b4e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00042b54] 217c 0005 bb0c 03d6       move.l     #Ash_error,982(a0)
 [00042b5c] 2039 000a 840e            move.l     $000A840E,d0
-[00042b62] 6708                      beq.s      $00042B6C
+[00042b62] 6708                      beq.s      get_acsblk_1
 [00042b64] 2079 000a 840e            movea.l    $000A840E,a0
-[00042b6a] 6004                      bra.s      $00042B70
+[00042b6a] 6004                      bra.s      get_acsblk_2
+get_acsblk_1:
 [00042b6c] 41fa fe96                 lea.l      dummy(pc),a0
+get_acsblk_2:
 [00042b70] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042b76] 2348 0298                 move.l     a0,664(a1)
 [00042b7a] 2039 000a 8412            move.l     $000A8412,d0
-[00042b80] 6708                      beq.s      $00042B8A
+[00042b80] 6708                      beq.s      get_acsblk_3
 [00042b82] 2079 000a 8412            movea.l    $000A8412,a0
-[00042b88] 6004                      bra.s      $00042B8E
+[00042b88] 6004                      bra.s      get_acsblk_4
+get_acsblk_3:
 [00042b8a] 41fa fd94                 lea.l      _ACSaboutme(pc),a0
+get_acsblk_4:
 [00042b8e] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042b94] 2348 029c                 move.l     a0,668(a1)
 [00042b98] 2039 000a 8416            move.l     $000A8416,d0
-[00042b9e] 6708                      beq.s      $00042BA8
+[00042b9e] 6708                      beq.s      get_acsblk_5
 [00042ba0] 2079 000a 8416            movea.l    $000A8416,a0
-[00042ba6] 6004                      bra.s      $00042BAC
+[00042ba6] 6004                      bra.s      get_acsblk_6
+get_acsblk_5:
 [00042ba8] 41fa fd44                 lea.l      _ACSclose(pc),a0
+get_acsblk_6:
 [00042bac] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042bb2] 2348 02a0                 move.l     a0,672(a1)
 [00042bb6] 2039 000a 841a            move.l     $000A841A,d0
-[00042bbc] 6708                      beq.s      $00042BC6
+[00042bbc] 6708                      beq.s      get_acsblk_7
 [00042bbe] 2079 000a 841a            movea.l    $000A841A,a0
-[00042bc4] 6004                      bra.s      $00042BCA
+[00042bc4] 6004                      bra.s      get_acsblk_8
+get_acsblk_7:
 [00042bc6] 41fa fd24                 lea.l      _ACSmessage(pc),a0
+get_acsblk_8:
 [00042bca] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042bd0] 2348 02a4                 move.l     a0,676(a1)
 [00042bd4] 2039 000a 841e            move.l     $000A841E,d0
-[00042bda] 6708                      beq.s      $00042BE4
+[00042bda] 6708                      beq.s      get_acsblk_9
 [00042bdc] 2079 000a 841e            movea.l    $000A841E,a0
-[00042be2] 6004                      bra.s      $00042BE8
+[00042be2] 6004                      bra.s      get_acsblk_10
+get_acsblk_9:
 [00042be4] 41fa fe1e                 lea.l      dummy(pc),a0
+get_acsblk_10:
 [00042be8] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042bee] 2348 02a8                 move.l     a0,680(a1)
 [00042bf2] 2039 000a 8422            move.l     $000A8422,d0
-[00042bf8] 6708                      beq.s      $00042C02
+[00042bf8] 6708                      beq.s      get_acsblk_11
 [00042bfa] 2079 000a 8422            movea.l    $000A8422,a0
-[00042c00] 6004                      bra.s      $00042C06
+[00042c00] 6004                      bra.s      get_acsblk_12
+get_acsblk_11:
 [00042c02] 41fa fe00                 lea.l      dummy(pc),a0
+get_acsblk_12:
 [00042c06] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042c0c] 2348 02ac                 move.l     a0,684(a1)
 [00042c10] 2039 000a 843e            move.l     $000A843E,d0
-[00042c16] 6708                      beq.s      $00042C20
+[00042c16] 6708                      beq.s      get_acsblk_13
 [00042c18] 2079 000a 843e            movea.l    $000A843E,a0
-[00042c1e] 6004                      bra.s      $00042C24
+[00042c1e] 6004                      bra.s      get_acsblk_14
+get_acsblk_13:
 [00042c20] 41fa fde4                 lea.l      ok(pc),a0
+get_acsblk_14:
 [00042c24] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042c2a] 2348 02b0                 move.l     a0,688(a1)
 [00042c2e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00042c34] 317c 00c1 02b4            move.w     #$00C1,692(a0)
 [00042c3a] 2039 000a 8426            move.l     $000A8426,d0
-[00042c40] 6708                      beq.s      $00042C4A
+[00042c40] 6708                      beq.s      get_acsblk_15
 [00042c42] 2079 000a 8426            movea.l    $000A8426,a0
-[00042c48] 6004                      bra.s      $00042C4E
+[00042c48] 6004                      bra.s      get_acsblk_16
+get_acsblk_15:
 [00042c4a] 41fa fdb8                 lea.l      dummy(pc),a0
+get_acsblk_16:
 [00042c4e] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042c54] 2348 02b6                 move.l     a0,694(a1)
 [00042c58] 2039 000a 8432            move.l     $000A8432,d0
-[00042c5e] 6708                      beq.s      $00042C68
+[00042c5e] 6708                      beq.s      get_acsblk_17
 [00042c60] 2079 000a 8432            movea.l    $000A8432,a0
-[00042c66] 6004                      bra.s      $00042C6C
+[00042c66] 6004                      bra.s      get_acsblk_18
+get_acsblk_17:
 [00042c68] 41fa fd9a                 lea.l      dummy(pc),a0
+get_acsblk_18:
 [00042c6c] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042c72] 2348 02c2                 move.l     a0,706(a1)
 [00042c76] 2039 000a 842a            move.l     $000A842A,d0
-[00042c7c] 6708                      beq.s      $00042C86
+[00042c7c] 6708                      beq.s      get_acsblk_19
 [00042c7e] 2079 000a 842a            movea.l    $000A842A,a0
-[00042c84] 6004                      bra.s      $00042C8A
+[00042c84] 6004                      bra.s      get_acsblk_20
+get_acsblk_19:
 [00042c86] 41fa fd7c                 lea.l      dummy(pc),a0
+get_acsblk_20:
 [00042c8a] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042c90] 2348 02ba                 move.l     a0,698(a1)
 [00042c94] 2039 000a 842e            move.l     $000A842E,d0
-[00042c9a] 6708                      beq.s      $00042CA4
+[00042c9a] 6708                      beq.s      get_acsblk_21
 [00042c9c] 2079 000a 842e            movea.l    $000A842E,a0
-[00042ca2] 6004                      bra.s      $00042CA8
+[00042ca2] 6004                      bra.s      get_acsblk_22
+get_acsblk_21:
 [00042ca4] 41fa fd5e                 lea.l      dummy(pc),a0
+get_acsblk_22:
 [00042ca8] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042cae] 2348 02be                 move.l     a0,702(a1)
 [00042cb2] 2039 000a 843a            move.l     $000A843A,d0
-[00042cb8] 6708                      beq.s      $00042CC2
+[00042cb8] 6708                      beq.s      get_acsblk_23
 [00042cba] 2079 000a 843a            movea.l    $000A843A,a0
-[00042cc0] 6006                      bra.s      $00042CC8
+[00042cc0] 6006                      bra.s      get_acsblk_24
+get_acsblk_23:
 [00042cc2] 41f9 0006 12a6            lea.l      Aev_GEMScript,a0
+get_acsblk_24:
 [00042cc8] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00042cce] 2348 04ee                 move.l     a0,1262(a1)
 [00042cd2] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -248,6 +287,7 @@ get_acsblk:
 [00042d48] 317c 0001 04fc            move.w     #$0001,1276(a0)
 [00042d4e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00042d54] 4e75                      rts
+
 main:
 [00042d56] 4fef fff6                 lea.l      -10(a7),a7
 [00042d5a] 3f40 0008                 move.w     d0,8(a7)

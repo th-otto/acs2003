@@ -15,22 +15,24 @@ call_click:
 [0004d106] 7020                      moveq.l    #32,d0
 [0004d108] 2057                      movea.l    (a7),a0
 [0004d10a] c068 0008                 and.w      8(a0),d0
-[0004d10e] 660a                      bne.s      $0004D11A
+[0004d10e] 660a                      bne.s      call_click_1
 [0004d110] 7008                      moveq.l    #8,d0
 [0004d112] 2057                      movea.l    (a7),a0
 [0004d114] c068 000a                 and.w      10(a0),d0
-[0004d118] 6702                      beq.s      $0004D11C
-[0004d11a] 604c                      bra.s      $0004D168
+[0004d118] 6702                      beq.s      call_click_2
+call_click_1:
+[0004d11a] 604c                      bra.s      call_click_3
+call_click_2:
 [0004d11c] 2057                      movea.l    (a7),a0
 [0004d11e] 41e8 0018                 lea.l      24(a0),a0
 [0004d122] 2f48 0004                 move.l     a0,4(a7)
 [0004d126] 206f 0004                 movea.l    4(a7),a0
 [0004d12a] 3028 0008                 move.w     8(a0),d0
 [0004d12e] c07c 8000                 and.w      #$8000,d0
-[0004d132] 6734                      beq.s      $0004D168
+[0004d132] 6734                      beq.s      call_click_3
 [0004d134] 206f 0004                 movea.l    4(a7),a0
 [0004d138] 2010                      move.l     (a0),d0
-[0004d13a] 672c                      beq.s      $0004D168
+[0004d13a] 672c                      beq.s      call_click_3
 [0004d13c] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004d142] 216f 000e 0258            move.l     14(a7),600(a0)
 [0004d148] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -40,8 +42,10 @@ call_click:
 [0004d160] 206f 0004                 movea.l    4(a7),a0
 [0004d164] 2050                      movea.l    (a0),a0
 [0004d166] 4e90                      jsr        (a0)
+call_click_3:
 [0004d168] 4fef 0012                 lea.l      18(a7),a7
 [0004d16c] 4e75                      rts
+
 Ame_titmenu:
 [0004d16e] 4fef fff6                 lea.l      -10(a7),a7
 [0004d172] 2f48 0006                 move.l     a0,6(a7)
@@ -71,8 +75,9 @@ Ame_titmenu:
 [0004d1b8] e788                      lsl.l      #3,d0
 [0004d1ba] 206f 0006                 movea.l    6(a7),a0
 [0004d1be] 3eb0 0802                 move.w     2(a0,d0.l),(a7)
-[0004d1c2] 602c                      bra.s      $0004D1F0
+[0004d1c2] 602c                      bra.s      Ame_titmenu_1
 [0004d1c4] 322f 0002                 move.w     2(a7),d1
+Ame_titmenu_2:
 [0004d1c8] 48c1                      ext.l      d1
 [0004d1ca] 2001                      move.l     d1,d0
 [0004d1cc] d080                      add.l      d0,d0
@@ -88,12 +93,14 @@ Ame_titmenu:
 [0004d1e6] e788                      lsl.l      #3,d0
 [0004d1e8] 206f 0006                 movea.l    6(a7),a0
 [0004d1ec] 3eb0 0800                 move.w     0(a0,d0.l),(a7)
+Ame_titmenu_1:
 [0004d1f0] 302f 0004                 move.w     4(a7),d0
 [0004d1f4] b06f 0002                 cmp.w      2(a7),d0
-[0004d1f8] 66ca                      bne.s      $0004D1C4
+[0004d1f8] 66ca                      bne.s      Ame_titmenu_2
 [0004d1fa] 3017                      move.w     (a7),d0
 [0004d1fc] 4fef 000a                 lea.l      10(a7),a7
 [0004d200] 4e75                      rts
+
 Ame_tnormal:
 [0004d202] 2f0a                      move.l     a2,-(a7)
 [0004d204] 4fef ffec                 lea.l      -20(a7),a7
@@ -104,8 +111,9 @@ Ame_tnormal:
 [0004d218] 206f 0010                 movea.l    16(a7),a0
 [0004d21c] 2068 005e                 movea.l    94(a0),a0
 [0004d220] b1ef 000c                 cmpa.l     12(a7),a0
-[0004d224] 6702                      beq.s      $0004D228
-[0004d226] 604e                      bra.s      $0004D276
+[0004d224] 6702                      beq.s      Ame_tnormal_1
+[0004d226] 604e                      bra.s      Ame_tnormal_2
+Ame_tnormal_1:
 [0004d228] 302f 000a                 move.w     10(a7),d0
 [0004d22c] 226f 000c                 movea.l    12(a7),a1
 [0004d230] 41d7                      lea.l      (a7),a0
@@ -118,20 +126,24 @@ Ame_tnormal:
 [0004d244] e788                      lsl.l      #3,d0
 [0004d246] d1af 000c                 add.l      d0,12(a7)
 [0004d24a] 302f 0008                 move.w     8(a7),d0
-[0004d24e] 670c                      beq.s      $0004D25C
+[0004d24e] 670c                      beq.s      Ame_tnormal_3
 [0004d250] 206f 000c                 movea.l    12(a7),a0
 [0004d254] 0068 0001 000a            ori.w      #$0001,10(a0)
-[0004d25a] 600a                      bra.s      $0004D266
+[0004d25a] 600a                      bra.s      Ame_tnormal_4
+Ame_tnormal_3:
 [0004d25c] 206f 000c                 movea.l    12(a7),a0
 [0004d260] 0268 fffe 000a            andi.w     #$FFFE,10(a0)
+Ame_tnormal_4:
 [0004d266] 43d7                      lea.l      (a7),a1
 [0004d268] 206f 0010                 movea.l    16(a7),a0
 [0004d26c] 246f 0010                 movea.l    16(a7),a2
 [0004d270] 246a 006a                 movea.l    106(a2),a2
 [0004d274] 4e92                      jsr        (a2)
+Ame_tnormal_2:
 [0004d276] 4fef 0014                 lea.l      20(a7),a7
 [0004d27a] 245f                      movea.l    (a7)+,a2
 [0004d27c] 4e75                      rts
+
 Ame_menu:
 [0004d27e] 2f0a                      move.l     a2,-(a7)
 [0004d280] 4fef ffca                 lea.l      -54(a7),a7
@@ -169,8 +181,9 @@ Ame_menu:
 [0004d2fa] 246f 0032                 movea.l    50(a7),a2
 [0004d2fe] 246a 0004                 movea.l    4(a2),a2
 [0004d302] 4e92                      jsr        (a2)
-[0004d304] 6000 0546                 bra        $0004D84C
+[0004d304] 6000 0546                 bra        Ame_menu_1
 [0004d308] 3f7c ffff 0014            move.w     #$FFFF,20(a7)
+Ame_menu_16:
 [0004d30e] 426f 0010                 clr.w      16(a7)
 [0004d312] 322f 0012                 move.w     18(a7),d1
 [0004d316] 48c1                      ext.l      d1
@@ -193,7 +206,7 @@ Ame_menu:
 [0004d34a] 41ef 0020                 lea.l      32(a7),a0
 [0004d34e] 4eb9 0004 fe06            jsr        Aob_offset
 [0004d354] 302f 0020                 move.w     32(a7),d0
-[0004d358] 6a1e                      bpl.s      $0004D378
+[0004d358] 6a1e                      bpl.s      Ame_menu_2
 [0004d35a] 302f 0020                 move.w     32(a7),d0
 [0004d35e] 342f 0012                 move.w     18(a7),d2
 [0004d362] 48c2                      ext.l      d2
@@ -204,8 +217,9 @@ Ame_menu:
 [0004d36c] 206f 002e                 movea.l    46(a7),a0
 [0004d370] 9170 1810                 sub.w      d0,16(a0,d1.l)
 [0004d374] 426f 0020                 clr.w      32(a7)
+Ame_menu_2:
 [0004d378] 302f 0022                 move.w     34(a7),d0
-[0004d37c] 6a1e                      bpl.s      $0004D39C
+[0004d37c] 6a1e                      bpl.s      Ame_menu_3
 [0004d37e] 302f 0022                 move.w     34(a7),d0
 [0004d382] 342f 0012                 move.w     18(a7),d2
 [0004d386] 48c2                      ext.l      d2
@@ -216,6 +230,7 @@ Ame_menu:
 [0004d390] 206f 002e                 movea.l    46(a7),a0
 [0004d394] 9170 1812                 sub.w      d0,18(a0,d1.l)
 [0004d398] 426f 0022                 clr.w      34(a7)
+Ame_menu_3:
 [0004d39c] 302f 0020                 move.w     32(a7),d0
 [0004d3a0] d06f 0024                 add.w      36(a7),d0
 [0004d3a4] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -224,7 +239,7 @@ Ame_menu:
 [0004d3b4] 9068 000c                 sub.w      12(a0),d0
 [0004d3b8] 3f40 0002                 move.w     d0,2(a7)
 [0004d3bc] 302f 0002                 move.w     2(a7),d0
-[0004d3c0] 6f22                      ble.s      $0004D3E4
+[0004d3c0] 6f22                      ble.s      Ame_menu_4
 [0004d3c2] 302f 0002                 move.w     2(a7),d0
 [0004d3c6] 342f 0012                 move.w     18(a7),d2
 [0004d3ca] 48c2                      ext.l      d2
@@ -236,6 +251,7 @@ Ame_menu:
 [0004d3d8] 9170 1810                 sub.w      d0,16(a0,d1.l)
 [0004d3dc] 302f 0002                 move.w     2(a7),d0
 [0004d3e0] 916f 0020                 sub.w      d0,32(a7)
+Ame_menu_4:
 [0004d3e4] 302f 0022                 move.w     34(a7),d0
 [0004d3e8] d06f 0026                 add.w      38(a7),d0
 [0004d3ec] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -244,7 +260,7 @@ Ame_menu:
 [0004d3fc] 9068 000e                 sub.w      14(a0),d0
 [0004d400] 3f40 0002                 move.w     d0,2(a7)
 [0004d404] 302f 0002                 move.w     2(a7),d0
-[0004d408] 6f22                      ble.s      $0004D42C
+[0004d408] 6f22                      ble.s      Ame_menu_5
 [0004d40a] 302f 0002                 move.w     2(a7),d0
 [0004d40e] 342f 0012                 move.w     18(a7),d2
 [0004d412] 48c2                      ext.l      d2
@@ -256,6 +272,7 @@ Ame_menu:
 [0004d420] 9170 1812                 sub.w      d0,18(a0,d1.l)
 [0004d424] 302f 0002                 move.w     2(a7),d0
 [0004d428] 916f 0022                 sub.w      d0,34(a7)
+Ame_menu_5:
 [0004d42c] 41ef 0020                 lea.l      32(a7),a0
 [0004d430] 4eb9 0005 009c            jsr        Aob_save
 [0004d436] 2f48 0028                 move.l     a0,40(a7)
@@ -269,8 +286,9 @@ Ame_menu:
 [0004d456] 206f 0034                 movea.l    52(a7),a0
 [0004d45a] 4eb9 0007 9c0c            jsr        mt_objc_draw
 [0004d460] 5c4f                      addq.w     #6,a7
-[0004d462] 6000 03e4                 bra        $0004D848
+[0004d462] 6000 03e4                 bra        Ame_menu_6
 [0004d466] 7003                      moveq.l    #3,d0
+Ame_menu_15:
 [0004d468] 4eb9 0005 ae7e            jsr        Awi_update
 [0004d46e] 2f39 000e 692a            move.l     _globl,-(a7)
 [0004d474] 486f 0004                 pea.l      4(a7)
@@ -297,7 +315,7 @@ Ame_menu:
 [0004d4b0] 91c8                      suba.l     a0,a0
 [0004d4b2] 7401                      moveq.l    #1,d2
 [0004d4b4] 7201                      moveq.l    #1,d1
-[0004d4b6] 7006                      moveq.l    #6,d0 MU_BUTTON | MU_M1
+[0004d4b6] 7006                      moveq.l    #6,d0
 [0004d4b8] 4eb9 0007 9240            jsr        mt_evnt_multi
 [0004d4be] 4fef 0032                 lea.l      50(a7),a7
 [0004d4c2] 3f40 000e                 move.w     d0,14(a7)
@@ -313,17 +331,18 @@ Ame_menu:
 [0004d4e8] 3f40 0016                 move.w     d0,22(a7)
 [0004d4ec] 302f 0016                 move.w     22(a7),d0
 [0004d4f0] b06f 0012                 cmp.w      18(a7),d0
-[0004d4f4] 6606                      bne.s      $0004D4FC
+[0004d4f4] 6606                      bne.s      Ame_menu_7
 [0004d4f6] 3f7c ffff 0016            move.w     #$FFFF,22(a7)
+Ame_menu_7:
 [0004d4fc] 302f 0016                 move.w     22(a7),d0
 [0004d500] b06f 0014                 cmp.w      20(a7),d0
-[0004d504] 6700 014a                 beq        $0004D650
+[0004d504] 6700 014a                 beq        Ame_menu_8
 [0004d508] 2279 000e 692a            movea.l    _globl,a1
 [0004d50e] 91c8                      suba.l     a0,a0
 [0004d510] 303c 0100                 move.w     #$0100,d0
 [0004d514] 4eb9 0007 abe4            jsr        mt_graf_mouse
 [0004d51a] 302f 0010                 move.w     16(a7),d0
-[0004d51e] 6762                      beq.s      $0004D582
+[0004d51e] 6762                      beq.s      Ame_menu_9
 [0004d520] 322f 0014                 move.w     20(a7),d1
 [0004d524] 48c1                      ext.l      d1
 [0004d526] 2001                      move.l     d1,d0
@@ -354,8 +373,9 @@ Ame_menu:
 [0004d574] 206f 0038                 movea.l    56(a7),a0
 [0004d578] 4eb9 0007 9f2c            jsr        mt_objc_change
 [0004d57e] 4fef 000a                 lea.l      10(a7),a7
+Ame_menu_9:
 [0004d582] 302f 0016                 move.w     22(a7),d0
-[0004d586] 6b00 00ac                 bmi        $0004D634
+[0004d586] 6b00 00ac                 bmi        Ame_menu_10
 [0004d58a] 7008                      moveq.l    #8,d0
 [0004d58c] 342f 0016                 move.w     22(a7),d2
 [0004d590] 48c2                      ext.l      d2
@@ -365,7 +385,7 @@ Ame_menu:
 [0004d598] e789                      lsl.l      #3,d1
 [0004d59a] 206f 002e                 movea.l    46(a7),a0
 [0004d59e] c070 180a                 and.w      10(a0,d1.l),d0
-[0004d5a2] 6600 0090                 bne        $0004D634
+[0004d5a2] 6600 0090                 bne        Ame_menu_10
 [0004d5a6] 302f 0016                 move.w     22(a7),d0
 [0004d5aa] 226f 002e                 movea.l    46(a7),a1
 [0004d5ae] 41ef 0018                 lea.l      24(a7),a0
@@ -407,15 +427,18 @@ Ame_menu:
 [0004d628] 246f 0032                 movea.l    50(a7),a2
 [0004d62c] 246a 0004                 movea.l    4(a2),a2
 [0004d630] 4e92                      jsr        (a2)
-[0004d632] 6004                      bra.s      $0004D638
+[0004d632] 6004                      bra.s      Ame_menu_11
+Ame_menu_10:
 [0004d634] 426f 0010                 clr.w      16(a7)
+Ame_menu_11:
 [0004d638] 2279 000e 692a            movea.l    _globl,a1
 [0004d63e] 91c8                      suba.l     a0,a0
 [0004d640] 303c 0101                 move.w     #$0101,d0
 [0004d644] 4eb9 0007 abe4            jsr        mt_graf_mouse
 [0004d64a] 3f6f 0016 0014            move.w     22(a7),20(a7)
+Ame_menu_8:
 [0004d650] 302f 0016                 move.w     22(a7),d0
-[0004d654] 6a00 0114                 bpl        $0004D76A
+[0004d654] 6a00 0114                 bpl        Ame_menu_12
 [0004d658] 3f2f 000a                 move.w     10(a7),-(a7)
 [0004d65c] 342f 000e                 move.w     14(a7),d2
 [0004d660] 7208                      moveq.l    #8,d1
@@ -426,7 +449,7 @@ Ame_menu:
 [0004d674] 544f                      addq.w     #2,a7
 [0004d676] 3f40 0016                 move.w     d0,22(a7)
 [0004d67a] 302f 0016                 move.w     22(a7),d0
-[0004d67e] 6b00 00ea                 bmi        $0004D76A
+[0004d67e] 6b00 00ea                 bmi        Ame_menu_12
 [0004d682] 2f39 000e 692a            move.l     _globl,-(a7)
 [0004d688] 486f 0004                 pea.l      4(a7)
 [0004d68c] 486f 0010                 pea.l      16(a7)
@@ -441,7 +464,7 @@ Ame_menu:
 [0004d6ae] 3f40 0008                 move.w     d0,8(a7)
 [0004d6b2] 302f 0016                 move.w     22(a7),d0
 [0004d6b6] b06f 002c                 cmp.w      44(a7),d0
-[0004d6ba] 6700 00ae                 beq        $0004D76A
+[0004d6ba] 6700 00ae                 beq        Ame_menu_12
 [0004d6be] 322f 0016                 move.w     22(a7),d1
 [0004d6c2] 48c1                      ext.l      d1
 [0004d6c4] 2001                      move.l     d1,d0
@@ -450,7 +473,7 @@ Ame_menu:
 [0004d6ca] e788                      lsl.l      #3,d0
 [0004d6cc] 206f 002e                 movea.l    46(a7),a0
 [0004d6d0] 0c30 0020 0807            cmpi.b     #$20,7(a0,d0.l)
-[0004d6d6] 6600 0092                 bne        $0004D76A
+[0004d6d6] 6600 0092                 bne        Ame_menu_12
 [0004d6da] 43ef 0020                 lea.l      32(a7),a1
 [0004d6de] 206f 0028                 movea.l    40(a7),a0
 [0004d6e2] 4eb9 0005 021e            jsr        Aob_restore
@@ -491,13 +514,14 @@ Ame_menu:
 [0004d75c] 246f 0032                 movea.l    50(a7),a2
 [0004d760] 246a 0004                 movea.l    4(a2),a2
 [0004d764] 4e92                      jsr        (a2)
-[0004d766] 6000 00e4                 bra        $0004D84C
+[0004d766] 6000 00e4                 bra        Ame_menu_1
+Ame_menu_12:
 [0004d76a] 302f 0016                 move.w     22(a7),d0
 [0004d76e] b06f 002c                 cmp.w      44(a7),d0
-[0004d772] 6700 00d4                 beq        $0004D848
+[0004d772] 6700 00d4                 beq        Ame_menu_6
 [0004d776] 7002                      moveq.l    #2,d0
 [0004d778] c06f 000e                 and.w      14(a7),d0
-[0004d77c] 6700 00ca                 beq        $0004D848
+[0004d77c] 6700 00ca                 beq        Ame_menu_6
 [0004d780] 43ef 0020                 lea.l      32(a7),a1
 [0004d784] 206f 0028                 movea.l    40(a7),a0
 [0004d788] 4eb9 0005 021e            jsr        Aob_restore
@@ -519,15 +543,15 @@ Ame_menu:
 [0004d7b8] 31af 0004 0812            move.w     4(a7),18(a0,d0.l)
 [0004d7be] 4eb9 0005 0c80            jsr        Aev_release
 [0004d7c4] 302f 0016                 move.w     22(a7),d0
-[0004d7c8] 6f58                      ble.s      $0004D822
+[0004d7c8] 6f58                      ble.s      Ame_menu_13
 [0004d7ca] 206f 002e                 movea.l    46(a7),a0
 [0004d7ce] 302f 0016                 move.w     22(a7),d0
 [0004d7d2] b068 0002                 cmp.w      2(a0),d0
-[0004d7d6] 674a                      beq.s      $0004D822
+[0004d7d6] 674a                      beq.s      Ame_menu_13
 [0004d7d8] 206f 002e                 movea.l    46(a7),a0
 [0004d7dc] 302f 0016                 move.w     22(a7),d0
 [0004d7e0] b068 0004                 cmp.w      4(a0),d0
-[0004d7e4] 673c                      beq.s      $0004D822
+[0004d7e4] 673c                      beq.s      Ame_menu_13
 [0004d7e6] 206f 002e                 movea.l    46(a7),a0
 [0004d7ea] 3228 0002                 move.w     2(a0),d1
 [0004d7ee] 48c1                      ext.l      d1
@@ -538,13 +562,14 @@ Ame_menu:
 [0004d7f8] 206f 002e                 movea.l    46(a7),a0
 [0004d7fc] 322f 0016                 move.w     22(a7),d1
 [0004d800] b270 0802                 cmp.w      2(a0,d0.l),d1
-[0004d804] 671c                      beq.s      $0004D822
+[0004d804] 671c                      beq.s      Ame_menu_13
 [0004d806] 4eb9 0004 eec0            jsr        Amo_busy
 [0004d80c] 302f 0016                 move.w     22(a7),d0
 [0004d810] 226f 002e                 movea.l    46(a7),a1
 [0004d814] 206f 0032                 movea.l    50(a7),a0
 [0004d818] 6100 f8c6                 bsr        call_click
 [0004d81c] 4eb9 0004 ef0c            jsr        Amo_unbusy
+Ame_menu_13:
 [0004d822] 4241                      clr.w      d1
 [0004d824] 302f 002c                 move.w     44(a7),d0
 [0004d828] 226f 002e                 movea.l    46(a7),a1
@@ -556,12 +581,16 @@ Ame_menu:
 [0004d83c] 246f 0032                 movea.l    50(a7),a2
 [0004d840] 246a 0004                 movea.l    4(a2),a2
 [0004d844] 4e92                      jsr        (a2)
-[0004d846] 6008                      bra.s      $0004D850
-[0004d848] 6000 fc1c                 bra        $0004D466
-[0004d84c] 6000 faba                 bra        $0004D308
+[0004d846] 6008                      bra.s      Ame_menu_14
+Ame_menu_6:
+[0004d848] 6000 fc1c                 bra        Ame_menu_15
+Ame_menu_1:
+[0004d84c] 6000 faba                 bra        Ame_menu_16
+Ame_menu_14:
 [0004d850] 4fef 0036                 lea.l      54(a7),a7
 [0004d854] 245f                      movea.l    (a7)+,a2
 [0004d856] 4e75                      rts
+
 Ame_submenu:
 [0004d858] 2f03                      move.l     d3,-(a7)
 [0004d85a] 2f0a                      move.l     a2,-(a7)
@@ -584,9 +613,10 @@ Ame_submenu:
 [0004d894] 206f 0048                 movea.l    72(a7),a0
 [0004d898] 3f70 0802 0028            move.w     2(a0,d0.l),40(a7)
 [0004d89e] 302f 0028                 move.w     40(a7),d0
-[0004d8a2] 6b00 00a2                 bmi        $0004D946
-[0004d8a6] 6018                      bra.s      $0004D8C0
+[0004d8a2] 6b00 00a2                 bmi        Ame_submenu_1
+[0004d8a6] 6018                      bra.s      Ame_submenu_2
 [0004d8a8] 322f 0028                 move.w     40(a7),d1
+Ame_submenu_4:
 [0004d8ac] 48c1                      ext.l      d1
 [0004d8ae] 2001                      move.l     d1,d0
 [0004d8b0] d080                      add.l      d0,d0
@@ -594,9 +624,10 @@ Ame_submenu:
 [0004d8b4] e788                      lsl.l      #3,d0
 [0004d8b6] 206f 0048                 movea.l    72(a7),a0
 [0004d8ba] 3f70 0800 0028            move.w     0(a0,d0.l),40(a7)
+Ame_submenu_2:
 [0004d8c0] 302f 0028                 move.w     40(a7),d0
 [0004d8c4] b06f 0046                 cmp.w      70(a7),d0
-[0004d8c8] 671a                      beq.s      $0004D8E4
+[0004d8c8] 671a                      beq.s      Ame_submenu_3
 [0004d8ca] 7004                      moveq.l    #4,d0
 [0004d8cc] 342f 0028                 move.w     40(a7),d2
 [0004d8d0] 48c2                      ext.l      d2
@@ -606,10 +637,11 @@ Ame_submenu:
 [0004d8d8] e789                      lsl.l      #3,d1
 [0004d8da] 206f 0048                 movea.l    72(a7),a0
 [0004d8de] c070 180a                 and.w      10(a0,d1.l),d0
-[0004d8e2] 67c4                      beq.s      $0004D8A8
+[0004d8e2] 67c4                      beq.s      Ame_submenu_4
+Ame_submenu_3:
 [0004d8e4] 302f 0028                 move.w     40(a7),d0
 [0004d8e8] b06f 0046                 cmp.w      70(a7),d0
-[0004d8ec] 6758                      beq.s      $0004D946
+[0004d8ec] 6758                      beq.s      Ame_submenu_1
 [0004d8ee] 322f 0028                 move.w     40(a7),d1
 [0004d8f2] 48c1                      ext.l      d1
 [0004d8f4] 2001                      move.l     d1,d0
@@ -642,6 +674,7 @@ Ame_submenu:
 [0004d93c] e789                      lsl.l      #3,d1
 [0004d93e] 206f 0048                 movea.l    72(a7),a0
 [0004d942] 9170 1812                 sub.w      d0,18(a0,d1.l)
+Ame_submenu_1:
 [0004d946] 302f 0046                 move.w     70(a7),d0
 [0004d94a] 226f 0048                 movea.l    72(a7),a1
 [0004d94e] 41ef 003a                 lea.l      58(a7),a0
@@ -649,7 +682,7 @@ Ame_submenu:
 [0004d958] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004d95e] 302f 003a                 move.w     58(a7),d0
 [0004d962] b068 0008                 cmp.w      8(a0),d0
-[0004d966] 6c2a                      bge.s      $0004D992
+[0004d966] 6c2a                      bge.s      Ame_submenu_5
 [0004d968] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004d96e] 322f 0046                 move.w     70(a7),d1
 [0004d972] 48c1                      ext.l      d1
@@ -661,10 +694,11 @@ Ame_submenu:
 [0004d980] 33a8 0008 0810            move.w     8(a0),16(a1,d0.l)
 [0004d986] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004d98c] 3f68 0008 003a            move.w     8(a0),58(a7)
+Ame_submenu_5:
 [0004d992] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004d998] 302f 003c                 move.w     60(a7),d0
 [0004d99c] b068 000a                 cmp.w      10(a0),d0
-[0004d9a0] 6c2a                      bge.s      $0004D9CC
+[0004d9a0] 6c2a                      bge.s      Ame_submenu_6
 [0004d9a2] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004d9a8] 322f 0046                 move.w     70(a7),d1
 [0004d9ac] 48c1                      ext.l      d1
@@ -676,6 +710,7 @@ Ame_submenu:
 [0004d9ba] 33a8 000a 0812            move.w     10(a0),18(a1,d0.l)
 [0004d9c0] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004d9c6] 3f68 000a 003c            move.w     10(a0),60(a7)
+Ame_submenu_6:
 [0004d9cc] 302f 003a                 move.w     58(a7),d0
 [0004d9d0] d06f 003e                 add.w      62(a7),d0
 [0004d9d4] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -684,7 +719,7 @@ Ame_submenu:
 [0004d9e4] 9068 000c                 sub.w      12(a0),d0
 [0004d9e8] 3f40 0004                 move.w     d0,4(a7)
 [0004d9ec] 302f 0004                 move.w     4(a7),d0
-[0004d9f0] 6f22                      ble.s      $0004DA14
+[0004d9f0] 6f22                      ble.s      Ame_submenu_7
 [0004d9f2] 302f 0004                 move.w     4(a7),d0
 [0004d9f6] 342f 0046                 move.w     70(a7),d2
 [0004d9fa] 48c2                      ext.l      d2
@@ -696,6 +731,7 @@ Ame_submenu:
 [0004da08] 9170 1810                 sub.w      d0,16(a0,d1.l)
 [0004da0c] 302f 0004                 move.w     4(a7),d0
 [0004da10] 916f 003a                 sub.w      d0,58(a7)
+Ame_submenu_7:
 [0004da14] 302f 003c                 move.w     60(a7),d0
 [0004da18] d06f 0040                 add.w      64(a7),d0
 [0004da1c] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -704,7 +740,7 @@ Ame_submenu:
 [0004da2c] 9068 000e                 sub.w      14(a0),d0
 [0004da30] 3f40 0004                 move.w     d0,4(a7)
 [0004da34] 302f 0004                 move.w     4(a7),d0
-[0004da38] 6f22                      ble.s      $0004DA5C
+[0004da38] 6f22                      ble.s      Ame_submenu_8
 [0004da3a] 302f 0004                 move.w     4(a7),d0
 [0004da3e] 342f 0046                 move.w     70(a7),d2
 [0004da42] 48c2                      ext.l      d2
@@ -716,6 +752,7 @@ Ame_submenu:
 [0004da50] 9170 1812                 sub.w      d0,18(a0,d1.l)
 [0004da54] 302f 0004                 move.w     4(a7),d0
 [0004da58] 916f 003c                 sub.w      d0,60(a7)
+Ame_submenu_8:
 [0004da5c] 41ef 003a                 lea.l      58(a7),a0
 [0004da60] 4eb9 0005 009c            jsr        Aob_save
 [0004da66] 2f48 0042                 move.l     a0,66(a7)
@@ -741,12 +778,15 @@ Ame_submenu:
 [0004dabe] 526f 0018                 addq.w     #1,24(a7)
 [0004dac2] 7001                      moveq.l    #1,d0
 [0004dac4] c06f 0012                 and.w      18(a7),d0
-[0004dac8] 6708                      beq.s      $0004DAD2
+[0004dac8] 6708                      beq.s      Ame_submenu_9
 [0004daca] 3f7c 0001 0010            move.w     #$0001,16(a7)
-[0004dad0] 6004                      bra.s      $0004DAD6
+[0004dad0] 6004                      bra.s      Ame_submenu_10
+Ame_submenu_9:
 [0004dad2] 426f 0010                 clr.w      16(a7)
-[0004dad6] 6000 0d4e                 bra        $0004E826
+Ame_submenu_10:
+[0004dad6] 6000 0d4e                 bra        Ame_submenu_11
 [0004dada] 7003                      moveq.l    #3,d0
+Ame_submenu_86:
 [0004dadc] 4eb9 0005 ae7e            jsr        Awi_update
 [0004dae2] 2f39 000e 692a            move.l     _globl,-(a7)
 [0004dae8] 486f 0006                 pea.l      6(a7)
@@ -774,7 +814,7 @@ Ame_submenu:
 [0004db26] 7401                      moveq.l    #1,d2
 [0004db28] 2479 0010 ee4e            movea.l    ACSblk,a2
 [0004db2e] 322a 02d0                 move.w     720(a2),d1
-[0004db32] 7007                      moveq.l    #7,d0 MU_BUTTON | MU_KEYBD | MU_M1
+[0004db32] 7007                      moveq.l    #7,d0
 [0004db34] 4eb9 0007 9240            jsr        mt_evnt_multi
 [0004db3a] 4fef 0032                 lea.l      50(a7),a7
 [0004db3e] 3f40 001a                 move.w     d0,26(a7)
@@ -782,7 +822,7 @@ Ame_submenu:
 [0004db44] 4eb9 0005 ae7e            jsr        Awi_update
 [0004db4a] 7001                      moveq.l    #1,d0
 [0004db4c] c06f 001a                 and.w      26(a7),d0
-[0004db50] 6700 0902                 beq        $0004E454
+[0004db50] 6700 0902                 beq        Ame_submenu_12
 [0004db54] 322f 0012                 move.w     18(a7),d1
 [0004db58] 302f 0014                 move.w     20(a7),d0
 [0004db5c] 4eb9 0004 4284            jsr        nkc_gemks2n
@@ -790,51 +830,53 @@ Ame_submenu:
 [0004db66] 3f7c fffe 0028            move.w     #$FFFE,40(a7)
 [0004db6c] 302f 0014                 move.w     20(a7),d0
 [0004db70] c07c 8000                 and.w      #$8000,d0
-[0004db74] 6700 08de                 beq        $0004E454
+[0004db74] 6700 08de                 beq        Ame_submenu_12
 [0004db78] 102f 0015                 move.b     21(a7),d0
 [0004db7c] 4880                      ext.w      d0
 [0004db7e] b07c 001b                 cmp.w      #$001B,d0
-[0004db82] 6200 08b0                 bhi        $0004E434
+[0004db82] 6200 08b0                 bhi        Ame_submenu_13
 [0004db86] d040                      add.w      d0,d0
 [0004db88] 303b 0006                 move.w     $0004DB90(pc,d0.w),d0
 [0004db8c] 4efb 0002                 jmp        $0004DB90(pc,d0.w)
 J35:
-[0004db90] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004db92] 0240                      dc.w $0240   ; $0004ddd0-$0004db90
-[0004db94] 0240                      dc.w $0240   ; $0004ddd0-$0004db90
-[0004db96] 0240                      dc.w $0240   ; $0004ddd0-$0004db90
-[0004db98] 0240                      dc.w $0240   ; $0004ddd0-$0004db90
-[0004db9a] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004db9c] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004db9e] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dba0] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dba2] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dba4] 004c                      dc.w $004c   ; $0004dbdc-$0004db90
-[0004dba6] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dba8] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbaa] 004c                      dc.w $004c   ; $0004dbdc-$0004db90
-[0004dbac] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbae] 01ce                      dc.w $01ce   ; $0004dd5e-$0004db90
-[0004dbb0] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbb2] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbb4] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbb6] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbb8] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbba] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbbc] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbbe] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbc0] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbc2] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbc4] 08a4                      dc.w $08a4   ; $0004e434-$0004db90
-[0004dbc6] 0038                      dc.w $0038   ; $0004dbc8-$0004db90
+[0004db90] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004db92] 0240                      dc.w $0240   ; Ame_submenu_14-J35
+[0004db94] 0240                      dc.w $0240   ; Ame_submenu_14-J35
+[0004db96] 0240                      dc.w $0240   ; Ame_submenu_14-J35
+[0004db98] 0240                      dc.w $0240   ; Ame_submenu_14-J35
+[0004db9a] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004db9c] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004db9e] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dba0] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dba2] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dba4] 004c                      dc.w $004c   ; Ame_submenu_15-J35
+[0004dba6] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dba8] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbaa] 004c                      dc.w $004c   ; Ame_submenu_15-J35
+[0004dbac] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbae] 01ce                      dc.w $01ce   ; Ame_submenu_16-J35
+[0004dbb0] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbb2] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbb4] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbb6] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbb8] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbba] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbbc] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbbe] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbc0] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbc2] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbc4] 08a4                      dc.w $08a4   ; Ame_submenu_13-J35
+[0004dbc6] 0038                      dc.w $0038   ; Ame_submenu_17-J35
+Ame_submenu_17:
 [0004dbc8] 3f7c ffff 0028            move.w     #$FFFF,40(a7)
 [0004dbce] 3f7c ffff 0022            move.w     #$FFFF,34(a7)
 [0004dbd4] 426f 0006                 clr.w      6(a7)
-[0004dbd8] 6000 087a                 bra        $0004E454
+[0004dbd8] 6000 087a                 bra        Ame_submenu_12
+Ame_submenu_15:
 [0004dbdc] 302f 0026                 move.w     38(a7),d0
-[0004dbe0] 6b00 0178                 bmi        $0004DD5A
+[0004dbe0] 6b00 0178                 bmi        Ame_submenu_18
 [0004dbe4] 302f 001c                 move.w     28(a7),d0
-[0004dbe8] 6700 0160                 beq        $0004DD4A
+[0004dbe8] 6700 0160                 beq        Ame_submenu_19
 [0004dbec] 322f 0026                 move.w     38(a7),d1
 [0004dbf0] 48c1                      ext.l      d1
 [0004dbf2] 2001                      move.l     d1,d0
@@ -843,7 +885,7 @@ J35:
 [0004dbf8] e788                      lsl.l      #3,d0
 [0004dbfa] 206f 0048                 movea.l    72(a7),a0
 [0004dbfe] 3030 0802                 move.w     2(a0,d0.l),d0
-[0004dc02] 6f00 0146                 ble        $0004DD4A
+[0004dc02] 6f00 0146                 ble        Ame_submenu_19
 [0004dc06] 322f 0026                 move.w     38(a7),d1
 [0004dc0a] 48c1                      ext.l      d1
 [0004dc0c] 2001                      move.l     d1,d0
@@ -853,7 +895,7 @@ J35:
 [0004dc14] 206f 0048                 movea.l    72(a7),a0
 [0004dc18] 3f70 0802 0024            move.w     2(a0,d0.l),36(a7)
 [0004dc1e] 302f 0024                 move.w     36(a7),d0
-[0004dc22] 6b00 0124                 bmi        $0004DD48
+[0004dc22] 6b00 0124                 bmi        Ame_submenu_20
 [0004dc26] 322f 0026                 move.w     38(a7),d1
 [0004dc2a] 48c1                      ext.l      d1
 [0004dc2c] 2001                      move.l     d1,d0
@@ -863,7 +905,7 @@ J35:
 [0004dc34] 206f 0048                 movea.l    72(a7),a0
 [0004dc38] 322f 0024                 move.w     36(a7),d1
 [0004dc3c] b270 0804                 cmp.w      4(a0,d0.l),d1
-[0004dc40] 6600 0106                 bne        $0004DD48
+[0004dc40] 6600 0106                 bne        Ame_submenu_20
 [0004dc44] 7001                      moveq.l    #1,d0
 [0004dc46] d06f 0034                 add.w      52(a7),d0
 [0004dc4a] 3f00                      move.w     d0,-(a7)
@@ -877,7 +919,7 @@ J35:
 [0004dc66] 544f                      addq.w     #2,a7
 [0004dc68] 322f 0026                 move.w     38(a7),d1
 [0004dc6c] b240                      cmp.w      d0,d1
-[0004dc6e] 6600 00d8                 bne        $0004DD48
+[0004dc6e] 6600 00d8                 bne        Ame_submenu_20
 [0004dc72] 322f 0024                 move.w     36(a7),d1
 [0004dc76] 48c1                      ext.l      d1
 [0004dc78] 2001                      move.l     d1,d0
@@ -924,19 +966,21 @@ J35:
 [0004dcec] 206f 0048                 movea.l    72(a7),a0
 [0004dcf0] 0070 0080 0808            ori.w      #$0080,8(a0,d0.l)
 [0004dcf6] 302f 0022                 move.w     34(a7),d0
-[0004dcfa] 6b20                      bmi.s      $0004DD1C
+[0004dcfa] 6b20                      bmi.s      Ame_submenu_21
 [0004dcfc] 302f 0046                 move.w     70(a7),d0
 [0004dd00] b06f 0022                 cmp.w      34(a7),d0
-[0004dd04] 6722                      beq.s      $0004DD28
+[0004dd04] 6722                      beq.s      Ame_submenu_22
 [0004dd06] 302f 0022                 move.w     34(a7),d0
 [0004dd0a] 206f 0048                 movea.l    72(a7),a0
 [0004dd0e] 4eb9 0005 0f3a            jsr        Aob_up
 [0004dd14] 322f 0046                 move.w     70(a7),d1
 [0004dd18] b240                      cmp.w      d0,d1
-[0004dd1a] 670c                      beq.s      $0004DD28
+[0004dd1a] 670c                      beq.s      Ame_submenu_22
+Ame_submenu_21:
 [0004dd1c] 426f 0006                 clr.w      6(a7)
 [0004dd20] 3f7c fffe 0028            move.w     #$FFFE,40(a7)
-[0004dd26] 6020                      bra.s      $0004DD48
+[0004dd26] 6020                      bra.s      Ame_submenu_20
+Ame_submenu_22:
 [0004dd28] 43ef 0022                 lea.l      34(a7),a1
 [0004dd2c] 7018                      moveq.l    #24,d0
 [0004dd2e] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -945,13 +989,17 @@ J35:
 [0004dd3e] 246a 0258                 movea.l    600(a2),a2
 [0004dd42] 246a 0004                 movea.l    4(a2),a2
 [0004dd46] 4e92                      jsr        (a2)
-[0004dd48] 6010                      bra.s      $0004DD5A
+Ame_submenu_20:
+[0004dd48] 6010                      bra.s      Ame_submenu_18
+Ame_submenu_19:
 [0004dd4a] 3f6f 0026 0022            move.w     38(a7),34(a7)
 [0004dd50] 426f 0006                 clr.w      6(a7)
 [0004dd54] 3f7c fffe 0028            move.w     #$FFFE,40(a7)
-[0004dd5a] 6000 06f8                 bra        $0004E454
+Ame_submenu_18:
+[0004dd5a] 6000 06f8                 bra        Ame_submenu_12
+Ame_submenu_16:
 [0004dd5e] 302f 0046                 move.w     70(a7),d0
-[0004dd62] 675e                      beq.s      $0004DDC2
+[0004dd62] 675e                      beq.s      Ame_submenu_23
 [0004dd64] 322f 0046                 move.w     70(a7),d1
 [0004dd68] 48c1                      ext.l      d1
 [0004dd6a] 2001                      move.l     d1,d0
@@ -960,7 +1008,7 @@ J35:
 [0004dd70] e788                      lsl.l      #3,d0
 [0004dd72] 206f 0048                 movea.l    72(a7),a0
 [0004dd76] 3030 0800                 move.w     0(a0,d0.l),d0
-[0004dd7a] 6f46                      ble.s      $0004DDC2
+[0004dd7a] 6f46                      ble.s      Ame_submenu_23
 [0004dd7c] 322f 0046                 move.w     70(a7),d1
 [0004dd80] 48c1                      ext.l      d1
 [0004dd82] 2001                      move.l     d1,d0
@@ -981,29 +1029,37 @@ J35:
 [0004ddb6] 7001                      moveq.l    #1,d0
 [0004ddb8] d06f 0034                 add.w      52(a7),d0
 [0004ddbc] 3f40 0016                 move.w     d0,22(a7)
-[0004ddc0] 6006                      bra.s      $0004DDC8
+[0004ddc0] 6006                      bra.s      Ame_submenu_24
+Ame_submenu_23:
 [0004ddc2] 3f7c ffff 0022            move.w     #$FFFF,34(a7)
+Ame_submenu_24:
 [0004ddc8] 426f 0006                 clr.w      6(a7)
-[0004ddcc] 6000 0686                 bra        $0004E454
+[0004ddcc] 6000 0686                 bra        Ame_submenu_12
+Ame_submenu_14:
 [0004ddd0] 302f 0026                 move.w     38(a7),d0
-[0004ddd4] 6a00 024e                 bpl        $0004E024
+[0004ddd4] 6a00 024e                 bpl        Ame_submenu_25
 [0004ddd8] 0c2f 0003 0015            cmpi.b     #$03,21(a7)
-[0004ddde] 6708                      beq.s      $0004DDE8
+[0004ddde] 6708                      beq.s      Ame_submenu_26
 [0004dde0] 0c2f 0002 0015            cmpi.b     #$02,21(a7)
-[0004dde6] 660c                      bne.s      $0004DDF4
+[0004dde6] 660c                      bne.s      Ame_submenu_27
+Ame_submenu_26:
 [0004dde8] 303c 7fff                 move.w     #$7FFF,d0
 [0004ddec] 3f40 000c                 move.w     d0,12(a7)
 [0004ddf0] 3f40 000e                 move.w     d0,14(a7)
+Ame_submenu_27:
 [0004ddf4] 0c2f 0004 0015            cmpi.b     #$04,21(a7)
-[0004ddfa] 6708                      beq.s      $0004DE04
+[0004ddfa] 6708                      beq.s      Ame_submenu_28
 [0004ddfc] 0c2f 0001 0015            cmpi.b     #$01,21(a7)
-[0004de02] 660a                      bne.s      $0004DE0E
+[0004de02] 660a                      bne.s      Ame_submenu_29
+Ame_submenu_28:
 [0004de04] 4240                      clr.w      d0
 [0004de06] 3f40 000c                 move.w     d0,12(a7)
 [0004de0a] 3f40 000e                 move.w     d0,14(a7)
+Ame_submenu_29:
 [0004de0e] 3f6f 0046 0002            move.w     70(a7),2(a7)
-[0004de14] 6018                      bra.s      $0004DE2E
+[0004de14] 6018                      bra.s      Ame_submenu_30
 [0004de16] 322f 0002                 move.w     2(a7),d1
+Ame_submenu_32:
 [0004de1a] 48c1                      ext.l      d1
 [0004de1c] 2001                      move.l     d1,d0
 [0004de1e] d080                      add.l      d0,d0
@@ -1011,6 +1067,7 @@ J35:
 [0004de22] e788                      lsl.l      #3,d0
 [0004de24] 206f 0048                 movea.l    72(a7),a0
 [0004de28] 3f70 0802 0002            move.w     2(a0,d0.l),2(a7)
+Ame_submenu_30:
 [0004de2e] 322f 0002                 move.w     2(a7),d1
 [0004de32] 48c1                      ext.l      d1
 [0004de34] 2001                      move.l     d1,d0
@@ -1019,7 +1076,7 @@ J35:
 [0004de3a] e788                      lsl.l      #3,d0
 [0004de3c] 206f 0048                 movea.l    72(a7),a0
 [0004de40] 3030 0802                 move.w     2(a0,d0.l),d0
-[0004de44] 6b2e                      bmi.s      $0004DE74
+[0004de44] 6b2e                      bmi.s      Ame_submenu_31
 [0004de46] 303c 0080                 move.w     #$0080,d0
 [0004de4a] 362f 0002                 move.w     2(a7),d3
 [0004de4e] 48c3                      ext.l      d3
@@ -1036,24 +1093,27 @@ J35:
 [0004de68] e789                      lsl.l      #3,d1
 [0004de6a] 206f 0048                 movea.l    72(a7),a0
 [0004de6e] c070 1808                 and.w      8(a0,d1.l),d0
-[0004de72] 67a2                      beq.s      $0004DE16
+[0004de72] 67a2                      beq.s      Ame_submenu_32
+Ame_submenu_31:
 [0004de74] 302f 0002                 move.w     2(a7),d0
 [0004de78] 206f 0048                 movea.l    72(a7),a0
 [0004de7c] 4eb9 0005 0f3a            jsr        Aob_up
 [0004de82] 3f40 0020                 move.w     d0,32(a7)
 [0004de86] 3f7c fffe 0028            move.w     #$FFFE,40(a7)
-[0004de8c] 6000 0186                 bra        $0004E014
+[0004de8c] 6000 0186                 bra        Ame_submenu_33
 [0004de90] 102f 0015                 move.b     21(a7),d0
+Ame_submenu_39:
 [0004de94] 4880                      ext.w      d0
 [0004de96] 5340                      subq.w     #1,d0
-[0004de98] 6700 00bc                 beq        $0004DF56
+[0004de98] 6700 00bc                 beq        Ame_submenu_34
 [0004de9c] 5340                      subq.w     #1,d0
-[0004de9e] 670e                      beq.s      $0004DEAE
+[0004de9e] 670e                      beq.s      Ame_submenu_35
 [0004dea0] 5340                      subq.w     #1,d0
-[0004dea2] 670a                      beq.s      $0004DEAE
+[0004dea2] 670a                      beq.s      Ame_submenu_35
 [0004dea4] 5340                      subq.w     #1,d0
-[0004dea6] 6700 00ae                 beq        $0004DF56
-[0004deaa] 6000 0150                 bra        $0004DFFC
+[0004dea6] 6700 00ae                 beq        Ame_submenu_34
+[0004deaa] 6000 0150                 bra        Ame_submenu_36
+Ame_submenu_35:
 [0004deae] 7008                      moveq.l    #8,d0
 [0004deb0] 342f 0002                 move.w     2(a7),d2
 [0004deb4] 48c2                      ext.l      d2
@@ -1063,7 +1123,7 @@ J35:
 [0004debc] e789                      lsl.l      #3,d1
 [0004debe] 206f 0048                 movea.l    72(a7),a0
 [0004dec2] c070 180a                 and.w      10(a0,d1.l),d0
-[0004dec6] 6600 008a                 bne        $0004DF52
+[0004dec6] 6600 008a                 bne        Ame_submenu_37
 [0004deca] 7041                      moveq.l    #65,d0
 [0004decc] 342f 0002                 move.w     2(a7),d2
 [0004ded0] 48c2                      ext.l      d2
@@ -1073,7 +1133,7 @@ J35:
 [0004ded8] e789                      lsl.l      #3,d1
 [0004deda] 206f 0048                 movea.l    72(a7),a0
 [0004dede] c070 1808                 and.w      8(a0,d1.l),d0
-[0004dee2] 676e                      beq.s      $0004DF52
+[0004dee2] 676e                      beq.s      Ame_submenu_37
 [0004dee4] 322f 0002                 move.w     2(a7),d1
 [0004dee8] 48c1                      ext.l      d1
 [0004deea] 2001                      move.l     d1,d0
@@ -1083,7 +1143,7 @@ J35:
 [0004def2] 206f 0048                 movea.l    72(a7),a0
 [0004def6] 3030 0812                 move.w     18(a0,d0.l),d0
 [0004defa] b06f 000c                 cmp.w      12(a7),d0
-[0004defe] 6c52                      bge.s      $0004DF52
+[0004defe] 6c52                      bge.s      Ame_submenu_37
 [0004df00] 322f 0002                 move.w     2(a7),d1
 [0004df04] 48c1                      ext.l      d1
 [0004df06] 2001                      move.l     d1,d0
@@ -1093,7 +1153,7 @@ J35:
 [0004df0e] 206f 0048                 movea.l    72(a7),a0
 [0004df12] 3030 0810                 move.w     16(a0,d0.l),d0
 [0004df16] b06f 000e                 cmp.w      14(a7),d0
-[0004df1a] 6c36                      bge.s      $0004DF52
+[0004df1a] 6c36                      bge.s      Ame_submenu_37
 [0004df1c] 322f 0002                 move.w     2(a7),d1
 [0004df20] 48c1                      ext.l      d1
 [0004df22] 2001                      move.l     d1,d0
@@ -1111,7 +1171,9 @@ J35:
 [0004df42] 206f 0048                 movea.l    72(a7),a0
 [0004df46] 3f70 0810 000e            move.w     16(a0,d0.l),14(a7)
 [0004df4c] 3f6f 0002 0028            move.w     2(a7),40(a7)
-[0004df52] 6000 00a8                 bra        $0004DFFC
+Ame_submenu_37:
+[0004df52] 6000 00a8                 bra        Ame_submenu_36
+Ame_submenu_34:
 [0004df56] 7008                      moveq.l    #8,d0
 [0004df58] 342f 0002                 move.w     2(a7),d2
 [0004df5c] 48c2                      ext.l      d2
@@ -1121,7 +1183,7 @@ J35:
 [0004df64] e789                      lsl.l      #3,d1
 [0004df66] 206f 0048                 movea.l    72(a7),a0
 [0004df6a] c070 180a                 and.w      10(a0,d1.l),d0
-[0004df6e] 6600 008a                 bne        $0004DFFA
+[0004df6e] 6600 008a                 bne        Ame_submenu_38
 [0004df72] 7041                      moveq.l    #65,d0
 [0004df74] 342f 0002                 move.w     2(a7),d2
 [0004df78] 48c2                      ext.l      d2
@@ -1131,7 +1193,7 @@ J35:
 [0004df80] e789                      lsl.l      #3,d1
 [0004df82] 206f 0048                 movea.l    72(a7),a0
 [0004df86] c070 1808                 and.w      8(a0,d1.l),d0
-[0004df8a] 676e                      beq.s      $0004DFFA
+[0004df8a] 676e                      beq.s      Ame_submenu_38
 [0004df8c] 322f 0002                 move.w     2(a7),d1
 [0004df90] 48c1                      ext.l      d1
 [0004df92] 2001                      move.l     d1,d0
@@ -1141,7 +1203,7 @@ J35:
 [0004df9a] 206f 0048                 movea.l    72(a7),a0
 [0004df9e] 3030 0812                 move.w     18(a0,d0.l),d0
 [0004dfa2] b06f 000c                 cmp.w      12(a7),d0
-[0004dfa6] 6d52                      blt.s      $0004DFFA
+[0004dfa6] 6d52                      blt.s      Ame_submenu_38
 [0004dfa8] 322f 0002                 move.w     2(a7),d1
 [0004dfac] 48c1                      ext.l      d1
 [0004dfae] 2001                      move.l     d1,d0
@@ -1151,7 +1213,7 @@ J35:
 [0004dfb6] 206f 0048                 movea.l    72(a7),a0
 [0004dfba] 3030 0810                 move.w     16(a0,d0.l),d0
 [0004dfbe] b06f 000e                 cmp.w      14(a7),d0
-[0004dfc2] 6d36                      blt.s      $0004DFFA
+[0004dfc2] 6d36                      blt.s      Ame_submenu_38
 [0004dfc4] 322f 0002                 move.w     2(a7),d1
 [0004dfc8] 48c1                      ext.l      d1
 [0004dfca] 2001                      move.l     d1,d0
@@ -1169,7 +1231,9 @@ J35:
 [0004dfea] 206f 0048                 movea.l    72(a7),a0
 [0004dfee] 3f70 0810 000e            move.w     16(a0,d0.l),14(a7)
 [0004dff4] 3f6f 0002 0028            move.w     2(a7),40(a7)
+Ame_submenu_38:
 [0004dffa] 4e71                      nop
+Ame_submenu_36:
 [0004dffc] 322f 0002                 move.w     2(a7),d1
 [0004e000] 48c1                      ext.l      d1
 [0004e002] 2001                      move.l     d1,d0
@@ -1178,10 +1242,12 @@ J35:
 [0004e008] e788                      lsl.l      #3,d0
 [0004e00a] 206f 0048                 movea.l    72(a7),a0
 [0004e00e] 3f70 0800 0002            move.w     0(a0,d0.l),2(a7)
+Ame_submenu_33:
 [0004e014] 302f 0002                 move.w     2(a7),d0
 [0004e018] b06f 0020                 cmp.w      32(a7),d0
-[0004e01c] 6600 fe72                 bne        $0004DE90
-[0004e020] 6000 0410                 bra        $0004E432
+[0004e01c] 6600 fe72                 bne        Ame_submenu_39
+[0004e020] 6000 0410                 bra        Ame_submenu_40
+Ame_submenu_25:
 [0004e024] 303c 7fff                 move.w     #$7FFF,d0
 [0004e028] 3f40 000c                 move.w     d0,12(a7)
 [0004e02c] 3f40 000e                 move.w     d0,14(a7)
@@ -1198,7 +1264,7 @@ J35:
 [0004e050] 206f 0048                 movea.l    72(a7),a0
 [0004e054] 3030 0800                 move.w     0(a0,d0.l),d0
 [0004e058] b06f 0020                 cmp.w      32(a7),d0
-[0004e05c] 661a                      bne.s      $0004E078
+[0004e05c] 661a                      bne.s      Ame_submenu_41
 [0004e05e] 322f 0020                 move.w     32(a7),d1
 [0004e062] 48c1                      ext.l      d1
 [0004e064] 2001                      move.l     d1,d0
@@ -1207,7 +1273,8 @@ J35:
 [0004e06a] e788                      lsl.l      #3,d0
 [0004e06c] 206f 0048                 movea.l    72(a7),a0
 [0004e070] 3f70 0802 0002            move.w     2(a0,d0.l),2(a7)
-[0004e076] 6018                      bra.s      $0004E090
+[0004e076] 6018                      bra.s      Ame_submenu_42
+Ame_submenu_41:
 [0004e078] 322f 0026                 move.w     38(a7),d1
 [0004e07c] 48c1                      ext.l      d1
 [0004e07e] 2001                      move.l     d1,d0
@@ -1216,9 +1283,11 @@ J35:
 [0004e084] e788                      lsl.l      #3,d0
 [0004e086] 206f 0048                 movea.l    72(a7),a0
 [0004e08a] 3f70 0800 0002            move.w     0(a0,d0.l),2(a7)
+Ame_submenu_42:
 [0004e090] 3f7c fffe 0028            move.w     #$FFFE,40(a7)
-[0004e096] 6000 038e                 bra        $0004E426
+[0004e096] 6000 038e                 bra        Ame_submenu_43
 [0004e09a] 322f 0002                 move.w     2(a7),d1
+Ame_submenu_72:
 [0004e09e] 48c1                      ext.l      d1
 [0004e0a0] 2001                      move.l     d1,d0
 [0004e0a2] d080                      add.l      d0,d0
@@ -1236,10 +1305,11 @@ J35:
 [0004e0c2] 9070 1810                 sub.w      16(a0,d1.l),d0
 [0004e0c6] 3f40 000a                 move.w     d0,10(a7)
 [0004e0ca] 302f 000a                 move.w     10(a7),d0
-[0004e0ce] 6a0a                      bpl.s      $0004E0DA
+[0004e0ce] 6a0a                      bpl.s      Ame_submenu_44
 [0004e0d0] 302f 000a                 move.w     10(a7),d0
 [0004e0d4] 4440                      neg.w      d0
 [0004e0d6] 3f40 000a                 move.w     d0,10(a7)
+Ame_submenu_44:
 [0004e0da] 322f 0002                 move.w     2(a7),d1
 [0004e0de] 48c1                      ext.l      d1
 [0004e0e0] 2001                      move.l     d1,d0
@@ -1258,10 +1328,11 @@ J35:
 [0004e102] 9070 1812                 sub.w      18(a0,d1.l),d0
 [0004e106] 3f40 0008                 move.w     d0,8(a7)
 [0004e10a] 302f 0008                 move.w     8(a7),d0
-[0004e10e] 6a0a                      bpl.s      $0004E11A
+[0004e10e] 6a0a                      bpl.s      Ame_submenu_45
 [0004e110] 302f 0008                 move.w     8(a7),d0
 [0004e114] 4440                      neg.w      d0
 [0004e116] 3f40 0008                 move.w     d0,8(a7)
+Ame_submenu_45:
 [0004e11a] 7008                      moveq.l    #8,d0
 [0004e11c] 342f 0002                 move.w     2(a7),d2
 [0004e120] 48c2                      ext.l      d2
@@ -1271,7 +1342,7 @@ J35:
 [0004e128] e789                      lsl.l      #3,d1
 [0004e12a] 206f 0048                 movea.l    72(a7),a0
 [0004e12e] c070 180a                 and.w      10(a0,d1.l),d0
-[0004e132] 6600 02a4                 bne        $0004E3D8
+[0004e132] 6600 02a4                 bne        Ame_submenu_46
 [0004e136] 7041                      moveq.l    #65,d0
 [0004e138] 342f 0002                 move.w     2(a7),d2
 [0004e13c] 48c2                      ext.l      d2
@@ -1281,18 +1352,19 @@ J35:
 [0004e144] e789                      lsl.l      #3,d1
 [0004e146] 206f 0048                 movea.l    72(a7),a0
 [0004e14a] c070 1808                 and.w      8(a0,d1.l),d0
-[0004e14e] 6700 0288                 beq        $0004E3D8
+[0004e14e] 6700 0288                 beq        Ame_submenu_46
 [0004e152] 102f 0015                 move.b     21(a7),d0
 [0004e156] 4880                      ext.w      d0
 [0004e158] 5340                      subq.w     #1,d0
-[0004e15a] 6700 01e4                 beq        $0004E340
+[0004e15a] 6700 01e4                 beq        Ame_submenu_47
 [0004e15e] 5340                      subq.w     #1,d0
-[0004e160] 6700 00aa                 beq        $0004E20C
+[0004e160] 6700 00aa                 beq        Ame_submenu_48
 [0004e164] 5340                      subq.w     #1,d0
-[0004e166] 670a                      beq.s      $0004E172
+[0004e166] 670a                      beq.s      Ame_submenu_49
 [0004e168] 5340                      subq.w     #1,d0
-[0004e16a] 6700 013a                 beq        $0004E2A6
-[0004e16e] 6000 0268                 bra        $0004E3D8
+[0004e16a] 6700 013a                 beq        Ame_submenu_50
+[0004e16e] 6000 0268                 bra        Ame_submenu_46
+Ame_submenu_49:
 [0004e172] 322f 0002                 move.w     2(a7),d1
 [0004e176] 48c1                      ext.l      d1
 [0004e178] 2001                      move.l     d1,d0
@@ -1309,38 +1381,44 @@ J35:
 [0004e194] e789                      lsl.l      #3,d1
 [0004e196] 206f 0048                 movea.l    72(a7),a0
 [0004e19a] b070 1810                 cmp.w      16(a0,d1.l),d0
-[0004e19e] 6f68                      ble.s      $0004E208
+[0004e19e] 6f68                      ble.s      Ame_submenu_51
 [0004e1a0] 302f 000c                 move.w     12(a7),d0
-[0004e1a4] 6610                      bne.s      $0004E1B6
+[0004e1a4] 6610                      bne.s      Ame_submenu_52
 [0004e1a6] 302f 0008                 move.w     8(a7),d0
-[0004e1aa] 660a                      bne.s      $0004E1B6
+[0004e1aa] 660a                      bne.s      Ame_submenu_52
 [0004e1ac] 302f 000a                 move.w     10(a7),d0
 [0004e1b0] b06f 000e                 cmp.w      14(a7),d0
-[0004e1b4] 6d40                      blt.s      $0004E1F6
+[0004e1b4] 6d40                      blt.s      Ame_submenu_53
+Ame_submenu_52:
 [0004e1b6] 302f 0008                 move.w     8(a7),d0
-[0004e1ba] 6606                      bne.s      $0004E1C2
+[0004e1ba] 6606                      bne.s      Ame_submenu_54
 [0004e1bc] 302f 000c                 move.w     12(a7),d0
-[0004e1c0] 6634                      bne.s      $0004E1F6
+[0004e1c0] 6634                      bne.s      Ame_submenu_53
+Ame_submenu_54:
 [0004e1c2] 302f 000c                 move.w     12(a7),d0
-[0004e1c6] 6714                      beq.s      $0004E1DC
+[0004e1c6] 6714                      beq.s      Ame_submenu_55
 [0004e1c8] 302f 000a                 move.w     10(a7),d0
 [0004e1cc] b06f 000e                 cmp.w      14(a7),d0
-[0004e1d0] 6c0a                      bge.s      $0004E1DC
+[0004e1d0] 6c0a                      bge.s      Ame_submenu_55
 [0004e1d2] 302f 0008                 move.w     8(a7),d0
 [0004e1d6] b06f 000c                 cmp.w      12(a7),d0
-[0004e1da] 6f1a                      ble.s      $0004E1F6
+[0004e1da] 6f1a                      ble.s      Ame_submenu_53
+Ame_submenu_55:
 [0004e1dc] 302f 000c                 move.w     12(a7),d0
-[0004e1e0] 6726                      beq.s      $0004E208
+[0004e1e0] 6726                      beq.s      Ame_submenu_51
 [0004e1e2] 302f 000a                 move.w     10(a7),d0
 [0004e1e6] b06f 000e                 cmp.w      14(a7),d0
-[0004e1ea] 6e1c                      bgt.s      $0004E208
+[0004e1ea] 6e1c                      bgt.s      Ame_submenu_51
 [0004e1ec] 302f 0008                 move.w     8(a7),d0
 [0004e1f0] b06f 000c                 cmp.w      12(a7),d0
-[0004e1f4] 6c12                      bge.s      $0004E208
+[0004e1f4] 6c12                      bge.s      Ame_submenu_51
+Ame_submenu_53:
 [0004e1f6] 3f6f 0008 000c            move.w     8(a7),12(a7)
 [0004e1fc] 3f6f 000a 000e            move.w     10(a7),14(a7)
 [0004e202] 3f6f 0002 0028            move.w     2(a7),40(a7)
-[0004e208] 6000 01ce                 bra        $0004E3D8
+Ame_submenu_51:
+[0004e208] 6000 01ce                 bra        Ame_submenu_46
+Ame_submenu_48:
 [0004e20c] 322f 0002                 move.w     2(a7),d1
 [0004e210] 48c1                      ext.l      d1
 [0004e212] 2001                      move.l     d1,d0
@@ -1357,38 +1435,44 @@ J35:
 [0004e22e] e789                      lsl.l      #3,d1
 [0004e230] 206f 0048                 movea.l    72(a7),a0
 [0004e234] b070 1812                 cmp.w      18(a0,d1.l),d0
-[0004e238] 6f68                      ble.s      $0004E2A2
+[0004e238] 6f68                      ble.s      Ame_submenu_56
 [0004e23a] 302f 000e                 move.w     14(a7),d0
-[0004e23e] 6610                      bne.s      $0004E250
+[0004e23e] 6610                      bne.s      Ame_submenu_57
 [0004e240] 302f 0008                 move.w     8(a7),d0
-[0004e244] 660a                      bne.s      $0004E250
+[0004e244] 660a                      bne.s      Ame_submenu_57
 [0004e246] 302f 0008                 move.w     8(a7),d0
 [0004e24a] b06f 000c                 cmp.w      12(a7),d0
-[0004e24e] 6d40                      blt.s      $0004E290
+[0004e24e] 6d40                      blt.s      Ame_submenu_58
+Ame_submenu_57:
 [0004e250] 302f 000e                 move.w     14(a7),d0
-[0004e254] 6706                      beq.s      $0004E25C
+[0004e254] 6706                      beq.s      Ame_submenu_59
 [0004e256] 302f 000a                 move.w     10(a7),d0
-[0004e25a] 6734                      beq.s      $0004E290
+[0004e25a] 6734                      beq.s      Ame_submenu_58
+Ame_submenu_59:
 [0004e25c] 302f 000e                 move.w     14(a7),d0
-[0004e260] 6714                      beq.s      $0004E276
+[0004e260] 6714                      beq.s      Ame_submenu_60
 [0004e262] 302f 0008                 move.w     8(a7),d0
 [0004e266] b06f 000c                 cmp.w      12(a7),d0
-[0004e26a] 6c0a                      bge.s      $0004E276
+[0004e26a] 6c0a                      bge.s      Ame_submenu_60
 [0004e26c] 302f 000a                 move.w     10(a7),d0
 [0004e270] b06f 000e                 cmp.w      14(a7),d0
-[0004e274] 6f1a                      ble.s      $0004E290
+[0004e274] 6f1a                      ble.s      Ame_submenu_58
+Ame_submenu_60:
 [0004e276] 302f 000e                 move.w     14(a7),d0
-[0004e27a] 6726                      beq.s      $0004E2A2
+[0004e27a] 6726                      beq.s      Ame_submenu_56
 [0004e27c] 302f 0008                 move.w     8(a7),d0
 [0004e280] b06f 000c                 cmp.w      12(a7),d0
-[0004e284] 6e1c                      bgt.s      $0004E2A2
+[0004e284] 6e1c                      bgt.s      Ame_submenu_56
 [0004e286] 302f 000a                 move.w     10(a7),d0
 [0004e28a] b06f 000e                 cmp.w      14(a7),d0
-[0004e28e] 6c12                      bge.s      $0004E2A2
+[0004e28e] 6c12                      bge.s      Ame_submenu_56
+Ame_submenu_58:
 [0004e290] 3f6f 0008 000c            move.w     8(a7),12(a7)
 [0004e296] 3f6f 000a 000e            move.w     10(a7),14(a7)
 [0004e29c] 3f6f 0002 0028            move.w     2(a7),40(a7)
-[0004e2a2] 6000 0134                 bra        $0004E3D8
+Ame_submenu_56:
+[0004e2a2] 6000 0134                 bra        Ame_submenu_46
+Ame_submenu_50:
 [0004e2a6] 322f 0002                 move.w     2(a7),d1
 [0004e2aa] 48c1                      ext.l      d1
 [0004e2ac] 2001                      move.l     d1,d0
@@ -1405,38 +1489,44 @@ J35:
 [0004e2c8] e789                      lsl.l      #3,d1
 [0004e2ca] 206f 0048                 movea.l    72(a7),a0
 [0004e2ce] b070 1810                 cmp.w      16(a0,d1.l),d0
-[0004e2d2] 6c68                      bge.s      $0004E33C
+[0004e2d2] 6c68                      bge.s      Ame_submenu_61
 [0004e2d4] 302f 000c                 move.w     12(a7),d0
-[0004e2d8] 6610                      bne.s      $0004E2EA
+[0004e2d8] 6610                      bne.s      Ame_submenu_62
 [0004e2da] 302f 0008                 move.w     8(a7),d0
-[0004e2de] 660a                      bne.s      $0004E2EA
+[0004e2de] 660a                      bne.s      Ame_submenu_62
 [0004e2e0] 302f 000a                 move.w     10(a7),d0
 [0004e2e4] b06f 000e                 cmp.w      14(a7),d0
-[0004e2e8] 6d40                      blt.s      $0004E32A
+[0004e2e8] 6d40                      blt.s      Ame_submenu_63
+Ame_submenu_62:
 [0004e2ea] 302f 000c                 move.w     12(a7),d0
-[0004e2ee] 6706                      beq.s      $0004E2F6
+[0004e2ee] 6706                      beq.s      Ame_submenu_64
 [0004e2f0] 302f 0008                 move.w     8(a7),d0
-[0004e2f4] 6734                      beq.s      $0004E32A
+[0004e2f4] 6734                      beq.s      Ame_submenu_63
+Ame_submenu_64:
 [0004e2f6] 302f 000c                 move.w     12(a7),d0
-[0004e2fa] 6714                      beq.s      $0004E310
+[0004e2fa] 6714                      beq.s      Ame_submenu_65
 [0004e2fc] 302f 000a                 move.w     10(a7),d0
 [0004e300] b06f 000e                 cmp.w      14(a7),d0
-[0004e304] 6c0a                      bge.s      $0004E310
+[0004e304] 6c0a                      bge.s      Ame_submenu_65
 [0004e306] 302f 0008                 move.w     8(a7),d0
 [0004e30a] b06f 000c                 cmp.w      12(a7),d0
-[0004e30e] 6f1a                      ble.s      $0004E32A
+[0004e30e] 6f1a                      ble.s      Ame_submenu_63
+Ame_submenu_65:
 [0004e310] 302f 000c                 move.w     12(a7),d0
-[0004e314] 6726                      beq.s      $0004E33C
+[0004e314] 6726                      beq.s      Ame_submenu_61
 [0004e316] 302f 000a                 move.w     10(a7),d0
 [0004e31a] b06f 000e                 cmp.w      14(a7),d0
-[0004e31e] 6e1c                      bgt.s      $0004E33C
+[0004e31e] 6e1c                      bgt.s      Ame_submenu_61
 [0004e320] 302f 0008                 move.w     8(a7),d0
 [0004e324] b06f 000c                 cmp.w      12(a7),d0
-[0004e328] 6c12                      bge.s      $0004E33C
+[0004e328] 6c12                      bge.s      Ame_submenu_61
+Ame_submenu_63:
 [0004e32a] 3f6f 0008 000c            move.w     8(a7),12(a7)
 [0004e330] 3f6f 000a 000e            move.w     10(a7),14(a7)
 [0004e336] 3f6f 0002 0028            move.w     2(a7),40(a7)
-[0004e33c] 6000 009a                 bra        $0004E3D8
+Ame_submenu_61:
+[0004e33c] 6000 009a                 bra        Ame_submenu_46
+Ame_submenu_47:
 [0004e340] 322f 0002                 move.w     2(a7),d1
 [0004e344] 48c1                      ext.l      d1
 [0004e346] 2001                      move.l     d1,d0
@@ -1453,38 +1543,44 @@ J35:
 [0004e362] e789                      lsl.l      #3,d1
 [0004e364] 206f 0048                 movea.l    72(a7),a0
 [0004e368] b070 1812                 cmp.w      18(a0,d1.l),d0
-[0004e36c] 6c68                      bge.s      $0004E3D6
+[0004e36c] 6c68                      bge.s      Ame_submenu_66
 [0004e36e] 302f 000e                 move.w     14(a7),d0
-[0004e372] 6610                      bne.s      $0004E384
+[0004e372] 6610                      bne.s      Ame_submenu_67
 [0004e374] 302f 000a                 move.w     10(a7),d0
-[0004e378] 660a                      bne.s      $0004E384
+[0004e378] 660a                      bne.s      Ame_submenu_67
 [0004e37a] 302f 0008                 move.w     8(a7),d0
 [0004e37e] b06f 000c                 cmp.w      12(a7),d0
-[0004e382] 6d40                      blt.s      $0004E3C4
+[0004e382] 6d40                      blt.s      Ame_submenu_68
+Ame_submenu_67:
 [0004e384] 302f 000e                 move.w     14(a7),d0
-[0004e388] 6706                      beq.s      $0004E390
+[0004e388] 6706                      beq.s      Ame_submenu_69
 [0004e38a] 302f 000a                 move.w     10(a7),d0
-[0004e38e] 6734                      beq.s      $0004E3C4
+[0004e38e] 6734                      beq.s      Ame_submenu_68
+Ame_submenu_69:
 [0004e390] 302f 000e                 move.w     14(a7),d0
-[0004e394] 6714                      beq.s      $0004E3AA
+[0004e394] 6714                      beq.s      Ame_submenu_70
 [0004e396] 302f 0008                 move.w     8(a7),d0
 [0004e39a] b06f 000c                 cmp.w      12(a7),d0
-[0004e39e] 6c0a                      bge.s      $0004E3AA
+[0004e39e] 6c0a                      bge.s      Ame_submenu_70
 [0004e3a0] 302f 000a                 move.w     10(a7),d0
 [0004e3a4] b06f 000e                 cmp.w      14(a7),d0
-[0004e3a8] 6f1a                      ble.s      $0004E3C4
+[0004e3a8] 6f1a                      ble.s      Ame_submenu_68
+Ame_submenu_70:
 [0004e3aa] 302f 000e                 move.w     14(a7),d0
-[0004e3ae] 6726                      beq.s      $0004E3D6
+[0004e3ae] 6726                      beq.s      Ame_submenu_66
 [0004e3b0] 302f 0008                 move.w     8(a7),d0
 [0004e3b4] b06f 000c                 cmp.w      12(a7),d0
-[0004e3b8] 6e1c                      bgt.s      $0004E3D6
+[0004e3b8] 6e1c                      bgt.s      Ame_submenu_66
 [0004e3ba] 302f 000a                 move.w     10(a7),d0
 [0004e3be] b06f 000e                 cmp.w      14(a7),d0
-[0004e3c2] 6c12                      bge.s      $0004E3D6
+[0004e3c2] 6c12                      bge.s      Ame_submenu_66
+Ame_submenu_68:
 [0004e3c4] 3f6f 0008 000c            move.w     8(a7),12(a7)
 [0004e3ca] 3f6f 000a 000e            move.w     10(a7),14(a7)
 [0004e3d0] 3f6f 0002 0028            move.w     2(a7),40(a7)
+Ame_submenu_66:
 [0004e3d6] 4e71                      nop
+Ame_submenu_46:
 [0004e3d8] 322f 0002                 move.w     2(a7),d1
 [0004e3dc] 48c1                      ext.l      d1
 [0004e3de] 2001                      move.l     d1,d0
@@ -1494,7 +1590,7 @@ J35:
 [0004e3e6] 206f 0048                 movea.l    72(a7),a0
 [0004e3ea] 3030 0800                 move.w     0(a0,d0.l),d0
 [0004e3ee] b06f 0020                 cmp.w      32(a7),d0
-[0004e3f2] 661a                      bne.s      $0004E40E
+[0004e3f2] 661a                      bne.s      Ame_submenu_71
 [0004e3f4] 322f 0020                 move.w     32(a7),d1
 [0004e3f8] 48c1                      ext.l      d1
 [0004e3fa] 2001                      move.l     d1,d0
@@ -1503,7 +1599,8 @@ J35:
 [0004e400] e788                      lsl.l      #3,d0
 [0004e402] 206f 0048                 movea.l    72(a7),a0
 [0004e406] 3f70 0802 0002            move.w     2(a0,d0.l),2(a7)
-[0004e40c] 6018                      bra.s      $0004E426
+[0004e40c] 6018                      bra.s      Ame_submenu_43
+Ame_submenu_71:
 [0004e40e] 322f 0002                 move.w     2(a7),d1
 [0004e412] 48c1                      ext.l      d1
 [0004e414] 2001                      move.l     d1,d0
@@ -1512,21 +1609,25 @@ J35:
 [0004e41a] e788                      lsl.l      #3,d0
 [0004e41c] 206f 0048                 movea.l    72(a7),a0
 [0004e420] 3f70 0800 0002            move.w     0(a0,d0.l),2(a7)
+Ame_submenu_43:
 [0004e426] 302f 0002                 move.w     2(a7),d0
 [0004e42a] b06f 0026                 cmp.w      38(a7),d0
-[0004e42e] 6600 fc6a                 bne        $0004E09A
-[0004e432] 6020                      bra.s      $0004E454
+[0004e42e] 6600 fc6a                 bne        Ame_submenu_72
+Ame_submenu_40:
+[0004e432] 6020                      bra.s      Ame_submenu_12
+Ame_submenu_13:
 [0004e434] 322f 0014                 move.w     20(a7),d1
 [0004e438] 302f 0012                 move.w     18(a7),d0
 [0004e43c] 206f 0048                 movea.l    72(a7),a0
 [0004e440] 4eb9 0005 0ce8            jsr        Aob_key
 [0004e446] 3f40 0022                 move.w     d0,34(a7)
 [0004e44a] 302f 0022                 move.w     34(a7),d0
-[0004e44e] 6f04                      ble.s      $0004E454
+[0004e44e] 6f04                      ble.s      Ame_submenu_12
 [0004e450] 426f 0006                 clr.w      6(a7)
+Ame_submenu_12:
 [0004e454] 7004                      moveq.l    #4,d0
 [0004e456] c06f 001a                 and.w      26(a7),d0
-[0004e45a] 671e                      beq.s      $0004E47A
+[0004e45a] 671e                      beq.s      Ame_submenu_73
 [0004e45c] 3f2f 0016                 move.w     22(a7),-(a7)
 [0004e460] 342f 001a                 move.w     26(a7),d2
 [0004e464] 7208                      moveq.l    #8,d1
@@ -1535,13 +1636,14 @@ J35:
 [0004e46e] 4eb9 0004 8fd4            jsr        Adr_find
 [0004e474] 544f                      addq.w     #2,a7
 [0004e476] 3f40 0028                 move.w     d0,40(a7)
+Ame_submenu_73:
 [0004e47a] 302f 0028                 move.w     40(a7),d0
 [0004e47e] b06f 0026                 cmp.w      38(a7),d0
-[0004e482] 6700 0182                 beq        $0004E606
+[0004e482] 6700 0182                 beq        Ame_submenu_74
 [0004e486] 0c6f fffe 0028            cmpi.w     #$FFFE,40(a7)
-[0004e48c] 6700 0178                 beq        $0004E606
+[0004e48c] 6700 0178                 beq        Ame_submenu_74
 [0004e490] 302f 001c                 move.w     28(a7),d0
-[0004e494] 676e                      beq.s      $0004E504
+[0004e494] 676e                      beq.s      Ame_submenu_75
 [0004e496] 322f 0026                 move.w     38(a7),d1
 [0004e49a] 48c1                      ext.l      d1
 [0004e49c] 2001                      move.l     d1,d0
@@ -1574,11 +1676,12 @@ J35:
 [0004e4f4] 4eb9 0007 9f2c            jsr        mt_objc_change
 [0004e4fa] 4fef 000a                 lea.l      10(a7),a7
 [0004e4fe] 4eb9 0004 ef66            jsr        Amo_show
+Ame_submenu_75:
 [0004e504] 302f 0028                 move.w     40(a7),d0
-[0004e508] 6b00 00cc                 bmi        $0004E5D6
+[0004e508] 6b00 00cc                 bmi        Ame_submenu_76
 [0004e50c] 302f 0028                 move.w     40(a7),d0
 [0004e510] b06f 0046                 cmp.w      70(a7),d0
-[0004e514] 6700 00c0                 beq        $0004E5D6
+[0004e514] 6700 00c0                 beq        Ame_submenu_76
 [0004e518] 7008                      moveq.l    #8,d0
 [0004e51a] 342f 0028                 move.w     40(a7),d2
 [0004e51e] 48c2                      ext.l      d2
@@ -1588,7 +1691,7 @@ J35:
 [0004e526] e789                      lsl.l      #3,d1
 [0004e528] 206f 0048                 movea.l    72(a7),a0
 [0004e52c] c070 180a                 and.w      10(a0,d1.l),d0
-[0004e530] 6600 00a4                 bne        $0004E5D6
+[0004e530] 6600 00a4                 bne        Ame_submenu_76
 [0004e534] 7041                      moveq.l    #65,d0
 [0004e536] 342f 0028                 move.w     40(a7),d2
 [0004e53a] 48c2                      ext.l      d2
@@ -1598,7 +1701,7 @@ J35:
 [0004e542] e789                      lsl.l      #3,d1
 [0004e544] 206f 0048                 movea.l    72(a7),a0
 [0004e548] c070 1808                 and.w      8(a0,d1.l),d0
-[0004e54c] 6700 0088                 beq        $0004E5D6
+[0004e54c] 6700 0088                 beq        Ame_submenu_76
 [0004e550] 302f 0028                 move.w     40(a7),d0
 [0004e554] 226f 0048                 movea.l    72(a7),a1
 [0004e558] 41ef 0032                 lea.l      50(a7),a0
@@ -1636,9 +1739,11 @@ J35:
 [0004e5c4] 206f 0048                 movea.l    72(a7),a0
 [0004e5c8] 0270 fffe 080a            andi.w     #$FFFE,10(a0,d0.l)
 [0004e5ce] 3f7c 0001 001c            move.w     #$0001,28(a7)
-[0004e5d4] 600a                      bra.s      $0004E5E0
+[0004e5d4] 600a                      bra.s      Ame_submenu_77
+Ame_submenu_76:
 [0004e5d6] 3f7c ffff 0028            move.w     #$FFFF,40(a7)
 [0004e5dc] 426f 001c                 clr.w      28(a7)
+Ame_submenu_77:
 [0004e5e0] 3f6f 0028 0026            move.w     40(a7),38(a7)
 [0004e5e6] 43ef 0026                 lea.l      38(a7),a1
 [0004e5ea] 7018                      moveq.l    #24,d0
@@ -1648,8 +1753,9 @@ J35:
 [0004e5fc] 246a 0258                 movea.l    600(a2),a2
 [0004e600] 246a 0004                 movea.l    4(a2),a2
 [0004e604] 4e92                      jsr        (a2)
+Ame_submenu_74:
 [0004e606] 302f 001c                 move.w     28(a7),d0
-[0004e60a] 6700 0154                 beq        $0004E760
+[0004e60a] 6700 0154                 beq        Ame_submenu_78
 [0004e60e] 322f 0028                 move.w     40(a7),d1
 [0004e612] 48c1                      ext.l      d1
 [0004e614] 2001                      move.l     d1,d0
@@ -1658,7 +1764,7 @@ J35:
 [0004e61a] e788                      lsl.l      #3,d0
 [0004e61c] 206f 0048                 movea.l    72(a7),a0
 [0004e620] 3030 0802                 move.w     2(a0,d0.l),d0
-[0004e624] 6f00 013a                 ble        $0004E760
+[0004e624] 6f00 013a                 ble        Ame_submenu_78
 [0004e628] 322f 0028                 move.w     40(a7),d1
 [0004e62c] 48c1                      ext.l      d1
 [0004e62e] 2001                      move.l     d1,d0
@@ -1678,7 +1784,7 @@ J35:
 [0004e650] 206f 0048                 movea.l    72(a7),a0
 [0004e654] 3f70 0802 0024            move.w     2(a0,d0.l),36(a7)
 [0004e65a] 302f 0024                 move.w     36(a7),d0
-[0004e65e] 6b00 0100                 bmi        $0004E760
+[0004e65e] 6b00 0100                 bmi        Ame_submenu_78
 [0004e662] 322f 0028                 move.w     40(a7),d1
 [0004e666] 48c1                      ext.l      d1
 [0004e668] 2001                      move.l     d1,d0
@@ -1688,7 +1794,7 @@ J35:
 [0004e670] 206f 0048                 movea.l    72(a7),a0
 [0004e674] 322f 0024                 move.w     36(a7),d1
 [0004e678] b270 0804                 cmp.w      4(a0,d0.l),d1
-[0004e67c] 6600 00e2                 bne        $0004E760
+[0004e67c] 6600 00e2                 bne        Ame_submenu_78
 [0004e680] 3f2f 0016                 move.w     22(a7),-(a7)
 [0004e684] 342f 001a                 move.w     26(a7),d2
 [0004e688] 946f 0002                 sub.w      2(a7),d2
@@ -1699,7 +1805,7 @@ J35:
 [0004e69c] 544f                      addq.w     #2,a7
 [0004e69e] 322f 0028                 move.w     40(a7),d1
 [0004e6a2] b240                      cmp.w      d0,d1
-[0004e6a4] 6600 00ba                 bne        $0004E760
+[0004e6a4] 6600 00ba                 bne        Ame_submenu_78
 [0004e6a8] 322f 0024                 move.w     36(a7),d1
 [0004e6ac] 48c1                      ext.l      d1
 [0004e6ae] 2001                      move.l     d1,d0
@@ -1737,18 +1843,20 @@ J35:
 [0004e70a] 206f 0048                 movea.l    72(a7),a0
 [0004e70e] 0070 0080 0808            ori.w      #$0080,8(a0,d0.l)
 [0004e714] 302f 0022                 move.w     34(a7),d0
-[0004e718] 6b20                      bmi.s      $0004E73A
+[0004e718] 6b20                      bmi.s      Ame_submenu_79
 [0004e71a] 302f 0046                 move.w     70(a7),d0
 [0004e71e] b06f 0022                 cmp.w      34(a7),d0
-[0004e722] 671c                      beq.s      $0004E740
+[0004e722] 671c                      beq.s      Ame_submenu_80
 [0004e724] 302f 0022                 move.w     34(a7),d0
 [0004e728] 206f 0048                 movea.l    72(a7),a0
 [0004e72c] 4eb9 0005 0f3a            jsr        Aob_up
 [0004e732] 322f 0046                 move.w     70(a7),d1
 [0004e736] b240                      cmp.w      d0,d1
-[0004e738] 6706                      beq.s      $0004E740
+[0004e738] 6706                      beq.s      Ame_submenu_80
+Ame_submenu_79:
 [0004e73a] 426f 0006                 clr.w      6(a7)
-[0004e73e] 6020                      bra.s      $0004E760
+[0004e73e] 6020                      bra.s      Ame_submenu_78
+Ame_submenu_80:
 [0004e740] 43ef 0022                 lea.l      34(a7),a1
 [0004e744] 7018                      moveq.l    #24,d0
 [0004e746] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1757,18 +1865,19 @@ J35:
 [0004e756] 246a 0258                 movea.l    600(a2),a2
 [0004e75a] 246a 0004                 movea.l    4(a2),a2
 [0004e75e] 4e92                      jsr        (a2)
+Ame_submenu_78:
 [0004e760] 302f 0046                 move.w     70(a7),d0
 [0004e764] 226f 0048                 movea.l    72(a7),a1
 [0004e768] 41ef 002a                 lea.l      42(a7),a0
 [0004e76c] 4eb9 0004 fe06            jsr        Aob_offset
 [0004e772] 0c6f ffff 0028            cmpi.w     #$FFFF,40(a7)
-[0004e778] 6600 009a                 bne        $0004E814
+[0004e778] 6600 009a                 bne        Ame_submenu_81
 [0004e77c] 322f 0016                 move.w     22(a7),d1
 [0004e780] 302f 0018                 move.w     24(a7),d0
 [0004e784] 41ef 002a                 lea.l      42(a7),a0
 [0004e788] 4eb9 0006 b7a6            jsr        Aob_within
 [0004e78e] 4a40                      tst.w      d0
-[0004e790] 6600 0082                 bne        $0004E814
+[0004e790] 6600 0082                 bne        Ame_submenu_81
 [0004e794] 322f 0046                 move.w     70(a7),d1
 [0004e798] 48c1                      ext.l      d1
 [0004e79a] 2001                      move.l     d1,d0
@@ -1777,8 +1886,9 @@ J35:
 [0004e7a0] e788                      lsl.l      #3,d0
 [0004e7a2] 206f 0048                 movea.l    72(a7),a0
 [0004e7a6] 3f70 0800 0020            move.w     0(a0,d0.l),32(a7)
-[0004e7ac] 6050                      bra.s      $0004E7FE
+[0004e7ac] 6050                      bra.s      Ame_submenu_82
 [0004e7ae] 302f 0020                 move.w     32(a7),d0
+Ame_submenu_85:
 [0004e7b2] 206f 0048                 movea.l    72(a7),a0
 [0004e7b6] 4eb9 0005 0f3a            jsr        Aob_up
 [0004e7bc] 3f40 001e                 move.w     d0,30(a7)
@@ -1791,8 +1901,9 @@ J35:
 [0004e7d8] 544f                      addq.w     #2,a7
 [0004e7da] 3f40 0022                 move.w     d0,34(a7)
 [0004e7de] 302f 0022                 move.w     34(a7),d0
-[0004e7e2] 6b02                      bmi.s      $0004E7E6
-[0004e7e4] 601e                      bra.s      $0004E804
+[0004e7e2] 6b02                      bmi.s      Ame_submenu_83
+[0004e7e4] 601e                      bra.s      Ame_submenu_84
+Ame_submenu_83:
 [0004e7e6] 322f 001e                 move.w     30(a7),d1
 [0004e7ea] 48c1                      ext.l      d1
 [0004e7ec] 2001                      move.l     d1,d0
@@ -1801,20 +1912,24 @@ J35:
 [0004e7f2] e788                      lsl.l      #3,d0
 [0004e7f4] 206f 0048                 movea.l    72(a7),a0
 [0004e7f8] 3f70 0800 0020            move.w     0(a0,d0.l),32(a7)
+Ame_submenu_82:
 [0004e7fe] 302f 0020                 move.w     32(a7),d0
-[0004e802] 6aaa                      bpl.s      $0004E7AE
+[0004e802] 6aaa                      bpl.s      Ame_submenu_85
+Ame_submenu_84:
 [0004e804] 302f 0020                 move.w     32(a7),d0
-[0004e808] 6f0a                      ble.s      $0004E814
+[0004e808] 6f0a                      ble.s      Ame_submenu_81
 [0004e80a] 302f 0022                 move.w     34(a7),d0
-[0004e80e] 6b04                      bmi.s      $0004E814
+[0004e80e] 6b04                      bmi.s      Ame_submenu_81
 [0004e810] 426f 0006                 clr.w      6(a7)
+Ame_submenu_81:
 [0004e814] 7002                      moveq.l    #2,d0
 [0004e816] c06f 001a                 and.w      26(a7),d0
-[0004e81a] 670a                      beq.s      $0004E826
+[0004e81a] 670a                      beq.s      Ame_submenu_11
 [0004e81c] 3f6f 0028 0022            move.w     40(a7),34(a7)
 [0004e822] 426f 0006                 clr.w      6(a7)
+Ame_submenu_11:
 [0004e826] 302f 0006                 move.w     6(a7),d0
-[0004e82a] 6600 f2ae                 bne        $0004DADA
+[0004e82a] 6600 f2ae                 bne        Ame_submenu_86
 [0004e82e] 43ef 003a                 lea.l      58(a7),a1
 [0004e832] 206f 0042                 movea.l    66(a7),a0
 [0004e836] 4eb9 0005 021e            jsr        Aob_restore
@@ -1823,6 +1938,7 @@ J35:
 [0004e844] 245f                      movea.l    (a7)+,a2
 [0004e846] 261f                      move.l     (a7)+,d3
 [0004e848] 4e75                      rts
+
 Ame_popup:
 [0004e84a] 2f0a                      move.l     a2,-(a7)
 [0004e84c] 4fef ffd8                 lea.l      -40(a7),a7
@@ -1835,9 +1951,9 @@ Ame_popup:
 [0004e868] 206f 0020                 movea.l    32(a7),a0
 [0004e86c] 4eb9 0004 fbdc            jsr        Aob_fix
 [0004e872] 302f 001e                 move.w     30(a7),d0
-[0004e876] 6a46                      bpl.s      $0004E8BE
+[0004e876] 6a46                      bpl.s      Ame_popup_1
 [0004e878] 302f 001c                 move.w     28(a7),d0
-[0004e87c] 6a40                      bpl.s      $0004E8BE
+[0004e87c] 6a40                      bpl.s      Ame_popup_1
 [0004e87e] 2f39 000e 692a            move.l     _globl,-(a7)
 [0004e884] 486f 001c                 pea.l      28(a7)
 [0004e888] 486f 0020                 pea.l      32(a7)
@@ -1853,6 +1969,7 @@ Ame_popup:
 [0004e8b4] 3028 0014                 move.w     20(a0),d0
 [0004e8b8] e240                      asr.w      #1,d0
 [0004e8ba] 916f 001c                 sub.w      d0,28(a7)
+Ame_popup_1:
 [0004e8be] 206f 0020                 movea.l    32(a7),a0
 [0004e8c2] 316f 001e 0010            move.w     30(a7),16(a0)
 [0004e8c8] 206f 0020                 movea.l    32(a7),a0
@@ -1880,22 +1997,25 @@ Ame_popup:
 [0004e922] 4e92                      jsr        (a2)
 [0004e924] 4eb9 0005 0c80            jsr        Aev_release
 [0004e92a] 302f 001a                 move.w     26(a7),d0
-[0004e92e] 6f1c                      ble.s      $0004E94C
+[0004e92e] 6f1c                      ble.s      Ame_popup_2
 [0004e930] 4eb9 0004 eec0            jsr        Amo_busy
 [0004e936] 302f 001a                 move.w     26(a7),d0
 [0004e93a] 226f 0020                 movea.l    32(a7),a1
 [0004e93e] 206f 0024                 movea.l    36(a7),a0
 [0004e942] 6100 e79c                 bsr        call_click
 [0004e946] 4eb9 0004 ef0c            jsr        Amo_unbusy
+Ame_popup_2:
 [0004e94c] 302f 001a                 move.w     26(a7),d0
-[0004e950] 6606                      bne.s      $0004E958
+[0004e950] 6606                      bne.s      Ame_popup_3
 [0004e952] 3f7c ffff 001a            move.w     #$FFFF,26(a7)
+Ame_popup_3:
 [0004e958] 41d7                      lea.l      (a7),a0
 [0004e95a] 4eb9 0006 c00a            jsr        Act_restore
 [0004e960] 302f 001a                 move.w     26(a7),d0
 [0004e964] 4fef 0028                 lea.l      40(a7),a7
 [0004e968] 245f                      movea.l    (a7)+,a2
 [0004e96a] 4e75                      rts
+
 Ame_root:
 [0004e96c] 4fef fff4                 lea.l      -12(a7),a7
 [0004e970] 3f40 000a                 move.w     d0,10(a7)
@@ -1906,15 +2026,17 @@ Ame_root:
 [0004e986] 2ea8 005e                 move.l     94(a0),(a7)
 [0004e98a] 4eb9 0004 eec0            jsr        Amo_busy
 [0004e990] 0c6f 0003 000a            cmpi.w     #$0003,10(a7)
-[0004e996] 660e                      bne.s      $0004E9A6
+[0004e996] 660e                      bne.s      Ame_root_1
 [0004e998] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0004e99e] 2068 029c                 movea.l    668(a0),a0
 [0004e9a2] 4e90                      jsr        (a0)
-[0004e9a4] 600e                      bra.s      $0004E9B4
+[0004e9a4] 600e                      bra.s      Ame_root_2
+Ame_root_1:
 [0004e9a6] 302f 0008                 move.w     8(a7),d0
 [0004e9aa] 2257                      movea.l    (a7),a1
 [0004e9ac] 206f 0004                 movea.l    4(a7),a0
 [0004e9b0] 6100 e72e                 bsr        call_click
+Ame_root_2:
 [0004e9b4] 4eb9 0004 ef0c            jsr        Amo_unbusy
 [0004e9ba] 2279 000e 692a            movea.l    _globl,a1
 [0004e9c0] 7201                      moveq.l    #1,d1
@@ -1923,6 +2045,7 @@ Ame_root:
 [0004e9c8] 4eb9 0007 9772            jsr        mt_menu_tnormal
 [0004e9ce] 4fef 000c                 lea.l      12(a7),a7
 [0004e9d2] 4e75                      rts
+
 Ame_drop:
 [0004e9d4] 4fef ffe8                 lea.l      -24(a7),a7
 [0004e9d8] 2f48 0014                 move.l     a0,20(a7)
@@ -1930,8 +2053,9 @@ Ame_drop:
 [0004e9e0] 3f41 0010                 move.w     d1,16(a7)
 [0004e9e4] 206f 0014                 movea.l    20(a7),a0
 [0004e9e8] 2ea8 005e                 move.l     94(a0),(a7)
-[0004e9ec] 6604                      bne.s      $0004E9F2
-[0004e9ee] 6000 00a6                 bra        $0004EA96
+[0004e9ec] 6604                      bne.s      Ame_drop_1
+[0004e9ee] 6000 00a6                 bra        Ame_drop_2
+Ame_drop_1:
 [0004e9f2] 2057                      movea.l    (a7),a0
 [0004e9f4] 3f68 0010 0008            move.w     16(a0),8(a7)
 [0004e9fa] 2057                      movea.l    (a7),a0
@@ -1940,12 +2064,14 @@ Ame_drop:
 [0004ea04] 3028 0014                 move.w     20(a0),d0
 [0004ea08] 206f 0014                 movea.l    20(a7),a0
 [0004ea0c] b068 0038                 cmp.w      56(a0),d0
-[0004ea10] 6c08                      bge.s      $0004EA1A
+[0004ea10] 6c08                      bge.s      Ame_drop_3
 [0004ea12] 2057                      movea.l    (a7),a0
 [0004ea14] 3028 0014                 move.w     20(a0),d0
-[0004ea18] 6008                      bra.s      $0004EA22
+[0004ea18] 6008                      bra.s      Ame_drop_4
+Ame_drop_3:
 [0004ea1a] 206f 0014                 movea.l    20(a7),a0
 [0004ea1e] 3028 0038                 move.w     56(a0),d0
+Ame_drop_4:
 [0004ea22] 3f40 000c                 move.w     d0,12(a7)
 [0004ea26] 2057                      movea.l    (a7),a0
 [0004ea28] 3f68 0016 000e            move.w     22(a0),14(a7)
@@ -1954,8 +2080,9 @@ Ame_drop:
 [0004ea36] 41ef 0008                 lea.l      8(a7),a0
 [0004ea3a] 4eb9 0006 b7a6            jsr        Aob_within
 [0004ea40] 4a40                      tst.w      d0
-[0004ea42] 6602                      bne.s      $0004EA46
-[0004ea44] 6050                      bra.s      $0004EA96
+[0004ea42] 6602                      bne.s      Ame_drop_5
+[0004ea44] 6050                      bra.s      Ame_drop_2
+Ame_drop_5:
 [0004ea46] 2057                      movea.l    (a7),a0
 [0004ea48] 3228 0002                 move.w     2(a0),d1
 [0004ea4c] 48c1                      ext.l      d1
@@ -1975,14 +2102,17 @@ Ame_drop:
 [0004ea78] 3f40 0006                 move.w     d0,6(a7)
 [0004ea7c] 302f 0006                 move.w     6(a7),d0
 [0004ea80] b06f 0004                 cmp.w      4(a7),d0
-[0004ea84] 6e02                      bgt.s      $0004EA88
-[0004ea86] 600e                      bra.s      $0004EA96
+[0004ea84] 6e02                      bgt.s      Ame_drop_6
+[0004ea86] 600e                      bra.s      Ame_drop_2
+Ame_drop_6:
 [0004ea88] 302f 0006                 move.w     6(a7),d0
 [0004ea8c] 2257                      movea.l    (a7),a1
 [0004ea8e] 206f 0014                 movea.l    20(a7),a0
 [0004ea92] 6100 e7ea                 bsr        Ame_menu
+Ame_drop_2:
 [0004ea96] 4fef 0018                 lea.l      24(a7),a7
 [0004ea9a] 4e75                      rts
+
 Ame_key:
 [0004ea9c] 4fef ffe8                 lea.l      -24(a7),a7
 [0004eaa0] 2f48 0014                 move.l     a0,20(a7)
@@ -1990,18 +2120,20 @@ Ame_key:
 [0004eaa8] 3f41 0010                 move.w     d1,16(a7)
 [0004eaac] 206f 0014                 movea.l    20(a7),a0
 [0004eab0] 2ea8 005e                 move.l     94(a0),(a7)
-[0004eab4] 6606                      bne.s      $0004EABC
+[0004eab4] 6606                      bne.s      Ame_key_1
 [0004eab6] 70ff                      moveq.l    #-1,d0
-[0004eab8] 6000 0164                 bra        $0004EC1E
+[0004eab8] 6000 0164                 bra        Ame_key_2
+Ame_key_1:
 [0004eabc] 322f 0010                 move.w     16(a7),d1
 [0004eac0] 302f 0012                 move.w     18(a7),d0
 [0004eac4] 2057                      movea.l    (a7),a0
 [0004eac6] 4eb9 0005 0ce8            jsr        Aob_key
 [0004eacc] 3f40 000e                 move.w     d0,14(a7)
 [0004ead0] 302f 000e                 move.w     14(a7),d0
-[0004ead4] 6a06                      bpl.s      $0004EADC
+[0004ead4] 6a06                      bpl.s      Ame_key_3
 [0004ead6] 70ff                      moveq.l    #-1,d0
-[0004ead8] 6000 0144                 bra        $0004EC1E
+[0004ead8] 6000 0144                 bra        Ame_key_2
+Ame_key_3:
 [0004eadc] 2057                      movea.l    (a7),a0
 [0004eade] 3228 0002                 move.w     2(a0),d1
 [0004eae2] 48c1                      ext.l      d1
@@ -2030,20 +2162,23 @@ Ame_key:
 [0004eb1c] 3f70 0802 0008            move.w     2(a0,d0.l),8(a7)
 [0004eb22] 3f6f 000e 0004            move.w     14(a7),4(a7)
 [0004eb28] 3f6f 0004 0006            move.w     4(a7),6(a7)
+Ame_key_5:
 [0004eb2e] 302f 0006                 move.w     6(a7),d0
 [0004eb32] 2057                      movea.l    (a7),a0
 [0004eb34] 4eb9 0005 0f3a            jsr        Aob_up
 [0004eb3a] 3f40 0004                 move.w     d0,4(a7)
 [0004eb3e] 302f 0004                 move.w     4(a7),d0
-[0004eb42] 6a06                      bpl.s      $0004EB4A
+[0004eb42] 6a06                      bpl.s      Ame_key_4
 [0004eb44] 70ff                      moveq.l    #-1,d0
-[0004eb46] 6000 00d6                 bra        $0004EC1E
+[0004eb46] 6000 00d6                 bra        Ame_key_2
+Ame_key_4:
 [0004eb4a] 2057                      movea.l    (a7),a0
 [0004eb4c] 302f 0004                 move.w     4(a7),d0
 [0004eb50] b068 0004                 cmp.w      4(a0),d0
-[0004eb54] 66d2                      bne.s      $0004EB28
-[0004eb56] 603c                      bra.s      $0004EB94
+[0004eb54] 66d2                      bne.s      Ame_key_5
+[0004eb56] 603c                      bra.s      Ame_key_6
 [0004eb58] 322f 000a                 move.w     10(a7),d1
+Ame_key_7:
 [0004eb5c] 48c1                      ext.l      d1
 [0004eb5e] 2001                      move.l     d1,d0
 [0004eb60] d080                      add.l      d0,d0
@@ -2061,16 +2196,17 @@ Ame_key:
 [0004eb7e] 3f70 0800 0008            move.w     0(a0,d0.l),8(a7)
 [0004eb84] 302f 000a                 move.w     10(a7),d0
 [0004eb88] b06f 000c                 cmp.w      12(a7),d0
-[0004eb8c] 6606                      bne.s      $0004EB94
+[0004eb8c] 6606                      bne.s      Ame_key_6
 [0004eb8e] 70ff                      moveq.l    #-1,d0
-[0004eb90] 6000 008c                 bra        $0004EC1E
+[0004eb90] 6000 008c                 bra        Ame_key_2
+Ame_key_6:
 [0004eb94] 302f 0008                 move.w     8(a7),d0
 [0004eb98] b06f 0006                 cmp.w      6(a7),d0
-[0004eb9c] 66ba                      bne.s      $0004EB58
+[0004eb9c] 66ba                      bne.s      Ame_key_7
 [0004eb9e] 4eb9 0004 eec0            jsr        Amo_busy
 [0004eba4] 206f 0014                 movea.l    20(a7),a0
 [0004eba8] 3028 0020                 move.w     32(a0),d0
-[0004ebac] 6638                      bne.s      $0004EBE6
+[0004ebac] 6638                      bne.s      Ame_key_8
 [0004ebae] 2279 000e 692a            movea.l    _globl,a1
 [0004ebb4] 4241                      clr.w      d1
 [0004ebb6] 302f 000a                 move.w     10(a7),d0
@@ -2085,7 +2221,8 @@ Ame_key:
 [0004ebd8] 302f 000a                 move.w     10(a7),d0
 [0004ebdc] 2057                      movea.l    (a7),a0
 [0004ebde] 4eb9 0007 9772            jsr        mt_menu_tnormal
-[0004ebe4] 602e                      bra.s      $0004EC14
+[0004ebe4] 602e                      bra.s      Ame_key_9
+Ame_key_8:
 [0004ebe6] 7201                      moveq.l    #1,d1
 [0004ebe8] 302f 000a                 move.w     10(a7),d0
 [0004ebec] 2257                      movea.l    (a7),a1
@@ -2100,10 +2237,13 @@ Ame_key:
 [0004ec0a] 2257                      movea.l    (a7),a1
 [0004ec0c] 206f 0014                 movea.l    20(a7),a0
 [0004ec10] 6100 e5f0                 bsr        Ame_tnormal
+Ame_key_9:
 [0004ec14] 4eb9 0004 ef0c            jsr        Amo_unbusy
 [0004ec1a] 302f 000e                 move.w     14(a7),d0
+Ame_key_2:
 [0004ec1e] 4fef 0018                 lea.l      24(a7),a7
 [0004ec22] 4e75                      rts
+
 Ame_namefix:
 [0004ec24] 4fef ffe4                 lea.l      -28(a7),a7
 [0004ec28] 2f48 0018                 move.l     a0,24(a7)
@@ -2161,8 +2301,9 @@ Ame_namefix:
 [0004ecce] e788                      lsl.l      #3,d0
 [0004ecd0] 206f 0018                 movea.l    24(a7),a0
 [0004ecd4] 3f70 0810 000c            move.w     16(a0,d0.l),12(a7)
-[0004ecda] 6000 0112                 bra        $0004EDEE
+[0004ecda] 6000 0112                 bra        Ame_namefix_1
 [0004ecde] 322f 0016                 move.w     22(a7),d1
+Ame_namefix_10:
 [0004ece2] 48c1                      ext.l      d1
 [0004ece4] 2001                      move.l     d1,d0
 [0004ece6] d080                      add.l      d0,d0
@@ -2177,22 +2318,28 @@ Ame_namefix:
 [0004ed06] 206f 0004                 movea.l    4(a7),a0
 [0004ed0a] 41f0 00ff                 lea.l      -1(a0,d0.w),a0
 [0004ed0e] 2e88                      move.l     a0,(a7)
-[0004ed10] 6006                      bra.s      $0004ED18
+[0004ed10] 6006                      bra.s      Ame_namefix_2
 [0004ed12] 536f 000a                 subq.w     #1,10(a7)
+Ame_namefix_4:
 [0004ed16] 5397                      subq.l     #1,(a7)
+Ame_namefix_2:
 [0004ed18] 302f 000a                 move.w     10(a7),d0
-[0004ed1c] 6f08                      ble.s      $0004ED26
+[0004ed1c] 6f08                      ble.s      Ame_namefix_3
 [0004ed1e] 2057                      movea.l    (a7),a0
 [0004ed20] 0c10 0020                 cmpi.b     #$20,(a0)
-[0004ed24] 67ec                      beq.s      $0004ED12
-[0004ed26] 6008                      bra.s      $0004ED30
+[0004ed24] 67ec                      beq.s      Ame_namefix_4
+Ame_namefix_3:
+[0004ed26] 6008                      bra.s      Ame_namefix_5
 [0004ed28] 536f 000a                 subq.w     #1,10(a7)
+Ame_namefix_7:
 [0004ed2c] 52af 0004                 addq.l     #1,4(a7)
+Ame_namefix_5:
 [0004ed30] 302f 000a                 move.w     10(a7),d0
-[0004ed34] 6f0a                      ble.s      $0004ED40
+[0004ed34] 6f0a                      ble.s      Ame_namefix_6
 [0004ed36] 206f 0004                 movea.l    4(a7),a0
 [0004ed3a] 0c10 0020                 cmpi.b     #$20,(a0)
-[0004ed3e] 67e8                      beq.s      $0004ED28
+[0004ed3e] 67e8                      beq.s      Ame_namefix_7
+Ame_namefix_6:
 [0004ed40] 7002                      moveq.l    #2,d0
 [0004ed42] d06f 000a                 add.w      10(a7),d0
 [0004ed46] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -2238,8 +2385,9 @@ Ame_namefix:
 [0004edc4] 3f70 0800 0016            move.w     0(a0,d0.l),22(a7)
 [0004edca] 302f 0016                 move.w     22(a7),d0
 [0004edce] b06f 0014                 cmp.w      20(a7),d0
-[0004edd2] 6602                      bne.s      $0004EDD6
-[0004edd4] 601c                      bra.s      $0004EDF2
+[0004edd2] 6602                      bne.s      Ame_namefix_8
+[0004edd4] 601c                      bra.s      Ame_namefix_9
+Ame_namefix_8:
 [0004edd6] 322f 0012                 move.w     18(a7),d1
 [0004edda] 48c1                      ext.l      d1
 [0004eddc] 2001                      move.l     d1,d0
@@ -2248,7 +2396,9 @@ Ame_namefix:
 [0004ede2] e788                      lsl.l      #3,d0
 [0004ede4] 206f 0018                 movea.l    24(a7),a0
 [0004ede8] 3f70 0800 0012            move.w     0(a0,d0.l),18(a7)
-[0004edee] 6000 feee                 bra        $0004ECDE
+Ame_namefix_1:
+[0004edee] 6000 feee                 bra        Ame_namefix_10
+Ame_namefix_9:
 [0004edf2] 322f 0014                 move.w     20(a7),d1
 [0004edf6] 48c1                      ext.l      d1
 [0004edf8] 2001                      move.l     d1,d0
@@ -2259,3 +2409,4 @@ Ame_namefix:
 [0004ee04] 31af 0008 0814            move.w     8(a7),20(a0,d0.l)
 [0004ee0a] 4fef 001c                 lea.l      28(a7),a7
 [0004ee0e] 4e75                      rts
+

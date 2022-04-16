@@ -12,6 +12,7 @@ edao_pal:
 [00032e16] 265f                      movea.l    (a7)+,a3
 [00032e18] 245f                      movea.l    (a7)+,a2
 [00032e1a] 4e75                      rts
+
 edao_call:
 [00032e1c] 48e7 103c                 movem.l    d3/a2-a5,-(a7)
 [00032e20] 594f                      subq.w     #4,a7
@@ -22,7 +23,7 @@ edao_call:
 [00032e34] 4268 0248                 clr.w      584(a0)
 [00032e38] 4eb9 0004 7e2a            jsr        Adr_next
 [00032e3e] 3600                      move.w     d0,d3
-[00032e40] 6f60                      ble.s      $00032EA2
+[00032e40] 6f60                      ble.s      edao_call_1
 [00032e42] 48c0                      ext.l      d0
 [00032e44] 2200                      move.l     d0,d1
 [00032e46] d281                      add.l      d1,d1
@@ -31,7 +32,7 @@ edao_call:
 [00032e4c] 246d 0014                 movea.l    20(a5),a2
 [00032e50] 45f2 1818                 lea.l      24(a2,d1.l),a2
 [00032e54] 0c6a 271c 0016            cmpi.w     #$271C,22(a2)
-[00032e5a] 6646                      bne.s      $00032EA2
+[00032e5a] 6646                      bne.s      edao_call_1
 [00032e5c] 2eaa 000c                 move.l     12(a2),(a7)
 [00032e60] 4eb9 0005 1388            jsr        Awi_diaend
 [00032e66] 2257                      movea.l    (a7),a1
@@ -50,9 +51,11 @@ edao_call:
 [00032e98] 3003                      move.w     d3,d0
 [00032e9a] 204d                      movea.l    a5,a0
 [00032e9c] 4eb9 0004 7f76            jsr        Adr_del
+edao_call_1:
 [00032ea2] 584f                      addq.w     #4,a7
 [00032ea4] 4cdf 3c08                 movem.l    (a7)+,d3/a2-a5
 [00032ea8] 4e75                      rts
+
 edao_dragkey:
 [00032eaa] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
 [00032eae] 594f                      subq.w     #4,a7
@@ -64,7 +67,7 @@ edao_dragkey:
 [00032ec4] 4269 0248                 clr.w      584(a1)
 [00032ec8] 4eb9 0004 7e2a            jsr        Adr_next
 [00032ece] 3600                      move.w     d0,d3
-[00032ed0] 6f4c                      ble.s      $00032F1E
+[00032ed0] 6f4c                      ble.s      edao_dragkey_1
 [00032ed2] 48c0                      ext.l      d0
 [00032ed4] 2200                      move.l     d0,d1
 [00032ed6] d281                      add.l      d1,d1
@@ -74,7 +77,7 @@ edao_dragkey:
 [00032ee0] 43f0 1818                 lea.l      24(a0,d1.l),a1
 [00032ee4] 2e89                      move.l     a1,(a7)
 [00032ee6] 0c69 2723 0016            cmpi.w     #$2723,22(a1)
-[00032eec] 6630                      bne.s      $00032F1E
+[00032eec] 6630                      bne.s      edao_dragkey_1
 [00032eee] 204c                      movea.l    a4,a0
 [00032ef0] 3003                      move.w     d3,d0
 [00032ef2] 4eb9 0004 7f76            jsr        Adr_del
@@ -90,9 +93,11 @@ edao_dragkey:
 [00032f16] 204a                      movea.l    a2,a0
 [00032f18] 226a 0066                 movea.l    102(a2),a1
 [00032f1c] 4e91                      jsr        (a1)
+edao_dragkey_1:
 [00032f1e] 584f                      addq.w     #4,a7
 [00032f20] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
 [00032f24] 4e75                      rts
+
 edao_ok:
 [00032f26] 48e7 003e                 movem.l    a2-a6,-(a7)
 [00032f2a] 4fef ffdc                 lea.l      -36(a7),a7
@@ -116,19 +121,21 @@ edao_ok:
 [00032f62] 7013                      moveq.l    #19,d0
 [00032f64] 4eb9 0005 11da            jsr        Aob_gettext
 [00032f6a] 1017                      move.b     (a7),d0
-[00032f6c] 6728                      beq.s      $00032F96
+[00032f6c] 6728                      beq.s      edao_ok_1
 [00032f6e] 41d7                      lea.l      (a7),a0
 [00032f70] 4eb9 0008 3180            jsr        strupr
 [00032f76] 41d7                      lea.l      (a7),a0
 [00032f78] 4eb9 0003 325a            jsr        key_code
 [00032f7e] 3940 002a                 move.w     d0,42(a4)
 [00032f82] 4a40                      tst.w      d0
-[00032f84] 6614                      bne.s      $00032F9A
+[00032f84] 6614                      bne.s      edao_ok_2
 [00032f86] 43d7                      lea.l      (a7),a1
 [00032f88] 41f9 000c c87e            lea.l      ERR_KEYCODE,a0
 [00032f8e] 4eb9 0006 b80c            jsr        alert_str
-[00032f94] 6004                      bra.s      $00032F9A
+[00032f94] 6004                      bra.s      edao_ok_2
+edao_ok_1:
 [00032f96] 426c 002a                 clr.w      42(a4)
+edao_ok_2:
 [00032f9a] 486c 0034                 pea.l      52(a4)
 [00032f9e] 43f9 000c cd2c            lea.l      $000CCD2C,a1
 [00032fa4] 7014                      moveq.l    #20,d0
@@ -136,31 +143,34 @@ edao_ok:
 [00032fa8] 4eb9 0005 10fe            jsr        Aob_scanf
 [00032fae] 584f                      addq.w     #4,a7
 [00032fb0] 2014                      move.l     (a4),d0
-[00032fb2] 670a                      beq.s      $00032FBE
+[00032fb2] 670a                      beq.s      edao_ok_3
 [00032fb4] 2240                      movea.l    d0,a1
 [00032fb6] 204b                      movea.l    a3,a0
 [00032fb8] 4eb9 0001 7f52            jsr        objfree
+edao_ok_3:
 [00032fbe] 43d7                      lea.l      (a7),a1
 [00032fc0] 7003                      moveq.l    #3,d0
 [00032fc2] 204a                      movea.l    a2,a0
 [00032fc4] 4eb9 0005 11da            jsr        Aob_gettext
 [00032fca] 1017                      move.b     (a7),d0
-[00032fcc] 672a                      beq.s      $00032FF8
+[00032fcc] 672a                      beq.s      edao_ok_4
 [00032fce] 204b                      movea.l    a3,a0
 [00032fd0] 7000                      moveq.l    #0,d0
 [00032fd2] 4eb9 0001 7fae            jsr        objmalloc
 [00032fd8] 2c48                      movea.l    a0,a6
 [00032fda] 2888                      move.l     a0,(a4)
 [00032fdc] 200e                      move.l     a6,d0
-[00032fde] 671a                      beq.s      $00032FFA
+[00032fde] 671a                      beq.s      edao_ok_5
 [00032fe0] 4879 000c cd2f            pea.l      $000CCD2F
 [00032fe6] 486f 0004                 pea.l      4(a7)
 [00032fea] 2248                      movea.l    a0,a1
 [00032fec] 204b                      movea.l    a3,a0
 [00032fee] 4eb9 0001 81c6            jsr        objname
 [00032ff4] 504f                      addq.w     #8,a7
-[00032ff6] 6002                      bra.s      $00032FFA
+[00032ff6] 6002                      bra.s      edao_ok_5
+edao_ok_4:
 [00032ff8] 4294                      clr.l      (a4)
+edao_ok_5:
 [00032ffa] 43d7                      lea.l      (a7),a1
 [00032ffc] 7012                      moveq.l    #18,d0
 [00032ffe] 204a                      movea.l    a2,a0
@@ -215,6 +225,7 @@ edao_ok:
 [00033096] 4fef 0024                 lea.l      36(a7),a7
 [0003309a] 4cdf 7c00                 movem.l    (a7)+,a2-a6
 [0003309e] 4e75                      rts
+
 edao_list:
 [000330a0] 2f0a                      move.l     a2,-(a7)
 [000330a2] 2f0b                      move.l     a3,-(a7)
@@ -233,6 +244,7 @@ edao_list:
 [000330d6] 265f                      movea.l    (a7)+,a3
 [000330d8] 245f                      movea.l    (a7)+,a2
 [000330da] 4e75                      rts
+
 set_aeo:
 [000330dc] 48e7 003c                 movem.l    a2-a5,-(a7)
 [000330e0] 4fef ffdc                 lea.l      -36(a7),a7
@@ -242,9 +254,10 @@ set_aeo:
 [000330f0] 4eb9 0004 f064            jsr        Aob_create
 [000330f6] 2448                      movea.l    a0,a2
 [000330f8] 200a                      move.l     a2,d0
-[000330fa] 6606                      bne.s      $00033102
+[000330fa] 6606                      bne.s      set_aeo_1
 [000330fc] 91c8                      suba.l     a0,a0
-[000330fe] 6000 0146                 bra        $00033246
+[000330fe] 6000 0146                 bra        set_aeo_2
+set_aeo_1:
 [00033102] 47f9 0010 ee4e            lea.l      ACSblk,a3
 [00033108] 7003                      moveq.l    #3,d0
 [0003310a] 224a                      movea.l    a2,a1
@@ -342,6 +355,7 @@ set_aeo:
 [00033240] 544f                      addq.w     #2,a7
 [00033242] 2a8a                      move.l     a2,(a5)
 [00033244] 204d                      movea.l    a5,a0
+set_aeo_2:
 [00033246] 4fef 0024                 lea.l      36(a7),a7
 [0003324a] 4cdf 3c00                 movem.l    (a7)+,a2-a5
 [0003324e] 4e75                      rts

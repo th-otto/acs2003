@@ -4,17 +4,21 @@ Ash_printSetIcon:
 [0006eb6c] 3e80                      move.w     d0,(a7)
 [0006eb6e] 23ef 0002 000e 2bf8       move.l     2(a7),$000E2BF8
 [0006eb76] 2039 000e 2bf8            move.l     $000E2BF8,d0
-[0006eb7c] 660a                      bne.s      $0006EB88
+[0006eb7c] 660a                      bne.s      Ash_printSetIcon_1
 [0006eb7e] 0279 fffc 000e 2bf2       andi.w     #$FFFC,$000E2BF2
-[0006eb86] 601e                      bra.s      $0006EBA6
+[0006eb86] 601e                      bra.s      Ash_printSetIcon_2
+Ash_printSetIcon_1:
 [0006eb88] 0079 0001 000e 2bf2       ori.w      #$0001,$000E2BF2
 [0006eb90] 3017                      move.w     (a7),d0
-[0006eb92] 670a                      beq.s      $0006EB9E
+[0006eb92] 670a                      beq.s      Ash_printSetIcon_3
 [0006eb94] 0079 0002 000e 2bf2       ori.w      #$0002,$000E2BF2
-[0006eb9c] 6008                      bra.s      $0006EBA6
+[0006eb9c] 6008                      bra.s      Ash_printSetIcon_2
+Ash_printSetIcon_3:
 [0006eb9e] 0279 fffd 000e 2bf2       andi.w     #$FFFD,$000E2BF2
+Ash_printSetIcon_2:
 [0006eba6] 5c4f                      addq.w     #6,a7
 [0006eba8] 4e75                      rts
+
 Ash_print:
 [0006ebaa] 2f0a                      move.l     a2,-(a7)
 [0006ebac] 4fef ffe8                 lea.l      -24(a7),a7
@@ -26,16 +30,18 @@ Ash_print:
 [0006ebc4] 3ebc ffff                 move.w     #$FFFF,(a7)
 [0006ebc8] 4eb9 0006 edf8            jsr        hasPdlg
 [0006ebce] 4a40                      tst.w      d0
-[0006ebd0] 6606                      bne.s      $0006EBD8
+[0006ebd0] 6606                      bne.s      Ash_print_1
 [0006ebd2] 70ff                      moveq.l    #-1,d0
-[0006ebd4] 6000 021a                 bra        $0006EDF0
+[0006ebd4] 6000 021a                 bra        Ash_print_2
+Ash_print_1:
 [0006ebd8] 7026                      moveq.l    #38,d0
 [0006ebda] 4eb9 0004 c608            jsr        Ax_malloc
 [0006ebe0] 2f48 0006                 move.l     a0,6(a7)
 [0006ebe4] 202f 0006                 move.l     6(a7),d0
-[0006ebe8] 6606                      bne.s      $0006EBF0
+[0006ebe8] 6606                      bne.s      Ash_print_3
 [0006ebea] 70ff                      moveq.l    #-1,d0
-[0006ebec] 6000 0202                 bra        $0006EDF0
+[0006ebec] 6000 0202                 bra        Ash_print_2
+Ash_print_3:
 [0006ebf0] 206f 0006                 movea.l    6(a7),a0
 [0006ebf4] 42a8 000c                 clr.l      12(a0)
 [0006ebf8] 206f 0006                 movea.l    6(a7),a0
@@ -53,10 +59,12 @@ Ash_print:
 [0006ec30] 206f 0006                 movea.l    6(a7),a0
 [0006ec34] 216f 0020 001e            move.l     32(a7),30(a0)
 [0006ec3a] 202f 0020                 move.l     32(a7),d0
-[0006ec3e] 6604                      bne.s      $0006EC44
+[0006ec3e] 6604                      bne.s      Ash_print_4
 [0006ec40] 7001                      moveq.l    #1,d0
-[0006ec42] 6002                      bra.s      $0006EC46
+[0006ec42] 6002                      bra.s      Ash_print_5
+Ash_print_4:
 [0006ec44] 4240                      clr.w      d0
+Ash_print_5:
 [0006ec46] 206f 0006                 movea.l    6(a7),a0
 [0006ec4a] 3140 0018                 move.w     d0,24(a0)
 [0006ec4e] 206f 0006                 movea.l    6(a7),a0
@@ -68,33 +76,35 @@ Ash_print:
 [0006ec68] 4e91                      jsr        (a1)
 [0006ec6a] 2f48 0002                 move.l     a0,2(a7)
 [0006ec6e] 202f 0002                 move.l     2(a7),d0
-[0006ec72] 6600 00fe                 bne        $0006ED72
+[0006ec72] 6600 00fe                 bne        Ash_print_6
 [0006ec76] 202f 0020                 move.l     32(a7),d0
-[0006ec7a] 6600 00c4                 bne        $0006ED40
+[0006ec7a] 6600 00c4                 bne        Ash_print_7
 [0006ec7e] 2079 000e 692a            movea.l    _globl,a0
 [0006ec84] 2f08                      move.l     a0,-(a7)
 [0006ec86] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006ec8c] 2068 023c                 movea.l    572(a0),a0
 [0006ec90] 3028 000e                 move.w     14(a0),d0
 [0006ec94] c07c 0100                 and.w      #$0100,d0
-[0006ec98] 6604                      bne.s      $0006EC9E
+[0006ec98] 6604                      bne.s      Ash_print_8
 [0006ec9a] 7001                      moveq.l    #1,d0
-[0006ec9c] 6002                      bra.s      $0006ECA0
+[0006ec9c] 6002                      bra.s      Ash_print_9
+Ash_print_8:
 [0006ec9e] 4240                      clr.w      d0
+Ash_print_9:
 [0006eca0] 205f                      movea.l    (a7)+,a0
 [0006eca2] 4eb9 0007 d16e            jsr        mt_pdlg_create
 [0006eca8] 226f 0006                 movea.l    6(a7),a1
 [0006ecac] 2348 000c                 move.l     a0,12(a1)
 [0006ecb0] 206f 0006                 movea.l    6(a7),a0
 [0006ecb4] 2028 000c                 move.l     12(a0),d0
-[0006ecb8] 6700 0086                 beq        $0006ED40
+[0006ecb8] 6700 0086                 beq        Ash_print_7
 [0006ecbc] 206f 0006                 movea.l    6(a7),a0
 [0006ecc0] 4eb9 0006 ee56            jsr        pdlgGetSettings
 [0006ecc6] 226f 0006                 movea.l    6(a7),a1
 [0006ecca] 2348 0008                 move.l     a0,8(a1)
 [0006ecce] 206f 0006                 movea.l    6(a7),a0
 [0006ecd2] 2028 0008                 move.l     8(a0),d0
-[0006ecd6] 6750                      beq.s      $0006ED28
+[0006ecd6] 6750                      beq.s      Ash_print_10
 [0006ecd8] 4eb9 0004 ef0c            jsr        Amo_unbusy
 [0006ecde] 2f39 000e 692a            move.l     _globl,-(a7)
 [0006ece4] 206f 000a                 movea.l    10(a7),a0
@@ -111,52 +121,63 @@ Ash_print:
 [0006ed0e] 3140 001a                 move.w     d0,26(a0)
 [0006ed12] 206f 0006                 movea.l    6(a7),a0
 [0006ed16] 0c68 0002 001a            cmpi.w     #$0002,26(a0)
-[0006ed1c] 6604                      bne.s      $0006ED22
+[0006ed1c] 6604                      bne.s      Ash_print_11
 [0006ed1e] 7001                      moveq.l    #1,d0
-[0006ed20] 6002                      bra.s      $0006ED24
+[0006ed20] 6002                      bra.s      Ash_print_12
+Ash_print_11:
 [0006ed22] 4240                      clr.w      d0
+Ash_print_12:
 [0006ed24] 3e80                      move.w     d0,(a7)
-[0006ed26] 6004                      bra.s      $0006ED2C
+[0006ed26] 6004                      bra.s      Ash_print_13
+Ash_print_10:
 [0006ed28] 3ebc ffff                 move.w     #$FFFF,(a7)
+Ash_print_13:
 [0006ed2c] 2279 000e 692a            movea.l    _globl,a1
 [0006ed32] 206f 0006                 movea.l    6(a7),a0
 [0006ed36] 2068 000c                 movea.l    12(a0),a0
 [0006ed3a] 4eb9 0007 d1c8            jsr        mt_pdlg_delete
+Ash_print_7:
 [0006ed40] 206f 0006                 movea.l    6(a7),a0
 [0006ed44] 3028 0012                 move.w     18(a0),d0
-[0006ed48] 670e                      beq.s      $0006ED58
+[0006ed48] 670e                      beq.s      Ash_print_14
 [0006ed4a] 206f 0006                 movea.l    6(a7),a0
 [0006ed4e] 2068 0008                 movea.l    8(a0),a0
 [0006ed52] 4eb9 0004 c7c8            jsr        Ax_free
+Ash_print_14:
 [0006ed58] 206f 0006                 movea.l    6(a7),a0
 [0006ed5c] 2050                      movea.l    (a0),a0
 [0006ed5e] 4eb9 0004 649c            jsr        Ast_delete
 [0006ed64] 206f 0006                 movea.l    6(a7),a0
 [0006ed68] 4eb9 0004 c7c8            jsr        Ax_free
-[0006ed6e] 6000 007e                 bra.w      $0006EDEE
+[0006ed6e] 6000 007e                 bra.w      Ash_print_15
+Ash_print_6:
 [0006ed72] 202f 0020                 move.l     32(a7),d0
-[0006ed76] 6644                      bne.s      $0006EDBC
+[0006ed76] 6644                      bne.s      Ash_print_16
 [0006ed78] 206f 0006                 movea.l    6(a7),a0
 [0006ed7c] 317c 0001 0018            move.w     #$0001,24(a0)
 [0006ed82] 206f 0002                 movea.l    2(a7),a0
 [0006ed86] 4eb9 0005 9df4            jsr        Awi_dialog
 [0006ed8c] 3e80                      move.w     d0,(a7)
 [0006ed8e] 0c57 ffff                 cmpi.w     #$FFFF,(a7)
-[0006ed92] 6d14                      blt.s      $0006EDA8
+[0006ed92] 6d14                      blt.s      Ash_print_17
 [0006ed94] 206f 0006                 movea.l    6(a7),a0
 [0006ed98] 0c68 0002 001a            cmpi.w     #$0002,26(a0)
-[0006ed9e] 6604                      bne.s      $0006EDA4
+[0006ed9e] 6604                      bne.s      Ash_print_18
 [0006eda0] 7001                      moveq.l    #1,d0
-[0006eda2] 6002                      bra.s      $0006EDA6
+[0006eda2] 6002                      bra.s      Ash_print_19
+Ash_print_18:
 [0006eda4] 4240                      clr.w      d0
+Ash_print_19:
 [0006eda6] 3e80                      move.w     d0,(a7)
+Ash_print_17:
 [0006eda8] 93c9                      suba.l     a1,a1
 [0006edaa] 7002                      moveq.l    #2,d0
 [0006edac] 206f 0002                 movea.l    2(a7),a0
 [0006edb0] 246f 0002                 movea.l    2(a7),a2
 [0006edb4] 246a 0004                 movea.l    4(a2),a2
 [0006edb8] 4e92                      jsr        (a2)
-[0006edba] 6032                      bra.s      $0006EDEE
+[0006edba] 6032                      bra.s      Ash_print_15
+Ash_print_16:
 [0006edbc] 206f 0006                 movea.l    6(a7),a0
 [0006edc0] 4268 0018                 clr.w      24(a0)
 [0006edc4] 206f 0002                 movea.l    2(a7),a0
@@ -164,23 +185,27 @@ Ash_print:
 [0006edcc] 2269 000c                 movea.l    12(a1),a1
 [0006edd0] 4e91                      jsr        (a1)
 [0006edd2] 4a40                      tst.w      d0
-[0006edd4] 6706                      beq.s      $0006EDDC
+[0006edd4] 6706                      beq.s      Ash_print_20
 [0006edd6] 3ebc 0002                 move.w     #$0002,(a7)
-[0006edda] 6012                      bra.s      $0006EDEE
+[0006edda] 6012                      bra.s      Ash_print_15
+Ash_print_20:
 [0006eddc] 93c9                      suba.l     a1,a1
 [0006edde] 7002                      moveq.l    #2,d0
 [0006ede0] 206f 0002                 movea.l    2(a7),a0
 [0006ede4] 246f 0002                 movea.l    2(a7),a2
 [0006ede8] 246a 0004                 movea.l    4(a2),a2
 [0006edec] 4e92                      jsr        (a2)
+Ash_print_15:
 [0006edee] 3017                      move.w     (a7),d0
+Ash_print_2:
 [0006edf0] 4fef 0018                 lea.l      24(a7),a7
 [0006edf4] 245f                      movea.l    (a7)+,a2
 [0006edf6] 4e75                      rts
+
 hasPdlg:
 [0006edf8] 514f                      subq.w     #8,a7
 [0006edfa] 3039 000e 2c40            move.w     vorhanden,d0
-[0006ee00] 6a42                      bpl.s      $0006EE44
+[0006ee00] 6a42                      bpl.s      hasPdlg_1
 [0006ee02] 2f39 000e 692a            move.l     _globl,-(a7)
 [0006ee08] 486f 0004                 pea.l      4(a7)
 [0006ee0c] 486f 000a                 pea.l      10(a7)
@@ -190,23 +215,30 @@ hasPdlg:
 [0006ee1a] 4eb9 0007 8da2            jsr        mt_appl_getinfo
 [0006ee20] 4fef 000c                 lea.l      12(a7),a7
 [0006ee24] 4a40                      tst.w      d0
-[0006ee26] 6716                      beq.s      $0006EE3E
+[0006ee26] 6716                      beq.s      hasPdlg_2
 [0006ee28] 7010                      moveq.l    #16,d0
 [0006ee2a] c06f 0006                 and.w      6(a7),d0
-[0006ee2e] 6704                      beq.s      $0006EE34
+[0006ee2e] 6704                      beq.s      hasPdlg_3
 [0006ee30] 7001                      moveq.l    #1,d0
-[0006ee32] 6002                      bra.s      $0006EE36
+[0006ee32] 6002                      bra.s      hasPdlg_4
+hasPdlg_3:
 [0006ee34] 4240                      clr.w      d0
+hasPdlg_4:
 [0006ee36] 33c0 000e 2c40            move.w     d0,vorhanden
-[0006ee3c] 6006                      bra.s      $0006EE44
+[0006ee3c] 6006                      bra.s      hasPdlg_1
+hasPdlg_2:
 [0006ee3e] 4279 000e 2c40            clr.w      vorhanden
+hasPdlg_1:
 [0006ee44] 3039 000e 2c40            move.w     vorhanden,d0
-[0006ee4a] 6704                      beq.s      $0006EE50
+[0006ee4a] 6704                      beq.s      hasPdlg_5
 [0006ee4c] 7001                      moveq.l    #1,d0
-[0006ee4e] 6002                      bra.s      $0006EE52
+[0006ee4e] 6002                      bra.s      hasPdlg_6
+hasPdlg_5:
 [0006ee50] 4240                      clr.w      d0
+hasPdlg_6:
 [0006ee52] 504f                      addq.w     #8,a7
 [0006ee54] 4e75                      rts
+
 pdlgGetSettings:
 [0006ee56] 4fef ffec                 lea.l      -20(a7),a7
 [0006ee5a] 2f48 000c                 move.l     a0,12(a7)
@@ -215,63 +247,76 @@ pdlgGetSettings:
 [0006ee68] 206f 000c                 movea.l    12(a7),a0
 [0006ee6c] 2ea8 0008                 move.l     8(a0),(a7)
 [0006ee70] 202f 0008                 move.l     8(a7),d0
-[0006ee74] 6626                      bne.s      $0006EE9C
+[0006ee74] 6626                      bne.s      pdlgGetSettings_1
 [0006ee76] 2079 000e 692a            movea.l    _globl,a0
 [0006ee7c] 4240                      clr.w      d0
 [0006ee7e] 4eb9 0007 d16e            jsr        mt_pdlg_create
 [0006ee84] 2f48 0004                 move.l     a0,4(a7)
 [0006ee88] 202f 0004                 move.l     4(a7),d0
-[0006ee8c] 6606                      bne.s      $0006EE94
+[0006ee8c] 6606                      bne.s      pdlgGetSettings_2
 [0006ee8e] 91c8                      suba.l     a0,a0
-[0006ee90] 6000 00aa                 bra        $0006EF3C
+[0006ee90] 6000 00aa                 bra        pdlgGetSettings_3
+pdlgGetSettings_2:
 [0006ee94] 2f6f 0004 0008            move.l     4(a7),8(a7)
-[0006ee9a] 6004                      bra.s      $0006EEA0
+[0006ee9a] 6004                      bra.s      pdlgGetSettings_4
+pdlgGetSettings_1:
 [0006ee9c] 42af 0004                 clr.l      4(a7)
+pdlgGetSettings_4:
 [0006eea0] 2017                      move.l     (a7),d0
-[0006eea2] 6604                      bne.s      $0006EEA8
+[0006eea2] 6604                      bne.s      pdlgGetSettings_5
 [0006eea4] 7001                      moveq.l    #1,d0
-[0006eea6] 6002                      bra.s      $0006EEAA
+[0006eea6] 6002                      bra.s      pdlgGetSettings_6
+pdlgGetSettings_5:
 [0006eea8] 4240                      clr.w      d0
+pdlgGetSettings_6:
 [0006eeaa] 206f 000c                 movea.l    12(a7),a0
 [0006eeae] 3140 0012                 move.w     d0,18(a0)
 [0006eeb2] 206f 000c                 movea.l    12(a7),a0
 [0006eeb6] 3028 0012                 move.w     18(a0),d0
-[0006eeba] 674a                      beq.s      $0006EF06
+[0006eeba] 674a                      beq.s      pdlgGetSettings_7
 [0006eebc] 2079 000e 692a            movea.l    _globl,a0
 [0006eec2] 4eb9 0007 d3cc            jsr        mt_pdlg_get_setsize
 [0006eec8] 2f40 0010                 move.l     d0,16(a7)
 [0006eecc] 0caf 0000 0178 0010       cmpi.l     #$00000178,16(a7)
-[0006eed4] 6306                      bls.s      $0006EEDC
+[0006eed4] 6306                      bls.s      pdlgGetSettings_8
 [0006eed6] 202f 0010                 move.l     16(a7),d0
-[0006eeda] 6006                      bra.s      $0006EEE2
+[0006eeda] 6006                      bra.s      pdlgGetSettings_9
+pdlgGetSettings_8:
 [0006eedc] 203c 0000 0178            move.l     #$00000178,d0
+pdlgGetSettings_9:
 [0006eee2] 4eb9 0004 c608            jsr        Ax_malloc
 [0006eee8] 2e88                      move.l     a0,(a7)
 [0006eeea] 2017                      move.l     (a7),d0
-[0006eeec] 6716                      beq.s      $0006EF04
+[0006eeec] 6716                      beq.s      pdlgGetSettings_10
 [0006eeee] 2f39 000e 692a            move.l     _globl,-(a7)
 [0006eef4] 226f 0004                 movea.l    4(a7),a1
 [0006eef8] 206f 000c                 movea.l    12(a7),a0
 [0006eefc] 4eb9 0007 d222            jsr        mt_pdlg_dflt_settings
 [0006ef02] 584f                      addq.w     #4,a7
-[0006ef04] 601e                      bra.s      $0006EF24
+pdlgGetSettings_10:
+[0006ef04] 601e                      bra.s      pdlgGetSettings_11
+pdlgGetSettings_7:
 [0006ef06] 2f39 000e 692a            move.l     _globl,-(a7)
 [0006ef0c] 226f 0004                 movea.l    4(a7),a1
 [0006ef10] 206f 000c                 movea.l    12(a7),a0
 [0006ef14] 4eb9 0007 d694            jsr        mt_pdlg_validate_settings
 [0006ef1a] 584f                      addq.w     #4,a7
 [0006ef1c] 4a40                      tst.w      d0
-[0006ef1e] 6604                      bne.s      $0006EF24
+[0006ef1e] 6604                      bne.s      pdlgGetSettings_11
 [0006ef20] 91c8                      suba.l     a0,a0
-[0006ef22] 6018                      bra.s      $0006EF3C
+[0006ef22] 6018                      bra.s      pdlgGetSettings_3
+pdlgGetSettings_11:
 [0006ef24] 202f 0004                 move.l     4(a7),d0
-[0006ef28] 6710                      beq.s      $0006EF3A
+[0006ef28] 6710                      beq.s      pdlgGetSettings_12
 [0006ef2a] 2279 000e 692a            movea.l    _globl,a1
 [0006ef30] 206f 0004                 movea.l    4(a7),a0
 [0006ef34] 4eb9 0007 d1c8            jsr        mt_pdlg_delete
+pdlgGetSettings_12:
 [0006ef3a] 2057                      movea.l    (a7),a0
+pdlgGetSettings_3:
 [0006ef3c] 4fef 0014                 lea.l      20(a7),a7
 [0006ef40] 4e75                      rts
+
 pdlgClose:
 [0006ef42] 2f0a                      move.l     a2,-(a7)
 [0006ef44] 4fef ffec                 lea.l      -20(a7),a7
@@ -281,13 +326,13 @@ pdlgClose:
 [0006ef56] 206f 0008                 movea.l    8(a7),a0
 [0006ef5a] 2ea8 001e                 move.l     30(a0),(a7)
 [0006ef5e] 202f 0004                 move.l     4(a7),d0
-[0006ef62] 6744                      beq.s      $0006EFA8
+[0006ef62] 6744                      beq.s      pdlgClose_1
 [0006ef64] 206f 0004                 movea.l    4(a7),a0
 [0006ef68] 3028 0020                 move.w     32(a0),d0
-[0006ef6c] 6b3a                      bmi.s      $0006EFA8
+[0006ef6c] 6b3a                      bmi.s      pdlgClose_1
 [0006ef6e] 206f 0008                 movea.l    8(a7),a0
 [0006ef72] 2028 000c                 move.l     12(a0),d0
-[0006ef76] 6730                      beq.s      $0006EFA8
+[0006ef76] 6730                      beq.s      pdlgClose_1
 [0006ef78] 2f39 000e 692a            move.l     _globl,-(a7)
 [0006ef7e] 206f 0008                 movea.l    8(a7),a0
 [0006ef82] 4868 002e                 pea.l      46(a0)
@@ -299,11 +344,12 @@ pdlgClose:
 [0006ef9c] 504f                      addq.w     #8,a7
 [0006ef9e] 206f 0004                 movea.l    4(a7),a0
 [0006efa2] 317c ffff 0020            move.w     #$FFFF,32(a0)
+pdlgClose_1:
 [0006efa8] 2017                      move.l     (a7),d0
-[0006efaa] 6740                      beq.s      $0006EFEC
+[0006efaa] 6740                      beq.s      pdlgClose_2
 [0006efac] 206f 0008                 movea.l    8(a7),a0
 [0006efb0] 2028 0008                 move.l     8(a0),d0
-[0006efb4] 6736                      beq.s      $0006EFEC
+[0006efb4] 6736                      beq.s      pdlgClose_2
 [0006efb6] 206f 0008                 movea.l    8(a7),a0
 [0006efba] 2f68 0008 000c            move.l     8(a0),12(a7)
 [0006efc0] 206f 0008                 movea.l    8(a7),a0
@@ -318,10 +364,12 @@ pdlgClose:
 [0006efe2] 4e92                      jsr        (a2)
 [0006efe4] 206f 0008                 movea.l    8(a7),a0
 [0006efe8] 42a8 001e                 clr.l      30(a0)
+pdlgClose_2:
 [0006efec] 7001                      moveq.l    #1,d0
 [0006efee] 4fef 0014                 lea.l      20(a7),a7
 [0006eff2] 245f                      movea.l    (a7)+,a2
 [0006eff4] 4e75                      rts
+
 pdlgMessage:
 [0006eff6] 2f0a                      move.l     a2,-(a7)
 [0006eff8] 4fef fff4                 lea.l      -12(a7),a7
@@ -342,20 +390,22 @@ pdlgMessage:
 [0006f03a] 4fef 000c                 lea.l      12(a7),a7
 [0006f03e] 3f40 0002                 move.w     d0,2(a7)
 [0006f042] 302f 0002                 move.w     2(a7),d0
-[0006f046] 664e                      bne.s      $0006F096
+[0006f046] 664e                      bne.s      pdlgMessage_1
 [0006f048] 206f 0008                 movea.l    8(a7),a0
 [0006f04c] 3028 001c                 move.w     28(a0),d0
-[0006f050] 6608                      bne.s      $0006F05A
+[0006f050] 6608                      bne.s      pdlgMessage_2
 [0006f052] 206f 0008                 movea.l    8(a7),a0
 [0006f056] 3157 001a                 move.w     (a7),26(a0)
+pdlgMessage_2:
 [0006f05a] 206f 0008                 movea.l    8(a7),a0
 [0006f05e] 317c 0001 001c            move.w     #$0001,28(a0)
 [0006f064] 206f 0008                 movea.l    8(a7),a0
 [0006f068] 3028 0018                 move.w     24(a0),d0
-[0006f06c] 670e                      beq.s      $0006F07C
+[0006f06c] 670e                      beq.s      pdlgMessage_3
 [0006f06e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f074] 317c 0001 0268            move.w     #$0001,616(a0)
-[0006f07a] 601a                      bra.s      $0006F096
+[0006f07a] 601a                      bra.s      pdlgMessage_1
+pdlgMessage_3:
 [0006f07c] 93c9                      suba.l     a1,a1
 [0006f07e] 7002                      moveq.l    #2,d0
 [0006f080] 206f 0008                 movea.l    8(a7),a0
@@ -364,79 +414,90 @@ pdlgMessage:
 [0006f08c] 246a 0022                 movea.l    34(a2),a2
 [0006f090] 246a 0004                 movea.l    4(a2),a2
 [0006f094] 4e92                      jsr        (a2)
+pdlgMessage_1:
 [0006f096] 302f 0002                 move.w     2(a7),d0
 [0006f09a] 4fef 000c                 lea.l      12(a7),a7
 [0006f09e] 245f                      movea.l    (a7)+,a2
 [0006f0a0] 4e75                      rts
+
 PrintCreate:
 [0006f0a2] 4fef fff0                 lea.l      -16(a7),a7
 [0006f0a6] 2f48 000c                 move.l     a0,12(a7)
 [0006f0aa] 2f6f 000c 0008            move.l     12(a7),8(a7)
 [0006f0b0] 202f 000c                 move.l     12(a7),d0
-[0006f0b4] 6606                      bne.s      $0006F0BC
+[0006f0b4] 6606                      bne.s      PrintCreate_1
 [0006f0b6] 91c8                      suba.l     a0,a0
-[0006f0b8] 6000 00e2                 bra        $0006F19C
+[0006f0b8] 6000 00e2                 bra        PrintCreate_2
+PrintCreate_1:
 [0006f0bc] 2079 000e 692a            movea.l    _globl,a0
 [0006f0c2] 2f08                      move.l     a0,-(a7)
 [0006f0c4] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f0ca] 2068 023c                 movea.l    572(a0),a0
 [0006f0ce] 3028 000e                 move.w     14(a0),d0
 [0006f0d2] c07c 0100                 and.w      #$0100,d0
-[0006f0d6] 6604                      bne.s      $0006F0DC
+[0006f0d6] 6604                      bne.s      PrintCreate_3
 [0006f0d8] 7001                      moveq.l    #1,d0
-[0006f0da] 6002                      bra.s      $0006F0DE
+[0006f0da] 6002                      bra.s      PrintCreate_4
+PrintCreate_3:
 [0006f0dc] 4240                      clr.w      d0
+PrintCreate_4:
 [0006f0de] 205f                      movea.l    (a7)+,a0
 [0006f0e0] 4eb9 0007 d16e            jsr        mt_pdlg_create
 [0006f0e6] 226f 0008                 movea.l    8(a7),a1
 [0006f0ea] 2348 000c                 move.l     a0,12(a1)
 [0006f0ee] 206f 0008                 movea.l    8(a7),a0
 [0006f0f2] 2028 000c                 move.l     12(a0),d0
-[0006f0f6] 6606                      bne.s      $0006F0FE
+[0006f0f6] 6606                      bne.s      PrintCreate_5
 [0006f0f8] 91c8                      suba.l     a0,a0
-[0006f0fa] 6000 00a0                 bra        $0006F19C
+[0006f0fa] 6000 00a0                 bra        PrintCreate_2
+PrintCreate_5:
 [0006f0fe] 206f 0008                 movea.l    8(a7),a0
 [0006f102] 6100 fd52                 bsr        pdlgGetSettings
 [0006f106] 226f 0008                 movea.l    8(a7),a1
 [0006f10a] 2348 0008                 move.l     a0,8(a1)
 [0006f10e] 206f 0008                 movea.l    8(a7),a0
 [0006f112] 2028 0008                 move.l     8(a0),d0
-[0006f116] 6618                      bne.s      $0006F130
+[0006f116] 6618                      bne.s      PrintCreate_6
 [0006f118] 2279 000e 692a            movea.l    _globl,a1
 [0006f11e] 206f 0008                 movea.l    8(a7),a0
 [0006f122] 2068 000c                 movea.l    12(a0),a0
 [0006f126] 4eb9 0007 d1c8            jsr        mt_pdlg_delete
 [0006f12c] 91c8                      suba.l     a0,a0
-[0006f12e] 606c                      bra.s      $0006F19C
+[0006f12e] 606c                      bra.s      PrintCreate_2
+PrintCreate_6:
 [0006f130] 41f9 000e 2b9e            lea.l      PrintSelWind,a0
 [0006f136] 4eb9 0005 7052            jsr        Awi_create
 [0006f13c] 2f48 0004                 move.l     a0,4(a7)
 [0006f140] 202f 0004                 move.l     4(a7),d0
-[0006f144] 6618                      bne.s      $0006F15E
+[0006f144] 6618                      bne.s      PrintCreate_7
 [0006f146] 2279 000e 692a            movea.l    _globl,a1
 [0006f14c] 206f 0008                 movea.l    8(a7),a0
 [0006f150] 2068 000c                 movea.l    12(a0),a0
 [0006f154] 4eb9 0007 d1c8            jsr        mt_pdlg_delete
 [0006f15a] 91c8                      suba.l     a0,a0
-[0006f15c] 603e                      bra.s      $0006F19C
+[0006f15c] 603e                      bra.s      PrintCreate_2
+PrintCreate_7:
 [0006f15e] 206f 0008                 movea.l    8(a7),a0
 [0006f162] 2050                      movea.l    (a0),a0
 [0006f164] 4eb9 0004 643c            jsr        Ast_create
 [0006f16a] 2e88                      move.l     a0,(a7)
 [0006f16c] 2017                      move.l     (a7),d0
-[0006f16e] 6716                      beq.s      $0006F186
+[0006f16e] 6716                      beq.s      PrintCreate_8
 [0006f170] 206f 0004                 movea.l    4(a7),a0
 [0006f174] 2068 004a                 movea.l    74(a0),a0
 [0006f178] 4eb9 0004 649c            jsr        Ast_delete
 [0006f17e] 206f 0004                 movea.l    4(a7),a0
 [0006f182] 2157 004a                 move.l     (a7),74(a0)
+PrintCreate_8:
 [0006f186] 206f 0004                 movea.l    4(a7),a0
 [0006f18a] 20af 0008                 move.l     8(a7),(a0)
 [0006f18e] 206f 0008                 movea.l    8(a7),a0
 [0006f192] 216f 0004 0022            move.l     4(a7),34(a0)
 [0006f198] 206f 0004                 movea.l    4(a7),a0
+PrintCreate_2:
 [0006f19c] 4fef 0010                 lea.l      16(a7),a7
 [0006f1a0] 4e75                      rts
+
 PrintService:
 [0006f1a2] 4fef fff6                 lea.l      -10(a7),a7
 [0006f1a6] 2f48 0006                 move.l     a0,6(a7)
@@ -445,29 +506,32 @@ PrintService:
 [0006f1b2] 2e90                      move.l     (a0),(a7)
 [0006f1b4] 302f 0004                 move.w     4(a7),d0
 [0006f1b8] 5540                      subq.w     #2,d0
-[0006f1ba] 6702                      beq.s      $0006F1BE
-[0006f1bc] 606c                      bra.s      $0006F22A
+[0006f1ba] 6702                      beq.s      PrintService_1
+[0006f1bc] 606c                      bra.s      PrintService_2
+PrintService_1:
 [0006f1be] 206f 0006                 movea.l    6(a7),a0
 [0006f1c2] 3028 0056                 move.w     86(a0),d0
 [0006f1c6] c07c 0200                 and.w      #$0200,d0
-[0006f1ca] 665a                      bne.s      $0006F226
+[0006f1ca] 665a                      bne.s      PrintService_3
 [0006f1cc] 206f 0006                 movea.l    6(a7),a0
 [0006f1d0] 0068 0200 0056            ori.w      #$0200,86(a0)
 [0006f1d6] 2057                      movea.l    (a7),a0
 [0006f1d8] 6100 fd68                 bsr        pdlgClose
 [0006f1dc] 2057                      movea.l    (a7),a0
 [0006f1de] 2028 000c                 move.l     12(a0),d0
-[0006f1e2] 6712                      beq.s      $0006F1F6
+[0006f1e2] 6712                      beq.s      PrintService_4
 [0006f1e4] 2279 000e 692a            movea.l    _globl,a1
 [0006f1ea] 2057                      movea.l    (a7),a0
 [0006f1ec] 2068 000c                 movea.l    12(a0),a0
 [0006f1f0] 4eb9 0007 d1c8            jsr        mt_pdlg_delete
+PrintService_4:
 [0006f1f6] 2057                      movea.l    (a7),a0
 [0006f1f8] 3028 0012                 move.w     18(a0),d0
-[0006f1fc] 670c                      beq.s      $0006F20A
+[0006f1fc] 670c                      beq.s      PrintService_5
 [0006f1fe] 2057                      movea.l    (a7),a0
 [0006f200] 2068 0008                 movea.l    8(a0),a0
 [0006f204] 4eb9 0004 c7c8            jsr        Ax_free
+PrintService_5:
 [0006f20a] 2057                      movea.l    (a7),a0
 [0006f20c] 2050                      movea.l    (a0),a0
 [0006f20e] 4eb9 0004 649c            jsr        Ast_delete
@@ -475,11 +539,15 @@ PrintService:
 [0006f216] 4eb9 0004 c7c8            jsr        Ax_free
 [0006f21c] 206f 0006                 movea.l    6(a7),a0
 [0006f220] 4eb9 0005 85f2            jsr        Awi_delete
+PrintService_3:
 [0006f226] 7001                      moveq.l    #1,d0
-[0006f228] 6002                      bra.s      $0006F22C
+[0006f228] 6002                      bra.s      PrintService_6
+PrintService_2:
 [0006f22a] 4240                      clr.w      d0
+PrintService_6:
 [0006f22c] 4fef 000a                 lea.l      10(a7),a7
 [0006f230] 4e75                      rts
+
 PrintOpen:
 [0006f232] 514f                      subq.w     #8,a7
 [0006f234] 2f48 0004                 move.l     a0,4(a7)
@@ -504,7 +572,7 @@ PrintOpen:
 [0006f27e] 3140 0020                 move.w     d0,32(a0)
 [0006f282] 206f 0004                 movea.l    4(a7),a0
 [0006f286] 3028 0020                 move.w     32(a0),d0
-[0006f28a] 6f00 00b6                 ble        $0006F342
+[0006f28a] 6f00 00b6                 ble        PrintOpen_1
 [0006f28e] 206f 0004                 movea.l    4(a7),a0
 [0006f292] 4868 002a                 pea.l      42(a0)
 [0006f296] 206f 0008                 movea.l    8(a7),a0
@@ -548,12 +616,15 @@ PrintOpen:
 [0006f332] 206f 0004                 movea.l    4(a7),a0
 [0006f336] 4eb9 0005 789e            jsr        Awi_register
 [0006f33c] 4240                      clr.w      d0
-[0006f33e] 6006                      bra.s      $0006F346
-[0006f340] 6004                      bra.s      $0006F346
+[0006f33e] 6006                      bra.s      PrintOpen_2
+[0006f340] 6004                      bra.s      PrintOpen_2
+PrintOpen_1:
 [0006f342] 70ff                      moveq.l    #-1,d0
 [0006f344] 4e71                      nop
+PrintOpen_2:
 [0006f346] 504f                      addq.w     #8,a7
 [0006f348] 4e75                      rts
+
 PrintClosed:
 [0006f34a] 4fef ffb8                 lea.l      -72(a7),a7
 [0006f34e] 2f48 0044                 move.l     a0,68(a7)
@@ -563,7 +634,8 @@ PrintClosed:
 [0006f360] 43d7                      lea.l      (a7),a1
 [0006f362] 700f                      moveq.l    #15,d0
 [0006f364] 22d8                      move.l     (a0)+,(a1)+
-[0006f366] 51c8 fffc                 dbf        d0,$0006F364
+PrintClosed_1:
+[0006f366] 51c8 fffc                 dbf        d0,PrintClosed_1
 [0006f36a] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f370] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f376] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -585,6 +657,7 @@ PrintClosed:
 [0006f3c8] 6100 fc2c                 bsr        pdlgMessage
 [0006f3cc] 4fef 0048                 lea.l      72(a7),a7
 [0006f3d0] 4e75                      rts
+
 PrintRedraw:
 [0006f3d2] 4fef ffb4                 lea.l      -76(a7),a7
 [0006f3d6] 2f48 0048                 move.l     a0,72(a7)
@@ -595,7 +668,8 @@ PrintRedraw:
 [0006f3ec] 43d7                      lea.l      (a7),a1
 [0006f3ee] 700f                      moveq.l    #15,d0
 [0006f3f0] 22d8                      move.l     (a0)+,(a1)+
-[0006f3f2] 51c8 fffc                 dbf        d0,$0006F3F0
+PrintRedraw_1:
+[0006f3f2] 51c8 fffc                 dbf        d0,PrintRedraw_1
 [0006f3f6] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f3fc] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f402] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -625,6 +699,7 @@ PrintRedraw:
 [0006f47a] 6100 fb7a                 bsr        pdlgMessage
 [0006f47e] 4fef 004c                 lea.l      76(a7),a7
 [0006f482] 4e75                      rts
+
 PrintArrowed:
 [0006f484] 4fef ffb6                 lea.l      -74(a7),a7
 [0006f488] 2f48 0046                 move.l     a0,70(a7)
@@ -635,7 +710,8 @@ PrintArrowed:
 [0006f49e] 43d7                      lea.l      (a7),a1
 [0006f4a0] 700f                      moveq.l    #15,d0
 [0006f4a2] 22d8                      move.l     (a0)+,(a1)+
-[0006f4a4] 51c8 fffc                 dbf        d0,$0006F4A2
+PrintArrowed_1:
+[0006f4a4] 51c8 fffc                 dbf        d0,PrintArrowed_1
 [0006f4a8] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f4ae] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f4b4] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -658,6 +734,7 @@ PrintArrowed:
 [0006f50c] 6100 fae8                 bsr        pdlgMessage
 [0006f510] 4fef 004a                 lea.l      74(a7),a7
 [0006f514] 4e75                      rts
+
 PrintChange:
 [0006f516] 2f0a                      move.l     a2,-(a7)
 [0006f518] 594f                      subq.w     #4,a7
@@ -671,6 +748,7 @@ PrintChange:
 [0006f52c] 584f                      addq.w     #4,a7
 [0006f52e] 245f                      movea.l    (a7)+,a2
 [0006f530] 4e75                      rts
+
 PrintFulled:
 [0006f532] 4fef ffb8                 lea.l      -72(a7),a7
 [0006f536] 2f48 0044                 move.l     a0,68(a7)
@@ -680,7 +758,8 @@ PrintFulled:
 [0006f548] 43d7                      lea.l      (a7),a1
 [0006f54a] 700f                      moveq.l    #15,d0
 [0006f54c] 22d8                      move.l     (a0)+,(a1)+
-[0006f54e] 51c8 fffc                 dbf        d0,$0006F54C
+PrintFulled_1:
+[0006f54e] 51c8 fffc                 dbf        d0,PrintFulled_1
 [0006f552] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f558] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f55e] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -702,9 +781,11 @@ PrintFulled:
 [0006f5b0] 6100 fa44                 bsr        pdlgMessage
 [0006f5b4] 4fef 0048                 lea.l      72(a7),a7
 [0006f5b8] 4e75                      rts
+
 PrintInit:
 [0006f5ba] 4240                      clr.w      d0
 [0006f5bc] 4e75                      rts
+
 PrintHSlide:
 [0006f5be] 4fef ffb6                 lea.l      -74(a7),a7
 [0006f5c2] 2f48 0046                 move.l     a0,70(a7)
@@ -715,7 +796,8 @@ PrintHSlide:
 [0006f5d8] 43d7                      lea.l      (a7),a1
 [0006f5da] 700f                      moveq.l    #15,d0
 [0006f5dc] 22d8                      move.l     (a0)+,(a1)+
-[0006f5de] 51c8 fffc                 dbf        d0,$0006F5DC
+PrintHSlide_1:
+[0006f5de] 51c8 fffc                 dbf        d0,PrintHSlide_1
 [0006f5e2] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f5e8] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f5ee] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -738,6 +820,7 @@ PrintHSlide:
 [0006f646] 6100 f9ae                 bsr        pdlgMessage
 [0006f64a] 4fef 004a                 lea.l      74(a7),a7
 [0006f64e] 4e75                      rts
+
 PrintVSlide:
 [0006f650] 4fef ffb6                 lea.l      -74(a7),a7
 [0006f654] 2f48 0046                 move.l     a0,70(a7)
@@ -748,7 +831,8 @@ PrintVSlide:
 [0006f66a] 43d7                      lea.l      (a7),a1
 [0006f66c] 700f                      moveq.l    #15,d0
 [0006f66e] 22d8                      move.l     (a0)+,(a1)+
-[0006f670] 51c8 fffc                 dbf        d0,$0006F66E
+PrintVSlide_1:
+[0006f670] 51c8 fffc                 dbf        d0,PrintVSlide_1
 [0006f674] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f67a] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f680] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -771,6 +855,7 @@ PrintVSlide:
 [0006f6d8] 6100 f91c                 bsr        pdlgMessage
 [0006f6dc] 4fef 004a                 lea.l      74(a7),a7
 [0006f6e0] 4e75                      rts
+
 PrintKeys:
 [0006f6e2] 4fef ffb6                 lea.l      -74(a7),a7
 [0006f6e6] 2f48 0046                 move.l     a0,70(a7)
@@ -781,7 +866,8 @@ PrintKeys:
 [0006f6fc] 43d7                      lea.l      (a7),a1
 [0006f6fe] 700f                      moveq.l    #15,d0
 [0006f700] 22d8                      move.l     (a0)+,(a1)+
-[0006f702] 51c8 fffc                 dbf        d0,$0006F700
+PrintKeys_1:
+[0006f702] 51c8 fffc                 dbf        d0,PrintKeys_1
 [0006f706] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f70c] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f712] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -802,6 +888,7 @@ PrintKeys:
 [0006f75c] 4240                      clr.w      d0
 [0006f75e] 4fef 004a                 lea.l      74(a7),a7
 [0006f762] 4e75                      rts
+
 PrintTopped:
 [0006f764] 4fef ffb8                 lea.l      -72(a7),a7
 [0006f768] 2f48 0044                 move.l     a0,68(a7)
@@ -811,7 +898,8 @@ PrintTopped:
 [0006f77a] 43d7                      lea.l      (a7),a1
 [0006f77c] 700f                      moveq.l    #15,d0
 [0006f77e] 22d8                      move.l     (a0)+,(a1)+
-[0006f780] 51c8 fffc                 dbf        d0,$0006F77E
+PrintTopped_1:
+[0006f780] 51c8 fffc                 dbf        d0,PrintTopped_1
 [0006f784] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f78a] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f790] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -833,6 +921,7 @@ PrintTopped:
 [0006f7e2] 6100 f812                 bsr        pdlgMessage
 [0006f7e6] 4fef 0048                 lea.l      72(a7),a7
 [0006f7ea] 4e75                      rts
+
 PrintMoved:
 [0006f7ec] 4fef ffb4                 lea.l      -76(a7),a7
 [0006f7f0] 2f48 0048                 move.l     a0,72(a7)
@@ -843,7 +932,8 @@ PrintMoved:
 [0006f806] 43d7                      lea.l      (a7),a1
 [0006f808] 700f                      moveq.l    #15,d0
 [0006f80a] 22d8                      move.l     (a0)+,(a1)+
-[0006f80c] 51c8 fffc                 dbf        d0,$0006F80A
+PrintMoved_1:
+[0006f80c] 51c8 fffc                 dbf        d0,PrintMoved_1
 [0006f810] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f816] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f81c] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -907,6 +997,7 @@ PrintMoved:
 [0006f91e] 3368 003a 0016            move.w     58(a0),22(a1)
 [0006f924] 4fef 004c                 lea.l      76(a7),a7
 [0006f928] 4e75                      rts
+
 PrintSized:
 [0006f92a] 4fef ffb4                 lea.l      -76(a7),a7
 [0006f92e] 2f48 0048                 move.l     a0,72(a7)
@@ -917,7 +1008,8 @@ PrintSized:
 [0006f944] 43d7                      lea.l      (a7),a1
 [0006f946] 700f                      moveq.l    #15,d0
 [0006f948] 22d8                      move.l     (a0)+,(a1)+
-[0006f94a] 51c8 fffc                 dbf        d0,$0006F948
+PrintSized_1:
+[0006f94a] 51c8 fffc                 dbf        d0,PrintSized_1
 [0006f94e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006f954] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006f95a] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -981,6 +1073,7 @@ PrintSized:
 [0006fa5c] 3368 003a 0016            move.w     58(a0),22(a1)
 [0006fa62] 4fef 004c                 lea.l      76(a7),a7
 [0006fa66] 4e75                      rts
+
 PrintIconify:
 [0006fa68] 5d4f                      subq.w     #6,a7
 [0006fa6a] 2f48 0002                 move.l     a0,2(a7)
@@ -990,6 +1083,7 @@ PrintIconify:
 [0006fa76] 4eb9 0005 998a            jsr        Awi_iconify
 [0006fa7c] 5c4f                      addq.w     #6,a7
 [0006fa7e] 4e75                      rts
+
 PrintUniconify:
 [0006fa80] 594f                      subq.w     #4,a7
 [0006fa82] 2e88                      move.l     a0,(a7)
@@ -997,6 +1091,7 @@ PrintUniconify:
 [0006fa86] 4eb9 0005 9c6c            jsr        Awi_uniconify
 [0006fa8c] 584f                      addq.w     #4,a7
 [0006fa8e] 4e75                      rts
+
 PrintGEMScript:
 [0006fa90] 4fef fff6                 lea.l      -10(a7),a7
 [0006fa94] 2f48 0006                 move.l     a0,6(a7)
@@ -1010,6 +1105,7 @@ PrintGEMScript:
 [0006fab4] 584f                      addq.w     #4,a7
 [0006fab6] 4fef 000a                 lea.l      10(a7),a7
 [0006faba] 4e75                      rts
+
 PrintClicked:
 [0006fabc] 4fef ffbc                 lea.l      -68(a7),a7
 [0006fac0] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1019,7 +1115,8 @@ PrintClicked:
 [0006fad4] 43d7                      lea.l      (a7),a1
 [0006fad6] 700f                      moveq.l    #15,d0
 [0006fad8] 22d8                      move.l     (a0)+,(a1)+
-[0006fada] 51c8 fffc                 dbf        d0,$0006FAD8
+PrintClicked_1:
+[0006fada] 51c8 fffc                 dbf        d0,PrintClicked_1
 [0006fade] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006fae4] 3f68 0262 0002            move.w     610(a0),2(a7)
 [0006faea] 2079 0010 ee4e            movea.l    ACSblk,a0

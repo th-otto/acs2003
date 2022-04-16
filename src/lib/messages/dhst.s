@@ -1,16 +1,18 @@
 Aev_InitDHST:
 [00060262] 7001                      moveq.l    #1,d0
 [00060264] 4e75                      rts
+
 Aev_ExitDHST:
 [00060266] 7001                      moveq.l    #1,d0
 [00060268] 4e75                      rts
+
 freeDhstInfo:
 [0006026a] 2f0a                      move.l     a2,-(a7)
 [0006026c] 594f                      subq.w     #4,a7
 [0006026e] 2e88                      move.l     a0,(a7)
 [00060270] 2057                      movea.l    (a7),a0
 [00060272] 2010                      move.l     (a0),d0
-[00060274] 6720                      beq.s      $00060296
+[00060274] 6720                      beq.s      freeDhstInfo_1
 [00060276] 4879 0007 0f86            pea.l      Alu_ptrCmp
 [0006027c] 206f 0004                 movea.l    4(a7),a0
 [00060280] 2250                      movea.l    (a0),a1
@@ -19,9 +21,10 @@ freeDhstInfo:
 [0006028e] 246a 0018                 movea.l    24(a2),a2
 [00060292] 4e92                      jsr        (a2)
 [00060294] 584f                      addq.w     #4,a7
+freeDhstInfo_1:
 [00060296] 2057                      movea.l    (a7),a0
 [00060298] 2028 0004                 move.l     4(a0),d0
-[0006029c] 6722                      beq.s      $000602C0
+[0006029c] 6722                      beq.s      freeDhstInfo_2
 [0006029e] 4879 0007 0f86            pea.l      Alu_ptrCmp
 [000602a4] 206f 0004                 movea.l    4(a7),a0
 [000602a8] 2268 0004                 movea.l    4(a0),a1
@@ -30,9 +33,10 @@ freeDhstInfo:
 [000602b8] 246a 0018                 movea.l    24(a2),a2
 [000602bc] 4e92                      jsr        (a2)
 [000602be] 584f                      addq.w     #4,a7
+freeDhstInfo_2:
 [000602c0] 2057                      movea.l    (a7),a0
 [000602c2] 2028 0008                 move.l     8(a0),d0
-[000602c6] 6722                      beq.s      $000602EA
+[000602c6] 6722                      beq.s      freeDhstInfo_3
 [000602c8] 4879 0007 0f86            pea.l      Alu_ptrCmp
 [000602ce] 206f 0004                 movea.l    4(a7),a0
 [000602d2] 2268 0008                 movea.l    8(a0),a1
@@ -41,9 +45,10 @@ freeDhstInfo:
 [000602e2] 246a 0018                 movea.l    24(a2),a2
 [000602e6] 4e92                      jsr        (a2)
 [000602e8] 584f                      addq.w     #4,a7
+freeDhstInfo_3:
 [000602ea] 2057                      movea.l    (a7),a0
 [000602ec] 2028 000c                 move.l     12(a0),d0
-[000602f0] 6722                      beq.s      $00060314
+[000602f0] 6722                      beq.s      freeDhstInfo_4
 [000602f2] 4879 0007 0f86            pea.l      Alu_ptrCmp
 [000602f8] 206f 0004                 movea.l    4(a7),a0
 [000602fc] 2268 000c                 movea.l    12(a0),a1
@@ -52,6 +57,7 @@ freeDhstInfo:
 [0006030c] 246a 0018                 movea.l    24(a2),a2
 [00060310] 4e92                      jsr        (a2)
 [00060312] 584f                      addq.w     #4,a7
+freeDhstInfo_4:
 [00060314] 4879 0007 0f86            pea.l      Alu_ptrCmp
 [0006031a] 226f 0004                 movea.l    4(a7),a1
 [0006031e] 2079 000e 147e            movea.l    globProtData,a0
@@ -62,9 +68,11 @@ freeDhstInfo:
 [00060332] 584f                      addq.w     #4,a7
 [00060334] 245f                      movea.l    (a7)+,a2
 [00060336] 4e75                      rts
+
 Aev_GetDhstAdd:
 [00060338] 7001                      moveq.l    #1,d0
 [0006033a] 4e75                      rts
+
 Aev_GetDhstAck:
 [0006033c] 2f0a                      move.l     a2,-(a7)
 [0006033e] 4fef ffca                 lea.l      -54(a7),a7
@@ -101,7 +109,7 @@ Aev_GetDhstAck:
 [000603be] 584f                      addq.w     #4,a7
 [000603c0] 2f48 000a                 move.l     a0,10(a7)
 [000603c4] 202f 000a                 move.l     10(a7),d0
-[000603c8] 671e                      beq.s      $000603E8
+[000603c8] 671e                      beq.s      Aev_GetDhstAck_1
 [000603ca] 4879 0007 0f86            pea.l      Alu_ptrCmp
 [000603d0] 226f 000e                 movea.l    14(a7),a1
 [000603d4] 2079 000d fba6            movea.l    SentMsg,a0
@@ -109,10 +117,12 @@ Aev_GetDhstAck:
 [000603e0] 246a 0020                 movea.l    32(a2),a2
 [000603e4] 4e92                      jsr        (a2)
 [000603e6] 584f                      addq.w     #4,a7
+Aev_GetDhstAck_1:
 [000603e8] 7001                      moveq.l    #1,d0
 [000603ea] 4fef 0036                 lea.l      54(a7),a7
 [000603ee] 245f                      movea.l    (a7)+,a2
 [000603f0] 4e75                      rts
+
 Aev_DhstAdd:
 [000603f2] 2f0a                      move.l     a2,-(a7)
 [000603f4] 4fef ffde                 lea.l      -34(a7),a7
@@ -120,22 +130,25 @@ Aev_DhstAdd:
 [000603fc] 2f49 001a                 move.l     a1,26(a7)
 [00060400] 41d7                      lea.l      (a7),a0
 [00060402] 203c 4448 5354            move.l     #$44485354,d0
-[00060408] 4eb9 0008 0ec4            jsr        Ash_getcookie
+[00060408] 4eb9 0008 0ec4            jsr        Ash_getc
 [0006040e] 4a40                      tst.w      d0
-[00060410] 670c                      beq.s      $0006041E
+[00060410] 670c                      beq.s      Aev_DhstAdd_1
 [00060412] 70ff                      moveq.l    #-1,d0
 [00060414] c06f 0002                 and.w      2(a7),d0
 [00060418] 3f40 0014                 move.w     d0,20(a7)
-[0006041c] 6a06                      bpl.s      $00060424
+[0006041c] 6a06                      bpl.s      Aev_DhstAdd_2
+Aev_DhstAdd_1:
 [0006041e] 4240                      clr.w      d0
-[00060420] 6000 0144                 bra        $00060566
+[00060420] 6000 0144                 bra        Aev_DhstAdd_3
+Aev_DhstAdd_2:
 [00060424] 7010                      moveq.l    #16,d0
 [00060426] 4eb9 0004 c95e            jsr        Ax_glmalloc
 [0006042c] 2f48 0016                 move.l     a0,22(a7)
 [00060430] 202f 0016                 move.l     22(a7),d0
-[00060434] 6606                      bne.s      $0006043C
+[00060434] 6606                      bne.s      Aev_DhstAdd_4
 [00060436] 4240                      clr.w      d0
-[00060438] 6000 012c                 bra        $00060566
+[00060438] 6000 012c                 bra        Aev_DhstAdd_3
+Aev_DhstAdd_4:
 [0006043c] 7204                      moveq.l    #4,d1
 [0006043e] 4240                      clr.w      d0
 [00060440] 206f 0016                 movea.l    22(a7),a0
@@ -207,9 +220,11 @@ Aev_DhstAdd:
 [0006055a] 7203                      moveq.l    #3,d1
 [0006055c] 302f 0014                 move.w     20(a7),d0
 [00060560] 4eb9 0005 d902            jsr        Aev_SendMsg
+Aev_DhstAdd_3:
 [00060566] 4fef 0022                 lea.l      34(a7),a7
 [0006056a] 245f                      movea.l    (a7)+,a2
 [0006056c] 4e75                      rts
+
 Aev_DhstSaved:
 [0006056e] 4fef fff6                 lea.l      -10(a7),a7
 [00060572] 2f48 0006                 move.l     a0,6(a7)
@@ -218,9 +233,10 @@ Aev_DhstSaved:
 [00060580] 4eb9 0004 c608            jsr        Ax_malloc
 [00060586] 2f48 0002                 move.l     a0,2(a7)
 [0006058a] 202f 0002                 move.l     2(a7),d0
-[0006058e] 6604                      bne.s      $00060594
+[0006058e] 6604                      bne.s      Aev_DhstSaved_1
 [00060590] 4240                      clr.w      d0
-[00060592] 6024                      bra.s      $000605B8
+[00060592] 6024                      bra.s      Aev_DhstSaved_2
+Aev_DhstSaved_1:
 [00060594] 226f 0006                 movea.l    6(a7),a1
 [00060598] 206f 0002                 movea.l    2(a7),a0
 [0006059c] 4eb9 0004 b706            jsr        Af_2fullname
@@ -230,5 +246,7 @@ Aev_DhstSaved:
 [000605ac] 206f 0002                 movea.l    2(a7),a0
 [000605b0] 4eb9 0004 c7c8            jsr        Ax_free
 [000605b6] 3017                      move.w     (a7),d0
+Aev_DhstSaved_2:
 [000605b8] 4fef 000a                 lea.l      10(a7),a7
 [000605bc] 4e75                      rts
+

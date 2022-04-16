@@ -6,15 +6,16 @@ ob_make:
 [000251ca] 226f 0048                 movea.l    72(a7),a1
 [000251ce] 2f69 0012 0040            move.l     18(a1),64(a7)
 [000251d4] 202f 0040                 move.l     64(a7),d0
-[000251d8] 670c                      beq.s      $000251E6
+[000251d8] 670c                      beq.s      ob_make_1
 [000251da] 2040                      movea.l    d0,a0
 [000251dc] 4eb9 0005 6bea            jsr        Awi_show
-[000251e2] 6000 025a                 bra        $0002543E
+[000251e2] 6000 025a                 bra        ob_make_2
+ob_make_1:
 [000251e6] 7032                      moveq.l    #50,d0
 [000251e8] 4eb9 0004 c608            jsr        Ax_malloc
 [000251ee] 2f48 0044                 move.l     a0,68(a7)
 [000251f2] 2008                      move.l     a0,d0
-[000251f4] 6700 0244                 beq        $0002543A
+[000251f4] 6700 0244                 beq        ob_make_3
 [000251f8] 2094                      move.l     (a4),(a0)
 [000251fa] 216c 0004 0004            move.l     4(a4),4(a0)
 [00025200] 317c 0001 0008            move.w     #$0001,8(a0)
@@ -31,10 +32,11 @@ ob_make:
 [00025230] 4eb9 0005 7052            jsr        Awi_create
 [00025236] 2f48 0040                 move.l     a0,64(a7)
 [0002523a] 2008                      move.l     a0,d0
-[0002523c] 660e                      bne.s      $0002524C
+[0002523c] 660e                      bne.s      ob_make_4
 [0002523e] 206f 0044                 movea.l    68(a7),a0
 [00025242] 4eb9 0004 c7c8            jsr        Ax_free
-[00025248] 6000 01f0                 bra        $0002543A
+[00025248] 6000 01f0                 bra        ob_make_3
+ob_make_4:
 [0002524c] 2054                      movea.l    (a4),a0
 [0002524e] 4868 0168                 pea.l      360(a0)
 [00025252] 226f 004c                 movea.l    76(a7),a1
@@ -50,7 +52,7 @@ ob_make:
 [0002527c] 4eb9 0004 c608            jsr        Ax_malloc
 [00025282] 2e88                      move.l     a0,(a7)
 [00025284] 2008                      move.l     a0,d0
-[00025286] 6700 01b2                 beq        $0002543A
+[00025286] 6700 01b2                 beq        ob_make_3
 [0002528a] 41e8 001f                 lea.l      31(a0),a0
 [0002528e] 2f48 0004                 move.l     a0,4(a7)
 [00025292] 41e8 001f                 lea.l      31(a0),a0
@@ -83,24 +85,25 @@ ob_make:
 [0002530c] 7238                      moveq.l    #56,d1
 [0002530e] 4eb9 0008 3c5a            jsr        _uldiv
 [00025314] 2600                      move.l     d0,d3
-[00025316] 6000 00f2                 bra        $0002540A
+[00025316] 6000 00f2                 bra        ob_make_5
 [0002531a] 202f 0038                 move.l     56(a7),d0
-[0002531e] 6700 00e0                 beq        $00025400
+ob_make_12:
+[0002531e] 6700 00e0                 beq        ob_make_6
 [00025322] 2040                      movea.l    d0,a0
 [00025324] 0c28 0018 000f            cmpi.b     #$18,15(a0)
-[0002532a] 6600 00d4                 bne        $00025400
+[0002532a] 6600 00d4                 bne        ob_make_6
 [0002532e] 2868 0014                 movea.l    20(a0),a4
 [00025332] 220c                      move.l     a4,d1
-[00025334] 6700 00ca                 beq        $00025400
+[00025334] 6700 00ca                 beq        ob_make_6
 [00025338] 246c 0004                 movea.l    4(a4),a2
 [0002533c] 220a                      move.l     a2,d1
-[0002533e] 6700 00c0                 beq        $00025400
+[0002533e] 6700 00c0                 beq        ob_make_6
 [00025342] 43f9 000b b5bb            lea.l      $000BB5BB,a1
 [00025348] 2052                      movea.l    (a2),a0
 [0002534a] 41e8 0016                 lea.l      22(a0),a0
 [0002534e] 4eb9 0008 2eba            jsr        strcmp
 [00025354] 4a40                      tst.w      d0
-[00025356] 6600 00a8                 bne        $00025400
+[00025356] 6600 00a8                 bne        ob_make_6
 [0002535a] 226f 0004                 movea.l    4(a7),a1
 [0002535e] 206a 0004                 movea.l    4(a2),a0
 [00025362] 4eb9 0001 591a            jsr        set_ref
@@ -117,23 +120,27 @@ ob_make:
 [00025396] 206a 0014                 movea.l    20(a2),a0
 [0002539a] 4eb9 0001 591a            jsr        set_ref
 [000253a0] 202a 0018                 move.l     24(a2),d0
-[000253a4] 6608                      bne.s      $000253AE
+[000253a4] 6608                      bne.s      ob_make_7
 [000253a6] 206f 0018                 movea.l    24(a7),a0
 [000253aa] 4210                      clr.b      (a0)
-[000253ac] 6012                      bra.s      $000253C0
+[000253ac] 6012                      bra.s      ob_make_8
+ob_make_7:
 [000253ae] 206a 0018                 movea.l    24(a2),a0
 [000253b2] 2268 0004                 movea.l    4(a0),a1
 [000253b6] 206f 0018                 movea.l    24(a7),a0
 [000253ba] 4eb9 0008 2f0c            jsr        strcpy
+ob_make_8:
 [000253c0] 202a 001c                 move.l     28(a2),d0
-[000253c4] 6608                      bne.s      $000253CE
+[000253c4] 6608                      bne.s      ob_make_9
 [000253c6] 206f 001c                 movea.l    28(a7),a0
 [000253ca] 4210                      clr.b      (a0)
-[000253cc] 6012                      bra.s      $000253E0
+[000253cc] 6012                      bra.s      ob_make_10
+ob_make_9:
 [000253ce] 206a 001c                 movea.l    28(a2),a0
 [000253d2] 2268 0004                 movea.l    4(a0),a1
 [000253d6] 206f 001c                 movea.l    28(a7),a0
 [000253da] 4eb9 0008 2f0c            jsr        strcpy
+ob_make_10:
 [000253e0] 486f 0020                 pea.l      32(a7)
 [000253e4] 224c                      movea.l    a4,a1
 [000253e6] 206f 0040                 movea.l    64(a7),a0
@@ -141,15 +148,18 @@ ob_make:
 [000253ec] 4eb9 0003 52de            jsr        change_user
 [000253f2] 584f                      addq.w     #4,a7
 [000253f4] 2008                      move.l     a0,d0
-[000253f6] 6708                      beq.s      $00025400
+[000253f6] 6708                      beq.s      ob_make_6
 [000253f8] 226f 0038                 movea.l    56(a7),a1
 [000253fc] 2340 0014                 move.l     d0,20(a1)
+ob_make_6:
 [00025400] 06af 0000 0038 0038       addi.l     #$00000038,56(a7)
 [00025408] 5343                      subq.w     #1,d3
+ob_make_5:
 [0002540a] 202f 0038                 move.l     56(a7),d0
-[0002540e] 6706                      beq.s      $00025416
+[0002540e] 6706                      beq.s      ob_make_11
 [00025410] 4a43                      tst.w      d3
-[00025412] 6600 ff06                 bne        $0002531A
+[00025412] 6600 ff06                 bne        ob_make_12
+ob_make_11:
 [00025416] 41d7                      lea.l      (a7),a0
 [00025418] 4eb9 0004 c7c8            jsr        Ax_free
 [0002541e] 206f 0040                 movea.l    64(a7),a0
@@ -157,12 +167,15 @@ ob_make:
 [00025426] 2269 000c                 movea.l    12(a1),a1
 [0002542a] 4e91                      jsr        (a1)
 [0002542c] 4a40                      tst.w      d0
-[0002542e] 670e                      beq.s      $0002543E
+[0002542e] 670e                      beq.s      ob_make_2
 [00025430] 206f 0040                 movea.l    64(a7),a0
 [00025434] 4eb9 0002 c8c8            jsr        ed_term
+ob_make_3:
 [0002543a] 91c8                      suba.l     a0,a0
-[0002543c] 6004                      bra.s      $00025442
+[0002543c] 6004                      bra.s      ob_make_13
+ob_make_2:
 [0002543e] 206f 0040                 movea.l    64(a7),a0
+ob_make_13:
 [00025442] 4fef 004c                 lea.l      76(a7),a7
 [00025446] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
 [0002544a] 4e75                      rts

@@ -101,12 +101,6 @@ list\eddata.c
 list\edwind.c
 list\edicon.c
 list\edimage.c
-list\edlist.c
-list\edalert.c
-list\eddata.c
-list\edwind.c
-list\edicon.c
-list\edimage.c
 list\eduser.c
 list\edmenu.c
 list\edmouse.c
@@ -122,7 +116,7 @@ acsplus\editor.c
 acsplus\pur_desk.c
 acsplus\editwi.c
 acsplus\fontsel.c
-acsplus\list.s
+acsplus\list.c
 acsplus\proto.c
 
 lib\main.c
