@@ -48,8 +48,8 @@ proto_arrowed:
 [00042392] 49ec 0048                 lea.l      72(a4),a4
 [00042396] 2f6c 000c 0004            move.l     12(a4),4(a7)
 [0004239c] 4243                      clr.w      d3
-[0004239e] 3004                      move.w     d4,d0
 proto_arrowed_18:
+[0004239e] 3004                      move.w     d4,d0
 [000423a0] b07c 0007                 cmp.w      #$0007,d0
 [000423a4] 6200 00a2                 bhi        proto_arrowed_1
 [000423a8] d040                      add.w      d0,d0

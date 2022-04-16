@@ -24,8 +24,8 @@ out_list:
 [00019668] 4244                      clr.w      d4
 [0001966a] 4bf9 0010 7f66            lea.l      iostring,a5
 [00019670] 6056                      bra.s      out_list_2
-[00019672] 3004                      move.w     d4,d0
 out_list_4:
+[00019672] 3004                      move.w     d4,d0
 [00019674] 48c0                      ext.l      d0
 [00019676] e588                      lsl.l      #2,d0
 [00019678] 2672 0800                 movea.l    0(a2,d0.l),a3
@@ -75,8 +75,8 @@ out_obj:
 [000196fe] 47f9 000a 53e8            lea.l      $000A53E8,a3
 [00019704] 49f9 0010 7f66            lea.l      iostring,a4
 [0001970a] 6000 00b6                 bra        out_obj_2
-[0001970e] 3004                      move.w     d4,d0
 out_obj_9:
+[0001970e] 3004                      move.w     d4,d0
 [00019710] 48c0                      ext.l      d0
 [00019712] e588                      lsl.l      #2,d0
 [00019714] 2a72 0800                 movea.l    0(a2,d0.l),a5
@@ -101,8 +101,8 @@ out_obj_9:
 [0001975e] 4246                      clr.w      d6
 [00019760] 3e06                      move.w     d6,d7
 [00019762] 6058                      bra.s      out_obj_4
-[00019764] 2015                      move.l     (a5),d0
 out_obj_8:
+[00019764] 2015                      move.l     (a5),d0
 [00019766] 671e                      beq.s      out_obj_5
 [00019768] 3f06                      move.w     d6,-(a7)
 [0001976a] 2040                      movea.l    d0,a0
@@ -165,8 +165,8 @@ out_declproto:
 [00019806] 4244                      clr.w      d4
 [00019808] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001980e] 6000 0256                 bra        out_declproto_2
-[00019812] 3004                      move.w     d4,d0
 out_declproto_27:
+[00019812] 3004                      move.w     d4,d0
 [00019814] 48c0                      ext.l      d0
 [00019816] e588                      lsl.l      #2,d0
 [00019818] 2872 0800                 movea.l    0(a2,d0.l),a4

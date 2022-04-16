@@ -19,8 +19,8 @@ Aev_InitXAcc_2:
 [0005ec7e] 504f                      addq.w     #8,a7
 [0005ec80] 3f40 000e                 move.w     d0,14(a7)
 [0005ec84] 6036                      bra.s      Aev_InitXAcc_3
-[0005ec86] 7006                      moveq.l    #6,d0
 Aev_InitXAcc_5:
+[0005ec86] 7006                      moveq.l    #6,d0
 [0005ec88] c06f 000c                 and.w      12(a7),d0
 [0005ec8c] 670e                      beq.s      Aev_InitXAcc_4
 [0005ec8e] 4241                      clr.w      d1
@@ -743,8 +743,8 @@ Aev_AccID:
 [0005f57e] 41f9 000e 1808            lea.l      $000E1808,a0
 [0005f584] 43d7                      lea.l      (a7),a1
 [0005f586] 700f                      moveq.l    #15,d0
-[0005f588] 12d8                      move.b     (a0)+,(a1)+
 Aev_AccID_1:
+[0005f588] 12d8                      move.b     (a0)+,(a1)+
 [0005f58a] 51c8 fffc                 dbf        d0,Aev_AccID_1
 [0005f58e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005f594] 302f 0016                 move.w     22(a7),d0
@@ -791,8 +791,8 @@ Aev_AccAcc:
 [0005f61e] 41f9 000e 1818            lea.l      $000E1818,a0
 [0005f624] 43d7                      lea.l      (a7),a1
 [0005f626] 700f                      moveq.l    #15,d0
-[0005f628] 12d8                      move.b     (a0)+,(a1)+
 Aev_AccAcc_1:
+[0005f628] 12d8                      move.b     (a0)+,(a1)+
 [0005f62a] 51c8 fffc                 dbf        d0,Aev_AccAcc_1
 [0005f62e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005f634] 302f 001a                 move.w     26(a7),d0
@@ -855,8 +855,8 @@ Aev_AccExit:
 [0005f700] 41f9 000e 1828            lea.l      $000E1828,a0
 [0005f706] 43d7                      lea.l      (a7),a1
 [0005f708] 700f                      moveq.l    #15,d0
-[0005f70a] 12d8                      move.b     (a0)+,(a1)+
 Aev_AccExit_1:
+[0005f70a] 12d8                      move.b     (a0)+,(a1)+
 [0005f70c] 51c8 fffc                 dbf        d0,Aev_AccExit_1
 [0005f710] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005f716] 302f 0016                 move.w     22(a7),d0
@@ -900,8 +900,8 @@ Aev_AccAck:
 [0005f788] 41f9 000e 1838            lea.l      $000E1838,a0
 [0005f78e] 43d7                      lea.l      (a7),a1
 [0005f790] 700f                      moveq.l    #15,d0
-[0005f792] 12d8                      move.b     (a0)+,(a1)+
 Aev_AccAck_1:
+[0005f792] 12d8                      move.b     (a0)+,(a1)+
 [0005f794] 51c8 fffc                 dbf        d0,Aev_AccAck_1
 [0005f798] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005f79e] 302f 0012                 move.w     18(a7),d0

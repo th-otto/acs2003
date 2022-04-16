@@ -13,8 +13,8 @@ add_ref:
 [00035c52] c87c 00ff                 and.w      #$00FF,d4
 [00035c56] 4245                      clr.w      d5
 [00035c58] 6000 00f2                 bra        add_ref_1
-[00035c5c] 3005                      move.w     d5,d0
 add_ref_7:
+[00035c5c] 3005                      move.w     d5,d0
 [00035c5e] 48c0                      ext.l      d0
 [00035c60] e588                      lsl.l      #2,d0
 [00035c62] 2057                      movea.l    (a7),a0
@@ -224,8 +224,8 @@ new_work_1:
 [00035eb0] 4bf3 0830                 lea.l      48(a3,d0.l),a5
 [00035eb4] 4244                      clr.w      d4
 [00035eb6] 6052                      bra.s      new_work_4
-[00035eb8] 7030                      moveq.l    #48,d0
 new_work_6:
+[00035eb8] 7030                      moveq.l    #48,d0
 [00035eba] 43f9 000c ee8a            lea.l      proto,a1
 [00035ec0] 204c                      movea.l    a4,a0
 [00035ec2] 4eb9 0008 3500            jsr        memcpy

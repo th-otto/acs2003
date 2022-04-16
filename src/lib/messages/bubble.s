@@ -68,8 +68,8 @@ FindBubbleGEM:
 [0006069c] 584f                      addq.w     #4,a7
 [0006069e] 426f 0004                 clr.w      4(a7)
 [000606a2] 6028                      bra.s      FindBubbleGEM_2
-[000606a4] 2079 000e 692a            movea.l    _globl,a0
 FindBubbleGEM_3:
+[000606a4] 2079 000e 692a            movea.l    _globl,a0
 [000606aa] 7064                      moveq.l    #100,d0
 [000606ac] 4eb9 0007 91d4            jsr        mt_evnt_timer
 [000606b2] 2279 000e 692a            movea.l    _globl,a1

@@ -333,8 +333,8 @@ al_service_5:
 
 find_brk:
 [0001de08] 5348                      subq.w     #1,a0
-[0001de0a] 5248                      addq.w     #1,a0
 find_brk_2:
+[0001de0a] 5248                      addq.w     #1,a0
 [0001de0c] 1010                      move.b     (a0),d0
 [0001de0e] 670c                      beq.s      find_brk_1
 [0001de10] b03c 007c                 cmp.b      #$7C,d0

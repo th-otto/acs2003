@@ -243,8 +243,8 @@ eded_keys:
 [0002bca2] 2600                      move.l     d0,d3
 [0002bca4] 4244                      clr.w      d4
 [0002bca6] 6000 00ce                 bra        eded_keys_1
-[0002bcaa] 102b 000f                 move.b     15(a3),d0
 eded_keys_12:
+[0002bcaa] 102b 000f                 move.b     15(a3),d0
 [0002bcae] 4880                      ext.w      d0
 [0002bcb0] 907c 0015                 sub.w      #$0015,d0
 [0002bcb4] b07c 000b                 cmp.w      #$000B,d0
@@ -297,8 +297,8 @@ eded_keys_8:
 [0002bd22] 4eb9 0008 2f6c            jsr        strlen
 [0002bd28] 3a00                      move.w     d0,d5
 [0002bd2a] 6002                      bra.s      eded_keys_9
-[0002bd2c] 5345                      subq.w     #1,d5
 eded_keys_11:
+[0002bd2c] 5345                      subq.w     #1,d5
 eded_keys_9:
 [0002bd2e] 4a45                      tst.w      d5
 [0002bd30] 6f08                      ble.s      eded_keys_10
@@ -632,8 +632,8 @@ try:
 [0002c0fe] 2f6d 0004 000a            move.l     4(a5),10(a7)
 [0002c104] 4244                      clr.w      d4
 [0002c106] 6000 01be                 bra        try_2
-[0002c10a] 7030                      moveq.l    #48,d0
 try_14:
+[0002c10a] 7030                      moveq.l    #48,d0
 [0002c10c] 226f 000a                 movea.l    10(a7),a1
 [0002c110] 5049                      addq.w     #8,a1
 [0002c112] 204a                      movea.l    a2,a0
@@ -939,8 +939,8 @@ ed_init_2:
 [0002c4e4] 23cc 000c 9164            move.l     a4,$000C9164
 [0002c4ea] 4246                      clr.w      d6
 [0002c4ec] 6000 024a                 bra        ed_init_4
-[0002c4f0] 3006                      move.w     d6,d0
 ed_init_17:
+[0002c4f0] 3006                      move.w     d6,d0
 [0002c4f2] 48c0                      ext.l      d0
 [0002c4f4] 23c0 000c 9168            move.l     d0,$000C9168
 [0002c4fa] 43f9 000c 9128            lea.l      entry,a1
@@ -1552,8 +1552,8 @@ subtree:
 [0002cbc6] 266f 0034                 movea.l    52(a7),a3
 [0002cbca] 3c2f 0038                 move.w     56(a7),d6
 [0002cbce] 286f 003a                 movea.l    58(a7),a4
-[0002cbd2] 3612                      move.w     (a2),d3
 subtree_5:
+[0002cbd2] 3612                      move.w     (a2),d3
 [0002cbd4] 3004                      move.w     d4,d0
 [0002cbd6] d040                      add.w      d0,d0
 [0002cbd8] d044                      add.w      d4,d0

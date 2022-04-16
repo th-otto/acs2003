@@ -14,8 +14,8 @@ p_string:
 [0001b87c] 4eb9 0001 8374            jsr        save_string
 [0001b882] 49ef 0004                 lea.l      4(a7),a4
 [0001b886] 6000 009c                 bra        p_string_1
-[0001b88a] 1013                      move.b     (a3),d0
 p_string_6:
+[0001b88a] 1013                      move.b     (a3),d0
 [0001b88c] 4880                      ext.w      d0
 [0001b88e] 5f40                      subq.w     #7,d0
 [0001b890] b07c 0020                 cmp.w      #$0020,d0
@@ -175,8 +175,8 @@ out_refs:
 [0001ba28] 4244                      clr.w      d4
 [0001ba2a] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001ba30] 605c                      bra.s      out_refs_2
-[0001ba32] 3004                      move.w     d4,d0
 out_refs_6:
+[0001ba32] 3004                      move.w     d4,d0
 [0001ba34] 48c0                      ext.l      d0
 [0001ba36] e588                      lsl.l      #2,d0
 [0001ba38] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -231,8 +231,8 @@ out_declproto:
 [0001bad0] 4244                      clr.w      d4
 [0001bad2] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001bad8] 6000 01b0                 bra        out_declproto_2
-[0001badc] 3004                      move.w     d4,d0
 out_declproto_21:
+[0001badc] 3004                      move.w     d4,d0
 [0001bade] 48c0                      ext.l      d0
 [0001bae0] e588                      lsl.l      #2,d0
 [0001bae2] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -402,8 +402,8 @@ out_acs:
 [0001bcaa] 43f9 000a 65c4            lea.l      $000A65C4,a1
 [0001bcb0] 41d7                      lea.l      (a7),a0
 [0001bcb2] 701f                      moveq.l    #31,d0
-[0001bcb4] 10d9                      move.b     (a1)+,(a0)+
 out_acs_1:
+[0001bcb4] 10d9                      move.b     (a1)+,(a0)+
 [0001bcb6] 51c8 fffc                 dbf        d0,out_acs_1
 [0001bcba] 302a 0006                 move.w     6(a2),d0
 [0001bcbe] c07c 8000                 and.w      #$8000,d0
@@ -447,8 +447,8 @@ out_acs_1:
 [0001bd5a] 4bea 0084                 lea.l      132(a2),a5
 [0001bd5e] 4243                      clr.w      d3
 [0001bd60] 6048                      bra.s      out_acs_3
-[0001bd62] 4a43                      tst.w      d3
 out_acs_7:
+[0001bd62] 4a43                      tst.w      d3
 [0001bd64] 670a                      beq.s      out_acs_4
 [0001bd66] 41eb 0422                 lea.l      1058(a3),a0
 [0001bd6a] 4eb9 0001 8374            jsr        save_string
@@ -481,8 +481,8 @@ out_acs_3:
 [0001bdba] 4243                      clr.w      d3
 [0001bdbc] 4bef 0020                 lea.l      32(a7),a5
 [0001bdc0] 606e                      bra.s      out_acs_8
-[0001bdc2] 41eb 0472                 lea.l      1138(a3),a0
 out_acs_13:
+[0001bdc2] 41eb 0472                 lea.l      1138(a3),a0
 [0001bdc6] 4eb9 0001 8374            jsr        save_string
 [0001bdcc] b67c 0021                 cmp.w      #$0021,d3
 [0001bdd0] 6c04                      bge.s      out_acs_9
@@ -724,8 +724,8 @@ out_icon:
 [0001c128] 4244                      clr.w      d4
 [0001c12a] 45f9 0010 7f66            lea.l      iostring,a2
 [0001c130] 6000 01ac                 bra        out_icon_2
-[0001c134] 3004                      move.w     d4,d0
 out_icon_13:
+[0001c134] 3004                      move.w     d4,d0
 [0001c136] 48c0                      ext.l      d0
 [0001c138] e588                      lsl.l      #2,d0
 [0001c13a] 2057                      movea.l    (a7),a0
@@ -768,8 +768,8 @@ out_icon_4:
 [0001c1aa] 4eb9 0001 8374            jsr        save_string
 [0001c1b0] 4247                      clr.w      d7
 [0001c1b2] 602c                      bra.s      out_icon_5
-[0001c1b4] 3f1e                      move.w     (a6)+,-(a7)
 out_icon_7:
+[0001c1b4] 3f1e                      move.w     (a6)+,-(a7)
 [0001c1b6] 43eb 06f3                 lea.l      1779(a3),a1
 [0001c1ba] 204a                      movea.l    a2,a0
 [0001c1bc] 4eb9 0008 15ac            jsr        sprintf
@@ -798,8 +798,8 @@ out_icon_5:
 [0001c1fc] 4eb9 0001 8374            jsr        save_string
 [0001c202] 4247                      clr.w      d7
 [0001c204] 602c                      bra.s      out_icon_8
-[0001c206] 3f1e                      move.w     (a6)+,-(a7)
 out_icon_10:
+[0001c206] 3f1e                      move.w     (a6)+,-(a7)
 [0001c208] 43eb 06f3                 lea.l      1779(a3),a1
 [0001c20c] 204a                      movea.l    a2,a0
 [0001c20e] 4eb9 0008 15ac            jsr        sprintf
@@ -888,8 +888,8 @@ out_mouse:
 [0001c31c] 4244                      clr.w      d4
 [0001c31e] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001c324] 6000 00e2                 bra        out_mouse_2
-[0001c328] 3004                      move.w     d4,d0
 out_mouse_9:
+[0001c328] 3004                      move.w     d4,d0
 [0001c32a] 48c0                      ext.l      d0
 [0001c32c] e588                      lsl.l      #2,d0
 [0001c32e] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -911,8 +911,8 @@ out_mouse_9:
 [0001c36e] 4dee 000a                 lea.l      10(a6),a6
 [0001c372] 7a0f                      moveq.l    #15,d5
 [0001c374] 602a                      bra.s      out_mouse_3
-[0001c376] 3f1e                      move.w     (a6)+,-(a7)
 out_mouse_5:
+[0001c376] 3f1e                      move.w     (a6)+,-(a7)
 [0001c378] 43eb 0901                 lea.l      2305(a3),a1
 [0001c37c] 204d                      movea.l    a5,a0
 [0001c37e] 4eb9 0008 15ac            jsr        sprintf
@@ -937,8 +937,8 @@ out_mouse_3:
 [0001c3b6] 4eb9 0001 8374            jsr        save_string
 [0001c3bc] 7a0f                      moveq.l    #15,d5
 [0001c3be] 602a                      bra.s      out_mouse_6
-[0001c3c0] 3f1e                      move.w     (a6)+,-(a7)
 out_mouse_8:
+[0001c3c0] 3f1e                      move.w     (a6)+,-(a7)
 [0001c3c2] 43eb 0901                 lea.l      2305(a3),a1
 [0001c3c6] 204d                      movea.l    a5,a0
 [0001c3c8] 4eb9 0008 15ac            jsr        sprintf
@@ -987,8 +987,8 @@ out_image:
 [0001c44c] 4244                      clr.w      d4
 [0001c44e] 45f9 0010 7f66            lea.l      iostring,a2
 [0001c454] 6000 00cc                 bra        out_image_2
-[0001c458] 3004                      move.w     d4,d0
 out_image_6:
+[0001c458] 3004                      move.w     d4,d0
 [0001c45a] 48c0                      ext.l      d0
 [0001c45c] e588                      lsl.l      #2,d0
 [0001c45e] 2057                      movea.l    (a7),a0
@@ -1012,8 +1012,8 @@ out_image_6:
 [0001c49a] 4eb9 0001 8374            jsr        save_string
 [0001c4a0] 4246                      clr.w      d6
 [0001c4a2] 602c                      bra.s      out_image_3
-[0001c4a4] 3f1e                      move.w     (a6)+,-(a7)
 out_image_5:
+[0001c4a4] 3f1e                      move.w     (a6)+,-(a7)
 [0001c4a6] 43eb 06f3                 lea.l      1779(a3),a1
 [0001c4aa] 204a                      movea.l    a2,a0
 [0001c4ac] 4eb9 0008 15ac            jsr        sprintf
@@ -1082,8 +1082,8 @@ out_obj:
 [0001c580] 47f9 0010 7f66            lea.l      iostring,a3
 [0001c586] 49ef 001c                 lea.l      28(a7),a4
 [0001c58a] 6000 0340                 bra        out_obj_2
-[0001c58e] 3004                      move.w     d4,d0
 out_obj_23:
+[0001c58e] 3004                      move.w     d4,d0
 [0001c590] 48c0                      ext.l      d0
 [0001c592] e588                      lsl.l      #2,d0
 [0001c594] 206f 0038                 movea.l    56(a7),a0
@@ -1102,8 +1102,8 @@ out_obj_23:
 [0001c5c8] 3486                      move.w     d6,(a2)
 [0001c5ca] 4247                      clr.w      d7
 [0001c5cc] 6062                      bra.s      out_obj_3
-[0001c5ce] 2015                      move.l     (a5),d0
 out_obj_7:
+[0001c5ce] 2015                      move.l     (a5),d0
 [0001c5d0] 671e                      beq.s      out_obj_4
 [0001c5d2] 3f06                      move.w     d6,-(a7)
 [0001c5d4] 2040                      movea.l    d0,a0
@@ -1158,8 +1158,8 @@ out_obj_3:
 [0001c65c] 2a68 0004                 movea.l    4(a0),a5
 [0001c660] 4247                      clr.w      d7
 [0001c662] 6000 0256                 bra        out_obj_8
-[0001c666] 7018                      moveq.l    #24,d0
 out_obj_22:
+[0001c666] 7018                      moveq.l    #24,d0
 [0001c668] 43ed 0008                 lea.l      8(a5),a1
 [0001c66c] 204c                      movea.l    a4,a0
 [0001c66e] 4eb9 0008 3500            jsr        memcpy
@@ -1368,9 +1368,9 @@ out_string:
 [0001c906] 4244                      clr.w      d4
 [0001c908] 49f9 000a 65e4            lea.l      $000A65E4,a4
 [0001c90e] 4bf9 0010 7f66            lea.l      iostring,a5
+out_string_4:
 [0001c914] 6052                      bra.s      out_string_2
 [0001c916] 3004                      move.w     d4,d0
-out_string_4:
 [0001c918] 48c0                      ext.l      d0
 [0001c91a] e588                      lsl.l      #2,d0
 [0001c91c] 2672 0800                 movea.l    0(a2,d0.l),a3
@@ -1417,8 +1417,8 @@ out_tedi:
 [0001c99e] 4244                      clr.w      d4
 [0001c9a0] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001c9a6] 606c                      bra.s      out_tedi_2
-[0001c9a8] 3004                      move.w     d4,d0
 out_tedi_3:
+[0001c9a8] 3004                      move.w     d4,d0
 [0001c9aa] 48c0                      ext.l      d0
 [0001c9ac] e588                      lsl.l      #2,d0
 [0001c9ae] 2672 0800                 movea.l    0(a2,d0.l),a3
@@ -1472,8 +1472,8 @@ out_user:
 [0001ca5a] 4244                      clr.w      d4
 [0001ca5c] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001ca62] 6000 0126                 bra        out_user_2
-[0001ca66] 3004                      move.w     d4,d0
 out_user_5:
+[0001ca66] 3004                      move.w     d4,d0
 [0001ca68] 48c0                      ext.l      d0
 [0001ca6a] e588                      lsl.l      #2,d0
 [0001ca6c] 206f 0010                 movea.l    16(a7),a0
@@ -1574,8 +1574,8 @@ out_data:
 [0001cbca] 4244                      clr.w      d4
 [0001cbcc] 49f9 0010 7f66            lea.l      iostring,a4
 [0001cbd2] 6000 0092                 bra        out_data_2
-[0001cbd6] 3004                      move.w     d4,d0
 out_data_7:
+[0001cbd6] 3004                      move.w     d4,d0
 [0001cbd8] 48c0                      ext.l      d0
 [0001cbda] e588                      lsl.l      #2,d0
 [0001cbdc] 2a72 0800                 movea.l    0(a2,d0.l),a5
@@ -1597,8 +1597,8 @@ out_data_7:
 [0001cc12] 2a6d 0004                 movea.l    4(a5),a5
 [0001cc16] 7c00                      moveq.l    #0,d6
 [0001cc18] 602e                      bra.s      out_data_4
-[0001cc1a] 3f1d                      move.w     (a5)+,-(a7)
 out_data_6:
+[0001cc1a] 3f1d                      move.w     (a5)+,-(a7)
 [0001cc1c] 43eb 06f3                 lea.l      1779(a3),a1
 [0001cc20] 204c                      movea.l    a4,a0
 [0001cc22] 4eb9 0008 15ac            jsr        sprintf
@@ -1649,8 +1649,8 @@ out_window:
 [0001cca2] 4244                      clr.w      d4
 [0001cca4] 4df9 0010 7f66            lea.l      iostring,a6
 [0001ccaa] 6000 029a                 bra        out_window_2
-[0001ccae] 3004                      move.w     d4,d0
 out_window_3:
+[0001ccae] 3004                      move.w     d4,d0
 [0001ccb0] 48c0                      ext.l      d0
 [0001ccb2] e588                      lsl.l      #2,d0
 [0001ccb4] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -1947,3 +1947,186 @@ pp_output_2:
 [0001d120] 4cdf 3c08                 movem.l    (a7)+,d3/a2-a5
 [0001d124] 4e75                      rts
 
+	.data
+
+[000a65c0]                           dc.b ';',$0d,$0a,0
+[000a65c4]                           dc.b '                                '',0
+[000a65e6]                           dc.b ''#%i'',0
+[000a65ec]                           dc.w $2727
+[000a65ee]                           dc.w $0025
+[000a65f0]                           dc.w $6300
+[000a65f2]                           dc.b ''#0',0
+[000a65f6]                           dc.w $2573
+[000a65f8]                           dc.w $0040
+[000a65fa]                           dc.w $2573
+[000a65fc]                           dc.w $0040
+[000a65fe]                           dc.b '%-12s[3]',0
+[000a6607]                           dc.b $0d,$0a,'IMPLEMENTATION',$0d,$0a,$0d,$0a,'(*',$09,'Pascal Routines',$09,'*)',$0d,$0a,$0d,$0a,0
+[000a6635]                           dc.b '(* '%s' Not yet defined by user *)',$0d,$0a,0
+[000a665a]                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'Pascal Prototypes',$09,$09,'*)',$0d,$0a,$0d,$0a,0
+[000a667c]                           dc.b 'Procedure %s;',$0d,$0a,0
+[000a668c]                           dc.b 'Function %s( dummy1, dummy2: Pointer; pb: PARMBLKPtr ) : Integer;',$0d,$0a,0
+[000a66d0]                           dc.b 'Function %s( entry: ACSOBJECTPtr; task: Integer; in_out: Pointer ) : Boolean;',$0d,$0a,0
+[000a6720]                           dc.b 'Function %s( wi: AwindowPtr ) : Integer;',$0d,$0a,0
+[000a674b]                           dc.b 'Function %s( para: Pointer ) : AwindowPtr;',$0d,$0a,0
+[000a6778]                           dc.b 'Function %s( wi: AwindowPtr; kstate, key: Integer ) : Integer;',$0d,$0a,0
+[000a67b9]                           dc.b 'Procedure %s( wi: AwindowPtr; obnr, state: Integer );',$0d,$0a,0
+[000a67f1]                           dc.b 'Procedure %s( wi: AwindowPtr; area: AxywhPtr );',$0d,$0a,0
+[000a6823]                           dc.b 'Procedure %s( wi: AwindowPtr );',$0d,$0a,0
+[000a6845]                           dc.b 'Procedure %s( wi: AwindowPtr; pos: Integer );',$0d,$0a,0
+[000a6875]                           dc.b 'Function %s( wi: AwindowPtr; task: Integer; in_out: Pointer ) : Boolean;',$0d,$0a,0
+[000a68c0]                           dc.b 'Function %s( wi: AwindowPtr; all: Integer ) : Integer;',$0d,$0a,0
+[000a68f9]                           dc.b 'Function %s( wi: AwindowPtr; anz: Integer; cmd: Pointer; antwort: A_GSAntwortPtr ) : Integer;',$0d,$0a,0
+[000a6959]                           dc.b '(* %s Type %d ?? *)',$0d,$0a,0
+[000a696f]                           dc.b $0d,$0a,$0d,$0a,'ACSdescr: Adescr = ',$0d,$0a,$09,'(',$0d,$0a,0
+[000a698d]                           dc.b $09,$09,'magic: '%s'#0; version: %d; dx: %2d; dy: %2d; flags: $%04x;',$0d,$0a,' ',$09,$09,'acc_reg: ',0
+[000a69d9]                           dc.b 'ACS3.00',0
+[000a69e1]                           dc.b $09,$09,'root: ',0
+[000a69ea]                           dc.b 'NIL',0
+[000a69ee]                           dc.b '; acc: ',0
+[000a69f6]                           dc.b ';',$0d,$0a,$09,$09,'mouse: (',$0d,$0a,0
+[000a6a06]                           dc.b ',',$0d,$0a,0
+[000a6a0a]                           dc.b $09,$09,$09,'(number: 255; form: @%s)',0
+[000a6a26]                           dc.b $09,$09,$09,'(number: %3d; form: NIL)',0
+[000a6a42]                           dc.b $0d,$0a,$09,$09,');',$0d,$0a,$09,$09,'mess: (',$0d,$0a,0
+[000a6a56]                           dc.b $09,$09,$09,$09,0
+[000a6a5b]                           dc.b 'ACS(%02d)',0
+[000a6a65]                           dc.b $0d,$0a,$09,$09,')',$0d,$0a,$09,');',$0d,$0a,0
+[000a6a72]                           dc.b $0d,$0a,$0d,$0a,'ACSconfig: Aconfig = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,0
+[000a6a94]                           dc.b 'CfgInfo: (',$0d,$0a,$09,$09,$09,'dateiname: '',0
+[000a6ab0]                           dc.b ''; comment: '',0
+[000a6abe]                           dc.w $253b
+[000a6ac0]                           dc.w $0027
+[000a6ac2]                           dc.b '; env_praefix: ',0
+[000a6ad2]                           dc.b '; ',$0d,$0a,$09,$09,$09,'casesensitiv: ',0
+[000a6ae8]                           dc.b 'TRUE',0
+[000a6aed]                           dc.b 'FALSE',0
+[000a6af3]                           dc.b '; file_sensitiv: ',0
+[000a6b05]                           dc.b ';',$0d,$0a,$09,$09,$09,'file_buffer: ',0
+[000a6b19]                           dc.b '%i',$0d,$0a,$09,$09,');',$0d,$0a,$09,$09,0
+[000a6b26]                           dc.b 'BaseName: '',0
+[000a6b32]                           dc.b 'PUR_DESK',0
+[000a6b3b]                           dc.b ''; ACSterm: ',0
+[000a6b48]                           dc.b '; ACSaboutme: ',0
+[000a6b57]                           dc.b '; ACSclose: ',0
+[000a6b64]                           dc.b ';',$0d,$0a,$09,$09,'ACSmessage: ',0
+[000a6b76]                           dc.b '; ACSmproto: ',0
+[000a6b84]                           dc.b '; ACStimer: ',0
+[000a6b91]                           dc.b '; ACSkey: ',0
+[000a6b9c]                           dc.b ';',$0d,$0a,$09,$09,'ACSbutton: ',0
+[000a6bad]                           dc.b '; ACSmouse: ',0
+[000a6bba]                           dc.b '; ACSwikey: ',0
+[000a6bc7]                           dc.b ';',$0d,$0a,$09,$09,'init_prot: ',0
+[000a6bd8]                           dc.b '%i; XAccType: ',0
+[000a6be7]                           dc.b '%i; ACSGEMScript: ',0
+[000a6bfa]                           dc.b '_C%d_%-s: CICON = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,'num_planes: %d;',$0d,$0a,$09,$09,'col_data: ',0
+[000a6c32]                           dc.b ';',$0d,$0a,$09,$09,'col_mask: ',0
+[000a6c42]                           dc.b ';',$0d,$0a,$09,$09,'sel_data: ',0
+[000a6c52]                           dc.b ';',$0d,$0a,$09,$09,'sel_mask: ',0
+[000a6c62]                           dc.b ';',$0d,$0a,$09,$09,'next_res: @_C%d_%-s);',$0d,$0a,0
+[000a6c7f]                           dc.b ';',$0d,$0a,$09,$09,'next_res: NIL);',$0d,$0a,0
+[000a6c96]                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'ICONS',$09,$09,'*)',$0d,$0a,$0d,$0a,0
+[000a6cac]                           dc.b '_MSK_%-s: array [0..%d] of WORD = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,0
+[000a6cd7]                           dc.b '$%04x, ',0
+[000a6cdf]                           dc.b '$%04x',$0d,$0a,$09,');',$0d,$0a,'_DAT_%-s: array [0..%d] of WORD = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,0
+[000a6d16]                           dc.b '$%04x',$0d,$0a,$09,');',$0d,$0a,0
+[000a6d23]                           dc.b '%-s: CICONBLK = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,'monoblk: ',$0d,$0a,$09,$09,'(',$0d,$0a,$09,$09,$09,'ib_pmask: @_MSK_%s; ib_pdata: @_DAT_%s; ib_ptext: @%s;',$0d,$0a,$09,$09,$09,'ib_char: $%04x; ib_xchar: %2d; ib_ychar: %2d;',$0d,$0a,$09,$09,$09,'ib_xicon: %2d; ib_yicon: %2d; ib_wicon: %2d; ib_hicon: %2d;',$0d,$0a,$09,$09,$09,'ib_xtext: %2d; ib_ytext: %2d; ib_wtext: %2d; ib_htext: %2d',$0d,$0a,$09,$09,');',$0d,$0a,$09,$09,'mainlist: ',0
+[000a6e4a]                           dc.b '@_C%d_%-s',0
+[000a6e54]                           dc.b $0d,$0a,$09,');',$0d,$0a,$0d,$0a,0
+[000a6e5e]                           dc.b $0d,$0a,'(*',$09,$09,'MOUSEFORMS',$09,$09,'*)',$0d,$0a,0
+[000a6e75]                           dc.b '%-s: MFORM = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,'mf_xhot: %2d; mf_yhot: %2d; mf_nplanes: %2d; mf_fg: %2d; mf_bg: %2d;',$0d,$0a,$09,$09,'mf_mask:',$0d,$0a,$09,$09,'(',$0d,$0a,$09,$09,$09,0
+[000a6ee5]                           dc.b '%d, ',0
+[000a6eea]                           dc.b '%d',$0d,$0a,$09,$09,');',$0d,$0a,$09,$09,'mf_data:',$0d,$0a,$09,$09,'(',$0d,$0a,$09,$09,$09,0
+[000a6f09]                           dc.b '%d',$0d,$0a,$09,$09,')',$0d,$0a,$09,');',$0d,$0a,$0d,$0a,0
+[000a6f1a]                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'IMAGES',$09,$09,'*)',$0d,$0a,$0d,$0a,0
+[000a6f31]                           dc.b '_IMG_%-s: array [0..%d] of WORD = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,$09,0
+[000a6f5d]                           dc.b '$%04x',$0d,$0a,$09,$09,');',$0d,$0a,$09,0
+[000a6f6c]                           dc.b '%-s: BITBLK = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,'bi_pdata: @_IMG_%s;',$0d,$0a,$09,$09,'bi_wb: %2d; bi_hl: %2d; bi_x: %2d; bi_y: %2d; bi_color: %d',$0d,$0a,$09,');',$0d,$0a,$0d,$0a,0
+[000a6fdd]                           dc.b '%s = %d;',$0d,$0a,0
+[000a6fe8]                           dc.b '%s : Array [0 ..%d] of ACSOBJECT = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,0
+[000a7014]                           dc.b '(aes: (ob_next: %2d; ob_head: %2d; ob_tail: %2d; ob_type: %2d; ob_flags: $%04x; ob_state: $%04x;',0
+[000a7075]                           dc.b 'ob_spec: (index: $%08lx);',0
+[000a708f]                           dc.b 'ob_spec: (free_string: @%s);',0
+[000a70ac]                           dc.b 'ob_x: %2d; ob_y: %2d; ob_width: %2d; ob_height: %2d))',0
+[000a70e2]                           dc.b ',',$0d,$0a,$09,$09,0
+[000a70e8]                           dc.b '(acs: (',0
+[000a70f0]                           dc.b 'click: ',0
+[000a70f8]                           dc.w $3b20
+[000a70fa]                           dc.w $0064
+[000a70fc]                           dc.b 'rag: ',0
+[000a7102]                           dc.b 'ob_flags: $%04x; key: $%04x;',0
+[000a711f]                           dc.b 'userp1: ',0
+[000a7128]                           dc.b ';userp2: ',0
+[000a7132]                           dc.b '; mo_index: %d; aob_type: %s))',0
+[000a7151]                           dc.b 'ACS(',0
+[000a7156]                           dc.b '%s: packed array [1..%ld] of char = ',0
+[000a717b]                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'TEDINFOS',$09,$09,'*)',$0d,$0a,$0d,$0a,0
+[000a7194]                           dc.b '%s: TEDINFO = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,'te_ptext: @%s; te_ptmplt: @%s; te_pvalid: @%s;',$0d,$0a,$09,$09,'te_font: %d; te_just: %d; te_color: $%04x; te_thickness: %d; te_txtlen: %ld; te_tmplen: %ld',$0d,$0a,$09,');',$0d,$0a,0
+[000a723f]                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'AUSERBLK',$09,$09,'*)',$0d,$0a,$0d,$0a,0
+[000a7258]                           dc.b '%s: AUSERBLK = (ub_code: %s; ub_parm: ',0
+[000a727f]                           dc.b '$%s',0
+[000a7283]                           dc.b '; ub_serv: ',0
+[000a728f]                           dc.b '; ub_ptr1: ',0
+[000a729b]                           dc.b '; ub_ptr2: ',0
+[000a72a7]                           dc.b '; ub_ptr3: ',0
+[000a72b3]                           dc.b '; bubble: ',0
+[000a72be]                           dc.b '; context: ',0
+[000a72ca]                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'DATAS',$09,$09,'*)',$0d,$0a,$0d,$0a,0
+[000a72e0]                           dc.b '%-s: array [0..%ld] of WORD =',$0d,$0a,$09,'(',$0d,$0a,$09,$09,0
+[000a7306]                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'WINDOWS',$09,$09,'*)',$0d,$0a,$0d,$0a,0
+[000a731e]                           dc.b '%s: Awindow = ',$0d,$0a,$09,'(',$0d,$0a,0
+[000a7333]                           dc.b $09,$09,'user: ',0
+[000a733c]                           dc.b ';',$0d,$0a,$09,$09,'service: ',0
+[000a734b]                           dc.b 'Awi_service',0
+[000a7357]                           dc.b ';',$0d,$0a,$09,$09,'create: ',0
+[000a7365]                           dc.b 'Awi_selfcreate',0
+[000a7374]                           dc.b ';',$0d,$0a,$09,$09,'open: ',0
+[000a7380]                           dc.b 'Awi_open',0
+[000a7389]                           dc.b ';',$0d,$0a,$09,$09,'init: ',0
+[000a7395]                           dc.b 'Awi_init',0
+[000a739e]                           dc.b ';',$0d,$0a,$09,$09,'work: ',0
+[000a73aa]                           dc.b ';',$0d,$0a,$09,$09,'toolbar: ',0
+[000a73b9]                           dc.b ';',$0d,$0a,$09,$09,'ob_edit: -1; ob_col: -1; wi_id: -1;',0
+[000a73e2]                           dc.b $0d,$0a,$09,$09,'wi_kind: $%04x; wi_act: (x: %2i; y: %2i; w: %2i; h: %2i);',0
+[000a7420]                           dc.b $0d,$0a,$09,$09,'wi_slider: (x: -1; y: -1; w: -1; h: -1);',0
+[000a744d]                           dc.b $0d,$0a,$09,$09,'snap_mask: $%04x;',0
+[000a7463]                           dc.b $0d,$0a,$09,$09,'name: ',0
+[000a746e]                           dc.b '; info: ',0
+[000a7477]                           dc.b ';',$0d,$0a,$09,$09,'ob_len: $%04x; kind: $%04x; icon : -1',0
+[000a74a2]                           dc.b ';',$0d,$0a,$09,$09,'iconblk: ',0
+[000a74b1]                           dc.b ';',$0d,$0a,$09,$09,'menu: ',0
+[000a74bd]                           dc.b ';',$0d,$0a,$09,$09,'keys: ',0
+[000a74c9]                           dc.b 'Awi_keys',0
+[000a74d2]                           dc.b ';',$0d,$0a,$09,$09,'obchange: ',0
+[000a74e2]                           dc.b 'Awi_obchange',0
+[000a74ef]                           dc.b ';',$0d,$0a,$09,$09,'redraw: ',0
+[000a74fd]                           dc.b 'Awi_redraw',0
+[000a7508]                           dc.b ';',$0d,$0a,$09,$09,'topped: ',0
+[000a7516]                           dc.b 'Awi_topped',0
+[000a7521]                           dc.b ';',$0d,$0a,$09,$09,'closed: ',0
+[000a752f]                           dc.b 'Awi_closed',0
+[000a753a]                           dc.b ';',$0d,$0a,$09,$09,'fulled: ',0
+[000a7548]                           dc.b 'Awi_fulled',0
+[000a7553]                           dc.b ';',$0d,$0a,$09,$09,'arrowed: ',0
+[000a7562]                           dc.b 'Awi_arrowed',0
+[000a756e]                           dc.b ';',$0d,$0a,$09,$09,'hslid: ',0
+[000a757b]                           dc.b 'Awi_hslid',0
+[000a7585]                           dc.b ';',$0d,$0a,$09,$09,'vslid: ',0
+[000a7592]                           dc.b 'Awi_vslid',0
+[000a759c]                           dc.b ';',$0d,$0a,$09,$09,'sized: ',0
+[000a75a9]                           dc.b 'Awi_sized',0
+[000a75b3]                           dc.b ';',$0d,$0a,$09,$09,'moved: ',0
+[000a75c0]                           dc.b 'Awi_moved',0
+[000a75ca]                           dc.w $2e49
+[000a75cc]                           dc.w $0050
+[000a75ce]                           dc.b 'ure PASCAL Code',0
+[000a75de]                           dc.b $0d,$0a,'(*',$09,$09,'Platform & GUI-Language',$09,$09,'*)',$0d,$0a,0
+[000a7602]                           dc.b '(*$DEFINE ACS_ATARI*)',$0d,$0a,0
+[000a761a]                           dc.b '(*$DEFINE ACS_LANG%d*)',$0d,$0a,0
+[000a7633]                           dc.b 'Const',$0d,$0a,0
+[000a763b]                           dc.b $0d,$0a,'(*',$09,$09,'ALERT BOXES',$09,$09,'*)',$0d,$0a,0
+[000a7653]                           dc.b $0d,$0a,'(*',$09,$09,'STRINGS',$09,$09,'*)',$0d,$0a,0
+[000a7667]                           dc.b $0d,$0a,'(*',$09,$09,'MENU TREES',$09,$09,'*)',$0d,$0a,0
+[000a767e]                           dc.b $0d,$0a,'(*',$09,$09,'POPUP TREES',$09,$09,'*)',$0d,$0a,0
+[000a7696]                           dc.b $0d,$0a,'(*',$09,$09,'OBJECT TREES',$09,$09,'*)',$0d,$0a,0
+[000a76af]                           dc.b $00

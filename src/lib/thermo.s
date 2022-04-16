@@ -93,8 +93,8 @@ Ash_thermometer_8:
 [0005bfd2] 202f 0026                 move.l     38(a7),d0
 [0005bfd6] 6720                      beq.s      Ash_thermometer_10
 [0005bfd8] 6010                      bra.s      Ash_thermometer_11
-[0005bfda] 202f 002a                 move.l     42(a7),d0
 Ash_thermometer_12:
+[0005bfda] 202f 002a                 move.l     42(a7),d0
 [0005bfde] 670a                      beq.s      Ash_thermometer_11
 [0005bfe0] 206f 0006                 movea.l    6(a7),a0
 [0005bfe4] 226f 002a                 movea.l    42(a7),a1

@@ -196,8 +196,8 @@ free_multidata:
 [0006d19c] 554f                      subq.w     #2,a7
 [0006d19e] 4257                      clr.w      (a7)
 [0006d1a0] 602a                      bra.s      free_multidata_1
-[0006d1a2] 3017                      move.w     (a7),d0
 free_multidata_3:
+[0006d1a2] 3017                      move.w     (a7),d0
 [0006d1a4] 48c0                      ext.l      d0
 [0006d1a6] e588                      lsl.l      #2,d0
 [0006d1a8] 2079 000e 2886            movea.l    multi_files,a0
@@ -269,8 +269,8 @@ Af_first_fsel_5:
 [0006d29a] 33ef 0002 000e 288a       move.w     2(a7),multi_count
 [0006d2a2] 4257                      clr.w      (a7)
 [0006d2a4] 6044                      bra.s      Af_first_fsel_6
-[0006d2a6] 7024                      moveq.l    #36,d0
 Af_first_fsel_8:
+[0006d2a6] 7024                      moveq.l    #36,d0
 [0006d2a8] 4eb9 0004 c95e            jsr        Ax_glmalloc
 [0006d2ae] 3017                      move.w     (a7),d0
 [0006d2b0] 48c0                      ext.l      d0
@@ -669,8 +669,8 @@ ConvertExt4Use_1:
 [0006d83e] 2f48 0106                 move.l     a0,262(a7)
 [0006d842] 2f48 010e                 move.l     a0,270(a7)
 [0006d846] 6000 012e                 bra        ConvertExt4Use_5
-[0006d84a] 702c                      moveq.l    #44,d0
 ConvertExt4Use_24:
+[0006d84a] 702c                      moveq.l    #44,d0
 [0006d84c] 206f 010a                 movea.l    266(a7),a0
 [0006d850] 4eb9 0008 2e8a            jsr        strchr
 [0006d856] 2f48 0102                 move.l     a0,258(a7)
@@ -717,8 +717,8 @@ ConvertExt4Use_10:
 [0006d8d6] 3f7c 0001 0100            move.w     #$0001,256(a7)
 ConvertExt4Use_11:
 [0006d8dc] 6004                      bra.s      ConvertExt4Use_12
-[0006d8de] 52af 0106                 addq.l     #1,262(a7)
 ConvertExt4Use_13:
+[0006d8de] 52af 0106                 addq.l     #1,262(a7)
 ConvertExt4Use_12:
 [0006d8e2] 206f 0106                 movea.l    262(a7),a0
 [0006d8e6] 1010                      move.b     (a0),d0
@@ -752,8 +752,8 @@ ConvertExt4Use_16:
 [0006d940] 600e                      bra.s      ConvertExt4Use_18
 ConvertExt4Use_17:
 [0006d942] 6004                      bra.s      ConvertExt4Use_19
-[0006d944] 52af 010a                 addq.l     #1,266(a7)
 ConvertExt4Use_20:
+[0006d944] 52af 010a                 addq.l     #1,266(a7)
 ConvertExt4Use_19:
 [0006d948] 206f 010a                 movea.l    266(a7),a0
 [0006d94c] 1010                      move.b     (a0),d0
@@ -762,8 +762,8 @@ ConvertExt4Use_18:
 [0006d950] 302f 0124                 move.w     292(a7),d0
 [0006d954] 671c                      beq.s      ConvertExt4Use_21
 [0006d956] 6004                      bra.s      ConvertExt4Use_22
-[0006d958] 52af 010a                 addq.l     #1,266(a7)
 ConvertExt4Use_23:
+[0006d958] 52af 010a                 addq.l     #1,266(a7)
 ConvertExt4Use_22:
 [0006d95c] 206f 010a                 movea.l    266(a7),a0
 [0006d960] 1010                      move.b     (a0),d0
@@ -911,8 +911,8 @@ MultiSelect:
 [0006db0a] 584f                      addq.w     #4,a7
 [0006db0c] 2f48 0080                 move.l     a0,128(a7)
 [0006db10] 6030                      bra.s      MultiSelect_2
-[0006db12] 206f 0080                 movea.l    128(a7),a0
 MultiSelect_4:
+[0006db12] 206f 0080                 movea.l    128(a7),a0
 [0006db16] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0006db1c] 4a40                      tst.w      d0
 [0006db1e] 661a                      bne.s      MultiSelect_3
@@ -1100,8 +1100,8 @@ fslxMakeListe_1:
 [0006dd40] 6700 00de                 beq        fslxMakeListe_3
 [0006dd44] 426f 0008                 clr.w      8(a7)
 [0006dd48] 6000 00ce                 bra        fslxMakeListe_4
-[0006dd4c] 206f 000e                 movea.l    14(a7),a0
 fslxMakeListe_10:
+[0006dd4c] 206f 000e                 movea.l    14(a7),a0
 [0006dd50] 2068 0012                 movea.l    18(a0),a0
 [0006dd54] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [0006dd5a] 4a40                      tst.w      d0
@@ -1371,8 +1371,8 @@ FileCreate_4:
 [0006e0c0] 206f 0014                 movea.l    20(a7),a0
 [0006e0c4] 2f68 0018 0008            move.l     24(a0),8(a7)
 [0006e0ca] 6006                      bra.s      FileCreate_6
-[0006e0cc] 5297                      addq.l     #1,(a7)
 FileCreate_7:
+[0006e0cc] 5297                      addq.l     #1,(a7)
 [0006e0ce] 52af 0008                 addq.l     #1,8(a7)
 FileCreate_6:
 [0006e0d2] 206f 0008                 movea.l    8(a7),a0
@@ -1407,8 +1407,8 @@ FileCreate_9:
 [0006e13a] 206f 0014                 movea.l    20(a7),a0
 [0006e13e] 2f68 0018 0004            move.l     24(a0),4(a7)
 [0006e144] 6012                      bra.s      FileCreate_10
-[0006e146] 206f 0008                 movea.l    8(a7),a0
 FileCreate_11:
+[0006e146] 206f 0008                 movea.l    8(a7),a0
 [0006e14a] 226f 0004                 movea.l    4(a7),a1
 [0006e14e] 1290                      move.b     (a0),(a1)
 [0006e150] 52af 0008                 addq.l     #1,8(a7)
@@ -1582,8 +1582,8 @@ FileClosed:
 [0006e37a] 41f9 000e 2894            lea.l      $000E2894,a0
 [0006e380] 43d7                      lea.l      (a7),a1
 [0006e382] 700f                      moveq.l    #15,d0
-[0006e384] 22d8                      move.l     (a0)+,(a1)+
 FileClosed_1:
+[0006e384] 22d8                      move.l     (a0)+,(a1)+
 [0006e386] 51c8 fffc                 dbf        d0,FileClosed_1
 [0006e38a] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e390] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1616,8 +1616,8 @@ FileRedraw:
 [0006e406] 41f9 000e 28d4            lea.l      $000E28D4,a0
 [0006e40c] 43d7                      lea.l      (a7),a1
 [0006e40e] 700f                      moveq.l    #15,d0
-[0006e410] 22d8                      move.l     (a0)+,(a1)+
 FileRedraw_1:
+[0006e410] 22d8                      move.l     (a0)+,(a1)+
 [0006e412] 51c8 fffc                 dbf        d0,FileRedraw_1
 [0006e416] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e41c] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1658,8 +1658,8 @@ FileArrowed:
 [0006e4b8] 41f9 000e 2914            lea.l      $000E2914,a0
 [0006e4be] 43d7                      lea.l      (a7),a1
 [0006e4c0] 700f                      moveq.l    #15,d0
-[0006e4c2] 22d8                      move.l     (a0)+,(a1)+
 FileArrowed_1:
+[0006e4c2] 22d8                      move.l     (a0)+,(a1)+
 [0006e4c4] 51c8 fffc                 dbf        d0,FileArrowed_1
 [0006e4c8] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e4ce] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1706,8 +1706,8 @@ FileFulled:
 [0006e562] 41f9 000e 2954            lea.l      $000E2954,a0
 [0006e568] 43d7                      lea.l      (a7),a1
 [0006e56a] 700f                      moveq.l    #15,d0
-[0006e56c] 22d8                      move.l     (a0)+,(a1)+
 FileFulled_1:
+[0006e56c] 22d8                      move.l     (a0)+,(a1)+
 [0006e56e] 51c8 fffc                 dbf        d0,FileFulled_1
 [0006e572] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e578] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1744,8 +1744,8 @@ FileHSlide:
 [0006e5f2] 41f9 000e 2994            lea.l      $000E2994,a0
 [0006e5f8] 43d7                      lea.l      (a7),a1
 [0006e5fa] 700f                      moveq.l    #15,d0
-[0006e5fc] 22d8                      move.l     (a0)+,(a1)+
 FileHSlide_1:
+[0006e5fc] 22d8                      move.l     (a0)+,(a1)+
 [0006e5fe] 51c8 fffc                 dbf        d0,FileHSlide_1
 [0006e602] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e608] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1779,8 +1779,8 @@ FileVSlide:
 [0006e684] 41f9 000e 29d4            lea.l      $000E29D4,a0
 [0006e68a] 43d7                      lea.l      (a7),a1
 [0006e68c] 700f                      moveq.l    #15,d0
-[0006e68e] 22d8                      move.l     (a0)+,(a1)+
 FileVSlide_1:
+[0006e68e] 22d8                      move.l     (a0)+,(a1)+
 [0006e690] 51c8 fffc                 dbf        d0,FileVSlide_1
 [0006e694] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e69a] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1814,8 +1814,8 @@ FileKeys:
 [0006e716] 41f9 000e 2a14            lea.l      $000E2A14,a0
 [0006e71c] 43d7                      lea.l      (a7),a1
 [0006e71e] 700f                      moveq.l    #15,d0
-[0006e720] 22d8                      move.l     (a0)+,(a1)+
 FileKeys_1:
+[0006e720] 22d8                      move.l     (a0)+,(a1)+
 [0006e722] 51c8 fffc                 dbf        d0,FileKeys_1
 [0006e726] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e72c] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1846,8 +1846,8 @@ FileTopped:
 [0006e794] 41f9 000e 2a54            lea.l      $000E2A54,a0
 [0006e79a] 43d7                      lea.l      (a7),a1
 [0006e79c] 700f                      moveq.l    #15,d0
-[0006e79e] 22d8                      move.l     (a0)+,(a1)+
 FileTopped_1:
+[0006e79e] 22d8                      move.l     (a0)+,(a1)+
 [0006e7a0] 51c8 fffc                 dbf        d0,FileTopped_1
 [0006e7a4] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e7aa] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1880,8 +1880,8 @@ FileMoved:
 [0006e820] 41f9 000e 2a94            lea.l      $000E2A94,a0
 [0006e826] 43d7                      lea.l      (a7),a1
 [0006e828] 700f                      moveq.l    #15,d0
-[0006e82a] 22d8                      move.l     (a0)+,(a1)+
 FileMoved_1:
+[0006e82a] 22d8                      move.l     (a0)+,(a1)+
 [0006e82c] 51c8 fffc                 dbf        d0,FileMoved_1
 [0006e830] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e836] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1956,8 +1956,8 @@ FileSized:
 [0006e95e] 41f9 000e 2ad4            lea.l      $000E2AD4,a0
 [0006e964] 43d7                      lea.l      (a7),a1
 [0006e966] 700f                      moveq.l    #15,d0
-[0006e968] 22d8                      move.l     (a0)+,(a1)+
 FileSized_1:
+[0006e968] 22d8                      move.l     (a0)+,(a1)+
 [0006e96a] 51c8 fffc                 dbf        d0,FileSized_1
 [0006e96e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006e974] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -2063,8 +2063,8 @@ FileClicked:
 [0006eaee] 41f9 000e 2b14            lea.l      $000E2B14,a0
 [0006eaf4] 43d7                      lea.l      (a7),a1
 [0006eaf6] 700f                      moveq.l    #15,d0
-[0006eaf8] 22d8                      move.l     (a0)+,(a1)+
 FileClicked_1:
+[0006eaf8] 22d8                      move.l     (a0)+,(a1)+
 [0006eafa] 51c8 fffc                 dbf        d0,FileClicked_1
 [0006eafe] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0006eb04] 3f68 0262 0002            move.w     610(a0),2(a7)

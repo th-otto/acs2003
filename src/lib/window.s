@@ -159,8 +159,8 @@ TRwindow_1:
 [00055b90] 4eb9 0005 ae7e            jsr        Awi_update
 [00055b96] 3f79 0011 452a 0004       move.w     _Wmax_wi,4(a7)
 [00055b9e] 6030                      bra.s      TRwindow_3
-[00055ba0] 302f 0004                 move.w     4(a7),d0
 TRwindow_5:
+[00055ba0] 302f 0004                 move.w     4(a7),d0
 [00055ba4] e548                      lsl.w      #2,d0
 [00055ba6] 41f9 0011 3f26            lea.l      _ACSv_winds,a0
 [00055bac] 2eb0 0000                 move.l     0(a0,d0.w),(a7)
@@ -191,8 +191,8 @@ TRwindow_3:
 [00055bf6] 4e92                      jsr        (a2)
 [00055bf8] 426f 0004                 clr.w      4(a7)
 [00055bfc] 6048                      bra.s      TRwindow_6
-[00055bfe] 302f 0004                 move.w     4(a7),d0
 TRwindow_8:
+[00055bfe] 302f 0004                 move.w     4(a7),d0
 [00055c02] e548                      lsl.w      #2,d0
 [00055c04] 41f9 0011 4326            lea.l      _ACSv_wiicons,a0
 [00055c0a] 2030 0000                 move.l     0(a0,d0.w),d0
@@ -354,8 +354,8 @@ Awi_invalid:
 [00055de6] 5d4f                      subq.w     #6,a7
 [00055de8] 426f 0004                 clr.w      4(a7)
 [00055dec] 6020                      bra.s      Awi_invalid_1
-[00055dee] 302f 0004                 move.w     4(a7),d0
 Awi_invalid_3:
+[00055dee] 302f 0004                 move.w     4(a7),d0
 [00055df2] e548                      lsl.w      #2,d0
 [00055df4] 41f9 0011 3af2            lea.l      gemmap,a0
 [00055dfa] 2eb0 0000                 move.l     0(a0,d0.w),(a7)
@@ -370,8 +370,8 @@ Awi_invalid_1:
 [00055e14] 6dd8                      blt.s      Awi_invalid_3
 [00055e16] 426f 0004                 clr.w      4(a7)
 [00055e1a] 603e                      bra.s      Awi_invalid_4
-[00055e1c] 302f 0004                 move.w     4(a7),d0
 Awi_invalid_6:
+[00055e1c] 302f 0004                 move.w     4(a7),d0
 [00055e20] e548                      lsl.w      #2,d0
 [00055e22] 41f9 0011 3af2            lea.l      gemmap,a0
 [00055e28] 2eb0 0000                 move.l     0(a0,d0.w),(a7)
@@ -436,14 +436,14 @@ Ash_prog:
 [00055eb2] 41f9 000e 0d46            lea.l      $000E0D46,a0
 [00055eb8] 43ef 00a0                 lea.l      160(a7),a1
 [00055ebc] 707f                      moveq.l    #127,d0
-[00055ebe] 12d8                      move.b     (a0)+,(a1)+
 Ash_prog_1:
+[00055ebe] 12d8                      move.b     (a0)+,(a1)+
 [00055ec0] 51c8 fffc                 dbf        d0,Ash_prog_1
 [00055ec4] 41f9 000e 0dc6            lea.l      $000E0DC6,a0
 [00055eca] 43ef 0020                 lea.l      32(a7),a1
 [00055ece] 707f                      moveq.l    #127,d0
-[00055ed0] 12d8                      move.b     (a0)+,(a1)+
 Ash_prog_2:
+[00055ed0] 12d8                      move.b     (a0)+,(a1)+
 [00055ed2] 51c8 fffc                 dbf        d0,Ash_prog_2
 [00055ed6] 42af 0018                 clr.l      24(a7)
 [00055eda] 2039 000e 0d0a            move.l     exec_com,d0
@@ -507,8 +507,8 @@ Ash_prog_7:
 [00055fc2] 4eb9 0008 303c            jsr        strtok
 [00055fc8] 2f48 001c                 move.l     a0,28(a7)
 [00055fcc] 602c                      bra.s      Ash_prog_10
-[00055fce] 226f 001c                 movea.l    28(a7),a1
 Ash_prog_12:
+[00055fce] 226f 001c                 movea.l    28(a7),a1
 [00055fd2] 41ef 0120                 lea.l      288(a7),a0
 [00055fd6] 4eb9 0008 2eba            jsr        strcmp
 [00055fdc] 4a40                      tst.w      d0
@@ -617,8 +617,8 @@ Ash_prog_15:
 [00056116] 2f48 014c                 move.l     a0,332(a7)
 [0005611a] 3f7c 0001 014a            move.w     #$0001,330(a7)
 [00056120] 6076                      bra.s      Ash_prog_22
-[00056122] 302f 014a                 move.w     330(a7),d0
 Ash_prog_24:
+[00056122] 302f 014a                 move.w     330(a7),d0
 [00056126] e548                      lsl.w      #2,d0
 [00056128] 41f9 0011 3af2            lea.l      gemmap,a0
 [0005612e] 2070 0000                 movea.l    0(a0,d0.w),a0
@@ -818,8 +818,8 @@ Ash_prog_29:
 [00056452] 41f9 000e 0f52            lea.l      $000E0F52,a0
 [00056458] 4eb9 0008 0ba2            jsr        Cconws
 [0005645e] 4e71                      nop
-[00056460] 4eb9 0008 0b94            jsr        Cconis
 Ash_prog_31:
+[00056460] 4eb9 0008 0b94            jsr        Cconis
 [00056466] 4a40                      tst.w      d0
 [00056468] 67f6                      beq.s      Ash_prog_31
 [0005646a] 4eb9 0008 0b86            jsr        Cconin
@@ -902,8 +902,8 @@ Ash_prog_34:
 Ash_prog_33:
 [000565a8] 3f7c 0001 014a            move.w     #$0001,330(a7)
 [000565ae] 6028                      bra.s      Ash_prog_35
-[000565b0] 302f 014a                 move.w     330(a7),d0
 Ash_prog_37:
+[000565b0] 302f 014a                 move.w     330(a7),d0
 [000565b4] e548                      lsl.w      #2,d0
 [000565b6] 41ef 0154                 lea.l      340(a7),a0
 [000565ba] 2f70 0000 0150            move.l     0(a0,d0.w),336(a7)
@@ -932,14 +932,14 @@ Ash_prog_21:
 [00056600] 41f9 000e 0e46            lea.l      $000E0E46,a0
 [00056606] 43ef 0364                 lea.l      868(a7),a1
 [0005660a] 700f                      moveq.l    #15,d0
-[0005660c] 12d8                      move.b     (a0)+,(a1)+
 Ash_prog_40:
+[0005660c] 12d8                      move.b     (a0)+,(a1)+
 [0005660e] 51c8 fffc                 dbf        d0,Ash_prog_40
 [00056612] 3f7c 0014 0362            move.w     #$0014,866(a7)
 [00056618] 42af 035c                 clr.l      860(a7)
 [0005661c] 601a                      bra.s      Ash_prog_41
-[0005661e] 7004                      moveq.l    #4,d0
 Ash_prog_43:
+[0005661e] 7004                      moveq.l    #4,d0
 [00056620] 206f 035c                 movea.l    860(a7),a0
 [00056624] c0a8 0002                 and.l      2(a0),d0
 [00056628] 670e                      beq.s      Ash_prog_41
@@ -1017,8 +1017,8 @@ Ash_prog_46:
 [00056730] 4a40                      tst.w      d0
 [00056732] 6700 00b8                 beq        Ash_prog_48
 [00056736] 6000 00aa                 bra        Ash_prog_49
-[0005673a] 2f39 000e 692a            move.l     _globl,-(a7)
 Ash_prog_56:
+[0005673a] 2f39 000e 692a            move.l     _globl,-(a7)
 [00056740] 486f 0364                 pea.l      868(a7)
 [00056744] 486f 0368                 pea.l      872(a7)
 [00056748] 486f 036c                 pea.l      876(a7)
@@ -1168,8 +1168,8 @@ Awi_catch_5:
 [000568f8] 302f 000e                 move.w     14(a7),d0
 [000568fc] 6a00 00a6                 bpl        Awi_catch_7
 [00056900] 3f79 000e 0cfa 000c       move.w     cycle,12(a7)
-[00056908] 7001                      moveq.l    #1,d0
 Awi_catch_9:
+[00056908] 7001                      moveq.l    #1,d0
 [0005690a] d079 000e 0cfa            add.w      cycle,d0
 [00056910] c07c 007f                 and.w      #$007F,d0
 [00056914] 33c0 000e 0cfa            move.w     d0,cycle
@@ -1233,8 +1233,8 @@ Awi_catch_6:
 Awi_list:
 [000569d6] 5d4f                      subq.w     #6,a7
 [000569d8] 426f 0004                 clr.w      4(a7)
-[000569dc] 3039 000e 0e5e            move.w     next,d0
 Awi_list_4:
+[000569dc] 3039 000e 0e5e            move.w     next,d0
 [000569e2] b079 0011 452a            cmp.w      _Wmax_wi,d0
 [000569e8] 6f14                      ble.s      Awi_list_1
 [000569ea] 4279 000e 0e5e            clr.w      next
@@ -1264,8 +1264,8 @@ Awi_sendall:
 [00056a2a] 2f48 0006                 move.l     a0,6(a7)
 [00056a2e] 3f79 0011 452a 0004       move.w     _Wmax_wi,4(a7)
 [00056a36] 6028                      bra.s      Awi_sendall_1
-[00056a38] 302f 0004                 move.w     4(a7),d0
 Awi_sendall_3:
+[00056a38] 302f 0004                 move.w     4(a7),d0
 [00056a3c] e548                      lsl.w      #2,d0
 [00056a3e] 41f9 0011 3f26            lea.l      _ACSv_winds,a0
 [00056a44] 2eb0 0000                 move.l     0(a0,d0.w),(a7)
@@ -1290,8 +1290,8 @@ Awi_lateupdate:
 [00056a70] 5d4f                      subq.w     #6,a7
 [00056a72] 3f79 0011 452a 0004       move.w     _Wmax_wi,4(a7)
 [00056a7a] 606e                      bra.s      Awi_lateupdate_1
-[00056a7c] 302f 0004                 move.w     4(a7),d0
 Awi_lateupdate_6:
+[00056a7c] 302f 0004                 move.w     4(a7),d0
 [00056a80] e548                      lsl.w      #2,d0
 [00056a82] 41f9 0011 3f26            lea.l      _ACSv_winds,a0
 [00056a88] 2eb0 0000                 move.l     0(a0,d0.w),(a7)
@@ -1341,8 +1341,8 @@ Awi_lateupdate_1:
 Awi_up:
 [00056af6] 514f                      subq.w     #8,a7
 [00056af8] 3f79 000e 0cfa 0006       move.w     cycle,6(a7)
-[00056b00] 7001                      moveq.l    #1,d0
 Awi_up_3:
+[00056b00] 7001                      moveq.l    #1,d0
 [00056b02] d079 000e 0cfa            add.w      cycle,d0
 [00056b08] c07c 007f                 and.w      #$007F,d0
 [00056b0c] 33c0 000e 0cfa            move.w     d0,cycle
@@ -1382,8 +1382,8 @@ Awi_up_2:
 Awi_down:
 [00056b70] 514f                      subq.w     #8,a7
 [00056b72] 3f79 000e 0cfa 0006       move.w     cycle,6(a7)
-[00056b7a] 70ff                      moveq.l    #-1,d0
 Awi_down_3:
+[00056b7a] 70ff                      moveq.l    #-1,d0
 [00056b7c] d079 000e 0cfa            add.w      cycle,d0
 [00056b82] c07c 007f                 and.w      #$007F,d0
 [00056b86] 33c0 000e 0cfa            move.w     d0,cycle
@@ -1522,8 +1522,8 @@ MakeModernMenu_5:
 MakeModernMenu_7:
 [00056d18] 3f7c 0001 0006            move.w     #$0001,6(a7)
 [00056d1e] 6018                      bra.s      MakeModernMenu_9
-[00056d20] 206f 0020                 movea.l    32(a7),a0
 MakeModernMenu_12:
+[00056d20] 206f 0020                 movea.l    32(a7),a0
 [00056d24] 0c10 002d                 cmpi.b     #$2D,(a0)
 [00056d28] 6604                      bne.s      MakeModernMenu_10
 [00056d2a] 7001                      moveq.l    #1,d0
@@ -1633,8 +1633,8 @@ MakeOldMenu:
 [00056e7e] 2e88                      move.l     a0,(a7)
 [00056e80] 2f6f 0008 0004            move.l     8(a7),4(a7)
 [00056e86] 6000 008e                 bra        MakeOldMenu_1
-[00056e8a] 206f 0004                 movea.l    4(a7),a0
 MakeOldMenu_6:
+[00056e8a] 206f 0004                 movea.l    4(a7),a0
 [00056e8e] 0c68 0014 0006            cmpi.w     #$0014,6(a0)
 [00056e94] 663e                      bne.s      MakeOldMenu_2
 [00056e96] 2017                      move.l     (a7),d0
@@ -1725,8 +1725,8 @@ Awi_layout_6:
 [00056fb6] 3f40 0002                 move.w     d0,2(a7)
 [00056fba] 426f 0004                 clr.w      4(a7)
 [00056fbe] 6064                      bra.s      Awi_layout_7
-[00056fc0] 302f 0004                 move.w     4(a7),d0
 Awi_layout_11:
+[00056fc0] 302f 0004                 move.w     4(a7),d0
 [00056fc4] e548                      lsl.w      #2,d0
 [00056fc6] 41f9 0011 3f26            lea.l      _ACSv_winds,a0
 [00056fcc] 2f70 0000 0006            move.l     0(a0,d0.w),6(a7)
@@ -1949,8 +1949,8 @@ Awi_create_14:
 [00057282] 4268 0052                 clr.w      82(a0)
 [00057286] 426f 0004                 clr.w      4(a7)
 [0005728a] 6000 00c2                 bra        Awi_create_15
-[0005728e] 302f 0004                 move.w     4(a7),d0
 Awi_create_19:
+[0005728e] 302f 0004                 move.w     4(a7),d0
 [00057292] e548                      lsl.w      #2,d0
 [00057294] 41f9 0011 3f26            lea.l      _ACSv_winds,a0
 [0005729a] 2030 0000                 move.l     0(a0,d0.w),d0
@@ -2335,16 +2335,16 @@ Awi_open_15:
 [000577ba] 6100 e4b6                 bsr        Awi_setontop
 [000577be] 4297                      clr.l      (a7)
 [000577c0] 604a                      bra.s      Awi_open_16
-[000577c2] 7004                      moveq.l    #4,d0
 Awi_open_19:
+[000577c2] 7004                      moveq.l    #4,d0
 [000577c4] 2057                      movea.l    (a7),a0
 [000577c6] c0a8 0002                 and.l      2(a0),d0
 [000577ca] 6740                      beq.s      Awi_open_16
 [000577cc] 41f9 000e 0eaa            lea.l      $000E0EAA,a0
 [000577d2] 43ef 0022                 lea.l      34(a7),a1
 [000577d6] 700f                      moveq.l    #15,d0
-[000577d8] 12d8                      move.b     (a0)+,(a1)+
 Awi_open_17:
+[000577d8] 12d8                      move.b     (a0)+,(a1)+
 [000577da] 51c8 fffc                 dbf        d0,Awi_open_17
 [000577de] 3f7c 4724 0022            move.w     #$4724,34(a7)
 [000577e4] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -2567,16 +2567,16 @@ Awi_register_11:
 [00057ad6] 6100 e19a                 bsr        Awi_setontop
 [00057ada] 4297                      clr.l      (a7)
 [00057adc] 604a                      bra.s      Awi_register_12
-[00057ade] 7004                      moveq.l    #4,d0
 Awi_register_15:
+[00057ade] 7004                      moveq.l    #4,d0
 [00057ae0] 2057                      movea.l    (a7),a0
 [00057ae2] c0a8 0002                 and.l      2(a0),d0
 [00057ae6] 6740                      beq.s      Awi_register_12
 [00057ae8] 41f9 000e 0ec2            lea.l      $000E0EC2,a0
 [00057aee] 43ef 0014                 lea.l      20(a7),a1
 [00057af2] 700f                      moveq.l    #15,d0
-[00057af4] 12d8                      move.b     (a0)+,(a1)+
 Awi_register_13:
+[00057af4] 12d8                      move.b     (a0)+,(a1)+
 [00057af6] 51c8 fffc                 dbf        d0,Awi_register_13
 [00057afa] 3f7c 4724 0014            move.w     #$4724,20(a7)
 [00057b00] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -2636,8 +2636,8 @@ Awi_modal:
 [00057b82] 554f                      subq.w     #2,a7
 [00057b84] 3ebc 0007                 move.w     #$0007,(a7)
 [00057b88] 6022                      bra.s      Awi_modal_1
-[00057b8a] 3017                      move.w     (a7),d0
 Awi_modal_4:
+[00057b8a] 3017                      move.w     (a7),d0
 [00057b8c] e548                      lsl.w      #2,d0
 [00057b8e] 41f9 0011 3cf2            lea.l      modwins,a0
 [00057b94] 2030 0000                 move.l     0(a0,d0.w),d0
@@ -2840,8 +2840,8 @@ Awi_set_modal:
 [00057e1c] 6700 009c                 beq        Awi_set_modal_1
 [00057e20] 426f 0002                 clr.w      2(a7)
 [00057e24] 602a                      bra.s      Awi_set_modal_2
-[00057e26] 302f 0002                 move.w     2(a7),d0
 Awi_set_modal_5:
+[00057e26] 302f 0002                 move.w     2(a7),d0
 [00057e2a] e548                      lsl.w      #2,d0
 [00057e2c] 41f9 0011 3cf2            lea.l      modwins,a0
 [00057e32] 2030 0000                 move.l     0(a0,d0.w),d0
@@ -2900,8 +2900,8 @@ Awi_set_modal_1:
 Awi_set_modal_11:
 [00057ecc] 3f7c 0007 0002            move.w     #$0007,2(a7)
 [00057ed2] 602c                      bra.s      Awi_set_modal_12
-[00057ed4] 302f 0002                 move.w     2(a7),d0
 Awi_set_modal_15:
+[00057ed4] 302f 0002                 move.w     2(a7),d0
 [00057ed8] e548                      lsl.w      #2,d0
 [00057eda] 41f9 0011 3cf2            lea.l      modwins,a0
 [00057ee0] 2070 0000                 movea.l    0(a0,d0.w),a0
@@ -3000,8 +3000,8 @@ Awi_show_menu_6:
 [00057fd6] 2057                      movea.l    (a7),a0
 [00057fd8] 3f70 0800 0004            move.w     0(a0,d0.l),4(a7)
 [00057fde] 602c                      bra.s      Awi_show_menu_7
-[00057fe0] 322f 0004                 move.w     4(a7),d1
 Awi_show_menu_8:
+[00057fe0] 322f 0004                 move.w     4(a7),d1
 [00057fe4] 48c1                      ext.l      d1
 [00057fe6] 2001                      move.l     d1,d0
 [00057fe8] d080                      add.l      d0,d0
@@ -3122,8 +3122,8 @@ Awi_show_menu_9:
 [0005811e] 2057                      movea.l    (a7),a0
 [00058120] 3f70 0800 0004            move.w     0(a0,d0.l),4(a7)
 [00058126] 602c                      bra.s      Awi_show_menu_10
-[00058128] 322f 0004                 move.w     4(a7),d1
 Awi_show_menu_11:
+[00058128] 322f 0004                 move.w     4(a7),d1
 [0005812c] 48c1                      ext.l      d1
 [0005812e] 2001                      move.l     d1,d0
 [00058130] d080                      add.l      d0,d0
@@ -3427,16 +3427,16 @@ Awi_closed_12:
 [0005855c] 6100 f8ae                 bsr        Awi_set_modal
 [00058560] 4297                      clr.l      (a7)
 [00058562] 604a                      bra.s      Awi_closed_13
-[00058564] 7004                      moveq.l    #4,d0
 Awi_closed_16:
+[00058564] 7004                      moveq.l    #4,d0
 [00058566] 2057                      movea.l    (a7),a0
 [00058568] c0a8 0002                 and.l      2(a0),d0
 [0005856c] 6740                      beq.s      Awi_closed_13
 [0005856e] 41f9 000e 0ed2            lea.l      $000E0ED2,a0
 [00058574] 43ef 0012                 lea.l      18(a7),a1
 [00058578] 700f                      moveq.l    #15,d0
-[0005857a] 12d8                      move.b     (a0)+,(a1)+
 Awi_closed_14:
+[0005857a] 12d8                      move.b     (a0)+,(a1)+
 [0005857c] 51c8 fffc                 dbf        d0,Awi_closed_14
 [00058580] 3f7c 4726 0012            move.w     #$4726,18(a7)
 [00058586] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -3493,8 +3493,8 @@ Awi_delete_1:
 [00058636] 6100 d730                 bsr        Awi_icondelete
 [0005863a] 3ebc 0064                 move.w     #$0064,(a7)
 [0005863e] 6010                      bra.s      Awi_delete_2
-[00058640] 206f 0002                 movea.l    2(a7),a0
 Awi_delete_4:
+[00058640] 206f 0002                 movea.l    2(a7),a0
 [00058644] 226f 0002                 movea.l    2(a7),a1
 [00058648] 2269 0072                 movea.l    114(a1),a1
 [0005864c] 4e91                      jsr        (a1)
@@ -3558,8 +3558,8 @@ Awi_delete_6:
 Awi_delete_7:
 [0005872a] 4257                      clr.w      (a7)
 [0005872c] 6066                      bra.s      Awi_delete_8
-[0005872e] 3017                      move.w     (a7),d0
 Awi_delete_13:
+[0005872e] 3017                      move.w     (a7),d0
 [00058730] e548                      lsl.w      #2,d0
 [00058732] 41f9 0011 3f26            lea.l      _ACSv_winds,a0
 [00058738] 2070 0000                 movea.l    0(a0,d0.w),a0
@@ -3573,8 +3573,8 @@ Awi_delete_13:
 [00058752] b079 0011 452a            cmp.w      _Wmax_wi,d0
 [00058758] 6626                      bne.s      Awi_delete_10
 [0005875a] 4e71                      nop
-[0005875c] 3039 0011 452a            move.w     _Wmax_wi,d0
 Awi_delete_11:
+[0005875c] 3039 0011 452a            move.w     _Wmax_wi,d0
 [00058762] 5379 0011 452a            subq.w     #1,_Wmax_wi
 [00058768] 4a40                      tst.w      d0
 [0005876a] 6f14                      ble.s      Awi_delete_10
@@ -4701,8 +4701,8 @@ Awi_oblist_2:
 [00059652] 3f40 0018                 move.w     d0,24(a7)
 [00059656] 3f40 0006                 move.w     d0,6(a7)
 [0005965a] 6000 014e                 bra        Awi_oblist_6
-[0005965e] 303c 0080                 move.w     #$0080,d0
 Awi_oblist_13:
+[0005965e] 303c 0080                 move.w     #$0080,d0
 [00059662] 342f 001c                 move.w     28(a7),d2
 [00059666] 48c2                      ext.l      d2
 [00059668] 2202                      move.l     d2,d1
@@ -5120,8 +5120,8 @@ Awi_iconify_7:
 [00059ba0] 4eb9 0004 810e            jsr        Adr_unselect
 [00059ba6] 3f7c 0001 000c            move.w     #$0001,12(a7)
 [00059bac] 6000 00ac                 bra        Awi_iconify_9
-[00059bb0] 302f 000c                 move.w     12(a7),d0
 Awi_iconify_12:
+[00059bb0] 302f 000c                 move.w     12(a7),d0
 [00059bb4] e548                      lsl.w      #2,d0
 [00059bb6] 41f9 0011 3af2            lea.l      gemmap,a0
 [00059bbc] 2eb0 0000                 move.l     0(a0,d0.w),(a7)
@@ -5252,8 +5252,8 @@ Awi_uniconify_1:
 [00059d76] 6750                      beq.s      Awi_uniconify_3
 [00059d78] 3ebc 0001                 move.w     #$0001,(a7)
 [00059d7c] 6044                      bra.s      Awi_uniconify_4
-[00059d7e] 3017                      move.w     (a7),d0
 Awi_uniconify_6:
+[00059d7e] 3017                      move.w     (a7),d0
 [00059d80] e548                      lsl.w      #2,d0
 [00059d82] 41f9 0011 3d12            lea.l      icnmap,a0
 [00059d88] 2f70 0000 0002            move.l     0(a0,d0.w),2(a7)
@@ -5449,8 +5449,8 @@ Awi_dialog_13:
 [00059ff4] 41e8 0262                 lea.l      610(a0),a0
 [00059ff8] 4eb9 0007 ac48            jsr        mt_graf_mkstate
 [00059ffe] 4fef 000c                 lea.l      12(a7),a7
-[0005a002] 2079 0010 ee4e            movea.l    ACSblk,a0
 Awi_dialog_28:
+[0005a002] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005a008] 4268 0268                 clr.w      616(a0)
 [0005a00c] 3f7c ffff 002c            move.w     #$FFFF,44(a7)
 [0005a012] 7010                      moveq.l    #16,d0
@@ -5839,8 +5839,8 @@ _init_alert_1:
 [0005a520] 23f9 0011 3aea 0011 3aee  move.l     timer1,timer2
 [0005a52a] 3f7c 0005 0008            move.w     #$0005,8(a7)
 [0005a530] 6026                      bra.s      _init_alert_4
-[0005a532] 303c 0080                 move.w     #$0080,d0
 _init_alert_7:
+[0005a532] 303c 0080                 move.w     #$0080,d0
 [0005a536] 342f 0008                 move.w     8(a7),d2
 [0005a53a] 48c2                      ext.l      d2
 [0005a53c] 2202                      move.l     d2,d1
@@ -6030,8 +6030,8 @@ Awi_alert_7:
 Awi_alert_14:
 [0005a7ac] 3f7c 0002 0004            move.w     #$0002,4(a7)
 [0005a7b2] 6020                      bra.s      Awi_alert_15
-[0005a7b4] 322f 0004                 move.w     4(a7),d1
 Awi_alert_16:
+[0005a7b4] 322f 0004                 move.w     4(a7),d1
 [0005a7b8] 48c1                      ext.l      d1
 [0005a7ba] 2001                      move.l     d1,d0
 [0005a7bc] d080                      add.l      d0,d0
@@ -6103,8 +6103,8 @@ Awi_alert_17:
 [0005a8a2] 5248                      addq.w     #1,a0
 [0005a8a4] 2f48 0016                 move.l     a0,22(a7)
 [0005a8a8] 6004                      bra.s      Awi_alert_23
-[0005a8aa] 52af 0016                 addq.l     #1,22(a7)
 Awi_alert_25:
+[0005a8aa] 52af 0016                 addq.l     #1,22(a7)
 Awi_alert_23:
 [0005a8ae] 705b                      moveq.l    #91,d0
 [0005a8b0] 206f 0016                 movea.l    22(a7),a0
@@ -6121,8 +6121,8 @@ Awi_alert_24:
 [0005a8d6] 5248                      addq.w     #1,a0
 [0005a8d8] 2f48 0012                 move.l     a0,18(a7)
 [0005a8dc] 6004                      bra.s      Awi_alert_27
-[0005a8de] 52af 0012                 addq.l     #1,18(a7)
 Awi_alert_29:
+[0005a8de] 52af 0012                 addq.l     #1,18(a7)
 Awi_alert_27:
 [0005a8e2] 705b                      moveq.l    #91,d0
 [0005a8e4] 206f 0012                 movea.l    18(a7),a0
@@ -6143,8 +6143,8 @@ Awi_alert_30:
 [0005a912] 6700 04cc                 beq        Awi_alert_3
 [0005a916] 3f7c 0010 0004            move.w     #$0010,4(a7)
 [0005a91c] 601c                      bra.s      Awi_alert_31
-[0005a91e] 43f9 000e 0f98            lea.l      $000E0F98,a1
 Awi_alert_32:
+[0005a91e] 43f9 000e 0f98            lea.l      $000E0F98,a1
 [0005a924] 302f 0004                 move.w     4(a7),d0
 [0005a928] 206f 003a                 movea.l    58(a7),a0
 [0005a92c] 2068 0014                 movea.l    20(a0),a0
@@ -6160,8 +6160,8 @@ Awi_alert_31:
 [0005a956] 206f 0016                 movea.l    22(a7),a0
 [0005a95a] 5248                      addq.w     #1,a0
 [0005a95c] 2f48 000e                 move.l     a0,14(a7)
-[0005a960] 707c                      moveq.l    #124,d0
 Awi_alert_35:
+[0005a960] 707c                      moveq.l    #124,d0
 [0005a962] 206f 000e                 movea.l    14(a7),a0
 [0005a966] 4eb9 0008 2e8a            jsr        strchr
 [0005a96c] 2f48 000a                 move.l     a0,10(a7)
@@ -6258,8 +6258,8 @@ Awi_alert_38:
 [0005aacc] 2f6f 0012 000e            move.l     18(a7),14(a7)
 [0005aad2] 426f 0008                 clr.w      8(a7)
 [0005aad6] 600e                      bra.s      Awi_alert_39
-[0005aad8] 526f 0008                 addq.w     #1,8(a7)
 Awi_alert_41:
+[0005aad8] 526f 0008                 addq.w     #1,8(a7)
 [0005aadc] 206f 000a                 movea.l    10(a7),a0
 [0005aae0] 5248                      addq.w     #1,a0
 [0005aae2] 2f48 000e                 move.l     a0,14(a7)
@@ -6509,8 +6509,8 @@ Awi_hotkey:
 [0005ae24] 2e88                      move.l     a0,(a7)
 [0005ae26] 2f6f 000c 0004            move.l     12(a7),4(a7)
 [0005ae2c] 601a                      bra.s      Awi_hotkey_1
-[0005ae2e] 206f 0004                 movea.l    4(a7),a0
 Awi_hotkey_4:
+[0005ae2e] 206f 0004                 movea.l    4(a7),a0
 [0005ae32] 1010                      move.b     (a0),d0
 [0005ae34] 4880                      ext.w      d0
 [0005ae36] 4eb9 0008 37aa            jsr        isalnum
@@ -7004,8 +7004,8 @@ Awi_name:
 Awi_name_1:
 [0005b400] 426f 0004                 clr.w      4(a7)
 [0005b404] 6048                      bra.s      Awi_name_3
-[0005b406] 302f 0004                 move.w     4(a7),d0
 Awi_name_7:
+[0005b406] 302f 0004                 move.w     4(a7),d0
 [0005b40a] e548                      lsl.w      #2,d0
 [0005b40c] 41f9 0011 3f26            lea.l      _ACSv_winds,a0
 [0005b412] 2eb0 0000                 move.l     0(a0,d0.w),(a7)
@@ -7073,8 +7073,8 @@ gs_str2key:
 [0005b4b4] 41f9 000e 0eeb            lea.l      $000E0EEB,a0
 [0005b4ba] 43ef 0008                 lea.l      8(a7),a1
 [0005b4be] 7011                      moveq.l    #17,d0
-[0005b4c0] 12d8                      move.b     (a0)+,(a1)+
 gs_str2key_1:
+[0005b4c0] 12d8                      move.b     (a0)+,(a1)+
 [0005b4c2] 51c8 fffc                 dbf        d0,gs_str2key_1
 [0005b4c6] 41f9 000e 0efe            lea.l      $000E0EFE,a0
 [0005b4cc] 43ef 0002                 lea.l      2(a7),a1
@@ -7088,11 +7088,11 @@ gs_str2key_1:
 [0005b4e0] 2f6f 002c 001e            move.l     44(a7),30(a7)
 [0005b4e6] 426f 0026                 clr.w      38(a7)
 [0005b4ea] 6000 00a0                 bra        gs_str2key_2
-[0005b4ee] 426f 0028                 clr.w      40(a7)
 gs_str2key_8:
+[0005b4ee] 426f 0028                 clr.w      40(a7)
 [0005b4f2] 6074                      bra.s      gs_str2key_3
-[0005b4f4] 322f 0028                 move.w     40(a7),d1
 gs_str2key_6:
+[0005b4f4] 322f 0028                 move.w     40(a7),d1
 [0005b4f8] 3001                      move.w     d1,d0
 [0005b4fa] d040                      add.w      d0,d0
 [0005b4fc] d041                      add.w      d1,d0
@@ -7324,8 +7324,8 @@ gs_KeyPress_3:
 [0005b7b0] 4eb9 0008 36ea            jsr        memset
 [0005b7b6] 426f 0004                 clr.w      4(a7)
 [0005b7ba] 6042                      bra.s      gs_KeyPress_4
-[0005b7bc] 41f9 000e 0fd5            lea.l      $000E0FD5,a0
 gs_KeyPress_6:
+[0005b7bc] 41f9 000e 0fd5            lea.l      $000E0FD5,a0
 [0005b7c2] 4eb9 0004 643c            jsr        Ast_create
 [0005b7c8] 302f 0004                 move.w     4(a7),d0
 [0005b7cc] 48c0                      ext.l      d0
@@ -7365,8 +7365,8 @@ gs_KeyPress_4:
 [0005b832] 2097                      move.l     (a7),(a0)
 [0005b834] 3f7c 0001 0004            move.w     #$0001,4(a7)
 [0005b83a] 6040                      bra.s      gs_KeyPress_7
-[0005b83c] 302f 0004                 move.w     4(a7),d0
 gs_KeyPress_10:
+[0005b83c] 302f 0004                 move.w     4(a7),d0
 [0005b840] 48c0                      ext.l      d0
 [0005b842] e588                      lsl.l      #2,d0
 [0005b844] 206f 0006                 movea.l    6(a7),a0
@@ -7440,8 +7440,8 @@ gs_GetAllCommands_2:
 gs_GetAllCommands_3:
 [0005b90e] 426f 0010                 clr.w      16(a7)
 [0005b912] 6052                      bra.s      gs_GetAllCommands_5
-[0005b914] 302f 0010                 move.w     16(a7),d0
 gs_GetAllCommands_7:
+[0005b914] 302f 0010                 move.w     16(a7),d0
 [0005b918] e748                      lsl.w      #3,d0
 [0005b91a] 41f9 000e 0f04            lea.l      _gs_commands,a0
 [0005b920] 2070 0000                 movea.l    0(a0,d0.w),a0
@@ -7492,8 +7492,8 @@ gs_GetAllCommands_8:
 [0005b9b6] 426f 000c                 clr.w      12(a7)
 [0005b9ba] 3f7c 0001 0010            move.w     #$0001,16(a7)
 [0005b9c0] 6032                      bra.s      gs_GetAllCommands_9
-[0005b9c2] 302f 0010                 move.w     16(a7),d0
 gs_GetAllCommands_11:
+[0005b9c2] 302f 0010                 move.w     16(a7),d0
 [0005b9c6] 48c0                      ext.l      d0
 [0005b9c8] e588                      lsl.l      #2,d0
 [0005b9ca] 206f 0008                 movea.l    8(a7),a0
@@ -7527,8 +7527,8 @@ gs_GetAllCommands_9:
 [0005ba26] 3f7c 0001 0010            move.w     #$0001,16(a7)
 [0005ba2c] 3f7c 0001 000e            move.w     #$0001,14(a7)
 [0005ba32] 6060                      bra.s      gs_GetAllCommands_13
-[0005ba34] 302f 000e                 move.w     14(a7),d0
 gs_GetAllCommands_16:
+[0005ba34] 302f 000e                 move.w     14(a7),d0
 [0005ba38] 48c0                      ext.l      d0
 [0005ba3a] e588                      lsl.l      #2,d0
 [0005ba3c] 206f 0004                 movea.l    4(a7),a0

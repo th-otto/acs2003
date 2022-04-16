@@ -89,8 +89,8 @@ boxed_insert_4:
 [000688f4] 603a                      bra.s      boxed_insert_7
 boxed_insert_6:
 [000688f6] 601e                      bra.s      boxed_insert_8
-[000688f8] 302f 0010                 move.w     16(a7),d0
 boxed_insert_9:
+[000688f8] 302f 0010                 move.w     16(a7),d0
 [000688fc] 206f 011a                 movea.l    282(a7),a0
 [00068900] 322f 0010                 move.w     16(a7),d1
 [00068904] d26f 0018                 add.w      24(a7),d1
@@ -191,8 +191,8 @@ boxed_within:
 [00068a4e] e240                      asr.w      #1,d0
 [00068a50] 3e80                      move.w     d0,(a7)
 [00068a52] 602e                      bra.s      boxed_within_1
-[00068a54] 302f 0002                 move.w     2(a7),d0
 boxed_within_4:
+[00068a54] 302f 0002                 move.w     2(a7),d0
 [00068a58] 206f 0008                 movea.l    8(a7),a0
 [00068a5c] 122f 000c                 move.b     12(a7),d1
 [00068a60] b230 0000                 cmp.b      0(a0,d0.w),d1
@@ -315,8 +315,8 @@ boxed_checktext_6:
 [00068bb0] 2028 0200                 move.l     512(a0),d0
 [00068bb4] 674a                      beq.s      boxed_checktext_7
 [00068bb6] 6018                      bra.s      boxed_checktext_8
-[00068bb8] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_10:
+[00068bb8] 302f 0024                 move.w     36(a7),d0
 [00068bbc] 206f 002a                 movea.l    42(a7),a0
 [00068bc0] 226f 001a                 movea.l    26(a7),a1
 [00068bc4] 52af 001a                 addq.l     #1,26(a7)
@@ -392,8 +392,8 @@ boxed_checktext_12:
 [00068c7e] 6000 05ca                 bra        boxed_checktext_11
 boxed_checktext_13:
 [00068c82] 6018                      bra.s      boxed_checktext_34
-[00068c84] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_36:
+[00068c84] 302f 0024                 move.w     36(a7),d0
 [00068c88] 206f 002a                 movea.l    42(a7),a0
 [00068c8c] 226f 001a                 movea.l    26(a7),a1
 [00068c90] 52af 001a                 addq.l     #1,26(a7)
@@ -417,8 +417,8 @@ boxed_checktext_35:
 boxed_checktext_14:
 [00068cca] 3f7c 0001 0020            move.w     #$0001,32(a7)
 [00068cd0] 6018                      bra.s      boxed_checktext_37
-[00068cd2] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_39:
+[00068cd2] 302f 0024                 move.w     36(a7),d0
 [00068cd6] 206f 002a                 movea.l    42(a7),a0
 [00068cda] 226f 001a                 movea.l    26(a7),a1
 [00068cde] 52af 001a                 addq.l     #1,26(a7)
@@ -441,8 +441,8 @@ boxed_checktext_38:
 boxed_checktext_15:
 [00068d18] 3f7c 0001 0020            move.w     #$0001,32(a7)
 [00068d1e] 6018                      bra.s      boxed_checktext_40
-[00068d20] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_42:
+[00068d20] 302f 0024                 move.w     36(a7),d0
 [00068d24] 206f 002a                 movea.l    42(a7),a0
 [00068d28] 226f 001a                 movea.l    26(a7),a1
 [00068d2c] 52af 001a                 addq.l     #1,26(a7)
@@ -465,8 +465,8 @@ boxed_checktext_41:
 boxed_checktext_16:
 [00068d66] 3f7c 0001 0020            move.w     #$0001,32(a7)
 [00068d6c] 6018                      bra.s      boxed_checktext_43
-[00068d6e] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_45:
+[00068d6e] 302f 0024                 move.w     36(a7),d0
 [00068d72] 206f 002a                 movea.l    42(a7),a0
 [00068d76] 226f 001a                 movea.l    26(a7),a1
 [00068d7a] 52af 001a                 addq.l     #1,26(a7)
@@ -489,8 +489,8 @@ boxed_checktext_44:
 boxed_checktext_17:
 [00068db4] 3f7c 0001 0020            move.w     #$0001,32(a7)
 [00068dba] 6018                      bra.s      boxed_checktext_46
-[00068dbc] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_48:
+[00068dbc] 302f 0024                 move.w     36(a7),d0
 [00068dc0] 206f 002a                 movea.l    42(a7),a0
 [00068dc4] 226f 001a                 movea.l    26(a7),a1
 [00068dc8] 52af 001a                 addq.l     #1,26(a7)
@@ -512,8 +512,8 @@ boxed_checktext_47:
 [00068dfe] 6000 044a                 bra        boxed_checktext_11
 boxed_checktext_18:
 [00068e02] 6018                      bra.s      boxed_checktext_49
-[00068e04] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_51:
+[00068e04] 302f 0024                 move.w     36(a7),d0
 [00068e08] 206f 002a                 movea.l    42(a7),a0
 [00068e0c] 226f 001a                 movea.l    26(a7),a1
 [00068e10] 52af 001a                 addq.l     #1,26(a7)
@@ -533,8 +533,8 @@ boxed_checktext_19:
 [00068e3a] 3f7c 0001 0026            move.w     #$0001,38(a7)
 boxed_checktext_20:
 [00068e40] 6018                      bra.s      boxed_checktext_52
-[00068e42] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_56:
+[00068e42] 302f 0024                 move.w     36(a7),d0
 [00068e46] 206f 002a                 movea.l    42(a7),a0
 [00068e4a] 226f 001a                 movea.l    26(a7),a1
 [00068e4e] 52af 001a                 addq.l     #1,26(a7)
@@ -579,8 +579,8 @@ boxed_checktext_22:
 [00068eca] 526f 0024                 addq.w     #1,36(a7)
 boxed_checktext_21:
 [00068ece] 6018                      bra.s      boxed_checktext_57
-[00068ed0] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_59:
+[00068ed0] 302f 0024                 move.w     36(a7),d0
 [00068ed4] 206f 002a                 movea.l    42(a7),a0
 [00068ed8] 226f 001a                 movea.l    26(a7),a1
 [00068edc] 52af 001a                 addq.l     #1,26(a7)
@@ -617,8 +617,8 @@ boxed_checktext_24:
 [00068f42] 526f 0024                 addq.w     #1,36(a7)
 boxed_checktext_23:
 [00068f46] 6018                      bra.s      boxed_checktext_60
-[00068f48] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_62:
+[00068f48] 302f 0024                 move.w     36(a7),d0
 [00068f4c] 206f 002a                 movea.l    42(a7),a0
 [00068f50] 226f 001a                 movea.l    26(a7),a1
 [00068f54] 52af 001a                 addq.l     #1,26(a7)
@@ -655,8 +655,8 @@ boxed_checktext_26:
 [00068fba] 526f 0024                 addq.w     #1,36(a7)
 boxed_checktext_25:
 [00068fbe] 6018                      bra.s      boxed_checktext_63
-[00068fc0] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_65:
+[00068fc0] 302f 0024                 move.w     36(a7),d0
 [00068fc4] 206f 002a                 movea.l    42(a7),a0
 [00068fc8] 226f 001a                 movea.l    26(a7),a1
 [00068fcc] 52af 001a                 addq.l     #1,26(a7)
@@ -694,8 +694,8 @@ boxed_checktext_28:
 boxed_checktext_27:
 [00069036] 3f7c 0001 0020            move.w     #$0001,32(a7)
 [0006903c] 6018                      bra.s      boxed_checktext_66
-[0006903e] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_68:
+[0006903e] 302f 0024                 move.w     36(a7),d0
 [00069042] 206f 002a                 movea.l    42(a7),a0
 [00069046] 226f 001a                 movea.l    26(a7),a1
 [0006904a] 52af 001a                 addq.l     #1,26(a7)
@@ -741,8 +741,8 @@ boxed_checktext_29:
 [000690ce] 4eb9 0008 2e8a            jsr        strchr
 [000690d4] 2f48 0016                 move.l     a0,22(a7)
 [000690d8] 6054                      bra.s      boxed_checktext_69
-[000690da] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_74:
+[000690da] 302f 0024                 move.w     36(a7),d0
 [000690de] 206f 002a                 movea.l    42(a7),a0
 [000690e2] 0c30 002e 0000            cmpi.b     #$2E,0(a0,d0.w)
 [000690e8] 662c                      bne.s      boxed_checktext_70
@@ -799,8 +799,8 @@ boxed_checktext_75:
 [00069188] 41e8 0100                 lea.l      256(a0),a0
 [0006918c] 6100 f91e                 bsr        boxed_findsep
 [00069190] 6000 00aa                 bra        boxed_checktext_76
-[00069194] 302f 0024                 move.w     36(a7),d0
 boxed_checktext_84:
+[00069194] 302f 0024                 move.w     36(a7),d0
 [00069198] 206f 002a                 movea.l    42(a7),a0
 [0006919c] 4241                      clr.w      d1
 [0006919e] 1230 0000                 move.b     0(a0,d0.w),d1
@@ -819,8 +819,8 @@ boxed_checktext_77:
 [000691c4] 6640                      bne.s      boxed_checktext_79
 [000691c6] 426f 001e                 clr.w      30(a7)
 [000691ca] 6032                      bra.s      boxed_checktext_80
-[000691cc] 302f 001e                 move.w     30(a7),d0
 boxed_checktext_82:
+[000691cc] 302f 001e                 move.w     30(a7),d0
 [000691d0] e548                      lsl.w      #2,d0
 [000691d2] 2037 0012                 move.l     18(a7,d0.w),d0
 [000691d6] 6622                      bne.s      boxed_checktext_81
@@ -915,8 +915,8 @@ boxed_validate_1:
 [000692d4] 6040                      bra.s      boxed_validate_3
 boxed_validate_2:
 [000692d6] 6020                      bra.s      boxed_validate_4
-[000692d8] 2217                      move.l     (a7),d1
 boxed_validate_6:
+[000692d8] 2217                      move.l     (a7),d1
 [000692da] 2001                      move.l     d1,d0
 [000692dc] e588                      lsl.l      #2,d0
 [000692de] d081                      add.l      d1,d0
@@ -951,8 +951,8 @@ boxed_postcheck:
 [00069324] 41f9 000e 1dfa            lea.l      $000E1DFA,a0
 [0006932a] 43ef 0012                 lea.l      18(a7),a1
 [0006932e] 303c 00ff                 move.w     #$00FF,d0
-[00069332] 12d8                      move.b     (a0)+,(a1)+
 boxed_postcheck_1:
+[00069332] 12d8                      move.b     (a0)+,(a1)+
 [00069334] 51c8 fffc                 dbf        d0,boxed_postcheck_1
 [00069338] 2f7c ffff ffff 000e       move.l     #$FFFFFFFF,14(a7)
 [00069340] 2f7c ffff ffff 000a       move.l     #$FFFFFFFF,10(a7)
@@ -1505,8 +1505,8 @@ boxed_charlist_1:
 [000699de] 06af 0000 0018 0008       addi.l     #$00000018,8(a7)
 [000699e6] 426f 0006                 clr.w      6(a7)
 [000699ea] 6000 00c0                 bra        boxed_charlist_3
-[000699ee] 7018                      moveq.l    #24,d0
 boxed_charlist_6:
+[000699ee] 7018                      moveq.l    #24,d0
 [000699f0] 43f9 000e 1de2            lea.l      CHARENTRY,a1
 [000699f6] 206f 0008                 movea.l    8(a7),a0
 [000699fa] 4eb9 0008 3500            jsr        memcpy
@@ -1718,8 +1718,8 @@ Aus_objboxed_7:
 [00069ce8] d16f 0034                 add.w      d0,52(a7)
 [00069cec] 426f 0016                 clr.w      22(a7)
 [00069cf0] 602c                      bra.s      Aus_objboxed_8
-[00069cf2] 302f 0016                 move.w     22(a7),d0
 Aus_objboxed_9:
+[00069cf2] 302f 0016                 move.w     22(a7),d0
 [00069cf6] e748                      lsl.w      #3,d0
 [00069cf8] 4277 0024                 clr.w      36(a7,d0.w)
 [00069cfc] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1813,8 +1813,8 @@ Aus_objboxed_10:
 [00069e4e] 4e92                      jsr        (a2)
 Aus_objboxed_11:
 [00069e50] 6000 01ec                 bra        Aus_objboxed_12
-[00069e54] 0c57 0002                 cmpi.w     #$0002,(a7)
 Aus_objboxed_29:
+[00069e54] 0c57 0002                 cmpi.w     #$0002,(a7)
 [00069e58] 662a                      bne.s      Aus_objboxed_13
 [00069e5a] 302f 000e                 move.w     14(a7),d0
 [00069e5e] 906f 0010                 sub.w      16(a7),d0
@@ -2595,8 +2595,8 @@ Auo_boxed_77:
 [0006a84a] 2068 0210                 movea.l    528(a0),a0
 [0006a84e] 3f50 001c                 move.w     (a0),28(a7)
 [0006a852] 6004                      bra.s      Auo_boxed_78
-[0006a854] 526f 001c                 addq.w     #1,28(a7)
 Auo_boxed_80:
+[0006a854] 526f 001c                 addq.w     #1,28(a7)
 Auo_boxed_78:
 [0006a858] 206f 003e                 movea.l    62(a7),a0
 [0006a85c] 302f 001c                 move.w     28(a7),d0
@@ -2613,8 +2613,8 @@ Auo_boxed_78:
 [0006a886] 67cc                      beq.s      Auo_boxed_80
 Auo_boxed_79:
 [0006a888] 6004                      bra.s      Auo_boxed_81
-[0006a88a] 526f 001c                 addq.w     #1,28(a7)
 Auo_boxed_83:
+[0006a88a] 526f 001c                 addq.w     #1,28(a7)
 Auo_boxed_81:
 [0006a88e] 206f 003e                 movea.l    62(a7),a0
 [0006a892] 302f 001c                 move.w     28(a7),d0
@@ -2696,8 +2696,8 @@ Auo_boxed_86:
 [0006a98c] d050                      add.w      (a0),d0
 [0006a98e] 3f40 001c                 move.w     d0,28(a7)
 [0006a992] 6004                      bra.s      Auo_boxed_87
-[0006a994] 536f 001c                 subq.w     #1,28(a7)
 Auo_boxed_89:
+[0006a994] 536f 001c                 subq.w     #1,28(a7)
 Auo_boxed_87:
 [0006a998] 302f 001c                 move.w     28(a7),d0
 [0006a99c] 6b22                      bmi.s      Auo_boxed_88
@@ -2712,8 +2712,8 @@ Auo_boxed_87:
 [0006a9be] 66d4                      bne.s      Auo_boxed_89
 Auo_boxed_88:
 [0006a9c0] 6004                      bra.s      Auo_boxed_90
-[0006a9c2] 536f 001c                 subq.w     #1,28(a7)
 Auo_boxed_92:
+[0006a9c2] 536f 001c                 subq.w     #1,28(a7)
 Auo_boxed_90:
 [0006a9c6] 302f 001c                 move.w     28(a7),d0
 [0006a9ca] 6b22                      bmi.s      Auo_boxed_91
@@ -2821,8 +2821,8 @@ Auo_boxed_99:
 [0006ab22] 4eb9 0008 2e8a            jsr        strchr
 [0006ab28] 2f48 0004                 move.l     a0,4(a7)
 [0006ab2c] 6004                      bra.s      Auo_boxed_101
-[0006ab2e] 536f 0014                 subq.w     #1,20(a7)
 Auo_boxed_108:
+[0006ab2e] 536f 0014                 subq.w     #1,20(a7)
 Auo_boxed_101:
 [0006ab32] 302f 0014                 move.w     20(a7),d0
 [0006ab36] 6b5c                      bmi.s      Auo_boxed_102
@@ -2871,8 +2871,8 @@ Auo_boxed_102:
 [0006abb0] 4eb9 0008 2e8a            jsr        strchr
 [0006abb6] 2f48 0004                 move.l     a0,4(a7)
 [0006abba] 6004                      bra.s      Auo_boxed_109
-[0006abbc] 526f 0012                 addq.w     #1,18(a7)
 Auo_boxed_115:
+[0006abbc] 526f 0012                 addq.w     #1,18(a7)
 Auo_boxed_109:
 [0006abc0] 206f 003e                 movea.l    62(a7),a0
 [0006abc4] 302f 0012                 move.w     18(a7),d0
@@ -2989,8 +2989,8 @@ Auo_boxed_62:
 [0006ad22] 4eb9 0008 2e8a            jsr        strchr
 [0006ad28] 2f48 0004                 move.l     a0,4(a7)
 [0006ad2c] 6004                      bra.s      Auo_boxed_118
-[0006ad2e] 536f 001c                 subq.w     #1,28(a7)
 Auo_boxed_125:
+[0006ad2e] 536f 001c                 subq.w     #1,28(a7)
 Auo_boxed_118:
 [0006ad32] 302f 001c                 move.w     28(a7),d0
 [0006ad36] 6b5c                      bmi.s      Auo_boxed_119
@@ -3106,8 +3106,8 @@ Auo_boxed_65:
 [0006ae84] 4eb9 0008 2e8a            jsr        strchr
 [0006ae8a] 2f48 0004                 move.l     a0,4(a7)
 [0006ae8e] 6004                      bra.s      Auo_boxed_128
-[0006ae90] 526f 001c                 addq.w     #1,28(a7)
 Auo_boxed_135:
+[0006ae90] 526f 001c                 addq.w     #1,28(a7)
 Auo_boxed_128:
 [0006ae94] 206f 003e                 movea.l    62(a7),a0
 [0006ae98] 302f 001c                 move.w     28(a7),d0

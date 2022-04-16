@@ -2,8 +2,8 @@ Apd_close:
 [0003b7f0] 48e7 002c                 movem.l    a2/a4-a5,-(a7)
 [0003b7f4] 554f                      subq.w     #2,a7
 [0003b7f6] 95ca                      suba.l     a2,a2
-[0003b7f8] 4bf9 0010 ee4e            lea.l      ACSblk,a5
 Apd_close_6:
+[0003b7f8] 4bf9 0010 ee4e            lea.l      ACSblk,a5
 [0003b7fe] 42a7                      clr.l      -(a7)
 [0003b800] 42a7                      clr.l      -(a7)
 [0003b802] 42a7                      clr.l      -(a7)
@@ -163,8 +163,8 @@ Apd_list_1:
 [0003b97c] 200a                      move.l     a2,d0
 [0003b97e] 6714                      beq.s      Apd_list_2
 [0003b980] 6008                      bra.s      Apd_list_3
-[0003b982] 4eb9 0005 69d6            jsr        Awi_list
 Apd_list_4:
+[0003b982] 4eb9 0005 69d6            jsr        Awi_list
 [0003b988] 2648                      movea.l    a0,a3
 Apd_list_3:
 [0003b98a] b7ca                      cmpa.l     a2,a3
@@ -236,8 +236,8 @@ open_one_file:
 [0003ba20] 43f9 000d 033e            lea.l      $000D033E,a1
 [0003ba26] 41d7                      lea.l      (a7),a0
 [0003ba28] 303c 00ff                 move.w     #$00FF,d0
-[0003ba2c] 10d9                      move.b     (a1)+,(a0)+
 open_one_file_1:
+[0003ba2c] 10d9                      move.b     (a1)+,(a0)+
 [0003ba2e] 51c8 fffc                 dbf        d0,open_one_file_1
 [0003ba32] 200a                      move.l     a2,d0
 [0003ba34] 672c                      beq.s      open_one_file_2
@@ -317,8 +317,8 @@ OpenDraggedFiles:
 [0003bae2] 6d00 0090                 blt        OpenDraggedFiles_1
 [0003bae6] 4eb9 0004 7e1e            jsr        Adr_start
 [0003baec] 6000 0078                 bra.w      OpenDraggedFiles_2
-[0003baf0] 3003                      move.w     d3,d0
 OpenDraggedFiles_10:
+[0003baf0] 3003                      move.w     d3,d0
 [0003baf2] c07c 1000                 and.w      #$1000,d0
 [0003baf6] 6720                      beq.s      OpenDraggedFiles_3
 [0003baf8] 222a 0018                 move.l     24(a2),d1
@@ -394,8 +394,8 @@ CheckDraggedFiles:
 CheckDraggedFiles_1:
 [0003bb9a] 4eb9 0004 7e1e            jsr        Adr_start
 [0003bba0] 6000 0074                 bra.w      CheckDraggedFiles_3
-[0003bba4] 3003                      move.w     d3,d0
 CheckDraggedFiles_12:
+[0003bba4] 3003                      move.w     d3,d0
 [0003bba6] c07c 1000                 and.w      #$1000,d0
 [0003bbaa] 6720                      beq.s      CheckDraggedFiles_4
 [0003bbac] 222a 0018                 move.l     24(a2),d1
@@ -495,8 +495,8 @@ build_work:
 [0003bc84] 49ec 0018                 lea.l      24(a4),a4
 [0003bc88] 4243                      clr.w      d3
 [0003bc8a] 6000 00aa                 bra        build_work_2
-[0003bc8e] 7018                      moveq.l    #24,d0
 build_work_8:
+[0003bc8e] 7018                      moveq.l    #24,d0
 [0003bc90] 224d                      movea.l    a5,a1
 [0003bc92] 204c                      movea.l    a4,a0
 [0003bc94] 4eb9 0008 3500            jsr        memcpy
@@ -1159,8 +1159,8 @@ modul_serv_29:
 [0003c420] 6700 01dc                 beq        modul_serv_25
 [0003c424] 4eb9 0004 7e1e            jsr        Adr_start
 [0003c42a] 6002                      bra.s      modul_serv_30
-[0003c42c] 36c5                      move.w     d5,(a3)+
 modul_serv_31:
+[0003c42c] 36c5                      move.w     d5,(a3)+
 modul_serv_30:
 [0003c42e] 4eb9 0004 7e2a            jsr        Adr_next
 [0003c434] 3a00                      move.w     d0,d5
@@ -1173,8 +1173,8 @@ modul_serv_30:
 [0003c446] 4eb9 0008 1240            jsr        qsort
 [0003c44c] 4245                      clr.w      d5
 [0003c44e] 6056                      bra.s      modul_serv_32
-[0003c450] 3205                      move.w     d5,d1
 modul_serv_35:
+[0003c450] 3205                      move.w     d5,d1
 [0003c452] 48c1                      ext.l      d1
 [0003c454] d281                      add.l      d1,d1
 [0003c456] 3434 1800                 move.w     0(a4,d1.l),d2
@@ -1432,8 +1432,8 @@ pd_make_11:
 [0003c730] 200d                      move.l     a5,d0
 [0003c732] 673a                      beq.s      pd_make_12
 [0003c734] 602c                      bra.s      pd_make_13
-[0003c736] 43f9 000d 047d            lea.l      $000D047D,a1
 pd_make_15:
+[0003c736] 43f9 000d 047d            lea.l      $000D047D,a1
 [0003c73c] 2f09                      move.l     a1,-(a7)
 [0003c73e] 2255                      movea.l    (a5),a1
 [0003c740] 41ef 000c                 lea.l      12(a7),a0
@@ -1651,8 +1651,8 @@ rem_icon:
 [0003c990] 4eb9 0005 0f3a            jsr        Aob_up
 [0003c996] 3a00                      move.w     d0,d5
 [0003c998] 6000 009e                 bra        rem_icon_2
-[0003c99c] 7026                      moveq.l    #38,d0
 rem_icon_5:
+[0003c99c] 7026                      moveq.l    #38,d0
 [0003c99e] 3404                      move.w     d4,d2
 [0003c9a0] 48c2                      ext.l      d2
 [0003c9a2] 2202                      move.l     d2,d1
@@ -1757,8 +1757,8 @@ rem_icon_4:
 [0003cab8] 286b 0014                 movea.l    20(a3),a4
 [0003cabc] 3834 1800                 move.w     0(a4,d1.l),d4
 [0003cac0] 6022                      bra.s      rem_icon_8
-[0003cac2] 4241                      clr.w      d1
 rem_icon_9:
+[0003cac2] 4241                      clr.w      d1
 [0003cac4] 3003                      move.w     d3,d0
 [0003cac6] 204b                      movea.l    a3,a0
 [0003cac8] 4eb9 0003 cb28            jsr        update_icon

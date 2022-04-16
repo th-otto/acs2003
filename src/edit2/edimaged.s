@@ -136,8 +136,8 @@ edim_up:
 [000215a4] 3401                      move.w     d1,d2
 [000215a6] 9440                      sub.w      d0,d2
 [000215a8] 6004                      bra.s      edim_up_1
-[000215aa] 32da                      move.w     (a2)+,(a1)+
 edim_up_2:
+[000215aa] 32da                      move.w     (a2)+,(a1)+
 [000215ac] 5342                      subq.w     #1,d2
 edim_up_1:
 [000215ae] 4a42                      tst.w      d2
@@ -149,8 +149,8 @@ edim_up_1:
 [000215bc] 43f1 38fe                 lea.l      -2(a1,d3.l),a1
 [000215c0] 3400                      move.w     d0,d2
 [000215c2] 6006                      bra.s      edim_up_3
-[000215c4] 4251                      clr.w      (a1)
 edim_up_4:
+[000215c4] 4251                      clr.w      (a1)
 [000215c6] 5549                      subq.w     #2,a1
 [000215c8] 5342                      subq.w     #1,d2
 edim_up_3:
@@ -191,8 +191,8 @@ edim_down:
 [0002162a] 95c2                      suba.l     d2,a2
 [0002162c] 9240                      sub.w      d0,d1
 [0002162e] 6008                      bra.s      edim_down_1
-[00021630] 3292                      move.w     (a2),(a1)
 edim_down_2:
+[00021630] 3292                      move.w     (a2),(a1)
 [00021632] 554a                      subq.w     #2,a2
 [00021634] 5549                      subq.w     #2,a1
 [00021636] 5341                      subq.w     #1,d1
@@ -202,8 +202,8 @@ edim_down_1:
 [0002163c] 2268 0010                 movea.l    16(a0),a1
 [00021640] 3200                      move.w     d0,d1
 [00021642] 6004                      bra.s      edim_down_3
-[00021644] 4259                      clr.w      (a1)+
 edim_down_4:
+[00021644] 4259                      clr.w      (a1)+
 [00021646] 5341                      subq.w     #1,d1
 edim_down_3:
 [00021648] 4a41                      tst.w      d1
@@ -233,8 +233,8 @@ edim_right:
 [00021690] 2268 0010                 movea.l    16(a0),a1
 [00021694] 4240                      clr.w      d0
 [00021696] 601e                      bra.s      edim_right_1
-[00021698] 7401                      moveq.l    #1,d2
 edim_right_4:
+[00021698] 7401                      moveq.l    #1,d2
 [0002169a] c440                      and.w      d0,d2
 [0002169c] 670e                      beq.s      edim_right_2
 [0002169e] 3011                      move.w     (a1),d0
@@ -280,8 +280,8 @@ edim_left:
 [00021704] 43f1 08fe                 lea.l      -2(a1,d0.l),a1
 [00021708] 4240                      clr.w      d0
 [0002170a] 6024                      bra.s      edim_left_1
-[0002170c] 343c 8000                 move.w     #$8000,d2
 edim_left_4:
+[0002170c] 343c 8000                 move.w     #$8000,d2
 [00021710] c440                      and.w      d0,d2
 [00021712] 6710                      beq.s      edim_left_2
 [00021714] 3011                      move.w     (a1),d0
@@ -330,16 +330,16 @@ edim_resize:
 [0002177c] 78ff                      moveq.l    #-1,d4
 [0002177e] d869 0006                 add.w      6(a1),d4
 [00021782] 6048                      bra.s      edim_resize_2
-[00021784] 3a04                      move.w     d4,d5
 edim_resize_7:
+[00021784] 3a04                      move.w     d4,d5
 [00021786] cbc2                      muls.w     d2,d5
 [00021788] 3204                      move.w     d4,d1
 [0002178a] c3c3                      muls.w     d3,d1
 [0002178c] 70ff                      moveq.l    #-1,d0
 [0002178e] d042                      add.w      d2,d0
 [00021790] 601c                      bra.s      edim_resize_3
-[00021792] 3c05                      move.w     d5,d6
 edim_resize_4:
+[00021792] 3c05                      move.w     d5,d6
 [00021794] dc40                      add.w      d0,d6
 [00021796] 48c6                      ext.l      d6
 [00021798] dc86                      add.l      d6,d6
@@ -356,8 +356,8 @@ edim_resize_3:
 [000217b0] 6ae0                      bpl.s      edim_resize_4
 [000217b2] 3002                      move.w     d2,d0
 [000217b4] 6010                      bra.s      edim_resize_5
-[000217b6] 3c01                      move.w     d1,d6
 edim_resize_6:
+[000217b6] 3c01                      move.w     d1,d6
 [000217b8] dc40                      add.w      d0,d6
 [000217ba] 48c6                      ext.l      d6
 [000217bc] dc86                      add.l      d6,d6
@@ -376,15 +376,15 @@ edim_resize_1:
 [000217d2] 6f38                      ble.s      edim_resize_8
 [000217d4] 4244                      clr.w      d4
 [000217d6] 602e                      bra.s      edim_resize_9
-[000217d8] 3a04                      move.w     d4,d5
 edim_resize_12:
+[000217d8] 3a04                      move.w     d4,d5
 [000217da] cbc2                      muls.w     d2,d5
 [000217dc] 3204                      move.w     d4,d1
 [000217de] c3c3                      muls.w     d3,d1
 [000217e0] 4240                      clr.w      d0
 [000217e2] 601c                      bra.s      edim_resize_10
-[000217e4] 3c05                      move.w     d5,d6
 edim_resize_11:
+[000217e4] 3c05                      move.w     d5,d6
 [000217e6] dc40                      add.w      d0,d6
 [000217e8] 48c6                      ext.l      d6
 [000217ea] dc86                      add.l      d6,d6
@@ -407,14 +407,14 @@ edim_resize_8:
 [0002180c] 78ff                      moveq.l    #-1,d4
 [0002180e] d857                      add.w      (a7),d4
 [00021810] 6020                      bra.s      edim_resize_13
-[00021812] 3204                      move.w     d4,d1
 edim_resize_16:
+[00021812] 3204                      move.w     d4,d1
 [00021814] c3c3                      muls.w     d3,d1
 [00021816] 70ff                      moveq.l    #-1,d0
 [00021818] d043                      add.w      d3,d0
 [0002181a] 6010                      bra.s      edim_resize_14
-[0002181c] 3401                      move.w     d1,d2
 edim_resize_15:
+[0002181c] 3401                      move.w     d1,d2
 [0002181e] d440                      add.w      d0,d2
 [00021820] 48c2                      ext.l      d2
 [00021822] d482                      add.l      d2,d2
@@ -751,8 +751,8 @@ edim_set_1:
 [00021bee] 206a 0014                 movea.l    20(a2),a0
 [00021bf2] 4eb9 0007 9d14            jsr        mt_objc_offset
 [00021bf8] 504f                      addq.w     #8,a7
-[00021bfa] 302f 0016                 move.w     22(a7),d0
 edim_set_28:
+[00021bfa] 302f 0016                 move.w     22(a7),d0
 [00021bfe] 906a 0034                 sub.w      52(a2),d0
 [00021c02] 906f 0012                 sub.w      18(a7),d0
 [00021c06] 48c0                      ext.l      d0
@@ -1124,8 +1124,8 @@ edim_bitmap_2:
 [00021ff2] 4244                      clr.w      d4
 [00021ff4] 45f9 000b 20a2            lea.l      the_mfdb,a2
 [00021ffa] 6000 00d8                 bra        edim_bitmap_3
-[00021ffe] 302d 000e                 move.w     14(a5),d0
 edim_bitmap_13:
+[00021ffe] 302d 000e                 move.w     14(a5),d0
 [00022002] b06f 0002                 cmp.w      2(a7),d0
 [00022006] 6d00 00b8                 blt        edim_bitmap_4
 [0002200a] 322d 000a                 move.w     10(a5),d1
@@ -1138,8 +1138,8 @@ edim_bitmap_13:
 [00022026] 3b40 000c                 move.w     d0,12(a5)
 [0002202a] 4245                      clr.w      d5
 [0002202c] 6000 008a                 bra        edim_bitmap_5
-[00022030] 206f 0018                 movea.l    24(a7),a0
 edim_bitmap_11:
+[00022030] 206f 0018                 movea.l    24(a7),a0
 [00022034] 54af 0018                 addq.l     #2,24(a7)
 [00022038] 3c10                      move.w     (a0),d6
 [0002203a] 303c 0080                 move.w     #$0080,d0
@@ -1151,8 +1151,8 @@ edim_bitmap_11:
 [0002204e] 6e5a                      bgt.s      edim_bitmap_6
 [00022050] 7e03                      moveq.l    #3,d7
 [00022052] 6050                      bra.s      edim_bitmap_7
-[00022054] 302d 000c                 move.w     12(a5),d0
 edim_bitmap_9:
+[00022054] 302d 000c                 move.w     12(a5),d0
 [00022058] b057                      cmp.w      (a7),d0
 [0002205a] 6d38                      blt.s      edim_bitmap_8
 [0002205c] 322d 0008                 move.w     8(a5),d1

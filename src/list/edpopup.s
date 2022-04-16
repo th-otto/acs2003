@@ -18,8 +18,8 @@ copy_pup_1:
 [00035b5e] 2c6c 0004                 movea.l    4(a4),a6
 [00035b62] 4244                      clr.w      d4
 [00035b64] 6020                      bra.s      copy_pup_3
-[00035b66] 3204                      move.w     d4,d1
 copy_pup_4:
+[00035b66] 3204                      move.w     d4,d1
 [00035b68] 48c1                      ext.l      d1
 [00035b6a] 2001                      move.l     d1,d0
 [00035b6c] e788                      lsl.l      #3,d0
@@ -64,8 +64,8 @@ del_pup_2:
 [00035bd2] 286b 0004                 movea.l    4(a3),a4
 [00035bd6] 4244                      clr.w      d4
 [00035bd8] 601a                      bra.s      del_pup_3
-[00035bda] 3204                      move.w     d4,d1
 del_pup_4:
+[00035bda] 3204                      move.w     d4,d1
 [00035bdc] 48c1                      ext.l      d1
 [00035bde] 2001                      move.l     d1,d0
 [00035be0] e788                      lsl.l      #3,d0

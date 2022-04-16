@@ -280,8 +280,8 @@ Awi_self0:
 [000516e0] 3f40 0008                 move.w     d0,8(a7)
 [000516e4] 3f7c ffff 0006            move.w     #$FFFF,6(a7)
 [000516ea] 6000 0112                 bra        Awi_self0_1
-[000516ee] 302f 0006                 move.w     6(a7),d0
 Awi_self0_10:
+[000516ee] 302f 0006                 move.w     6(a7),d0
 [000516f2] 6a06                      bpl.s      Awi_self0_2
 [000516f4] 426f 0004                 clr.w      4(a7)
 [000516f8] 6018                      bra.s      Awi_self0_3
@@ -306,8 +306,8 @@ Awi_self0_3:
 [00051726] 206f 000a                 movea.l    10(a7),a0
 [0005172a] 3f70 0800 0004            move.w     0(a0,d0.l),4(a7)
 [00051730] 601e                      bra.s      Awi_self0_5
-[00051732] 3f6f 0004 0006            move.w     4(a7),6(a7)
 Awi_self0_6:
+[00051732] 3f6f 0004 0006            move.w     4(a7),6(a7)
 [00051738] 322f 0004                 move.w     4(a7),d1
 [0005173c] 48c1                      ext.l      d1
 [0005173e] 2001                      move.l     d1,d0
@@ -534,8 +534,8 @@ Awi_obchange_11:
 [00051a08] 4eb9 0007 f7ba            jsr        wind_get
 [00051a0e] 4fef 0010                 lea.l      16(a7),a7
 [00051a12] 6000 012e                 bra        Awi_obchange_13
-[00051a16] 43ef 0020                 lea.l      32(a7),a1
 Awi_obchange_19:
+[00051a16] 43ef 0020                 lea.l      32(a7),a1
 [00051a1a] 41ef 0018                 lea.l      24(a7),a0
 [00051a1e] 4eb9 0006 c662            jsr        intersect
 [00051a24] 302f 001c                 move.w     28(a7),d0
@@ -782,8 +782,8 @@ Awi_redraw_4:
 [00051d68] 4eb9 0007 f7ba            jsr        wind_get
 [00051d6e] 4fef 0010                 lea.l      16(a7),a7
 [00051d72] 6064                      bra.s      Awi_redraw_7
-[00051d74] 226f 002c                 movea.l    44(a7),a1
 Awi_redraw_11:
+[00051d74] 226f 002c                 movea.l    44(a7),a1
 [00051d78] 41ef 0010                 lea.l      16(a7),a0
 [00051d7c] 4eb9 0006 c662            jsr        intersect
 [00051d82] 302f 0014                 move.w     20(a7),d0
@@ -861,8 +861,8 @@ Awi_redraw_12:
 [00051e82] 4eb9 0007 f7ba            jsr        wind_get
 [00051e88] 4fef 0010                 lea.l      16(a7),a7
 [00051e8c] 6000 0226                 bra        Awi_redraw_13
-[00051e90] 226f 002c                 movea.l    44(a7),a1
 Awi_redraw_23:
+[00051e90] 226f 002c                 movea.l    44(a7),a1
 [00051e94] 41ef 0010                 lea.l      16(a7),a0
 [00051e98] 4eb9 0006 c662            jsr        intersect
 [00051e9e] 302f 0014                 move.w     20(a7),d0
@@ -1184,8 +1184,8 @@ Awi_arrowed_5:
 [0005229a] 4e71                      nop
 Awi_arrowed_3:
 [0005229c] 3f6f 0004 0012            move.w     4(a7),18(a7)
-[000522a2] 206f 0014                 movea.l    20(a7),a0
 Awi_arrowed_30:
+[000522a2] 206f 0014                 movea.l    20(a7),a0
 [000522a6] 3f68 0010 0010            move.w     16(a0),16(a7)
 [000522ac] 206f 0014                 movea.l    20(a7),a0
 [000522b0] 3f68 0012 000e            move.w     18(a0),14(a7)
@@ -2292,8 +2292,8 @@ Awi_lastedit_2:
 [00053054] 2017                      move.l     (a7),d0
 [00053056] 6746                      beq.s      Awi_lastedit_3
 [00053058] 3f7c ffff 0004            move.w     #$FFFF,4(a7)
-[0005305e] 3f6f 0004 0006            move.w     4(a7),6(a7)
 Awi_lastedit_4:
+[0005305e] 3f6f 0004 0006            move.w     4(a7),6(a7)
 [00053064] 7208                      moveq.l    #8,d1
 [00053066] 302f 0006                 move.w     6(a7),d0
 [0005306a] 2057                      movea.l    (a7),a0
@@ -2459,8 +2459,8 @@ Awi_prevsel_2:
 Awi_prevsel_4:
 [00053250] 3f6f 0006 0002            move.w     6(a7),2(a7)
 [00053256] 6000 009c                 bra        Awi_prevsel_5
-[0005325a] 7001                      moveq.l    #1,d0
 Awi_prevsel_11:
+[0005325a] 7001                      moveq.l    #1,d0
 [0005325c] 342f 0002                 move.w     2(a7),d2
 [00053260] 48c2                      ext.l      d2
 [00053262] 2202                      move.l     d2,d1
@@ -2585,8 +2585,8 @@ Awi_nextsel_4:
 [000533ae] 3eaf 0004                 move.w     4(a7),(a7)
 Awi_nextsel_6:
 [000533b2] 6000 0090                 bra        Awi_nextsel_7
-[000533b6] 7001                      moveq.l    #1,d0
 Awi_nextsel_13:
+[000533b6] 7001                      moveq.l    #1,d0
 [000533b8] 3417                      move.w     (a7),d2
 [000533ba] 48c2                      ext.l      d2
 [000533bc] 2202                      move.l     d2,d1
@@ -3015,8 +3015,8 @@ Awi_keysend_13:
 [000538c4] 4eb9 0007 5314            jsr        vq_key_s
 [000538ca] 4eb9 0004 7e1e            jsr        Adr_start
 [000538d0] 6050                      bra.s      Awi_keysend_18
-[000538d2] 322f 012c                 move.w     300(a7),d1
 Awi_keysend_20:
+[000538d2] 322f 012c                 move.w     300(a7),d1
 [000538d6] 48c1                      ext.l      d1
 [000538d8] 2001                      move.l     d1,d0
 [000538da] d080                      add.l      d0,d0
@@ -3260,8 +3260,8 @@ Awi_keysend_7:
 [00053ba4] 206f 0016                 movea.l    22(a7),a0
 [00053ba8] 3f68 0002 012c            move.w     2(a0),300(a7)
 [00053bae] 6000 00b0                 bra        Awi_keysend_47
-[00053bb2] 303c 0080                 move.w     #$0080,d0
 Awi_keysend_52:
+[00053bb2] 303c 0080                 move.w     #$0080,d0
 [00053bb6] 342f 012c                 move.w     300(a7),d2
 [00053bba] 48c2                      ext.l      d2
 [00053bbc] 2202                      move.l     d2,d1
@@ -3279,8 +3279,8 @@ Awi_keysend_52:
 [00053be6] 6f60                      ble.s      Awi_keysend_48
 [00053be8] 426f 0126                 clr.w      294(a7)
 [00053bec] 6004                      bra.s      Awi_keysend_49
-[00053bee] 526f 0126                 addq.w     #1,294(a7)
 Awi_keysend_51:
+[00053bee] 526f 0126                 addq.w     #1,294(a7)
 Awi_keysend_49:
 [00053bf2] 322f 0126                 move.w     294(a7),d1
 [00053bf6] 1037 101e                 move.b     30(a7,d1.w),d0
@@ -3807,8 +3807,8 @@ Awi_keysend_79:
 [000541a2] 604e                      bra.s      Awi_keysend_104
 Awi_keysend_103:
 [000541a4] 6006                      bra.s      Awi_keysend_105
-[000541a6] 3f6f 0128 012a            move.w     296(a7),298(a7)
 Awi_keysend_107:
+[000541a6] 3f6f 0128 012a            move.w     296(a7),298(a7)
 Awi_keysend_105:
 [000541ac] 7208                      moveq.l    #8,d1
 [000541ae] 302f 012a                 move.w     298(a7),d0
@@ -4558,8 +4558,8 @@ Aob_visible:
 [00054a4a] 3ebc 0001                 move.w     #$0001,(a7)
 [00054a4e] 3f6f 0004 0002            move.w     4(a7),2(a7)
 [00054a54] 6030                      bra.s      Aob_visible_1
-[00054a56] 303c 0080                 move.w     #$0080,d0
 Aob_visible_4:
+[00054a56] 303c 0080                 move.w     #$0080,d0
 [00054a5a] 342f 0002                 move.w     2(a7),d2
 [00054a5e] 48c2                      ext.l      d2
 [00054a60] 2202                      move.l     d2,d1

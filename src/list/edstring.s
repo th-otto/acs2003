@@ -20,8 +20,8 @@ add_string:
 [00035f7c] e48b                      lsr.l      #2,d3
 [00035f7e] 4244                      clr.w      d4
 [00035f80] 6000 00a4                 bra        add_string_3
-[00035f84] 3004                      move.w     d4,d0
 add_string_13:
+[00035f84] 3004                      move.w     d4,d0
 [00035f86] 48c0                      ext.l      d0
 [00035f88] e588                      lsl.l      #2,d0
 [00035f8a] 2c75 0800                 movea.l    0(a5,d0.l),a6
@@ -32,8 +32,8 @@ add_string_13:
 [00035f9e] 6600 0084                 bne        add_string_4
 [00035fa2] 4245                      clr.w      d5
 [00035fa4] 6030                      bra.s      add_string_5
-[00035fa6] 3005                      move.w     d5,d0
 add_string_7:
+[00035fa6] 3005                      move.w     d5,d0
 [00035fa8] 48c0                      ext.l      d0
 [00035faa] e588                      lsl.l      #2,d0
 [00035fac] 41f3 0800                 lea.l      0(a3,d0.l),a0
@@ -57,8 +57,8 @@ add_string_6:
 [00035fe0] 673c                      beq.s      add_string_8
 [00035fe2] 4245                      clr.w      d5
 [00035fe4] 602c                      bra.s      add_string_9
-[00035fe6] 3005                      move.w     d5,d0
 add_string_11:
+[00035fe6] 3005                      move.w     d5,d0
 [00035fe8] 48c0                      ext.l      d0
 [00035fea] e588                      lsl.l      #2,d0
 [00035fec] 41f3 0800                 lea.l      0(a3,d0.l),a0
@@ -230,8 +230,8 @@ serv_str:
 [0003619c] 41f9 000c f076            lea.l      $000CF076,a0
 [000361a2] 43ef 0028                 lea.l      40(a7),a1
 [000361a6] 720f                      moveq.l    #15,d1
-[000361a8] 22d8                      move.l     (a0)+,(a1)+
 serv_str_1:
+[000361a8] 22d8                      move.l     (a0)+,(a1)+
 [000361aa] 51c9 fffc                 dbf        d1,serv_str_1
 [000361ae] 32d8                      move.w     (a0)+,(a1)+
 [000361b0] 3200                      move.w     d0,d1
@@ -245,8 +245,8 @@ serv_str_1:
 serv_str_2:
 [000361c6] 4243                      clr.w      d3
 [000361c8] 6076                      bra.s      serv_str_6
-[000361ca] 206f 006a                 movea.l    106(a7),a0
 serv_str_7:
+[000361ca] 206f 006a                 movea.l    106(a7),a0
 [000361ce] 2f68 0004 002c            move.l     4(a0),44(a7)
 [000361d4] 2028 000a                 move.l     10(a0),d0
 [000361d8] 2f40 0032                 move.l     d0,50(a7)
@@ -296,8 +296,8 @@ serv_str_3:
 [00036266] 2f68 0004 0020            move.l     4(a0),32(a7)
 [0003626c] 4245                      clr.w      d5
 [0003626e] 6014                      bra.s      serv_str_9
-[00036270] 3005                      move.w     d5,d0
 serv_str_10:
+[00036270] 3005                      move.w     d5,d0
 [00036272] 48c0                      ext.l      d0
 [00036274] e588                      lsl.l      #2,d0
 [00036276] 206f 0020                 movea.l    32(a7),a0
@@ -309,8 +309,8 @@ serv_str_9:
 [00036286] 6ee8                      bgt.s      serv_str_10
 [00036288] 4246                      clr.w      d6
 [0003628a] 6000 0072                 bra.w      serv_str_11
-[0003628e] 4217                      clr.b      (a7)
 serv_str_19:
+[0003628e] 4217                      clr.b      (a7)
 [00036290] 701c                      moveq.l    #28,d0
 [00036292] 3206                      move.w     d6,d1
 [00036294] 48c1                      ext.l      d1
@@ -321,8 +321,8 @@ serv_str_19:
 [000362a4] 41d7                      lea.l      (a7),a0
 [000362a6] 4eb9 0008 2f96            jsr        strncat
 [000362ac] 2a48                      movea.l    a0,a5
-[000362ae] 7001                      moveq.l    #1,d0
 serv_str_14:
+[000362ae] 7001                      moveq.l    #1,d0
 [000362b0] 41d7                      lea.l      (a7),a0
 [000362b2] 4eb9 0008 2e8a            jsr        strchr
 [000362b8] 2a48                      movea.l    a0,a5
@@ -339,8 +339,8 @@ serv_str_12:
 serv_str_13:
 [000362d0] 4243                      clr.w      d3
 [000362d2] 6020                      bra.s      serv_str_15
-[000362d4] 43d7                      lea.l      (a7),a1
 serv_str_17:
+[000362d4] 43d7                      lea.l      (a7),a1
 [000362d6] 3003                      move.w     d3,d0
 [000362d8] 48c0                      ext.l      d0
 [000362da] e588                      lsl.l      #2,d0
@@ -366,8 +366,8 @@ serv_str_18:
 [00036306] 6f00 0102                 ble        serv_str_8
 [0003630a] 4243                      clr.w      d3
 [0003630c] 6066                      bra.s      serv_str_20
-[0003630e] 3003                      move.w     d3,d0
 serv_str_21:
+[0003630e] 3003                      move.w     d3,d0
 [00036310] 48c0                      ext.l      d0
 [00036312] e588                      lsl.l      #2,d0
 [00036314] 41f3 0800                 lea.l      0(a3,d0.l),a0
@@ -405,8 +405,8 @@ serv_str_20:
 serv_str_4:
 [0003637e] 4243                      clr.w      d3
 [00036380] 6000 007a                 bra.w      serv_str_22
-[00036384] 3003                      move.w     d3,d0
 serv_str_27:
+[00036384] 3003                      move.w     d3,d0
 [00036386] 48c0                      ext.l      d0
 [00036388] e588                      lsl.l      #2,d0
 [0003638a] 41f3 0800                 lea.l      0(a3,d0.l),a0
@@ -424,8 +424,8 @@ serv_str_27:
 [000363ba] 5c4f                      addq.w     #6,a7
 [000363bc] 4246                      clr.w      d6
 [000363be] 6036                      bra.s      serv_str_23
-[000363c0] 3006                      move.w     d6,d0
 serv_str_26:
+[000363c0] 3006                      move.w     d6,d0
 [000363c2] 48c0                      ext.l      d0
 [000363c4] e588                      lsl.l      #2,d0
 [000363c6] 206f 0024                 movea.l    36(a7),a0
@@ -528,8 +528,8 @@ new_work_1:
 [000364ba] 4bf3 0830                 lea.l      48(a3,d0.l),a5
 [000364be] 4244                      clr.w      d4
 [000364c0] 607c                      bra.s      new_work_4
-[000364c2] 7030                      moveq.l    #48,d0
 new_work_6:
+[000364c2] 7030                      moveq.l    #48,d0
 [000364c4] 43f9 000c ef98            lea.l      proto,a1
 [000364ca] 204c                      movea.l    a4,a0
 [000364cc] 4eb9 0008 3500            jsr        memcpy

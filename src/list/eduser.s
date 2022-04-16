@@ -214,8 +214,8 @@ add_user:
 [00034f68] e48c                      lsr.l      #2,d4
 [00034f6a] 4245                      clr.w      d5
 [00034f6c] 6000 00ca                 bra        add_user_2
-[00034f70] 3005                      move.w     d5,d0
 add_user_5:
+[00034f70] 3005                      move.w     d5,d0
 [00034f72] 48c0                      ext.l      d0
 [00034f74] e588                      lsl.l      #2,d0
 [00034f76] 2057                      movea.l    (a7),a0

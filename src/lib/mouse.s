@@ -52,8 +52,8 @@ Amo_new_2:
 Amo_point:
 [0004ee96] 4279 0011 36ca            clr.w      busy
 [0004ee9c] 6006                      bra.s      Amo_point_1
-[0004ee9e] 4eb9 0004 ef66            jsr        Amo_show
 Amo_point_2:
+[0004ee9e] 4eb9 0004 ef66            jsr        Amo_show
 Amo_point_1:
 [0004eea4] 3039 0011 36c8            move.w     hide,d0
 [0004eeaa] 66f2                      bne.s      Amo_point_2

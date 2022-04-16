@@ -16,8 +16,8 @@ add_tedinfo:
 [000365a8] e48b                      lsr.l      #2,d3
 [000365aa] 4244                      clr.w      d4
 [000365ac] 6000 008c                 bra        add_tedinfo_2
-[000365b0] 3004                      move.w     d4,d0
 add_tedinfo_5:
+[000365b0] 3004                      move.w     d4,d0
 [000365b2] 48c0                      ext.l      d0
 [000365b4] e588                      lsl.l      #2,d0
 [000365b6] 2057                      movea.l    (a7),a0

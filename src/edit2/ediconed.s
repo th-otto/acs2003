@@ -652,8 +652,8 @@ do_plane_4:
 [0001e816] 7aff                      moveq.l    #-1,d5
 [0001e818] da43                      add.w      d3,d5
 [0001e81a] 6022                      bra.s      do_plane_11
-[0001e81c] 2f0b                      move.l     a3,-(a7)
 do_plane_12:
+[0001e81c] 2f0b                      move.l     a3,-(a7)
 [0001e81e] 224d                      movea.l    a5,a1
 [0001e820] 206f 0028                 movea.l    40(a7),a0
 [0001e824] 7203                      moveq.l    #3,d1
@@ -1488,8 +1488,8 @@ edic_control:
 [0001f232] 41f9 000b 0e44            lea.l      $000B0E44,a0
 [0001f238] 43ef 0020                 lea.l      32(a7),a1
 [0001f23c] 700f                      moveq.l    #15,d0
-[0001f23e] 12d8                      move.b     (a0)+,(a1)+
 edic_control_1:
+[0001f23e] 12d8                      move.b     (a0)+,(a1)+
 [0001f240] 51c8 fffc                 dbf        d0,edic_control_1
 [0001f244] 47f9 0010 ee4e            lea.l      ACSblk,a3
 [0001f24a] 2053                      movea.l    (a3),a0
@@ -1807,8 +1807,8 @@ edic_control_20:
 [0001f636] 3029 000e                 move.w     14(a1),d0
 [0001f63a] c07c 0800                 and.w      #$0800,d0
 [0001f63e] 6600 0076                 bne.w      edic_control_16
-[0001f642] 2f2f 0014                 move.l     20(a7),-(a7)
 edic_control_25:
+[0001f642] 2f2f 0014                 move.l     20(a7),-(a7)
 [0001f646] 43ef 0004                 lea.l      4(a7),a1
 [0001f64a] 41ef 0024                 lea.l      36(a7),a0
 [0001f64e] 7203                      moveq.l    #3,d1
@@ -2007,8 +2007,8 @@ edic_nextcol_3:
 [0001f8b0] 2068 023c                 movea.l    572(a0),a0
 [0001f8b4] 41e8 003e                 lea.l      62(a0),a0
 [0001f8b8] 4eb9 0004 ee3c            jsr        Amo_new
-[0001f8be] 6100 ebfe                 bsr        edic_black0
 edic_nextcol_8:
+[0001f8be] 6100 ebfe                 bsr        edic_black0
 [0001f8c2] 601a                      bra.s      edic_nextcol_6
 edic_nextcol_7:
 [0001f8c4] 357c ffff 0044            move.w     #$FFFF,68(a2)
@@ -2095,8 +2095,8 @@ edic_set_3:
 [0001f9ce] 504f                      addq.w     #8,a7
 [0001f9d0] 76ff                      moveq.l    #-1,d3
 [0001f9d2] 3803                      move.w     d3,d4
-[0001f9d4] 302f 005e                 move.w     94(a7),d0
 edic_set_22:
+[0001f9d4] 302f 005e                 move.w     94(a7),d0
 [0001f9d8] 206f 004c                 movea.l    76(a7),a0
 [0001f9dc] 9068 0034                 sub.w      52(a0),d0
 [0001f9e0] 906f 005a                 sub.w      90(a7),d0
@@ -2911,14 +2911,14 @@ zooming:
 [0002040a] 72ff                      moveq.l    #-1,d1
 [0002040c] d268 000c                 add.w      12(a0),d1
 [00020410] 6068                      bra.s      zooming_1
-[00020412] 341a                      move.w     (a2)+,d2
 zooming_8:
+[00020412] 341a                      move.w     (a2)+,d2
 [00020414] 3600                      move.w     d0,d3
 [00020416] 2049                      movea.l    a1,a0
 [00020418] 780f                      moveq.l    #15,d4
 [0002041a] 6054                      bra.s      zooming_2
-[0002041c] 4a43                      tst.w      d3
 zooming_7:
+[0002041c] 4a43                      tst.w      d3
 [0002041e] 6b20                      bmi.s      zooming_3
 [00020420] 7c54                      moveq.l    #84,d6
 [00020422] 1146 0060                 move.b     d6,96(a0)
@@ -3129,8 +3129,8 @@ edic_bitmap_5:
 [000206ec] 3f68 000c 003c            move.w     12(a0),60(a7)
 [000206f2] 4246                      clr.w      d6
 [000206f4] 6000 0184                 bra        edic_bitmap_7
-[000206f8] 396c 0002 0006            move.w     2(a4),6(a4)
 edic_bitmap_17:
+[000206f8] 396c 0002 0006            move.w     2(a4),6(a4)
 [000206fe] 7007                      moveq.l    #7,d0
 [00020700] d06f 003c                 add.w      60(a7),d0
 [00020704] b06f 0012                 cmp.w      18(a7),d0
@@ -3143,8 +3143,8 @@ edic_bitmap_17:
 [00020720] 4254                      clr.w      (a4)
 [00020722] 4244                      clr.w      d4
 [00020724] 6000 0144                 bra        edic_bitmap_9
-[00020728] 303c 0080                 move.w     #$0080,d0
 edic_bitmap_16:
+[00020728] 303c 0080                 move.w     #$0080,d0
 [0002072c] d047                      add.w      d7,d0
 [0002072e] b06f 0010                 cmp.w      16(a7),d0
 [00020732] 6d00 012c                 blt        edic_bitmap_10
@@ -3163,8 +3163,8 @@ edic_bitmap_16:
 [00020760] 663e                      bne.s      edic_bitmap_11
 [00020762] 7a00                      moveq.l    #0,d5
 [00020764] 602e                      bra.s      edic_bitmap_12
-[00020766] 3006                      move.w     d6,d0
 edic_bitmap_13:
+[00020766] 3006                      move.w     d6,d0
 [00020768] c1c3                      muls.w     d3,d0
 [0002076a] d044                      add.w      d4,d0
 [0002076c] 48c0                      ext.l      d0

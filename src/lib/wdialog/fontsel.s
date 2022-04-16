@@ -177,8 +177,8 @@ Ash_font_17:
 [0006fdae] 2028 0006                 move.l     6(a0),d0
 [0006fdb2] 6700 008e                 beq        Ash_font_15
 [0006fdb6] 4eb9 0004 ef0c            jsr        Amo_unbusy
-[0006fdbc] 2f39 000e 692a            move.l     _globl,-(a7)
 Ash_font_18:
+[0006fdbc] 2f39 000e 692a            move.l     _globl,-(a7)
 [0006fdc2] 206f 000a                 movea.l    10(a7),a0
 [0006fdc6] 4868 0020                 pea.l      32(a0)
 [0006fdca] 206f 000e                 movea.l    14(a7),a0
@@ -698,8 +698,8 @@ FontClosed:
 [0007041e] 41f9 000e 2fd8            lea.l      $000E2FD8,a0
 [00070424] 43d7                      lea.l      (a7),a1
 [00070426] 700f                      moveq.l    #15,d0
-[00070428] 22d8                      move.l     (a0)+,(a1)+
 FontClosed_1:
+[00070428] 22d8                      move.l     (a0)+,(a1)+
 [0007042a] 51c8 fffc                 dbf        d0,FontClosed_1
 [0007042e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00070434] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -732,8 +732,8 @@ FontRedraw:
 [000704aa] 41f9 000e 3018            lea.l      $000E3018,a0
 [000704b0] 43d7                      lea.l      (a7),a1
 [000704b2] 700f                      moveq.l    #15,d0
-[000704b4] 22d8                      move.l     (a0)+,(a1)+
 FontRedraw_1:
+[000704b4] 22d8                      move.l     (a0)+,(a1)+
 [000704b6] 51c8 fffc                 dbf        d0,FontRedraw_1
 [000704ba] 2079 0010 ee4e            movea.l    ACSblk,a0
 [000704c0] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -774,8 +774,8 @@ FontArrowed:
 [0007055c] 41f9 000e 3058            lea.l      $000E3058,a0
 [00070562] 43d7                      lea.l      (a7),a1
 [00070564] 700f                      moveq.l    #15,d0
-[00070566] 22d8                      move.l     (a0)+,(a1)+
 FontArrowed_1:
+[00070566] 22d8                      move.l     (a0)+,(a1)+
 [00070568] 51c8 fffc                 dbf        d0,FontArrowed_1
 [0007056c] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00070572] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -822,8 +822,8 @@ FontFulled:
 [00070606] 41f9 000e 3098            lea.l      $000E3098,a0
 [0007060c] 43d7                      lea.l      (a7),a1
 [0007060e] 700f                      moveq.l    #15,d0
-[00070610] 22d8                      move.l     (a0)+,(a1)+
 FontFulled_1:
+[00070610] 22d8                      move.l     (a0)+,(a1)+
 [00070612] 51c8 fffc                 dbf        d0,FontFulled_1
 [00070616] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0007061c] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -860,8 +860,8 @@ FontHSlide:
 [00070696] 41f9 000e 30d8            lea.l      $000E30D8,a0
 [0007069c] 43d7                      lea.l      (a7),a1
 [0007069e] 700f                      moveq.l    #15,d0
-[000706a0] 22d8                      move.l     (a0)+,(a1)+
 FontHSlide_1:
+[000706a0] 22d8                      move.l     (a0)+,(a1)+
 [000706a2] 51c8 fffc                 dbf        d0,FontHSlide_1
 [000706a6] 2079 0010 ee4e            movea.l    ACSblk,a0
 [000706ac] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -895,8 +895,8 @@ FontVSlide:
 [00070728] 41f9 000e 3118            lea.l      $000E3118,a0
 [0007072e] 43d7                      lea.l      (a7),a1
 [00070730] 700f                      moveq.l    #15,d0
-[00070732] 22d8                      move.l     (a0)+,(a1)+
 FontVSlide_1:
+[00070732] 22d8                      move.l     (a0)+,(a1)+
 [00070734] 51c8 fffc                 dbf        d0,FontVSlide_1
 [00070738] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0007073e] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -930,8 +930,8 @@ FontKeys:
 [000707ba] 41f9 000e 3158            lea.l      $000E3158,a0
 [000707c0] 43d7                      lea.l      (a7),a1
 [000707c2] 700f                      moveq.l    #15,d0
-[000707c4] 22d8                      move.l     (a0)+,(a1)+
 FontKeys_1:
+[000707c4] 22d8                      move.l     (a0)+,(a1)+
 [000707c6] 51c8 fffc                 dbf        d0,FontKeys_1
 [000707ca] 2079 0010 ee4e            movea.l    ACSblk,a0
 [000707d0] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -962,8 +962,8 @@ FontTopped:
 [00070838] 41f9 000e 3198            lea.l      $000E3198,a0
 [0007083e] 43d7                      lea.l      (a7),a1
 [00070840] 700f                      moveq.l    #15,d0
-[00070842] 22d8                      move.l     (a0)+,(a1)+
 FontTopped_1:
+[00070842] 22d8                      move.l     (a0)+,(a1)+
 [00070844] 51c8 fffc                 dbf        d0,FontTopped_1
 [00070848] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0007084e] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -996,8 +996,8 @@ FontMoved:
 [000708c4] 41f9 000e 31d8            lea.l      $000E31D8,a0
 [000708ca] 43d7                      lea.l      (a7),a1
 [000708cc] 700f                      moveq.l    #15,d0
-[000708ce] 22d8                      move.l     (a0)+,(a1)+
 FontMoved_1:
+[000708ce] 22d8                      move.l     (a0)+,(a1)+
 [000708d0] 51c8 fffc                 dbf        d0,FontMoved_1
 [000708d4] 2079 0010 ee4e            movea.l    ACSblk,a0
 [000708da] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1072,8 +1072,8 @@ FontSized:
 [00070a02] 41f9 000e 3218            lea.l      $000E3218,a0
 [00070a08] 43d7                      lea.l      (a7),a1
 [00070a0a] 700f                      moveq.l    #15,d0
-[00070a0c] 22d8                      move.l     (a0)+,(a1)+
 FontSized_1:
+[00070a0c] 22d8                      move.l     (a0)+,(a1)+
 [00070a0e] 51c8 fffc                 dbf        d0,FontSized_1
 [00070a12] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00070a18] 3f68 0262 0002            move.w     610(a0),2(a7)
@@ -1179,8 +1179,8 @@ FontClicked:
 [00070b92] 41f9 000e 3258            lea.l      $000E3258,a0
 [00070b98] 43d7                      lea.l      (a7),a1
 [00070b9a] 700f                      moveq.l    #15,d0
-[00070b9c] 22d8                      move.l     (a0)+,(a1)+
 FontClicked_1:
+[00070b9c] 22d8                      move.l     (a0)+,(a1)+
 [00070b9e] 51c8 fffc                 dbf        d0,FontClicked_1
 [00070ba2] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00070ba8] 3f68 0262 0002            move.w     610(a0),2(a7)

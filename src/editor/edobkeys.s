@@ -8,8 +8,8 @@ key_code:
 [0003325e] 2448                      movea.l    a0,a2
 [00033260] 4243                      clr.w      d3
 [00033262] 534a                      subq.w     #1,a2
-[00033264] 524a                      addq.w     #1,a2
 key_code_2:
+[00033264] 524a                      addq.w     #1,a2
 [00033266] 0c12 0007                 cmpi.b     #$07,(a2)
 [0003326a] 6606                      bne.s      key_code_1
 [0003326c] 867c 8800                 or.w       #$8800,d3
@@ -89,8 +89,8 @@ key_string_3:
 [00033330] 4245                      clr.w      d5
 [00033332] 47f9 000c cd3a            lea.l      nktab,a3
 [00033338] 601e                      bra.s      key_string_4
-[0003333a] 3005                      move.w     d5,d0
 key_string_7:
+[0003333a] 3005                      move.w     d5,d0
 [0003333c] d040                      add.w      d0,d0
 [0003333e] d045                      add.w      d5,d0
 [00033340] d040                      add.w      d0,d0

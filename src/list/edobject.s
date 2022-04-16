@@ -53,8 +53,8 @@ copy_obj_1:
 [00035a68] 2c6c 0004                 movea.l    4(a4),a6
 [00035a6c] 4244                      clr.w      d4
 [00035a6e] 6020                      bra.s      copy_obj_3
-[00035a70] 3204                      move.w     d4,d1
 copy_obj_4:
+[00035a70] 3204                      move.w     d4,d1
 [00035a72] 48c1                      ext.l      d1
 [00035a74] 2001                      move.l     d1,d0
 [00035a76] e788                      lsl.l      #3,d0
@@ -99,8 +99,8 @@ del_object_2:
 [00035adc] 286b 0004                 movea.l    4(a3),a4
 [00035ae0] 4244                      clr.w      d4
 [00035ae2] 601a                      bra.s      del_object_3
-[00035ae4] 3204                      move.w     d4,d1
 del_object_4:
+[00035ae4] 3204                      move.w     d4,d1
 [00035ae6] 48c1                      ext.l      d1
 [00035ae8] 2001                      move.l     d1,d0
 [00035aea] e788                      lsl.l      #3,d0

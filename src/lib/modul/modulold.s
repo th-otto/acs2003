@@ -33,8 +33,8 @@ Aob_create23x:
 [00071632] 2848                      movea.l    a0,a4
 [00071634] 7600                      moveq.l    #0,d3
 [00071636] 2448                      movea.l    a0,a2
-[00071638] d6bc 0000 0018            add.l      #$00000018,d3
 Aob_create23x_1:
+[00071638] d6bc 0000 0018            add.l      #$00000018,d3
 [0007163e] 7020                      moveq.l    #32,d0
 [00071640] 204a                      movea.l    a2,a0
 [00071642] 45ea 0018                 lea.l      24(a2),a2
@@ -51,8 +51,8 @@ Aob_create23x_1:
 [00071666] 4257                      clr.w      (a7)
 [00071668] 244b                      movea.l    a3,a2
 [0007166a] 2a4a                      movea.l    a2,a5
-[0007166c] 302a 0008                 move.w     8(a2),d0
 Aob_create23x_12:
+[0007166c] 302a 0008                 move.w     8(a2),d0
 [00071670] c07c 8000                 and.w      #$8000,d0
 [00071674] 6600 00ba                 bne        Aob_create23x_3
 [00071678] 322a 000a                 move.w     10(a2),d1
@@ -226,8 +226,8 @@ Awi_create23x_10:
 [0007187c] 4bf9 000e 0d26            lea.l      Aroot_wi,a5
 [00071882] 49f9 0010 ee4e            lea.l      ACSblk,a4
 [00071888] 6000 007a                 bra.w      Awi_create23x_11
-[0007188c] 3003                      move.w     d3,d0
 Awi_create23x_16:
+[0007188c] 3003                      move.w     d3,d0
 [0007188e] e548                      lsl.w      #2,d0
 [00071890] 2233 0000                 move.l     0(a3,d0.w),d1
 [00071894] 666c                      bne.s      Awi_create23x_12

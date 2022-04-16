@@ -495,8 +495,8 @@ Af_readdirOld_2:
 [0004baa8] 4eb9 0008 0d3e            jsr        Fsfirst
 [0004baae] 3f40 000c                 move.w     d0,12(a7)
 [0004bab2] 6000 0148                 bra        Af_readdirOld_3
-[0004bab6] 43f9 000e 0861            lea.l      $000E0861,a1
 Af_readdirOld_12:
+[0004bab6] 43f9 000e 0861            lea.l      $000E0861,a1
 [0004babc] 41ef 002c                 lea.l      44(a7),a0
 [0004bac0] 4eb9 0004 665a            jsr        Ast_cmp
 [0004bac6] 4a40                      tst.w      d0
@@ -692,8 +692,8 @@ Af_readdirNew_8:
 [0004bd0c] 7000                      moveq.l    #0,d0
 [0004bd0e] 2f40 0038                 move.l     d0,56(a7)
 [0004bd12] 2f40 003c                 move.l     d0,60(a7)
-[0004bd16] 486f 0044                 pea.l      68(a7)
 Af_readdirNew_36:
+[0004bd16] 486f 0044                 pea.l      68(a7)
 [0004bd1a] 43ef 0004                 lea.l      4(a7),a1
 [0004bd1e] 206f 0038                 movea.l    56(a7),a0
 [0004bd22] 222f 004c                 move.l     76(a7),d1
@@ -710,8 +710,8 @@ Af_readdirNew_36:
 [0004bd4a] 4eb9 0008 0c16            jsr        Dreaddir
 [0004bd50] 2f40 0050                 move.l     d0,80(a7)
 [0004bd54] 6016                      bra.s      Af_readdirNew_11
-[0004bd56] 206f 0034                 movea.l    52(a7),a0
 Af_readdirNew_12:
+[0004bd56] 206f 0034                 movea.l    52(a7),a0
 [0004bd5a] 222f 0048                 move.l     72(a7),d1
 [0004bd5e] 302f 0042                 move.w     66(a7),d0
 [0004bd62] 4eb9 0008 0c16            jsr        Dreaddir
@@ -737,8 +737,8 @@ Af_readdirNew_13:
 [0004bd98] 6046                      bra.s      Af_readdirNew_17
 Af_readdirNew_10:
 [0004bd9a] 6020                      bra.s      Af_readdirNew_18
-[0004bd9c] 486f 0044                 pea.l      68(a7)
 Af_readdirNew_19:
+[0004bd9c] 486f 0044                 pea.l      68(a7)
 [0004bda0] 43ef 0004                 lea.l      4(a7),a1
 [0004bda4] 206f 0038                 movea.l    56(a7),a0
 [0004bda8] 222f 004c                 move.l     76(a7),d1
@@ -991,8 +991,8 @@ Af_freedir:
 [0004c0a6] 514f                      subq.w     #8,a7
 [0004c0a8] 2f48 0004                 move.l     a0,4(a7)
 [0004c0ac] 6026                      bra.s      Af_freedir_1
-[0004c0ae] 2eaf 0004                 move.l     4(a7),(a7)
 Af_freedir_3:
+[0004c0ae] 2eaf 0004                 move.l     4(a7),(a7)
 [0004c0b2] 206f 0004                 movea.l    4(a7),a0
 [0004c0b6] 2f68 0004 0004            move.l     4(a0),4(a7)
 [0004c0bc] 2057                      movea.l    (a7),a0
@@ -1099,8 +1099,8 @@ Af_quote_1:
 [0004c1ea] 4257                      clr.w      (a7)
 [0004c1ec] 2f6f 000e 0006            move.l     14(a7),6(a7)
 [0004c1f2] 6014                      bra.s      Af_quote_3
-[0004c1f4] 206f 0006                 movea.l    6(a7),a0
 Af_quote_5:
+[0004c1f4] 206f 0006                 movea.l    6(a7),a0
 [0004c1f8] 1010                      move.b     (a0),d0
 [0004c1fa] b039 000e 087b            cmp.b      $000E087B,d0
 [0004c200] 6602                      bne.s      Af_quote_4
@@ -1121,8 +1121,8 @@ Af_quote_3:
 [0004c22a] 41f0 0001                 lea.l      1(a0,d0.w),a0
 [0004c22e] 2f48 0002                 move.l     a0,2(a7)
 [0004c232] 602e                      bra.s      Af_quote_6
-[0004c234] 206f 0006                 movea.l    6(a7),a0
 Af_quote_8:
+[0004c234] 206f 0006                 movea.l    6(a7),a0
 [0004c238] 1010                      move.b     (a0),d0
 [0004c23a] b039 000e 087e            cmp.b      $000E087E,d0
 [0004c240] 660e                      bne.s      Af_quote_7
@@ -1190,8 +1190,8 @@ Af_unquote_1:
 [0004c312] 5248                      addq.w     #1,a0
 [0004c314] 2f48 0006                 move.l     a0,6(a7)
 [0004c318] 6034                      bra.s      Af_unquote_3
-[0004c31a] 206f 0006                 movea.l    6(a7),a0
 Af_unquote_7:
+[0004c31a] 206f 0006                 movea.l    6(a7),a0
 [0004c31e] 1010                      move.b     (a0),d0
 [0004c320] b017                      cmp.b      (a7),d0
 [0004c322] 6618                      bne.s      Af_unquote_4
@@ -1243,8 +1243,8 @@ Af_parseCmdLine_1:
 Af_parseCmdLine_3:
 [0004c39c] 2f6f 0004 0092            move.l     4(a7),146(a7)
 [0004c3a2] 6000 00f6                 bra        Af_parseCmdLine_4
-[0004c3a6] 206f 0092                 movea.l    146(a7),a0
 Af_parseCmdLine_12:
+[0004c3a6] 206f 0092                 movea.l    146(a7),a0
 [0004c3aa] 4eb9 0004 663c            jsr        Ast_alltrim
 [0004c3b0] 206f 0092                 movea.l    146(a7),a0
 [0004c3b4] 1f50 0088                 move.b     (a0),136(a7)
@@ -1258,8 +1258,8 @@ Af_parseCmdLine_12:
 [0004c3d2] 41ef 0008                 lea.l      8(a7),a0
 [0004c3d6] 2f48 008e                 move.l     a0,142(a7)
 [0004c3da] 6034                      bra.s      Af_parseCmdLine_6
-[0004c3dc] 206f 0092                 movea.l    146(a7),a0
 Af_parseCmdLine_9:
+[0004c3dc] 206f 0092                 movea.l    146(a7),a0
 [0004c3e0] 1010                      move.b     (a0),d0
 [0004c3e2] b02f 0088                 cmp.b      136(a7),d0
 [0004c3e6] 6616                      bne.s      Af_parseCmdLine_7

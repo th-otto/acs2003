@@ -258,8 +258,8 @@ out_acs:
 [00019f6c] 4bea 0084                 lea.l      132(a2),a5
 [00019f70] 4243                      clr.w      d3
 [00019f72] 6048                      bra.s      out_acs_2
-[00019f74] 4a43                      tst.w      d3
 out_acs_6:
+[00019f74] 4a43                      tst.w      d3
 [00019f76] 670a                      beq.s      out_acs_3
 [00019f78] 41eb 0087                 lea.l      135(a3),a0
 [00019f7c] 4eb9 0001 8374            jsr        save_string
@@ -291,8 +291,8 @@ out_acs_2:
 [00019fc6] 4eb9 0001 8374            jsr        save_string
 [00019fcc] 4243                      clr.w      d3
 [00019fce] 6000 008e                 bra        out_acs_7
-[00019fd2] 3f03                      move.w     d3,-(a7)
 out_acs_11:
+[00019fd2] 3f03                      move.w     d3,-(a7)
 [00019fd4] 43eb 00b1                 lea.l      177(a3),a1
 [00019fd8] 41ef 0002                 lea.l      2(a7),a0
 [00019fdc] 4eb9 0008 15ac            jsr        sprintf
@@ -566,8 +566,8 @@ out_icon:
 [0001a3ac] 4244                      clr.w      d4
 [0001a3ae] 45f9 0010 7f66            lea.l      iostring,a2
 [0001a3b4] 6000 01ca                 bra        out_icon_2
-[0001a3b8] 3004                      move.w     d4,d0
 out_icon_15:
+[0001a3b8] 3004                      move.w     d4,d0
 [0001a3ba] 48c0                      ext.l      d0
 [0001a3bc] e588                      lsl.l      #2,d0
 [0001a3be] 2057                      movea.l    (a7),a0
@@ -609,8 +609,8 @@ out_icon_4:
 [0001a42a] 4eb9 0001 8374            jsr        save_string
 [0001a430] 4247                      clr.w      d7
 [0001a432] 602c                      bra.s      out_icon_5
-[0001a434] 3f1e                      move.w     (a6)+,-(a7)
 out_icon_7:
+[0001a434] 3f1e                      move.w     (a6)+,-(a7)
 [0001a436] 43eb 01bf                 lea.l      447(a3),a1
 [0001a43a] 204a                      movea.l    a2,a0
 [0001a43c] 4eb9 0008 15ac            jsr        sprintf
@@ -638,8 +638,8 @@ out_icon_5:
 [0001a47a] 4eb9 0001 8374            jsr        save_string
 [0001a480] 4247                      clr.w      d7
 [0001a482] 602c                      bra.s      out_icon_8
-[0001a484] 3f1e                      move.w     (a6)+,-(a7)
 out_icon_10:
+[0001a484] 3f1e                      move.w     (a6)+,-(a7)
 [0001a486] 43eb 01bf                 lea.l      447(a3),a1
 [0001a48a] 204a                      movea.l    a2,a0
 [0001a48c] 4eb9 0008 15ac            jsr        sprintf
@@ -739,8 +739,8 @@ out_mouse:
 [0001a5bc] 4244                      clr.w      d4
 [0001a5be] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001a5c4] 6000 0104                 bra        out_mouse_2
-[0001a5c8] 3004                      move.w     d4,d0
 out_mouse_11:
+[0001a5c8] 3004                      move.w     d4,d0
 [0001a5ca] 48c0                      ext.l      d0
 [0001a5cc] e588                      lsl.l      #2,d0
 [0001a5ce] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -773,8 +773,8 @@ out_mouse_4:
 [0001a630] 4dee 000a                 lea.l      10(a6),a6
 [0001a634] 7a0f                      moveq.l    #15,d5
 [0001a636] 602a                      bra.s      out_mouse_5
-[0001a638] 3f1e                      move.w     (a6)+,-(a7)
 out_mouse_7:
+[0001a638] 3f1e                      move.w     (a6)+,-(a7)
 [0001a63a] 43eb 01bf                 lea.l      447(a3),a1
 [0001a63e] 204d                      movea.l    a5,a0
 [0001a640] 4eb9 0008 15ac            jsr        sprintf
@@ -799,8 +799,8 @@ out_mouse_5:
 [0001a678] 4eb9 0001 8374            jsr        save_string
 [0001a67e] 7a0f                      moveq.l    #15,d5
 [0001a680] 602a                      bra.s      out_mouse_8
-[0001a682] 3f1e                      move.w     (a6)+,-(a7)
 out_mouse_10:
+[0001a682] 3f1e                      move.w     (a6)+,-(a7)
 [0001a684] 43eb 01bf                 lea.l      447(a3),a1
 [0001a688] 204d                      movea.l    a5,a0
 [0001a68a] 4eb9 0008 15ac            jsr        sprintf
@@ -849,8 +849,8 @@ out_image:
 [0001a70c] 4244                      clr.w      d4
 [0001a70e] 45f9 0010 7f66            lea.l      iostring,a2
 [0001a714] 6000 00ec                 bra        out_image_2
-[0001a718] 3004                      move.w     d4,d0
 out_image_8:
+[0001a718] 3004                      move.w     d4,d0
 [0001a71a] 48c0                      ext.l      d0
 [0001a71c] e588                      lsl.l      #2,d0
 [0001a71e] 2057                      movea.l    (a7),a0
@@ -873,8 +873,8 @@ out_image_8:
 [0001a756] 4eb9 0001 8374            jsr        save_string
 [0001a75c] 4246                      clr.w      d6
 [0001a75e] 602c                      bra.s      out_image_3
-[0001a760] 3f1e                      move.w     (a6)+,-(a7)
 out_image_5:
+[0001a760] 3f1e                      move.w     (a6)+,-(a7)
 [0001a762] 43eb 01bf                 lea.l      447(a3),a1
 [0001a766] 204a                      movea.l    a2,a0
 [0001a768] 4eb9 0008 15ac            jsr        sprintf
@@ -954,8 +954,8 @@ out_obj:
 [0001a85e] 47f9 0010 7f66            lea.l      iostring,a3
 [0001a864] 49ef 0018                 lea.l      24(a7),a4
 [0001a868] 6000 0350                 bra        out_obj_2
-[0001a86c] 3004                      move.w     d4,d0
 out_obj_22:
+[0001a86c] 3004                      move.w     d4,d0
 [0001a86e] 48c0                      ext.l      d0
 [0001a870] e588                      lsl.l      #2,d0
 [0001a872] 206f 0034                 movea.l    52(a7),a0
@@ -974,8 +974,8 @@ out_obj_22:
 [0001a8a4] 3486                      move.w     d6,(a2)
 [0001a8a6] 4247                      clr.w      d7
 [0001a8a8] 6000 0076                 bra.w      out_obj_3
-[0001a8ac] 206f 0030                 movea.l    48(a7),a0
 out_obj_7:
+[0001a8ac] 206f 0030                 movea.l    48(a7),a0
 [0001a8b0] 3028 0038                 move.w     56(a0),d0
 [0001a8b4] c07c 0500                 and.w      #$0500,d0
 [0001a8b8] b07c 0100                 cmp.w      #$0100,d0
@@ -1024,8 +1024,8 @@ out_obj_3:
 [0001a92a] 2a68 0004                 movea.l    4(a0),a5
 [0001a92e] 4247                      clr.w      d7
 [0001a930] 6000 0276                 bra        out_obj_8
-[0001a934] 7018                      moveq.l    #24,d0
 out_obj_21:
+[0001a934] 7018                      moveq.l    #24,d0
 [0001a936] 43ed 0008                 lea.l      8(a5),a1
 [0001a93a] 204c                      movea.l    a4,a0
 [0001a93c] 4eb9 0008 3500            jsr        memcpy
@@ -1243,8 +1243,8 @@ out_data:
 [0001abf8] 4244                      clr.w      d4
 [0001abfa] 49f9 0010 7f66            lea.l      iostring,a4
 [0001ac00] 6000 00b4                 bra        out_data_2
-[0001ac04] 3004                      move.w     d4,d0
 out_data_9:
+[0001ac04] 3004                      move.w     d4,d0
 [0001ac06] 48c0                      ext.l      d0
 [0001ac08] e588                      lsl.l      #2,d0
 [0001ac0a] 2a72 0800                 movea.l    0(a2,d0.l),a5
@@ -1276,8 +1276,8 @@ out_data_5:
 [0001ac62] 2a6d 0004                 movea.l    4(a5),a5
 [0001ac66] 7c00                      moveq.l    #0,d6
 [0001ac68] 602e                      bra.s      out_data_6
-[0001ac6a] 3f1d                      move.w     (a5)+,-(a7)
 out_data_8:
+[0001ac6a] 3f1d                      move.w     (a5)+,-(a7)
 [0001ac6c] 43eb 01bf                 lea.l      447(a3),a1
 [0001ac70] 204c                      movea.l    a4,a0
 [0001ac72] 4eb9 0008 15ac            jsr        sprintf
@@ -1331,8 +1331,8 @@ out_string:
 [0001acf2] 49f9 000a 59c8            lea.l      $000A59C8,a4
 [0001acf8] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001acfe] 6000 0162                 bra        out_string_2
-[0001ad02] 3004                      move.w     d4,d0
 out_string_20:
+[0001ad02] 3004                      move.w     d4,d0
 [0001ad04] 48c0                      ext.l      d0
 [0001ad06] e588                      lsl.l      #2,d0
 [0001ad08] 2c72 0800                 movea.l    0(a2,d0.l),a6
@@ -1364,8 +1364,8 @@ out_string_5:
 [0001ad62] 4eb9 0001 8374            jsr        save_string
 [0001ad68] 2c6e 0004                 movea.l    4(a6),a6
 [0001ad6c] 6000 00e2                 bra        out_string_6
-[0001ad70] 1016                      move.b     (a6),d0
 out_string_19:
+[0001ad70] 1016                      move.b     (a6),d0
 [0001ad72] 4880                      ext.w      d0
 [0001ad74] b07c 000b                 cmp.w      #$000B,d0
 [0001ad78] 6762                      beq.s      out_string_7
@@ -1476,8 +1476,8 @@ out_tedi:
 [0001ae9a] 4244                      clr.w      d4
 [0001ae9c] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001aea2] 6072                      bra.s      out_tedi_2
-[0001aea4] 3004                      move.w     d4,d0
 out_tedi_3:
+[0001aea4] 3004                      move.w     d4,d0
 [0001aea6] 48c0                      ext.l      d0
 [0001aea8] e588                      lsl.l      #2,d0
 [0001aeaa] 2672 0800                 movea.l    0(a2,d0.l),a3
@@ -1531,8 +1531,8 @@ out_user:
 [0001af4e] 4244                      clr.w      d4
 [0001af50] 4df9 0010 7f66            lea.l      iostring,a6
 [0001af56] 6000 00d4                 bra        out_user_2
-[0001af5a] 3004                      move.w     d4,d0
 out_user_3:
+[0001af5a] 3004                      move.w     d4,d0
 [0001af5c] 48c0                      ext.l      d0
 [0001af5e] e588                      lsl.l      #2,d0
 [0001af60] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -1607,8 +1607,8 @@ out_window:
 [0001b066] 4244                      clr.w      d4
 [0001b068] 4df9 0010 7f66            lea.l      iostring,a6
 [0001b06e] 6000 02f2                 bra        out_window_2
-[0001b072] 3004                      move.w     d4,d0
 out_window_3:
+[0001b072] 3004                      move.w     d4,d0
 [0001b074] 48c0                      ext.l      d0
 [0001b076] e588                      lsl.l      #2,d0
 [0001b078] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -1807,8 +1807,8 @@ out_refs:
 [0001b396] 4244                      clr.w      d4
 [0001b398] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001b39e] 605e                      bra.s      out_refs_2
-[0001b3a0] 3004                      move.w     d4,d0
 out_refs_5:
+[0001b3a0] 3004                      move.w     d4,d0
 [0001b3a2] 48c0                      ext.l      d0
 [0001b3a4] e588                      lsl.l      #2,d0
 [0001b3a6] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -1863,8 +1863,8 @@ out_declproto:
 [0001b43e] 4244                      clr.w      d4
 [0001b440] 4bf9 0010 7f66            lea.l      iostring,a5
 [0001b446] 6000 024e                 bra        out_declproto_2
-[0001b44a] 3004                      move.w     d4,d0
 out_declproto_27:
+[0001b44a] 3004                      move.w     d4,d0
 [0001b44c] 48c0                      ext.l      d0
 [0001b44e] e588                      lsl.l      #2,d0
 [0001b450] 2872 0800                 movea.l    0(a2,d0.l),a4
@@ -2206,3 +2206,186 @@ pc_output_2:
 [0001b854] 4cdf 3c08                 movem.l    (a7)+,d3/a2-a5
 [0001b858] 4e75                      rts
 
+	.data
+
+xacc_types:
+[000a599e]                           dc.w $0000
+[000a59a0]                           dc.w $0057
+[000a59a2]                           dc.w $5000
+[000a59a4]                           dc.w $4454
+[000a59a6]                           dc.w $0045
+[000a59a8]                           dc.w $4400
+[000a59aa]                           dc.w $4442
+[000a59ac]                           dc.w $0053
+[000a59ae]                           dc.w $5300
+[000a59b0]                           dc.w $5247
+[000a59b2]                           dc.w $0056
+[000a59b4]                           dc.w $4700
+[000a59b6]                           dc.w $4747
+[000a59b8]                           dc.w $004d
+[000a59ba]                           dc.w $5500
+[000a59bc]                           dc.w $4344
+[000a59be]                           dc.w $0044
+[000a59c0]                           dc.w $4300
+[000a59c2]                           dc.w $4454
+[000a59c4]                           dc.w $0050
+[000a59c6]                           dc.w $4500
+[000a59c8]                           dc.w $0025
+[000a59ca]                           dc.b '-12s',0
+[000a59cf]                           dc.b '&%-12s',0
+[000a59d6]                           dc.b '&%-12s[3]',0
+[000a59e0]                           dc.b $0d,$0a,$0d,$0a,'Adescr ACSdescr =',0
+[000a59f6]                           dc.b $0d,$0a,$09,'{',$0d,$0a,0
+[000a59fd]                           dc.b $09,$09,'"%s", %d,',$0d,$0a,$09,$09,'%2d, %2d,',$0d,$0a,$09,$09,'%#4x,',$0d,$0a,$09,$09,'"%s",',$0d,$0a,$09,$09,0
+[000a5a2c]                           dc.b 'ACS3.00',0
+[000a5a34]                           dc.b '&PUR_DESK',0
+[000a5a3e]                           dc.w $2c20
+[000a5a40]                           dc.w $004e
+[000a5a42]                           dc.b 'ULL',0
+[000a5a46]                           dc.b ',',$0d,$0a,$09,$09,'{',$0d,$0a,0
+[000a5a4f]                           dc.b ',',$0d,$0a,0
+[000a5a53]                           dc.b $09,$09,$09,'{%3d, NULL}',0
+[000a5a62]                           dc.b $09,$09,$09,'{255, &%s}',0
+[000a5a70]                           dc.b $0d,$0a,$09,$09,'},',$0d,$0a,0
+[000a5a79]                           dc.b 'ACS(%02d)',0
+[000a5a83]                           dc.b $09,$09,'"%s"',0
+[000a5a8a]                           dc.w $2c00
+[000a5a8c]                           dc.b $09,'};',$0d,$0a,0
+[000a5a92]                           dc.b $0d,$0a,$0d,$0a,' Aconfig ACSconfig =',0
+[000a5aab]                           dc.b $0d,$0a,$09,'{',$0d,$0a,$09,$09,0
+[000a5ab4]                           dc.w $7b22
+[000a5ab6]                           dc.w $0022
+[000a5ab8]                           dc.b ', "',0
+[000a5abc]                           dc.w $253b
+[000a5abe]                           dc.w $0022
+[000a5ac0]                           dc.w $2c20
+[000a5ac2]                           dc.w $0054
+[000a5ac4]                           dc.b 'RUE, ',0
+[000a5aca]                           dc.b 'FALSE, ',0
+[000a5ad2]                           dc.b '%i},',$0d,$0a,$09,$09,0
+[000a5adb]                           dc.b '4},',$0d,$0a,$09,$09,0
+[000a5ae3]                           dc.b ', ',$0d,$0a,$09,$09,0
+[000a5aea]                           dc.b '%i, ',0
+[000a5aef]                           dc.b ''%s', ',0
+[000a5af6]                           dc.b '0, ',0
+[000a5afa]                           dc.b 'ACSinit',0
+[000a5b02]                           dc.b $0d,$0a,$09,'};',$0d,$0a,0
+[000a5b0a]                           dc.b 'static CICON _C%d_%-s = {',$0d,$0a,$09,$09,'%d,',$0d,$0a,$09,$09,0
+[000a5b2f]                           dc.b ',',$0d,$0a,$09,$09,'&_C%d_%-s};',$0d,$0a,0
+[000a5b42]                           dc.b ',',$0d,$0a,$09,$09,'NULL};',$0d,$0a,0
+[000a5b50]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'ICONS',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a5b66]                           dc.b 'static INT16 _MSK_%-s [] = {',$0d,$0a,$09,$09,0
+[000a5b87]                           dc.b '%#06x, ',0
+[000a5b8f]                           dc.b '%#06x};',$0d,$0a,'static INT16 _DAT_%-s [] = {',$0d,$0a,$09,$09,0
+[000a5bb9]                           dc.b '%#06x};',$0d,$0a,0
+[000a5bc3]                           dc.b '       ',0
+[000a5bcb]                           dc.b 'static ',0
+[000a5bd3]                           dc.b 'CICONBLK %-s = {{',$0d,$0a,$09,$09,'_MSK_%-s, _DAT_%-s, %-s,',$0d,$0a,$09,$09,'%#6x, %2d, %2d, %2d, %2d, %2d, %2d, %2d, %2d, %2d, %2d},',0
+[000a5c3d]                           dc.b '&_C%d_%-s',0
+[000a5c47]                           dc.b '};',$0d,$0a,$0d,$0a,0
+[000a5c4e]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'MOUSEFORMS',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a5c69]                           dc.b 'MFORM %-s =',$0d,$0a,$09,$09,'{',$0d,$0a,$09,$09,$09,'%2d, %2d, %2d, %2d, %2d,',$0d,$0a,$09,$09,$09,'{',$0d,$0a,$09,$09,$09,$09,0
+[000a5ca3]                           dc.b '%#06x',$0d,$0a,$09,$09,$09,'},',$0d,$0a,$09,$09,$09,'{',$0d,$0a,$09,$09,$09,$09,0
+[000a5cbc]                           dc.b '%#06x',$0d,$0a,$09,$09,$09,'}',$0d,$0a,$09,$09,'};',$0d,$0a,$0d,$0a,$0d,$0a,0
+[000a5cd4]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'IMAGES',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a5ceb]                           dc.b 'static INT16 _IMG_%-s [] =',$0d,$0a,$09,'{',$0d,$0a,$09,$09,0
+[000a5d0e]                           dc.b '%#06x',$0d,$0a,$09,'};',$0d,$0a,0
+[000a5d1b]                           dc.b 'BITBLK %-s = {_IMG_%-s, %2d, %2d, %2d, %2d, %#04x};',$0d,$0a,$0d,$0a,0
+[000a5d53]                           dc.b '#define %-14s (%3d)',$0d,$0a,0
+[000a5d69]                           dc.b 'OBJECT  %-12s    ',0
+[000a5d7b]                           dc.b 'static OBJECT  _%02d_%-12s',0
+[000a5d96]                           dc.b ' = { %2d, %2d, %2d, %2d, %#6x, %#6x, ',0
+[000a5dbc]                           dc.b ' %#010lxL',$09,$09,$09,$09,0
+[000a5dca]                           dc.b '(long) %-12s',0
+[000a5dd7]                           dc.b '(long) &%-12s',0
+[000a5de5]                           dc.b ' , %2d, %2d, %2d, %2d };',$0d,$0a,0
+[000a5e00]                           dc.b 'static AOBJECT _%02da%-12s = {',0
+[000a5e1f]                           dc.b 'NULL',$09,$09,' ',0
+[000a5e27]                           dc.b 'NULL',$09,$09,$09,$09,0
+[000a5e30]                           dc.b '0',$09,$09,$09,$09,$09,0
+[000a5e37]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'DATAS',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a5e4d]                           dc.b 'INT16 %-12s [] =',$0d,$0a,$09,'{',$0d,$0a,$09,$09,$09,0
+[000a5e67]                           dc.b '%#06x',$0d,$0a,$09,'};',$0d,$0a,$0d,$0a,0
+[000a5e76]                           dc.b 'ACS(',0
+[000a5e7b]                           dc.b 'char %-12s [] = "',0
+[000a5e8d]                           dc.b $5c
+[000a5e8e]                           dc.w $6e00
+[000a5e90]                           dc.w $5c72
+[000a5e92]                           dc.w $005c
+[000a5e94]                           dc.w $7400
+[000a5e96]                           dc.w $5c76
+[000a5e98]                           dc.w $005c
+[000a5e9a]                           dc.w $6200
+[000a5e9c]                           dc.w $5c61
+[000a5e9e]                           dc.w $005c
+[000a5ea0]                           dc.w $6600
+[000a5ea2]                           dc.w $5c22
+[000a5ea4]                           dc.w $005c
+[000a5ea6]                           dc.w $5c00
+[000a5ea8]                           dc.w $2563
+[000a5eaa]                           dc.w $0022
+[000a5eac]                           dc.b ';',$0d,$0a,0
+[000a5eb0]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'TEDINFOS',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a5ec9]                           dc.b 'static TEDINFO %-12s = {%s, %s, %s, %d, %d, %d, %#x, %d, %d, %ld, %ld};',$0d,$0a,0
+[000a5f13]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'AUSERBLK',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a5f2c]                           dc.b 'static AUSERBLK %-12s = {%s, ',0
+[000a5f4a]                           dc.w $304c
+[000a5f4c]                           dc.w $000d
+[000a5f4e]                           dc.b $0a,$0d,$0a,'/*',$09,$09,'WINDOWS',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a5f65]                           dc.b 'Awindow %-12s =',$0d,$0a,$09,'{',$0d,$0a,$09,$09,0
+[000a5f7d]                           dc.b 'Awi_service',0
+[000a5f89]                           dc.b 'Awi_selfcreate',0
+[000a5f98]                           dc.b 'Awi_open',0
+[000a5fa1]                           dc.b 'Awi_init',0
+[000a5faa]                           dc.b ', 0, 0, -1,',$0d,$0a,$09,$09,0
+[000a5fba]                           dc.b '%#6x, {%2i, %2i, %2i, %2i},',$0d,$0a,$09,$09,0
+[000a5fda]                           dc.b '{0, 0, 0, 0}, {0, 0, 0, 0}, {-1, -1, -1, -1}, 0, 0,',$0d,$0a,$09,$09,0
+[000a6012]                           dc.b '%#6x,',$0d,$0a,$09,$09,0
+[000a601c]                           dc.b '%4d, %#6x, 0, -1,',$0d,$0a,$09,$09,0
+[000a6032]                           dc.b 'Awi_keys',0
+[000a603b]                           dc.b 'Awi_obchange',0
+[000a6048]                           dc.b 'Awi_redraw',0
+[000a6053]                           dc.b 'Awi_topped',0
+[000a605e]                           dc.b 'Awi_closed',0
+[000a6069]                           dc.b 'Awi_fulled',0
+[000a6074]                           dc.b 'Awi_arrowed',0
+[000a6080]                           dc.b 'Awi_hslid',0
+[000a608a]                           dc.b 'Awi_vslid',0
+[000a6094]                           dc.b 'Awi_sized',0
+[000a609e]                           dc.b 'Awi_moved',0
+[000a60a8]                           dc.b 'Awi_iconify',0
+[000a60b4]                           dc.b 'Awi_uniconify',0
+[000a60c2]                           dc.b 'Awi_gemscript',0
+[000a60d0]                           dc.b $0d,$0a,$09,'};',$0d,$0a,$0d,$0a,$0d,$0a,0
+[000a60dc]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'ANSI-C Routines',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a60fc]                           dc.b '/* '%s' Not yet defined by user */',$0d,$0a,0
+[000a6121]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'ANSI-C Prototypes',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a6143]                           dc.b 'static void %s( void );',$0d,$0a,0
+[000a615d]                           dc.b 'static INT16 CDECL %s( PARMBLK* pb );',$0d,$0a,0
+[000a6185]                           dc.b 'static INT16 %s( OBJECT *entry, INT16 task, void *in_out );',$0d,$0a,0
+[000a61c3]                           dc.b 'static INT16 %s( Awindow* wind );',$0d,$0a,0
+[000a61e7]                           dc.b 'static Awindow *%s( void *para );',$0d,$0a,0
+[000a620b]                           dc.b 'static INT16 %s( Awindow *wind, INT16 kstate, INT16 key );',$0d,$0a,0
+[000a6248]                           dc.b 'static void %s( Awindow *wind, INT16 obnr, INT16 state );',$0d,$0a,0
+[000a6284]                           dc.b 'static void %s( Awindow *wind, Axywh *area );',$0d,$0a,0
+[000a62b4]                           dc.b 'static void %s( Awindow *wind );',$0d,$0a,0
+[000a62d7]                           dc.b 'static void %s( Awindow *wind, INT16 pos, INT16 amount );',$0d,$0a,0
+[000a6313]                           dc.b 'static void %s( Awindow *wind, INT16 pos );',$0d,$0a,0
+[000a6341]                           dc.b 'static INT16 %s( Awindow *wind, INT16 task, void *in_out );',$0d,$0a,0
+[000a637f]                           dc.b 'static INT16 %s( Awindow *wind, INT16 all );',$0d,$0a,0
+[000a63ae]                           dc.b 'static INT16 %s( Awindow *wind, INT16 anz, char **cmds, A_GSAntwort *antwort );',$0d,$0a,0
+[000a6400]                           dc.b 'static INT16 %s( void );',$0d,$0a,0
+[000a641b]                           dc.b 'static INT16 %s( INT16 *message );',$0d,$0a,0
+[000a6440]                           dc.b 'static void %s( INT16 *button, INT16 *kreturn );',$0d,$0a,0
+[000a6473]                           dc.b 'static void %s( INT16 *kstate, INT16 *key );',$0d,$0a,0
+[000a64a2]                           dc.b 'static INT16 %s( INT16 anz, char **cmd, A_GSAntwort *antwort );',$0d,$0a,0
+[000a64e4]                           dc.b '/* %s Type %d ?? */',$0d,$0a,0
+[000a64fa]                           dc.b '.AH',0
+[000a64fe]                           dc.b 'ANSI C Code',0
+[000a650a]                           dc.b $0d,$0a,'/*',$09,$09,'GUI-LANGUAGE',$09,$09,'*/',$0d,$0a,0
+[000a6523]                           dc.b '#define ACS_LANG%d',$0d,$0a,0
+[000a6538]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'ALERT BOXES',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a6554]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'STRINGS',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a656c]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'MENU TREES',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a6587]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'POPUP TREES',$09,$09,'*/',$0d,$0a,$0d,$0a,0
+[000a65a3]                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'OBJECT TREES',$09,$09,'*/',$0d,$0a,$0d,$0a,0

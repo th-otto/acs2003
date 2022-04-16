@@ -203,8 +203,8 @@ copysub_ob:
 [0002d16e] 266a 0004                 movea.l    4(a2),a3
 [0002d172] 2a6c 0004                 movea.l    4(a4),a5
 [0002d176] 6042                      bra.s      copysub_ob_3
-[0002d178] 3205                      move.w     d5,d1
 copysub_ob_6:
+[0002d178] 3205                      move.w     d5,d1
 [0002d17a] 48c1                      ext.l      d1
 [0002d17c] 2001                      move.l     d1,d0
 [0002d17e] e788                      lsl.l      #3,d0
@@ -385,8 +385,8 @@ delsub_ob:
 [0002d31c] 3833 180a                 move.w     10(a3,d1.l),d4
 [0002d320] 4a44                      tst.w      d4
 [0002d322] 6b1e                      bmi.s      delsub_ob_1
-[0002d324] 3004                      move.w     d4,d0
 delsub_ob_2:
+[0002d324] 3004                      move.w     d4,d0
 [0002d326] 224a                      movea.l    a2,a1
 [0002d328] 204c                      movea.l    a4,a0
 [0002d32a] 6100 ffd8                 bsr.w      delsub_ob
@@ -431,8 +431,8 @@ free_ob:
 [0002d384] 3832 1808                 move.w     8(a2,d1.l),d4
 [0002d388] 3a04                      move.w     d4,d5
 [0002d38a] 6012                      bra.s      free_ob_2
-[0002d38c] 3c04                      move.w     d4,d6
 free_ob_3:
+[0002d38c] 3c04                      move.w     d4,d6
 [0002d38e] 3206                      move.w     d6,d1
 [0002d390] 48c1                      ext.l      d1
 [0002d392] 2001                      move.l     d1,d0
@@ -467,8 +467,8 @@ free_ob_5:
 [0002d3d2] e788                      lsl.l      #3,d0
 [0002d3d4] 3585 080a                 move.w     d5,10(a2,d0.l)
 [0002d3d8] 603c                      bra.s      free_ob_1
-[0002d3da] 3206                      move.w     d6,d1
 free_ob_6:
+[0002d3da] 3206                      move.w     d6,d1
 [0002d3dc] 48c1                      ext.l      d1
 [0002d3de] 2001                      move.l     d1,d0
 [0002d3e0] e788                      lsl.l      #3,d0
@@ -539,8 +539,8 @@ moveto_ob:
 moveto_ob_2:
 [0002d476] 3c04                      move.w     d4,d6
 [0002d478] 6002                      bra.s      moveto_ob_3
-[0002d47a] 3c05                      move.w     d5,d6
 moveto_ob_4:
+[0002d47a] 3c05                      move.w     d5,d6
 moveto_ob_3:
 [0002d47c] 3206                      move.w     d6,d1
 [0002d47e] 48c1                      ext.l      d1
@@ -572,8 +572,8 @@ moveto_ob_5:
 [0002d4ba] 6616                      bne.s      moveto_ob_6
 [0002d4bc] 3583 080a                 move.w     d3,10(a2,d0.l)
 [0002d4c0] 6026                      bra.s      moveto_ob_1
-[0002d4c2] 3206                      move.w     d6,d1
 moveto_ob_7:
+[0002d4c2] 3206                      move.w     d6,d1
 [0002d4c4] 48c1                      ext.l      d1
 [0002d4c6] 2001                      move.l     d1,d0
 [0002d4c8] e788                      lsl.l      #3,d0
@@ -604,8 +604,8 @@ pack_ob:
 [0002d504] 2600                      move.l     d0,d3
 [0002d506] 4244                      clr.w      d4
 [0002d508] 6042                      bra.s      pack_ob_1
-[0002d50a] 3204                      move.w     d4,d1
 pack_ob_5:
+[0002d50a] 3204                      move.w     d4,d1
 [0002d50c] 48c1                      ext.l      d1
 [0002d50e] 2001                      move.l     d1,d0
 [0002d510] e788                      lsl.l      #3,d0
@@ -613,8 +613,8 @@ pack_ob_5:
 [0002d514] e788                      lsl.l      #3,d0
 [0002d516] 0c73 ffff 080e            cmpi.w     #$FFFF,14(a3,d0.l)
 [0002d51c] 662c                      bne.s      pack_ob_2
-[0002d51e] 5343                      subq.w     #1,d3
 pack_ob_4:
+[0002d51e] 5343                      subq.w     #1,d3
 [0002d520] 04aa 0000 0038 000e       subi.l     #$00000038,14(a2)
 [0002d528] b644                      cmp.w      d4,d3
 [0002d52a] 6f24                      ble.s      pack_ob_3
@@ -700,8 +700,8 @@ unlink_ob_3:
 [0002d5ec] 3c32 0818                 move.w     24(a2,d0.l),d6
 [0002d5f0] 3e32 081a                 move.w     26(a2,d0.l),d7
 [0002d5f4] 3a04                      move.w     d4,d5
-[0002d5f6] 3205                      move.w     d5,d1
 unlink_ob_4:
+[0002d5f6] 3205                      move.w     d5,d1
 [0002d5f8] 48c1                      ext.l      d1
 [0002d5fa] 2001                      move.l     d1,d0
 [0002d5fc] e788                      lsl.l      #3,d0
@@ -722,8 +722,8 @@ unlink_ob_4:
 [0002d620] 3c32 0808                 move.w     8(a2,d0.l),d6
 [0002d624] 3a06                      move.w     d6,d5
 [0002d626] 6012                      bra.s      unlink_ob_5
-[0002d628] 3e06                      move.w     d6,d7
 unlink_ob_6:
+[0002d628] 3e06                      move.w     d6,d7
 [0002d62a] 3207                      move.w     d7,d1
 [0002d62c] 48c1                      ext.l      d1
 [0002d62e] 2001                      move.l     d1,d0
@@ -745,8 +745,8 @@ unlink_ob_5:
 [0002d652] 6616                      bne.s      unlink_ob_7
 [0002d654] 3584 080a                 move.w     d4,10(a2,d0.l)
 [0002d658] 6026                      bra.s      unlink_ob_8
-[0002d65a] 3207                      move.w     d7,d1
 unlink_ob_9:
+[0002d65a] 3207                      move.w     d7,d1
 [0002d65c] 48c1                      ext.l      d1
 [0002d65e] 2001                      move.l     d1,d0
 [0002d660] e788                      lsl.l      #3,d0
@@ -932,8 +932,8 @@ resize_ob:
 [0002d85a] 4a42                      tst.w      d2
 [0002d85c] 6724                      beq.s      resize_ob_1
 [0002d85e] 601e                      bra.s      resize_ob_2
-[0002d860] 224b                      movea.l    a3,a1
 resize_ob_3:
+[0002d860] 224b                      movea.l    a3,a1
 [0002d862] 3406                      move.w     d6,d2
 [0002d864] 3205                      move.w     d5,d1
 [0002d866] 3004                      move.w     d4,d0

@@ -74,8 +74,8 @@ Alu_clearElem:
 [00070cba] 206f 0008                 movea.l    8(a7),a0
 [00070cbe] 2f50 0004                 move.l     (a0),4(a7)
 [00070cc2] 6032                      bra.s      Alu_clearElem_1
-[00070cc4] 206f 0004                 movea.l    4(a7),a0
 Alu_clearElem_3:
+[00070cc4] 206f 0004                 movea.l    4(a7),a0
 [00070cc8] 2e90                      move.l     (a0),(a7)
 [00070cca] 206f 000c                 movea.l    12(a7),a0
 [00070cce] 2028 0004                 move.l     4(a0),d0
@@ -170,8 +170,8 @@ Alu_insertElem_1:
 [00070dd8] 2057                      movea.l    (a7),a0
 [00070dda] 2f50 0004                 move.l     (a0),4(a7)
 [00070dde] 600c                      bra.s      Alu_insertElem_3
-[00070de0] 206f 0004                 movea.l    4(a7),a0
 Alu_insertElem_5:
+[00070de0] 206f 0004                 movea.l    4(a7),a0
 [00070de4] 2f50 0004                 move.l     (a0),4(a7)
 [00070de8] 52af 000c                 addq.l     #1,12(a7)
 Alu_insertElem_3:
@@ -252,8 +252,8 @@ Alu_deleteElem:
 [00070ec0] 206f 0004                 movea.l    4(a7),a0
 [00070ec4] 2f50 0008                 move.l     (a0),8(a7)
 [00070ec8] 6012                      bra.s      Alu_deleteElem_1
-[00070eca] 2f6f 0008 000c            move.l     8(a7),12(a7)
 Alu_deleteElem_3:
+[00070eca] 2f6f 0008 000c            move.l     8(a7),12(a7)
 [00070ed0] 206f 0008                 movea.l    8(a7),a0
 [00070ed4] 2f50 0008                 move.l     (a0),8(a7)
 [00070ed8] 52af 0010                 addq.l     #1,16(a7)
@@ -347,8 +347,8 @@ Alu_deleteForElem:
 [00070fc4] 2057                      movea.l    (a7),a0
 [00070fc6] 2f50 0008                 move.l     (a0),8(a7)
 [00070fca] 6000 00aa                 bra        Alu_deleteForElem_1
-[00070fce] 202f 0020                 move.l     32(a7),d0
 Alu_deleteForElem_10:
+[00070fce] 202f 0020                 move.l     32(a7),d0
 [00070fd2] 6718                      beq.s      Alu_deleteForElem_2
 [00070fd4] 206f 0008                 movea.l    8(a7),a0
 [00070fd8] 2268 0008                 movea.l    8(a0),a1
@@ -426,8 +426,8 @@ Alu_searchElem:
 [000710a4] 2057                      movea.l    (a7),a0
 [000710a6] 2f50 0004                 move.l     (a0),4(a7)
 [000710aa] 600c                      bra.s      Alu_searchElem_1
-[000710ac] 206f 0004                 movea.l    4(a7),a0
 Alu_searchElem_3:
+[000710ac] 206f 0004                 movea.l    4(a7),a0
 [000710b0] 2f50 0004                 move.l     (a0),4(a7)
 [000710b4] 52af 0008                 addq.l     #1,8(a7)
 Alu_searchElem_1:
@@ -469,8 +469,8 @@ Alu_searchForElem:
 [0007111e] 2057                      movea.l    (a7),a0
 [00071120] 2f50 0004                 move.l     (a0),4(a7)
 [00071124] 6030                      bra.s      Alu_searchForElem_1
-[00071126] 202f 001e                 move.l     30(a7),d0
 Alu_searchForElem_5:
+[00071126] 202f 001e                 move.l     30(a7),d0
 [0007112a] 6716                      beq.s      Alu_searchForElem_2
 [0007112c] 206f 0004                 movea.l    4(a7),a0
 [00071130] 2268 0008                 movea.l    8(a0),a1
@@ -613,8 +613,8 @@ Alu_skipElem:
 [00071274] 672a                      beq.s      Alu_skipElem_1
 [00071276] 4297                      clr.l      (a7)
 [00071278] 6012                      bra.s      Alu_skipElem_2
-[0007127a] 206f 0004                 movea.l    4(a7),a0
 Alu_skipElem_4:
+[0007127a] 206f 0004                 movea.l    4(a7),a0
 [0007127e] 2068 000c                 movea.l    12(a0),a0
 [00071282] 226f 0004                 movea.l    4(a7),a1
 [00071286] 2350 000c                 move.l     (a0),12(a1)
@@ -631,8 +631,8 @@ Alu_skipElem_3:
 Alu_skipElem_1:
 [000712a0] 4297                      clr.l      (a7)
 [000712a2] 6014                      bra.s      Alu_skipElem_6
-[000712a4] 206f 0004                 movea.l    4(a7),a0
 Alu_skipElem_7:
+[000712a4] 206f 0004                 movea.l    4(a7),a0
 [000712a8] 2068 000c                 movea.l    12(a0),a0
 [000712ac] 226f 0004                 movea.l    4(a7),a1
 [000712b0] 2368 0004 000c            move.l     4(a0),12(a1)
@@ -681,8 +681,8 @@ Alu_countForElem:
 [0007131a] 2057                      movea.l    (a7),a0
 [0007131c] 2f50 0004                 move.l     (a0),4(a7)
 [00071320] 6028                      bra.s      Alu_countForElem_1
-[00071322] 202f 001c                 move.l     28(a7),d0
 Alu_countForElem_4:
+[00071322] 202f 001c                 move.l     28(a7),d0
 [00071326] 6716                      beq.s      Alu_countForElem_2
 [00071328] 206f 0004                 movea.l    4(a7),a0
 [0007132c] 2268 0008                 movea.l    8(a0),a1
@@ -715,8 +715,8 @@ Alu_doForElem:
 [00071374] 2057                      movea.l    (a7),a0
 [00071376] 2f50 0004                 move.l     (a0),4(a7)
 [0007137a] 6036                      bra.s      Alu_doForElem_1
-[0007137c] 202f 0018                 move.l     24(a7),d0
 Alu_doForElem_4:
+[0007137c] 202f 0018                 move.l     24(a7),d0
 [00071380] 6716                      beq.s      Alu_doForElem_2
 [00071382] 206f 0004                 movea.l    4(a7),a0
 [00071386] 2268 0008                 movea.l    8(a0),a1

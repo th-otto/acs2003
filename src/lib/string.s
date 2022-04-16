@@ -73,8 +73,8 @@ Ast_toupper_1:
 [000464f2] 671e                      beq.s      Ast_toupper_2
 [000464f4] 2eaf 0004                 move.l     4(a7),(a7)
 [000464f8] 6012                      bra.s      Ast_toupper_3
-[000464fa] 2057                      movea.l    (a7),a0
 Ast_toupper_4:
+[000464fa] 2057                      movea.l    (a7),a0
 [000464fc] 1010                      move.b     (a0),d0
 [000464fe] 4880                      ext.w      d0
 [00046500] 4eb9 0004 4264            jsr        nkc_toup
@@ -101,8 +101,8 @@ Ast_tolower_1:
 [00046532] 671e                      beq.s      Ast_tolower_2
 [00046534] 2eaf 0004                 move.l     4(a7),(a7)
 [00046538] 6012                      bra.s      Ast_tolower_3
-[0004653a] 2057                      movea.l    (a7),a0
 Ast_tolower_4:
+[0004653a] 2057                      movea.l    (a7),a0
 [0004653c] 1010                      move.b     (a0),d0
 [0004653e] 4880                      ext.w      d0
 [00046540] 4eb9 0004 4274            jsr        nkc_tolo
@@ -127,8 +127,8 @@ Ast_ltrim:
 Ast_ltrim_1:
 [00046570] 2eaf 0008                 move.l     8(a7),(a7)
 [00046574] 6002                      bra.s      Ast_ltrim_2
-[00046576] 5297                      addq.l     #1,(a7)
 Ast_ltrim_4:
+[00046576] 5297                      addq.l     #1,(a7)
 Ast_ltrim_2:
 [00046578] 2057                      movea.l    (a7),a0
 [0004657a] 1010                      move.b     (a0),d0
@@ -147,8 +147,8 @@ Ast_ltrim_3:
 [00046598] 6322                      bls.s      Ast_ltrim_5
 [0004659a] 2f6f 0008 0004            move.l     8(a7),4(a7)
 [000465a0] 600e                      bra.s      Ast_ltrim_6
-[000465a2] 2057                      movea.l    (a7),a0
 Ast_ltrim_7:
+[000465a2] 2057                      movea.l    (a7),a0
 [000465a4] 226f 0004                 movea.l    4(a7),a1
 [000465a8] 1290                      move.b     (a0),(a1)
 [000465aa] 5297                      addq.l     #1,(a7)
@@ -173,16 +173,16 @@ Ast_rtrim:
 Ast_rtrim_1:
 [000465da] 2eaf 0004                 move.l     4(a7),(a7)
 [000465de] 6002                      bra.s      Ast_rtrim_2
-[000465e0] 5297                      addq.l     #1,(a7)
 Ast_rtrim_3:
+[000465e0] 5297                      addq.l     #1,(a7)
 Ast_rtrim_2:
 [000465e2] 2057                      movea.l    (a7),a0
 [000465e4] 1010                      move.b     (a0),d0
 [000465e6] 66f8                      bne.s      Ast_rtrim_3
 [000465e8] 5397                      subq.l     #1,(a7)
 [000465ea] 6002                      bra.s      Ast_rtrim_4
-[000465ec] 5397                      subq.l     #1,(a7)
 Ast_rtrim_6:
+[000465ec] 5397                      subq.l     #1,(a7)
 Ast_rtrim_4:
 [000465ee] 2057                      movea.l    (a7),a0
 [000465f0] b1ef 0004                 cmpa.l     4(a7),a0
@@ -251,8 +251,8 @@ Ast_cmp_2:
 [00046682] 2f6f 000c 0004            move.l     12(a7),4(a7)
 [00046688] 2eaf 0008                 move.l     8(a7),(a7)
 [0004668c] 6026                      bra.s      Ast_cmp_3
-[0004668e] 206f 0004                 movea.l    4(a7),a0
 Ast_cmp_9:
+[0004668e] 206f 0004                 movea.l    4(a7),a0
 [00046692] 1010                      move.b     (a0),d0
 [00046694] 2057                      movea.l    (a7),a0
 [00046696] b010                      cmp.b      (a0),d0
@@ -315,8 +315,8 @@ Ast_icmp_2:
 [00046712] 2f6f 000e 0004            move.l     14(a7),4(a7)
 [00046718] 2eaf 000a                 move.l     10(a7),(a7)
 [0004671c] 6044                      bra.s      Ast_icmp_3
-[0004671e] 206f 0004                 movea.l    4(a7),a0
 Ast_icmp_9:
+[0004671e] 206f 0004                 movea.l    4(a7),a0
 [00046722] 1010                      move.b     (a0),d0
 [00046724] 4880                      ext.w      d0
 [00046726] 4eb9 0004 4264            jsr        nkc_toup
@@ -387,8 +387,8 @@ Ast_ncmp_2:
 [000467c8] 2f6f 0010 0004            move.l     16(a7),4(a7)
 [000467ce] 2eaf 000c                 move.l     12(a7),(a7)
 [000467d2] 602a                      bra.s      Ast_ncmp_3
-[000467d4] 206f 0004                 movea.l    4(a7),a0
 Ast_ncmp_9:
+[000467d4] 206f 0004                 movea.l    4(a7),a0
 [000467d8] 1010                      move.b     (a0),d0
 [000467da] 2057                      movea.l    (a7),a0
 [000467dc] b010                      cmp.b      (a0),d0
@@ -463,8 +463,8 @@ Ast_incmp_2:
 [0004687c] 2f6f 0012 0004            move.l     18(a7),4(a7)
 [00046882] 2eaf 000e                 move.l     14(a7),(a7)
 [00046886] 6048                      bra.s      Ast_incmp_3
-[00046888] 206f 0004                 movea.l    4(a7),a0
 Ast_incmp_9:
+[00046888] 206f 0004                 movea.l    4(a7),a0
 [0004688c] 1010                      move.b     (a0),d0
 [0004688e] 4880                      ext.w      d0
 [00046890] 4eb9 0004 4264            jsr        nkc_toup
@@ -556,8 +556,8 @@ Ast_istr_2:
 [0004697a] 426f 0006                 clr.w      6(a7)
 [0004697e] 4257                      clr.w      (a7)
 [00046980] 6024                      bra.s      Ast_istr_3
-[00046982] 302f 0002                 move.w     2(a7),d0
 Ast_istr_7:
+[00046982] 302f 0002                 move.w     2(a7),d0
 [00046986] 226f 000c                 movea.l    12(a7),a1
 [0004698a] 206f 0008                 movea.l    8(a7),a0
 [0004698e] 6100 febc                 bsr        Ast_incmp
@@ -615,8 +615,8 @@ Ast_isEmpty:
 [000469f8] 2f48 0004                 move.l     a0,4(a7)
 [000469fc] 2eaf 0004                 move.l     4(a7),(a7)
 [00046a00] 6002                      bra.s      Ast_isEmpty_1
-[00046a02] 5297                      addq.l     #1,(a7)
 Ast_isEmpty_3:
+[00046a02] 5297                      addq.l     #1,(a7)
 Ast_isEmpty_1:
 [00046a04] 2017                      move.l     (a7),d0
 [00046a06] 6712                      beq.s      Ast_isEmpty_2
@@ -665,8 +665,8 @@ Ast_add_1:
 [00046a6c] 4210                      clr.b      (a0)
 [00046a6e] 426f 0010                 clr.w      16(a7)
 [00046a72] 6000 008a                 bra        Ast_add_3
-[00046a76] 206f 0012                 movea.l    18(a7),a0
 Ast_add_7:
+[00046a76] 206f 0012                 movea.l    18(a7),a0
 [00046a7a] 58af 0012                 addq.l     #4,18(a7)
 [00046a7e] 2f50 000c                 move.l     (a0),12(a7)
 [00046a82] 202f 000c                 move.l     12(a7),d0
@@ -842,10 +842,10 @@ Ast_filter_2:
 [00046c76] 2e88                      move.l     a0,(a7)
 [00046c78] 2f48 0004                 move.l     a0,4(a7)
 [00046c7c] 606a                      bra.s      Ast_filter_4
-[00046c7e] 6004                      bra.s      Ast_filter_5
 Ast_filter_13:
-[00046c80] 52af 0004                 addq.l     #1,4(a7)
+[00046c7e] 6004                      bra.s      Ast_filter_5
 Ast_filter_7:
+[00046c80] 52af 0004                 addq.l     #1,4(a7)
 Ast_filter_5:
 [00046c84] 202f 0008                 move.l     8(a7),d0
 [00046c88] 671e                      beq.s      Ast_filter_6
@@ -861,8 +861,8 @@ Ast_filter_5:
 [00046ca6] 66d8                      bne.s      Ast_filter_7
 Ast_filter_6:
 [00046ca8] 6004                      bra.s      Ast_filter_8
-[00046caa] 52af 0004                 addq.l     #1,4(a7)
 Ast_filter_10:
+[00046caa] 52af 0004                 addq.l     #1,4(a7)
 Ast_filter_8:
 [00046cae] 202f 0014                 move.l     20(a7),d0
 [00046cb2] 671e                      beq.s      Ast_filter_9
@@ -912,8 +912,8 @@ Ast_count_1:
 [00046d20] 42af 0004                 clr.l      4(a7)
 [00046d24] 2eaf 000c                 move.l     12(a7),(a7)
 [00046d28] 601a                      bra.s      Ast_count_2
-[00046d2a] 2057                      movea.l    (a7),a0
 Ast_count_4:
+[00046d2a] 2057                      movea.l    (a7),a0
 [00046d2c] 1010                      move.b     (a0),d0
 [00046d2e] 4880                      ext.w      d0
 [00046d30] 206f 0008                 movea.l    8(a7),a0
@@ -951,8 +951,8 @@ strfsearchafterwc:
 [00046d86] 6000 00f0                 bra        strfsearchafterwc_2
 strfsearchafterwc_1:
 [00046d8a] 6006                      bra.s      strfsearchafterwc_3
-[00046d8c] 206f 0016                 movea.l    22(a7),a0
 strfsearchafterwc_5:
+[00046d8c] 206f 0016                 movea.l    22(a7),a0
 [00046d90] 5290                      addq.l     #1,(a0)
 strfsearchafterwc_3:
 [00046d92] 206f 0016                 movea.l    22(a7),a0
@@ -973,8 +973,8 @@ strfsearchafterwc_4:
 [00046dba] 1010                      move.b     (a0),d0
 [00046dbc] 661c                      bne.s      strfsearchafterwc_6
 [00046dbe] 6006                      bra.s      strfsearchafterwc_7
-[00046dc0] 206f 001a                 movea.l    26(a7),a0
 strfsearchafterwc_8:
+[00046dc0] 206f 001a                 movea.l    26(a7),a0
 [00046dc4] 5290                      addq.l     #1,(a0)
 strfsearchafterwc_7:
 [00046dc6] 206f 001a                 movea.l    26(a7),a0
@@ -1125,8 +1125,8 @@ Ast_fcmp_13:
 [00046f6a] 2f6f 002c 0004            move.l     44(a7),4(a7)
 [00046f70] 2eaf 0028                 move.l     40(a7),(a7)
 [00046f74] 6000 0138                 bra        Ast_fcmp_14
-[00046f78] 206f 0004                 movea.l    4(a7),a0
 Ast_fcmp_34:
+[00046f78] 206f 0004                 movea.l    4(a7),a0
 [00046f7c] 1010                      move.b     (a0),d0
 [00046f7e] 4880                      ext.w      d0
 [00046f80] 41ef 0026                 lea.l      38(a7),a0
@@ -1279,8 +1279,8 @@ Ast_countASCIZZ:
 [000470da] 2f48 0006                 move.l     a0,6(a7)
 [000470de] 2f6f 0006 0002            move.l     6(a7),2(a7)
 [000470e4] 4257                      clr.w      (a7)
-[000470e6] 5257                      addq.w     #1,(a7)
 Ast_countASCIZZ_1:
+[000470e6] 5257                      addq.w     #1,(a7)
 [000470e8] 206f 0002                 movea.l    2(a7),a0
 [000470ec] 4eb9 0008 2f6c            jsr        strlen
 [000470f2] 5280                      addq.l     #1,d0
@@ -1316,8 +1316,8 @@ Ast_splitASCIIZZ_1:
 [00047142] 2f6f 000e 0004            move.l     14(a7),4(a7)
 [00047148] 426f 0008                 clr.w      8(a7)
 [0004714c] 6022                      bra.s      Ast_splitASCIIZZ_3
-[0004714e] 206f 0004                 movea.l    4(a7),a0
 Ast_splitASCIIZZ_4:
+[0004714e] 206f 0004                 movea.l    4(a7),a0
 [00047152] 6100 f2e8                 bsr        Ast_create
 [00047156] 2257                      movea.l    (a7),a1
 [00047158] 2288                      move.l     a0,(a1)
@@ -1345,8 +1345,8 @@ Ast_mergeASCIIZZ:
 [00047194] 2f7c 0000 0002 0004       move.l     #$00000002,4(a7)
 [0004719c] 426f 0012                 clr.w      18(a7)
 [000471a0] 6000 00ba                 bra        Ast_mergeASCIIZZ_1
-[000471a4] 302f 0012                 move.w     18(a7),d0
 Ast_mergeASCIIZZ_7:
+[000471a4] 302f 0012                 move.w     18(a7),d0
 [000471a8] 48c0                      ext.l      d0
 [000471aa] e588                      lsl.l      #2,d0
 [000471ac] 206f 0018                 movea.l    24(a7),a0
@@ -1437,8 +1437,8 @@ Ast_mergeASCIIZZ_10:
 [000472a0] 426f 0012                 clr.w      18(a7)
 [000472a4] 2f57 000e                 move.l     (a7),14(a7)
 [000472a8] 6000 0152                 bra        Ast_mergeASCIIZZ_12
-[000472ac] 302f 0012                 move.w     18(a7),d0
 Ast_mergeASCIIZZ_23:
+[000472ac] 302f 0012                 move.w     18(a7),d0
 [000472b0] 48c0                      ext.l      d0
 [000472b2] e588                      lsl.l      #2,d0
 [000472b4] 206f 0018                 movea.l    24(a7),a0
@@ -1498,8 +1498,8 @@ Ast_mergeASCIIZZ_16:
 [0004735e] 206f 0018                 movea.l    24(a7),a0
 [00047362] 2f70 0800 000a            move.l     0(a0,d0.l),10(a7)
 [00047368] 6072                      bra.s      Ast_mergeASCIIZZ_17
-[0004736a] 206f 000a                 movea.l    10(a7),a0
 Ast_mergeASCIIZZ_22:
+[0004736a] 206f 000a                 movea.l    10(a7),a0
 [0004736e] 1010                      move.b     (a0),d0
 [00047370] 4880                      ext.w      d0
 [00047372] e840                      asr.w      #4,d0
@@ -1566,8 +1566,8 @@ Ast_deleteAry:
 [0004741c] 426f 0004                 clr.w      4(a7)
 [00047420] 2eaf 0008                 move.l     8(a7),(a7)
 [00047424] 600e                      bra.s      Ast_deleteAry_1
-[00047426] 2057                      movea.l    (a7),a0
 Ast_deleteAry_2:
+[00047426] 2057                      movea.l    (a7),a0
 [00047428] 2050                      movea.l    (a0),a0
 [0004742a] 6100 f070                 bsr        Ast_delete
 [0004742e] 526f 0004                 addq.w     #1,4(a7)
@@ -1632,8 +1632,8 @@ Ast_reverse:
 Ast_reverse_1:
 [000474da] 2eaf 0008                 move.l     8(a7),(a7)
 [000474de] 6002                      bra.s      Ast_reverse_2
-[000474e0] 5297                      addq.l     #1,(a7)
 Ast_reverse_3:
+[000474e0] 5297                      addq.l     #1,(a7)
 Ast_reverse_2:
 [000474e2] 2057                      movea.l    (a7),a0
 [000474e4] 1010                      move.b     (a0),d0
@@ -1641,8 +1641,8 @@ Ast_reverse_2:
 [000474e8] 2f6f 000c 0004            move.l     12(a7),4(a7)
 [000474ee] 5397                      subq.l     #1,(a7)
 [000474f0] 600e                      bra.s      Ast_reverse_4
-[000474f2] 2057                      movea.l    (a7),a0
 Ast_reverse_5:
+[000474f2] 2057                      movea.l    (a7),a0
 [000474f4] 226f 0004                 movea.l    4(a7),a1
 [000474f8] 1290                      move.b     (a0),(a1)
 [000474fa] 5397                      subq.l     #1,(a7)

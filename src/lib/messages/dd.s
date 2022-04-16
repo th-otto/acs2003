@@ -28,8 +28,8 @@ Aev_GetAPDragDrop:
 [0005fe98] 41f9 000e 1a2a            lea.l      $000E1A2A,a0
 [0005fe9e] 43ef 003c                 lea.l      60(a7),a1
 [0005fea2] 7013                      moveq.l    #19,d0
-[0005fea4] 12d8                      move.b     (a0)+,(a1)+
 Aev_GetAPDragDrop_1:
+[0005fea4] 12d8                      move.b     (a0)+,(a1)+
 [0005fea6] 51c8 fffc                 dbf        d0,Aev_GetAPDragDrop_1
 [0005feaa] 41f9 000e 1a3e            lea.l      $000E1A3E,a0
 [0005feb0] 43ef 0014                 lea.l      20(a7),a1
@@ -122,8 +122,8 @@ Aev_GetAPDragDrop_7:
 [0005ffe0] 4a40                      tst.w      d0
 [0005ffe2] 664a                      bne.s      Aev_GetAPDragDrop_8
 [0005ffe4] 6004                      bra.s      Aev_GetAPDragDrop_9
-[0005ffe6] 536f 000c                 subq.w     #1,12(a7)
 Aev_GetAPDragDrop_11:
+[0005ffe6] 536f 000c                 subq.w     #1,12(a7)
 Aev_GetAPDragDrop_9:
 [0005ffea] 302f 000c                 move.w     12(a7),d0
 [0005ffee] 6f16                      ble.s      Aev_GetAPDragDrop_10
@@ -160,8 +160,8 @@ Aev_GetAPDragDrop_8:
 Aev_GetAPDragDrop_12:
 [00060052] 596f 000c                 subq.w     #4,12(a7)
 [00060056] 602a                      bra.s      Aev_GetAPDragDrop_13
-[00060058] 41ef 001a                 lea.l      26(a7),a0
 Aev_GetAPDragDrop_15:
+[00060058] 41ef 001a                 lea.l      26(a7),a0
 [0006005c] 7201                      moveq.l    #1,d1
 [0006005e] 302f 000e                 move.w     14(a7),d0
 [00060062] 4eb9 0008 0cd2            jsr        Fread

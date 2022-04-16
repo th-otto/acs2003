@@ -86,8 +86,8 @@ ob_make_4:
 [0002530e] 4eb9 0008 3c5a            jsr        _uldiv
 [00025314] 2600                      move.l     d0,d3
 [00025316] 6000 00f2                 bra        ob_make_5
-[0002531a] 202f 0038                 move.l     56(a7),d0
 ob_make_12:
+[0002531a] 202f 0038                 move.l     56(a7),d0
 [0002531e] 6700 00e0                 beq        ob_make_6
 [00025322] 2040                      movea.l    d0,a0
 [00025324] 0c28 0018 000f            cmpi.b     #$18,15(a0)

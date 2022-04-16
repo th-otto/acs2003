@@ -157,8 +157,8 @@ ParseGSCommands:
 [00060a3a] 426f 001a                 clr.w      26(a7)
 [00060a3e] 2f6f 0004 000c            move.l     4(a7),12(a7)
 [00060a44] 6000 01ae                 bra        ParseGSCommands_2
-[00060a48] 206f 000c                 movea.l    12(a7),a0
 ParseGSCommands_15:
+[00060a48] 206f 000c                 movea.l    12(a7),a0
 [00060a4c] 2050                      movea.l    (a0),a0
 [00060a4e] 1010                      move.b     (a0),d0
 [00060a50] 4880                      ext.w      d0
@@ -210,8 +210,8 @@ ParseGSCommands_5:
 [00060ae6] 2f48 0014                 move.l     a0,20(a7)
 [00060aea] 2f6f 0008 0010            move.l     8(a7),16(a7)
 [00060af0] 6000 00b8                 bra        ParseGSCommands_8
-[00060af4] 206f 0014                 movea.l    20(a7),a0
 ParseGSCommands_14:
+[00060af4] 206f 0014                 movea.l    20(a7),a0
 [00060af8] 1010                      move.b     (a0),d0
 [00060afa] 4880                      ext.w      d0
 [00060afc] 4eb9 0008 37ce            jsr        isdigit
@@ -308,8 +308,8 @@ ParseGSCommands_2:
 [00060c02] 426f 001a                 clr.w      26(a7)
 [00060c06] 2f6f 0004 000c            move.l     4(a7),12(a7)
 [00060c0c] 6014                      bra.s      ParseGSCommands_16
-[00060c0e] 206f 000c                 movea.l    12(a7),a0
 ParseGSCommands_18:
+[00060c0e] 206f 000c                 movea.l    12(a7),a0
 [00060c12] 2010                      move.l     (a0),d0
 [00060c14] 6704                      beq.s      ParseGSCommands_17
 [00060c16] 526f 0002                 addq.w     #1,2(a7)
@@ -339,8 +339,8 @@ ParseGSCommands_19:
 [00060c5c] 3f40 001a                 move.w     d0,26(a7)
 [00060c60] 2f6f 0004 000c            move.l     4(a7),12(a7)
 [00060c66] 602a                      bra.s      ParseGSCommands_20
-[00060c68] 206f 000c                 movea.l    12(a7),a0
 ParseGSCommands_23:
+[00060c68] 206f 000c                 movea.l    12(a7),a0
 [00060c6c] 2010                      move.l     (a0),d0
 [00060c6e] 671a                      beq.s      ParseGSCommands_21
 [00060c70] 206f 000c                 movea.l    12(a7),a0
@@ -563,8 +563,8 @@ Aev_GetGSCommand_5:
 [00060f3c] 4eb9 0004 7410            jsr        Ast_deleteAry
 [00060f42] 426f 001e                 clr.w      30(a7)
 [00060f46] 601a                      bra.s      Aev_GetGSCommand_8
-[00060f48] 302f 001e                 move.w     30(a7),d0
 Aev_GetGSCommand_9:
+[00060f48] 302f 001e                 move.w     30(a7),d0
 [00060f4c] 48c0                      ext.l      d0
 [00060f4e] e588                      lsl.l      #2,d0
 [00060f50] 206f 0010                 movea.l    16(a7),a0
@@ -1058,8 +1058,8 @@ gs_GetAllCommands_3:
 [00061532] 4eb9 0008 36ea            jsr        memset
 [00061538] 426f 0012                 clr.w      18(a7)
 [0006153c] 6046                      bra.s      gs_GetAllCommands_4
-[0006153e] 302f 0012                 move.w     18(a7),d0
 gs_GetAllCommands_6:
+[0006153e] 302f 0012                 move.w     18(a7),d0
 [00061542] e748                      lsl.w      #3,d0
 [00061544] 41f9 000e 1ac2            lea.l      _gs_commands,a0
 [0006154a] 2070 0000                 movea.l    0(a0,d0.w),a0
@@ -1103,8 +1103,8 @@ gs_GetAllCommands_4:
 [000615ce] 426f 000e                 clr.w      14(a7)
 [000615d2] 3f7c 0001 0012            move.w     #$0001,18(a7)
 [000615d8] 6032                      bra.s      gs_GetAllCommands_7
-[000615da] 302f 0012                 move.w     18(a7),d0
 gs_GetAllCommands_9:
+[000615da] 302f 0012                 move.w     18(a7),d0
 [000615de] 48c0                      ext.l      d0
 [000615e0] e588                      lsl.l      #2,d0
 [000615e2] 206f 0008                 movea.l    8(a7),a0
@@ -1138,8 +1138,8 @@ gs_GetAllCommands_7:
 [0006163e] 3f7c 0001 0012            move.w     #$0001,18(a7)
 [00061644] 3f7c 0001 0010            move.w     #$0001,16(a7)
 [0006164a] 6060                      bra.s      gs_GetAllCommands_11
-[0006164c] 302f 0010                 move.w     16(a7),d0
 gs_GetAllCommands_14:
+[0006164c] 302f 0010                 move.w     16(a7),d0
 [00061650] 48c0                      ext.l      d0
 [00061652] e588                      lsl.l      #2,d0
 [00061654] 206f 0004                 movea.l    4(a7),a0

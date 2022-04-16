@@ -257,8 +257,8 @@ edmo_set_1:
 [00022926] 3f68 0262 0016            move.w     610(a0),22(a7)
 [0002292c] 3f68 0264 0014            move.w     612(a0),20(a7)
 [00022932] 2f53 0018                 move.l     (a3),24(a7)
-[00022936] 49ef 0008                 lea.l      8(a7),a4
 edmo_set_15:
+[00022936] 49ef 0008                 lea.l      8(a7),a4
 [0002293a] 2f39 000e 692a            move.l     _globl,-(a7)
 [00022940] 486f 0014                 pea.l      20(a7)
 [00022944] 43ef 001a                 lea.l      26(a7),a1
@@ -460,8 +460,8 @@ edmo_bitmap_2:
 [00022b9c] 4243                      clr.w      d3
 [00022b9e] 45f9 000b 2996            lea.l      color,a2
 [00022ba4] 6000 00f2                 bra        edmo_bitmap_3
-[00022ba8] 302d 000e                 move.w     14(a5),d0
 edmo_bitmap_11:
+[00022ba8] 302d 000e                 move.w     14(a5),d0
 [00022bac] b06f 0002                 cmp.w      2(a7),d0
 [00022bb0] 6d00 00d4                 blt        edmo_bitmap_4
 [00022bb4] 322d 000a                 move.w     10(a5),d1
@@ -480,8 +480,8 @@ edmo_bitmap_11:
 [00022be6] 3a11                      move.w     (a1),d5
 [00022be8] 7c0f                      moveq.l    #15,d6
 [00022bea] 6000 0092                 bra        edmo_bitmap_5
-[00022bee] 302d 000c                 move.w     12(a5),d0
 edmo_bitmap_9:
+[00022bee] 302d 000c                 move.w     12(a5),d0
 [00022bf2] b057                      cmp.w      (a7),d0
 [00022bf4] 6d00 007a                 blt.w      edmo_bitmap_6
 [00022bf8] 322d 0008                 move.w     8(a5),d1

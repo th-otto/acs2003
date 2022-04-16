@@ -126,8 +126,8 @@ evkeybrd:
 [0004a4a2] 41f9 000e 0794            lea.l      $000E0794,a0
 [0004a4a8] 43ef 0006                 lea.l      6(a7),a1
 [0004a4ac] 700f                      moveq.l    #15,d0
-[0004a4ae] 12d8                      move.b     (a0)+,(a1)+
 evkeybrd_1:
+[0004a4ae] 12d8                      move.b     (a0)+,(a1)+
 [0004a4b0] 51c8 fffc                 dbf        d0,evkeybrd_1
 [0004a4b4] 3f7c ffff 0004            move.w     #$FFFF,4(a7)
 [0004a4ba] 4297                      clr.l      (a7)
@@ -365,8 +365,8 @@ evkeybrd_23:
 [0004a826] 0c6f ffff 0004            cmpi.w     #$FFFF,4(a7)
 [0004a82c] 6c6a                      bge.s      evkeybrd_24
 [0004a82e] 605c                      bra.s      evkeybrd_25
-[0004a830] 7004                      moveq.l    #4,d0
 evkeybrd_26:
+[0004a830] 7004                      moveq.l    #4,d0
 [0004a832] 2057                      movea.l    (a7),a0
 [0004a834] c0a8 0002                 and.l      2(a0),d0
 [0004a838] 6752                      beq.s      evkeybrd_25
@@ -429,8 +429,8 @@ ev_dobutton_1:
 [0004a8f4] 426f 000e                 clr.w      14(a7)
 [0004a8f8] 3f6f 000c 000a            move.w     12(a7),10(a7)
 [0004a8fe] 6012                      bra.s      ev_dobutton_3
-[0004a900] 302f 000a                 move.w     10(a7),d0
 ev_dobutton_5:
+[0004a900] 302f 000a                 move.w     10(a7),d0
 [0004a904] 206f 001a                 movea.l    26(a7),a0
 [0004a908] 4eb9 0005 0f3a            jsr        Aob_up
 [0004a90e] 3f40 000a                 move.w     d0,10(a7)
@@ -554,8 +554,8 @@ ev_dobutton_18:
 [0004aa70] 302f 0012                 move.w     18(a7),d0
 [0004aa74] 6700 007c                 beq.w      ev_dobutton_19
 [0004aa78] 3f7c 0002 0010            move.w     #$0002,16(a7)
-[0004aa7e] 536f 0010                 subq.w     #1,16(a7)
 ev_dobutton_21:
+[0004aa7e] 536f 0010                 subq.w     #1,16(a7)
 [0004aa82] 2079 000e 692a            movea.l    _globl,a0
 [0004aa88] 700a                      moveq.l    #10,d0
 [0004aa8a] 4eb9 0007 91d4            jsr        mt_evnt_timer
@@ -909,8 +909,8 @@ evmouse_4:
 [0004af4c] 544f                      addq.w     #2,a7
 [0004af4e] 3f40 0014                 move.w     d0,20(a7)
 [0004af52] 6000 00a2                 bra        evmouse_7
-[0004af56] 7008                      moveq.l    #8,d0
 evmouse_11:
+[0004af56] 7008                      moveq.l    #8,d0
 [0004af58] 342f 0014                 move.w     20(a7),d2
 [0004af5c] 48c2                      ext.l      d2
 [0004af5e] 2202                      move.l     d2,d1
@@ -1032,8 +1032,8 @@ Aev_mess_3:
 [0004b0ae] 7010                      moveq.l    #16,d0
 [0004b0b0] 4eb9 0005 ae7e            jsr        Awi_update
 [0004b0b6] 6000 0082                 bra        Aev_mess_4
-[0004b0ba] 2f39 000e 692a            move.l     _globl,-(a7)
 Aev_mess_8:
+[0004b0ba] 2f39 000e 692a            move.l     _globl,-(a7)
 [0004b0c0] 486f 0016                 pea.l      22(a7)
 [0004b0c4] 486f 001a                 pea.l      26(a7)
 [0004b0c8] 486f 001e                 pea.l      30(a7)
@@ -1127,8 +1127,8 @@ ACSeventhandler_4:
 [0004b1c6] 202f 0036                 move.l     54(a7),d0
 [0004b1ca] 6732                      beq.s      ACSeventhandler_5
 [0004b1cc] 6024                      bra.s      ACSeventhandler_6
-[0004b1ce] 206f 0036                 movea.l    54(a7),a0
 ACSeventhandler_8:
+[0004b1ce] 206f 0036                 movea.l    54(a7),a0
 [0004b1d2] 3028 0008                 move.w     8(a0),d0
 [0004b1d6] c07c 8000                 and.w      #$8000,d0
 [0004b1da] 670e                      beq.s      ACSeventhandler_7
@@ -1152,8 +1152,8 @@ ACSeventhandler_5:
 [0004b21a] 202f 0036                 move.l     54(a7),d0
 [0004b21e] 6732                      beq.s      ACSeventhandler_9
 [0004b220] 6024                      bra.s      ACSeventhandler_10
-[0004b222] 206f 0036                 movea.l    54(a7),a0
 ACSeventhandler_12:
+[0004b222] 206f 0036                 movea.l    54(a7),a0
 [0004b226] 3028 0008                 move.w     8(a0),d0
 [0004b22a] c07c 8000                 and.w      #$8000,d0
 [0004b22e] 670e                      beq.s      ACSeventhandler_11

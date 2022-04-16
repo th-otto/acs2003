@@ -21,8 +21,8 @@ pu_init_1:
 [000264ec] 3768 000e 0016            move.w     14(a0),22(a3)
 [000264f2] 4244                      clr.w      d4
 [000264f4] 601e                      bra.s      pu_init_3
-[000264f6] 3a04                      move.w     d4,d5
 pu_init_4:
+[000264f6] 3a04                      move.w     d4,d5
 [000264f8] da45                      add.w      d5,d5
 [000264fa] da44                      add.w      d4,d5
 [000264fc] 5645                      addq.w     #3,d5
@@ -290,8 +290,8 @@ pup_edit_1:
 [000267e0] 7801                      moveq.l    #1,d4
 [000267e2] d86b 0002                 add.w      2(a3),d4
 [000267e6] 6014                      bra.s      pup_edit_4
-[000267e8] 7001                      moveq.l    #1,d0
 pup_edit_5:
+[000267e8] 7001                      moveq.l    #1,d0
 [000267ea] 3404                      move.w     d4,d2
 [000267ec] 48c2                      ext.l      d2
 [000267ee] 2202                      move.l     d2,d1

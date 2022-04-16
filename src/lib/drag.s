@@ -222,8 +222,8 @@ drag_set:
 [00047860] 4fef ffee                 lea.l      -18(a7),a7
 [00047864] 426f 0010                 clr.w      16(a7)
 [00047868] 6000 0254                 bra        drag_set_1
-[0004786c] 0c6f 0200 0010            cmpi.w     #$0200,16(a7)
 drag_set_9:
+[0004786c] 0c6f 0200 0010            cmpi.w     #$0200,16(a7)
 [00047872] 6d04                      blt.s      drag_set_2
 [00047874] 6000 025a                 bra        drag_set_3
 drag_set_2:
@@ -441,8 +441,8 @@ drag_draw:
 [00047b7a] 3f40 0016                 move.w     d0,22(a7)
 [00047b7e] 33c0 0011 158e            move.w     d0,pattern
 [00047b84] 6000 0254                 bra        drag_draw_1
-[00047b88] 0c6f 0200 0016            cmpi.w     #$0200,22(a7)
 drag_draw_9:
+[00047b88] 0c6f 0200 0016            cmpi.w     #$0200,22(a7)
 [00047b8e] 6d04                      blt.s      drag_draw_2
 [00047b90] 6000 025a                 bra        drag_draw_3
 drag_draw_2:
@@ -668,8 +668,8 @@ Adr_add_2:
 Adr_add_3:
 [00047eb6] 426f 0004                 clr.w      4(a7)
 [00047eba] 6024                      bra.s      Adr_add_4
-[00047ebc] 302f 0004                 move.w     4(a7),d0
 Adr_add_7:
+[00047ebc] 302f 0004                 move.w     4(a7),d0
 [00047ec0] 48c0                      ext.l      d0
 [00047ec2] d080                      add.l      d0,d0
 [00047ec4] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -751,8 +751,8 @@ Adr_del_4:
 [00047fc4] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00047fca] 2f68 0254 0008            move.l     596(a0),8(a7)
 [00047fd0] 6000 0116                 bra        Adr_del_5
-[00047fd4] 206f 0008                 movea.l    8(a7),a0
 Adr_del_10:
+[00047fd4] 206f 0008                 movea.l    8(a7),a0
 [00047fd8] 3010                      move.w     (a0),d0
 [00047fda] b06f 0010                 cmp.w      16(a7),d0
 [00047fde] 6600 0100                 bne        Adr_del_6
@@ -789,8 +789,8 @@ Adr_del_7:
 [0004804e] 2e88                      move.l     a0,(a7)
 [00048050] 536f 000c                 subq.w     #1,12(a7)
 [00048054] 6068                      bra.s      Adr_del_8
-[00048056] 2057                      movea.l    (a7),a0
 Adr_del_9:
+[00048056] 2057                      movea.l    (a7),a0
 [00048058] 2257                      movea.l    (a7),a1
 [0004805a] 32a8 0010                 move.w     16(a0),(a1)
 [0004805e] 2057                      movea.l    (a7),a0
@@ -859,8 +859,8 @@ Adr_unselect_1:
 [00048128] 2f68 0240 0004            move.l     576(a0),4(a7)
 [0004812e] 426f 0002                 clr.w      2(a7)
 [00048132] 6000 0082                 bra        Adr_unselect_3
-[00048136] 302f 0002                 move.w     2(a7),d0
 Adr_unselect_6:
+[00048136] 302f 0002                 move.w     2(a7),d0
 [0004813a] 48c0                      ext.l      d0
 [0004813c] d080                      add.l      d0,d0
 [0004813e] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -943,8 +943,8 @@ rect_find:
 [00048226] 6000 02d0                 bra        rect_find_2
 rect_find_1:
 [0004822a] 6000 02c0                 bra        rect_find_3
-[0004822e] 322f 0016                 move.w     22(a7),d1
 rect_find_20:
+[0004822e] 322f 0016                 move.w     22(a7),d1
 [00048232] 48c1                      ext.l      d1
 [00048234] 2001                      move.l     d1,d0
 [00048236] d080                      add.l      d0,d0
@@ -1119,8 +1119,8 @@ rect_find_13:
 [0004844e] 6738                      beq.s      rect_find_14
 [00048450] 426f 000c                 clr.w      12(a7)
 [00048454] 6024                      bra.s      rect_find_15
-[00048456] 302f 000c                 move.w     12(a7),d0
 rect_find_17:
+[00048456] 302f 000c                 move.w     12(a7),d0
 [0004845a] 48c0                      ext.l      d0
 [0004845c] d080                      add.l      d0,d0
 [0004845e] 206f 0032                 movea.l    50(a7),a0
@@ -1286,8 +1286,8 @@ Adr_box_8:
 [0004868c] 4eb9 0004 ee3c            jsr        Amo_new
 [00048692] 7003                      moveq.l    #3,d0
 [00048694] 4eb9 0005 ae7e            jsr        Awi_update
-[0004869a] 4eb9 0004 ef40            jsr        Amo_hide
 Adr_box_40:
+[0004869a] 4eb9 0004 ef40            jsr        Amo_hide
 [000486a0] 7203                      moveq.l    #3,d1
 [000486a2] 2079 0010 ee4e            movea.l    ACSblk,a0
 [000486a8] 3028 0010                 move.w     16(a0),d0
@@ -1323,8 +1323,8 @@ Adr_box_9:
 [00048716] 6100 eece                 bsr        dotted_yline
 Adr_box_10:
 [0004871a] 4eb9 0004 ef66            jsr        Amo_show
-[00048720] 486f 0018                 pea.l      24(a7)
 Adr_box_12:
+[00048720] 486f 0018                 pea.l      24(a7)
 [00048724] 43ef 001e                 lea.l      30(a7),a1
 [00048728] 41ef 0020                 lea.l      32(a7),a0
 [0004872c] 2479 0010 ee4e            movea.l    ACSblk,a2
@@ -1959,8 +1959,8 @@ Adr_find0_7:
 [00048f62] 9068 0012                 sub.w      18(a0),d0
 [00048f66] 3f40 0020                 move.w     d0,32(a7)
 [00048f6a] 3f7c ffff 0018            move.w     #$FFFF,24(a7)
-[00048f70] 3f2f 0020                 move.w     32(a7),-(a7)
 Adr_find0_10:
+[00048f70] 3f2f 0020                 move.w     32(a7),-(a7)
 [00048f74] 342f 0024                 move.w     36(a7),d2
 [00048f78] 72ff                      moveq.l    #-1,d1
 [00048f7a] d26f 0028                 add.w      40(a7),d1
@@ -2120,8 +2120,8 @@ Adr_drag:
 [00049150] 41f9 000e 05f6            lea.l      $000E05F6,a0
 [00049156] 43ef 007e                 lea.l      126(a7),a1
 [0004915a] 303c 00ff                 move.w     #$00FF,d0
-[0004915e] 12d8                      move.b     (a0)+,(a1)+
 Adr_drag_1:
+[0004915e] 12d8                      move.b     (a0)+,(a1)+
 [00049160] 51c8 fffc                 dbf        d0,Adr_drag_1
 [00049164] 42af 0032                 clr.l      50(a7)
 [00049168] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -2200,8 +2200,8 @@ Adr_drag_4:
 [00049282] 41f0 0838                 lea.l      56(a0,d0.l),a0
 [00049286] 4eb9 0004 ee3c            jsr        Amo_new
 [0004928c] 3f7c ffff 0046            move.w     #$FFFF,70(a7)
-[00049292] 302f 005c                 move.w     92(a7),d0
 Adr_drag_39:
+[00049292] 302f 005c                 move.w     92(a7),d0
 [00049296] 906f 0184                 sub.w      388(a7),d0
 [0004929a] 3f40 0054                 move.w     d0,84(a7)
 [0004929e] 302f 005a                 move.w     90(a7),d0
@@ -2210,8 +2210,8 @@ Adr_drag_39:
 [000492aa] 322f 0052                 move.w     82(a7),d1
 [000492ae] 302f 0054                 move.w     84(a7),d0
 [000492b2] 6100 e822                 bsr        drag_draw
-[000492b6] 3f6f 005c 0058            move.w     92(a7),88(a7)
 Adr_drag_12:
+[000492b6] 3f6f 005c 0058            move.w     92(a7),88(a7)
 [000492bc] 3f6f 005a 0056            move.w     90(a7),86(a7)
 [000492c2] 2f39 000e 692a            move.l     _globl,-(a7)
 [000492c8] 486f 0054                 pea.l      84(a7)
@@ -2359,8 +2359,8 @@ Adr_drag_16:
 [000494a2] 006f 1000 0048            ori.w      #$1000,72(a7)
 Adr_drag_17:
 [000494a8] 6000 00ec                 bra        Adr_drag_18
-[000494ac] 206f 002e                 movea.l    46(a7),a0
 Adr_drag_27:
+[000494ac] 206f 002e                 movea.l    46(a7),a0
 [000494b0] b1ef 002a                 cmpa.l     42(a7),a0
 [000494b4] 660e                      bne.s      Adr_drag_19
 [000494b6] 302f 0048                 move.w     72(a7),d0
@@ -2865,15 +2865,15 @@ Adr_drag_60:
 [00049b14] 41f9 000e 06f6            lea.l      $000E06F6,a0
 [00049b1a] 43ef 0212                 lea.l      530(a7),a1
 [00049b1e] 700f                      moveq.l    #15,d0
-[00049b20] 12d8                      move.b     (a0)+,(a1)+
 Adr_drag_62:
+[00049b20] 12d8                      move.b     (a0)+,(a1)+
 [00049b22] 51c8 fffc                 dbf        d0,Adr_drag_62
 [00049b26] 42af 020a                 clr.l      522(a7)
 [00049b2a] 41f9 000e 0706            lea.l      $000E0706,a0
 [00049b30] 43ef 01f4                 lea.l      500(a7),a1
 [00049b34] 7013                      moveq.l    #19,d0
-[00049b36] 12d8                      move.b     (a0)+,(a1)+
 Adr_drag_63:
+[00049b36] 12d8                      move.b     (a0)+,(a1)+
 [00049b38] 51c8 fffc                 dbf        d0,Adr_drag_63
 [00049b3c] 42af 01be                 clr.l      446(a7)
 [00049b40] 42af 01ba                 clr.l      442(a7)
@@ -2887,8 +2887,8 @@ Adr_drag_63:
 [00049b66] 4eb9 0008 0d74            jsr        Fxattr
 [00049b6c] 4a80                      tst.l      d0
 [00049b6e] 6600 0302                 bne        Adr_drag_64
-[00049b72] 522f 0206                 addq.b     #1,518(a7)
 Adr_drag_68:
+[00049b72] 522f 0206                 addq.b     #1,518(a7)
 [00049b76] 0c2f 005a 0206            cmpi.b     #$5A,518(a7)
 [00049b7c] 6f16                      ble.s      Adr_drag_65
 [00049b7e] 522f 0205                 addq.b     #1,517(a7)
@@ -3398,8 +3398,8 @@ Adr_drag_96:
 [0004a232] 3f40 0038                 move.w     d0,56(a7)
 [0004a236] 426f 0036                 clr.w      54(a7)
 [0004a23a] 6014                      bra.s      Adr_drag_97
-[0004a23c] 302f 0038                 move.w     56(a7),d0
 Adr_drag_98:
+[0004a23c] 302f 0038                 move.w     56(a7),d0
 [0004a240] e240                      asr.w      #1,d0
 [0004a242] d06f 0038                 add.w      56(a7),d0
 [0004a246] e440                      asr.w      #2,d0
@@ -3424,8 +3424,8 @@ Adr_drag_99:
 Adr_drag_100:
 [0004a286] 426f 004c                 clr.w      76(a7)
 [0004a28a] 6056                      bra.s      Adr_drag_101
-[0004a28c] 4240                      clr.w      d0
 Adr_drag_104:
+[0004a28c] 4240                      clr.w      d0
 [0004a28e] 3f40 005a                 move.w     d0,90(a7)
 [0004a292] 3f40 005c                 move.w     d0,92(a7)
 [0004a296] 7001                      moveq.l    #1,d0
@@ -3433,8 +3433,8 @@ Adr_drag_104:
 [0004a29c] e368                      lsl.w      d1,d0
 [0004a29e] 3f40 004e                 move.w     d0,78(a7)
 [0004a2a2] 6038                      bra.s      Adr_drag_102
-[0004a2a4] 302f 0054                 move.w     84(a7),d0
 Adr_drag_103:
+[0004a2a4] 302f 0054                 move.w     84(a7),d0
 [0004a2a8] d16f 005c                 add.w      d0,92(a7)
 [0004a2ac] 302f 0052                 move.w     82(a7),d0
 [0004a2b0] d16f 005a                 add.w      d0,90(a7)

@@ -7,8 +7,8 @@ AddItem:
 [000412ba] 202b 0090                 move.l     144(a3),d0
 [000412be] 675e                      beq.s      AddItem_1
 [000412c0] 6002                      bra.s      AddItem_2
-[000412c2] 5283                      addq.l     #1,d3
 AddItem_4:
+[000412c2] 5283                      addq.l     #1,d3
 AddItem_2:
 [000412c4] b6ab 0090                 cmp.l      144(a3),d3
 [000412c8] 6c28                      bge.s      AddItem_3
@@ -254,8 +254,8 @@ UpdateList:
 [00041564] 4eb9 0003 a772            jsr        Auo_editor
 [0004156a] 7600                      moveq.l    #0,d3
 [0004156c] 6048                      bra.s      UpdateList_1
-[0004156e] 2003                      move.l     d3,d0
 UpdateList_3:
+[0004156e] 2003                      move.l     d3,d0
 [00041570] 222b 0084                 move.l     132(a3),d1
 [00041574] 4eb9 0008 3cac            jsr        _lmul
 [0004157a] 286b 0094                 movea.l    148(a3),a4
@@ -371,8 +371,8 @@ key_list:
 [000416d4] 43f9 000d 5a5c            lea.l      $000D5A5C,a1
 [000416da] 41d7                      lea.l      (a7),a0
 [000416dc] 740f                      moveq.l    #15,d2
-[000416de] 10d9                      move.b     (a1)+,(a0)+
 key_list_1:
+[000416de] 10d9                      move.b     (a1)+,(a0)+
 [000416e0] 51ca fffc                 dbf        d2,key_list_1
 [000416e4] 2853                      movea.l    (a3),a4
 [000416e6] b63c 000e                 cmp.b      #$0E,d3
@@ -518,8 +518,8 @@ list_acc:
 [00041846] 2651                      movea.l    (a1),a3
 [00041848] 4eb9 0004 7e1e            jsr        Adr_start
 [0004184e] 6060                      bra.s      list_acc_2
-[00041850] 3004                      move.w     d4,d0
 list_acc_5:
+[00041850] 3004                      move.w     d4,d0
 [00041852] c07c 1000                 and.w      #$1000,d0
 [00041856] 6720                      beq.s      list_acc_3
 [00041858] 3404                      move.w     d4,d2
@@ -576,14 +576,14 @@ list_click:
 [000418d6] 41f9 000d 5a6c            lea.l      $000D5A6C,a0
 [000418dc] 43ef 0014                 lea.l      20(a7),a1
 [000418e0] 700f                      moveq.l    #15,d0
-[000418e2] 12d8                      move.b     (a0)+,(a1)+
 list_click_1:
+[000418e2] 12d8                      move.b     (a0)+,(a1)+
 [000418e4] 51c8 fffc                 dbf        d0,list_click_1
 [000418e8] 41f9 000d 5a7c            lea.l      $000D5A7C,a0
 [000418ee] 43ef 0004                 lea.l      4(a7),a1
 [000418f2] 700f                      moveq.l    #15,d0
-[000418f4] 12d8                      move.b     (a0)+,(a1)+
 list_click_2:
+[000418f4] 12d8                      move.b     (a0)+,(a1)+
 [000418f6] 51c8 fffc                 dbf        d0,list_click_2
 [000418fa] 47f9 0010 ee4e            lea.l      ACSblk,a3
 [00041900] 2053                      movea.l    (a3),a0
@@ -767,8 +767,8 @@ list_copy:
 [00041b30] 41f9 000d 5a8c            lea.l      $000D5A8C,a0
 [00041b36] 43d7                      lea.l      (a7),a1
 [00041b38] 700f                      moveq.l    #15,d0
-[00041b3a] 12d8                      move.b     (a0)+,(a1)+
 list_copy_1:
+[00041b3a] 12d8                      move.b     (a0)+,(a1)+
 [00041b3c] 51c8 fffc                 dbf        d0,list_copy_1
 [00041b40] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00041b46] 2268 0258                 movea.l    600(a0),a1
@@ -806,8 +806,8 @@ list_cut:
 [00041bb8] 41f9 000d 5a9c            lea.l      $000D5A9C,a0
 [00041bbe] 43d7                      lea.l      (a7),a1
 [00041bc0] 700f                      moveq.l    #15,d0
-[00041bc2] 12d8                      move.b     (a0)+,(a1)+
 list_cut_1:
+[00041bc2] 12d8                      move.b     (a0)+,(a1)+
 [00041bc4] 51c8 fffc                 dbf        d0,list_cut_1
 [00041bc8] 45f9 0010 ee4e            lea.l      ACSblk,a2
 [00041bce] 2052                      movea.l    (a2),a0
@@ -895,8 +895,8 @@ list_open:
 [00041cbe] 41f9 000d 5aac            lea.l      $000D5AAC,a0
 [00041cc4] 43d7                      lea.l      (a7),a1
 [00041cc6] 700f                      moveq.l    #15,d0
-[00041cc8] 12d8                      move.b     (a0)+,(a1)+
 list_open_1:
+[00041cc8] 12d8                      move.b     (a0)+,(a1)+
 [00041cca] 51c8 fffc                 dbf        d0,list_open_1
 [00041cce] 45f9 0010 ee4e            lea.l      ACSblk,a2
 [00041cd4] 2052                      movea.l    (a2),a0

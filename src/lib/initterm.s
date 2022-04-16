@@ -1098,8 +1098,8 @@ TermAES_3:
 [00043d8c] 2068 023c                 movea.l    572(a0),a0
 [00043d90] 117c 0005 0010            move.b     #$05,16(a0)
 [00043d96] 604e                      bra.s      TermAES_4
-[00043d98] 2f39 000e 692a            move.l     _globl,-(a7)
 TermAES_5:
+[00043d98] 2f39 000e 692a            move.l     _globl,-(a7)
 [00043d9e] 486f 0024                 pea.l      36(a7)
 [00043da2] 486f 0028                 pea.l      40(a7)
 [00043da6] 486f 002c                 pea.l      44(a7)

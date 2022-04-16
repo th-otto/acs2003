@@ -141,8 +141,8 @@ set_font:
 [00040d4a] 45ef 0004                 lea.l      4(a7),a2
 [00040d4e] 47ef 0002                 lea.l      2(a7),a3
 [00040d52] 6078                      bra.s      set_font_1
-[00040d54] 3004                      move.w     d4,d0
 set_font_3:
+[00040d54] 3004                      move.w     d4,d0
 [00040d56] 48c0                      ext.l      d0
 [00040d58] d080                      add.l      d0,d0
 [00040d5a] 206f 0010                 movea.l    16(a7),a0
@@ -235,8 +235,8 @@ livefont:
 [00040e64] 2a69 0258                 movea.l    600(a1),a5
 [00040e68] 4243                      clr.w      d3
 [00040e6a] 6046                      bra.s      livefont_1
-[00040e6c] 3203                      move.w     d3,d1
 livefont_4:
+[00040e6c] 3203                      move.w     d3,d1
 [00040e6e] 48c1                      ext.l      d1
 [00040e70] 2001                      move.l     d1,d0
 [00040e72] e988                      lsl.l      #4,d0
@@ -298,8 +298,8 @@ get_fontinfo_1:
 [00040f10] 4bef 0084                 lea.l      132(a7),a5
 [00040f14] 49ef 0080                 lea.l      128(a7),a4
 [00040f18] 6000 014a                 bra        get_fontinfo_3
-[00040f1c] 204b                      movea.l    a3,a0
 get_fontinfo_17:
+[00040f1c] 204b                      movea.l    a3,a0
 [00040f1e] 3203                      move.w     d3,d1
 [00040f20] 2252                      movea.l    (a2),a1
 [00040f22] 3029 0010                 move.w     16(a1),d0
@@ -343,8 +343,8 @@ get_fontinfo_6:
 [00040f9e] 3c2f 0082                 move.w     130(a7),d6
 get_fontinfo_7:
 [00040fa2] 600a                      bra.s      get_fontinfo_8
-[00040fa4] 3015                      move.w     (a5),d0
 get_fontinfo_11:
+[00040fa4] 3015                      move.w     (a5),d0
 [00040fa6] 1f86 0000                 move.b     d6,0(a7,d0.w)
 [00040faa] 5255                      addq.w     #1,(a5)
 [00040fac] 5246                      addq.w     #1,d6
@@ -386,8 +386,8 @@ get_fontinfo_12:
 [00041012] 3e3c 00c8                 move.w     #$00C8,d7
 [00041016] 7c0b                      moveq.l    #11,d6
 [00041018] 603a                      bra.s      get_fontinfo_13
-[0004101a] 4855                      pea.l      (a5)
 get_fontinfo_16:
+[0004101a] 4855                      pea.l      (a5)
 [0004101c] 4855                      pea.l      (a5)
 [0004101e] 224d                      movea.l    a5,a1
 [00041020] 204d                      movea.l    a5,a0
@@ -506,8 +506,8 @@ A_fontsel_2:
 [00041148] 76ff                      moveq.l    #-1,d3
 [0004114a] d66c fffc                 add.w      -4(a4),d3
 [0004114e] 6002                      bra.s      A_fontsel_4
-[00041150] 5343                      subq.w     #1,d3
 A_fontsel_6:
+[00041150] 5343                      subq.w     #1,d3
 A_fontsel_4:
 [00041152] 4a43                      tst.w      d3
 [00041154] 6f1a                      ble.s      A_fontsel_5

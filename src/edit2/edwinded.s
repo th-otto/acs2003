@@ -372,15 +372,15 @@ acc_window:
 [00023838] 43f9 000b 7a10            lea.l      $000B7A10,a1
 [0002383e] 41ef 0042                 lea.l      66(a7),a0
 [00023842] 720f                      moveq.l    #15,d1
-[00023844] 20d9                      move.l     (a1)+,(a0)+
 acc_window_1:
+[00023844] 20d9                      move.l     (a1)+,(a0)+
 [00023846] 51c9 fffc                 dbf        d1,acc_window_1
 [0002384a] 30d9                      move.w     (a1)+,(a0)+
 [0002384c] 41f9 000b 7a52            lea.l      $000B7A52,a0
 [00023852] 43d7                      lea.l      (a7),a1
 [00023854] 720f                      moveq.l    #15,d1
-[00023856] 22d8                      move.l     (a0)+,(a1)+
 acc_window_2:
+[00023856] 22d8                      move.l     (a0)+,(a1)+
 [00023858] 51c9 fffc                 dbf        d1,acc_window_2
 [0002385c] 32d8                      move.w     (a0)+,(a1)+
 [0002385e] 206f 0098                 movea.l    152(a7),a0

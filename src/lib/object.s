@@ -29,8 +29,8 @@ Aob_create_1:
 [0004f0bc] 206f 0012                 movea.l    18(a7),a0
 [0004f0c0] 2f48 000e                 move.l     a0,14(a7)
 [0004f0c4] 2f48 0008                 move.l     a0,8(a7)
-[0004f0c8] 206f 000e                 movea.l    14(a7),a0
 Aob_create_13:
+[0004f0c8] 206f 000e                 movea.l    14(a7),a0
 [0004f0cc] 3028 0008                 move.w     8(a0),d0
 [0004f0d0] c07c 8000                 and.w      #$8000,d0
 [0004f0d4] 6600 0112                 bne        Aob_create_3
@@ -146,8 +146,8 @@ Aob_delete:
 [0004f21a] 6000 00de                 bra        Aob_delete_2
 Aob_delete_1:
 [0004f21e] 2eaf 0008                 move.l     8(a7),(a7)
-[0004f222] 2057                      movea.l    (a7),a0
 Aob_delete_10:
+[0004f222] 2057                      movea.l    (a7),a0
 [0004f224] 3028 0008                 move.w     8(a0),d0
 [0004f228] c07c 8000                 and.w      #$8000,d0
 [0004f22c] 6600 00b0                 bne        Aob_delete_3
@@ -235,8 +235,8 @@ Aob_count:
 [0004f30e] 3ebc 0001                 move.w     #$0001,(a7)
 [0004f312] 2f6f 0008 0002            move.l     8(a7),2(a7)
 [0004f318] 601e                      bra.s      Aob_count_1
-[0004f31a] 302f 0006                 move.w     6(a7),d0
 Aob_count_4:
+[0004f31a] 302f 0006                 move.w     6(a7),d0
 [0004f31e] 660e                      bne.s      Aob_count_2
 [0004f320] 206f 0002                 movea.l    2(a7),a0
 [0004f324] 3028 0008                 move.w     8(a0),d0
@@ -301,8 +301,8 @@ convert_1:
 [0004f3e4] 3e80                      move.w     d0,(a7)
 [0004f3e6] 426f 0010                 clr.w      16(a7)
 [0004f3ea] 6000 01e8                 bra        convert_4
-[0004f3ee] 302f 0010                 move.w     16(a7),d0
 convert_19:
+[0004f3ee] 302f 0010                 move.w     16(a7),d0
 [0004f3f2] 3f40 000e                 move.w     d0,14(a7)
 [0004f3f6] 3f40 000a                 move.w     d0,10(a7)
 [0004f3fa] 302f 0010                 move.w     16(a7),d0
@@ -312,8 +312,8 @@ convert_19:
 [0004f408] 2f40 0022                 move.l     d0,34(a7)
 [0004f40c] 426f 0012                 clr.w      18(a7)
 [0004f410] 6000 01ae                 bra        convert_5
-[0004f414] 302f 0012                 move.w     18(a7),d0
 convert_18:
+[0004f414] 302f 0012                 move.w     18(a7),d0
 [0004f418] e840                      asr.w      #4,d0
 [0004f41a] 48c0                      ext.l      d0
 [0004f41c] d0af 0022                 add.l      34(a7),d0
@@ -941,8 +941,8 @@ Aob_fix:
 Aob_fix_1:
 [0004fbf6] 206f 000c                 movea.l    12(a7),a0
 [0004fbfa] 0068 8000 000a            ori.w      #$8000,10(a0)
-[0004fc00] 206f 000c                 movea.l    12(a7),a0
 Aob_fix_14:
+[0004fc00] 206f 000c                 movea.l    12(a7),a0
 [0004fc04] 3028 0008                 move.w     8(a0),d0
 [0004fc08] c07c 8000                 and.w      #$8000,d0
 [0004fc0c] 6600 014c                 bne        Aob_fix_3
@@ -1271,8 +1271,8 @@ Aob_offset_15:
 [00050008] 206f 0016                 movea.l    22(a7),a0
 [0005000c] 3140 0006                 move.w     d0,6(a0)
 [00050010] 6000 0080                 bra        Aob_offset_17
-[00050014] 3f6f 0010 0006            move.w     16(a7),6(a7)
 Aob_offset_20:
+[00050014] 3f6f 0010 0006            move.w     16(a7),6(a7)
 [0005001a] 322f 0006                 move.w     6(a7),d1
 [0005001e] 48c1                      ext.l      d1
 [00050020] 2001                      move.l     d1,d0
@@ -1442,8 +1442,8 @@ Aob_restore:
 [0005022c] 41f9 000e 0c8e            lea.l      $000E0C8E,a0
 [00050232] 43d7                      lea.l      (a7),a1
 [00050234] 700f                      moveq.l    #15,d0
-[00050236] 12d8                      move.b     (a0)+,(a1)+
 Aob_restore_1:
+[00050236] 12d8                      move.b     (a0)+,(a1)+
 [00050238] 51c8 fffc                 dbf        d0,Aob_restore_1
 [0005023c] 202f 0014                 move.l     20(a7),d0
 [00050240] 661e                      bne.s      Aob_restore_2
@@ -1933,8 +1933,8 @@ Aob_select_11:
 [00050816] 206f 0010                 movea.l    16(a7),a0
 [0005081a] 3f70 0802 0006            move.w     2(a0,d0.l),6(a7)
 [00050820] 6000 00b8                 bra        Aob_select_17
-[00050824] 7010                      moveq.l    #16,d0
 Aob_select_20:
+[00050824] 7010                      moveq.l    #16,d0
 [00050826] 342f 0006                 move.w     6(a7),d2
 [0005082a] 48c2                      ext.l      d2
 [0005082c] 2202                      move.l     d2,d1
@@ -2189,8 +2189,8 @@ Aob_watch_5:
 [00050b28] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00050b2e] 3140 0262                 move.w     d0,610(a0)
 [00050b32] 6000 013e                 bra        Aob_watch_6
-[00050b36] 7003                      moveq.l    #3,d0
 Aob_watch_12:
+[00050b36] 7003                      moveq.l    #3,d0
 [00050b38] 4eb9 0005 ae7e            jsr        Awi_update
 [00050b3e] 2f39 000e 692a            move.l     _globl,-(a7)
 [00050b44] 486f 0022                 pea.l      34(a7)
@@ -2295,8 +2295,8 @@ Aob_watch_8:
 
 Aev_release:
 [00050c80] 594f                      subq.w     #4,a7
-[00050c82] 7003                      moveq.l    #3,d0
 Aev_release_1:
+[00050c82] 7003                      moveq.l    #3,d0
 [00050c84] 4eb9 0005 ae7e            jsr        Awi_update
 [00050c8a] 2f39 000e 692a            move.l     _globl,-(a7)
 [00050c90] 486f 0006                 pea.l      6(a7)
@@ -2362,8 +2362,8 @@ Aob_key_2:
 [00050d3a] 026f 9fff 0006            andi.w     #$9FFF,6(a7)
 [00050d40] 426f 0002                 clr.w      2(a7)
 [00050d44] 6000 0112                 bra        Aob_key_3
-[00050d48] 302f 0002                 move.w     2(a7),d0
 Aob_key_13:
+[00050d48] 302f 0002                 move.w     2(a7),d0
 [00050d4c] 6a06                      bpl.s      Aob_key_4
 [00050d4e] 426f 0004                 clr.w      4(a7)
 [00050d52] 603c                      bra.s      Aob_key_5
@@ -2401,8 +2401,8 @@ Aob_key_5:
 [00050da4] 206f 0008                 movea.l    8(a7),a0
 [00050da8] 3f70 0800 0004            move.w     0(a0,d0.l),4(a7)
 [00050dae] 601e                      bra.s      Aob_key_8
-[00050db0] 3f6f 0004 0002            move.w     4(a7),2(a7)
 Aob_key_9:
+[00050db0] 3f6f 0004 0002            move.w     4(a7),2(a7)
 [00050db6] 322f 0004                 move.w     4(a7),d1
 [00050dba] 48c1                      ext.l      d1
 [00050dbc] 2001                      move.l     d1,d0
@@ -2476,8 +2476,8 @@ Aob_findflag:
 [00050e6a] 3f40 0004                 move.w     d0,4(a7)
 [00050e6e] 3f41 0002                 move.w     d1,2(a7)
 [00050e72] 6000 00bc                 bra        Aob_findflag_1
-[00050e76] 302f 0004                 move.w     4(a7),d0
 Aob_findflag_11:
+[00050e76] 302f 0004                 move.w     4(a7),d0
 [00050e7a] 6a04                      bpl.s      Aob_findflag_2
 [00050e7c] 4257                      clr.w      (a7)
 [00050e7e] 6038                      bra.s      Aob_findflag_3
@@ -2515,8 +2515,8 @@ Aob_findflag_3:
 [00050eca] 206f 0006                 movea.l    6(a7),a0
 [00050ece] 3eb0 0800                 move.w     0(a0,d0.l),(a7)
 [00050ed2] 6018                      bra.s      Aob_findflag_6
-[00050ed4] 3f57 0004                 move.w     (a7),4(a7)
 Aob_findflag_7:
+[00050ed4] 3f57 0004                 move.w     (a7),4(a7)
 [00050ed8] 3217                      move.w     (a7),d1
 [00050eda] 48c1                      ext.l      d1
 [00050edc] 2001                      move.l     d1,d0
@@ -2567,8 +2567,8 @@ Aob_up:
 [00050f3e] 2f48 0006                 move.l     a0,6(a7)
 [00050f42] 3f40 0004                 move.w     d0,4(a7)
 [00050f46] 3f6f 0004 0002            move.w     4(a7),2(a7)
-[00050f4c] 322f 0002                 move.w     2(a7),d1
 Aob_up_4:
+[00050f4c] 322f 0002                 move.w     2(a7),d1
 [00050f50] 48c1                      ext.l      d1
 [00050f52] 2001                      move.l     d1,d0
 [00050f54] d080                      add.l      d0,d0
@@ -2750,8 +2750,8 @@ Aob_scanf:
 [00051146] 676a                      beq.s      Aob_scanf_2
 [00051148] 5297                      addq.l     #1,(a7)
 [0005114a] 6002                      bra.s      Aob_scanf_3
-[0005114c] 5297                      addq.l     #1,(a7)
 Aob_scanf_4:
+[0005114c] 5297                      addq.l     #1,(a7)
 Aob_scanf_3:
 [0005114e] 2057                      movea.l    (a7),a0
 [00051150] 1010                      move.b     (a0),d0

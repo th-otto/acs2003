@@ -32,8 +32,8 @@ J25:
 [00037872] 02a8                      dc.w $02a8   ; Auo_wislider_3-J25
 [00037874] 02a8                      dc.w $02a8   ; Auo_wislider_3-J25
 [00037876] 00c4                      dc.w $00c4   ; Auo_wislider_7-J25
-[00037878] 026e                      dc.w $026e   ; Auo_wislider_8-J25
 Auo_wislider_18:
+[00037878] 026e                      dc.w $026e   ; Auo_wislider_8-J25
 [0003787a] 0278                      dc.w $0278   ; Auo_wislider_9-J25
 [0003787c] 0282                      dc.w $0282   ; Auo_wislider_10-J25
 [0003787e] 028c                      dc.w $028c   ; Auo_wislider_11-J25

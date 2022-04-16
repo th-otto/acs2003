@@ -137,8 +137,8 @@ INuserobj_7:
 [000627d0] 6f26                      ble.s      INuserobj_16
 [000627d2] 426f 0002                 clr.w      2(a7)
 [000627d6] 6018                      bra.s      INuserobj_17
-[000627d8] 302f 0002                 move.w     2(a7),d0
 INuserobj_18:
+[000627d8] 302f 0002                 move.w     2(a7),d0
 [000627dc] 48c0                      ext.l      d0
 [000627de] d080                      add.l      d0,d0
 [000627e0] 2079 000d e0a0            movea.l    _CHK_3D_S,a0
@@ -174,8 +174,8 @@ INuserobj_16:
 [00062868] 6f26                      ble.s      INuserobj_19
 [0006286a] 426f 0002                 clr.w      2(a7)
 [0006286e] 6018                      bra.s      INuserobj_20
-[00062870] 302f 0002                 move.w     2(a7),d0
 INuserobj_21:
+[00062870] 302f 0002                 move.w     2(a7),d0
 [00062874] 48c0                      ext.l      d0
 [00062876] d080                      add.l      d0,d0
 [00062878] 2079 000d e132            movea.l    _CHK_3D_U,a0
@@ -211,8 +211,8 @@ INuserobj_19:
 [00062900] 6f26                      ble.s      INuserobj_22
 [00062902] 426f 0002                 clr.w      2(a7)
 [00062906] 6018                      bra.s      INuserobj_23
-[00062908] 302f 0002                 move.w     2(a7),d0
 INuserobj_24:
+[00062908] 302f 0002                 move.w     2(a7),d0
 [0006290c] 48c0                      ext.l      d0
 [0006290e] d080                      add.l      d0,d0
 [00062910] 2079 000d df7c            movea.l    _CHK_3D_DS,a0
@@ -248,8 +248,8 @@ INuserobj_22:
 [00062998] 6f26                      ble.s      INuserobj_25
 [0006299a] 426f 0002                 clr.w      2(a7)
 [0006299e] 6018                      bra.s      INuserobj_26
-[000629a0] 302f 0002                 move.w     2(a7),d0
 INuserobj_27:
+[000629a0] 302f 0002                 move.w     2(a7),d0
 [000629a4] 48c0                      ext.l      d0
 [000629a6] d080                      add.l      d0,d0
 [000629a8] 2079 000d e00e            movea.l    _CHK_3D_DU,a0
@@ -2138,8 +2138,8 @@ A_innerframe_3:
 A_innerframe_5:
 [00064446] 426f 0028                 clr.w      40(a7)
 [0006444a] 600e                      bra.s      A_innerframe_6
-[0006444c] 302f 0028                 move.w     40(a7),d0
 A_innerframe_7:
+[0006444c] 302f 0028                 move.w     40(a7),d0
 [00064450] d040                      add.w      d0,d0
 [00064452] 5377 003a                 subq.w     #1,58(a7,d0.w)
 [00064456] 526f 0028                 addq.w     #1,40(a7)
@@ -3095,8 +3095,8 @@ A_3Dbutton_50:
 [00065182] 3f40 0050                 move.w     d0,80(a7)
 [00065186] 3f6f 0062 0052            move.w     98(a7),82(a7)
 [0006518c] 6000 00b4                 bra        A_3Dbutton_54
-[00065190] 302f 0010                 move.w     16(a7),d0
 A_3Dbutton_58:
+[00065190] 302f 0010                 move.w     16(a7),d0
 [00065194] 671a                      beq.s      A_3Dbutton_55
 [00065196] 0c6f 0002 0034            cmpi.w     #$0002,52(a7)
 [0006519c] 6c12                      bge.s      A_3Dbutton_55
@@ -3239,8 +3239,8 @@ A_3Dbutton_65:
 [00065390] 3f40 0052                 move.w     d0,82(a7)
 [00065394] 3f40 004e                 move.w     d0,78(a7)
 [00065398] 6000 00b4                 bra        A_3Dbutton_69
-[0006539c] 302f 0010                 move.w     16(a7),d0
 A_3Dbutton_73:
+[0006539c] 302f 0010                 move.w     16(a7),d0
 [000653a0] 671a                      beq.s      A_3Dbutton_70
 [000653a2] 0c6f 0002 0034            cmpi.w     #$0002,52(a7)
 [000653a8] 6c12                      bge.s      A_3Dbutton_70

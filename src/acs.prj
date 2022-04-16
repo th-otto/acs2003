@@ -39,13 +39,14 @@ acs.app
 stupargv.s
 
 acsbase.s
-palette.c
-ebdehave.c
-general.c
+palette.s
+ebdehave.s
+general.s
 about.s
-edutil.c
-io\protocol.c
-io\fixacs.c
+edutil.s
+
+io\protocol.s
+io\fixacs.s
 io\acsio.c
 io\rcsin.c
 io\pc_head.c

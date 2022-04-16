@@ -143,3 +143,17 @@ str_output_2:
 [0001d314] 4fef 0204                 lea.l      516(a7),a7
 [0001d318] 4cdf 3c08                 movem.l    (a7)+,d3/a2-a5
 [0001d31c] 4e75                      rts
+
+	.data
+
+[000a76b0]                           dc.b '%-12s',0
+[000a76b6]                           dc.b '&%-12s',0
+[000a76bd]                           dc.b '&%-12s[3]',0
+[000a76c7]                           dc.b 'ACS(',0
+[000a76cc]                           dc.b '%s=#',0
+[000a76d1]                           dc.b '#',$0d,$0a,0
+[000a76d5]                           dc.b '.ST0',0
+[000a76da]                           dc.b 'String-Export',0
+[000a76e8]                           dc.b '[%s]',$0d,$0a,0
+[000a76ef]                           dc.b 'GUI-LANGUAGE=ACS_LANG%d',$0d,$0a,0
+[000a7709]                           dc.b $00

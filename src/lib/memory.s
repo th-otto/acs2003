@@ -9,8 +9,8 @@ INmemory:
 INmemory_1:
 [0004c4d6] 4257                      clr.w      (a7)
 [0004c4d8] 605a                      bra.s      INmemory_3
-[0004c4da] 3217                      move.w     (a7),d1
 INmemory_4:
+[0004c4da] 3217                      move.w     (a7),d1
 [0004c4dc] 48c1                      ext.l      d1
 [0004c4de] 2001                      move.l     d1,d0
 [0004c4e0] e588                      lsl.l      #2,d0
@@ -69,8 +69,8 @@ TRmemory:
 TRmemory_1:
 [0004c578] 426f 0008                 clr.w      8(a7)
 [0004c57c] 604a                      bra.s      TRmemory_3
-[0004c57e] 322f 0008                 move.w     8(a7),d1
 TRmemory_6:
+[0004c57e] 322f 0008                 move.w     8(a7),d1
 [0004c582] 48c1                      ext.l      d1
 [0004c584] 2001                      move.l     d1,d0
 [0004c586] e588                      lsl.l      #2,d0
@@ -80,8 +80,8 @@ TRmemory_6:
 [0004c592] d1c0                      adda.l     d0,a0
 [0004c594] 2f48 0004                 move.l     a0,4(a7)
 [0004c598] 6020                      bra.s      TRmemory_4
-[0004c59a] 206f 0004                 movea.l    4(a7),a0
 TRmemory_5:
+[0004c59a] 206f 0004                 movea.l    4(a7),a0
 [0004c59e] 2ea8 0010                 move.l     16(a0),(a7)
 [0004c5a2] 206f 0004                 movea.l    4(a7),a0
 [0004c5a6] 2068 0010                 movea.l    16(a0),a0
@@ -351,10 +351,10 @@ Ax_free_3:
 Ax_release:
 [0004c8f6] 594f                      subq.w     #4,a7
 [0004c8f8] 605e                      bra.s      Ax_release_1
-[0004c8fa] 601a                      bra.s      Ax_release_2
 Ax_release_6:
-[0004c8fc] 2079 000e 0922            movea.l    act,a0
+[0004c8fa] 601a                      bra.s      Ax_release_2
 Ax_release_3:
+[0004c8fc] 2079 000e 0922            movea.l    act,a0
 [0004c902] 2028 0004                 move.l     4(a0),d0
 [0004c906] e588                      lsl.l      #2,d0
 [0004c908] 2079 000e 0922            movea.l    act,a0
@@ -500,8 +500,8 @@ Ax_memCheck_4:
 Ax_memCheck_7:
 [0004cabe] 1ebc 0041                 move.b     #$41,(a7)
 [0004cac2] 6016                      bra.s      Ax_memCheck_9
-[0004cac4] 206f 0002                 movea.l    2(a7),a0
 Ax_memCheck_11:
+[0004cac4] 206f 0002                 movea.l    2(a7),a0
 [0004cac8] 1e90                      move.b     (a0),(a7)
 [0004caca] 302f 0014                 move.w     20(a7),d0
 [0004cace] 6706                      beq.s      Ax_memCheck_10
@@ -516,8 +516,8 @@ Ax_memCheck_9:
 Ax_memCheck_6:
 [0004cae0] 1ebc 0041                 move.b     #$41,(a7)
 [0004cae4] 6016                      bra.s      Ax_memCheck_12
-[0004cae6] 206f 0002                 movea.l    2(a7),a0
 Ax_memCheck_14:
+[0004cae6] 206f 0002                 movea.l    2(a7),a0
 [0004caea] 1e90                      move.b     (a0),(a7)
 [0004caec] 302f 0014                 move.w     20(a7),d0
 [0004caf0] 6706                      beq.s      Ax_memCheck_13
@@ -535,8 +535,8 @@ Ax_memCheck_12:
 Ax_memCheck_8:
 [0004cb0c] 42af 000e                 clr.l      14(a7)
 [0004cb10] 601a                      bra.s      Ax_memCheck_15
-[0004cb12] 206f 0002                 movea.l    2(a7),a0
 Ax_memCheck_17:
+[0004cb12] 206f 0002                 movea.l    2(a7),a0
 [0004cb16] 1e90                      move.b     (a0),(a7)
 [0004cb18] 302f 0014                 move.w     20(a7),d0
 [0004cb1c] 6706                      beq.s      Ax_memCheck_16
@@ -784,8 +784,8 @@ deleteOldList:
 [0004cdd0] 2f48 000c                 move.l     a0,12(a7)
 [0004cdd4] 42af 0008                 clr.l      8(a7)
 [0004cdd8] 601e                      bra.s      deleteOldList_1
-[0004cdda] 206f 000c                 movea.l    12(a7),a0
 deleteOldList_2:
+[0004cdda] 206f 000c                 movea.l    12(a7),a0
 [0004cdde] 2f68 0010 0004            move.l     16(a0),4(a7)
 [0004cde4] 206f 0004                 movea.l    4(a7),a0
 [0004cde8] 226f 000c                 movea.l    12(a7),a1
@@ -813,8 +813,8 @@ deleteOldList_3:
 [0004ce2e] 4257                      clr.w      (a7)
 [0004ce30] 426f 0002                 clr.w      2(a7)
 [0004ce34] 6052                      bra.s      deleteOldList_5
-[0004ce36] 322f 0002                 move.w     2(a7),d1
 deleteOldList_7:
+[0004ce36] 322f 0002                 move.w     2(a7),d1
 [0004ce3a] 48c1                      ext.l      d1
 [0004ce3c] 2001                      move.l     d1,d0
 [0004ce3e] e588                      lsl.l      #2,d0
@@ -917,8 +917,8 @@ Ax_setRecycleSize_6:
 Ax_setRecycleSize_5:
 [0004cf72] 3f6f 000c 0002            move.w     12(a7),2(a7)
 [0004cf78] 6022                      bra.s      Ax_setRecycleSize_8
-[0004cf7a] 206f 0004                 movea.l    4(a7),a0
 Ax_setRecycleSize_10:
+[0004cf7a] 206f 0004                 movea.l    4(a7),a0
 [0004cf7e] 2f68 0010 0012            move.l     16(a0),18(a7)
 [0004cf84] 206f 0012                 movea.l    18(a7),a0
 [0004cf88] 226f 0004                 movea.l    4(a7),a1
@@ -979,8 +979,8 @@ Ax_getRecycleStat:
 Ax_getRecycleStat_1:
 [0004d038] 4257                      clr.w      (a7)
 [0004d03a] 607c                      bra.s      Ax_getRecycleStat_3
-[0004d03c] 3217                      move.w     (a7),d1
 Ax_getRecycleStat_4:
+[0004d03c] 3217                      move.w     (a7),d1
 [0004d03e] 48c1                      ext.l      d1
 [0004d040] 2001                      move.l     d1,d0
 [0004d042] e588                      lsl.l      #2,d0

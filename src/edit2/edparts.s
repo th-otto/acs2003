@@ -434,8 +434,8 @@ part_get:
 [00024e22] d679 000b b538            add.w      part_ucnt,d3
 [00024e28] 45f9 0010 c37c            lea.l      part_list,a2
 [00024e2e] 6020                      bra.s      part_get_1
-[00024e30] 3003                      move.w     d3,d0
 part_get_4:
+[00024e30] 3003                      move.w     d3,d0
 [00024e32] e548                      lsl.w      #2,d0
 [00024e34] 2272 0000                 movea.l    0(a2,d0.w),a1
 [00024e38] 204b                      movea.l    a3,a0
@@ -523,8 +523,8 @@ part_make_3:
 [00024f40] 200a                      move.l     a2,d0
 [00024f42] 6740                      beq.s      part_make_4
 [00024f44] 6032                      bra.s      part_make_5
-[00024f46] 43f9 000b b5ab            lea.l      $000BB5AB,a1
 part_make_7:
+[00024f46] 43f9 000b b5ab            lea.l      $000BB5AB,a1
 [00024f4c] 2f09                      move.l     a1,-(a7)
 [00024f4e] 2255                      movea.l    (a5),a1
 [00024f50] 41ef 0004                 lea.l      4(a7),a0

@@ -330,8 +330,8 @@ Aev_AvProtokoll:
 [0005fc1e] 41f9 000e 19ac            lea.l      $000E19AC,a0
 [0005fc24] 43d7                      lea.l      (a7),a1
 [0005fc26] 700f                      moveq.l    #15,d0
-[0005fc28] 12d8                      move.b     (a0)+,(a1)+
 Aev_AvProtokoll_1:
+[0005fc28] 12d8                      move.b     (a0)+,(a1)+
 [0005fc2a] 51c8 fffc                 dbf        d0,Aev_AvProtokoll_1
 [0005fc2e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005fc34] 302f 0016                 move.w     22(a7),d0
@@ -376,8 +376,8 @@ Aev_AvExit:
 [0005fcb0] 41f9 000e 19bc            lea.l      $000E19BC,a0
 [0005fcb6] 43d7                      lea.l      (a7),a1
 [0005fcb8] 700f                      moveq.l    #15,d0
-[0005fcba] 12d8                      move.b     (a0)+,(a1)+
 Aev_AvExit_1:
+[0005fcba] 12d8                      move.b     (a0)+,(a1)+
 [0005fcbc] 51c8 fffc                 dbf        d0,Aev_AvExit_1
 [0005fcc0] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005fcc6] 302f 0016                 move.w     22(a7),d0
@@ -424,8 +424,8 @@ Aev_VaStart:
 [0005fd44] 41f9 000e 19dc            lea.l      $000E19DC,a0
 [0005fd4a] 43ef 0004                 lea.l      4(a7),a1
 [0005fd4e] 700f                      moveq.l    #15,d0
-[0005fd50] 12d8                      move.b     (a0)+,(a1)+
 Aev_VaStart_1:
+[0005fd50] 12d8                      move.b     (a0)+,(a1)+
 [0005fd52] 51c8 fffc                 dbf        d0,Aev_VaStart_1
 [0005fd56] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005fd5c] 302f 001e                 move.w     30(a7),d0
@@ -478,8 +478,8 @@ Aev_AvStarted:
 [0005fdea] 41f9 000e 19ec            lea.l      $000E19EC,a0
 [0005fdf0] 43d7                      lea.l      (a7),a1
 [0005fdf2] 700f                      moveq.l    #15,d0
-[0005fdf4] 12d8                      move.b     (a0)+,(a1)+
 Aev_AvStarted_1:
+[0005fdf4] 12d8                      move.b     (a0)+,(a1)+
 [0005fdf6] 51c8 fffc                 dbf        d0,Aev_AvStarted_1
 [0005fdfa] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005fe00] 302f 0014                 move.w     20(a7),d0

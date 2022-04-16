@@ -26,8 +26,8 @@ object_tree:
 [0002acea] 41f9 000c 423e            lea.l      $000C423E,a0
 [0002acf0] 43ef 0012                 lea.l      18(a7),a1
 [0002acf4] 7031                      moveq.l    #49,d0
-[0002acf6] 12d8                      move.b     (a0)+,(a1)+
 object_tree_1:
+[0002acf6] 12d8                      move.b     (a0)+,(a1)+
 [0002acf8] 51c8 fffc                 dbf        d0,object_tree_1
 [0002acfc] 41f9 000c 3d20            lea.l      ED_FTEXT,a0
 [0002ad02] 4eb9 0004 f064            jsr        Aob_create
@@ -86,8 +86,8 @@ object_tree_2:
 [0002adb2] e0a3                      asr.l      d0,d3
 [0002adb4] 4244                      clr.w      d4
 [0002adb6] 6018                      bra.s      object_tree_4
-[0002adb8] 41ef 0012                 lea.l      18(a7),a0
 object_tree_6:
+[0002adb8] 41ef 0012                 lea.l      18(a7),a0
 [0002adbc] 3204                      move.w     d4,d1
 [0002adbe] 2252                      movea.l    (a2),a1
 [0002adc0] 3029 0010                 move.w     16(a1),d0
@@ -448,8 +448,8 @@ font_sel_2:
 [0002b214] 4243                      clr.w      d3
 [0002b216] 49ef 0004                 lea.l      4(a7),a4
 [0002b21a] 6018                      bra.s      font_sel_3
-[0002b21c] 204c                      movea.l    a4,a0
 font_sel_5:
+[0002b21c] 204c                      movea.l    a4,a0
 [0002b21e] 3203                      move.w     d3,d1
 [0002b220] 2252                      movea.l    (a2),a1
 [0002b222] 3029 0010                 move.w     16(a1),d0

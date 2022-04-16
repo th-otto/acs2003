@@ -204,8 +204,8 @@ set_type:
 [0001d6c4] 4eb9 0005 11da            jsr        Aob_gettext
 [0001d6ca] 47d7                      lea.l      (a7),a3
 [0001d6cc] 6002                      bra.s      set_type_1
-[0001d6ce] 524b                      addq.w     #1,a3
 set_type_2:
+[0001d6ce] 524b                      addq.w     #1,a3
 set_type_1:
 [0001d6d0] 0c13 0020                 cmpi.b     #$20,(a3)
 [0001d6d4] 67f8                      beq.s      set_type_2

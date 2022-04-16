@@ -258,11 +258,11 @@ Ash_getenv:
 [0005be1a] 206f 0008                 movea.l    8(a7),a0
 [0005be1e] 2f50 0004                 move.l     (a0),4(a7)
 [0005be22] 6046                      bra.s      Ash_getenv_2
-[0005be24] 2eaf 000c                 move.l     12(a7),(a7)
 Ash_getenv_7:
+[0005be24] 2eaf 000c                 move.l     12(a7),(a7)
 [0005be28] 601a                      bra.s      Ash_getenv_3
-[0005be2a] 206f 0004                 movea.l    4(a7),a0
 Ash_getenv_6:
+[0005be2a] 206f 0004                 movea.l    4(a7),a0
 [0005be2e] 0c10 003d                 cmpi.b     #$3D,(a0)
 [0005be32] 6610                      bne.s      Ash_getenv_3
 [0005be34] 2057                      movea.l    (a7),a0

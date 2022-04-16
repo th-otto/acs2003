@@ -179,14 +179,14 @@ PushFuncLists:
 [000715a2] 662c                      bne.s      PushFuncLists_1
 [000715a4] 4240                      clr.w      d0
 [000715a6] 6032                      bra.s      PushFuncLists_2
-[000715a8] 3229 0004                 move.w     4(a1),d1
 PushFuncLists_9:
+[000715a8] 3229 0004                 move.w     4(a1),d1
 [000715ac] 4291                      clr.l      (a1)
 [000715ae] 4242                      clr.w      d2
 [000715b0] 2052                      movea.l    (a2),a0
 [000715b2] 600c                      bra.s      PushFuncLists_3
-[000715b4] b268 0004                 cmp.w      4(a0),d1
 PushFuncLists_6:
+[000715b4] b268 0004                 cmp.w      4(a0),d1
 [000715b8] 6602                      bne.s      PushFuncLists_4
 [000715ba] 2290                      move.l     (a0),(a1)
 PushFuncLists_4:

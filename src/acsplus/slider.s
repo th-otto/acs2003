@@ -530,8 +530,8 @@ A_slider_41:
 [00036dd4] 4eb9 0007 2230            jsr        vs_clip
 [00036dda] 4a45                      tst.w      d5
 [00036ddc] 672e                      beq.s      A_slider_42
-[00036dde] 4240                      clr.w      d0
 A_slider_44:
+[00036dde] 4240                      clr.w      d0
 [00036de0] 204c                      movea.l    a4,a0
 [00036de2] 6100 f9e8                 bsr        dr_3dbut
 [00036de6] 6032                      bra.s      A_slider_35
@@ -607,8 +607,8 @@ A_slider_51:
 [00036e9c] 4eb9 0007 2230            jsr        vs_clip
 [00036ea2] 4a45                      tst.w      d5
 [00036ea4] 672e                      beq.s      A_slider_52
-[00036ea6] 4240                      clr.w      d0
 A_slider_54:
+[00036ea6] 4240                      clr.w      d0
 [00036ea8] 204c                      movea.l    a4,a0
 [00036eaa] 6100 f920                 bsr        dr_3dbut
 [00036eae] 6032                      bra.s      A_slider_45
@@ -960,8 +960,8 @@ Auo_slider_7:
 [0003729e] 224c                      movea.l    a4,a1
 [000372a0] 41eb 0012                 lea.l      18(a3),a0
 [000372a4] 4eb9 0008 2fd6            jsr        strncpy
-[000372aa] 302b 0010                 move.w     16(a3),d0
 Auo_slider_51:
+[000372aa] 302b 0010                 move.w     16(a3),d0
 [000372ae] 4233 0012                 clr.b      18(a3,d0.w)
 [000372b2] 6000 025c                 bra        Auo_slider_17
 Auo_slider_6:

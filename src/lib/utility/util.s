@@ -89,8 +89,8 @@ alert_str:
 [0006b818] 41ef 0004                 lea.l      4(a7),a0
 [0006b81c] 2e88                      move.l     a0,(a7)
 [0006b81e] 602a                      bra.s      alert_str_1
-[0006b820] 206f 0108                 movea.l    264(a7),a0
 alert_str_4:
+[0006b820] 206f 0108                 movea.l    264(a7),a0
 [0006b824] 0c10 0025                 cmpi.b     #$25,(a0)
 [0006b828] 6612                      bne.s      alert_str_2
 [0006b82a] 206f 0108                 movea.l    264(a7),a0
@@ -238,8 +238,8 @@ Aform_do_2:
 Aform_do_3:
 [0006b9ec] 3f7c 0001 000a            move.w     #$0001,10(a7)
 [0006b9f2] 6000 0556                 bra        Aform_do_4
-[0006b9f6] 302f 0012                 move.w     18(a7),d0
 Aform_do_21:
+[0006b9f6] 302f 0012                 move.w     18(a7),d0
 [0006b9fa] 6754                      beq.s      Aform_do_5
 [0006b9fc] 206f 0014                 movea.l    20(a7),a0
 [0006ba00] 3010                      move.w     (a0),d0
@@ -855,8 +855,8 @@ A_exdialog_4:
 [0006c26a] 4240                      clr.w      d0
 [0006c26c] 4eb9 0005 7f1c            jsr        Awi_show_menu
 [0006c272] 6000 02a0                 bra        A_exdialog_5
-[0006c276] 2279 0010 ee4e            movea.l    ACSblk,a1
 A_exdialog_16:
+[0006c276] 2279 0010 ee4e            movea.l    ACSblk,a1
 [0006c27c] 5049                      addq.w     #8,a1
 [0006c27e] 41ef 0014                 lea.l      20(a7),a0
 [0006c282] 4eb9 0006 c5b6            jsr        fitin
@@ -887,8 +887,8 @@ A_exdialog_16:
 [0006c2ee] 5c4f                      addq.w     #6,a7
 [0006c2f0] 426f 0006                 clr.w      6(a7)
 [0006c2f4] 6000 0156                 bra        A_exdialog_6
-[0006c2f8] 43d7                      lea.l      (a7),a1
 A_exdialog_12:
+[0006c2f8] 43d7                      lea.l      (a7),a1
 [0006c2fa] 206f 0046                 movea.l    70(a7),a0
 [0006c2fe] 6100 f69a                 bsr        Aform_do
 [0006c302] 3f40 0006                 move.w     d0,6(a7)
@@ -1343,8 +1343,8 @@ scrp_chg:
 [0006c846] 41f9 000e 1fcc            lea.l      $000E1FCC,a0
 [0006c84c] 43ef 000e                 lea.l      14(a7),a1
 [0006c850] 700f                      moveq.l    #15,d0
-[0006c852] 12d8                      move.b     (a0)+,(a1)+
 scrp_chg_1:
+[0006c852] 12d8                      move.b     (a0)+,(a1)+
 [0006c854] 51c8 fffc                 dbf        d0,scrp_chg_1
 [0006c858] 3f7c ffff 000a            move.w     #$FFFF,10(a7)
 [0006c85e] 3f7c 0050 000e            move.w     #$0050,14(a7)
@@ -1400,8 +1400,8 @@ Ascrp_clear:
 [0006c90c] 41f9 000e 1fdc            lea.l      $000E1FDC,a0
 [0006c912] 43ef 0108                 lea.l      264(a7),a1
 [0006c916] 707f                      moveq.l    #127,d0
-[0006c918] 12d8                      move.b     (a0)+,(a1)+
 Ascrp_clear_1:
+[0006c918] 12d8                      move.b     (a0)+,(a1)+
 [0006c91a] 51c8 fffc                 dbf        d0,Ascrp_clear_1
 [0006c91e] 4297                      clr.l      (a7)
 [0006c920] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1423,8 +1423,8 @@ Ascrp_clear_1:
 [0006c96c] 202f 0004                 move.l     4(a7),d0
 [0006c970] 6700 00ae                 beq        Ascrp_clear_3
 [0006c974] 6000 008c                 bra        Ascrp_clear_4
-[0006c978] 206f 0004                 movea.l    4(a7),a0
 Ascrp_clear_10:
+[0006c978] 206f 0004                 movea.l    4(a7),a0
 [0006c97c] 2250                      movea.l    (a0),a1
 [0006c97e] 41ef 0088                 lea.l      136(a7),a0
 [0006c982] 4eb9 0004 b66e            jsr        Af_2name
@@ -1490,8 +1490,8 @@ Ascrp_get:
 [0006ca38] 41f9 000e 205c            lea.l      $000E205C,a0
 [0006ca3e] 43ef 010e                 lea.l      270(a7),a1
 [0006ca42] 707f                      moveq.l    #127,d0
-[0006ca44] 12d8                      move.b     (a0)+,(a1)+
 Ascrp_get_1:
+[0006ca44] 12d8                      move.b     (a0)+,(a1)+
 [0006ca46] 51c8 fffc                 dbf        d0,Ascrp_get_1
 [0006ca4a] 42af 0002                 clr.l      2(a7)
 [0006ca4e] 4257                      clr.w      (a7)
@@ -1519,8 +1519,8 @@ Ascrp_get_3:
 [0006caae] 202f 0006                 move.l     6(a7),d0
 [0006cab2] 6700 0160                 beq        Ascrp_get_4
 [0006cab6] 6000 007c                 bra.w      Ascrp_get_5
-[0006caba] 206f 0006                 movea.l    6(a7),a0
 Ascrp_get_10:
+[0006caba] 206f 0006                 movea.l    6(a7),a0
 [0006cabe] 2250                      movea.l    (a0),a1
 [0006cac0] 41ef 008e                 lea.l      142(a7),a0
 [0006cac4] 4eb9 0004 b66e            jsr        Af_2name

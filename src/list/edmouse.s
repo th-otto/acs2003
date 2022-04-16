@@ -9,8 +9,8 @@ add_mouse:
 [000358dc] e48b                      lsr.l      #2,d3
 [000358de] 4244                      clr.w      d4
 [000358e0] 601e                      bra.s      add_mouse_1
-[000358e2] 2a5c                      movea.l    (a4)+,a5
 add_mouse_4:
+[000358e2] 2a5c                      movea.l    (a4)+,a5
 [000358e4] 704a                      moveq.l    #74,d0
 [000358e6] 226e 0004                 movea.l    4(a6),a1
 [000358ea] 206d 0004                 movea.l    4(a5),a0

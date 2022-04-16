@@ -68,8 +68,8 @@ align:
 [000254ea] 3584 181c                 move.w     d4,28(a2,d1.l)
 [000254ee] 4244                      clr.w      d4
 [000254f0] 6034                      bra.s      align_1
-[000254f2] 3205                      move.w     d5,d1
 align_2:
+[000254f2] 3205                      move.w     d5,d1
 [000254f4] 48c1                      ext.l      d1
 [000254f6] 2001                      move.l     d1,d0
 [000254f8] e788                      lsl.l      #3,d0
@@ -151,8 +151,8 @@ find_drop:
 [000255a6] d072 2802                 add.w      2(a2,d2.l),d0
 [000255aa] 3a00                      move.w     d0,d5
 [000255ac] 6030                      bra.s      find_drop_1
-[000255ae] bc44                      cmp.w      d4,d6
 find_drop_4:
+[000255ae] bc44                      cmp.w      d4,d6
 [000255b0] 6604                      bne.s      find_drop_2
 [000255b2] 3005                      move.w     d5,d0
 [000255b4] 6032                      bra.s      find_drop_3
@@ -233,8 +233,8 @@ find_title:
 [00025652] e789                      lsl.l      #3,d1
 [00025654] da72 1802                 add.w      2(a2,d1.l),d5
 [00025658] 6030                      bra.s      find_title_1
-[0002565a] bc45                      cmp.w      d5,d6
 find_title_4:
+[0002565a] bc45                      cmp.w      d5,d6
 [0002565c] 6604                      bne.s      find_title_2
 [0002565e] 3003                      move.w     d3,d0
 [00025660] 6032                      bra.s      find_title_3
@@ -341,8 +341,8 @@ me_init:
 [00025778] 0073 1800 0820            ori.w      #$1800,32(a3,d0.l)
 [0002577e] 29bc 0002 5d64 0830       move.l     #new_title,48(a4,d0.l)
 [00025786] 6020                      bra.s      me_init_2
-[00025788] 3205                      move.w     d5,d1
 me_init_3:
+[00025788] 3205                      move.w     d5,d1
 [0002578a] 48c1                      ext.l      d1
 [0002578c] 2001                      move.l     d1,d0
 [0002578e] d080                      add.l      d0,d0
@@ -411,8 +411,8 @@ me_init_2:
 [00025842] be40                      cmp.w      d0,d7
 [00025844] 6762                      beq.s      me_init_4
 [00025846] 603a                      bra.s      me_init_5
-[00025848] 3207                      move.w     d7,d1
 me_init_6:
+[00025848] 3207                      move.w     d7,d1
 [0002584a] 48c1                      ext.l      d1
 [0002584c] 2001                      move.l     d1,d0
 [0002584e] d080                      add.l      d0,d0
@@ -437,8 +437,8 @@ me_init_5:
 [00025886] be40                      cmp.w      d0,d7
 [00025888] 66be                      bne.s      me_init_6
 [0002588a] 601c                      bra.s      me_init_4
-[0002588c] 3206                      move.w     d6,d1
 me_init_7:
+[0002588c] 3206                      move.w     d6,d1
 [0002588e] 48c1                      ext.l      d1
 [00025890] 2001                      move.l     d1,d0
 [00025892] d080                      add.l      d0,d0
@@ -685,8 +685,8 @@ make_title_5:
 [00025b60] e789                      lsl.l      #3,d1
 [00025b62] 3e35 180a                 move.w     10(a5,d1.l),d7
 [00025b66] 6020                      bra.s      make_title_7
-[00025b68] 3203                      move.w     d3,d1
 make_title_8:
+[00025b68] 3203                      move.w     d3,d1
 [00025b6a] 48c1                      ext.l      d1
 [00025b6c] 2001                      move.l     d1,d0
 [00025b6e] e788                      lsl.l      #3,d0
@@ -1056,8 +1056,8 @@ ti_delete_3:
 [00025f3c] 2250                      movea.l    (a0),a1
 [00025f3e] 4269 0248                 clr.w      584(a1)
 [00025f42] 6000 00b2                 bra        ti_delete_4
-[00025f46] 3204                      move.w     d4,d1
 ti_delete_6:
+[00025f46] 3204                      move.w     d4,d1
 [00025f48] 48c1                      ext.l      d1
 [00025f4a] 2001                      move.l     d1,d0
 [00025f4c] d080                      add.l      d0,d0
@@ -1200,8 +1200,8 @@ title_rubber:
 [00026128] 41ef 0014                 lea.l      20(a7),a0
 [0002612c] 4eb9 0007 ac48            jsr        mt_graf_mkstate
 [00026132] 4fef 000c                 lea.l      12(a7),a7
-[00026136] 45ef 000a                 lea.l      10(a7),a2
 title_rubber_8:
+[00026136] 45ef 000a                 lea.l      10(a7),a2
 [0002613a] 36af 0008                 move.w     8(a7),(a3)
 [0002613e] 7004                      moveq.l    #4,d0
 [00026140] c054                      and.w      (a4),d0
@@ -1260,8 +1260,8 @@ title_rubber_4:
 [000261d4] 91c8                      suba.l     a0,a0
 [000261d6] 303c 0101                 move.w     #$0101,d0
 [000261da] 4eb9 0007 abe4            jsr        mt_graf_mouse
-[000261e0] 2f16                      move.l     (a6),-(a7)
 title_rubber_7:
+[000261e0] 2f16                      move.l     (a6),-(a7)
 [000261e2] 4854                      pea.l      (a4)
 [000261e4] 4855                      pea.l      (a5)
 [000261e6] 43ef 001e                 lea.l      30(a7),a1
@@ -1332,8 +1332,8 @@ tdragged_2:
 [0002629c] 2250                      movea.l    (a0),a1
 [0002629e] 4269 0248                 clr.w      584(a1)
 [000262a2] 600c                      bra.s      tdragged_3
-[000262a4] 3403                      move.w     d3,d2
 tdragged_4:
+[000262a4] 3403                      move.w     d3,d2
 [000262a6] 3204                      move.w     d4,d1
 [000262a8] 3005                      move.w     d5,d0
 [000262aa] 204a                      movea.l    a2,a0

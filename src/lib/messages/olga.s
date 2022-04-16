@@ -85,8 +85,8 @@ FindAppl:
 [00061846] 584f                      addq.w     #4,a7
 [00061848] 426f 0018                 clr.w      24(a7)
 [0006184c] 603e                      bra.s      FindAppl_2
-[0006184e] 2079 000e 692a            movea.l    _globl,a0
 FindAppl_4:
+[0006184e] 2079 000e 692a            movea.l    _globl,a0
 [00061854] 7064                      moveq.l    #100,d0
 [00061856] 4eb9 0007 91d4            jsr        mt_evnt_timer
 [0006185c] 2279 000e 692a            movea.l    _globl,a1
@@ -156,8 +156,8 @@ CheckOlga_3:
 [0006193e] 661a                      bne.s      CheckOlga_4
 [00061940] 4257                      clr.w      (a7)
 [00061942] 6008                      bra.s      CheckOlga_5
-[00061944] 4eb9 0004 b086            jsr        Aev_mess
 CheckOlga_6:
+[00061944] 4eb9 0004 b086            jsr        Aev_mess
 [0006194a] 5257                      addq.w     #1,(a7)
 CheckOlga_5:
 [0006194c] 3039 000e 1b5a            move.w     use_olga,d0

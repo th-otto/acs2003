@@ -53,8 +53,8 @@ copy_men_1:
 [000357fa] 2c6c 0004                 movea.l    4(a4),a6
 [000357fe] 4244                      clr.w      d4
 [00035800] 6020                      bra.s      copy_men_3
-[00035802] 3204                      move.w     d4,d1
 copy_men_4:
+[00035802] 3204                      move.w     d4,d1
 [00035804] 48c1                      ext.l      d1
 [00035806] 2001                      move.l     d1,d0
 [00035808] e788                      lsl.l      #3,d0
@@ -99,8 +99,8 @@ del_men_2:
 [0003586e] 286b 0004                 movea.l    4(a3),a4
 [00035872] 4244                      clr.w      d4
 [00035874] 601a                      bra.s      del_men_3
-[00035876] 3204                      move.w     d4,d1
 del_men_4:
+[00035876] 3204                      move.w     d4,d1
 [00035878] 48c1                      ext.l      d1
 [0003587a] 2001                      move.l     d1,d0
 [0003587c] e788                      lsl.l      #3,d0

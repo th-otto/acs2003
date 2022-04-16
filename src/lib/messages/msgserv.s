@@ -277,8 +277,8 @@ Aev_CmpMsgInList:
 Aev_CmpMsgInList_1:
 [0005d89c] 4257                      clr.w      (a7)
 [0005d89e] 6036                      bra.s      Aev_CmpMsgInList_3
-[0005d8a0] 3017                      move.w     (a7),d0
 Aev_CmpMsgInList_5:
+[0005d8a0] 3017                      move.w     (a7),d0
 [0005d8a2] 48c0                      ext.l      d0
 [0005d8a4] e588                      lsl.l      #2,d0
 [0005d8a6] 206f 0006                 movea.l    6(a7),a0
@@ -672,8 +672,8 @@ Ash_sendall_2:
 [0005dcd8] 504f                      addq.w     #8,a7
 [0005dcda] 3f40 000e                 move.w     d0,14(a7)
 [0005dcde] 6046                      bra.s      Ash_sendall_3
-[0005dce0] 7006                      moveq.l    #6,d0
 Ash_sendall_6:
+[0005dce0] 7006                      moveq.l    #6,d0
 [0005dce2] c06f 000c                 and.w      12(a7),d0
 [0005dce6] 671e                      beq.s      Ash_sendall_4
 [0005dce8] 2279 000e 692a            movea.l    _globl,a1
@@ -924,8 +924,8 @@ dd_find_dest_9:
 [0005e002] 6b00 008c                 bmi        dd_find_dest_10
 [0005e006] 206f 0030                 movea.l    48(a7),a0
 [0005e00a] 3f50 001a                 move.w     (a0),26(a7)
-[0005e00e] 322f 001a                 move.w     26(a7),d1
 dd_find_dest_12:
+[0005e00e] 322f 001a                 move.w     26(a7),d1
 [0005e012] 48c1                      ext.l      d1
 [0005e014] 2001                      move.l     d1,d0
 [0005e016] d080                      add.l      d0,d0
@@ -992,8 +992,8 @@ dd_find_dest_10:
 [0005e0e0] 6b00 0094                 bmi        dd_find_dest_13
 [0005e0e4] 206f 0030                 movea.l    48(a7),a0
 [0005e0e8] 3f50 001a                 move.w     (a0),26(a7)
-[0005e0ec] 322f 001a                 move.w     26(a7),d1
 dd_find_dest_16:
+[0005e0ec] 322f 001a                 move.w     26(a7),d1
 [0005e0f0] 48c1                      ext.l      d1
 [0005e0f2] 2001                      move.l     d1,d0
 [0005e0f4] d080                      add.l      d0,d0
@@ -1050,8 +1050,8 @@ dd_find_dest_17:
 [0005e194] 206f 0034                 movea.l    52(a7),a0
 [0005e198] 3080                      move.w     d0,(a0)
 [0005e19a] 6044                      bra.s      dd_find_dest_19
-[0005e19c] 206f 0034                 movea.l    52(a7),a0
 dd_find_dest_21:
+[0005e19c] 206f 0034                 movea.l    52(a7),a0
 [0005e1a0] 3f50 001a                 move.w     (a0),26(a7)
 [0005e1a4] 206f 0034                 movea.l    52(a7),a0
 [0005e1a8] 3010                      move.w     (a0),d0
@@ -1183,8 +1183,8 @@ GetTxtIntoObj:
 [0005e348] 4e91                      jsr        (a1)
 [0005e34a] 2e88                      move.l     a0,(a7)
 [0005e34c] 604c                      bra.s      GetTxtIntoObj_4
-[0005e34e] 2257                      movea.l    (a7),a1
 GetTxtIntoObj_5:
+[0005e34e] 2257                      movea.l    (a7),a1
 [0005e350] 41ef 0014                 lea.l      20(a7),a0
 [0005e354] 4eb9 0004 c1a6            jsr        Af_quote
 [0005e35a] 206f 0004                 movea.l    4(a7),a0
@@ -1271,8 +1271,8 @@ GetTxtIntoObj_1:
 [0005e470] 4e91                      jsr        (a1)
 [0005e472] 2e88                      move.l     a0,(a7)
 [0005e474] 6000 00b0                 bra        GetTxtIntoObj_14
-[0005e478] 2257                      movea.l    (a7),a1
 GetTxtIntoObj_16:
+[0005e478] 2257                      movea.l    (a7),a1
 [0005e47a] 41ef 0014                 lea.l      20(a7),a0
 [0005e47e] 4eb9 0004 c1a6            jsr        Af_quote
 [0005e484] 206f 0004                 movea.l    4(a7),a0
@@ -1331,8 +1331,8 @@ GetTxtIntoObj_12:
 [0005e548] 302f 0008                 move.w     8(a7),d0
 [0005e54c] 6b4e                      bmi.s      GetTxtIntoObj_17
 [0005e54e] 6040                      bra.s      GetTxtIntoObj_18
-[0005e550] 206f 0010                 movea.l    16(a7),a0
 GetTxtIntoObj_20:
+[0005e550] 206f 0010                 movea.l    16(a7),a0
 [0005e554] 0c10 001f                 cmpi.b     #$1F,(a0)
 [0005e558] 6f32                      ble.s      GetTxtIntoObj_19
 [0005e55a] 206f 0010                 movea.l    16(a7),a0
@@ -1358,8 +1358,8 @@ GetTxtIntoObj_18:
 [0005e598] 6000 008a                 bra        GetTxtIntoObj_11
 GetTxtIntoObj_17:
 [0005e59c] 6000 007c                 bra.w      GetTxtIntoObj_21
-[0005e5a0] 206f 0010                 movea.l    16(a7),a0
 GetTxtIntoObj_27:
+[0005e5a0] 206f 0010                 movea.l    16(a7),a0
 [0005e5a4] 1010                      move.b     (a0),d0
 [0005e5a6] 4880                      ext.w      d0
 [0005e5a8] 907c 0009                 sub.w      #$0009,d0

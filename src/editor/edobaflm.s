@@ -49,8 +49,8 @@ edafl_ok:
 [0003278e] 3610                      move.w     (a0),d3
 [00032790] 4eb9 0004 eec0            jsr        Amo_busy
 [00032796] 6000 016a                 bra        edafl_ok_2
-[0003279a] 2057                      movea.l    (a7),a0
 edafl_ok_7:
+[0003279a] 2057                      movea.l    (a7),a0
 [0003279c] 5497                      addq.l     #2,(a7)
 [0003279e] 3210                      move.w     (a0),d1
 [000327a0] 48c1                      ext.l      d1
@@ -277,8 +277,8 @@ set_aflags_1:
 [000329d4] 4eb9 0004 eec0            jsr        Amo_busy
 [000329da] 4eb9 0004 7e1e            jsr        Adr_start
 [000329e0] 6034                      bra.s      set_aflags_3
-[000329e2] 72fe                      moveq.l    #-2,d1
 set_aflags_4:
+[000329e2] 72fe                      moveq.l    #-2,d1
 [000329e4] d257                      add.w      (a7),d1
 [000329e6] 48c1                      ext.l      d1
 [000329e8] 83fc 0003                 divs.w     #$0003,d1

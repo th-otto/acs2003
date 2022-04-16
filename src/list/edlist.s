@@ -5,8 +5,8 @@ find_entry:
 [00033386] e48b                      lsr.l      #2,d3
 [00033388] 2468 0004                 movea.l    4(a0),a2
 [0003338c] 601a                      bra.s      find_entry_1
-[0003338e] 2252                      movea.l    (a2),a1
 find_entry_4:
+[0003338e] 2252                      movea.l    (a2),a1
 [00033390] 43e9 0016                 lea.l      22(a1),a1
 [00033394] 204b                      movea.l    a3,a0
 [00033396] 4eb9 0008 2eba            jsr        strcmp
@@ -46,8 +46,8 @@ add_entry_1:
 [000333e0] e588                      lsl.l      #2,d0
 [000333e2] d7c0                      adda.l     d0,a3
 [000333e4] 6008                      bra.s      add_entry_3
-[000333e6] 2753 0004                 move.l     (a3),4(a3)
 add_entry_5:
+[000333e6] 2753 0004                 move.l     (a3),4(a3)
 [000333ea] 594b                      subq.w     #4,a3
 [000333ec] 5343                      subq.w     #1,d3
 add_entry_3:
@@ -80,8 +80,8 @@ del_entry:
 [0003342c] 2468 0004                 movea.l    4(a0),a2
 [00033430] 4241                      clr.w      d1
 [00033432] 6002                      bra.s      del_entry_1
-[00033434] 5241                      addq.w     #1,d1
 del_entry_3:
+[00033434] 5241                      addq.w     #1,d1
 del_entry_1:
 [00033436] b041                      cmp.w      d1,d0
 [00033438] 6d0c                      blt.s      del_entry_2
@@ -94,8 +94,8 @@ del_entry_2:
 [00033446] b041                      cmp.w      d1,d0
 [00033448] 6d2c                      blt.s      del_entry_4
 [0003344a] 6014                      bra.s      del_entry_5
-[0003344c] 3401                      move.w     d1,d2
 del_entry_6:
+[0003344c] 3401                      move.w     d1,d2
 [0003344e] 48c2                      ext.l      d2
 [00033450] e58a                      lsl.l      #2,d2
 [00033452] 3601                      move.w     d1,d3
@@ -125,8 +125,8 @@ delete:
 [0003348e] 2650                      movea.l    (a0),a3
 [00033490] 4269 0248                 clr.w      584(a1)
 [00033494] 6042                      bra.s      delete_2
-[00033496] 3203                      move.w     d3,d1
 delete_3:
+[00033496] 3203                      move.w     d3,d1
 [00033498] 48c1                      ext.l      d1
 [0003349a] 2001                      move.l     d1,d0
 [0003349c] d080                      add.l      d0,d0
@@ -220,8 +220,8 @@ li_setfree:
 [000335a0] 2652                      movea.l    (a2),a3
 [000335a2] 4268 0248                 clr.w      584(a0)
 [000335a6] 604e                      bra.s      li_setfree_1
-[000335a8] 3203                      move.w     d3,d1
 li_setfree_3:
+[000335a8] 3203                      move.w     d3,d1
 [000335aa] 48c1                      ext.l      d1
 [000335ac] 2001                      move.l     d1,d0
 [000335ae] d080                      add.l      d0,d0
@@ -264,8 +264,8 @@ li_wopen:
 [0003361e] 2279 0010 ee4e            movea.l    ACSblk,a1
 [00033624] 4269 0248                 clr.w      584(a1)
 [00033628] 6018                      bra.s      li_wopen_1
-[0003362a] 3003                      move.w     d3,d0
 li_wopen_3:
+[0003362a] 3003                      move.w     d3,d0
 [0003362c] 204a                      movea.l    a2,a0
 [0003362e] 4eb9 0003 3b90            jsr        open_wi
 [00033634] 4a40                      tst.w      d0
@@ -336,8 +336,8 @@ li_winfo_2:
 [00033700] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00033706] 4268 0248                 clr.w      584(a0)
 [0003370a] 6000 00d2                 bra        li_winfo_4
-[0003370e] 3203                      move.w     d3,d1
 li_winfo_5:
+[0003370e] 3203                      move.w     d3,d1
 [00033710] 48c1                      ext.l      d1
 [00033712] 2001                      move.l     d1,d0
 [00033714] d080                      add.l      d0,d0
@@ -500,8 +500,8 @@ drag:
 [000338ec] 200a                      move.l     a2,d0
 [000338ee] 6700 0090                 beq        drag_1
 [000338f2] 603a                      bra.s      drag_2
-[000338f4] 3004                      move.w     d4,d0
 drag_4:
+[000338f4] 3004                      move.w     d4,d0
 [000338f6] c07c 1000                 and.w      #$1000,d0
 [000338fa] 671c                      beq.s      drag_3
 [000338fc] 3404                      move.w     d4,d2
@@ -532,8 +532,8 @@ drag_2:
 [00033938] 4eb9 0004 810e            jsr        Adr_unselect
 [0003393e] 4244                      clr.w      d4
 [00033940] 6032                      bra.s      drag_5
-[00033942] 3004                      move.w     d4,d0
 drag_8:
+[00033942] 3004                      move.w     d4,d0
 [00033944] 48c0                      ext.l      d0
 [00033946] e588                      lsl.l      #2,d0
 [00033948] 2475 0800                 movea.l    0(a5,d0.l),a2
@@ -629,8 +629,8 @@ li_init_3:
 [00033a38] 2b7c 0003 37f4 0004       move.l     #dragged,4(a5)
 [00033a40] 3a2c 0002                 move.w     2(a4),d5
 [00033a44] 601a                      bra.s      li_init_5
-[00033a46] 3205                      move.w     d5,d1
 li_init_6:
+[00033a46] 3205                      move.w     d5,d1
 [00033a48] 48c1                      ext.l      d1
 [00033a4a] 2001                      move.l     d1,d0
 [00033a4c] d080                      add.l      d0,d0
@@ -870,8 +870,8 @@ li_service_9:
 [00033cf4] 0c68 271c 0014            cmpi.w     #$271C,20(a0)
 [00033cfa] 666a                      bne.s      li_service_10
 [00033cfc] 604e                      bra.s      li_service_14
-[00033cfe] 7020                      moveq.l    #32,d0
 li_service_16:
+[00033cfe] 7020                      moveq.l    #32,d0
 [00033d00] 3403                      move.w     d3,d2
 [00033d02] 48c2                      ext.l      d2
 [00033d04] 2202                      move.l     d2,d1
@@ -995,8 +995,8 @@ work_icon_1:
 [00033e3c] 4bf3 0830                 lea.l      48(a3,d0.l),a5
 [00033e40] 7801                      moveq.l    #1,d4
 [00033e42] 606a                      bra.s      work_icon_4
-[00033e44] 5244                      addq.w     #1,d4
 work_icon_6:
+[00033e44] 5244                      addq.w     #1,d4
 [00033e46] 49ec 0030                 lea.l      48(a4),a4
 [00033e4a] 7030                      moveq.l    #48,d0
 [00033e4c] 43f9 000c dd88            lea.l      proto,a1
@@ -1055,8 +1055,8 @@ li_scope:
 [00033ee4] 2e92                      move.l     (a2),(a7)
 [00033ee6] 4268 0248                 clr.w      584(a0)
 [00033eea] 6000 00aa                 bra        li_scope_1
-[00033eee] 3203                      move.w     d3,d1
 li_scope_7:
+[00033eee] 3203                      move.w     d3,d1
 [00033ef0] 48c1                      ext.l      d1
 [00033ef2] 2001                      move.l     d1,d0
 [00033ef4] d080                      add.l      d0,d0

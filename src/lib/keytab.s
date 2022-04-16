@@ -496,8 +496,8 @@ Akt_BlockAtari2X_3:
 [0005cd56] 2f6f 000e 0016            move.l     14(a7),22(a7)
 [0005cd5c] 42af 0012                 clr.l      18(a7)
 [0005cd60] 6024                      bra.s      Akt_BlockAtari2X_4
-[0005cd62] 206f 0016                 movea.l    22(a7),a0
 Akt_BlockAtari2X_5:
+[0005cd62] 206f 0016                 movea.l    22(a7),a0
 [0005cd66] 1f10                      move.b     (a0),-(a7)
 [0005cd68] 3f2f 000e                 move.w     14(a7),-(a7)
 [0005cd6c] 206f 0004                 movea.l    4(a7),a0
@@ -553,8 +553,8 @@ Akt_BlockX2Atari_3:
 [0005ce00] 2f6f 000e 0016            move.l     14(a7),22(a7)
 [0005ce06] 42af 0012                 clr.l      18(a7)
 [0005ce0a] 6024                      bra.s      Akt_BlockX2Atari_4
-[0005ce0c] 206f 0016                 movea.l    22(a7),a0
 Akt_BlockX2Atari_5:
+[0005ce0c] 206f 0016                 movea.l    22(a7),a0
 [0005ce10] 1f10                      move.b     (a0),-(a7)
 [0005ce12] 3f2f 000e                 move.w     14(a7),-(a7)
 [0005ce16] 206f 0004                 movea.l    4(a7),a0
@@ -971,8 +971,8 @@ Akt_popExpName_1:
 [0005d2a2] 3f40 000c                 move.w     d0,12(a7)
 [0005d2a6] 3f40 0008                 move.w     d0,8(a7)
 [0005d2aa] 6078                      bra.s      Akt_popExpName_3
-[0005d2ac] 302f 000c                 move.w     12(a7),d0
 Akt_popExpName_7:
+[0005d2ac] 302f 000c                 move.w     12(a7),d0
 [0005d2b0] 6100 f71a                 bsr        Akt_getExpNameFromNr
 [0005d2b4] 2e88                      move.l     a0,(a7)
 [0005d2b6] 43f9 000e 146e            lea.l      $000E146E,a1
@@ -1047,8 +1047,8 @@ Akt_popImpName_1:
 [0005d38c] 3f40 000c                 move.w     d0,12(a7)
 [0005d390] 3f40 0008                 move.w     d0,8(a7)
 [0005d394] 6078                      bra.s      Akt_popImpName_3
-[0005d396] 302f 000c                 move.w     12(a7),d0
 Akt_popImpName_7:
+[0005d396] 302f 000c                 move.w     12(a7),d0
 [0005d39a] 6100 f680                 bsr        Akt_getImpNameFromNr
 [0005d39e] 2e88                      move.l     a0,(a7)
 [0005d3a0] 43f9 000e 1475            lea.l      $000E1475,a1

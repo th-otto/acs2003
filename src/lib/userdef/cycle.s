@@ -414,8 +414,8 @@ set:
 [00067282] 2f6f 0006 0002            move.l     6(a7),2(a7)
 [00067288] 4257                      clr.w      (a7)
 [0006728a] 6006                      bra.s      set_1
-[0006728c] 52af 0002                 addq.l     #1,2(a7)
 set_2:
+[0006728c] 52af 0002                 addq.l     #1,2(a7)
 [00067290] 5257                      addq.w     #1,(a7)
 set_1:
 [00067292] 206f 0002                 movea.l    2(a7),a0
@@ -450,8 +450,8 @@ next_entry:
 [000672e8] 594f                      subq.w     #4,a7
 [000672ea] 2e88                      move.l     a0,(a7)
 [000672ec] 602a                      bra.s      next_entry_1
-[000672ee] 2057                      movea.l    (a7),a0
 next_entry_6:
+[000672ee] 2057                      movea.l    (a7),a0
 [000672f0] 1010                      move.b     (a0),d0
 [000672f2] 6602                      bne.s      next_entry_2
 [000672f4] 6024                      bra.s      next_entry_3
@@ -493,8 +493,8 @@ next:
 [0006733e] 2ea8 0008                 move.l     8(a0),(a7)
 next_1:
 [00067342] 6008                      bra.s      next_2
-[00067344] 2057                      movea.l    (a7),a0
 next_3:
+[00067344] 2057                      movea.l    (a7),a0
 [00067346] 6100 ffa0                 bsr.w      next_entry
 [0006734a] 2e88                      move.l     a0,(a7)
 next_2:
@@ -533,8 +533,8 @@ cyc_getindex:
 [000673a6] 2ea8 0008                 move.l     8(a0),(a7)
 [000673aa] 426f 0006                 clr.w      6(a7)
 [000673ae] 6064                      bra.s      cyc_getindex_1
-[000673b0] 2057                      movea.l    (a7),a0
 cyc_getindex_7:
+[000673b0] 2057                      movea.l    (a7),a0
 [000673b2] 0c10 005b                 cmpi.b     #$5B,(a0)
 [000673b6] 6740                      beq.s      cyc_getindex_2
 [000673b8] 302f 0004                 move.w     4(a7),d0
@@ -588,8 +588,8 @@ cyc_index:
 [00067432] 206f 0006                 movea.l    6(a7),a0
 [00067436] 217c 000e 1dbf 0004       move.l     #$000E1DBF,4(a0)
 [0006743e] 6008                      bra.s      cyc_index_1
-[00067440] 206f 0006                 movea.l    6(a7),a0
 cyc_index_2:
+[00067440] 206f 0006                 movea.l    6(a7),a0
 [00067444] 6100 feda                 bsr        next
 cyc_index_1:
 [00067448] 3017                      move.w     (a7),d0
@@ -794,8 +794,8 @@ count_it:
 [00067668] 206f 0004                 movea.l    4(a7),a0
 [0006766c] 30bc 0001                 move.w     #$0001,(a0)
 [00067670] 6028                      bra.s      count_it_1
-[00067672] 2057                      movea.l    (a7),a0
 count_it_4:
+[00067672] 2057                      movea.l    (a7),a0
 [00067674] 0c10 007c                 cmpi.b     #$7C,(a0)
 [00067678] 6606                      bne.s      count_it_2
 [0006767a] 206f 0004                 movea.l    4(a7),a0
@@ -822,8 +822,8 @@ count_it_1:
 [000676ac] 206f 0010                 movea.l    16(a7),a0
 [000676b0] 3080                      move.w     d0,(a0)
 [000676b2] 6010                      bra.s      count_it_5
-[000676b4] 2057                      movea.l    (a7),a0
 count_it_7:
+[000676b4] 2057                      movea.l    (a7),a0
 [000676b6] 0c10 005b                 cmpi.b     #$5B,(a0)
 [000676ba] 6606                      bne.s      count_it_6
 [000676bc] 206f 0010                 movea.l    16(a7),a0
@@ -883,8 +883,8 @@ make_panel:
 [00067770] 5250                      addq.w     #1,(a0)
 [00067772] 4257                      clr.w      (a7)
 [00067774] 6000 0262                 bra        make_panel_1
-[00067778] 206f 001e                 movea.l    30(a7),a0
 make_panel_22:
+[00067778] 206f 001e                 movea.l    30(a7),a0
 [0006777c] 3f50 0008                 move.w     (a0),8(a7)
 [00067780] 322f 0008                 move.w     8(a7),d1
 [00067784] 48c1                      ext.l      d1
@@ -984,8 +984,8 @@ make_panel_11:
 [000678ae] d06f 001a                 add.w      26(a7),d0
 [000678b2] 3f40 0004                 move.w     d0,4(a7)
 [000678b6] 6046                      bra.s      make_panel_12
-[000678b8] 206f 002a                 movea.l    42(a7),a0
 make_panel_17:
+[000678b8] 206f 002a                 movea.l    42(a7),a0
 [000678bc] 2050                      movea.l    (a0),a0
 [000678be] 0c10 005d                 cmpi.b     #$5D,(a0)
 [000678c2] 661a                      bne.s      make_panel_13
@@ -1276,8 +1276,8 @@ Ame_strpopup_6:
 [00067c4a] 4eb9 0008 3008            jsr        strstr
 [00067c50] 2f48 0008                 move.l     a0,8(a7)
 [00067c54] 6014                      bra.s      Ame_strpopup_7
-[00067c56] 226f 0004                 movea.l    4(a7),a1
 Ame_strpopup_8:
+[00067c56] 226f 0004                 movea.l    4(a7),a1
 [00067c5a] 206f 0008                 movea.l    8(a7),a0
 [00067c5e] 5248                      addq.w     #1,a0
 [00067c60] 4eb9 0008 3008            jsr        strstr

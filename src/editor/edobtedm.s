@@ -498,8 +498,8 @@ edte_type_7:
 [00032196] 2054                      movea.l    (a4),a0
 [00032198] 2068 025c                 movea.l    604(a0),a0
 [0003219c] 4eb9 0005 0fd8            jsr        Aob_puttext
-[000321a2] b67c 001d                 cmp.w      #$001D,d3
 edte_type_13:
+[000321a2] b67c 001d                 cmp.w      #$001D,d3
 [000321a6] 6708                      beq.s      edte_type_12
 [000321a8] b67c 001e                 cmp.w      #$001E,d3
 [000321ac] 6600 007c                 bne.w      edte_type_11
@@ -525,8 +525,8 @@ edte_type_9:
 [000321ea] 2054                      movea.l    (a4),a0
 [000321ec] 2068 025c                 movea.l    604(a0),a0
 [000321f0] 4eb9 0005 0fd8            jsr        Aob_puttext
-[000321f6] b67c 0015                 cmp.w      #$0015,d3
 edte_type_15:
+[000321f6] b67c 0015                 cmp.w      #$0015,d3
 [000321fa] 6706                      beq.s      edte_type_14
 [000321fc] b67c 0016                 cmp.w      #$0016,d3
 [00032200] 6628                      bne.s      edte_type_11

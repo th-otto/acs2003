@@ -134,12 +134,12 @@ A_picture_10:
 [000680a2] 206f 0032                 movea.l    50(a7),a0
 [000680a6] 3f68 000c 0012            move.w     12(a0),18(a7)
 [000680ac] 6000 0084                 bra        A_picture_13
-[000680b0] 206f 0032                 movea.l    50(a7),a0
 A_picture_16:
+[000680b0] 206f 0032                 movea.l    50(a7),a0
 [000680b4] 3f68 000a 0014            move.w     10(a0),20(a7)
 [000680ba] 6056                      bra.s      A_picture_14
-[000680bc] 3f6f 0014 001e            move.w     20(a7),30(a7)
 A_picture_15:
+[000680bc] 3f6f 0014 001e            move.w     20(a7),30(a7)
 [000680c2] 3f6f 0012 0020            move.w     18(a7),32(a7)
 [000680c8] 302f 0014                 move.w     20(a7),d0
 [000680cc] d06f 0010                 add.w      16(a7),d0

@@ -289,8 +289,8 @@ Acfg_clearAllGroups:
 [000448c0] 6700 010a                 beq        Acfg_clearAllGroups_1
 [000448c4] 426f 000a                 clr.w      10(a7)
 [000448c8] 6000 00ca                 bra        Acfg_clearAllGroups_2
-[000448cc] 302f 000a                 move.w     10(a7),d0
 Acfg_clearAllGroups_8:
+[000448cc] 302f 000a                 move.w     10(a7),d0
 [000448d0] 48c0                      ext.l      d0
 [000448d2] e588                      lsl.l      #2,d0
 [000448d4] 206f 0004                 movea.l    4(a7),a0
@@ -306,8 +306,8 @@ Acfg_clearAllGroups_8:
 [000448f6] 6770                      beq.s      Acfg_clearAllGroups_4
 [000448f8] 426f 0008                 clr.w      8(a7)
 [000448fc] 6046                      bra.s      Acfg_clearAllGroups_5
-[000448fe] 302f 0008                 move.w     8(a7),d0
 Acfg_clearAllGroups_7:
+[000448fe] 302f 0008                 move.w     8(a7),d0
 [00044902] 48c0                      ext.l      d0
 [00044904] e588                      lsl.l      #2,d0
 [00044906] 2057                      movea.l    (a7),a0
@@ -394,8 +394,8 @@ Acfg_clearGroup:
 [00044a0a] 6700 0124                 beq        Acfg_clearGroup_1
 [00044a0e] 426f 0014                 clr.w      20(a7)
 [00044a12] 601e                      bra.s      Acfg_clearGroup_2
-[00044a14] 302f 0014                 move.w     20(a7),d0
 Acfg_clearGroup_3:
+[00044a14] 302f 0014                 move.w     20(a7),d0
 [00044a18] 48c0                      ext.l      d0
 [00044a1a] e588                      lsl.l      #2,d0
 [00044a1c] 206f 001a                 movea.l    26(a7),a0
@@ -428,8 +428,8 @@ Acfg_clearGroup_2:
 [00044a82] 3f40 0014                 move.w     d0,20(a7)
 [00044a86] 3f40 0012                 move.w     d0,18(a7)
 [00044a8a] 604a                      bra.s      Acfg_clearGroup_5
-[00044a8c] 302f 0014                 move.w     20(a7),d0
 Acfg_clearGroup_8:
+[00044a8c] 302f 0014                 move.w     20(a7),d0
 [00044a90] 48c0                      ext.l      d0
 [00044a92] e588                      lsl.l      #2,d0
 [00044a94] 206f 001e                 movea.l    30(a7),a0
@@ -605,8 +605,8 @@ FoundNextGroup:
 [00044cb4] 3080                      move.w     d0,(a0)
 [00044cb6] 4257                      clr.w      (a7)
 [00044cb8] 6070                      bra.s      FoundNextGroup_1
-[00044cba] 226f 0006                 movea.l    6(a7),a1
 FoundNextGroup_4:
+[00044cba] 226f 0006                 movea.l    6(a7),a1
 [00044cbe] 303c 2000                 move.w     #$2000,d0
 [00044cc2] 206f 0016                 movea.l    22(a7),a0
 [00044cc6] 4eb9 0008 22be            jsr        fgets
@@ -683,8 +683,8 @@ ReadUntilNextGroup_1:
 [00044dac] 206f 0018                 movea.l    24(a7),a0
 [00044db0] 4eb9 0004 663c            jsr        Ast_alltrim
 [00044db6] 6056                      bra.s      ReadUntilNextGroup_4
-[00044db8] 206f 0018                 movea.l    24(a7),a0
 ReadUntilNextGroup_8:
+[00044db8] 206f 0018                 movea.l    24(a7),a0
 [00044dbc] 4eb9 0004 69f6            jsr        Ast_isEmpty
 [00044dc2] 4a40                      tst.w      d0
 [00044dc4] 6626                      bne.s      ReadUntilNextGroup_5
@@ -807,8 +807,8 @@ Acfg_load_7:
 [00044f42] 206f 001c                 movea.l    28(a7),a0
 [00044f46] 4eb9 0008 2476            jsr        fseek
 [00044f4c] 602c                      bra.s      Acfg_load_8
-[00044f4e] 226f 001c                 movea.l    28(a7),a1
 Acfg_load_9:
+[00044f4e] 226f 001c                 movea.l    28(a7),a1
 [00044f52] 303c 2000                 move.w     #$2000,d0
 [00044f56] 206f 000c                 movea.l    12(a7),a0
 [00044f5a] 4eb9 0008 22be            jsr        fgets
@@ -860,8 +860,8 @@ Acfg_load_10:
 [00044ffc] 4eb9 0008 2476            jsr        fseek
 [00045002] 426f 0004                 clr.w      4(a7)
 [00045006] 6000 0116                 bra        Acfg_load_11
-[0004500a] 700a                      moveq.l    #10,d0
 Acfg_load_14:
+[0004500a] 700a                      moveq.l    #10,d0
 [0004500c] 4eb9 0004 c608            jsr        Ax_malloc
 [00045012] 2e88                      move.l     a0,(a7)
 [00045014] 2017                      move.l     (a7),d0
@@ -981,8 +981,8 @@ WriteString:
 [000451b0] 6664                      bne.s      WriteString_2
 [000451b2] 4257                      clr.w      (a7)
 [000451b4] 6034                      bra.s      WriteString_3
-[000451b6] 3017                      move.w     (a7),d0
 WriteString_4:
+[000451b6] 3017                      move.w     (a7),d0
 [000451b8] 48c0                      ext.l      d0
 [000451ba] e588                      lsl.l      #2,d0
 [000451bc] 206f 0002                 movea.l    2(a7),a0
@@ -1107,8 +1107,8 @@ Acfg_save_10:
 [0004533a] 3e80                      move.w     d0,(a7)
 [0004533c] 426f 0004                 clr.w      4(a7)
 [00045340] 6000 00bc                 bra        Acfg_save_11
-[00045344] 302f 0004                 move.w     4(a7),d0
 Acfg_save_17:
+[00045344] 302f 0004                 move.w     4(a7),d0
 [00045348] 48c0                      ext.l      d0
 [0004534a] e588                      lsl.l      #2,d0
 [0004534c] 206f 0022                 movea.l    34(a7),a0
@@ -1132,8 +1132,8 @@ Acfg_save_12:
 [0004538e] 206f 000a                 movea.l    10(a7),a0
 [00045392] 2f68 0006 0006            move.l     6(a0),6(a7)
 [00045398] 6028                      bra.s      Acfg_save_13
-[0004539a] 206f 0006                 movea.l    6(a7),a0
 Acfg_save_14:
+[0004539a] 206f 0006                 movea.l    6(a7),a0
 [0004539e] 2f10                      move.l     (a0),-(a7)
 [000453a0] 4879 000e 05ac            pea.l      $000E05AC
 [000453a6] 486f 0008                 pea.l      8(a7)
@@ -1864,8 +1864,8 @@ Acfg_strIsComment:
 [00045cc0] 2068 0006                 movea.l    6(a0),a0
 [00045cc4] 2f70 0800 0002            move.l     0(a0,d0.l),2(a7)
 [00045cca] 6004                      bra.s      Acfg_strIsComment_2
-[00045ccc] 52af 0002                 addq.l     #1,2(a7)
 Acfg_strIsComment_4:
+[00045ccc] 52af 0002                 addq.l     #1,2(a7)
 Acfg_strIsComment_2:
 [00045cd0] 206f 0002                 movea.l    2(a7),a0
 [00045cd4] 1010                      move.b     (a0),d0
@@ -1899,8 +1899,8 @@ Acfg_clearHeader:
 [00045d1e] 2f6f 0006 0002            move.l     6(a7),2(a7)
 [00045d24] 4257                      clr.w      (a7)
 [00045d26] 601a                      bra.s      Acfg_clearHeader_1
-[00045d28] 3017                      move.w     (a7),d0
 Acfg_clearHeader_2:
+[00045d28] 3017                      move.w     (a7),d0
 [00045d2a] 48c0                      ext.l      d0
 [00045d2c] e588                      lsl.l      #2,d0
 [00045d2e] 206f 0002                 movea.l    2(a7),a0
@@ -1961,8 +1961,8 @@ Acfg_setHeader_1:
 [00045dd6] 2157 001e                 move.l     (a7),30(a0)
 [00045dda] 426f 0004                 clr.w      4(a7)
 [00045dde] 602e                      bra.s      Acfg_setHeader_3
-[00045de0] 302f 0004                 move.w     4(a7),d0
 Acfg_setHeader_4:
+[00045de0] 302f 0004                 move.w     4(a7),d0
 [00045de4] 48c0                      ext.l      d0
 [00045de6] e588                      lsl.l      #2,d0
 [00045de8] 206f 000a                 movea.l    10(a7),a0
@@ -1991,8 +1991,8 @@ Acfg_getHeader:
 [00045e2e] 2f6f 000a 0002            move.l     10(a7),2(a7)
 [00045e34] 4257                      clr.w      (a7)
 [00045e36] 602e                      bra.s      Acfg_getHeader_1
-[00045e38] 3017                      move.w     (a7),d0
 Acfg_getHeader_2:
+[00045e38] 3017                      move.w     (a7),d0
 [00045e3a] 48c0                      ext.l      d0
 [00045e3c] e588                      lsl.l      #2,d0
 [00045e3e] 206f 0002                 movea.l    2(a7),a0
@@ -2125,8 +2125,8 @@ SearchCfgNameInStrings_2:
 [00045fca] 2eaf 0018                 move.l     24(a7),(a7)
 [00045fce] 42af 0004                 clr.l      4(a7)
 [00045fd2] 6036                      bra.s      SearchCfgNameInStrings_4
-[00045fd4] 2057                      movea.l    (a7),a0
 SearchCfgNameInStrings_8:
+[00045fd4] 2057                      movea.l    (a7),a0
 [00045fd6] 2010                      move.l     (a0),d0
 [00045fd8] 672a                      beq.s      SearchCfgNameInStrings_5
 [00045fda] 2057                      movea.l    (a7),a0
@@ -2185,8 +2185,8 @@ SearchGruppe_1:
 [00046068] 426f 0004                 clr.w      4(a7)
 [0004606c] 426f 0006                 clr.w      6(a7)
 [00046070] 6068                      bra.s      SearchGruppe_3
-[00046072] 302f 0006                 move.w     6(a7),d0
 SearchGruppe_12:
+[00046072] 302f 0006                 move.w     6(a7),d0
 [00046076] 48c0                      ext.l      d0
 [00046078] e588                      lsl.l      #2,d0
 [0004607a] 206f 000c                 movea.l    12(a7),a0
@@ -2253,8 +2253,8 @@ SearchCfgName:
 [0004610a] 2f49 000a                 move.l     a1,10(a7)
 [0004610e] 2f6f 000a 0004            move.l     10(a7),4(a7)
 [00046114] 6004                      bra.s      SearchCfgName_1
-[00046116] 52af 0004                 addq.l     #1,4(a7)
 SearchCfgName_3:
+[00046116] 52af 0004                 addq.l     #1,4(a7)
 SearchCfgName_1:
 [0004611a] 206f 0004                 movea.l    4(a7),a0
 [0004611e] 1010                      move.b     (a0),d0
@@ -2283,8 +2283,8 @@ SearchCfgName_4:
 [0004615e] 2ea8 0008                 move.l     8(a0),(a7)
 [00046162] 3f7c 0001 0008            move.w     #$0001,8(a7)
 [00046168] 604e                      bra.s      SearchCfgName_6
-[0004616a] 206f 000e                 movea.l    14(a7),a0
 SearchCfgName_14:
+[0004616a] 206f 000e                 movea.l    14(a7),a0
 [0004616e] 3028 000c                 move.w     12(a0),d0
 [00046172] 6718                      beq.s      SearchCfgName_7
 [00046174] 206f 0004                 movea.l    4(a7),a0
@@ -2332,8 +2332,8 @@ SearchCfgName_6:
 [000461d4] 6694                      bne.s      SearchCfgName_14
 SearchCfgName_13:
 [000461d6] 6004                      bra.s      SearchCfgName_15
-[000461d8] 52af 0004                 addq.l     #1,4(a7)
 SearchCfgName_17:
+[000461d8] 52af 0004                 addq.l     #1,4(a7)
 SearchCfgName_15:
 [000461dc] 302f 0008                 move.w     8(a7),d0
 [000461e0] 6722                      beq.s      SearchCfgName_16
@@ -2505,8 +2505,8 @@ DeleteCfgString_1:
 [000463da] 426f 0008                 clr.w      8(a7)
 [000463de] 2eaf 0004                 move.l     4(a7),(a7)
 [000463e2] 6026                      bra.s      DeleteCfgString_3
-[000463e4] 302f 0008                 move.w     8(a7),d0
 DeleteCfgString_5:
+[000463e4] 302f 0008                 move.w     8(a7),d0
 [000463e8] b06f 000c                 cmp.w      12(a7),d0
 [000463ec] 6718                      beq.s      DeleteCfgString_4
 [000463ee] 302f 0008                 move.w     8(a7),d0

@@ -51,8 +51,8 @@ tree_label:
 [00018d2c] 4243                      clr.w      d3
 [00018d2e] 45f9 0010 8366            lea.l      dfna,a2
 [00018d34] 605a                      bra.s      tree_label_1
-[00018d36] 3203                      move.w     d3,d1
 tree_label_4:
+[00018d36] 3203                      move.w     d3,d1
 [00018d38] 48c1                      ext.l      d1
 [00018d3a] 2001                      move.l     d1,d0
 [00018d3c] e788                      lsl.l      #3,d0
@@ -102,8 +102,8 @@ index_label:
 [00018da8] 4243                      clr.w      d3
 [00018daa] 45f9 0010 8366            lea.l      dfna,a2
 [00018db0] 6042                      bra.s      index_label_1
-[00018db2] 3203                      move.w     d3,d1
 index_label_4:
+[00018db2] 3203                      move.w     d3,d1
 [00018db4] 48c1                      ext.l      d1
 [00018db6] 2001                      move.l     d1,d0
 [00018db8] e788                      lsl.l      #3,d0
@@ -144,8 +144,8 @@ image_label:
 [00018e0a] 4243                      clr.w      d3
 [00018e0c] 45f9 0010 8366            lea.l      dfna,a2
 [00018e12] 603a                      bra.s      image_label_1
-[00018e14] 3203                      move.w     d3,d1
 image_label_4:
+[00018e14] 3203                      move.w     d3,d1
 [00018e16] 48c1                      ext.l      d1
 [00018e18] 2001                      move.l     d1,d0
 [00018e1a] e788                      lsl.l      #3,d0
@@ -183,8 +183,8 @@ string_label:
 [00018e66] 4243                      clr.w      d3
 [00018e68] 45f9 0010 8366            lea.l      dfna,a2
 [00018e6e] 6066                      bra.s      string_label_1
-[00018e70] 3203                      move.w     d3,d1
 string_label_6:
+[00018e70] 3203                      move.w     d3,d1
 [00018e72] 48c1                      ext.l      d1
 [00018e74] 2001                      move.l     d1,d0
 [00018e76] e788                      lsl.l      #3,d0
@@ -248,8 +248,8 @@ strings:
 [00018f06] 4244                      clr.w      d4
 [00018f08] 45ef 0010                 lea.l      16(a7),a2
 [00018f0c] 6000 010a                 bra        strings_1
-[00018f10] 3004                      move.w     d4,d0
 strings_10:
+[00018f10] 3004                      move.w     d4,d0
 [00018f12] 48c0                      ext.l      d0
 [00018f14] e588                      lsl.l      #2,d0
 [00018f16] 206f 0012                 movea.l    18(a7),a0
@@ -354,8 +354,8 @@ images:
 [00019044] 2f49 0010                 move.l     a1,16(a7)
 [00019048] 4244                      clr.w      d4
 [0001904a] 6050                      bra.s      images_1
-[0001904c] 3004                      move.w     d4,d0
 images_3:
+[0001904c] 3004                      move.w     d4,d0
 [0001904e] 48c0                      ext.l      d0
 [00019050] e588                      lsl.l      #2,d0
 [00019052] 206f 0010                 movea.l    16(a7),a0
@@ -394,14 +394,14 @@ fix_cicon:
 [000190ae] 514f                      subq.w     #8,a7
 [000190b0] 2f48 0004                 move.l     a0,4(a7)
 [000190b4] 2e88                      move.l     a0,(a7)
-[000190b6] 2057                      movea.l    (a7),a0
 fix_cicon_1:
+[000190b6] 2057                      movea.l    (a7),a0
 [000190b8] 5897                      addq.l     #4,(a7)
 [000190ba] 2010                      move.l     (a0),d0
 [000190bc] 67f8                      beq.s      fix_cicon_1
 [000190be] 6000 00ac                 bra        fix_cicon_2
-[000190c2] 206f 0004                 movea.l    4(a7),a0
 fix_cicon_9:
+[000190c2] 206f 0004                 movea.l    4(a7),a0
 [000190c6] 58af 0004                 addq.l     #4,4(a7)
 [000190ca] 2097                      move.l     (a7),(a0)
 [000190cc] 2857                      movea.l    (a7),a4
@@ -420,8 +420,8 @@ fix_cicon_9:
 [000190f2] 4bed 000c                 lea.l      12(a5),a5
 [000190f6] 9dce                      suba.l     a6,a6
 [000190f8] 244e                      movea.l    a6,a2
-[000190fa] 264d                      movea.l    a5,a3
 fix_cicon_6:
+[000190fa] 264d                      movea.l    a5,a3
 [000190fc] 0c53 0004                 cmpi.w     #$0004,(a3)
 [00019100] 6602                      bne.s      fix_cicon_3
 [00019102] 244b                      movea.l    a3,a2
@@ -516,8 +516,8 @@ objects_1:
 [000191c8] 2f49 001a                 move.l     a1,26(a7)
 [000191cc] 4244                      clr.w      d4
 [000191ce] 6000 03c4                 bra        objects_2
-[000191d2] 3004                      move.w     d4,d0
 objects_27:
+[000191d2] 3004                      move.w     d4,d0
 [000191d4] 48c0                      ext.l      d0
 [000191d6] e588                      lsl.l      #2,d0
 [000191d8] 206f 001a                 movea.l    26(a7),a0
@@ -536,8 +536,8 @@ objects_27:
 [000191fe] 2a01                      move.l     d1,d5
 [00019200] 4246                      clr.w      d6
 [00019202] 601c                      bra.s      objects_3
-[00019204] 3006                      move.w     d6,d0
 objects_5:
+[00019204] 3006                      move.w     d6,d0
 [00019206] 48c0                      ext.l      d0
 [00019208] e588                      lsl.l      #2,d0
 [0001920a] 206f 001a                 movea.l    26(a7),a0
@@ -662,8 +662,8 @@ objects_11:
 [00019384] e78a                      lsl.l      #3,d2
 [00019386] 3c33 2802                 move.w     2(a3,d2.l),d6
 [0001938a] 6016                      bra.s      objects_13
-[0001938c] 3206                      move.w     d6,d1
 objects_14:
+[0001938c] 3206                      move.w     d6,d1
 [0001938e] 48c1                      ext.l      d1
 [00019390] 2001                      move.l     d1,d0
 [00019392] d080                      add.l      d0,d0
@@ -682,8 +682,8 @@ objects_12:
 [000193b4] 3740 0010                 move.w     d0,16(a3)
 [000193b8] 4246                      clr.w      d6
 [000193ba] 6000 01a0                 bra        objects_15
-[000193be] 7038                      moveq.l    #56,d0
 objects_24:
+[000193be] 7038                      moveq.l    #56,d0
 [000193c0] 43f9 000a 5368            lea.l      obsproto,a1
 [000193c6] 204d                      movea.l    a5,a0
 [000193c8] 4eb9 0008 3500            jsr        memcpy

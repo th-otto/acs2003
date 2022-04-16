@@ -340,8 +340,8 @@ compress_image_2:
 [00054fb8] 2f50 008c                 move.l     (a0),140(a7)
 [00054fbc] 422f 0092                 clr.b      146(a7)
 [00054fc0] 6028                      bra.s      compress_image_3
-[00054fc2] 4240                      clr.w      d0
 compress_image_4:
+[00054fc2] 4240                      clr.w      d0
 [00054fc4] 102f 0092                 move.b     146(a7),d0
 [00054fc8] 48c0                      ext.l      d0
 [00054fca] 222f 0004                 move.l     4(a7),d1
@@ -363,8 +363,8 @@ compress_image_3:
 [00054ffc] 206f 00a8                 movea.l    168(a7),a0
 [00055000] 3f68 0006 009c            move.w     6(a0),156(a7)
 [00055006] 6000 0310                 bra        compress_image_5
-[0005500a] 322f 0096                 move.w     150(a7),d1
 compress_image_33:
+[0005500a] 322f 0096                 move.w     150(a7),d1
 [0005500e] 206f 00a8                 movea.l    168(a7),a0
 [00055012] 3028 000c                 move.w     12(a0),d0
 [00055016] 41ef 0008                 lea.l      8(a7),a0
@@ -396,19 +396,19 @@ compress_image_7:
 compress_image_6:
 [00055072] 426f 009e                 clr.w      158(a7)
 [00055076] 6000 0286                 bra        compress_image_8
-[0005507a] 3f6f 0096 009a            move.w     150(a7),154(a7)
 compress_image_32:
+[0005507a] 3f6f 0096 009a            move.w     150(a7),154(a7)
 [00055080] 302f 009e                 move.w     158(a7),d0
 [00055084] e548                      lsl.w      #2,d0
 [00055086] 2f77 0008 008c            move.l     8(a7,d0.w),140(a7)
 [0005508c] 6000 0246                 bra        compress_image_9
-[00055090] 422f 0093                 clr.b      147(a7)
 compress_image_31:
+[00055090] 422f 0093                 clr.b      147(a7)
 [00055094] 206f 008c                 movea.l    140(a7),a0
 [00055098] 1010                      move.b     (a0),d0
 [0005509a] 663a                      bne.s      compress_image_10
-[0005509c] 536f 009a                 subq.w     #1,154(a7)
 compress_image_12:
+[0005509c] 536f 009a                 subq.w     #1,154(a7)
 [000550a0] 522f 0093                 addq.b     #1,147(a7)
 [000550a4] 52af 008c                 addq.l     #1,140(a7)
 [000550a8] 206f 008c                 movea.l    140(a7),a0
@@ -431,8 +431,8 @@ compress_image_10:
 [000550d6] 206f 008c                 movea.l    140(a7),a0
 [000550da] 0c10 00ff                 cmpi.b     #$FF,(a0)
 [000550de] 6640                      bne.s      compress_image_14
-[000550e0] 536f 009a                 subq.w     #1,154(a7)
 compress_image_16:
+[000550e0] 536f 009a                 subq.w     #1,154(a7)
 [000550e4] 522f 0093                 addq.b     #1,147(a7)
 [000550e8] 52af 008c                 addq.l     #1,140(a7)
 [000550ec] 206f 008c                 movea.l    140(a7),a0
@@ -471,8 +471,8 @@ compress_image_14:
 [0005515c] 1f7c 0001 0093            move.b     #$01,147(a7)
 [00055162] 54af 008c                 addq.l     #2,140(a7)
 [00055166] 556f 009a                 subq.w     #2,154(a7)
-[0005516a] 556f 009a                 subq.w     #2,154(a7)
 compress_image_20:
+[0005516a] 556f 009a                 subq.w     #2,154(a7)
 [0005516e] 522f 0093                 addq.b     #1,147(a7)
 [00055172] 54af 008c                 addq.l     #2,140(a7)
 [00055176] 206f 008c                 movea.l    140(a7),a0
@@ -508,8 +508,8 @@ compress_image_21:
 compress_image_18:
 [000551da] 2f6f 008c 0088            move.l     140(a7),136(a7)
 [000551e0] 6000 00a4                 bra        compress_image_22
-[000551e4] 536f 009a                 subq.w     #1,154(a7)
 compress_image_28:
+[000551e4] 536f 009a                 subq.w     #1,154(a7)
 [000551e8] 522f 0093                 addq.b     #1,147(a7)
 [000551ec] 52af 008c                 addq.l     #1,140(a7)
 [000551f0] 302f 009a                 move.w     154(a7),d0
@@ -575,8 +575,8 @@ compress_image_25:
 [000552ac] 52af 00a0                 addq.l     #1,160(a7)
 [000552b0] 10af 0093                 move.b     147(a7),(a0)
 [000552b4] 6012                      bra.s      compress_image_29
-[000552b6] 206f 0088                 movea.l    136(a7),a0
 compress_image_30:
+[000552b6] 206f 0088                 movea.l    136(a7),a0
 [000552ba] 52af 0088                 addq.l     #1,136(a7)
 [000552be] 226f 00a0                 movea.l    160(a7),a1
 [000552c2] 52af 00a0                 addq.l     #1,160(a7)
@@ -630,8 +630,8 @@ vreplic_1:
 [0005534e] d06f 0092                 add.w      146(a7),d0
 [00055352] 3f40 008e                 move.w     d0,142(a7)
 [00055356] 6022                      bra.s      vreplic_2
-[00055358] 3017                      move.w     (a7),d0
 vreplic_3:
+[00055358] 3017                      move.w     (a7),d0
 [0005535a] 322f 008e                 move.w     142(a7),d1
 [0005535e] 48c1                      ext.l      d1
 [00055360] e589                      lsl.l      #2,d1
@@ -646,13 +646,13 @@ vreplic_2:
 [0005537a] 302f 008e                 move.w     142(a7),d0
 [0005537e] 6ad8                      bpl.s      vreplic_3
 [00055380] 6000 007a                 bra.w      vreplic_4
-[00055384] 70ff                      moveq.l    #-1,d0
 vreplic_11:
+[00055384] 70ff                      moveq.l    #-1,d0
 [00055386] d06f 0092                 add.w      146(a7),d0
 [0005538a] 3f40 008e                 move.w     d0,142(a7)
 [0005538e] 6062                      bra.s      vreplic_5
-[00055390] 302f 008e                 move.w     142(a7),d0
 vreplic_10:
+[00055390] 302f 008e                 move.w     142(a7),d0
 [00055394] 48c0                      ext.l      d0
 [00055396] e588                      lsl.l      #2,d0
 [00055398] 206f 0094                 movea.l    148(a7),a0
@@ -664,8 +664,8 @@ vreplic_10:
 [000553b0] d06f 0090                 add.w      144(a7),d0
 [000553b4] 3f40 008c                 move.w     d0,140(a7)
 [000553b8] 6020                      bra.s      vreplic_6
-[000553ba] 206f 0008                 movea.l    8(a7),a0
 vreplic_9:
+[000553ba] 206f 0008                 movea.l    8(a7),a0
 [000553be] 52af 0008                 addq.l     #1,8(a7)
 [000553c2] 1010                      move.b     (a0),d0
 [000553c4] 206f 0004                 movea.l    4(a7),a0
@@ -913,8 +913,8 @@ uncompress_image:
 [000556fe] 2e80                      move.l     d0,(a7)
 [00055700] 422f 008e                 clr.b      142(a7)
 [00055704] 6026                      bra.s      uncompress_image_1
-[00055706] 4240                      clr.w      d0
 uncompress_image_2:
+[00055706] 4240                      clr.w      d0
 [00055708] 102f 008e                 move.b     142(a7),d0
 [0005570c] 48c0                      ext.l      d0
 [0005570e] 2217                      move.l     (a7),d1
@@ -935,12 +935,12 @@ uncompress_image_1:
 [0005573c] 206f 009e                 movea.l    158(a7),a0
 [00055740] 3f68 000e 0096            move.w     14(a0),150(a7)
 [00055746] 6000 01e8                 bra        uncompress_image_3
-[0005574a] 422f 008f                 clr.b      143(a7)
 uncompress_image_30:
+[0005574a] 422f 008f                 clr.b      143(a7)
 [0005574e] 426f 0098                 clr.w      152(a7)
 [00055752] 6000 01be                 bra        uncompress_image_4
-[00055756] 3f6f 0092 0094            move.w     146(a7),148(a7)
 uncompress_image_29:
+[00055756] 3f6f 0092 0094            move.w     146(a7),148(a7)
 [0005575c] 302f 0098                 move.w     152(a7),d0
 [00055760] e548                      lsl.w      #2,d0
 [00055762] 2077 0004                 movea.l    4(a7,d0.w),a0
@@ -957,8 +957,8 @@ uncompress_image_29:
 [00055788] 6000 01ae                 bra        uncompress_image_6
 uncompress_image_5:
 [0005578c] 6000 0116                 bra        uncompress_image_7
-[00055790] 206f 009a                 movea.l    154(a7),a0
 uncompress_image_24:
+[00055790] 206f 009a                 movea.l    154(a7),a0
 [00055794] 52af 009a                 addq.l     #1,154(a7)
 [00055798] 4240                      clr.w      d0
 [0005579a] 1010                      move.b     (a0),d0
@@ -986,11 +986,11 @@ uncompress_image_12:
 [000557de] 604e                      bra.s      uncompress_image_13
 uncompress_image_11:
 [000557e0] 6038                      bra.s      uncompress_image_14
-[000557e2] 422f 008d                 clr.b      141(a7)
 uncompress_image_17:
+[000557e2] 422f 008d                 clr.b      141(a7)
 [000557e6] 601e                      bra.s      uncompress_image_15
-[000557e8] 7000                      moveq.l    #0,d0
 uncompress_image_16:
+[000557e8] 7000                      moveq.l    #0,d0
 [000557ea] 102f 008d                 move.b     141(a7),d0
 [000557ee] 206f 009a                 movea.l    154(a7),a0
 [000557f2] 226f 0084                 movea.l    132(a7),a1
@@ -1019,8 +1019,8 @@ uncompress_image_9:
 [00055836] 52af 009a                 addq.l     #1,154(a7)
 [0005583a] 1f50 008e                 move.b     (a0),142(a7)
 [0005583e] 601a                      bra.s      uncompress_image_18
-[00055840] 206f 009a                 movea.l    154(a7),a0
 uncompress_image_19:
+[00055840] 206f 009a                 movea.l    154(a7),a0
 [00055844] 52af 009a                 addq.l     #1,154(a7)
 [00055848] 226f 0084                 movea.l    132(a7),a1
 [0005584c] 52af 0084                 addq.l     #1,132(a7)
@@ -1044,8 +1044,8 @@ uncompress_image_20:
 [00055884] 422f 008c                 clr.b      140(a7)
 uncompress_image_21:
 [00055888] 6014                      bra.s      uncompress_image_22
-[0005588a] 206f 0084                 movea.l    132(a7),a0
 uncompress_image_23:
+[0005588a] 206f 0084                 movea.l    132(a7),a0
 [0005588e] 52af 0084                 addq.l     #1,132(a7)
 [00055892] 10af 008c                 move.b     140(a7),(a0)
 [00055896] 536f 0094                 subq.w     #1,148(a7)
@@ -1065,8 +1065,8 @@ uncompress_image_7:
 uncompress_image_25:
 [000558be] 422f 008e                 clr.b      142(a7)
 [000558c2] 6034                      bra.s      uncompress_image_26
-[000558c4] 302f 0092                 move.w     146(a7),d0
 uncompress_image_28:
+[000558c4] 302f 0092                 move.w     146(a7),d0
 [000558c8] 48c0                      ext.l      d0
 [000558ca] 226f 0088                 movea.l    136(a7),a1
 [000558ce] 206f 0084                 movea.l    132(a7),a0

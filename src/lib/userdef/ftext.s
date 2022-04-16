@@ -241,8 +241,8 @@ A_ftext_13:
 [00066710] 6000 0208                 bra        A_ftext_5
 A_ftext_14:
 [00066714] 2f6f 002e 0022            move.l     46(a7),34(a7)
-[0006671a] 707c                      moveq.l    #124,d0
 A_ftext_36:
+[0006671a] 707c                      moveq.l    #124,d0
 [0006671c] 206f 0022                 movea.l    34(a7),a0
 [00066720] 4eb9 0008 2e8a            jsr        strchr
 [00066726] 2f48 002a                 move.l     a0,42(a7)
@@ -265,8 +265,8 @@ A_ftext_15:
 [00066760] b1ef 001e                 cmpa.l     30(a7),a0
 [00066764] 6300 0076                 bls.w      A_ftext_17
 [00066768] 426f 0052                 clr.w      82(a7)
-[0006676c] 202f 002a                 move.l     42(a7),d0
 A_ftext_22:
+[0006676c] 202f 002a                 move.l     42(a7),d0
 [00066770] 670c                      beq.s      A_ftext_18
 [00066772] 206f 001e                 movea.l    30(a7),a0
 [00066776] b1ef 002a                 cmpa.l     42(a7),a0
@@ -310,8 +310,8 @@ A_ftext_17:
 [000667ee] 6432                      bcc.s      A_ftext_23
 [000667f0] 2f6f 001e 0016            move.l     30(a7),22(a7)
 [000667f6] 6004                      bra.s      A_ftext_24
-[000667f8] 53af 001e                 subq.l     #1,30(a7)
 A_ftext_26:
+[000667f8] 53af 001e                 subq.l     #1,30(a7)
 A_ftext_24:
 [000667fc] 206f 001e                 movea.l    30(a7),a0
 [00066800] 0c28 0020 ffff            cmpi.b     #$20,-1(a0)
@@ -334,8 +334,8 @@ A_ftext_23:
 [00066838] 52af 0026                 addq.l     #1,38(a7)
 A_ftext_16:
 [0006683c] 6004                      bra.s      A_ftext_27
-[0006683e] 52af 0022                 addq.l     #1,34(a7)
 A_ftext_29:
+[0006683e] 52af 0022                 addq.l     #1,34(a7)
 A_ftext_27:
 [00066842] 206f 0022                 movea.l    34(a7),a0
 [00066846] 0c10 0020                 cmpi.b     #$20,(a0)
@@ -345,8 +345,8 @@ A_ftext_27:
 [00066854] 65e8                      bcs.s      A_ftext_29
 A_ftext_28:
 [00066856] 6004                      bra.s      A_ftext_30
-[00066858] 53af 001e                 subq.l     #1,30(a7)
 A_ftext_32:
+[00066858] 53af 001e                 subq.l     #1,30(a7)
 A_ftext_30:
 [0006685c] 206f 001e                 movea.l    30(a7),a0
 [00066860] 0c28 0020 ffff            cmpi.b     #$20,-1(a0)
