@@ -47,14 +47,14 @@ edutil.s
 
 io\protocol.s
 io\fixacs.s
-io\acsio.c
-io\rcsin.c
-io\pc_head.c
-io\pc_out.c
-io\pp_out.c
-io\str_out.c
+io\acsio.s
+io\rcsin.s
+io\pc_head.s
+io\pc_out.s
+io\pp_out.s
+io\str_out.s
 
-edit2\eddataed.c
+edit2\eddataed.s
 edit2\edrefed.c
 edit2\edaled.c
 edit2\ediconed.c
