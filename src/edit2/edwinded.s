@@ -12,7 +12,7 @@ edwi_tme:
 		movea.l    (a0),a1
 		move.l     28(a1),4(a3)
 		movea.l    a3,a0
-		movea.l    $000CDC9E,a1
+		movea.l    WI_LIST+8,a1
 		jsr        (a1)
 		andi.w     #$FFFB,84(a2)
 		movea.l    (a7)+,a3
@@ -31,7 +31,7 @@ edwi_two:
 		movea.l    (a0),a1
 		move.l     24(a1),4(a3)
 		movea.l    a3,a0
-		movea.l    $000CDC9E,a1
+		movea.l    WI_LIST+8,a1
 		jsr        (a1)
 		andi.w     #$FFFB,84(a2)
 		movea.l    (a7)+,a3
@@ -50,7 +50,7 @@ edwi_tic:
 		movea.l    (a0),a1
 		move.l     44(a1),4(a3)
 		movea.l    a3,a0
-		movea.l    $000CDC9E,a1
+		movea.l    WI_LIST+8,a1
 		jsr        (a1)
 		andi.w     #$FFFB,84(a2)
 		movea.l    (a7)+,a3
@@ -69,7 +69,7 @@ edwi_ref:
 		movea.l    (a0),a1
 		move.l     60(a1),4(a3)
 		movea.l    a3,a0
-		movea.l    $000CDC9E,a1
+		movea.l    WI_LIST+8,a1
 		jsr        (a1)
 		andi.w     #$FFFB,84(a2)
 		movea.l    (a7)+,a3

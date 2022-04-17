@@ -1,1870 +1,10494 @@
+		.text
+
 make_a_window:
-[0002ba08] 4eb9 0005 7052            jsr        Awi_create
-[0002ba0e] 2008                      move.l     a0,d0
-[0002ba10] 6604                      bne.s      make_a_window_1
-[0002ba12] 91c8                      suba.l     a0,a0
-[0002ba14] 4e71                      nop
+		jsr        Awi_create
+		move.l     a0,d0
+		bne.s      make_a_window_1
+		suba.l     a0,a0
+		nop
 make_a_window_1:
-[0002ba16] 4e75                      rts
+		rts
 
 close_uc:
-[0002ba18] 2f0a                      move.l     a2,-(a7)
-[0002ba1a] 2448                      movea.l    a0,a2
-[0002ba1c] 5379 000c 9106            subq.w     #1,visible_editors
-[0002ba22] 3039 000c 9106            move.w     visible_editors,d0
-[0002ba28] 6e18                      bgt.s      close_uc_1
-[0002ba2a] 2279 000b b542            movea.l    parts_window,a1
-[0002ba30] 3229 0020                 move.w     32(a1),d1
-[0002ba34] 6b0c                      bmi.s      close_uc_1
-[0002ba36] 2269 0072                 movea.l    114(a1),a1
-[0002ba3a] 2079 000b b542            movea.l    parts_window,a0
-[0002ba40] 4e91                      jsr        (a1)
+		move.l     a2,-(a7)
+		movea.l    a0,a2
+		subq.w     #1,visible_editors
+		move.w     visible_editors,d0
+		bgt.s      close_uc_1
+		movea.l    parts_window,a1
+		move.w     32(a1),d1
+		bmi.s      close_uc_1
+		movea.l    114(a1),a1
+		movea.l    parts_window,a0
+		jsr        (a1)
 close_uc_1:
-[0002ba42] 302a 0020                 move.w     32(a2),d0
-[0002ba46] 6b08                      bmi.s      close_uc_2
-[0002ba48] 204a                      movea.l    a2,a0
-[0002ba4a] 4eb9 0005 8362            jsr        Awi_closed
+		move.w     32(a2),d0
+		bmi.s      close_uc_2
+		movea.l    a2,a0
+		jsr        Awi_closed
 close_uc_2:
-[0002ba50] 245f                      movea.l    (a7)+,a2
-[0002ba52] 4e75                      rts
+		movea.l    (a7)+,a2
+		rts
 
 close_me:
-[0002ba54] 2f0a                      move.l     a2,-(a7)
-[0002ba56] 2f0b                      move.l     a3,-(a7)
-[0002ba58] 2448                      movea.l    a0,a2
-[0002ba5a] 2650                      movea.l    (a0),a3
-[0002ba5c] 0c6b 0001 0008            cmpi.w     #$0001,8(a3)
-[0002ba62] 6706                      beq.s      close_me_1
-[0002ba64] 202a 0014                 move.l     20(a2),d0
-[0002ba68] 6608                      bne.s      close_me_2
+		move.l     a2,-(a7)
+		move.l     a3,-(a7)
+		movea.l    a0,a2
+		movea.l    (a0),a3
+		cmpi.w     #$0001,8(a3)
+		beq.s      close_me_1
+		move.l     20(a2),d0
+		bne.s      close_me_2
 close_me_1:
-[0002ba6a] 204a                      movea.l    a2,a0
-[0002ba6c] 6100 ffaa                 bsr.w      close_uc
-[0002ba70] 6010                      bra.s      close_me_3
+		movea.l    a2,a0
+		bsr.w      close_uc
+		bra.s      close_me_3
 close_me_2:
-[0002ba72] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002ba78] 214a 0258                 move.l     a2,600(a0)
-[0002ba7c] 206b 001a                 movea.l    26(a3),a0
-[0002ba80] 4e90                      jsr        (a0)
+		movea.l    ACSblk,a0
+		move.l     a2,600(a0)
+		movea.l    26(a3),a0
+		jsr        (a0)
 close_me_3:
-[0002ba82] 265f                      movea.l    (a7)+,a3
-[0002ba84] 245f                      movea.l    (a7)+,a2
-[0002ba86] 4e75                      rts
+		movea.l    (a7)+,a3
+		movea.l    (a7)+,a2
+		rts
 
 open_me:
-[0002ba88] 2f0a                      move.l     a2,-(a7)
-[0002ba8a] 2448                      movea.l    a0,a2
-[0002ba8c] 3039 000c 9106            move.w     visible_editors,d0
-[0002ba92] 6616                      bne.s      open_me_1
-[0002ba94] 2279 000b b542            movea.l    parts_window,a1
-[0002ba9a] 2269 000c                 movea.l    12(a1),a1
-[0002ba9e] 2079 000b b542            movea.l    parts_window,a0
-[0002baa4] 4e91                      jsr        (a1)
-[0002baa6] 4a40                      tst.w      d0
-[0002baa8] 6618                      bne.s      open_me_2
+		move.l     a2,-(a7)
+		movea.l    a0,a2
+		move.w     visible_editors,d0
+		bne.s      open_me_1
+		movea.l    parts_window,a1
+		movea.l    12(a1),a1
+		movea.l    parts_window,a0
+		jsr        (a1)
+		tst.w      d0
+		bne.s      open_me_2
 open_me_1:
-[0002baaa] 5279 000c 9106            addq.w     #1,visible_editors
-[0002bab0] 204a                      movea.l    a2,a0
-[0002bab2] 4eb9 0005 7428            jsr        Awi_open
-[0002bab8] 5240                      addq.w     #1,d0
-[0002baba] 660a                      bne.s      open_me_3
-[0002babc] 204a                      movea.l    a2,a0
-[0002babe] 6100 ff58                 bsr        close_uc
+		addq.w     #1,visible_editors
+		movea.l    a2,a0
+		jsr        Awi_open
+		addq.w     #1,d0
+		bne.s      open_me_3
+		movea.l    a2,a0
+		bsr        close_uc
 open_me_2:
-[0002bac2] 70ff                      moveq.l    #-1,d0
-[0002bac4] 600a                      bra.s      open_me_4
+		moveq.l    #-1,d0
+		bra.s      open_me_4
 open_me_3:
-[0002bac6] 204a                      movea.l    a2,a0
-[0002bac8] 4eb9 0002 5072            jsr        glue_parts
-[0002bace] 4240                      clr.w      d0
+		movea.l    a2,a0
+		jsr        glue_parts
+		clr.w      d0
 open_me_4:
-[0002bad0] 245f                      movea.l    (a7)+,a2
-[0002bad2] 4e75                      rts
+		movea.l    (a7)+,a2
+		rts
 
 top_me:
-[0002bad4] 2f0a                      move.l     a2,-(a7)
-[0002bad6] 2448                      movea.l    a0,a2
-[0002bad8] 3039 000c 9106            move.w     visible_editors,d0
-[0002bade] 6714                      beq.s      top_me_1
-[0002bae0] 2079 000b b542            movea.l    parts_window,a0
-[0002bae6] 4eb9 0005 6bea            jsr        Awi_show
-[0002baec] 204a                      movea.l    a2,a0
-[0002baee] 4eb9 0002 5072            jsr        glue_parts
+		move.l     a2,-(a7)
+		movea.l    a0,a2
+		move.w     visible_editors,d0
+		beq.s      top_me_1
+		movea.l    parts_window,a0
+		jsr        Awi_show
+		movea.l    a2,a0
+		jsr        glue_parts
 top_me_1:
-[0002baf4] 204a                      movea.l    a2,a0
-[0002baf6] 4eb9 0005 87a4            jsr        Awi_topped
-[0002bafc] 245f                      movea.l    (a7)+,a2
-[0002bafe] 4e75                      rts
+		movea.l    a2,a0
+		jsr        Awi_topped
+		movea.l    (a7)+,a2
+		rts
 
 move_me:
-[0002bb00] 2f0b                      move.l     a3,-(a7)
-[0002bb02] 2648                      movea.l    a0,a3
-[0002bb04] 4eb9 0005 8d50            jsr        Awi_moved
-[0002bb0a] 204b                      movea.l    a3,a0
-[0002bb0c] 4eb9 0002 5072            jsr        glue_parts
-[0002bb12] 265f                      movea.l    (a7)+,a3
-[0002bb14] 4e75                      rts
+		move.l     a3,-(a7)
+		movea.l    a0,a3
+		jsr        Awi_moved
+		movea.l    a3,a0
+		jsr        glue_parts
+		movea.l    (a7)+,a3
+		rts
 
 key_me:
-[0002bb16] 48e7 1820                 movem.l    d3-d4/a2,-(a7)
-[0002bb1a] 2448                      movea.l    a0,a2
-[0002bb1c] 3800                      move.w     d0,d4
-[0002bb1e] 3601                      move.w     d1,d3
-[0002bb20] 2050                      movea.l    (a0),a0
-[0002bb22] 2408                      move.l     a0,d2
-[0002bb24] 6700 0090                 beq        key_me_1
-[0002bb28] 0c68 0001 0008            cmpi.w     #$0001,8(a0)
-[0002bb2e] 6600 0086                 bne        key_me_1
-[0002bb32] 72ff                      moveq.l    #-1,d1
-[0002bb34] c203                      and.b      d3,d1
-[0002bb36] b23c 000e                 cmp.b      #$0E,d1
-[0002bb3a] 675a                      beq.s      key_me_2
-[0002bb3c] 4a43                      tst.w      d3
-[0002bb3e] 6f60                      ble.s      key_me_3
-[0002bb40] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002bb46] 214a 0258                 move.l     a2,600(a0)
-[0002bb4a] 1001                      move.b     d1,d0
-[0002bb4c] 4eb9 0004 64b6            jsr        Ach_toupper
-[0002bb52] 4880                      ext.w      d0
-[0002bb54] b07c 0050                 cmp.w      #$0050,d0
-[0002bb58] 6734                      beq.s      key_me_4
-[0002bb5a] 6e0e                      bgt.s      key_me_5
-[0002bb5c] 907c 000e                 sub.w      #$000E,d0
-[0002bb60] 6734                      beq.s      key_me_2
-[0002bb62] 907c 0038                 sub.w      #$0038,d0
-[0002bb66] 6716                      beq.s      key_me_6
-[0002bb68] 6044                      bra.s      key_me_7
+		movem.l    d3-d4/a2,-(a7)
+		movea.l    a0,a2
+		move.w     d0,d4
+		move.w     d1,d3
+		movea.l    (a0),a0
+		move.l     a0,d2
+		beq        key_me_1
+		cmpi.w     #$0001,8(a0)
+		bne        key_me_1
+		moveq.l    #-1,d1
+		and.b      d3,d1
+		cmp.b      #$0E,d1
+		beq.s      key_me_2
+		tst.w      d3
+		ble.s      key_me_3
+		movea.l    ACSblk,a0
+		move.l     a2,600(a0)
+		move.b     d1,d0
+		jsr        Ach_toupper
+		ext.w      d0
+		cmp.w      #$0050,d0
+		beq.s      key_me_4
+		bgt.s      key_me_5
+		sub.w      #$000E,d0
+		beq.s      key_me_2
+		sub.w      #$0038,d0
+		beq.s      key_me_6
+		bra.s      key_me_7
 key_me_5:
-[0002bb6a] 907c 0052                 sub.w      #$0052,d0
-[0002bb6e] 6706                      beq.s      key_me_8
-[0002bb70] 5340                      subq.w     #1,d0
-[0002bb72] 6712                      beq.s      key_me_9
-[0002bb74] 6038                      bra.s      key_me_7
+		sub.w      #$0052,d0
+		beq.s      key_me_8
+		subq.w     #1,d0
+		beq.s      key_me_9
+		bra.s      key_me_7
 key_me_8:
-[0002bb76] 4eb9 0002 f420            jsr        edob_refs
-[0002bb7c] 6034                      bra.s      key_me_10
+		jsr        edob_refs
+		bra.s      key_me_10
 key_me_6:
-[0002bb7e] 4eb9 0002 f708            jsr        edob_aflags
-[0002bb84] 602c                      bra.s      key_me_10
+		jsr        edob_aflags
+		bra.s      key_me_10
 key_me_9:
-[0002bb86] 4eb9 0002 f856            jsr        edob_specs
-[0002bb8c] 6024                      bra.s      key_me_10
+		jsr        edob_specs
+		bra.s      key_me_10
 key_me_4:
-[0002bb8e] 4eb9 0003 05bc            jsr        edob_pos
-[0002bb94] 601c                      bra.s      key_me_10
+		jsr        edob_pos
+		bra.s      key_me_10
 key_me_2:
-[0002bb96] 204a                      movea.l    a2,a0
-[0002bb98] 4eb9 0005 3456            jsr        Awi_help
-[0002bb9e] 6012                      bra.s      key_me_10
+		movea.l    a2,a0
+		jsr        Awi_help
+		bra.s      key_me_10
 key_me_3:
-[0002bba0] b63c 0009                 cmp.b      #$09,d3
-[0002bba4] 6608                      bne.s      key_me_7
-[0002bba6] 4eb9 0002 e632            jsr        edob_next
-[0002bbac] 6004                      bra.s      key_me_10
+		cmp.b      #$09,d3
+		bne.s      key_me_7
+		jsr        edob_next
+		bra.s      key_me_10
 key_me_7:
-[0002bbae] 70ff                      moveq.l    #-1,d0
-[0002bbb0] 6010                      bra.s      key_me_11
+		moveq.l    #-1,d0
+		bra.s      key_me_11
 key_me_10:
-[0002bbb2] 4240                      clr.w      d0
-[0002bbb4] 600c                      bra.s      key_me_11
+		clr.w      d0
+		bra.s      key_me_11
 key_me_1:
-[0002bbb6] 3203                      move.w     d3,d1
-[0002bbb8] 3004                      move.w     d4,d0
-[0002bbba] 204a                      movea.l    a2,a0
-[0002bbbc] 4eb9 0006 b744            jsr        Awi_keys
+		move.w     d3,d1
+		move.w     d4,d0
+		movea.l    a2,a0
+		jsr        Awi_keys
 key_me_11:
-[0002bbc2] 4cdf 0418                 movem.l    (a7)+,d3-d4/a2
-[0002bbc6] 4e75                      rts
+		movem.l    (a7)+,d3-d4/a2
+		rts
 
 eded_info:
-[0002bbc8] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002bbce] 2068 0258                 movea.l    600(a0),a0
-[0002bbd2] 4eb9 0002 bbe8            jsr        ed_info
-[0002bbd8] 4e75                      rts
+		movea.l    ACSblk,a0
+		movea.l    600(a0),a0
+		jsr        ed_info
+		rts
 
 eded_parts:
-[0002bbda] 2079 000b b542            movea.l    parts_window,a0
-[0002bbe0] 4eb9 0005 6bea            jsr        Awi_show
-[0002bbe6] 4e75                      rts
+		movea.l    parts_window,a0
+		jsr        Awi_show
+		rts
 
 ed_info:
-[0002bbe8] 48e7 0038                 movem.l    a2-a4,-(a7)
-[0002bbec] 4fef fff6                 lea.l      -10(a7),a7
-[0002bbf0] 2450                      movea.l    (a0),a2
-[0002bbf2] 266a 0004                 movea.l    4(a2),a3
-[0002bbf6] 41f9 000c 8c98            lea.l      WI_INFO,a0
-[0002bbfc] 2279 000c 8ca0            movea.l    $000C8CA0,a1
-[0002bc02] 4e91                      jsr        (a1)
-[0002bc04] 2848                      movea.l    a0,a4
-[0002bc06] 200c                      move.l     a4,d0
-[0002bc08] 6760                      beq.s      ed_info_1
-[0002bc0a] 2252                      movea.l    (a2),a1
-[0002bc0c] 2269 0008                 movea.l    8(a1),a1
-[0002bc10] 206c 0014                 movea.l    20(a4),a0
-[0002bc14] 7004                      moveq.l    #4,d0
-[0002bc16] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bc1c] 43eb 0016                 lea.l      22(a3),a1
-[0002bc20] 7005                      moveq.l    #5,d0
-[0002bc22] 206c 0014                 movea.l    20(a4),a0
-[0002bc26] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bc2c] 202b 000e                 move.l     14(a3),d0
-[0002bc30] 7238                      moveq.l    #56,d1
-[0002bc32] 4eb9 0008 3c5a            jsr        _uldiv
-[0002bc38] 2f00                      move.l     d0,-(a7)
-[0002bc3a] 43f9 000c 91a8            lea.l      $000C91A8,a1
-[0002bc40] 41ef 0004                 lea.l      4(a7),a0
-[0002bc44] 4eb9 0008 15ac            jsr        sprintf
-[0002bc4a] 584f                      addq.w     #4,a7
-[0002bc4c] 43d7                      lea.l      (a7),a1
-[0002bc4e] 7006                      moveq.l    #6,d0
-[0002bc50] 206c 0014                 movea.l    20(a4),a0
-[0002bc54] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bc5a] 204c                      movea.l    a4,a0
-[0002bc5c] 4eb9 0005 9df4            jsr        Awi_dialog
-[0002bc62] 204c                      movea.l    a4,a0
-[0002bc64] 4eb9 0005 85f2            jsr        Awi_delete
+		movem.l    a2-a4,-(a7)
+		lea.l      -10(a7),a7
+		movea.l    (a0),a2
+		movea.l    4(a2),a3
+		lea.l      WI_INFO,a0
+		movea.l    WI_INFO+8,a1
+		jsr        (a1)
+		movea.l    a0,a4
+		move.l     a4,d0
+		beq.s      ed_info_1
+		movea.l    (a2),a1
+		movea.l    8(a1),a1
+		movea.l    20(a4),a0
+		moveq.l    #4,d0
+		jsr        Aob_puttext
+		lea.l      22(a3),a1
+		moveq.l    #5,d0
+		movea.l    20(a4),a0
+		jsr        Aob_puttext
+		move.l     14(a3),d0
+		moveq.l    #56,d1
+		jsr        _uldiv
+		move.l     d0,-(a7)
+		lea.l      xc91a8,a1
+		lea.l      4(a7),a0
+		jsr        sprintf
+		addq.w     #4,a7
+		lea.l      (a7),a1
+		moveq.l    #6,d0
+		movea.l    20(a4),a0
+		jsr        Aob_puttext
+		movea.l    a4,a0
+		jsr        Awi_dialog
+		movea.l    a4,a0
+		jsr        Awi_delete
 ed_info_1:
-[0002bc6a] 4fef 000a                 lea.l      10(a7),a7
-[0002bc6e] 4cdf 1c00                 movem.l    (a7)+,a2-a4
-[0002bc72] 4e75                      rts
+		lea.l      10(a7),a7
+		movem.l    (a7)+,a2-a4
+		rts
 
 eded_keys:
-[0002bc74] 48e7 1c38                 movem.l    d3-d5/a2-a4,-(a7)
-[0002bc78] 4fef ffdc                 lea.l      -36(a7),a7
-[0002bc7c] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002bc82] 2268 0258                 movea.l    600(a0),a1
-[0002bc86] 2f51 0020                 move.l     (a1),32(a7)
-[0002bc8a] 206f 0020                 movea.l    32(a7),a0
-[0002bc8e] 2868 0004                 movea.l    4(a0),a4
-[0002bc92] 266c 0004                 movea.l    4(a4),a3
-[0002bc96] 202c 000e                 move.l     14(a4),d0
-[0002bc9a] 7238                      moveq.l    #56,d1
-[0002bc9c] 4eb9 0008 3c5a            jsr        _uldiv
-[0002bca2] 2600                      move.l     d0,d3
-[0002bca4] 4244                      clr.w      d4
-[0002bca6] 6000 00ce                 bra        eded_keys_1
+		movem.l    d3-d5/a2-a4,-(a7)
+		lea.l      -36(a7),a7
+		movea.l    ACSblk,a0
+		movea.l    600(a0),a1
+		move.l     (a1),32(a7)
+		movea.l    32(a7),a0
+		movea.l    4(a0),a4
+		movea.l    4(a4),a3
+		move.l     14(a4),d0
+		moveq.l    #56,d1
+		jsr        _uldiv
+		move.l     d0,d3
+		clr.w      d4
+		bra        eded_keys_1
 eded_keys_12:
-[0002bcaa] 102b 000f                 move.b     15(a3),d0
-[0002bcae] 4880                      ext.w      d0
-[0002bcb0] 907c 0015                 sub.w      #$0015,d0
-[0002bcb4] b07c 000b                 cmp.w      #$000B,d0
-[0002bcb8] 6234                      bhi.s      eded_keys_2
-[0002bcba] d040                      add.w      d0,d0
-[0002bcbc] 303b 0006                 move.w     $0002BCC4(pc,d0.w),d0
-[0002bcc0] 4efb 0002                 jmp        $0002BCC4(pc,d0.w)
+		move.b     15(a3),d0
+		ext.w      d0
+		sub.w      #$0015,d0
+		cmp.w      #$000B,d0
+		bhi.s      eded_keys_2
+		add.w      d0,d0
+		move.w     J15(pc,d0.w),d0
+		jmp        J15(pc,d0.w)
 J15:
-[0002bcc4] 001e                      dc.w $001e   ; eded_keys_3-J15
-[0002bcc6] 001e                      dc.w $001e   ; eded_keys_3-J15
-[0002bcc8] 002a                      dc.w $002a   ; eded_keys_2-J15
-[0002bcca] 002a                      dc.w $002a   ; eded_keys_2-J15
-[0002bccc] 002a                      dc.w $002a   ; eded_keys_2-J15
-[0002bcce] 0018                      dc.w $0018   ; eded_keys_4-J15
-[0002bcd0] 002a                      dc.w $002a   ; eded_keys_2-J15
-[0002bcd2] 0018                      dc.w $0018   ; eded_keys_4-J15
-[0002bcd4] 002a                      dc.w $002a   ; eded_keys_2-J15
-[0002bcd6] 002a                      dc.w $002a   ; eded_keys_2-J15
-[0002bcd8] 002a                      dc.w $002a   ; eded_keys_2-J15
-[0002bcda] 0018                      dc.w $0018   ; eded_keys_4-J15
+		dc.w eded_keys_3-J15
+		dc.w eded_keys_3-J15
+		dc.w eded_keys_2-J15
+		dc.w eded_keys_2-J15
+		dc.w eded_keys_2-J15
+		dc.w eded_keys_4-J15
+		dc.w eded_keys_2-J15
+		dc.w eded_keys_4-J15
+		dc.w eded_keys_2-J15
+		dc.w eded_keys_2-J15
+		dc.w eded_keys_2-J15
+		dc.w eded_keys_4-J15
 eded_keys_4:
-[0002bcdc] 286b 0014                 movea.l    20(a3),a4
-[0002bce0] 600e                      bra.s      eded_keys_5
+		movea.l    20(a3),a4
+		bra.s      eded_keys_5
 eded_keys_3:
-[0002bce2] 206b 0014                 movea.l    20(a3),a0
-[0002bce6] 2068 0004                 movea.l    4(a0),a0
-[0002bcea] 2850                      movea.l    (a0),a4
-[0002bcec] 6002                      bra.s      eded_keys_5
+		movea.l    20(a3),a0
+		movea.l    4(a0),a0
+		movea.l    (a0),a4
+		bra.s      eded_keys_5
 eded_keys_2:
-[0002bcee] 99cc                      suba.l     a4,a4
+		suba.l     a4,a4
 eded_keys_5:
-[0002bcf0] 200c                      move.l     a4,d0
-[0002bcf2] 6700 007c                 beq.w      eded_keys_6
-[0002bcf6] 246c 0004                 movea.l    4(a4),a2
-[0002bcfa] 204a                      movea.l    a2,a0
-[0002bcfc] 4eb9 0008 2f6c            jsr        strlen
-[0002bd02] 2a00                      move.l     d0,d5
-[0002bd04] ba7c 001e                 cmp.w      #$001E,d5
-[0002bd08] 6f06                      ble.s      eded_keys_7
-[0002bd0a] 9a7c 001e                 sub.w      #$001E,d5
-[0002bd0e] 6002                      bra.s      eded_keys_8
+		move.l     a4,d0
+		beq.w      eded_keys_6
+		movea.l    4(a4),a2
+		movea.l    a2,a0
+		jsr        strlen
+		move.l     d0,d5
+		cmp.w      #$001E,d5
+		ble.s      eded_keys_7
+		sub.w      #$001E,d5
+		bra.s      eded_keys_8
 eded_keys_7:
-[0002bd10] 4245                      clr.w      d5
+		clr.w      d5
 eded_keys_8:
-[0002bd12] 4217                      clr.b      (a7)
-[0002bd14] 701e                      moveq.l    #30,d0
-[0002bd16] 43f2 5000                 lea.l      0(a2,d5.w),a1
-[0002bd1a] 41d7                      lea.l      (a7),a0
-[0002bd1c] 4eb9 0008 2f96            jsr        strncat
-[0002bd22] 4eb9 0008 2f6c            jsr        strlen
-[0002bd28] 3a00                      move.w     d0,d5
-[0002bd2a] 6002                      bra.s      eded_keys_9
+		clr.b      (a7)
+		moveq.l    #30,d0
+		lea.l      0(a2,d5.w),a1
+		lea.l      (a7),a0
+		jsr        strncat
+		jsr        strlen
+		move.w     d0,d5
+		bra.s      eded_keys_9
 eded_keys_11:
-[0002bd2c] 5345                      subq.w     #1,d5
+		subq.w     #1,d5
 eded_keys_9:
-[0002bd2e] 4a45                      tst.w      d5
-[0002bd30] 6f08                      ble.s      eded_keys_10
-[0002bd32] 0c37 0020 50ff            cmpi.b     #$20,-1(a7,d5.w)
-[0002bd38] 67f2                      beq.s      eded_keys_11
+		tst.w      d5
+		ble.s      eded_keys_10
+		cmpi.b     #$20,-1(a7,d5.w)
+		beq.s      eded_keys_11
 eded_keys_10:
-[0002bd3a] 4a45                      tst.w      d5
-[0002bd3c] 6732                      beq.s      eded_keys_6
-[0002bd3e] 4237 5000                 clr.b      0(a7,d5.w)
-[0002bd42] 7020                      moveq.l    #32,d0
-[0002bd44] 41d7                      lea.l      (a7),a0
-[0002bd46] 4eb9 0008 2e9e            jsr        strrchr
-[0002bd4c] 2448                      movea.l    a0,a2
-[0002bd4e] 200a                      move.l     a2,d0
-[0002bd50] 671e                      beq.s      eded_keys_6
-[0002bd52] 41ea 0001                 lea.l      1(a2),a0
-[0002bd56] 4eb9 0003 325a            jsr        key_code
-[0002bd5c] 3a00                      move.w     d0,d5
-[0002bd5e] 6710                      beq.s      eded_keys_6
-[0002bd60] 206f 0020                 movea.l    32(a7),a0
-[0002bd64] 2250                      movea.l    (a0),a1
-[0002bd66] 0069 0001 0006            ori.w      #$0001,6(a1)
-[0002bd6c] 3740 002a                 move.w     d0,42(a3)
+		tst.w      d5
+		beq.s      eded_keys_6
+		clr.b      0(a7,d5.w)
+		moveq.l    #32,d0
+		lea.l      (a7),a0
+		jsr        strrchr
+		movea.l    a0,a2
+		move.l     a2,d0
+		beq.s      eded_keys_6
+		lea.l      1(a2),a0
+		jsr        key_code
+		move.w     d0,d5
+		beq.s      eded_keys_6
+		movea.l    32(a7),a0
+		movea.l    (a0),a1
+		ori.w      #$0001,6(a1)
+		move.w     d0,42(a3)
 eded_keys_6:
-[0002bd70] 47eb 0038                 lea.l      56(a3),a3
-[0002bd74] 5244                      addq.w     #1,d4
+		lea.l      56(a3),a3
+		addq.w     #1,d4
 eded_keys_1:
-[0002bd76] b644                      cmp.w      d4,d3
-[0002bd78] 6e00 ff30                 bgt        eded_keys_12
-[0002bd7c] 4fef 0024                 lea.l      36(a7),a7
-[0002bd80] 4cdf 1c38                 movem.l    (a7)+,d3-d5/a2-a4
-[0002bd84] 4e75                      rts
+		cmp.w      d4,d3
+		bgt        eded_keys_12
+		lea.l      36(a7),a7
+		movem.l    (a7)+,d3-d5/a2-a4
+		rts
 
 click_ans:
-[0002bd86] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
-[0002bd8a] 3600                      move.w     d0,d3
-[0002bd8c] 2650                      movea.l    (a0),a3
-[0002bd8e] 41f9 000c 8fc2            lea.l      WI_TRYCLICK,a0
-[0002bd94] 2279 000c 8fca            movea.l    $000C8FCA,a1
-[0002bd9a] 4e91                      jsr        (a1)
-[0002bd9c] 2448                      movea.l    a0,a2
-[0002bd9e] 200a                      move.l     a2,d0
-[0002bda0] 6606                      bne.s      click_ans_1
-[0002bda2] 4240                      clr.w      d0
-[0002bda4] 6000 00c4                 bra        click_ans_2
+		movem.l    d3/a2-a4,-(a7)
+		move.w     d0,d3
+		movea.l    (a0),a3
+		lea.l      WI_TRYCLICK,a0
+		movea.l    WI_TRYCLICK+8,a1
+		jsr        (a1)
+		movea.l    a0,a2
+		move.l     a2,d0
+		bne.s      click_ans_1
+		clr.w      d0
+		bra        click_ans_2
 click_ans_1:
-[0002bda8] 705c                      moveq.l    #92,d0
-[0002bdaa] 2053                      movea.l    (a3),a0
-[0002bdac] 2068 0008                 movea.l    8(a0),a0
-[0002bdb0] 4eb9 0008 2e9e            jsr        strrchr
-[0002bdb6] 2248                      movea.l    a0,a1
-[0002bdb8] 5249                      addq.w     #1,a1
-[0002bdba] 7003                      moveq.l    #3,d0
-[0002bdbc] 206a 0014                 movea.l    20(a2),a0
-[0002bdc0] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bdc6] 226b 0004                 movea.l    4(a3),a1
-[0002bdca] 43e9 0016                 lea.l      22(a1),a1
-[0002bdce] 7005                      moveq.l    #5,d0
-[0002bdd0] 206a 0014                 movea.l    20(a2),a0
-[0002bdd4] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bdda] 206b 0004                 movea.l    4(a3),a0
-[0002bdde] 2668 0004                 movea.l    4(a0),a3
-[0002bde2] 3203                      move.w     d3,d1
-[0002bde4] e241                      asr.w      #1,d1
-[0002bde6] 48c1                      ext.l      d1
-[0002bde8] 2001                      move.l     d1,d0
-[0002bdea] e788                      lsl.l      #3,d0
-[0002bdec] 9081                      sub.l      d1,d0
-[0002bdee] e788                      lsl.l      #3,d0
-[0002bdf0] 2873 0820                 movea.l    32(a3,d0.l),a4
-[0002bdf4] 240c                      move.l     a4,d2
-[0002bdf6] 6614                      bne.s      click_ans_3
-[0002bdf8] 43f9 000c 91ad            lea.l      $000C91AD,a1
-[0002bdfe] 206a 0014                 movea.l    20(a2),a0
-[0002be02] 7007                      moveq.l    #7,d0
-[0002be04] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002be0a] 6010                      bra.s      click_ans_4
+		moveq.l    #92,d0
+		movea.l    (a3),a0
+		movea.l    8(a0),a0
+		jsr        strrchr
+		movea.l    a0,a1
+		addq.w     #1,a1
+		moveq.l    #3,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
+		movea.l    4(a3),a1
+		lea.l      22(a1),a1
+		moveq.l    #5,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
+		movea.l    4(a3),a0
+		movea.l    4(a0),a3
+		move.w     d3,d1
+		asr.w      #1,d1
+		ext.l      d1
+		move.l     d1,d0
+		lsl.l      #3,d0
+		sub.l      d1,d0
+		lsl.l      #3,d0
+		movea.l    32(a3,d0.l),a4
+		move.l     a4,d2
+		bne.s      click_ans_3
+		lea.l      xc91ad,a1
+		movea.l    20(a2),a0
+		moveq.l    #7,d0
+		jsr        Aob_puttext
+		bra.s      click_ans_4
 click_ans_3:
-[0002be0c] 43ec 0016                 lea.l      22(a4),a1
-[0002be10] 7007                      moveq.l    #7,d0
-[0002be12] 206a 0014                 movea.l    20(a2),a0
-[0002be16] 4eb9 0005 0fd8            jsr        Aob_puttext
+		lea.l      22(a4),a1
+		moveq.l    #7,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
 click_ans_4:
-[0002be1c] 3203                      move.w     d3,d1
-[0002be1e] e241                      asr.w      #1,d1
-[0002be20] 48c1                      ext.l      d1
-[0002be22] 2001                      move.l     d1,d0
-[0002be24] e788                      lsl.l      #3,d0
-[0002be26] 9081                      sub.l      d1,d0
-[0002be28] e788                      lsl.l      #3,d0
-[0002be2a] 2873 0800                 movea.l    0(a3,d0.l),a4
-[0002be2e] 240c                      move.l     a4,d2
-[0002be30] 6614                      bne.s      click_ans_5
-[0002be32] 43f9 000c 91ad            lea.l      $000C91AD,a1
-[0002be38] 206a 0014                 movea.l    20(a2),a0
-[0002be3c] 7009                      moveq.l    #9,d0
-[0002be3e] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002be44] 6010                      bra.s      click_ans_6
+		move.w     d3,d1
+		asr.w      #1,d1
+		ext.l      d1
+		move.l     d1,d0
+		lsl.l      #3,d0
+		sub.l      d1,d0
+		lsl.l      #3,d0
+		movea.l    0(a3,d0.l),a4
+		move.l     a4,d2
+		bne.s      click_ans_5
+		lea.l      xc91ad,a1
+		movea.l    20(a2),a0
+		moveq.l    #9,d0
+		jsr        Aob_puttext
+		bra.s      click_ans_6
 click_ans_5:
-[0002be46] 43ec 0016                 lea.l      22(a4),a1
-[0002be4a] 7009                      moveq.l    #9,d0
-[0002be4c] 206a 0014                 movea.l    20(a2),a0
-[0002be50] 4eb9 0005 0fd8            jsr        Aob_puttext
+		lea.l      22(a4),a1
+		moveq.l    #9,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
 click_ans_6:
-[0002be56] 204a                      movea.l    a2,a0
-[0002be58] 4eb9 0005 9df4            jsr        Awi_dialog
-[0002be5e] 3600                      move.w     d0,d3
-[0002be60] 204a                      movea.l    a2,a0
-[0002be62] 4eb9 0005 85f2            jsr        Awi_delete
-[0002be68] 3003                      move.w     d3,d0
+		movea.l    a2,a0
+		jsr        Awi_dialog
+		move.w     d0,d3
+		movea.l    a2,a0
+		jsr        Awi_delete
+		move.w     d3,d0
 click_ans_2:
-[0002be6a] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
-[0002be6e] 4e75                      rts
+		movem.l    (a7)+,d3/a2-a4
+		rts
 
 try_click:
-[0002be70] 48e7 0038                 movem.l    a2-a4,-(a7)
-[0002be74] 45f9 0010 ee4e            lea.l      ACSblk,a2
-[0002be7a] 2052                      movea.l    (a2),a0
-[0002be7c] 2668 0258                 movea.l    600(a0),a3
-[0002be80] 2868 025c                 movea.l    604(a0),a4
-[0002be84] 3028 0260                 move.w     608(a0),d0
-[0002be88] 204b                      movea.l    a3,a0
-[0002be8a] 6100 fefa                 bsr        click_ans
-[0002be8e] b07c 000a                 cmp.w      #$000A,d0
-[0002be92] 671c                      beq.s      try_click_1
-[0002be94] b9eb 0014                 cmpa.l     20(a3),a4
-[0002be98] 6706                      beq.s      try_click_2
-[0002be9a] b9eb 005e                 cmpa.l     94(a3),a4
-[0002be9e] 6608                      bne.s      try_click_3
+		movem.l    a2-a4,-(a7)
+		lea.l      ACSblk,a2
+		movea.l    (a2),a0
+		movea.l    600(a0),a3
+		movea.l    604(a0),a4
+		move.w     608(a0),d0
+		movea.l    a3,a0
+		bsr        click_ans
+		cmp.w      #$000A,d0
+		beq.s      try_click_1
+		cmpa.l     20(a3),a4
+		beq.s      try_click_2
+		cmpa.l     94(a3),a4
+		bne.s      try_click_3
 try_click_2:
-[0002bea0] 4eb9 0002 f27c            jsr        ed_abort
-[0002bea6] 6008                      bra.s      try_click_1
+		jsr        ed_abort
+		bra.s      try_click_1
 try_click_3:
-[0002bea8] 2052                      movea.l    (a2),a0
-[0002beaa] 317c 0001 0268            move.w     #$0001,616(a0)
+		movea.l    (a2),a0
+		move.w     #$0001,616(a0)
 try_click_1:
-[0002beb0] 4cdf 1c00                 movem.l    (a7)+,a2-a4
-[0002beb4] 4e75                      rts
+		movem.l    (a7)+,a2-a4
+		rts
 
 try_drag:
-[0002beb6] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
-[0002beba] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002bec0] 2268 0258                 movea.l    600(a0),a1
-[0002bec4] 2651                      movea.l    (a1),a3
-[0002bec6] 3628 0260                 move.w     608(a0),d3
-[0002beca] 41f9 000c 9064            lea.l      WI_TRYDRAG,a0
-[0002bed0] 2279 000c 906c            movea.l    $000C906C,a1
-[0002bed6] 4e91                      jsr        (a1)
-[0002bed8] 2448                      movea.l    a0,a2
-[0002beda] 200a                      move.l     a2,d0
-[0002bedc] 6700 00e0                 beq        try_drag_1
-[0002bee0] 705c                      moveq.l    #92,d0
-[0002bee2] 2253                      movea.l    (a3),a1
-[0002bee4] 2069 0008                 movea.l    8(a1),a0
-[0002bee8] 4eb9 0008 2e9e            jsr        strrchr
-[0002beee] 2248                      movea.l    a0,a1
-[0002bef0] 5249                      addq.w     #1,a1
-[0002bef2] 7003                      moveq.l    #3,d0
-[0002bef4] 206a 0014                 movea.l    20(a2),a0
-[0002bef8] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002befe] 226b 0004                 movea.l    4(a3),a1
-[0002bf02] 43e9 0016                 lea.l      22(a1),a1
-[0002bf06] 7005                      moveq.l    #5,d0
-[0002bf08] 206a 0014                 movea.l    20(a2),a0
-[0002bf0c] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bf12] 206b 0004                 movea.l    4(a3),a0
-[0002bf16] 2668 0004                 movea.l    4(a0),a3
-[0002bf1a] 3203                      move.w     d3,d1
-[0002bf1c] e241                      asr.w      #1,d1
-[0002bf1e] 48c1                      ext.l      d1
-[0002bf20] 2001                      move.l     d1,d0
-[0002bf22] e788                      lsl.l      #3,d0
-[0002bf24] 9081                      sub.l      d1,d0
-[0002bf26] e788                      lsl.l      #3,d0
-[0002bf28] 2873 0824                 movea.l    36(a3,d0.l),a4
-[0002bf2c] 240c                      move.l     a4,d2
-[0002bf2e] 6614                      bne.s      try_drag_2
-[0002bf30] 43f9 000c 91ad            lea.l      $000C91AD,a1
-[0002bf36] 206a 0014                 movea.l    20(a2),a0
-[0002bf3a] 7007                      moveq.l    #7,d0
-[0002bf3c] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bf42] 6010                      bra.s      try_drag_3
+		movem.l    d3/a2-a4,-(a7)
+		movea.l    ACSblk,a0
+		movea.l    600(a0),a1
+		movea.l    (a1),a3
+		move.w     608(a0),d3
+		lea.l      WI_TRYDRAG,a0
+		movea.l    WI_TRYDRAG+8,a1
+		jsr        (a1)
+		movea.l    a0,a2
+		move.l     a2,d0
+		beq        try_drag_1
+		moveq.l    #92,d0
+		movea.l    (a3),a1
+		movea.l    8(a1),a0
+		jsr        strrchr
+		movea.l    a0,a1
+		addq.w     #1,a1
+		moveq.l    #3,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
+		movea.l    4(a3),a1
+		lea.l      22(a1),a1
+		moveq.l    #5,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
+		movea.l    4(a3),a0
+		movea.l    4(a0),a3
+		move.w     d3,d1
+		asr.w      #1,d1
+		ext.l      d1
+		move.l     d1,d0
+		lsl.l      #3,d0
+		sub.l      d1,d0
+		lsl.l      #3,d0
+		movea.l    36(a3,d0.l),a4
+		move.l     a4,d2
+		bne.s      try_drag_2
+		lea.l      xc91ad,a1
+		movea.l    20(a2),a0
+		moveq.l    #7,d0
+		jsr        Aob_puttext
+		bra.s      try_drag_3
 try_drag_2:
-[0002bf44] 43ec 0016                 lea.l      22(a4),a1
-[0002bf48] 7007                      moveq.l    #7,d0
-[0002bf4a] 206a 0014                 movea.l    20(a2),a0
-[0002bf4e] 4eb9 0005 0fd8            jsr        Aob_puttext
+		lea.l      22(a4),a1
+		moveq.l    #7,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
 try_drag_3:
-[0002bf54] 3203                      move.w     d3,d1
-[0002bf56] e241                      asr.w      #1,d1
-[0002bf58] 48c1                      ext.l      d1
-[0002bf5a] 2001                      move.l     d1,d0
-[0002bf5c] e788                      lsl.l      #3,d0
-[0002bf5e] 9081                      sub.l      d1,d0
-[0002bf60] e788                      lsl.l      #3,d0
-[0002bf62] 2873 0800                 movea.l    0(a3,d0.l),a4
-[0002bf66] 240c                      move.l     a4,d2
-[0002bf68] 6614                      bne.s      try_drag_4
-[0002bf6a] 43f9 000c 91ad            lea.l      $000C91AD,a1
-[0002bf70] 206a 0014                 movea.l    20(a2),a0
-[0002bf74] 7009                      moveq.l    #9,d0
-[0002bf76] 4eb9 0005 0fd8            jsr        Aob_puttext
-[0002bf7c] 6010                      bra.s      try_drag_5
+		move.w     d3,d1
+		asr.w      #1,d1
+		ext.l      d1
+		move.l     d1,d0
+		lsl.l      #3,d0
+		sub.l      d1,d0
+		lsl.l      #3,d0
+		movea.l    0(a3,d0.l),a4
+		move.l     a4,d2
+		bne.s      try_drag_4
+		lea.l      xc91ad,a1
+		movea.l    20(a2),a0
+		moveq.l    #9,d0
+		jsr        Aob_puttext
+		bra.s      try_drag_5
 try_drag_4:
-[0002bf7e] 43ec 0016                 lea.l      22(a4),a1
-[0002bf82] 7009                      moveq.l    #9,d0
-[0002bf84] 206a 0014                 movea.l    20(a2),a0
-[0002bf88] 4eb9 0005 0fd8            jsr        Aob_puttext
+		lea.l      22(a4),a1
+		moveq.l    #9,d0
+		movea.l    20(a2),a0
+		jsr        Aob_puttext
 try_drag_5:
-[0002bf8e] 204a                      movea.l    a2,a0
-[0002bf90] 4eb9 0005 9df4            jsr        Awi_dialog
-[0002bf96] 3600                      move.w     d0,d3
-[0002bf98] 204a                      movea.l    a2,a0
-[0002bf9a] 4eb9 0005 85f2            jsr        Awi_delete
-[0002bfa0] b67c 000a                 cmp.w      #$000A,d3
-[0002bfa4] 6612                      bne.s      try_drag_6
-[0002bfa6] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002bfac] 4268 024a                 clr.w      586(a0)
-[0002bfb0] 4eb9 0004 810e            jsr        Adr_unselect
-[0002bfb6] 6006                      bra.s      try_drag_1
+		movea.l    a2,a0
+		jsr        Awi_dialog
+		move.w     d0,d3
+		movea.l    a2,a0
+		jsr        Awi_delete
+		cmp.w      #$000A,d3
+		bne.s      try_drag_6
+		movea.l    ACSblk,a0
+		clr.w      586(a0)
+		jsr        Adr_unselect
+		bra.s      try_drag_1
 try_drag_6:
-[0002bfb8] 4eb9 0002 f27c            jsr        ed_abort
+		jsr        ed_abort
 try_drag_1:
-[0002bfbe] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
-[0002bfc2] 4e75                      rts
+		movem.l    (a7)+,d3/a2-a4
+		rts
 
 fix_cicon:
-[0002bfc4] 48e7 0038                 movem.l    a2-a4,-(a7)
-[0002bfc8] 2648                      movea.l    a0,a3
-[0002bfca] 7052                      moveq.l    #82,d0
-[0002bfcc] 4eb9 0004 c608            jsr        Ax_malloc
-[0002bfd2] 2448                      movea.l    a0,a2
-[0002bfd4] 200a                      move.l     a2,d0
-[0002bfd6] 6700 008a                 beq        fix_cicon_1
-[0002bfda] 224b                      movea.l    a3,a1
-[0002bfdc] 7052                      moveq.l    #82,d0
-[0002bfde] 4eb9 0008 3500            jsr        memcpy
-[0002bfe4] 200b                      move.l     a3,d0
-[0002bfe6] d192                      add.l      d0,(a2)
-[0002bfe8] d1aa 0004                 add.l      d0,4(a2)
-[0002bfec] 206a 0008                 movea.l    8(a2),a0
-[0002bff0] 2068 0004                 movea.l    4(a0),a0
-[0002bff4] 4eb9 0004 643c            jsr        Ast_create
-[0002bffa] 2548 0008                 move.l     a0,8(a2)
-[0002bffe] 99cc                      suba.l     a4,a4
-[0002c000] 302b 0026                 move.w     38(a3),d0
-[0002c004] 6712                      beq.s      fix_cicon_2
-[0002c006] 2279 0010 ee4e            movea.l    ACSblk,a1
-[0002c00c] 0c69 0004 001c            cmpi.w     #$0004,28(a1)
-[0002c012] 6d04                      blt.s      fix_cicon_2
-[0002c014] 49ea 0026                 lea.l      38(a2),a4
+		movem.l    a2-a4,-(a7)
+		movea.l    a0,a3
+		moveq.l    #82,d0
+		jsr        Ax_malloc
+		movea.l    a0,a2
+		move.l     a2,d0
+		beq        fix_cicon_1
+		movea.l    a3,a1
+		moveq.l    #82,d0
+		jsr        memcpy
+		move.l     a3,d0
+		add.l      d0,(a2)
+		add.l      d0,4(a2)
+		movea.l    8(a2),a0
+		movea.l    4(a0),a0
+		jsr        Ast_create
+		move.l     a0,8(a2)
+		suba.l     a4,a4
+		move.w     38(a3),d0
+		beq.s      fix_cicon_2
+		movea.l    ACSblk,a1
+		cmpi.w     #$0004,28(a1)
+		blt.s      fix_cicon_2
+		lea.l      38(a2),a4
 fix_cicon_2:
-[0002c018] 302b 003c                 move.w     60(a3),d0
-[0002c01c] 6712                      beq.s      fix_cicon_3
-[0002c01e] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002c024] 0c68 0008 001c            cmpi.w     #$0008,28(a0)
-[0002c02a] 6d04                      blt.s      fix_cicon_3
-[0002c02c] 49ea 003c                 lea.l      60(a2),a4
+		move.w     60(a3),d0
+		beq.s      fix_cicon_3
+		movea.l    ACSblk,a0
+		cmpi.w     #$0008,28(a0)
+		blt.s      fix_cicon_3
+		lea.l      60(a2),a4
 fix_cicon_3:
-[0002c030] 254c 0022                 move.l     a4,34(a2)
-[0002c034] 200c                      move.l     a4,d0
-[0002c036] 6772                      beq.s      fix_cicon_4
-[0002c038] 206c 0006                 movea.l    6(a4),a0
-[0002c03c] 2968 0004 0006            move.l     4(a0),6(a4)
-[0002c042] 2f0a                      move.l     a2,-(a7)
-[0002c044] 3014                      move.w     (a4),d0
-[0002c046] 226c 0006                 movea.l    6(a4),a1
-[0002c04a] 206c 0002                 movea.l    2(a4),a0
-[0002c04e] 2068 0004                 movea.l    4(a0),a0
-[0002c052] 4eb9 0001 6766            jsr        to_cicon
-[0002c058] 584f                      addq.w     #4,a7
-[0002c05a] 2948 0002                 move.l     a0,2(a4)
-[0002c05e] 2008                      move.l     a0,d0
-[0002c060] 6604                      bne.s      fix_cicon_5
+		move.l     a4,34(a2)
+		move.l     a4,d0
+		beq.s      fix_cicon_4
+		movea.l    6(a4),a0
+		move.l     4(a0),6(a4)
+		move.l     a2,-(a7)
+		move.w     (a4),d0
+		movea.l    6(a4),a1
+		movea.l    2(a4),a0
+		movea.l    4(a0),a0
+		jsr        to_cicon
+		addq.w     #4,a7
+		move.l     a0,2(a4)
+		move.l     a0,d0
+		bne.s      fix_cicon_5
 fix_cicon_1:
-[0002c062] 91c8                      suba.l     a0,a0
-[0002c064] 6046                      bra.s      fix_cicon_6
+		suba.l     a0,a0
+		bra.s      fix_cicon_6
 fix_cicon_5:
-[0002c066] 202c 000a                 move.l     10(a4),d0
-[0002c06a] 6734                      beq.s      fix_cicon_7
-[0002c06c] 2f0a                      move.l     a2,-(a7)
-[0002c06e] 3014                      move.w     (a4),d0
-[0002c070] 206c 000e                 movea.l    14(a4),a0
-[0002c074] 2268 0004                 movea.l    4(a0),a1
-[0002c078] 266c 000a                 movea.l    10(a4),a3
-[0002c07c] 206b 0004                 movea.l    4(a3),a0
-[0002c080] 4eb9 0001 6766            jsr        to_cicon
-[0002c086] 584f                      addq.w     #4,a7
-[0002c088] 2948 000a                 move.l     a0,10(a4)
-[0002c08c] 2008                      move.l     a0,d0
-[0002c08e] 670c                      beq.s      fix_cicon_8
-[0002c090] 226c 000e                 movea.l    14(a4),a1
-[0002c094] 2969 0004 000e            move.l     4(a1),14(a4)
-[0002c09a] 6004                      bra.s      fix_cicon_7
+		move.l     10(a4),d0
+		beq.s      fix_cicon_7
+		move.l     a2,-(a7)
+		move.w     (a4),d0
+		movea.l    14(a4),a0
+		movea.l    4(a0),a1
+		movea.l    10(a4),a3
+		movea.l    4(a3),a0
+		jsr        to_cicon
+		addq.w     #4,a7
+		move.l     a0,10(a4)
+		move.l     a0,d0
+		beq.s      fix_cicon_8
+		movea.l    14(a4),a1
+		move.l     4(a1),14(a4)
+		bra.s      fix_cicon_7
 fix_cicon_8:
-[0002c09c] 42ac 000e                 clr.l      14(a4)
+		clr.l      14(a4)
 fix_cicon_7:
-[0002c0a0] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002c0a6] 38a8 001c                 move.w     28(a0),(a4)
+		movea.l    ACSblk,a0
+		move.w     28(a0),(a4)
 fix_cicon_4:
-[0002c0aa] 204a                      movea.l    a2,a0
+		movea.l    a2,a0
 fix_cicon_6:
-[0002c0ac] 4cdf 1c00                 movem.l    (a7)+,a2-a4
-[0002c0b0] 4e75                      rts
+		movem.l    (a7)+,a2-a4
+		rts
 
 try:
-[0002c0b2] 48e7 183c                 movem.l    d3-d4/a2-a5,-(a7)
-[0002c0b6] 4fef ffe4                 lea.l      -28(a7),a7
-[0002c0ba] 2a48                      movea.l    a0,a5
-[0002c0bc] 2f49 0018                 move.l     a1,24(a7)
-[0002c0c0] 202d 000e                 move.l     14(a5),d0
-[0002c0c4] 7238                      moveq.l    #56,d1
-[0002c0c6] 4eb9 0008 3c5a            jsr        _uldiv
-[0002c0cc] 2600                      move.l     d0,d3
-[0002c0ce] 3203                      move.w     d3,d1
-[0002c0d0] d241                      add.w      d1,d1
-[0002c0d2] 48c1                      ext.l      d1
-[0002c0d4] 2001                      move.l     d1,d0
-[0002c0d6] d080                      add.l      d0,d0
-[0002c0d8] d081                      add.l      d1,d0
-[0002c0da] e788                      lsl.l      #3,d0
-[0002c0dc] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c0e2] 2448                      movea.l    a0,a2
-[0002c0e4] 2e88                      move.l     a0,(a7)
-[0002c0e6] 200a                      move.l     a2,d0
-[0002c0e8] 6700 01c4                 beq        try_1
-[0002c0ec] 4eb9 0004 810e            jsr        Adr_unselect
-[0002c0f2] 226f 0018                 movea.l    24(a7),a1
-[0002c0f6] 204d                      movea.l    a5,a0
-[0002c0f8] 4eb9 0002 cb4e            jsr        reorg
-[0002c0fe] 2f6d 0004 000a            move.l     4(a5),10(a7)
-[0002c104] 4244                      clr.w      d4
-[0002c106] 6000 01be                 bra        try_2
+		movem.l    d3-d4/a2-a5,-(a7)
+		lea.l      -28(a7),a7
+		movea.l    a0,a5
+		move.l     a1,24(a7)
+		move.l     14(a5),d0
+		moveq.l    #56,d1
+		jsr        _uldiv
+		move.l     d0,d3
+		move.w     d3,d1
+		add.w      d1,d1
+		ext.l      d1
+		move.l     d1,d0
+		add.l      d0,d0
+		add.l      d1,d0
+		lsl.l      #3,d0
+		jsr        Ax_malloc
+		movea.l    a0,a2
+		move.l     a0,(a7)
+		move.l     a2,d0
+		beq        try_1
+		jsr        Adr_unselect
+		movea.l    24(a7),a1
+		movea.l    a5,a0
+		jsr        reorg
+		move.l     4(a5),10(a7)
+		clr.w      d4
+		bra        try_2
 try_14:
-[0002c10a] 7030                      moveq.l    #48,d0
-[0002c10c] 226f 000a                 movea.l    10(a7),a1
-[0002c110] 5049                      addq.w     #8,a1
-[0002c112] 204a                      movea.l    a2,a0
-[0002c114] 4eb9 0008 3500            jsr        memcpy
-[0002c11a] 026a dfff 000a            andi.w     #$DFFF,10(a2)
-[0002c120] 3012                      move.w     (a2),d0
-[0002c122] 6b02                      bmi.s      try_3
-[0002c124] e3d2                      lsl.w      (a2)
+		moveq.l    #48,d0
+		movea.l    10(a7),a1
+		addq.w     #8,a1
+		movea.l    a2,a0
+		jsr        memcpy
+		andi.w     #$DFFF,10(a2)
+		move.w     (a2),d0
+		bmi.s      try_3
+		lsl.w      (a2)
 try_3:
-[0002c126] 302a 0002                 move.w     2(a2),d0
-[0002c12a] 6b04                      bmi.s      try_4
-[0002c12c] e3ea 0002                 lsl.w      2(a2)
+		move.w     2(a2),d0
+		bmi.s      try_4
+		lsl.w      2(a2)
 try_4:
-[0002c130] 302a 0004                 move.w     4(a2),d0
-[0002c134] 6b04                      bmi.s      try_5
-[0002c136] e3ea 0004                 lsl.w      4(a2)
+		move.w     4(a2),d0
+		bmi.s      try_5
+		lsl.w      4(a2)
 try_5:
-[0002c13a] 47ea 0018                 lea.l      24(a2),a3
-[0002c13e] 26bc 0002 be70            move.l     #try_click,(a3)
-[0002c144] 277c 0002 beb6 0004       move.l     #try_drag,4(a3)
-[0002c14c] 102a 0007                 move.b     7(a2),d0
-[0002c150] 4880                      ext.w      d0
-[0002c152] 907c 0015                 sub.w      #$0015,d0
-[0002c156] b07c 000c                 cmp.w      #$000C,d0
-[0002c15a] 6200 015c                 bhi        try_6
-[0002c15e] d040                      add.w      d0,d0
-[0002c160] 303b 0006                 move.w     $0002C168(pc,d0.w),d0
-[0002c164] 4efb 0002                 jmp        $0002C168(pc,d0.w)
+		lea.l      24(a2),a3
+		move.l     #try_click,(a3)
+		move.l     #try_drag,4(a3)
+		move.b     7(a2),d0
+		ext.w      d0
+		sub.w      #$0015,d0
+		cmp.w      #$000C,d0
+		bhi        try_6
+		add.w      d0,d0
+		move.w     J16(pc,d0.w),d0
+		jmp        J16(pc,d0.w)
 J16:
-[0002c168] 001a                      dc.w $001a   ; try_7-J16
-[0002c16a] 001a                      dc.w $001a   ; try_7-J16
-[0002c16c] 0092                      dc.w $0092   ; try_8-J16
-[0002c16e] 00c4                      dc.w $00c4   ; try_9-J16
-[0002c170] 0150                      dc.w $0150   ; try_6-J16
-[0002c172] 011e                      dc.w $011e   ; try_10-J16
-[0002c174] 0150                      dc.w $0150   ; try_6-J16
-[0002c176] 011e                      dc.w $011e   ; try_10-J16
-[0002c178] 001a                      dc.w $001a   ; try_7-J16
-[0002c17a] 001a                      dc.w $001a   ; try_7-J16
-[0002c17c] 0132                      dc.w $0132   ; try_11-J16
-[0002c17e] 011e                      dc.w $011e   ; try_10-J16
-[0002c180] 0132                      dc.w $0132   ; try_11-J16
+		dc.w try_7-J16
+		dc.w try_7-J16
+		dc.w try_8-J16
+		dc.w try_9-J16
+		dc.w try_6-J16
+		dc.w try_10-J16
+		dc.w try_6-J16
+		dc.w try_10-J16
+		dc.w try_7-J16
+		dc.w try_7-J16
+		dc.w try_11-J16
+		dc.w try_10-J16
+		dc.w try_11-J16
 try_7:
-[0002c182] 286a 000c                 movea.l    12(a2),a4
-[0002c186] 701c                      moveq.l    #28,d0
-[0002c188] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c18e] 2a48                      movea.l    a0,a5
-[0002c190] 200d                      move.l     a5,d0
-[0002c192] 6700 011a                 beq        try_1
-[0002c196] 226c 0004                 movea.l    4(a4),a1
-[0002c19a] 701c                      moveq.l    #28,d0
-[0002c19c] 4eb9 0008 3500            jsr        memcpy
-[0002c1a2] 2055                      movea.l    (a5),a0
-[0002c1a4] 2068 0004                 movea.l    4(a0),a0
-[0002c1a8] 4eb9 0004 643c            jsr        Ast_create
-[0002c1ae] 2a88                      move.l     a0,(a5)
-[0002c1b0] 226d 0004                 movea.l    4(a5),a1
-[0002c1b4] 2069 0004                 movea.l    4(a1),a0
-[0002c1b8] 4eb9 0004 643c            jsr        Ast_create
-[0002c1be] 2b48 0004                 move.l     a0,4(a5)
-[0002c1c2] 226d 0008                 movea.l    8(a5),a1
-[0002c1c6] 2069 0004                 movea.l    4(a1),a0
-[0002c1ca] 4eb9 0004 643c            jsr        Ast_create
-[0002c1d0] 2b48 0008                 move.l     a0,8(a5)
-[0002c1d4] 2055                      movea.l    (a5),a0
-[0002c1d6] 4eb9 0008 2f6c            jsr        strlen
-[0002c1dc] 5240                      addq.w     #1,d0
-[0002c1de] 3b40 0018                 move.w     d0,24(a5)
-[0002c1e2] 206d 0004                 movea.l    4(a5),a0
-[0002c1e6] 4eb9 0008 2f6c            jsr        strlen
-[0002c1ec] 5240                      addq.w     #1,d0
-[0002c1ee] 3b40 001a                 move.w     d0,26(a5)
-[0002c1f2] 254d 000c                 move.l     a5,12(a2)
-[0002c1f6] 6000 00c0                 bra        try_6
+		movea.l    12(a2),a4
+		moveq.l    #28,d0
+		jsr        Ax_malloc
+		movea.l    a0,a5
+		move.l     a5,d0
+		beq        try_1
+		movea.l    4(a4),a1
+		moveq.l    #28,d0
+		jsr        memcpy
+		movea.l    (a5),a0
+		movea.l    4(a0),a0
+		jsr        Ast_create
+		move.l     a0,(a5)
+		movea.l    4(a5),a1
+		movea.l    4(a1),a0
+		jsr        Ast_create
+		move.l     a0,4(a5)
+		movea.l    8(a5),a1
+		movea.l    4(a1),a0
+		jsr        Ast_create
+		move.l     a0,8(a5)
+		movea.l    (a5),a0
+		jsr        strlen
+		addq.w     #1,d0
+		move.w     d0,24(a5)
+		movea.l    4(a5),a0
+		jsr        strlen
+		addq.w     #1,d0
+		move.w     d0,26(a5)
+		move.l     a5,12(a2)
+		bra        try_6
 try_8:
-[0002c1fa] 286a 000c                 movea.l    12(a2),a4
-[0002c1fe] 700e                      moveq.l    #14,d0
-[0002c200] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c206] 2a48                      movea.l    a0,a5
-[0002c208] 200d                      move.l     a5,d0
-[0002c20a] 6700 00a2                 beq        try_1
-[0002c20e] 226c 0004                 movea.l    4(a4),a1
-[0002c212] 700e                      moveq.l    #14,d0
-[0002c214] 4eb9 0008 3500            jsr        memcpy
-[0002c21a] 206c 0004                 movea.l    4(a4),a0
-[0002c21e] 41e8 000e                 lea.l      14(a0),a0
-[0002c222] 2a88                      move.l     a0,(a5)
-[0002c224] 254d 000c                 move.l     a5,12(a2)
-[0002c228] 6000 008e                 bra        try_6
+		movea.l    12(a2),a4
+		moveq.l    #14,d0
+		jsr        Ax_malloc
+		movea.l    a0,a5
+		move.l     a5,d0
+		beq        try_1
+		movea.l    4(a4),a1
+		moveq.l    #14,d0
+		jsr        memcpy
+		movea.l    4(a4),a0
+		lea.l      14(a0),a0
+		move.l     a0,(a5)
+		move.l     a5,12(a2)
+		bra        try_6
 try_9:
-[0002c22c] 286a 000c                 movea.l    12(a2),a4
-[0002c230] 7020                      moveq.l    #32,d0
-[0002c232] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c238] 2a48                      movea.l    a0,a5
-[0002c23a] 200d                      move.l     a5,d0
-[0002c23c] 6770                      beq.s      try_1
-[0002c23e] 224d                      movea.l    a5,a1
-[0002c240] 204c                      movea.l    a4,a0
-[0002c242] 4eb9 0002 cae2            jsr        map_user
-[0002c248] 254d 000c                 move.l     a5,12(a2)
-[0002c24c] 202d 0008                 move.l     8(a5),d0
-[0002c250] 6766                      beq.s      try_6
-[0002c252] 3f7c 0001 0008            move.w     #$0001,8(a7)
-[0002c258] 43ef 0008                 lea.l      8(a7),a1
-[0002c25c] 204a                      movea.l    a2,a0
-[0002c25e] 2640                      movea.l    d0,a3
-[0002c260] 7001                      moveq.l    #1,d0
-[0002c262] 4e93                      jsr        (a3)
-[0002c264] 2f6f 0018 000e            move.l     24(a7),14(a7)
-[0002c26a] 2f4a 0012                 move.l     a2,18(a7)
-[0002c26e] 3004                      move.w     d4,d0
-[0002c270] d040                      add.w      d0,d0
-[0002c272] 3f40 0016                 move.w     d0,22(a7)
-[0002c276] 43ef 000e                 lea.l      14(a7),a1
-[0002c27a] 204a                      movea.l    a2,a0
-[0002c27c] 266d 0008                 movea.l    8(a5),a3
-[0002c280] 7009                      moveq.l    #9,d0
-[0002c282] 4e93                      jsr        (a3)
-[0002c284] 6032                      bra.s      try_6
+		movea.l    12(a2),a4
+		moveq.l    #32,d0
+		jsr        Ax_malloc
+		movea.l    a0,a5
+		move.l     a5,d0
+		beq.s      try_1
+		movea.l    a5,a1
+		movea.l    a4,a0
+		jsr        map_user
+		move.l     a5,12(a2)
+		move.l     8(a5),d0
+		beq.s      try_6
+		move.w     #$0001,8(a7)
+		lea.l      8(a7),a1
+		movea.l    a2,a0
+		movea.l    d0,a3
+		moveq.l    #1,d0
+		jsr        (a3)
+		move.l     24(a7),14(a7)
+		move.l     a2,18(a7)
+		move.w     d4,d0
+		add.w      d0,d0
+		move.w     d0,22(a7)
+		lea.l      14(a7),a1
+		movea.l    a2,a0
+		movea.l    8(a5),a3
+		moveq.l    #9,d0
+		jsr        (a3)
+		bra.s      try_6
 try_10:
-[0002c286] 286a 000c                 movea.l    12(a2),a4
-[0002c28a] 206c 0004                 movea.l    4(a4),a0
-[0002c28e] 4eb9 0004 643c            jsr        Ast_create
-[0002c294] 2548 000c                 move.l     a0,12(a2)
-[0002c298] 601e                      bra.s      try_6
+		movea.l    12(a2),a4
+		movea.l    4(a4),a0
+		jsr        Ast_create
+		move.l     a0,12(a2)
+		bra.s      try_6
 try_11:
-[0002c29a] 286a 000c                 movea.l    12(a2),a4
-[0002c29e] 206c 0004                 movea.l    4(a4),a0
-[0002c2a2] 6100 fd20                 bsr        fix_cicon
-[0002c2a6] 2f48 0004                 move.l     a0,4(a7)
-[0002c2aa] 2008                      move.l     a0,d0
-[0002c2ac] 6604                      bne.s      try_12
+		movea.l    12(a2),a4
+		movea.l    4(a4),a0
+		bsr        fix_cicon
+		move.l     a0,4(a7)
+		move.l     a0,d0
+		bne.s      try_12
 try_1:
-[0002c2ae] 91c8                      suba.l     a0,a0
-[0002c2b0] 602e                      bra.s      try_13
+		suba.l     a0,a0
+		bra.s      try_13
 try_12:
-[0002c2b2] 256f 0004 000c            move.l     4(a7),12(a2)
+		move.l     4(a7),12(a2)
 try_6:
-[0002c2b8] 45ea 0030                 lea.l      48(a2),a2
-[0002c2bc] 06af 0000 0038 000a       addi.l     #$00000038,10(a7)
-[0002c2c4] 5244                      addq.w     #1,d4
+		lea.l      48(a2),a2
+		addi.l     #$00000038,10(a7)
+		addq.w     #1,d4
 try_2:
-[0002c2c6] b644                      cmp.w      d4,d3
-[0002c2c8] 6e00 fe40                 bgt        try_14
-[0002c2cc] 45ea ffe8                 lea.l      -24(a2),a2
-[0002c2d0] 006a 0020 0008            ori.w      #$0020,8(a2)
-[0002c2d6] 2057                      movea.l    (a7),a0
-[0002c2d8] 4eb9 0004 fbdc            jsr        Aob_fix
-[0002c2de] 2057                      movea.l    (a7),a0
+		cmp.w      d4,d3
+		bgt        try_14
+		lea.l      -24(a2),a2
+		ori.w      #$0020,8(a2)
+		movea.l    (a7),a0
+		jsr        Aob_fix
+		movea.l    (a7),a0
 try_13:
-[0002c2e0] 4fef 001c                 lea.l      28(a7),a7
-[0002c2e4] 4cdf 3c18                 movem.l    (a7)+,d3-d4/a2-a5
-[0002c2e8] 4e75                      rts
+		lea.l      28(a7),a7
+		movem.l    (a7)+,d3-d4/a2-a5
+		rts
 
 eded_try:
-[0002c2ea] 48e7 003c                 movem.l    a2-a5,-(a7)
-[0002c2ee] 514f                      subq.w     #8,a7
-[0002c2f0] 2079 0010 ee4e            movea.l    ACSblk,a0
-[0002c2f6] 2468 0258                 movea.l    600(a0),a2
-[0002c2fa] 2a52                      movea.l    (a2),a5
-[0002c2fc] 2f55 0004                 move.l     (a5),4(a7)
-[0002c300] 286d 0004                 movea.l    4(a5),a4
-[0002c304] 224a                      movea.l    a2,a1
-[0002c306] 206d 0004                 movea.l    4(a5),a0
-[0002c30a] 6100 fda6                 bsr        try
-[0002c30e] 2a48                      movea.l    a0,a5
-[0002c310] 200d                      move.l     a5,d0
-[0002c312] 6700 011c                 beq        eded_try_1
-[0002c316] 43ec 0016                 lea.l      22(a4),a1
-[0002c31a] 206f 0004                 movea.l    4(a7),a0
-[0002c31e] 2068 0018                 movea.l    24(a0),a0
-[0002c322] 4eb9 0003 337c            jsr        find_entry
-[0002c328] b9c8                      cmpa.l     a0,a4
-[0002c32a] 666e                      bne.s      eded_try_2
-[0002c32c] 2f39 000e 692a            move.l     _globl,-(a7)
-[0002c332] 486f 0006                 pea.l      6(a7)
-[0002c336] 486f 0008                 pea.l      8(a7)
-[0002c33a] 43ef 000c                 lea.l      12(a7),a1
-[0002c33e] 41ef 000c                 lea.l      12(a7),a0
-[0002c342] 4eb9 0007 ac48            jsr        mt_graf_mkstate
-[0002c348] 4fef 000c                 lea.l      12(a7),a7
-[0002c34c] 7004                      moveq.l    #4,d0
-[0002c34e] c06f 0002                 and.w      2(a7),d0
-[0002c352] 671c                      beq.s      eded_try_3
-[0002c354] 204a                      movea.l    a2,a0
-[0002c356] 226a 0010                 movea.l    16(a2),a1
-[0002c35a] 4e91                      jsr        (a1)
-[0002c35c] 204d                      movea.l    a5,a0
-[0002c35e] 4eb9 0006 c596            jsr        A_dialog
-[0002c364] 204d                      movea.l    a5,a0
-[0002c366] 4eb9 0004 f20a            jsr        Aob_delete
-[0002c36c] 6000 00c2                 bra        eded_try_1
+		movem.l    a2-a5,-(a7)
+		subq.w     #8,a7
+		movea.l    ACSblk,a0
+		movea.l    600(a0),a2
+		movea.l    (a2),a5
+		move.l     (a5),4(a7)
+		movea.l    4(a5),a4
+		movea.l    a2,a1
+		movea.l    4(a5),a0
+		bsr        try
+		movea.l    a0,a5
+		move.l     a5,d0
+		beq        eded_try_1
+		lea.l      22(a4),a1
+		movea.l    4(a7),a0
+		movea.l    24(a0),a0
+		jsr        find_entry
+		cmpa.l     a0,a4
+		bne.s      eded_try_2
+		move.l     _globl,-(a7)
+		pea.l      6(a7)
+		pea.l      8(a7)
+		lea.l      12(a7),a1
+		lea.l      12(a7),a0
+		jsr        mt_graf_mkstate
+		lea.l      12(a7),a7
+		moveq.l    #4,d0
+		and.w      2(a7),d0
+		beq.s      eded_try_3
+		movea.l    a2,a0
+		movea.l    16(a2),a1
+		jsr        (a1)
+		movea.l    a5,a0
+		jsr        A_dialog
+		movea.l    a5,a0
+		jsr        Aob_delete
+		bra        eded_try_1
 eded_try_3:
-[0002c370] 42a7                      clr.l      -(a7)
-[0002c372] 42a7                      clr.l      -(a7)
-[0002c374] 42a7                      clr.l      -(a7)
-[0002c376] 4879 0004 f20a            pea.l      Aob_delete
-[0002c37c] 4879 0002 f27c            pea.l      ed_abort
-[0002c382] 4879 000c 4e2f            pea.l      testmode
-[0002c388] 224d                      movea.l    a5,a1
-[0002c38a] 204a                      movea.l    a2,a0
-[0002c38c] 4eb9 0002 f488            jsr        change_work
-[0002c392] 4fef 0018                 lea.l      24(a7),a7
-[0002c396] 6000 0098                 bra        eded_try_1
+		clr.l      -(a7)
+		clr.l      -(a7)
+		clr.l      -(a7)
+		pea.l      Aob_delete
+		pea.l      ed_abort
+		pea.l      testmode
+		movea.l    a5,a1
+		movea.l    a2,a0
+		jsr        change_work
+		lea.l      24(a7),a7
+		bra        eded_try_1
 eded_try_2:
-[0002c39a] 43ec 0016                 lea.l      22(a4),a1
-[0002c39e] 206f 0004                 movea.l    4(a7),a0
-[0002c3a2] 2068 001c                 movea.l    28(a0),a0
-[0002c3a6] 4eb9 0003 337c            jsr        find_entry
-[0002c3ac] b9c8                      cmpa.l     a0,a4
-[0002c3ae] 6648                      bne.s      eded_try_4
-[0002c3b0] 41f9 000c 89e0            lea.l      MINIOB,a0
-[0002c3b6] 4eb9 0004 f064            jsr        Aob_create
-[0002c3bc] 2648                      movea.l    a0,a3
-[0002c3be] 376a 0038 0014            move.w     56(a2),20(a3)
-[0002c3c4] 376a 003a 0016            move.w     58(a2),22(a3)
-[0002c3ca] 006b 8000 000a            ori.w      #$8000,10(a3)
-[0002c3d0] 42a7                      clr.l      -(a7)
-[0002c3d2] 42a7                      clr.l      -(a7)
-[0002c3d4] 2f0d                      move.l     a5,-(a7)
-[0002c3d6] 4879 0004 f20a            pea.l      Aob_delete
-[0002c3dc] 4879 0002 f27c            pea.l      ed_abort
-[0002c3e2] 4879 000c 4e2f            pea.l      testmode
-[0002c3e8] 224b                      movea.l    a3,a1
-[0002c3ea] 204a                      movea.l    a2,a0
-[0002c3ec] 4eb9 0002 f488            jsr        change_work
-[0002c3f2] 4fef 0018                 lea.l      24(a7),a7
-[0002c3f6] 6038                      bra.s      eded_try_1
+		lea.l      22(a4),a1
+		movea.l    4(a7),a0
+		movea.l    28(a0),a0
+		jsr        find_entry
+		cmpa.l     a0,a4
+		bne.s      eded_try_4
+		lea.l      MINIOB,a0
+		jsr        Aob_create
+		movea.l    a0,a3
+		move.w     56(a2),20(a3)
+		move.w     58(a2),22(a3)
+		ori.w      #$8000,10(a3)
+		clr.l      -(a7)
+		clr.l      -(a7)
+		move.l     a5,-(a7)
+		pea.l      Aob_delete
+		pea.l      ed_abort
+		pea.l      testmode
+		movea.l    a3,a1
+		movea.l    a2,a0
+		jsr        change_work
+		lea.l      24(a7),a7
+		bra.s      eded_try_1
 eded_try_4:
-[0002c3f8] 43ec 0016                 lea.l      22(a4),a1
-[0002c3fc] 206f 0004                 movea.l    4(a7),a0
-[0002c400] 2068 0020                 movea.l    32(a0),a0
-[0002c404] 4eb9 0003 337c            jsr        find_entry
-[0002c40a] b9c8                      cmpa.l     a0,a4
-[0002c40c] 6622                      bne.s      eded_try_1
-[0002c40e] 204a                      movea.l    a2,a0
-[0002c410] 226a 0010                 movea.l    16(a2),a1
-[0002c414] 4e91                      jsr        (a1)
-[0002c416] 4eb9 0004 ef0c            jsr        Amo_unbusy
-[0002c41c] 72ff                      moveq.l    #-1,d1
-[0002c41e] 70ff                      moveq.l    #-1,d0
-[0002c420] 224d                      movea.l    a5,a1
-[0002c422] 204a                      movea.l    a2,a0
-[0002c424] 4eb9 0004 e84a            jsr        Ame_popup
-[0002c42a] 4eb9 0004 eec0            jsr        Amo_busy
+		lea.l      22(a4),a1
+		movea.l    4(a7),a0
+		movea.l    32(a0),a0
+		jsr        find_entry
+		cmpa.l     a0,a4
+		bne.s      eded_try_1
+		movea.l    a2,a0
+		movea.l    16(a2),a1
+		jsr        (a1)
+		jsr        Amo_unbusy
+		moveq.l    #-1,d1
+		moveq.l    #-1,d0
+		movea.l    a5,a1
+		movea.l    a2,a0
+		jsr        Ame_popup
+		jsr        Amo_busy
 eded_try_1:
-[0002c430] 504f                      addq.w     #8,a7
-[0002c432] 4cdf 3c00                 movem.l    (a7)+,a2-a5
-[0002c436] 4e75                      rts
+		addq.w     #8,a7
+		movem.l    (a7)+,a2-a5
+		rts
 
 ed_init:
-[0002c438] 48e7 1e3e                 movem.l    d3-d6/a2-a6,-(a7)
-[0002c43c] 4fef ffe4                 lea.l      -28(a7),a7
-[0002c440] 2f48 0018                 move.l     a0,24(a7)
-[0002c444] 2279 0010 ee4e            movea.l    ACSblk,a1
-[0002c44a] 2069 0240                 movea.l    576(a1),a0
-[0002c44e] b1ef 0018                 cmpa.l     24(a7),a0
-[0002c452] 6606                      bne.s      ed_init_1
-[0002c454] 4eb9 0004 810e            jsr        Adr_unselect
+		movem.l    d3-d6/a2-a6,-(a7)
+		lea.l      -28(a7),a7
+		move.l     a0,24(a7)
+		movea.l    ACSblk,a1
+		movea.l    576(a1),a0
+		cmpa.l     24(a7),a0
+		bne.s      ed_init_1
+		jsr        Adr_unselect
 ed_init_1:
-[0002c45a] 206f 0018                 movea.l    24(a7),a0
-[0002c45e] 2f50 000a                 move.l     (a0),10(a7)
-[0002c462] 226f 000a                 movea.l    10(a7),a1
-[0002c466] 2869 0004                 movea.l    4(a1),a4
-[0002c46a] 2f6c 0004 0006            move.l     4(a4),6(a7)
-[0002c470] 202c 000e                 move.l     14(a4),d0
-[0002c474] 7238                      moveq.l    #56,d1
-[0002c476] 4eb9 0008 3c5a            jsr        _uldiv
-[0002c47c] 2600                      move.l     d0,d3
-[0002c47e] 206f 0018                 movea.l    24(a7),a0
-[0002c482] 2a68 0014                 movea.l    20(a0),a5
-[0002c486] 4244                      clr.w      d4
-[0002c488] 3a04                      move.w     d4,d5
-[0002c48a] 200d                      move.l     a5,d0
-[0002c48c] 6710                      beq.s      ed_init_2
-[0002c48e] 3a2d 0010                 move.w     16(a5),d5
-[0002c492] 382d 0012                 move.w     18(a5),d4
-[0002c496] 204d                      movea.l    a5,a0
-[0002c498] 4eb9 0004 f20a            jsr        Aob_delete
+		movea.l    24(a7),a0
+		move.l     (a0),10(a7)
+		movea.l    10(a7),a1
+		movea.l    4(a1),a4
+		move.l     4(a4),6(a7)
+		move.l     14(a4),d0
+		moveq.l    #56,d1
+		jsr        _uldiv
+		move.l     d0,d3
+		movea.l    24(a7),a0
+		movea.l    20(a0),a5
+		clr.w      d4
+		move.w     d4,d5
+		move.l     a5,d0
+		beq.s      ed_init_2
+		move.w     16(a5),d5
+		move.w     18(a5),d4
+		movea.l    a5,a0
+		jsr        Aob_delete
 ed_init_2:
-[0002c49e] 206f 000a                 movea.l    10(a7),a0
-[0002c4a2] 317c 0001 0008            move.w     #$0001,8(a0)
-[0002c4a8] 3203                      move.w     d3,d1
-[0002c4aa] d241                      add.w      d1,d1
-[0002c4ac] d243                      add.w      d3,d1
-[0002c4ae] 5241                      addq.w     #1,d1
-[0002c4b0] 48c1                      ext.l      d1
-[0002c4b2] 2001                      move.l     d1,d0
-[0002c4b4] d080                      add.l      d0,d0
-[0002c4b6] d081                      add.l      d1,d0
-[0002c4b8] e788                      lsl.l      #3,d0
-[0002c4ba] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c4c0] 2a48                      movea.l    a0,a5
-[0002c4c2] 226f 0018                 movea.l    24(a7),a1
-[0002c4c6] 2348 0014                 move.l     a0,20(a1)
-[0002c4ca] 200d                      move.l     a5,d0
-[0002c4cc] 6700 01b8                 beq        ed_init_3
-[0002c4d0] 43f9 000c 9190            lea.l      deskob,a1
-[0002c4d6] 204d                      movea.l    a5,a0
-[0002c4d8] 7018                      moveq.l    #24,d0
-[0002c4da] 4eb9 0008 3500            jsr        memcpy
-[0002c4e0] 47ed 0018                 lea.l      24(a5),a3
-[0002c4e4] 23cc 000c 9164            move.l     a4,$000C9164
-[0002c4ea] 4246                      clr.w      d6
-[0002c4ec] 6000 024a                 bra        ed_init_4
+		movea.l    10(a7),a0
+		move.w     #$0001,8(a0)
+		move.w     d3,d1
+		add.w      d1,d1
+		add.w      d3,d1
+		addq.w     #1,d1
+		ext.l      d1
+		move.l     d1,d0
+		add.l      d0,d0
+		add.l      d1,d0
+		lsl.l      #3,d0
+		jsr        Ax_malloc
+		movea.l    a0,a5
+		movea.l    24(a7),a1
+		move.l     a0,20(a1)
+		move.l     a5,d0
+		beq        ed_init_3
+		lea.l      deskob,a1
+		movea.l    a5,a0
+		moveq.l    #24,d0
+		jsr        memcpy
+		lea.l      24(a5),a3
+		move.l     a4,ent02+12
+		clr.w      d6
+		bra        ed_init_4
 ed_init_17:
-[0002c4f0] 3006                      move.w     d6,d0
-[0002c4f2] 48c0                      ext.l      d0
-[0002c4f4] 23c0 000c 9168            move.l     d0,$000C9168
-[0002c4fa] 43f9 000c 9128            lea.l      entry,a1
-[0002c500] 204b                      movea.l    a3,a0
-[0002c502] 7048                      moveq.l    #72,d0
-[0002c504] 4eb9 0008 3500            jsr        memcpy
-[0002c50a] 7018                      moveq.l    #24,d0
-[0002c50c] 3406                      move.w     d6,d2
-[0002c50e] 48c2                      ext.l      d2
-[0002c510] 2202                      move.l     d2,d1
-[0002c512] e789                      lsl.l      #3,d1
-[0002c514] 9282                      sub.l      d2,d1
-[0002c516] e789                      lsl.l      #3,d1
-[0002c518] 226f 0006                 movea.l    6(a7),a1
-[0002c51c] 43f1 1808                 lea.l      8(a1,d1.l),a1
-[0002c520] 204b                      movea.l    a3,a0
-[0002c522] 4eb9 0008 3500            jsr        memcpy
-[0002c528] 102b 0007                 move.b     7(a3),d0
-[0002c52c] 4880                      ext.w      d0
-[0002c52e] 907c 0015                 sub.w      #$0015,d0
-[0002c532] b07c 000c                 cmp.w      #$000C,d0
-[0002c536] 6200 0158                 bhi        ed_init_5
-[0002c53a] d040                      add.w      d0,d0
-[0002c53c] 303b 0006                 move.w     $0002C544(pc,d0.w),d0
-[0002c540] 4efb 0002                 jmp        $0002C544(pc,d0.w)
+		move.w     d6,d0
+		ext.l      d0
+		move.l     d0,ent02+16
+		lea.l      entry,a1
+		movea.l    a3,a0
+		moveq.l    #72,d0
+		jsr        memcpy
+		moveq.l    #24,d0
+		move.w     d6,d2
+		ext.l      d2
+		move.l     d2,d1
+		lsl.l      #3,d1
+		sub.l      d2,d1
+		lsl.l      #3,d1
+		movea.l    6(a7),a1
+		lea.l      8(a1,d1.l),a1
+		movea.l    a3,a0
+		jsr        memcpy
+		move.b     7(a3),d0
+		ext.w      d0
+		sub.w      #$0015,d0
+		cmp.w      #$000C,d0
+		bhi        ed_init_5
+		add.w      d0,d0
+		move.w     J17(pc,d0.w),d0
+		jmp        J17(pc,d0.w)
 J17:
-[0002c544] 001a                      dc.w $001a   ; ed_init_6-J17
-[0002c546] 001a                      dc.w $001a   ; ed_init_6-J17
-[0002c548] 0092                      dc.w $0092   ; ed_init_7-J17
-[0002c54a] 00c4                      dc.w $00c4   ; ed_init_8-J17
-[0002c54c] 014c                      dc.w $014c   ; ed_init_5-J17
-[0002c54e] 011e                      dc.w $011e   ; ed_init_9-J17
-[0002c550] 014c                      dc.w $014c   ; ed_init_5-J17
-[0002c552] 011e                      dc.w $011e   ; ed_init_9-J17
-[0002c554] 001a                      dc.w $001a   ; ed_init_6-J17
-[0002c556] 001a                      dc.w $001a   ; ed_init_6-J17
-[0002c558] 0132                      dc.w $0132   ; ed_init_10-J17
-[0002c55a] 011e                      dc.w $011e   ; ed_init_9-J17
-[0002c55c] 0132                      dc.w $0132   ; ed_init_10-J17
+		dc.w ed_init_6-J17
+		dc.w ed_init_6-J17
+		dc.w ed_init_7-J17
+		dc.w ed_init_8-J17
+		dc.w ed_init_5-J17
+		dc.w ed_init_9-J17
+		dc.w ed_init_5-J17
+		dc.w ed_init_9-J17
+		dc.w ed_init_6-J17
+		dc.w ed_init_6-J17
+		dc.w ed_init_10-J17
+		dc.w ed_init_9-J17
+		dc.w ed_init_10-J17
 ed_init_6:
-[0002c55e] 246b 000c                 movea.l    12(a3),a2
-[0002c562] 701c                      moveq.l    #28,d0
-[0002c564] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c56a] 2848                      movea.l    a0,a4
-[0002c56c] 200c                      move.l     a4,d0
-[0002c56e] 6700 0116                 beq        ed_init_3
-[0002c572] 226a 0004                 movea.l    4(a2),a1
-[0002c576] 701c                      moveq.l    #28,d0
-[0002c578] 4eb9 0008 3500            jsr        memcpy
-[0002c57e] 2054                      movea.l    (a4),a0
-[0002c580] 2068 0004                 movea.l    4(a0),a0
-[0002c584] 4eb9 0004 643c            jsr        Ast_create
-[0002c58a] 2888                      move.l     a0,(a4)
-[0002c58c] 226c 0004                 movea.l    4(a4),a1
-[0002c590] 2069 0004                 movea.l    4(a1),a0
-[0002c594] 4eb9 0004 643c            jsr        Ast_create
-[0002c59a] 2948 0004                 move.l     a0,4(a4)
-[0002c59e] 226c 0008                 movea.l    8(a4),a1
-[0002c5a2] 2069 0004                 movea.l    4(a1),a0
-[0002c5a6] 4eb9 0004 643c            jsr        Ast_create
-[0002c5ac] 2948 0008                 move.l     a0,8(a4)
-[0002c5b0] 2054                      movea.l    (a4),a0
-[0002c5b2] 4eb9 0008 2f6c            jsr        strlen
-[0002c5b8] 5240                      addq.w     #1,d0
-[0002c5ba] 3940 0018                 move.w     d0,24(a4)
-[0002c5be] 206c 0004                 movea.l    4(a4),a0
-[0002c5c2] 4eb9 0008 2f6c            jsr        strlen
-[0002c5c8] 5240                      addq.w     #1,d0
-[0002c5ca] 3940 001a                 move.w     d0,26(a4)
-[0002c5ce] 274c 000c                 move.l     a4,12(a3)
-[0002c5d2] 6000 00bc                 bra        ed_init_5
+		movea.l    12(a3),a2
+		moveq.l    #28,d0
+		jsr        Ax_malloc
+		movea.l    a0,a4
+		move.l     a4,d0
+		beq        ed_init_3
+		movea.l    4(a2),a1
+		moveq.l    #28,d0
+		jsr        memcpy
+		movea.l    (a4),a0
+		movea.l    4(a0),a0
+		jsr        Ast_create
+		move.l     a0,(a4)
+		movea.l    4(a4),a1
+		movea.l    4(a1),a0
+		jsr        Ast_create
+		move.l     a0,4(a4)
+		movea.l    8(a4),a1
+		movea.l    4(a1),a0
+		jsr        Ast_create
+		move.l     a0,8(a4)
+		movea.l    (a4),a0
+		jsr        strlen
+		addq.w     #1,d0
+		move.w     d0,24(a4)
+		movea.l    4(a4),a0
+		jsr        strlen
+		addq.w     #1,d0
+		move.w     d0,26(a4)
+		move.l     a4,12(a3)
+		bra        ed_init_5
 ed_init_7:
-[0002c5d6] 246b 000c                 movea.l    12(a3),a2
-[0002c5da] 700e                      moveq.l    #14,d0
-[0002c5dc] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c5e2] 2848                      movea.l    a0,a4
-[0002c5e4] 200c                      move.l     a4,d0
-[0002c5e6] 6700 009e                 beq        ed_init_3
-[0002c5ea] 226a 0004                 movea.l    4(a2),a1
-[0002c5ee] 700e                      moveq.l    #14,d0
-[0002c5f0] 4eb9 0008 3500            jsr        memcpy
-[0002c5f6] 206a 0004                 movea.l    4(a2),a0
-[0002c5fa] 41e8 000e                 lea.l      14(a0),a0
-[0002c5fe] 2888                      move.l     a0,(a4)
-[0002c600] 274c 000c                 move.l     a4,12(a3)
-[0002c604] 6000 008a                 bra        ed_init_5
+		movea.l    12(a3),a2
+		moveq.l    #14,d0
+		jsr        Ax_malloc
+		movea.l    a0,a4
+		move.l     a4,d0
+		beq        ed_init_3
+		movea.l    4(a2),a1
+		moveq.l    #14,d0
+		jsr        memcpy
+		movea.l    4(a2),a0
+		lea.l      14(a0),a0
+		move.l     a0,(a4)
+		move.l     a4,12(a3)
+		bra        ed_init_5
 ed_init_8:
-[0002c608] 246b 000c                 movea.l    12(a3),a2
-[0002c60c] 7020                      moveq.l    #32,d0
-[0002c60e] 4eb9 0004 c608            jsr        Ax_malloc
-[0002c614] 2848                      movea.l    a0,a4
-[0002c616] 200c                      move.l     a4,d0
-[0002c618] 676c                      beq.s      ed_init_3
-[0002c61a] 224c                      movea.l    a4,a1
-[0002c61c] 204a                      movea.l    a2,a0
-[0002c61e] 4eb9 0002 cae2            jsr        map_user
-[0002c624] 274c 000c                 move.l     a4,12(a3)
-[0002c628] 202c 0008                 move.l     8(a4),d0
-[0002c62c] 6762                      beq.s      ed_init_5
-[0002c62e] 3f7c 0001 0004            move.w     #$0001,4(a7)
-[0002c634] 43ef 0004                 lea.l      4(a7),a1
-[0002c638] 204b                      movea.l    a3,a0
-[0002c63a] 2c40                      movea.l    d0,a6
-[0002c63c] 7001                      moveq.l    #1,d0
-[0002c63e] 4e96                      jsr        (a6)
-[0002c640] 2f6f 0018 000e            move.l     24(a7),14(a7)
-[0002c646] 2f4b 0012                 move.l     a3,18(a7)
-[0002c64a] 3006                      move.w     d6,d0
-[0002c64c] d040                      add.w      d0,d0
-[0002c64e] 3f40 0016                 move.w     d0,22(a7)
-[0002c652] 43ef 000e                 lea.l      14(a7),a1
-[0002c656] 204b                      movea.l    a3,a0
-[0002c658] 2c6c 0008                 movea.l    8(a4),a6
-[0002c65c] 7009                      moveq.l    #9,d0
-[0002c65e] 4e96                      jsr        (a6)
-[0002c660] 602e                      bra.s      ed_init_5
+		movea.l    12(a3),a2
+		moveq.l    #32,d0
+		jsr        Ax_malloc
+		movea.l    a0,a4
+		move.l     a4,d0
+		beq.s      ed_init_3
+		movea.l    a4,a1
+		movea.l    a2,a0
+		jsr        map_user
+		move.l     a4,12(a3)
+		move.l     8(a4),d0
+		beq.s      ed_init_5
+		move.w     #$0001,4(a7)
+		lea.l      4(a7),a1
+		movea.l    a3,a0
+		movea.l    d0,a6
+		moveq.l    #1,d0
+		jsr        (a6)
+		move.l     24(a7),14(a7)
+		move.l     a3,18(a7)
+		move.w     d6,d0
+		add.w      d0,d0
+		move.w     d0,22(a7)
+		lea.l      14(a7),a1
+		movea.l    a3,a0
+		movea.l    8(a4),a6
+		moveq.l    #9,d0
+		jsr        (a6)
+		bra.s      ed_init_5
 ed_init_9:
-[0002c662] 246b 000c                 movea.l    12(a3),a2
-[0002c666] 206a 0004                 movea.l    4(a2),a0
-[0002c66a] 4eb9 0004 643c            jsr        Ast_create
-[0002c670] 2748 000c                 move.l     a0,12(a3)
-[0002c674] 601a                      bra.s      ed_init_5
+		movea.l    12(a3),a2
+		movea.l    4(a2),a0
+		jsr        Ast_create
+		move.l     a0,12(a3)
+		bra.s      ed_init_5
 ed_init_10:
-[0002c676] 246b 000c                 movea.l    12(a3),a2
-[0002c67a] 206a 0004                 movea.l    4(a2),a0
-[0002c67e] 6100 f944                 bsr        fix_cicon
-[0002c682] 2e88                      move.l     a0,(a7)
-[0002c684] 6606                      bne.s      ed_init_11
+		movea.l    12(a3),a2
+		movea.l    4(a2),a0
+		bsr        fix_cicon
+		move.l     a0,(a7)
+		bne.s      ed_init_11
 ed_init_3:
-[0002c686] 70ff                      moveq.l    #-1,d0
-[0002c688] 6000 011a                 bra        ed_init_12
+		moveq.l    #-1,d0
+		bra        ed_init_12
 ed_init_11:
-[0002c68c] 2757 000c                 move.l     (a7),12(a3)
+		move.l     (a7),12(a3)
 ed_init_5:
-[0002c690] 3213                      move.w     (a3),d1
-[0002c692] 3001                      move.w     d1,d0
-[0002c694] d040                      add.w      d0,d0
-[0002c696] d041                      add.w      d1,d0
-[0002c698] 5240                      addq.w     #1,d0
-[0002c69a] 3740 0018                 move.w     d0,24(a3)
-[0002c69e] 3413                      move.w     (a3),d2
-[0002c6a0] 48c2                      ext.l      d2
-[0002c6a2] 2202                      move.l     d2,d1
-[0002c6a4] e789                      lsl.l      #3,d1
-[0002c6a6] 9282                      sub.l      d2,d1
-[0002c6a8] e789                      lsl.l      #3,d1
-[0002c6aa] 206f 0006                 movea.l    6(a7),a0
-[0002c6ae] bc70 180c                 cmp.w      12(a0,d1.l),d6
-[0002c6b2] 6604                      bne.s      ed_init_13
-[0002c6b4] 526b 0018                 addq.w     #1,24(a3)
+		move.w     (a3),d1
+		move.w     d1,d0
+		add.w      d0,d0
+		add.w      d1,d0
+		addq.w     #1,d0
+		move.w     d0,24(a3)
+		move.w     (a3),d2
+		ext.l      d2
+		move.l     d2,d1
+		lsl.l      #3,d1
+		sub.l      d2,d1
+		lsl.l      #3,d1
+		movea.l    6(a7),a0
+		cmp.w      12(a0,d1.l),d6
+		bne.s      ed_init_13
+		addq.w     #1,24(a3)
 ed_init_13:
-[0002c6b8] 302b 0002                 move.w     2(a3),d0
-[0002c6bc] 6b26                      bmi.s      ed_init_14
-[0002c6be] 3200                      move.w     d0,d1
-[0002c6c0] d241                      add.w      d1,d1
-[0002c6c2] d240                      add.w      d0,d1
-[0002c6c4] 5241                      addq.w     #1,d1
-[0002c6c6] 3741 001a                 move.w     d1,26(a3)
-[0002c6ca] 342b 0004                 move.w     4(a3),d2
-[0002c6ce] 3002                      move.w     d2,d0
-[0002c6d0] d040                      add.w      d0,d0
-[0002c6d2] d042                      add.w      d2,d0
-[0002c6d4] 5440                      addq.w     #2,d0
-[0002c6d6] 3740 001c                 move.w     d0,28(a3)
-[0002c6da] 72ff                      moveq.l    #-1,d1
-[0002c6dc] 3741 0004                 move.w     d1,4(a3)
-[0002c6e0] 3741 0002                 move.w     d1,2(a3)
+		move.w     2(a3),d0
+		bmi.s      ed_init_14
+		move.w     d0,d1
+		add.w      d1,d1
+		add.w      d0,d1
+		addq.w     #1,d1
+		move.w     d1,26(a3)
+		move.w     4(a3),d2
+		move.w     d2,d0
+		add.w      d0,d0
+		add.w      d2,d0
+		addq.w     #2,d0
+		move.w     d0,28(a3)
+		moveq.l    #-1,d1
+		move.w     d1,4(a3)
+		move.w     d1,2(a3)
 ed_init_14:
-[0002c6e4] 3006                      move.w     d6,d0
-[0002c6e6] d040                      add.w      d0,d0
-[0002c6e8] d046                      add.w      d6,d0
-[0002c6ea] 5440                      addq.w     #2,d0
-[0002c6ec] 3680                      move.w     d0,(a3)
-[0002c6ee] 376b 0010 0028            move.w     16(a3),40(a3)
-[0002c6f4] 376b 0012 002a            move.w     18(a3),42(a3)
-[0002c6fa] 376b 0014 002c            move.w     20(a3),44(a3)
-[0002c700] 376b 0016 002e            move.w     22(a3),46(a3)
-[0002c706] 323c 0080                 move.w     #$0080,d1
-[0002c70a] c26b 0008                 and.w      8(a3),d1
-[0002c70e] 6706                      beq.s      ed_init_15
-[0002c710] 006b 0080 0020            ori.w      #$0080,32(a3)
+		move.w     d6,d0
+		add.w      d0,d0
+		add.w      d6,d0
+		addq.w     #2,d0
+		move.w     d0,(a3)
+		move.w     16(a3),40(a3)
+		move.w     18(a3),42(a3)
+		move.w     20(a3),44(a3)
+		move.w     22(a3),46(a3)
+		move.w     #$0080,d1
+		and.w      8(a3),d1
+		beq.s      ed_init_15
+		ori.w      #$0080,32(a3)
 ed_init_15:
-[0002c716] 302b 000a                 move.w     10(a3),d0
-[0002c71a] c07c 1000                 and.w      #$1000,d0
-[0002c71e] 6706                      beq.s      ed_init_16
-[0002c720] 006b 1000 0022            ori.w      #$1000,34(a3)
+		move.w     10(a3),d0
+		and.w      #$1000,d0
+		beq.s      ed_init_16
+		ori.w      #$1000,34(a3)
 ed_init_16:
-[0002c726] 026b 06d7 0008            andi.w     #$06D7,8(a3)
-[0002c72c] 026b 0f3f 000a            andi.w     #$0F3F,10(a3)
-[0002c732] 5246                      addq.w     #1,d6
-[0002c734] 47eb 0048                 lea.l      72(a3),a3
+		andi.w     #$06D7,8(a3)
+		andi.w     #$0F3F,10(a3)
+		addq.w     #1,d6
+		lea.l      72(a3),a3
 ed_init_4:
-[0002c738] b646                      cmp.w      d6,d3
-[0002c73a] 6e00 fdb4                 bgt        ed_init_17
-[0002c73e] 47eb ffe8                 lea.l      -24(a3),a3
-[0002c742] 006b 0020 0008            ori.w      #$0020,8(a3)
-[0002c748] 426d 0030                 clr.w      48(a5)
-[0002c74c] 302d 0014                 move.w     20(a5),d0
-[0002c750] e240                      asr.w      #1,d0
-[0002c752] 3b40 0028                 move.w     d0,40(a5)
-[0002c756] 3b40 0040                 move.w     d0,64(a5)
-[0002c75a] 322d 0016                 move.w     22(a5),d1
-[0002c75e] e241                      asr.w      #1,d1
-[0002c760] 3b41 002a                 move.w     d1,42(a5)
-[0002c764] 3b41 0042                 move.w     d1,66(a5)
-[0002c768] 302d 002c                 move.w     44(a5),d0
-[0002c76c] d16d 0014                 add.w      d0,20(a5)
-[0002c770] 302d 002e                 move.w     46(a5),d0
-[0002c774] d16d 0016                 add.w      d0,22(a5)
-[0002c778] 206f 000a                 movea.l    10(a7),a0
-[0002c77c] 3028 0018                 move.w     24(a0),d0
-[0002c780] 6b10                      bmi.s      ed_init_18
-[0002c782] 48c0                      ext.l      d0
-[0002c784] 2200                      move.l     d0,d1
-[0002c786] d281                      add.l      d1,d1
-[0002c788] d280                      add.l      d0,d1
-[0002c78a] e789                      lsl.l      #3,d1
-[0002c78c] 0075 1800 1808            ori.w      #$1800,8(a5,d1.l)
+		cmp.w      d6,d3
+		bgt        ed_init_17
+		lea.l      -24(a3),a3
+		ori.w      #$0020,8(a3)
+		clr.w      48(a5)
+		move.w     20(a5),d0
+		asr.w      #1,d0
+		move.w     d0,40(a5)
+		move.w     d0,64(a5)
+		move.w     22(a5),d1
+		asr.w      #1,d1
+		move.w     d1,42(a5)
+		move.w     d1,66(a5)
+		move.w     44(a5),d0
+		add.w      d0,20(a5)
+		move.w     46(a5),d0
+		add.w      d0,22(a5)
+		movea.l    10(a7),a0
+		move.w     24(a0),d0
+		bmi.s      ed_init_18
+		ext.l      d0
+		move.l     d0,d1
+		add.l      d1,d1
+		add.l      d0,d1
+		lsl.l      #3,d1
+		ori.w      #$1800,8(a5,d1.l)
 ed_init_18:
-[0002c792] 204d                      movea.l    a5,a0
-[0002c794] 4eb9 0004 fbdc            jsr        Aob_fix
-[0002c79a] 3b45 0010                 move.w     d5,16(a5)
-[0002c79e] 3b44 0012                 move.w     d4,18(a5)
-[0002c7a2] 4240                      clr.w      d0
+		movea.l    a5,a0
+		jsr        Aob_fix
+		move.w     d5,16(a5)
+		move.w     d4,18(a5)
+		clr.w      d0
 ed_init_12:
-[0002c7a4] 4fef 001c                 lea.l      28(a7),a7
-[0002c7a8] 4cdf 7c78                 movem.l    (a7)+,d3-d6/a2-a6
-[0002c7ac] 4e75                      rts
+		lea.l      28(a7),a7
+		movem.l    (a7)+,d3-d6/a2-a6
+		rts
 
-ed_service_9:
 ed_service:
-[0002c7ae] 48e7 1038                 movem.l    d3/a2-a4,-(a7)
-[0002c7b2] 2448                      movea.l    a0,a2
-[0002c7b4] 3600                      move.w     d0,d3
-[0002c7b6] 2849                      movea.l    a1,a4
-[0002c7b8] 2650                      movea.l    (a0),a3
-[0002c7ba] b07c 0012                 cmp.w      #$0012,d0
-[0002c7be] 6762                      beq.s      ed_service_1
-[0002c7c0] 6e32                      bgt.s      ed_service_2
-[0002c7c2] b07c 000f                 cmp.w      #$000F,d0
-[0002c7c6] 6200 00ea                 bhi        ed_service_3
-[0002c7ca] d040                      add.w      d0,d0
-[0002c7cc] 303b 0006                 move.w     $0002C7D4(pc,d0.w),d0
-[0002c7d0] 4efb 0002                 jmp        $0002C7D4(pc,d0.w)
+		movem.l    d3/a2-a4,-(a7)
+		movea.l    a0,a2
+		move.w     d0,d3
+		movea.l    a1,a4
+		movea.l    (a0),a3
+		cmp.w      #$0012,d0
+		beq.s      ed_service_1
+		bgt.s      ed_service_2
+		cmp.w      #$000F,d0
+		bhi        ed_service_3
+		add.w      d0,d0
+		move.w     J18(pc,d0.w),d0
+		jmp        J18(pc,d0.w)
 J18:
-[0002c7d4] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7d6] 00ca                      dc.w $00ca   ; ed_service_4-J18
-[0002c7d8] 00a0                      dc.w $00a0   ; ed_service_5-J18
-[0002c7da] 00aa                      dc.w $00aa   ; ed_service_6-J18
-[0002c7dc] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7de] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7e0] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7e2] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7e4] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7e6] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7e8] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7ea] 00c0                      dc.w $00c0   ; ed_service_7-J18
-[0002c7ec] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7ee] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7f0] 00de                      dc.w $00de   ; ed_service_3-J18
-[0002c7f2] 00d2                      dc.w $00d2   ; ed_service_8-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00ca   ; ed_service_4-J18
+		dc.w $00a0   ; ed_service_5-J18
+		dc.w $00aa   ; ed_service_6-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00c0   ; ed_service_7-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00de   ; ed_service_3-J18
+		dc.w $00d2   ; ed_service_8-J18
 ed_service_2:
-[0002c7f4] 907c                      dc.w $907c   ; ed_service_9-J18
-[0002c7f6] 0024                      dc.w $0024   ; ed_service_10-J18
-ed_service_10:
-[0002c7f8] 6720                      beq.s      ed_service_11
-[0002c7fa] 5340                      subq.w     #1,d0
-[0002c7fc] 6714                      beq.s      ed_service_12
-[0002c7fe] 907c 03d2                 sub.w      #$03D2,d0
-[0002c802] 6700 00aa                 beq        ed_service_13
-[0002c806] 907c 2319                 sub.w      #$2319,d0
-[0002c80a] 6700 007a                 beq.w      ed_service_14
-[0002c80e] 6000 00a2                 bra        ed_service_3
+		sub.w      #$0024,d0
+		beq.s      ed_service_11
+		subq.w     #1,d0
+		beq.s      ed_service_12
+		sub.w      #$03D2,d0
+		beq        ed_service_13
+		sub.w      #$2319,d0
+		beq.w      ed_service_14
+		bra        ed_service_3
 ed_service_12:
-[0002c812] 42ac 0002                 clr.l      2(a4)
-[0002c816] 6000 00a8                 bra        ed_service_15
+		clr.l      2(a4)
+		bra        ed_service_15
 ed_service_11:
-[0002c81a] 38bc 0001                 move.w     #$0001,(a4)
-[0002c81e] 6000 00a0                 bra        ed_service_15
+		move.w     #$0001,(a4)
+		bra        ed_service_15
 ed_service_1:
-[0002c822] 204c                      movea.l    a4,a0
-[0002c824] 3039 0008 4806            move.w     snapping,d0
-[0002c82a] 6716                      beq.s      ed_service_16
-[0002c82c] 2279 0010 ee4e            movea.l    ACSblk,a1
-[0002c832] 30a9 0012                 move.w     18(a1),(a0)
-[0002c836] 2279 0010 ee4e            movea.l    ACSblk,a1
-[0002c83c] 3169 0014 0002            move.w     20(a1),2(a0)
+		movea.l    a4,a0
+		move.w     snapping,d0
+		beq.s      ed_service_16
+		movea.l    ACSblk,a1
+		move.w     18(a1),(a0)
+		movea.l    ACSblk,a1
+		move.w     20(a1),2(a0)
 ed_service_16:
-[0002c842] 317c 0003 000c            move.w     #$0003,12(a0)
-[0002c848] 317c 000b 000e            move.w     #$000B,14(a0)
-[0002c84e] 317c 0003 0010            move.w     #$0003,16(a0)
-[0002c854] 317c 000c 0012            move.w     #$000C,18(a0)
-[0002c85a] 317c 0003 0014            move.w     #$0003,20(a0)
-[0002c860] 317c 000b 0016            move.w     #$000B,22(a0)
-[0002c866] 317c 0003 0018            move.w     #$0003,24(a0)
-[0002c86c] 317c 000c 001a            move.w     #$000C,26(a0)
-[0002c872] 604c                      bra.s      ed_service_15
+		move.w     #$0003,12(a0)
+		move.w     #$000B,14(a0)
+		move.w     #$0003,16(a0)
+		move.w     #$000C,18(a0)
+		move.w     #$0003,20(a0)
+		move.w     #$000B,22(a0)
+		move.w     #$0003,24(a0)
+		move.w     #$000C,26(a0)
+		bra.s      ed_service_15
 ed_service_5:
-[0002c874] 204a                      movea.l    a2,a0
-[0002c876] 4eb9 0002 c8c8            jsr        ed_term
-[0002c87c] 6042                      bra.s      ed_service_15
+		movea.l    a2,a0
+		jsr        ed_term
+		bra.s      ed_service_15
 ed_service_6:
-[0002c87e] 204a                      movea.l    a2,a0
-[0002c880] 6100 f196                 bsr        close_uc
-[0002c884] 603a                      bra.s      ed_service_15
+		movea.l    a2,a0
+		bsr        close_uc
+		bra.s      ed_service_15
 ed_service_14:
-[0002c886] 226b 0004                 movea.l    4(a3),a1
-[0002c88a] 204a                      movea.l    a2,a0
-[0002c88c] 4eb9 0001 60ea            jsr        new_name
-[0002c892] 602c                      bra.s      ed_service_15
+		movea.l    4(a3),a1
+		movea.l    a2,a0
+		jsr        new_name
+		bra.s      ed_service_15
 ed_service_7:
-[0002c894] 204a                      movea.l    a2,a0
-[0002c896] 4eb9 0002 da56            jsr        ed_delete
-[0002c89c] 6022                      bra.s      ed_service_15
+		movea.l    a2,a0
+		jsr        ed_delete
+		bra.s      ed_service_15
 ed_service_4:
-[0002c89e] 4279 000c 9106            clr.w      visible_editors
-[0002c8a4] 601a                      bra.s      ed_service_15
+		clr.w      visible_editors
+		bra.s      ed_service_15
 ed_service_8:
-[0002c8a6] 204a                      movea.l    a2,a0
-[0002c8a8] 6100 f33e                 bsr        ed_info
-[0002c8ac] 6012                      bra.s      ed_service_15
+		movea.l    a2,a0
+		bsr        ed_info
+		bra.s      ed_service_15
 ed_service_13:
-[0002c8ae] 288a                      move.l     a2,(a4)
-[0002c8b0] 600e                      bra.s      ed_service_15
+		move.l     a2,(a4)
+		bra.s      ed_service_15
 ed_service_3:
-[0002c8b2] 224c                      movea.l    a4,a1
-[0002c8b4] 3003                      move.w     d3,d0
-[0002c8b6] 204a                      movea.l    a2,a0
-[0002c8b8] 4eb9 0005 9dd0            jsr        Awi_service
-[0002c8be] 6002                      bra.s      ed_service_17
+		movea.l    a4,a1
+		move.w     d3,d0
+		movea.l    a2,a0
+		jsr        Awi_service
+		bra.s      ed_service_17
 ed_service_15:
-[0002c8c0] 7001                      moveq.l    #1,d0
+		moveq.l    #1,d0
 ed_service_17:
-[0002c8c2] 4cdf 1c08                 movem.l    (a7)+,d3/a2-a4
-[0002c8c6] 4e75                      rts
+		movem.l    (a7)+,d3/a2-a4
+		rts
 
 ed_term:
-[0002c8c8] 2f0a                      move.l     a2,-(a7)
-[0002c8ca] 2f0b                      move.l     a3,-(a7)
-[0002c8cc] 2448                      movea.l    a0,a2
-[0002c8ce] 2650                      movea.l    (a0),a3
-[0002c8d0] 006a 0100 0056            ori.w      #$0100,86(a2)
-[0002c8d6] 200b                      move.l     a3,d0
-[0002c8d8] 6772                      beq.s      ed_term_1
-[0002c8da] 0c6b 0002 0008            cmpi.w     #$0002,8(a3)
-[0002c8e0] 6610                      bne.s      ed_term_2
-[0002c8e2] 2279 0010 ee4e            movea.l    ACSblk,a1
-[0002c8e8] 2348 0258                 move.l     a0,600(a1)
-[0002c8ec] 206b 001a                 movea.l    26(a3),a0
-[0002c8f0] 4e90                      jsr        (a0)
+		move.l     a2,-(a7)
+		move.l     a3,-(a7)
+		movea.l    a0,a2
+		movea.l    (a0),a3
+		ori.w      #$0100,86(a2)
+		move.l     a3,d0
+		beq.s      ed_term_1
+		cmpi.w     #$0002,8(a3)
+		bne.s      ed_term_2
+		movea.l    ACSblk,a1
+		move.l     a0,600(a1)
+		movea.l    26(a3),a0
+		jsr        (a0)
 ed_term_2:
-[0002c8f2] 206b 001e                 movea.l    30(a3),a0
-[0002c8f6] 4eb9 0004 c7c8            jsr        Ax_free
-[0002c8fc] 224a                      movea.l    a2,a1
-[0002c8fe] 206b 0004                 movea.l    4(a3),a0
-[0002c902] 4eb9 0002 cb4e            jsr        reorg
-[0002c908] 302a 0056                 move.w     86(a2),d0
-[0002c90c] c07c 0800                 and.w      #$0800,d0
-[0002c910] 6716                      beq.s      ed_term_3
-[0002c912] 43ea 002c                 lea.l      44(a2),a1
-[0002c916] 206b 0004                 movea.l    4(a3),a0
-[0002c91a] 41e8 003a                 lea.l      58(a0),a0
-[0002c91e] 7008                      moveq.l    #8,d0
-[0002c920] 4eb9 0008 3500            jsr        memcpy
-[0002c926] 6014                      bra.s      ed_term_4
+		movea.l    30(a3),a0
+		jsr        Ax_free
+		movea.l    a2,a1
+		movea.l    4(a3),a0
+		jsr        reorg
+		move.w     86(a2),d0
+		and.w      #$0800,d0
+		beq.s      ed_term_3
+		lea.l      44(a2),a1
+		movea.l    4(a3),a0
+		lea.l      58(a0),a0
+		moveq.l    #8,d0
+		jsr        memcpy
+		bra.s      ed_term_4
 ed_term_3:
-[0002c928] 7008                      moveq.l    #8,d0
-[0002c92a] 43ea 0024                 lea.l      36(a2),a1
-[0002c92e] 206b 0004                 movea.l    4(a3),a0
-[0002c932] 41e8 003a                 lea.l      58(a0),a0
-[0002c936] 4eb9 0008 3500            jsr        memcpy
+		moveq.l    #8,d0
+		lea.l      36(a2),a1
+		movea.l    4(a3),a0
+		lea.l      58(a0),a0
+		jsr        memcpy
 ed_term_4:
-[0002c93c] 206b 0004                 movea.l    4(a3),a0
-[0002c940] 42a8 0012                 clr.l      18(a0)
-[0002c944] 204b                      movea.l    a3,a0
-[0002c946] 4eb9 0004 c7c8            jsr        Ax_free
+		movea.l    4(a3),a0
+		clr.l      18(a0)
+		movea.l    a3,a0
+		jsr        Ax_free
 ed_term_1:
-[0002c94c] 204a                      movea.l    a2,a0
-[0002c94e] 4eb9 0005 85f2            jsr        Awi_delete
-[0002c954] 265f                      movea.l    (a7)+,a3
-[0002c956] 245f                      movea.l    (a7)+,a2
-[0002c958] 4e75                      rts
+		movea.l    a2,a0
+		jsr        Awi_delete
+		movea.l    (a7)+,a3
+		movea.l    (a7)+,a2
+		rts
 
 set_userdef:
-[0002c95a] 2f0a                      move.l     a2,-(a7)
-[0002c95c] 2f0b                      move.l     a3,-(a7)
-[0002c95e] 2649                      movea.l    a1,a3
-[0002c960] 2468 0004                 movea.l    4(a0),a2
-[0002c964] 226a 0004                 movea.l    4(a2),a1
-[0002c968] 43e9 0016                 lea.l      22(a1),a1
-[0002c96c] 2689                      move.l     a1,(a3)
-[0002c96e] 226a 0008                 movea.l    8(a2),a1
-[0002c972] 43e9 0016                 lea.l      22(a1),a1
-[0002c976] 2749 0004                 move.l     a1,4(a3)
-[0002c97a] 202a 000c                 move.l     12(a2),d0
-[0002c97e] 6606                      bne.s      set_userdef_1
-[0002c980] 0268 fffc 0038            andi.w     #$FFFC,56(a0)
+		move.l     a2,-(a7)
+		move.l     a3,-(a7)
+		movea.l    a1,a3
+		movea.l    4(a0),a2
+		movea.l    4(a2),a1
+		lea.l      22(a1),a1
+		move.l     a1,(a3)
+		movea.l    8(a2),a1
+		lea.l      22(a1),a1
+		move.l     a1,4(a3)
+		move.l     12(a2),d0
+		bne.s      set_userdef_1
+		andi.w     #$FFFC,56(a0)
 set_userdef_1:
-[0002c986] 202a 0010                 move.l     16(a2),d0
-[0002c98a] 6606                      bne.s      set_userdef_2
-[0002c98c] 0268 fff3 0038            andi.w     #$FFF3,56(a0)
+		move.l     16(a2),d0
+		bne.s      set_userdef_2
+		andi.w     #$FFF3,56(a0)
 set_userdef_2:
-[0002c992] 202a 0014                 move.l     20(a2),d0
-[0002c996] 6606                      bne.s      set_userdef_3
-[0002c998] 0268 ffcf 0038            andi.w     #$FFCF,56(a0)
+		move.l     20(a2),d0
+		bne.s      set_userdef_3
+		andi.w     #$FFCF,56(a0)
 set_userdef_3:
-[0002c99e] 7003                      moveq.l    #3,d0
-[0002c9a0] c068 0038                 and.w      56(a0),d0
-[0002c9a4] 3740 0008                 move.w     d0,8(a3)
-[0002c9a8] 4a40                      tst.w      d0
-[0002c9aa] 670e                      beq.s      set_userdef_4
-[0002c9ac] 5340                      subq.w     #1,d0
-[0002c9ae] 6710                      beq.s      set_userdef_5
-[0002c9b0] 5340                      subq.w     #1,d0
-[0002c9b2] 671a                      beq.s      set_userdef_6
-[0002c9b4] 5340                      subq.w     #1,d0
-[0002c9b6] 6726                      beq.s      set_userdef_7
-[0002c9b8] 6038                      bra.s      set_userdef_8
+		moveq.l    #3,d0
+		and.w      56(a0),d0
+		move.w     d0,8(a3)
+		tst.w      d0
+		beq.s      set_userdef_4
+		subq.w     #1,d0
+		beq.s      set_userdef_5
+		subq.w     #1,d0
+		beq.s      set_userdef_6
+		subq.w     #1,d0
+		beq.s      set_userdef_7
+		bra.s      set_userdef_8
 set_userdef_4:
-[0002c9ba] 42ab 000a                 clr.l      10(a3)
-[0002c9be] 6018                      bra.s      set_userdef_9
+		clr.l      10(a3)
+		bra.s      set_userdef_9
 set_userdef_5:
-[0002c9c0] 226a 000c                 movea.l    12(a2),a1
-[0002c9c4] 43e9 0016                 lea.l      22(a1),a1
-[0002c9c8] 2749 000a                 move.l     a1,10(a3)
-[0002c9cc] 600a                      bra.s      set_userdef_9
+		movea.l    12(a2),a1
+		lea.l      22(a1),a1
+		move.l     a1,10(a3)
+		bra.s      set_userdef_9
 set_userdef_6:
-[0002c9ce] 226a 000c                 movea.l    12(a2),a1
-[0002c9d2] 2769 0004 000a            move.l     4(a1),10(a3)
+		movea.l    12(a2),a1
+		move.l     4(a1),10(a3)
 set_userdef_9:
-[0002c9d8] 42ab 000e                 clr.l      14(a3)
-[0002c9dc] 6014                      bra.s      set_userdef_8
+		clr.l      14(a3)
+		bra.s      set_userdef_8
 set_userdef_7:
-[0002c9de] 226a 000c                 movea.l    12(a2),a1
-[0002c9e2] 2769 0004 000a            move.l     4(a1),10(a3)
-[0002c9e8] 226a 000c                 movea.l    12(a2),a1
-[0002c9ec] 2769 000e 000e            move.l     14(a1),14(a3)
+		movea.l    12(a2),a1
+		move.l     4(a1),10(a3)
+		movea.l    12(a2),a1
+		move.l     14(a1),14(a3)
 set_userdef_8:
-[0002c9f2] 3028 0038                 move.w     56(a0),d0
-[0002c9f6] e440                      asr.w      #2,d0
-[0002c9f8] c07c 0003                 and.w      #$0003,d0
-[0002c9fc] 3740 0012                 move.w     d0,18(a3)
-[0002ca00] 4a40                      tst.w      d0
-[0002ca02] 670e                      beq.s      set_userdef_10
-[0002ca04] 5340                      subq.w     #1,d0
-[0002ca06] 6710                      beq.s      set_userdef_11
-[0002ca08] 5340                      subq.w     #1,d0
-[0002ca0a] 671a                      beq.s      set_userdef_12
-[0002ca0c] 5340                      subq.w     #1,d0
-[0002ca0e] 6726                      beq.s      set_userdef_13
-[0002ca10] 6038                      bra.s      set_userdef_14
+		move.w     56(a0),d0
+		asr.w      #2,d0
+		and.w      #$0003,d0
+		move.w     d0,18(a3)
+		tst.w      d0
+		beq.s      set_userdef_10
+		subq.w     #1,d0
+		beq.s      set_userdef_11
+		subq.w     #1,d0
+		beq.s      set_userdef_12
+		subq.w     #1,d0
+		beq.s      set_userdef_13
+		bra.s      set_userdef_14
 set_userdef_10:
-[0002ca12] 42ab 0014                 clr.l      20(a3)
-[0002ca16] 6018                      bra.s      set_userdef_15
+		clr.l      20(a3)
+		bra.s      set_userdef_15
 set_userdef_11:
-[0002ca18] 226a 0010                 movea.l    16(a2),a1
-[0002ca1c] 43e9 0016                 lea.l      22(a1),a1
-[0002ca20] 2749 0014                 move.l     a1,20(a3)
-[0002ca24] 600a                      bra.s      set_userdef_15
+		movea.l    16(a2),a1
+		lea.l      22(a1),a1
+		move.l     a1,20(a3)
+		bra.s      set_userdef_15
 set_userdef_12:
-[0002ca26] 226a 0010                 movea.l    16(a2),a1
-[0002ca2a] 2769 0004 0014            move.l     4(a1),20(a3)
+		movea.l    16(a2),a1
+		move.l     4(a1),20(a3)
 set_userdef_15:
-[0002ca30] 42ab 0018                 clr.l      24(a3)
-[0002ca34] 6014                      bra.s      set_userdef_14
+		clr.l      24(a3)
+		bra.s      set_userdef_14
 set_userdef_13:
-[0002ca36] 226a 0010                 movea.l    16(a2),a1
-[0002ca3a] 2769 0004 0014            move.l     4(a1),20(a3)
-[0002ca40] 226a 0010                 movea.l    16(a2),a1
-[0002ca44] 2769 000e 0018            move.l     14(a1),24(a3)
+		movea.l    16(a2),a1
+		move.l     4(a1),20(a3)
+		movea.l    16(a2),a1
+		move.l     14(a1),24(a3)
 set_userdef_14:
-[0002ca4a] 3028 0038                 move.w     56(a0),d0
-[0002ca4e] e840                      asr.w      #4,d0
-[0002ca50] c07c 0003                 and.w      #$0003,d0
-[0002ca54] 3740 001c                 move.w     d0,28(a3)
-[0002ca58] 4a40                      tst.w      d0
-[0002ca5a] 670e                      beq.s      set_userdef_16
-[0002ca5c] 5340                      subq.w     #1,d0
-[0002ca5e] 6710                      beq.s      set_userdef_17
-[0002ca60] 5340                      subq.w     #1,d0
-[0002ca62] 671a                      beq.s      set_userdef_18
-[0002ca64] 5340                      subq.w     #1,d0
-[0002ca66] 6726                      beq.s      set_userdef_19
-[0002ca68] 6038                      bra.s      set_userdef_20
+		move.w     56(a0),d0
+		asr.w      #4,d0
+		and.w      #$0003,d0
+		move.w     d0,28(a3)
+		tst.w      d0
+		beq.s      set_userdef_16
+		subq.w     #1,d0
+		beq.s      set_userdef_17
+		subq.w     #1,d0
+		beq.s      set_userdef_18
+		subq.w     #1,d0
+		beq.s      set_userdef_19
+		bra.s      set_userdef_20
 set_userdef_16:
-[0002ca6a] 42ab 001e                 clr.l      30(a3)
-[0002ca6e] 6018                      bra.s      set_userdef_21
+		clr.l      30(a3)
+		bra.s      set_userdef_21
 set_userdef_17:
-[0002ca70] 206a 0014                 movea.l    20(a2),a0
-[0002ca74] 41e8 0016                 lea.l      22(a0),a0
-[0002ca78] 2748 001e                 move.l     a0,30(a3)
-[0002ca7c] 600a                      bra.s      set_userdef_21
+		movea.l    20(a2),a0
+		lea.l      22(a0),a0
+		move.l     a0,30(a3)
+		bra.s      set_userdef_21
 set_userdef_18:
-[0002ca7e] 206a 0014                 movea.l    20(a2),a0
-[0002ca82] 2768 0004 001e            move.l     4(a0),30(a3)
+		movea.l    20(a2),a0
+		move.l     4(a0),30(a3)
 set_userdef_21:
-[0002ca88] 42ab 0022                 clr.l      34(a3)
-[0002ca8c] 6014                      bra.s      set_userdef_20
+		clr.l      34(a3)
+		bra.s      set_userdef_20
 set_userdef_19:
-[0002ca8e] 206a 0014                 movea.l    20(a2),a0
-[0002ca92] 2768 0004 001e            move.l     4(a0),30(a3)
-[0002ca98] 206a 0014                 movea.l    20(a2),a0
-[0002ca9c] 2768 000e 0022            move.l     14(a0),34(a3)
+		movea.l    20(a2),a0
+		move.l     4(a0),30(a3)
+		movea.l    20(a2),a0
+		move.l     14(a0),34(a3)
 set_userdef_20:
-[0002caa2] 202a 0018                 move.l     24(a2),d0
-[0002caa6] 6604                      bne.s      set_userdef_22
-[0002caa8] 91c8                      suba.l     a0,a0
-[0002caaa] 600e                      bra.s      set_userdef_23
+		move.l     24(a2),d0
+		bne.s      set_userdef_22
+		suba.l     a0,a0
+		bra.s      set_userdef_23
 set_userdef_22:
-[0002caac] 206a 0018                 movea.l    24(a2),a0
-[0002cab0] 2068 0004                 movea.l    4(a0),a0
-[0002cab4] 4eb9 0004 643c            jsr        Ast_create
+		movea.l    24(a2),a0
+		movea.l    4(a0),a0
+		jsr        Ast_create
 set_userdef_23:
-[0002caba] 2748 0026                 move.l     a0,38(a3)
-[0002cabe] 202a 001c                 move.l     28(a2),d0
-[0002cac2] 6604                      bne.s      set_userdef_24
-[0002cac4] 93c9                      suba.l     a1,a1
-[0002cac6] 6010                      bra.s      set_userdef_25
+		move.l     a0,38(a3)
+		move.l     28(a2),d0
+		bne.s      set_userdef_24
+		suba.l     a1,a1
+		bra.s      set_userdef_25
 set_userdef_24:
-[0002cac8] 206a 001c                 movea.l    28(a2),a0
-[0002cacc] 2068 0004                 movea.l    4(a0),a0
-[0002cad0] 4eb9 0004 643c            jsr        Ast_create
-[0002cad6] 2248                      movea.l    a0,a1
+		movea.l    28(a2),a0
+		movea.l    4(a0),a0
+		jsr        Ast_create
+		movea.l    a0,a1
 set_userdef_25:
-[0002cad8] 2749 002a                 move.l     a1,42(a3)
-[0002cadc] 265f                      movea.l    (a7)+,a3
-[0002cade] 245f                      movea.l    (a7)+,a2
-[0002cae0] 4e75                      rts
+		move.l     a1,42(a3)
+		movea.l    (a7)+,a3
+		movea.l    (a7)+,a2
+		rts
 
 map_user:
-[0002cae2] 48e7 003c                 movem.l    a2-a5,-(a7)
-[0002cae6] 4fef ffd2                 lea.l      -46(a7),a7
-[0002caea] 2648                      movea.l    a0,a3
-[0002caec] 2449                      movea.l    a1,a2
-[0002caee] 7220                      moveq.l    #32,d1
-[0002caf0] 4240                      clr.w      d0
-[0002caf2] 2049                      movea.l    a1,a0
-[0002caf4] 4eb9 0008 36ea            jsr        memset
-[0002cafa] 286b 0004                 movea.l    4(a3),a4
-[0002cafe] 2054                      movea.l    (a4),a0
-[0002cb00] 41e8 0016                 lea.l      22(a0),a0
-[0002cb04] 4eb9 0002 4e1a            jsr        part_get
-[0002cb0a] 2a48                      movea.l    a0,a5
-[0002cb0c] 200d                      move.l     a5,d0
-[0002cb0e] 6714                      beq.s      map_user_1
-[0002cb10] 43d7                      lea.l      (a7),a1
-[0002cb12] 204b                      movea.l    a3,a0
-[0002cb14] 6100 fe44                 bsr        set_userdef
-[0002cb18] 224a                      movea.l    a2,a1
-[0002cb1a] 41d7                      lea.l      (a7),a0
-[0002cb1c] 266d 0024                 movea.l    36(a5),a3
-[0002cb20] 4e93                      jsr        (a3)
-[0002cb22] 6020                      bra.s      map_user_2
+		movem.l    a2-a5,-(a7)
+		lea.l      -46(a7),a7
+		movea.l    a0,a3
+		movea.l    a1,a2
+		moveq.l    #32,d1
+		clr.w      d0
+		movea.l    a1,a0
+		jsr        memset
+		movea.l    4(a3),a4
+		movea.l    (a4),a0
+		lea.l      22(a0),a0
+		jsr        part_get
+		movea.l    a0,a5
+		move.l     a5,d0
+		beq.s      map_user_1
+		lea.l      (a7),a1
+		movea.l    a3,a0
+		bsr        set_userdef
+		movea.l    a2,a1
+		lea.l      (a7),a0
+		movea.l    36(a5),a3
+		jsr        (a3)
+		bra.s      map_user_2
 map_user_1:
-[0002cb24] 24bc 0002 ce6a            move.l     #user_dummy,(a2)
-[0002cb2a] 486a 0004                 pea.l      4(a2)
-[0002cb2e] 43f9 000c 91b6            lea.l      $000C91B6,a1
-[0002cb34] 206c 0004                 movea.l    4(a4),a0
-[0002cb38] 41e8 0016                 lea.l      22(a0),a0
-[0002cb3c] 4eb9 0008 1b26            jsr        sscanf
-[0002cb42] 584f                      addq.w     #4,a7
+		move.l     #user_dummy,(a2)
+		pea.l      4(a2)
+		lea.l      xc91b6,a1
+		movea.l    4(a4),a0
+		lea.l      22(a0),a0
+		jsr        sscanf
+		addq.w     #4,a7
 map_user_2:
-[0002cb44] 4fef 002e                 lea.l      46(a7),a7
-[0002cb48] 4cdf 3c00                 movem.l    (a7)+,a2-a5
-[0002cb4c] 4e75                      rts
+		lea.l      46(a7),a7
+		movem.l    (a7)+,a2-a5
+		rts
 
 reorg:
-[0002cb4e] 48e7 003c                 movem.l    a2-a5,-(a7)
-[0002cb52] 554f                      subq.w     #2,a7
-[0002cb54] 2448                      movea.l    a0,a2
-[0002cb56] 2a49                      movea.l    a1,a5
-[0002cb58] 4257                      clr.w      (a7)
-[0002cb5a] 202a 000e                 move.l     14(a2),d0
-[0002cb5e] 4eb9 0004 c608            jsr        Ax_malloc
-[0002cb64] 2648                      movea.l    a0,a3
-[0002cb66] 200b                      move.l     a3,d0
-[0002cb68] 673e                      beq.s      reorg_1
-[0002cb6a] 286a 0004                 movea.l    4(a2),a4
-[0002cb6e] 2a55                      movea.l    (a5),a5
-[0002cb70] 486d 000a                 pea.l      10(a5)
-[0002cb74] 3f2d 000a                 move.w     10(a5),-(a7)
-[0002cb78] 486d 0018                 pea.l      24(a5)
-[0002cb7c] 486f 000a                 pea.l      10(a7)
-[0002cb80] 342d 0018                 move.w     24(a5),d2
-[0002cb84] 72ff                      moveq.l    #-1,d1
-[0002cb86] 224b                      movea.l    a3,a1
-[0002cb88] 4240                      clr.w      d0
-[0002cb8a] 204c                      movea.l    a4,a0
-[0002cb8c] 4eb9 0002 cbb0            jsr        subtree
-[0002cb92] 4fef 000e                 lea.l      14(a7),a7
-[0002cb96] 254b 0004                 move.l     a3,4(a2)
-[0002cb9a] 256a 000e 000a            move.l     14(a2),10(a2)
-[0002cba0] 204c                      movea.l    a4,a0
-[0002cba2] 4eb9 0004 c7c8            jsr        Ax_free
+		movem.l    a2-a5,-(a7)
+		subq.w     #2,a7
+		movea.l    a0,a2
+		movea.l    a1,a5
+		clr.w      (a7)
+		move.l     14(a2),d0
+		jsr        Ax_malloc
+		movea.l    a0,a3
+		move.l     a3,d0
+		beq.s      reorg_1
+		movea.l    4(a2),a4
+		movea.l    (a5),a5
+		pea.l      10(a5)
+		move.w     10(a5),-(a7)
+		pea.l      24(a5)
+		pea.l      10(a7)
+		move.w     24(a5),d2
+		moveq.l    #-1,d1
+		movea.l    a3,a1
+		clr.w      d0
+		movea.l    a4,a0
+		jsr        subtree
+		lea.l      14(a7),a7
+		move.l     a3,4(a2)
+		move.l     14(a2),10(a2)
+		movea.l    a4,a0
+		jsr        Ax_free
 reorg_1:
-[0002cba8] 544f                      addq.w     #2,a7
-[0002cbaa] 4cdf 3c00                 movem.l    (a7)+,a2-a5
-[0002cbae] 4e75                      rts
+		addq.w     #2,a7
+		movem.l    (a7)+,a2-a5
+		rts
 
 subtree:
-[0002cbb0] 48e7 1f3e                 movem.l    d3-d7/a2-a6,-(a7)
-[0002cbb4] 594f                      subq.w     #4,a7
-[0002cbb6] 2a48                      movea.l    a0,a5
-[0002cbb8] 3800                      move.w     d0,d4
-[0002cbba] 2c49                      movea.l    a1,a6
-[0002cbbc] 246f 0030                 movea.l    48(a7),a2
-[0002cbc0] 3f41 0002                 move.w     d1,2(a7)
-[0002cbc4] 3e82                      move.w     d2,(a7)
-[0002cbc6] 266f 0034                 movea.l    52(a7),a3
-[0002cbca] 3c2f 0038                 move.w     56(a7),d6
-[0002cbce] 286f 003a                 movea.l    58(a7),a4
+		movem.l    d3-d7/a2-a6,-(a7)
+		subq.w     #4,a7
+		movea.l    a0,a5
+		move.w     d0,d4
+		movea.l    a1,a6
+		movea.l    48(a7),a2
+		move.w     d1,2(a7)
+		move.w     d2,(a7)
+		movea.l    52(a7),a3
+		move.w     56(a7),d6
+		movea.l    58(a7),a4
 subtree_5:
-[0002cbd2] 3612                      move.w     (a2),d3
-[0002cbd4] 3004                      move.w     d4,d0
-[0002cbd6] d040                      add.w      d0,d0
-[0002cbd8] d044                      add.w      d4,d0
-[0002cbda] 5440                      addq.w     #2,d0
-[0002cbdc] 3217                      move.w     (a7),d1
-[0002cbde] b240                      cmp.w      d0,d1
-[0002cbe0] 660a                      bne.s      subtree_1
-[0002cbe2] 3403                      move.w     d3,d2
-[0002cbe4] d442                      add.w      d2,d2
-[0002cbe6] d443                      add.w      d3,d2
-[0002cbe8] 5442                      addq.w     #2,d2
-[0002cbea] 3682                      move.w     d2,(a3)
+		move.w     (a2),d3
+		move.w     d4,d0
+		add.w      d0,d0
+		add.w      d4,d0
+		addq.w     #2,d0
+		move.w     (a7),d1
+		cmp.w      d0,d1
+		bne.s      subtree_1
+		move.w     d3,d2
+		add.w      d2,d2
+		add.w      d3,d2
+		addq.w     #2,d2
+		move.w     d2,(a3)
 subtree_1:
-[0002cbec] b846                      cmp.w      d6,d4
-[0002cbee] 6602                      bne.s      subtree_2
-[0002cbf0] 3883                      move.w     d3,(a4)
+		cmp.w      d6,d4
+		bne.s      subtree_2
+		move.w     d3,(a4)
 subtree_2:
-[0002cbf2] 7038                      moveq.l    #56,d0
-[0002cbf4] 3404                      move.w     d4,d2
-[0002cbf6] 48c2                      ext.l      d2
-[0002cbf8] 2202                      move.l     d2,d1
-[0002cbfa] e789                      lsl.l      #3,d1
-[0002cbfc] 9282                      sub.l      d2,d1
-[0002cbfe] e789                      lsl.l      #3,d1
-[0002cc00] 43f5 1800                 lea.l      0(a5,d1.l),a1
-[0002cc04] 3403                      move.w     d3,d2
-[0002cc06] 48c2                      ext.l      d2
-[0002cc08] 2202                      move.l     d2,d1
-[0002cc0a] e789                      lsl.l      #3,d1
-[0002cc0c] 9282                      sub.l      d2,d1
-[0002cc0e] e789                      lsl.l      #3,d1
-[0002cc10] 41f6 1800                 lea.l      0(a6,d1.l),a0
-[0002cc14] 4eb9 0008 3500            jsr        memcpy
-[0002cc1a] 5252                      addq.w     #1,(a2)
-[0002cc1c] 3204                      move.w     d4,d1
-[0002cc1e] 48c1                      ext.l      d1
-[0002cc20] 2001                      move.l     d1,d0
-[0002cc22] e788                      lsl.l      #3,d0
-[0002cc24] 9081                      sub.l      d1,d0
-[0002cc26] e788                      lsl.l      #3,d0
-[0002cc28] 3e35 0808                 move.w     8(a5,d0.l),d7
-[0002cc2c] 3a35 080a                 move.w     10(a5,d0.l),d5
-[0002cc30] 4a45                      tst.w      d5
-[0002cc32] 6b3e                      bmi.s      subtree_3
-[0002cc34] 3203                      move.w     d3,d1
-[0002cc36] 48c1                      ext.l      d1
-[0002cc38] 2401                      move.l     d1,d2
-[0002cc3a] e78a                      lsl.l      #3,d2
-[0002cc3c] 9481                      sub.l      d1,d2
-[0002cc3e] e78a                      lsl.l      #3,d2
-[0002cc40] 3d92 280a                 move.w     (a2),10(a6,d2.l)
-[0002cc44] 2f0c                      move.l     a4,-(a7)
-[0002cc46] 3f06                      move.w     d6,-(a7)
-[0002cc48] 2f0b                      move.l     a3,-(a7)
-[0002cc4a] 2f0a                      move.l     a2,-(a7)
-[0002cc4c] 224e                      movea.l    a6,a1
-[0002cc4e] 204d                      movea.l    a5,a0
-[0002cc50] 3005                      move.w     d5,d0
-[0002cc52] 3203                      move.w     d3,d1
-[0002cc54] 342f 000e                 move.w     14(a7),d2
-[0002cc58] 6100 ff56                 bsr        subtree
-[0002cc5c] 4fef 000e                 lea.l      14(a7),a7
-[0002cc60] 3a00                      move.w     d0,d5
-[0002cc62] 3403                      move.w     d3,d2
-[0002cc64] 48c2                      ext.l      d2
-[0002cc66] 2202                      move.l     d2,d1
-[0002cc68] e789                      lsl.l      #3,d1
-[0002cc6a] 9282                      sub.l      d2,d1
-[0002cc6c] e789                      lsl.l      #3,d1
-[0002cc6e] 3d80 180c                 move.w     d0,12(a6,d1.l)
+		moveq.l    #56,d0
+		move.w     d4,d2
+		ext.l      d2
+		move.l     d2,d1
+		lsl.l      #3,d1
+		sub.l      d2,d1
+		lsl.l      #3,d1
+		lea.l      0(a5,d1.l),a1
+		move.w     d3,d2
+		ext.l      d2
+		move.l     d2,d1
+		lsl.l      #3,d1
+		sub.l      d2,d1
+		lsl.l      #3,d1
+		lea.l      0(a6,d1.l),a0
+		jsr        memcpy
+		addq.w     #1,(a2)
+		move.w     d4,d1
+		ext.l      d1
+		move.l     d1,d0
+		lsl.l      #3,d0
+		sub.l      d1,d0
+		lsl.l      #3,d0
+		move.w     8(a5,d0.l),d7
+		move.w     10(a5,d0.l),d5
+		tst.w      d5
+		bmi.s      subtree_3
+		move.w     d3,d1
+		ext.l      d1
+		move.l     d1,d2
+		lsl.l      #3,d2
+		sub.l      d1,d2
+		lsl.l      #3,d2
+		move.w     (a2),10(a6,d2.l)
+		move.l     a4,-(a7)
+		move.w     d6,-(a7)
+		move.l     a3,-(a7)
+		move.l     a2,-(a7)
+		movea.l    a6,a1
+		movea.l    a5,a0
+		move.w     d5,d0
+		move.w     d3,d1
+		move.w     14(a7),d2
+		bsr        subtree
+		lea.l      14(a7),a7
+		move.w     d0,d5
+		move.w     d3,d2
+		ext.l      d2
+		move.l     d2,d1
+		lsl.l      #3,d1
+		sub.l      d2,d1
+		lsl.l      #3,d1
+		move.w     d0,12(a6,d1.l)
 subtree_3:
-[0002cc72] 4a47                      tst.w      d7
-[0002cc74] 6b28                      bmi.s      subtree_4
-[0002cc76] 3203                      move.w     d3,d1
-[0002cc78] 48c1                      ext.l      d1
-[0002cc7a] 2001                      move.l     d1,d0
-[0002cc7c] e788                      lsl.l      #3,d0
-[0002cc7e] 9081                      sub.l      d1,d0
-[0002cc80] e788                      lsl.l      #3,d0
-[0002cc82] 3d92 0808                 move.w     (a2),8(a6,d0.l)
-[0002cc86] 3a07                      move.w     d7,d5
-[0002cc88] 48c5                      ext.l      d5
-[0002cc8a] 2405                      move.l     d5,d2
-[0002cc8c] e78a                      lsl.l      #3,d2
-[0002cc8e] 9485                      sub.l      d5,d2
-[0002cc90] e78a                      lsl.l      #3,d2
-[0002cc92] b875 280c                 cmp.w      12(a5,d2.l),d4
-[0002cc96] 6706                      beq.s      subtree_4
-[0002cc98] 3807                      move.w     d7,d4
-[0002cc9a] 6000 ff36                 bra        subtree_5
+		tst.w      d7
+		bmi.s      subtree_4
+		move.w     d3,d1
+		ext.l      d1
+		move.l     d1,d0
+		lsl.l      #3,d0
+		sub.l      d1,d0
+		lsl.l      #3,d0
+		move.w     (a2),8(a6,d0.l)
+		move.w     d7,d5
+		ext.l      d5
+		move.l     d5,d2
+		lsl.l      #3,d2
+		sub.l      d5,d2
+		lsl.l      #3,d2
+		cmp.w      12(a5,d2.l),d4
+		beq.s      subtree_4
+		move.w     d7,d4
+		bra        subtree_5
 subtree_4:
-[0002cc9e] 3203                      move.w     d3,d1
-[0002cca0] 48c1                      ext.l      d1
-[0002cca2] 2001                      move.l     d1,d0
-[0002cca4] e788                      lsl.l      #3,d0
-[0002cca6] 9081                      sub.l      d1,d0
-[0002cca8] e788                      lsl.l      #3,d0
-[0002ccaa] 3daf 0002 0808            move.w     2(a7),8(a6,d0.l)
-[0002ccb0] 3003                      move.w     d3,d0
-[0002ccb2] 584f                      addq.w     #4,a7
-[0002ccb4] 4cdf 7cf8                 movem.l    (a7)+,d3-d7/a2-a6
-[0002ccb8] 4e75                      rts
+		move.w     d3,d1
+		ext.l      d1
+		move.l     d1,d0
+		lsl.l      #3,d0
+		sub.l      d1,d0
+		lsl.l      #3,d0
+		move.w     2(a7),8(a6,d0.l)
+		move.w     d3,d0
+		addq.w     #4,a7
+		movem.l    (a7)+,d3-d7/a2-a6
+		rts
 
 user_control:
-[0002ccba] 48e7 2038                 movem.l    d2/a2-a4,-(a7)
-[0002ccbe] 246f 0014                 movea.l    20(a7),a2
-[0002ccc2] 7001                      moveq.l    #1,d0
-[0002ccc4] c06a 0008                 and.w      8(a2),d0
-[0002ccc8] 660a                      bne.s      user_control_1
-[0002ccca] 7201                      moveq.l    #1,d1
-[0002cccc] c26a 0006                 and.w      6(a2),d1
-[0002ccd0] 6700 0190                 beq        user_control_2
+		movem.l    d2/a2-a4,-(a7)
+		movea.l    20(a7),a2
+		moveq.l    #1,d0
+		and.w      8(a2),d0
+		bne.s      user_control_1
+		moveq.l    #1,d1
+		and.w      6(a2),d1
+		beq        user_control_2
 user_control_1:
-[0002ccd4] 47f9 0010 c586            lea.l      pxy,a3
-[0002ccda] 376a 0016 0004            move.w     22(a2),4(a3)
-[0002cce0] 376a 0018 0006            move.w     24(a2),6(a3)
-[0002cce6] 49f9 0010 ee4e            lea.l      ACSblk,a4
-[0002ccec] 302b 0004                 move.w     4(a3),d0
-[0002ccf0] 6606                      bne.s      user_control_3
-[0002ccf2] 322b 0006                 move.w     6(a3),d1
-[0002ccf6] 672c                      beq.s      user_control_4
+		lea.l      pxy,a3
+		move.w     22(a2),4(a3)
+		move.w     24(a2),6(a3)
+		lea.l      ACSblk,a4
+		move.w     4(a3),d0
+		bne.s      user_control_3
+		move.w     6(a3),d1
+		beq.s      user_control_4
 user_control_3:
-[0002ccf8] 36aa 0012                 move.w     18(a2),(a3)
-[0002ccfc] 376a 0014 0002            move.w     20(a2),2(a3)
-[0002cd02] 70ff                      moveq.l    #-1,d0
-[0002cd04] d053                      add.w      (a3),d0
-[0002cd06] d16b 0004                 add.w      d0,4(a3)
-[0002cd0a] 70ff                      moveq.l    #-1,d0
-[0002cd0c] d06b 0002                 add.w      2(a3),d0
-[0002cd10] d16b 0006                 add.w      d0,6(a3)
-[0002cd14] 204b                      movea.l    a3,a0
-[0002cd16] 7201                      moveq.l    #1,d1
-[0002cd18] 2254                      movea.l    (a4),a1
-[0002cd1a] 3029 0010                 move.w     16(a1),d0
-[0002cd1e] 4eb9 0007 2230            jsr        vs_clip
+		move.w     18(a2),(a3)
+		move.w     20(a2),2(a3)
+		moveq.l    #-1,d0
+		add.w      (a3),d0
+		add.w      d0,4(a3)
+		moveq.l    #-1,d0
+		add.w      2(a3),d0
+		add.w      d0,6(a3)
+		movea.l    a3,a0
+		moveq.l    #1,d1
+		movea.l    (a4),a1
+		move.w     16(a1),d0
+		jsr        vs_clip
 user_control_4:
-[0002cd24] 7203                      moveq.l    #3,d1
-[0002cd26] 2054                      movea.l    (a4),a0
-[0002cd28] 3028 0010                 move.w     16(a0),d0
-[0002cd2c] 4eb9 0007 3070            jsr        vswr_mode
-[0002cd32] 7201                      moveq.l    #1,d1
-[0002cd34] 2054                      movea.l    (a4),a0
-[0002cd36] 3028 0010                 move.w     16(a0),d0
-[0002cd3a] 4eb9 0007 316a            jsr        vsl_width
-[0002cd40] 4242                      clr.w      d2
-[0002cd42] 4241                      clr.w      d1
-[0002cd44] 2054                      movea.l    (a4),a0
-[0002cd46] 3028 0010                 move.w     16(a0),d0
-[0002cd4a] 4eb9 0007 3214            jsr        vsl_ends
-[0002cd50] 7207                      moveq.l    #7,d1
-[0002cd52] 2054                      movea.l    (a4),a0
-[0002cd54] 3028 0010                 move.w     16(a0),d0
-[0002cd58] 4eb9 0007 30c4            jsr        vsl_type
-[0002cd5e] 7201                      moveq.l    #1,d1
-[0002cd60] 2054                      movea.l    (a4),a0
-[0002cd62] 3028 0010                 move.w     16(a0),d0
-[0002cd66] 4eb9 0007 31c0            jsr        vsl_color
-[0002cd6c] 36aa 000a                 move.w     10(a2),(a3)
-[0002cd70] 376a 000c 0002            move.w     12(a2),2(a3)
-[0002cd76] 3013                      move.w     (a3),d0
-[0002cd78] d06a 000e                 add.w      14(a2),d0
-[0002cd7c] 5340                      subq.w     #1,d0
-[0002cd7e] 3740 0004                 move.w     d0,4(a3)
-[0002cd82] 322b 0002                 move.w     2(a3),d1
-[0002cd86] d26a 0010                 add.w      16(a2),d1
-[0002cd8a] 5341                      subq.w     #1,d1
-[0002cd8c] 3741 0006                 move.w     d1,6(a3)
-[0002cd90] 342b 0002                 move.w     2(a3),d2
-[0002cd94] 3013                      move.w     (a3),d0
-[0002cd96] 322b 0004                 move.w     4(a3),d1
-[0002cd9a] 4eb9 0004 76bc            jsr        xline2
-[0002cda0] 342b 0006                 move.w     6(a3),d2
-[0002cda4] 322b 0004                 move.w     4(a3),d1
-[0002cda8] 3013                      move.w     (a3),d0
-[0002cdaa] 4eb9 0004 76bc            jsr        xline2
-[0002cdb0] 3413                      move.w     (a3),d2
-[0002cdb2] 322b 0006                 move.w     6(a3),d1
-[0002cdb6] 302b 0002                 move.w     2(a3),d0
-[0002cdba] 4eb9 0004 778a            jsr        yline2
-[0002cdc0] 342b 0004                 move.w     4(a3),d2
-[0002cdc4] 322b 0006                 move.w     6(a3),d1
-[0002cdc8] 302b 0002                 move.w     2(a3),d0
-[0002cdcc] 4eb9 0004 778a            jsr        yline2
-[0002cdd2] 302a 000e                 move.w     14(a2),d0
-[0002cdd6] e640                      asr.w      #3,d0
-[0002cdd8] 5140                      subq.w     #8,d0
-[0002cdda] 6f10                      ble.s      user_control_5
-[0002cddc] 322b 0004                 move.w     4(a3),d1
-[0002cde0] 342a 000e                 move.w     14(a2),d2
-[0002cde4] e642                      asr.w      #3,d2
-[0002cde6] 9242                      sub.w      d2,d1
-[0002cde8] 3681                      move.w     d1,(a3)
-[0002cdea] 6008                      bra.s      user_control_6
+		moveq.l    #3,d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vswr_mode
+		moveq.l    #1,d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsl_width
+		clr.w      d2
+		clr.w      d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsl_ends
+		moveq.l    #7,d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsl_type
+		moveq.l    #1,d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsl_color
+		move.w     10(a2),(a3)
+		move.w     12(a2),2(a3)
+		move.w     (a3),d0
+		add.w      14(a2),d0
+		subq.w     #1,d0
+		move.w     d0,4(a3)
+		move.w     2(a3),d1
+		add.w      16(a2),d1
+		subq.w     #1,d1
+		move.w     d1,6(a3)
+		move.w     2(a3),d2
+		move.w     (a3),d0
+		move.w     4(a3),d1
+		jsr        xline2
+		move.w     6(a3),d2
+		move.w     4(a3),d1
+		move.w     (a3),d0
+		jsr        xline2
+		move.w     (a3),d2
+		move.w     6(a3),d1
+		move.w     2(a3),d0
+		jsr        yline2
+		move.w     4(a3),d2
+		move.w     6(a3),d1
+		move.w     2(a3),d0
+		jsr        yline2
+		move.w     14(a2),d0
+		asr.w      #3,d0
+		subq.w     #8,d0
+		ble.s      user_control_5
+		move.w     4(a3),d1
+		move.w     14(a2),d2
+		asr.w      #3,d2
+		sub.w      d2,d1
+		move.w     d1,(a3)
+		bra.s      user_control_6
 user_control_5:
-[0002cdec] 70f8                      moveq.l    #-8,d0
-[0002cdee] d06b 0004                 add.w      4(a3),d0
-[0002cdf2] 3680                      move.w     d0,(a3)
+		moveq.l    #-8,d0
+		add.w      4(a3),d0
+		move.w     d0,(a3)
 user_control_6:
-[0002cdf4] 302a 0010                 move.w     16(a2),d0
-[0002cdf8] e640                      asr.w      #3,d0
-[0002cdfa] 5140                      subq.w     #8,d0
-[0002cdfc] 6f12                      ble.s      user_control_7
-[0002cdfe] 322b 0006                 move.w     6(a3),d1
-[0002ce02] 342a 0010                 move.w     16(a2),d2
-[0002ce06] e642                      asr.w      #3,d2
-[0002ce08] 9242                      sub.w      d2,d1
-[0002ce0a] 3741 0002                 move.w     d1,2(a3)
-[0002ce0e] 600a                      bra.s      user_control_8
+		move.w     16(a2),d0
+		asr.w      #3,d0
+		subq.w     #8,d0
+		ble.s      user_control_7
+		move.w     6(a3),d1
+		move.w     16(a2),d2
+		asr.w      #3,d2
+		sub.w      d2,d1
+		move.w     d1,2(a3)
+		bra.s      user_control_8
 user_control_7:
-[0002ce10] 70f8                      moveq.l    #-8,d0
-[0002ce12] d06b 0006                 add.w      6(a3),d0
-[0002ce16] 3740 0002                 move.w     d0,2(a3)
+		moveq.l    #-8,d0
+		add.w      6(a3),d0
+		move.w     d0,2(a3)
 user_control_8:
-[0002ce1a] 7201                      moveq.l    #1,d1
-[0002ce1c] 2054                      movea.l    (a4),a0
-[0002ce1e] 3028 0010                 move.w     16(a0),d0
-[0002ce22] 4eb9 0007 3660            jsr        vsf_interior
-[0002ce28] 7201                      moveq.l    #1,d1
-[0002ce2a] 2054                      movea.l    (a4),a0
-[0002ce2c] 3028 0010                 move.w     16(a0),d0
-[0002ce30] 4eb9 0007 3708            jsr        vsf_color
-[0002ce36] 4241                      clr.w      d1
-[0002ce38] 2054                      movea.l    (a4),a0
-[0002ce3a] 3028 0010                 move.w     16(a0),d0
-[0002ce3e] 4eb9 0007 375c            jsr        vsf_perimeter
-[0002ce44] 204b                      movea.l    a3,a0
-[0002ce46] 2254                      movea.l    (a4),a1
-[0002ce48] 3029 0010                 move.w     16(a1),d0
-[0002ce4c] 4eb9 0007 282e            jsr        v_bar
-[0002ce52] 204b                      movea.l    a3,a0
-[0002ce54] 4241                      clr.w      d1
-[0002ce56] 2254                      movea.l    (a4),a1
-[0002ce58] 3029 0010                 move.w     16(a1),d0
-[0002ce5c] 4eb9 0007 2230            jsr        vs_clip
+		moveq.l    #1,d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsf_interior
+		moveq.l    #1,d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsf_color
+		clr.w      d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsf_perimeter
+		movea.l    a3,a0
+		movea.l    (a4),a1
+		move.w     16(a1),d0
+		jsr        v_bar
+		movea.l    a3,a0
+		clr.w      d1
+		movea.l    (a4),a1
+		move.w     16(a1),d0
+		jsr        vs_clip
 user_control_2:
-[0002ce62] 4240                      clr.w      d0
-[0002ce64] 4cdf 1c04                 movem.l    (a7)+,d2/a2-a4
-[0002ce68] 4e75                      rts
+		clr.w      d0
+		movem.l    (a7)+,d2/a2-a4
+		rts
 
 user_dummy:
-[0002ce6a] 48e7 2028                 movem.l    d2/a2/a4,-(a7)
-[0002ce6e] 514f                      subq.w     #8,a7
-[0002ce70] 246f 0018                 movea.l    24(a7),a2
-[0002ce74] 3f6a 0016 0004            move.w     22(a2),4(a7)
-[0002ce7a] 3f6a 0018 0006            move.w     24(a2),6(a7)
-[0002ce80] 49f9 0010 ee4e            lea.l      ACSblk,a4
-[0002ce86] 302f 0004                 move.w     4(a7),d0
-[0002ce8a] 6606                      bne.s      user_dummy_1
-[0002ce8c] 322f 0006                 move.w     6(a7),d1
-[0002ce90] 672c                      beq.s      user_dummy_2
+		movem.l    d2/a2/a4,-(a7)
+		subq.w     #8,a7
+		movea.l    24(a7),a2
+		move.w     22(a2),4(a7)
+		move.w     24(a2),6(a7)
+		lea.l      ACSblk,a4
+		move.w     4(a7),d0
+		bne.s      user_dummy_1
+		move.w     6(a7),d1
+		beq.s      user_dummy_2
 user_dummy_1:
-[0002ce92] 3eaa 0012                 move.w     18(a2),(a7)
-[0002ce96] 3f6a 0014 0002            move.w     20(a2),2(a7)
-[0002ce9c] 70ff                      moveq.l    #-1,d0
-[0002ce9e] d057                      add.w      (a7),d0
-[0002cea0] d16f 0004                 add.w      d0,4(a7)
-[0002cea4] 70ff                      moveq.l    #-1,d0
-[0002cea6] d06f 0002                 add.w      2(a7),d0
-[0002ceaa] d16f 0006                 add.w      d0,6(a7)
-[0002ceae] 41d7                      lea.l      (a7),a0
-[0002ceb0] 7201                      moveq.l    #1,d1
-[0002ceb2] 2254                      movea.l    (a4),a1
-[0002ceb4] 3029 0010                 move.w     16(a1),d0
-[0002ceb8] 4eb9 0007 2230            jsr        vs_clip
+		move.w     18(a2),(a7)
+		move.w     20(a2),2(a7)
+		moveq.l    #-1,d0
+		add.w      (a7),d0
+		add.w      d0,4(a7)
+		moveq.l    #-1,d0
+		add.w      2(a7),d0
+		add.w      d0,6(a7)
+		lea.l      (a7),a0
+		moveq.l    #1,d1
+		movea.l    (a4),a1
+		move.w     16(a1),d0
+		jsr        vs_clip
 user_dummy_2:
-[0002cebe] 7001                      moveq.l    #1,d0
-[0002cec0] c06a 0008                 and.w      8(a2),d0
-[0002cec4] 6664                      bne.s      user_dummy_3
-[0002cec6] 7201                      moveq.l    #1,d1
-[0002cec8] c26a 0006                 and.w      6(a2),d1
-[0002cecc] 665c                      bne.s      user_dummy_3
-[0002cece] 2054                      movea.l    (a4),a0
-[0002ced0] 3028 0010                 move.w     16(a0),d0
-[0002ced4] 7203                      moveq.l    #3,d1
-[0002ced6] 4eb9 0007 3070            jsr        vswr_mode
-[0002cedc] 3eaa 000a                 move.w     10(a2),(a7)
-[0002cee0] 3f6a 000c 0002            move.w     12(a2),2(a7)
-[0002cee6] 3017                      move.w     (a7),d0
-[0002cee8] d06a 000e                 add.w      14(a2),d0
-[0002ceec] 5340                      subq.w     #1,d0
-[0002ceee] 3f40 0004                 move.w     d0,4(a7)
-[0002cef2] 322f 0002                 move.w     2(a7),d1
-[0002cef6] d26a 0010                 add.w      16(a2),d1
-[0002cefa] 5341                      subq.w     #1,d1
-[0002cefc] 3f41 0006                 move.w     d1,6(a7)
-[0002cf00] 2054                      movea.l    (a4),a0
-[0002cf02] 3028 0010                 move.w     16(a0),d0
-[0002cf06] 7201                      moveq.l    #1,d1
-[0002cf08] 4eb9 0007 3660            jsr        vsf_interior
-[0002cf0e] 7201                      moveq.l    #1,d1
-[0002cf10] 2054                      movea.l    (a4),a0
-[0002cf12] 3028 0010                 move.w     16(a0),d0
-[0002cf16] 4eb9 0007 3708            jsr        vsf_color
-[0002cf1c] 41d7                      lea.l      (a7),a0
-[0002cf1e] 2254                      movea.l    (a4),a1
-[0002cf20] 3029 0010                 move.w     16(a1),d0
-[0002cf24] 4eb9 0007 282e            jsr        v_bar
+		moveq.l    #1,d0
+		and.w      8(a2),d0
+		bne.s      user_dummy_3
+		moveq.l    #1,d1
+		and.w      6(a2),d1
+		bne.s      user_dummy_3
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		moveq.l    #3,d1
+		jsr        vswr_mode
+		move.w     10(a2),(a7)
+		move.w     12(a2),2(a7)
+		move.w     (a7),d0
+		add.w      14(a2),d0
+		subq.w     #1,d0
+		move.w     d0,4(a7)
+		move.w     2(a7),d1
+		add.w      16(a2),d1
+		subq.w     #1,d1
+		move.w     d1,6(a7)
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		moveq.l    #1,d1
+		jsr        vsf_interior
+		moveq.l    #1,d1
+		movea.l    (a4),a0
+		move.w     16(a0),d0
+		jsr        vsf_color
+		lea.l      (a7),a0
+		movea.l    (a4),a1
+		move.w     16(a1),d0
+		jsr        v_bar
 user_dummy_3:
-[0002cf2a] 41d7                      lea.l      (a7),a0
-[0002cf2c] 4241                      clr.w      d1
-[0002cf2e] 2254                      movea.l    (a4),a1
-[0002cf30] 3029 0010                 move.w     16(a1),d0
-[0002cf34] 4eb9 0007 2230            jsr        vs_clip
-[0002cf3a] 70fe                      moveq.l    #-2,d0
-[0002cf3c] c06a 0008                 and.w      8(a2),d0
-[0002cf40] 504f                      addq.w     #8,a7
-[0002cf42] 4cdf 1404                 movem.l    (a7)+,d2/a2/a4
-[0002cf46] 4e75                      rts
+		lea.l      (a7),a0
+		clr.w      d1
+		movea.l    (a4),a1
+		move.w     16(a1),d0
+		jsr        vs_clip
+		moveq.l    #-2,d0
+		and.w      8(a2),d0
+		addq.w     #8,a7
+		movem.l    (a7)+,d2/a2/a4
+		rts
 
 	.data
 
 	.globl NEW_POPUP
 NEW_POPUP:
-[000c497c]                           dc.b '[2][ Wollen Sie ein neues | PopUp-MenÅ erzeugen? ][OK| Abbruch ]',0
+		dc.b '[2][ Wollen Sie ein neues | PopUp-MenÅ erzeugen? ][OK| Abbruch ]',0
+	.globl WARN_SAME
+WARN_SAME:
+		dc.b '[2][| Das Objekt soll auf sich| selbst kopiert werden!| Operation abbrechen?][ JA | NEIN ]',0
+	.globl WARN_XSHRINK
+WARN_XSHRINK:
+		dc.b '[2][| Kindobjekt ist breiter | als das Elternobjekt.| Kind verkleinern ?][ JA | NEIN ]',0
+	.globl WARN_YSHRINK
+WARN_YSHRINK:
+		dc.b '[2][| Kindobjekt ist hîher| als das Elternobjekt. | Kind verkleinern ?][ JA | NEIN ]',0
+
+STGUIDE_01:
+		dc.b 'Der Objektbaum-Editor',0
+STGUIDE_02:
+		dc.b 'Der MenÅ-Editor',0
+STGUIDE_03:
+		dc.b 'Der Popup-Editor',0
+STGUIDE_04:
+		dc.b 'Eingabe der Objekt-Position',0
+TEXT_002:
+		dc.b $00
+TEXT_003:
+		dc.b 'OK',0
+TEXT_006:
+		dc.b '1234567890123456789012345678901',0
+TEXT_01:
+		dc.b 'Subobj:',0
+TEXT_010:
+		dc.b ' MENö EDITOR ',0
+TEXT_011:
+		dc.b ' OBJEKTBAUM EDITOR ',0
+TEXT_012:
+		dc.b ' POPUP EDITOR ',0
+TEXT_02:
+		dc.b 'MENöS',0
+TEXT_03:
+		dc.b '  Objekt-Editor...',0
+TEXT_04:
+		dc.b '  Lerne Tasten       '
+		dc.w $074c
+		dc.w $0020
+		dc.b ' Referenzen...',0
+TEXT_06:
+		dc.b '  Information...     ^I',0
+TEXT_069:
+		dc.b 'Datei:',0
+TEXT_07:
+		dc.b '  Referenzen lîschen',0
+TEXT_071:
+		dc.b 'Objekt:',0
+TEXT_08:
+		dc.b 'Char:',0
+TEXT_086:
+		dc.b '  Verstecke',0
+TEXT_087:
+		dc.b '  Decke auf',0
+TEXT_088:
+		dc.b '  Verriegeln',0
+TEXT_089:
+		dc.b '  Entriegeln',0
+TEXT_09:
+		dc.b '  Test...            '
+		dc.w $0754
+		dc.w $0020
+		dc.b ' Rechts',0
+TEXT_091:
+		dc.b '  Mitte',0
+TEXT_092:
+		dc.b '  Links',0
+TEXT_093:
+		dc.b '  Oben',0
+TEXT_094:
+		dc.b '-Vertikal-',0
+TEXT_095:
+		dc.b '  Unten',0
+TEXT_097:
+		dc.b '  Nach oben',0
+TEXT_098:
+		dc.b '  Nach unten',0
+TEXT_099:
+		dc.b 'Horizontal',0
+TEXT_10:
+		dc.b 'Pixel:',0
+TEXT_100:
+		dc.b '  FÅllen',0
+TEXT_11:
+		dc.b '  Sichtbarkeit    '
+		dc.w $0300
+TEXT_13:
+		dc.b 'Ob_Y:',0
+TEXT_133:
+		dc.b '123456',0
+TEXT_14:
+		dc.b 'Ob_Width:',0
+TEXT_15:
+		dc.b 'Ob_Height:',0
+TEXT_16:
+		dc.b ' Objekt(e) angewÑhlt ',0
+TEXT_17:
+		dc.b 'POPUP',0
+TEXT_170:
+		dc.b '  öber mich ...     ',0
+TEXT_171:
+		dc.b '--------------------',0
+TEXT_18:
+		dc.b '  Kontroll-Fenster    K',0
+TEXT_19:
+		dc.b '  Position...',0
+TEXT_20:
+		dc.b '  Ausrichtung     '
+		dc.w $0300
+TEXT_21:
+		dc.b 'Ob_X:',0
+TEXT_22:
+		dc.b ' Information ',0
+TEXT_23:
+		dc.b ' Position ',0
+TEXT_239:
+		dc.b 'Aufruf:',0
+TEXT_24:
+		dc.b 'Aufdecken',0
+TEXT_245:
+		dc.b 'Index:',0
+TEXT_25:
+		dc.b ' Objekt(e) empfangen ',0
+TEXT_26:
+		dc.b '  Status...',0
+TEXT_27:
+		dc.b 'OBJEKTE',0
+TEXT_28:
+		dc.b '  Reihenfolge     '
+		dc.w $0300
+TEXT_29:
+		dc.b 'Verriegeln',0
+TEXT_30:
+		dc.b 'vertikal:',0
+TEXT_301:
+		dc.b 'Abbruch',0
+TEXT_31:
+		dc.b 'horizontal:',0
+TEXT_32:
+		dc.b 'nach Unten',0
+TEXT_339:
+		dc.b ' Baum ',0
+TEXT_34:
+		dc.b 'Verstecken',0
+TEXT_35:
+		dc.b 'Entriegeln',0
+TEXT_36:
+		dc.b 'nach Oben',0
+testmode:
+		dc.b ' TESTMODE -',0
+		dc.b $00
+DATAS_01:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02f0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $47ff
+		dc.w $fc07
+		dc.w $f006
+		dc.w $4400
+		dc.w $0470
+		dc.w $07e6
+		dc.w $44ef
+		dc.w $6440
+		dc.w $0026
+		dc.w $4400
+		dc.w $0453
+		dc.w $dfa6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4000
+		dc.w $0040
+		dc.w $0026
+		dc.w $4000
+		dc.w $0053
+		dc.w $f7a6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $44f6
+		dc.w $e453
+		dc.w $bfa6
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $47ff
+		dc.w $fc7f
+		dc.w $ffe6
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4047
+		dc.w $cc47
+		dc.w $f306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_02:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_03:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02c0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0018
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0ff0
+		dc.w $007f
+		dc.w $fff8
+		dc.w $0017
+		dc.w $ff60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0015
+		dc.w $5560
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00e0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_04:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_05:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02c0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0018
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0ff0
+		dc.w $007f
+		dc.w $fff8
+		dc.w $0017
+		dc.w $ff60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0015
+		dc.w $5560
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00e0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_06:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_07:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02c0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $004f
+		dc.w $f980
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0055
+		dc.w $5580
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $0700
+		dc.w $1800
+		dc.w $007f
+		dc.w $ff3f
+		dc.w $9800
+		dc.w $0040
+		dc.w $0100
+		dc.w $1800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01c0
+		dc.w $7800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_08:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_09:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02c0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $004f
+		dc.w $f980
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0055
+		dc.w $5580
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $0700
+		dc.w $1800
+		dc.w $007f
+		dc.w $ff3f
+		dc.w $9800
+		dc.w $0040
+		dc.w $0100
+		dc.w $1800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01c0
+		dc.w $7800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_10:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_11:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02f0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $47ff
+		dc.w $fc07
+		dc.w $f006
+		dc.w $4400
+		dc.w $0470
+		dc.w $07e6
+		dc.w $44ef
+		dc.w $6440
+		dc.w $0026
+		dc.w $4400
+		dc.w $0453
+		dc.w $dfa6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4000
+		dc.w $0040
+		dc.w $0026
+		dc.w $4000
+		dc.w $0053
+		dc.w $f7a6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $44f6
+		dc.w $e453
+		dc.w $bfa6
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $47ff
+		dc.w $fc7f
+		dc.w $ffe6
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4047
+		dc.w $cc47
+		dc.w $f306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_12:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_13:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02f0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $47ff
+		dc.w $fc07
+		dc.w $f006
+		dc.w $4400
+		dc.w $0470
+		dc.w $07e6
+		dc.w $44ef
+		dc.w $6440
+		dc.w $0026
+		dc.w $4400
+		dc.w $0453
+		dc.w $dfa6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4000
+		dc.w $0040
+		dc.w $0026
+		dc.w $4000
+		dc.w $0053
+		dc.w $f7a6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $44f6
+		dc.w $e453
+		dc.w $bfa6
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $47ff
+		dc.w $fc7f
+		dc.w $ffe6
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4047
+		dc.w $cc47
+		dc.w $f306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_14:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_17:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02c0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0010
+		dc.w $101f
+		dc.w $f000
+		dc.w $0010
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $ff40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0015
+		dc.w $5540
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00c0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe40
+		dc.w $0000
+		dc.w $0010
+		dc.w $0040
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffc0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0018
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0ff0
+		dc.w $007f
+		dc.w $fff8
+		dc.w $0017
+		dc.w $ff60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0015
+		dc.w $5560
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00e0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_18:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_19:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02c0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $07ff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffc0
+		dc.w $7000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $004f
+		dc.w $f980
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0055
+		dc.w $5580
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $0700
+		dc.w $1800
+		dc.w $007f
+		dc.w $ff3f
+		dc.w $9800
+		dc.w $0040
+		dc.w $0100
+		dc.w $1800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01c0
+		dc.w $7800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_20:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_21:
+		dc.w $0000
+		dc.w $0000
+		dc.w $02f0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $03ff
+		dc.w $fffa
+		dc.w $5800
+		dc.w $038f
+		dc.w $f81a
+		dc.w $58ef
+		dc.w $63bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5fff
+		dc.w $ffbf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $58f6
+		dc.w $e3bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $03bf
+		dc.w $ffda
+		dc.w $5800
+		dc.w $0380
+		dc.w $001a
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fdf
+		dc.w $f7df
+		dc.w $fdfa
+		dc.w $5fc0
+		dc.w $07c0
+		dc.w $01fa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $5fff
+		dc.w $ffff
+		dc.w $fffa
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $47ff
+		dc.w $fc07
+		dc.w $f006
+		dc.w $4400
+		dc.w $0470
+		dc.w $07e6
+		dc.w $44ef
+		dc.w $6440
+		dc.w $0026
+		dc.w $4400
+		dc.w $0453
+		dc.w $dfa6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4000
+		dc.w $0040
+		dc.w $0026
+		dc.w $4000
+		dc.w $0053
+		dc.w $f7a6
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0026
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $44f6
+		dc.w $e453
+		dc.w $bfa6
+		dc.w $4400
+		dc.w $0440
+		dc.w $0026
+		dc.w $47ff
+		dc.w $fc7f
+		dc.w $ffe6
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $4047
+		dc.w $cc47
+		dc.w $f306
+		dc.w $4040
+		dc.w $0c40
+		dc.w $0306
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $407f
+		dc.w $fc7f
+		dc.w $ff06
+		dc.w $4000
+		dc.w $0000
+		dc.w $0006
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+DATAS_22:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+TEDI_001:
+		dc.l TEXT_006
+		dc.l TEXT_002
+		dc.l TEXT_002
+		dc.w $0003
+		dc.w $0006
+		dc.w $0000
+		dc.w $1180
+		dc.w $0000
+		dc.w $0000
+		dc.w $0020
+		dc.w $0001
+TEDI_042:
+		dc.l TEXT_133
+		dc.l TEXT_002
+		dc.l TEXT_002
+		dc.w $0003
+		dc.w $0006
+		dc.w $0001
+		dc.w $1180
+		dc.w $0000
+		dc.w $0000
+		dc.w $0007
+		dc.w $0001
+A_3DBUTTON01:
+		dc.l A_3Dbutton
+		dc.w $2011
+		dc.w $9178
+		dc.l Auo_string
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON02:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $01f8
+		dc.l Auo_string
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON03:
+		dc.l A_3Dbutton
+		dc.w $29c1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_003
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON04:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_05
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON05:
+		dc.l A_3Dbutton
+		dc.w $29c1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_301
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON06:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_03
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON07:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_11
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON08:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON09:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_19
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON10:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_20
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON11:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_092
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON12:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $01f8
+		dc.l Auo_string
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON13:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_26
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON14:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_28
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON15:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_091
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON16:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_090
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON17:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_100
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON18:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_093
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON19:
+		dc.l A_3Dbutton
+		dc.w $09f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_095
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON20:
+		dc.l A_3Dbutton
+		dc.w $6800
+		dc.w $8178
+		dc.l Auo_string
+		dc.l TEXT_30
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON21:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_24
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON22:
+		dc.l A_3Dbutton
+		dc.w $6800
+		dc.w $8178
+		dc.l Auo_string
+		dc.l TEXT_31
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON23:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_29
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON24:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_35
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON25:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_36
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON26:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_32
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_3DBUTTON28:
+		dc.l A_3Dbutton
+		dc.w $29f1
+		dc.w $0178
+		dc.l Auo_string
+		dc.l TEXT_34
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_ARROWS02:
+		dc.l A_arrows
+		dc.w $2209
+		dc.w $0001
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_ARROWS03:
+		dc.l A_arrows
+		dc.w $0001
+		dc.w $0001
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_BOXED01:
+		dc.l A_boxed
+		dc.w $9078
+		dc.w $0412
+		dc.l Auo_boxed
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_BOXED02:
+		dc.l A_boxed
+		dc.w $9078
+		dc.w $0412
+		dc.l Auo_boxed
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+A_BOXED03:
+		dc.l A_boxed
+		dc.w $9078
+		dc.w $0412
+		dc.l Auo_boxed
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_C4_IC_MENU:
+		dc.w $0004
+		dc.l DATAS_17+6
+		dc.l DATAS_18
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_MSK_IC_MENU:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_DAT_IC_MENU:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff0
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1798
+		dc.w $33e0
+		dc.w $0018
+		dc.w $101f
+		dc.w $f000
+		dc.w $0018
+		dc.w $1fff
+		dc.w $ffff
+		dc.w $fff8
+		dc.w $0ff0
+		dc.w $007f
+		dc.w $fff8
+		dc.w $0017
+		dc.w $ff60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0015
+		dc.w $5560
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0018
+		dc.w $00e0
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $0017
+		dc.w $fe60
+		dc.w $0000
+		dc.w $0010
+		dc.w $0060
+		dc.w $0000
+		dc.w $001f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $000f
+		dc.w $ffe0
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+IC_MENU:
+		dc.l _MSK_IC_MENU
+		dc.l _DAT_IC_MENU
+		dc.l TEXT_02
+		dc.w $1000
+		dc.w $0000
+		dc.w $0000
+		dc.w $000c
+		dc.w $0000
+		dc.w $0030
+		dc.w $001d
+		dc.w $0000
+		dc.w $0020
+		dc.w $0048
+		dc.w $0008
+		dc.l _C4_IC_MENU
+_C4_IC_OBJECT:
+		dc.w $0004
+		dc.l DATAS_21+6
+		dc.l DATAS_22
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_MSK_IC_OBJECT:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_DAT_IC_OBJECT:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $4000
+		dc.w $0003
+		dc.w $fe02
+		dc.w $47ff
+		dc.w $fc78
+		dc.w $00f2
+		dc.w $4400
+		dc.w $0440
+		dc.w $0012
+		dc.w $44ef
+		dc.w $6440
+		dc.w $0012
+		dc.w $4400
+		dc.w $0453
+		dc.w $df92
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0012
+		dc.w $4000
+		dc.w $0040
+		dc.w $0012
+		dc.w $4000
+		dc.w $0053
+		dc.w $f792
+		dc.w $47ff
+		dc.w $fc40
+		dc.w $0012
+		dc.w $4400
+		dc.w $0440
+		dc.w $0012
+		dc.w $44f6
+		dc.w $e453
+		dc.w $bf92
+		dc.w $4400
+		dc.w $0440
+		dc.w $0012
+		dc.w $47ff
+		dc.w $fc7f
+		dc.w $fff2
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $407f
+		dc.w $fc00
+		dc.w $0002
+		dc.w $407f
+		dc.w $fc3f
+		dc.w $fe02
+		dc.w $4060
+		dc.w $0c20
+		dc.w $0202
+		dc.w $4067
+		dc.w $cc27
+		dc.w $f202
+		dc.w $4060
+		dc.w $0c20
+		dc.w $0202
+		dc.w $407f
+		dc.w $fc3f
+		dc.w $fe02
+		dc.w $407f
+		dc.w $fc00
+		dc.w $0002
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $4000
+		dc.w $0000
+		dc.w $0002
+		dc.w $7fff
+		dc.w $ffff
+		dc.w $fffe
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+IC_OBJECT:
+		dc.l _MSK_IC_OBJECT
+		dc.l _DAT_IC_OBJECT
+		dc.l TEXT_27
+		dc.w $1000
+		dc.w $0000
+		dc.w $0000
+		dc.w $000c
+		dc.w $0000
+		dc.w $0030
+		dc.w $001f
+		dc.w $0000
+		dc.w $0020
+		dc.w $0048
+		dc.w $0008
+		dc.l _C4_IC_OBJECT
+_C4_IC_POPUP:
+		dc.w $0004
+		dc.l DATAS_19+6
+		dc.l DATAS_20
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_MSK_IC_POPUP:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_DAT_IC_POPUP:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $007f
+		dc.w $ff00
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $004f
+		dc.w $f980
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $0055
+		dc.w $5580
+		dc.w $0000
+		dc.w $0040
+		dc.w $0180
+		dc.w $0000
+		dc.w $007f
+		dc.w $ffff
+		dc.w $f000
+		dc.w $0070
+		dc.w $0700
+		dc.w $1800
+		dc.w $007f
+		dc.w $ff3f
+		dc.w $9800
+		dc.w $0040
+		dc.w $0100
+		dc.w $1800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01c0
+		dc.w $7800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $004f
+		dc.w $f9ff
+		dc.w $f800
+		dc.w $0040
+		dc.w $01ff
+		dc.w $f800
+		dc.w $007f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $003f
+		dc.w $ff80
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+IC_POPUP:
+		dc.l _MSK_IC_POPUP
+		dc.l _DAT_IC_POPUP
+		dc.l TEXT_17
+		dc.w $1000
+		dc.w $0000
+		dc.w $0000
+		dc.w $000c
+		dc.w $0000
+		dc.w $0030
+		dc.w $001d
+		dc.w $0000
+		dc.w $0020
+		dc.w $0048
+		dc.w $0008
+		dc.l _C4_IC_POPUP
+_IMG_IM_SORT_XY:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $08ff
+		dc.w $e04f
+		dc.w $fe38
+		dc.w $08ff
+		dc.w $e02f
+		dc.w $fe08
+		dc.w $08ff
+		dc.w $ffff
+		dc.w $fe38
+		dc.w $08ff
+		dc.w $e02f
+		dc.w $fe20
+		dc.w $08ff
+		dc.w $e04f
+		dc.w $fe38
+		dc.w $0000
+		dc.w $0000
+		dc.w $4000
+		dc.w $0000
+		dc.w $0000
+		dc.w $4000
+		dc.w $0007
+		dc.w $ffff
+		dc.w $c000
+		dc.w $0015
+		dc.w $0000
+		dc.w $0000
+		dc.w $000e
+		dc.w $0000
+		dc.w $0000
+		dc.w $0004
+		dc.w $0000
+		dc.w $0000
+		dc.w $1cff
+		dc.w $e04f
+		dc.w $fe20
+		dc.w $04ff
+		dc.w $e02f
+		dc.w $fe28
+		dc.w $0cff
+		dc.w $ffff
+		dc.w $fe38
+		dc.w $04ff
+		dc.w $e02f
+		dc.w $fe08
+		dc.w $1cff
+		dc.w $e04f
+		dc.w $fe08
+		dc.w $0000
+		dc.w $0000
+		dc.w $4000
+		dc.w $0000
+		dc.w $0000
+		dc.w $4000
+		dc.w $0007
+		dc.w $ffff
+		dc.w $c000
+		dc.w $0015
+		dc.w $0000
+		dc.w $0000
+		dc.w $000e
+		dc.w $0000
+		dc.w $0000
+		dc.w $0004
+		dc.w $0000
+		dc.w $0000
+		dc.w $1cff
+		dc.w $e04f
+		dc.w $fe10
+		dc.w $10ff
+		dc.w $e02f
+		dc.w $fe20
+		dc.w $1cff
+		dc.w $ffff
+		dc.w $fe38
+		dc.w $04ff
+		dc.w $e02f
+		dc.w $fe28
+		dc.w $1cff
+		dc.w $e04f
+		dc.w $fe38
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+IM_SORT_XY:
+		dc.l _IMG_IM_SORT_XY
+		dc.w $0006
+		dc.w $0020
+		dc.w $0000
+		dc.w $0000
+		dc.w $0001
+_IMG_IM_SORT_YX:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $08ff
+		dc.w $e04f
+		dc.w $fe20
+		dc.w $08ff
+		dc.w $e02f
+		dc.w $fe28
+		dc.w $08ff
+		dc.w $e1ff
+		dc.w $fe38
+		dc.w $08ff
+		dc.w $e12f
+		dc.w $fe08
+		dc.w $08ff
+		dc.w $e14f
+		dc.w $fe08
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $0015
+		dc.w $0101
+		dc.w $5000
+		dc.w $000e
+		dc.w $0100
+		dc.w $e000
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $1cff
+		dc.w $e10f
+		dc.w $fe38
+		dc.w $04ff
+		dc.w $e10f
+		dc.w $fe20
+		dc.w $1cff
+		dc.w $e10f
+		dc.w $fe38
+		dc.w $10ff
+		dc.w $e10f
+		dc.w $fe08
+		dc.w $1cff
+		dc.w $e10f
+		dc.w $fe38
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $0015
+		dc.w $0101
+		dc.w $5000
+		dc.w $000e
+		dc.w $0100
+		dc.w $e000
+		dc.w $0004
+		dc.w $0100
+		dc.w $4000
+		dc.w $1cff
+		dc.w $e10f
+		dc.w $fe10
+		dc.w $04ff
+		dc.w $e10f
+		dc.w $fe20
+		dc.w $0cff
+		dc.w $ff0f
+		dc.w $fe38
+		dc.w $04ff
+		dc.w $e00f
+		dc.w $fe28
+		dc.w $1cff
+		dc.w $e00f
+		dc.w $fe38
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+IM_SORT_YX:
+		dc.l _IMG_IM_SORT_YX
+		dc.w $0006
+		dc.w $0020
+		dc.w $0000
+		dc.w $0000
+		dc.w $0001
+MEN_EDIT:
+		dc.w $ffff
+		dc.w $0001
+		dc.w $0005
+		dc.w $0019
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $005a
+		dc.w $0019
+_01_MEN_EDIT:
+		dc.w $0005
+		dc.w $0002
+		dc.w $0002
+		dc.w $0014
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $1100
+		dc.w $0000
+		dc.w $0000
+		dc.w $005a
+		dc.w $0201
+_02_MEN_EDIT:
+		dc.w $0001
+		dc.w $0003
+		dc.w $0004
+		dc.w $0019
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0002
+		dc.w $0000
+		dc.w $000c
+		dc.w $0301
+_03_MEN_EDIT:
+		dc.w $0004
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0020
+		dc.w $0000
+		dc.w $0000
+		dc.l TEXT_002
+		dc.w $0000
+		dc.w $0000
+		dc.w $0006
+		dc.w $0301
+_04_MEN_EDIT:
+		dc.w $0002
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0020
+		dc.w $0000
+		dc.w $0000
+		dc.l TEXT_339
+		dc.w $0006
+		dc.w $0000
+		dc.w $0006
+		dc.w $0301
+_05_MEN_EDIT:
+		dc.w $0000
+		dc.w $0006
+		dc.w $000f
+		dc.w $0019
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0301
+		dc.w $0050
+		dc.w $0013
+_06_MEN_EDIT:
+		dc.w $000f
+		dc.w $0007
+		dc.w $000e
+		dc.w $0014
+		dc.w $0000
+		dc.w $0000
+		dc.w $00ff
+		dc.w $1100
+		dc.w $0002
+		dc.w $0000
+		dc.w $0014
+		dc.w $0008
+_07_MEN_EDIT:
+		dc.w $0008
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_170
+		dc.w $0000
+		dc.w $0000
+		dc.w $0014
+		dc.w $0001
+_08_MEN_EDIT:
+		dc.w $0009
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_171
+		dc.w $0000
+		dc.w $0001
+		dc.w $0014
+		dc.w $0001
+_09_MEN_EDIT:
+		dc.w $000a
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_002
+		dc.w $0000
+		dc.w $0002
+		dc.w $0014
+		dc.w $0001
+_10_MEN_EDIT:
+		dc.w $000b
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_002
+		dc.w $0000
+		dc.w $0003
+		dc.w $0014
+		dc.w $0001
+_11_MEN_EDIT:
+		dc.w $000c
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_002
+		dc.w $0000
+		dc.w $0004
+		dc.w $0014
+		dc.w $0001
+_12_MEN_EDIT:
+		dc.w $000d
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_002
+		dc.w $0000
+		dc.w $0005
+		dc.w $0014
+		dc.w $0001
+_13_MEN_EDIT:
+		dc.w $000e
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_002
+		dc.w $0000
+		dc.w $0006
+		dc.w $0014
+		dc.w $0001
+_14_MEN_EDIT:
+		dc.w $0006
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2000
+		dc.l TEXT_002
+		dc.w $0000
+		dc.w $0007
+		dc.w $0014
+		dc.w $0001
+_15_MEN_EDIT:
+		dc.w $0005
+		dc.w $0010
+		dc.w $001a
+		dc.w $0014
+		dc.w $0000
+		dc.w $0000
+		dc.w $00ff
+		dc.w $1101
+		dc.w $0008
+		dc.w $0000
+		dc.w $0018
+		dc.w $0007
+_16_MEN_EDIT:
+		dc.w $0012
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $0100
+		dc.l TEXT_04
+		dc.w $0000
+		dc.w $0000
+		dc.w $0018
+		dc.w $0001
+_16aMEN_EDIT:
+		dc.l eded_keys
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $884c
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_18_MEN_EDIT:
+		dc.w $0014
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $0100
+		dc.l TEXT_09
+		dc.w $0000
+		dc.w $0001
+		dc.w $0018
+		dc.w $0001
+_18aMEN_EDIT:
+		dc.l eded_try
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $8854
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_20_MEN_EDIT:
+		dc.w $0015
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0000
+		dc.w $0108
+		dc.l A_ARROWS02
+		dc.w $0000
+		dc.w $0002
+		dc.w $0018
+		dc.w $0001
+_21_MEN_EDIT:
+		dc.w $0017
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $0100
+		dc.l TEXT_06
+		dc.w $0000
+		dc.w $0003
+		dc.w $0018
+		dc.w $0001
+_21aMEN_EDIT:
+		dc.l eded_info
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $8449
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_23_MEN_EDIT:
+		dc.w $0018
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0000
+		dc.w $0108
+		dc.l A_ARROWS02
+		dc.w $0000
+		dc.w $0004
+		dc.w $0018
+		dc.w $0001
+_24_MEN_EDIT:
+		dc.w $001a
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $0100
+		dc.l TEXT_07
+		dc.w $0000
+		dc.w $0005
+		dc.w $0018
+		dc.w $0001
+_24aMEN_EDIT:
+		dc.l edob_resetref
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_26_MEN_EDIT:
+		dc.w $000f
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $0100
+		dc.l TEXT_18
+		dc.w $0000
+		dc.w $0006
+		dc.w $0018
+		dc.w $0001
+_26aMEN_EDIT:
+		dc.l eded_parts
+		dc.w $0000
+		dc.w $0000
+		dc.w $8020
+		dc.w $004b
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+OBJ_POPUP:
+		dc.w $ffff
+		dc.w $0001
+		dc.w $0052
+		dc.w $0014
+		dc.w $0000
+		dc.w $0020
+		dc.w $00ff
+		dc.w $1100
+		dc.w $0000
+		dc.w $0000
+		dc.w $0014
+		dc.w $0007
+_01_OBJ_POPUP:
+		dc.w $0003
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON06
+		dc.w $0000
+		dc.w $0000
+		dc.w $0014
+		dc.w $0001
+_01aOBJ_POPUP:
+		dc.l edob_specs
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_03_OBJ_POPUP:
+		dc.w $0005
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON13
+		dc.w $0000
+		dc.w $0001
+		dc.w $0014
+		dc.w $0001
+_03aOBJ_POPUP:
+		dc.l edob_aflags
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_05_OBJ_POPUP:
+		dc.w $0007
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON04
+		dc.w $0000
+		dc.w $0002
+		dc.w $0014
+		dc.w $0001
+_05aOBJ_POPUP:
+		dc.l edob_refs
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_07_OBJ_POPUP:
+		dc.w $0009
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON09
+		dc.w $0000
+		dc.w $0003
+		dc.w $0014
+		dc.w $0001
+_07aOBJ_POPUP:
+		dc.l edob_pos
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_09_OBJ_POPUP:
+		dc.w $001c
+		dc.w $000a
+		dc.w $001a
+		dc.w $0014
+		dc.w $0080
+		dc.w $0020
+		dc.w $00ff
+		dc.w $1101
+		dc.w $0000
+		dc.w $0004
+		dc.w $000a
+		dc.w $000a
+_10_OBJ_POPUP:
+		dc.w $000b
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2008
+		dc.l TEXT_099
+		dc.w $0000
+		dc.w $0000
+		dc.w $000a
+		dc.w $0001
+_11_OBJ_POPUP:
+		dc.w $000d
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_092
+		dc.w $0000
+		dc.w $0001
+		dc.w $000a
+		dc.w $0001
+_11aOBJ_POPUP:
+		dc.l edob_left
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_13_OBJ_POPUP:
+		dc.w $000f
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_091
+		dc.w $0000
+		dc.w $0002
+		dc.w $000a
+		dc.w $0001
+_13aOBJ_POPUP:
+		dc.l edob_center
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_15_OBJ_POPUP:
+		dc.w $0011
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_090
+		dc.w $0000
+		dc.w $0003
+		dc.w $000a
+		dc.w $0001
+_15aOBJ_POPUP:
+		dc.l edob_right
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_17_OBJ_POPUP:
+		dc.w $0013
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_100
+		dc.w $0000
+		dc.w $0004
+		dc.w $000a
+		dc.w $0001
+_17aOBJ_POPUP:
+		dc.l edob_horfill
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_19_OBJ_POPUP:
+		dc.w $0014
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0000
+		dc.w $2008
+		dc.l TEXT_094
+		dc.w $0000
+		dc.w $0005
+		dc.w $000a
+		dc.w $0001
+_20_OBJ_POPUP:
+		dc.w $0016
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_093
+		dc.w $0000
+		dc.w $0006
+		dc.w $000a
+		dc.w $0001
+_20aOBJ_POPUP:
+		dc.l edob_top
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_22_OBJ_POPUP:
+		dc.w $0018
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_091
+		dc.w $0000
+		dc.w $0007
+		dc.w $000a
+		dc.w $0001
+_22aOBJ_POPUP:
+		dc.l edob_mid
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_24_OBJ_POPUP:
+		dc.w $001a
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_095
+		dc.w $0000
+		dc.w $0008
+		dc.w $000a
+		dc.w $0001
+_24aOBJ_POPUP:
+		dc.l edob_bottom
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_26_OBJ_POPUP:
+		dc.w $0009
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_100
+		dc.w $0000
+		dc.w $0009
+		dc.w $000a
+		dc.w $0001
+_26aOBJ_POPUP:
+		dc.l edob_verfill
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_28_OBJ_POPUP:
+		dc.w $0030
+		dc.w $001d
+		dc.w $001d
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON10
+		dc.w $0000
+		dc.w $0004
+		dc.w $0014
+		dc.w $0001
+_29_OBJ_POPUP:
+		dc.w $001c
+		dc.w $001e
+		dc.w $002e
+		dc.w $0014
+		dc.w $0080
+		dc.w $0020
+		dc.w $00ff
+		dc.w $1101
+		dc.w $0000
+		dc.w $0000
+		dc.w $000d
+		dc.w $000a
+_30_OBJ_POPUP:
+		dc.w $001f
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0000
+		dc.w $0000
+		dc.l A_3DBUTTON22
+		dc.w $0000
+		dc.w $0000
+		dc.w $000d
+		dc.w $0001
+_31_OBJ_POPUP:
+		dc.w $0021
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON11
+		dc.w $0000
+		dc.w $0001
+		dc.w $000d
+		dc.w $0001
+_31aOBJ_POPUP:
+		dc.l edob_left
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_33_OBJ_POPUP:
+		dc.w $0023
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON15
+		dc.w $0000
+		dc.w $0002
+		dc.w $000d
+		dc.w $0001
+_33aOBJ_POPUP:
+		dc.l edob_center
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_35_OBJ_POPUP:
+		dc.w $0025
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON16
+		dc.w $0000
+		dc.w $0003
+		dc.w $000d
+		dc.w $0001
+_35aOBJ_POPUP:
+		dc.l edob_right
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_37_OBJ_POPUP:
+		dc.w $0027
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON17
+		dc.w $0000
+		dc.w $0004
+		dc.w $000d
+		dc.w $0001
+_37aOBJ_POPUP:
+		dc.l edob_horfill
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_39_OBJ_POPUP:
+		dc.w $0028
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0000
+		dc.w $0000
+		dc.l A_3DBUTTON20
+		dc.w $0000
+		dc.w $0005
+		dc.w $000d
+		dc.w $0001
+_40_OBJ_POPUP:
+		dc.w $002a
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON18
+		dc.w $0000
+		dc.w $0006
+		dc.w $000d
+		dc.w $0001
+_40aOBJ_POPUP:
+		dc.l edob_top
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_42_OBJ_POPUP:
+		dc.w $002c
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON15
+		dc.w $0000
+		dc.w $0007
+		dc.w $000d
+		dc.w $0001
+_42aOBJ_POPUP:
+		dc.l edob_mid
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_44_OBJ_POPUP:
+		dc.w $002e
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON19
+		dc.w $0000
+		dc.w $0008
+		dc.w $000d
+		dc.w $0001
+_44aOBJ_POPUP:
+		dc.l edob_bottom
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_46_OBJ_POPUP:
+		dc.w $001d
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON17
+		dc.w $0000
+		dc.w $0009
+		dc.w $000d
+		dc.w $0001
+_46aOBJ_POPUP:
+		dc.l edob_verfill
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_48_OBJ_POPUP:
+		dc.w $003f
+		dc.w $0031
+		dc.w $003e
+		dc.w $0014
+		dc.w $0080
+		dc.w $0020
+		dc.w $00ff
+		dc.w $1101
+		dc.w $0000
+		dc.w $0005
+		dc.w $000e
+		dc.w $0008
+_49_OBJ_POPUP:
+		dc.w $0033
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $2000
+		dc.l TEXT_086
+		dc.w $0000
+		dc.w $0000
+		dc.w $000e
+		dc.w $0001
+_49aOBJ_POPUP:
+		dc.l edob_hide
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_51_OBJ_POPUP:
+		dc.w $0035
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $2000
+		dc.l TEXT_087
+		dc.w $0000
+		dc.w $0001
+		dc.w $000e
+		dc.w $0001
+_51aOBJ_POPUP:
+		dc.l edob_unhide
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_53_OBJ_POPUP:
+		dc.w $0037
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_088
+		dc.w $0000
+		dc.w $0003
+		dc.w $000e
+		dc.w $0001
+_53aOBJ_POPUP:
+		dc.l edob_lock
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_55_OBJ_POPUP:
+		dc.w $0039
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_089
+		dc.w $0000
+		dc.w $0004
+		dc.w $000e
+		dc.w $0001
+_55aOBJ_POPUP:
+		dc.l edob_unlock
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_57_OBJ_POPUP:
+		dc.w $003b
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_097
+		dc.w $0000
+		dc.w $0006
+		dc.w $000e
+		dc.w $0001
+_57aOBJ_POPUP:
+		dc.l edob_up
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_59_OBJ_POPUP:
+		dc.w $003d
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0001
+		dc.w $0000
+		dc.l TEXT_098
+		dc.w $0000
+		dc.w $0007
+		dc.w $000e
+		dc.w $0001
+_59aOBJ_POPUP:
+		dc.l edob_down
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_61_OBJ_POPUP:
+		dc.w $003e
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0000
+		dc.w $0008
+		dc.l A_ARROWS02
+		dc.w $0000
+		dc.w $0002
+		dc.w $000e
+		dc.w $0001
+_62_OBJ_POPUP:
+		dc.w $0030
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0000
+		dc.w $0008
+		dc.l A_ARROWS02
+		dc.w $0000
+		dc.w $0005
+		dc.w $000e
+		dc.w $0001
+_63_OBJ_POPUP:
+		dc.w $004d
+		dc.w $0040
+		dc.w $0040
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON07
+		dc.w $0000
+		dc.w $0005
+		dc.w $0014
+		dc.w $0001
+_64_OBJ_POPUP:
+		dc.w $003f
+		dc.w $0041
+		dc.w $004b
+		dc.w $0014
+		dc.w $0080
+		dc.w $0020
+		dc.w $00ff
+		dc.w $1101
+		dc.w $0000
+		dc.w $0000
+		dc.w $0024
+		dc.w $0002
+_65_OBJ_POPUP:
+		dc.w $0043
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON28
+		dc.w $0000
+		dc.w $0000
+		dc.w $000c
+		dc.w $0001
+_65aOBJ_POPUP:
+		dc.l edob_hide
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_67_OBJ_POPUP:
+		dc.w $0045
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON21
+		dc.w $0000
+		dc.w $0001
+		dc.w $000c
+		dc.w $0001
+_67aOBJ_POPUP:
+		dc.l edob_unhide
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_69_OBJ_POPUP:
+		dc.w $0047
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON23
+		dc.w $000c
+		dc.w $0000
+		dc.w $000c
+		dc.w $0001
+_69aOBJ_POPUP:
+		dc.l edob_lock
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_71_OBJ_POPUP:
+		dc.w $0049
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON24
+		dc.w $000c
+		dc.w $0001
+		dc.w $000c
+		dc.w $0001
+_71aOBJ_POPUP:
+		dc.l edob_unlock
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_73_OBJ_POPUP:
+		dc.w $004b
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON25
+		dc.w $0018
+		dc.w $0000
+		dc.w $000c
+		dc.w $0001
+_73aOBJ_POPUP:
+		dc.l edob_up
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_75_OBJ_POPUP:
+		dc.w $0040
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON26
+		dc.w $0018
+		dc.w $0001
+		dc.w $000c
+		dc.w $0001
+_75aOBJ_POPUP:
+		dc.l edob_down
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_77_OBJ_POPUP:
+		dc.w $0052
+		dc.w $004e
+		dc.w $0050
+		dc.w $0014
+		dc.w $0080
+		dc.w $0020
+		dc.w $00ff
+		dc.w $1101
+		dc.w $0000
+		dc.w $0006
+		dc.w $000c
+		dc.w $0002
+_78_OBJ_POPUP:
+		dc.w $0050
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0017
+		dc.w $0001
+		dc.w $0000
+		dc.l IM_SORT_YX
+		dc.w $0000
+		dc.w $0000
+		dc.w $0006
+		dc.w $0002
+_78aOBJ_POPUP:
+		dc.l edob_sortyx
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_80_OBJ_POPUP:
+		dc.w $004d
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0017
+		dc.w $0001
+		dc.w $0000
+		dc.l IM_SORT_XY
+		dc.w $0006
+		dc.w $0000
+		dc.w $0006
+		dc.w $0002
+_80aOBJ_POPUP:
+		dc.l edob_sortxy
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_82_OBJ_POPUP:
+		dc.w $0000
+		dc.w $0053
+		dc.w $0053
+		dc.w $0018
+		dc.w $0041
+		dc.w $0000
+		dc.l A_3DBUTTON14
+		dc.w $0000
+		dc.w $0006
+		dc.w $0014
+		dc.w $0001
+_83_OBJ_POPUP:
+		dc.w $0052
+		dc.w $0054
+		dc.w $0056
+		dc.w $0014
+		dc.w $0080
+		dc.w $0020
+		dc.w $00ff
+		dc.w $1101
+		dc.w $0000
+		dc.w $0000
+		dc.w $000c
+		dc.w $0002
+_84_OBJ_POPUP:
+		dc.w $0056
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0017
+		dc.w $0041
+		dc.w $0000
+		dc.l IM_SORT_YX
+		dc.w $0000
+		dc.w $0000
+		dc.w $0006
+		dc.w $0002
+_84aOBJ_POPUP:
+		dc.l edob_sortyx
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_86_OBJ_POPUP:
+		dc.w $0053
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0017
+		dc.w $0041
+		dc.w $0000
+		dc.l IM_SORT_XY
+		dc.w $0006
+		dc.w $0000
+		dc.w $0006
+		dc.w $0002
+_86aOBJ_POPUP:
+		dc.l edob_sortxy
+		dc.w $0000
+		dc.w $0000
+		dc.w $8020
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+FINE_POS:
+		dc.w $ffff
+		dc.w $0001
+		dc.w $0001
+		dc.w $0019
+		dc.w $0040
+		dc.w $0000
+		dc.w $00ff
+		dc.w $1178
+		dc.w $0000
+		dc.w $0000
+		dc.w $001a
+		dc.w $000a
+_01_FINE_POS:
+		dc.w $0000
+		dc.w $0002
+		dc.w $0015
+		dc.w $0018
+		dc.w $0040
+		dc.w $0510
+		dc.l A_3DBUTTON08
+		dc.w $0000
+		dc.w $0000
+		dc.w $001a
+		dc.w $000a
+_02_FINE_POS:
+		dc.w $0003
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_08
+		dc.w $000c
+		dc.w $0001
+		dc.w $0005
+		dc.w $0001
+_03_FINE_POS:
+		dc.w $0004
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_10
+		dc.w $0012
+		dc.w $0001
+		dc.w $0006
+		dc.w $0001
+_04_FINE_POS:
+		dc.w $0005
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_21
+		dc.w $0006
+		dc.w $0002
+		dc.w $0005
+		dc.w $0001
+_05_FINE_POS:
+		dc.w $0010
+		dc.w $0006
+		dc.w $0006
+		dc.w $0018
+		dc.w $0040
+		dc.w $0000
+		dc.l A_3DBUTTON01
+		dc.w $000c
+		dc.w $0002
+		dc.w $000c
+		dc.w $0004
+_06_FINE_POS:
+		dc.w $0005
+		dc.w $0007
+		dc.w $000f
+		dc.w $0014
+		dc.w $0040
+		dc.w $0000
+		dc.w $00ff
+		dc.w $0101
+		dc.w $0000
+		dc.w $0000
+		dc.w $000c
+		dc.w $0004
+_07_FINE_POS:
+		dc.w $0008
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED03
+		dc.w $0000
+		dc.w $0000
+		dc.w $0005
+		dc.w $0001
+_08_FINE_POS:
+		dc.w $0009
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED02
+		dc.w $0000
+		dc.w $0001
+		dc.w $0005
+		dc.w $0001
+_09_FINE_POS:
+		dc.w $000a
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED01
+		dc.w $0000
+		dc.w $0002
+		dc.w $0005
+		dc.w $0001
+_10_FINE_POS:
+		dc.w $000b
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED01
+		dc.w $0000
+		dc.w $0003
+		dc.w $0005
+		dc.w $0001
+_11_FINE_POS:
+		dc.w $000c
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0000
+		dc.w $0000
+		dc.l A_ARROWS03
+		dc.w $0005
+		dc.w $0000
+		dc.w $0002
+		dc.w $0004
+_12_FINE_POS:
+		dc.w $000d
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED01
+		dc.w $0007
+		dc.w $0000
+		dc.w $0005
+		dc.w $0001
+_13_FINE_POS:
+		dc.w $000e
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED01
+		dc.w $0007
+		dc.w $0001
+		dc.w $0005
+		dc.w $0001
+_14_FINE_POS:
+		dc.w $000f
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED01
+		dc.w $0007
+		dc.w $0002
+		dc.w $0005
+		dc.w $0001
+_15_FINE_POS:
+		dc.w $0006
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0008
+		dc.w $0000
+		dc.l A_BOXED01
+		dc.w $0007
+		dc.w $0003
+		dc.w $0005
+		dc.w $0001
+_16_FINE_POS:
+		dc.w $0011
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_13
+		dc.w $0006
+		dc.w $0003
+		dc.w $0005
+		dc.w $0001
+_17_FINE_POS:
+		dc.w $0012
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_14
+		dc.w $0002
+		dc.w $0004
+		dc.w $0009
+		dc.w $0001
+_18_FINE_POS:
+		dc.w $0013
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_15
+		dc.w $0001
+		dc.w $0005
+		dc.w $000a
+		dc.w $0001
+_19_FINE_POS:
+		dc.w $0015
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $4007
+		dc.w $0010
+		dc.l A_3DBUTTON03
+		dc.w $0002
+		dc.w $0007
+		dc.w $000a
+		dc.w $0002
+_19aFINE_POS:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $884f
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_21_FINE_POS:
+		dc.w $0001
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $4005
+		dc.w $0010
+		dc.l A_3DBUTTON05
+		dc.w $000e
+		dc.w $0007
+		dc.w $000a
+		dc.w $0002
+_21aFINE_POS:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $8020
+		dc.w $8841
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+INFO_EDIT:
+		dc.w $ffff
+		dc.w $0001
+		dc.w $0001
+		dc.w $0019
+		dc.w $0040
+		dc.w $0000
+		dc.w $00ff
+		dc.w $1141
+		dc.w $0000
+		dc.w $0000
+		dc.w $0028
+		dc.w $0005
+_01_INFO_EDIT:
+		dc.w $0000
+		dc.w $0002
+		dc.w $0007
+		dc.w $0018
+		dc.w $0040
+		dc.w $0010
+		dc.l A_3DBUTTON12
+		dc.w $0000
+		dc.w $0000
+		dc.w $0028
+		dc.w $0005
+_02_INFO_EDIT:
+		dc.w $0003
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_01
+		dc.w $0001
+		dc.w $0003
+		dc.w $0007
+		dc.w $0001
+_03_INFO_EDIT:
+		dc.w $0004
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_071
+		dc.w $0001
+		dc.w $0002
+		dc.w $0007
+		dc.w $0001
+_04_INFO_EDIT:
+		dc.w $0005
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0001
+		dc.w $001f
+		dc.w $0001
+_05_INFO_EDIT:
+		dc.w $0006
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0002
+		dc.w $001f
+		dc.w $0001
+_06_INFO_EDIT:
+		dc.w $0007
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_042
+		dc.w $0008
+		dc.w $0003
+		dc.w $0006
+		dc.w $0001
+_07_INFO_EDIT:
+		dc.w $0001
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0060
+		dc.w $0000
+		dc.l TEXT_069
+		dc.w $0002
+		dc.w $0001
+		dc.w $0006
+		dc.w $0001
+MINIOB:
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0060
+		dc.w $0010
+		dc.l A_3DBUTTON02
+		dc.w $0000
+		dc.w $0000
+		dc.w $001c
+		dc.w $000b
+TRY_CLICK:
+		dc.w $ffff
+		dc.w $0001
+		dc.w $0001
+		dc.w $0019
+		dc.w $0040
+		dc.w $0000
+		dc.w $00ff
+		dc.w $1178
+		dc.w $0000
+		dc.w $0000
+		dc.w $0028
+		dc.w $0009
+_01_TRY_CLICK:
+		dc.w $0000
+		dc.w $0002
+		dc.w $000c
+		dc.w $0018
+		dc.w $0040
+		dc.w $0010
+		dc.l A_3DBUTTON08
+		dc.w $0000
+		dc.w $0000
+		dc.w $0028
+		dc.w $0009
+_02_TRY_CLICK:
+		dc.w $0003
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_069
+		dc.w $0002
+		dc.w $0001
+		dc.w $0006
+		dc.w $0001
+_03_TRY_CLICK:
+		dc.w $0004
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0001
+		dc.w $001f
+		dc.w $0001
+_04_TRY_CLICK:
+		dc.w $0005
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_071
+		dc.w $0001
+		dc.w $0002
+		dc.w $0007
+		dc.w $0001
+_05_TRY_CLICK:
+		dc.w $0006
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0002
+		dc.w $001f
+		dc.w $0001
+_06_TRY_CLICK:
+		dc.w $0007
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_239
+		dc.w $0001
+		dc.w $0003
+		dc.w $0007
+		dc.w $0001
+_07_TRY_CLICK:
+		dc.w $0008
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0003
+		dc.w $001f
+		dc.w $0001
+_08_TRY_CLICK:
+		dc.w $0009
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_245
+		dc.w $0002
+		dc.w $0004
+		dc.w $0006
+		dc.w $0001
+_09_TRY_CLICK:
+		dc.w $000a
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0004
+		dc.w $001f
+		dc.w $0001
+_10_TRY_CLICK:
+		dc.w $000c
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $4007
+		dc.w $0010
+		dc.l A_3DBUTTON03
+		dc.w $0007
+		dc.w $0006
+		dc.w $000c
+		dc.w $0002
+_10aTRY_CLICK:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $884f
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_12_TRY_CLICK:
+		dc.w $0001
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $4005
+		dc.w $0010
+		dc.l A_3DBUTTON05
+		dc.w $0015
+		dc.w $0006
+		dc.w $000c
+		dc.w $0002
+_12aTRY_CLICK:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $8020
+		dc.w $8841
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+TRY_DRAG:
+		dc.w $ffff
+		dc.w $0001
+		dc.w $0001
+		dc.w $0019
+		dc.w $0040
+		dc.w $0000
+		dc.w $00ff
+		dc.w $1178
+		dc.w $0000
+		dc.w $0000
+		dc.w $0028
+		dc.w $0009
+_01_TRY_DRAG:
+		dc.w $0000
+		dc.w $0002
+		dc.w $000c
+		dc.w $0018
+		dc.w $0040
+		dc.w $0010
+		dc.l A_3DBUTTON08
+		dc.w $0000
+		dc.w $0000
+		dc.w $0028
+		dc.w $0009
+_02_TRY_DRAG:
+		dc.w $0003
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_069
+		dc.w $0002
+		dc.w $0001
+		dc.w $0006
+		dc.w $0001
+_03_TRY_DRAG:
+		dc.w $0004
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0001
+		dc.w $001f
+		dc.w $0001
+_04_TRY_DRAG:
+		dc.w $0005
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_071
+		dc.w $0001
+		dc.w $0002
+		dc.w $0007
+		dc.w $0001
+_05_TRY_DRAG:
+		dc.w $0006
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0002
+		dc.w $001f
+		dc.w $0001
+_06_TRY_DRAG:
+		dc.w $0007
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_239
+		dc.w $0001
+		dc.w $0003
+		dc.w $0007
+		dc.w $0001
+_07_TRY_DRAG:
+		dc.w $0008
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0003
+		dc.w $001f
+		dc.w $0001
+_08_TRY_DRAG:
+		dc.w $0009
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $001c
+		dc.w $0040
+		dc.w $0000
+		dc.l TEXT_245
+		dc.w $0002
+		dc.w $0004
+		dc.w $0006
+		dc.w $0001
+_09_TRY_DRAG:
+		dc.w $000a
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0016
+		dc.w $0040
+		dc.w $0000
+		dc.l TEDI_001
+		dc.w $0008
+		dc.w $0004
+		dc.w $001f
+		dc.w $0001
+_10_TRY_DRAG:
+		dc.w $000c
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $4007
+		dc.w $0010
+		dc.l A_3DBUTTON03
+		dc.w $0007
+		dc.w $0006
+		dc.w $000c
+		dc.w $0002
+_10aTRY_DRAG:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $8000
+		dc.w $884f
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+_12_TRY_DRAG:
+		dc.w $0001
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $4005
+		dc.w $0010
+		dc.l A_3DBUTTON05
+		dc.w $0015
+		dc.w $0006
+		dc.w $000c
+		dc.w $0002
+_12aTRY_DRAG:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $8020
+		dc.w $8841
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+WI_INFO:
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_service
+		dc.l make_a_window
+		dc.l Awi_open
+		dc.l Awi_init
+		dc.l INFO_EDIT
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $000b
+		dc.w $0000
+		dc.w $0000
+		dc.w $0078
+		dc.w $0032
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $fcf8
+		dc.l TEXT_22
+		dc.l TEXT_002
+		dc.w $2710
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_keys
+		dc.l Awi_obchange
+		dc.l Awi_redraw
+		dc.l Awi_topped
+		dc.l Awi_closed
+		dc.l Awi_fulled
+		dc.l Awi_arrowed
+		dc.l Awi_hslid
+		dc.l Awi_vslid
+		dc.l Awi_sized
+		dc.l Awi_moved
+		dc.l Awi_iconify
+		dc.l Awi_uniconify
+		dc.l Awi_gemscript
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+WI_MENU:
+		dc.w $0000
+		dc.w $0000
+		dc.l me_service
+		dc.l me_make
+		dc.l open_me
+		dc.l me_init
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $4fff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0023
+		dc.w $000e
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $f8f8
+		dc.l TEXT_010
+		dc.l TEXT_002
+		dc.w $2710
+		dc.w $0100
+		dc.w $0000
+		dc.w $ffff
+		dc.l IC_MENU
+		dc.l MEN_EDIT
+		dc.l key_me
+		dc.l Awi_obchange
+		dc.l Awi_redraw
+		dc.l top_me
+		dc.l close_me
+		dc.l Awi_fulled
+		dc.l Awi_arrowed
+		dc.l Awi_hslid
+		dc.l Awi_vslid
+		dc.l Awi_sized
+		dc.l move_me
+		dc.l Awi_iconify
+		dc.l Awi_uniconify
+		dc.l Awi_gemscript
+		dc.l STGUIDE_02
+		dc.w $0000
+		dc.w $0000
+WI_OBJECT:
+		dc.w $0000
+		dc.w $0000
+		dc.l ed_service
+		dc.l ob_make
+		dc.l open_me
+		dc.l ed_init
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $4fff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0063
+		dc.w $0063
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $f8f8
+		dc.l TEXT_011
+		dc.l TEXT_002
+		dc.w $2710
+		dc.w $0100
+		dc.w $0000
+		dc.w $ffff
+		dc.l IC_OBJECT
+		dc.l MEN_EDIT
+		dc.l key_me
+		dc.l Awi_obchange
+		dc.l Awi_redraw
+		dc.l top_me
+		dc.l close_me
+		dc.l Awi_fulled
+		dc.l Awi_arrowed
+		dc.l Awi_hslid
+		dc.l Awi_vslid
+		dc.l Awi_sized
+		dc.l move_me
+		dc.l Awi_iconify
+		dc.l Awi_uniconify
+		dc.l Awi_gemscript
+		dc.l STGUIDE_01
+		dc.w $0000
+		dc.w $0000
+WI_POPUP:
+		dc.w $0000
+		dc.w $0000
+		dc.l ed_service
+		dc.l pu_make
+		dc.l open_me
+		dc.l pu_init
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $4fff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0020
+		dc.w $0010
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $f8f8
+		dc.l TEXT_012
+		dc.l TEXT_002
+		dc.w $2710
+		dc.w $0100
+		dc.w $0000
+		dc.w $ffff
+		dc.l IC_POPUP
+		dc.l MEN_EDIT
+		dc.l key_me
+		dc.l Awi_obchange
+		dc.l Awi_redraw
+		dc.l top_me
+		dc.l close_me
+		dc.l Awi_fulled
+		dc.l Awi_arrowed
+		dc.l Awi_hslid
+		dc.l Awi_vslid
+		dc.l Awi_sized
+		dc.l move_me
+		dc.l Awi_iconify
+		dc.l Awi_uniconify
+		dc.l Awi_gemscript
+		dc.l STGUIDE_03
+		dc.w $0000
+		dc.w $0000
+WI_POSITION:
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_service
+		dc.l Awi_selfcreate
+		dc.l Awi_open
+		dc.l Awi_init
+		dc.l FINE_POS
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $000b
+		dc.w $0000
+		dc.w $0000
+		dc.w $0078
+		dc.w $0032
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $fcf8
+		dc.l TEXT_23
+		dc.l TEXT_002
+		dc.w $2710
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_keys
+		dc.l Awi_obchange
+		dc.l Awi_redraw
+		dc.l Awi_topped
+		dc.l Awi_closed
+		dc.l Awi_fulled
+		dc.l Awi_arrowed
+		dc.l Awi_hslid
+		dc.l Awi_vslid
+		dc.l Awi_sized
+		dc.l Awi_moved
+		dc.l Awi_iconify
+		dc.l Awi_uniconify
+		dc.l Awi_gemscript
+		dc.l STGUIDE_04
+		dc.w $0000
+		dc.w $0000
+WI_TRYCLICK:
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_service
+		dc.l make_a_window
+		dc.l Awi_open
+		dc.l Awi_init
+		dc.l TRY_CLICK
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $000b
+		dc.w $0000
+		dc.w $0000
+		dc.w $0078
+		dc.w $0032
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $fcf8
+		dc.l TEXT_16
+		dc.l TEXT_002
+		dc.w $2710
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_keys
+		dc.l Awi_obchange
+		dc.l Awi_redraw
+		dc.l Awi_topped
+		dc.l Awi_closed
+		dc.l Awi_fulled
+		dc.l Awi_arrowed
+		dc.l Awi_hslid
+		dc.l Awi_vslid
+		dc.l Awi_sized
+		dc.l Awi_moved
+		dc.l Awi_iconify
+		dc.l Awi_uniconify
+		dc.l Awi_gemscript
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+WI_TRYDRAG:
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_service
+		dc.l make_a_window
+		dc.l Awi_open
+		dc.l Awi_init
+		dc.l TRY_DRAG
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $000b
+		dc.w $0000
+		dc.w $0000
+		dc.w $0078
+		dc.w $0032
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $fcf8
+		dc.l TEXT_25
+		dc.l TEXT_002
+		dc.w $2710
+		dc.w $0000
+		dc.w $0000
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.l Awi_keys
+		dc.l Awi_obchange
+		dc.l Awi_redraw
+		dc.l Awi_topped
+		dc.l Awi_closed
+		dc.l Awi_fulled
+		dc.l Awi_arrowed
+		dc.l Awi_hslid
+		dc.l Awi_vslid
+		dc.l Awi_sized
+		dc.l Awi_moved
+		dc.l Awi_iconify
+		dc.l Awi_uniconify
+		dc.l Awi_gemscript
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+visible_editors:
+		dc.w $0000
+control:
+		dc.l user_control
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+entry:
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+ent01:
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $ffff
+		dc.w $0018
+		dc.w $0040
+		dc.w $2030
+		dc.l control
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+ent02:
+		dc.l ed_edit
+		dc.l ed_dragged
+		dc.w $8000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $2af8
+dither:
+		dc.l A_3Dbutton
+		dc.w $0000
+		dc.w $0078
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+deskob:
+		dc.w $ffff
+		dc.w $0001
+		dc.w $0002
+		dc.w $0018
+		dc.w $0040
+		dc.w $2000
+		dc.l dither
+		dc.w $0000
+		dc.w $0000
+		dc.w $0004
+		dc.w $0002
+xc91a8:
+		dc.b '%4ld',0
+xc91ad:
+		dc.b '- NULL -',0
+xc91b6:
+		dc.b '0x%lx',0
