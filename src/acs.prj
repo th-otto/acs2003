@@ -96,20 +96,20 @@ editor\edobaflm.s
 editor\edobaeom.s
 editor\edobkeys.s
 
-list\edlist.c
-list\edalert.c
-list\eddata.c
-list\edwind.c
-list\edicon.c
-list\edimage.c
-list\eduser.c
-list\edmenu.c
-list\edmouse.c
-list\edobject.c
-list\edpopup.c
-list\edref.c
-list\edstring.c
-list\edtedi.c
+list\edlist.s
+list\edalert.s
+list\eddata.s
+list\edwind.s
+list\edicon.s
+list\edimage.s
+list\eduser.s
+list\edmenu.s
+list\edmouse.s
+list\edobject.s
+list\edpopup.s
+list\edref.s
+list\edstring.s
+list\edtedi.s
 
 acsplus\slider.c
 acsplus\wislider.c
