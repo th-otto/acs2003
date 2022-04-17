@@ -111,14 +111,14 @@ list\edref.s
 list\edstring.s
 list\edtedi.s
 
-acsplus\slider.c
-acsplus\wislider.c
-acsplus\editor.c
-acsplus\pur_desk.c
-acsplus\editwi.c
-acsplus\fontsel.c
-acsplus\list.c
-acsplus\proto.c
+acsplus\slider.s
+acsplus\wislider.s
+acsplus\editor.s
+acsplus\pur_desk.s
+acsplus\editwi.s
+acsplus\fontsel.s [-M-]
+acsplus\list.s
+acsplus\proto.s
 
 lib\main.c
 lib\initterm.c
