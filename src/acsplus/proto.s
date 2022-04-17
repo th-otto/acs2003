@@ -539,6 +539,7 @@ proto_vslid:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl wprintf
 wprintf:
 		movem.l    d3/a2-a3,-(a7)
 		movea.l    a0,a2
@@ -1673,6 +1674,7 @@ _03_INFOBOX:
 		dc.w $0000
 		dc.w $0018
 		dc.w $0004
+	.globl PROTOCOL
 PROTOCOL:
 		dc.w $0000
 		dc.w $0000
@@ -1734,6 +1736,7 @@ PROTOCOL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WIPR_INFO
 WIPR_INFO:
 		dc.w $0000
 		dc.w $0000

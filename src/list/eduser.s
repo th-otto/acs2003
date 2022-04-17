@@ -196,6 +196,7 @@ comp2_it_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl add_user
 add_user:
 		movem.l    d3-d5/a2-a5,-(a7)
 		subq.w     #8,a7
@@ -312,6 +313,7 @@ add_user_7:
 		movem.l    (a7)+,d3-d5/a2-a5
 		rts
 
+	.globl del_user
 del_user:
 		movem.l    a2-a4,-(a7)
 		movea.l    a0,a2
@@ -523,6 +525,7 @@ set_usertype_3:
 		movem.l    (a7)+,a2-a6
 		rts
 
+	.globl change_user
 change_user:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a3
@@ -691,6 +694,7 @@ chgadd_3ref_6:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl change_udf
 change_udf:
 		movem.l    a2-a6,-(a7)
 		subq.w     #4,a7
@@ -907,6 +911,7 @@ new_work:
 
 	.data
 
+	.globl list_user
 list_user:
 		dc.w $0000
 		dc.w $0000

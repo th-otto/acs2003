@@ -1,3 +1,5 @@
+
+	.globl Alu_create
 Alu_create:
 [00070c0a] 594f                      subq.w     #4,a7
 [00070c0c] 7044                      moveq.l    #68,d0
@@ -33,6 +35,7 @@ Alu_create_2:
 [00070c5a] 584f                      addq.w     #4,a7
 [00070c5c] 4e75                      rts
 
+	.globl Alu_delete
 Alu_delete:
 [00070c5e] 594f                      subq.w     #4,a7
 [00070c60] 2e88                      move.l     a0,(a7)
@@ -318,6 +321,7 @@ Alu_deleteElem_5:
 [00070f80] 4fef 001a                 lea.l      26(a7),a7
 [00070f84] 4e75                      rts
 
+	.globl Alu_ptrCmp
 Alu_ptrCmp:
 [00070f86] 514f                      subq.w     #8,a7
 [00070f88] 2f48 0004                 move.l     a0,4(a7)

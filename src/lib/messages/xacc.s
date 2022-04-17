@@ -1,3 +1,4 @@
+	.globl Aev_InitXAcc
 Aev_InitXAcc:
 [0005ec38] 4fef fff0                 lea.l      -16(a7),a7
 [0005ec3c] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -44,10 +45,12 @@ Aev_InitXAcc_1:
 [0005ecc4] 4fef 0010                 lea.l      16(a7),a7
 [0005ecc8] 4e75                      rts
 
+	.globl Aev_ExitXAcc
 Aev_ExitXAcc:
 [0005ecca] 7001                      moveq.l    #1,d0
 [0005eccc] 4e75                      rts
 
+	.globl XAccDataDelete
 XAccDataDelete:
 [0005ecce] 2f0a                      move.l     a2,-(a7)
 [0005ecd0] 594f                      subq.w     #4,a7
@@ -99,6 +102,7 @@ Aev_CheckXAccPart_3:
 [0005ed46] 5c4f                      addq.w     #6,a7
 [0005ed48] 4e75                      rts
 
+	.globl Aev_GetAccID
 Aev_GetAccID:
 [0005ed4a] 2f0a                      move.l     a2,-(a7)
 [0005ed4c] 4fef fff2                 lea.l      -14(a7),a7
@@ -156,6 +160,7 @@ Aev_GetAccID_5:
 [0005edf0] 245f                      movea.l    (a7)+,a2
 [0005edf2] 4e75                      rts
 
+	.globl Aev_GetAccAck
 Aev_GetAccAck:
 [0005edf4] 2f0a                      move.l     a2,-(a7)
 [0005edf6] 4fef fff0                 lea.l      -16(a7),a7
@@ -230,6 +235,7 @@ Aev_GetAccAck_5:
 [0005eed6] 245f                      movea.l    (a7)+,a2
 [0005eed8] 4e75                      rts
 
+	.globl Aev_GetAccAcc
 Aev_GetAccAcc:
 [0005eeda] 4fef fff2                 lea.l      -14(a7),a7
 [0005eede] 2f48 000a                 move.l     a0,10(a7)
@@ -296,6 +302,7 @@ Aev_GetAccAcc_6:
 [0005ef90] 4fef 000e                 lea.l      14(a7),a7
 [0005ef94] 4e75                      rts
 
+	.globl Aev_GetAccKey
 Aev_GetAccKey:
 [0005ef96] 4fef fff2                 lea.l      -14(a7),a7
 [0005ef9a] 2f48 000a                 move.l     a0,10(a7)
@@ -343,6 +350,7 @@ Aev_GetAccKey_2:
 [0005f028] 4fef 000e                 lea.l      14(a7),a7
 [0005f02c] 4e75                      rts
 
+	.globl Aev_GetAccText
 Aev_GetAccText:
 [0005f02e] 4fef fff4                 lea.l      -12(a7),a7
 [0005f032] 2f48 0008                 move.l     a0,8(a7)
@@ -403,6 +411,7 @@ Aev_GetAccText_2:
 [0005f0f0] 4fef 000c                 lea.l      12(a7),a7
 [0005f0f4] 4e75                      rts
 
+	.globl Aev_GetAccImg
 Aev_GetAccImg:
 [0005f0f6] 2f0a                      move.l     a2,-(a7)
 [0005f0f8] 4fef ffec                 lea.l      -20(a7),a7
@@ -574,6 +583,7 @@ Aev_GetAccImg_4:
 [0005f346] 245f                      movea.l    (a7)+,a2
 [0005f348] 4e75                      rts
 
+	.globl Aev_GetAccMeta
 Aev_GetAccMeta:
 [0005f34a] 2f0a                      move.l     a2,-(a7)
 [0005f34c] 4fef ffec                 lea.l      -20(a7),a7
@@ -735,6 +745,7 @@ Aev_GetAccMeta_4:
 [0005f56a] 245f                      movea.l    (a7)+,a2
 [0005f56c] 4e75                      rts
 
+	.globl Aev_AccID
 Aev_AccID:
 [0005f56e] 4fef ffe8                 lea.l      -24(a7),a7
 [0005f572] 3f40 0016                 move.w     d0,22(a7)
@@ -782,6 +793,7 @@ Aev_AccID_4:
 [0005f604] 4fef 0018                 lea.l      24(a7),a7
 [0005f608] 4e75                      rts
 
+	.globl Aev_AccAcc
 Aev_AccAcc:
 [0005f60a] 4fef ffe4                 lea.l      -28(a7),a7
 [0005f60e] 3f40 001a                 move.w     d0,26(a7)
@@ -847,6 +859,7 @@ Aev_AccAcc_6:
 [0005f6ea] 4fef 001c                 lea.l      28(a7),a7
 [0005f6ee] 4e75                      rts
 
+	.globl Aev_AccExit
 Aev_AccExit:
 [0005f6f0] 4fef ffe8                 lea.l      -24(a7),a7
 [0005f6f4] 3f40 0016                 move.w     d0,22(a7)
@@ -893,6 +906,7 @@ Aev_AccExit_4:
 [0005f776] 4fef 0018                 lea.l      24(a7),a7
 [0005f77a] 4e75                      rts
 
+	.globl Aev_AccAck
 Aev_AccAck:
 [0005f77c] 4fef ffec                 lea.l      -20(a7),a7
 [0005f780] 3f40 0012                 move.w     d0,18(a7)

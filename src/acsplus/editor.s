@@ -118,6 +118,7 @@ vpos_2:
 		move.l     (a7)+,d3
 		rts
 
+	.globl A_editor
 A_editor:
 		movem.l    d2-d7/a2-a6,-(a7)
 		lea.l      -56(a7),a7
@@ -2238,6 +2239,7 @@ uedit_scroll_2:
 		movem.l    (a7)+,d3-d7/a2-a5
 		rts
 
+	.globl edit_invers
 edit_invers:
 		movem.l    d3-d5/a2-a3,-(a7)
 		movea.l    a0,a2
@@ -3471,6 +3473,7 @@ edit_add_3:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl edit_appline
 edit_appline:
 		move.l     a2,-(a7)
 		movea.l    12(a0),a0
@@ -3493,6 +3496,7 @@ edit_appline_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl edit_free
 edit_free:
 		movem.l    d3/a2-a3,-(a7)
 		movea.l    a0,a2
@@ -4122,6 +4126,7 @@ edit_selectword_7:
 		movem.l    (a7)+,d3-d6/a2-a3
 		rts
 
+	.globl Auo_editor
 Auo_editor:
 		movem.l    d3/a2-a5,-(a7)
 		lea.l      -30(a7),a7
@@ -5318,6 +5323,7 @@ edit_click_4:
 		movem.l    (a7)+,d3-d5/a2-a4
 		rts
 
+	.globl Aus_editor
 Aus_editor:
 		movem.l    a2-a4,-(a7)
 		lea.l      ACSblk,a2
@@ -5689,6 +5695,7 @@ wwputs_2:
 		movem.l    (a7)+,d3-d4/a2-a5
 		rts
 
+	.globl uvprintf
 uvprintf:
 		movem.l    d3/a2-a5,-(a7)
 		movea.l    a0,a2

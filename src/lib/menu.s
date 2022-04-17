@@ -1939,6 +1939,7 @@ Ame_submenu_11:
 [0004e846] 261f                      move.l     (a7)+,d3
 [0004e848] 4e75                      rts
 
+	.globl Ame_popup
 Ame_popup:
 [0004e84a] 2f0a                      move.l     a2,-(a7)
 [0004e84c] 4fef ffd8                 lea.l      -40(a7),a7
@@ -2016,6 +2017,7 @@ Ame_popup_3:
 [0004e968] 245f                      movea.l    (a7)+,a2
 [0004e96a] 4e75                      rts
 
+	.globl Ame_root
 Ame_root:
 [0004e96c] 4fef fff4                 lea.l      -12(a7),a7
 [0004e970] 3f40 000a                 move.w     d0,10(a7)
@@ -2046,6 +2048,7 @@ Ame_root_2:
 [0004e9ce] 4fef 000c                 lea.l      12(a7),a7
 [0004e9d2] 4e75                      rts
 
+	.globl Ame_drop
 Ame_drop:
 [0004e9d4] 4fef ffe8                 lea.l      -24(a7),a7
 [0004e9d8] 2f48 0014                 move.l     a0,20(a7)
@@ -2113,6 +2116,7 @@ Ame_drop_2:
 [0004ea96] 4fef 0018                 lea.l      24(a7),a7
 [0004ea9a] 4e75                      rts
 
+	.globl Ame_key
 Ame_key:
 [0004ea9c] 4fef ffe8                 lea.l      -24(a7),a7
 [0004eaa0] 2f48 0014                 move.l     a0,20(a7)
@@ -2244,6 +2248,7 @@ Ame_key_2:
 [0004ec1e] 4fef 0018                 lea.l      24(a7),a7
 [0004ec22] 4e75                      rts
 
+	.globl Ame_namefix
 Ame_namefix:
 [0004ec24] 4fef ffe4                 lea.l      -28(a7),a7
 [0004ec28] 2f48 0018                 move.l     a0,24(a7)

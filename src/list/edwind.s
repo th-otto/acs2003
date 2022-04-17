@@ -147,6 +147,7 @@ delref_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl del_window
 del_window:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a4
@@ -312,6 +313,7 @@ protodata:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl list_data
 list_data:
 		dc.w $0000
 		dc.w $0000
@@ -582,6 +584,7 @@ protowindow:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl list_window
 list_window:
 		dc.w $0000
 		dc.w $0000

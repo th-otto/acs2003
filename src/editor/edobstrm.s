@@ -152,6 +152,7 @@ edst_ok_1:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl set_str
 set_str:
 		movem.l    a2-a4,-(a7)
 		movea.l    a0,a3

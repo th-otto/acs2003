@@ -269,6 +269,7 @@ find_title_3:
 		movem.l    (a7)+,d3-d6/a2
 		rts
 
+	.globl me_init
 me_init:
 		movem.l    d3-d7/a2-a4,-(a7)
 		movea.l    a0,a3
@@ -496,6 +497,7 @@ me_init_1:
 		movem.l    (a7)+,d3-d7/a2-a4
 		rts
 
+	.globl me_make
 me_make:
 		movem.l    a2-a4,-(a7)
 		subq.w     #4,a7
@@ -987,6 +989,7 @@ obspec_only:
 		jsr        edob_specs
 		rts
 
+	.globl me_service
 me_service:
 		movem.l    d3-d4/a2-a4,-(a7)
 		movea.l    a0,a2

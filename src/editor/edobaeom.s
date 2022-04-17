@@ -247,6 +247,7 @@ edao_list:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl set_aeo
 set_aeo:
 		movem.l    a2-a5,-(a7)
 		lea.l      -36(a7),a7

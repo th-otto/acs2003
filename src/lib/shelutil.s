@@ -1,3 +1,4 @@
+	.globl Ash_error
 Ash_error:
 [0005bb0c] 4fef ff74                 lea.l      -140(a7),a7
 [0005bb10] 3f40 008a                 move.w     d0,138(a7)
@@ -248,6 +249,7 @@ Ash_error_38:
 [0005bdfa] 4fef 008c                 lea.l      140(a7),a7
 [0005bdfe] 4e75                      rts
 
+	.globl Ash_getenv
 Ash_getenv:
 [0005be00] 4fef fff0                 lea.l      -16(a7),a7
 [0005be04] 2f48 000c                 move.l     a0,12(a7)

@@ -112,6 +112,7 @@ dr_3dbut_6:
 		movem.l    (a7)+,d3/a2-a3
 		rts
 
+	.globl A_slider
 A_slider:
 		movem.l    d2-d7/a2-a6,-(a7)
 		lea.l      -32(a7),a7
@@ -875,7 +876,7 @@ sl_calc_5:
 		movem.l    (a7)+,d3-d5/a2-a3
 		rts
 
-Auo_slider_16:
+	.globl Auo_slider
 Auo_slider:
 		movem.l    d3/a2-a5,-(a7)
 		subq.w     #4,a7
@@ -1266,6 +1267,7 @@ sl_bar_5:
 		movem.l    (a7)+,d3-d5/a2-a3
 		rts
 
+	.globl Aus_slider
 Aus_slider:
 		movem.l    d3-d7/a2-a6,-(a7)
 		lea.l      -26(a7),a7

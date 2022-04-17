@@ -1,3 +1,4 @@
+	.globl INuserobj
 INuserobj:
 [000625bc] 2f0a                      move.l     a2,-(a7)
 [000625be] 594f                      subq.w     #4,a7
@@ -366,6 +367,7 @@ INuserobj_3:
 [00062ba0] 245f                      movea.l    (a7)+,a2
 [00062ba2] 4e75                      rts
 
+	.globl TRuserobj
 TRuserobj:
 [00062ba4] 5379 000e 1bfa            subq.w     #1,icn_count
 [00062baa] 6616                      bne.s      TRuserobj_1
@@ -738,6 +740,7 @@ g_stringLen_15:
 [000630ee] 245f                      movea.l    (a7)+,a2
 [000630f0] 4e75                      rts
 
+	.globl Auo_string
 Auo_string:
 [000630f2] 4fef ffea                 lea.l      -22(a7),a7
 [000630f6] 2f48 0012                 move.l     a0,18(a7)
@@ -855,6 +858,7 @@ Auo_string_14:
 [00063226] 4fef 0016                 lea.l      22(a7),a7
 [0006322a] 4e75                      rts
 
+	.globl A_radiobutton
 A_radiobutton:
 [0006322c] 2f02                      move.l     d2,-(a7)
 [0006322e] 2f2f 0008                 move.l     8(a7),-(a7)
@@ -863,6 +867,7 @@ A_radiobutton:
 [0006323a] 241f                      move.l     (a7)+,d2
 [0006323c] 4e75                      rts
 
+	.globl A_checkbox
 A_checkbox:
 [0006323e] 2f02                      move.l     d2,-(a7)
 [00063240] 2f0a                      move.l     a2,-(a7)
@@ -2004,6 +2009,7 @@ A_checkbox_62:
 [00064252] 241f                      move.l     (a7)+,d2
 [00064254] 4e75                      rts
 
+	.globl A_innerframe
 A_innerframe:
 [00064256] 2f02                      move.l     d2,-(a7)
 [00064258] 2f0a                      move.l     a2,-(a7)
@@ -2543,6 +2549,7 @@ A_innerframe_27:
 [00064a1e] 241f                      move.l     (a7)+,d2
 [00064a20] 4e75                      rts
 
+	.globl A_3Dbutton
 A_3Dbutton:
 [00064a22] 2f02                      move.l     d2,-(a7)
 [00064a24] 2f0a                      move.l     a2,-(a7)
@@ -3410,6 +3417,7 @@ A_3Dbutton_78:
 [0006561c] 241f                      move.l     (a7)+,d2
 [0006561e] 4e75                      rts
 
+	.globl A_title
 A_title:
 [00065620] 2f02                      move.l     d2,-(a7)
 [00065622] 2f0a                      move.l     a2,-(a7)

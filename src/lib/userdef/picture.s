@@ -1,3 +1,5 @@
+
+	.globl A_picture
 A_picture:
 [00067ece] 2f02                      move.l     d2,-(a7)
 [00067ed0] 2f0a                      move.l     a2,-(a7)
@@ -532,6 +534,7 @@ make_pic_2:
 [0006863a] 245f                      movea.l    (a7)+,a2
 [0006863c] 4e75                      rts
 
+	.globl Auo_picture
 Auo_picture:
 [0006863e] 4fef ffe2                 lea.l      -30(a7),a7
 [00068642] 2f48 001a                 move.l     a0,26(a7)

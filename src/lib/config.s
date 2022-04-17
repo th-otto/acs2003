@@ -1,3 +1,4 @@
+	.globl Acfg_create
 Acfg_create:
 [00044572] 4fef fff6                 lea.l      -10(a7),a7
 [00044576] 2f48 0006                 move.l     a0,6(a7)
@@ -33,6 +34,7 @@ Acfg_create_2:
 [000445ca] 4fef 000a                 lea.l      10(a7),a7
 [000445ce] 4e75                      rts
 
+	.globl Acfg_delete
 Acfg_delete:
 [000445d0] 514f                      subq.w     #8,a7
 [000445d2] 2f48 0004                 move.l     a0,4(a7)
@@ -60,6 +62,7 @@ Acfg_delete_1:
 [00044610] 504f                      addq.w     #8,a7
 [00044612] 4e75                      rts
 
+	.globl Acfg_flags
 Acfg_flags:
 [00044614] 4fef fff4                 lea.l      -12(a7),a7
 [00044618] 2f48 0008                 move.l     a0,8(a7)
@@ -103,6 +106,7 @@ InitConfigStruct:
 [0004468c] 504f                      addq.w     #8,a7
 [0004468e] 4e75                      rts
 
+	.globl Acfg_createInfo
 Acfg_createInfo:
 [00044690] 594f                      subq.w     #4,a7
 [00044692] 7012                      moveq.l    #18,d0
@@ -125,6 +129,7 @@ Acfg_createInfo_2:
 [000446c0] 584f                      addq.w     #4,a7
 [000446c2] 4e75                      rts
 
+	.globl Acfg_deleteInfo
 Acfg_deleteInfo:
 [000446c4] 594f                      subq.w     #4,a7
 [000446c6] 2e88                      move.l     a0,(a7)
@@ -195,6 +200,7 @@ Acfg_initInfo_3:
 [000447a2] 504f                      addq.w     #8,a7
 [000447a4] 4e75                      rts
 
+	.globl Acfg_copyInfo
 Acfg_copyInfo:
 [000447a6] 514f                      subq.w     #8,a7
 [000447a8] 2f48 0004                 move.l     a0,4(a7)
@@ -237,6 +243,7 @@ Acfg_copyInfo_3:
 [0004481e] 504f                      addq.w     #8,a7
 [00044820] 4e75                      rts
 
+	.globl Acfg_setInfo
 Acfg_setInfo:
 [00044822] 4fef fff4                 lea.l      -12(a7),a7
 [00044826] 2f48 0008                 move.l     a0,8(a7)
@@ -249,6 +256,7 @@ Acfg_setInfo:
 [00044840] 4fef 000c                 lea.l      12(a7),a7
 [00044844] 4e75                      rts
 
+	.globl Acfg_getInfo
 Acfg_getInfo:
 [00044846] 4fef fff4                 lea.l      -12(a7),a7
 [0004484a] 2f48 0008                 move.l     a0,8(a7)
@@ -260,6 +268,7 @@ Acfg_getInfo:
 [00044860] 4fef 000c                 lea.l      12(a7),a7
 [00044864] 4e75                      rts
 
+	.globl Acfg_clear
 Acfg_clear:
 [00044866] 4fef fff4                 lea.l      -12(a7),a7
 [0004486a] 2f48 0008                 move.l     a0,8(a7)
@@ -275,6 +284,7 @@ Acfg_clear:
 [00044890] 4fef 000c                 lea.l      12(a7),a7
 [00044894] 4e75                      rts
 
+	.globl Acfg_clearAllGroups
 Acfg_clearAllGroups:
 [00044896] 4fef fff0                 lea.l      -16(a7),a7
 [0004489a] 2f48 000c                 move.l     a0,12(a7)
@@ -376,6 +386,7 @@ Acfg_clearAllGroups_1:
 [000449cc] 4fef 0010                 lea.l      16(a7),a7
 [000449d0] 4e75                      rts
 
+	.globl Acfg_clearGroup
 Acfg_clearGroup:
 [000449d2] 4fef ffd6                 lea.l      -42(a7),a7
 [000449d6] 2f48 0026                 move.l     a0,38(a7)
@@ -731,6 +742,7 @@ ReadUntilNextGroup_3:
 [00044e44] 4fef 0014                 lea.l      20(a7),a7
 [00044e48] 4e75                      rts
 
+	.globl Acfg_load
 Acfg_load:
 [00044e4a] 4fef ffd0                 lea.l      -48(a7),a7
 [00044e4e] 2f48 002c                 move.l     a0,44(a7)
@@ -1024,6 +1036,7 @@ WriteString_1:
 [00045232] 4fef 000a                 lea.l      10(a7),a7
 [00045236] 4e75                      rts
 
+	.globl Acfg_save
 Acfg_save:
 [00045238] 4fef ffd2                 lea.l      -46(a7),a7
 [0004523c] 2f48 002a                 move.l     a0,42(a7)
@@ -1190,6 +1203,7 @@ Acfg_save_4:
 [0004545a] 4fef 002e                 lea.l      46(a7),a7
 [0004545e] 4e75                      rts
 
+	.globl Acfg_getValue
 Acfg_getValue:
 [00045460] 4fef ffd8                 lea.l      -40(a7),a7
 [00045464] 2f48 0024                 move.l     a0,36(a7)
@@ -1288,6 +1302,7 @@ Acfg_getValue_7:
 [000455a8] 4fef 0028                 lea.l      40(a7),a7
 [000455ac] 4e75                      rts
 
+	.globl Acfg_setValue
 Acfg_setValue:
 [000455ae] 4fef ffd6                 lea.l      -42(a7),a7
 [000455b2] 2f48 0024                 move.l     a0,36(a7)
@@ -1413,6 +1428,7 @@ Acfg_setValue_12:
 [00045744] 4fef 002a                 lea.l      42(a7),a7
 [00045748] 4e75                      rts
 
+	.globl Acfg_clearValue
 Acfg_clearValue:
 [0004574a] 4fef ffe0                 lea.l      -32(a7),a7
 [0004574e] 2f48 001c                 move.l     a0,28(a7)
@@ -1458,6 +1474,7 @@ Acfg_clearValue_3:
 [000457e0] 4fef 0020                 lea.l      32(a7),a7
 [000457e4] 4e75                      rts
 
+	.globl Acfg_getString
 Acfg_getString:
 [000457e6] 514f                      subq.w     #8,a7
 [000457e8] 2f48 0004                 move.l     a0,4(a7)
@@ -1471,6 +1488,7 @@ Acfg_getString:
 [00045806] 504f                      addq.w     #8,a7
 [00045808] 4e75                      rts
 
+	.globl Acfg_getLong
 Acfg_getLong:
 [0004580a] 4fef dff8                 lea.l      -8200(a7),a7
 [0004580e] 2f48 2004                 move.l     a0,8196(a7)
@@ -1485,6 +1503,7 @@ Acfg_getLong:
 [00045830] 4fef 2008                 lea.l      8200(a7),a7
 [00045834] 4e75                      rts
 
+	.globl Acfg_setLong
 Acfg_setLong:
 [00045836] 4fef ffde                 lea.l      -34(a7),a7
 [0004583a] 2f48 001e                 move.l     a0,30(a7)
@@ -1505,6 +1524,7 @@ Acfg_setLong:
 [00045876] 4fef 0022                 lea.l      34(a7),a7
 [0004587a] 4e75                      rts
 
+	.globl Acfg_getChar
 Acfg_getChar:
 [0004587c] 4fef ffc4                 lea.l      -60(a7),a7
 [00045880] 2f48 0038                 move.l     a0,56(a7)
@@ -1519,6 +1539,7 @@ Acfg_getChar:
 [0004589e] 4fef 003c                 lea.l      60(a7),a7
 [000458a2] 4e75                      rts
 
+	.globl Acfg_setChar
 Acfg_setChar:
 [000458a4] 4fef fff4                 lea.l      -12(a7),a7
 [000458a8] 2f48 0008                 move.l     a0,8(a7)
@@ -1536,6 +1557,7 @@ Acfg_setChar:
 [000458d2] 4fef 000c                 lea.l      12(a7),a7
 [000458d6] 4e75                      rts
 
+	.globl Acfg_getBool
 Acfg_getBool:
 [000458d8] 4fef ffee                 lea.l      -18(a7),a7
 [000458dc] 2f48 000e                 move.l     a0,14(a7)
@@ -1560,6 +1582,7 @@ Acfg_getBool_2:
 [00045914] 4fef 0012                 lea.l      18(a7),a7
 [00045918] 4e75                      rts
 
+	.globl Acfg_setBool
 Acfg_setBool:
 [0004591a] 4fef fff6                 lea.l      -10(a7),a7
 [0004591e] 2f48 0006                 move.l     a0,6(a7)
@@ -1592,6 +1615,7 @@ Acfg_setBool_4:
 [0004596a] 4fef 000a                 lea.l      10(a7),a7
 [0004596e] 4e75                      rts
 
+	.globl Acfg_isChanged
 Acfg_isChanged:
 [00045970] 594f                      subq.w     #4,a7
 [00045972] 2e88                      move.l     a0,(a7)
@@ -1600,6 +1624,7 @@ Acfg_isChanged:
 [0004597a] 584f                      addq.w     #4,a7
 [0004597c] 4e75                      rts
 
+	.globl Acfg_grpAnzahl
 Acfg_grpAnzahl:
 [0004597e] 594f                      subq.w     #4,a7
 [00045980] 2e88                      move.l     a0,(a7)
@@ -1608,6 +1633,7 @@ Acfg_grpAnzahl:
 [00045988] 584f                      addq.w     #4,a7
 [0004598a] 4e75                      rts
 
+	.globl Acfg_grpName
 Acfg_grpName:
 [0004598c] 4fef fff2                 lea.l      -14(a7),a7
 [00045990] 2f48 000a                 move.l     a0,10(a7)
@@ -1636,6 +1662,7 @@ Acfg_grpName_2:
 [000459d4] 4fef 000e                 lea.l      14(a7),a7
 [000459d8] 4e75                      rts
 
+	.globl Acfg_strAnzahl
 Acfg_strAnzahl:
 [000459da] 4fef fff6                 lea.l      -10(a7),a7
 [000459de] 2f48 0006                 move.l     a0,6(a7)
@@ -1661,6 +1688,7 @@ Acfg_strAnzahl_2:
 [00045a16] 4fef 000a                 lea.l      10(a7),a7
 [00045a1a] 4e75                      rts
 
+	.globl Acfg_isGroupPresent
 Acfg_isGroupPresent:
 [00045a1c] 4fef ffe2                 lea.l      -30(a7),a7
 [00045a20] 2f48 001a                 move.l     a0,26(a7)
@@ -1684,6 +1712,7 @@ Acfg_isGroupPresent_2:
 [00045a5a] 4fef 001e                 lea.l      30(a7),a7
 [00045a5e] 4e75                      rts
 
+	.globl Acfg_isStringPresent
 Acfg_isStringPresent:
 [00045a60] 4fef ffe2                 lea.l      -30(a7),a7
 [00045a64] 2f48 001a                 move.l     a0,26(a7)
@@ -1707,6 +1736,7 @@ Acfg_isStringPresent_2:
 [00045aa0] 4fef 001e                 lea.l      30(a7),a7
 [00045aa4] 4e75                      rts
 
+	.globl Acfg_strName
 Acfg_strName:
 [00045aa6] 4fef ffe4                 lea.l      -28(a7),a7
 [00045aaa] 2f48 0018                 move.l     a0,24(a7)
@@ -1766,6 +1796,7 @@ Acfg_strName_1:
 [00045b6a] 4fef 001c                 lea.l      28(a7),a7
 [00045b6e] 4e75                      rts
 
+	.globl Acfg_strValue
 Acfg_strValue:
 [00045b70] 4fef ffe4                 lea.l      -28(a7),a7
 [00045b74] 2f48 0018                 move.l     a0,24(a7)
@@ -1832,6 +1863,7 @@ Acfg_strValue_1:
 [00045c54] 4fef 001c                 lea.l      28(a7),a7
 [00045c58] 4e75                      rts
 
+	.globl Acfg_strIsComment
 Acfg_strIsComment:
 [00045c5a] 4fef ffea                 lea.l      -22(a7),a7
 [00045c5e] 2f48 0012                 move.l     a0,18(a7)
@@ -1893,6 +1925,7 @@ Acfg_strIsComment_1:
 [00045d10] 4fef 0016                 lea.l      22(a7),a7
 [00045d14] 4e75                      rts
 
+	.globl Acfg_clearHeader
 Acfg_clearHeader:
 [00045d16] 4fef fff6                 lea.l      -10(a7),a7
 [00045d1a] 2f48 0006                 move.l     a0,6(a7)
@@ -1923,6 +1956,7 @@ Acfg_clearHeader_1:
 [00045d6c] 4fef 000a                 lea.l      10(a7),a7
 [00045d70] 4e75                      rts
 
+	.globl Acfg_headAnzahl
 Acfg_headAnzahl:
 [00045d72] 594f                      subq.w     #4,a7
 [00045d74] 2e88                      move.l     a0,(a7)
@@ -1931,6 +1965,7 @@ Acfg_headAnzahl:
 [00045d7c] 584f                      addq.w     #4,a7
 [00045d7e] 4e75                      rts
 
+	.globl Acfg_setHeader
 Acfg_setHeader:
 [00045d80] 4fef ffec                 lea.l      -20(a7),a7
 [00045d84] 2f48 0010                 move.l     a0,16(a7)
@@ -1984,6 +2019,7 @@ Acfg_setHeader_2:
 [00045e1c] 4fef 0014                 lea.l      20(a7),a7
 [00045e20] 4e75                      rts
 
+	.globl Acfg_getHeader
 Acfg_getHeader:
 [00045e22] 4fef fff2                 lea.l      -14(a7),a7
 [00045e26] 2f48 000a                 move.l     a0,10(a7)
@@ -2015,6 +2051,7 @@ Acfg_getHeader_1:
 [00045e76] 4fef 000e                 lea.l      14(a7),a7
 [00045e7a] 4e75                      rts
 
+	.globl Acfg_isCfgfile
 Acfg_isCfgfile:
 [00045e7c] 4fef fff4                 lea.l      -12(a7),a7
 [00045e80] 2f48 0008                 move.l     a0,8(a7)

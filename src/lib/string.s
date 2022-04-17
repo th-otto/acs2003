@@ -1,3 +1,4 @@
+	.globl Ast_create
 Ast_create:
 [0004643c] 4fef fff4                 lea.l      -12(a7),a7
 [00046440] 2f48 0008                 move.l     a0,8(a7)
@@ -32,6 +33,7 @@ Ast_create_3:
 [00046496] 4fef 000c                 lea.l      12(a7),a7
 [0004649a] 4e75                      rts
 
+	.globl Ast_delete
 Ast_delete:
 [0004649c] 594f                      subq.w     #4,a7
 [0004649e] 2e88                      move.l     a0,(a7)
@@ -44,6 +46,7 @@ Ast_delete_1:
 [000464b2] 584f                      addq.w     #4,a7
 [000464b4] 4e75                      rts
 
+	.globl Ach_toupper
 Ach_toupper:
 [000464b6] 554f                      subq.w     #2,a7
 [000464b8] 1e80                      move.b     d0,(a7)
@@ -53,6 +56,7 @@ Ach_toupper:
 [000464c4] 544f                      addq.w     #2,a7
 [000464c6] 4e75                      rts
 
+	.globl Ach_tolower
 Ach_tolower:
 [000464c8] 554f                      subq.w     #2,a7
 [000464ca] 1e80                      move.b     d0,(a7)
@@ -62,6 +66,7 @@ Ach_tolower:
 [000464d6] 544f                      addq.w     #2,a7
 [000464d8] 4e75                      rts
 
+	.globl Ast_toupper
 Ast_toupper:
 [000464da] 514f                      subq.w     #8,a7
 [000464dc] 2f48 0004                 move.l     a0,4(a7)
@@ -90,6 +95,7 @@ Ast_toupper_2:
 [00046516] 504f                      addq.w     #8,a7
 [00046518] 4e75                      rts
 
+	.globl Ast_tolower
 Ast_tolower:
 [0004651a] 514f                      subq.w     #8,a7
 [0004651c] 2f48 0004                 move.l     a0,4(a7)
@@ -118,6 +124,7 @@ Ast_tolower_2:
 [00046556] 504f                      addq.w     #8,a7
 [00046558] 4e75                      rts
 
+	.globl Ast_ltrim
 Ast_ltrim:
 [0004655a] 4fef fff4                 lea.l      -12(a7),a7
 [0004655e] 2f48 0008                 move.l     a0,8(a7)
@@ -164,6 +171,7 @@ Ast_ltrim_5:
 [000465c0] 4fef 000c                 lea.l      12(a7),a7
 [000465c4] 4e75                      rts
 
+	.globl Ast_rtrim
 Ast_rtrim:
 [000465c6] 514f                      subq.w     #8,a7
 [000465c8] 2f48 0004                 move.l     a0,4(a7)
@@ -221,6 +229,7 @@ Ast_rtrim_10:
 [00046638] 504f                      addq.w     #8,a7
 [0004663a] 4e75                      rts
 
+	.globl Ast_alltrim
 Ast_alltrim:
 [0004663c] 594f                      subq.w     #4,a7
 [0004663e] 2e88                      move.l     a0,(a7)
@@ -236,6 +245,7 @@ Ast_alltrim_2:
 [00046656] 584f                      addq.w     #4,a7
 [00046658] 4e75                      rts
 
+	.globl Ast_cmp
 Ast_cmp:
 [0004665a] 4fef fff0                 lea.l      -16(a7),a7
 [0004665e] 2f48 000c                 move.l     a0,12(a7)
@@ -300,6 +310,7 @@ Ast_cmp_7:
 [000466e4] 4fef 0010                 lea.l      16(a7),a7
 [000466e8] 4e75                      rts
 
+	.globl Ast_icmp
 Ast_icmp:
 [000466ea] 4fef ffee                 lea.l      -18(a7),a7
 [000466ee] 2f48 000e                 move.l     a0,14(a7)
@@ -370,6 +381,7 @@ Ast_icmp_7:
 [00046792] 4fef 0012                 lea.l      18(a7),a7
 [00046796] 4e75                      rts
 
+	.globl Ast_ncmp
 Ast_ncmp:
 [00046798] 4fef ffec                 lea.l      -20(a7),a7
 [0004679c] 2f48 0010                 move.l     a0,16(a7)
@@ -446,6 +458,7 @@ Ast_ncmp_7:
 [00046846] 4fef 0014                 lea.l      20(a7),a7
 [0004684a] 4e75                      rts
 
+	.globl Ast_incmp
 Ast_incmp:
 [0004684c] 4fef ffea                 lea.l      -22(a7),a7
 [00046850] 2f48 0012                 move.l     a0,18(a7)
@@ -528,6 +541,7 @@ Ast_incmp_7:
 [00046918] 4fef 0016                 lea.l      22(a7),a7
 [0004691c] 4e75                      rts
 
+	.globl Ast_istr
 Ast_istr:
 [0004691e] 4fef ffec                 lea.l      -20(a7),a7
 [00046922] 2f48 0010                 move.l     a0,16(a7)
@@ -591,6 +605,7 @@ Ast_istr_9:
 [000469ca] 4fef 0014                 lea.l      20(a7),a7
 [000469ce] 4e75                      rts
 
+	.globl Ach_isWhite
 Ach_isWhite:
 [000469d0] 554f                      subq.w     #2,a7
 [000469d2] 1e80                      move.b     d0,(a7)
@@ -610,6 +625,7 @@ Ach_isWhite_2:
 [000469f2] 544f                      addq.w     #2,a7
 [000469f4] 4e75                      rts
 
+	.globl Ast_isEmpty
 Ast_isEmpty:
 [000469f6] 514f                      subq.w     #8,a7
 [000469f8] 2f48 0004                 move.l     a0,4(a7)
@@ -648,6 +664,7 @@ Ast_isEmpty_6:
 [00046a36] 504f                      addq.w     #8,a7
 [00046a38] 4e75                      rts
 
+	.globl Ast_add
 Ast_add:
 [00046a3a] 4fef ffe4                 lea.l      -28(a7),a7
 [00046a3e] 3f40 001a                 move.w     d0,26(a7)
@@ -720,6 +737,7 @@ Ast_add_2:
 [00046b22] 4fef 001c                 lea.l      28(a7),a7
 [00046b26] 4e75                      rts
 
+	.globl Ast_adl
 Ast_adl:
 [00046b28] 4fef fff4                 lea.l      -12(a7),a7
 [00046b2c] 2f48 0008                 move.l     a0,8(a7)
@@ -751,6 +769,7 @@ Ast_adl_2:
 [00046b78] 4fef 000c                 lea.l      12(a7),a7
 [00046b7c] 4e75                      rts
 
+	.globl Ast_adr
 Ast_adr:
 [00046b7e] 4fef fff4                 lea.l      -12(a7),a7
 [00046b82] 2f48 0008                 move.l     a0,8(a7)
@@ -787,6 +806,7 @@ Ast_adr_2:
 [00046be2] 4fef 000c                 lea.l      12(a7),a7
 [00046be6] 4e75                      rts
 
+	.globl Ast_adc
 Ast_adc:
 [00046be8] 4fef fff0                 lea.l      -16(a7),a7
 [00046bec] 2f48 000c                 move.l     a0,12(a7)
@@ -824,6 +844,7 @@ Ast_adc_2:
 [00046c48] 4fef 0010                 lea.l      16(a7),a7
 [00046c4c] 4e75                      rts
 
+	.globl Ast_filter
 Ast_filter:
 [00046c4e] 4fef fff0                 lea.l      -16(a7),a7
 [00046c52] 2f48 000c                 move.l     a0,12(a7)
@@ -901,6 +922,7 @@ Ast_filter_3:
 [00046d00] 4fef 0010                 lea.l      16(a7),a7
 [00046d04] 4e75                      rts
 
+	.globl Ast_count
 Ast_count:
 [00046d06] 4fef fff0                 lea.l      -16(a7),a7
 [00046d0a] 2f48 000c                 move.l     a0,12(a7)
@@ -1040,6 +1062,7 @@ strfsearchafterwc_2:
 [00046e78] 4fef 001e                 lea.l      30(a7),a7
 [00046e7c] 4e75                      rts
 
+	.glob Ast_fcmp
 Ast_fcmp:
 [00046e7e] 4fef ffd0                 lea.l      -48(a7),a7
 [00046e82] 2f48 002c                 move.l     a0,44(a7)
@@ -1274,6 +1297,7 @@ Ast_fcmp_3:
 [000470d0] 4fef 0030                 lea.l      48(a7),a7
 [000470d4] 4e75                      rts
 
+	.globl Ast_countASCIZZ
 Ast_countASCIZZ:
 [000470d6] 4fef fff6                 lea.l      -10(a7),a7
 [000470da] 2f48 0006                 move.l     a0,6(a7)
@@ -1292,6 +1316,7 @@ Ast_countASCIZZ_1:
 [00047102] 4fef 000a                 lea.l      10(a7),a7
 [00047106] 4e75                      rts
 
+	.globl Ast_splitASCIIZZ
 Ast_splitASCIIZZ:
 [00047108] 4fef ffee                 lea.l      -18(a7),a7
 [0004710c] 2f48 000e                 move.l     a0,14(a7)
@@ -1337,6 +1362,7 @@ Ast_splitASCIIZZ_2:
 [0004717e] 4fef 0012                 lea.l      18(a7),a7
 [00047182] 4e75                      rts
 
+	.globl Ast_mergeASCIIZZ
 Ast_mergeASCIIZZ:
 [00047184] 4fef ffe4                 lea.l      -28(a7),a7
 [00047188] 2f48 0018                 move.l     a0,24(a7)
@@ -1559,6 +1585,7 @@ Ast_mergeASCIIZZ_11:
 [0004740a] 4fef 001c                 lea.l      28(a7),a7
 [0004740e] 4e75                      rts
 
+	.globl Ast_deleteAry
 Ast_deleteAry:
 [00047410] 4fef fff4                 lea.l      -12(a7),a7
 [00047414] 2f48 0008                 move.l     a0,8(a7)
@@ -1581,6 +1608,7 @@ Ast_deleteAry_1:
 [00047448] 4fef 000c                 lea.l      12(a7),a7
 [0004744c] 4e75                      rts
 
+	.globl Ast_copy
 Ast_copy:
 [0004744e] 4fef fff2                 lea.l      -14(a7),a7
 [00047452] 2f48 000a                 move.l     a0,10(a7)
@@ -1622,6 +1650,7 @@ Ast_copy_5:
 [000474ba] 4fef 000e                 lea.l      14(a7),a7
 [000474be] 4e75                      rts
 
+	.globl Ast_reverse
 Ast_reverse:
 [000474c0] 4fef fff0                 lea.l      -16(a7),a7
 [000474c4] 2f48 000c                 move.l     a0,12(a7)
@@ -1659,6 +1688,7 @@ Ast_reverse_4:
 
 	.data
 
+	.globl null_string
 null_string:
 [000e05da]                           dc.w $002a
 [000e05dc]                           dc.w $003f

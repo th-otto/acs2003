@@ -1,5 +1,6 @@
 		.text
 
+	.globl ed_abort
 ed_abort:
 		movea.l    ACSblk,a0
 		movea.l    600(a0),a0
@@ -125,6 +126,7 @@ ed_wabort_5:
 		movem.l    (a7)+,d3/a2-a4
 		rts
 
+	.globl edob_refs
 edob_refs:
 		movem.l    a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -161,6 +163,7 @@ edob_refs_1:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl change_work
 change_work:
 		movem.l    d3/a2-a6,-(a7)
 		lea.l      -268(a7),a7
@@ -344,6 +347,7 @@ change_work_14:
 		movem.l    (a7)+,d3/a2-a6
 		rts
 
+	.globl edob_aflags
 edob_aflags:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -378,6 +382,7 @@ edob_aflags_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl edob_hide
 edob_hide:
 		movem.l    d3-d4/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -419,6 +424,7 @@ edob_hide_1:
 		movem.l    (a7)+,d3-d4/a2-a4
 		rts
 
+	.globl set_userdata
 set_userdata:
 		movem.l    d3-d4/a2-a4,-(a7)
 		movea.l    a0,a4
@@ -460,6 +466,7 @@ set_userdata_2:
 		movem.l    (a7)+,d3-d4/a2-a4
 		rts
 
+	.globl edob_specs
 edob_specs:
 		movem.l    a2-a5,-(a7)
 		lea.l      -82(a7),a7
@@ -594,6 +601,7 @@ edob_specs_1:
 		movem.l    (a7)+,a2-a5
 		rts
 
+	.globl open_it
 open_it:
 		movem.l    d3-d4/a2-a5,-(a7)
 		movea.l    ACSblk,a0
@@ -692,6 +700,7 @@ open_it_8:
 		movem.l    (a7)+,d3-d4/a2-a5
 		rts
 
+	.globl find_papa
 find_papa:
 		movem.l    d3-d4/a2,-(a7)
 		movea.l    a0,a2
@@ -726,6 +735,7 @@ find_papa_2:
 		movem.l    (a7)+,d3-d4/a2
 		rts
 
+	.globl edob_left
 edob_left:
 		movem.l    d3-d4/a2-a3,-(a7)
 		movea.l    ACSblk,a0
@@ -769,6 +779,7 @@ edob_left:
 		movem.l    (a7)+,d3-d4/a2-a3
 		rts
 
+	.globl edob_right
 edob_right:
 		movem.l    d3-d6/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -826,6 +837,7 @@ edob_right:
 		movem.l    (a7)+,d3-d6/a2-a4
 		rts
 
+	.globl edob_center
 edob_center:
 		movem.l    d3-d6/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -884,6 +896,7 @@ edob_center:
 		movem.l    (a7)+,d3-d6/a2-a4
 		rts
 
+	.globl edob_horfill
 edob_horfill:
 		movem.l    d3-d6/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -965,6 +978,7 @@ edob_horfill:
 		movem.l    (a7)+,d3-d6/a2-a4
 		rts
 
+	.globl edob_top
 edob_top:
 		movem.l    d3-d5/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -1007,6 +1021,7 @@ edob_top:
 		movem.l    (a7)+,d3-d5/a2-a4
 		rts
 
+	.globl edob_bottom
 edob_bottom:
 		movem.l    d3-d6/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -1064,6 +1079,7 @@ edob_bottom:
 		movem.l    (a7)+,d3-d6/a2-a4
 		rts
 
+	.globl edob_mid
 edob_mid:
 		movem.l    d3-d6/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -1122,6 +1138,7 @@ edob_mid:
 		movem.l    (a7)+,d3-d6/a2-a4
 		rts
 
+	.globl edob_verfill
 edob_verfill:
 		movem.l    d3-d6/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -1203,6 +1220,7 @@ edob_verfill:
 		movem.l    (a7)+,d3-d6/a2-a4
 		rts
 
+	.globl edob_up
 edob_up:
 		movem.l    d3-d7/a2-a4,-(a7)
 		movea.l    ACSblk,a0
@@ -1296,6 +1314,7 @@ edob_up_1:
 		movem.l    (a7)+,d3-d7/a2-a4
 		rts
 
+	.globl edob_down
 edob_down:
 		movem.l    d3-d7/a2-a3,-(a7)
 		movea.l    ACSblk,a0
@@ -1384,6 +1403,7 @@ edob_down_1:
 		movem.l    (a7)+,d3-d7/a2-a3
 		rts
 
+	.globl sort
 sort:
 		movem.l    d3-d7/a2-a4,-(a7)
 		subq.w     #4,a7
@@ -1575,6 +1595,7 @@ sort_1:
 		movem.l    (a7)+,d3-d7/a2-a4
 		rts
 
+	.globl edob_sortxy
 edob_sortxy:
 		moveq.l    #1,d0
 		movea.l    ACSblk,a0
@@ -1582,6 +1603,7 @@ edob_sortxy:
 		bsr        sort
 		rts
 
+	.globl edob_sortyx
 edob_sortyx:
 		clr.w      d0
 		movea.l    ACSblk,a0
@@ -1589,6 +1611,7 @@ edob_sortyx:
 		bsr        sort
 		rts
 
+	.globl edob_lock
 edob_lock:
 		movem.l    d3-d4/a2-a3,-(a7)
 		movea.l    ACSblk,a0
@@ -1622,6 +1645,7 @@ edob_lock:
 		movem.l    (a7)+,d3-d4/a2-a3
 		rts
 
+	.globl edob_unlock
 edob_unlock:
 		movem.l    d3-d4/a2-a3,-(a7)
 		movea.l    ACSblk,a0
@@ -1655,6 +1679,7 @@ edob_unlock:
 		movem.l    (a7)+,d3-d4/a2-a3
 		rts
 
+	.globl edob_unhide
 edob_unhide:
 		movem.l    d3-d6/a2-a5,-(a7)
 		movea.l    ACSblk,a0
@@ -1731,6 +1756,7 @@ edob_unhide_1:
 		movem.l    (a7)+,d3-d6/a2-a5
 		rts
 
+	.globl edob_pos
 edob_pos:
 		movem.l    d3-d7/a2-a5,-(a7)
 		lea.l      -10(a7),a7
@@ -2172,6 +2198,7 @@ edob_pos_1:
 		movem.l    (a7)+,d3-d7/a2-a5
 		rts
 
+	.globl edob_resetref
 edob_resetref:
 		movem.l    d3-d4/a2-a4,-(a7)
 		subq.w     #4,a7
@@ -2252,6 +2279,7 @@ edob_resetref_1:
 		movem.l    (a7)+,d3-d4/a2-a4
 		rts
 
+	.globl oe_beself
 oe_beself:
 		movem.l    d3/a2-a3,-(a7)
 		lea.l      -10(a7),a7
@@ -2277,6 +2305,7 @@ oe_beself:
 		movem.l    (a7)+,d3/a2-a3
 		rts
 
+	.globl oe_colsel
 oe_colsel:
 		movem.l    d3-d5/a2-a3,-(a7)
 		subq.w     #8,a7

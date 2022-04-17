@@ -1,3 +1,5 @@
+
+	.globl Ax_mterm
 Ax_mterm:
 [000713c0] 2f0a                      move.l     a2,-(a7)
 [000713c2] 2f0b                      move.l     a3,-(a7)
@@ -25,6 +27,7 @@ Ax_mterm_1:
 [00071404] 245f                      movea.l    (a7)+,a2
 [00071406] 4e75                      rts
 
+	.globl Ash_module
 Ash_module:
 [00071408] 48e7 183c                 movem.l    d3-d4/a2-a5,-(a7)
 [0007140c] 2648                      movea.l    a0,a3
@@ -1322,6 +1325,7 @@ funcKeytab:
 [000e4270]                           dc.w $0000
 funcAnzKeytab:
 [000e4272]                           dc.w $0001
+	.globl funcs
 funcs:
 [000e4274] 000e32fc                  dc.l funcAbp
 [000e4278] 000e3302                  dc.l funcAnzAbp
@@ -1373,9 +1377,11 @@ funcs:
 [000e4330] 000e4272                  dc.l funcAnzKeytab
 [000e4334] 000e41c8                  dc.l funcMtAes
 [000e4338] 000e41ce                  dc.l funcAnzMtAes
+	.globl funcsAnz
 funcsAnz:
 [000e433c]                           dc.w $0000
 [000e433e]                           dc.w $0019
+	.globl ACS233
 ACS233:
 [000e4340] 00055e68                  dc.l Awi_wid
 [000e4344] 00055e8c                  dc.l Awi_root
@@ -1580,6 +1586,7 @@ ACS233:
 [000e4660] 000715ea                  dc.l noop
 [000e4664] 000715ea                  dc.l noop
 [000e4668] 000715ea                  dc.l noop
+	.globl ACS230
 ACS230:
 [000e466c] 00055e68                  dc.l Awi_wid
 [000e4670] 00055e8c                  dc.l Awi_root

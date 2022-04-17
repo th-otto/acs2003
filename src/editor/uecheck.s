@@ -42,6 +42,7 @@ do3d_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl init_check
 init_check:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -503,6 +504,7 @@ A_INNERFRAME03:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl ED_CHECKBOX
 ED_CHECKBOX:
 		dc.w $ffff
 		dc.w $0001

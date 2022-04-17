@@ -1,3 +1,4 @@
+
 boxed_insert:
 [000687b6] 2f0a                      move.l     a2,-(a7)
 [000687b8] 4fef fed8                 lea.l      -296(a7),a7
@@ -1600,6 +1601,7 @@ boxed_charlist_2:
 [00069b48] 4fef 0014                 lea.l      20(a7),a7
 [00069b4c] 4e75                      rts
 
+	.globl Aus_boxed
 Aus_boxed:
 [00069b4e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00069b54] 3028 0260                 move.w     608(a0),d0
@@ -1610,6 +1612,7 @@ Aus_boxed:
 [00069b6c] 4eb9 0006 9b74            jsr        Aus_objboxed
 [00069b72] 4e75                      rts
 
+	.globl Aus_objboxed
 Aus_objboxed:
 [00069b74] 2f0a                      move.l     a2,-(a7)
 [00069b76] 4fef ff94                 lea.l      -108(a7),a7
@@ -1986,7 +1989,7 @@ Aus_objboxed_3:
 [0006a064] 245f                      movea.l    (a7)+,a2
 [0006a066] 4e75                      rts
 
-Auo_boxed_11:
+	.globl Auo_boxed
 Auo_boxed:
 [0006a068] 2f0a                      move.l     a2,-(a7)
 [0006a06a] 4fef ffb4                 lea.l      -76(a7),a7
@@ -3231,6 +3234,7 @@ Auo_boxed_20:
 [0006afe8] 4e75                      rts
 Auo_boxed_13:
 
+	.globl A_boxed
 A_boxed:
 [0006afea] 2f02                      move.l     d2,-(a7)
 [0006afec] 2f0a                      move.l     a2,-(a7)

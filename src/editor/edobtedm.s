@@ -655,6 +655,7 @@ edte_ok_4:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl set_ted
 set_ted:
 		movem.l    d3/a2-a5,-(a7)
 		movea.l    a0,a3

@@ -1,3 +1,4 @@
+	.globl Ash_thermometer
 Ash_thermometer:
 [0005be80] 2f0a                      move.l     a2,-(a7)
 [0005be82] 4fef ffea                 lea.l      -22(a7),a7
@@ -1228,6 +1229,7 @@ _04_ThermTObj:
 [000e138c]                           dc.w $0200
 [000e138e]                           dc.w $0005
 [000e1390]                           dc.w $0001
+	.globl ThermWind
 ThermWind:
 [000e1392]                           dc.w $0000
 [000e1394]                           dc.w $0000

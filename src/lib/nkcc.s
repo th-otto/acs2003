@@ -1,3 +1,4 @@
+	.globl nkc_gemks2n
 nkc_gemks2n:
 [00044284] 594f                      subq.w     #4,a7
 [00044286] 3f40 0002                 move.w     d0,2(a7)
@@ -21,6 +22,7 @@ nkc_gemks2n:
 [000442be] 584f                      addq.w     #4,a7
 [000442c0] 4e75                      rts
 
+	.globl nkc_gem2n
 nkc_gem2n:
 [000442c2] 554f                      subq.w     #2,a7
 [000442c4] 3e80                      move.w     d0,(a7)
@@ -30,6 +32,7 @@ nkc_gem2n:
 [000442d2] 544f                      addq.w     #2,a7
 [000442d4] 4e75                      rts
 
+	.globl nkc_n2gemks
 nkc_n2gemks:
 [000442d6] 4fef fff2                 lea.l      -14(a7),a7
 [000442da] 3f40 000c                 move.w     d0,12(a7)
@@ -61,6 +64,7 @@ nkc_n2gemks_2:
 [0004432a] 4fef 000e                 lea.l      14(a7),a7
 [0004432e] 4e75                      rts
 
+	.globl nkc_n2gem
 nkc_n2gem:
 [00044330] 5d4f                      subq.w     #6,a7
 [00044332] 3f40 0004                 move.w     d0,4(a7)
@@ -76,6 +80,7 @@ nkc_n2gem:
 [00044356] 5c4f                      addq.w     #6,a7
 [00044358] 4e75                      rts
 
+	.globl nkc_n2kstate
 nkc_n2kstate:
 [0004435a] 554f                      subq.w     #2,a7
 [0004435c] 3e80                      move.w     d0,(a7)
@@ -87,6 +92,7 @@ nkc_n2kstate:
 [00044370] 544f                      addq.w     #2,a7
 [00044372] 4e75                      rts
 
+	.globl nkc_kstate
 nkc_kstate:
 [00044374] 594f                      subq.w     #4,a7
 [00044376] 2039 000e 056e            move.l     pshift,d0
@@ -109,6 +115,7 @@ nkc_kstate_1:
 [000443b4] 584f                      addq.w     #4,a7
 [000443b6] 4e75                      rts
 
+	.globl nkc_cmp
 nkc_cmp:
 [000443b8] 4fef fff6                 lea.l      -10(a7),a7
 [000443bc] 3f40 0008                 move.w     d0,8(a7)
@@ -294,6 +301,7 @@ nkc_cmp_2:
 [00044568] 4fef 000a                 lea.l      10(a7),a7
 [0004456c] 4e75                      rts
 
+	.globl nkc_exit
 nkc_exit:
 [0004456e] 4240                      clr.w      d0
 [00044570] 4e75                      rts

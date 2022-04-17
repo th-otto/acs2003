@@ -255,6 +255,7 @@ preset_it_5:
 		movem.l    (a7)+,d3-d5/a2
 		rts
 
+	.globl set_aflags
 set_aflags:
 		movem.l    d3-d7/a2-a5,-(a7)
 		subq.w     #2,a7

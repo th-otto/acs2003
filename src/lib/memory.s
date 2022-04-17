@@ -1,3 +1,4 @@
+	.globl INmemory
 INmemory:
 [0004c4be] 554f                      subq.w     #2,a7
 [0004c4c0] 3039 000e 0898            move.w     MemInit,d0
@@ -61,6 +62,7 @@ INmemory_2:
 [0004c564] 544f                      addq.w     #2,a7
 [0004c566] 4e75                      rts
 
+	.globl TRmemory
 TRmemory:
 [0004c568] 4fef fff6                 lea.l      -10(a7),a7
 [0004c56c] 5379 000e 0898            subq.w     #1,MemInit
@@ -112,6 +114,7 @@ TRmemory_2:
 [0004c602] 4fef 000a                 lea.l      10(a7),a7
 [0004c606] 4e75                      rts
 
+	.globl Ax_malloc
 Ax_malloc:
 [0004c608] 514f                      subq.w     #8,a7
 [0004c60a] 2f40 0004                 move.l     d0,4(a7)
@@ -180,6 +183,7 @@ _malloc_5:
 [0004c6c4] 504f                      addq.w     #8,a7
 [0004c6c6] 4e75                      rts
 
+	.globl Ax_ifree
 Ax_ifree:
 [0004c6c8] 514f                      subq.w     #8,a7
 [0004c6ca] 2f48 0004                 move.l     a0,4(a7)
@@ -259,6 +263,7 @@ Ax_ifree_3:
 [0004c7c4] 504f                      addq.w     #8,a7
 [0004c7c6] 4e75                      rts
 
+	.globl Ax_free
 Ax_free:
 [0004c7c8] 4fef fff4                 lea.l      -12(a7),a7
 [0004c7cc] 2f48 0008                 move.l     a0,8(a7)
@@ -348,6 +353,7 @@ Ax_free_3:
 [0004c8f0] 4fef 000c                 lea.l      12(a7),a7
 [0004c8f4] 4e75                      rts
 
+	.globl Ax_release
 Ax_release:
 [0004c8f6] 594f                      subq.w     #4,a7
 [0004c8f8] 605e                      bra.s      Ax_release_1
@@ -384,6 +390,7 @@ Ax_release_5:
 [0004c95a] 584f                      addq.w     #4,a7
 [0004c95c] 4e75                      rts
 
+	.globl Ax_glmalloc
 Ax_glmalloc:
 [0004c95e] 4fef fff6                 lea.l      -10(a7),a7
 [0004c962] 2f40 0006                 move.l     d0,6(a7)
@@ -422,6 +429,7 @@ Ax_glmalloc_4:
 [0004c9d4] 4fef 000a                 lea.l      10(a7),a7
 [0004c9d8] 4e75                      rts
 
+	.globl Ax_glfree
 Ax_glfree:
 [0004c9da] 594f                      subq.w     #4,a7
 [0004c9dc] 2e88                      move.l     a0,(a7)
@@ -453,6 +461,7 @@ handle_sigbus:
 [0004ca2e] 241f                      move.l     (a7)+,d2
 [0004ca30] 4e75                      rts
 
+	.globl Ax_memCheck
 Ax_memCheck:
 [0004ca32] 4fef ffe2                 lea.l      -30(a7),a7
 [0004ca36] 2f48 001a                 move.l     a0,26(a7)
@@ -643,6 +652,7 @@ RecycleFreeBlocks_5:
 [0004cc22] 4fef 000c                 lea.l      12(a7),a7
 [0004cc26] 4e75                      rts
 
+	.globl Ax_recycle
 Ax_recycle:
 [0004cc28] 4fef ffee                 lea.l      -18(a7),a7
 [0004cc2c] 2f48 000e                 move.l     a0,14(a7)
@@ -870,6 +880,7 @@ deleteOldList_9:
 [0004cedc] 4fef 0010                 lea.l      16(a7),a7
 [0004cee0] 4e75                      rts
 
+	.globl Ax_setRecycleSize
 Ax_setRecycleSize:
 [0004cee2] 4fef ffea                 lea.l      -22(a7),a7
 [0004cee6] 2f40 000e                 move.l     d0,14(a7)
@@ -960,6 +971,7 @@ Ax_setRecycleSize_2:
 [0004cff8] 4fef 0016                 lea.l      22(a7),a7
 [0004cffc] 4e75                      rts
 
+	.globl Ax_getRecycleStat
 Ax_getRecycleStat:
 [0004cffe] 4fef fff2                 lea.l      -14(a7),a7
 [0004d002] 2f48 000a                 move.l     a0,10(a7)
@@ -1030,6 +1042,7 @@ Ax_getRecycleStat_2:
 
 	.data
 
+	.globl in_use
 in_use:
 [000e0894]                           dc.w $0000
 [000e0896]                           dc.w $0000

@@ -1,6 +1,7 @@
 noop:
 [000715ea] 4e75                      rts
 
+	.globl Aus_create23x
 Aus_create23x:
 [000715ec] 2f0a                      move.l     a2,-(a7)
 [000715ee] 2f0b                      move.l     a3,-(a7)
@@ -27,6 +28,7 @@ Aus_create23x_2:
 [00071628] 245f                      movea.l    (a7)+,a2
 [0007162a] 4e75                      rts
 
+	.globl Aob_create23x
 Aob_create23x:
 [0007162c] 48e7 103e                 movem.l    d3/a2-a6,-(a7)
 [00071630] 554f                      subq.w     #2,a7
@@ -283,16 +285,19 @@ Awi_create23x_15:
 [00071922] 4cdf 7c08                 movem.l    (a7)+,d3/a2-a6
 [00071926] 4e75                      rts
 
+	.globl Awi_arrowed23x
 Awi_arrowed23x:
 [00071928] 7201                      moveq.l    #1,d1
 [0007192a] 4eb9 0005 217c            jsr        Awi_arrowed
 [00071930] 4e75                      rts
 
+	.globl Af_first230
 Af_first230:
 [00071932] 93c9                      suba.l     a1,a1
 [00071934] 4eb9 0004 c0de            jsr        Af_first
 [0007193a] 4e75                      rts
 
+	.globl Af_next230
 Af_next230:
 [0007193c] 91c8                      suba.l     a0,a0
 [0007193e] 4eb9 0004 c12c            jsr        Af_next

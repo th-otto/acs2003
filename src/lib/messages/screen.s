@@ -1,3 +1,4 @@
+	.globl Aev_GetMnSelected
 Aev_GetMnSelected:
 [0005e62e] 594f                      subq.w     #4,a7
 [0005e630] 2e88                      move.l     a0,(a7)
@@ -12,6 +13,7 @@ Aev_GetMnSelected:
 [0005e64a] 584f                      addq.w     #4,a7
 [0005e64c] 4e75                      rts
 
+	.globl Aev_GetWmRedraw
 Aev_GetWmRedraw:
 [0005e64e] 2f0a                      move.l     a2,-(a7)
 [0005e650] 594f                      subq.w     #4,a7
@@ -29,6 +31,7 @@ Aev_GetWmRedraw:
 [0005e66e] 245f                      movea.l    (a7)+,a2
 [0005e670] 4e75                      rts
 
+	.globl Aev_GetWmTopped
 Aev_GetWmTopped:
 [0005e672] 594f                      subq.w     #4,a7
 [0005e674] 2e88                      move.l     a0,(a7)
@@ -71,6 +74,7 @@ Aev_GetWmTopped_2:
 [0005e6f8] 584f                      addq.w     #4,a7
 [0005e6fa] 4e75                      rts
 
+	.globl Aev_GetWmClosed
 Aev_GetWmClosed:
 [0005e6fc] 2f0a                      move.l     a2,-(a7)
 [0005e6fe] 4fef fff4                 lea.l      -12(a7),a7
@@ -116,6 +120,7 @@ Aev_GetWmClosed_2:
 [0005e768] 245f                      movea.l    (a7)+,a2
 [0005e76a] 4e75                      rts
 
+	.globl Aev_GetWmFulled
 Aev_GetWmFulled:
 [0005e76c] 594f                      subq.w     #4,a7
 [0005e76e] 2e88                      move.l     a0,(a7)
@@ -129,6 +134,7 @@ Aev_GetWmFulled:
 [0005e784] 584f                      addq.w     #4,a7
 [0005e786] 4e75                      rts
 
+	.globl Aev_GetWmArrowed
 Aev_GetWmArrowed:
 [0005e788] 514f                      subq.w     #8,a7
 [0005e78a] 2f48 0004                 move.l     a0,4(a7)
@@ -178,6 +184,7 @@ Aev_GetWmArrowed_2:
 [0005e80e] 504f                      addq.w     #8,a7
 [0005e810] 4e75                      rts
 
+	.globl Aev_GetWmMouseWheel
 Aev_GetWmMouseWheel:
 [0005e812] 4fef ffd8                 lea.l      -40(a7),a7
 [0005e816] 2f48 0024                 move.l     a0,36(a7)
@@ -200,6 +207,7 @@ Aev_GetWmMouseWheel:
 [0005e856] 4fef 0028                 lea.l      40(a7),a7
 [0005e85a] 4e75                      rts
 
+	.globl Aev_GetWmHSlid
 Aev_GetWmHSlid:
 [0005e85c] 594f                      subq.w     #4,a7
 [0005e85e] 2e88                      move.l     a0,(a7)
@@ -216,6 +224,7 @@ Aev_GetWmHSlid:
 [0005e87c] 584f                      addq.w     #4,a7
 [0005e87e] 4e75                      rts
 
+	.globl Aev_GetWmVSlid
 Aev_GetWmVSlid:
 [0005e880] 594f                      subq.w     #4,a7
 [0005e882] 2e88                      move.l     a0,(a7)
@@ -232,6 +241,7 @@ Aev_GetWmVSlid:
 [0005e8a0] 584f                      addq.w     #4,a7
 [0005e8a2] 4e75                      rts
 
+	.globl Aev_GetWmSized
 Aev_GetWmSized:
 [0005e8a4] 2f0a                      move.l     a2,-(a7)
 [0005e8a6] 594f                      subq.w     #4,a7
@@ -249,6 +259,7 @@ Aev_GetWmSized:
 [0005e8c4] 245f                      movea.l    (a7)+,a2
 [0005e8c6] 4e75                      rts
 
+	.globl Aev_GetWmMoved
 Aev_GetWmMoved:
 [0005e8c8] 2f0a                      move.l     a2,-(a7)
 [0005e8ca] 594f                      subq.w     #4,a7
@@ -266,6 +277,7 @@ Aev_GetWmMoved:
 [0005e8e8] 245f                      movea.l    (a7)+,a2
 [0005e8ea] 4e75                      rts
 
+	.globl Aev_GetWmBottomed
 Aev_GetWmBottomed:
 [0005e8ec] 594f                      subq.w     #4,a7
 [0005e8ee] 2e88                      move.l     a0,(a7)
@@ -276,6 +288,7 @@ Aev_GetWmBottomed:
 [0005e8fe] 584f                      addq.w     #4,a7
 [0005e900] 4e75                      rts
 
+	.globl Aev_GetWmOnTop
 Aev_GetWmOnTop:
 [0005e902] 594f                      subq.w     #4,a7
 [0005e904] 2e88                      move.l     a0,(a7)
@@ -295,14 +308,17 @@ Aev_GetWmOnTop_2:
 [0005e92e] 584f                      addq.w     #4,a7
 [0005e930] 4e75                      rts
 
+	.globl Aev_GetWmUnTopped
 Aev_GetWmUnTopped:
 [0005e932] 7001                      moveq.l    #1,d0
 [0005e934] 4e75                      rts
 
+	.globl Aev_GetWmToolbar
 Aev_GetWmToolbar:
 [0005e936] 7001                      moveq.l    #1,d0
 [0005e938] 4e75                      rts
 
+	.globl Aev_GetWmShaded
 Aev_GetWmShaded:
 [0005e93a] 2f0a                      move.l     a2,-(a7)
 [0005e93c] 594f                      subq.w     #4,a7
@@ -323,6 +339,7 @@ Aev_GetWmShaded:
 [0005e966] 245f                      movea.l    (a7)+,a2
 [0005e968] 4e75                      rts
 
+	.globl Aev_GetWmUnshaded
 Aev_GetWmUnshaded:
 [0005e96a] 2f0a                      move.l     a2,-(a7)
 [0005e96c] 514f                      subq.w     #8,a7
@@ -349,6 +366,7 @@ Aev_GetWmUnshaded:
 [0005e9ae] 245f                      movea.l    (a7)+,a2
 [0005e9b0] 4e75                      rts
 
+	.globl Aev_GetWmIconify
 Aev_GetWmIconify:
 [0005e9b2] 594f                      subq.w     #4,a7
 [0005e9b4] 2e88                      move.l     a0,(a7)
@@ -363,6 +381,7 @@ Aev_GetWmIconify:
 [0005e9cc] 584f                      addq.w     #4,a7
 [0005e9ce] 4e75                      rts
 
+	.globl Aev_GetWmAllIconify
 Aev_GetWmAllIconify:
 [0005e9d0] 594f                      subq.w     #4,a7
 [0005e9d2] 2e88                      move.l     a0,(a7)
@@ -377,6 +396,7 @@ Aev_GetWmAllIconify:
 [0005e9ea] 584f                      addq.w     #4,a7
 [0005e9ec] 4e75                      rts
 
+	.globl Aev_GetWmUnIconify
 Aev_GetWmUnIconify:
 [0005e9ee] 594f                      subq.w     #4,a7
 [0005e9f0] 2e88                      move.l     a0,(a7)
@@ -390,6 +410,7 @@ Aev_GetWmUnIconify:
 [0005ea06] 584f                      addq.w     #4,a7
 [0005ea08] 4e75                      rts
 
+	.globl Aev_GetApTerm
 Aev_GetApTerm:
 [0005ea0a] 4eb9 0004 a30e            jsr        Aev_quit
 [0005ea10] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -397,6 +418,7 @@ Aev_GetApTerm:
 [0005ea1c] 7001                      moveq.l    #1,d0
 [0005ea1e] 4e75                      rts
 
+	.globl Aev_GetScChanged
 Aev_GetScChanged:
 [0005ea20] 91c8                      suba.l     a0,a0
 [0005ea22] 701c                      moveq.l    #28,d0
@@ -404,6 +426,7 @@ Aev_GetScChanged:
 [0005ea2a] 7001                      moveq.l    #1,d0
 [0005ea2c] 4e75                      rts
 
+	.globl Aev_GetFntChanged
 Aev_GetFntChanged:
 [0005ea2e] 4fef ff8e                 lea.l      -114(a7),a7
 [0005ea32] 4241                      clr.w      d1
@@ -430,6 +453,7 @@ Aev_GetFntChanged:
 [0005ea8c] 4fef 0072                 lea.l      114(a7),a7
 [0005ea90] 4e75                      rts
 
+	.globl Aev_GetPrnChanged
 Aev_GetPrnChanged:
 [0005ea92] 594f                      subq.w     #4,a7
 [0005ea94] 2e88                      move.l     a0,(a7)
@@ -442,6 +466,7 @@ Aev_GetPrnChanged:
 [0005eaa6] 584f                      addq.w     #4,a7
 [0005eaa8] 4e75                      rts
 
+	.globl Aev_GetColorsChanged
 Aev_GetColorsChanged:
 [0005eaaa] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005eab0] 0c68 0008 001c            cmpi.w     #$0008,28(a0)
@@ -456,6 +481,7 @@ Aev_GetColorsChanged_1:
 [0005ead0] 7001                      moveq.l    #1,d0
 [0005ead2] 4e75                      rts
 
+	.globl Aev_GetAcClose
 Aev_GetAcClose:
 [0005ead4] 594f                      subq.w     #4,a7
 [0005ead6] 4eb9 0005 5e8c            jsr        Awi_root
@@ -494,6 +520,7 @@ Aev_GetAcClose_2:
 [0005eb40] 584f                      addq.w     #4,a7
 [0005eb42] 4e75                      rts
 
+	.globl Aev_GetAcOpen
 Aev_GetAcOpen:
 [0005eb44] 594f                      subq.w     #4,a7
 [0005eb46] 4eb9 0005 5e8c            jsr        Awi_root
@@ -507,6 +534,7 @@ Aev_GetAcOpen_1:
 [0005eb5c] 584f                      addq.w     #4,a7
 [0005eb5e] 4e75                      rts
 
+	.globl Aev_WmRedraw
 Aev_WmRedraw:
 [0005eb60] 4fef ffe6                 lea.l      -26(a7),a7
 [0005eb64] 3f40 0018                 move.w     d0,24(a7)

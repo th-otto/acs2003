@@ -1,5 +1,6 @@
 		.text
-		
+
+		.globl add_icon
 add_icon:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a2
@@ -148,6 +149,7 @@ copy_icon_2:
 		movem.l    (a7)+,a2-a6
 		rts
 
+	.globl dup_icon
 dup_icon:
 		movem.l    d3/a2-a5,-(a7)
 		subq.w     #8,a7
@@ -330,6 +332,7 @@ dup_icon_11:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl del_icon
 del_icon:
 		movem.l    a2-a4,-(a7)
 		movea.l    a0,a4
@@ -655,6 +658,7 @@ protoicon:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl list_icon
 list_icon:
 		dc.w $0000
 		dc.w $0000

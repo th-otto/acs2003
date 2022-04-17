@@ -45,6 +45,7 @@ out_string_1:
 		movem.l    (a7)+,d3-d4/a2-a5
 		rts
 
+	.globl str_output
 str_output:
 		movem.l    d3/a2-a5,-(a7)
 		lea.l      -516(a7),a7

@@ -10623,6 +10623,7 @@ _31aIC_POS:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_ICON
 WI_ICON:
 		dc.w $0000
 		dc.w $0000
@@ -10683,6 +10684,7 @@ WI_ICON:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_POS
 WI_POS:
 		dc.w $0000
 		dc.w $0000
@@ -10787,3 +10789,10 @@ xb0e6a:
 xb0e6d:
 		dc.b '8',0
 	.even
+
+	.bss
+
+to2plane: ds.w 24
+toplane: ds.w 24
+zoomplane: ds.b 6144
+zoom2plane: ds.b 6144

@@ -114,6 +114,7 @@ edoim_ok_2:
 		movem.l    (a7)+,a2-a5
 		rts
 
+	.globl set_image
 set_image:
 		movem.l    a2-a4,-(a7)
 		movea.l    a0,a3

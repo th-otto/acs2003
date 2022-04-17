@@ -1,5 +1,6 @@
 		.text
 
+	.globl find_entry
 find_entry:
 		movem.l    d3/a2-a3,-(a7)
 		movea.l    a1,a3
@@ -27,6 +28,7 @@ find_entry_3:
 		movem.l    (a7)+,d3/a2-a3
 		rts
 
+	.globl add_entry
 add_entry:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a2
@@ -73,6 +75,7 @@ add_entry_2:
 		movem.l    (a7)+,d3/a2-a4
 		rts
 
+	.globl del_entry
 del_entry:
 		move.l     d3,-(a7)
 		move.l     a2,-(a7)
@@ -594,6 +597,7 @@ li_new:
 		bsr.w      li_newwi
 		rts
 
+	.globl li_init
 li_init:
 		movem.l    d3-d5/a2-a5,-(a7)
 		movea.l    a0,a2
@@ -653,6 +657,7 @@ li_init_4:
 		movem.l    (a7)+,d3-d5/a2-a5
 		rts
 
+	.globl li_make
 li_make:
 		movem.l    a2-a5,-(a7)
 		lea.l      -74(a7),a7
@@ -778,6 +783,7 @@ open_wi_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl li_service
 li_service:
 		movem.l    d3-d4/a2-a5,-(a7)
 		movea.l    a0,a2
@@ -954,6 +960,7 @@ term_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl work_icon
 work_icon:
 		movem.l    d3-d4/a2-a5,-(a7)
 		subq.w     #4,a7
@@ -1121,9 +1128,11 @@ li_scope_1:
 	.data
 
 
+	.globl proto_alert
 proto_alert:
 		dc.b '[1][Alarmbox][ OK ]',0
 
+	.globl ABOUT
 ABOUT:
 		dc.b '  šber mich ...',0
 TEXT_002:
@@ -1188,66 +1197,97 @@ TEXT_192:
 		dc.b 'Nutzen:',0
 TEXT_195:
 		dc.b 'Objekte:',0
+	.globl al_lis
 al_list:
 		dc.b ' ALARMBOX LISTE ',0
+	.globl al_name
 al_name:
 		dc.b 'ALARMBOX NAME',0
+	.globl ic_list
 ic_list:
 		dc.b ' IKONEN LISTE ',0
+	.globl ic_name
 ic_name:
 		dc.b 'IKONEN NAME',0
+	.globl if_list
 if_list:
 		dc.b ' DATEN LISTE ',0
+	.globl if_name
 if_name:
 		dc.b 'DATEN NAME',0
+	.globl im_list
 im_list:
 		dc.b ' BILDER LISTE ',0
+	.globl im_name
 im_name:
 		dc.b 'BILD NAME',0
+	.globl me_list
 me_list:
 		dc.b ' MENš LISTE ',0
+	.globl me_name
 me_name:
 		dc.b 'MENš NAME',0
+	.globl mf_list
 mf_list:
 		dc.b ' MAUSFORMEN LISTE ',0
+	.globl mf_name
 mf_name:
 		dc.b 'MAUSFORM NAME',0
+	.globl ob_list
 ob_list:
 		dc.b ' OBJEKTBŽUME LISTE ',0
+	.globl ob_name
 ob_name:
 		dc.b 'OBJEKTBAUM NAME',0
+	.globl proto_string
 proto_string:
 		dc.b 'Freier String',0
+	.globl proto_wihelpfile
 proto_wihelpfile:
 		dc.b 0
+	.globl proto_wihelptitle
 proto_wihelptitle:
 		dc.b 0
+	.globl proto_wiinfo
 proto_wiinfo:
 		dc.b 0
+	.globl proto_winame
 proto_winame:
 		dc.b ' Hinweis ',0
+	.globl pu_list
 pu_list:
 		dc.b ' POPUP LISTE ',0
+	.globl pu_name
 pu_name:
 		dc.b 'POPUP NAME',0
+	.globl rf_list
 rf_list:
 		dc.b ' REFERENZEN LISTE ',0
+	.globl rf_name
 rf_name:
 		dc.b 'REFERENZ NAME',0
+	.globl st_list
 st_list:
 		dc.b ' TEXTE LISTE ',0
+	.globl st_name
 st_name:
 		dc.b 'TEXT NAME',0
+	.globl te_list
 te_list:
 		dc.b ' TEDINFO LISTE ',0
+	.globl te_name
 te_name:
 		dc.b 'TEDINFO NAME',0
+	.globl us_list
 us_list:
 		dc.b ' USERBLK LISTE ',0
+	.globl us_name
 us_name:
 		dc.b 'USERBLK NAME',0
+	.globl wi_list
 wi_list:
 		dc.b ' FENSTER LISTE ',0
+	.globl wi_name
 wi_name:
 		dc.b 'FENSTER NAME',0
 TEDI_002:
@@ -1763,6 +1803,7 @@ _26aMEN_LIST:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl DIFF_TYPE
 DIFF_TYPE:
 		dc.w $ffff
 		dc.w $0001
@@ -2353,6 +2394,7 @@ LIST_NOT:
 		dc.w $0000
 		dc.w $0020
 		dc.w $000c
+	.globl WI_DIFF_TYPE
 WI_DIFF_TYPE:
 		dc.w $0000
 		dc.w $0000
@@ -2414,6 +2456,7 @@ WI_DIFF_TYPE:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_INFO_LIST
 WI_INFO_LIST:
 		dc.w $0000
 		dc.w $0000
@@ -2475,6 +2518,7 @@ WI_INFO_LIST:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_INFO_LISTSELF
 WI_INFO_LISTSELF:
 		dc.w $0000
 		dc.w $0000
@@ -2536,6 +2580,7 @@ WI_INFO_LISTSELF:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_INFO_SCOPE
 WI_INFO_SCOPE:
 		dc.w $0000
 		dc.w $0000
@@ -2597,6 +2642,7 @@ WI_INFO_SCOPE:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_LIST
 WI_LIST:
 		dc.w $0000
 		dc.w $0000

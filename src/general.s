@@ -119,6 +119,7 @@ ge_save:
 		jsr        save
 		rts
 
+	.globl save
 save:
 		lea.l      -144(a7),a7
 		move.l     a0,140(a7)
@@ -1301,6 +1302,7 @@ exec_cmd_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl newclose
 newclose:
 		move.l     a2,-(a7)
 		suba.l     a1,a1
@@ -1705,6 +1707,7 @@ debugtimer_2:
 		lea.l      88(a7),a7
 		rts
 
+	.globl ACSinit0
 ACSinit0:
 		lea.l      x9af21,a0
 		move.w     #0x01F4,d1
@@ -1721,6 +1724,7 @@ ACSinit0:
 		clr.w      d0
 		rts
 
+	.globl ACSinit
 ACSinit:
 		move.l     a2,-(a7)
 		lea.l      -154(a7),a7
@@ -1912,6 +1916,7 @@ TEXT_33:
 		dc.b 'EIGENSCHAFT',0
 TEXT_35:
 		dc.b 'REFERENZ',0
+	.globl _WGTITEL
 _WGTITEL:
 		dc.b ' Generelles ',0
 ttl_open:
@@ -33868,6 +33873,7 @@ _08_INFO_GENERAL:
 		dc.w $0003
 		dc.w $0006
 		dc.w $0001
+	.globl WI_GENERAL
 WI_GENERAL:
 		dc.w $0000
 		dc.w $0000
@@ -33926,6 +33932,7 @@ WI_GENERAL:
 		dc.l STGUIDE_01
 		dc.w $0000
 		dc.w $0000
+	.globl WI_INFO_GENERAL
 WI_INFO_GENERAL:
 		dc.w $0000
 		dc.w $0000
@@ -33987,6 +33994,7 @@ WI_INFO_GENERAL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl debug
 debug:
 		dc.w $0000
 		dc.w $0000
@@ -34065,3 +34073,14 @@ x9af2a:
 x9af33:
 		dc.b $2d
 		dc.w $2f00
+
+	.bss
+
+	.globl oldclose
+oldclose: ds.l 1
+	.globl oldkey
+oldkey: ds.l 1
+	.globl OldAboutMe
+OldAboutMe: ds.l 1
+
+save_aborted: ds.w 1

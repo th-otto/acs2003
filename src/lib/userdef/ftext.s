@@ -1,3 +1,4 @@
+	.globl A_ftext
 A_ftext:
 [0006639a] 2f02                      move.l     d2,-(a7)
 [0006639c] 2f0a                      move.l     a2,-(a7)
@@ -407,8 +408,7 @@ A_ftext_5:
 [00066920] 241f                      move.l     (a7)+,d2
 [00066922] 4e75                      rts
 
-Auo_ftext_11:
-Auo_ftext_13:
+	.globl Auo_ftext
 Auo_ftext:
 [00066924] 4fef ffe2                 lea.l      -30(a7),a7
 [00066928] 2f48 001a                 move.l     a0,26(a7)

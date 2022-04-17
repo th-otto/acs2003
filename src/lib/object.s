@@ -1,3 +1,4 @@
+	.globl Aob_create
 Aob_create:
 [0004f064] 2f0a                      move.l     a2,-(a7)
 [0004f066] 4fef ffe6                 lea.l      -26(a7),a7
@@ -137,6 +138,7 @@ Aob_create_2:
 [0004f206] 245f                      movea.l    (a7)+,a2
 [0004f208] 4e75                      rts
 
+	.globl Aob_delete
 Aob_delete:
 [0004f20a] 2f0a                      move.l     a2,-(a7)
 [0004f20c] 4fef fff4                 lea.l      -12(a7),a7
@@ -228,6 +230,7 @@ Aob_delete_2:
 [0004f2fe] 245f                      movea.l    (a7)+,a2
 [0004f300] 4e75                      rts
 
+	.globl Aob_count
 Aob_count:
 [0004f302] 4fef fff4                 lea.l      -12(a7),a7
 [0004f306] 2f48 0008                 move.l     a0,8(a7)
@@ -466,6 +469,7 @@ convert_2:
 [0004f602] 245f                      movea.l    (a7)+,a2
 [0004f604] 4e75                      rts
 
+	.globl Aic_create
 Aic_create:
 [0004f606] 4fef ffb2                 lea.l      -78(a7),a7
 [0004f60a] 2f48 004a                 move.l     a0,74(a7)
@@ -721,6 +725,7 @@ Aic_create_2:
 [0004f994] 4fef 004e                 lea.l      78(a7),a7
 [0004f998] 4e75                      rts
 
+	.globl Aic_delete
 Aic_delete:
 [0004f99a] 4fef fff4                 lea.l      -12(a7),a7
 [0004f99e] 2f48 0008                 move.l     a0,8(a7)
@@ -779,6 +784,7 @@ Aic_delete_2:
 [0004fa46] 4fef 000c                 lea.l      12(a7),a7
 [0004fa4a] 4e75                      rts
 
+	.globl Aim_create
 Aim_create:
 [0004fa4c] 514f                      subq.w     #8,a7
 [0004fa4e] 2f48 0004                 move.l     a0,4(a7)
@@ -798,6 +804,7 @@ Aim_create_2:
 [0004fa72] 504f                      addq.w     #8,a7
 [0004fa74] 4e75                      rts
 
+	.globl Aim_delete
 Aim_delete:
 [0004fa76] 594f                      subq.w     #4,a7
 [0004fa78] 2e88                      move.l     a0,(a7)
@@ -807,6 +814,7 @@ Aim_delete:
 [0004fa84] 584f                      addq.w     #4,a7
 [0004fa86] 4e75                      rts
 
+	.globl Ate_create
 Ate_create:
 [0004fa88] 514f                      subq.w     #8,a7
 [0004fa8a] 2f48 0004                 move.l     a0,4(a7)
@@ -862,6 +870,7 @@ Ate_create_2:
 [0004fb20] 504f                      addq.w     #8,a7
 [0004fb22] 4e75                      rts
 
+	.globl Ate_delete
 Ate_delete:
 [0004fb24] 594f                      subq.w     #4,a7
 [0004fb26] 2e88                      move.l     a0,(a7)
@@ -885,6 +894,7 @@ Ate_delete_2:
 [0004fb5a] 584f                      addq.w     #4,a7
 [0004fb5c] 4e75                      rts
 
+	.globl Aus_create
 Aus_create:
 [0004fb5e] 514f                      subq.w     #8,a7
 [0004fb60] 2f48 0004                 move.l     a0,4(a7)
@@ -915,6 +925,7 @@ Aus_create_2:
 [0004fbae] 504f                      addq.w     #8,a7
 [0004fbb0] 4e75                      rts
 
+	.globl Aus_delete
 Aus_delete:
 [0004fbb2] 594f                      subq.w     #4,a7
 [0004fbb4] 2e88                      move.l     a0,(a7)
@@ -930,6 +941,7 @@ Aus_delete:
 [0004fbd8] 584f                      addq.w     #4,a7
 [0004fbda] 4e75                      rts
 
+	.globl Aob_fix
 Aob_fix:
 [0004fbdc] 4fef fff0                 lea.l      -16(a7),a7
 [0004fbe0] 2f48 000c                 move.l     a0,12(a7)
@@ -1054,6 +1066,7 @@ Aob_fix_2:
 [0004fd70] 4fef 0010                 lea.l      16(a7),a7
 [0004fd74] 4e75                      rts
 
+	.globl Aob_icon
 Aob_icon:
 [0004fd76] 4fef fff4                 lea.l      -12(a7),a7
 [0004fd7a] 2f48 0008                 move.l     a0,8(a7)
@@ -1097,6 +1110,7 @@ Aob_icon_4:
 [0004fe00] 4fef 000c                 lea.l      12(a7),a7
 [0004fe04] 4e75                      rts
 
+	.globl Aob_offset
 Aob_offset:
 [0004fe06] 4fef ffe6                 lea.l      -26(a7),a7
 [0004fe0a] 2f48 0016                 move.l     a0,22(a7)
@@ -1321,6 +1335,7 @@ Aob_offset_19:
 [00050096] 4fef 001a                 lea.l      26(a7),a7
 [0005009a] 4e75                      rts
 
+	.globl Aob_save
 Aob_save:
 [0005009c] 2f0a                      move.l     a2,-(a7)
 [0005009e] 4fef ffe6                 lea.l      -26(a7),a7
@@ -1434,6 +1449,7 @@ Aob_save_6:
 [0005021a] 245f                      movea.l    (a7)+,a2
 [0005021c] 4e75                      rts
 
+	.globl Aob_restore
 Aob_restore:
 [0005021e] 2f0a                      move.l     a2,-(a7)
 [00050220] 4fef ffe8                 lea.l      -24(a7),a7
@@ -1511,6 +1527,7 @@ Aob_restore_3:
 [00050330] 245f                      movea.l    (a7)+,a2
 [00050332] 4e75                      rts
 
+	.globl Aob_tobkey
 Aob_tobkey:
 [00050334] 4fef fff0                 lea.l      -16(a7),a7
 [00050338] 2f48 000c                 move.l     a0,12(a7)
@@ -1568,6 +1585,7 @@ Aob_tobkey_3:
 [000503ca] 4fef 0010                 lea.l      16(a7),a7
 [000503ce] 4e75                      rts
 
+	.globl Aob_wobkey
 Aob_wobkey:
 [000503d0] 4fef fff0                 lea.l      -16(a7),a7
 [000503d4] 2f48 000c                 move.l     a0,12(a7)
@@ -1625,6 +1643,7 @@ Aob_wobkey_3:
 [00050466] 4fef 0010                 lea.l      16(a7),a7
 [0005046a] 4e75                      rts
 
+	.globl Aob_execute
 Aob_execute:
 [0005046c] 4fef ffec                 lea.l      -20(a7),a7
 [00050470] 2f48 0010                 move.l     a0,16(a7)
@@ -1755,6 +1774,7 @@ Aob_execute_2:
 [000505f4] 4fef 0014                 lea.l      20(a7),a7
 [000505f8] 4e75                      rts
 
+	.globl Aob_alias
 Aob_alias:
 [000505fa] 4fef fff2                 lea.l      -14(a7),a7
 [000505fe] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -1801,6 +1821,7 @@ Aob_alias_2:
 [00050690] 4fef 000e                 lea.l      14(a7),a7
 [00050694] 4e75                      rts
 
+	.globl Aob_select
 Aob_select:
 [00050696] 4fef ffe8                 lea.l      -24(a7),a7
 [0005069a] 2f48 0014                 move.l     a0,20(a7)
@@ -2069,6 +2090,7 @@ Aob_select_4:
 [0005099e] 4fef 0018                 lea.l      24(a7),a7
 [000509a2] 4e75                      rts
 
+	.globl Aob_watch
 Aob_watch:
 [000509a4] 4fef ffd8                 lea.l      -40(a7),a7
 [000509a8] 2f48 0024                 move.l     a0,36(a7)
@@ -2293,6 +2315,7 @@ Aob_watch_8:
 [00050c7a] 4fef 0028                 lea.l      40(a7),a7
 [00050c7e] 4e75                      rts
 
+	.globl Aev_release
 Aev_release:
 [00050c80] 594f                      subq.w     #4,a7
 Aev_release_1:
@@ -2333,6 +2356,7 @@ Aev_release_1:
 [00050ce4] 584f                      addq.w     #4,a7
 [00050ce6] 4e75                      rts
 
+	.globl Aob_key
 Aob_key:
 [00050ce8] 4fef fff4                 lea.l      -12(a7),a7
 [00050cec] 2f48 0008                 move.l     a0,8(a7)
@@ -2470,6 +2494,7 @@ Aob_key_12:
 [00050e5c] 4fef 000c                 lea.l      12(a7),a7
 [00050e60] 4e75                      rts
 
+	.globl Aob_findflag
 Aob_findflag:
 [00050e62] 4fef fff6                 lea.l      -10(a7),a7
 [00050e66] 2f48 0006                 move.l     a0,6(a7)
@@ -2562,6 +2587,7 @@ Aob_findflag_10:
 [00050f34] 4fef 000a                 lea.l      10(a7),a7
 [00050f38] 4e75                      rts
 
+	.globl Aob_up
 Aob_up:
 [00050f3a] 4fef fff6                 lea.l      -10(a7),a7
 [00050f3e] 2f48 0006                 move.l     a0,6(a7)
@@ -2600,6 +2626,7 @@ Aob_up_2:
 [00050f8e] 4fef 000a                 lea.l      10(a7),a7
 [00050f92] 4e75                      rts
 
+	.globl Aob_printf
 Aob_printf:
 [00050f94] 4fef fff2                 lea.l      -14(a7),a7
 [00050f98] 2f48 000a                 move.l     a0,10(a7)
@@ -2619,6 +2646,7 @@ Aob_printf:
 [00050fd2] 4fef 000e                 lea.l      14(a7),a7
 [00050fd6] 4e75                      rts
 
+	.globl Aob_puttext
 Aob_puttext:
 [00050fd8] 2f0a                      move.l     a2,-(a7)
 [00050fda] 4fef ffee                 lea.l      -18(a7),a7
@@ -2729,6 +2757,7 @@ Aob_puttext_1:
 [000510fa] 245f                      movea.l    (a7)+,a2
 [000510fc] 4e75                      rts
 
+	.globl Aob_scanf
 Aob_scanf:
 [000510fe] 4fef ffec                 lea.l      -20(a7),a7
 [00051102] 2f48 0010                 move.l     a0,16(a7)
@@ -2803,6 +2832,7 @@ Aob_scanf_1:
 [000511d4] 4fef 0014                 lea.l      20(a7),a7
 [000511d8] 4e75                      rts
 
+	.globl Aob_gettext
 Aob_gettext:
 [000511da] 2f0a                      move.l     a2,-(a7)
 [000511dc] 4fef ffec                 lea.l      -20(a7),a7

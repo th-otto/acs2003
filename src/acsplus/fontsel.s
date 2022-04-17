@@ -465,6 +465,7 @@ serv_wi_font_5:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl A_fontsel
 A_fontsel:
 		movem.l    d3/a2-a5,-(a7)
 		lea.l      -42(a7),a7
@@ -1033,6 +1034,7 @@ _20_FONTSEL:
 		dc.w $0007
 		dc.w $0005
 		dc.w $0001
+	.globl WI_FONTSEL
 WI_FONTSEL:
 		dc.w $0000
 		dc.w $0000

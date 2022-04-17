@@ -1,3 +1,4 @@
+
 fsmesshndler:
 [0006ceee] 2f02                      move.l     d2,-(a7)
 [0006cef0] 206f 0008                 movea.l    8(a7),a0
@@ -5,6 +6,7 @@ fsmesshndler:
 [0006cefa] 241f                      move.l     (a7)+,d2
 [0006cefc] 4e75                      rts
 
+	.globl Af_select
 Af_select:
 [0006cefe] 4fef ffaa                 lea.l      -86(a7),a7
 [0006cf02] 2f48 0052                 move.l     a0,82(a7)
@@ -192,6 +194,7 @@ Af_select_20:
 [0006d196] 4fef 0056                 lea.l      86(a7),a7
 [0006d19a] 4e75                      rts
 
+	.globl free_multidata
 free_multidata:
 [0006d19c] 554f                      subq.w     #2,a7
 [0006d19e] 4257                      clr.w      (a7)
@@ -226,6 +229,7 @@ free_multidata_1:
 [0006d202] 544f                      addq.w     #2,a7
 [0006d204] 4e75                      rts
 
+	.globl Af_first_fsel
 Af_first_fsel:
 [0006d206] 4fef fff0                 lea.l      -16(a7),a7
 [0006d20a] 2f48 000c                 move.l     a0,12(a7)
@@ -386,6 +390,7 @@ Af_first_fsel_11:
 [0006d44a] 4fef 0010                 lea.l      16(a7),a7
 [0006d44e] 4e75                      rts
 
+	.globl Af_next_fsel
 Af_next_fsel:
 [0006d450] 594f                      subq.w     #4,a7
 [0006d452] 4297                      clr.l      (a7)
@@ -425,6 +430,7 @@ Af_next_fsel_1:
 [0006d4d0] 584f                      addq.w     #4,a7
 [0006d4d2] 4e75                      rts
 
+	.globl Ash_fileSetIcon
 Ash_fileSetIcon:
 [0006d4d4] 5d4f                      subq.w     #6,a7
 [0006d4d6] 2f48 0002                 move.l     a0,2(a7)
@@ -446,6 +452,7 @@ Ash_fileSetIcon_2:
 [0006d514] 5c4f                      addq.w     #6,a7
 [0006d516] 4e75                      rts
 
+	.globl Ash_fileselect
 Ash_fileselect:
 [0006d518] 2f0a                      move.l     a2,-(a7)
 [0006d51a] 4fef ffe6                 lea.l      -26(a7),a7
@@ -998,6 +1005,7 @@ MagiCSelect_5:
 [0006dc1e] 4fef 0194                 lea.l      404(a7),a7
 [0006dc22] 4e75                      rts
 
+	.globl Af_fileselect
 Af_fileselect:
 [0006dc24] 4fef fff0                 lea.l      -16(a7),a7
 [0006dc28] 2f48 000c                 move.l     a0,12(a7)
@@ -2945,6 +2953,7 @@ _00aOB_FILESEL:
 [000e27da]                           dc.w $0000
 [000e27dc]                           dc.w $0000
 [000e27de]                           dc.w $0000
+	.globl WI_FILESEL
 WI_FILESEL:
 [000e27e0]                           dc.w $0000
 [000e27e2]                           dc.w $0000

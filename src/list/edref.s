@@ -1,5 +1,6 @@
 	.text
 
+	.globl add_ref
 add_ref:
 		movem.l    d3-d6/a2-a5,-(a7)
 		lea.l      -12(a7),a7
@@ -128,6 +129,7 @@ add_ref_9:
 		movem.l    (a7)+,d3-d6/a2-a5
 		rts
 
+	.globl del_ref
 del_ref:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -147,6 +149,7 @@ del_ref_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl dup_ref
 dup_ref:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a4
@@ -355,6 +358,7 @@ protoref:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl list_reference
 list_reference:
 		dc.w $0000
 		dc.w $0000

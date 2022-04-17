@@ -120,8 +120,8 @@ acsplus\fontsel.s [-M-]
 acsplus\list.s
 acsplus\proto.s
 
-lib\main.c
-lib\initterm.c
+lib\main.s
+lib\initterm.s
 lib\vdi_data.c
 lib\nkcc.c
 lib\config.c

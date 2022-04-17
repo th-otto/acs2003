@@ -1765,6 +1765,7 @@ _38aEDIT_MOUSE:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_MOUSE
 WI_MOUSE:
 		dc.w $0000
 		dc.w $0000

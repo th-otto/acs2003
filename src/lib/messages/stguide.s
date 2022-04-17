@@ -1,7 +1,9 @@
+	.globl Aev_InitSTGuide
 Aev_InitSTGuide:
 [0006217e] 7001                      moveq.l    #1,d0
 [00062180] 4e75                      rts
 
+	.globl Aev_ExitSTGuide
 Aev_ExitSTGuide:
 [00062182] 2039 000e 1b9c            move.l     help_string,d0
 [00062188] 670c                      beq.s      Aev_ExitSTGuide_1
@@ -13,6 +15,7 @@ Aev_ExitSTGuide_1:
 [000621a2] 7001                      moveq.l    #1,d0
 [000621a4] 4e75                      rts
 
+	.globl CheckSTGuide
 CheckSTGuide:
 [000621a6] 594f                      subq.w     #4,a7
 [000621a8] 2e88                      move.l     a0,(a7)
@@ -39,6 +42,7 @@ SendMeldung_1:
 [000621e6] 245f                      movea.l    (a7)+,a2
 [000621e8] 4e75                      rts
 
+	.globl Aev_STGuideHelp
 Aev_STGuideHelp:
 [000621ea] 4fef fff2                 lea.l      -14(a7),a7
 [000621ee] 2f48 000a                 move.l     a0,10(a7)

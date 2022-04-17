@@ -1,3 +1,9 @@
+	.globl Aev_InitPCHelp
+Aev_InitPCHelp:
+[00062350] 7001                      moveq.l    #1,d0
+[00062352] 4e75                      rts
+
+	.globl Aev_ExitPCHelp
 Aev_ExitPCHelp:
 [00062354] 2039 000e 1bc2            move.l     help_string,d0
 [0006235a] 670c                      beq.s      Aev_ExitPCHelp_1
@@ -62,6 +68,7 @@ FindPCHelp_5:
 [0006242c] 5c4f                      addq.w     #6,a7
 [0006242e] 4e75                      rts
 
+	.globl CheckPcHelp
 CheckPcHelp:
 [00062430] 594f                      subq.w     #4,a7
 [00062432] 2e88                      move.l     a0,(a7)
@@ -95,6 +102,7 @@ SendMeldung_1:
 [00062484] 245f                      movea.l    (a7)+,a2
 [00062486] 4e75                      rts
 
+	.globl Aev_GetAcReply
 Aev_GetAcReply:
 [00062488] 514f                      subq.w     #8,a7
 [0006248a] 2f48 0004                 move.l     a0,4(a7)
@@ -131,6 +139,7 @@ Aev_GetAcReply_3:
 [000624f2] 504f                      addq.w     #8,a7
 [000624f4] 4e75                      rts
 
+	.globl Aev_AcHelp
 Aev_AcHelp:
 [000624f6] 4fef ffe6                 lea.l      -26(a7),a7
 [000624fa] 2f48 0016                 move.l     a0,22(a7)

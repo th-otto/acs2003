@@ -133,14 +133,19 @@ term_2:
 
 	.data
 
+	.globl A_MISSENTRY
 A_MISSENTRY:
 		dc.b '[3][ Objekteintrag | nicht vorhanden! ][ Abbruch ]',0
+	.globl ERR_FILETYP
 ERR_FILETYP:
 		dc.b '[3][ Falscher Dateityp!][ Abbruch ]',0
+	.globl ERR_OPEN
 ERR_OPEN:
 		dc.b "[3][ | Konnte Datei '%s' | nicht finden oder es trat | ein Fehler beim ôffnen ein! | ][ Abbruch ]",0
+	.globl ERR_TRANS
 ERR_TRANS:
 		dc.b '[3][ Die Translationstabelle ist| Åbergelaufen! Bitte das ACS- | Modul in mehrere Module | aufteilen! ][ Abbruch ]',0
+	.globl ERR_TYPE
 ERR_TYPE:
 		dc.b '[1][ Ein unzulÑssiger Objekttyp | wurde importiert!][ Abbruch ]',0
 TEXT_002:
@@ -167,45 +172,84 @@ TEXT_10:
 		dc.b $31,0
 TEXT_191:
 		dc.b 'Name:',0
+
+	.globl al1_obj
 al1_obj:
 		dc.b 'ML1-ALERT LIST',0
+
+	.globl al2_obj
 al2_obj:
 		dc.b 'ML2-ALERT LIST',0
+
+	.globl al3_obj
 al3_obj:
 		dc.b 'ML3-ALERT LIST',0
+
+	.globl 
 al_obj:
 		dc.b 'ALERT LIST',0
+
+	.globl ic_obj
 ic_obj:
 		dc.b 'ICON LIST',0
+
+	.globl if_obj
 if_obj:
 		dc.b 'DATA LIST',0
+
+	.globl im_obj
 im_obj:
 		dc.b 'IMAGE LIST',0
+
+	.globl me_obj
 me_obj:
 		dc.b 'MENU LIST',0
+
+	.globl mf_obj
 mf_obj:
 		dc.b 'MOUSEFORM LIST',0
+
+	.globl ml1_obj
 ml1_obj:
 		dc.b 'ML1-TEXT LIST',0
+
+	.globl ml2_obj
 ml2_obj:
 		dc.b 'ML2-TEXT LIST',0
+
+	.globl ml3_obj
 ml3_obj:
 		dc.b 'ML3-TEXT LIST',0
+
+	.globl ob_obj
 ob_obj:
 		dc.b 'OBJECTTREE LIST',0
+
+	.globl pu_obj
 pu_obj:
 		dc.b 'POPUP LIST',0
+
+	.globl rf_obj
 rf_obj:
 		dc.b 'REFERENCE LIST',0
+
+	.globl st_obj
 st_obj:
 		dc.b 'TEXT LIST',0
+
+	.globl te_obj
 te_obj:
 		dc.b 'TEDINFO LIST',0
+
+	.globl us_obj
 us_obj:
 		dc.b 'USERBLK LIST',0
+
+	.globl wi_obj
 wi_obj:
 		dc.b 'WINDOW LIST',0
 		dc.b $00
+
 		dc.l TEXT_01
 		dc.l TEXT_002
 		dc.l TEXT_002
@@ -425,6 +469,7 @@ _IMG_IM_SORT_XY:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl IM_SORT_XY
 IM_SORT_XY:
 		dc.l _IMG_IM_SORT_XY
 		dc.w $0006
@@ -529,6 +574,7 @@ _IMG_IM_SORT_YX:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl IM_SORT_YX
 IM_SORT_YX:
 		dc.l _IMG_IM_SORT_YX
 		dc.w $0006
@@ -608,6 +654,7 @@ _IMG_SUNRISE:
 		dc.w $0000
 		dc.w $0300
 		dc.w $0000
+	.globl SUNRISE
 SUNRISE:
 		dc.l _IMG_SUNRISE
 		dc.w $0006
@@ -615,6 +662,7 @@ SUNRISE:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0001
+	.globl INFO_OB_WH
 INFO_OB_WH:
 		dc.w $ffff
 		dc.w $0001
@@ -652,6 +700,7 @@ _02_INFO_OB_WH:
 		dc.w $0001
 		dc.w $000b
 		dc.w $0001
+	.globl NEW2_LABEL
 NEW2_LABEL:
 		dc.w $ffff
 		dc.w $0001
@@ -738,6 +787,7 @@ _05aNEW2_LABEL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl NEW_LABEL
 NEW_LABEL:
 		dc.w $ffff
 		dc.w $0001
@@ -798,6 +848,7 @@ _03aNEW_LABEL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl OUTPUT_INFO
 OUTPUT_INFO:
 		dc.w $ffff
 		dc.w $0001
@@ -955,6 +1006,7 @@ _12_OUTPUT_INFO:
 		dc.w $0006
 		dc.w $001f
 		dc.w $0001
+	.globl WI_NEW2_LABEL
 WI_NEW2_LABEL:
 		dc.w $0000
 		dc.w $0000
@@ -1016,6 +1068,7 @@ WI_NEW2_LABEL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_NEW_LABEL
 WI_NEW_LABEL:
 		dc.w $0000
 		dc.w $0000
@@ -1078,6 +1131,7 @@ WI_NEW_LABEL:
 		dc.w $0000
 		dc.w $0000
 
+	.globl MO_ADD
 MO_ADD:
 		dc.w $0008
 		dc.w $0008
@@ -1115,6 +1169,7 @@ MO_ADD:
 		dc.w $0e3f
 		dc.w $018c
 		dc.w $006c
+	.globl MO_BLACK
 MO_BLACK:
 		dc.w $0000
 		dc.w $0000
@@ -1148,6 +1203,7 @@ MO_BLACK:
 		dc.w $0300
 		dc.w $0300
 		dc.w $0000
+	.globl MO_DRAG
 MO_DRAG:
 		dc.w $0008
 		dc.w $0008
@@ -1185,6 +1241,7 @@ MO_DRAG:
 		dc.w $0e00
 		dc.w $0180
 		dc.w $0060
+	.globl MO_TRANS
 MO_TRANS:
 		dc.w $0000
 		dc.w $0000
@@ -1223,6 +1280,7 @@ MO_TRANS:
 		dc.w $0300
 		dc.w $0300
 		dc.w $0000
+	.globl MO_WHITE
 MO_WHITE:
 		dc.w $0000
 		dc.w $0000
@@ -1256,6 +1314,7 @@ MO_WHITE:
 		dc.w $0300
 		dc.w $0300
 		dc.w $0000
+	.globl ACSdescr
 ACSdescr:
 		dc.b 'ACS3.00',0
 		dc.w $012c
@@ -1400,6 +1459,7 @@ ACSdescr:
 		dc.l xa8d1b
 		dc.l xa8d23
 		dc.l xa8d2a
+	.globl ACSconfig
 ACSconfig:
 		dc.l xa8484
 		dc.l xa8d34

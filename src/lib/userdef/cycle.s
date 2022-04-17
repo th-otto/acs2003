@@ -1,3 +1,5 @@
+
+	.globl A_cycle
 A_cycle:
 [00066c46] 2f02                      move.l     d2,-(a7)
 [00066c48] 2f0a                      move.l     a2,-(a7)
@@ -599,8 +601,7 @@ cyc_index_1:
 [00067450] 4fef 000a                 lea.l      10(a7),a7
 [00067454] 4e75                      rts
 
-Auo_cycle_14:
-Auo_cycle_9:
+	.globl Auo_cycle
 Auo_cycle:
 [00067456] 4fef ffe6                 lea.l      -26(a7),a7
 [0006745a] 2f48 0016                 move.l     a0,22(a7)
@@ -1205,6 +1206,7 @@ create_popup_5:
 [00067b66] 4fef 0024                 lea.l      36(a7),a7
 [00067b6a] 4e75                      rts
 
+	.globl Ame_strpopup
 Ame_strpopup:
 [00067b6c] 4fef ffde                 lea.l      -34(a7),a7
 [00067b70] 2f48 001e                 move.l     a0,30(a7)
@@ -1305,6 +1307,7 @@ Ame_strpopup_10:
 [00067c9e] 4fef 0022                 lea.l      34(a7),a7
 [00067ca2] 4e75                      rts
 
+	.globl Aus_cycle
 Aus_cycle:
 [00067ca4] 2f0a                      move.l     a2,-(a7)
 [00067ca6] 4fef ffd6                 lea.l      -42(a7),a7

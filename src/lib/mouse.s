@@ -1,3 +1,4 @@
+	.globl INmouse
 INmouse:
 [0004ee10] 3039 000e 0c50            move.w     init,d0
 [0004ee16] 5279 000e 0c50            addq.w     #1,init
@@ -12,10 +13,12 @@ INmouse_1:
 [0004ee30] 4240                      clr.w      d0
 [0004ee32] 4e75                      rts
 
+	.globl TRmouse
 TRmouse:
 [0004ee34] 4eb9 0004 ee96            jsr        Amo_point
 [0004ee3a] 4e75                      rts
 
+	.globl Amo_new
 Amo_new:
 [0004ee3c] 2f0a                      move.l     a2,-(a7)
 [0004ee3e] 594f                      subq.w     #4,a7
@@ -49,6 +52,7 @@ Amo_new_2:
 [0004ee92] 245f                      movea.l    (a7)+,a2
 [0004ee94] 4e75                      rts
 
+	.globl Amo_point
 Amo_point:
 [0004ee96] 4279 0011 36ca            clr.w      busy
 [0004ee9c] 6006                      bra.s      Amo_point_1
@@ -63,6 +67,7 @@ Amo_point_1:
 [0004eeba] 6100 ff80                 bsr.w      Amo_new
 [0004eebe] 4e75                      rts
 
+	.globl Amo_busy
 Amo_busy:
 [0004eec0] 2f0a                      move.l     a2,-(a7)
 [0004eec2] 594f                      subq.w     #4,a7
@@ -91,6 +96,7 @@ Amo_busy_2:
 [0004ef08] 245f                      movea.l    (a7)+,a2
 [0004ef0a] 4e75                      rts
 
+	.globl Amo_unbusy
 Amo_unbusy:
 [0004ef0c] 5379 0011 36ca            subq.w     #1,busy
 [0004ef12] 6f02                      ble.s      Amo_unbusy_1
@@ -109,6 +115,7 @@ x4ef16_1:
 [0004ef38] 4eb9 0007 abe4            jsr        mt_graf_mouse
 [0004ef3e] 4e75                      rts
 
+	.globl Amo_hide
 Amo_hide:
 [0004ef40] 3039 0011 36c8            move.w     hide,d0
 [0004ef46] 5279 0011 36c8            addq.w     #1,hide
@@ -123,6 +130,7 @@ Amo_hide_1:
 [0004ef5e] 4eb9 0007 abe4            jsr        mt_graf_mouse
 [0004ef64] 4e75                      rts
 
+	.globl Amo_show
 Amo_show:
 [0004ef66] 5379 0011 36c8            subq.w     #1,hide
 [0004ef6c] 6f02                      ble.s      Amo_show_1
@@ -140,6 +148,7 @@ Amo_show_1:
 [0004ef9a] 4eb9 0007 abe4            jsr        mt_graf_mouse
 [0004efa0] 4e75                      rts
 
+	.globl Amo_restart
 Amo_restart:
 [0004efa2] 2f0a                      move.l     a2,-(a7)
 [0004efa4] 4fef fff6                 lea.l      -10(a7),a7
@@ -165,6 +174,7 @@ Amo_restart:
 [0004effe] 245f                      movea.l    (a7)+,a2
 [0004f000] 4e75                      rts
 
+	.globl Amo_return
 Amo_return:
 [0004f002] 2f0a                      move.l     a2,-(a7)
 [0004f004] 5d4f                      subq.w     #6,a7

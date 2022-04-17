@@ -1,12 +1,13 @@
 		.text
 
+	.globl A_wislider
 A_wislider:
 		moveq.l    #-10,d0
 		movea.l    4(a7),a0
 		and.w      8(a0),d0
 		rts
 
-Auo_wislider_13:
+	.globl Auo_wislider
 Auo_wislider:
 		movem.l    d3-d5/a2-a4,-(a7)
 		subq.w     #4,a7

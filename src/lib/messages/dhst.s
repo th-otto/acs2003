@@ -1,7 +1,9 @@
+	.globl Aev_InitDHST
 Aev_InitDHST:
 [00060262] 7001                      moveq.l    #1,d0
 [00060264] 4e75                      rts
 
+	.globl Aev_ExitDHST
 Aev_ExitDHST:
 [00060266] 7001                      moveq.l    #1,d0
 [00060268] 4e75                      rts
@@ -69,10 +71,12 @@ freeDhstInfo_4:
 [00060334] 245f                      movea.l    (a7)+,a2
 [00060336] 4e75                      rts
 
+	.globl Aev_GetDhstAdd
 Aev_GetDhstAdd:
 [00060338] 7001                      moveq.l    #1,d0
 [0006033a] 4e75                      rts
 
+	.globl Aev_GetDhstAck
 Aev_GetDhstAck:
 [0006033c] 2f0a                      move.l     a2,-(a7)
 [0006033e] 4fef ffca                 lea.l      -54(a7),a7
@@ -123,6 +127,7 @@ Aev_GetDhstAck_1:
 [000603ee] 245f                      movea.l    (a7)+,a2
 [000603f0] 4e75                      rts
 
+	.globl Aev_DhstAdd
 Aev_DhstAdd:
 [000603f2] 2f0a                      move.l     a2,-(a7)
 [000603f4] 4fef ffde                 lea.l      -34(a7),a7
@@ -225,6 +230,7 @@ Aev_DhstAdd_3:
 [0006056a] 245f                      movea.l    (a7)+,a2
 [0006056c] 4e75                      rts
 
+	.globl Aev_DhstSaved
 Aev_DhstSaved:
 [0006056e] 4fef fff6                 lea.l      -10(a7),a7
 [00060572] 2f48 0006                 move.l     a0,6(a7)

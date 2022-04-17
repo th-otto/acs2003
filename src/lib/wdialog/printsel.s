@@ -1,3 +1,5 @@
+
+	.globl Ash_printSetIcon
 Ash_printSetIcon:
 [0006eb66] 5d4f                      subq.w     #6,a7
 [0006eb68] 2f48 0002                 move.l     a0,2(a7)
@@ -19,6 +21,7 @@ Ash_printSetIcon_2:
 [0006eba6] 5c4f                      addq.w     #6,a7
 [0006eba8] 4e75                      rts
 
+	.globl Ash_print
 Ash_print:
 [0006ebaa] 2f0a                      move.l     a2,-(a7)
 [0006ebac] 4fef ffe8                 lea.l      -24(a7),a7
@@ -1168,6 +1171,7 @@ _00aPrintSelObj:
 [000e2b98]                           dc.w $0000
 [000e2b9a]                           dc.w $0000
 [000e2b9c]                           dc.w $0000
+	.globl PrintSelWind
 PrintSelWind:
 [000e2b9e]                           dc.w $0000
 [000e2ba0]                           dc.w $0000

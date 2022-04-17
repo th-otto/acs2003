@@ -1,5 +1,6 @@
 	.text
 	
+		.globl Apd_close
 Apd_close:
 		movem.l    a2/a4-a5,-(a7)
 		subq.w     #2,a7
@@ -66,6 +67,7 @@ Apd_close_2:
 		movem.l    (a7)+,a2/a4-a5
 		rts
 
+	.globl Apd_delete
 Apd_delete:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -112,6 +114,7 @@ Apd_delete_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl Apd_info
 Apd_info:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -140,6 +143,7 @@ Apd_info_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl Apd_list
 Apd_list:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -186,6 +190,7 @@ Apd_list_5:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl Apd_module
 Apd_module:
 		move.l     module_window,d0
 		beq.s      Apd_module_1
@@ -194,11 +199,13 @@ Apd_module:
 Apd_module_1:
 		rts
 
+	.globl Apd_new
 Apd_new:
 		suba.l     a0,a0
 		jsr        new_call
 		rts
 
+	.globl Apd_open
 Apd_open:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -223,6 +230,7 @@ Apd_open_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl Apd_quit
 Apd_quit:
 		movea.l    ACSblk,a0
 		movea.l    672(a0),a0
@@ -794,6 +802,7 @@ mod_load_1:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl modul_close
 modul_close:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -1923,6 +1932,7 @@ purGEMScript_2:
 
 	.data
 
+	.globl module_window
 module_window:
 		dc.w $0000
 		dc.w $0000
@@ -1943,6 +1953,7 @@ MODUL_LOAD_TITEL:
 		dc.b 'Module laden',0
 NAME_MODULE:
 		dc.b ' Module ',0
+	.globl NAME_PUR_DESK
 NAME_PUR_DESK:
 		dc.b ' Purer Desktop ',0
 STGUIDE_01:
@@ -3634,6 +3645,7 @@ PUR_DESK:
 		dc.l purGEMScript
 		dc.l STGUIDE_02
 		dc.l HELPFILE_02
+	.globl PUR_MODULE
 PUR_MODULE:
 		dc.w $0000
 		dc.w $0000

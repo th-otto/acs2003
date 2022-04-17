@@ -1,3 +1,4 @@
+	.globl Akt_getKeyTab
 Akt_getKeyTab:
 [0005c8fe] 2039 000e 146a            move.l     kt,d0
 [0005c904] 662a                      bne.s      Akt_getKeyTab_1
@@ -15,6 +16,7 @@ Akt_getKeyTab_1:
 [0005c930] 2079 000e 146a            movea.l    kt,a0
 [0005c936] 4e75                      rts
 
+	.globl Akt_getExpMinNr
 Akt_getExpMinNr:
 [0005c938] 594f                      subq.w     #4,a7
 [0005c93a] 6100 ffc2                 bsr.w      Akt_getKeyTab
@@ -37,6 +39,7 @@ Akt_getExpMinNr_2:
 [0005c95e] 584f                      addq.w     #4,a7
 [0005c960] 4e75                      rts
 
+	.globl Akt_getExpMaxNr
 Akt_getExpMaxNr:
 [0005c962] 594f                      subq.w     #4,a7
 [0005c964] 6100 ff98                 bsr.w      Akt_getKeyTab
@@ -55,6 +58,7 @@ Akt_getExpMaxNr_2:
 [0005c97e] 584f                      addq.w     #4,a7
 [0005c980] 4e75                      rts
 
+	.globl Akt_getImpMinNr
 Akt_getImpMinNr:
 [0005c982] 594f                      subq.w     #4,a7
 [0005c984] 6100 ff78                 bsr        Akt_getKeyTab
@@ -77,6 +81,7 @@ Akt_getImpMinNr_2:
 [0005c9a8] 584f                      addq.w     #4,a7
 [0005c9aa] 4e75                      rts
 
+	.globl Akt_getImpMaxNr
 Akt_getImpMaxNr:
 [0005c9ac] 594f                      subq.w     #4,a7
 [0005c9ae] 6100 ff4e                 bsr        Akt_getKeyTab
@@ -95,6 +100,7 @@ Akt_getImpMaxNr_2:
 [0005c9c8] 584f                      addq.w     #4,a7
 [0005c9ca] 4e75                      rts
 
+	.globl Akt_getExpNameFromNr
 Akt_getExpNameFromNr:
 [0005c9cc] 5d4f                      subq.w     #6,a7
 [0005c9ce] 3f40 0004                 move.w     d0,4(a7)
@@ -131,6 +137,7 @@ Akt_getExpNameFromNr_3:
 [0005ca18] 5c4f                      addq.w     #6,a7
 [0005ca1a] 4e75                      rts
 
+	.globl Akt_getImpNameFromNr
 Akt_getImpNameFromNr:
 [0005ca1c] 5d4f                      subq.w     #6,a7
 [0005ca1e] 3f40 0004                 move.w     d0,4(a7)
@@ -167,6 +174,7 @@ Akt_getImpNameFromNr_3:
 [0005ca68] 5c4f                      addq.w     #6,a7
 [0005ca6a] 4e75                      rts
 
+	.globl Akt_getExpShortNameFromNr
 Akt_getExpShortNameFromNr:
 [0005ca6c] 5d4f                      subq.w     #6,a7
 [0005ca6e] 3f40 0004                 move.w     d0,4(a7)
@@ -193,6 +201,7 @@ Akt_getExpShortNameFromNr_2:
 [0005caa0] 5c4f                      addq.w     #6,a7
 [0005caa2] 4e75                      rts
 
+	.globl Akt_getImpShortNameFromNr
 Akt_getImpShortNameFromNr:
 [0005caa4] 5d4f                      subq.w     #6,a7
 [0005caa6] 3f40 0004                 move.w     d0,4(a7)
@@ -219,6 +228,7 @@ Akt_getImpShortNameFromNr_2:
 [0005cad8] 5c4f                      addq.w     #6,a7
 [0005cada] 4e75                      rts
 
+	.globl Akt_getRelease
 Akt_getRelease:
 [0005cadc] 594f                      subq.w     #4,a7
 [0005cade] 6100 fe1e                 bsr        Akt_getKeyTab
@@ -241,6 +251,7 @@ Akt_getRelease_2:
 [0005cb02] 584f                      addq.w     #4,a7
 [0005cb04] 4e75                      rts
 
+	.globl Akt_getExpNrFromId
 Akt_getExpNrFromId:
 [0005cb06] 5d4f                      subq.w     #6,a7
 [0005cb08] 3f40 0004                 move.w     d0,4(a7)
@@ -262,6 +273,7 @@ Akt_getExpNrFromId_2:
 [0005cb2e] 5c4f                      addq.w     #6,a7
 [0005cb30] 4e75                      rts
 
+	.globl Akt_getImpNrFromId
 Akt_getImpNrFromId:
 [0005cb32] 5d4f                      subq.w     #6,a7
 [0005cb34] 3f40 0004                 move.w     d0,4(a7)
@@ -283,6 +295,7 @@ Akt_getImpNrFromId_2:
 [0005cb5a] 5c4f                      addq.w     #6,a7
 [0005cb5c] 4e75                      rts
 
+	.globl Akt_getExpIdFromNr
 Akt_getExpIdFromNr:
 [0005cb5e] 5d4f                      subq.w     #6,a7
 [0005cb60] 3f40 0004                 move.w     d0,4(a7)
@@ -308,6 +321,7 @@ Akt_getExpIdFromNr_2:
 [0005cb90] 5c4f                      addq.w     #6,a7
 [0005cb92] 4e75                      rts
 
+	.globl Akt_getImpIdFromNr
 Akt_getImpIdFromNr:
 [0005cb94] 5d4f                      subq.w     #6,a7
 [0005cb96] 3f40 0004                 move.w     d0,4(a7)
@@ -333,6 +347,7 @@ Akt_getImpIdFromNr_2:
 [0005cbc6] 5c4f                      addq.w     #6,a7
 [0005cbc8] 4e75                      rts
 
+	.globl Akt_getExpNrFromName
 Akt_getExpNrFromName:
 [0005cbca] 514f                      subq.w     #8,a7
 [0005cbcc] 2f48 0004                 move.l     a0,4(a7)
@@ -358,6 +373,7 @@ Akt_getExpNrFromName_2:
 [0005cbfc] 504f                      addq.w     #8,a7
 [0005cbfe] 4e75                      rts
 
+	.globl Akt_getImpNrFromName
 Akt_getImpNrFromName:
 [0005cc00] 514f                      subq.w     #8,a7
 [0005cc02] 2f48 0004                 move.l     a0,4(a7)
@@ -383,6 +399,7 @@ Akt_getImpNrFromName_2:
 [0005cc32] 504f                      addq.w     #8,a7
 [0005cc34] 4e75                      rts
 
+	.globl Akt_getEuro
 Akt_getEuro:
 [0005cc36] 514f                      subq.w     #8,a7
 [0005cc38] 6100 fcc4                 bsr        Akt_getKeyTab
@@ -414,6 +431,7 @@ Akt_getEuro_2:
 [0005cc80] 504f                      addq.w     #8,a7
 [0005cc82] 4e75                      rts
 
+	.globl Akt_CharAtari2X
 Akt_CharAtari2X:
 [0005cc84] 514f                      subq.w     #8,a7
 [0005cc86] 3f40 0006                 move.w     d0,6(a7)
@@ -437,6 +455,7 @@ Akt_CharAtari2X_2:
 [0005ccb6] 504f                      addq.w     #8,a7
 [0005ccb8] 4e75                      rts
 
+	.globl Akt_CharX2Atari
 Akt_CharX2Atari:
 [0005ccba] 514f                      subq.w     #8,a7
 [0005ccbc] 3f40 0006                 move.w     d0,6(a7)
@@ -460,6 +479,7 @@ Akt_CharX2Atari_2:
 [0005ccec] 504f                      addq.w     #8,a7
 [0005ccee] 4e75                      rts
 
+	.globl Akt_BlockAtari2X
 Akt_BlockAtari2X:
 [0005ccf0] 4fef ffe6                 lea.l      -26(a7),a7
 [0005ccf4] 2f48 000e                 move.l     a0,14(a7)
@@ -517,6 +537,7 @@ Akt_BlockAtari2X_2:
 [0005cd94] 4fef 001a                 lea.l      26(a7),a7
 [0005cd98] 4e75                      rts
 
+	.globl Akt_BlockX2Atari
 Akt_BlockX2Atari:
 [0005cd9a] 4fef ffe6                 lea.l      -26(a7),a7
 [0005cd9e] 2f48 000e                 move.l     a0,14(a7)
@@ -574,6 +595,7 @@ Akt_BlockX2Atari_2:
 [0005ce3e] 4fef 001a                 lea.l      26(a7),a7
 [0005ce42] 4e75                      rts
 
+	.globl Akt_StringAtari2X
 Akt_StringAtari2X:
 [0005ce44] 4fef fff6                 lea.l      -10(a7),a7
 [0005ce48] 2f48 0006                 move.l     a0,6(a7)
@@ -590,6 +612,7 @@ Akt_StringAtari2X:
 [0005ce6c] 4fef 000a                 lea.l      10(a7),a7
 [0005ce70] 4e75                      rts
 
+	.globl Akt_StringX2Atari
 Akt_StringX2Atari:
 [0005ce72] 4fef fff6                 lea.l      -10(a7),a7
 [0005ce76] 2f48 0006                 move.l     a0,6(a7)
@@ -606,6 +629,7 @@ Akt_StringX2Atari:
 [0005ce9a] 4fef 000a                 lea.l      10(a7),a7
 [0005ce9e] 4e75                      rts
 
+	.globl Akt_CharX2Unicode
 Akt_CharX2Unicode:
 [0005cea0] 514f                      subq.w     #8,a7
 [0005cea2] 3f40 0006                 move.w     d0,6(a7)
@@ -634,6 +658,7 @@ Akt_CharX2Unicode_2:
 [0005cede] 504f                      addq.w     #8,a7
 [0005cee0] 4e75                      rts
 
+	.globl Akt_CharUnicode2X
 Akt_CharUnicode2X:
 [0005cee2] 514f                      subq.w     #8,a7
 [0005cee4] 3f40 0006                 move.w     d0,6(a7)
@@ -662,6 +687,7 @@ Akt_CharUnicode2X_2:
 [0005cf20] 504f                      addq.w     #8,a7
 [0005cf22] 4e75                      rts
 
+	.globl Akt_BlockX2Unicode
 Akt_BlockX2Unicode:
 [0005cf24] 4fef ffee                 lea.l      -18(a7),a7
 [0005cf28] 2f48 000e                 move.l     a0,14(a7)
@@ -699,6 +725,7 @@ Akt_BlockX2Unicode_3:
 [0005cf86] 4fef 0012                 lea.l      18(a7),a7
 [0005cf8a] 4e75                      rts
 
+	.globl Akt_BlockUnicode2X
 Akt_BlockUnicode2X:
 [0005cf8c] 4fef ffee                 lea.l      -18(a7),a7
 [0005cf90] 2f48 000e                 move.l     a0,14(a7)
@@ -731,6 +758,7 @@ Akt_BlockUnicode2X_3:
 [0005cfdc] 4fef 0012                 lea.l      18(a7),a7
 [0005cfe0] 4e75                      rts
 
+	.globl Akt_StringX2Unicode
 Akt_StringX2Unicode:
 [0005cfe2] 4fef fff6                 lea.l      -10(a7),a7
 [0005cfe6] 2f48 0006                 move.l     a0,6(a7)
@@ -747,6 +775,7 @@ Akt_StringX2Unicode:
 [0005d00a] 4fef 000a                 lea.l      10(a7),a7
 [0005d00e] 4e75                      rts
 
+	.globl Akt_BlockXUtf2Unicode
 Akt_BlockXUtf2Unicode:
 [0005d010] 4fef ffee                 lea.l      -18(a7),a7
 [0005d014] 2f48 000e                 move.l     a0,14(a7)
@@ -780,6 +809,7 @@ Akt_BlockXUtf2Unicode_3:
 [0005d064] 4fef 0012                 lea.l      18(a7),a7
 [0005d068] 4e75                      rts
 
+	.globl Akt_BlockUnicode2XUtf
 Akt_BlockUnicode2XUtf:
 [0005d06a] 4fef ffee                 lea.l      -18(a7),a7
 [0005d06e] 2f48 000e                 move.l     a0,14(a7)
@@ -811,6 +841,7 @@ Akt_BlockUnicode2XUtf_2:
 [0005d0bc] 4fef 0012                 lea.l      18(a7),a7
 [0005d0c0] 4e75                      rts
 
+	.globl Akt_BlockXUtf2U2XUtf
 Akt_BlockXUtf2U2XUtf:
 [0005d0c2] 4fef ffec                 lea.l      -20(a7),a7
 [0005d0c6] 2f48 0010                 move.l     a0,16(a7)
@@ -849,6 +880,7 @@ Akt_BlockXUtf2U2XUtf_3:
 [0005d130] 4fef 0014                 lea.l      20(a7),a7
 [0005d134] 4e75                      rts
 
+	.globl Akt_BlockXUtf2XUtf
 Akt_BlockXUtf2XUtf:
 [0005d136] 4fef ffec                 lea.l      -20(a7),a7
 [0005d13a] 2f48 0010                 move.l     a0,16(a7)
@@ -887,6 +919,7 @@ Akt_BlockXUtf2XUtf_3:
 [0005d1a4] 4fef 0014                 lea.l      20(a7),a7
 [0005d1a8] 4e75                      rts
 
+	.globl Akt_StringXUtf2Unicode
 Akt_StringXUtf2Unicode:
 [0005d1aa] 4fef fff6                 lea.l      -10(a7),a7
 [0005d1ae] 2f48 0006                 move.l     a0,6(a7)
@@ -905,6 +938,7 @@ Akt_StringXUtf2Unicode:
 [0005d1dc] 4fef 000a                 lea.l      10(a7),a7
 [0005d1e0] 4e75                      rts
 
+	.globl Akt_StringXUtf2U2XUtf
 Akt_StringXUtf2U2XUtf:
 [0005d1e2] 4fef fff4                 lea.l      -12(a7),a7
 [0005d1e6] 2f48 0008                 move.l     a0,8(a7)
@@ -925,6 +959,7 @@ Akt_StringXUtf2U2XUtf:
 [0005d21c] 4fef 000c                 lea.l      12(a7),a7
 [0005d220] 4e75                      rts
 
+	.globl Akt_StringXUtf2XUtf
 Akt_StringXUtf2XUtf:
 [0005d222] 4fef fff4                 lea.l      -12(a7),a7
 [0005d226] 2f48 0008                 move.l     a0,8(a7)
@@ -945,6 +980,7 @@ Akt_StringXUtf2XUtf:
 [0005d25c] 4fef 000c                 lea.l      12(a7),a7
 [0005d260] 4e75                      rts
 
+	.globl Akt_popExpName
 Akt_popExpName:
 [0005d262] 4fef ffee                 lea.l      -18(a7),a7
 [0005d266] 2f48 000e                 move.l     a0,14(a7)
@@ -1021,6 +1057,7 @@ Akt_popExpName_2:
 [0005d346] 4fef 0012                 lea.l      18(a7),a7
 [0005d34a] 4e75                      rts
 
+	.globl Akt_popImpName
 Akt_popImpName:
 [0005d34c] 4fef ffee                 lea.l      -18(a7),a7
 [0005d350] 2f48 000e                 move.l     a0,14(a7)
@@ -1097,6 +1134,7 @@ Akt_popImpName_2:
 [0005d430] 4fef 0012                 lea.l      18(a7),a7
 [0005d434] 4e75                      rts
 
+	.globl Akt_chooseExpNr
 Akt_chooseExpNr:
 [0005d436] 4fef ffe8                 lea.l      -24(a7),a7
 [0005d43a] 2f48 0014                 move.l     a0,20(a7)
@@ -1144,6 +1182,7 @@ Akt_chooseExpNr_2:
 [0005d4c8] 4fef 0018                 lea.l      24(a7),a7
 [0005d4cc] 4e75                      rts
 
+	.globl Akt_chooseImpNr
 Akt_chooseImpNr:
 [0005d4ce] 4fef ffe8                 lea.l      -24(a7),a7
 [0005d4d2] 2f48 0014                 move.l     a0,20(a7)

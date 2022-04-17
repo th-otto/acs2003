@@ -1,5 +1,6 @@
 		.text
 
+	.globl add_mouse
 add_mouse:
 		movem.l    d3-d4/a2-a6,-(a7)
 		movea.l    a0,a2
@@ -80,6 +81,7 @@ copy_mouse_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl del_mouse
 del_mouse:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a4
@@ -182,6 +184,7 @@ protomouse:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl list_mouse
 list_mouse:
 		dc.w $0000
 		dc.w $0000

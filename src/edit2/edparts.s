@@ -429,6 +429,7 @@ part_add_26:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl part_get
 part_get:
 		movem.l    d3/a2-a3,-(a7)
 		movea.l    a0,a3
@@ -458,6 +459,7 @@ part_get_3:
 		movem.l    (a7)+,d3/a2-a3
 		rts
 
+	.globl part_make
 part_make:
 		movem.l    a2-a5,-(a7)
 		lea.l      -262(a7),a7
@@ -644,6 +646,7 @@ part_service_11:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl glue_parts
 glue_parts:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -3072,6 +3075,7 @@ IMAGE_001:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0001
+	.globl PARTS
 PARTS:
 		dc.w $ffff
 		dc.w $0001
@@ -5341,6 +5345,7 @@ _11aPARTS_TOOL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_PARTS
 WI_PARTS:
 		dc.w $0000
 		dc.w $0000
@@ -8068,6 +8073,7 @@ tree:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl part_palette
 part_palette:
 		dc.w $0000
 		dc.w $0000
@@ -8149,6 +8155,7 @@ part_ucnt:
 uocall:
 		dc.l ed_abort
 		dc.l set_userdata
+	.globl parts_window
 parts_window:
 		dc.w $0000
 		dc.w $0000
@@ -8184,3 +8191,7 @@ xbb5a0:
 xbb5ab:
 		dc.b 'AME',0
 		.even
+
+	.bss
+
+part_list: ds.b 128

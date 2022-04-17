@@ -3319,6 +3319,7 @@ _122aREF_TYPE:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl EDIT_REF
 EDIT_REF:
 		dc.w $ffff
 		dc.w $0001
@@ -3502,6 +3503,7 @@ _13aEDIT_REF:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_REF
 WI_REF:
 		dc.w $0000
 		dc.w $0000
@@ -3562,6 +3564,7 @@ WI_REF:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl cross_type
 cross_type:
 		dc.w $002c
 		dc.w $0030
@@ -3601,6 +3604,7 @@ cross_type:
 		dc.w $004a
 		dc.w $004c
 		dc.w $004e
+	.globl cross_type_anz
 cross_type_anz:
 		dc.w $0026
 p_type:

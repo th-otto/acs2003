@@ -1,3 +1,5 @@
+
+	.globl Ash_fontSetIcon
 Ash_fontSetIcon:
 [0006fb46] 5d4f                      subq.w     #6,a7
 [0006fb48] 2f48 0002                 move.l     a0,2(a7)
@@ -19,6 +21,7 @@ Ash_fontSetIcon_2:
 [0006fb86] 5c4f                      addq.w     #6,a7
 [0006fb88] 4e75                      rts
 
+	.globl Ash_font
 Ash_font:
 [0006fb8a] 2f0a                      move.l     a2,-(a7)
 [0006fb8c] 4fef ffe4                 lea.l      -28(a7),a7
@@ -1233,6 +1236,7 @@ _00aFontSelObj:
 [000e2f2e]                           dc.w $0000
 [000e2f30]                           dc.w $0000
 [000e2f32]                           dc.w $0000
+	.globl FontSelWind
 FontSelWind:
 [000e2f34]                           dc.w $0000
 [000e2f36]                           dc.w $0000

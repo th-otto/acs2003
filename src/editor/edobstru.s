@@ -1,5 +1,6 @@
 		.text
 
+	.globl copy_ob
 copy_ob:
 		movem.l    a2-a6,-(a7)
 		subq.w     #4,a7
@@ -147,6 +148,7 @@ copy_ob_9:
 		movem.l    (a7)+,a2-a6
 		rts
 
+	.globl copysub_ob
 copysub_ob:
 		movem.l    d3-d7/a2-a6,-(a7)
 		subq.w     #2,a7
@@ -279,6 +281,7 @@ copysub_ob_5:
 		movem.l    (a7)+,d3-d7/a2-a6
 		rts
 
+	.globl del_ob
 del_ob:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -373,6 +376,7 @@ del_ob_7:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl delsub_ob
 delsub_ob:
 		movem.l    d3-d4/a2-a4,-(a7)
 		movea.l    a0,a4
@@ -417,6 +421,7 @@ delsub_ob_1:
 		movem.l    (a7)+,d3-d4/a2-a4
 		rts
 
+	.globl free_ob
 free_ob:
 		movem.l    d3-d6/a2,-(a7)
 		movea.l    a0,a2
@@ -500,6 +505,7 @@ free_ob_1:
 		movem.l    (a7)+,d3-d6/a2
 		rts
 
+	.globl moveto_ob
 moveto_ob:
 		movem.l    d3-d6/a2,-(a7)
 		movea.l    a0,a2
@@ -596,6 +602,7 @@ moveto_ob_1:
 		movem.l    (a7)+,d3-d6/a2
 		rts
 
+	.globl pack_ob
 pack_ob:
 		movem.l    d3-d4/a2-a3,-(a7)
 		movea.l    a0,a2
@@ -641,6 +648,7 @@ pack_ob_3:
 		movem.l    (a7)+,d3-d4/a2-a3
 		rts
 
+	.globl unlink_ob
 unlink_ob:
 		movem.l    d3-d7/a2,-(a7)
 		movea.l    a0,a2
@@ -913,6 +921,7 @@ rob_1:
 		movem.l    (a7)+,d3-d6/a2-a6
 		rts
 
+	.globl resize_ob
 resize_ob:
 		movem.l    d3-d6/a2-a3,-(a7)
 		movea.l    a0,a2

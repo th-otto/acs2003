@@ -1816,6 +1816,7 @@ out_window_1:
 		movem.l    (a7)+,d3-d4/a2-a6
 		rts
 
+	.globl pp_output
 pp_output:
 		movem.l    d3/a2-a5,-(a7)
 		lea.l      -136(a7),a7

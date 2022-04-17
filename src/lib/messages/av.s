@@ -1,3 +1,4 @@
+	.globl Aev_InitVA
 Aev_InitVA:
 [0005f804] 4fef fff0                 lea.l      -16(a7),a7
 [0005f808] 2079 0010 ee4e            movea.l    ACSblk,a0
@@ -53,13 +54,16 @@ Aev_InitVA_1:
 [0005f8d2] 4fef 0010                 lea.l      16(a7),a7
 [0005f8d6] 4e75                      rts
 
+	.globl Aev_ExitVA
 Aev_ExitVA:
 [0005f8d8] 7001                      moveq.l    #1,d0
 [0005f8da] 4e75                      rts
 
+	.globl VaDataDelete
 VaDataDelete:
 [0005f8dc] 4e75                      rts
 
+	.globl Aev_GetAvExit
 Aev_GetAvExit:
 [0005f8de] 4fef fff4                 lea.l      -12(a7),a7
 [0005f8e2] 2f48 0008                 move.l     a0,8(a7)
@@ -87,6 +91,7 @@ Aev_GetAvExit_1:
 [0005f928] 4fef 000c                 lea.l      12(a7),a7
 [0005f92c] 4e75                      rts
 
+	.globl Aev_GetVaProtoStatus
 Aev_GetVaProtoStatus:
 [0005f92e] 2f0a                      move.l     a2,-(a7)
 [0005f930] 4fef fff4                 lea.l      -12(a7),a7
@@ -118,6 +123,7 @@ Aev_GetVaProtoStatus_2:
 [0005f97c] 245f                      movea.l    (a7)+,a2
 [0005f97e] 4e75                      rts
 
+	.globl Aev_GetVaStart
 Aev_GetVaStart:
 [0005f980] 2f0a                      move.l     a2,-(a7)
 [0005f982] 4fef fff2                 lea.l      -14(a7),a7
@@ -159,6 +165,7 @@ Aev_GetVaStart_2:
 [0005f9f4] 245f                      movea.l    (a7)+,a2
 [0005f9f6] 4e75                      rts
 
+	.globl Aev_GetAvStarted
 Aev_GetAvStarted:
 [0005f9f8] 2f0a                      move.l     a2,-(a7)
 [0005f9fa] 4fef ffca                 lea.l      -54(a7),a7
@@ -221,6 +228,7 @@ Aev_GetAvStarted_1:
 [0005fad2] 245f                      movea.l    (a7)+,a2
 [0005fad4] 4e75                      rts
 
+	.globl Aev_GetAvSendKey
 Aev_GetAvSendKey:
 [0005fad6] 514f                      subq.w     #8,a7
 [0005fad8] 2f48 0004                 move.l     a0,4(a7)
@@ -264,6 +272,7 @@ Aev_GetAvSendKey_4:
 [0005fb50] 504f                      addq.w     #8,a7
 [0005fb52] 4e75                      rts
 
+	.globl Aev_GetAvSendClick
 Aev_GetAvSendClick:
 [0005fb54] 514f                      subq.w     #8,a7
 [0005fb56] 2f48 0004                 move.l     a0,4(a7)
@@ -299,6 +308,7 @@ Aev_GetAvSendClick_2:
 [0005fbca] 504f                      addq.w     #8,a7
 [0005fbcc] 4e75                      rts
 
+	.globl Aev_GetVaPathUpdate
 Aev_GetVaPathUpdate:
 [0005fbce] 4fef fff4                 lea.l      -12(a7),a7
 [0005fbd2] 2f48 0008                 move.l     a0,8(a7)
@@ -322,6 +332,7 @@ Aev_GetVaPathUpdate_1:
 [0005fc08] 4fef 000c                 lea.l      12(a7),a7
 [0005fc0c] 4e75                      rts
 
+	.globl Aev_AvProtokoll
 Aev_AvProtokoll:
 [0005fc0e] 4fef ffe8                 lea.l      -24(a7),a7
 [0005fc12] 3f40 0016                 move.w     d0,22(a7)
@@ -368,6 +379,7 @@ Aev_AvProtokoll_4:
 [0005fc9a] 4fef 0018                 lea.l      24(a7),a7
 [0005fc9e] 4e75                      rts
 
+	.globl Aev_AvExit
 Aev_AvExit:
 [0005fca0] 4fef ffe8                 lea.l      -24(a7),a7
 [0005fca4] 3f40 0016                 move.w     d0,22(a7)
@@ -415,6 +427,7 @@ Aev_AvExit_4:
 [0005fd2a] 4fef 0018                 lea.l      24(a7),a7
 [0005fd2e] 4e75                      rts
 
+	.globl Aev_VaStart
 Aev_VaStart:
 [0005fd30] 4fef ffe0                 lea.l      -32(a7),a7
 [0005fd34] 3f40 001e                 move.w     d0,30(a7)
@@ -471,6 +484,7 @@ Aev_VaStart_4:
 [0005fdd8] 4fef 0020                 lea.l      32(a7),a7
 [0005fddc] 4e75                      rts
 
+	.globl Aev_AvStarted
 Aev_AvStarted:
 [0005fdde] 4fef ffea                 lea.l      -22(a7),a7
 [0005fde2] 3f40 0014                 move.w     d0,20(a7)

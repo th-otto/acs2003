@@ -99,6 +99,7 @@ edpi_tile:
 		jsr        (a1)
 		rts
 
+	.globl init_picture
 init_picture:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)

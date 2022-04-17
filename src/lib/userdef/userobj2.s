@@ -1,3 +1,5 @@
+
+	.globl A_pattern
 A_pattern:
 [000659ea] 2f02                      move.l     d2,-(a7)
 [000659ec] 4fef fff2                 lea.l      -14(a7),a7
@@ -181,6 +183,7 @@ A_pattern_12:
 [00065c6e] 241f                      move.l     (a7)+,d2
 [00065c70] 4e75                      rts
 
+	.globl A_arrows
 A_arrows:
 [00065c72] 2f02                      move.l     d2,-(a7)
 [00065c74] 4fef ffe8                 lea.l      -24(a7),a7
@@ -597,6 +600,7 @@ A_arrows_32:
 [000661d2] 241f                      move.l     (a7)+,d2
 [000661d4] 4e75                      rts
 
+	.globl A_select
 A_select:
 [000661d6] 2f02                      move.l     d2,-(a7)
 [000661d8] 4fef ffe2                 lea.l      -30(a7),a7

@@ -1,3 +1,4 @@
+	.globl INMsgService
 INMsgService:
 [0005d566] 2039 000e 147e            move.l     globProtData,d0
 [0005d56c] 6626                      bne.s      INMsgService_1
@@ -21,6 +22,7 @@ INMsgService_1:
 [0005d5b0] 4240                      clr.w      d0
 [0005d5b2] 4e75                      rts
 
+	.globl TRMsgService
 TRMsgService:
 [0005d5b4] 2039 000e 147e            move.l     globProtData,d0
 [0005d5ba] 670c                      beq.s      TRMsgService_1
@@ -41,6 +43,7 @@ P2IntCmp:
 [0005d5e2] 504f                      addq.w     #8,a7
 [0005d5e4] 4e75                      rts
 
+	.globl Aev_message
 Aev_message:
 [0005d5e6] 2f0a                      move.l     a2,-(a7)
 [0005d5e8] 4fef ffd8                 lea.l      -40(a7),a7
@@ -263,6 +266,7 @@ Aev_message_2:
 [0005d87a] 245f                      movea.l    (a7)+,a2
 [0005d87c] 4e75                      rts
 
+	.globl Aev_CmpMsgInList
 Aev_CmpMsgInList:
 [0005d87e] 4fef fff6                 lea.l      -10(a7),a7
 [0005d882] 2f48 0006                 move.l     a0,6(a7)
@@ -308,6 +312,7 @@ Aev_CmpMsgInList_2:
 [0005d8de] 4fef 000a                 lea.l      10(a7),a7
 [0005d8e2] 4e75                      rts
 
+	.globl Aev_CmpDestID
 Aev_CmpDestID:
 [0005d8e4] 514f                      subq.w     #8,a7
 [0005d8e6] 2f48 0004                 move.l     a0,4(a7)
@@ -325,6 +330,7 @@ Aev_CmpDestID_2:
 [0005d8fe] 504f                      addq.w     #8,a7
 [0005d900] 4e75                      rts
 
+	.globl Aev_SendMsg
 Aev_SendMsg:
 [0005d902] 2f0a                      move.l     a2,-(a7)
 [0005d904] 4fef ffec                 lea.l      -20(a7),a7
@@ -397,6 +403,7 @@ Aev_SendMsg_5:
 [0005d9e8] 245f                      movea.l    (a7)+,a2
 [0005d9ea] 4e75                      rts
 
+	.globl Aev_SendMsg2all
 Aev_SendMsg2all:
 [0005d9ec] 2f0a                      move.l     a2,-(a7)
 [0005d9ee] 514f                      subq.w     #8,a7
@@ -430,6 +437,7 @@ Aev_SendMsg2all_2:
 [0005da42] 245f                      movea.l    (a7)+,a2
 [0005da44] 4e75                      rts
 
+	.globl Aev_SendAllMsg
 Aev_SendAllMsg:
 [0005da46] 2f0a                      move.l     a2,-(a7)
 [0005da48] 4fef ffe8                 lea.l      -24(a7),a7
@@ -471,6 +479,7 @@ DDCmpIDs_2:
 [0005dab4] 504f                      addq.w     #8,a7
 [0005dab6] 4e75                      rts
 
+	.globl Aev_DDSearch
 Aev_DDSearch:
 [0005dab8] 2f0a                      move.l     a2,-(a7)
 [0005daba] 514f                      subq.w     #8,a7
@@ -489,6 +498,7 @@ Aev_DDSearch:
 [0005dae8] 245f                      movea.l    (a7)+,a2
 [0005daea] 4e75                      rts
 
+	.globl Aev_DDAdd
 Aev_DDAdd:
 [0005daec] 2f0a                      move.l     a2,-(a7)
 [0005daee] 4fef fff0                 lea.l      -16(a7),a7
@@ -568,6 +578,7 @@ Aev_DDAdd_2:
 [0005dbca] 245f                      movea.l    (a7)+,a2
 [0005dbcc] 4e75                      rts
 
+	.globl Aev_DDDelete
 Aev_DDDelete:
 [0005dbce] 2f0a                      move.l     a2,-(a7)
 [0005dbd0] 554f                      subq.w     #2,a7
@@ -591,6 +602,7 @@ Aev_DDDelete_2:
 [0005dbfe] 245f                      movea.l    (a7)+,a2
 [0005dc00] 4e75                      rts
 
+	.globl Aev_DDRemove
 Aev_DDRemove:
 [0005dc02] 594f                      subq.w     #4,a7
 [0005dc04] 2e88                      move.l     a0,(a7)
@@ -649,6 +661,7 @@ Ash_chkDDtype_3:
 [0005dc8a] 504f                      addq.w     #8,a7
 [0005dc8c] 4e75                      rts
 
+	.globl Ash_sendall
 Ash_sendall:
 [0005dc8e] 2f0a                      move.l     a2,-(a7)
 [0005dc90] 4fef ffe8                 lea.l      -24(a7),a7
@@ -714,6 +727,7 @@ Ash_sendall_5:
 [0005dd54] 245f                      movea.l    (a7)+,a2
 [0005dd56] 4e75                      rts
 
+	.globl Ash_nextdd
 Ash_nextdd:
 [0005dd58] 594f                      subq.w     #4,a7
 [0005dd5a] 2e88                      move.l     a0,(a7)
@@ -1113,6 +1127,7 @@ dd_find_dest_8:
 [0005e256] 4fef 0024                 lea.l      36(a7),a7
 [0005e25a] 4e75                      rts
 
+	.globl GetImgIntoObj
 GetImgIntoObj:
 [0005e25c] 4fef ffee                 lea.l      -18(a7),a7
 [0005e260] 2f48 000e                 move.l     a0,14(a7)
@@ -1149,6 +1164,7 @@ GetImgIntoObj_2:
 [0005e2ca] 4fef 0012                 lea.l      18(a7),a7
 [0005e2ce] 4e75                      rts
 
+	.globl GetTxtIntoObj
 GetTxtIntoObj:
 [0005e2d0] 2f0a                      move.l     a2,-(a7)
 [0005e2d2] 4fef fbce                 lea.l      -1074(a7),a7
@@ -1409,6 +1425,7 @@ GetTxtIntoObj_11:
 
 	.data
 
+	.globl globProtData
 globProtData:
 [000e147e]                           dc.w $0000
 [000e1480]                           dc.w $0000

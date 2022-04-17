@@ -160,6 +160,7 @@ edus_ptr:
 		bsr        accept
 		rts
 
+	.globl set_user
 set_user:
 		movem.l    a2-a5,-(a7)
 		lea.l      -258(a7),a7

@@ -1,5 +1,6 @@
 		.text
 
+	.globl init_ftext
 init_ftext:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -1028,6 +1029,7 @@ A_INNERFRAME05:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl ED_FTEXT
 ED_FTEXT:
 		dc.w $ffff
 		dc.w $0001

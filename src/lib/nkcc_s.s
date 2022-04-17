@@ -27,6 +27,7 @@ nk_finds:
 .found:
 [00043f64] 4a41                      tst.w      d1
 [00043f66] 4e75                      rts
+	.globl nkc_init
 nkc_init:
 [00043f68] 70ff                      moveq.l    #-1,d0
 [00043f6a] 2f00                      move.l     d0,-(a7)
@@ -42,6 +43,7 @@ nkc_init:
 .exit:
 [00043f8e] 303c 0294                 move.w     #$0294,d0
 [00043f92] 4e75                      rts
+	.globl nkc_tos2
 nkc_tos2:
 [00043f94] 48e7 1800                 movem.l    d3-d4,-(a7)
 [00043f98] 2200                      move.l     d0,d1
@@ -187,6 +189,7 @@ nkc_tos2:
 [00044100] 8042                      or.w       d2,d0
 [00044102] 4cdf 0018                 movem.l    (a7)+,d3-d4
 [00044106] 4e75                      rts
+	nkc_n2to
 nkc_n2to:
 [00044108] 3200                      move.w     d0,d1
 [0004410a] c27c 8c00                 and.w      #$8C00,d1
@@ -320,12 +323,14 @@ nkc_n2to:
 .exit:
 [00044260] 4a80                      tst.l      d0
 [00044262] 4e75                      rts
-nkc_toup:
+	.globl nkc_toupper
+nkc_toupper:
 [00044264] 41f9 000e 0324            lea.l      toupper,a0
 [0004426a] c07c 00ff                 and.w      #$00FF,d0
 [0004426e] 1030 0000                 move.b     0(a0,d0.w),d0
 [00044272] 4e75                      rts
-nkc_tolo:
+	.globl nkc_tolower
+nkc_tolower:
 [00044274] 41f9 000e 0424            lea.l      tolower,a0
 [0004427a] c07c 00ff                 and.w      #$00FF,d0
 [0004427e] 1030 0000                 move.b     0(a0,d0.w),d0

@@ -5477,6 +5477,7 @@ _96aEDIT_MAINMOD:
 		dc.w 0
 		dc.w 0
 		dc.w 0
+	.globl WI_BEHAVE
 WI_BEHAVE:
 		dc.w 0
 		dc.w 0
@@ -5536,6 +5537,7 @@ WI_BEHAVE:
 		dc.l STGUIDE_02
 		dc.w 0
 		dc.w 0
+	.globl WI_MAINMOD
 WI_MAINMOD:
 		dc.w 0
 		dc.w 0
@@ -5595,6 +5597,7 @@ WI_MAINMOD:
 		dc.l Awi_gemscript
 		dc.l STGUIDE_01
 		dc.l HELPFILE_01
+	.globl mlmess
 mlmess:
 		dc.l _A_GENERAL
 		dc.l _A_GENERAL_STR

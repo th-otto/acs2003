@@ -1,3 +1,4 @@
+	.globl Aev_InitOlga
 Aev_InitOlga:
 [0006170c] 554f                      subq.w     #2,a7
 [0006170e] 3ebc 0001                 move.w     #$0001,(a7)
@@ -33,6 +34,7 @@ Aev_InitOlga_2:
 [0006177a] 544f                      addq.w     #2,a7
 [0006177c] 4e75                      rts
 
+	.globl Aev_ExitOlga
 Aev_ExitOlga:
 [0006177e] 33fc 0001 000e 1b70       move.w     #$0001,phase
 [00061786] 3039 000e 1b52            move.w     olga_id,d0
@@ -334,6 +336,7 @@ SendOlgaUpdate:
 [00061aea] 245f                      movea.l    (a7)+,a2
 [00061aec] 4e75                      rts
 
+	.globl Aev_GetOlgaInit
 Aev_GetOlgaInit:
 [00061aee] 4fef fff6                 lea.l      -10(a7),a7
 [00061af2] 2f48 0006                 move.l     a0,6(a7)
@@ -373,6 +376,7 @@ Aev_GetOlgaInit_3:
 [00061b6c] 4fef 000a                 lea.l      10(a7),a7
 [00061b70] 4e75                      rts
 
+	.globl Aev_GetOleExit
 Aev_GetOleExit:
 [00061b72] 514f                      subq.w     #8,a7
 [00061b74] 2f48 0004                 move.l     a0,4(a7)
@@ -400,6 +404,7 @@ Aev_GetOleExit_2:
 [00061bc8] 504f                      addq.w     #8,a7
 [00061bca] 4e75                      rts
 
+	.globl Aev_GetOleNew
 Aev_GetOleNew:
 [00061bcc] 514f                      subq.w     #8,a7
 [00061bce] 2f48 0004                 move.l     a0,4(a7)
@@ -413,6 +418,7 @@ Aev_GetOleNew:
 [00061bf2] 504f                      addq.w     #8,a7
 [00061bf4] 4e75                      rts
 
+	.globl Aev_GetOlgaAck
 Aev_GetOlgaAck:
 [00061bf6] 2f0a                      move.l     a2,-(a7)
 [00061bf8] 4fef ffd6                 lea.l      -42(a7),a7
@@ -526,6 +532,7 @@ Aev_GetOlgaAck_12:
 [00061d62] 245f                      movea.l    (a7)+,a2
 [00061d64] 4e75                      rts
 
+	.globl Aev_GetOlgaUpdated
 Aev_GetOlgaUpdated:
 [00061d66] 2f0a                      move.l     a2,-(a7)
 [00061d68] 4fef ffe6                 lea.l      -26(a7),a7
@@ -557,6 +564,7 @@ Aev_GetOlgaUpdated_1:
 [00061dc8] 245f                      movea.l    (a7)+,a2
 [00061dca] 4e75                      rts
 
+	.globl Aev_GetOlgaGetInfo
 Aev_GetOlgaGetInfo:
 [00061dcc] 2f0a                      move.l     a2,-(a7)
 [00061dce] 4fef fff0                 lea.l      -16(a7),a7
@@ -594,10 +602,12 @@ Aev_GetOlgaGetInfo_1:
 [00061e36] 245f                      movea.l    (a7)+,a2
 [00061e38] 4e75                      rts
 
+	.globl Aev_GetOlgaClientTerminated
 Aev_GetOlgaClientTerminated:
 [00061e3a] 7001                      moveq.l    #1,d0
 [00061e3c] 4e75                      rts
 
+	.globl Aev_GetOlgaIdle
 Aev_GetOlgaIdle:
 [00061e3e] 2f0a                      move.l     a2,-(a7)
 [00061e40] 4fef ffe6                 lea.l      -26(a7),a7
@@ -651,6 +661,7 @@ Aev_GetOlgaIdle_2:
 [00061ee0] 245f                      movea.l    (a7)+,a2
 [00061ee2] 4e75                      rts
 
+	.globl Aev_OleInit
 Aev_OleInit:
 [00061ee4] 4fef ffee                 lea.l      -18(a7),a7
 [00061ee8] 426f 0010                 clr.w      16(a7)
@@ -687,6 +698,7 @@ Aev_OleInit_1:
 [00061f54] 4fef 0012                 lea.l      18(a7),a7
 [00061f58] 4e75                      rts
 
+	.globl Aev_OleExit
 Aev_OleExit:
 [00061f5a] 4fef ffee                 lea.l      -18(a7),a7
 [00061f5e] 426f 0010                 clr.w      16(a7)
@@ -726,6 +738,7 @@ Aev_OleExit_1:
 [00061fda] 4fef 0012                 lea.l      18(a7),a7
 [00061fde] 4e75                      rts
 
+	.globl Aev_OlgaUpdate
 Aev_OlgaUpdate:
 [00061fe0] 2f0a                      move.l     a2,-(a7)
 [00061fe2] 4fef ffd0                 lea.l      -48(a7),a7

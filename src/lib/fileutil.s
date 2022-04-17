@@ -1,3 +1,4 @@
+	.globl Af_cfgfile
 Af_cfgfile:
 [0004b496] 594f                      subq.w     #4,a7
 [0004b498] 2e88                      move.l     a0,(a7)
@@ -45,6 +46,7 @@ Af_cfgfile_5:
 [0004b544] 584f                      addq.w     #4,a7
 [0004b546] 4e75                      rts
 
+	.globl Af_2drv
 Af_2drv:
 [0004b548] 594f                      subq.w     #4,a7
 [0004b54a] 2e88                      move.l     a0,(a7)
@@ -71,6 +73,7 @@ Af_2drv_2:
 [0004b582] 584f                      addq.w     #4,a7
 [0004b584] 4e75                      rts
 
+	.globl Af_2path
 Af_2path:
 [0004b586] 4fef fff0                 lea.l      -16(a7),a7
 [0004b58a] 2f48 000c                 move.l     a0,12(a7)
@@ -143,6 +146,7 @@ Af_2path_3:
 [0004b668] 4fef 0010                 lea.l      16(a7),a7
 [0004b66c] 4e75                      rts
 
+	.globl Af_2name
 Af_2name:
 [0004b66e] 4fef fff0                 lea.l      -16(a7),a7
 [0004b672] 2f48 000c                 move.l     a0,12(a7)
@@ -193,6 +197,7 @@ Af_2name_6:
 [0004b700] 4fef 0010                 lea.l      16(a7),a7
 [0004b704] 4e75                      rts
 
+	.globl Af_2fullname
 Af_2fullname:
 [0004b706] 4fef fff4                 lea.l      -12(a7),a7
 [0004b70a] 2f48 0008                 move.l     a0,8(a7)
@@ -225,6 +230,7 @@ Af_2fullname_4:
 [0004b752] 4fef 000c                 lea.l      12(a7),a7
 [0004b756] 4e75                      rts
 
+	.globl Af_2ext
 Af_2ext:
 [0004b758] 4fef fff0                 lea.l      -16(a7),a7
 [0004b75c] 2f48 000c                 move.l     a0,12(a7)
@@ -257,6 +263,7 @@ Af_2ext_3:
 [0004b7b6] 4fef 0010                 lea.l      16(a7),a7
 [0004b7ba] 4e75                      rts
 
+	.globl Af_buildname
 Af_buildname:
 [0004b7bc] 4fef fff2                 lea.l      -14(a7),a7
 [0004b7c0] 2f48 000a                 move.l     a0,10(a7)
@@ -355,6 +362,7 @@ Af_buildname_8:
 [0004b8f4] 4fef 000e                 lea.l      14(a7),a7
 [0004b8f8] 4e75                      rts
 
+	.globl Af_length
 Af_length:
 [0004b8fa] 4fef ffec                 lea.l      -20(a7),a7
 [0004b8fe] 2f48 0010                 move.l     a0,16(a7)
@@ -910,6 +918,7 @@ Af_readdirNew_6:
 [0004bf9c] 4fef 0058                 lea.l      88(a7),a7
 [0004bfa0] 4e75                      rts
 
+	.globl Af_readdir
 Af_readdir:
 [0004bfa2] 4fef ffe6                 lea.l      -26(a7),a7
 [0004bfa6] 2f48 0016                 move.l     a0,22(a7)
@@ -987,6 +996,7 @@ Af_readdir_2:
 [0004c0a0] 4fef 001a                 lea.l      26(a7),a7
 [0004c0a4] 4e75                      rts
 
+	.globl Af_freedir
 Af_freedir:
 [0004c0a6] 514f                      subq.w     #8,a7
 [0004c0a8] 2f48 0004                 move.l     a0,4(a7)
@@ -1010,6 +1020,7 @@ Af_freedir_1:
 [0004c0da] 504f                      addq.w     #8,a7
 [0004c0dc] 4e75                      rts
 
+	.globl Af_first
 Af_first:
 [0004c0de] 514f                      subq.w     #8,a7
 [0004c0e0] 2f48 0004                 move.l     a0,4(a7)
@@ -1036,6 +1047,7 @@ Af_first_3:
 [0004c128] 504f                      addq.w     #8,a7
 [0004c12a] 4e75                      rts
 
+	.globl Af_next
 Af_next:
 [0004c12c] 594f                      subq.w     #4,a7
 [0004c12e] 2e88                      move.l     a0,(a7)
@@ -1078,6 +1090,7 @@ Af_next_2:
 [0004c1a2] 584f                      addq.w     #4,a7
 [0004c1a4] 4e75                      rts
 
+	.globl Af_quote
 Af_quote:
 [0004c1a6] 4fef ffee                 lea.l      -18(a7),a7
 [0004c1aa] 2f48 000e                 move.l     a0,14(a7)
@@ -1157,6 +1170,7 @@ Af_quote_2:
 [0004c2a2] 4fef 0012                 lea.l      18(a7),a7
 [0004c2a6] 4e75                      rts
 
+	.globl Af_unquote
 Af_unquote:
 [0004c2a8] 4fef ffee                 lea.l      -18(a7),a7
 [0004c2ac] 2f48 000e                 move.l     a0,14(a7)
@@ -1222,6 +1236,7 @@ Af_unquote_2:
 [0004c360] 4fef 0012                 lea.l      18(a7),a7
 [0004c364] 4e75                      rts
 
+	.globl Af_parseCmdLine
 Af_parseCmdLine:
 [0004c366] 2f0a                      move.l     a2,-(a7)
 [0004c368] 4fef ff64                 lea.l      -156(a7),a7

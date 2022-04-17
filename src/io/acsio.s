@@ -1,3 +1,4 @@
+	.globl acs_closewi
 acs_closewi:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a3
@@ -44,6 +45,7 @@ acs_closewi_3:
 		movem.l    (a7)+,d3/a2-a4
 		rts
 
+	.globl assert_error
 assert_error:
 		tst.w      d0
 		beq.s      assert_error_1
@@ -56,6 +58,7 @@ assert_error_1:
 		jsr        longjmp
 		rts
 
+	.globl set_handle
 set_handle:
 		lea.l      err_jmp,a0
 		moveq.l    #0,d1
@@ -64,6 +67,7 @@ set_handle:
 		move.w     d0,48(a0)
 		rts
 
+	.globl save_buf
 save_buf:
 		movem.l    d3-d4/a2-a3,-(a7)
 		movea.l    a0,a3
@@ -121,6 +125,7 @@ save_buf_4:
 		movem.l    (a7)+,d3-d4/a2-a3
 		rts
 
+	.globl save_string
 save_string:
 		move.l     a2,-(a7)
 		movea.l    a0,a2
@@ -130,6 +135,7 @@ save_string:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl close_buf
 close_buf:
 		move.l     a2,-(a7)
 		lea.l      bpos,a2
@@ -153,6 +159,7 @@ close_buf_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl read_buf
 read_buf:
 		movem.l    d3-d4/a2-a3,-(a7)
 		movea.l    a0,a3
@@ -222,6 +229,7 @@ read_buf_4:
 		movem.l    (a7)+,d3-d4/a2-a3
 		rts
 
+	.globl save_acs
 save_acs:
 		move.l     a2,-(a7)
 		movea.l    a0,a2
@@ -261,6 +269,7 @@ save_acs_4:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl init_acs
 init_acs:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a2
@@ -449,6 +458,7 @@ init_acs_1:
 		movem.l    (a7)+,d3/a2-a4
 		rts
 
+	.globl init_ml_list
 init_ml_list:
 		movem.l    d3-d5/a2-a5,-(a7)
 		lea.l      -70(a7),a7
@@ -567,6 +577,7 @@ init_ml_list_4:
 		movem.l    (a7)+,d3-d5/a2-a5
 		rts
 
+	.globl del_mess
 del_mess:
 		movem.l    d3-d4/a2/a4-a5,-(a7)
 		lea.l      -36(a7),a7
@@ -636,6 +647,7 @@ del_mess_7:
 		movem.l    (a7)+,d3-d4/a2/a4-a5
 		rts
 
+	.globl init_mess
 init_mess:
 		movem.l    d3-d4/a2-a4/a6,-(a7)
 		lea.l      -102(a7),a7
@@ -768,6 +780,7 @@ init_mess_2:
 		movem.l    (a7)+,d3-d4/a2-a4/a6
 		rts
 
+	.globl read_acs
 read_acs:
 		movem.l    d3-d4/a2-a3,-(a7)
 		lea.l      -10(a7),a7
@@ -1297,3 +1310,10 @@ obsproto:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+
+	.bss
+
+err_jmp: ds.b 48
+handle: ds.w 1
+bpos: ds.l 1
+bfill: ds.l 1

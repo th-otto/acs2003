@@ -1,3 +1,4 @@
+	.globl Aev_InitBubble
 Aev_InitBubble:
 [000605be] 554f                      subq.w     #2,a7
 [000605c0] 7008                      moveq.l    #8,d0
@@ -12,6 +13,7 @@ Aev_InitBubble_1:
 [000605e0] 544f                      addq.w     #2,a7
 [000605e2] 4e75                      rts
 
+	.globl Aev_ExitBubble
 Aev_ExitBubble:
 [000605e4] 33fc 0001 000e 1a92       move.w     #$0001,phase
 [000605ec] 2039 000e 1a8e            move.l     bubble_string,d0
@@ -89,6 +91,7 @@ FindBubbleGEM_1:
 [000606e6] 504f                      addq.w     #8,a7
 [000606e8] 4e75                      rts
 
+	.globl Aev_GetAckBubbleGEM
 Aev_GetAckBubbleGEM:
 [000606ea] 514f                      subq.w     #8,a7
 [000606ec] 2f48 0004                 move.l     a0,4(a7)
@@ -118,6 +121,7 @@ Aev_GetAckBubbleGEM_3:
 [0006072a] 504f                      addq.w     #8,a7
 [0006072c] 4e75                      rts
 
+	.globl Aev_GetRequestBubbleGEM
 Aev_GetRequestBubbleGEM:
 [0006072e] 594f                      subq.w     #4,a7
 [00060730] 2e88                      move.l     a0,(a7)
@@ -131,6 +135,7 @@ Aev_GetRequestBubbleGEM:
 [0006074a] 584f                      addq.w     #4,a7
 [0006074c] 4e75                      rts
 
+	.globl Aev_ShowBubbleGEM
 Aev_ShowBubbleGEM:
 [0006074e] 4fef ffe2                 lea.l      -30(a7),a7
 [00060752] 2f48 001a                 move.l     a0,26(a7)

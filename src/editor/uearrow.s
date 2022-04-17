@@ -487,6 +487,7 @@ edar_stil_1:
 		movem.l    (a7)+,d3/a2-a3
 		rts
 
+	.globl init_arrow
 init_arrow:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -1712,6 +1713,7 @@ _07_POP_STYLESEL:
 		dc.w $0006
 		dc.w $0006
 		dc.w $0001
+	.globl ED_ARROW
 ED_ARROW:
 		dc.w $ffff
 		dc.w $0001

@@ -1,3 +1,4 @@
+	.globl Aev_InitGEMScript
 Aev_InitGEMScript:
 [0006086c] 700c                      moveq.l    #12,d0
 [0006086e] 4eb9 0004 c95e            jsr        Ax_glmalloc
@@ -29,6 +30,7 @@ x60886_1:
 [000608da] 7001                      moveq.l    #1,d0
 [000608dc] 4e75                      rts
 
+	.globl Aev_ExitGEMScript
 Aev_ExitGEMScript:
 [000608de] 2079 000e 1ab6            movea.l    gs_connect,a0
 [000608e4] 4eb9 0007 0c5e            jsr        Alu_delete
@@ -369,6 +371,7 @@ ParseGSCommands_1:
 [00060cb2] 4fef 0024                 lea.l      36(a7),a7
 [00060cb6] 4e75                      rts
 
+	.globl Aev_GetGSRequest
 Aev_GetGSRequest:
 [00060cb8] 2f0a                      move.l     a2,-(a7)
 [00060cba] 4fef ffe8                 lea.l      -24(a7),a7
@@ -449,6 +452,7 @@ Aev_GetGSRequest_3:
 [00060dbe] 245f                      movea.l    (a7)+,a2
 [00060dc0] 4e75                      rts
 
+	.globl Aev_GetGSQuit
 Aev_GetGSQuit:
 [00060dc2] 2f0a                      move.l     a2,-(a7)
 [00060dc4] 4fef fff4                 lea.l      -12(a7),a7
@@ -483,6 +487,7 @@ Aev_GetGSQuit:
 [00060e30] 245f                      movea.l    (a7)+,a2
 [00060e32] 4e75                      rts
 
+	.globl Aev_GetGSCommand
 Aev_GetGSCommand:
 [00060e34] 2f0a                      move.l     a2,-(a7)
 [00060e36] 4fef ffd0                 lea.l      -48(a7),a7
@@ -589,6 +594,7 @@ Aev_GetGSCommand_2:
 [00060f8a] 245f                      movea.l    (a7)+,a2
 [00060f8c] 4e75                      rts
 
+	.globl Aev_GetGSAck
 Aev_GetGSAck:
 [00060f8e] 2f0a                      move.l     a2,-(a7)
 [00060f90] 4fef ffc6                 lea.l      -58(a7),a7
@@ -838,6 +844,7 @@ _gs_search:
 [00061286] 504f                      addq.w     #8,a7
 [00061288] 4e75                      rts
 
+	.globl _gs_strcmp
 _gs_strcmp:
 [0006128a] 514f                      subq.w     #8,a7
 [0006128c] 2f48 0004                 move.l     a0,4(a7)
@@ -850,6 +857,7 @@ _gs_strcmp:
 [000612a2] 504f                      addq.w     #8,a7
 [000612a4] 4e75                      rts
 
+	.globl Aev_GEMScript
 Aev_GEMScript:
 [000612a6] 2f0a                      move.l     a2,-(a7)
 [000612a8] 4fef fff2                 lea.l      -14(a7),a7

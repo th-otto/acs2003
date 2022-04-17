@@ -1,3 +1,4 @@
+	.globl INbackplan
 INbackplan:
 [00054b02] 3039 000e 0cea            move.w     init,d0
 [00054b08] 5279 000e 0cea            addq.w     #1,init
@@ -21,6 +22,7 @@ INbackplan_1:
 [00054b64] 33e8 0382 0011 3adc       move.w     898(a0),v_rez_hz
 [00054b6c] 4e75                      rts
 
+	.globl Abp_create
 Abp_create:
 [00054b6e] 4fef fff2                 lea.l      -14(a7),a7
 [00054b72] 3f40 000c                 move.w     d0,12(a7)
@@ -66,6 +68,7 @@ Abp_create_1:
 [00054bfe] 4fef 000e                 lea.l      14(a7),a7
 [00054c02] 4e75                      rts
 
+	.globl Abp_delete
 Abp_delete:
 [00054c04] 594f                      subq.w     #4,a7
 [00054c06] 2e88                      move.l     a0,(a7)
@@ -78,6 +81,7 @@ Abp_delete:
 ret:
 [00054c16] 4e75                      rts
 
+	.globl Abp_start
 Abp_start:
 [00054c18] 594f                      subq.w     #4,a7
 [00054c1a] 2e88                      move.l     a0,(a7)
@@ -132,6 +136,7 @@ Abp_start_1:
 [00054cee] 584f                      addq.w     #4,a7
 [00054cf0] 4e75                      rts
 
+	.globl Abp_end
 Abp_end:
 [00054cf2] 3039 0011 3ad8            move.w     bytes_lin,d0
 [00054cf8] 2079 0010 f55e            movea.l    Linea,a0
@@ -164,6 +169,7 @@ Abp_end:
 [00054d8e] 4eb9 0004 ef66            jsr        Amo_show
 [00054d94] 4e75                      rts
 
+	.globl Abp_mfdb2img
 Abp_mfdb2img:
 [00054d96] 2f0a                      move.l     a2,-(a7)
 [00054d98] 4fef fff4                 lea.l      -12(a7),a7
@@ -697,6 +703,7 @@ vreplic_8:
 [0005540a] 4fef 0098                 lea.l      152(a7),a7
 [0005540e] 4e75                      rts
 
+	.globl Abp_img2mfdb
 Abp_img2mfdb:
 [00055410] 2f0a                      move.l     a2,-(a7)
 [00055412] 4fef ffc2                 lea.l      -62(a7),a7

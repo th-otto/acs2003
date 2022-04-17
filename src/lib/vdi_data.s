@@ -1,3 +1,4 @@
+	.globl Avdi_getRGB
 Avdi_getRGB:
 [00043dee] 554f                      subq.w     #2,a7
 [00043df0] 3e80                      move.w     d0,(a7)
@@ -21,6 +22,7 @@ Avdi_getRGB_2:
 [00043e16] 544f                      addq.w     #2,a7
 [00043e18] 4e75                      rts
 
+	.globl ACSInitL
 ACSInitL:
 [00043e1a] 48e7 1f3e                 movem.l    d3-d7/a2-a6,-(a7)
 [00043e1e] a000                      ALINE      #$0000
@@ -91,7 +93,8 @@ intret:
 [00043ef2] 4cdf 0300                 movem.l    (a7)+,a0-a1
 [00043ef6] 4e73                      rte
 
-accgemdo:
+	.globl accgemdos
+accgemdos:
 [00043ef8] 4879 0004 3e4a            pea.l      mygemdos
 [00043efe] 2f3c 0005 0021            move.l     #$00050021,-(a7)
 [00043f04] 4e4d                      trap       #13
@@ -99,7 +102,8 @@ accgemdo:
 [00043f08] 23c0 0010 f572            move.l     d0,oldvec
 [00043f0e] 4e75                      rts
 
-oldgemdo:
+	.globl oldgemdos
+oldgemdos:
 [00043f10] 2f39 0010 f572            move.l     oldvec,-(a7)
 [00043f16] 2f3c 0005 0021            move.l     #$00050021,-(a7)
 [00043f1c] 4e4d                      trap       #13

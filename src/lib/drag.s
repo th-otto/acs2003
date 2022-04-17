@@ -1,3 +1,4 @@
+	.globl dotted_xline
 dotted_xline:
 [00047518] 4fef fff2                 lea.l      -14(a7),a7
 [0004751c] 3f40 000c                 move.w     d0,12(a7)
@@ -52,6 +53,7 @@ dotted_xline_2:
 [000475e0] 4fef 000e                 lea.l      14(a7),a7
 [000475e4] 4e75                      rts
 
+	.globl dotted_yline
 dotted_yline:
 [000475e6] 4fef fff2                 lea.l      -14(a7),a7
 [000475ea] 3f40 000c                 move.w     d0,12(a7)
@@ -108,6 +110,7 @@ dotted_yline_2:
 [000476b6] 4fef 000e                 lea.l      14(a7),a7
 [000476ba] 4e75                      rts
 
+	.globl xline2
 xline2:
 [000476bc] 4fef fff2                 lea.l      -14(a7),a7
 [000476c0] 3f40 000c                 move.w     d0,12(a7)
@@ -162,6 +165,7 @@ xline2_2:
 [00047784] 4fef 000e                 lea.l      14(a7),a7
 [00047788] 4e75                      rts
 
+	.globl yline2
 yline2:
 [0004778a] 4fef fff2                 lea.l      -14(a7),a7
 [0004778e] 3f40 000c                 move.w     d0,12(a7)
@@ -615,11 +619,13 @@ drag_draw_3:
 [00047e18] 4fef 001c                 lea.l      28(a7),a7
 [00047e1c] 4e75                      rts
 
+	.globl Adr_start
 Adr_start:
 [00047e1e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00047e24] 4268 0248                 clr.w      584(a0)
 [00047e28] 4e75                      rts
 
+	.globl Adr_next
 Adr_next:
 [00047e2a] 2079 0010 ee4e            movea.l    ACSblk,a0
 [00047e30] 3028 0248                 move.w     584(a0),d0
@@ -643,6 +649,7 @@ Adr_next_1:
 [00047e66] 4e71                      nop
 [00047e68] 4e75                      rts
 
+	.globl Adr_add
 Adr_add:
 [00047e6a] 2f0a                      move.l     a2,-(a7)
 [00047e6c] 4fef fff2                 lea.l      -14(a7),a7
@@ -725,6 +732,7 @@ Adr_add_6:
 [00047f72] 245f                      movea.l    (a7)+,a2
 [00047f74] 4e75                      rts
 
+	.globl Adr_del
 Adr_del:
 [00047f76] 2f0a                      move.l     a2,-(a7)
 [00047f78] 4fef ffea                 lea.l      -22(a7),a7
@@ -847,6 +855,7 @@ Adr_del_2:
 [0004810a] 245f                      movea.l    (a7)+,a2
 [0004810c] 4e75                      rts
 
+	.globl Adr_unselect
 Adr_unselect:
 [0004810e] 2f0a                      move.l     a2,-(a7)
 [00048110] 514f                      subq.w     #8,a7
@@ -1176,6 +1185,7 @@ rect_find_2:
 [000484f8] 4fef 002a                 lea.l      42(a7),a7
 [000484fc] 4e75                      rts
 
+	.globl Adr_box
 Adr_box:
 [000484fe] 2f0a                      move.l     a2,-(a7)
 [00048500] 4fef ffac                 lea.l      -84(a7),a7
@@ -1842,6 +1852,7 @@ Adr_box_2:
 [00048dd2] 245f                      movea.l    (a7)+,a2
 [00048dd4] 4e75                      rts
 
+	.globl Adr_find0
 Adr_find0:
 [00048dd6] 4fef ffd2                 lea.l      -46(a7),a7
 [00048dda] 2f48 002a                 move.l     a0,42(a7)
@@ -2111,6 +2122,7 @@ DDCmpName_4:
 [0004913c] 504f                      addq.w     #8,a7
 [0004913e] 4e75                      rts
 
+	.globl Adr_drag
 Adr_drag:
 [00049140] 3f03                      move.w     d3,-(a7)
 [00049142] 2f0a                      move.l     a2,-(a7)

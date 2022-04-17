@@ -2000,3 +2000,6 @@ WI_PALETTE:
 		dc.w 0
 		dc.w 0
 
+	.bss
+
+formtest: ds.b 74

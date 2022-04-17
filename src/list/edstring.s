@@ -1,5 +1,6 @@
 		.text
 
+	.globl add_string
 add_string:
 		movem.l    d3-d5/a2-a6,-(a7)
 		subq.w     #4,a7
@@ -122,6 +123,7 @@ add_string_15:
 		movem.l    (a7)+,d3-d5/a2-a6
 		rts
 
+	.globl change_string
 change_string:
 		movem.l    d3/a2-a5,-(a7)
 		movea.l    a0,a3
@@ -176,6 +178,7 @@ change_string_2:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl del_string
 del_string:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a2
@@ -207,6 +210,7 @@ del_string_1:
 		movem.l    (a7)+,a2-a5
 		rts
 
+	.globl dup_string
 dup_string:
 		movem.l    a2-a4,-(a7)
 		movea.l    a0,a4
@@ -224,6 +228,7 @@ dup_string:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl serv_str
 serv_str:
 		movem.l    d3-d6/a3-a6,-(a7)
 		lea.l      -110(a7),a7
@@ -465,6 +470,7 @@ serv_str_28:
 		movem.l    (a7)+,d3-d6/a3-a6
 		rts
 
+	.globl copy_str
 copy_str:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -671,6 +677,7 @@ protostring:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl list_string
 list_string:
 		dc.w $0000
 		dc.w $0000

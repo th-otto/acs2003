@@ -1,5 +1,6 @@
 		.text
 
+	.globl add_data
 add_data:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a2
@@ -70,6 +71,7 @@ copy_data_2:
 		movem.l    (a7)+,a2-a5
 		rts
 
+	.globl dup_data
 dup_data:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -85,6 +87,7 @@ dup_data:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl del_data
 del_data:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a2

@@ -1,3 +1,4 @@
+	.globl Aev_unhidepointer
 Aev_unhidepointer:
 [0004a2f8] 3039 000e 073c            move.w     hidepointer,d0
 [0004a2fe] 670c                      beq.s      Aev_unhidepointer_1
@@ -6,6 +7,7 @@ Aev_unhidepointer:
 Aev_unhidepointer_1:
 [0004a30c] 4e75                      rts
 
+	.globl Aev_quit
 Aev_quit:
 [0004a30e] 7001                      moveq.l    #1,d0
 [0004a310] 33c0 000e 073a            move.w     d0,exitapp
@@ -119,6 +121,7 @@ IsDeadKey_2:
 [0004a492] 4fef 0014                 lea.l      20(a7),a7
 [0004a496] 4e75                      rts
 
+	.globl evkeybrd
 evkeybrd:
 [0004a498] 2f0a                      move.l     a2,-(a7)
 [0004a49a] 4fef ffe0                 lea.l      -32(a7),a7
@@ -404,6 +407,7 @@ evkeybrd_3:
 [0004a8a6] 245f                      movea.l    (a7)+,a2
 [0004a8a8] 4e75                      rts
 
+	.globl ev_dobutton
 ev_dobutton:
 [0004a8aa] 4fef ffde                 lea.l      -34(a7),a7
 [0004a8ae] 2f48 001e                 move.l     a0,30(a7)
@@ -591,6 +595,7 @@ ev_dobutton_2:
 [0004aaf6] 4fef 0022                 lea.l      34(a7),a7
 [0004aafa] 4e75                      rts
 
+	.globl evmwheel
 evmwheel:
 [0004aafc] 4fef fff2                 lea.l      -14(a7),a7
 [0004ab00] 2f48 000a                 move.l     a0,10(a7)
@@ -626,6 +631,7 @@ evmwheel_4:
 [0004ab5e] 4fef 000e                 lea.l      14(a7),a7
 [0004ab62] 4e75                      rts
 
+	.globl evbutton
 evbutton:
 [0004ab64] 2f0a                      move.l     a2,-(a7)
 [0004ab66] 4fef ffe2                 lea.l      -30(a7),a7
@@ -835,6 +841,7 @@ evbutton_2:
 [0004ae40] 245f                      movea.l    (a7)+,a2
 [0004ae42] 4e75                      rts
 
+	.globl evmouse
 evmouse:
 [0004ae44] 2f0a                      move.l     a2,-(a7)
 [0004ae46] 4fef ffe8                 lea.l      -24(a7),a7
@@ -1016,6 +1023,7 @@ evmouse_2:
 [0004b082] 245f                      movea.l    (a7)+,a2
 [0004b084] 4e75                      rts
 
+	.globl Aev_mess
 Aev_mess:
 [0004b086] 4fef ffec                 lea.l      -20(a7),a7
 [0004b08a] 4eb9 0005 5e8c            jsr        Awi_root
@@ -1086,6 +1094,7 @@ Aev_mess_2:
 [0004b14a] 4fef 0014                 lea.l      20(a7),a7
 [0004b14e] 4e75                      rts
 
+	.globl ACSeventhandler
 ACSeventhandler:
 [0004b150] 2f0a                      move.l     a2,-(a7)
 [0004b152] 4fef ffc2                 lea.l      -62(a7),a7

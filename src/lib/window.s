@@ -1,3 +1,4 @@
+	.globl INwindow
 INwindow:
 [0005593e] 594f                      subq.w     #4,a7
 [00055940] 3039 000e 0cf8            move.w     init,d0
@@ -148,6 +149,7 @@ INwindow_2:
 [00055b7a] 584f                      addq.w     #4,a7
 [00055b7c] 4e75                      rts
 
+	.globl TRwindow
 TRwindow:
 [00055b7e] 2f0a                      move.l     a2,-(a7)
 [00055b80] 5d4f                      subq.w     #6,a7
@@ -220,6 +222,7 @@ TRwindow_2:
 [00055c56] 245f                      movea.l    (a7)+,a2
 [00055c58] 4e75                      rts
 
+	.globl Awi_ontop
 Awi_ontop:
 [00055c5a] 2039 000e 0d2a            move.l     top_window,d0
 [00055c60] 6608                      bne.s      Awi_ontop_1
@@ -230,6 +233,7 @@ Awi_ontop_1:
 [00055c6a] 2079 000e 0d2a            movea.l    top_window,a0
 [00055c70] 4e75                      rts
 
+	.globl Awi_setontop
 Awi_setontop:
 [00055c72] 594f                      subq.w     #4,a7
 [00055c74] 2e88                      move.l     a0,(a7)
@@ -349,6 +353,7 @@ Awi_icondelete_3:
 [00055de0] 584f                      addq.w     #4,a7
 [00055de2] 4e75                      rts
 
+	.globl Awi_invalid
 Awi_invalid:
 [00055de4] 2f0a                      move.l     a2,-(a7)
 [00055de6] 5d4f                      subq.w     #6,a7
@@ -398,6 +403,7 @@ Awi_invalid_4:
 [00055e64] 245f                      movea.l    (a7)+,a2
 [00055e66] 4e75                      rts
 
+	.globl Awi_wid
 Awi_wid:
 [00055e68] 554f                      subq.w     #2,a7
 [00055e6a] 3e80                      move.w     d0,(a7)
@@ -417,14 +423,17 @@ Awi_wid_3:
 [00055e88] 544f                      addq.w     #2,a7
 [00055e8a] 4e75                      rts
 
+	.globl Awi_root
 Awi_root:
 [00055e8c] 2079 000e 0d26            movea.l    Aroot_wi,a0
 [00055e92] 4e75                      rts
 
+	.globl Awi_init
 Awi_init:
 [00055e94] 4240                      clr.w      d0
 [00055e96] 4e75                      rts
 
+	.globl Ash_prog
 Ash_prog:
 [00055e98] 2f0a                      move.l     a2,-(a7)
 [00055e9a] 4fef fc8c                 lea.l      -884(a7),a7
@@ -1230,6 +1239,7 @@ Awi_catch_6:
 [000569d2] 245f                      movea.l    (a7)+,a2
 [000569d4] 4e75                      rts
 
+	.globl Awi_list
 Awi_list:
 [000569d6] 5d4f                      subq.w     #6,a7
 [000569d8] 426f 0004                 clr.w      4(a7)
@@ -1257,6 +1267,7 @@ Awi_list_3:
 [00056a1c] 5c4f                      addq.w     #6,a7
 [00056a1e] 4e75                      rts
 
+	.globl Awi_sendall
 Awi_sendall:
 [00056a20] 2f0a                      move.l     a2,-(a7)
 [00056a22] 4fef fff4                 lea.l      -12(a7),a7
@@ -1285,6 +1296,7 @@ Awi_sendall_1:
 [00056a6a] 245f                      movea.l    (a7)+,a2
 [00056a6c] 4e75                      rts
 
+	.globl Awi_lateupdate
 Awi_lateupdate:
 [00056a6e] 2f0a                      move.l     a2,-(a7)
 [00056a70] 5d4f                      subq.w     #6,a7
@@ -1338,6 +1350,7 @@ Awi_lateupdate_1:
 [00056af2] 245f                      movea.l    (a7)+,a2
 [00056af4] 4e75                      rts
 
+	.globl Awi_up
 Awi_up:
 [00056af6] 514f                      subq.w     #8,a7
 [00056af8] 3f79 000e 0cfa 0006       move.w     cycle,6(a7)
@@ -1379,6 +1392,7 @@ Awi_up_2:
 [00056b6c] 504f                      addq.w     #8,a7
 [00056b6e] 4e75                      rts
 
+	.globl Awi_down
 Awi_down:
 [00056b70] 514f                      subq.w     #8,a7
 [00056b72] 3f79 000e 0cfa 0006       move.w     cycle,6(a7)
@@ -1420,6 +1434,7 @@ Awi_down_2:
 [00056be6] 504f                      addq.w     #8,a7
 [00056be8] 4e75                      rts
 
+	.globl Awi_show
 Awi_show:
 [00056bea] 594f                      subq.w     #4,a7
 [00056bec] 2e88                      move.l     a0,(a7)
@@ -1442,6 +1457,7 @@ Awi_show_2:
 [00056c12] 584f                      addq.w     #4,a7
 [00056c14] 4e75                      rts
 
+	.globl Awi_selfcreate
 Awi_selfcreate:
 [00056c16] 594f                      subq.w     #4,a7
 [00056c18] 2e88                      move.l     a0,(a7)
@@ -1680,6 +1696,7 @@ MakeOldMenu_1:
 [00056f24] 4fef 000c                 lea.l      12(a7),a7
 [00056f28] 4e75                      rts
 
+	.globl Awi_layout
 Awi_layout:
 [00056f2a] 2f0a                      move.l     a2,-(a7)
 [00056f2c] 4fef fff0                 lea.l      -16(a7),a7
@@ -1775,6 +1792,7 @@ Awi_layout_12:
 [0005704e] 245f                      movea.l    (a7)+,a2
 [00057050] 4e75                      rts
 
+	.globl Awi_create
 Awi_create:
 [00057052] 2f0a                      move.l     a2,-(a7)
 [00057054] 4fef fff6                 lea.l      -10(a7),a7
@@ -2018,6 +2036,7 @@ Awi_create_3:
 [00057372] 245f                      movea.l    (a7)+,a2
 [00057374] 4e75                      rts
 
+	.globl Awi_slider
 Awi_slider:
 [00057376] 4fef fff6                 lea.l      -10(a7),a7
 [0005737a] 2f48 0006                 move.l     a0,6(a7)
@@ -2077,6 +2096,7 @@ Awi_slider_1:
 [00057422] 4fef 000a                 lea.l      10(a7),a7
 [00057426] 4e75                      rts
 
+	.globl Awi_open
 Awi_open:
 [00057428] 2f0a                      move.l     a2,-(a7)
 [0005742a] 4fef ffce                 lea.l      -50(a7),a7
@@ -2403,6 +2423,7 @@ Awi_open_2:
 [0005789a] 245f                      movea.l    (a7)+,a2
 [0005789c] 4e75                      rts
 
+	.globl Awi_register
 Awi_register:
 [0005789e] 2f0a                      move.l     a2,-(a7)
 [000578a0] 4fef ffdc                 lea.l      -36(a7),a7
@@ -2602,6 +2623,7 @@ Awi_register_2:
 [00057b40] 245f                      movea.l    (a7)+,a2
 [00057b42] 4e75                      rts
 
+	.globl Awi_backdrop
 Awi_backdrop:
 [00057b44] 594f                      subq.w     #4,a7
 [00057b46] 2e88                      move.l     a0,(a7)
@@ -2632,6 +2654,7 @@ Awi_backdrop_2:
 [00057b7e] 584f                      addq.w     #4,a7
 [00057b80] 4e75                      rts
 
+	.globl Awi_modal
 Awi_modal:
 [00057b82] 554f                      subq.w     #2,a7
 [00057b84] 3ebc 0007                 move.w     #$0007,(a7)
@@ -2657,6 +2680,7 @@ Awi_modal_3:
 [00057bb2] 544f                      addq.w     #2,a7
 [00057bb4] 4e75                      rts
 
+	.globl Awi_up_modal
 Awi_up_modal:
 [00057bb6] 2f0a                      move.l     a2,-(a7)
 [00057bb8] 5d4f                      subq.w     #6,a7
@@ -2928,6 +2952,7 @@ Awi_set_modal_7:
 [00057f16] 4fef 000a                 lea.l      10(a7),a7
 [00057f1a] 4e75                      rts
 
+	.globl Awi_show_menu
 Awi_show_menu:
 [00057f1c] 2f03                      move.l     d3,-(a7)
 [00057f1e] 2f04                      move.l     d4,-(a7)
@@ -3281,6 +3306,7 @@ Awi_ropen_3:
 [0005835e] 261f                      move.l     (a7)+,d3
 [00058360] 4e75                      rts
 
+	.globl Awi_closed
 Awi_closed:
 [00058362] 2f0a                      move.l     a2,-(a7)
 [00058364] 4fef ffde                 lea.l      -34(a7),a7
@@ -3472,6 +3498,7 @@ Awi_closed_2:
 [000585ee] 245f                      movea.l    (a7)+,a2
 [000585f0] 4e75                      rts
 
+	.globl Awi_delete
 Awi_delete:
 [000585f2] 2f0a                      move.l     a2,-(a7)
 [000585f4] 5d4f                      subq.w     #6,a7
@@ -3599,6 +3626,7 @@ Awi_delete_12:
 [000587a0] 245f                      movea.l    (a7)+,a2
 [000587a2] 4e75                      rts
 
+	.globl Awi_topped
 Awi_topped:
 [000587a4] 5d4f                      subq.w     #6,a7
 [000587a6] 2f48 0002                 move.l     a0,2(a7)
@@ -3627,6 +3655,7 @@ Awi_topped_1:
 [000587e8] 5c4f                      addq.w     #6,a7
 [000587ea] 4e75                      rts
 
+	.globl Awi_fulled
 Awi_fulled:
 [000587ec] 2f0a                      move.l     a2,-(a7)
 [000587ee] 4fef ffe6                 lea.l      -26(a7),a7
@@ -3888,6 +3917,7 @@ Awi_fulled_2:
 [00058bac] 245f                      movea.l    (a7)+,a2
 [00058bae] 4e75                      rts
 
+	.globl Awi_sized
 Awi_sized:
 [00058bb0] 2f0a                      move.l     a2,-(a7)
 [00058bb2] 4fef fff0                 lea.l      -16(a7),a7
@@ -4008,6 +4038,7 @@ Awi_sized_2:
 [00058d4c] 245f                      movea.l    (a7)+,a2
 [00058d4e] 4e75                      rts
 
+	.globl Awi_moved
 Awi_moved:
 [00058d50] 514f                      subq.w     #8,a7
 [00058d52] 2f48 0004                 move.l     a0,4(a7)
@@ -4050,6 +4081,7 @@ Awi_moved_2:
 [00058dd8] 504f                      addq.w     #8,a7
 [00058dda] 4e75                      rts
 
+	.globl Awi_cleanup
 Awi_cleanup:
 [00058ddc] 2f0a                      move.l     a2,-(a7)
 [00058dde] 4fef ffc4                 lea.l      -60(a7),a7
@@ -4965,6 +4997,7 @@ Awi_oblist_3:
 [00059986] 245f                      movea.l    (a7)+,a2
 [00059988] 4e75                      rts
 
+	.globl Awi_iconify
 Awi_iconify:
 [0005998a] 4fef ffec                 lea.l      -20(a7),a7
 [0005998e] 2f48 0010                 move.l     a0,16(a7)
@@ -5176,6 +5209,7 @@ Awi_iconify_3:
 [00059c66] 4fef 0014                 lea.l      20(a7),a7
 [00059c6a] 4e75                      rts
 
+	.globl Awi_uniconify
 Awi_uniconify:
 [00059c6c] 4fef fff6                 lea.l      -10(a7),a7
 [00059c70] 2f48 0006                 move.l     a0,6(a7)
@@ -5280,6 +5314,7 @@ Awi_uniconify_3:
 [00059dca] 4fef 000a                 lea.l      10(a7),a7
 [00059dce] 4e75                      rts
 
+	.globl Awi_service
 Awi_service:
 [00059dd0] 5d4f                      subq.w     #6,a7
 [00059dd2] 2f48 0002                 move.l     a0,2(a7)
@@ -5301,6 +5336,7 @@ Awi_service_4:
 [00059df0] 5c4f                      addq.w     #6,a7
 [00059df2] 4e75                      rts
 
+	.globl Awi_dialog
 Awi_dialog:
 [00059df4] 2f0a                      move.l     a2,-(a7)
 [00059df6] 4fef ffc8                 lea.l      -56(a7),a7
@@ -5704,6 +5740,7 @@ Awi_dialog_2:
 [0005a362] 245f                      movea.l    (a7)+,a2
 [0005a364] 4e75                      rts
 
+	.globl Awi_doform
 Awi_doform:
 [0005a366] 4fef ffee                 lea.l      -18(a7),a7
 [0005a36a] 2f48 000e                 move.l     a0,14(a7)
@@ -5778,11 +5815,13 @@ Awi_doform_5:
 [0005a468] 4fef 0012                 lea.l      18(a7),a7
 [0005a46c] 4e75                      rts
 
+	.globl Awi_diaabort
 Awi_diaabort:
 [0005a46e] 2079 0010 ee4e            movea.l    ACSblk,a0
 [0005a474] 317c 0001 0268            move.w     #$0001,616(a0)
 [0005a47a] 4e75                      rts
 
+	.globl Awi_shadow
 Awi_shadow:
 [0005a47c] 4fef fff4                 lea.l      -12(a7),a7
 [0005a480] 2f48 0008                 move.l     a0,8(a7)
@@ -5818,6 +5857,7 @@ Awi_shadow_2:
 [0005a4d6] 4fef 000c                 lea.l      12(a7),a7
 [0005a4da] 4e75                      rts
 
+	.globl _init_alert
 _init_alert:
 [0005a4dc] 2f0a                      move.l     a2,-(a7)
 [0005a4de] 4fef fff2                 lea.l      -14(a7),a7
@@ -5907,6 +5947,7 @@ _init_alert_2:
 [0005a5fc] 245f                      movea.l    (a7)+,a2
 [0005a5fe] 4e75                      rts
 
+	.globl Awi_alert
 Awi_alert:
 [0005a600] 4fef ffbc                 lea.l      -68(a7),a7
 [0005a604] 3f40 0042                 move.w     d0,66(a7)
@@ -6543,6 +6584,7 @@ Awi_hotkey_6:
 [0005ae78] 4fef 0010                 lea.l      16(a7),a7
 [0005ae7c] 4e75                      rts
 
+	.globl Awi_update
 Awi_update:
 [0005ae7e] 554f                      subq.w     #2,a7
 [0005ae80] 3e80                      move.w     d0,(a7)
@@ -6652,6 +6694,7 @@ Awi_update_6:
 [0005b004] 544f                      addq.w     #2,a7
 [0005b006] 4e75                      rts
 
+	.globl Awi_obfind
 Awi_obfind:
 [0005b008] 4fef ffe6                 lea.l      -26(a7),a7
 [0005b00c] 2f48 0016                 move.l     a0,22(a7)
@@ -6876,6 +6919,7 @@ Awi_contstring_2:
 [0005b28e] 245f                      movea.l    (a7)+,a2
 [0005b290] 4e75                      rts
 
+	.globl Awi_bubblegem
 Awi_bubblegem:
 [0005b292] 4fef fff4                 lea.l      -12(a7),a7
 [0005b296] 2f48 0008                 move.l     a0,8(a7)
@@ -6911,6 +6955,7 @@ Awi_bubblegem_2:
 [0005b2ea] 4fef 000c                 lea.l      12(a7),a7
 [0005b2ee] 4e75                      rts
 
+	.globl Awi_context
 Awi_context:
 [0005b2f0] 3f03                      move.w     d3,-(a7)
 [0005b2f2] 2f0a                      move.l     a2,-(a7)
@@ -6991,6 +7036,7 @@ Awi_context_1:
 [0005b3dc] 361f                      move.w     (a7)+,d3
 [0005b3de] 4e75                      rts
 
+	.globl Awi_name
 Awi_name:
 [0005b3e0] 4fef fff4                 lea.l      -12(a7),a7
 [0005b3e4] 2f48 0008                 move.l     a0,8(a7)
@@ -7061,6 +7107,7 @@ _gs_search:
 [0005b494] 504f                      addq.w     #8,a7
 [0005b496] 4e75                      rts
 
+	.globl gs_str2key
 gs_str2key:
 [0005b498] 4fef ffd0                 lea.l      -48(a7),a7
 [0005b49c] 2f48 002c                 move.l     a0,44(a7)
@@ -7157,6 +7204,7 @@ gs_str2key_9:
 [0005b5b0] 4fef 0030                 lea.l      48(a7),a7
 [0005b5b4] 4e75                      rts
 
+	.globl Awi_gemscript
 Awi_gemscript:
 [0005b5b6] 2f0a                      move.l     a2,-(a7)
 [0005b5b8] 4fef fff2                 lea.l      -14(a7),a7
@@ -7634,6 +7682,7 @@ empty:
 [000e0d20]                           dc.w $0000
 [000e0d22]                           dc.w $00f0
 [000e0d24]                           dc.w $00f0
+	.globl Aroot_wi
 Aroot_wi:
 [000e0d26]                           dc.w $0000
 [000e0d28]                           dc.w $0000

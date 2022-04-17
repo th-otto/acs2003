@@ -279,6 +279,7 @@ prot_labellist_1:
 		movem.l    (a7)+,d3-d4/a2-a4
 		rts
 
+	.globl protocol
 protocol:
 		movem.l    d3/a2/a4-a5,-(a7)
 		lea.l      -132(a7),a7

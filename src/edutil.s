@@ -1,5 +1,6 @@
 		.text
 		
+		.globl set_flag
 set_flag:
 		subq.w     #6,a7
 		move.w     d0,4(a7)
@@ -16,6 +17,7 @@ set_flag_2:
 		addq.w     #6,a7
 		rts
 
+	.globl mod_ref
 mod_ref:
 		lea.l      -14(a7),a7
 		move.l     a0,10(a7)
@@ -46,6 +48,7 @@ mod_ref_3:
 		lea.l      14(a7),a7
 		rts
 
+	.globl set_ref
 set_ref:
 		subq.w     #8,a7
 		move.l     a0,4(a7)
@@ -64,6 +67,7 @@ set_ref_2:
 		addq.w     #8,a7
 		rts
 
+	.globl set_val
 set_val:
 		subq.w     #8,a7
 		move.l     a0,4(a7)
@@ -82,6 +86,7 @@ set_val_2:
 		addq.w     #8,a7
 		rts
 
+	.globl A_rubberbox
 A_rubberbox:
 		move.l     a2,-(a7)
 		lea.l      -86(a7),a7
@@ -544,6 +549,7 @@ A_rubberbox_16:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl view_grow
 view_grow:
 		move.l     a2,-(a7)
 		subq.w     #4,a7
@@ -581,6 +587,7 @@ view_grow_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl view_shrink
 view_shrink:
 		move.l     a2,-(a7)
 		subq.w     #4,a7
@@ -618,6 +625,7 @@ view_shrink_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl new_name
 new_name:
 		lea.l      -10(a7),a7
 		move.l     a0,6(a7)
@@ -656,6 +664,7 @@ new_name_1:
 		lea.l      10(a7),a7
 		rts
 
+	.globl chk_new_label
 chk_new_label:
 		lea.l      -128(a7),a7
 		lea.l      (a7),a1
@@ -671,6 +680,7 @@ chk_new_label_1:
 		lea.l      128(a7),a7
 		rts
 
+	.globl newlabel
 newlabel:
 		lea.l      -140(a7),a7
 		move.l     a0,136(a7)
@@ -722,6 +732,7 @@ newlabel_2:
 		lea.l      140(a7),a7
 		rts
 
+	.globl new2label
 new2label:
 		lea.l      -142(a7),a7
 		move.l     a0,138(a7)
@@ -813,6 +824,7 @@ wicalc_pos_4:
 		lea.l      14(a7),a7
 		rts
 
+	.globl wi_pos
 wi_pos:
 		subq.w     #8,a7
 		move.l     a0,4(a7)
@@ -1117,6 +1129,7 @@ convert_18:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl to_cicon
 to_cicon:
 		lea.l      -68(a7),a7
 		move.l     a0,64(a7)
@@ -1275,3 +1288,6 @@ xa46f8:
 		dc.b '%d*%d',0
 xa46fe:
 		dc.b '%d*%d',0
+
+	.bss
+col: ds.l 1

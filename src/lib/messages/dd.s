@@ -1,7 +1,9 @@
+	.globl Aev_InitDD
 Aev_InitDD:
 [0005fe5c] 7001                      moveq.l    #1,d0
 [0005fe5e] 4e75                      rts
 
+	.globl Aev_ExitDD
 Aev_ExitDD:
 [0005fe60] 7001                      moveq.l    #1,d0
 [0005fe62] 4e75                      rts
@@ -21,6 +23,7 @@ Aev_ddabort:
 [0005fe8a] 5c4f                      addq.w     #6,a7
 [0005fe8c] 4e75                      rts
 
+	.globl Aev_GetAPDragDrop
 Aev_GetAPDragDrop:
 [0005fe8e] 2f0a                      move.l     a2,-(a7)
 [0005fe90] 4fef ffac                 lea.l      -84(a7),a7

@@ -1,3 +1,5 @@
+
+	.globl Awi_keys
 Awi_keys:
 [0006b744] 4fef fff6                 lea.l      -10(a7),a7
 [0006b748] 2f48 0006                 move.l     a0,6(a7)
@@ -18,6 +20,7 @@ Awi_keys_2:
 [0006b774] 4fef 000a                 lea.l      10(a7),a7
 [0006b778] 4e75                      rts
 
+	.globl Awi_nokey
 Awi_nokey:
 [0006b77a] 5d4f                      subq.w     #6,a7
 [0006b77c] 2f48 0002                 move.l     a0,2(a7)
@@ -38,6 +41,7 @@ Awi_nokey_1:
 [0006b7a2] 5c4f                      addq.w     #6,a7
 [0006b7a4] 4e75                      rts
 
+	.globl Aob_within
 Aob_within:
 [0006b7a6] 514f                      subq.w     #8,a7
 [0006b7a8] 2f48 0004                 move.l     a0,4(a7)
@@ -82,6 +86,7 @@ Aob_within_2:
 [0006b808] 504f                      addq.w     #8,a7
 [0006b80a] 4e75                      rts
 
+	.globl alert_str
 alert_str:
 [0006b80c] 4fef fef4                 lea.l      -268(a7),a7
 [0006b810] 2f48 0108                 move.l     a0,264(a7)
@@ -667,6 +672,7 @@ Aform_do_23:
 [0006bf9a] 245f                      movea.l    (a7)+,a2
 [0006bf9c] 4e75                      rts
 
+	.globl Act_save
 Act_save:
 [0006bf9e] 594f                      subq.w     #4,a7
 [0006bfa0] 2e88                      move.l     a0,(a7)
@@ -696,6 +702,7 @@ Act_save:
 [0006c006] 584f                      addq.w     #4,a7
 [0006c008] 4e75                      rts
 
+	.globl Act_restore
 Act_restore:
 [0006c00a] 594f                      subq.w     #4,a7
 [0006c00c] 2e88                      move.l     a0,(a7)
@@ -725,6 +732,7 @@ Act_restore:
 [0006c072] 584f                      addq.w     #4,a7
 [0006c074] 4e75                      rts
 
+	.globl A_isModDia
 A_isModDia:
 [0006c076] 3039 000e 1fca            move.w     a_dialog_active,d0
 [0006c07c] 6f04                      ble.s      A_isModDia_1
@@ -1091,6 +1099,7 @@ A_exdialog_14:
 [0006c592] 245f                      movea.l    (a7)+,a2
 [0006c594] 4e75                      rts
 
+	.globl A_dialog
 A_dialog:
 [0006c596] 594f                      subq.w     #4,a7
 [0006c598] 2e88                      move.l     a0,(a7)
@@ -1100,6 +1109,7 @@ A_dialog:
 [0006c5a2] 584f                      addq.w     #4,a7
 [0006c5a4] 4e75                      rts
 
+	.globl A_dialog2
 A_dialog2:
 [0006c5a6] 594f                      subq.w     #4,a7
 [0006c5a8] 2e88                      move.l     a0,(a7)
@@ -1109,6 +1119,7 @@ A_dialog2:
 [0006c5b2] 584f                      addq.w     #4,a7
 [0006c5b4] 4e75                      rts
 
+	.globl fitin
 fitin:
 [0006c5b6] 514f                      subq.w     #8,a7
 [0006c5b8] 2f48 0004                 move.l     a0,4(a7)
@@ -1172,6 +1183,7 @@ fitin_4:
 [0006c65e] 504f                      addq.w     #8,a7
 [0006c660] 4e75                      rts
 
+	.globl intersect
 intersect:
 [0006c662] 4fef fff4                 lea.l      -12(a7),a7
 [0006c666] 2f48 0008                 move.l     a0,8(a7)
@@ -1280,6 +1292,7 @@ intersect_11:
 [0006c79a] 4fef 000c                 lea.l      12(a7),a7
 [0006c79e] 4e75                      rts
 
+	.globl xywh2array
 xywh2array:
 [0006c7a0] 514f                      subq.w     #8,a7
 [0006c7a2] 2f48 0004                 move.l     a0,4(a7)
@@ -1310,6 +1323,7 @@ xywh2array:
 [0006c7ec] 504f                      addq.w     #8,a7
 [0006c7ee] 4e75                      rts
 
+	.globl array2xywh
 array2xywh:
 [0006c7f0] 514f                      subq.w     #8,a7
 [0006c7f2] 2f48 0004                 move.l     a0,4(a7)
@@ -1394,6 +1408,7 @@ scrp_chg_6:
 [0006c8fe] 4fef 0020                 lea.l      32(a7),a7
 [0006c902] 4e75                      rts
 
+	.globl Ascrp_clear
 Ascrp_clear:
 [0006c904] 4fef fe74                 lea.l      -396(a7),a7
 [0006c908] 2f48 0188                 move.l     a0,392(a7)
@@ -1483,6 +1498,7 @@ Ascrp_clear_2:
 [0006ca26] 4fef 018c                 lea.l      396(a7),a7
 [0006ca2a] 4e75                      rts
 
+	.globl Ascrp_get
 Ascrp_get:
 [0006ca2c] 4fef fe6a                 lea.l      -406(a7),a7
 [0006ca30] 2f48 0192                 move.l     a0,402(a7)
@@ -1635,6 +1651,7 @@ Ascrp_get_2:
 [0006cc1c] 4fef 0196                 lea.l      406(a7),a7
 [0006cc20] 4e75                      rts
 
+	.globl Ascrp_put
 Ascrp_put:
 [0006cc22] 4fef fee8                 lea.l      -280(a7),a7
 [0006cc26] 2f48 0114                 move.l     a0,276(a7)
@@ -1750,6 +1767,7 @@ Ascrp_put_3:
 
 	.data
 
+	.globl a_dialog_active
 a_dialog_active:
 [000e1fca]                           dc.w $0000
 [000e1fcc]                           dc.w $0000

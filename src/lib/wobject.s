@@ -1,4 +1,4 @@
-Awi_diaend:
+	.globl Awi_diaendAwi_diaend:
 [00051388] 2f0a                      move.l     a2,-(a7)
 [0005138a] 4fef fff0                 lea.l      -16(a7),a7
 [0005138e] 2039 000e 0cb2            move.l     open_dialog,d0
@@ -69,6 +69,7 @@ Awi_diaend_3:
 [00051478] 245f                      movea.l    (a7)+,a2
 [0005147a] 4e75                      rts
 
+	.globl Awi_diastart
 Awi_diastart:
 [0005147c] 2f0a                      move.l     a2,-(a7)
 [0005147e] 4fef ffde                 lea.l      -34(a7),a7
@@ -385,6 +386,7 @@ Awi_self0_8:
 [00051806] 245f                      movea.l    (a7)+,a2
 [00051808] 4e75                      rts
 
+	.globl Awi_uoself
 Awi_uoself:
 [0005180a] 4fef fff2                 lea.l      -14(a7),a7
 [0005180e] 2f48 000a                 move.l     a0,10(a7)
@@ -410,6 +412,7 @@ Awi_uoself_2:
 [0005184c] 4fef 000e                 lea.l      14(a7),a7
 [00051850] 4e75                      rts
 
+	.globl Awi_obchange
 Awi_obchange:
 [00051852] 4fef ffd0                 lea.l      -48(a7),a7
 [00051856] 2f48 002c                 move.l     a0,44(a7)
@@ -637,6 +640,7 @@ Awi_obchange_2:
 [00051b7a] 4fef 0030                 lea.l      48(a7),a7
 [00051b7e] 4e75                      rts
 
+	.globl Awi_obredraw
 Awi_obredraw:
 [00051b80] 2f0a                      move.l     a2,-(a7)
 [00051b82] 4fef fff2                 lea.l      -14(a7),a7
@@ -702,6 +706,7 @@ Awi_obredraw_2:
 [00051c42] 245f                      movea.l    (a7)+,a2
 [00051c44] 4e75                      rts
 
+	.globl Awi_redraw
 Awi_redraw:
 [00051c46] 4fef ffcc                 lea.l      -52(a7),a7
 [00051c4a] 2f48 0030                 move.l     a0,48(a7)
@@ -1094,6 +1099,7 @@ next_arrow_3:
 [00052178] 245f                      movea.l    (a7)+,a2
 [0005217a] 4e75                      rts
 
+	.globl Awi_arrowed
 Awi_arrowed:
 [0005217c] 4fef ffe0                 lea.l      -32(a7),a7
 [00052180] 2f48 001c                 move.l     a0,28(a7)
@@ -1360,6 +1366,7 @@ Awi_arrowed_2:
 [000524ae] 4fef 0020                 lea.l      32(a7),a7
 [000524b2] 4e75                      rts
 
+	.globl Awi_hslid
 Awi_hslid:
 [000524b4] 4fef fff4                 lea.l      -12(a7),a7
 [000524b8] 2f48 0008                 move.l     a0,8(a7)
@@ -1407,6 +1414,7 @@ Awi_hslid_2:
 [00052558] 4fef 000c                 lea.l      12(a7),a7
 [0005255c] 4e75                      rts
 
+	.globl Awi_vslid
 Awi_vslid:
 [0005255e] 4fef fff4                 lea.l      -12(a7),a7
 [00052562] 2f48 0008                 move.l     a0,8(a7)
@@ -1454,6 +1462,7 @@ Awi_vslid_2:
 [00052600] 4fef 000c                 lea.l      12(a7),a7
 [00052604] 4e75                      rts
 
+	.globl Awi_wheeled
 Awi_wheeled:
 [00052606] 4fef ffdc                 lea.l      -36(a7),a7
 [0005260a] 2f48 0014                 move.l     a0,20(a7)
@@ -1690,6 +1699,7 @@ Awi_wheeled_2:
 [00052900] 4fef 0024                 lea.l      36(a7),a7
 [00052904] 4e75                      rts
 
+	.globl Awi_obview
 Awi_obview:
 [00052906] 2f0a                      move.l     a2,-(a7)
 [00052908] 4fef ffd8                 lea.l      -40(a7),a7
@@ -1955,6 +1965,7 @@ Awi_obview_2:
 [00052c98] 245f                      movea.l    (a7)+,a2
 [00052c9a] 4e75                      rts
 
+	.globl Aob_chdef
 Aob_chdef:
 [00052c9c] 4fef fff4                 lea.l      -12(a7),a7
 [00052ca0] 2f48 0008                 move.l     a0,8(a7)
@@ -2320,6 +2331,7 @@ Awi_lastedit_7:
 [000530a0] 4fef 000c                 lea.l      12(a7),a7
 [000530a4] 4e75                      rts
 
+	.globl Awi_focuschg
 Awi_focuschg:
 [000530a6] 2f0a                      move.l     a2,-(a7)
 [000530a8] 4fef ffec                 lea.l      -20(a7),a7
@@ -2657,6 +2669,7 @@ Awi_nextsel_3:
 [00053450] 4fef 0012                 lea.l      18(a7),a7
 [00053454] 4e75                      rts
 
+	.globl Awi_help
 Awi_help:
 [00053456] 2f0a                      move.l     a2,-(a7)
 [00053458] 4fef fff4                 lea.l      -12(a7),a7
@@ -2920,7 +2933,8 @@ Awi_keyACSwitch_1:
 [0005379c] 4fef 000a                 lea.l      10(a7),a7
 [000537a0] 4e75                      rts
 
-Awi_keysend_86:
+
+	.globl Awi_keysendAwi_keysend_86:
 Awi_keysend:
 [000537a2] 2f0a                      move.l     a2,-(a7)
 [000537a4] 4fef feca                 lea.l      -310(a7),a7
@@ -4090,6 +4104,7 @@ Awi_keysend_2:
 [000544c0] 245f                      movea.l    (a7)+,a2
 [000544c2] 4e75                      rts
 
+	.globl Awi_scroll
 Awi_scroll:
 [000544c4] 2f0a                      move.l     a2,-(a7)
 [000544c6] 4fef ffd2                 lea.l      -46(a7),a7
@@ -4296,6 +4311,7 @@ Awi_scroll_2:
 [00054780] 245f                      movea.l    (a7)+,a2
 [00054782] 4e75                      rts
 
+	.globl Aob_flags
 Aob_flags:
 [00054784] 4fef fff2                 lea.l      -14(a7),a7
 [00054788] 2f48 000a                 move.l     a0,10(a7)
@@ -4374,6 +4390,7 @@ Aob_flags_8:
 [00054848] 4fef 000e                 lea.l      14(a7),a7
 [0005484c] 4e75                      rts
 
+	.globl Aob_state
 Aob_state:
 [0005484e] 4fef fff2                 lea.l      -14(a7),a7
 [00054852] 2f48 000a                 move.l     a0,10(a7)
@@ -4453,6 +4470,7 @@ Aob_state_8:
 [00054916] 4fef 000e                 lea.l      14(a7),a7
 [0005491a] 4e75                      rts
 
+	.globl Aob_service
 Aob_service:
 [0005491c] 2f0a                      move.l     a2,-(a7)
 [0005491e] 4fef ffec                 lea.l      -20(a7),a7
@@ -4512,6 +4530,7 @@ Aob_service_5:
 [000549ca] 245f                      movea.l    (a7)+,a2
 [000549cc] 4e75                      rts
 
+	.globl Awi_observice
 Awi_observice:
 [000549ce] 4fef fff4                 lea.l      -12(a7),a7
 [000549d2] 2f48 0008                 move.l     a0,8(a7)
@@ -4551,6 +4570,7 @@ Awi_observice_4:
 [00054a38] 4fef 000c                 lea.l      12(a7),a7
 [00054a3c] 4e75                      rts
 
+	.globl Aob_visible
 Aob_visible:
 [00054a3e] 4fef fff6                 lea.l      -10(a7),a7
 [00054a42] 2f48 0006                 move.l     a0,6(a7)
@@ -4585,6 +4605,7 @@ Aob_visible_3:
 [00054a92] 4fef 000a                 lea.l      10(a7),a7
 [00054a96] 4e75                      rts
 
+	.globl Awi_obvisible
 Awi_obvisible:
 [00054a98] 5d4f                      subq.w     #6,a7
 [00054a9a] 2f48 0002                 move.l     a0,2(a7)

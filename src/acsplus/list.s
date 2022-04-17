@@ -2786,6 +2786,7 @@ _09aT_LIST:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl LIST_WINDOW
 LIST_WINDOW:
 		dc.w $0000
 		dc.w $0000

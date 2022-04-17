@@ -1,5 +1,6 @@
 		.text
 
+	.globl init_boxed
 init_boxed:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -2533,6 +2534,7 @@ _64aPOP_MASKSEL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl ED_BOXED
 ED_BOXED:
 		dc.w $ffff
 		dc.w $0001

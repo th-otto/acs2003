@@ -1,3 +1,5 @@
+
+	.globl Adate_getMonth
 Adate_getMonth:
 [0006cd86] 4fef fff6                 lea.l      -10(a7),a7
 [0006cd8a] 2f48 0006                 move.l     a0,6(a7)

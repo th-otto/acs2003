@@ -1586,6 +1586,7 @@ crc16_6:
 		lea.l      12(a7),a7
 		rts
 
+	.globl validate
 validate:
 		lea.l      -12(a7),a7
 		move.l     wdemo,d0
@@ -1633,6 +1634,7 @@ validate3:
 		lea.l      12(a7),a7
 		rts
 
+	.globl demo_init
 demo_init:
 		move.l     a2,-(a7)
 		subq.w     #4,a7
@@ -1669,6 +1671,7 @@ demo_init3:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl demo_serv
 demo_serv:
 		lea.l      -10(a7),a7
 		move.l     a0,6(a7)
@@ -2161,6 +2164,7 @@ regend:
 		dc.l x86872
 		dc.l 0
 
+	.globl runasdemo
 runasdemo:
 		dc.w 1
 wdemo:
@@ -2169,21 +2173,30 @@ wdemo:
 stepper:
 		dc.l 0
 
+	.globl cfg
 cfg:    ds.b 2370
+	.globl last_path
 last_path:
 		dc.l cfg+192
+	.globl helpacc
 helpacc:
 		dc.l cfg+151
+	.globl gluepart
 gluepart:
 		dc.w 1
+	.globl dirtysave
 dirtysave:
 		dc.w 0
+	.globl snapping
 snapping:
 		dc.w 1
+	.globl imagesnap
 imagesnap:
 		dc.w 1
+	.globl copyindex
 copyindex:
 		dc.w 1
+	.globl refimages
 refimages:
 		dc.w 1
 A_DEMO:
@@ -4179,6 +4192,7 @@ WI_COMMON:
 		dc.l STGUIDE_01
 		dc.l 0
 
+	.globl WI_DEMO
 WI_DEMO:
 		dc.w 0
 		dc.w 0
@@ -4241,6 +4255,7 @@ WI_DEMO:
 		dc.w 0
 		dc.w 0
 
+	.globl WI_INFO_BASE
 WI_INFO_BASE:
 		dc.w 0
 		dc.w 0
@@ -4303,6 +4318,7 @@ WI_INFO_BASE:
 		dc.w 0
 		dc.w 0
 
+	.globl WI_REGISTER
 WI_REGISTER:
 		dc.w 0
 		dc.w 0
@@ -4493,4 +4509,14 @@ x8695a:                           dc.b 'x',0
 x8695c:                           dc.b 'TIMES',0
 x86962:                           dc.b 'DUTCH',0
 
+	.bss
 
+oldabout: ds.l 1
+timer0: ds.l 1
+timer1: ds.l 1
+
+	.globl cews
+cews: ds.b 2116
+
+	.globl base_window
+base_window: ds.l 1

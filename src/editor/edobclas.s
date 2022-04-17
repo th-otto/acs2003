@@ -1,5 +1,6 @@
 		.text
 
+	.globl make_a_window
 make_a_window:
 		jsr        Awi_create
 		move.l     a0,d0
@@ -30,6 +31,7 @@ close_uc_2:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl close_me
 close_me:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -53,6 +55,7 @@ close_me_3:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl open_me
 open_me:
 		move.l     a2,-(a7)
 		movea.l    a0,a2
@@ -83,6 +86,7 @@ open_me_4:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl top_me
 top_me:
 		move.l     a2,-(a7)
 		movea.l    a0,a2
@@ -98,6 +102,7 @@ top_me_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl move_me
 move_me:
 		move.l     a3,-(a7)
 		movea.l    a0,a3
@@ -107,6 +112,7 @@ move_me:
 		movea.l    (a7)+,a3
 		rts
 
+	.globl key_me
 key_me:
 		movem.l    d3-d4/a2,-(a7)
 		movea.l    a0,a2
@@ -178,12 +184,14 @@ key_me_11:
 		movem.l    (a7)+,d3-d4/a2
 		rts
 
+	.globl eded_info
 eded_info:
 		movea.l    ACSblk,a0
 		movea.l    600(a0),a0
 		jsr        ed_info
 		rts
 
+	.globl eded_parts
 eded_parts:
 		movea.l    parts_window,a0
 		jsr        Awi_show
@@ -230,6 +238,7 @@ ed_info_1:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl eded_keys
 eded_keys:
 		movem.l    d3-d5/a2-a4,-(a7)
 		lea.l      -36(a7),a7
@@ -790,6 +799,7 @@ try_13:
 		movem.l    (a7)+,d3-d4/a2-a5
 		rts
 
+	.globl eded_try
 eded_try:
 		movem.l    a2-a5,-(a7)
 		subq.w     #8,a7
@@ -886,6 +896,7 @@ eded_try_1:
 		movem.l    (a7)+,a2-a5
 		rts
 
+	.globl ed_init
 ed_init:
 		movem.l    d3-d6/a2-a6,-(a7)
 		lea.l      -28(a7),a7
@@ -1172,6 +1183,7 @@ ed_init_12:
 		movem.l    (a7)+,d3-d6/a2-a6
 		rts
 
+	.globl ed_service
 ed_service:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a2
@@ -1276,6 +1288,7 @@ ed_service_17:
 		movem.l    (a7)+,d3/a2-a4
 		rts
 
+	.globl ed_term
 ed_term:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -1323,6 +1336,7 @@ ed_term_1:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl set_userdef
 set_userdef:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -1656,6 +1670,7 @@ subtree_4:
 		movem.l    (a7)+,d3-d7/a2-a6
 		rts
 
+	.globl user_control
 user_control:
 		movem.l    d2/a2-a4,-(a7)
 		movea.l    20(a7),a2
@@ -8190,6 +8205,7 @@ _26aMEN_EDIT:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl OBJ_POPUP
 OBJ_POPUP:
 		dc.w $ffff
 		dc.w $0001
@@ -9253,6 +9269,7 @@ _86aOBJ_POPUP:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl FINE_POS
 FINE_POS:
 		dc.w $ffff
 		dc.w $0001
@@ -9533,6 +9550,7 @@ _21aFINE_POS:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl INFO_EDIT
 INFO_EDIT:
 		dc.w $ffff
 		dc.w $0001
@@ -9630,6 +9648,7 @@ _07_INFO_EDIT:
 		dc.w $0001
 		dc.w $0006
 		dc.w $0001
+	.globl MINIOB
 MINIOB:
 		dc.w $ffff
 		dc.w $ffff
@@ -9642,6 +9661,7 @@ MINIOB:
 		dc.w $0000
 		dc.w $001c
 		dc.w $000b
+	.globl TRY_CLICK
 TRY_CLICK:
 		dc.w $ffff
 		dc.w $0001
@@ -9813,6 +9833,7 @@ _12aTRY_CLICK:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl TRY_DRAG
 TRY_DRAG:
 		dc.w $ffff
 		dc.w $0001
@@ -9984,6 +10005,7 @@ _12aTRY_DRAG:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_INFO
 WI_INFO:
 		dc.w $0000
 		dc.w $0000
@@ -10045,6 +10067,7 @@ WI_INFO:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_MENU
 WI_MENU:
 		dc.w $0000
 		dc.w $0000
@@ -10104,6 +10127,7 @@ WI_MENU:
 		dc.l STGUIDE_02
 		dc.w $0000
 		dc.w $0000
+	.globl WI_OBJECT
 WI_OBJECT:
 		dc.w $0000
 		dc.w $0000
@@ -10163,6 +10187,7 @@ WI_OBJECT:
 		dc.l STGUIDE_01
 		dc.w $0000
 		dc.w $0000
+	.globl WI_POPUP
 WI_POPUP:
 		dc.w $0000
 		dc.w $0000
@@ -10222,6 +10247,7 @@ WI_POPUP:
 		dc.l STGUIDE_03
 		dc.w $0000
 		dc.w $0000
+	.globl WI_POSITION
 WI_POSITION:
 		dc.w $0000
 		dc.w $0000
@@ -10282,6 +10308,7 @@ WI_POSITION:
 		dc.l STGUIDE_04
 		dc.w $0000
 		dc.w $0000
+	.globl WI_TRYCLICK
 WI_TRYCLICK:
 		dc.w $0000
 		dc.w $0000
@@ -10343,6 +10370,7 @@ WI_TRYCLICK:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl WI_TRYDRAG
 WI_TRYDRAG:
 		dc.w $0000
 		dc.w $0000
