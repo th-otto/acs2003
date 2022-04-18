@@ -1,337 +1,346 @@
 	.globl Aev_InitDD
 Aev_InitDD:
-[0005fe5c] 7001                      moveq.l    #1,d0
-[0005fe5e] 4e75                      rts
+		moveq.l    #1,d0
+		rts
 
 	.globl Aev_ExitDD
 Aev_ExitDD:
-[0005fe60] 7001                      moveq.l    #1,d0
-[0005fe62] 4e75                      rts
+		moveq.l    #1,d0
+		rts
 
 Aev_ddabort:
-[0005fe64] 5d4f                      subq.w     #6,a7
-[0005fe66] 3f40 0004                 move.w     d0,4(a7)
-[0005fe6a] 2e81                      move.l     d1,(a7)
-[0005fe6c] 2057                      movea.l    (a7),a0
-[0005fe6e] 700d                      moveq.l    #13,d0
-[0005fe70] 4eb9 0008 0e00            jsr        Psignal
-[0005fe76] 302f 0004                 move.w     4(a7),d0
-[0005fe7a] 4eb9 0008 0c7e            jsr        Fclose
-[0005fe80] 7001                      moveq.l    #1,d0
-[0005fe82] 4eb9 0005 ae7e            jsr        Awi_update
-[0005fe88] 4240                      clr.w      d0
-[0005fe8a] 5c4f                      addq.w     #6,a7
-[0005fe8c] 4e75                      rts
+		subq.w     #6,a7
+		move.w     d0,4(a7)
+		move.l     d1,(a7)
+		movea.l    (a7),a0
+		moveq.l    #13,d0
+		jsr        Psignal
+		move.w     4(a7),d0
+		jsr        Fclose
+		moveq.l    #1,d0
+		jsr        Awi_update
+		clr.w      d0
+		addq.w     #6,a7
+		rts
 
 	.globl Aev_GetAPDragDrop
 Aev_GetAPDragDrop:
-[0005fe8e] 2f0a                      move.l     a2,-(a7)
-[0005fe90] 4fef ffac                 lea.l      -84(a7),a7
-[0005fe94] 2f48 0050                 move.l     a0,80(a7)
-[0005fe98] 41f9 000e 1a2a            lea.l      $000E1A2A,a0
-[0005fe9e] 43ef 003c                 lea.l      60(a7),a1
-[0005fea2] 7013                      moveq.l    #19,d0
+		move.l     a2,-(a7)
+		lea.l      -84(a7),a7
+		move.l     a0,80(a7)
+		lea.l      xe1a2a,a0
+		lea.l      60(a7),a1
+		moveq.l    #19,d0
 Aev_GetAPDragDrop_1:
-[0005fea4] 12d8                      move.b     (a0)+,(a1)+
-[0005fea6] 51c8 fffc                 dbf        d0,Aev_GetAPDragDrop_1
-[0005feaa] 41f9 000e 1a3e            lea.l      $000E1A3E,a0
-[0005feb0] 43ef 0014                 lea.l      20(a7),a1
-[0005feb4] 12d8                      move.b     (a0)+,(a1)+
-[0005feb6] 12d8                      move.b     (a0)+,(a1)+
-[0005feb8] 12d8                      move.b     (a0)+,(a1)+
-[0005feba] 12d8                      move.b     (a0)+,(a1)+
-[0005febc] 12d8                      move.b     (a0)+,(a1)+
-[0005febe] 206f 0050                 movea.l    80(a7),a0
-[0005fec2] 2050                      movea.l    (a0),a0
-[0005fec4] 1f68 000f 004e            move.b     15(a0),78(a7)
-[0005feca] 206f 0050                 movea.l    80(a7),a0
-[0005fece] 2050                      movea.l    (a0),a0
-[0005fed0] 3028 000e                 move.w     14(a0),d0
-[0005fed4] e040                      asr.w      #8,d0
-[0005fed6] 1f40 004d                 move.b     d0,77(a7)
-[0005feda] 7002                      moveq.l    #2,d0
-[0005fedc] 41ef 003c                 lea.l      60(a7),a0
-[0005fee0] 4eb9 0008 0cc0            jsr        Fopen
-[0005fee6] 2f40 0008                 move.l     d0,8(a7)
-[0005feea] 202f 0008                 move.l     8(a7),d0
-[0005feee] 6a06                      bpl.s      Aev_GetAPDragDrop_2
-[0005fef0] 4240                      clr.w      d0
-[0005fef2] 6000 0366                 bra        Aev_GetAPDragDrop_3
+		move.b     (a0)+,(a1)+
+		dbf        d0,Aev_GetAPDragDrop_1
+		lea.l      xe1a3e,a0
+		lea.l      20(a7),a1
+		move.b     (a0)+,(a1)+
+		move.b     (a0)+,(a1)+
+		move.b     (a0)+,(a1)+
+		move.b     (a0)+,(a1)+
+		move.b     (a0)+,(a1)+
+		movea.l    80(a7),a0
+		movea.l    (a0),a0
+		move.b     15(a0),78(a7)
+		movea.l    80(a7),a0
+		movea.l    (a0),a0
+		move.w     14(a0),d0
+		asr.w      #8,d0
+		move.b     d0,77(a7)
+		moveq.l    #2,d0
+		lea.l      60(a7),a0
+		jsr        Fopen
+		move.l     d0,8(a7)
+		move.l     8(a7),d0
+		bpl.s      Aev_GetAPDragDrop_2
+		clr.w      d0
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_2:
-[0005fef6] 3f6f 000a 000e            move.w     10(a7),14(a7)
-[0005fefc] 4240                      clr.w      d0
-[0005fefe] 4eb9 0005 ae7e            jsr        Awi_update
-[0005ff04] 207c 0000 0001            movea.l    #$00000001,a0
-[0005ff0a] 700d                      moveq.l    #13,d0
-[0005ff0c] 4eb9 0008 0e00            jsr        Psignal
-[0005ff12] 2f40 0004                 move.l     d0,4(a7)
-[0005ff16] 7221                      moveq.l    #33,d1
-[0005ff18] 4240                      clr.w      d0
-[0005ff1a] 41ef 001a                 lea.l      26(a7),a0
-[0005ff1e] 4eb9 0008 36ea            jsr        memset
-[0005ff24] 43f9 000e 1a58            lea.l      $000E1A58,a1
-[0005ff2a] 41ef 001b                 lea.l      27(a7),a0
-[0005ff2e] 4eb9 0008 2f0c            jsr        strcpy
-[0005ff34] 41ef 001a                 lea.l      26(a7),a0
-[0005ff38] 7221                      moveq.l    #33,d1
-[0005ff3a] 302f 000e                 move.w     14(a7),d0
-[0005ff3e] 4eb9 0008 0d5e            jsr        Fwrite
-[0005ff44] 7221                      moveq.l    #33,d1
-[0005ff46] b280                      cmp.l      d0,d1
-[0005ff48] 6710                      beq.s      Aev_GetAPDragDrop_4
-[0005ff4a] 222f 0004                 move.l     4(a7),d1
-[0005ff4e] 302f 000e                 move.w     14(a7),d0
-[0005ff52] 6100 ff10                 bsr        Aev_ddabort
-[0005ff56] 6000 0302                 bra        Aev_GetAPDragDrop_3
+		move.w     10(a7),14(a7)
+		clr.w      d0
+		jsr        Awi_update
+		movea.l    #$00000001,a0
+		moveq.l    #13,d0
+		jsr        Psignal
+		move.l     d0,4(a7)
+		moveq.l    #33,d1
+		clr.w      d0
+		lea.l      26(a7),a0
+		jsr        memset
+		lea.l      xe1a58,a1
+		lea.l      27(a7),a0
+		jsr        strcpy
+		lea.l      26(a7),a0
+		moveq.l    #33,d1
+		move.w     14(a7),d0
+		jsr        Fwrite
+		moveq.l    #33,d1
+		cmp.l      d0,d1
+		beq.s      Aev_GetAPDragDrop_4
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_4:
-[0005ff5a] 2079 000e 692a            movea.l    _globl,a0
-[0005ff60] 7032                      moveq.l    #50,d0
-[0005ff62] 4eb9 0007 91d4            jsr        mt_evnt_timer
-[0005ff68] 41ef 000c                 lea.l      12(a7),a0
-[0005ff6c] 7202                      moveq.l    #2,d1
-[0005ff6e] 302f 000e                 move.w     14(a7),d0
-[0005ff72] 4eb9 0008 0cd2            jsr        Fread
-[0005ff78] 7202                      moveq.l    #2,d1
-[0005ff7a] b280                      cmp.l      d0,d1
-[0005ff7c] 6608                      bne.s      Aev_GetAPDragDrop_5
-[0005ff7e] 0c6f 0008 000c            cmpi.w     #$0008,12(a7)
-[0005ff84] 6c10                      bge.s      Aev_GetAPDragDrop_6
+		movea.l    _globl,a0
+		moveq.l    #50,d0
+		jsr        mt_evnt_timer
+		lea.l      12(a7),a0
+		moveq.l    #2,d1
+		move.w     14(a7),d0
+		jsr        Fread
+		moveq.l    #2,d1
+		cmp.l      d0,d1
+		bne.s      Aev_GetAPDragDrop_5
+		cmpi.w     #$0008,12(a7)
+		bge.s      Aev_GetAPDragDrop_6
 Aev_GetAPDragDrop_5:
-[0005ff86] 222f 0004                 move.l     4(a7),d1
-[0005ff8a] 302f 000e                 move.w     14(a7),d0
-[0005ff8e] 6100 fed4                 bsr        Aev_ddabort
-[0005ff92] 6000 02c6                 bra        Aev_GetAPDragDrop_3
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_6:
-[0005ff96] 41ef 0014                 lea.l      20(a7),a0
-[0005ff9a] 7204                      moveq.l    #4,d1
-[0005ff9c] 302f 000e                 move.w     14(a7),d0
-[0005ffa0] 4eb9 0008 0cd2            jsr        Fread
-[0005ffa6] 7204                      moveq.l    #4,d1
-[0005ffa8] b280                      cmp.l      d0,d1
-[0005ffaa] 6710                      beq.s      Aev_GetAPDragDrop_7
-[0005ffac] 222f 0004                 move.l     4(a7),d1
-[0005ffb0] 302f 000e                 move.w     14(a7),d0
-[0005ffb4] 6100 feae                 bsr        Aev_ddabort
-[0005ffb8] 6000 02a0                 bra        Aev_GetAPDragDrop_3
+		lea.l      20(a7),a0
+		moveq.l    #4,d1
+		move.w     14(a7),d0
+		jsr        Fread
+		moveq.l    #4,d1
+		cmp.l      d0,d1
+		beq.s      Aev_GetAPDragDrop_7
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_7:
-[0005ffbc] 422f 0018                 clr.b      24(a7)
-[0005ffc0] 41ef 0014                 lea.l      20(a7),a0
-[0005ffc4] 4eb9 0004 64da            jsr        Ast_toupper
-[0005ffca] 596f 000c                 subq.w     #4,12(a7)
-[0005ffce] 7004                      moveq.l    #4,d0
-[0005ffd0] 43f9 000e 1a61            lea.l      $000E1A61,a1
-[0005ffd6] 41ef 0014                 lea.l      20(a7),a0
-[0005ffda] 4eb9 0008 2fb8            jsr        strncmp
-[0005ffe0] 4a40                      tst.w      d0
-[0005ffe2] 664a                      bne.s      Aev_GetAPDragDrop_8
-[0005ffe4] 6004                      bra.s      Aev_GetAPDragDrop_9
+		clr.b      24(a7)
+		lea.l      20(a7),a0
+		jsr        Ast_toupper
+		subq.w     #4,12(a7)
+		moveq.l    #4,d0
+		lea.l      xe1a61,a1
+		lea.l      20(a7),a0
+		jsr        strncmp
+		tst.w      d0
+		bne.s      Aev_GetAPDragDrop_8
+		bra.s      Aev_GetAPDragDrop_9
 Aev_GetAPDragDrop_11:
-[0005ffe6] 536f 000c                 subq.w     #1,12(a7)
+		subq.w     #1,12(a7)
 Aev_GetAPDragDrop_9:
-[0005ffea] 302f 000c                 move.w     12(a7),d0
-[0005ffee] 6f16                      ble.s      Aev_GetAPDragDrop_10
-[0005fff0] 41ef 001a                 lea.l      26(a7),a0
-[0005fff4] 7201                      moveq.l    #1,d1
-[0005fff6] 302f 000e                 move.w     14(a7),d0
-[0005fffa] 4eb9 0008 0cd2            jsr        Fread
-[00060000] 7201                      moveq.l    #1,d1
-[00060002] b280                      cmp.l      d0,d1
-[00060004] 67e0                      beq.s      Aev_GetAPDragDrop_11
+		move.w     12(a7),d0
+		ble.s      Aev_GetAPDragDrop_10
+		lea.l      26(a7),a0
+		moveq.l    #1,d1
+		move.w     14(a7),d0
+		jsr        Fread
+		moveq.l    #1,d1
+		cmp.l      d0,d1
+		beq.s      Aev_GetAPDragDrop_11
 Aev_GetAPDragDrop_10:
-[00060006] 1f7c 0001 001a            move.b     #$01,26(a7)
-[0006000c] 41ef 001a                 lea.l      26(a7),a0
-[00060010] 7201                      moveq.l    #1,d1
-[00060012] 302f 000e                 move.w     14(a7),d0
-[00060016] 4eb9 0008 0d5e            jsr        Fwrite
-[0006001c] 222f 0004                 move.l     4(a7),d1
-[00060020] 302f 000e                 move.w     14(a7),d0
-[00060024] 6100 fe3e                 bsr        Aev_ddabort
-[00060028] 7001                      moveq.l    #1,d0
-[0006002a] 6000 022e                 bra        Aev_GetAPDragDrop_3
+		move.b     #$01,26(a7)
+		lea.l      26(a7),a0
+		moveq.l    #1,d1
+		move.w     14(a7),d0
+		jsr        Fwrite
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		moveq.l    #1,d0
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_8:
-[0006002e] 41d7                      lea.l      (a7),a0
-[00060030] 7204                      moveq.l    #4,d1
-[00060032] 302f 000e                 move.w     14(a7),d0
-[00060036] 4eb9 0008 0cd2            jsr        Fread
-[0006003c] 7204                      moveq.l    #4,d1
-[0006003e] b280                      cmp.l      d0,d1
-[00060040] 6710                      beq.s      Aev_GetAPDragDrop_12
-[00060042] 222f 0004                 move.l     4(a7),d1
-[00060046] 302f 000e                 move.w     14(a7),d0
-[0006004a] 6100 fe18                 bsr        Aev_ddabort
-[0006004e] 6000 020a                 bra        Aev_GetAPDragDrop_3
+		lea.l      (a7),a0
+		moveq.l    #4,d1
+		move.w     14(a7),d0
+		jsr        Fread
+		moveq.l    #4,d1
+		cmp.l      d0,d1
+		beq.s      Aev_GetAPDragDrop_12
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_12:
-[00060052] 596f 000c                 subq.w     #4,12(a7)
-[00060056] 602a                      bra.s      Aev_GetAPDragDrop_13
+		subq.w     #4,12(a7)
+		bra.s      Aev_GetAPDragDrop_13
 Aev_GetAPDragDrop_15:
-[00060058] 41ef 001a                 lea.l      26(a7),a0
-[0006005c] 7201                      moveq.l    #1,d1
-[0006005e] 302f 000e                 move.w     14(a7),d0
-[00060062] 4eb9 0008 0cd2            jsr        Fread
-[00060068] 7201                      moveq.l    #1,d1
-[0006006a] b280                      cmp.l      d0,d1
-[0006006c] 6710                      beq.s      Aev_GetAPDragDrop_14
-[0006006e] 222f 0004                 move.l     4(a7),d1
-[00060072] 302f 000e                 move.w     14(a7),d0
-[00060076] 6100 fdec                 bsr        Aev_ddabort
-[0006007a] 6000 01de                 bra        Aev_GetAPDragDrop_3
+		lea.l      26(a7),a0
+		moveq.l    #1,d1
+		move.w     14(a7),d0
+		jsr        Fread
+		moveq.l    #1,d1
+		cmp.l      d0,d1
+		beq.s      Aev_GetAPDragDrop_14
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_14:
-[0006007e] 536f 000c                 subq.w     #1,12(a7)
+		subq.w     #1,12(a7)
 Aev_GetAPDragDrop_13:
-[00060082] 302f 000c                 move.w     12(a7),d0
-[00060086] 6ed0                      bgt.s      Aev_GetAPDragDrop_15
-[00060088] 7001                      moveq.l    #1,d0
-[0006008a] d097                      add.l      (a7),d0
-[0006008c] 4eb9 0004 c608            jsr        Ax_malloc
-[00060092] 2f48 0010                 move.l     a0,16(a7)
-[00060096] 202f 0010                 move.l     16(a7),d0
-[0006009a] 6626                      bne.s      Aev_GetAPDragDrop_16
-[0006009c] 1f7c 0001 001a            move.b     #$01,26(a7)
-[000600a2] 41ef 001a                 lea.l      26(a7),a0
-[000600a6] 7201                      moveq.l    #1,d1
-[000600a8] 302f 000e                 move.w     14(a7),d0
-[000600ac] 4eb9 0008 0d5e            jsr        Fwrite
-[000600b2] 222f 0004                 move.l     4(a7),d1
-[000600b6] 302f 000e                 move.w     14(a7),d0
-[000600ba] 6100 fda8                 bsr        Aev_ddabort
-[000600be] 6000 019a                 bra        Aev_GetAPDragDrop_3
+		move.w     12(a7),d0
+		bgt.s      Aev_GetAPDragDrop_15
+		moveq.l    #1,d0
+		add.l      (a7),d0
+		jsr        Ax_malloc
+		move.l     a0,16(a7)
+		move.l     16(a7),d0
+		bne.s      Aev_GetAPDragDrop_16
+		move.b     #$01,26(a7)
+		lea.l      26(a7),a0
+		moveq.l    #1,d1
+		move.w     14(a7),d0
+		jsr        Fwrite
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_16:
-[000600c2] 422f 001a                 clr.b      26(a7)
-[000600c6] 41ef 001a                 lea.l      26(a7),a0
-[000600ca] 7201                      moveq.l    #1,d1
-[000600cc] 302f 000e                 move.w     14(a7),d0
-[000600d0] 4eb9 0008 0d5e            jsr        Fwrite
-[000600d6] 7201                      moveq.l    #1,d1
-[000600d8] b280                      cmp.l      d0,d1
-[000600da] 6710                      beq.s      Aev_GetAPDragDrop_17
-[000600dc] 222f 0004                 move.l     4(a7),d1
-[000600e0] 302f 000e                 move.w     14(a7),d0
-[000600e4] 6100 fd7e                 bsr        Aev_ddabort
-[000600e8] 6000 0170                 bra        Aev_GetAPDragDrop_3
+		clr.b      26(a7)
+		lea.l      26(a7),a0
+		moveq.l    #1,d1
+		move.w     14(a7),d0
+		jsr        Fwrite
+		moveq.l    #1,d1
+		cmp.l      d0,d1
+		beq.s      Aev_GetAPDragDrop_17
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_17:
-[000600ec] 2079 000e 692a            movea.l    _globl,a0
-[000600f2] 7064                      moveq.l    #100,d0
-[000600f4] 4eb9 0007 91d4            jsr        mt_evnt_timer
-[000600fa] 206f 0010                 movea.l    16(a7),a0
-[000600fe] 2217                      move.l     (a7),d1
-[00060100] 302f 000e                 move.w     14(a7),d0
-[00060104] 4eb9 0008 0cd2            jsr        Fread
-[0006010a] b097                      cmp.l      (a7),d0
-[0006010c] 671a                      beq.s      Aev_GetAPDragDrop_18
-[0006010e] 206f 0010                 movea.l    16(a7),a0
-[00060112] 4eb9 0004 c7c8            jsr        Ax_free
-[00060118] 222f 0004                 move.l     4(a7),d1
-[0006011c] 302f 000e                 move.w     14(a7),d0
-[00060120] 6100 fd42                 bsr        Aev_ddabort
-[00060124] 6000 0134                 bra        Aev_GetAPDragDrop_3
+		movea.l    _globl,a0
+		moveq.l    #100,d0
+		jsr        mt_evnt_timer
+		movea.l    16(a7),a0
+		move.l     (a7),d1
+		move.w     14(a7),d0
+		jsr        Fread
+		cmp.l      (a7),d0
+		beq.s      Aev_GetAPDragDrop_18
+		movea.l    16(a7),a0
+		jsr        Ax_free
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_18:
-[00060128] 222f 0004                 move.l     4(a7),d1
-[0006012c] 302f 000e                 move.w     14(a7),d0
-[00060130] 6100 fd32                 bsr        Aev_ddabort
-[00060134] 2017                      move.l     (a7),d0
-[00060136] 206f 0010                 movea.l    16(a7),a0
-[0006013a] 4230 0800                 clr.b      0(a0,d0.l)
-[0006013e] 7004                      moveq.l    #4,d0
-[00060140] 43f9 000e 1a66            lea.l      $000E1A66,a1
-[00060146] 41ef 0014                 lea.l      20(a7),a0
-[0006014a] 4eb9 0008 2fb8            jsr        strncmp
-[00060150] 4a40                      tst.w      d0
-[00060152] 663c                      bne.s      Aev_GetAPDragDrop_19
-[00060154] 206f 0050                 movea.l    80(a7),a0
-[00060158] 2f28 0014                 move.l     20(a0),-(a7)
-[0006015c] 206f 0054                 movea.l    84(a7),a0
-[00060160] 2f28 0010                 move.l     16(a0),-(a7)
-[00060164] 206f 0058                 movea.l    88(a7),a0
-[00060168] 3028 0018                 move.w     24(a0),d0
-[0006016c] 206f 0058                 movea.l    88(a7),a0
-[00060170] 2268 000c                 movea.l    12(a0),a1
-[00060174] 206f 0018                 movea.l    24(a7),a0
-[00060178] 4eb9 0005 e25c            jsr        GetImgIntoObj
-[0006017e] 504f                      addq.w     #8,a7
-[00060180] 206f 0010                 movea.l    16(a7),a0
-[00060184] 4eb9 0004 c7c8            jsr        Ax_free
-[0006018a] 7001                      moveq.l    #1,d0
-[0006018c] 6000 00cc                 bra        Aev_GetAPDragDrop_3
+		move.l     4(a7),d1
+		move.w     14(a7),d0
+		bsr        Aev_ddabort
+		move.l     (a7),d0
+		movea.l    16(a7),a0
+		clr.b      0(a0,d0.l)
+		moveq.l    #4,d0
+		lea.l      xe1a66,a1
+		lea.l      20(a7),a0
+		jsr        strncmp
+		tst.w      d0
+		bne.s      Aev_GetAPDragDrop_19
+		movea.l    80(a7),a0
+		move.l     20(a0),-(a7)
+		movea.l    84(a7),a0
+		move.l     16(a0),-(a7)
+		movea.l    88(a7),a0
+		move.w     24(a0),d0
+		movea.l    88(a7),a0
+		movea.l    12(a0),a1
+		movea.l    24(a7),a0
+		jsr        GetImgIntoObj
+		addq.w     #8,a7
+		movea.l    16(a7),a0
+		jsr        Ax_free
+		moveq.l    #1,d0
+		bra        Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_19:
-[00060190] 7004                      moveq.l    #4,d0
-[00060192] 43f9 000e 1a6b            lea.l      $000E1A6B,a1
-[00060198] 41ef 0014                 lea.l      20(a7),a0
-[0006019c] 4eb9 0008 2fb8            jsr        strncmp
-[000601a2] 4a40                      tst.w      d0
-[000601a4] 6716                      beq.s      Aev_GetAPDragDrop_20
-[000601a6] 7004                      moveq.l    #4,d0
-[000601a8] 43f9 000e 1a70            lea.l      $000E1A70,a1
-[000601ae] 41ef 0014                 lea.l      20(a7),a0
-[000601b2] 4eb9 0008 2fb8            jsr        strncmp
-[000601b8] 4a40                      tst.w      d0
-[000601ba] 6648                      bne.s      Aev_GetAPDragDrop_21
+		moveq.l    #4,d0
+		lea.l      xe1a6b,a1
+		lea.l      20(a7),a0
+		jsr        strncmp
+		tst.w      d0
+		beq.s      Aev_GetAPDragDrop_20
+		moveq.l    #4,d0
+		lea.l      xe1a70,a1
+		lea.l      20(a7),a0
+		jsr        strncmp
+		tst.w      d0
+		bne.s      Aev_GetAPDragDrop_21
 Aev_GetAPDragDrop_20:
-[000601bc] 206f 0050                 movea.l    80(a7),a0
-[000601c0] 2f28 0014                 move.l     20(a0),-(a7)
-[000601c4] 206f 0054                 movea.l    84(a7),a0
-[000601c8] 2f28 0010                 move.l     16(a0),-(a7)
-[000601cc] 206f 0058                 movea.l    88(a7),a0
-[000601d0] 2f28 000c                 move.l     12(a0),-(a7)
-[000601d4] 206f 005c                 movea.l    92(a7),a0
-[000601d8] 3228 001a                 move.w     26(a0),d1
-[000601dc] 206f 005c                 movea.l    92(a7),a0
-[000601e0] 3028 0018                 move.w     24(a0),d0
-[000601e4] 43ef 0020                 lea.l      32(a7),a1
-[000601e8] 206f 001c                 movea.l    28(a7),a0
-[000601ec] 4eb9 0005 e2d0            jsr        GetTxtIntoObj
-[000601f2] 4fef 000c                 lea.l      12(a7),a7
-[000601f6] 206f 0010                 movea.l    16(a7),a0
-[000601fa] 4eb9 0004 c7c8            jsr        Ax_free
-[00060200] 7001                      moveq.l    #1,d0
-[00060202] 6056                      bra.s      Aev_GetAPDragDrop_3
+		movea.l    80(a7),a0
+		move.l     20(a0),-(a7)
+		movea.l    84(a7),a0
+		move.l     16(a0),-(a7)
+		movea.l    88(a7),a0
+		move.l     12(a0),-(a7)
+		movea.l    92(a7),a0
+		move.w     26(a0),d1
+		movea.l    92(a7),a0
+		move.w     24(a0),d0
+		lea.l      32(a7),a1
+		movea.l    28(a7),a0
+		jsr        GetTxtIntoObj
+		lea.l      12(a7),a7
+		movea.l    16(a7),a0
+		jsr        Ax_free
+		moveq.l    #1,d0
+		bra.s      Aev_GetAPDragDrop_3
 Aev_GetAPDragDrop_21:
-[00060204] 0c2f 002e 0014            cmpi.b     #$2E,20(a7)
-[0006020a] 6710                      beq.s      Aev_GetAPDragDrop_22
-[0006020c] 43f9 000e 1a75            lea.l      $000E1A75,a1
-[00060212] 41ef 0014                 lea.l      20(a7),a0
-[00060216] 4eb9 0008 2f0c            jsr        strcpy
+		cmpi.b     #$2E,20(a7)
+		beq.s      Aev_GetAPDragDrop_22
+		lea.l      xe1a75,a1
+		lea.l      20(a7),a0
+		jsr        strcpy
 Aev_GetAPDragDrop_22:
-[0006021c] 4241                      clr.w      d1
-[0006021e] 2017                      move.l     (a7),d0
-[00060220] 226f 0010                 movea.l    16(a7),a1
-[00060224] 41ef 0015                 lea.l      21(a7),a0
-[00060228] 4eb9 0006 cc22            jsr        Ascrp_put
-[0006022e] 43ef 0015                 lea.l      21(a7),a1
-[00060232] 701d                      moveq.l    #29,d0
-[00060234] 206f 0050                 movea.l    80(a7),a0
-[00060238] 2068 000c                 movea.l    12(a0),a0
-[0006023c] 246f 0050                 movea.l    80(a7),a2
-[00060240] 246a 000c                 movea.l    12(a2),a2
-[00060244] 246a 0004                 movea.l    4(a2),a2
-[00060248] 4e92                      jsr        (a2)
-[0006024a] 4a40                      tst.w      d0
-[0006024c] 660a                      bne.s      Aev_GetAPDragDrop_23
-[0006024e] 41ef 0015                 lea.l      21(a7),a0
-[00060252] 4eb9 0006 c904            jsr        Ascrp_clear
+		clr.w      d1
+		move.l     (a7),d0
+		movea.l    16(a7),a1
+		lea.l      21(a7),a0
+		jsr        Ascrp_put
+		lea.l      21(a7),a1
+		moveq.l    #29,d0
+		movea.l    80(a7),a0
+		movea.l    12(a0),a0
+		movea.l    80(a7),a2
+		movea.l    12(a2),a2
+		movea.l    4(a2),a2
+		jsr        (a2)
+		tst.w      d0
+		bne.s      Aev_GetAPDragDrop_23
+		lea.l      21(a7),a0
+		jsr        Ascrp_clear
 Aev_GetAPDragDrop_23:
-[00060258] 7001                      moveq.l    #1,d0
+		moveq.l    #1,d0
 Aev_GetAPDragDrop_3:
-[0006025a] 4fef 0054                 lea.l      84(a7),a7
-[0006025e] 245f                      movea.l    (a7)+,a2
-[00060260] 4e75                      rts
+		lea.l      84(a7),a7
+		movea.l    (a7)+,a2
+		rts
 
 	.data
 
-[000e1a2a]                           dc.b 'U:\PIPE\DRAGDROP.AA',0
-[000e1a3e]                           dc.w $0000
-[000e1a40]                           dc.w $0000
-[000e1a42]                           dc.w $0055
-[000e1a44]                           dc.b ':\PIPE\DRAGDROP.AA',0
-[000e1a57]                           dc.b $00
-[000e1a58]                           dc.b '.TXT.IMG',0
-[000e1a61]                           dc.b 'PATH',0
-[000e1a66]                           dc.b '.IMG',0
-[000e1a6b]                           dc.b '.TXT',0
-[000e1a70]                           dc.b 'ARGS',0
-[000e1a75]                           dc.b '.TMP',0
-[000e1a7a]                           dc.b 'U:\PIPE',0
-[000e1a82]                           dc.b '    ',0
-[000e1a87]                           dc.b $00
-[000e1a88]                           dc.w $0050
-[000e1a8a]                           dc.b 'ATH',0
+xe1a2a:
+		dc.b 'U:\PIPE\DRAGDROP.AA',0
+xe1a3e:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0055
+		dc.b ':\PIPE\DRAGDROP.AA',0
+		dc.b $00
+xe1a58:
+		dc.b '.TXT.IMG',0
+xe1a61:
+		dc.b 'PATH',0
+xe1a66:
+		dc.b '.IMG',0
+xe1a6b:
+		dc.b '.TXT',0
+xe1a70:
+		dc.b 'ARGS',0
+xe1a75:
+		dc.b '.TMP',0
+		dc.b 'U:\PIPE',0
+		dc.b '    ',0
+		.even
+xe1a88: /* unused */
+		dc.b 0
+		dc.b 'PATH',0
 

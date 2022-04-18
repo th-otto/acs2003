@@ -15551,6 +15551,7 @@ _DAT__CHK_1D_DS:
 		dc.w $8002
 		dc.w $5554
 		dc.w $0000
+	.globl _CHK_1D_DS
 _CHK_1D_DS:
 		dc.l _MSK__CHK_1D_DS
 		dc.l _DAT__CHK_1D_DS
@@ -15568,7 +15569,6 @@ _CHK_1D_DS:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__CHK_1D_DU
 _MSK__CHK_1D_DU:
 		dc.w $fffe
 		dc.w $fffe
@@ -15603,6 +15603,7 @@ _DAT__CHK_1D_DU:
 		dc.w $8002
 		dc.w $5554
 		dc.w $0000
+	.globl _CHK_1D_DU
 _CHK_1D_DU:
 		dc.l _MSK__CHK_1D_DU
 		dc.l _DAT__CHK_1D_DU
@@ -15620,7 +15621,6 @@ _CHK_1D_DU:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__CHK_1D_S
 _MSK__CHK_1D_S:
 		dc.w $fffe
 		dc.w $fffe
@@ -15655,6 +15655,7 @@ _DAT__CHK_1D_S:
 		dc.w $c006
 		dc.w $fffe
 		dc.w $0000
+	.globl _CHK_1D_S
 _CHK_1D_S:
 		dc.l _MSK__CHK_1D_S
 		dc.l _DAT__CHK_1D_S
@@ -15707,6 +15708,7 @@ _DAT__CHK_1D_U:
 		dc.w $8002
 		dc.w $fffe
 		dc.w $0000
+	.globl _CHK_1D_U
 _CHK_1D_U:
 		dc.l _MSK__CHK_1D_U
 		dc.l _DAT__CHK_1D_U
@@ -15724,7 +15726,6 @@ _CHK_1D_U:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _C8__CHK_3D_DS
 _C8__CHK_3D_DS:
 		dc.w $0008
 		dc.l DATAS_219+6
@@ -15743,7 +15744,6 @@ _C4__CHK_3D_DS:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-		dc.l _C8__CHK_3D_DS
 _MSK__CHK_3D_DS:
 		dc.w $fffe
 		dc.w $fffe
@@ -15776,6 +15776,7 @@ _DAT__CHK_3D_DS:
 		dc.w $8002
 		dc.w $5554
 		dc.w $0000
+	.globl _CHK_3D_DS
 _CHK_3D_DS:
 		dc.l _MSK__CHK_3D_DS
 		dc.l _DAT__CHK_3D_DS
@@ -15792,7 +15793,6 @@ _CHK_3D_DS:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__CHK_3D_DS
-	.globl _C8__CHK_3D_DU
 _C8__CHK_3D_DU:
 		dc.w $0008
 		dc.l DATAS_207+6
@@ -15846,6 +15846,7 @@ _DAT__CHK_3D_DU:
 		dc.w $aaaa
 		dc.w $5554
 		dc.w $0000
+	.globl _CHK_3D_DU
 _CHK_3D_DU:
 		dc.l _MSK__CHK_3D_DU
 		dc.l _DAT__CHK_3D_DU
@@ -15862,7 +15863,6 @@ _CHK_3D_DU:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__CHK_3D_DU
-	.globl _C8__CHK_3D_S
 _C8__CHK_3D_S:
 		dc.w $0008
 		dc.l DATAS_215+6
@@ -15916,6 +15916,7 @@ _DAT__CHK_3D_S:
 		dc.w $8002
 		dc.w $fffe
 		dc.w $0000
+	.globl _CHK_3D_S
 _CHK_3D_S:
 		dc.l _MSK__CHK_3D_S
 		dc.l _DAT__CHK_3D_S
@@ -15931,8 +15932,6 @@ _CHK_3D_S:
 		dc.w $0002
 		dc.w $0000
 		dc.w $0000
-		dc.l _C4__CHK_3D_S
-	.globl _C8__CHK_3D_U
 _C8__CHK_3D_U:
 		dc.w $0008
 		dc.l DATAS_199+6
@@ -15951,7 +15950,6 @@ _C4__CHK_3D_U:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-		dc.l _C8__CHK_3D_U
 _MSK__CHK_3D_U:
 		dc.w $fffe
 		dc.w $fffe
@@ -15986,6 +15984,7 @@ _DAT__CHK_3D_U:
 		dc.w $bffe
 		dc.w $fffe
 		dc.w $0000
+		.globl _CHK_3D_U
 _CHK_3D_U:
 		dc.l _MSK__CHK_3D_U
 		dc.l _DAT__CHK_3D_U
@@ -17859,7 +17858,6 @@ _IM_TIME8:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME8
-	.globl _MSK__RD_1D_DS
 _MSK__RD_1D_DS:
 		dc.w $0000
 		dc.w $03c0
@@ -17894,6 +17892,7 @@ _DAT__RD_1D_DS:
 		dc.w $0410
 		dc.w $0280
 		dc.w $0000
+	.globl _RD_1D_DS
 _RD_1D_DS:
 		dc.l _MSK__RD_1D_DS
 		dc.l _DAT__RD_1D_DS
@@ -17911,7 +17910,6 @@ _RD_1D_DS:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__RD_1D_DU
 _MSK__RD_1D_DU:
 		dc.w $0000
 		dc.w $03c0
@@ -17946,6 +17944,7 @@ _DAT__RD_1D_DU:
 		dc.w $0410
 		dc.w $0280
 		dc.w $0000
+	.globl _RD_1D_DU
 _RD_1D_DU:
 		dc.l _MSK__RD_1D_DU
 		dc.l _DAT__RD_1D_DU
@@ -17963,7 +17962,6 @@ _RD_1D_DU:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__RD_1D_S
 _MSK__RD_1D_S:
 		dc.w $0000
 		dc.w $03c0
@@ -17998,6 +17996,7 @@ _DAT__RD_1D_S:
 		dc.w $0c30
 		dc.w $03c0
 		dc.w $0000
+	.globl _RD_1D_S
 _RD_1D_S:
 		dc.l _MSK__RD_1D_S
 		dc.l _DAT__RD_1D_S
@@ -18015,7 +18014,6 @@ _RD_1D_S:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__RD_1D_U
 _MSK__RD_1D_U:
 		dc.w $0000
 		dc.w $03c0
@@ -18050,6 +18048,7 @@ _DAT__RD_1D_U:
 		dc.w $0c30
 		dc.w $03c0
 		dc.w $0000
+	.globl _RD_1D_U
 _RD_1D_U:
 		dc.l _MSK__RD_1D_U
 		dc.l _DAT__RD_1D_U
@@ -18067,7 +18066,6 @@ _RD_1D_U:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _C8__RD_3D_DS
 _C8__RD_3D_DS:
 		dc.w $0008
 		dc.l DATAS_183+6
@@ -18121,6 +18119,7 @@ _DAT__RD_3D_DS:
 		dc.w $0410
 		dc.w $0280
 		dc.w $0000
+	.globl _RD_3D_DS
 _RD_3D_DS:
 		dc.l _MSK__RD_3D_DS
 		dc.l _DAT__RD_3D_DS
@@ -18137,7 +18136,6 @@ _RD_3D_DS:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__RD_3D_DS
-	.globl _C8__RD_3D_DU
 _C8__RD_3D_DU:
 		dc.w $0008
 		dc.l DATAS_187+6
@@ -18191,6 +18189,7 @@ _DAT__RD_3D_DU:
 		dc.w $0490
 		dc.w $0280
 		dc.w $0000
+	.globl _RD_3D_DU
 _RD_3D_DU:
 		dc.l _MSK__RD_3D_DU
 		dc.l _DAT__RD_3D_DU
@@ -18207,7 +18206,6 @@ _RD_3D_DU:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__RD_3D_DU
-	.globl _C8__RD_3D_S
 _C8__RD_3D_S:
 		dc.w $0008
 		dc.l DATAS_155+6
@@ -18261,6 +18259,7 @@ _DAT__RD_3D_S:
 		dc.w $0c30
 		dc.w $03c0
 		dc.w $0000
+	.globl _RD_3D_S
 _RD_3D_S:
 		dc.l _MSK__RD_3D_S
 		dc.l _DAT__RD_3D_S
@@ -18277,7 +18276,6 @@ _RD_3D_S:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__RD_3D_S
-	.globl _C8__RD_3D_U
 _C8__RD_3D_U:
 		dc.w $0008
 		dc.l DATAS_163+6
@@ -18331,6 +18329,7 @@ _DAT__RD_3D_U:
 		dc.w $0eb0
 		dc.w $03c0
 		dc.w $0000
+	.globl _RD_3D_U
 _RD_3D_U:
 		dc.l _MSK__RD_3D_U
 		dc.l _DAT__RD_3D_U
@@ -18347,7 +18346,6 @@ _RD_3D_U:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__RD_3D_U
-	.globl _C8__WIN
 _C8__WIN:
 		dc.w $0008
 		dc.l DATAS_31+6

@@ -122,50 +122,52 @@ acsplus\proto.s
 
 lib\main.s
 lib\initterm.s
-lib\vdi_data.c
-lib\nkcc.c
-lib\config.c
-lib\string.c
-lib\drag.c
-lib\event.c
-lib\fileutil.c
-lib\memory.c
-lib\menu.c
-lib\mouse.c
-lib\object.c
-lib\wobject.c
-lib\backplan.c
-lib\window.c
-lib\shelutil.c
-lib\thermo.c
-lib\keytab.c
-lib\messages\msgserv.c
-lib\messages\screen.c
-lib\messages\xacc.c
-lib\messages\av.c
-lib\messages\dd.c
-lib\messages\dhst.c
-lib\messages\bubble.c
-lib\messages\gemscr.c
-lib\messages\olga.c
-lib\messages\stguide.c
-lib\messages\seproto.c
-lib\messages\ssp.c
-lib\messages\pc_help.c
-lib\userdef\userobj.c
-lib\userdef\userobj2.c
-lib\userdef\ftext.c
-lib\userdef\cycle.c
-lib\userdef\picture.c
-lib\userdef\boxed.c
-lib\utility\util.c
-lib\utility\date.c
-lib\wdialog\filesel.c
-lib\wdialog\printsel.c
-lib\wdialog\fontsel.c
-lib\listen\ulinlist.c
-lib\modul\modul.c
-lib\modul\modulold.c
+lib\vdi_data.s
+lib\mygemdos.s [-S]
+lib\nkcc.s
+lib\nkcc_s.s
+lib\config.s
+lib\string.s
+lib\drag.s
+lib\event.s
+lib\fileutil.s
+lib\memory.s
+lib\menu.s
+lib\mouse.s
+lib\object.s
+lib\wobject.s
+lib\backplan.s
+lib\window.s
+lib\shelutil.s
+lib\thermo.s
+lib\keytab.s [-M-]
+lib\messages\msgserv.s [-M-]
+lib\messages\screen.s
+lib\messages\xacc.s [-M-]
+lib\messages\av.s
+lib\messages\dd.s
+lib\messages\dhst.s
+lib\messages\bubble.s [-M-]
+lib\messages\gemscr.s
+lib\messages\olga.s
+lib\messages\stguide.s
+lib\messages\seproto.s
+lib\messages\ssp.s
+lib\messages\pc_help.s [-M-]
+lib\userdef\userobj.s
+lib\userdef\userobj2.s
+lib\userdef\ftext.s [-M-]
+lib\userdef\cycle.s [-M-]
+lib\userdef\picture.s
+lib\userdef\boxed.s
+lib\utility\util.s
+lib\utility\date.s
+lib\wdialog\filesel.s
+lib\wdialog\printsel.s
+lib\wdialog\fontsel.s
+lib\listen\ulinlist.s
+lib\modul\modul.s
+lib\modul\modulold.s
 
 vdi\vdi_s.s
 vdi\vdi_c.c
