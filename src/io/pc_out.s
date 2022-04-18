@@ -2030,7 +2030,7 @@ out_declproto_20:
 		movea.l    a5,a0
 		jsr        sprintf
 		addq.w     #4,a7
-		bra        out_declproto_26
+		bra.w      out_declproto_26
 out_declproto_21:
 		pea.l      22(a4)
 		lea.l      2616(a3),a1

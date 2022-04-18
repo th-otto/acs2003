@@ -1852,7 +1852,6 @@ Adr_box_2:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl Adr_find0
 Adr_find0:
 		lea.l      -46(a7),a7
 		move.l     a0,42(a7)
@@ -2974,7 +2973,8 @@ Adr_drag_67:
 		moveq.l    #32,d1
 		cmp.l      d0,d1
 		bne        Adr_drag_70
-		movea.l    #$00000001,a0
+		/* movea.l    #$00000001,a0 */
+		dc.w 0x207c,0,1
 		moveq.l    #13,d0
 		jsr        Psignal
 		move.l     d0,450(a7)

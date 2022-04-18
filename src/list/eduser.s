@@ -321,7 +321,7 @@ del_user:
 		ori.w      #0x0001,6(a2)
 		subq.w     #1,54(a3)
 		move.w     54(a3),d0
-		bgt        del_user_1
+		bgt.w      del_user_1
 		movea.l    4(a3),a4
 		movea.l    (a4),a1
 		jsr        del_ref

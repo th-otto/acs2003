@@ -270,7 +270,7 @@ Awi_iconcreate:
 		bne.s      Awi_iconcreate_2
 Awi_iconcreate_1:
 		clr.w      d0
-		bra        Awi_iconcreate_3
+		bra.w      Awi_iconcreate_3
 Awi_iconcreate_2:
 		moveq.l    #72,d0
 		movea.l    _WWorkIcon,a1
@@ -555,7 +555,7 @@ Ash_prog_14:
 Ash_prog_13:
 		movea.l    ACSblk,a0
 		move.w     568(a0),d0
-		beq        Ash_prog_15
+		beq.w      Ash_prog_15
 		movea.l    ACSblk,a0
 		move.l     1278(a0),d0
 		bne.s      Ash_prog_16
@@ -3187,7 +3187,7 @@ Awi_ropen:
 		movea.l    8(a7),a0
 		clr.w      32(a0)
 		move.l     4(a7),d0
-		beq        Awi_ropen_1
+		beq.w      Awi_ropen_1
 		movea.l    ACSblk,a0
 		lea.l      543(a0),a0
 		jsr        Ast_create

@@ -1284,7 +1284,7 @@ Aob_offset_15:
 		add.w      (a7),d0
 		movea.l    22(a7),a0
 		move.w     d0,6(a0)
-		bra        Aob_offset_17
+		bra.w      Aob_offset_17
 Aob_offset_20:
 		move.w     16(a7),6(a7)
 		move.w     6(a7),d1

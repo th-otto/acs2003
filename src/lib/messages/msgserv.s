@@ -362,7 +362,7 @@ Aev_SendMsg_2:
 		move.w     6(a7),d0
 		bmi        Aev_SendMsg_3
 		move.l     8(a7),d0
-		beq        Aev_SendMsg_3
+		beq.w      Aev_SendMsg_3
 		moveq.l    #26,d0
 		jsr        Ax_malloc
 		move.l     a0,2(a7)

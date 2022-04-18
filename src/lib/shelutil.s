@@ -123,7 +123,7 @@ Ash_error_23:
 		bra        Ash_error_15
 Ash_error_12:
 		move.l     134(a7),d0
-		beq        Ash_error_24
+		beq.w      Ash_error_24
 		movea.l    134(a7),a0
 		move.b     (a0),d0
 		beq.w      Ash_error_24

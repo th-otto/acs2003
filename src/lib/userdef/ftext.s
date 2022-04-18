@@ -524,7 +524,6 @@ Auo_ftext_10:
 		movea.l    4(a7),a0
 		movea.l    12(a7),a1
 		move.l     10(a0),4(a1)
-Auo_ftext_12:
 		movea.l    4(a7),a0
 		movea.l    12(a7),a1
 		move.w     14(a0),8(a1)
@@ -614,7 +613,7 @@ Auo_ftext_93:
 		or.l       d1,d0
 		movea.l    16(a7),a0
 		move.l     d0,4(a0)
-		bra        Auo_ftext_18
+		bra.w      Auo_ftext_18
 Auo_ftext_94:
 		movea.l    16(a7),a0
 		move.l     4(a0),d0

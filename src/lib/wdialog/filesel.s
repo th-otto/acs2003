@@ -1,5 +1,6 @@
 		.text
 
+	.globl fsmesshndler /* FIXME */
 fsmesshndler:
 		move.l     d2,-(a7)
 		movea.l    8(a7),a0

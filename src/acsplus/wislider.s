@@ -234,7 +234,7 @@ Auo_wislider_37:
 		beq        Auo_wislider_19
 		move.w     d3,60(a2)
 		tst.w      d5
-		ble        Auo_wislider_19
+		ble.w      Auo_wislider_19
 		clr.w      -(a7)
 		clr.w      -(a7)
 		clr.w      -(a7)
@@ -297,8 +297,6 @@ Auo_wislider_38:
 		addq.w     #4,a7
 		movem.l    (a7)+,d3-d5/a2-a4
 		rts
-Auo_wislider_15:
-Auo_wislider_17:
 
 	.data
 

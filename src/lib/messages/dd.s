@@ -61,7 +61,8 @@ Aev_GetAPDragDrop_2:
 		move.w     10(a7),14(a7)
 		clr.w      d0
 		jsr        Awi_update
-		movea.l    #$00000001,a0
+		/* movea.l    #$00000001,a0 */
+		dc.w 0x207c,0,1
 		moveq.l    #13,d0
 		jsr        Psignal
 		move.l     d0,4(a7)

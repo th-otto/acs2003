@@ -326,7 +326,7 @@ get_fontinfo_17:
 		subq.w     #1,d0
 		blt        get_fontinfo_4
 		tst.w      d5
-		bne        get_fontinfo_5
+		bne.w      get_fontinfo_5
 		pea.l      116(a7)
 		pea.l      130(a7)
 		pea.l      124(a7)

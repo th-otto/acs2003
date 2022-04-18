@@ -658,7 +658,7 @@ glue_parts:
 		ble        glue_parts_1
 		lea.l      parts_window,a3
 		move.l     (a3),d0
-		beq        glue_parts_1
+		beq.w      glue_parts_1
 		movea.l    d0,a0
 		move.w     32(a0),d1
 		ble.s      glue_parts_1

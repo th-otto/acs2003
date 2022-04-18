@@ -1225,7 +1225,7 @@ term:
 		moveq.l    #1,d0
 		movea.l    8(a7),a0
 		and.w      6(a0),d0
-		beq        term_2
+		beq.w      term_2
 		movea.l    ACSblk,a0
 		move.w     570(a0),d0
 		beq.s      term_3

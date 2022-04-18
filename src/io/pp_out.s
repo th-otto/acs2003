@@ -169,7 +169,7 @@ out_refs:
 		move.l     14(a0),d3
 		lsr.l      #2,d3
 		tst.w      d3
-		ble        out_refs_1
+		ble.w      out_refs_1
 		movea.l    4(a0),a2
 		lea.l      xa65e4,a3
 		lea.l      35(a3),a0
@@ -1947,6 +1947,7 @@ pp_output_4:
 		jsr        Fclose
 pp_output_2:
 		lea.l      136(a7),a7
+		movem.l    (a7)+,d3/a2-a5
 		rts
 
 	.data

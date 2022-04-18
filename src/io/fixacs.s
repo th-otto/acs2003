@@ -118,7 +118,6 @@ unfix_config:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl fix_ob
 fix_ob:
 		move.l     (a0),d0
 		beq.s      fix_ob_1
@@ -129,7 +128,6 @@ fix_ob:
 fix_ob_1:
 		rts
 
-	.globl unfix_ob
 unfix_ob:
 		move.w     2(a0),d0
 		ext.l      d0

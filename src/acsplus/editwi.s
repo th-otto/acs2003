@@ -2148,7 +2148,7 @@ edit_make_2:
 		cmp.l      d0,d1
 		bne        edit_make_6
 		moveq.l    #0,d4
-		bra        edit_make_7
+		bra.w      edit_make_7
 edit_make_10:
 		movea.l    a6,a0
 		move.l     #0x00000102,d1
@@ -3072,7 +3072,7 @@ Aed_findsel_2:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
-	.globl Aed_gotoline
+	.globl Aed_font
 Aed_font:
 		movem.l    d3-d4/a2-a5,-(a7)
 		lea.l      -12(a7),a7

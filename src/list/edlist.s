@@ -868,7 +868,7 @@ li_service_13:
 		ori.w      #0x0008,442(a0)
 		movea.l    94(a2),a0
 		ori.w      #0x0008,538(a0)
-		bra        li_service_10
+		bra.w      li_service_10
 li_service_1:
 		movea.l    a2,a0
 		bsr        delete

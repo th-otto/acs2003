@@ -98,7 +98,7 @@ Awi_diastart_1:
 Awi_diastart_2:
 		movea.l    30(a7),a0
 		move.w     28(a0),d0
-		bpl        Awi_diastart_4
+		bpl.w      Awi_diastart_4
 		movea.l    30(a7),a0
 		cmpa.l     last_edit,a0
 		bne.s      Awi_diastart_4

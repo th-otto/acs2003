@@ -96,7 +96,8 @@ Abp_start_1:
 		movea.l    vectors,a0
 		move.l     #ret,16(a0)
 		moveq.l    #-1,d0
-		movea.l    #$FFFFFFFF,a1
+		/* movea.l    #$FFFFFFFF,a1 */
+		dc.w 0x227c,-1,-1
 		movea.l    (a7),a0
 		movea.l    (a0),a0
 		jsr        Setscreen
@@ -155,7 +156,8 @@ Abp_end:
 		move.w     d0,220(a0)
 		move.w     d0,pxy+6
 		moveq.l    #-1,d0
-		movea.l    #$FFFFFFFF,a1
+		/* movea.l    #$FFFFFFFF,a1 */
+		dc.w 0x227c,-1,-1
 		movea.l    screen,a0
 		jsr        Setscreen
 		movea.l    vectors,a0
@@ -472,7 +474,7 @@ compress_image_14:
 		movea.l    140(a7),a0
 		move.b     144(a7),d0
 		cmp.b      3(a0),d0
-		bne        compress_image_18
+		bne.w      compress_image_18
 		move.b     #$01,147(a7)
 		addq.l     #2,140(a7)
 		subq.w     #2,154(a7)

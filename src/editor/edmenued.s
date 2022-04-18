@@ -402,7 +402,7 @@ me_init_2:
 		moveq.l    #1,d0
 		add.w      d6,d0
 		cmp.w      d0,d7
-		beq        me_init_4
+		beq.w      me_init_4
 		move.w     d7,d1
 		ext.l      d1
 		move.l     d1,d2
@@ -663,7 +663,7 @@ make_title_3:
 		jsr        copysub_ob
 		addq.w     #4,a7
 		move.w     d0,d5
-		bra        make_title_6
+		bra.w      make_title_6
 make_title_5:
 		move.w     10(a5),d4
 		move.w     d4,d1

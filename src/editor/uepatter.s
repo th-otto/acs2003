@@ -113,7 +113,7 @@ object_tree:
 		jsr        Aob_create
 		movea.l    a0,a2
 		move.l     a2,d0
-		beq        object_tree_1
+		beq.w      object_tree_1
 		lea.l      48(a2),a0
 		moveq.l    #22,d1
 		and.w      8(a3),d1

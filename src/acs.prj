@@ -35,6 +35,8 @@ acs.app
 
 .S[-U]
 
+.L[-S=40960]
+
 =
 stupargv.s
 
@@ -124,8 +126,8 @@ lib\main.s
 lib\initterm.s
 lib\vdi_data.s
 lib\mygemdos.s [-S]
-lib\nkcc.s
 lib\nkcc_s.s
+lib\nkcc.s
 lib\config.s
 lib\string.s
 lib\drag.s

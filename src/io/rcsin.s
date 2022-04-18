@@ -611,7 +611,7 @@ objects_9:
 		addq.w     #8,a7
 objects_11:
 		move.w     24(a7),d0
-		beq        objects_12
+		beq.w      objects_12
 		move.w     2(a3),d7
 		ext.l      d7
 		move.l     d7,d2

@@ -805,7 +805,7 @@ Auo_string_7:
 		ext.l      d0
 		movea.l    (a7),a0
 		move.l     d0,20(a0)
-		bra        Auo_string_11
+		bra.w      Auo_string_11
 Auo_string_3:
 		movea.l    (a7),a0
 		movea.l    12(a0),a0
@@ -3056,7 +3056,7 @@ A_3Dbutton_46:
 		jsr        vsl_type
 		clr.w      18(a7)
 A_3Dbutton_49:
-		bra        A_3Dbutton_50
+		bra.w      A_3Dbutton_50
 A_3Dbutton_45:
 		move.w     24(a7),d0
 		beq.s      A_3Dbutton_51
@@ -3200,7 +3200,7 @@ A_3Dbutton_61:
 		jsr        vsl_type
 		clr.w      18(a7)
 A_3Dbutton_64:
-		bra        A_3Dbutton_65
+		bra.w      A_3Dbutton_65
 A_3Dbutton_60:
 		move.w     24(a7),d0
 		beq.s      A_3Dbutton_66
