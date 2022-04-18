@@ -210,6 +210,7 @@ int16 mt_form_center( OBJECT *tree, int16 *x, int16 *y, int16 *w, int16 *h,
 
 /******************************************************************************/
 
+#if 0
 int16 mt_form_center_grect( OBJECT *tree, GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -234,6 +235,7 @@ int16 mt_form_center_grect( OBJECT *tree, GRECT *r, GlobalArray *globl )
 
    return data.intout[0];
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */
@@ -395,7 +397,7 @@ int16 mt_form_xdial( const int16 fo_diflag, const int16 fo_dilittlx, const int16
             void **flydial, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
-   static int16 contrl[] = {51, 9, 1, 2, 0};
+   static int16 contrl[] = {51, 9, 1, 1, 0};
    AESData data;
 
    /* Das contrl-Array initialisieren */
@@ -416,7 +418,9 @@ int16 mt_form_xdial( const int16 fo_diflag, const int16 fo_dilittlx, const int16
    data.intin[8] = fo_dibigh;
 
    data.addrin[0] = flydial;
+#if 0
    data.addrin[1] = 0;           /* Reserved */
+#endif
 
    /* Ab in die AES... */
    aes(data.contrl, data.globl, data.intin, data.intout, data.addrin, data.addrout);
@@ -426,6 +430,7 @@ int16 mt_form_xdial( const int16 fo_diflag, const int16 fo_dilittlx, const int16
 
 /******************************************************************************/
 
+#if 0
 int16 mt_form_xdial_grect( const int16 fo_diflag,
             const GRECT *fo_dilittl, const GRECT *fo_dibig,
             void **flydial, GlobalArray *globl )
@@ -456,6 +461,7 @@ int16 mt_form_xdial_grect( const int16 fo_diflag,
 
    return data.intout[0];
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */

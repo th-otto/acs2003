@@ -42,7 +42,7 @@ typedef struct
 {
    int16 contrl[CTRL_WORDS];
    GlobalArray *globl;
-   int16 intin[17];
+   int16 intin[16];
    int16 intout[7];
    void *addrin[5];
    void *addrout[1];
@@ -354,21 +354,31 @@ int16 mt_appl_exit( GlobalArray *globl )
 int16 mt_appl_getinfo( const int16 type, int16 *out1, int16 *out2, int16 *out3, int16 *out4,
             GlobalArray *globl )
 {
+   AESData data;
    /* UnterstÅtzt das System appl_getinfo? */
    static int16 hasInfo = -1;
    static int32 pmmu = 1;
+
+  /* contrl anlegen */
+  static int16 contrl[] = {130, 1, 5, 0, 0};
+
+  /* Das contrl-Array initialisieren */
+  CTRLCOPY(data.contrl, contrl);
+
+  /* Das globl-Array eintragen */
+  data.globl = globl;
 
    /* Ggf. prÅfen, ob appl_getinfo vorhanden ist */
    if( hasInfo<0 )
    {
       MAGX_COOKIE *cookie;
 
-      if( globl->ap_version>0x400
-            || (type<4 && globl->ap_version==0x400)
-            || (mt_appl_find("?AGI", globl)>=0)
-            || (globl->ap_version==0x399 && Ash_getcookie(C_MagX, &cookie)
+      if( data.globl->ap_version>0x400
+            || (type<4 && data.globl->ap_version==0x400)
+            || (mt_appl_find("?AGI", data.globl)>=0)
+            || (data.globl->ap_version==0x399 && Ash_getcookie(C_MagX, &cookie)
                && cookie->aesvars->version>=0 )
-            || (mt_wind_get(0, WF_WINX, NULL, NULL, NULL, NULL, globl)==WF_WINX) )
+            || (mt_wind_get(0, WF_WINX, NULL, NULL, NULL, NULL, data.globl)==WF_WINX) )
          hasInfo = 1;
       else
          hasInfo = 0;
@@ -382,16 +392,6 @@ int16 mt_appl_getinfo( const int16 type, int16 *out1, int16 *out2, int16 *out3, 
    /* Falls vorhanden, appl_getinfo aufrufen */
    if( hasInfo )
    {
-      /* contrl anlegen */
-      static int16 contrl[] = {130, 1, 5, 0, 0};
-      AESData data;
-
-      /* Das contrl-Array initialisieren */
-      CTRLCOPY(data.contrl, contrl);
-
-      /* Das globl-Array eintragen */
-      data.globl = globl;
-
       /* Die Arrays fÅllen */
       data.intin[0] = type;
 
@@ -431,6 +431,7 @@ int16 mt_appl_getinfo( const int16 type, int16 *out1, int16 *out2, int16 *out3, 
 /*                                                                            */
 /******************************************************************************/
 
+#if 0
 int16 mt_appl_getinfo_str( const int16 type, char *str1, char *str2, char *str3, char *str4,
             GlobalArray *globl )
 {
@@ -482,6 +483,7 @@ int16 mt_appl_getinfo_str( const int16 type, char *str1, char *str2, char *str3,
 
    return FALSE;
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */

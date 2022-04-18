@@ -908,7 +908,7 @@ void v_bit_image( const int16 handle, const char *filename, const int16 aspect,
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 void v_opnwk( int16 *work_in, int16 *handle, int16 *work_out );
-int16 v_opnprn( int16 *handle, PRN_SETTINGS *settings, int16 *work_out );
+void v_opnprn( int16 *handle, PRN_SETTINGS *settings, int16 *work_out );
 void v_opnprnwrk( int16 *handle, int16 *work_in, PRN_SETTINGS *settings, int16 *work_out );
 void v_opnmatrixprn( int16 *work_in, int16 *handle, int16 *work_out, int16 max_x, int16 max_y );
 void v_opnmeta( int16 *work_in, int16 *handle, int16 *work_out, const char *filename );

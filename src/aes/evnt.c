@@ -426,6 +426,7 @@ int16 mt_evnt_xmulti( const int16 ev_mflags, const int16 ev_mbclicks, const int1
 /*                                                                            */
 /******************************************************************************/
 
+#if 0
 void mt_EVNT_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev_mbmask,
             const int16 ev_mbstate, MOBLK *m1, MOBLK *m2, const int32 ev_mtimer,
             EVNT *event, GlobalArray *globl )
@@ -483,6 +484,7 @@ void mt_EVNT_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16 
    /* Die Werte zurÅckgeben - optimiert, denn genau so ist EVNT definiert! */
    MEMCPY_7(event, data.intout);
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */

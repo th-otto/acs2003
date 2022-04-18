@@ -65,7 +65,7 @@ void v_opnwk( int16 *work_in, int16 *handle, int16 *work_out )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 v_opnprn( int16 *handle, PRN_SETTINGS *settings, int16 *work_out )
+void v_opnprn( int16 *handle, PRN_SETTINGS *settings, int16 *work_out )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12] = {1, 0, 6, 16, 45};
@@ -76,7 +76,7 @@ int16 v_opnprn( int16 *handle, PRN_SETTINGS *settings, int16 *work_out )
 
    /* Wurde etwas fÅr die erweiterten NVDI-Parameter Åbergeben? */
    if( settings==NULL )
-      return -1;
+      return;
 
    /* Die Werte Åbertragen */
    intin[0]  = settings->driver_id;
@@ -100,8 +100,6 @@ int16 v_opnprn( int16 *handle, PRN_SETTINGS *settings, int16 *work_out )
    /* RÅckgabewert auswerten */
    if( handle!=NULL )
       *handle = contrl[6];
-
-   return contrl[6];
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/

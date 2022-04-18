@@ -193,7 +193,7 @@ void vqt_extent( const int16 handle, const char *string, int16 *extent )
    /* intin anlegen */
    int16 *intin;
    register int16 i, *i_ptr;
-   register unsigned char *c_ptr;
+   register const char *c_ptr;
 
    /* Die Daten in die Arrays bertragen */
    contrl[6] = handle;
@@ -203,7 +203,7 @@ void vqt_extent( const int16 handle, const char *string, int16 *extent )
    if( intin == NULL )
       return;
 
-   for( i=0, i_ptr=intin, c_ptr=(unsigned char *)string ; i<=contrl[3] ; i_ptr++, c_ptr++, i++ )
+   for( i=0, i_ptr=intin, c_ptr=string ; i<=contrl[3] ; i_ptr++, c_ptr++, i++ )
       *i_ptr = *c_ptr;
 
    /* VDI aufrufen */

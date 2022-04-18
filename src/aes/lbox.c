@@ -44,7 +44,7 @@ typedef struct
    GlobalArray *globl;
    int16 intin[16];
    int16 intout[7];
-   void *addrin[8];
+   void *addrin[5]; /* BUG */
    void *addrout[1];
 } AESData;
 

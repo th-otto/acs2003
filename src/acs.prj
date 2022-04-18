@@ -161,7 +161,7 @@ lib\userdef\userobj2.s
 lib\userdef\ftext.s [-M-]
 lib\userdef\cycle.s [-M-]
 lib\userdef\picture.s
-lib\userdef\boxed.s
+lib\userdef\boxed.s [-M-]
 lib\utility\util.s
 lib\utility\date.s
 lib\wdialog\filesel.s
@@ -182,7 +182,7 @@ vdi\inquire.c
 vdi\escape.c
 
 aes\aes_s.s
-aes\appl.c
+aes\appl.c [-M-]
 aes\evnt.c
 aes\menu.c
 aes\objc.c
@@ -222,6 +222,6 @@ tos\xbios.s
 tos\gemdos.s
 tos\mintnet.s
 tos\pamsnet.s
-tos\tos_util.c
+tos\tos_util.c [-J- -Z- -R- -M-]
 
 pcstdlib.lib

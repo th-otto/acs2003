@@ -130,6 +130,7 @@ int16 mt_wind_create( const int16 kind, const int16 max_x, const int16 max_y,
 
 /******************************************************************************/
 
+#if 0
 int16 mt_wind_create_grect( const int16 kind, const GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -154,6 +155,7 @@ int16 mt_wind_create_grect( const int16 kind, const GRECT *r, GlobalArray *globl
 
    return data.intout[0];
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */
@@ -189,6 +191,7 @@ int16 mt_wind_open( const int16 handle, const int16 x, const int16 y,
 
 /******************************************************************************/
 
+#if 0
 int16 mt_wind_open_grect( const int16 handle, const GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -213,6 +216,7 @@ int16 mt_wind_open_grect( const int16 handle, const GRECT *r, GlobalArray *globl
 
    return data.intout[0];
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */
@@ -388,6 +392,7 @@ int16 mt_wind_getQSB( const int16 handle, void **buffer, int32 *length, GlobalAr
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+#if 0
 int16 mt_wind_get_grect( const int16 handle, int16 what, GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -416,6 +421,7 @@ int16 mt_wind_get_grect( const int16 handle, int16 what, GRECT *r, GlobalArray *
 
    return data.intout[0];
 }
+#endif
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -423,6 +429,7 @@ int16 mt_wind_get_grect( const int16 handle, int16 what, GRECT *r, GlobalArray *
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+#if 0
 int16 mt_wind_get_int( const int16 handle, int16 what, int16 *g1, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -451,6 +458,7 @@ int16 mt_wind_get_int( const int16 handle, int16 what, int16 *g1, GlobalArray *g
 
    return data.intout[0];
 }
+#endif
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -458,6 +466,7 @@ int16 mt_wind_get_int( const int16 handle, int16 what, int16 *g1, GlobalArray *g
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+#if 0
 int16 mt_wind_xget_grect( const int16 handle, int16 what, const GRECT *clip, GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -492,6 +501,7 @@ int16 mt_wind_xget_grect( const int16 handle, int16 what, const GRECT *clip, GRE
 
    return data.intout[0];
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */
@@ -571,11 +581,13 @@ int16 mt_wind_xset_grect( const int16 handle, const int16 what, const GRECT *xyw
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+#if 0
 int16 mt_wind_setGRECT( const int16 handle, const int16 what, const GRECT *xywh,
             GlobalArray *globl )
 {
    return mt_wind_xset_grect(handle, what, xywh, NULL, globl);
 }
+#endif
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -583,11 +595,13 @@ int16 mt_wind_setGRECT( const int16 handle, const int16 what, const GRECT *xywh,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+#if 0
 int16 mt_wind_set_grect( const int16 handle, const int16 what, const GRECT *r,
             GlobalArray *globl )
 {
    return mt_wind_xset_grect(handle, what, r, NULL, globl);
 }
+#endif
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -595,6 +609,7 @@ int16 mt_wind_set_grect( const int16 handle, const int16 what, const GRECT *r,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+#if 0
 int16 mt_wind_set_string( const int16 handle, const int16 what, const char *str,
             GlobalArray *globl )
 {
@@ -629,6 +644,7 @@ int16 mt_wind_set_string( const int16 handle, const int16 what, const char *str,
 
    return data.intout[0];
 }
+#endif
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -636,6 +652,7 @@ int16 mt_wind_set_string( const int16 handle, const int16 what, const char *str,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+#if 0
 int16 mt_wind_set_int( const int16 handle, const int16 what, const int16 g1,
             GlobalArray *globl )
 {
@@ -662,6 +679,7 @@ int16 mt_wind_set_int( const int16 handle, const int16 what, const int16 g1,
 
    return data.intout[0];
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */

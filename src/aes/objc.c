@@ -144,6 +144,7 @@ int16 mt_objc_draw( OBJECT *tree, const int16 start, const int16 depth, const in
 
 /******************************************************************************/
 
+#if 0
 int16 mt_objc_draw_grect( OBJECT *tree, const int16 start, const int16 depth,
             const GRECT *r, GlobalArray *globl )
 {
@@ -172,6 +173,7 @@ int16 mt_objc_draw_grect( OBJECT *tree, const int16 start, const int16 depth,
 
    return data.intout[0];
 }
+#endif
 
 /******************************************************************************/
 /*                                                                            */
