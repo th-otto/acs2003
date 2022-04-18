@@ -1418,4 +1418,6 @@ xe088d:
 		dc.b $20,$09,$0a,$0d,$27,0
 		.even
 
+	.bss
 
+scrap: ds.b 256

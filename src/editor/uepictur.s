@@ -2828,3 +2828,8 @@ xbeb07:
 		dc.b 'Auo_picture',0
 xbeb13:
 		dc.b '0x%lxL',0
+
+
+	.bss
+
+parm: ds.b 32

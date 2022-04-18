@@ -405,6 +405,7 @@ help_title:
 title:
 		dc.b 'SLIDER -',0
 		dc.b $00
+A_3DBUTTON01:
 		dc.l A_3Dbutton
 		dc.w $29f1
 		dc.w $01f8
@@ -923,6 +924,7 @@ data:
 		dc.l help_title
 		dc.w $0000
 		dc.w $0000
+xbd764:
 		dc.b '0x2L'
 xbd768: dc.b 0
 xbd769:
@@ -930,3 +932,8 @@ xbd769:
 xbd774:
 		dc.b '0x%lxL',0
 		.even
+
+
+	.bss
+
+parm: ds.b 32

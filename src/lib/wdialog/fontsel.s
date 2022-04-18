@@ -1211,7 +1211,9 @@ FontClicked_1:
 	.data
 
 TEXT_01:
-		dc.w $0000
+		dc.b 0
+TEXT_02:
+		dc.b 0
 FontSelObj:
 		dc.w $ffff
 		dc.w $ffff

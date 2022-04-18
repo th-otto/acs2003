@@ -866,8 +866,9 @@ BUBBLE_05:
 		dc.b 'Hier kann der String eingegeben werden, der das aufzurufende Context-Popup beschreibt (siehe in der Dokumentation zu Ame_strpopup).',0
 TEXT_005:
 		dc.w $4f4b
-		dc.w $0041
-		dc.b 'bbruch',0
+		dc.b $00
+TEXT_009:
+		dc.b 'Abbruch',0
 TEXT_05:
 		dc.b 'Sonstiges',0
 TEXT_06:
@@ -2450,3 +2451,7 @@ xc03d0:
 xc03dc:
 		dc.b '0x%lxL',0
 		.even
+
+	.bss
+
+parm: ds.b 32

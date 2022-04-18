@@ -1649,8 +1649,9 @@ term_4:
 ERR_LARGE:
 		dc.b '[3][ Die Bilddaten umspannen| einen zu grossen Bereich | (Limit 196 x 196), oder| liegen nicht im| Standardformat vor.][ OK ]',0
 TEXT_002:
-		dc.w $004f
-		dc.w $4b00
+		dc.b 0
+TEXT_003:
+		dc.b 'OK',0
 TEXT_004:
 		dc.b 'Abbruch',0
 TEXT_01:

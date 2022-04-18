@@ -154,6 +154,7 @@ next_trans_1:
 		addq.w     #1,used
 		rts
 
+	.globl fix_all
 fix_all:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a3
@@ -362,6 +363,7 @@ fix_all_4:
 		movem.l    (a7)+,d3/a2-a4
 		rts
 
+	.globl unfix_all
 unfix_all:
 		movem.l    d3/a2-a5,-(a7)
 		movea.l    a0,a4

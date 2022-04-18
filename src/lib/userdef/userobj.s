@@ -3742,3 +3742,7 @@ col2:
 xe1c44: dc.b 0
 xe1c45: dc.b 0
 	.even
+
+	.bss
+
+act: ds.l 1

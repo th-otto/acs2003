@@ -618,8 +618,9 @@ A_fontsel_3:
 	.data
 
 TEXT_002:
-		dc.w $0084
-		dc.b '”™š The quick brown fox jumps over the lazy dog',0
+		dc.b $00
+TEXT_01:
+		dc.b '„”™š The quick brown fox jumps over the lazy dog',0
 TEXT_013:
 		dc.b 'OK',0
 TEXT_02:
@@ -1104,3 +1105,10 @@ xd4ec9:
 		dc.b 'Pixel',0
 		.even
 
+	.bss
+
+table: ds.l 1
+fonts: ds.w 1
+fontid: ds.w 1
+height: ds.w 1
+pixel: ds.w 1

@@ -2493,3 +2493,8 @@ xc2d0d:
 xc2d11:
 		dc.b '%d',0
 		.even
+
+
+	.bss
+
+parm: ds.b 32

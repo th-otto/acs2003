@@ -1611,19 +1611,22 @@ BUBBLE_53:
 STGUIDE_01:
 		dc.b 'Der Fenster-Editor',0
 TEXT_002:
-		dc.w $004f
-		dc.w $4b00
+		dc.b 0
+TEXT_003:
+		dc.b 'OK',0
 TEXT_004:
 		dc.b 'Abbruch',0
 TEXT_01:
 		dc.b ' Info',0
 TEXT_012:
-		dc.w $593a
-		dc.w $0058
+		dc.b $59,$3a,0
+TEXT_013:
+		dc.b $58
 		dc.w $3a00
 TEXT_014:
-		dc.w $573a
-		dc.w $0048
+		dc.b $57,$3a,0
+TEXT_015:
+		dc.b $48
 		dc.w $3a00
 TEXT_02:
 		dc.w $0100
@@ -1704,11 +1707,13 @@ TEXT_38:
 TEXT_39:
 		dc.b 'Komponenten:',0
 TEXT_40:
-		dc.b $07
-		dc.w $007f
-		dc.w $001f
-		dc.w $004e
-		dc.b 'ame',0
+		dc.b $07,0
+TEXT_41:
+		dc.b $7f,0
+TEXT_42:
+		dc.b $1f,0
+TEXT_43:
+		dc.b 'Name',0
 TEXT_44:
 		dc.b 'Mover',0
 TEXT_45:

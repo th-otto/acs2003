@@ -237,3 +237,7 @@ xcce41:
 xcce43:
 		dc.b 7,0
 		.even
+
+	.bss
+
+string: ds.b 32

@@ -560,6 +560,7 @@ help_title:
 title:
 		dc.b 'TITLE -',0
 		dc.b $00
+A_3DBUTTON03:
 		dc.l A_3Dbutton
 		dc.w $29c1
 		dc.w $0178
@@ -1148,9 +1149,15 @@ data:
 xc495e:
 		dc.b 'TITEL'
 xc4963: dc.b 0
+xc4964:
 		dc.b '0x0L',0
 xc4969:
 		dc.b 'Auo_string',0
 xc4974:
 		dc.b '0x%lxL',0
 		.even
+
+
+	.bss
+
+parm: ds.b 32

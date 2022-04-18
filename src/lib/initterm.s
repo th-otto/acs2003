@@ -492,7 +492,7 @@ InitMagiC:
 		movea.l    ACSblk,a0
 		lea.l      1278(a0),a0
 		move.l     #$4D616758,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		beq.s      InitMagiC_1
 		movea.l    ACSblk,a0
@@ -526,7 +526,7 @@ InitNAES:
 		movea.l    ACSblk,a0
 		lea.l      1282(a0),a0
 		move.l     #$6E414553,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		bne.s      InitNAES_1
 		movea.l    ACSblk,a0

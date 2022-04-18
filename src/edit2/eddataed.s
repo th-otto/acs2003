@@ -185,7 +185,7 @@ al2_obj:
 al3_obj:
 		dc.b 'ML3-ALERT LIST',0
 
-	.globl 
+	.globl al_obj
 al_obj:
 		dc.b 'ALERT LIST',0
 
@@ -250,6 +250,7 @@ wi_obj:
 		dc.b 'WINDOW LIST',0
 		dc.b $00
 
+TEDINFO_01:
 		dc.l TEXT_01
 		dc.l TEXT_002
 		dc.l TEXT_002
@@ -1567,6 +1568,7 @@ xa8d2a:
 		dc.b ' Meldung ',0
 xa8d34:
 		dc.b '%;',0
+xa8d37:
 		dc.b 'PUR_DESK',0
 
 TEXT_002_2:

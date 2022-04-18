@@ -1953,7 +1953,6 @@ MODUL_LOAD_TITEL:
 		dc.b 'Module laden',0
 NAME_MODULE:
 		dc.b ' Module ',0
-	.globl NAME_PUR_DESK
 NAME_PUR_DESK:
 		dc.b ' Purer Desktop ',0
 STGUIDE_01:
@@ -3586,6 +3585,7 @@ _08aPUR_TOOL:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+	.globl PUR_DESK
 PUR_DESK:
 		dc.w $0000
 		dc.w $0000

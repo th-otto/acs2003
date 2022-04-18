@@ -1417,7 +1417,9 @@ vslide_list:
 	.data
 
 TEXT_002:
-		dc.w $0000
+		dc.b 0
+TEXT_01:
+		dc.b 0
 DATAS_05:
 		dc.w $0000
 		dc.w $0000

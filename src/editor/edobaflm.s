@@ -2459,3 +2459,7 @@ sm:
 		dc.l help_title
 		dc.w $0000
 		dc.w $0000
+
+	.bss
+
+wintitel: ds.b 128

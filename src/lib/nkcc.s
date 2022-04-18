@@ -97,7 +97,7 @@ nkc_kstate:
 		subq.w     #4,a7
 		move.l     pshift,d0
 		bne.s      nkc_kstate_1
-		jsr        Ash_getO
+		jsr        Ash_getOSHeader
 		move.l     a0,(a7)
 		movea.l    (a7),a0
 		cmpi.w     #0x0100,2(a0)

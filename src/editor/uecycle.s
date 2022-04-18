@@ -1244,3 +1244,8 @@ xbf57d:
 xbf587:
 		dc.b '0x%lxL',0
 		.even
+
+
+	.bss
+
+parm: ds.b 36

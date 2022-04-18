@@ -1921,8 +1921,9 @@ TEXT_03:
 TEXT_04:
 		dc.b '  Lerne Tasten       '
 		dc.w $074c
-		dc.w $0020
-		dc.b ' Referenzen...',0
+		dc.b $00
+TEXT_05:
+		dc.b '  Referenzen...',0
 TEXT_06:
 		dc.b '  Information...     ^I',0
 TEXT_069:
@@ -1944,8 +1945,9 @@ TEXT_089:
 TEXT_09:
 		dc.b '  Test...            '
 		dc.w $0754
-		dc.w $0020
-		dc.b ' Rechts',0
+		dc.b $00
+TEXT_090:
+		dc.b '  Rechts',0
 TEXT_091:
 		dc.b '  Mitte',0
 TEXT_092:
@@ -10520,3 +10522,7 @@ xc91ad:
 		dc.b '- NULL -',0
 xc91b6:
 		dc.b '0x%lx',0
+
+	.bss
+
+pxy: ds.w 4 

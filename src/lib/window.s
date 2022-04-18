@@ -5870,7 +5870,7 @@ _init_alert:
 _init_alert_1:
 		movea.l    10(a7),a0
 		ori.w      #$0020,86(a0)
-		jsr        Ash_gett
+		jsr        Ash_gettimer
 		move.l     d0,timer1
 		move.l     timer1,d0
 		sub.l      timer2,d0
@@ -6129,7 +6129,7 @@ Awi_alert_22:
 		andi.w     #$FF7F,320(a0)
 		movea.l    58(a7),a0
 		move.l     #$00000001,(a0)
-		jsr        Ash_gett
+		jsr        Ash_gettimer
 		move.l     d0,timer2
 		move.l     d0,timer1
 		movea.l    58(a7),a0
@@ -7997,3 +7997,30 @@ xe0fd5:
 xe0fd7:
 		dc.b $30,$31,0
 		.even
+
+	.bss
+
+wi_minw: ds.w 1
+wi_minh: ds.w 1
+timer1: ds.l 1
+timer2: ds.l 1
+gemmap: ds.b 512
+modwins: ds.w 16
+icnmap: ds.w 256
+_WIconText: ds.l 1
+_WWorkIcon: ds.l 1
+_WIcon: ds.l 1
+virt_desk: ds.w 4
+
+	.globl _ACSv_winds
+_ACSv_winds: ds.b 1024
+	.globl _ACSv_wiicons
+_ACSv_wiicons: ds.w 256
+
+_ACSv_wwork: ds.w 1
+
+	.globl _ACSv_wmenu
+_ACSv_wmenu: ds.w 1
+
+	.globl _Wmax_wi
+_Wmax_wi: ds.w 1

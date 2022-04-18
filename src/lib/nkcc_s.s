@@ -661,6 +661,12 @@ n_to_sca2:
 		dc.w $4501
 		dc.w $4637
 		dc.w $0053
+	.globl pshift
 pshift:
-		dc.w $0000
-		dc.w $0000
+		dc.l 0
+
+	.bss
+
+pkey_uns: ds.l 1
+pkey_shi: ds.l 1
+pkey_cap: ds.l 1

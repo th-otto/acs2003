@@ -40,7 +40,7 @@ stupargv.s
 
 acsbase.s
 palette.s
-ebdehave.s
+edbehave.s
 general.s
 about.s
 edutil.s

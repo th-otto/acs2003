@@ -211,3 +211,8 @@ init:
 prevmouse:
 		dc.w $ffff
 		dc.l 0
+
+	.bss
+
+hide: ds.w 1
+busy: ds.w 1

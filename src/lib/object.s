@@ -3029,3 +3029,8 @@ xe0c8e:
 		dc.w $0000
 xe0c9e:
 		dc.b '0 0 0 0 0 0 0 0 0 0',0
+
+	.bss
+
+ob_inout: ds.b 512
+col: ds.l 1

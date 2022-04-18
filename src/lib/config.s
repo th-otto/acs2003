@@ -2639,3 +2639,7 @@ xe05d5:                              dc.b '[]',0
 xe05d8:
 		dc.b $3d,0
 		.even
+
+	.bss
+
+s_val: ds.b 8192

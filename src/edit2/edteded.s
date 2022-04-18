@@ -155,8 +155,9 @@ term_2:
 	.data
 
 TEXT_002:
-		dc.w $004f
-		dc.w $4b00
+		dc.b $00
+TEXT_003:
+		dc.b 'OK',0
 TEXT_01:
 		dc.b 'Text:',0
 TEXT_02:

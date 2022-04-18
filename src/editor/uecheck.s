@@ -881,3 +881,8 @@ xc3461:
 xc346c:
 		dc.b '0x%lxL',0
 		.even
+
+
+	.bss
+
+parm: ds.b 32

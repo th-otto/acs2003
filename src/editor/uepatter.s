@@ -246,6 +246,7 @@ help_title:
 title:
 		dc.b 'PATTERN -',0
 		dc.b $00
+A_3DBUTTON01:
 		dc.l A_3Dbutton
 		dc.w $29c1
 		dc.w $0178
@@ -2349,3 +2350,7 @@ xc1552:
 		dc.b '0x%lxL',0
 		.even
 
+
+	.bss
+
+parm: ds.b 32

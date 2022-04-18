@@ -4193,9 +4193,9 @@ BUBBLE_08:
 TEXT_002:
 		dc.b $00
 TEXT_003:
-		dc.w $4f4b
-		dc.w $0041
-		dc.b 'bbruch',0
+		dc.b $4f,$4b,0
+TEXT_004:
+		dc.b 'Abbruch',0
 TEXT_01:
 		dc.b 'THINN',0
 TEXT_019:
@@ -4219,13 +4219,14 @@ TEXT_09:
 TEXT_10:
 		dc.b 'vorne:',0
 TEXT_11:
-		dc.w $593a
-		dc.w $0057
+		dc.b $59,$3a,0
+TEXT_12:
+		dc.b $57
 		dc.w $3a00
 TEXT_13:
-		dc.w $483a
-		dc.w $0043
-		dc.b 'har:',0
+		dc.b $48,$3a,0
+TEXT_14:
+		dc.b 'Char:',0
 TEXT_15:
 		dc.b 'Icon:',0
 TEXT_16:
@@ -4241,8 +4242,9 @@ TEXT_20:
 TEXT_21:
 		dc.b 'Ausmaže...',0
 TEXT_22:
-		dc.w $583a
-		dc.w $0004
+		dc.b $58,$3a,0
+TEXT_23:
+		dc.b $04
 		dc.b ' Deskicon',0
 TEXT_24:
 		dc.b ' Ausmaže ',0

@@ -137,6 +137,7 @@ Aob_create23x_11:
 		movem.l    (a7)+,d3/a2-a6
 		rts
 
+	.globl Awi_create23x
 Awi_create23x:
 		movem.l    d3/a2-a6,-(a7)
 		movea.l    a0,a3

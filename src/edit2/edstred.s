@@ -224,8 +224,9 @@ term_2:
 	.data
 
 TEXT_002:
-		dc.w $004f
-		dc.w $4b00
+		dc.b 0
+TEXT_003:
+		dc.b 'OK',0
 TEXT_004:
 		dc.b 'Abbruch',0
 TEXT_01:
@@ -233,6 +234,7 @@ TEXT_01:
 TEXT_12:
 		dc.b 'TEXT',0
 		dc.b $00
+A_3DBUTTON01:
 		dc.l A_3Dbutton
 		dc.w $29c1
 		dc.w $0178

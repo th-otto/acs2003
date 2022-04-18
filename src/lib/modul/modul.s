@@ -17,10 +17,10 @@ Ax_mterm_2:
 		jsr        Mfree
 		bra.s      Ax_mterm_1
 Ax_mterm_3:
-		jsr        accgemdo
+		jsr        accgemdos
 		movea.l    (a2),a0
 		jsr        Mfree
-		jsr        oldgemdo
+		jsr        oldgemdos
 Ax_mterm_1:
 		move.l     a3,(a2)
 		movea.l    (a7)+,a3
@@ -44,7 +44,7 @@ Ash_module_1:
 Ash_module_2:
 		tst.w      d3
 		beq.s      Ash_module_3
-		jsr        accgemdo
+		jsr        accgemdos
 Ash_module_3:
 		lea.l      nix,a5
 		pea.l      (a5)
@@ -103,7 +103,7 @@ Ash_module_9:
 		jsr        Mfree
 		tst.w      d3
 		beq.s      Ash_module_11
-		jsr        oldgemdo
+		jsr        oldgemdos
 Ash_module_11:
 		movea.l    a3,a0
 		moveq.l    #14,d0
@@ -114,7 +114,7 @@ Ash_module_11:
 Ash_module_10:
 		tst.w      d3
 		beq.s      Ash_module_13
-		jsr        oldgemdo
+		jsr        oldgemdos
 Ash_module_13:
 		tst.w      d4
 		bne.s      Ash_module_14
@@ -128,14 +128,14 @@ Ash_module_13:
 		beq.s      Ash_module_14
 		tst.w      d3
 		beq.s      Ash_module_15
-		jsr        accgemdo
+		jsr        accgemdos
 Ash_module_15:
 		movea.l    a5,a0
 		jsr        Mfree
 Ash_module_4:
 		tst.w      d3
 		beq.s      Ash_module_16
-		jsr        oldgemdo
+		jsr        oldgemdos
 Ash_module_16:
 		movea.l    a3,a0
 		moveq.l    #13,d0
@@ -428,7 +428,7 @@ funcAnzAscrp:
 func1Ash:
 		dc.l Ash_prog
 		dc.l Ash_error
-		dc.l Ash_getc
+		dc.l Ash_getcookie
 		dc.l Ash_getenv
 		dc.l Ash_nextdd
 		dc.l Ash_sendall
@@ -440,15 +440,15 @@ func1Ash:
 		dc.l Ash_fileselect
 		dc.l Ash_font
 		dc.l Ash_print
-		dc.l Ash_gett
+		dc.l Ash_gettimer
 		dc.l Ash_printSetIcon
 		dc.l Ash_fontSetIcon
 		dc.l Ash_fileSetIcon
-		dc.l Ash_getO
-		dc.l Ash_getM
-		dc.l Ash_getN
-		dc.l Ash_getM
-		dc.l Ash_getM
+		dc.l Ash_getOSHeader
+		dc.l Ash_getMagiC
+		dc.l Ash_getNAES
+		dc.l Ash_getMagiCVersion
+		dc.l Ash_getMagiCAESVars
 funcAsh:
 		dc.l func1Ash
 		dc.w $0000
@@ -600,8 +600,8 @@ func1Sonst:
 		dc.l nkc_n2kstate
 		dc.l nkc_kstate
 		dc.l nkc_cmp
-		dc.l nkc_tolo
-		dc.l nkc_toup
+		dc.l nkc_tolower
+		dc.l nkc_toupper
 		dc.l appl_getinfo
 		dc.l Ax_setRecycleSize
 		dc.l Ax_getRecycleStat
@@ -1497,7 +1497,7 @@ ACS233:
 		dc.l dotted_xline
 		dc.l dotted_yline
 		dc.l Ash_error
-		dc.l Ash_getc
+		dc.l Ash_getcookie
 		dc.l nkc_tos2
 		dc.l nkc_gem2n
 		dc.l nkc_n2to
@@ -1523,8 +1523,8 @@ ACS233:
 		dc.l Ash_sendall
 		dc.l Af_first_fsel
 		dc.l Af_next_fsel
-		dc.l nkc_tolo
-		dc.l nkc_toup
+		dc.l nkc_tolower
+		dc.l nkc_toupper
 		dc.l Awi_update
 		dc.l A_boxed
 		dc.l Auo_boxed
@@ -1702,7 +1702,7 @@ ACS230:
 		dc.l dotted_xline
 		dc.l dotted_yline
 		dc.l Ash_error
-		dc.l Ash_getc
+		dc.l Ash_getcookie
 		dc.l nkc_tos2
 		dc.l nkc_gem2n
 		dc.l nkc_n2to
@@ -1728,8 +1728,8 @@ ACS230:
 		dc.l Ash_sendall
 		dc.l Af_first_fsel
 		dc.l Af_next_fsel
-		dc.l nkc_tolo
-		dc.l nkc_toup
+		dc.l nkc_tolower
+		dc.l nkc_toupper
 		dc.l Awi_update
 		dc.l A_boxed
 		dc.l Auo_boxed

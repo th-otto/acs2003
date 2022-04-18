@@ -70,3 +70,10 @@ oldgemdos:
 		addq.l     #8,a7
 		rts
 
+	.bss
+
+oldret: ds.l 1
+oldvec: ds.l 1
+oldpd: ds.l 1
+_run: ds.l 1
+sint7: ds.l 1

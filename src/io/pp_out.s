@@ -884,7 +884,7 @@ out_mouse:
 		lea.l      22(a2),a0
 		jsr        info_list
 		movea.l    4(a2),a2
-		lea.l      a65e4,a3
+		lea.l      xa65e4,a3
 		lea.l      2170(a3),a0
 		jsr        save_string
 		clr.w      d4
@@ -1957,6 +1957,7 @@ xa65c4:
 		dc.b "                                "
 xa65e4:
 		dc.b "'",0
+		/* unused */
 		dc.b "'#%i'",0
 		dc.b $27,$27,0
 a65ef:

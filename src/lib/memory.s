@@ -146,11 +146,11 @@ _malloc_1:
 		move.l     a0,(a7)
 		bra.s      _malloc_3
 _malloc_2:
-		jsr        accgemdo
+		jsr        accgemdos
 		move.l     4(a7),d0
 		jsr        malloc
 		move.l     a0,(a7)
-		jsr        oldgemdo
+		jsr        oldgemdos
 _malloc_3:
 		move.l     (a7),d0
 		bne.s      _malloc_4
@@ -255,10 +255,10 @@ Ax_ifree_7:
 		jsr        free
 		bra.s      Ax_ifree_3
 Ax_ifree_8:
-		jsr        accgemdo
+		jsr        accgemdos
 		movea.l    4(a7),a0
 		jsr        free
-		jsr        oldgemdo
+		jsr        oldgemdos
 Ax_ifree_3:
 		addq.w     #8,a7
 		rts
@@ -400,7 +400,7 @@ Ax_glmalloc:
 		movea.l    ACSblk,a0
 		move.w     568(a0),d0
 		bne.s      Ax_glmalloc_1
-		jsr        accgemdo
+		jsr        accgemdos
 Ax_glmalloc_1:
 		jsr        Mxmask
 		move.w     d0,4(a7)
@@ -423,7 +423,7 @@ Ax_glmalloc_3:
 		movea.l    ACSblk,a0
 		move.w     568(a0),d0
 		bne.s      Ax_glmalloc_4
-		jsr        oldgemdo
+		jsr        oldgemdos
 Ax_glmalloc_4:
 		movea.l    (a7),a0
 		lea.l      10(a7),a7
@@ -444,10 +444,10 @@ Ax_glfree_1:
 		jsr        Mfree
 		bra.s      Ax_glfree_3
 Ax_glfree_2:
-		jsr        accgemdo
+		jsr        accgemdos
 		movea.l    (a7),a0
 		jsr        Mfree
-		jsr        oldgemdo
+		jsr        oldgemdos
 Ax_glfree_3:
 		addq.w     #4,a7
 		rts
@@ -1414,3 +1414,8 @@ xe0c24:
 xe0c2e:
 		dc.b 'ULinListe-Element',0
 		.even
+
+	.bss
+watch_min: ds.l 1
+watch_max: ds.l 1
+check: ds.b 48

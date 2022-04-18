@@ -4466,7 +4466,8 @@ x86858:                           dc.b 0
 x86859:                           dc.b 0
 x8685a:                           dc.b 9,'Datum:',0
 x86862:                           dc.b 0
-x86863:                           dc.b 9,'Unterschrift:',0,0
+x86863:                           dc.b 9,'Unterschrift:',0
+x86872:                           dc.b 0
 x86873:                           dc.b 'ACS',0
 x86877:                           dc.b 'ACS',0
 x8687b:                           dc.b '%d',0

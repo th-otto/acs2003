@@ -3093,7 +3093,7 @@ Aed_font:
 		bne        Aed_font_1
 		lea.l      8(a7),a0
 		move.l     #0x7846534C,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		beq.s      Aed_font_1
 		move.w     380(a3),2(a7)
@@ -13505,3 +13505,7 @@ xd4a6d:
 xd4a70:
 		dc.b '%s:%-0.*s',0
 		.even
+
+	.bss
+
+buffer: ds.b 8194

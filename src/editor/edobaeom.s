@@ -394,6 +394,7 @@ help_title:
 title:
 		dc.b ' ERWEITERTE WERTE -',0
 		dc.b $00
+TEDINFO_01:
 		dc.l TEXT_08
 		dc.l TEXT_09
 		dc.l TEXT_09

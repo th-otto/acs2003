@@ -33,7 +33,7 @@ ACSInitL:
 		move.l     a0,(a3)
 		lea.l      Fonts,a3
 		move.l     a1,(a3)
-		lea.l      Linea_fu,a3
+		lea.l      Linea_funp,a3
 		move.l     a2,(a3)
 		movem.l    (a7)+,d3-d7/a2-a6
 		rts

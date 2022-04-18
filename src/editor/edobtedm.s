@@ -991,6 +991,7 @@ help_title:
 title:
 		dc.b ' TEDINFOS -',0
 		dc.b $00
+TEDINFO_01:
 		dc.l TEXT_02
 		dc.l TEXT_03
 		dc.l TEXT_04

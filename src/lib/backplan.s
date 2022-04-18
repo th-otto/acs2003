@@ -99,7 +99,7 @@ Abp_start_1:
 		movea.l    #$FFFFFFFF,a1
 		movea.l    (a7),a0
 		movea.l    (a0),a0
-		jsr        Setscree
+		jsr        Setscreen
 		movea.l    (a7),a0
 		move.w     8(a0),d0
 		add.w      d0,d0
@@ -157,7 +157,7 @@ Abp_end:
 		moveq.l    #-1,d0
 		movea.l    #$FFFFFFFF,a1
 		movea.l    screen,a0
-		jsr        Setscree
+		jsr        Setscreen
 		movea.l    vectors,a0
 		move.l     kb_mousevec,16(a0)
 		lea.l      pxy,a0
@@ -1124,3 +1124,14 @@ pxy:
 color:
 		dc.w $0001
 		dc.w $0000
+
+	.bss
+
+screen: ds.l 1
+max_x: ds.w 1
+max_y: ds.w 1
+bytes_lin: ds.w 1
+v_rez_vt: ds.w 1
+v_rez_hz: ds.w 1
+vectors: ds.l 1
+kb_mousevec: ds.l 1

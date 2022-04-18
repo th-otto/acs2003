@@ -1244,3 +1244,6 @@ xce7f8:
 		dc.b 'DATAS_01',0
 		.even
 
+	.bss
+bubble_string: ds.b 258
+context_string: ds.b 258

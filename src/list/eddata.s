@@ -120,3 +120,85 @@ new_work:
 		movea.l    WI_DATA+90,a1
 		jsr        work_icon
 		rts
+
+	.data
+
+protodata:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.b 'DATAS_01',0
+		dc.b $00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0001
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+	.globl list_data
+list_data:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.l WI_DATA
+		dc.l if_list
+		dc.l if_name
+		dc.w $2724
+		dc.l protodata
+		dc.l copy_data
+		dc.l del_data
+		dc.l new_work
+		dc.w $0000
+		dc.w $0000
+free_data:
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.b 'DATAS_01',0
+		dc.b $00
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0001
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+		dc.w $0000
+

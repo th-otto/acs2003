@@ -820,14 +820,17 @@ ThermoGEMScript:
 	.data
 
 TEXT_02:
-		dc.w $0049
-		dc.b 'nitialisierung...                                ',0
+		dc.b 0
+TEXT_03:
+		dc.b 'Initialisierung...                                ',0
 TEXT_04:
 		dc.b 'Abbrechen',0
 TEXT_05:
-		dc.w $0031
-		dc.b '00 %',0
+		dc.b 0
+TEXT_06:
+		dc.b '100 %',0
 		dc.b $00
+TEDINFO_02:
 		dc.l TEXT_06
 		dc.l TEXT_02
 		dc.l TEXT_02

@@ -567,9 +567,9 @@ TEXT_001:
 TEXT_002:
 		dc.b $00
 TEXT_003:
-		dc.w $4f4b
-		dc.w $0050
-		dc.b 'robe',0
+		dc.b 'OK',0
+TEXT_004:
+		dc.b 'Probe',0
 TEXT_01:
 		dc.b ' Alertbox-Editor ',0
 TEXT_08:

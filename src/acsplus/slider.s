@@ -1537,3 +1537,7 @@ xcf1a8:
 xcf1aa:
 		dc.b '%ld',0
 		.even
+
+	.bss
+
+text: ds.b 12

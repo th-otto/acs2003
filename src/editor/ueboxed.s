@@ -943,9 +943,9 @@ TEXT_05:
 		dc.b 'Sonstiges',0
 TEXT_06:
 		dc.b '  Zeit              '
-		dc.b $03
-		dc.w $004b
-		dc.b 'apitalisieren',0
+		dc.b $03,0
+TEXT_07:
+		dc.b 'Kapitalisieren',0
 TEXT_08:
 		dc.b 'BubbleGEM-Text',0
 TEXT_09:
@@ -979,14 +979,16 @@ TEXT_30:
 		dc.w $0300
 TEXT_41:
 		dc.w $4f4b
-		dc.w $0020
-		dc.b ' Pfad              '
+		dc.b $00
+TXT0:
+		dc.b '  Pfad              '
 		dc.b $03
-		dc.w $0020
-		dc.b ' Datei             '
-		dc.b $03
-		dc.w $0044
-		dc.b 'er BoxEdit-Editor',0
+		dc.b $00
+TXT1:
+		dc.b '  Datei             '
+		dc.b $03,0
+help_title:
+		dc.b 'Der BoxEdit-Editor',0
 title:
 		dc.b 'BOXEDIT -',0
 A_3DBUTTON01:
@@ -3340,3 +3342,8 @@ xbce7e:
 xbce85:
 		dc.b '%d',9
 		.even
+
+
+	.bss
+
+parm: ds.b 34

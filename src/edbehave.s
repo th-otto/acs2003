@@ -1,5 +1,55 @@
 		.text
 		
+edbh_wi:
+		lea.l      -22(a7),a7
+		movea.l    ACSblk,a0
+		move.l     600(a0),4(a7)
+		movea.l    4(a7),a0
+		move.l     20(a0),(a7)
+		movea.l    ACSblk,a0
+		move.l     576(a0),10(a7)
+		movea.l    ACSblk,a0
+		clr.w      584(a0)
+		jsr        Adr_next
+		move.w     d0,8(a7)
+		ble        edbh_wi_1
+		move.w     8(a7),d1
+		ext.l      d1
+		move.l     d1,d0
+		add.l      d0,d0
+		add.l      d1,d0
+		lsl.l      #3,d0
+		movea.l    10(a7),a0
+		movea.l    20(a0),a0
+		lea.l      24(a0,d0.l),a0
+		move.l     a0,18(a7)
+		movea.l    18(a7),a0
+		cmpi.w     #0x2717,22(a0)
+		bne.s      edbh_wi_1
+		movea.l    18(a7),a0
+		move.l     12(a0),14(a7)
+		movea.l    14(a7),a1
+		lea.l      22(a1),a1
+		movea.l    ACSblk,a0
+		move.w     608(a0),d0
+		movea.l    (a7),a0
+		jsr        Aob_puttext
+		jsr        Awi_diaend
+		moveq.l    #-1,d1
+		movea.l    ACSblk,a0
+		move.w     608(a0),d0
+		movea.l    4(a7),a0
+		movea.l    4(a7),a1
+		movea.l    102(a1),a1
+		jsr        (a1)
+		jsr        Awi_diastart
+		move.w     8(a7),d0
+		movea.l    10(a7),a0
+		jsr        Adr_del
+edbh_wi_1:
+		lea.l      22(a7),a7
+		rts
+
 edbh_list:
 		subq.w     #8,a7
 		movea.l    ACSblk,a0

@@ -2005,6 +2005,7 @@ Adr_find0_2:
 		lea.l      46(a7),a7
 		rts
 
+	.globl Adr_find
 Adr_find:
 		lea.l      -16(a7),a7
 		move.l     a0,12(a7)
@@ -3631,3 +3632,8 @@ xe072f:
 		dc.b 'ARGS    ',0
 		dc.w $0000
 		.even
+
+	.bss
+
+pattern: ds.w 1
+drags: ds.b 8192

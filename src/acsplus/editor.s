@@ -5925,3 +5925,8 @@ xcf36d:
 xcf37e:
 		dc.b 'Keine Klammer.',0
 		dc.b $00
+
+	.bss
+
+buffer: ds.b 1024
+line: ds.b 514

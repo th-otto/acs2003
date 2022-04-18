@@ -176,6 +176,7 @@ help_title:
 title:
 		dc.b ' ICONS -',0
 		dc.b $00
+TEDI_001:
 		dc.l TEXT_005
 		dc.l TEXT_002
 		dc.l TEXT_002

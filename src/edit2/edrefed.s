@@ -1767,6 +1767,7 @@ IC_REF:
 		dc.w $0048
 		dc.w $0008
 		dc.l _C4_IC_REF
+	.globl REF_TYPE
 REF_TYPE:
 		dc.w $ffff
 		dc.w $0001

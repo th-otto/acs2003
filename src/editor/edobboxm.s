@@ -567,6 +567,7 @@ help_title:
 title:
 		dc.b ' BOXEN -',0
 		dc.b $00
+A_3DBUTTON01:
 		dc.l A_3Dbutton
 		dc.w $09f1
 		dc.w $0178

@@ -20,7 +20,7 @@ Af_select:
 		bne.s      Af_select_1
 		lea.l      multi_cook,a0
 		move.l     #$4653454C,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		bne.s      Af_select_1
 		clr.l      multi_cook
@@ -29,7 +29,7 @@ Af_select_1:
 		bne.s      Af_select_2
 		lea.l      bkhndler,a0
 		move.l     #$48424653,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		bne.s      Af_select_2
 		clr.l      bkhndler
@@ -240,7 +240,7 @@ Af_first_fsel:
 		bne.s      Af_first_fsel_1
 		lea.l      multi_cook,a0
 		move.l     #$4653454C,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 Af_first_fsel_1:
 		move.l     multi_cook,d0
 		beq        Af_first_fsel_2
@@ -2100,7 +2100,9 @@ FileClicked_1:
 	.data
 
 TEXT_01:
-		dc.w $0000
+		dc.b 0
+TEXT_02:
+		dc.b 0
 TEXT_04:
 		dc.b 'Selector',0
 		dc.b $00
@@ -3412,3 +3414,8 @@ xe2b66:
 xe2b68:
 		dc.w $2a00
 		dc.w $0000
+
+	.bss
+
+multi_opath: ds.b 128
+multi_pathend: ds.l 1

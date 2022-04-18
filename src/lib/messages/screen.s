@@ -1,4 +1,7 @@
-		_GetMnSelected:
+	.text
+
+	.globl Aev_GetMnSelected
+Aev_GetMnSelected:
 		subq.w     #4,a7
 		move.l     a0,(a7)
 		movea.l    (a7),a0

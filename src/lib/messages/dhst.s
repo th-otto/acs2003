@@ -135,7 +135,7 @@ Aev_DhstAdd:
 		move.l     a1,26(a7)
 		lea.l      (a7),a0
 		move.l     #$44485354,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		beq.s      Aev_DhstAdd_1
 		moveq.l    #-1,d0

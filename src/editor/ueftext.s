@@ -1715,3 +1715,8 @@ xc42af:
 xc42b4:
 		dc.b '%-*s',0
 		.even
+
+
+	.bss
+
+parm: ds.b 36

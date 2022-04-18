@@ -1280,36 +1280,7 @@ xa5359:
 		dc.b 'ACS(%02d)',0
 xa5363:
 		dc.b 'RSC',0
-		dc.b $00
-obsproto:
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $ffff
-		dc.w $ffff
-		dc.w $ffff
-		dc.w $0014
-		dc.w $0000
-		dc.w $0010
-		dc.w $0002
-		dc.w $1100
-		dc.w $0000
-		dc.w $0000
-		dc.w $0020
-		dc.w $000c
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $8000
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
-		dc.w $0000
+		.even
 
 	.bss
 

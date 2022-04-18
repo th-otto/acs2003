@@ -1197,7 +1197,7 @@ TEXT_192:
 		dc.b 'Nutzen:',0
 TEXT_195:
 		dc.b 'Objekte:',0
-	.globl al_lis
+	.globl al_list
 al_list:
 		dc.b ' ALARMBOX LISTE ',0
 	.globl al_name

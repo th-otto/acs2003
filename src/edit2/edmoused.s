@@ -829,8 +829,9 @@ term_2:
 TEXT_001:
 		dc.b 'Abbruch',0
 TEXT_002:
-		dc.w $004f
-		dc.w $4b00
+		dc.b 0
+TEXT_003:
+		dc.b 'OK',0
 TEXT_01:
 		dc.b 'neues Muster',0
 TEXT_03:
@@ -848,6 +849,7 @@ TEXT_18:
 TEXT_210:
 		dc.b 'MŽUSE',0
 		dc.b $00
+A_3DBUTTON01:
 		dc.l A_3Dbutton
 		dc.w $29c1
 		dc.w $0178

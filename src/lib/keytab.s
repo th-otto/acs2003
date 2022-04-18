@@ -4,7 +4,7 @@ Akt_getKeyTab:
 		bne.s      Akt_getKeyTab_1
 		lea.l      kt,a0
 		move.l     #$4B455954,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		beq.s      Akt_getKeyTab_2
 		movea.l    kt,a0
@@ -418,7 +418,7 @@ Akt_getEuro:
 Akt_getEuro_1:
 		lea.l      (a7),a0
 		move.l     #$4555524F,d0
-		jsr        Ash_getc
+		jsr        Ash_getcookie
 		tst.w      d0
 		beq.s      Akt_getEuro_3
 		move.l     (a7),d0
