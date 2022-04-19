@@ -209,7 +209,7 @@ xcce06:
 xcce09:
 		dc.b 'F8',0
 xcce0c:
-		dc.w 'F9',0
+		dc.b 'F9',0
 xcce0f:
 		dc.b 'HELP',0
 xcce14:

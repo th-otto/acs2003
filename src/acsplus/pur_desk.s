@@ -3865,5 +3865,5 @@ xd047a:
 xd047d:
 		dc.b 'AMA',0
 xd0481:
-		dc.b 'SetFront',0
+		dc.b 'GetFront',0
 		.even

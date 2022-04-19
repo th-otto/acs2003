@@ -48,7 +48,7 @@ _ACSaboutme_4:
 		move.b     d0,lib_date
 		move.b     compiler_date+5,lib_date+1
 		move.b     #0x2E,lib_date+2
-		lea.l      lib_date+2,a1
+		lea.l      lib_date+3,a1
 		lea.l      compiler_date,a0
 		jsr        Adate_getMonth
 		move.b     #0x2E,lib_date+5
@@ -145,7 +145,7 @@ get_acsblk:
 		movea.l    ACSblk,a0
 		clr.w      638(a0)
 		movea.l    ACSblk,a0
-		move.l     #0x00114A54,640(a0)
+		move.l     #_GemParBlk+30,640(a0)
 		movea.l    ACSblk,a0
 		move.w     #0x0100,580(a0)
 		movea.l    ACSblk,a0
@@ -15744,6 +15744,7 @@ _C4__CHK_3D_DS:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+		dc.l _C8__CHK_3D_DS
 _MSK__CHK_3D_DS:
 		dc.w $fffe
 		dc.w $fffe
@@ -15932,6 +15933,7 @@ _CHK_3D_S:
 		dc.w $0002
 		dc.w $0000
 		dc.w $0000
+		dc.l _C4__CHK_3D_S
 _C8__CHK_3D_U:
 		dc.w $0008
 		dc.l DATAS_199+6
@@ -15950,6 +15952,7 @@ _C4__CHK_3D_U:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
+		dc.l _C8__CHK_3D_U
 _MSK__CHK_3D_U:
 		dc.w $fffe
 		dc.w $fffe
@@ -18358,7 +18361,7 @@ _C8__WIN:
 		dc.w $0000
 _C4__WIN:
 		dc.w $0004
-		dc.l DATAS_03
+		dc.l DATAS_03+6
 		dc.l DATAS_04
 		dc.w $0000
 		dc.w $0000
@@ -19322,6 +19325,7 @@ xdfc2b:
 		dc.b ' ',$09,'=+-*/()!&|[]{}<>,.;:'
 		dc.b $dd
 		dc.b '$%?`',$27,'^#~@\"',0
+	.even
 
 		.bss
 

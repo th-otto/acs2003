@@ -8194,4 +8194,4 @@ xbb5ab:
 
 	.bss
 
-part_list: ds.b 128
+part_list: ds.b 160

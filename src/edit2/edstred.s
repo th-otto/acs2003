@@ -672,4 +672,4 @@ WI_STRING:
 		dc.w $0000
 xb3df6:
 		dc.b '%-*s',0
-		dc.b $00
+	.even

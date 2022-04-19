@@ -233,7 +233,8 @@ ParseGSCommands_9:
 		movea.l    20(a7),a0
 		move.b     (a0),d0
 		jsr        Ach_toupper
-		add.b      #$C9,d0
+		/* add.b      #$C9,d0 */
+		dc.w 0xd03c,0xffc9
 		movea.l    16(a7),a0
 		move.b     d0,(a0)
 ParseGSCommands_10:
@@ -267,7 +268,8 @@ ParseGSCommands_12:
 		movea.l    20(a7),a0
 		move.b     (a0),d0
 		jsr        Ach_toupper
-		add.b      #$C9,d0
+		/* add.b      #$C9,d0 */
+		dc.w 0xd03c,0xffc9
 		movea.l    16(a7),a0
 		or.b       d0,(a0)
 ParseGSCommands_11:
@@ -1223,15 +1225,15 @@ xe1aba:
 _gs_commands:
 		dc.l xe1b07
 		dc.l gs_CheckCommand
-		dc.l $000e1b14
+		dc.l xe1b14
 		dc.l gs_SendToTopWindow
-		dc.l $000e1b1d
+		dc.l xe1b1d
 		dc.l gs_Quit
-		dc.l $000e1b22
+		dc.l xe1b22
 		dc.l gs_AppGetLongName
-		dc.l $000e1b31
+		dc.l xe1b31
 		dc.l gs_SendToTopWindow
-		dc.l $000e1b3a
+		dc.l xe1b3a
 		dc.l gs_GetAllCommands
 _gs_cmd_anzahl:
 		dc.w $0006
@@ -1252,10 +1254,15 @@ xe1b03:
 		dc.b $00,0
 xe1b07:
 		dc.b 'CheckCommand',0
+xe1b14:
 		dc.b 'GetFront',0
+xe1b1d:
 		dc.b 'Quit',0
+xe1b22:
 		dc.b 'AppGetLongName',0
+xe1b31:
 		dc.b 'KeyPress',0
+xe1b3a:
 		dc.b 'GetAllCommands',0
 xe1b49:
 		dc.b $31,0

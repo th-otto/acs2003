@@ -244,7 +244,8 @@ nkc_cmp_23:
 		beq.s      nkc_cmp_25
 		move.w     6(a7),d0
 		jsr        nkc_toupper
-		and.b      #0xFF,d0
+		/* and.b      #0xFF,d0 */
+		dc.w 0xc03c,0xffff
 		move.b     2(a7),d1
 		cmp.b      d0,d1
 		bne.s      nkc_cmp_26

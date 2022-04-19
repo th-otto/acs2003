@@ -304,4 +304,5 @@ Ash_getenv_4:
 
 xe0fda:
 		dc.b '[| Internal errors! | Take care! |][  OK  ]',0
+	.even
 		dc.w $0000

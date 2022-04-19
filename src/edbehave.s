@@ -3669,7 +3669,7 @@ A_INNERFRAME12:
 		dc.w 0
 _C4_IC_BEHAVE:
 		dc.w $0004
-		dc.l $000894c0
+		dc.l DATAS_07+6
 		dc.l DATAS_08
 		dc.w 0
 		dc.w 0
@@ -5721,6 +5721,4 @@ x8af9c: dc.b '%d',0
 x8af9f: dc.b '  ',0
 x8afa2: dc.b '%3d',0
 x8afa6: dc.b '%3d',0
-
-
-
+	.even

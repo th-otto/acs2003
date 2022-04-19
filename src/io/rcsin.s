@@ -912,10 +912,11 @@ xa53de:
 		dc.b '.DFN',0
 xa53e3:
 		dc.b '.ACS',0
+	.even
 
 	.bss
 	.globl mapX
-mapX: ds.w 1000
+mapX: ds.w 1024
 iobuf: ds.b 131072
 	.globl iostring
 iostring: ds.b 1024

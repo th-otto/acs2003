@@ -1870,7 +1870,7 @@ zero:
 		dc.w $0000
 xa4af8:
 		dc.b '%00d',0
-		dc.b $00
+	.even
 
 	.bss
 

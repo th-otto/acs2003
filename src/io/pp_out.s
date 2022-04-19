@@ -1370,8 +1370,8 @@ out_string:
 		clr.w      d4
 		lea.l      xa65e4,a4
 		lea.l      iostring,a5
-out_string_4:
 		bra.s      out_string_2
+out_string_4:
 		move.w     d4,d0
 		ext.l      d0
 		lsl.l      #2,d0
@@ -1961,8 +1961,8 @@ xa65e4:
 		/* unused */
 		dc.b "'#%i'",0
 		dc.b $27,$27,0
-a65ef:
-		dc.b "%s",0
+xa65ef:
+		dc.b "%c",0
 		dc.b "'#"
 xa65f4:	dc.b '0',0
 xa65f6:
@@ -2017,7 +2017,7 @@ x000a6b05:                           dc.b ';',$0d,$0a,$09,$09,$09,'file_buffer: 
 x000a6b19:                           dc.b '%i',$0d,$0a,$09,$09,');',$0d,$0a,$09,$09,0
 x000a6b26:                           dc.b "BaseName: '",0
 x000a6b32:                           dc.b 'PUR_DESK',0
-x000a6b3b:                           dc.b ''; ACSterm: ',0
+x000a6b3b:                           dc.b "'; ACSterm: ",0
 x000a6b48:                           dc.b '; ACSaboutme: ',0
 x000a6b57:                           dc.b '; ACSclose: ',0
 x000a6b64:                           dc.b ';',$0d,$0a,$09,$09,'ACSmessage: ',0
@@ -2037,10 +2037,10 @@ x000a6c52:                           dc.b ';',$0d,$0a,$09,$09,'sel_mask: ',0
 x000a6c62:                           dc.b ';',$0d,$0a,$09,$09,'next_res: @_C%d_%-s);',$0d,$0a,0
 x000a6c7f:                           dc.b ';',$0d,$0a,$09,$09,'next_res: NIL);',$0d,$0a,0
 x000a6c96:                           dc.b $0d,$0a,$0d,$0a,'(*',$09,$09,'ICONS',$09,$09,'*)',$0d,$0a,$0d,$0a,0
-x000a6cac:                           dc.b '_MSK_%-s: array [0..%d: of WORD = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,0
+x000a6cac:                           dc.b '_MSK_%-s: array [0..%d] of WORD = ',$0d,$0a,$09,'(',$0d,$0a,$09,$09,0
 x000a6cd7:                           dc.b '$%04x, ',0
 x000a6cdf:                           dc.b '$%04x',$0d,$0a,$09,');',$0d,$0a
-			dc.b '_DAT_%-s: array [0..%d: of WORD = ',$0d,$0a
+			dc.b '_DAT_%-s: array [0..%d] of WORD = ',$0d,$0a
 			dc.b $09,'(',$0d,$0a,$09,$09,0
 x000a6d16:                           dc.b '$%04x',$0d,$0a,$09,');',$0d,$0a,0
 x000a6d23:                           dc.b '%-s: CICONBLK = ',$0d,$0a,
@@ -2162,7 +2162,7 @@ x000a7653:                           dc.b $0d,$0a,'(*',$09,$09,'STRINGS',$09,$09
 x000a7667:                           dc.b $0d,$0a,'(*',$09,$09,'MENU TREES',$09,$09,'*)',$0d,$0a,0
 x000a767e:                           dc.b $0d,$0a,'(*',$09,$09,'POPUP TREES',$09,$09,'*)',$0d,$0a,0
 x000a7696:                           dc.b $0d,$0a,'(*',$09,$09,'OBJECT TREES',$09,$09,'*)',$0d,$0a,0
-x000a76af:                           dc.b $00
+	.even
 
 	.bss
 

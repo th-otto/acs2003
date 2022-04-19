@@ -299,7 +299,7 @@ serv_alert_28:
 
 new_work:
 		move.w     #$271E,d0
-		movea.l    $000AD794,a1
+		movea.l    WI_ALERT+90,a1
 		jsr        work_icon
 		rts
 

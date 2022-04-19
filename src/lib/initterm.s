@@ -131,7 +131,7 @@ ACSinitialize_19:
 		jsr        Awi_root
 		movea.l    ACSblk,a1
 		move.l     a0,600(a1)
-		movea.l    $000A8442,a0
+		movea.l    ACSconfig+74,a0 /* ACSinit */
 		jsr        (a0)
 		move.w     d0,8(a7)
 		jsr        Amo_point
@@ -1203,7 +1203,7 @@ xdfcc7:
 xdfcc9:
 		dc.b $41,$3a,$5c,0
 xdfccd:
-		dc.b '        ',0
+		dc.b '        ',0,0
 xdfcd7:
 		dc.b 'CLIPBOARD',0
 xdfce1:

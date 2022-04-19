@@ -561,4 +561,4 @@ x000a5942:                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'WINDOWS'
 x000a595a:                           dc.b 'extern Awindow %s;',$0d,$0a,0
 x000a596f:                           dc.b $0d,$0a,$0d,$0a,'/*',$09,$09,'MOUSEFORMS',$09,$09,'*/',$0d,$0a,$0d,$0a,0
 x000a598a:                           dc.b 'extern MFORM %s;',$0d,$0a,0
-x000a599d:                           dc.b $00
+	.even

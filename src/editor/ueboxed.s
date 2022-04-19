@@ -3340,7 +3340,7 @@ xbce79:
 xbce7e:
 		dc.b '0x%lxL',0
 xbce85:
-		dc.b '%d',9
+		dc.b '%d',0
 		.even
 
 

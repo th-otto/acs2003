@@ -8,16 +8,16 @@ Ash_fontSetIcon:
 		move.l     2(a7),FontSelWind+90
 		move.l     FontSelWind+90,d0
 		bne.s      Ash_fontSetIcon_1
-		andi.w     #$FFFC,FontSelWind+8
+		andi.w     #$FFFC,FontSelWind+84
 		bra.s      Ash_fontSetIcon_2
 Ash_fontSetIcon_1:
-		ori.w      #$0001,FontSelWind+8
+		ori.w      #$0001,FontSelWind+84
 		move.w     (a7),d0
 		beq.s      Ash_fontSetIcon_3
-		ori.w      #$0002,FontSelWind+8
+		ori.w      #$0002,FontSelWind+84
 		bra.s      Ash_fontSetIcon_2
 Ash_fontSetIcon_3:
-		andi.w     #$FFFD,FontSelWind+8
+		andi.w     #$FFFD,FontSelWind+84
 Ash_fontSetIcon_2:
 		addq.w     #6,a7
 		rts

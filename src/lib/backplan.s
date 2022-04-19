@@ -396,7 +396,8 @@ compress_image_7:
 		clr.b      (a0)
 		movea.l    160(a7),a0
 		addq.l     #1,160(a7)
-		move.b     #$FF,(a0)
+		/* move.b     #$FF,(a0) */
+		dc.w 0x10bc,0xffff
 		movea.l    160(a7),a0
 		addq.l     #1,160(a7)
 		move.b     148(a7),(a0)
@@ -577,7 +578,8 @@ compress_image_25:
 		beq.s      compress_image_9
 		movea.l    160(a7),a0
 		addq.l     #1,160(a7)
-		move.b     #$80,(a0)
+		/* move.b     #$80,(a0) */
+		dc.w 0x10bc,0xff80
 		movea.l    160(a7),a0
 		addq.l     #1,160(a7)
 		move.b     147(a7),(a0)

@@ -33,8 +33,8 @@ prot_texte_5:
 		lea.l      iostring,a0
 		jsr        save_string
 		movea.l    4(a6),a6
-prot_texte_4:
 		bra.s      prot_texte_3
+prot_texte_4:
 		move.b     (a5),(a7)
 		clr.b      (a5)
 		movea.l    a6,a0
@@ -409,3 +409,4 @@ xa49c4:
 		dc.b $09,$09,'TEXTS',$0d,$0a,$09,$09,'=====',$0d,$0a,$0d,$0a,0
 xa49d9:
 		dc.b $09,$09,'ALERTBOXES',$0d,$0a,$09,$09,'==========',$0d,$0a,$0d,$0a,0
+	.even

@@ -1200,8 +1200,8 @@ edit_cutblk_13:
 edit_cutblk_7:
 		move.l     (a2),d5
 		bra.s      edit_cutblk_9
-		move.l     d5,d0
 edit_cutblk_12:
+		move.l     d5,d0
 		lsl.l      #3,d0
 		movea.l    44(a3),a5
 		adda.l     d0,a5
@@ -1726,15 +1726,13 @@ edit_updateline:
 		addq.l     #1,106(a0)
 		rts
 edit_updateline_3:
-edit_updateline_1:
-edit_updateline_2:
-
 		ori.w      #0x0008,18(a0)
 		rts
-
+edit_updateline_1:
 		ori.w      #0x0004,18(a0)
 		move.l     d0,102(a0)
 		move.l     d0,106(a0)
+edit_updateline_2:
 		rts
 
 edit_showline:
@@ -3833,7 +3831,8 @@ edit_find_5:
 		blt.s      edit_find_7
 		cmp.b      #0x7A,d5
 		bgt.s      edit_find_7
-		add.b      #0xE0,d6
+		/* add.b      #0xE0,d6 */
+		dc.w 0xdc3c,0xffe0
 		bra.s      edit_find_6
 edit_find_7:
 		cmp.b      #0x41,d5
@@ -5924,7 +5923,7 @@ xcf36d:
 		dc.b 'Nichts gefunden.',0
 xcf37e:
 		dc.b 'Keine Klammer.',0
-		dc.b $00
+	.even
 
 	.bss
 

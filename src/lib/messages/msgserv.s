@@ -1140,7 +1140,7 @@ GetImgIntoObj:
 		jsr        Abp_img2mfdb
 		tst.w      d0
 		bne.s      GetImgIntoObj_1
-		movea.l    $000DF9D4,a0
+		movea.l    _WDD+20,a0
 		lea.l      72(a0),a0
 		move.l     a0,4(a7)
 		movea.l    4(a7),a0
@@ -1173,7 +1173,7 @@ GetTxtIntoObj:
 		move.l     a1,12(a7)
 		move.w     d0,10(a7)
 		move.w     d1,8(a7)
-		movea.l    $000DF9D4,a0
+		movea.l    _WDD+20,a0
 		lea.l      72(a0),a0
 		move.l     a0,4(a7)
 		move.l     1086(a7),d0
@@ -1817,3 +1817,4 @@ xe17f8:
 		dc.b 'ARGS',0
 xe17fd:
 		dc.b '.TXT',0
+	.even

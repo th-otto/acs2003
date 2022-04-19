@@ -435,7 +435,7 @@ convert_6:
 convert_17:
 		move.w     42(a7),d0
 		move.w     d0,col
-		move.w     d0,$00113ACE
+		move.w     d0,col+2
 		pea.l      col
 		move.l     48(a7),-(a7)
 		lea.l      punkt,a1
@@ -3029,8 +3029,9 @@ xe0c8e:
 		dc.w $0000
 xe0c9e:
 		dc.b '0 0 0 0 0 0 0 0 0 0',0
+	.even
 
 	.bss
 
-ob_inout: ds.b 512
+ob_inout: ds.b 1024
 col: ds.l 1

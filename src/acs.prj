@@ -83,7 +83,7 @@ editor\ueinner.s
 editor\ue3dbutt.s
 editor\uecheck.s
 editor\ueftext.s
-editor\uetitle.s
+editor\uetitle.s [-M-]
 editor\edobclas.s
 editor\edobstru.s
 editor\edobsurf.s
@@ -224,4 +224,4 @@ tos\mintnet.s
 tos\pamsnet.s
 tos\tos_util.c [-J- -Z- -R- -M-]
 
-pcstdlib.lib
+..\lib\pcstdlib.lib

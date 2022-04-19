@@ -1923,7 +1923,7 @@ ttl_open:
 		dc.b 'ACS/RSC-Datei îffnen',0
 ttl_save:
 		dc.b 'ACS-Datei sichern',0
-		dc.b 0
+		.even
 DATAS_01:
 		dc.w $0000
 		dc.w $0000
@@ -29336,7 +29336,7 @@ A_INNERFRAME02:
 		dc.w $0000
 _C8_GE_ALERT:
 		dc.w $0008
-		dc.l $0009296e
+		dc.l DATAS_67+6
 		dc.l DATAS_68
 		dc.w $0000
 		dc.w $0000
@@ -29346,7 +29346,7 @@ _C8_GE_ALERT:
 		dc.w $0000
 _C4_GE_ALERT:
 		dc.w $0004
-		dc.l $000925e4
+		dc.l DATAS_65+6
 		dc.l DATAS_66
 		dc.w $0000
 		dc.w $0000
@@ -29553,7 +29553,7 @@ GE_ALERT:
 		dc.l _C4_GE_ALERT
 _C4_GE_BEHAVE:
 		dc.w $0004
-		dc.l $0008d63e
+		dc.l DATAS_109+6
 		dc.l DATAS_110
 		dc.w $0000
 		dc.w $0000
@@ -29749,7 +29749,7 @@ GE_BEHAVE:
 		dc.l _C4_GE_BEHAVE
 _C4_GE_DATA:
 		dc.w $0004
-		dc.l $0008b79c
+		dc.l DATAS_05+6
 		dc.l DATAS_06
 		dc.w $0000
 		dc.w $0000
@@ -29957,7 +29957,7 @@ GE_DATA:
 		dc.l _C4_GE_DATA
 _C4_GE_ICON:
 		dc.w $0004
-		dc.l $0008bb26
+		dc.l DATAS_07+6
 		dc.l DATAS_08
 		dc.w $0000
 		dc.w $0000
@@ -30165,7 +30165,7 @@ GE_ICON:
 		dc.l _C4_GE_ICON
 _C4_GE_IMAGE:
 		dc.w $0004
-		dc.l $0008beb0
+		dc.l DATAS_09+6
 		dc.l DATAS_10
 		dc.w $0000
 		dc.w $0000
@@ -30358,7 +30358,7 @@ GE_IMAGE:
 		dc.l _C4_GE_IMAGE
 _C8_GE_MAINMOD:
 		dc.w $0008
-		dc.l $0008deb8
+		dc.l DATAS_117+6
 		dc.l DATAS_118
 		dc.w $0000
 		dc.w $0000
@@ -30368,7 +30368,7 @@ _C8_GE_MAINMOD:
 		dc.w $0000
 _C4_GE_MAINMOD:
 		dc.w $0004
-		dc.l $0008f01c
+		dc.l DATAS_19+6
 		dc.l DATAS_20
 		dc.w $0000
 		dc.w $0000
@@ -30575,7 +30575,7 @@ GE_MAINMOD:
 		dc.l _C4_GE_MAINMOD
 _C4_GE_MENU:
 		dc.w $0004
-		dc.l $0008d8e4
+		dc.l DATAS_11+6
 		dc.l DATAS_12
 		dc.w $0000
 		dc.w $0000
@@ -30970,7 +30970,7 @@ GE_MOUSE:
 		dc.w $0000
 _C4_GE_OBJECT:
 		dc.w $0004
-		dc.l $0008e5ba
+		dc.l DATAS_13+6
 		dc.l DATAS_14
 		dc.w $0000
 		dc.w $0000
@@ -31178,7 +31178,7 @@ GE_OBJECT:
 		dc.l _C4_GE_OBJECT
 _C4_GE_PALETTE:
 		dc.w $0004
-		dc.l $0008e944
+		dc.l DATAS_15+6
 		dc.l DATAS_16
 		dc.w $0000
 		dc.w $0000
@@ -31385,7 +31385,7 @@ GE_PALETTE:
 		dc.l _C4_GE_PALETTE
 _C4_GE_POPUP:
 		dc.w $0004
-		dc.l $0008ecce
+		dc.l DATAS_17+6
 		dc.l DATAS_18
 		dc.w $0000
 		dc.w $0000
@@ -31581,7 +31581,7 @@ GE_POPUP:
 		dc.l _C4_GE_POPUP
 _C4_GE_REF:
 		dc.w $0004
-		dc.l $0008dc32
+		dc.l DATAS_115+6
 		dc.l DATAS_116
 		dc.w $0000
 		dc.w $0000
@@ -31924,7 +31924,7 @@ GE_STRING:
 		dc.w $0000
 _C4_GE_TEDI:
 		dc.w $0004
-		dc.l $0008f3a6
+		dc.l DATAS_21+6
 		dc.l DATAS_22
 		dc.w $0000
 		dc.w $0000
@@ -32120,7 +32120,7 @@ GE_TEDI:
 		dc.l _C4_GE_TEDI
 _C4_GE_USER:
 		dc.w $0004
-		dc.l $0008b412
+		dc.l DATAS_03+6
 		dc.l DATAS_04
 		dc.w $0000
 		dc.w $0000
@@ -32328,7 +32328,7 @@ GE_USER:
 		dc.l _C4_GE_USER
 _C4_GE_WINDOW:
 		dc.w $0004
-		dc.l $00090256
+		dc.l DATAS_31+6
 		dc.l DATAS_32
 		dc.w $0000
 		dc.w $0000
@@ -32536,7 +32536,7 @@ GE_WINDOW:
 		dc.l _C4_GE_WINDOW
 _C4_ICON_ACS:
 		dc.w $0004
-		dc.l $0008feae
+		dc.l DATAS_29+6
 		dc.l DATAS_30
 		dc.w $0000
 		dc.w $0000
@@ -32747,9 +32747,9 @@ ICON_ACS:
 		dc.l _C4_ICON_ACS
 _C4_IC_BACK:
 		dc.w $0004
-		dc.l $0009186a
+		dc.l DATAS_55+6
 		dc.l DATAS_56
-		dc.l $00091910
+		dc.l DATAS_57+6
 		dc.l DATAS_58
 		dc.w $0000
 		dc.w $0000
@@ -32800,9 +32800,9 @@ IC_BACK:
 		dc.l _C4_IC_BACK
 _C4_IC_COUT:
 		dc.w $0004
-		dc.l $00091486
+		dc.l DATAS_43+6
 		dc.l DATAS_44
-		dc.l $0009152c
+		dc.l DATAS_45+6
 		dc.l DATAS_46
 		dc.w $0000
 		dc.w $0000
@@ -32858,9 +32858,9 @@ IC_COUT:
 		dc.l _C4_IC_COUT
 _C4_IC_EWS:
 		dc.w $0004
-		dc.l $000915d2
+		dc.l DATAS_47+6
 		dc.l DATAS_48
-		dc.l $00091678
+		dc.l DATAS_49+6
 		dc.l DATAS_50
 		dc.w $0000
 		dc.w $0000
@@ -32913,7 +32913,7 @@ IC_EWS:
 		dc.l _C4_IC_EWS
 _C4_IC_GENERAL:
 		dc.w $0004
-		dc.l $0008b1dc
+		dc.l DATAS_01+6
 		dc.l DATAS_02
 		dc.w $0000
 		dc.w $0000
@@ -33053,9 +33053,9 @@ IC_GENERAL:
 		dc.l _C4_IC_GENERAL
 _C4_IC_POUT:
 		dc.w $0004
-		dc.l $000905e0
+		dc.l DATAS_33+6
 		dc.l DATAS_34
-		dc.l $00090686
+		dc.l DATAS_35+6
 		dc.l DATAS_36
 		dc.w $0000
 		dc.w $0000
@@ -33104,9 +33104,9 @@ IC_POUT:
 		dc.l _C4_IC_POUT
 _C4_IC_SAVE:
 		dc.w $0004
-		dc.l $0009171e
+		dc.l DATAS_51+6
 		dc.l DATAS_52
-		dc.l $000917c4
+		dc.l DATAS_53+6
 		dc.l DATAS_54
 		dc.w $0000
 		dc.w $0000
@@ -33158,9 +33158,9 @@ IC_SAVE:
 		dc.l _C4_IC_SAVE
 _C4_IC_SAVEAS:
 		dc.w $0004
-		dc.l $0008f6f4
+		dc.l DATAS_23+6
 		dc.l DATAS_24
-		dc.l $0009072c
+		dc.l DATAS_37+6
 		dc.l DATAS_38
 		dc.w $0000
 		dc.w $0000
@@ -34055,13 +34055,13 @@ x9add5:
 x9ae17:
 		dc.b "Index %d: '%s' / '%s'",$0a,0
 x9ae2e:
-		dc.b "Unterschiedliche Textanzahl:',$0a,'Datei '%s'",$0a,'al_list: %d',$0a,'mlal_list[%d]: %d',$0a,0
+		dc.b "Unterschiedliche Textanzahl:",$0a,"Datei '%s'",$0a,'al_list: %d',$0a,'mlal_list[%d]: %d',$0a,0
 x9ae75:
 		dc.b '%.28s'
 		dc.w $0125
 		dc.b $64,1,0
 x9ae7f:
-		dc.b "Textlabel nicht gefunden:',$0a,'Datei '%s'",$0a,'al_list: %d',$0a,"erwartetes Label '%s'",$0a,0
+		dc.b "Textlabel nicht gefunden:",$0a,"Datei '%s'",$0a,'al_list: %d',$0a,"erwartetes Label '%s'",$0a,0
 x9aec7:
 		dc.b "Unterschiedliche Indizees fÅr '%s':",$0a,'al_list: %d mlal_list[%d]: %d',$0a,0
 x9af0a:
@@ -34073,6 +34073,7 @@ x9af2a:
 x9af33:
 		dc.b $2d
 		dc.w $2f00
+	.even
 
 	.bss
 

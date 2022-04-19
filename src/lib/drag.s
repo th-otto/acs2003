@@ -634,10 +634,8 @@ Adr_next:
 		blt.s      Adr_next_1
 		moveq.l    #-1,d0
 		rts
-Adr_next_1:
-
 		rts
-
+Adr_next_1:
 		movea.l    ACSblk,a0
 		move.w     584(a0),d0
 		addq.w     #1,584(a0)
@@ -3048,16 +3046,19 @@ Adr_drag_77:
 		move.l     462(a7),d0
 		moveq.l    #24,d1
 		asr.l      d1,d0
-		and.b      #$FF,d0
+		/* and.b      #$FF,d0 */
+		dc.w 0xc03c,0xffff
 		move.b     d0,470(a7)
 		move.l     462(a7),d0
 		moveq.l    #16,d1
 		asr.l      d1,d0
-		and.b      #$FF,d0
+		/* and.b      #$FF,d0 */
+		dc.w 0xc03c,0xffff
 		move.b     d0,471(a7)
 		move.l     462(a7),d0
 		asr.l      #8,d0
-		and.b      #$FF,d0
+		/* and.b      #$FF,d0 */
+		dc.w 0xc03c,0xffff
 		move.b     d0,472(a7)
 		moveq.l    #-1,d0
 		and.b      465(a7),d0

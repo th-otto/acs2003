@@ -2112,7 +2112,7 @@ A_INNERFRAME02_2:
 		dc.w $0000
 _C4_IC_DATA:
 		dc.w $0004
-		dc.l $000a8dc6
+		dc.l DATAS_09+6
 		dc.l DATAS_10
 		dc.w $0000
 		dc.w $0000

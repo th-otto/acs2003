@@ -523,8 +523,8 @@ me_make_1:
 		move.w     #$FFFF,10(a2)
 		clr.l      30(a2)
 		lea.l      22(a3),a0
-		move.l     a0,$000C8D88
-		movea.l    $000C8D94,a1
+		move.l     a0,WI_MENU+78
+		movea.l    WI_MENU+90,a1
 		move.l     a0,8(a1)
 		lea.l      WI_MENU,a0
 		jsr        Awi_create

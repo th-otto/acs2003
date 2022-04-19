@@ -12,8 +12,8 @@ out_string:
 		lea.l      xa76b0,a4
 		lea.l      iostring,a5
 		bra.s      out_string_2
-		move.w     d4,d0
 out_string_4:
+		move.w     d4,d0
 		ext.l      d0
 		lsl.l      #2,d0
 		movea.l    0(a2,d0.l),a3
@@ -162,4 +162,4 @@ xa76e8:
 		dc.b '[%s]',$0d,$0a,0
 xa76ef:
 		dc.b 'GUI-LANGUAGE=ACS_LANG%d',$0d,$0a,0
-		dc.b $00
+		.even

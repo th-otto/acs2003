@@ -1271,7 +1271,7 @@ save_ptr:
 	MODULE Mshrink
 		
 		PCRegSave				; Register fr Pure-C retten
-		MOVE.L D0, -(SP)		; newsize auf Stack
+		MOVE.L D1, -(SP)		; newsize auf Stack
 		PEA (A0)					; startadr auf Stack
 		MOVE.W D0, -(SP)		; Dummy auf Stack
 		GEMDOS $4A, 12			; => GEMDOS-Aufruf

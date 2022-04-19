@@ -25,7 +25,7 @@ INwindow_3:
 		movea.l    572(a0),a0
 		move.w     12(a0),d0
 INwindow_4:
-		move.w     d0,$00113F20
+		move.w     d0,virt_desk+2
 		movea.l    ACSblk,a0
 		move.w     12(a0),d0
 		movea.l    ACSblk,a0
@@ -33,7 +33,7 @@ INwindow_4:
 		move.w     10(a0),d1
 		add.w      d1,d1
 		sub.w      d1,d0
-		move.w     d0,$00113F22
+		move.w     d0,virt_desk+4
 		movea.l    ACSblk,a0
 		move.w     10(a0),d0
 		movea.l    ACSblk,a0
@@ -41,8 +41,8 @@ INwindow_4:
 		movea.l    ACSblk,a0
 		movea.l    572(a0),a0
 		sub.w      12(a0),d0
-		sub.w      $00113F20,d0
-		move.w     d0,$00113F24
+		sub.w      virt_desk+2,d0
+		move.w     d0,virt_desk+6
 		movea.l    ACSblk,a0
 		move.w     4(a0),d1
 		move.w     d1,d0
@@ -4234,11 +4234,11 @@ Awi_cleanup_16:
 		move.w     40(a7),d0
 Awi_cleanup_17:
 		move.w     d0,40(a7)
-		move.w     $00113F20,d0
+		move.w     virt_desk+2,d0
 		sub.w      36(a7),d0
 		move.w     d0,22(a7)
 		move.w     virt_desk,d0
-		add.w      $00113F22,d0
+		add.w      virt_desk+4,d0
 		sub.w      42(a7),d0
 		move.w     46(a7),d1
 		cmp.w      d0,d1
@@ -4247,12 +4247,12 @@ Awi_cleanup_17:
 		bra.s      Awi_cleanup_19
 Awi_cleanup_18:
 		move.w     virt_desk,d0
-		add.w      $00113F22,d0
+		add.w      virt_desk+4,d0
 		sub.w      42(a7),d0
 Awi_cleanup_19:
 		move.w     d0,46(a7)
-		move.w     $00113F20,d0
-		add.w      $00113F24,d0
+		move.w     virt_desk+2,d0
+		add.w      virt_desk+6,d0
 		sub.w      40(a7),d0
 		move.w     44(a7),d1
 		cmp.w      d0,d1
@@ -4260,8 +4260,8 @@ Awi_cleanup_19:
 		move.w     44(a7),d0
 		bra.s      Awi_cleanup_21
 Awi_cleanup_20:
-		move.w     $00113F20,d0
-		add.w      $00113F24,d0
+		move.w     virt_desk+2,d0
+		add.w      virt_desk+6,d0
 		sub.w      40(a7),d0
 Awi_cleanup_21:
 		move.w     d0,44(a7)
@@ -4274,10 +4274,10 @@ Awi_cleanup_22:
 		move.w     46(a7),d0
 Awi_cleanup_23:
 		move.w     d0,46(a7)
-		move.w     $00113F20,d0
+		move.w     virt_desk+2,d0
 		cmp.w      44(a7),d0
 		ble.s      Awi_cleanup_24
-		move.w     $00113F20,d0
+		move.w     virt_desk+2,d0
 		bra.s      Awi_cleanup_25
 Awi_cleanup_24:
 		move.w     44(a7),d0
@@ -5961,7 +5961,7 @@ Awi_alert:
 		bra        Awi_alert_2
 Awi_alert_1:
 		lea.l      _W_ALERT,a0
-		movea.l    $000DFB0C,a1
+		movea.l    _W_ALERT+8,a1
 		jsr        (a1)
 		move.l     a0,58(a7)
 		move.l     58(a7),d0

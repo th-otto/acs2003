@@ -5590,7 +5590,7 @@ TEXT_50:
 TEXT_51:
 		dc.b 'Abbruch',0
 TEXT_52:
-		dc.w 'OK',0
+		dc.b 'OK',0
 TEXT_53:
 		dc.b ' Bearbeiten ',0
 TEXT_54:

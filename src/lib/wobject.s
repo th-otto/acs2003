@@ -554,7 +554,7 @@ Awi_obchange_19:
 		move.w     4(a7),d0
 		cmp.w      2(a0),d0
 		ble.s      Awi_obchange_16
-		lea.l      last_edit+4,a0
+		lea.l      xe0cca,a0
 		moveq.l    #1,d0
 		movea.l    ACSblk,a1
 		movea.l    982(a1),a1
@@ -4666,6 +4666,7 @@ xe0cc0:
 		dc.w $ffff
 xe0cc8:
 		dc.w $2000
+xe0cca:
 		dc.b 'Window-Lib',0
 xe0cd5:
 		dc.b 'Window-Lib',0

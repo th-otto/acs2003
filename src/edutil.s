@@ -1288,6 +1288,7 @@ xa46f8:
 		dc.b '%d*%d',0
 xa46fe:
 		dc.b '%d*%d',0
+	.even
 
 	.bss
 col: ds.l 1

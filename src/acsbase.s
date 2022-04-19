@@ -199,7 +199,7 @@ ab_make2:
 		lea.l      cfg,a0
 		jsr        memset
 ab_make3:
-		bra        ab_make7
+		bra        ab_make71
 ab_make4:
 		lea.l      34(a7),a0
 		move.l     #2366,d1
@@ -305,7 +305,7 @@ ab_make12:
 		lsl.w      #7,d0
 		lea.l      cfg+322,a0
 		adda.w     d0,a0
-		movea.l    WI_GENERAL+12,a1
+		movea.l    WI_GENERAL+8,a1
 		jsr        (a1)
 		subq.w     #1,28(a7)
 ab_make13:
@@ -721,7 +721,7 @@ ab_service34:
 		movea.l    26(a7),a1
 		move.w     16(a7),d0
 		lsl.w      #7,d0
-		lea.l      cews+72,a0
+		lea.l      cews+68,a0
 		adda.w     d0,a0
 		jsr        strcpy
 ab_service35:
@@ -745,7 +745,7 @@ ab_service39:
 		movea.l    26(a7),a1
 		move.w     16(a7),d0
 		lsl.w      #7,d0
-		lea.l      cews+72,a0
+		lea.l      cews+68,a0
 		adda.w     d0,a0
 		jsr        strcmp
 		tst.w      d0
@@ -837,7 +837,7 @@ ab_service48:
 		bne.s      ab_service49
 		move.w     16(a7),d0
 		lsl.w      #7,d0
-		lea.l      cews+72,a1
+		lea.l      cews+68,a1
 		adda.w     d0,a1
 		move.w     #0x00D1,d0
 		movea.l    cews,a0
@@ -851,7 +851,7 @@ ab_service48:
 		lea.l      x86892,a1
 		move.w     16(a7),d0
 		lsl.w      #7,d0
-		lea.l      cews+72,a0
+		lea.l      cews+68,a0
 		adda.w     d0,a0
 		jsr        strcpy
 ab_service49:
@@ -4423,7 +4423,7 @@ x86470:                           dc.b 0
 x86471:                           dc.b 9,'An',0
 x86475:                           dc.b 9,'Martin Els„sser',0
 x86486:                           dc.b 9,'Garten„cker 30',0
-x86496:                           dc.w 0
+x86496:                           dc.b 0
 x86497:                           dc.b 9,'D - 86938 Schondorf a.A.',0
 x864b1:                           dc.b 0
 x864b2:                           dc.b 0
@@ -4509,6 +4509,8 @@ x86958:                           dc.b '0',0
 x8695a:                           dc.b 'x',0
 x8695c:                           dc.b 'TIMES',0
 x86962:                           dc.b 'DUTCH',0
+
+	.even
 
 	.bss
 

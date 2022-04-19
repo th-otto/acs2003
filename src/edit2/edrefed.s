@@ -365,7 +365,7 @@ ref_edit:
 		movea.l    4(a2),a4
 		lea.l      22(a4),a1
 		move.l     a1,1088(a7)
-		movea.l    $000D34DC,a1
+		movea.l    EDITOR+8,a1
 		suba.l     a0,a0
 		jsr        (a1)
 		movea.l    a0,a3
@@ -4008,4 +4008,4 @@ xacb7b:
 		dc.b $43,0
 xacb7d:
 		dc.b 'static ',0
-		dc.b $00
+	.even

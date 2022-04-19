@@ -158,7 +158,7 @@ INuserobj_16:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DE0C2,a0
+		movea.l    _CHK_3D_S+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0
@@ -195,7 +195,7 @@ INuserobj_19:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DE154,a0
+		movea.l    _CHK_3D_U+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0
@@ -232,7 +232,7 @@ INuserobj_22:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DDF9E,a0
+		movea.l    _CHK_3D_DS+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0
@@ -269,7 +269,7 @@ INuserobj_25:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DE030,a0
+		movea.l    _CHK_3D_DU+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0
@@ -290,7 +290,7 @@ INuserobj_25:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DF330,a0
+		movea.l    _RD_3D_S+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0
@@ -311,7 +311,7 @@ INuserobj_25:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DF3C2,a0
+		movea.l    _RD_3D_U+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0
@@ -330,7 +330,7 @@ INuserobj_25:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DF20C,a0
+		movea.l    _RD_3D_DS+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0
@@ -349,7 +349,7 @@ INuserobj_25:
 		movea.l    (a0),a0
 		jsr        memset
 		move.l     #$00000080,d0
-		movea.l    $000DF29E,a0
+		movea.l    _RD_3D_DU+34,a0
 		movea.l    2(a0),a1
 		movea.l    icn_tmp,a0
 		movea.l    (a0),a0

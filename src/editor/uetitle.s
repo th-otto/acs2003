@@ -464,7 +464,7 @@ ok:
 		movea.l    60(a2),a4
 		lea.l      parm,a3
 		move.l     4(a4),-(a7)
-		lea.l      data+64,a1
+		lea.l      xc4974,a1
 		movea.l    a3,a0
 		jsr        sprintf
 		addq.w     #4,a7
