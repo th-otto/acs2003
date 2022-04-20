@@ -1571,6 +1571,7 @@ xa8d34:
 xa8d37:
 		dc.b 'PUR_DESK',0
 
+/* FIXME: does not belong here? */
 TEXT_002_2:
 		dc.b 0
 TEXT_003_2:

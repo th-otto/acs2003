@@ -4193,7 +4193,7 @@ BUBBLE_08:
 TEXT_002:
 		dc.b $00
 TEXT_003:
-		dc.b $4f,$4b,0
+		dc.b 'OK',0
 TEXT_004:
 		dc.b 'Abbruch',0
 TEXT_01:
