@@ -12,7 +12,7 @@ typedef swd* (*Acreate)( void *x );
 
 /******************************************************************************/
 
-/* Extented Object */
+/* Extended Object */
 typedef struct
 {
 	/* Action-Routine fÅr Exit, TouchExit or Doppelklick */
@@ -40,7 +40,7 @@ typedef struct
 
 /******************************************************************************/
 
-/* Extented USERBLK */
+/* Extended USERBLK */
 typedef struct
 {
 	/* Redraw-Routine, wie in USERBLK */

@@ -80,7 +80,6 @@ ok:
 		clr.w      d0
 		rts
 
-	.globl DEBUG_MEM
 DEBUG_MEM:
 		subq.w     #4,a7
 		move.l     a0,(a7)

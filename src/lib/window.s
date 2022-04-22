@@ -1,4 +1,6 @@
-	.globl INwindow
+		.text
+
+		.globl INwindow
 INwindow:
 		subq.w     #4,a7
 		move.w     init,d0

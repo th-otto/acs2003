@@ -1,4 +1,6 @@
-	.globl INuserobj
+		.text
+
+		.globl INuserobj
 INuserobj:
 		move.l     a2,-(a7)
 		subq.w     #4,a7
