@@ -1330,7 +1330,11 @@ demoabout1:
 installdemo:
 		move.l     a2,-(a7)
 		move.w     runasdemo,d0
+		.IFNE KILLDEMO
+		bra.s      installdemo2
+		.ELSE
 		beq.s      installdemo2
+		.ENDC
 		clr.l      stepper
 		movea.l    ACSblk,a0
 		move.l     #demoabout,668(a0)
@@ -1602,7 +1606,11 @@ validate:
 		move.l     d0,timer1
 		move.l     d0,timer0
 validate1:
+		.IFNE KILLDEMO
+		move.w     #0,runasdemo
+		.ELSE
 		move.w     #1,runasdemo
+		.ENDC
 		move.b     cfg+1,d0
 		beq.s      validate3
 		moveq.l    #5,d0
@@ -2166,7 +2174,11 @@ regend:
 
 	.globl runasdemo
 runasdemo:
+		.IFNE KILLDEMO
+		dc.w 0
+		.ELSE
 		dc.w 1
+		.ENDC
 wdemo:
 		dc.l 0
 
