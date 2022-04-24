@@ -158,6 +158,7 @@ typedef struct wd
    void (*sized)(swd *a, Axywh *b);       /* Sized */
    void (*moved)(swd *a, Axywh *b);       /* Moved */
 
+   /* new in 3.0.0: */
    int16 (*iconify)(swd *a, int16 all);   /* Iconify, Iconify All */
    int16 (*uniconify)(swd *a);            /* Uniconify */
 
@@ -224,12 +225,13 @@ typedef struct wd
 
 typedef struct
 {
-   char *dateiname;
-   char *comment;
-   char *env_praefix;
-   int16 casesensitiv;
-   int16 file_sensitiv;
-   int16 file_buffer;
+   /*  0 */ char *dateiname;
+   /*  4 */ char *comment;
+   /*  8 */ char *env_praefix;
+   /* 12 */ int16 casesensitiv;
+   /* 14 */ int16 file_sensitiv;
+   /* 16 */ int16 file_buffer;
+   /* 18 */ 
 } UCfgInfo;
 
 /******************************************************************************/
@@ -240,48 +242,50 @@ typedef struct
 
 typedef struct
 {
-   char     magic[8];            /* Magic "ACS 2.0" */
-   int16    version;             /* Version * 200 */
-   int16    dx,dy;               /* virtuell desktop increments */
-   uint16   flags;               /* commom flags */
-   char     acc_reg[32];         /* Accessory register message */
-   Awindow  *root;               /* Root window */
-   Awindow  *acc;                /* Accessory first window */
-   Amouse   mouse[32];           /* 32 Mouseforms */
-   char     *mess[AD_COUNT];     /* multilinguale Strings */
+   /*   0 */ char     magic[8];            /* Magic "ACS 2.0" */
+   /*   8 */ int16    version;             /* Version * 200 */
+   /*  10 */ int16    dx,dy;               /* virtuell desktop increments */
+   /*  14 */ uint16   flags;               /* commom flags */
+   /*  16 */ char     acc_reg[32];         /* Accessory register message */
+   /*  48 */ Awindow  *root;               /* Root window */
+   /*  52 */ Awindow  *acc;                /* Accessory first window */
+   /*  56 */ Amouse   mouse[32];           /* 32 Mouseforms */
+   /* 248 */ char     *mess[AD_COUNT];     /* multilinguale Strings */
+   /* 384 */
 } Adescr;
 
 /******************************************************************************/
 
 typedef struct
 {
-   UCfgInfo CfgInfo;                                     /* Infos zum Laden der Cfg-Strings */
-   char *BaseName;                                       /* Zu verwendender Name fr basename */
+   /*   0 */ UCfgInfo CfgInfo;                                     /* Infos zum Laden der Cfg-Strings */
+   /*  18 */ char *BaseName;                                       /* Zu verwendender Name fr basename */
 
    /* Initialisierungszeiger in ACSblk fr ACS-Interna */
-   void (*ACSterm)( void );                              /* Vor dem Terminieren von ACS */
-   void (*ACSaboutme)( void );                           /* Der Eintrag 'šber mich' */
-   void (*ACSclose)( void );                             /* ACS beenden (Eintrag 'Quit') */
-   void (*ACSmessage)( int16 *ev_mmgpbuf );              /* Unbekannte Messages bearbeiten */
-   void (*ACSmproto)( int16 *ev_mmgpbuf );               /* Message-Filter-Routine */
-   void (*ACStimer)( void );                             /* Timer am Ende der Event-Schleife */
-   void (*ACSkey)( int16 *kstate, int16 *key );          /* Tastendruck-Filter-Routine */
-   void (*ACSbutton)( int16 *button, int16 *breturn );   /* Maus-Button-Filter-Routine */
-   void (*ACSmouse)( void );                             /* Maus-Bewegungs-Filter-Routine */
-   void (*ACSwikey)( int16 *kstate, int16 *key );        /* Tastendruck-Filter-Routine vor wi->keys */
+   /*  22 */ void (*ACSterm)( void );                              /* Vor dem Terminieren von ACS */
+   /*  26 */ void (*ACSaboutme)( void );                           /* Der Eintrag 'šber mich' */
+   /*  30 */ void (*ACSclose)( void );                             /* ACS beenden (Eintrag 'Quit') */
+   /*  34 */ void (*ACSmessage)( int16 *ev_mmgpbuf );              /* Unbekannte Messages bearbeiten */
+   /*  38 */ void (*ACSmproto)( int16 *ev_mmgpbuf );               /* Message-Filter-Routine */
+   /*  42 */ void (*ACStimer)( void );                             /* Timer am Ende der Event-Schleife */
+   /*  46 */ void (*ACSkey)( int16 *kstate, int16 *key );          /* Tastendruck-Filter-Routine */
+   /*  50 */ void (*ACSbutton)( int16 *button, int16 *breturn );   /* Maus-Button-Filter-Routine */
+   /*  54 */ void (*ACSmouse)( void );                             /* Maus-Bewegungs-Filter-Routine */
+   /*  58 */ void (*ACSwikey)( int16 *kstate, int16 *key );        /* Tastendruck-Filter-Routine vor wi->keys */
 
-   int16 init_prot;                                      /* Welche Protokolle sollen (komplett) initialisiert werden? */
-   int16 XAccType;                                       /* Maschinenlesbarer XAcc-Programmtyp */
+   /*  62 */ int16 init_prot;                                      /* Welche Protokolle sollen (komplett) initialisiert werden? */
+   /*  64 */ int16 XAccType;                                       /* Maschinenlesbarer XAcc-Programmtyp */
 
    /* Initialisierungszeiger in ACSblk fr GEMScript */
-   int16 (*ACSGEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );   /* Allgemeine GEMScript-Funktion */
+   /*  66 */ int16 (*ACSGEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );   /* Allgemeine GEMScript-Funktion */
 
    /* Start-Funktionen fr ACS */
-   int16 (*ACSinit0)( void );                            /* Initialisierung nach GEM-Initialisierung */
-   int16 (*ACSinit)( void );                             /* Initialisierung nach der ACS-Initialisierung */
+   /*  70 */ int16 (*ACSinit0)( void );                            /* Initialisierung nach GEM-Initialisierung */
+   /*  74 */ int16 (*ACSinit)( void );                             /* Initialisierung nach der ACS-Initialisierung */
 
    /* Initialisierungszeiger in ACSblk fr AV-Protokoll */
    /* Noch nicht implementiert */
+   /*  78 */ 
 } Aconfig;
 
 /******************************************************************************/
@@ -559,9 +563,11 @@ typedef struct
                   char *source, int32 src_len, int16 src_nr );
    void cdecl (*BlockXUtf2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
                   char *source, int32 src_len, int16 src_nr );
-   /* new in 3.0.0 */
+   /* new in 3.0.0 from 2005 */
+#if 0
    int16 cdecl (*GetInfoShort)( int16 nr, int16 what, int16 *info );
    int16 cdecl (*GetInfoString)( int16 nr, int16 what, char *info, int16 maxLen );
+#endif
 } KEYT;
 
 /******************************************************************************/
@@ -581,80 +587,73 @@ typedef void (*A_ListWork)(void *para, void *elem);
 
 /******************************************************************************/
 
-/* Abkrzung, da Zeiger auf Struktur in deren Deklaration ben”tigt werden */
-#define _sul struct _ULinList
-
-/******************************************************************************/
-
 typedef struct _ULinList
 {
    /* Der Zeiger auf die lineare Liste (soll nur ACS-intern verwendet werden!) */
-   void *ListData;
+   /*   0 */ void *ListData;
 
    /* Zeiger auf Funktion, die die Elemente der Liste freigeben kann */
-   void (*freeElem)( void *elem );
+   /*   4 */ void (*freeElem)( void *elem );
 
    /* Die lineare Liste leeren, alle Daten freigeben */
-   void (*clear)( _sul *liste );
+   /*   8 */ void (*clear)( struct _ULinList *liste );
 
    /* Anh„ngen neuer Daten an die Liste */
-   int16 (*append)( _sul *liste, void *new_data );
+   /*  12 */ int16 (*append)( struct _ULinList *liste, void *new_data );
 
    /* Einfgen neuer Daten in die Liste */
-   int16 (*insert)( _sul *liste, void *new_data, int16 before_obj );
+   /*  16 */ int16 (*insert)( struct _ULinList *liste, void *new_data, int16 before_obj );
 
    /* Daten aus der Liste l”schen und zurckgeben */
-   void *(*delete)( _sul *liste, int16 data_nr );
+   /*  20 */ void *(*delete)( struct _ULinList *liste, int16 data_nr );
 
    /* Alle Daten aus der Liste l”schen, die eine bestimmte Bedingung erfllen     */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
    /* bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
-   int32 (*deleteFor)( _sul *liste, void *para,
+   /*  24 */ int32 (*deleteFor)( struct _ULinList *liste, void *para,
          int16 (*to_delete)(void *para, void *elem) );
 
    /* Die Daten Nummer nr holen */
-   void *(*search)( _sul *liste, int32 nr );
+   /*  28 */ void *(*search)( struct _ULinList *liste, int32 nr );
 
    /* Daten suchen, die eine Bedingung erfllen                                 */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
    /* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
-   void *(*searchFor)( _sul *liste, void *para, int16 (*found)(void *para,void *elem) );
+   /*  32 */ void *(*searchFor)( struct _ULinList *liste, void *para, int16 (*found)(void *para,void *elem) );
 
    /* Das erste Element der Liste */
-   void *(*first)( _sul *liste );
+   /*  36 */ void *(*first)( struct _ULinList *liste );
 
    /* Das letzte Element der Liste */
-   void *(*last)( _sul *liste );
+   /*  40 */ void *(*last)( struct _ULinList *liste );
 
    /* Das aktuelle Element der Liste */
-   void *(*akt)( _sul *liste );
+   /*  44 */ void *(*akt)( struct _ULinList *liste );
 
    /* Die Nummer des aktuellen Elementes der Liste */
-   int32 (*aktNr)( _sul *liste );
+   /*  48 */ int32 (*aktNr)( struct _ULinList *liste );
 
    /* Das aktuelle Element vorw„rts/rckw„rts bewegen */
-   void *(*skip)( _sul *liste, int16 vorwaerts, int32 amount );
+   /*  52 */ void *(*skip)( struct _ULinList *liste, int16 vorwaerts, int32 amount );
 
    /* Die Anzahl der verwalteten Daten */
-   int32 (*count)( _sul *liste);
+   /*  56 */ int32 (*count)( struct _ULinList *liste);
 
    /* Die Anzahl der Daten ermitteln, die eine Bedingung erfllen */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
    /* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
-   int32 (*countFor)( _sul *liste, void *para, int16 (*count)(void *para, void *elem) );
+   /*  60 */ int32 (*countFor)( struct _ULinList *liste, void *para, int16 (*count)(void *para, void *elem) );
 
    /* Fr alle Daten, die eine Bedingung erfllen, eine Aktion ausfhren               */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
    /* work bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
-   void (*doFor)( _sul *liste, void *para,
+   /*  64 */ void (*doFor)( struct _ULinList *liste, void *para,
             int16 (*to_work)(void *para, void *elem),
             void (*work)(void *para, void *elem) );
 } ULinList;
 
 /* For backward compatibility only */
 #define ULinListe ULinList
-
-#undef _sul
 
 /******************************************************************************/
 /*                                                                            */
@@ -764,7 +763,7 @@ typedef struct
    char basename[20];            /* basename appname without extention */
 
    /* others */
-   int32 ev_mtcount;          /* Timerintervall in milli sec (initial 500 ms) */
+   int32 ev_mtcount;             /* Timerintervall in milli sec (initial 500 ms) */
    int16 application;         /* runs as an application */
    int16 multitask;           /* more than 1 applications possible */
    int16 appexit;             /* application is in system termination mode */
@@ -799,7 +798,7 @@ typedef struct
    int16 dither;                             /* dither config */
    void (*ACSkey)(int16 *kstate, int16 *key);/* filter keys */
    void (*ACSbutton)(int16 *button, int16 *breturn);  /* filter mouse buttons */
-   void (*ACSmouse)(void);                /* filter mouse moves (ev_mmox/y) */
+   void (*ACSmouse)(void);                   /* filter mouse moves (ev_mmox/y) */
    void (*ACSwikey)(int16 *kstate, int16 *key);    /* filter keystroke before wi->keys call */
    int16 ev_bmask;                           /* evnt_multi */
    int16 ev_bstate;                          /* evnt_multi */

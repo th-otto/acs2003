@@ -16,26 +16,27 @@ typedef swd* (*Acreate)( void *x );
 typedef struct
 {
 	/* Action-Routine fr Exit, TouchExit or Doppelklick */
-	Aaction click;
+	/*   0 */ Aaction click;
 	
 	/* Action-Routine fr Drag&Drop */
-	Aaction drag;
+	/*   4 */ Aaction drag;
 	
 	/* ob_flags, muž an gleicher Stelle wie in OBJECT stehen, wird geprft! */
-	INT16 ob_flags;
+	/*   8 */ int16 ob_flags;
 	
 	/* Tastatur-Shortcut */
-	INT16 key;
+	/*  10 */ int16 key;
 	
 	/* User-Pointer */
-	void *userp1;
-	void *userp2;
+	/*  12 */ void *userp1;
+	/*  16 */ void *userp2;
 	
 	/* Maus-Index fr dieses Feld */
-	INT16 mo_index;
+	/*  20 */ int16 mo_index;
 	
 	/* Objekt-Typ (nicht der AES Typ) */
-	INT16 type;
+	/*  22 */ int16 type;
+	/*  24 */ 
 } AOBJECT;
 
 /******************************************************************************/
@@ -44,28 +45,29 @@ typedef struct
 typedef struct
 {
 	/* Redraw-Routine, wie in USERBLK */
-	INT16 CDECL (*ub_code)(PARMBLK *pb);
+	/*  0 */ int16 CDECL (*ub_code)(PARMBLK *pb);
 	
 	/* Parameter wie in USERBLK */
-	long ub_parm;
+	/*  4 */ long ub_parm;
 	
 	/* Service-Routne des Objektes */
-	INT16 (*ub_serv)(OBJECT *entry, INT16 task, void *in_out);
+	/*  8 */ int16 (*ub_serv)(OBJECT *entry, int16 task, void *in_out);
 	
 	/* Extra pointers (data) */
-	void *ub_ptr1;
+	/* 12 */ void *ub_ptr1;
 	
 	/* typically window */
-	void *ub_ptr2;
+	/* 16 */ void *ub_ptr2;
 	
 	/* typically obnr */
-	void *ub_ptr3;
+	/* 20 */ void *ub_ptr3;
 	
 	/* BubbleGEM-Hilfe-String */
-	char *bubble;
+	/* 24 */ char *bubble;
 	
 	/* Context-Popup-String fr Ame_strpopup */
-	char *context;
+	/* 28 */ char *context;
+	/* 32 */ 
 } AUSERBLK;
 
 /******************************************************************************/
@@ -74,7 +76,7 @@ typedef struct
 typedef struct
 {
 	/* Maus-Nummer, 255: durch form beschrieben */
-	INT16 number;
+	int16 number;
 	
 	/* Maus-Form oder NULL */
 	MFORM *form;
@@ -86,8 +88,8 @@ typedef struct
 typedef struct
 {
 	char **antwort;
-	INT16 anzahl;
-	INT16 ret_wert;
+	int16 anzahl;
+	int16 ret_wert;
 } A_GSAntwort;
 
 /******************************************************************************/
@@ -96,98 +98,99 @@ typedef struct
 typedef struct wd
 {
 	/* Users object pointer */
-	void *user;
+	/*   0 */ void *user;
 	
 	/* Service-Routine */
-	INT16 (*service)(swd *a, INT16 task, void *in_out);
+	/*   4 */ int16 (*service)(swd *a, int16 task, void *in_out);
 	
 	/* Fenster erzeugen mit fenster abh„ngigem Parameter */
-	swd *(*create)(void *a);
+	/*   8 */ swd *(*create)(void *a);
 	
 	/* Fenster ”ffnen */
-	INT16 (*open)(swd *a);
+	/*  12 */ int16 (*open)(swd *a);
 	
 	/* Init-Routine des Fensters */
-	INT16 (*init)(swd *a);
+	/*  16 */ int16 (*init)(swd *a);
 	
 	/* Das sog. Work-Objekt im Fenster */
-	OBJECT *work;
+	/*  20 */ OBJECT *work;
 	
 	/* Die Toolbar des Fensters */
-	OBJECT *toolbar;
+	/*  24 */ OBJECT *toolbar;
 	
 	/* Objektnr and aktuelle Position fr Edit-Felder im Fenster */
-	INT16 ob_edit, ob_col;
+	/*  28 */ int16 ob_edit, ob_col;
 	
 	/* GEM-Fenster-Handle oder -1 */
-	INT16 wi_id;
+	/*  32 */ int16 wi_id;
 	
 	/* Fenster-Attribute */
-	INT16 wi_kind;
+	/*  34 */ int16 wi_kind;
 	
 	/* Fenster-Koordinaten: akteulle (aužen), normale (aužen) und innere */
-	Axywh wi_act;
-	Axywh wi_normal;
-	Axywh wi_work;
+	/*  36 */ Axywh wi_act;
+	/*  44 */ Axywh wi_normal;
+	/*  52 */ Axywh wi_work;
 	
 	/* Letzte Slider-Position & ->Gr”že */
-	Axywh wi_slider;
+	/*  60 */ Axywh wi_slider;
 	
 	/* Offset des Work-Objektes */
-	INT16 wi_nx, wi_ny;
+	/*  68 */ int16 wi_nx, wi_ny;
 	
 	/* Raster des Fensters, Highbyte fr y, Lowbyte fr x */
-	INT16 snap_mask;
+	/*  72 */ int16 snap_mask;
 	
 	/* Name und Info-Zeile des Fensters */
-	char *name;
-	char *info;
+	/*  74 */ char *name;
+	/*  78 */ char *info;
 	
 	/* L„nge des selektierten Edit-Textes, 0 fr keine Selektion */
-	INT16 ob_len;
+	/*  82 */ int16 ob_len;
 	
 	/* ACS-Fenster-Attribute */
-	INT16 kind;
+	/*  84 */ int16 kind;
 	
 	/* Status des Fensters */
-	INT16 state;
+	/*  86 */ int16 state;
 	
 	/* Objektnummer des Icons im verwaltenden Root-Fenster */
-	INT16 icon;
+	/*  88 */ int16 icon;
 	
 	/* Das Icon-Image, NULL: Default-Icon */
-	CICONBLK *iconblk;
+	/*  90 */ CICONBLK *iconblk;
 	
 	/* Fenster-Men */
-	OBJECT *menu;
+	/*  94 */ OBJECT *menu;
 	
 	/* Tastendrcke */
-	INT16 (*keys)(swd *x, INT16 kstate, INT16 key);
+	/*  98 */ int16 (*keys)(swd *x, int16 kstate, int16 key);
 	
 	/* Status-Žnderungen von Objekten des Fensters */
-	void (*obchange)(swd *a, INT16 obnr, INT16 new_state);
+	/* 102 */ void (*obchange)(swd *a, int16 obnr, int16 new_state);
 	
 	/* Reaktion auf Nachrichten des Screen-Managers */
-	void (*redraw)(swd *a, Axywh *b);		/* Redraw */
-	void (*topped)(swd *a);						/* Topped */
-	void (*closed)(swd *a);						/* Closed */
-	void (*fulled)(swd *a);						/* Fulled */
-	void (*arrowed)(swd *a, INT16 which);	/* Arrowed */
-	void (*hslid)(swd *a, INT16 pos);		/* HSlide */
-	void (*vslid)(swd *a, INT16 pos);		/* VSlide */
-	void (*sized)(swd *a, Axywh *b);			/* Sized */
-	void (*moved)(swd *a, Axywh *b);			/* Moved */
-	INT16 (*iconify)(swd *a, INT16 all);	/* Iconify, Iconify All */
-	INT16 (*uniconify)(swd *a);				/* Uniconify */
+	/* 106 */ void (*redraw)(swd *a, Axywh *b);		/* Redraw */
+	/* 110 */ void (*topped)(swd *a);						/* Topped */
+	/* 114 */ void (*closed)(swd *a);						/* Closed */
+	/* 118 */ void (*fulled)(swd *a);						/* Fulled */
+	/* 122 */ void (*arrowed)(swd *a, int16 which);	/* Arrowed */
+	/* 126 */ void (*hslid)(swd *a, int16 pos);		/* HSlide */
+	/* 130 */ void (*vslid)(swd *a, int16 pos);		/* VSlide */
+	/* 134 */ void (*sized)(swd *a, Axywh *b);			/* Sized */
+	/* 138 */ void (*moved)(swd *a, Axywh *b);			/* Moved */
+	/* 142 */ int16 (*iconify)(swd *a, int16 all);	/* Iconify, Iconify All */
+	/* 146 */ int16 (*uniconify)(swd *a);				/* Uniconify */
 	
 	/* Zeiger auf Funktion fr fensterspezifische GEMScript-Befehle */
-	INT16 (*gemscript)(swd *a, INT16 anz, char **cmds, A_GSAntwort *antwort );
+	/* 150 */ int16 (*gemscript)(swd *a, int16 anz, char **cmds, A_GSAntwort *antwort );
 	
 	/* Titel der Hilfe-Seite */
-	char *help_title;
+	/* 154 */ char *help_title;
 	
 	/* Name der Hilfe-Datei */
-	char *help_file;
+	/* 158 */ char *help_file;
+	/* 162 */ 
 } Awindow;
 
 
@@ -207,9 +210,9 @@ typedef struct
 	char *dateiname;
 	char *comment;
 	char *env_praefix;
-	INT16 casesensitiv;
-	INT16 file_sensitiv;
-	INT16 file_buffer;
+	int16 casesensitiv;
+	int16 file_sensitiv;
+	int16 file_buffer;
 } UCfgInfo;
 
 /******************************************************************************/
@@ -217,47 +220,48 @@ typedef struct
 /* Description start */
 typedef struct
 {
-	char		magic[8];				/* Magic "ACS 2.0" */
-	INT16		version;					/* Version * 200 */
-	INT16		dx,dy;					/* virtuell desktop increments */
-	INT16		flags;					/* commom flags */
-	char		acc_reg[32];			/* Accessory register message */
-	Awindow	*root;					/* Root window */
-	Awindow	*acc;						/* Accessory first window */
-	Amouse	mouse[32];				/* 32 Mouseforms */
-	char		*mess[];					/* multilinguale Strings */
+   /*   0 */ char     magic[8];            /* Magic "ACS 2.0" */
+   /*   8 */ int16    version;             /* Version * 200 */
+   /*  10 */ int16    dx,dy;               /* virtuell desktop increments */
+   /*  14 */ uint16   flags;               /* commom flags */
+   /*  16 */ char     acc_reg[32];         /* Accessory register message */
+   /*  48 */ Awindow  *root;               /* Root window */
+   /*  52 */ Awindow  *acc;                /* Accessory first window */
+   /*  56 */ Amouse   mouse[32];           /* 32 Mouseforms */
+   /* 248 */ char     *mess[];             /* multilinguale Strings */
 } Adescr;
 
 /* Initialisierungs-Infos fr den Anwendungsstart */
 typedef struct
 {
-	UCfgInfo CfgInfo;													/* Infos zum Laden der Cfg-Strings */
-	char *BaseName;													/* Zu verwendender Name fr basename */
-	
-	/* Initialisierungszeiger in ACSblk fr ACS-Interna */
-	void (*ACSterm)( void );										/* Vor dem Terminieren von ACS */
-	void (*ACSaboutme)( void );									/* Der Eintrag 'šber mich' */
-	void (*ACSclose)( void );										/* ACS beenden (Eintrag 'Quit') */
-	void (*ACSmessage)( INT16 *ev_mmgpbuf );					/* Unbekannte Messages bearbeiten */
-	void (*ACSmproto)( INT16 *ev_mmgpbuf );	 				/* Message-Filter-Routine */
-	void (*ACStimer)( void );										/* Timer am Ende der Event-Schleife */
-	void (*ACSkey)( INT16 *kstate, INT16 *key );				/* Tastendruck-Filter-Routine */
-	void (*ACSbutton)( INT16 *button, INT16 *breturn );	/* Maus-Button-Filter-Routine */
-	void (*ACSmouse)( void );										/* Maus-Bewegungs-Filter-Routine */
-	void (*ACSwikey)( INT16 *kstate, INT16 *key );			/* Tastendruck-Filter-Routine vor wi->keys */
-	
-	INT16 init_prot;													/* Welche Protokolle sollen (komplett) initialisiert werden? */
-	INT16 XAccType;													/* Maschinenlesbarer XAcc-Programmtyp */
-	
-	/* Initialisierungszeiger in ACSblk fr GEMScript */
-	INT16 (*ACSGEMScript)( INT16 anz, char **cmd, A_GSAntwort *antwort );	/* Allgemeine GEMScript-Funktion */
-	
-	/* Start-Funktionen fr ACS */
-	INT16 (*ACSinit0)( void );										/* Initialisierung nach GEM-Initialisierung */
-	INT16 (*ACSinit)( void );										/* Initialisierung nach der ACS-Initialisierung */
-	
-	/* Initialisierungszeiger in ACSblk fr AV-Protokoll */
-	/* Noch nicht implementiert */
+   /*   0 */ UCfgInfo CfgInfo;                                     /* Infos zum Laden der Cfg-Strings */
+   /*  18 */ char *BaseName;                                       /* Zu verwendender Name fr basename */
+
+   /* Initialisierungszeiger in ACSblk fr ACS-Interna */
+   /*  22 */ void (*ACSterm)( void );                              /* Vor dem Terminieren von ACS */
+   /*  26 */ void (*ACSaboutme)( void );                           /* Der Eintrag 'šber mich' */
+   /*  30 */ void (*ACSclose)( void );                             /* ACS beenden (Eintrag 'Quit') */
+   /*  34 */ void (*ACSmessage)( int16 *ev_mmgpbuf );              /* Unbekannte Messages bearbeiten */
+   /*  38 */ void (*ACSmproto)( int16 *ev_mmgpbuf );               /* Message-Filter-Routine */
+   /*  42 */ void (*ACStimer)( void );                             /* Timer am Ende der Event-Schleife */
+   /*  46 */ void (*ACSkey)( int16 *kstate, int16 *key );          /* Tastendruck-Filter-Routine */
+   /*  50 */ void (*ACSbutton)( int16 *button, int16 *breturn );   /* Maus-Button-Filter-Routine */
+   /*  54 */ void (*ACSmouse)( void );                             /* Maus-Bewegungs-Filter-Routine */
+   /*  58 */ void (*ACSwikey)( int16 *kstate, int16 *key );        /* Tastendruck-Filter-Routine vor wi->keys */
+
+   /*  62 */ int16 init_prot;                                      /* Welche Protokolle sollen (komplett) initialisiert werden? */
+   /*  64 */ int16 XAccType;                                       /* Maschinenlesbarer XAcc-Programmtyp */
+
+   /* Initialisierungszeiger in ACSblk fr GEMScript */
+   /*  66 */ int16 (*ACSGEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );   /* Allgemeine GEMScript-Funktion */
+
+   /* Start-Funktionen fr ACS */
+   /*  70 */ int16 (*ACSinit0)( void );                            /* Initialisierung nach GEM-Initialisierung */
+   /*  74 */ int16 (*ACSinit)( void );                             /* Initialisierung nach der ACS-Initialisierung */
+
+   /* Initialisierungszeiger in ACSblk fr AV-Protokoll */
+   /* Noch nicht implementiert */
+   /*  78 */ 
 } Aconfig;
 
 /* Flags fr die Initialisierung der Protokolle beim Systemstart */
@@ -272,13 +276,13 @@ typedef struct
 typedef struct
 {
 	Awindow *window;						/* the objects belong to this window */
-	INT16 maxlen;							/* max entries in list */
-	INT16 actlen;							/* actual count */
-	INT16 next;								/* next entry return by Adr_next */
-	INT16 dragback;						/* drag still selected object back to origin */
-	INT16 x, y;								/* position during pick up */
-	INT16 rx, ry;							/* relativ dragged distance */
-	INT16 *array;							/* points to array of obnr's */
+	int16 maxlen;							/* max entries in list */
+	int16 actlen;							/* actual count */
+	int16 next;								/* next entry return by Adr_next */
+	int16 dragback;						/* drag still selected object back to origin */
+	int16 x, y;								/* position during pick up */
+	int16 rx, ry;							/* relativ dragged distance */
+	int16 *array;							/* points to array of obnr's */
 } Asel;
 
 #define DD_PIPEDD	(0x1)							/* ATARI-Pipe-Drag&Drop */
@@ -350,8 +354,8 @@ typedef struct
 	typedef struct
 	{
 		long len;		/* L„nge der Struktur in Bytes */
-		INT16 version;	/* Versionsnummer des Protokolles beim Sender (z.Z. 0x0120 = 1.2) */
-		INT16 msgs;		/* Bitmap der untersttzten Nachrichten und F„higkeiten (GSM_xxx) */
+		int16 version;	/* Versionsnummer des Protokolles beim Sender (z.Z. 0x0120 = 1.2) */
+		int16 msgs;		/* Bitmap der untersttzten Nachrichten und F„higkeiten (GSM_xxx) */
 		long ext;		/* benutzte Endung, etwa '.SIC'                     */
 	} GS_INFO;
 	
@@ -378,11 +382,11 @@ typedef struct
 
 typedef struct
 {
-	INT16	id;							/* the AES-ID of another PRG */
+	int16	id;							/* the AES-ID of another PRG */
 	long	type;							/* same bitvec as dd_active	*/
-	unsigned INT16	xacc_val;		/* DD-dependant-value: XACC->groups */
+	unsigned int16	xacc_val;		/* DD-dependant-value: XACC->groups */
 	const char	*xacc_name;			/* name of partner, or NULL */
-	unsigned INT16	va_val[3];
+	unsigned int16	va_val[3];
 	const char	*va_name;
 } A_dd;
 
@@ -390,7 +394,7 @@ typedef struct
 {
 	Awindow *window;
 	OBJECT *entry;
-	INT16 obnr;
+	int16 obnr;
 } Awiob;
 
 /******************************************************************************/
@@ -400,79 +404,75 @@ typedef struct
 /******************************************************************************/
 
 /* Keine FOR-Funktion, alle sollen bearbeitet/gesucht werden */
-#define NO_FOR (INT16 (*)(void *,void *))	NULL
+#define NO_FOR (int16 (*)(void *,void *))	NULL
 
-#define _ll struct _ULinListe
-
-typedef INT16 (*A_ListFor)(void *para, void *elem);
+typedef int16 (*A_ListFor)(void *para, void *elem);
 typedef void (*A_ListWork)(void *para, void *elem);
 
-typedef struct _ULinListe
+typedef struct _ULinList
 {
-	/* Der Zeiger auf die lineare Liste (soll nur ACS-intern verwendet werden!) */
-	void *ListData;
-	
-	/* Zeiger auf Funktion, die die Elemente der Lste freigeben kann */
-	void (*freeElem)( void *elem );
-	
-	/* Die lineare Liste leeren, alle Daten freigeben */
-	void (*clear)( _ll *liste );
-	
-	/* Anh„ngen neuer Daten an die Liste */
-	INT16 (*append)( _ll *liste, void *new_data );
-	
-	/* Einfgen neuer Daten in die Liste */
-	INT16 (*insert)( _ll *liste, void *new_data, INT16 before_obj );
-	
-	/* Daten aus der Liste l”schen und zurckgeben */
-	void *(*delete)( _ll *liste, INT16 data_nr );
-	
-	/* Alle Daten aus der Liste l”schen, die eine bestimmte Bedingung erfllen     */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
-	/* bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
-	long (*deleteFor)( _ll *liste, void *para,
-			INT16 (*to_delete)(void *para, void *elem) );
-	
-	/* Die Daten Nummer nr holen */
-	void *(*search)( _ll *liste, long nr );
-	
-	/* Daten suchen, die eine Bedingung erfllen                                 */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
-	/* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
-	void *(*searchFor)( _ll *liste, void *para, INT16 (*found)(void *para,void *elem) );
-	
-	/* Das erste Element der Liste */
-	void *(*first)( _ll *liste );
-	
-	/* Das letzte Element der Liste */
-	void *(*last)( _ll *liste );
-	
-	/* Das aktuelle Element der Liste */
-	void *(*akt)( _ll *liste );
-	
-	/* Die Nummer des aktuellen Elementes der Liste */
-	long (*aktNr)( _ll *liste );
-	
-	/* Das aktuelle Element vorw„rts/rckw„rts bewegen */
-	void *(*skip)( _ll *liste, INT16 vorwaerts, long amount );
-	
-	/* Die Anzahl der verwalteten Daten */
-	long (*count)( _ll *liste);
-	
-	/* Die Anzahl der Daten ermitteln, die eine Bedingung erfllen */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
-	/* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
-	long (*countFor)( _ll *liste, void *para, INT16 (*count)(void *para, void *elem) );
-	
-	/* Fr alle Daten, die eine Bedingung erfllen, eine Aktion ausfhren               */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
-	/* work bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
-	void (*doFor)( _ll *liste, void *para, 
-				INT16 (*to_work)(void *para, void *elem),
-				void (*work)(void *para, void *elem) );
-} ULinListe;
+   /* Der Zeiger auf die lineare Liste (soll nur ACS-intern verwendet werden!) */
+   /*   0 */ void *ListData;
 
-#undef _ll
+   /* Zeiger auf Funktion, die die Elemente der Liste freigeben kann */
+   /*   4 */ void (*freeElem)( void *elem );
+
+   /* Die lineare Liste leeren, alle Daten freigeben */
+   /*   8 */ void (*clear)( struct _ULinList *liste );
+
+   /* Anh„ngen neuer Daten an die Liste */
+   /*  12 */ int16 (*append)( struct _ULinList *liste, void *new_data );
+
+   /* Einfgen neuer Daten in die Liste */
+   /*  16 */ int16 (*insert)( struct _ULinList *liste, void *new_data, int16 before_obj );
+
+   /* Daten aus der Liste l”schen und zurckgeben */
+   /*  20 */ void *(*delete)( struct _ULinList *liste, int16 data_nr );
+
+   /* Alle Daten aus der Liste l”schen, die eine bestimmte Bedingung erfllen     */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
+   /* bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
+   /*  24 */ int32 (*deleteFor)( struct _ULinList *liste, void *para,
+         int16 (*to_delete)(void *para, void *elem) );
+
+   /* Die Daten Nummer nr holen */
+   /*  28 */ void *(*search)( struct _ULinList *liste, int32 nr );
+
+   /* Daten suchen, die eine Bedingung erfllen                                 */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
+   /* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
+   /*  32 */ void *(*searchFor)( struct _ULinList *liste, void *para, int16 (*found)(void *para,void *elem) );
+
+   /* Das erste Element der Liste */
+   /*  36 */ void *(*first)( struct _ULinList *liste );
+
+   /* Das letzte Element der Liste */
+   /*  40 */ void *(*last)( struct _ULinList *liste );
+
+   /* Das aktuelle Element der Liste */
+   /*  44 */ void *(*akt)( struct _ULinList *liste );
+
+   /* Die Nummer des aktuellen Elementes der Liste */
+   /*  48 */ int32 (*aktNr)( struct _ULinList *liste );
+
+   /* Das aktuelle Element vorw„rts/rckw„rts bewegen */
+   /*  52 */ void *(*skip)( struct _ULinList *liste, int16 vorwaerts, int32 amount );
+
+   /* Die Anzahl der verwalteten Daten */
+   /*  56 */ int32 (*count)( struct _ULinList *liste);
+
+   /* Die Anzahl der Daten ermitteln, die eine Bedingung erfllen */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
+   /* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
+   /*  60 */ int32 (*countFor)( struct _ULinList *liste, void *para, int16 (*count)(void *para, void *elem) );
+
+   /* Fr alle Daten, die eine Bedingung erfllen, eine Aktion ausfhren               */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
+   /* work bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
+   /*  64 */ void (*doFor)( struct _ULinList *liste, void *para,
+            int16 (*to_work)(void *para, void *elem),
+            void (*work)(void *para, void *elem) );
+} ULinList;
 
 /* Pathsize */
 #define __PS__ (127 + 1)
@@ -480,91 +480,91 @@ typedef struct _ULinListe
 /* Before ACSinit0() initialized !! */
 typedef struct
 {
-	/* AES */
-	INT16 gl_apid;					/* AES application ID */
-	INT16 phys_handle;			/* workstation for aes */
-	INT16 gl_wattr;				/* attribut width */
-	INT16 gl_hattr;				/* attribut height */
-	Axywh desk;						/* desktop limits XYWH */
-	
-	/* VDI */
-	INT16 vdi_handle;				/* virtual VDI workstation for ACS */
-	INT16 gl_wbox;					/* cell width of standard char */
-	INT16 gl_hbox;					/* cell height of standard char */
-	INT16 gl_wchar;				/* max width of standard char*/
-	INT16 gl_hchar;				/* max height of standard char */
-	INT16 ncolors;					/* number of colors (2=mono) */
-	INT16 nplanes;					/* number of colors expressed in planes */
-	
-	/* Pathes */
-	char appname [__PS__];			/* application complete name */
-	char apppath [__PS__];			/* application path */
-	char apppara [__PS__];			/* application parameter */
-	char appfrom [__PS__];			/* application called from */
-	char basename[20];				/* basename appname without extention */
-	
-	/* others */
-	long ev_mtcount;				/* Timerintervall in milli sec (initial 500 ms) */
-	INT16 application;			/* runs as an application */
-	INT16 multitask;				/* more than 1 applications possible */
-	INT16 appexit;					/* application is in system termination mode */
-	Adescr* description;			/* surface description, pointer for late assignment */
-	Asel Aselect;					/* list of selected objects */
-	
-	/* context during callback pointer values */
-	Awindow* ev_window;								/* actual window */
-	OBJECT* ev_object;								/* actual object tree */
-	INT16	ev_obnr;										/* actaul objectnumber, index */
-	INT16	ev_mmox, ev_mmoy;							/* Mouse position */
-	INT16	ev_mmokstate;								/* Keyboard state */
-	INT16	dia_abort;									/* Abort modal dialog */
-	MFDB screenMFDB;									/* exactly this */
-	INT16 apterm;										/* AP_TERM received */
-	INT16* AESglobal;									/* points to initialized (AES) global */
-	INT16 fonts;										/* count of available fonts */
-	INT16	argc;											/* parameter passed to main routine */
-	char **argv;										/* argument list */
-	char **env;											/* environment */
-	INT16 fontid;										/* Fontid for Userdefs */
-	INT16 fheight;										/* Height for Userdeffonts */
-	INT16 fontsid;										/* Fontid for Userdef (small) */
-	INT16 fsheight;									/* Height for Userdeffonts (small) */
-	void (*ACSterm) (void);							/* called before terminating ACS */
-	void (*ACSaboutme) (void);						/* call used for 'about me' */
-	void (*ACSclose) (void);						/* call used for 'Quit' */
-	void (*ACSmessage) (INT16* ev_mmgpbuf);	/* handle unprocessed messages */
-	void (*ACSmproto) (INT16* ev_mmgpbuf); 	/* filter unprocessed messages */
-	void (*ACStimer) (void);						/* called at end of event loop */
-	INT16 (*ACSinit0) (void);						/* pre init */
-	INT16 dither;										/* dither config */
-	void (*ACSkey) (INT16* kstate, INT16* key);			/* filter keys */
-	void (*ACSbutton) (INT16* button, INT16* breturn);	/* filter mouse buttons */
-	void (*ACSmouse) (void);						/* filter mouse moves (ev_mmox/y) */
-	void (*ACSwikey) (INT16* kstate, INT16* key);		/* filter keystroke before wi-> keys call ! */
-	INT16 ev_bmask;									/* evnt_multi */
-	INT16 ev_bstate;									/* evnt_multi */
-	INT16 ev_mmobutton;								/* evnt_multi */
-	INT16 ev_mbreturn;								/* evnt_multi */
-	INT16 ev_mkreturn;								/* evnt_multi */
-	INT16 ev_mbclicks;								/* evnt_multi default 2 */
-	void (*DEBUG_MEM) (void* defective);		/* Debuggable */
-	char cfg_path [__PS__];							/* config path initially = apppath*/
-	char scrp_path [__PS__];						/* initialised scrap-path */
-	void (*ACSerror) (INT16 errmess, void *para);		/* error-Routine */
-	INT16	menu_id;										/* ACC-Menu-ID or -1 */
-	char	*dd_name;									/* global available name for DD-Protos */
-	char	*alert_name;								/* own WinAlert-Name */
-	INT16	mfsel_count;								/* multi-Fsel-Counter */
-	char	separator[256];							/* Worttrenner */
-	
-	/* Langer Name der Applikation (u.a. fr GEMScript) */
-	char *AppLongName;
-	
-	/* Die Config-Strings der Anwendung */
-	UConfig *cfg;
-	
-	/* Allgemeine GEMScript-Funktion der Applikation */
-	INT16 (*GEMScript)( INT16 anz, char **cmd, A_GSAntwort *antwort );
+   /* AES */
+   int16 gl_apid;                /* AES application ID */
+   int16 phys_handle;            /* workstation for aes */
+   int16 gl_wattr;               /* attribut width */
+   int16 gl_hattr;               /* attribut height */
+   Axywh desk;                   /* desktop limits XYWH */
+
+   /* VDI */
+   int16 vdi_handle;             /* virtual VDI workstation for ACS */
+   int16 gl_wbox;                /* cell width of standard char */
+   int16 gl_hbox;                /* cell height of standard char */
+   int16 gl_wchar;               /* max width of standard char*/
+   int16 gl_hchar;               /* max height of standard char */
+   int16 ncolors;                /* number of colors (2=mono) */
+   int16 nplanes;                /* number of colors expressed in planes */
+
+   /* Pathes */
+   char appname [__PS__];        /* application complete name */
+   char apppath [__PS__];        /* application path */
+   char apppara [__PS__];        /* application parameter */
+   char appfrom [__PS__];        /* application called from */
+   char basename[20];            /* basename appname without extention */
+
+   /* others */
+   int32 ev_mtcount;             /* Timerintervall in milli sec (initial 500 ms) */
+   int16 application;         /* runs as an application */
+   int16 multitask;           /* more than 1 applications possible */
+   int16 appexit;             /* application is in system termination mode */
+   Adescr *description;       /* surface description, pointer for late assignment */
+   Asel Aselect;              /* list of selected objects */
+
+   /* context during callback pointer values */
+   Awindow *ev_window;                       /* actual window */
+   OBJECT *ev_object;                        /* actual object tree */
+   int16 ev_obnr;                            /* actaul objectnumber, index */
+   int16 ev_mmox, ev_mmoy;                   /* Mouse position */
+   int16 ev_mmokstate;                       /* Keyboard state */
+   int16 dia_abort;                          /* Abort modal dialog */
+   MFDB screenMFDB;                          /* exactly this */
+   int16 apterm;                             /* AP_TERM received */
+   int16 *AESglobal;                         /* points to initialized (AES) global */
+   int16 fonts;                              /* count of available fonts */
+   int16 argc;                               /* parameter passed to main routine */
+   char **argv;                              /* argument list */
+   char **env;                               /* environment */
+   int16 fontid;                             /* Fontid for Userdefs */
+   int16 fheight;                            /* Height for Userdeffonts */
+   int16 fontsid;                            /* Fontid for Userdef (small) */
+   int16 fsheight;                           /* Height for Userdeffonts (small) */
+   void (*ACSterm) (void);                   /* called before terminating ACS */
+   void (*ACSaboutme) (void);                /* call used for 'about me' */
+   void (*ACSclose) (void);                  /* call used for 'Quit' */
+   void (*ACSmessage)(int16 *ev_mmgpbuf);    /* handle unprocessed messages */
+   void (*ACSmproto)(int16 *ev_mmgpbuf);     /* filter unprocessed messages */
+   void (*ACStimer)(void);                   /* called at end of event loop */
+   int16 (*ACSinit0)(void);                  /* pre init */
+   int16 dither;                             /* dither config */
+   void (*ACSkey)(int16 *kstate, int16 *key);/* filter keys */
+   void (*ACSbutton)(int16 *button, int16 *breturn);  /* filter mouse buttons */
+   void (*ACSmouse)(void);                   /* filter mouse moves (ev_mmox/y) */
+   void (*ACSwikey)(int16 *kstate, int16 *key);    /* filter keystroke before wi->keys call */
+   int16 ev_bmask;                           /* evnt_multi */
+   int16 ev_bstate;                          /* evnt_multi */
+   int16 ev_mmobutton;                       /* evnt_multi */
+   int16 ev_mbreturn;                        /* evnt_multi */
+   int16 ev_mkreturn;                        /* evnt_multi */
+   int16 ev_mbclicks;                        /* evnt_multi default 2 */
+   void (*DEBUG_MEM)(void *defective);       /* Debuggable */
+   char cfg_path [__PS__];                   /* config path initially = apppath*/
+   char scrp_path [__PS__];                  /* initialised scrap-path */
+   void (*ACSerror)(int16 errmess, void *para);    /* error-Routine */
+   int16 menu_id;                            /* ACC-Menu-ID or -1 */
+   char  *dd_name;                           /* global available name for DD-Protos */
+   char  *alert_name;                        /* own WinAlert-Name */
+   int16 mfsel_count;                        /* multi-Fsel-Counter */
+   char  separator[256];                     /* Worttrenner */
+
+   /* Langer Name der Applikation (u.a. fr GEMScript) */
+   char *AppLongName;
+
+   /* Die Config-Strings der Anwendung */
+   UConfig *cfg;
+
+   /* Allgemeine GEMScript-Funktion der Applikation */
+   int16 (*GEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );
 } Ablk;
 
 /*
@@ -618,30 +618,30 @@ typedef struct
 #define AS_SELECTDEL			(6)			/* deleted object in select list */
 #define AS_UNTOPPED			(7)			/* ACS does not handle UNTOPPED, maybe the window want it to know */
 #define AS_FOCUSCHG			(8)			/* Input Focus changed within a window */
-#define AS_CHECKDRAG			(9)			/* check if window will accept draglist (in) INT16 [0] = obnr, (out) INT16 [1] = TRUE/FALSE */
+#define AS_CHECKDRAG			(9)			/* check if window will accept draglist (in) int16 [0] = obnr, (out) int16 [1] = TRUE/FALSE */
 
 #define AS_OPEN				(10)			/* Open the selected list of objects */
 #define AS_DELETE				(11)			/* delete selected list */
-#define AS_CHECKDELETE		(12)			/* is list deleteable, INT16 * (TRUE/FALSE) */
+#define AS_CHECKDELETE		(12)			/* is list deleteable, int16 * (TRUE/FALSE) */
 #define AS_WIAUTOPOS			(14)			/* automatic determination of pos */
 #define AS_INFO				(15)			/* Info about Window */
 #define AS_DRAGGED			(16)			/* Something dragged on windows ICON */
-#define AS_CHECKDRAGGED		(17)			/* is list acceptable for this window icon, INT16 * (TRUE/FALSE) */
-#define AS_CONFIGDRAG		(18)			/* Allows owner window to modify drag parameter like raster (see Doc), INT16 * */
-#define AS_DRAGABORTED		(19)			/* Drag was released on foreign window, INT16* wi_id */
+#define AS_CHECKDRAGGED		(17)			/* is list acceptable for this window icon, int16 * (TRUE/FALSE) */
+#define AS_CONFIGDRAG		(18)			/* Allows owner window to modify drag parameter like raster (see Doc), int16 * */
+#define AS_DRAGABORTED		(19)			/* Drag was released on foreign window, int16* wi_id */
 #define AS_REALSEL_START	(20)			/* Start neuer Aselect-Liste */
 #define AS_REALSEL_UPDATE	(21)			/* Žnderung der Aselect-Liste */
 #define AS_REALSEL_END		(22)			/* Ende der Aselect-Liste */
-#define AS_REALPOP_START	(23)			/* Start des Popups, IN_OUT: *INT16 auf Startobjekt */
-#define AS_REALPOP_UPDATE	(24)			/* Žnderung des Popups, IN_OUT: *INT16 auf Objektnummer */
+#define AS_REALPOP_START	(23)			/* Start des Popups, IN_OUT: *int16 auf Startobjekt */
+#define AS_REALPOP_UPDATE	(24)			/* Žnderung des Popups, IN_OUT: *int16 auf Objektnummer */
 #define AS_REALPOP_END		(25)			/* Ende des Popups */
 #define AS_EDITCHG			(26)			/* neue Taste in der Eingabe */
 #define AS_GEM_MESS			(27)			/* unbekannte GEM-Message fr RootFenster */
 #define AS_SCRAP_UPDATE		(28)			/* das Klemmbrett wurde erneuert, in_out *ext */
 #define AS_SCRAP_IMPORT		(29)			/* Aufruf, aus dem Klemmbrett zu importieren, in_out *ext */
 #define AS_SCRAP_EXPORT		(30)			/* dito fr Export */
-#define AS_REALMENU_START	(31)			/* Start der Menbedienung, in_out *INT16 auf Start */
-#define AS_REALMENU_UPDATE	(32)			/* ...neuer Eintrag, in_out *INT16 auf neuen Eintrag */
+#define AS_REALMENU_START	(31)			/* Start der Menbedienung, in_out *int16 auf Start */
+#define AS_REALMENU_UPDATE	(32)			/* ...neuer Eintrag, in_out *int16 auf neuen Eintrag */
 #define AS_REALMENU_END		(33)			/* ...und Ende */
 #define AS_SHADED				(34)			/* Fenster wurde gerade shaded (WINX, MagiC) */
 #define AS_UNSHADED			(35)			/* Fenster wurde gerade unshaded (WINX, MagiC) */
@@ -674,7 +674,7 @@ typedef struct
 /* Datenstrukturen fr die Nachrichten */
 typedef struct
 {
-	INT16 obnr;						/* Objekt-Nummer */
+	int16 obnr;						/* Objekt-Nummer */
 	char *text;						/* Text fr BubbleGEM */
 } AGetObjText;
 
@@ -687,11 +687,11 @@ typedef struct
 typedef struct
 {
 	Awindow *window;				/* Bearbeitendes Fenster */
-	INT16 id;						/* ID der Verbindung */
+	int16 id;						/* ID der Verbindung */
 	char *datei;					/* Dateiname der Austausch-Datei */
-	INT16 info_id;					/* ID-Nummer des Servers (als OLGA-Client nutzbar, sonst gleich id) */
+	int16 info_id;					/* ID-Nummer des Servers (als OLGA-Client nutzbar, sonst gleich id) */
 	char *info_datei;				/* Dateiname der vorhandenen bzw. erzeugbaren Info-Datei */
-	INT16 olga_flags;				/* Einige FLags der OLGA-Connection */
+	int16 olga_flags;				/* Einige FLags der OLGA-Connection */
 } OLGA_Infos;
 
 /* Ein paar Konstanten fr die OLGA-Infos */
@@ -842,7 +842,7 @@ typedef struct
  */
 
 /* Init entry after ACS initializing */
-INT16 ACSinit( void );
+int16 ACSinit( void );
 
 /*
  *		Global Vars		(no Values)
@@ -856,7 +856,7 @@ extern Ablk *ACSblk;
 	extern Aconfig ACSconfig;
 	
 	/* pre init */
-	INT16 ACSinit0 (void);
+	int16 ACSinit0 (void);
 #else
 	/* This module should terminate, WARNING dangerous call*/
 	void ACSmoduleterm (void);
@@ -911,7 +911,7 @@ extern Ablk *ACSblk;
  */
 
 /* Get window for GEM-Window-ID */
-Awindow* Awi_wid( const INT16 wid );
+Awindow* Awi_wid( const int16 wid );
 
 /* Return Root-Window */
 Awindow* Awi_root( void );
@@ -920,7 +920,7 @@ Awindow* Awi_root( void );
 Awindow* Awi_list( void );
 
 /* Sends Message to all Windows */
-void Awi_sendall( INT16 task, void *in_out );
+void Awi_sendall( int16 task, void *in_out );
 
 /* Cycle down Windows */
 void Awi_down( void );
@@ -932,13 +932,13 @@ void Awi_up( void );
 void Awi_show( Awindow *window );
 
 /* Dummy Init-Routine */
-INT16 Awi_init( Awindow *window );
+int16 Awi_init( Awindow *window );
 
 /* create a copy of window x */
 Awindow* Awi_create( const Awindow *x );
 
 /* Open Window */
-INT16 Awi_open( Awindow *x );
+int16 Awi_open( Awindow *x );
 
 /* Close Window */
 void Awi_closed( Awindow *x );
@@ -960,15 +960,15 @@ void Awi_sized( Awindow *window, Axywh *new );
 void Awi_moved( Awindow *window, Axywh *new );
 
 /* Iconify (FALSE: ein Fenster, TRUE: alle) & Uniconify */
-INT16 Awi_iconify (Awindow *wi, INT16 all);
-INT16 Awi_uniconify (Awindow *wi);
+int16 Awi_iconify (Awindow *wi, int16 all);
+int16 Awi_uniconify (Awindow *wi);
 
 /* Allgemeine GEMScript-Funktion der Anwendung und eines Fensters */
-INT16 ACSGEMScript( INT16 anz, char **cmd, A_GSAntwort *antwort );
-INT16 Awi_gemscript( Awindow *wi, INT16 anz, char **cmds, A_GSAntwort *antwort );
+int16 ACSGEMScript( int16 anz, char **cmd, A_GSAntwort *antwort );
+int16 Awi_gemscript( Awindow *wi, int16 anz, char **cmds, A_GSAntwort *antwort );
 
 /* Fenstern anhand des Titels bestimmen */
-Awindow *Awi_name( const char *title, INT16 sensitiv );
+Awindow *Awi_name( const char *title, int16 sensitiv );
 
 /* Finish open Dialog */
 void Awi_diaend( void );
@@ -977,35 +977,35 @@ void Awi_diaend( void );
 void Awi_diastart( void );
 
 /* Key-Input for Dialog */
-INT16 Awi_keys( Awindow *window, INT16 kstate, INT16 key );
+int16 Awi_keys( Awindow *window, int16 kstate, int16 key );
 
 /* Key-Input for Dialog, send Keys to AV-Server if not used */
-INT16 Awi_keysend( Awindow *window, INT16 kstate, INT16 key );
+int16 Awi_keysend( Awindow *window, int16 kstate, int16 key );
 
 /* Key-Input for Dialog, sends no Keys to AV-Server */
-INT16 Awi_nokey( Awindow *wi, INT16 kstate, INT16 key );
+int16 Awi_nokey( Awindow *wi, int16 kstate, int16 key );
 
 /* Show Area in Work-Object-Coordinates */
 void Awi_obview( Awindow *window, Axywh *xywh );
 
 /* Very simple Service-Routine */
-INT16 Awi_service( Awindow *window, INT16 task, void *in_out );
+int16 Awi_service( Awindow *window, int16 task, void *in_out );
 
 /* Intelligent Scroll/Update (x,y upper left edge BEFORE scrolling) */
-void Awi_scroll( Awindow *window, INT16 x, INT16 y );
+void Awi_scroll( Awindow *window, int16 x, int16 y );
 
 /* Modal Dialog on Top? (returns NULL if not) */
 Awindow *Awi_modal( void );
 
 /* Complete Modal-Window-Dialog-Handler */
-INT16 Awi_dialog( Awindow *win );
-INT16 Awi_doform( Awindow *mod_dia, void *para );
+int16 Awi_dialog( Awindow *win );
+int16 Awi_doform( Awindow *mod_dia, void *para );
 
 /* Click-Routine: Einen Dialog abbrechen */
 void Awi_diaabort( void );
 
 /* Shows Window-Alert */
-INT16 Awi_alert( INT16 but, char *text );
+int16 Awi_alert( int16 but, char *text );
 
 /* Creates a Copy of Awindow x */
 Awindow *Awi_selfcreate( void *x );
@@ -1016,10 +1016,10 @@ void Awi_uoself( Awindow *wi );
 /* Internal wind_update */
 #define RESET_UPDATE 	(0x0010)
 #define RESTART_UPDATE  (0x0020)
-void Awi_update( INT16 mode );
+void Awi_update( int16 mode );
 
 /* ST-Guide-Hilfe zum Fenster anzeigen */
-INT16 Awi_help( Awindow *window );
+int16 Awi_help( Awindow *window );
 
 /*
  * Window: inner Objects
@@ -1027,28 +1027,28 @@ INT16 Awi_help( Awindow *window );
 
 /* Change the State of this Object in Work-Tree */
 /* ! changed behaviour to 1.0                   */
-void Awi_obchange( Awindow *window, INT16 obnr, INT16 new_state );
+void Awi_obchange( Awindow *window, int16 obnr, int16 new_state );
 
 /* Redraws everthing in the Area of obnr (uses window->redraw) */
-void Awi_obredraw(Awindow *window, INT16 obnr );
+void Awi_obredraw(Awindow *window, int16 obnr );
 
 /* Redraw-Routine */
 void Awi_redraw( Awindow *window, Axywh *limit );
 
 /* Arrows */
-void Awi_arrowed( Awindow *window, INT16 which );
+void Awi_arrowed( Awindow *window, int16 which );
 
 /* Horizontal Slider */
-void Awi_hslid( Awindow *window, INT16 pos );
+void Awi_hslid( Awindow *window, int16 pos );
 
 /* vertical slider */
-void Awi_vslid( Awindow *window, INT16 pos );
+void Awi_vslid( Awindow *window, int16 pos );
 
 /* Daten wurden gesichert, andere Fenster und OLGA davon informieren */
 void Awi_saved( Awindow *window, const char *datei );
 
 /* Das Kontext-Popup fr Objekt unter (mx, my) aufrufen */
-INT16 Awi_context( Awindow *window, INT16 mx, INT16 my );
+int16 Awi_context( Awindow *window, int16 mx, int16 my );
 
 /*
  * Events
@@ -1069,38 +1069,38 @@ void Aev_release( void );
 /* Diverse Nachrichten verschicken */
 
 /* AV-Protokoll */
-INT16 Aev_AvProtokoll( INT16 dest_id, Awindow *window, INT16 timeout );
-INT16 Aev_AvExit( INT16 dest_id, Awindow *window, INT16 timeout );
-INT16 Aev_VaProtoStatus( INT16 dest_id, Awindow *window, INT16 timeout );
-INT16 Aev_VaStart( INT16 dest_id, char *cmd, Awindow *window, INT16 timeout );
-INT16 Aev_AvStarted( INT16 dest_id, INT16 ok, const char *cmd );
+int16 Aev_AvProtokoll( int16 dest_id, Awindow *window, int16 timeout );
+int16 Aev_AvExit( int16 dest_id, Awindow *window, int16 timeout );
+int16 Aev_VaProtoStatus( int16 dest_id, Awindow *window, int16 timeout );
+int16 Aev_VaStart( int16 dest_id, char *cmd, Awindow *window, int16 timeout );
+int16 Aev_AvStarted( int16 dest_id, int16 ok, const char *cmd );
 
 /* XAcc-Protokoll */
-INT16 Aev_AccID( INT16 dest_id, Awindow *window, INT16 timeout );
-INT16 Aev_AccExit( INT16 dest_id, Awindow *window, INT16 timeout );
-INT16 Aev_AccAck( INT16 dest_id, INT16 ok );
-INT16 Aev_AccAcc( INT16 dest_id, INT16 *message, Awindow *window, INT16 timeout );
-INT16 Aev_AccKey( INT16 dest_id, INT16 key, Awindow *window, INT16 timeout );
+int16 Aev_AccID( int16 dest_id, Awindow *window, int16 timeout );
+int16 Aev_AccExit( int16 dest_id, Awindow *window, int16 timeout );
+int16 Aev_AccAck( int16 dest_id, int16 ok );
+int16 Aev_AccAcc( int16 dest_id, int16 *message, Awindow *window, int16 timeout );
+int16 Aev_AccKey( int16 dest_id, int16 key, Awindow *window, int16 timeout );
 
 /* ST-Guide-Hilfe anfordern */
-INT16 Aev_STGuideHelp( char *hyp_text, char *referenz, Awindow *window );
+int16 Aev_STGuideHelp( char *hyp_text, char *referenz, Awindow *window );
 
 /* PC-Hilfe anfordern */
-INT16 Aev_PCHelpVersion( void );
-INT16 Aev_AcHelp( char *help_acc, char *referenz, Awindow *window );
-INT16 Aev_AcVersion( char *help_acc, Awindow *window );
-INT16 Aev_AcCopy( char *help_acc, Awindow *window );
+int16 Aev_PCHelpVersion( void );
+int16 Aev_AcHelp( char *help_acc, char *referenz, Awindow *window );
+int16 Aev_AcVersion( char *help_acc, Awindow *window );
+int16 Aev_AcCopy( char *help_acc, Awindow *window );
 
 /* BubbleGEM */
-INT16 Awi_bubblegem( Awindow *window, INT16 mx, INT16 my );
-INT16 Aev_FontBubbleGEM( INT16 font_id, INT16 points );
+int16 Awi_bubblegem( Awindow *window, int16 mx, int16 my );
+int16 Aev_FontBubbleGEM( int16 font_id, int16 points );
 
 /* OLGA-Protokoll */
-INT16 Aev_OlgaIdle( void );
-INT16 Aev_OlgaUpdate( const char *datei );
-INT16 Aev_OlgaGetInfo( const INT16 id );
-INT16 Aev_OlgaRename( const char *old_datei, const char *new_datei );
-INT16 Aev_OlgaBreaklink( const char *datei );
+int16 Aev_OlgaIdle( void );
+int16 Aev_OlgaUpdate( const char *datei );
+int16 Aev_OlgaGetInfo( const int16 id );
+int16 Aev_OlgaRename( const char *old_datei, const char *new_datei );
+int16 Aev_OlgaBreaklink( const char *datei );
 
 /*
  *		Mousehandling
@@ -1138,7 +1138,7 @@ void Aob_icon( OBJECT *object );
 void Aob_fix( OBJECT *object );
 
 /* Calculate Redraw-Rectangle for Object */
-void Aob_offset( Axywh *redraw, OBJECT *ob, INT16 entry );
+void Aob_offset( Axywh *redraw, OBJECT *ob, int16 entry );
 
 /* save rectangle of desktop */
 MFDB* Aob_save( Axywh *rect );
@@ -1148,17 +1148,17 @@ void Aob_restore( MFDB *save, Axywh *rect );
 
 /* Watched Object, select, if pointer upon obnr  */
 /* returns TRUE, if button was release upon obnr */
-INT16 Aob_watch( Awindow *window, INT16 obnr );
+int16 Aob_watch( Awindow *window, int16 obnr );
 
 /* Find obnr for which Flagmask becomes TRUE, obnr is start object */
-INT16 Aob_findflag( OBJECT *ob, INT16 obnr, INT16 flag );
+int16 Aob_findflag( OBJECT *ob, int16 obnr, int16 flag );
 
 /* Find parent Objectnr, returns -1 on top level */
-INT16 Aob_up( OBJECT* ob, INT16 obnr );
+int16 Aob_up( OBJECT* ob, int16 obnr );
 
 /* Bits aus ob_flags und ob_state setzen oder l”schen */
-INT16 Aob_flags( Awindow *window, INT16 obnr, INT16 flag, INT16 setflag );
-INT16 Aob_state( Awindow *window, INT16 obnr, INT16 flag, INT16 setflag );
+int16 Aob_flags( Awindow *window, int16 obnr, int16 flag, int16 setflag );
+int16 Aob_state( Awindow *window, int16 obnr, int16 flag, int16 setflag );
 
 /* Fixes Tree on different Length of first Title (name) */
 void Ame_namefix( OBJECT *menu );
@@ -1166,35 +1166,35 @@ void Ame_namefix( OBJECT *menu );
 /* Pop up a Popup-Menu, x/y determs upper left Edge */
 /* returns selected Obnr, If a Callback is defined, */
 /* it will be called                                */
-INT16 Ame_popup( Awindow *window, OBJECT *popup, INT16 x, INT16 y );
+int16 Ame_popup( Awindow *window, OBJECT *popup, int16 x, int16 y );
 
 /* Build a Popup out of pstr, the Entry chk will be checked,        */
 /* should be a substring of pstr, Width is the Pixel-Width of Popup */
 /* returns the selected Substring or NULL in none                   */
-char* Ame_strpopup( Awindow* wi, char* pstr, char* chk, INT16 width, INT16 x, INT16 y );
+char* Ame_strpopup( Awindow* wi, char* pstr, char* chk, int16 width, int16 x, int16 y );
 
 /* Setzt TEXT in das Objekt ein, betrachtet die Typen!        */
 /* Nur fr die USERDEFS wird in UB_PTR1 dynamisch Speicher    */
 /* entsprechend der Textl„nge angelegt, sonst darf auf keinen */
 /* Fall die Textl„nge die vorhandene L„nge berschreiten!!!   */
-void Aob_puttext( const OBJECT *ob, const INT16 obnr, char *text );
+void Aob_puttext( const OBJECT *ob, const int16 obnr, char *text );
 
 /* Gibt analog zu printf Text in ein Objekt aus, 1024 Zeichen Puffer */
-void Aob_printf( const OBJECT *ob, const INT16 obnr, const char *format, ... );
+void Aob_printf( const OBJECT *ob, const int16 obnr, const char *format, ... );
 
 /* Holt Text aus Objekt, TEXT muž lang genug sein!           */
 /* zurckgeleifert wird die L„nge des Textes oder -1         */
 /* wenn die L„nge nicht ermittelt werden konnte.             */
 /* wird TEXT=NULL gesetzt, wird nur die L„nge ermittelt,     */
 /* was dazu dienen kann, die Textl„nge dynamisch zu erfragen */
-INT16 Aob_gettext( const OBJECT *ob, const INT16 obnr, char *text );
+int16 Aob_gettext( const OBJECT *ob, const int16 obnr, char *text );
 
 /* Holt Werte analog zu scanf, liefert analog zu Aob_gettext */
 /* nur L„nge wenn format!=NULL, 1024 Zeichen Puffer          */
-INT16 Aob_scanf( const OBJECT *ob, const INT16 obnr, const char *format, ... );
+int16 Aob_scanf( const OBJECT *ob, const int16 obnr, const char *format, ... );
 
 /* Is x/y in Rectangle? */
-INT16 Aob_within( const Axywh* rect, const INT16 x, const INT16 y );
+int16 Aob_within( const Axywh* rect, const int16 x, const int16 y );
 
 /*
  * Backplane Support
@@ -1203,14 +1203,14 @@ INT16 Aob_within( const Axywh* rect, const INT16 x, const INT16 y );
 /* IMG-Header */
 typedef struct
 {
-	INT16 version;
-	INT16 headlen;												/* normally 8 */
-	INT16 planes;
-	INT16 pat_run;
-	INT16 pix_width;
-	INT16 pix_height;
-	INT16 sl_width;
-	INT16 sl_height;
+	int16 version;
+	int16 headlen;												/* normally 8 */
+	int16 planes;
+	int16 pat_run;
+	int16 pix_width;
+	int16 pix_height;
+	int16 sl_width;
+	int16 sl_height;
 } IMG_HEADER;
 
 /* XIMG-Header */
@@ -1222,28 +1222,28 @@ typedef struct
 /* Color-Entries for XIMG-Header */
 typedef struct
 {
-	unsigned INT16	red;
-	unsigned INT16	green;
-	unsigned INT16	blue;
+	unsigned int16	red;
+	unsigned int16	green;
+	unsigned int16	blue;
 }	RGB_LIST;
 
 typedef struct
 {
-	INT16 version;
-	INT16 headlen;												/* sizeof (XIMG_HEADER) + sizeof (all_rgb_list) */
-	INT16 planes;
-	INT16 pat_run;
-	INT16 pix_width;
-	INT16 pix_height;
-	INT16 sl_width;
-	INT16 sl_height;
+	int16 version;
+	int16 headlen;												/* sizeof (XIMG_HEADER) + sizeof (all_rgb_list) */
+	int16 planes;
+	int16 pat_run;
+	int16 pix_width;
+	int16 pix_height;
+	int16 sl_width;
+	int16 sl_height;
 	char	x_id[4];												/* should be 'XIMG' */
-	INT16	color_model;										/* see defines above */
+	int16	color_model;										/* see defines above */
 	RGB_LIST	color_table[];									/* array of colors, length is 2^planes */
 } XIMG_HEADER;
 
 /* Create Backplane with Width w and Height h */
-MFDB* Abp_create( INT16 w, INT16 h );
+MFDB* Abp_create( int16 w, int16 h );
 
 /* Free Backplane */
 void Abp_delete( MFDB *backplane );
@@ -1255,37 +1255,37 @@ void Abp_start( MFDB *backplane );
 void Abp_end( void );
 
 /* Converts IMAGE to MFDB, transform into dev-fmt, if do_trnsfm=TRUE, OK on success */
-INT16 Abp_img2mfdb( IMG_HEADER *org, MFDB **dest, INT16 do_trnsfm );
+int16 Abp_img2mfdb( IMG_HEADER *org, MFDB **dest, int16 do_trnsfm );
 
 /* Converts dev-depend. MFDB to IMG-Format, gives IMG-DATA-Length */
 /* dest=NULL serves ONLY img_len, returns OK on sucess */
-INT16 Abp_mfdb2img( MFDB* org, IMG_HEADER **dest, long *img_len );
+int16 Abp_mfdb2img( MFDB* org, IMG_HEADER **dest, long *img_len );
 
 /*
  * Drag support functions
  */
 
 /* substitute for objc_find */
-INT16 Adr_find( OBJECT *work, INT16 start, INT16 depth, INT16 x, INT16 y );
+int16 Adr_find( OBJECT *work, int16 start, int16 depth, int16 x, int16 y );
 
 /* Start Drawing a Box which select intersected Objects */
-void Adr_box( INT16 x, INT16 y );
+void Adr_box( int16 x, int16 y );
 
 /* Drag Objectlist */
-void Adr_drag( INT16 x, INT16 y );
+void Adr_drag( int16 x, int16 y );
 
 /* Initialize Start */
 void Adr_start( void );
 
 /* Returns next obnr from List, init with Adr_start(), */
 /* return -1 if no more Object are available           */
-INT16 Adr_next( void );
+int16 Adr_next( void );
 
 /* Add Object in Aselect-List */
-void Adr_add( Awindow *window, const INT16 obnr );
+void Adr_add( Awindow *window, const int16 obnr );
 
 /* Delete Object from Aselect-List, did not update on Screen ! */
-void Adr_del( Awindow *window, const INT16 obnr );
+void Adr_del( Awindow *window, const int16 obnr );
 
 /* Unselect all Object in List, update Screen ! */		
 void Adr_unselect( void );
@@ -1299,7 +1299,7 @@ char Ach_toupper( const char ch );
 char Ach_tolower( const char ch );
 
 /* Ist ein Zeichen ein "Blank"? (incl. '\r', '\n' & '\t') */
-INT16 Ach_isWhite( const char c );
+int16 Ach_isWhite( const char c );
 
 /* Neue Kopie eines Strings anlegen bzw. freigeben */
 char* Ast_create( const char *parent );
@@ -1315,14 +1315,14 @@ char *Ast_rtrim( char *string );
 char *Ast_alltrim( char *string );
 
 /* Stringvergleiche mit und ohne Grož/Klein-Unterscheidung */
-INT16 Ast_cmp( const char *str_1, const char *str_2 );
-INT16 Ast_icmp( const char *str_1, const char *str_2 );
+int16 Ast_cmp( const char *str_1, const char *str_2 );
+int16 Ast_icmp( const char *str_1, const char *str_2 );
 
 /* Ist ein String leer, bis auf "Blanks"? */
-INT16 Ast_isEmpty( const char *string );
+int16 Ast_isEmpty( const char *string );
 
 /* Mehrere Strings linksbndig zusammensetzen, Gesamtl„nge vorgegeben */
-char *Ast_add( INT16 anzahl, char *ergebnis, ... );
+char *Ast_add( int16 anzahl, char *ergebnis, ... );
 
 /* Einen String mitels Blanks links-/rehtsbndig bzw. zentriert auf bestimte L„nge bringen */
 char *Ast_adl( char *string, long len );
@@ -1336,19 +1336,19 @@ char *Ast_filter( char *string, char *wrg_char );
 long Ast_count( const char *string, const char *zeichen );
 
 /* Zwei Dateinamen vergleichen, der erste darf die blichen Wildcards enthalten */
-INT16 Ast_fcmp( char *filename1, char *filename2 );
+int16 Ast_fcmp( char *filename1, char *filename2 );
 
 /* Anzahl der Strings eines ASCIZZ-Strings z„hlen */
-INT16 Ast_countASCIZZ( const char *asciizz );
+int16 Ast_countASCIZZ( const char *asciizz );
 
 /* Einen ASCIIZZ-String in ein Array von Strings splitten */
-INT16 Ast_splitASCIZZ( const char *ascizz, char ***strings, INT16 *anz );
+int16 Ast_splitASCIZZ( const char *ascizz, char ***strings, int16 *anz );
 
 /* Aus einem String-Array einen ASCIIZZ-String machen */
-char *Ast_mergeASCIIZZ( const char **strings, const INT16 anzahl, const INT16 global );
+char *Ast_mergeASCIIZZ( const char **strings, const int16 anzahl, const int16 global );
 
 /* EIn Array von Strings komplett freigeben */
-void Ast_deleteAry( char **strings, INT16 anzahl );
+void Ast_deleteAry( char **strings, int16 anzahl );
 
 /*
  * ICON, Image Support
@@ -1410,38 +1410,38 @@ void Ax_ifree( void* memory );
 
 typedef struct afilelist
 {
-	char *file;
-	struct afilelist *next;
-	XATTR attribs;
+   char *file;
+   struct afilelist *next;
+   XATTR attribs;
 } A_FileList;
 
 /* Alias object, number in userp1 */
 void Aob_alias( void );
 
 /* Draw a Dialogbox near the Pointer, handle Draw and Redraw, returns Buttonnumber */
-INT16 A_dialog( OBJECT* dia );
+int16 A_dialog( OBJECT* dia );
 
 /* Same as A_dialog, except Position is not changed (dia->ob_x/y) */
-INT16 A_dialog2( OBJECT* dia );
+int16 A_dialog2( OBJECT* dia );
 
 /* Display an Alert-Box with one String-Parameter */
 /* alert must have the form [X][...%s....][Y] */
-INT16 alert_str( const char* alert, const char* para );
+int16 alert_str( const char* alert, const char* para );
 
 /* Veschneidet beide Rechtecke, TRUE wenn Schnitt existiert */
-INT16 intersect( Axywh* to, const Axywh* from );
+int16 intersect( Axywh* to, const Axywh* from );
 
 /* Wandelt Axywh in pxyarray */
-void xywh2array( INT16 *to, const Axywh *from );
+void xywh2array( int16 *to, const Axywh *from );
 
 /* Wandlet pxyarray in Axywh */
-void array2xywh( Axywh *to, const INT16 *from );
+void array2xywh( Axywh *to, const int16 *from );
 
 /* Punktierte waagerechte Linie */
-void dotted_xline( INT16 x1, INT16 x2, INT16 y );
+void dotted_xline( int16 x1, int16 x2, int16 y );
 
 /* Punktierte senkrechte Linie */
-void dotted_yline( INT16 y1, INT16 y2, INT16 x );
+void dotted_yline( int16 y1, int16 y2, int16 x );
 
 
 
@@ -1449,18 +1449,18 @@ void dotted_yline( INT16 y1, INT16 y2, INT16 x );
  *		Predefined "Userdefined Objects"
  */
 
-INT16 CDECL A_checkbox( PARMBLK* pb );		/* checkboxes, parm simular to ob_spec for boxes ! */
-INT16 CDECL A_radiobutton( PARMBLK* pb );	/* uses CHECKBOX-Routine */
-INT16 CDECL A_innerframe( PARMBLK* pb );	/* draws a frames half a character inside ! */
-INT16 CDECL A_pattern( PARMBLK* pb );		/* draws general patterns */
-INT16 CDECL A_arrows( PARMBLK* pb );		/* draws arrows */
-INT16 CDECL A_select( PARMBLK* pb );		/* select in a frame instead of reverse */
-INT16 CDECL A_ftext( PARMBLK* pb );			/* Formated multiline Text */
-INT16 CDECL A_3Dbutton( PARMBLK *pb );		/* 3D-Style Buttons */
-INT16 CDECL A_cycle( PARMBLK *pb );			/* Cycle Buttons */
-INT16 CDECL A_picture( PARMBLK *pb );		/* draw picture */
-INT16 CDECL A_title( PARMBLK *pb );			/* underscored title */
-INT16 CDECL A_boxed( PARMBLK *pb );
+int16 CDECL A_checkbox( PARMBLK* pb );		/* checkboxes, parm simular to ob_spec for boxes ! */
+int16 CDECL A_radiobutton( PARMBLK* pb );	/* uses CHECKBOX-Routine */
+int16 CDECL A_innerframe( PARMBLK* pb );	/* draws a frames half a character inside ! */
+int16 CDECL A_pattern( PARMBLK* pb );		/* draws general patterns */
+int16 CDECL A_arrows( PARMBLK* pb );		/* draws arrows */
+int16 CDECL A_select( PARMBLK* pb );		/* select in a frame instead of reverse */
+int16 CDECL A_ftext( PARMBLK* pb );			/* Formated multiline Text */
+int16 CDECL A_3Dbutton( PARMBLK *pb );		/* 3D-Style Buttons */
+int16 CDECL A_cycle( PARMBLK *pb );			/* Cycle Buttons */
+int16 CDECL A_picture( PARMBLK *pb );		/* draw picture */
+int16 CDECL A_title( PARMBLK *pb );			/* underscored title */
+int16 CDECL A_boxed( PARMBLK *pb );
 
 /*
  *		USERDEFs Service routines
@@ -1470,25 +1470,25 @@ INT16 CDECL A_boxed( PARMBLK *pb );
  *				Object Services for USERDEF 'A_ftext'
  */
 
-#define AUO_FTFONT				(300)						/* Set Font, INT16 * */
-#define AUO_FTHEIGHT				(301)						/* Set Height, INT16 * */
-#define AUO_FTCOLOR				(302)						/* Set Color, INT16 * */
-#define AUO_FTEFFECTS			(303)						/* Set Effects, INT16 * */
+#define AUO_FTFONT				(300)						/* Set Font, int16 * */
+#define AUO_FTHEIGHT				(301)						/* Set Height, int16 * */
+#define AUO_FTCOLOR				(302)						/* Set Color, int16 * */
+#define AUO_FTEFFECTS			(303)						/* Set Effects, int16 * */
 #define AUO_FTLEFT				(304)						/* Set leftalign */
 #define AUO_FTRIGHT				(305)						/* Set right align */
 #define AUO_FTCENTER				(306)						/* Set center align */
 #define AUO_FTBLOCK				(307)						/* Set block align */
-INT16 Auo_ftext( OBJECT* entry, INT16 task, void* in_out );
-INT16 Auo_string( OBJECT* entry, INT16 task, void* in_out );
+int16 Auo_ftext( OBJECT* entry, int16 task, void* in_out );
+int16 Auo_string( OBJECT* entry, int16 task, void* in_out );
 
 #define AUO_CYCPOPUP				(400)						/* set popup string */
-#define AUO_CYCINDEX				(401)						/* set index, INT16 * */
-#define AUO_CYCGETINDEX			(402)						/* return actual index, INT16 * */
-INT16 Auo_cycle( OBJECT* entry, INT16 task, void* in_out );
+#define AUO_CYCINDEX				(401)						/* set index, int16 * */
+#define AUO_CYCGETINDEX			(402)						/* return actual index, int16 * */
+int16 Auo_cycle( OBJECT* entry, int16 task, void* in_out );
 void Aus_cycle( void );
 
 #define AUO_PICMFDB				(500)						/* take MFDB, will not copy MFDB */
-INT16 Auo_picture( OBJECT* entry, INT16 task, void* in_out );
+int16 Auo_picture( OBJECT* entry, int16 task, void* in_out );
 
 /*
  *  Box-Edit
@@ -1556,7 +1556,7 @@ typedef struct
 #define BEM_TIME12			(25)	/* Std(2):Min(2):sek(2) max 12 Stunden */
 #define BEM_TIME24			(26)	/* Std(2):Min(2):sek(2) max 24 Stunden */
 
-INT16 Auo_boxed( OBJECT *entry, INT16 task, void *in_out );
+int16 Auo_boxed( OBJECT *entry, int16 task, void *in_out );
 void Aus_boxed( void );
 
 /*
@@ -1567,20 +1567,20 @@ void Aus_boxed( void );
 long Ash_prog( char* path, char* command, char** env );
 
 /* Load and initialize an ACS-Module (returns OK or FAIL) */
-INT16 Ash_module( char* path );
+int16 Ash_module( char* path );
 
 /* Standard-Error-Handler */
-void Ash_error( INT16 messerr, void *para );
+void Ash_error( int16 messerr, void *para );
 
 /* Returns cyclic D&D-Partners, init act with NULL, end is NULL */
 A_dd *Ash_nextdd( A_dd *act );
 
 /* sendet DD-Partnern (mit Typ type) oder unter MTOS/MagiC */
-/* allen (type<0) den 8 INT16-langen Messageblock */
-INT16	Ash_sendall( INT16 *mess, long type );
+/* allen (type<0) den 8 int16-langen Messageblock */
+int16	Ash_sendall( int16 *mess, long type );
 
 /* Looks for 'cookie' and writes its Value in val (returns TRUE on success) */
-INT16 Ash_getcookie( long cookie, void *value );
+int16 Ash_getcookie( long cookie, void *value );
 
 /* looks for 'char' in Env and returns value */
 char *Ash_getenv( const char *var );
@@ -1676,7 +1676,7 @@ void DEBUG_MEM( void* defective );
 	#define NK_DEL       0x1f           /* Delete            */
 	
    /* terminator for key code tables */
-	#define NK_TERM      ((INT16)(NKF_FUNC | NK_INVALID))
+	#define NK_TERM      ((int16)(NKF_FUNC | NK_INVALID))
 	
 	/* ASCII codes less than 32 */
 	/* not supported by ACS, just for general purpose */
@@ -1719,14 +1719,14 @@ void DEBUG_MEM( void* defective );
 	 * PROTOTYPES
 	 */
 	
-	INT16 nkc_tconv( long toskey );
-	INT16 nkc_gconv( INT16 gemkey );
-	long nkc_n2tos( INT16 nkcode );
-	INT16 nkc_n2gem( INT16 nkcode );
-	INT16 nkc_kstate( void );
-	INT16 nkc_cmp( INT16 refkey,INT16 kcode );
-	INT16 nkc_tolower( INT16 key );
-	INT16 nkc_toupper( INT16 key );
+	int16 nkc_tconv( long toskey );
+	int16 nkc_gconv( int16 gemkey );
+	long nkc_n2tos( int16 nkcode );
+	int16 nkc_n2gem( int16 nkcode );
+	int16 nkc_kstate( void );
+	int16 nkc_cmp( int16 refkey,int16 kcode );
+	int16 nkc_tolower( int16 key );
+	int16 nkc_toupper( int16 key );
 
 #endif      /* #ifndef __NKCC */
 
@@ -1751,7 +1751,7 @@ void DEBUG_MEM( void* defective );
 #define		EXT '.'						/* Extension Trenner */
 
 /* turns filedrv or Dgetdrv if non-exist */
-INT16 Af_2drv( const char *file );
+int16 Af_2drv( const char *file );
 
 /* Returns Path of file or "\\"	in dest and back */
 char *Af_2path( char *dest, const char *file );
@@ -1766,7 +1766,7 @@ char *Af_2fullname( char *dest, const char *file );
 char *Af_2ext( char *dest, const char *file );
 
 /* Builds full Pathfilename, missing Parts were added to dest and back */
-char *Af_buildname( char *dest, INT16 drv, const char *path,
+char *Af_buildname( char *dest, int16 drv, const char *path,
 			const char *name, const char *ext );
 
 /* Changes the extension of a filename */
@@ -1795,12 +1795,12 @@ void Ascrp_clear( const char *ext );
 /* Reads from clipboard SCRAP."ext" or first Scrap-file  */
 /* If buffer==NULL, only Length will be returned, Buffer */
 /* and real ext are returned and TRUE, if all is ok      */
-INT16	Ascrp_get( char *ext, void **buffer, long *len );
+int16	Ascrp_get( char *ext, void **buffer, long *len );
 
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */
 /* to a possibly existing file. -> TRUE if all is ok */
-INT16	Ascrp_put (char *ext, void *buffer, long len, INT16 append );
+int16	Ascrp_put (char *ext, void *buffer, long len, int16 append );
 
 /******************************************************************************/
 /*																										*/
@@ -1809,16 +1809,16 @@ INT16	Ascrp_put (char *ext, void *buffer, long len, INT16 append );
 /******************************************************************************/
 
 /* Eine lineare Liste erzeugen */
-ULinListe *Alu_create( void );
-void Alu_delete( ULinListe *liste );
+ULinList *Alu_create( void );
+void Alu_delete( ULinList *liste );
 
 /* Diverse Standard-Such-Funktionen */
-INT16 Alu_ptrCmp( void *para, void *elem );
-INT16 Alu_longCmp( void *para, void *elem );
-INT16 Alu_intCmp( void *para, void *elem );
-INT16 Alu_charCmp( void *para, void *elem );
-INT16 Alu_strCmp( void *para, void *elem );
-INT16 Alu_striCmp( void *para, void *elem );
+int16 Alu_ptrCmp( void *para, void *elem );
+int16 Alu_longCmp( void *para, void *elem );
+int16 Alu_intCmp( void *para, void *elem );
+int16 Alu_charCmp( void *para, void *elem );
+int16 Alu_strCmp( void *para, void *elem );
+int16 Alu_striCmp( void *para, void *elem );
 
 /******************************************************************************/
 /*																										*/
@@ -1826,13 +1826,13 @@ INT16 Alu_striCmp( void *para, void *elem );
 /*																										*/
 /******************************************************************************/
 
-UConfig *Acfg_create( const UCfgInfo *info, INT16 load );
+UConfig *Acfg_create( const UCfgInfo *info, int16 load );
 void Acfg_delete( UConfig *config );
 void Acfg_clear( UConfig *cfg, const UCfgInfo *info );
 void Acfg_clearGroup( UConfig *config );
-INT16 Acfg_load( UConfig *config, const char *filename );
-INT16 Acfg_save( UConfig *config, const char *filename );
-INT16 Acfg_isChanged( UConfig *config );
+int16 Acfg_load( UConfig *config, const char *filename );
+int16 Acfg_save( UConfig *config, const char *filename );
+int16 Acfg_isChanged( UConfig *config );
 char *Acfg_getValue( UConfig *config, const char *kategorie,
 		const char *name, char *value );
 char *Acfg_setValue( UConfig *config, const char *kategorie,
@@ -1842,20 +1842,20 @@ char *Acfg_clearValue( UConfig *config, const char *kategorie,
 long Acfg_getLong( UConfig *config, const char *kategorie, const char *name );
 long Acfg_setLong( UConfig *config, const char *kategorie,
 			const char *name, const long value );
-INT16 Acfg_getBool( UConfig *config, const char *kategorie, const char *name );
-INT16 Acfg_setBool( UConfig *config, const char *kategorie,
-			const char *name, const INT16 value );
+int16 Acfg_getBool( UConfig *config, const char *kategorie, const char *name );
+int16 Acfg_setBool( UConfig *config, const char *kategorie,
+			const char *name, const int16 value );
 void Acfg_clearHeader( UConfig *config );
-INT16 Acfg_headAnzahl( UConfig *config );
-char **Acfg_setHeader( UConfig *config, INT16 anzahl, const char **head_lines );
+int16 Acfg_headAnzahl( UConfig *config );
+char **Acfg_setHeader( UConfig *config, int16 anzahl, const char **head_lines );
 char **Acfg_getHeader( UConfig *config, char **head_lines );
-INT16 Acfg_grpAnzahl( UConfig *config );
-char *Acfg_grpName( UConfig *config, INT16 grp_nr, char *name );
-INT16 Acfg_strAnzahl( UConfig *config, const INT16 grp_nr );
-char *Acfg_strName( UConfig *config, const INT16 grp_nr, const INT16 str_nr, char *name );
-char *Acfg_strValue( UConfig *config, const INT16 grp_nr, const INT16 str_nr, char *value );
-INT16 Acfg_strIsComment( UConfig *config, const INT16 grp_nr, const INT16 str_nr );
-INT16 Acfg_isCfgfile( UConfig *config, const char *filename );
+int16 Acfg_grpAnzahl( UConfig *config );
+char *Acfg_grpName( UConfig *config, int16 grp_nr, char *name );
+int16 Acfg_strAnzahl( UConfig *config, const int16 grp_nr );
+char *Acfg_strName( UConfig *config, const int16 grp_nr, const int16 str_nr, char *name );
+char *Acfg_strValue( UConfig *config, const int16 grp_nr, const int16 str_nr, char *value );
+int16 Acfg_strIsComment( UConfig *config, const int16 grp_nr, const int16 str_nr );
+int16 Acfg_isCfgfile( UConfig *config, const char *filename );
 
 UCfgInfo *Acfg_createInfo( void );
 void Acfg_deleteInfo( UCfgInfo *info );
