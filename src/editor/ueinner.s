@@ -293,7 +293,7 @@ J13:
 		dc.w edin_pos_8-J13
 		dc.w edin_pos_9-J13
 edin_pos_4:
-		lea.l      -733(a2),a1
+		lea.l      POS_TEXT0-POP_POSSEL(a2),a1
 		moveq.l    #19,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -301,7 +301,7 @@ edin_pos_4:
 		bra        edin_pos_3
 edin_pos_5:
 		ori.l      #0x01000000,(a5)
-		lea.l      -729(a2),a1
+		lea.l      POS_TEXT1-POP_POSSEL(a2),a1
 		moveq.l    #19,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -309,7 +309,7 @@ edin_pos_5:
 		bra.s      edin_pos_3
 edin_pos_6:
 		ori.l      #0x02000000,(a5)
-		lea.l      -725(a2),a1
+		lea.l      POS_TEXT2-POP_POSSEL(a2),a1
 		moveq.l    #19,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -317,7 +317,7 @@ edin_pos_6:
 		bra.s      edin_pos_3
 edin_pos_7:
 		ori.l      #0x04000000,(a5)
-		lea.l      -721(a2),a1
+		lea.l      POS_TEXT3-POP_POSSEL(a2),a1
 		moveq.l    #19,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -325,7 +325,7 @@ edin_pos_7:
 		bra.s      edin_pos_3
 edin_pos_8:
 		ori.l      #0x05000000,(a5)
-		lea.l      -717(a2),a1
+		lea.l      POS_TEXT4-POP_POSSEL(a2),a1
 		moveq.l    #19,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -333,7 +333,7 @@ edin_pos_8:
 		bra.s      edin_pos_3
 edin_pos_9:
 		ori.l      #0x06000000,(a5)
-		lea.l      -713(a2),a1
+		lea.l      POS_TEXT5-POP_POSSEL(a2),a1
 		moveq.l    #19,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0

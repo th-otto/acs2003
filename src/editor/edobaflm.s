@@ -261,7 +261,7 @@ set_aflags:
 		subq.w     #2,a7
 		clr.w      d3
 		lea.l      sm,a3
-		lea.l      -2208(a3),a0
+		lea.l      ED_AFLAGS-sm(a3),a0
 		jsr        Aob_create
 		movea.l    a0,a2
 		move.l     a2,d0
@@ -306,7 +306,7 @@ set_aflags_3:
 		lea.l      wintitel,a5
 		cmp.w      #0x0001,d3
 		bne.s      set_aflags_5
-		lea.l      -3350(a3),a1
+		lea.l      title1-sm(a3),a1
 		movea.l    a5,a0
 		jsr        strcpy
 		move.w     8(a4),d0
@@ -332,7 +332,7 @@ set_aflags_9:
 		bra.s      set_aflags_10
 set_aflags_5:
 		move.w     d3,-(a7)
-		lea.l      -3340(a3),a1
+		lea.l      titlemore-sm(a3),a1
 		movea.l    a5,a0
 		jsr        sprintf
 		addq.w     #2,a7

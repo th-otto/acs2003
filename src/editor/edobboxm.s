@@ -234,7 +234,7 @@ edbo_type_6:
 		movea.l    (a4),a0
 		movea.l    604(a0),a1
 		move.w     #$0014,54(a1)
-		lea.l      -2315(a2),a1
+		lea.l      TYPE0-POP_TYPESEL(a2),a1
 		moveq.l    #7,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -244,7 +244,7 @@ edbo_type_7:
 		movea.l    (a4),a0
 		movea.l    604(a0),a1
 		move.w     #$0019,54(a1)
-		lea.l      -2309(a2),a1
+		lea.l      TYPE1-POP_TYPESEL(a2),a1
 		moveq.l    #7,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -254,7 +254,7 @@ edbo_type_8:
 		movea.l    (a4),a0
 		movea.l    604(a0),a1
 		move.w     #$001B,54(a1)
-		lea.l      -2301(a2),a1
+		lea.l      TYPE2-POP_TYPESEL(a2),a1
 		moveq.l    #7,d0
 		movea.l    (a4),a0
 		movea.l    604(a0),a0
@@ -321,11 +321,11 @@ set_box:
 		subq.w     #2,a7
 		movea.l    a0,a3
 		lea.l      colour_text,a4
-		lea.l      64(a4),a0
+		lea.l      xae2b0-colour_text(a4),a0
 		lea.l      (a7),a1
 		move.b     (a0)+,(a1)+
 		move.b     (a0)+,(a1)+
-		lea.l      -1416(a4),a0
+		lea.l      ED_BOX-colour_text(a4),a0
 		jsr        Aob_create
 		movea.l    a0,a2
 		move.l     a2,d0
@@ -359,19 +359,19 @@ set_box_1:
 		beq.s      set_box_5
 		bra.s      set_box_6
 set_box_3:
-		lea.l      -3827(a4),a1
+		lea.l      TYPE0-colour_text(a4),a1
 		moveq.l    #7,d0
 		movea.l    a2,a0
 		jsr        Aob_puttext
 		bra.s      set_box_6
 set_box_4:
-		lea.l      -3821(a4),a1
+		lea.l      TYPE1-colour_text(a4),a1
 		moveq.l    #7,d0
 		movea.l    a2,a0
 		jsr        Aob_puttext
 		bra.s      set_box_6
 set_box_5:
-		lea.l      -3813(a4),a1
+		lea.l      TYPE2-colour_text(a4),a1
 		moveq.l    #7,d0
 		movea.l    a2,a0
 		jsr        Aob_puttext
@@ -429,8 +429,8 @@ set_box_6:
 		and.w      #$0001,d0
 		lsl.w      #7,d0
 		or.w       d0,62(a2)
-		move.l     a2,66(a4)
-		lea.l      66(a4),a0
+		move.l     a2,sm-colour_text(a4)
+		lea.l      sm-colour_text(a4),a0
 set_box_2:
 		addq.w     #2,a7
 		movem.l    (a7)+,d3/a2-a4
@@ -2463,6 +2463,7 @@ colour_text:
 		dc.l COLOUR13
 		dc.l COLOUR14
 		dc.l COLOUR15
+xae2b0:
 		dc.w $2000
 sm:
 		dc.w $0000
