@@ -1,95 +1,103 @@
 /******************************************************************************/
-/*																										*/
-/*		ACS					Application Construction System								*/
-/*		REVISION:			18. November 2001													*/
-/*		DESCRIPTION:		Headerdatei der îffentlichen Konstanten, Strukturen	*/
-/*								und Routinen des Entwicklungssystems ACSpro				*/
-/*								fÅr TOS- und TTP-Programme										*/
-/*																										*/
-/* (c) 1991-2001 Stefan Bachert, Oliver Michalak, Martin ElsÑsser					*/
+/*                                                                            */
+/*    ACS               Application Construction System                       */
+/*    REVISION:         18. November 2001                                     */
+/*    DESCRIPTION:      Headerdatei der îffentlichen Konstanten, Strukturen   */
+/*                      und Routinen des Entwicklungssystems ACSpro           */
+/*                      fÅr TOS- und TTP-Programme                            */
+/*                                                                            */
+/* (c) 1991-2001 Stefan Bachert, Oliver Michalak, Martin ElsÑsser             */
 /******************************************************************************/
 
 #ifndef __ACS_TOOL__
-	#define __ACS_TOOL__
+   #define __ACS_TOOL__
 
 /******************************************************************************/
-/*																										*/
-/*	Benîtigte Header-Dateien einlesen														*/
-/*																										*/
+/*                                                                            */
+/* Benîtigte Header-Dateien einlesen                                          */
+/*                                                                            */
 /******************************************************************************/
 
-#include		<acstype.h>
-#include		<acstos.h>
+#include    <acstype.h>
+#include    <acstos.h>
 
 /* Ggf. die Cookie-Konstanten einlesen */
 #ifndef _cookie_h_
-	#include <acscook.h>
+   #include <acscook.h>
 #endif
 
 /******************************************************************************/
-/*																										*/
-/* Globale ACS-Datentypen 																		*/
-/*																										*/
+/*                                                                            */
+/* Globale ACS-Datentypen                                                     */
+/*                                                                            */
 /******************************************************************************/
 
+/* Ein Element einer einfach verketten linearen Liste */
+typedef struct _ACSNextStruct
+{
+   struct _ACSNextStruct *next;
+   void *data;
+} A_ListNextStruct;
+
+/******************************************************************************/
 /* Infos Åber die Listen der freien Blîcke von ACS */
 typedef struct
 {
-	int32 block_size;
-	char *descr_text;
-	int16 max_liste;
-	int16 aktuell_liste;
-	int16 max_used;
-	int16 opt_anzahl;
+   int32 block_size;
+   char *descr_text;
+   int16 max_liste;
+   int16 aktuell_liste;
+   int16 max_used;
+   int16 opt_anzahl;
 } MemFreeBlockStat;
 
 /******************************************************************************/
-/*																										*/
-/* ACS-standardisierte Fehlermeldungsnummern												*/
-/*																										*/
+/*                                                                            */
+/* ACS-standardisierte Fehlermeldungsnummern                                  */
+/*                                                                            */
 /******************************************************************************/
 
-#define AD_COUNT					34
+#define AD_COUNT              34
 
-#define AD_GENERAL   			0
-#define AD_GENERAL_STR 			1
-#define AD_COLREZ					2     
-#define AD_CREATE_IO				3
-#define AD_CREATE_STR 			4
-#define AD_DEFECTIVE_MEM		5
-#define AD_ERR_ACC   			6
-#define AD_ERR_MESS  			7
-#define AD_ERR_WINDOW			8
-#define AD_ERR_WISLOT			9
-#define AD_GEN_IO 	   		10
-#define AD_GEN_MEM  				11
-#define AD_GEN_MOD   			12
-#define AD_GEN_MOD_STR 			13
-#define AD_LOAD_MOD				14
-#define AD_LOAD_MOD_STR			15
-#define AD_MEM_MOD				16
-#define AD_MEM_MOD_STR			17
-#define AD_ODD_MEM				18
-#define AD_OPEN_IO				19
-#define AD_OPEN_STR				20
-#define AD_OUT_OF_MEM			21
-#define AD_PORT					22
-#define AD_RANGE_MEM				23
-#define AD_READ_IO				24
-#define AD_READ_STR				25
-#define AD_VER_MOD				26
-#define AD_VER_MOD_STR 			27
-#define AD_WRITE_IO				28
-#define AD_WRITE_STR				29
-#define AD_A_ATT					30
-#define AD_A_QUEST				31
-#define AD_A_STOP					32
-#define AD_A_TIMER				33
+#define AD_GENERAL            0
+#define AD_GENERAL_STR        1
+#define AD_COLREZ             2
+#define AD_CREATE_IO          3
+#define AD_CREATE_STR         4
+#define AD_DEFECTIVE_MEM      5
+#define AD_ERR_ACC            6
+#define AD_ERR_MESS           7
+#define AD_ERR_WINDOW         8
+#define AD_ERR_WISLOT         9
+#define AD_GEN_IO             10
+#define AD_GEN_MEM            11
+#define AD_GEN_MOD            12
+#define AD_GEN_MOD_STR        13
+#define AD_LOAD_MOD           14
+#define AD_LOAD_MOD_STR       15
+#define AD_MEM_MOD            16
+#define AD_MEM_MOD_STR        17
+#define AD_ODD_MEM            18
+#define AD_OPEN_IO            19
+#define AD_OPEN_STR           20
+#define AD_OUT_OF_MEM         21
+#define AD_PORT               22
+#define AD_RANGE_MEM          23
+#define AD_READ_IO            24
+#define AD_READ_STR           25
+#define AD_VER_MOD            26
+#define AD_VER_MOD_STR        27
+#define AD_WRITE_IO           28
+#define AD_WRITE_STR          29
+#define AD_A_ATT              30
+#define AD_A_QUEST            31
+#define AD_A_STOP             32
+#define AD_A_TIMER            33
 
 /******************************************************************************/
-/*																										*/
-/* Die Konfigurations-String-UnterstÅtzung												*/
-/*																										*/
+/*                                                                            */
+/* Die Konfigurations-String-UnterstÅtzung                                    */
+/*                                                                            */
 /******************************************************************************/
 
 /* Maximale LÑnge eines Config-Strings insgesamt! */
@@ -99,76 +107,123 @@ typedef struct
 
 typedef struct
 {
-	char *dateiname;
-	char *comment;
-	char *env_praefix;
-	int16 casesensitiv;
-	int16 file_sensitiv;
-	int16 file_buffer;
+   char *dateiname;
+   char *comment;
+   char *env_praefix;
+   int16 casesensitiv;
+   int16 file_sensitiv;
+   int16 file_buffer;
 } UCfgInfo;
 
 /******************************************************************************/
-/*																										*/
-/* Zeichensatzwandelungen Åber KEYTAB														*/
-/*																										*/
+/*                                                                            */
+/* Zeichensatzwandelungen Åber KEYTAB                                         */
+/*                                                                            */
 /******************************************************************************/
 
 #ifdef __KEYTAB_LIB__
-	#error "KeyTab-Library is in ACS implemented!"
+   #error "KeyTab-Library is in ACS implemented!"
 #endif
 #ifdef KEYTAB_H
-	#error "KeyTab-Header-File is in ACS included!"
+   #error "KeyTab-Header-File is in ACS included!"
 #endif
+
+/******************************************************************************/
+/*                                                                            */
+/* Globale Konstanten fÅr KEYTAB - Global Constants for KEYTAB                */
+/*                                                                            */
+/******************************************************************************/
+
+/* Konstanten fÅr die Short-Informationen der 8-Bit-ZeichensÑtze */
+/* Constants for the Short-Informations of the 8-Bit-Charsets   */
+#define KT_SINFO_8BIT_ASK_MAX_SINFO       KT_SINFO_8BIT_MAX
+#define KT_SINFO_8BIT_ASK_MAX_CINFO       KT_CINFO_8BIT_MAX
+#define KT_SINFO_8BIT_CONV_ATARI          2
+#define KT_SINFO_8BIT_CONV_UNICODE        3
+#define KT_SINFO_8BIT_MAX                 3
+
+/******************************************************************************/
+
+/* Konstanten fÅr die String-Informationen der 8-Bit-ZeichensÑtze */
+/* Constants for the String-Informations of the 8-Bit-Charsets    */
+#define KT_CINFO_8BIT_LONGNAME            0
+#define KT_CINFO_8BIT_SHORTNAME           1
+#define KT_CINFO_8BIT_MAX                 1
+
+/******************************************************************************/
+
+/* Konstanten fÅr die Short-Informationen der Unicode-Codierungen */
+/* Constants for the Short-Informations of the Unicode-Encodings  */
+#define KT_SINFO_UNICODE_ASK_MAX_SINFO    KT_SINFO_UNICODE_MAX
+#define KT_SINFO_UNICODE_ASK_MAX_CINFO    KT_CINFO_UNICODE_MAX
+#define KT_SINFO_UNICODE_MAX              1
+
+/******************************************************************************/
+
+/* Konstanten fÅr die String-Informationen der Unicode-Codierungen */
+/* Constants for the String-Informations of the Unicode-Encodings  */
+#define KT_CINFO_UNICODE_LONGNAME         0
+#define KT_CINFO_UNICODE_SHORTNAME        1
+#define KT_CINFO_UNICODE_MAX              1
+
+/******************************************************************************/
+
+/* Konstanten fÅr maximale LÑnge der Zeichensatz-Namen */
+/* Constants for the maximum length of charsets names  */
+#define KT_MAX_LONG_NAME   38
+#define KT_MAX_SHORT_NAME  14
 
 /******************************************************************************/
 
 /* Daten-Struktur, auf die der KEYT-Cookie verweist */
 typedef struct
 {
-	int32  magic;
-	int32 size;
-	int16 cdecl (*GetExpMaxNr)(void);
-	int32 resvd0;
-	int16 cdecl (*GetExpNrFromId)(int16 eid);
-	char  cdecl (*CharAtari2X)(int16 enr, char echr);
-	int16 cdecl (*GetImpMaxNr)(void);
-	int32 resvd1;
-	int16 cdecl (*GetImpNrFromId)(int16 iid);
-	char  cdecl (*CharX2Atari)(int16 inr, char ichr);
-	void  cdecl (*BlockAtari2X)(int16 enr, int32 elen, char *echrs);
-	void  cdecl (*BlockX2Atari)(int16 inr, int32 ilen, char *ichrs);
-	char *cdecl (*GetExpNameFromNr)(int16 enr);
-	char *cdecl (*GetImpNameFromNr)(int16 inr);
-	char *cdecl (*GetExpShortNameFromNr)(int16 enr);
-	char *cdecl (*GetImpShortNameFromNr)(int16 inr);
-	int16 cdecl (*GetRelease)(void);
-	int16 cdecl (*GetExpIdFromNr)(int16 enr);
-	int16 cdecl (*GetImpIdFromNr)(int16 inr);
-	int16 cdecl (*GetExpNrFromName)(char *name);
-	int16 cdecl (*GetImpNrFromName)(char *name);
-	int32 cdecl (*GetEuro)(void);
-	int16 cdecl	(*CharX2Unicode)(int16 nr, char ch);
-	char cdecl	(*CharUnicode2X)(int16 nr, int16 unicode);
-	void cdecl (*BlockX2Unicode)( int16 *unicode, int16 nr, char *x_chrs, int32 len );
-	void cdecl (*BlockUnicode2X)( char *x_chrs, int16 nr, int16 *unicode, int32 len );
-	int16 cdecl (*GetExpMinNr)(void);
-	int16 cdecl (*GetImpMinNr)(void);
-	int32  cdecl (*CharXUtf2Unicode)( int16 nr, char *string, int32 len, int16 *read_chars );
-	char *cdecl (*CharUnicode2XUtf)( int16 nr, int32 lunicode, char *result, int16 *used_chars );
-	void cdecl (*BlockXUtf2Unicode)( int16 *unicode, int32 *uni_len, int16 nr,
-						char *string, int32 len );
-	void cdecl (*BlockUnicode2XUtf)( char *string, int32 *str_len, int16 nr,
-						int16 *unicode, int32 len );
-	void cdecl (*BlockXUtf2U2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
-						char *source, int32 src_len, int16 src_nr );
-	void cdecl (*BlockXUtf2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
-						char *source, int32 src_len, int16 src_nr );
+   int32  magic;
+   int32 size;
+   int16 cdecl (*GetExpMaxNr)(void);
+   int32 resvd0;
+   int16 cdecl (*GetExpNrFromId)(int16 eid);
+   char  cdecl (*CharAtari2X)(int16 enr, char echr);
+   int16 cdecl (*GetImpMaxNr)(void);
+   int32 resvd1;
+   int16 cdecl (*GetImpNrFromId)(int16 iid);
+   char  cdecl (*CharX2Atari)(int16 inr, char ichr);
+   void  cdecl (*BlockAtari2X)(int16 enr, int32 elen, char *echrs);
+   void  cdecl (*BlockX2Atari)(int16 inr, int32 ilen, char *ichrs);
+   char *cdecl (*GetExpNameFromNr)(int16 enr);
+   char *cdecl (*GetImpNameFromNr)(int16 inr);
+   char *cdecl (*GetExpShortNameFromNr)(int16 enr);
+   char *cdecl (*GetImpShortNameFromNr)(int16 inr);
+   int16 cdecl (*GetRelease)(void);
+   int16 cdecl (*GetExpIdFromNr)(int16 enr);
+   int16 cdecl (*GetImpIdFromNr)(int16 inr);
+   int16 cdecl (*GetExpNrFromName)(char *name);
+   int16 cdecl (*GetImpNrFromName)(char *name);
+   int32 cdecl (*GetEuro)(void);
+   int16 cdecl (*CharX2Unicode)(int16 nr, char ch);
+   char cdecl  (*CharUnicode2X)(int16 nr, int16 unicode);
+   void cdecl (*BlockX2Unicode)( int16 *unicode, int16 nr, char *x_chrs, int32 len );
+   void cdecl (*BlockUnicode2X)( char *x_chrs, int16 nr, int16 *unicode, int32 len );
+   int16 cdecl (*GetExpMinNr)(void);
+   int16 cdecl (*GetImpMinNr)(void);
+   int32  cdecl (*CharXUtf2Unicode)( int16 nr, char *string, int32 len, int16 *read_chars );
+   char *cdecl (*CharUnicode2XUtf)( int16 nr, int32 lunicode, char *result, int16 *used_chars );
+   void cdecl (*BlockXUtf2Unicode)( int16 *unicode, int32 *uni_len, int16 nr,
+                  char *string, int32 len );
+   void cdecl (*BlockUnicode2XUtf)( char *string, int32 *str_len, int16 nr,
+                  int16 *unicode, int32 len );
+   void cdecl (*BlockXUtf2U2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
+                  char *source, int32 src_len, int16 src_nr );
+   void cdecl (*BlockXUtf2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
+                  char *source, int32 src_len, int16 src_nr );
+   int16 cdecl (*GetInfoShort)( int16 nr, int16 what, int16 *info );
+   int16 cdecl (*GetInfoString)( int16 nr, int16 what, char *info, int16 maxLen );
 } KEYT;
-	
+
 /******************************************************************************/
-/*																										*/
-/* Die lineare unsortierte Liste																*/
-/*																										*/
+/*                                                                            */
+/* Die lineare unsortierte Liste                                              */
+/*                                                                            */
 /******************************************************************************/
 
 typedef void (*A_ListFree)(void *elem);
@@ -187,72 +242,145 @@ typedef void (*A_ListWork)(void *para, void *elem);
 
 /******************************************************************************/
 
-typedef struct _ULinListe
+typedef struct _ULinList
 {
-	/* Der Zeiger auf die lineare Liste (soll nur ACS-intern verwendet werden!) */
-	void *ListData;
-	
-	/* Zeiger auf Funktion, die die Elemente der Lste freigeben kann */
-	void (*freeElem)( void *elem );
-	
-	/* Die lineare Liste leeren, alle Daten freigeben */
-	void (*clear)( _ll *liste );
-	
-	/* AnhÑngen neuer Daten an die Liste */
-	int16 (*append)( _ll *liste, void *new_data );
-	
-	/* EinfÅgen neuer Daten in die Liste */
-	int16 (*insert)( _ll *liste, void *new_data, int16 before_obj );
-	
-	/* Daten aus der Liste lîschen und zurÅckgeben */
-	void *(*delete)( _ll *liste, int16 data_nr );
-	
-	/* Alle Daten aus der Liste lîschen, die eine bestimmte Bedingung erfÅllen     */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
-	/* Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
-	long (*deleteFor)( _ll *liste, void *para,
-			int16 (*to_delete)(void *para, void *elem) );
-	
-	/* Die Daten Nummer nr holen */
-	void *(*search)( _ll *liste, long nr );
-	
-	/* Daten suchen, die eine Bedingung erfÅllen                                 */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in found Åber- */
-	/* gebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien)   */
-	void *(*searchFor)( _ll *liste, void *para, int16 (*found)(void *para,void *elem) );
-	
-	/* Das erste Element der Liste */
-	void *(*first)( _ll *liste );
-	
-	/* Das letzte Element der Liste */
-	void *(*last)( _ll *liste );
-	
-	/* Das aktuelle Element der Liste */
-	void *(*akt)( _ll *liste );
-	
-	/* Die Nummer des aktuellen Elementes der Liste */
-	long (*aktNr)( _ll *liste );
-	
-	/* Das aktuelle Element vorwÑrts/rÅckwÑrts bewegen */
-	void *(*skip)( _ll *liste, int16 vorwaerts, long amount );
-	
-	/* Die Anzahl der verwalteten Daten */
-	long (*count)( _ll *liste);
-	
-	/* Die Anzahl der Daten ermitteln, die eine Bedingung erfÅllen */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in found Åber- */
-	/* gebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien)   */
-	long (*countFor)( _ll *liste, void *para, int16 (*count)(void *para, void *elem) );
-	
-	/* FÅr alle Daten, die eine Bedingung erfÅllen, eine Aktion ausfÅhren               */
-	/* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
-	/* work Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
-	void (*doFor)( _ll *liste, void *para, 
-				int16 (*to_work)(void *para, void *elem),
-				void (*work)(void *para, void *elem) );
-} ULinListe;
+   /* Der Zeiger auf die lineare Liste (soll nur ACS-intern verwendet werden!) */
+   void *ListData;
+
+   /* Zeiger auf Funktion, die die Elemente der Liste freigeben kann */
+   void (*freeElem)( void *elem );
+
+   /* Die lineare Liste leeren, alle Daten freigeben */
+   void (*clear)( _ll *liste );
+
+   /* AnhÑngen neuer Daten an die Liste */
+   int16 (*append)( _ll *liste, void *new_data );
+
+   /* EinfÅgen neuer Daten in die Liste */
+   int16 (*insert)( _ll *liste, void *new_data, int16 before_obj );
+
+   /* Daten aus der Liste lîschen und zurÅckgeben */
+   void *(*delete)( _ll *liste, int16 data_nr );
+
+   /* Alle Daten aus der Liste lîschen, die eine bestimmte Bedingung erfÅllen     */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
+   /* Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
+   int32 (*deleteFor)( _ll *liste, void *para,
+         int16 (*to_delete)(void *para, void *elem) );
+
+   /* Die Daten Nummer nr holen */
+   void *(*search)( _ll *liste, int32 nr );
+
+   /* Daten suchen, die eine Bedingung erfÅllen                                 */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in found Åber- */
+   /* gebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien)   */
+   void *(*searchFor)( _ll *liste, void *para, int16 (*found)(void *para,void *elem) );
+
+   /* Das erste Element der Liste */
+   void *(*first)( _ll *liste );
+
+   /* Das letzte Element der Liste */
+   void *(*last)( _ll *liste );
+
+   /* Das aktuelle Element der Liste */
+   void *(*akt)( _ll *liste );
+
+   /* Die Nummer des aktuellen Elementes der Liste */
+   int32 (*aktNr)( _ll *liste );
+
+   /* Das aktuelle Element vorwÑrts/rÅckwÑrts bewegen */
+   void *(*skip)( _ll *liste, int16 vorwaerts, int32 amount );
+
+   /* Die Anzahl der verwalteten Daten */
+   int32 (*count)( _ll *liste);
+
+   /* Die Anzahl der Daten ermitteln, die eine Bedingung erfÅllen */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in found Åber- */
+   /* gebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien)   */
+   int32 (*countFor)( _ll *liste, void *para, int16 (*count)(void *para, void *elem) );
+
+   /* FÅr alle Daten, die eine Bedingung erfÅllen, eine Aktion ausfÅhren               */
+   /* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
+   /* work Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
+   void (*doFor)( _ll *liste, void *para,
+            int16 (*to_work)(void *para, void *elem),
+            void (*work)(void *para, void *elem) );
+} ULinList;
+
+/* For backward compatibility only */
+#define ULinListe ULinlist
 
 #undef _ll
+
+/******************************************************************************/
+/*                                                                            */
+/* Der Stack (Stapel)                                                         */
+/*                                                                            */
+/******************************************************************************/
+
+/* AbkÅrzung, da Zeiger auf Struktur in deren Deklaration benîtigt werden */
+#define _ss struct _Stack
+
+typedef struct _Stack
+{
+   /* Der Zeiger auf die Elemente des Stacks (sollte nur ACS-intern verwendet werden!) */
+   A_ListNextStruct *StackData;
+
+   /* Zeiger auf Funktion, die die Elemente der Liste freigeben kann */
+   void (*freeElem)( void *elem );
+
+   /* Ein Element auf den Stack legen */
+   boolean (*push)( _ss *stack, void *elem );
+
+   /* Das oberste ELement vom Stack holen */
+   void *(*pop)( _ss *stack );
+
+   /* PrÅfen, ob der Stack leer ist */
+   boolean (*isEmpty)( _ss *stack );
+
+   /* Die Anzahl der Elemente auf dem Stack ermitteln */
+   int32 (*count)( _ss *stack );
+
+   /* Den Stack komplett lîschen */
+   void (*clear)( _ss *stack );
+} Stack;
+
+#undef _ss
+
+/******************************************************************************/
+/*                                                                            */
+/* Die Warteschlange (Queue)                                                  */
+/*                                                                            */
+/******************************************************************************/
+
+/* AbkÅrzung, da Zeiger auf Struktur in deren Deklaration benîtigt werden */
+#define _sq struct _Queue
+
+typedef struct _Queue
+{
+   /* Der Zeiger auf die Queue (soll nur ACS-intern verwendet werden!) */
+   void *QueueData;
+
+   /* Zeiger auf Funktion, die die Elemente der Liste freigeben kann */
+   void (*freeElem)( void *elem );
+
+   /* Ein Element in die Queue stellen */
+   boolean (*put)( _sq *queue, void *elem );
+
+   /* Das erste Element aus der Queue holen */
+   void *(*get)( _sq *queue );
+
+   /* PrÅfen, ob die Queue leer ist */
+   boolean (*isEmpty)( _sq *queue );
+
+   /* Die Anzahl der Elemente in der Queue ermitteln */
+   int32 (*count)( _sq *queue );
+
+   /* Die Queue komplett lîschen */
+   void (*clear)( _sq *queue );
+} Queue;
+
+#undef _sq
 
 /******************************************************************************/
 
@@ -260,129 +388,129 @@ typedef struct _ULinListe
 #define __PS__ (127 + 1)
 
 /******************************************************************************/
-/*																										*/
-/* Zentrale ACS-Initialisierungs-Variablen												*/
-/*	Die globale Variable ACSconfig vom Typ Aconfig muû im Programm existieren	*/
-/*																										*/
+/*                                                                            */
+/* Zentrale ACS-Initialisierungs-Variablen                                    */
+/* Die globale Variable ACSconfig vom Typ Aconfig muû im Programm existieren  */
+/*                                                                            */
 /******************************************************************************/
 
 typedef struct
 {
-	UCfgInfo CfgInfo;					/* Infos zum Laden der Cfg-Strings */
-	char *BaseName;					/* Zu verwendender Name fÅr basename */
-	
-	/* Informationen fÅr das Scannen der Kommandozeile */
-	int16 (*ACSwrgOpt)( const char ch);	/* Fehlerhafte Optionen melden */
-	int16 optionScanning;			/* Flag, ob die Optionen gescannt werden sollen */
-	char *optionBeginChars;			/* Alle Zeichen, die eine Option einleiten */
-	char *optionsAllowed;			/* Alle Optionen, die erlaubt sind */
-	char *optionsWithParam;			/* Alle erlaubten Optionen, die einen Parameter benîtigen */
-	
-	/* Start-Funktionen fÅr ACS */
-	int16 (*ACSinit0)( void );		/* Initialisierung vor der ACS-Initialisierung */
-	int16 (*ACSinit)( void );		/* Initialisierung nach der ACS-Initialisierung */
-	int16 (*ACSwork)(void);			/* Die Funktion, die die Arbeit des Programmes macht */
-	
-	/* Initialisierungszeiger in ACSblk fÅr ACS-Interna */
-	void (*ACSaboutme)( void );	/* Der Eintrag 'öber mich' */
+   UCfgInfo CfgInfo;             /* Infos zum Laden der Cfg-Strings */
+   char *BaseName;               /* Zu verwendender Name fÅr basename */
+
+   /* Informationen fÅr das Scannen der Kommandozeile */
+   int16 (*ACSwrgOpt)( const char ch); /* Fehlerhafte Optionen melden */
+   int16 optionScanning;         /* Flag, ob die Optionen gescannt werden sollen */
+   char *optionBeginChars;       /* Alle Zeichen, die eine Option einleiten */
+   char *optionsAllowed;         /* Alle Optionen, die erlaubt sind */
+   char *optionsWithParam;       /* Alle erlaubten Optionen, die einen Parameter benîtigen */
+
+   /* Start-Funktionen fÅr ACS */
+   int16 (*ACSinit0)( void );    /* Initialisierung vor der ACS-Initialisierung */
+   int16 (*ACSinit)( void );     /* Initialisierung nach der ACS-Initialisierung */
+   int16 (*ACSwork)(void);       /* Die Funktion, die die Arbeit des Programmes macht */
+
+   /* Initialisierungszeiger in ACSblk fÅr ACS-Interna */
+   void (*ACSaboutme)( void );   /* Der Eintrag 'öber mich' */
 } Aconfig;
 
 /******************************************************************************/
-/*																										*/
-/* Zentrale ACS-Variablen																		*/
-/* Diese Variablen sind bereits vor Aufruf von ACSinit0 initialisiert			*/
-/*																										*/
+/*                                                                            */
+/* Zentrale ACS-Variablen                                                     */
+/* Diese Variablen sind bereits vor Aufruf von ACSinit0 initialisiert         */
+/*                                                                            */
 /******************************************************************************/
 
 typedef struct
 {
-	/* Pathes */
-	char appname [__PS__];			/* application complete name */
-	char apppath [__PS__];			/* application path */
-	char apppara [__PS__];			/* application parameter */
-	char appfrom [__PS__];			/* application called from */
-	char basename[20];				/* basename appname without extention */
-	char cfg_path [__PS__];			/* config path initially = apppath*/
-	char scrp_path [__PS__];		/* initialised scrap-path */
-	char separator[256];				/* Worttrenner */
-	int16	argc;							/* parameter passed to main routine */
-	char **argv;						/* argument list */
-	char **env;							/* environment */
-	void (*ACSerror)(int16 errmess, void *para);		/* Error-Routine */
-	void (*ACSaboutme)(void);		/* call used for 'about me' */
-	int16 (*ACSinit0)(void);		/* Initialisierung vor der ACS-Initialisierung */
-	int16 (*ACSinit)(void);			/* Initialisierung nach der ACS-Initialisierung */
-	
-	/* Cfg-Strings des Programmes */
-	UConfig *cfg;
-	
-	/* Infos zum Scannen der Kommandozeile */
-	int16 (*ACScmderror)(void);	/* Fehler beim Scannen der Optionen */
-	int16 (*ACSwrgOpt)(const char ch);	/* Fehlerhafte Optionen melden */
-	char optionBeginChars[10];		/* Alle Zeichen, die eine Option einleiten */
-	char optionsAllowed[256];		/* Alle Optionen, die erlaubt sind */
-	char optionsWithParam[256];	/* Alle erlaubten Optionen, die einen Parameter benîtigen */
-	char *options[256];				/* FÅr jede der mîglichen Optionen ein String (Wert) */
-	ULinListe *params;				/* Die "reinen" Parameter */
-	
-	/* Der MagiC-Cookie */
-	MAGX_COOKIE *MagiCCookie;
-	
-	/* Der N.AES-Cookie */
-	N_AESINFO *NAesCookie;
+   /* Pathes */
+   char appname [__PS__];        /* application complete name */
+   char apppath [__PS__];        /* application path */
+   char apppara [__PS__];        /* application parameter */
+   char appfrom [__PS__];        /* application called from */
+   char basename[20];            /* basename appname without extention */
+   char cfg_path [__PS__];       /* config path initially = apppath*/
+   char scrp_path [__PS__];      /* initialised scrap-path */
+   char separator[256];          /* Worttrenner */
+   int16 argc;                   /* parameter passed to main routine */
+   char **argv;                  /* argument list */
+   char **env;                   /* environment */
+   void (*ACSerror)(int16 errmess, void *para);    /* Error-Routine */
+   void (*ACSaboutme)(void);     /* call used for 'about me' */
+   int16 (*ACSinit0)(void);      /* Initialisierung vor der ACS-Initialisierung */
+   int16 (*ACSinit)(void);       /* Initialisierung nach der ACS-Initialisierung */
+
+   /* Cfg-Strings des Programmes */
+   UConfig *cfg;
+
+   /* Infos zum Scannen der Kommandozeile */
+   int16 (*ACScmderror)(void);   /* Fehler beim Scannen der Optionen */
+   int16 (*ACSwrgOpt)(const char ch);  /* Fehlerhafte Optionen melden */
+   char optionBeginChars[10];    /* Alle Zeichen, die eine Option einleiten */
+   char optionsAllowed[256];     /* Alle Optionen, die erlaubt sind */
+   char optionsWithParam[256];   /* Alle erlaubten Optionen, die einen Parameter benîtigen */
+   char *options[256];           /* FÅr jede der mîglichen Optionen ein String (Wert) */
+   ULinList *params;             /* Die "reinen" Parameter */
+
+   /* Der MagiC-Cookie */
+   MAGX_COOKIE *MagiCCookie;
+
+   /* Der N.AES-Cookie */
+   N_AESINFO *NAesCookie;
 } Ablk;
 
 /******************************************************************************/
-/*																										*/
-/* ACSerror-Fehler-Nummern																		*/
-/*																										*/
+/*                                                                            */
+/* ACSerror-Fehler-Nummern                                                    */
+/*                                                                            */
 /******************************************************************************/
 
 /* For Std-Message-Numbers, not-NULL-Pointer in Para means */
 /* printable Text, which can be added to the normal message */
 
-#define AE_GEN						(1)			/* general error occured */
-#define AE_GEN_MEM				(2)			/* general memory error, prefer following specialized numbers */
-#define AE_OUT_OF_MEM			(3)			/* not enough memory */
-#define AE_DEFECTIVE_MEM		(4)			/* mem orgininally not allocated */
-#define AE_RANGE_MEM				(5)			/* to much or not enough memory handled */
-#define AE_ODD_MEM				(6)			/* odd mem-adress */
-#define AE_GEN_IO					(7)			/* general io-error, prefer following specialized numbers */
-#define AE_OPEN_IO				(8)			/* IO-channel-open error */
-#define AE_CREATE_IO				(9)			/* IO-channel-create error */
-#define AE_WRITE_IO				(10)			/* IO-channel-write error */
-#define AE_READ_IO				(11)			/* IO-channel-read error */
-#define AE_GEN_MOD				(12)			/* general modul-error */
-#define AE_LOAD_MOD				(13)			/* Pexec-3 Load-error */
-#define AE_VER_MOD				(14)			/* wrong version */
-#define AE_MEM_MOD				(15)			/* mshrink-error */
-#define AE_PORT					(16)			/* io-port-error */
-#define AE_COLORS					(17)			/* incorrect amounts of colors */
-#define AE_REZ						(18)			/* unsupported resolution */
-#define AE_VDI						(19)			/* VDI-error (like version-numbers) */
-#define AE_AES						(20)			/* AES-Error (like 'MTos required') */
-#define AE_IMG						(21)			/* IMG-Depack-error */
-#define AE_DD_WARN				(22)			/* D&D-Warning */
-#define AE_DD_ERR					(23)			/* D&D-Error */
+#define AE_GEN                (1)         /* general error occured */
+#define AE_GEN_MEM            (2)         /* general memory error, prefer following specialized numbers */
+#define AE_OUT_OF_MEM         (3)         /* not enough memory */
+#define AE_DEFECTIVE_MEM      (4)         /* mem orgininally not allocated */
+#define AE_RANGE_MEM          (5)         /* to much or not enough memory handled */
+#define AE_ODD_MEM            (6)         /* odd mem-adress */
+#define AE_GEN_IO             (7)         /* general io-error, prefer following specialized numbers */
+#define AE_OPEN_IO            (8)         /* IO-channel-open error */
+#define AE_CREATE_IO          (9)         /* IO-channel-create error */
+#define AE_WRITE_IO           (10)        /* IO-channel-write error */
+#define AE_READ_IO            (11)        /* IO-channel-read error */
+#define AE_GEN_MOD            (12)        /* general modul-error */
+#define AE_LOAD_MOD           (13)        /* Pexec-3 Load-error */
+#define AE_VER_MOD            (14)        /* wrong version */
+#define AE_MEM_MOD            (15)        /* mshrink-error */
+#define AE_PORT               (16)        /* io-port-error */
+#define AE_COLORS             (17)        /* incorrect amounts of colors */
+#define AE_REZ                (18)        /* unsupported resolution */
+#define AE_VDI                (19)        /* VDI-error (like version-numbers) */
+#define AE_AES                (20)        /* AES-Error (like 'MTos required') */
+#define AE_IMG                (21)        /* IMG-Depack-error */
+#define AE_DD_WARN            (22)        /* D&D-Warning */
+#define AE_DD_ERR             (23)        /* D&D-Error */
 
 /******************************************************************************/
-/*																										*/
-/*																										*/
-/*																										*/
+/*                                                                            */
+/*                                                                            */
+/*                                                                            */
 /******************************************************************************/
 
 /******************************************************************************/
-/*																										*/
-/* Init entry after ACS initializing														*/
-/*																										*/
+/*                                                                            */
+/* Init entry after ACS initializing                                          */
+/*                                                                            */
 /******************************************************************************/
 
 int16 ACSinit( void );
 
 /******************************************************************************/
-/*																										*/
-/* Die globalen ACS-Variablen																	*/
-/*																										*/
+/*                                                                            */
+/* Die globalen ACS-Variablen                                                 */
+/*                                                                            */
 /******************************************************************************/
 
 /* Diese globale Variable enthÑlt alle globalen */
@@ -391,22 +519,22 @@ extern Ablk *ACSblk;
 
 /******************************************************************************/
 
-/*	Diese globale Variable muû bereitgestellt werden! */
+/* Diese globale Variable muû bereitgestellt werden! */
 extern Aconfig ACSconfig;
 
 /******************************************************************************/
-/*																										*/
-/* Unterschiedliche Variablen bzw. Funktionen fÅr Nicht-Module und Module		*/
-/*																										*/
+/*                                                                            */
+/* Unterschiedliche Variablen bzw. Funktionen fÅr Nicht-Module und Module     */
+/*                                                                            */
 /******************************************************************************/
 
 /* pre init */
 int16 ACSinit0 (void);
 
 /******************************************************************************/
-/*																										*/
-/* Char- und String-Support-Funktionen														*/
-/*																										*/
+/*                                                                            */
+/* Char- und String-Support-Funktionen                                        */
+/*                                                                            */
 /******************************************************************************/
 
 /* Zeichen in Groû-/Kleinbuchstaben wandeln (incl. Umlaute!) */
@@ -476,9 +604,9 @@ char *Ast_mergeASCIIZZ( const char **strings, const int16 anzahl, const int16 gl
 void Ast_deleteAry( char **strings, int16 anzahl );
 
 /******************************************************************************/
-/*																										*/
-/* Funktionen zur Zeichensatz-Wandelung mittels KEYTAB								*/
-/*																										*/
+/*                                                                            */
+/* Funktionen zur Zeichensatz-Wandelung mittels KEYTAB                        */
+/*                                                                            */
 /******************************************************************************/
 
 /* Funktionen rund um den CookieJar - Functions around the CookieJar   */
@@ -502,6 +630,8 @@ int16 Akt_getExpIdFromNr( int16 nr );
 int16 Akt_getImpIdFromNr( int16 nr );
 int16 Akt_getExpNrFromName( char *name );
 int16 Akt_getImpNrFromName( char *name );
+int16 Akt_getInfoShort( int16 nr, int16 what, int16 *info );
+int16 Akt_getInfoString( int16 nr, int16 what, char *info, int16 max_len );
 
 /******************************************************************************/
 
@@ -535,9 +665,9 @@ char *Akt_StringXUtf2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *sou
 int32 Akt_getEuro( void );
 
 /******************************************************************************/
-/*																										*/
-/* Funktionen rund ums Speicher-Management												*/
-/*																										*/
+/*                                                                            */
+/* Funktionen rund ums Speicher-Management                                    */
+/*                                                                            */
 /******************************************************************************/
 
 /* Speicher allozieren */
@@ -559,16 +689,16 @@ int16 Ax_setRecycleSize( int32 size, int16 amount, char *beschreibung );
 MemFreeBlockStat *Ax_getRecycleStat( int16 *anzahl );
 
 /******************************************************************************/
-/*																										*/
-/* Utility-Funktionen																			*/
-/*																										*/
+/*                                                                            */
+/* Utility-Funktionen                                                         */
+/*                                                                            */
 /******************************************************************************/
 
 typedef struct afilelist
 {
-	char *file;
-	struct afilelist *next;
-	XATTR attribs;
+   char *file;
+   struct afilelist *next;
+   XATTR attribs;
 } A_FileList;
 
 /******************************************************************************/
@@ -579,15 +709,15 @@ uint32 Ash_gettimer( void );
 /******************************************************************************/
 
 /* Kommandozeile parsen und Optionen befÅllen */
-int16 Ash_cmdParsen( char *options[256], const int16 argc, char **argv, 
-			const char *optionBeginChars, const char *optionsAllowed,
-			const char *optionsWithParam, int16 (*wrongOption)(const char c),
-			ULinListe *params );
+int16 Ash_cmdParsen( char *options[256], const int16 argc, char **argv,
+         const char *optionBeginChars, const char *optionsAllowed,
+         const char *optionsWithParam, int16 (*wrongOption)(const char c),
+         ULinList *params );
 
 /******************************************************************************/
-/*																										*/
-/* ACS-System- und Shell-Funktionen															*/
-/*																										*/
+/*                                                                            */
+/* ACS-System- und Shell-Funktionen                                           */
+/*                                                                            */
 /******************************************************************************/
 
 /* Call an other Program (return retvalue of Pexec(Basepage)) */
@@ -606,41 +736,41 @@ int16 Ash_getcookie( long cookie, void *value );
 char *Ash_getenv( const char *var );
 
 /******************************************************************************/
-/*																										*/
-/* NÅtzliche Makros																				*/
-/*																										*/
+/*                                                                            */
+/* NÅtzliche Makros                                                           */
+/*                                                                            */
 /******************************************************************************/
 
 /* Minimum */
 #ifndef min
-	#define min(A,B) (((A) < (B)) ? (A) : (B))
+   #define min(A,B) (((A) < (B)) ? (A) : (B))
 #endif
 
 /******************************************************************************/
 
 /* Maximum */
 #ifndef max
-	#define max(A,B) (((A) > (B)) ? (A) : (B))
+   #define max(A,B) (((A) > (B)) ? (A) : (B))
 #endif
 
 /******************************************************************************/
-/*																										*/
-/* Funktionen rund um Dateien und Verzeichnisse											*/
-/*																										*/
+/*                                                                            */
+/* Funktionen rund um Dateien und Verzeichnisse                               */
+/*                                                                            */
 /******************************************************************************/
 
-#define		EOS	'\0'			/* Ende des Strings */
-#define		DIR	'\\'			/* Directory-Trenner */
-#define		DEV	':'			/* Device-Trenner */
-#define		SEP	'/'			/* Called by Trenner */
-#define		EXT	'.'			/* Extension Trenner */
+#define     EOS   '\0'        /* Ende des Strings */
+#define     DIR   '\\'        /* Directory-Trenner */
+#define     DEV   ':'         /* Device-Trenner */
+#define     SEP   '/'         /* Called by Trenner */
+#define     EXT   '.'         /* Extension Trenner */
 
 /******************************************************************************/
 
 /* turns filedrv or Dgetdrv if non-exist */
 int16 Af_2drv( const char *file );
 
-/* Returns Path of file or "\\"	in dest and back */
+/* Returns Path of file or "\\"  in dest and back */
 char *Af_2path( char *dest, const char *file );
 
 /* Returns DEMO from [d:][bla\\bli]\\DEMO[.EXT] or "" in dest and back */
@@ -654,7 +784,7 @@ char *Af_2ext( char *dest, const char *file );
 
 /* Builds full Pathfilename, missing Parts were added to dest and back */
 char *Af_buildname( char *dest, int16 drv, const char *path,
-			const char *name, const char *ext );
+         const char *name, const char *ext );
 
 /* Changes the extension of a filename */
 char *Af_chgExt( char *file, char *new_ext );
@@ -672,9 +802,9 @@ char *Af_next( A_FileList *fileinfo );
 char *Af_cfgfile( char* file );
 
 /******************************************************************************/
-/*																										*/
-/* Funktionen rund um das GEM-Clipboard													*/
-/*																										*/
+/*                                                                            */
+/* Funktionen rund um das GEM-Clipboard                                       */
+/*                                                                            */
 /******************************************************************************/
 
 /* Deletes SCRAP."ext" or SCRAP.*, if ext=NULL */
@@ -683,22 +813,22 @@ void Ascrp_clear( const char *ext );
 /* Reads from clipboard SCRAP."ext" or first Scrap-file  */
 /* If buffer==NULL, only Length will be returned, Buffer */
 /* and real ext are returned and TRUE, if all is ok      */
-int16	Ascrp_get( char *ext, void **buffer, long *len );
+int16 Ascrp_get( char *ext, void **buffer, long *len );
 
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */
 /* to a possibly existing file. -> TRUE if all is ok */
-int16	Ascrp_put (char *ext, void *buffer, long len, int16 append );
+int16 Ascrp_put (char *ext, void *buffer, long len, int16 append );
 
 /******************************************************************************/
-/*																										*/
-/* Die lineare unsortierte Liste																*/
-/*																										*/
+/*                                                                            */
+/* Die lineare unsortierte Liste                                              */
+/*                                                                            */
 /******************************************************************************/
 
 /* Eine lineare Liste erzeugen */
-ULinListe *Alu_create( void );
-void Alu_delete( ULinListe *liste );
+ULinList *Alu_create( void );
+void Alu_delete( ULinList *liste );
 
 /* Diverse Standard-Such-Funktionen */
 int16 Alu_ptrCmp( void *para, void *elem );
@@ -709,9 +839,19 @@ int16 Alu_strCmp( void *para, void *elem );
 int16 Alu_striCmp( void *para, void *elem );
 
 /******************************************************************************/
-/*																										*/
-/* Die Konfigurations-String-UnterstÅtzung												*/
-/*																										*/
+/*                                                                            */
+/* Der Stack (Stapel)                                                         */
+/*                                                                            */
+/******************************************************************************/
+
+/* Einen Stack erzeugen und wieder vernichten */
+Stack *As_create( void );
+void As_delete( Stack *stack );
+
+/******************************************************************************/
+/*                                                                            */
+/* Die Konfigurations-String-UnterstÅtzung                                    */
+/*                                                                            */
 /******************************************************************************/
 
 UConfig *Acfg_create( const UCfgInfo *info, int16 load );
@@ -725,11 +865,11 @@ int16 Acfg_isChanged( UConfig *config );
 
 /* Achtung: Alle Flags zwischen 0x0002 und 0x0800 sind */
 /*          fÅr zukÅnftige Zwecke fÅr ACS reserviert!  */
-#define ACFG_AUTOSAVE	0x0001	/* Cfg-Strings am Ende automatisch sichern */
-#define ACFG_USER1		0x1000	/* User-Flag, Funktion frei definierbar    */
-#define ACFG_USER2		0x2000	/* User-Flag, Funktion frei definierbar    */
-#define ACFG_USER3		0x4000	/* User-Flag, Funktion frei definierbar    */
-#define ACFG_USER4		0x8000	/* User-Flag, Funktion frei definierbar    */
+#define ACFG_AUTOSAVE   0x0001   /* Cfg-Strings am Ende automatisch sichern */
+#define ACFG_USER1      0x1000   /* User-Flag, Funktion frei definierbar    */
+#define ACFG_USER2      0x2000   /* User-Flag, Funktion frei definierbar    */
+#define ACFG_USER3      0x4000   /* User-Flag, Funktion frei definierbar    */
+#define ACFG_USER4      0x8000   /* User-Flag, Funktion frei definierbar    */
 
 /* Flags setzen (set>0), lîschen (set=0) oder nur anfragen (set<0) */
 int16 Acfg_flags( UConfig *config, int16 flags, int16 set );
@@ -738,21 +878,21 @@ int16 Acfg_isGroupPresent( UConfig *config, const char *kategorie );
 int16 Acfg_isStringPresent( UConfig *config, const char *kategorie, const char *name );
 
 char *Acfg_getValue( UConfig *config, const char *kategorie,
-		const char *name, char *value );
+      const char *name, char *value );
 char *Acfg_setValue( UConfig *config, const char *kategorie,
-		const char *name, const char *value );
+      const char *name, const char *value );
 char *Acfg_clearValue( UConfig *config, const char *kategorie,
-		const char *name, char *value );
+      const char *name, char *value );
 char *Acfg_getString( UConfig *config, const char *kategorie, const char *name );
 long Acfg_getLong( UConfig *config, const char *kategorie, const char *name );
 long Acfg_setLong( UConfig *config, const char *kategorie,
-			const char *name, const long value );
+         const char *name, const long value );
 char Acfg_getChar( UConfig *config, const char *kategorie, const char *name );
 char Acfg_setChar( UConfig *config, const char *kategorie,
-			const char *name, const char value );
+         const char *name, const char value );
 int16 Acfg_getBool( UConfig *config, const char *kategorie, const char *name );
 int16 Acfg_setBool( UConfig *config, const char *kategorie,
-			const char *name, const int16 value );
+         const char *name, const int16 value );
 
 void Acfg_clearHeader( UConfig *config );
 int16 Acfg_headAnzahl( UConfig *config );
@@ -774,4 +914,4 @@ UCfgInfo *Acfg_setInfo( UConfig *config, const UCfgInfo *info );
 UCfgInfo *Acfg_getInfo( UConfig *config, UCfgInfo *info );
 UCfgInfo *Acfg_copyInfo( UCfgInfo *dest, const UCfgInfo *source );
 
-#endif			/* #ifndef __ACS__ */
+#endif         /* #ifndef __ACS__ */

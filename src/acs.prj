@@ -22,6 +22,7 @@ acs.app
 .C[ -K- ]		; Default Char is signed
 .C[ -P  ]		; Absolute calls
 .C[ -G- ]		; optimize for speed
+.C[ -S- ]       ; no standard stack frames
 
 ; Flags fÅr die Debug-Version
 .C[ -D_DEBUG -DDEBUG ]
@@ -125,54 +126,7 @@ acsplus\fontsel.s [-M-]
 acsplus\list.s
 acsplus\proto.s
 
-lib\main.s
-lib\initterm.s
-lib\vdi_data.s
-lib\mygemdos.s [-S]
-lib\nkcc_s.s
-lib\nkcc.s
-lib\config.s
-lib\string.s
-lib\drag.s
-lib\event.s
-lib\fileutil.s
-lib\memory.s
-lib\menu.s
-lib\mouse.s
-lib\object.s
-lib\wobject.s
-lib\backplan.s
-lib\window.s
-lib\shelutil.s
-lib\thermo.s
-lib\keytab.s [-M-]
-lib\messages\msgserv.s [-M-]
-lib\messages\screen.s
-lib\messages\xacc.s [-M-]
-lib\messages\av.s
-lib\messages\dd.s
-lib\messages\dhst.s
-lib\messages\bubble.s [-M-]
-lib\messages\gemscr.s
-lib\messages\olga.s
-lib\messages\stguide.s
-lib\messages\seproto.s
-lib\messages\ssp.s
-lib\messages\pc_help.s [-M-]
-lib\userdef\userobj.s
-lib\userdef\userobj2.s
-lib\userdef\ftext.s [-M-]
-lib\userdef\cycle.s [-M-]
-lib\userdef\picture.s
-lib\userdef\boxed.s [-M-]
-lib\utility\util.s
-lib\utility\date.s
-lib\wdialog\filesel.s
-lib\wdialog\printsel.s
-lib\wdialog\fontsel.s
-lib\listen\ulinlist.s
-lib\modul\modul.s
-lib\modul\modulold.s
+lib\acslib.prj
 
 vdi\vdi_s.s
 vdi\vdi_c.c

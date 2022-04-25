@@ -1,5 +1,5 @@
 /*
- *          UO_ACS.H          (c) 1991, 1992 Stefan Bachert    
+ *          UO_ACS.H          (c) 1991, 1992 Stefan Bachert
  *          Revision:            1.7.1996
  *          Types for reloadable Userdefs for ACS-Editors
  *

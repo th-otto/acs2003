@@ -46,8 +46,8 @@ nkc_init:
 		move.w     #$0294,d0
 		rts
 
-	.globl nkc_tos2
-nkc_tos2:
+	.globl nkc_tos2n
+nkc_tos2n:
 		movem.l    d3-d4,-(a7)
 		move.l     d0,d1
 		swap       d1
@@ -193,8 +193,8 @@ nkc_tos2:
 		movem.l    (a7)+,d3-d4
 		rts
 
-	.globl nkc_n2to
-nkc_n2to:
+	.globl nkc_n2tos
+nkc_n2tos:
 		move.w     d0,d1
 		and.w      #$8C00,d1
 		cmp.w      #$8000,d1

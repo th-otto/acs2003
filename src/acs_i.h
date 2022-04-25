@@ -1,4 +1,5 @@
 #include <acs.h>
+#include <acsaes.h>
 
 #define __PS__ 128
 
@@ -763,6 +764,36 @@ typedef struct {
 	const int16 *versionen;
 } funcListe;
 
+
+/*
+ * lib/modul/modul.c
+ */
+void Ax_mterm(void *);
+
+
+/*
+ * lib/modul/modulold.c
+ */
+extern funcListe funcs[];
+extern long const funcsAnz;
+extern void *ACS233[];
+extern void *ACS230[];
+
+AUSERBLK *Aus_create23x(const AUSERBLK *user);
+OBJECT *Aob_create23x(const OBJECT *parent);
+Awindow *Awi_create23x(const Awindow *x);
+void Awi_arrowed23x(Awindow *window, int16 which, int16 amount);
+char *Af_first230(const char *start, A_FileList *fileinfo);
+char *Af_next230(A_FileList *fileinfo);
+
+
+/*
+ * lib/mygemdos.s
+ */
+void accgemdos(void);
+void oldgemdos(void);
+
+ 
 /*
  * messages/msgserv.c
  */
@@ -772,3 +803,4 @@ extern ULinListe *globProtData;
  * list/edmouse.c
  */
 extern LISTPARM list_mouse;
+

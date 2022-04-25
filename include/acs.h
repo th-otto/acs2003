@@ -696,10 +696,8 @@ typedef struct _Stack
 /*                                                                            */
 /******************************************************************************/
 
-/* AbkÅrzung, da Zeiger auf Struktur in deren Deklaration benîtigt werden */
-#define _sq struct _Queue
-
-typedef struct _Queue
+typedef struct _Queue Queue;
+struct _Queue
 {
    /* Der Zeiger auf die Queue (soll nur ACS-intern verwendet werden!) */
    void *QueueData;
@@ -708,22 +706,20 @@ typedef struct _Queue
    void (*freeElem)( void *elem );
 
    /* Ein Element in die Queue stellen */
-   boolean (*put)( _sq *queue, void *elem );
+   boolean (*put)( Queue *queue, void *elem );
 
    /* Das erste Element aus der Queue holen */
-   void *(*get)( _sq *queue );
+   void *(*get)( Queue *queue );
 
    /* PrÅfen, ob die Queue leer ist */
-   boolean (*isEmpty)( _sq *queue );
+   boolean (*isEmpty)( Queue *queue );
 
    /* Die Anzahl der Elemente in der Queue ermitteln */
-   int32 (*count)( _sq *queue );
+   int32 (*count)( Queue *queue );
 
    /* Die Queue komplett lîschen */
-   void (*clear)( _sq *queue );
-} Queue;
-
-#undef _sq
+   void (*clear)( Queue *queue );
+};
 
 /******************************************************************************/
 /*                                                                            */
@@ -739,105 +735,106 @@ typedef struct _Queue
 
 typedef struct
 {
-   /* AES */
-   int16 gl_apid;                /* AES application ID */
-   int16 phys_handle;            /* workstation for aes */
-   int16 gl_wattr;               /* attribut width */
-   int16 gl_hattr;               /* attribut height */
-   Axywh desk;                   /* desktop limits XYWH */
+    /* AES */
+    /*    0 */ int16 gl_apid;                            /* AES application ID */
+    /*    2 */ int16 phys_handle;                        /* workstation for aes */
+    /*    4 */ int16 gl_wattr;                           /* attribut width */
+    /*    6 */ int16 gl_hattr;                           /* attribut height */
+    /*    8 */ Axywh desk;                               /* desktop limits XYWH */
 
-   /* VDI */
-   int16 vdi_handle;             /* virtual VDI workstation for ACS */
-   int16 gl_wbox;                /* cell width of standard char */
-   int16 gl_hbox;                /* cell height of standard char */
-   int16 gl_wchar;               /* max width of standard char*/
-   int16 gl_hchar;               /* max height of standard char */
-   int16 ncolors;                /* number of colors (2=mono) */
-   int16 nplanes;                /* number of colors expressed in planes */
+    /* VDI */
+    /*   16 */ int16 vdi_handle;                         /* virtual VDI workstation for ACS */
+    /*   18 */ int16 gl_wbox;                            /* cell width of standard char */
+    /*   20 */ int16 gl_hbox;                            /* cell height of standard char */
+    /*   22 */ int16 gl_wchar;                           /* max width of standard char*/
+    /*   24 */ int16 gl_hchar;                           /* max height of standard char */
+    /*   26 */ int16 ncolors;                            /* number of colors (2=mono) */
+    /*   28 */ int16 nplanes;                            /* number of colors expressed in planes */
 
-   /* Pathes */
-   char appname [__PS__];        /* application complete name */
-   char apppath [__PS__];        /* application path */
-   char apppara [__PS__];        /* application parameter */
-   char appfrom [__PS__];        /* application called from */
-   char basename[20];            /* basename appname without extention */
+    /* Pathes */
+    /*   30 */ char appname [__PS__];                    /* application complete name */
+    /*  158 */ char apppath [__PS__];                    /* application path */
+    /*  286 */ char apppara [__PS__];                    /* application parameter */
+    /*  414 */ char appfrom [__PS__];                    /* application called from */
+    /*  542 */ char basename[20];                        /* basename appname without extention */
 
-   /* others */
-   int32 ev_mtcount;             /* Timerintervall in milli sec (initial 500 ms) */
-   int16 application;         /* runs as an application */
-   int16 multitask;           /* more than 1 applications possible */
-   int16 appexit;             /* application is in system termination mode */
-   Adescr *description;       /* surface description, pointer for late assignment */
-   Asel Aselect;              /* list of selected objects */
+    /* others */
+    /*  562 */ int32 ev_mtcount;                         /* Timerintervall in milli sec (initial 500 ms) */
+    /*  566 */ int16 application;                        /* runs as an application */
+    /*  568 */ int16 multitask;                          /* more than 1 applications possible */
+    /*  570 */ int16 appexit;                            /* application is in system termination mode */
+    /*  572 */ Adescr *description;                      /* surface description, pointer for late assignment */
+    /*  576 */ Asel Aselect;                             /* list of selected objects */
 
-   /* context during callback pointer values */
-   Awindow *ev_window;                       /* actual window */
-   OBJECT *ev_object;                        /* actual object tree */
-   int16 ev_obnr;                            /* actaul objectnumber, index */
-   int16 ev_mmox, ev_mmoy;                   /* Mouse position */
-   int16 ev_mmokstate;                       /* Keyboard state */
-   int16 dia_abort;                          /* Abort modal dialog */
-   MFDB screenMFDB;                          /* exactly this */
-   int16 apterm;                             /* AP_TERM received */
-   int16 *AESglobal;                         /* points to initialized (AES) global */
-   int16 fonts;                              /* count of available fonts */
-   int16 argc;                               /* parameter passed to main routine */
-   char **argv;                              /* argument list */
-   char **env;                               /* environment */
-   int16 fontid;                             /* Fontid for Userdefs */
-   int16 fheight;                            /* Height for Userdeffonts */
-   int16 fontsid;                            /* Fontid for Userdef (small) */
-   int16 fsheight;                           /* Height for Userdeffonts (small) */
-   void (*ACSterm) (void);                   /* called before terminating ACS */
-   void (*ACSaboutme) (void);                /* call used for 'about me' */
-   void (*ACSclose) (void);                  /* call used for 'Quit' */
-   void (*ACSmessage)(int16 *ev_mmgpbuf);    /* handle unprocessed messages */
-   void (*ACSmproto)(int16 *ev_mmgpbuf);     /* filter unprocessed messages */
-   void (*ACStimer)(void);                   /* called at end of event loop */
-   int16 (*ACSinit0)(void);                  /* pre init */
-   int16 dither;                             /* dither config */
-   void (*ACSkey)(int16 *kstate, int16 *key);/* filter keys */
-   void (*ACSbutton)(int16 *button, int16 *breturn);  /* filter mouse buttons */
-   void (*ACSmouse)(void);                   /* filter mouse moves (ev_mmox/y) */
-   void (*ACSwikey)(int16 *kstate, int16 *key);    /* filter keystroke before wi->keys call */
-   int16 ev_bmask;                           /* evnt_multi */
-   int16 ev_bstate;                          /* evnt_multi */
-   int16 ev_mmobutton;                       /* evnt_multi */
-   int16 ev_mbreturn;                        /* evnt_multi */
-   int16 ev_mkreturn;                        /* evnt_multi */
-   int16 ev_mbclicks;                        /* evnt_multi default 2 */
-   void (*DEBUG_MEM)(void *defective);       /* Debuggable */
-   char cfg_path [__PS__];                   /* config path initially = apppath*/
-   char scrp_path [__PS__];                  /* initialised scrap-path */
-   void (*ACSerror)(int16 errmess, void *para);    /* error-Routine */
-   int16 menu_id;                            /* ACC-Menu-ID or -1 */
-   char  *dd_name;                           /* global available name for DD-Protos */
-   char  *alert_name;                        /* own WinAlert-Name */
-   int16 mfsel_count;                        /* multi-Fsel-Counter */
-   char  separator[256];                     /* Worttrenner */
+    /* context during callback pointer values */
+    /*  600 */ Awindow *ev_window;                       /* actual window */
+    /*  604 */ OBJECT *ev_object;                        /* actual object tree */
+    /*  608 */ int16 ev_obnr;                            /* actual objectnumber, index */
+    /*  610 */ int16 ev_mmox, ev_mmoy;                   /* Mouse position */
+    /*  614 */ int16 ev_mmokstate;                       /* Keyboard state */
+    /*  616 */ int16 dia_abort;                          /* Abort modal dialog */
+    /*  618 */ MFDB screenMFDB;                          /* exactly this */
+    /*  638 */ int16 apterm;                             /* AP_TERM received */
+    /*  640 */ int16 *AESglobal;                         /* points to initialized (AES) global */
+    /*  644 */ int16 fonts;                              /* count of available fonts */
+    /*  646 */ int16 argc;                               /* parameter passed to main routine */
+    /*  648 */ char **argv;                              /* argument list */
+    /*  652 */ char **env;                               /* environment */
+    /*  656 */ int16 fontid;                             /* Fontid for Userdefs */
+    /*  658 */ int16 fheight;                            /* Height for Userdeffonts */
+    /*  660 */ int16 fontsid;                            /* Fontid for Userdef (small) */
+    /*  662 */ int16 fsheight;                           /* Height for Userdeffonts (small) */
+    /*  664 */ void (*ACSterm) (void);                   /* called before terminating ACS */
+    /*  668 */ void (*ACSaboutme) (void);                /* call used for 'about me' */
+    /*  672 */ void (*ACSclose) (void);                  /* call used for 'Quit' */
+    /*  676 */ void (*ACSmessage)(int16 *ev_mmgpbuf);    /* handle unprocessed messages */
+    /*  680 */ void (*ACSmproto)(int16 *ev_mmgpbuf);     /* filter unprocessed messages */
+    /*  684 */ void (*ACStimer)(void);                   /* called at end of event loop */
+    /*  688 */ int16 (*ACSinit0)(void);                  /* pre init */
+    /*  692 */ int16 dither;                             /* dither config */
+    /*  694 */ void (*ACSkey)(int16 *kstate, int16 *key);/* filter keys */
+    /*  698 */ void (*ACSbutton)(int16 *button, int16 *breturn);  /* filter mouse buttons */
+    /*  702 */ void (*ACSmouse)(void);                   /* filter mouse moves (ev_mmox/y) */
+    /*  706 */ void (*ACSwikey)(int16 *kstate, int16 *key);    /* filter keystroke before wi->keys call */
+    /*  710 */ int16 ev_bmask;                           /* evnt_multi */
+    /*  712 */ int16 ev_bstate;                          /* evnt_multi */
+    /*  714 */ int16 ev_mmobutton;                       /* evnt_multi */
+    /*  716 */ int16 ev_mbreturn;                        /* evnt_multi */
+    /*  718 */ int16 ev_mkreturn;                        /* evnt_multi */
+    /*  720 */ int16 ev_mbclicks;                        /* evnt_multi default 2 */
+    /*  722 */ void (*DEBUG_MEM)(void *defective);       /* Debuggable */
+    /*  726 */ char cfg_path [__PS__];                   /* config path initially = apppath*/
+    /*  854 */ char scrp_path [__PS__];                  /* initialised scrap-path */
+    /*  982 */ void (*ACSerror)(int16 errmess, void *para);    /* error-Routine */
+    /*  986 */ int16 menu_id;                            /* ACC-Menu-ID or -1 */
+    /*  988 */ char *dd_name;                            /* global available name for DD-Protos */
+    /*  992 */ char *alert_name;                         /* own WinAlert-Name */
+    /*  996 */ int16 mfsel_count;                        /* multi-Fsel-Counter */
+    /*  998 */ char separator[256];                      /* Worttrenner */
 
-   /* Langer Name der Applikation (u.a. fÅr GEMScript) */
-   char *AppLongName;
+    /* Langer Name der Applikation (u.a. fÅr GEMScript) */
+    /* 1254 */ char *AppLongName;
 
-   /* Die Config-Strings der Anwendung */
-   UConfig *cfg;
+    /* Die Config-Strings der Anwendung */
+    /* 1258 */ UConfig *cfg;
 
-   /* Allgemeine GEMScript-Funktion der Applikation */
-   int16 (*GEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );
+    /* Allgemeine GEMScript-Funktion der Applikation */
+    /* 1262 */ int16 (*GEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );
 
-   /* Erlaubte, d.h. freigeschaltete Dead-Keys aus der Menge ^'`π\"¯,/~ */
-   char ev_mkdead[10];
+    /* Erlaubte, d.h. freigeschaltete Dead-Keys aus der Menge ^'`π\"¯,/~ */
+    /* 1266 */ char ev_mkdead[10];
 
-   /* Einstellung, ob eine nicht verarbeitete "normale" Taste zusammen mit */
-   /* ALT oder CTRL als TastenkÅrzel fÅr Toolbar/Work-Objekt ausprobiert   */
-   /* werden soll */
-   int16 keyAltCtrlSwitch;
+    /* Einstellung, ob eine nicht verarbeitete "normale" Taste zusammen mit */
+    /* ALT oder CTRL als TastenkÅrzel fÅr Toolbar/Work-Objekt ausprobiert   */
+    /* werden soll */
+    /* 1276 */ int16 keyAltCtrlSwitch;
 
-   /* Der MagiC-Cookie */
-   MAGX_COOKIE *MagiCCookie;
+    /* Der MagiC-Cookie */
+    /* 1278 */ MAGX_COOKIE *MagiCCookie;
 
-   /* Der N.AES-Cookie */
-   N_AESINFO *NAesCookie;
+    /* Der N.AES-Cookie */
+    /* 1282 */ N_AESINFO *NAesCookie;
+    /* 1286 */
 } Ablk;
 
 /******************************************************************************/
@@ -2173,7 +2170,7 @@ void Aus_boxed( void );
 int32 Ash_prog( char *path, char *command, char **env );
 
 /* Load and initialize an ACS-Module (returns OK or FAIL) */
-int16 Ash_module( char* path );
+int16 Ash_module(const char *path);
 
 /* Standard-Error-Handler */
 void Ash_error( int16 messerr, void *para );
