@@ -37,6 +37,9 @@ acs.app
 ;.C[ -M- ]		; String Merging
 ;.C[ -R- ]		; Register Variables
 
+.S[-DCOUNTRY=1]
+.C[-DCOUNTRY=1]
+
 .S[-U]
 
 .L[-S=40960]
@@ -48,7 +51,7 @@ acsbase.s
 palette.s
 edbehave.s
 general.s
-about.s
+about.c
 edutil.s
 
 io\protocol.s

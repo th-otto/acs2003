@@ -783,6 +783,20 @@ typedef struct {
 
 
 /*
+ * about.c
+ */
+void ShowACSVersion(void);
+void ShowACSUpdate(void);
+void AboutGUIEditor(void);
+
+
+/*
+ * general.c
+ */
+extern void (*OldAboutMe)(void);
+
+
+/*
  * lib/main.c
  */
 extern char const _A_ERR_WISLOT[];
