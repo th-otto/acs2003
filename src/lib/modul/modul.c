@@ -1,6 +1,5 @@
-#define __COMPATIBLE_FKT__
 #include "acs_i.h"
-#include "acsvdi.h"
+#include <acsvdi.h>
 
 
 static void *oldbas = NULL;

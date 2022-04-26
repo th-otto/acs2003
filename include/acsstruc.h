@@ -1,6 +1,6 @@
 
-#define swd struct wd				/* local #undef */
-swd;										/* recursive use: Awindow */
+#define swd struct wd            /* local #undef */
+swd;                             /* recursive use: Awindow */
 
 /******************************************************************************/
 
@@ -15,28 +15,28 @@ typedef swd* (*Acreate)( void *x );
 /* Extended Object */
 typedef struct
 {
-	/* Action-Routine fÅr Exit, TouchExit or Doppelklick */
-	/*   0 */ Aaction click;
-	
-	/* Action-Routine fÅr Drag&Drop */
-	/*   4 */ Aaction drag;
-	
-	/* ob_flags, muû an gleicher Stelle wie in OBJECT stehen, wird geprÅft! */
-	/*   8 */ int16 ob_flags;
-	
-	/* Tastatur-Shortcut */
-	/*  10 */ int16 key;
-	
-	/* User-Pointer */
-	/*  12 */ void *userp1;
-	/*  16 */ void *userp2;
-	
-	/* Maus-Index fÅr dieses Feld */
-	/*  20 */ int16 mo_index;
-	
-	/* Objekt-Typ (nicht der AES Typ) */
-	/*  22 */ int16 type;
-	/*  24 */ 
+   /* Action-Routine fÅr Exit, TouchExit or Doppelklick */
+   /*   0 */ Aaction click;
+   
+   /* Action-Routine fÅr Drag&Drop */
+   /*   4 */ Aaction drag;
+   
+   /* ob_flags, muû an gleicher Stelle wie in OBJECT stehen, wird geprÅft! */
+   /*   8 */ int16 ob_flags;
+   
+   /* Tastatur-Shortcut */
+   /*  10 */ int16 key;
+   
+   /* User-Pointer */
+   /*  12 */ void *userp1;
+   /*  16 */ void *userp2;
+   
+   /* Maus-Index fÅr dieses Feld */
+   /*  20 */ int16 mo_index;
+   
+   /* Objekt-Typ (nicht der AES Typ) */
+   /*  22 */ int16 type;
+   /*  24 */ 
 } AOBJECT;
 
 /******************************************************************************/
@@ -44,30 +44,30 @@ typedef struct
 /* Extended USERBLK */
 typedef struct
 {
-	/* Redraw-Routine, wie in USERBLK */
-	/*  0 */ int16 CDECL (*ub_code)(PARMBLK *pb);
-	
-	/* Parameter wie in USERBLK */
-	/*  4 */ long ub_parm;
-	
-	/* Service-Routne des Objektes */
-	/*  8 */ int16 (*ub_serv)(OBJECT *entry, int16 task, void *in_out);
-	
-	/* Extra pointers (data) */
-	/* 12 */ void *ub_ptr1;
-	
-	/* typically window */
-	/* 16 */ void *ub_ptr2;
-	
-	/* typically obnr */
-	/* 20 */ void *ub_ptr3;
-	
-	/* BubbleGEM-Hilfe-String */
-	/* 24 */ char *bubble;
-	
-	/* Context-Popup-String fÅr Ame_strpopup */
-	/* 28 */ char *context;
-	/* 32 */ 
+   /* Redraw-Routine, wie in USERBLK */
+   /*  0 */ int16 CDECL (*ub_code)(PARMBLK *pb);
+   
+   /* Parameter wie in USERBLK */
+   /*  4 */ long ub_parm;
+   
+   /* Service-Routne des Objektes */
+   /*  8 */ int16 (*ub_serv)(OBJECT *entry, int16 task, void *in_out);
+   
+   /* Extra pointers (data) */
+   /* 12 */ void *ub_ptr1;
+   
+   /* typically window */
+   /* 16 */ void *ub_ptr2;
+   
+   /* typically obnr */
+   /* 20 */ void *ub_ptr3;
+   
+   /* BubbleGEM-Hilfe-String */
+   /* 24 */ char *bubble;
+   
+   /* Context-Popup-String fÅr Ame_strpopup */
+   /* 28 */ char *context;
+   /* 32 */ 
 } AUSERBLK;
 
 /******************************************************************************/
@@ -75,11 +75,11 @@ typedef struct
 /* Maus-Parameter */
 typedef struct
 {
-	/* Maus-Nummer, 255: durch form beschrieben */
-	int16 number;
-	
-	/* Maus-Form oder NULL */
-	MFORM *form;
+   /* Maus-Nummer, 255: durch form beschrieben */
+   int16 number;
+   
+   /* Maus-Form oder NULL */
+   MFORM *form;
 } Amouse;
 
 /******************************************************************************/
@@ -87,9 +87,9 @@ typedef struct
 /* Struktur fÅr Antworten auf GEMScript-Kommandos */
 typedef struct
 {
-	char **antwort;
-	int16 anzahl;
-	int16 ret_wert;
+   char **antwort;
+   int16 anzahl;
+   int16 ret_wert;
 } A_GSAntwort;
 
 /******************************************************************************/
@@ -97,107 +97,108 @@ typedef struct
 /* Das (zentrale) Fenster-Objekt */
 typedef struct wd
 {
-	/* Users object pointer */
-	/*   0 */ void *user;
-	
-	/* Service-Routine */
-	/*   4 */ int16 (*service)(swd *a, int16 task, void *in_out);
-	
-	/* Fenster erzeugen mit fenster abhÑngigem Parameter */
-	/*   8 */ swd *(*create)(void *a);
-	
-	/* Fenster îffnen */
-	/*  12 */ int16 (*open)(swd *a);
-	
-	/* Init-Routine des Fensters */
-	/*  16 */ int16 (*init)(swd *a);
-	
-	/* Das sog. Work-Objekt im Fenster */
-	/*  20 */ OBJECT *work;
-	
-	/* Die Toolbar des Fensters */
-	/*  24 */ OBJECT *toolbar;
-	
-	/* Objektnr and aktuelle Position fÅr Edit-Felder im Fenster */
-	/*  28 */ int16 ob_edit, ob_col;
-	
-	/* GEM-Fenster-Handle oder -1 */
-	/*  32 */ int16 wi_id;
-	
-	/* Fenster-Attribute */
-	/*  34 */ int16 wi_kind;
-	
-	/* Fenster-Koordinaten: akteulle (auûen), normale (auûen) und innere */
-	/*  36 */ Axywh wi_act;
-	/*  44 */ Axywh wi_normal;
-	/*  52 */ Axywh wi_work;
-	
-	/* Letzte Slider-Position & ->Grîûe */
-	/*  60 */ Axywh wi_slider;
-	
-	/* Offset des Work-Objektes */
-	/*  68 */ int16 wi_nx, wi_ny;
-	
-	/* Raster des Fensters, Highbyte fÅr y, Lowbyte fÅr x */
-	/*  72 */ int16 snap_mask;
-	
-	/* Name und Info-Zeile des Fensters */
-	/*  74 */ char *name;
-	/*  78 */ char *info;
-	
-	/* LÑnge des selektierten Edit-Textes, 0 fÅr keine Selektion */
-	/*  82 */ int16 ob_len;
-	
-	/* ACS-Fenster-Attribute */
-	/*  84 */ int16 kind;
-	
-	/* Status des Fensters */
-	/*  86 */ int16 state;
-	
-	/* Objektnummer des Icons im verwaltenden Root-Fenster */
-	/*  88 */ int16 icon;
-	
-	/* Das Icon-Image, NULL: Default-Icon */
-	/*  90 */ CICONBLK *iconblk;
-	
-	/* Fenster-MenÅ */
-	/*  94 */ OBJECT *menu;
-	
-	/* TastendrÅcke */
-	/*  98 */ int16 (*keys)(swd *x, int16 kstate, int16 key);
-	
-	/* Status-énderungen von Objekten des Fensters */
-	/* 102 */ void (*obchange)(swd *a, int16 obnr, int16 new_state);
-	
-	/* Reaktion auf Nachrichten des Screen-Managers */
-	/* 106 */ void (*redraw)(swd *a, Axywh *b);		/* Redraw */
-	/* 110 */ void (*topped)(swd *a);						/* Topped */
-	/* 114 */ void (*closed)(swd *a);						/* Closed */
-	/* 118 */ void (*fulled)(swd *a);						/* Fulled */
-	/* 122 */ void (*arrowed)(swd *a, int16 which);	/* Arrowed */
-	/* 126 */ void (*hslid)(swd *a, int16 pos);		/* HSlide */
-	/* 130 */ void (*vslid)(swd *a, int16 pos);		/* VSlide */
-	/* 134 */ void (*sized)(swd *a, Axywh *b);			/* Sized */
-	/* 138 */ void (*moved)(swd *a, Axywh *b);			/* Moved */
-	/* 142 */ int16 (*iconify)(swd *a, int16 all);	/* Iconify, Iconify All */
-	/* 146 */ int16 (*uniconify)(swd *a);				/* Uniconify */
-	
-	/* Zeiger auf Funktion fÅr fensterspezifische GEMScript-Befehle */
-	/* 150 */ int16 (*gemscript)(swd *a, int16 anz, char **cmds, A_GSAntwort *antwort );
-	
-	/* Titel der Hilfe-Seite */
-	/* 154 */ char *help_title;
-	
-	/* Name der Hilfe-Datei */
-	/* 158 */ char *help_file;
-	/* 162 */ 
+   /* Users object pointer */
+   /*   0 */ void *user;
+   
+   /* Service-Routine */
+   /*   4 */ int16 (*service)(swd *a, int16 task, void *in_out);
+   
+   /* Fenster erzeugen mit fenster abhÑngigem Parameter */
+   /*   8 */ swd *(*create)(void *a);
+   
+   /* Fenster îffnen */
+   /*  12 */ int16 (*open)(swd *a);
+   
+   /* Init-Routine des Fensters */
+   /*  16 */ int16 (*init)(swd *a);
+   
+   /* Das sog. Work-Objekt im Fenster */
+   /*  20 */ OBJECT *work;
+   
+   /* Die Toolbar des Fensters */
+   /*  24 */ OBJECT *toolbar;
+   
+   /* Objektnr and aktuelle Position fÅr Edit-Felder im Fenster */
+   /*  28 */ int16 ob_edit, ob_col;
+   
+   /* GEM-Fenster-Handle oder -1 */
+   /*  32 */ int16 wi_id;
+   
+   /* Fenster-Attribute */
+   /*  34 */ int16 wi_kind;
+   
+   /* Fenster-Koordinaten: akteulle (auûen), normale (auûen) und innere */
+   /*  36 */ Axywh wi_act;
+   /*  44 */ Axywh wi_normal;
+   /*  52 */ Axywh wi_work;
+   
+   /* Letzte Slider-Position & ->Grîûe */
+   /*  60 */ Axywh wi_slider;
+   
+   /* Offset des Work-Objektes */
+   /*  68 */ int16 wi_nx, wi_ny;
+   
+   /* Raster des Fensters, Highbyte fÅr y, Lowbyte fÅr x */
+   /*  72 */ int16 snap_mask;
+   
+   /* Name und Info-Zeile des Fensters */
+   /*  74 */ char *name;
+   /*  78 */ char *info;
+   
+   /* LÑnge des selektierten Edit-Textes, 0 fÅr keine Selektion */
+   /*  82 */ int16 ob_len;
+   
+   /* ACS-Fenster-Attribute */
+   /*  84 */ int16 kind;
+   
+   /* Status des Fensters */
+   /*  86 */ int16 state;
+   
+   /* Objektnummer des Icons im verwaltenden Root-Fenster */
+   /*  88 */ int16 icon;
+   
+   /* Das Icon-Image, NULL: Default-Icon */
+   /*  90 */ CICONBLK *iconblk;
+   
+   /* Fenster-MenÅ */
+   /*  94 */ OBJECT *menu;
+   
+   /* TastendrÅcke */
+   /*  98 */ int16 (*keys)(swd *x, int16 kstate, int16 key);
+   
+   /* Status-énderungen von Objekten des Fensters */
+   /* 102 */ void (*obchange)(swd *a, int16 obnr, int16 new_state);
+   
+   /* Reaktion auf Nachrichten des Screen-Managers */
+   /* 106 */ void (*redraw)(swd *a, Axywh *b);     /* Redraw */
+   /* 110 */ void (*topped)(swd *a);                  /* Topped */
+   /* 114 */ void (*closed)(swd *a);                  /* Closed */
+   /* 118 */ void (*fulled)(swd *a);                  /* Fulled */
+   /* 122 */ void (*arrowed)(swd *a, int16 which); /* Arrowed */
+   /* 126 */ void (*hslid)(swd *a, int16 pos);     /* HSlide */
+   /* 130 */ void (*vslid)(swd *a, int16 pos);     /* VSlide */
+   /* 134 */ void (*sized)(swd *a, Axywh *b);         /* Sized */
+   /* 138 */ void (*moved)(swd *a, Axywh *b);         /* Moved */
+   /* New in 3.0.0: */
+   /* 142 */ int16 (*iconify)(swd *a, int16 all);  /* Iconify, Iconify All */
+   /* 146 */ int16 (*uniconify)(swd *a);           /* Uniconify */
+   
+   /* Zeiger auf Funktion fÅr fensterspezifische GEMScript-Befehle */
+   /* 150 */ int16 (*gemscript)(swd *a, int16 anz, char **cmds, A_GSAntwort *antwort );
+   
+   /* Titel der Hilfe-Seite */
+   /* 154 */ char *help_title;
+   
+   /* Name der Hilfe-Datei */
+   /* 158 */ char *help_file;
+   /* 162 */ 
 } Awindow;
 
 
 /******************************************************************************/
-/*																										*/
-/* Die Konfigurations-String-UnterstÅtzung												*/
-/*																										*/
+/*                                                                            */
+/* Die Konfigurations-String-UnterstÅtzung                                    */
+/*                                                                            */
 /******************************************************************************/
 
 /* Maximale LÑnge eines Config-Strings insgesamt! */
@@ -207,12 +208,12 @@ typedef struct wd
 
 typedef struct
 {
-	char *dateiname;
-	char *comment;
-	char *env_praefix;
-	int16 casesensitiv;
-	int16 file_sensitiv;
-	int16 file_buffer;
+   char *dateiname;
+   char *comment;
+   char *env_praefix;
+   int16 casesensitiv;
+   int16 file_sensitiv;
+   int16 file_buffer;
 } UCfgInfo;
 
 /******************************************************************************/
@@ -267,144 +268,144 @@ typedef struct
 /* Flags fÅr die Initialisierung der Protokolle beim Systemstart */
 /* Falls die Protokolle nicht initialisiert werden, wird dies    */
 /* nachgeholt, sobald sie benîtigt werden!                       */
-#define CFG_INIT_OLGA			0x0001		/* Starte ggf. OLGA-Manager nach, Anmeldung beim OLGA-Manager anstoûen */
-#define CFG_INIT_OLGA_FULL		0x0002		/* ZusÑtzlich auf das Ende der OLGA-Initialisierung warten */
-#define CFG_INIT_GEMSCRIPT		0x0004		/* Volle Initialisiere des GEMScript-Protokolles */
-#define CFG_INIT_BUBBLEGEM		0x0008		/* Ggf. BubbleGEM nachstarten und intialisieren */
+#define CFG_INIT_OLGA         0x0001      /* Starte ggf. OLGA-Manager nach, Anmeldung beim OLGA-Manager anstoûen */
+#define CFG_INIT_OLGA_FULL    0x0002      /* ZusÑtzlich auf das Ende der OLGA-Initialisierung warten */
+#define CFG_INIT_GEMSCRIPT    0x0004      /* Volle Initialisiere des GEMScript-Protokolles */
+#define CFG_INIT_BUBBLEGEM    0x0008      /* Ggf. BubbleGEM nachstarten und intialisieren */
 
 /* list of selected Objects */
 typedef struct
 {
-	Awindow *window;						/* the objects belong to this window */
-	int16 maxlen;							/* max entries in list */
-	int16 actlen;							/* actual count */
-	int16 next;								/* next entry return by Adr_next */
-	int16 dragback;						/* drag still selected object back to origin */
-	int16 x, y;								/* position during pick up */
-	int16 rx, ry;							/* relativ dragged distance */
-	int16 *array;							/* points to array of obnr's */
+   Awindow *window;                 /* the objects belong to this window */
+   int16 maxlen;                    /* max entries in list */
+   int16 actlen;                    /* actual count */
+   int16 next;                      /* next entry return by Adr_next */
+   int16 dragback;                  /* drag still selected object back to origin */
+   int16 x, y;                      /* position during pick up */
+   int16 rx, ry;                    /* relativ dragged distance */
+   int16 *array;                    /* points to array of obnr's */
 } Asel;
 
-#define DD_PIPEDD	(0x1)							/* ATARI-Pipe-Drag&Drop */
-#define DD_XACC	(0x2)							/* XACC-D&D */
-#define DD_VA		(0x4)							/* VA-Server */
+#define DD_PIPEDD (0x1)                   /* ATARI-Pipe-Drag&Drop */
+#define DD_XACC   (0x2)                   /* XACC-D&D */
+#define DD_VA     (0x4)                   /* VA-Server */
 
 /* XACC-Messages */
 #ifndef __xaccproto__
-	#define __xaccproto__
-	#define ACC_ID					0x400
-	#define ACC_OPEN				0x401
-	#define ACC_CLOSE				0x402
-	#define ACC_ACC				0x403
-	#define ACC_EXIT				0x404
-	#define ACC_ACK				0x500
-	#define ACC_TEXT				0x501
-	#define ACC_KEY				0x502
-	#define ACC_META				0x503
-	#define ACC_IMG				0x504
+   #define __xaccproto__
+   #define ACC_ID             0x400
+   #define ACC_OPEN           0x401
+   #define ACC_CLOSE          0x402
+   #define ACC_ACC            0x403
+   #define ACC_EXIT           0x404
+   #define ACC_ACK            0x500
+   #define ACC_TEXT           0x501
+   #define ACC_KEY            0x502
+   #define ACC_META           0x503
+   #define ACC_IMG            0x504
 #endif
 
 /* AV-Messages */
 #ifndef __vaproto__
-	#define __vaproto__
-	#define AV_PROTOKOLL			0x4700
-	#define VA_PROTOSTATUS		0x4701
-	#define AV_GETSTATUS			0x4703
-	#define AV_STATUS				0x4704
-	#define VA_SETSTATUS			0x4705
-	#define AV_SENDCLICK       0x4709
-	#define AV_SENDKEY			0x4710
-	#define VA_START				0x4711
-	#define AV_ASKFILEFONT		0x4712
-	#define VA_FILEFONT			0x4713
-	#define AV_ASKCONFONT		0x4714
-	#define VA_CONFONT			0x4715
-	#define AV_ASKOBJECT			0x4716
-	#define VA_OBJECT				0x4717
-	#define AV_OPENCONSOLE		0x4718
-	#define VA_CONSOLEOPEN		0x4719
-	#define AV_OPENWIND			0x4720
-	#define VA_WINDOPEN			0x4721
-	#define AV_STARTPROG			0x4722
-	#define VA_PROGSTART			0x4723
-	#define AV_ACCWINDOPEN		0x4724
-	#define VA_DRAGACCWIND		0x4725
-	#define AV_ACCWINDCLOSED	0x4726
-	#define AV_COPY_DRAGGED		0x4728
-	#define VA_COPY_COMPLETE	0x4729
-	#define AV_PATH_UPDATE		0x4730
-	#define AV_WHAT_IZIT			0x4732
-	#define VA_THAT_IZIT			0x4733
-	#define AV_DRAG_ON_WINDOW	0x4734
-	#define VA_DRAG_COMPLETE	0x4735
-	#define AV_EXIT				0x4736
-	#define AV_STARTED			0x4738
-	#define VA_OB_UNKNOWN		0		
-	#define VA_OB_TRASHCAN  	1
-	#define VA_OB_SHREDDER  	2
-	#define VA_OB_CLIPBOARD 	3
-	#define VA_OB_FILE      	4
-	#define VA_OB_FOLDER			5
-	#define VA_OB_DRIVE			6
-	#define VA_OB_WINDOW    	7
+   #define __vaproto__
+   #define AV_PROTOKOLL       0x4700
+   #define VA_PROTOSTATUS     0x4701
+   #define AV_GETSTATUS       0x4703
+   #define AV_STATUS          0x4704
+   #define VA_SETSTATUS       0x4705
+   #define AV_SENDCLICK       0x4709
+   #define AV_SENDKEY         0x4710
+   #define VA_START           0x4711
+   #define AV_ASKFILEFONT     0x4712
+   #define VA_FILEFONT        0x4713
+   #define AV_ASKCONFONT      0x4714
+   #define VA_CONFONT         0x4715
+   #define AV_ASKOBJECT       0x4716
+   #define VA_OBJECT          0x4717
+   #define AV_OPENCONSOLE     0x4718
+   #define VA_CONSOLEOPEN     0x4719
+   #define AV_OPENWIND        0x4720
+   #define VA_WINDOPEN        0x4721
+   #define AV_STARTPROG       0x4722
+   #define VA_PROGSTART       0x4723
+   #define AV_ACCWINDOPEN     0x4724
+   #define VA_DRAGACCWIND     0x4725
+   #define AV_ACCWINDCLOSED   0x4726
+   #define AV_COPY_DRAGGED    0x4728
+   #define VA_COPY_COMPLETE   0x4729
+   #define AV_PATH_UPDATE     0x4730
+   #define AV_WHAT_IZIT       0x4732
+   #define VA_THAT_IZIT       0x4733
+   #define AV_DRAG_ON_WINDOW  0x4734
+   #define VA_DRAG_COMPLETE   0x4735
+   #define AV_EXIT            0x4736
+   #define AV_STARTED         0x4738
+   #define VA_OB_UNKNOWN      0     
+   #define VA_OB_TRASHCAN     1
+   #define VA_OB_SHREDDER     2
+   #define VA_OB_CLIPBOARD    3
+   #define VA_OB_FILE         4
+   #define VA_OB_FOLDER       5
+   #define VA_OB_DRIVE        6
+   #define VA_OB_WINDOW       7
 #endif
 
 #ifndef __gemscript__
-	#define __gemscript__
-	typedef struct
-	{
-		long len;		/* LÑnge der Struktur in Bytes */
-		int16 version;	/* Versionsnummer des Protokolles beim Sender (z.Z. 0x0120 = 1.2) */
-		int16 msgs;		/* Bitmap der unterstÅtzten Nachrichten und FÑhigkeiten (GSM_xxx) */
-		long ext;		/* benutzte Endung, etwa '.SIC'                     */
-	} GS_INFO;
-	
-	/* Kennung fÅr den Empfang von GS_COMMAND */
-	#define GSM_COMMAND		0x0001
-	
-	/* Kennung fÅr Empfang von GS_OPENMACRO, GS_WRITE */
-	/* und GS_CLOSEMACRO und Senden von GS_MACRO      */
-	#define GSM_MACRO			0x0002
-	
-	/* Kennung fÅr Versand von GS_OPENMACRO, GS_WRITE */
-	/* und GS_CLOSEMACRO und Empfang von GS_MACRO     */
-	#define GSM_WRITE			0x0004
-	
-	/* Hex-Codierung wird verstanden */
-	#define GSM_HEXCODING	0x0008
-	
-	/* RÅckgabewerte der GEMScript-Funktionen (Anwendung & Fenster) */
-	#define GSACK_OK			0
-	#define GSACK_UNKNOWN	1
-	#define GSACK_ERROR		2
-	
+   #define __gemscript__
+   typedef struct
+   {
+      long len;      /* LÑnge der Struktur in Bytes */
+      int16 version; /* Versionsnummer des Protokolles beim Sender (z.Z. 0x0120 = 1.2) */
+      int16 msgs;    /* Bitmap der unterstÅtzten Nachrichten und FÑhigkeiten (GSM_xxx) */
+      long ext;      /* benutzte Endung, etwa '.SIC'                     */
+   } GS_INFO;
+   
+   /* Kennung fÅr den Empfang von GS_COMMAND */
+   #define GSM_COMMAND     0x0001
+   
+   /* Kennung fÅr Empfang von GS_OPENMACRO, GS_WRITE */
+   /* und GS_CLOSEMACRO und Senden von GS_MACRO      */
+   #define GSM_MACRO       0x0002
+   
+   /* Kennung fÅr Versand von GS_OPENMACRO, GS_WRITE */
+   /* und GS_CLOSEMACRO und Empfang von GS_MACRO     */
+   #define GSM_WRITE       0x0004
+   
+   /* Hex-Codierung wird verstanden */
+   #define GSM_HEXCODING   0x0008
+   
+   /* RÅckgabewerte der GEMScript-Funktionen (Anwendung & Fenster) */
+   #define GSACK_OK        0
+   #define GSACK_UNKNOWN   1
+   #define GSACK_ERROR     2
+   
 #endif
 
 typedef struct
 {
-	int16	id;							/* the AES-ID of another PRG */
-	long	type;							/* same bitvec as dd_active	*/
-	unsigned int16	xacc_val;		/* DD-dependant-value: XACC->groups */
-	const char	*xacc_name;			/* name of partner, or NULL */
-	unsigned int16	va_val[3];
-	const char	*va_name;
+   int16 id;                     /* the AES-ID of another PRG */
+   long  type;                   /* same bitvec as dd_active   */
+   unsigned int16 xacc_val;      /* DD-dependant-value: XACC->groups */
+   const char  *xacc_name;       /* name of partner, or NULL */
+   unsigned int16 va_val[3];
+   const char  *va_name;
 } A_dd;
 
 typedef struct
 {
-	Awindow *window;
-	OBJECT *entry;
-	int16 obnr;
+   Awindow *window;
+   OBJECT *entry;
+   int16 obnr;
 } Awiob;
 
 /******************************************************************************/
-/*																										*/
-/* Die lineare unsortierte Liste																*/
-/*																										*/
+/*                                                                            */
+/* Die lineare unsortierte Liste                                              */
+/*                                                                            */
 /******************************************************************************/
 
 /* Keine FOR-Funktion, alle sollen bearbeitet/gesucht werden */
-#define NO_FOR (int16 (*)(void *,void *))	NULL
+#define NO_FOR (int16 (*)(void *,void *)) NULL
 
 typedef int16 (*A_ListFor)(void *para, void *elem);
 typedef void (*A_ListWork)(void *para, void *elem);
@@ -568,346 +569,346 @@ typedef struct
 } Ablk;
 
 /*
- *		Global Defines
+ *    Global Defines
  */
 
-#define A_TOOLBAR		(0x1000)				/* Flag indicates Toolbar */
-#define A_MASK			(0x0fff)				/* mask out pure index number */
+#define A_TOOLBAR    (0x1000)          /* Flag indicates Toolbar */
+#define A_MASK       (0x0fff)          /* mask out pure index number */
 
 /* Userdefined Objects Services */
-#define AUO_CREATE			(1)					/* UObject can add or initialize data structs */
-#define AUO_TERM				(2)					/* UObject can free data structs */
-#define AUO_GETVAL			(3)					/* UObject returns value, char ** */
-#define AUO_SETVAL			(4)					/* UObject sets value, char * */
-#define AUO_UPDATE			(5)					/* UObject smart update */
-#define AUO_FULLUPDATE		(6)					/* UObject no smart update */
-#define AUO_SELF				(9)					/* tells own identity, Awiob * */
-#define AUO_NEXT				(10)					/* inc pos		*/
-#define AUO_PREV				(11)					/* dec pos		*/
-#define AUO_NEXTPAGE			(12)					/* inc pos by 'step' */
-#define AUO_PREVPAGE			(13)					/* dec pos		by 'step' */
-#define AUO_BEGIN				(14)					/* pos = 0		*/
-#define AUO_END				(15)					/* pos = max */
-#define AUO_POS				(17)					/* set pos		*/
-#define AUO_OWNER				(18)					/* gets own identity, Awiob */
-#define AUO_GETBUBBLE		(19)					/* Text fÅr BubbleGEM-Hilfe erfragen */
-#define AUO_GETCONTEXT		(20)					/* Text fÅr Context-Popup erfragen */
-#define AUO_CONTEXT			(21)					/* Aus dem Context-Popup ausgewÑhlter Eintrag */
+#define AUO_CREATE         (1)               /* UObject can add or initialize data structs */
+#define AUO_TERM           (2)               /* UObject can free data structs */
+#define AUO_GETVAL         (3)               /* UObject returns value, char ** */
+#define AUO_SETVAL         (4)               /* UObject sets value, char * */
+#define AUO_UPDATE         (5)               /* UObject smart update */
+#define AUO_FULLUPDATE     (6)               /* UObject no smart update */
+#define AUO_SELF           (9)               /* tells own identity, Awiob * */
+#define AUO_NEXT           (10)              /* inc pos     */
+#define AUO_PREV           (11)              /* dec pos     */
+#define AUO_NEXTPAGE       (12)              /* inc pos by 'step' */
+#define AUO_PREVPAGE       (13)              /* dec pos     by 'step' */
+#define AUO_BEGIN          (14)              /* pos = 0     */
+#define AUO_END            (15)              /* pos = max */
+#define AUO_POS            (17)              /* set pos     */
+#define AUO_OWNER          (18)              /* gets own identity, Awiob */
+#define AUO_GETBUBBLE      (19)              /* Text fÅr BubbleGEM-Hilfe erfragen */
+#define AUO_GETCONTEXT     (20)              /* Text fÅr Context-Popup erfragen */
+#define AUO_CONTEXT        (21)              /* Aus dem Context-Popup ausgewÑhlter Eintrag */
 
 /* description.flags */
-#define AB_CLICKMENU			(0x0001)		/* menu drop down on click instead of touch */
-#define AB_MOVIES				(0x0002)		/* draws moving, growing, shrink rectangle */
-#define AB_FEEDBACK			(0x0002)		/* new name for feedback-actions */
-#define AB_ACUSTIC			(0x0004)		/* acustic bell if user clicks outside of dialog */
-#define AB_HIDEPOINTER		(0x0008)		/* hide pointer on key input */
-#define AB_CENTERDIALOG 	(0x0010)		/* center dialog */
-#define AB_GDOSFONT			(0x0020)		/* load and frees gdos fonts if available */
-#define AB_SMARTREDRAW		(0x0040)		/* use smart redraw */
-#define AB_MENUFIRST			(0x0080)		/* change key consume strategie */
-#define AB_NO3D				(0x0100)		/* suppress 3D effects */
-#define AB_LAZYEVAL			(0x0200)		/* no secure checks, i.e. no Dsetdrv/Dsetpath in Ash_prog */
-#define AB_NOMEMCHECK		(0x0400)		/* dont check memory assuming Pure C style */
-#define AB_NOTRANSICON		(0x0800)		/* dont transform internal icons */
+#define AB_CLICKMENU       (0x0001)    /* menu drop down on click instead of touch */
+#define AB_MOVIES          (0x0002)    /* draws moving, growing, shrink rectangle */
+#define AB_FEEDBACK        (0x0002)    /* new name for feedback-actions */
+#define AB_ACUSTIC         (0x0004)    /* acustic bell if user clicks outside of dialog */
+#define AB_HIDEPOINTER     (0x0008)    /* hide pointer on key input */
+#define AB_CENTERDIALOG    (0x0010)    /* center dialog */
+#define AB_GDOSFONT        (0x0020)    /* load and frees gdos fonts if available */
+#define AB_SMARTREDRAW     (0x0040)    /* use smart redraw */
+#define AB_MENUFIRST       (0x0080)    /* change key consume strategie */
+#define AB_NO3D            (0x0100)    /* suppress 3D effects */
+#define AB_LAZYEVAL        (0x0200)    /* no secure checks, i.e. no Dsetdrv/Dsetpath in Ash_prog */
+#define AB_NOMEMCHECK      (0x0400)    /* dont check memory assuming Pure C style */
+#define AB_NOTRANSICON     (0x0800)    /* dont transform internal icons */
 
 /* Awindow.service (generic) */
-#define AS_ACCLOSED			(1)			/* accessory closed, initialize correctly */
-#define AS_TERM				(2)			/* terminate */
-#define AS_ICONIZED			(3)			/* the window was iconized (in order to receive a free window id) */
-#define AS_MOUSE				(4)			/* Mouse is upon the window */
-#define AS_SELECTADD			(5)			/* added object in select list */
-#define AS_SELECTDEL			(6)			/* deleted object in select list */
-#define AS_UNTOPPED			(7)			/* ACS does not handle UNTOPPED, maybe the window want it to know */
-#define AS_FOCUSCHG			(8)			/* Input Focus changed within a window */
-#define AS_CHECKDRAG			(9)			/* check if window will accept draglist (in) int16 [0] = obnr, (out) int16 [1] = TRUE/FALSE */
+#define AS_ACCLOSED        (1)         /* accessory closed, initialize correctly */
+#define AS_TERM            (2)         /* terminate */
+#define AS_ICONIZED        (3)         /* the window was iconized (in order to receive a free window id) */
+#define AS_MOUSE           (4)         /* Mouse is upon the window */
+#define AS_SELECTADD       (5)         /* added object in select list */
+#define AS_SELECTDEL       (6)         /* deleted object in select list */
+#define AS_UNTOPPED        (7)         /* ACS does not handle UNTOPPED, maybe the window want it to know */
+#define AS_FOCUSCHG        (8)         /* Input Focus changed within a window */
+#define AS_CHECKDRAG       (9)         /* check if window will accept draglist (in) int16 [0] = obnr, (out) int16 [1] = TRUE/FALSE */
 
-#define AS_OPEN				(10)			/* Open the selected list of objects */
-#define AS_DELETE				(11)			/* delete selected list */
-#define AS_CHECKDELETE		(12)			/* is list deleteable, int16 * (TRUE/FALSE) */
-#define AS_WIAUTOPOS			(14)			/* automatic determination of pos */
-#define AS_INFO				(15)			/* Info about Window */
-#define AS_DRAGGED			(16)			/* Something dragged on windows ICON */
-#define AS_CHECKDRAGGED		(17)			/* is list acceptable for this window icon, int16 * (TRUE/FALSE) */
-#define AS_CONFIGDRAG		(18)			/* Allows owner window to modify drag parameter like raster (see Doc), int16 * */
-#define AS_DRAGABORTED		(19)			/* Drag was released on foreign window, int16* wi_id */
-#define AS_REALSEL_START	(20)			/* Start neuer Aselect-Liste */
-#define AS_REALSEL_UPDATE	(21)			/* énderung der Aselect-Liste */
-#define AS_REALSEL_END		(22)			/* Ende der Aselect-Liste */
-#define AS_REALPOP_START	(23)			/* Start des Popups, IN_OUT: *int16 auf Startobjekt */
-#define AS_REALPOP_UPDATE	(24)			/* énderung des Popups, IN_OUT: *int16 auf Objektnummer */
-#define AS_REALPOP_END		(25)			/* Ende des Popups */
-#define AS_EDITCHG			(26)			/* neue Taste in der Eingabe */
-#define AS_GEM_MESS			(27)			/* unbekannte GEM-Message fÅr RootFenster */
-#define AS_SCRAP_UPDATE		(28)			/* das Klemmbrett wurde erneuert, in_out *ext */
-#define AS_SCRAP_IMPORT		(29)			/* Aufruf, aus dem Klemmbrett zu importieren, in_out *ext */
-#define AS_SCRAP_EXPORT		(30)			/* dito fÅr Export */
-#define AS_REALMENU_START	(31)			/* Start der MenÅbedienung, in_out *int16 auf Start */
-#define AS_REALMENU_UPDATE	(32)			/* ...neuer Eintrag, in_out *int16 auf neuen Eintrag */
-#define AS_REALMENU_END		(33)			/* ...und Ende */
-#define AS_SHADED				(34)			/* Fenster wurde gerade shaded (WINX, MagiC) */
-#define AS_UNSHADED			(35)			/* Fenster wurde gerade unshaded (WINX, MagiC) */
+#define AS_OPEN            (10)        /* Open the selected list of objects */
+#define AS_DELETE          (11)        /* delete selected list */
+#define AS_CHECKDELETE     (12)        /* is list deleteable, int16 * (TRUE/FALSE) */
+#define AS_WIAUTOPOS       (14)        /* automatic determination of pos */
+#define AS_INFO            (15)        /* Info about Window */
+#define AS_DRAGGED         (16)        /* Something dragged on windows ICON */
+#define AS_CHECKDRAGGED    (17)        /* is list acceptable for this window icon, int16 * (TRUE/FALSE) */
+#define AS_CONFIGDRAG      (18)        /* Allows owner window to modify drag parameter like raster (see Doc), int16 * */
+#define AS_DRAGABORTED     (19)        /* Drag was released on foreign window, int16* wi_id */
+#define AS_REALSEL_START   (20)        /* Start neuer Aselect-Liste */
+#define AS_REALSEL_UPDATE  (21)        /* énderung der Aselect-Liste */
+#define AS_REALSEL_END     (22)        /* Ende der Aselect-Liste */
+#define AS_REALPOP_START   (23)        /* Start des Popups, IN_OUT: *int16 auf Startobjekt */
+#define AS_REALPOP_UPDATE  (24)        /* énderung des Popups, IN_OUT: *int16 auf Objektnummer */
+#define AS_REALPOP_END     (25)        /* Ende des Popups */
+#define AS_EDITCHG         (26)        /* neue Taste in der Eingabe */
+#define AS_GEM_MESS        (27)        /* unbekannte GEM-Message fÅr RootFenster */
+#define AS_SCRAP_UPDATE    (28)        /* das Klemmbrett wurde erneuert, in_out *ext */
+#define AS_SCRAP_IMPORT    (29)        /* Aufruf, aus dem Klemmbrett zu importieren, in_out *ext */
+#define AS_SCRAP_EXPORT    (30)        /* dito fÅr Export */
+#define AS_REALMENU_START  (31)        /* Start der MenÅbedienung, in_out *int16 auf Start */
+#define AS_REALMENU_UPDATE (32)        /* ...neuer Eintrag, in_out *int16 auf neuen Eintrag */
+#define AS_REALMENU_END    (33)        /* ...und Ende */
+#define AS_SHADED          (34)        /* Fenster wurde gerade shaded (WINX, MagiC) */
+#define AS_UNSHADED        (35)        /* Fenster wurde gerade unshaded (WINX, MagiC) */
 
 /* Meldungen BubbleGEM betreffend */
-#define AS_ALLOWBUBBLE		(36)			/* Soll fÅr dieses Fenster BubbleGEM unterstÅtzt werden? */
-#define AS_GETBUBBLE			(37)			/* Text fÅr BubbleGEM-Hilfe wird gefragt */
+#define AS_ALLOWBUBBLE     (36)        /* Soll fÅr dieses Fenster BubbleGEM unterstÅtzt werden? */
+#define AS_GETBUBBLE       (37)        /* Text fÅr BubbleGEM-Hilfe wird gefragt */
 
 /* Meldungen das Context-Popup betreffend */
-#define AS_ALLOWCONTEXT		(38)			/* Soll fÅr dieses Fenster ein Context-Popup unterstÅtzt werden? */
-#define AS_GETCONTEXT		(39)			/* Text fÅr Context-Popup wird gefragt */
-#define AS_CONTEXT			(40)			/* Aus dem Context-Popup ausgewÑhlter Substring */
+#define AS_ALLOWCONTEXT    (38)        /* Soll fÅr dieses Fenster ein Context-Popup unterstÅtzt werden? */
+#define AS_GETCONTEXT      (39)        /* Text fÅr Context-Popup wird gefragt */
+#define AS_CONTEXT         (40)        /* Aus dem Context-Popup ausgewÑhlter Substring */
 
 /* Erlaubt das Fenster die ST-Guide-Hilfe? */
-#define AS_ASK_STGUIDE		(41)			/* Nachfrage nach dem ST-Guide-Text, das fÅr das Fenster angegebene Thema wird mitgegeben und kann geÑndert werden */
+#define AS_ASK_STGUIDE     (41)        /* Nachfrage nach dem ST-Guide-Text, das fÅr das Fenster angegebene Thema wird mitgegeben und kann geÑndert werden */
 
 /* Meldungen OLGA betreffend */
-#define AS_OLGA_CONNECT		(42)			/* Die OLGA-Verbindung ist hergestellt */
-#define AS_OLGA_UPDATED		(43)			/* Ein verknÅpftes OLGA-Dokument wurde geÑndert */
-#define AS_OLGA_DISCONNECT	(44)			/* Die OLGA-Verbindung ist getrennt */
-#define AS_OLGA_MAKE_INFO	(45)			/* Eine Info-Datei zu einer OLGA-Verbindung soll erzeugt werden */
-#define AS_OLGA_INFO			(46)			/* Eine (bestellte) Info-Datei einer OLGA-Verbindung steht zur VerfÅgung */
-#define AS_OLGA_CLEAR_INFO	(47)			/* Eine erzeugt Info-Datei einer OLGA-Verbindung kann wieder gelîscht werden */
+#define AS_OLGA_CONNECT    (42)        /* Die OLGA-Verbindung ist hergestellt */
+#define AS_OLGA_UPDATED    (43)        /* Ein verknÅpftes OLGA-Dokument wurde geÑndert */
+#define AS_OLGA_DISCONNECT (44)        /* Die OLGA-Verbindung ist getrennt */
+#define AS_OLGA_MAKE_INFO  (45)        /* Eine Info-Datei zu einer OLGA-Verbindung soll erzeugt werden */
+#define AS_OLGA_INFO       (46)        /* Eine (bestellte) Info-Datei einer OLGA-Verbindung steht zur VerfÅgung */
+#define AS_OLGA_CLEAR_INFO (47)        /* Eine erzeugt Info-Datei einer OLGA-Verbindung kann wieder gelîscht werden */
 
 /* Einige Messages fÅr Ergebnis-Meldungen der diversen Protokolle */
-#define AS_ACC_ACK			(100)			/* BestÑtigung eines XAcc-Transfers eingegangen */
-#define AS_AV_STARTED		(101)			/* BestÑtigung eines VA_START-Transfers eingegangen */
-#define AS_PC_VERSION		(102)			/* Versionsnummer der PureC-Hilfe als BestÑtigung */
+#define AS_ACC_ACK         (100)       /* BestÑtigung eines XAcc-Transfers eingegangen */
+#define AS_AV_STARTED      (101)       /* BestÑtigung eines VA_START-Transfers eingegangen */
+#define AS_PC_VERSION      (102)       /* Versionsnummer der PureC-Hilfe als BestÑtigung */
 
 /* Datenstrukturen fÅr die Nachrichten */
 typedef struct
 {
-	int16 obnr;						/* Objekt-Nummer */
-	char *text;						/* Text fÅr BubbleGEM */
+   int16 obnr;                /* Objekt-Nummer */
+   char *text;                /* Text fÅr BubbleGEM */
 } AGetObjText;
 
 typedef struct
 {
-	char *hyp_file;
-	char *hyp_title;
+   char *hyp_file;
+   char *hyp_title;
 } AGetSTGuide;
 
 typedef struct
 {
-	Awindow *window;				/* Bearbeitendes Fenster */
-	int16 id;						/* ID der Verbindung */
-	char *datei;					/* Dateiname der Austausch-Datei */
-	int16 info_id;					/* ID-Nummer des Servers (als OLGA-Client nutzbar, sonst gleich id) */
-	char *info_datei;				/* Dateiname der vorhandenen bzw. erzeugbaren Info-Datei */
-	int16 olga_flags;				/* Einige FLags der OLGA-Connection */
+   Awindow *window;           /* Bearbeitendes Fenster */
+   int16 id;                  /* ID der Verbindung */
+   char *datei;               /* Dateiname der Austausch-Datei */
+   int16 info_id;             /* ID-Nummer des Servers (als OLGA-Client nutzbar, sonst gleich id) */
+   char *info_datei;          /* Dateiname der vorhandenen bzw. erzeugbaren Info-Datei */
+   int16 olga_flags;          /* Einige FLags der OLGA-Connection */
 } OLGA_Infos;
 
 /* Ein paar Konstanten fÅr die OLGA-Infos */
-#define OLGA_INF_SENSITIV	0x0001		/* Dateinamen case-sensitiv vergleichen? */
-#define OLGA_INF_SERVER		0x0002		/* Das Fenster ist der OLGA-Server */
-#define OLGA_INF_CONNECTED	0x0004		/* Kennt der OLGA-Manager diese Verbindung eigentlich? */
+#define OLGA_INF_SENSITIV  0x0001      /* Dateinamen case-sensitiv vergleichen? */
+#define OLGA_INF_SERVER    0x0002      /* Das Fenster ist der OLGA-Server */
+#define OLGA_INF_CONNECTED 0x0004      /* Kennt der OLGA-Manager diese Verbindung eigentlich? */
 
 /* zusÑtzliche, neue Nachrichten *******************************************/
-#define AS_ASKHELP			(1000)		/* Kann ein Fenster AS_HELP verstehen? */
-													/* in in_out ist dann Fensterzeiger */
-#define AS_HELP				(1001)		/* Hilfe anzeigen lassen */
-					/* in INOUT ein fertiger HELP-Text-Pfad oder IMG-Pfad Åbergeben        */
-					/* einzelne öberschriften aus dem Text kînnen ausgewÑhlt werden, indem */
-					/* nach dem Pfad, durch ein TAB getrennt, die öberschrift folgt        */
-					/* dabei wird in der Åbergeben Datei nach einer Zeile gesucht, die     */
-					/* mit # beginnt und dann genau die öberschrift hat. In diesem Fall    */
-					/* erfolgt die Textausgabe bis zum nÑchsten # am Zeilenanfang          */
-#define AS_REDRAWFILE		(1002)		/* Fenster mit Dateidarstellungen sollen auf diese Nachricht die */
-													/* Dateidarstellung aktualisieren, OPTIONAL KANN in IN_OUT ein Pfad */
-													/* angegeben sein, fÅr den diese VerÑnderung gilt */
-#define AS_LOADFILE			(1003) 		/* ein Fenster soll, sofern es als PRG lÑuft, die Textdatei aus */
-													/* IN_OUT in einen EDITOR laden */
+#define AS_ASKHELP         (1000)      /* Kann ein Fenster AS_HELP verstehen? */
+                                       /* in in_out ist dann Fensterzeiger */
+#define AS_HELP            (1001)      /* Hilfe anzeigen lassen */
+               /* in INOUT ein fertiger HELP-Text-Pfad oder IMG-Pfad Åbergeben        */
+               /* einzelne öberschriften aus dem Text kînnen ausgewÑhlt werden, indem */
+               /* nach dem Pfad, durch ein TAB getrennt, die öberschrift folgt        */
+               /* dabei wird in der Åbergeben Datei nach einer Zeile gesucht, die     */
+               /* mit # beginnt und dann genau die öberschrift hat. In diesem Fall    */
+               /* erfolgt die Textausgabe bis zum nÑchsten # am Zeilenanfang          */
+#define AS_REDRAWFILE      (1002)      /* Fenster mit Dateidarstellungen sollen auf diese Nachricht die */
+                                       /* Dateidarstellung aktualisieren, OPTIONAL KANN in IN_OUT ein Pfad */
+                                       /* angegeben sein, fÅr den diese VerÑnderung gilt */
+#define AS_LOADFILE        (1003)      /* ein Fenster soll, sofern es als PRG lÑuft, die Textdatei aus */
+                                       /* IN_OUT in einen EDITOR laden */
 
-#define AS_SELECTFILE 		(1004)		/* ein Fenster mit einer Dateidarstellung sollte die Datei IN_OUT selektieren */
-													/* zusÑtzlich selekt. nur dann, wenn die Datei sich im gleichen Verzeichnis befindet */
-													/* NULL in IN_OUT bedeutet deselktieren */
+#define AS_SELECTFILE      (1004)      /* ein Fenster mit einer Dateidarstellung sollte die Datei IN_OUT selektieren */
+                                       /* zusÑtzlich selekt. nur dann, wenn die Datei sich im gleichen Verzeichnis befindet */
+                                       /* NULL in IN_OUT bedeutet deselktieren */
 
-#define AS_LOOKSTRING		(1005)		/* suche nullterminierten String aus IN_OUT in den eigenen Datenstrukturen */
-#define AS_SAVEFILE			(1006)		/* sichere Datei *IN_OUT */
-#define AS_DOARCHIVE			(1010)		/* LAZy-Shell-intern... */
-#define AS_ASKLAZY			(1011)		/* bist Du LAZy-Fenster? */
-#define AS_ASKFILE			(1012)		/* bist Du Dateidarstellungsfenster? */
-#define AS_ASKTURNUS			(1013)		/* bist Du TURNUS-Fenster? */
-#define AS_ASKNOTIO			(1014)		/* bist Du NOTIO-Fenster? */
-#define AS_ASKACSOBJ			(1015)		/* bist Du ACS-Object-Fenster? */
-#define AS_CEWS_BASE			(1100)		/* bist Du ACS-Base-Fenster? */
-#define AS_IMGSETOWNER		(2000)		/* IMGEDIT-intern */
+#define AS_LOOKSTRING      (1005)      /* suche nullterminierten String aus IN_OUT in den eigenen Datenstrukturen */
+#define AS_SAVEFILE        (1006)      /* sichere Datei *IN_OUT */
+#define AS_DOARCHIVE       (1010)      /* LAZy-Shell-intern... */
+#define AS_ASKLAZY         (1011)      /* bist Du LAZy-Fenster? */
+#define AS_ASKFILE         (1012)      /* bist Du Dateidarstellungsfenster? */
+#define AS_ASKTURNUS       (1013)      /* bist Du TURNUS-Fenster? */
+#define AS_ASKNOTIO        (1014)      /* bist Du NOTIO-Fenster? */
+#define AS_ASKACSOBJ       (1015)      /* bist Du ACS-Object-Fenster? */
+#define AS_CEWS_BASE       (1100)      /* bist Du ACS-Base-Fenster? */
+#define AS_IMGSETOWNER     (2000)      /* IMGEDIT-intern */
 
 /* VAMOS */
-#define ADD_DLO				(20000)		/* Nachricht */
-#define AS_MODE				(20001)		/* Modus wechseln */
-#define AS_CALC				(20002)		/* Fensterinhalt neu berechnen */
+#define ADD_DLO            (20000)     /* Nachricht */
+#define AS_MODE            (20001)     /* Modus wechseln */
+#define AS_CALC            (20002)     /* Fensterinhalt neu berechnen */
 
 /* Awindow.kind */
-#define AW_ICON				(0x0001)		/* Iconizing Window instead of Terminating */
-#define AW_GHOSTICON			(0x0002)		/* Ghost Icon from beginning */
-#define AW_STAY				(0x0004)		/* do not change state of the window iconize/open */
-#define AW_OBLIST				(0x0008)		/* inner object is a objects list */
-#define AW_ICONACCEPT		(0x0010)		/* accept dragging on windows icon */
-#define AW_UHSLIDER			(0x0020)		/* user administrated horizontal slider */
-#define AW_UVSLIDER			(0x0040)		/* user administrated vertical slider */
-#define AW_NOSCROLL			(0x0080)		/* no optimized scrolling */
-#define AW_TOOLBOX			(0x0100)		/* do not top if access (AES 4.0 only) */
+#define AW_ICON            (0x0001)    /* Iconizing Window instead of Terminating */
+#define AW_GHOSTICON       (0x0002)    /* Ghost Icon from beginning */
+#define AW_STAY            (0x0004)    /* do not change state of the window iconize/open */
+#define AW_OBLIST          (0x0008)    /* inner object is a objects list */
+#define AW_ICONACCEPT      (0x0010)    /* accept dragging on windows icon */
+#define AW_UHSLIDER        (0x0020)    /* user administrated horizontal slider */
+#define AW_UVSLIDER        (0x0040)    /* user administrated vertical slider */
+#define AW_NOSCROLL        (0x0080)    /* no optimized scrolling */
+#define AW_TOOLBOX         (0x0100)    /* do not top if access (AES 4.0 only) */
 
 /* Awindow.state */
-#define AWS_FULL				(0x0001)		/* State full */
-#define AWS_DIALOG			(0x0002)		/* dialog is activ */
-#define AWS_MODIFIED			(0x0004)		/* dependend information was changed call init before open */
-#define AWS_MODAL				(0x0008)		/* a modal dialog is open for this window */
-#define AWS_FORCEREDRAW		(0x0010)		/* forces a redraw */
-#define AWS_LATEUPDATE		(0x0020)		/* send AS_UPATE after returning to main loop */
-#define AWS_TERM				(0x0100)		/* Terminatesequence active, skip iconizing */
-#define AWS_INTERM			(0x0200)		/* USER set! window is term routine in progress, just to avoid double terminating and freeing memory */
-#define AWS_MODAL_WIN		(0x0400)		/* modal, window dialog */
-#define AWS_ICONIZED			(0x0800)		/* GEM-iconified */
-#define AWS_ALLICONIZED		(0x1000)		/* Main-GEM-iconified */
-#define AWS_SHADED			(0x2000)		/* window is shaded (MagiC,WINX) */
+#define AWS_FULL           (0x0001)    /* State full */
+#define AWS_DIALOG         (0x0002)    /* dialog is activ */
+#define AWS_MODIFIED       (0x0004)    /* dependend information was changed call init before open */
+#define AWS_MODAL          (0x0008)    /* a modal dialog is open for this window */
+#define AWS_FORCEREDRAW    (0x0010)    /* forces a redraw */
+#define AWS_LATEUPDATE     (0x0020)    /* send AS_UPATE after returning to main loop */
+#define AWS_TERM           (0x0100)    /* Terminatesequence active, skip iconizing */
+#define AWS_INTERM         (0x0200)    /* USER set! window is term routine in progress, just to avoid double terminating and freeing memory */
+#define AWS_MODAL_WIN      (0x0400)    /* modal, window dialog */
+#define AWS_ICONIZED       (0x0800)    /* GEM-iconified */
+#define AWS_ALLICONIZED    (0x1000)    /* Main-GEM-iconified */
+#define AWS_SHADED         (0x2000)    /* window is shaded (MagiC,WINX) */
 
 /* OBJECT.ob_flags */
-#define AEO						(0x8000)		/* Extended Object */
-#define AO_DEFABLE			(0x4000)		/* defaultable Object */
-#define AO_DRAGABLE			(0x2000)		/* dragable Object */
-#define AO_ACCEPT				(0x1000)		/* accept dragable Object */
-#define AO_SILENT				(0x0800)		/* object will NOT visual react (AO_ACCEPT) */
+#define AEO                (0x8000)    /* Extended Object */
+#define AO_DEFABLE         (0x4000)    /* defaultable Object */
+#define AO_DRAGABLE        (0x2000)    /* dragable Object */
+#define AO_ACCEPT          (0x1000)    /* accept dragable Object */
+#define AO_SILENT          (0x0800)    /* object will NOT visual react (AO_ACCEPT) */
 
 /* OBJECT.ob_state */
-#define AOS_FIXED				(0x8000)		/* Object tree is already fixed */
-#define AOS_DCLICK			(0x4000)		/* last selection was a double click */
-#define AOS_CONST				(0x2000)		/* Do not copy substructure, do not release (free) substructure */
-#define AOS_LOCKED			(0x1000)		/* subtree is locked */
-#define AOS_CLTOP				(0x0800)		/* Counterlock Top; is bound to Bottom of parent */
-#define AOS_CLBOTTOM			(0x0400)		/* Counterlock Bottom */
-#define AOS_CLLEFT			(0x0200)		/* Counterlock Left */
-#define AOS_CLRIGHT			(0x0100)		/* Counterlock Right */
+#define AOS_FIXED          (0x8000)    /* Object tree is already fixed */
+#define AOS_DCLICK         (0x4000)    /* last selection was a double click */
+#define AOS_CONST          (0x2000)    /* Do not copy substructure, do not release (free) substructure */
+#define AOS_LOCKED         (0x1000)    /* subtree is locked */
+#define AOS_CLTOP          (0x0800)    /* Counterlock Top; is bound to Bottom of parent */
+#define AOS_CLBOTTOM       (0x0400)    /* Counterlock Bottom */
+#define AOS_CLLEFT         (0x0200)    /* Counterlock Left */
+#define AOS_CLRIGHT        (0x0100)    /* Counterlock Right */
 
 /* AOBJECT.type */
-#define AT_ICONWINDOW		(1)				/* iconized window */
-#define AT_NEW					(2)				/* new object */
-#define AT_TRASH				(3)				/* trash bin */
+#define AT_ICONWINDOW      (1)            /* iconized window */
+#define AT_NEW             (2)            /* new object */
+#define AT_TRASH           (3)            /* trash bin */
 
-#define AT_MFDB				(10)				/* MFDB in userp1 */
-#define AT_STRING				(11)				/* Nullterminated String in userp1 */
-#define AT_FILE 				(20)				/* Nullterminated String in userp1, file path */
+#define AT_MFDB            (10)           /* MFDB in userp1 */
+#define AT_STRING          (11)           /* Nullterminated String in userp1 */
+#define AT_FILE            (20)           /* Nullterminated String in userp1, file path */
 
-#define AT_ARCHIVE			(30)				/* LAZY SHELL */
-#define AT_TEXT				(31)				/* '\n'-seperated Strings with final zero */
-#define AT_TURNUS				(32)				/* TurnUs-intern */
-#define AT_NOTIO        	(33)        	/* Notio-intern */
+#define AT_ARCHIVE         (30)           /* LAZY SHELL */
+#define AT_TEXT            (31)           /* '\n'-seperated Strings with final zero */
+#define AT_TURNUS          (32)           /* TurnUs-intern */
+#define AT_NOTIO           (33)           /* Notio-intern */
 
 /* VAMOS, reserviert 20000 - 20009 */
-#define AT_DLO					(20000)			/* DainÑmik Link Obdschekt */
-#define AT_SLOT				(20001)			/* Modulslot */
-#define AT_JOBSYMBOL			(20002)			/* Symbol fÅr JOB - Layout - Programm */
-#define AT_BITBLK				(20003)			/* Bitblock */
-#define AT_ICONBLK			(20004)			/* Iconblock */
-#define AT_JOBITEM			(20005)			/* Objekt fÅr Joblauf */
+#define AT_DLO             (20000)        /* DainÑmik Link Obdschekt */
+#define AT_SLOT            (20001)        /* Modulslot */
+#define AT_JOBSYMBOL       (20002)        /* Symbol fÅr JOB - Layout - Programm */
+#define AT_BITBLK          (20003)        /* Bitblock */
+#define AT_ICONBLK         (20004)        /* Iconblock */
+#define AT_JOBITEM         (20005)        /* Objekt fÅr Joblauf */
 
 /* S_C_M, reserviert 50-59 */
-#define	AT_DATE				(50)
-#define	AT_BOOKING			(51)
-#define	AT_CUSTOMER			(52)
-#define	AT_NEWCUSTOMER		(53)
-#define	AT_ARTICLE			(54)
+#define  AT_DATE           (50)
+#define  AT_BOOKING        (51)
+#define  AT_CUSTOMER       (52)
+#define  AT_NEWCUSTOMER    (53)
+#define  AT_ARTICLE        (54)
 
 
 /* ACSerror-Message Numbers */
 /*    For Std-Message-Numbers, not-NULL-Pointer in Para means */
-/*		printable Text, which can be added to the normal message */
-#define AE_GEN						(1)			/* general error occured */
-#define AE_GEN_MEM				(2)			/* general memory error, prefer following specialized numbers */
-#define AE_OUT_OF_MEM			(3)			/* not enough memory */
-#define AE_DEFECTIVE_MEM		(4)			/* mem orgininally not allocated */
-#define AE_RANGE_MEM				(5)			/* to much or not enough memory handled */
-#define AE_ODD_MEM				(6)			/* odd mem-adress */
-#define AE_GEN_IO					(7)			/* general io-error, prefer following specialized numbers */
-#define AE_OPEN_IO				(8)			/* IO-channel-open error */
-#define AE_CREATE_IO				(9)			/* IO-channel-create error */
-#define AE_WRITE_IO				(10)			/* IO-channel-write error */
-#define AE_READ_IO				(11)			/* IO-channel-read error */
-#define AE_GEN_MOD				(12)			/* general modul-error */
-#define AE_LOAD_MOD				(13)			/* Pexec-3 Load-error */
-#define AE_VER_MOD				(14)			/* wrong version */
-#define AE_MEM_MOD				(15)			/* mshrink-error */
-#define AE_PORT					(16)			/* io-port-error */
-#define AE_COLORS					(17)			/* incorrect amounts of colors */
-#define AE_REZ						(18)			/* unsupported resolution */
-#define AE_VDI						(19)			/* VDI-error (like version-numbers) */
-#define AE_AES						(20)			/* AES-Error (like 'MTos required') */
-#define AE_IMG						(21)			/* IMG-Depack-error */
-#define AE_DD_WARN				(22)			/* D&D-Warning */
-#define AE_DD_ERR					(23)			/* D&D-Error */
+/*    printable Text, which can be added to the normal message */
+#define AE_GEN                (1)         /* general error occured */
+#define AE_GEN_MEM            (2)         /* general memory error, prefer following specialized numbers */
+#define AE_OUT_OF_MEM         (3)         /* not enough memory */
+#define AE_DEFECTIVE_MEM      (4)         /* mem orgininally not allocated */
+#define AE_RANGE_MEM          (5)         /* to much or not enough memory handled */
+#define AE_ODD_MEM            (6)         /* odd mem-adress */
+#define AE_GEN_IO             (7)         /* general io-error, prefer following specialized numbers */
+#define AE_OPEN_IO            (8)         /* IO-channel-open error */
+#define AE_CREATE_IO          (9)         /* IO-channel-create error */
+#define AE_WRITE_IO           (10)        /* IO-channel-write error */
+#define AE_READ_IO            (11)        /* IO-channel-read error */
+#define AE_GEN_MOD            (12)        /* general modul-error */
+#define AE_LOAD_MOD           (13)        /* Pexec-3 Load-error */
+#define AE_VER_MOD            (14)        /* wrong version */
+#define AE_MEM_MOD            (15)        /* mshrink-error */
+#define AE_PORT               (16)        /* io-port-error */
+#define AE_COLORS             (17)        /* incorrect amounts of colors */
+#define AE_REZ                (18)        /* unsupported resolution */
+#define AE_VDI                (19)        /* VDI-error (like version-numbers) */
+#define AE_AES                (20)        /* AES-Error (like 'MTos required') */
+#define AE_IMG                (21)        /* IMG-Depack-error */
+#define AE_DD_WARN            (22)        /* D&D-Warning */
+#define AE_DD_ERR             (23)        /* D&D-Error */
 
-#undef swd													/* no one knows it any more */
+#undef swd                                      /* no one knows it any more */
 
 
 /*
- *		Global Defines
+ *    Global Defines
  */
 
 /* Init entry after ACS initializing */
 int16 ACSinit( void );
 
 /*
- *		Global Vars		(no Values)
+ *    Global Vars    (no Values)
  */
 
 extern Ablk *ACSblk;
 
 #ifndef __ACS_MODULE__
-	extern Awindow* Aroot_wi;
-	extern Adescr ACSdescr;
-	extern Aconfig ACSconfig;
-	
-	/* pre init */
-	int16 ACSinit0 (void);
+   extern Awindow* Aroot_wi;
+   extern Adescr ACSdescr;
+   extern Aconfig ACSconfig;
+   
+   /* pre init */
+   int16 ACSinit0 (void);
 #else
-	/* This module should terminate, WARNING dangerous call*/
-	void ACSmoduleterm (void);
+   /* This module should terminate, WARNING dangerous call*/
+   void ACSmoduleterm (void);
 #endif
 
 #ifdef __ACS1__
-	#define gl_apid			(ACSblk-> gl_apid)
-	#define phys_handle		(ACSblk-> phys_handle)
-	#define gl_wattr			(ACSblk-> gl_wattr)
-	#define gl_hattr			(ACSblk-> gl_hattr)
-	#define desk				(ACSblk-> desk)
-	
-	/* VDI */
-	#define vdi_handle		(ACSblk-> vdi_handle)
-	#define gl_wbox			(ACSblk-> gl_wbox)
-	#define gl_hbox			(ACSblk-> gl_hbox)
-	#define gl_wchar			(ACSblk-> gl_wchar)
-	#define gl_hchar			(ACSblk-> gl_hchar)
-	#define ncolors			(ACSblk-> ncolors)
-	#define nplanes			(ACSblk-> nplanes)
-	
-	/* Pathes */
-	#define appname 			(ACSblk-> appname)
-	#define apppath			(ACSblk-> apppath)
-	#define apppara 			(ACSblk-> apppara)
-	#define appfrom			(ACSblk-> appfrom)
-	#define basename			(ACSblk-> basename)
-	
-	/* others */
-	#define ev_mtcount		(ACSblk-> ev_mtcount)
-	#define application		(ACSblk-> application)
-	#define multitask			(ACSblk-> multitask)
-	#define appexit			(ACSblk-> appexit)
-	#define description 		(ACSblk-> description)
-	#define Aselect			(ACSblk-> Aselect)
-	
-	/* context during callback pointer values */
-	#define ev_window			(ACSblk-> ev_window)
-	#define ev_object			(ACSblk-> ev_object)
-	#define ev_obnr			(ACSblk-> ev_obnr)
-	#define ev_mmox			(ACSblk-> ev_mmox)
-	#define ev_mmoy			(ACSblk-> ev_mmoy)
-	#define ev_mmokstate 	(ACSblk-> ev_mmokstate)
-	#define dia_abort			(ACSblk-> dia_abort)
-	#define screenMFDB		(ACSblk-> screenMFDB)
-	#define apterm				(ACSblk-> apterm)
-	#define AESglobal			(ACSblk-> AESglobal)
+   #define gl_apid         (ACSblk-> gl_apid)
+   #define phys_handle     (ACSblk-> phys_handle)
+   #define gl_wattr        (ACSblk-> gl_wattr)
+   #define gl_hattr        (ACSblk-> gl_hattr)
+   #define desk            (ACSblk-> desk)
+   
+   /* VDI */
+   #define vdi_handle      (ACSblk-> vdi_handle)
+   #define gl_wbox         (ACSblk-> gl_wbox)
+   #define gl_hbox         (ACSblk-> gl_hbox)
+   #define gl_wchar        (ACSblk-> gl_wchar)
+   #define gl_hchar        (ACSblk-> gl_hchar)
+   #define ncolors         (ACSblk-> ncolors)
+   #define nplanes         (ACSblk-> nplanes)
+   
+   /* Pathes */
+   #define appname         (ACSblk-> appname)
+   #define apppath         (ACSblk-> apppath)
+   #define apppara         (ACSblk-> apppara)
+   #define appfrom         (ACSblk-> appfrom)
+   #define basename        (ACSblk-> basename)
+   
+   /* others */
+   #define ev_mtcount      (ACSblk-> ev_mtcount)
+   #define application     (ACSblk-> application)
+   #define multitask       (ACSblk-> multitask)
+   #define appexit         (ACSblk-> appexit)
+   #define description     (ACSblk-> description)
+   #define Aselect         (ACSblk-> Aselect)
+   
+   /* context during callback pointer values */
+   #define ev_window       (ACSblk-> ev_window)
+   #define ev_object       (ACSblk-> ev_object)
+   #define ev_obnr         (ACSblk-> ev_obnr)
+   #define ev_mmox         (ACSblk-> ev_mmox)
+   #define ev_mmoy         (ACSblk-> ev_mmoy)
+   #define ev_mmokstate    (ACSblk-> ev_mmokstate)
+   #define dia_abort       (ACSblk-> dia_abort)
+   #define screenMFDB      (ACSblk-> screenMFDB)
+   #define apterm          (ACSblk-> apterm)
+   #define AESglobal       (ACSblk-> AESglobal)
 #endif
 
 /*
- *		Windowhandling common Routines
+ *    Windowhandling common Routines
  */
 
 /* Get window for GEM-Window-ID */
@@ -1014,7 +1015,7 @@ Awindow *Awi_selfcreate( void *x );
 void Awi_uoself( Awindow *wi );
 
 /* Internal wind_update */
-#define RESET_UPDATE 	(0x0010)
+#define RESET_UPDATE    (0x0010)
 #define RESTART_UPDATE  (0x0020)
 void Awi_update( int16 mode );
 
@@ -1103,7 +1104,7 @@ int16 Aev_OlgaRename( const char *old_datei, const char *new_datei );
 int16 Aev_OlgaBreaklink( const char *datei );
 
 /*
- *		Mousehandling
+ *    Mousehandling
  */
 
 /* Set new Mouse */
@@ -1122,7 +1123,7 @@ void Amo_hide( void );
 void Amo_show( void );
 
 /*
- *		Objecthandling
+ *    Objecthandling
  */
 
 /* Creates a Copy of Parent */
@@ -1203,43 +1204,43 @@ int16 Aob_within( const Axywh* rect, const int16 x, const int16 y );
 /* IMG-Header */
 typedef struct
 {
-	int16 version;
-	int16 headlen;												/* normally 8 */
-	int16 planes;
-	int16 pat_run;
-	int16 pix_width;
-	int16 pix_height;
-	int16 sl_width;
-	int16 sl_height;
+   int16 version;
+   int16 headlen;                                  /* normally 8 */
+   int16 planes;
+   int16 pat_run;
+   int16 pix_width;
+   int16 pix_height;
+   int16 sl_width;
+   int16 sl_height;
 } IMG_HEADER;
 
 /* XIMG-Header */
-#define RGB			(0)											/* col-table-model for color_model */
-#define CYM			(1)
-#define HLS			(2)
-#define PANTONE	(3)
+#define RGB       (0)                                 /* col-table-model for color_model */
+#define CYM       (1)
+#define HLS       (2)
+#define PANTONE   (3)
 
 /* Color-Entries for XIMG-Header */
 typedef struct
 {
-	unsigned int16	red;
-	unsigned int16	green;
-	unsigned int16	blue;
-}	RGB_LIST;
+   unsigned int16 red;
+   unsigned int16 green;
+   unsigned int16 blue;
+}  RGB_LIST;
 
 typedef struct
 {
-	int16 version;
-	int16 headlen;												/* sizeof (XIMG_HEADER) + sizeof (all_rgb_list) */
-	int16 planes;
-	int16 pat_run;
-	int16 pix_width;
-	int16 pix_height;
-	int16 sl_width;
-	int16 sl_height;
-	char	x_id[4];												/* should be 'XIMG' */
-	int16	color_model;										/* see defines above */
-	RGB_LIST	color_table[];									/* array of colors, length is 2^planes */
+   int16 version;
+   int16 headlen;                                  /* sizeof (XIMG_HEADER) + sizeof (all_rgb_list) */
+   int16 planes;
+   int16 pat_run;
+   int16 pix_width;
+   int16 pix_height;
+   int16 sl_width;
+   int16 sl_height;
+   char  x_id[4];                                  /* should be 'XIMG' */
+   int16 color_model;                              /* see defines above */
+   RGB_LIST color_table[];                         /* array of colors, length is 2^planes */
 } XIMG_HEADER;
 
 /* Create Backplane with Width w and Height h */
@@ -1287,11 +1288,11 @@ void Adr_add( Awindow *window, const int16 obnr );
 /* Delete Object from Aselect-List, did not update on Screen ! */
 void Adr_del( Awindow *window, const int16 obnr );
 
-/* Unselect all Object in List, update Screen ! */		
+/* Unselect all Object in List, update Screen ! */    
 void Adr_unselect( void );
 
 /*
- *		Char & String Support
+ *    Char & String Support
  */
 
 /* Zeichen in Groû-/Kleinbuchstaben wandeln (incl. Umlaute!) */
@@ -1367,7 +1368,7 @@ BITBLK* Aim_create( const BITBLK *bitblk );
 void Aim_delete( BITBLK *bitblk );
 
 /*
- *		USER defined Objects
+ *    USER defined Objects
  */
 
 /* Create a Copy */
@@ -1380,7 +1381,7 @@ void Aus_delete( AUSERBLK *user );
 void Aus_help( void );
 
 /*
- *		TEDINFO Support
+ *    TEDINFO Support
  */
 
 /* Create a Copy */
@@ -1390,7 +1391,7 @@ TEDINFO* Ate_create( const TEDINFO *tedi );
 void Ate_delete( TEDINFO *tedi );
 
 /*
- *		Xtra Functions
+ *    Xtra Functions
  */
 
 /* ACS Malloc can be overwritten if linked before Library */
@@ -1405,7 +1406,7 @@ void Ax_glfree( void *memory );
 void Ax_ifree( void* memory );
 
 /*
- *		Utilities
+ *    Utilities
  */
 
 typedef struct afilelist
@@ -1446,121 +1447,121 @@ void dotted_yline( int16 y1, int16 y2, int16 x );
 
 
 /*
- *		Predefined "Userdefined Objects"
+ *    Predefined "Userdefined Objects"
  */
 
-int16 CDECL A_checkbox( PARMBLK* pb );		/* checkboxes, parm simular to ob_spec for boxes ! */
-int16 CDECL A_radiobutton( PARMBLK* pb );	/* uses CHECKBOX-Routine */
-int16 CDECL A_innerframe( PARMBLK* pb );	/* draws a frames half a character inside ! */
-int16 CDECL A_pattern( PARMBLK* pb );		/* draws general patterns */
-int16 CDECL A_arrows( PARMBLK* pb );		/* draws arrows */
-int16 CDECL A_select( PARMBLK* pb );		/* select in a frame instead of reverse */
-int16 CDECL A_ftext( PARMBLK* pb );			/* Formated multiline Text */
-int16 CDECL A_3Dbutton( PARMBLK *pb );		/* 3D-Style Buttons */
-int16 CDECL A_cycle( PARMBLK *pb );			/* Cycle Buttons */
-int16 CDECL A_picture( PARMBLK *pb );		/* draw picture */
-int16 CDECL A_title( PARMBLK *pb );			/* underscored title */
+int16 CDECL A_checkbox( PARMBLK* pb );    /* checkboxes, parm simular to ob_spec for boxes ! */
+int16 CDECL A_radiobutton( PARMBLK* pb ); /* uses CHECKBOX-Routine */
+int16 CDECL A_innerframe( PARMBLK* pb );  /* draws a frames half a character inside ! */
+int16 CDECL A_pattern( PARMBLK* pb );     /* draws general patterns */
+int16 CDECL A_arrows( PARMBLK* pb );      /* draws arrows */
+int16 CDECL A_select( PARMBLK* pb );      /* select in a frame instead of reverse */
+int16 CDECL A_ftext( PARMBLK* pb );       /* Formated multiline Text */
+int16 CDECL A_3Dbutton( PARMBLK *pb );    /* 3D-Style Buttons */
+int16 CDECL A_cycle( PARMBLK *pb );       /* Cycle Buttons */
+int16 CDECL A_picture( PARMBLK *pb );     /* draw picture */
+int16 CDECL A_title( PARMBLK *pb );       /* underscored title */
 int16 CDECL A_boxed( PARMBLK *pb );
 
 /*
- *		USERDEFs Service routines
+ *    USERDEFs Service routines
  */
 
 /*
- *				Object Services for USERDEF 'A_ftext'
+ *          Object Services for USERDEF 'A_ftext'
  */
 
-#define AUO_FTFONT				(300)						/* Set Font, int16 * */
-#define AUO_FTHEIGHT				(301)						/* Set Height, int16 * */
-#define AUO_FTCOLOR				(302)						/* Set Color, int16 * */
-#define AUO_FTEFFECTS			(303)						/* Set Effects, int16 * */
-#define AUO_FTLEFT				(304)						/* Set leftalign */
-#define AUO_FTRIGHT				(305)						/* Set right align */
-#define AUO_FTCENTER				(306)						/* Set center align */
-#define AUO_FTBLOCK				(307)						/* Set block align */
+#define AUO_FTFONT            (300)                /* Set Font, int16 * */
+#define AUO_FTHEIGHT          (301)                /* Set Height, int16 * */
+#define AUO_FTCOLOR           (302)                /* Set Color, int16 * */
+#define AUO_FTEFFECTS         (303)                /* Set Effects, int16 * */
+#define AUO_FTLEFT            (304)                /* Set leftalign */
+#define AUO_FTRIGHT           (305)                /* Set right align */
+#define AUO_FTCENTER          (306)                /* Set center align */
+#define AUO_FTBLOCK           (307)                /* Set block align */
 int16 Auo_ftext( OBJECT* entry, int16 task, void* in_out );
 int16 Auo_string( OBJECT* entry, int16 task, void* in_out );
 
-#define AUO_CYCPOPUP				(400)						/* set popup string */
-#define AUO_CYCINDEX				(401)						/* set index, int16 * */
-#define AUO_CYCGETINDEX			(402)						/* return actual index, int16 * */
+#define AUO_CYCPOPUP          (400)                /* set popup string */
+#define AUO_CYCINDEX          (401)                /* set index, int16 * */
+#define AUO_CYCGETINDEX       (402)                /* return actual index, int16 * */
 int16 Auo_cycle( OBJECT* entry, int16 task, void* in_out );
 void Aus_cycle( void );
 
-#define AUO_PICMFDB				(500)						/* take MFDB, will not copy MFDB */
+#define AUO_PICMFDB           (500)                /* take MFDB, will not copy MFDB */
 int16 Auo_picture( OBJECT* entry, int16 task, void* in_out );
 
 /*
  *  Box-Edit
  */
-#define BE_MAXLEN				(255)
+#define BE_MAXLEN          (255)
 typedef struct
 {
-	unsigned	upcol			:4;
-	unsigned	downcol		:4;
-	unsigned	mask			:5;
-	unsigned	textlen		:8;
-	unsigned	textcol		:4;
-	unsigned	capital		:1;
-	unsigned	smallfont	:1;
-	unsigned	threedim		:1;
-	unsigned	secret		:1;
-	unsigned	resv			:3;
+   unsigned upcol       :4;
+   unsigned downcol     :4;
+   unsigned mask        :5;
+   unsigned textlen     :8;
+   unsigned textcol     :4;
+   unsigned capital     :1;
+   unsigned smallfont   :1;
+   unsigned threedim    :1;
+   unsigned secret      :1;
+   unsigned resv        :3;
 } beparm;
 
 /*** Nachrichten ***/
-#define AUO_BEINCPOS		(700)
-#define AUO_BEDECPOS		(701)
-#define AUO_BEINCWPOS	(702)
-#define AUO_BEDECWPOS	(703)
-#define AUO_BEINSCHAR	(704)
-#define AUO_BEINSTEXT	(705)
-#define AUO_BESETSELECT	(706)
-#define AUO_BEGETSELECT	(707)
-#define AUO_BEBS			(708)
-#define AUO_BEBSW			(709)
-#define AUO_BEBSLINE		(710)
-#define AUO_BEDEL			(711)
-#define AUO_BEDELW		(712)
-#define AUO_BEDELLINE	(713)
-#define AUO_BEDELALL		(714)
-#define AUO_BEMASK		(715)
-#define AUO_BECHARLIST	(716)
+#define AUO_BEINCPOS    (700)
+#define AUO_BEDECPOS    (701)
+#define AUO_BEINCWPOS   (702)
+#define AUO_BEDECWPOS   (703)
+#define AUO_BEINSCHAR   (704)
+#define AUO_BEINSTEXT   (705)
+#define AUO_BESETSELECT (706)
+#define AUO_BEGETSELECT (707)
+#define AUO_BEBS        (708)
+#define AUO_BEBSW       (709)
+#define AUO_BEBSLINE    (710)
+#define AUO_BEDEL       (711)
+#define AUO_BEDELW      (712)
+#define AUO_BEDELLINE   (713)
+#define AUO_BEDELALL    (714)
+#define AUO_BEMASK      (715)
+#define AUO_BECHARLIST  (716)
 
 /*** Masken ***/
-#define	BEM_ALL				(0)	/* alles */
-#define BEM_PATH				(1)	/* alles */
-#define BEM_FILE				(2)	/* alles ohne \: */
-#define BEM_TOSFILE			(3)	/* A-Za-z0-9 ._!@#$%^&()+-=~';",<>|[]{} */
-#define BEM_TOSFILESPEC		(4)	/* BEM_TOSFILE *? */
-#define BEM_TOSPATH			(5)	/* BEM_TOSFILE \: */
-#define	BEM_TOSPATHSPEC	(6) 	/* BEM_TOSFILE \:*? */
-#define BEM_NORM				(7)	/* Space... */
-#define BEM_ALPHA				(8)	/* a-zA-Z Space */
-#define BEM_ALPHADIGIT		(9)	/* a-zA-Z0-9 Space */
-#define BEM_BIN				(10)	/* 0-1 */
-#define BEM_NEGBIN			(11)	/* - 0-1 */
-#define BEM_OCT				(12)	/* 0-7 */
-#define BEM_NEGOCT			(13)	/* - 0-7 */
-#define BEM_DEC				(14)	/* 0-9 */
-#define BEM_NEGDEC			(15)	/* - 0-9 */
-#define BEM_HEX				(16)	/* 0-9A-Z */
-#define BEM_NEGHEX			(17)	/* - 0-9A-Z */
-#define BEM_FLOAT				(18)	/* 0-9.0-9 */
-#define BEM_NEGFLOAT			(19)	/* - 0-9.0-9 */
-#define BEM_DATEEURO			(20)	/* Tag(2).Monat(2).Jahr(4) */
-#define BEM_DATEEURO_SEP	(21)	/* Tag(2)/Monat(2)/Jahr(4) */
-#define BEM_DATEUS			(22)	/* Monat(2).Tag(2).Jahr(4) */
-#define BEM_DATEUS_SEP		(23)	/* Monat(2)/Tag(2)/Jahr(4) */
-#define BEM_TIME				(24)	/* Std:Min(2):sek(2) Std unbegrenzt */
-#define BEM_TIME12			(25)	/* Std(2):Min(2):sek(2) max 12 Stunden */
-#define BEM_TIME24			(26)	/* Std(2):Min(2):sek(2) max 24 Stunden */
+#define  BEM_ALL           (0)   /* alles */
+#define BEM_PATH           (1)   /* alles */
+#define BEM_FILE           (2)   /* alles ohne \: */
+#define BEM_TOSFILE        (3)   /* A-Za-z0-9 ._!@#$%^&()+-=~';",<>|[]{} */
+#define BEM_TOSFILESPEC    (4)   /* BEM_TOSFILE *? */
+#define BEM_TOSPATH        (5)   /* BEM_TOSFILE \: */
+#define  BEM_TOSPATHSPEC   (6)   /* BEM_TOSFILE \:*? */
+#define BEM_NORM           (7)   /* Space... */
+#define BEM_ALPHA          (8)   /* a-zA-Z Space */
+#define BEM_ALPHADIGIT     (9)   /* a-zA-Z0-9 Space */
+#define BEM_BIN            (10)  /* 0-1 */
+#define BEM_NEGBIN         (11)  /* - 0-1 */
+#define BEM_OCT            (12)  /* 0-7 */
+#define BEM_NEGOCT         (13)  /* - 0-7 */
+#define BEM_DEC            (14)  /* 0-9 */
+#define BEM_NEGDEC         (15)  /* - 0-9 */
+#define BEM_HEX            (16)  /* 0-9A-Z */
+#define BEM_NEGHEX         (17)  /* - 0-9A-Z */
+#define BEM_FLOAT          (18)  /* 0-9.0-9 */
+#define BEM_NEGFLOAT       (19)  /* - 0-9.0-9 */
+#define BEM_DATEEURO       (20)  /* Tag(2).Monat(2).Jahr(4) */
+#define BEM_DATEEURO_SEP   (21)  /* Tag(2)/Monat(2)/Jahr(4) */
+#define BEM_DATEUS         (22)  /* Monat(2).Tag(2).Jahr(4) */
+#define BEM_DATEUS_SEP     (23)  /* Monat(2)/Tag(2)/Jahr(4) */
+#define BEM_TIME           (24)  /* Std:Min(2):sek(2) Std unbegrenzt */
+#define BEM_TIME12         (25)  /* Std(2):Min(2):sek(2) max 12 Stunden */
+#define BEM_TIME24         (26)  /* Std(2):Min(2):sek(2) max 24 Stunden */
 
 int16 Auo_boxed( OBJECT *entry, int16 task, void *in_out );
 void Aus_boxed( void );
 
 /*
- *	Shell feature(s)
+ * Shell feature(s)
  */
 
 /* Call an other Program (return retvalue of Pexec(Basepage)) */
@@ -1577,7 +1578,7 @@ A_dd *Ash_nextdd( A_dd *act );
 
 /* sendet DD-Partnern (mit Typ type) oder unter MTOS/MagiC */
 /* allen (type<0) den 8 int16-langen Messageblock */
-int16	Ash_sendall( int16 *mess, long type );
+int16 Ash_sendall( int16 *mess, long type );
 
 /* Looks for 'cookie' and writes its Value in val (returns TRUE on success) */
 int16 Ash_getcookie( long cookie, void *value );
@@ -1586,7 +1587,7 @@ int16 Ash_getcookie( long cookie, void *value );
 char *Ash_getenv( const char *var );
 
 /*
-		Debug entry
+      Debug entry
 */
 
 void DEBUG_MEM( void* defective );
@@ -1594,139 +1595,139 @@ void DEBUG_MEM( void* defective );
 #undef __PS__
 
 #ifndef __NKCC
-	#define __NKCC
-	/*******************************************************************************
-	 * NKCC-Header
-	 * Autor: Harald Siegmund (adequate systems)
-	 * ACS verwendet ab Version 2.18 nur noch NKCC-Tastencodes (AO_SCANCODE ist
-	 * also nicht mehr gÅltig).
-	 * Es wird zwar kstate aus der Hauptschleife zurÅckgeliefert,
-	 * allerdings lÑût sich die Taste samt der Umschalttasten komplett
-	 * aus ev_mkretrun ableiten, die 16 Bits aus ev_mkreturn sind folgendermaûen
-	 * belegt:
-	 *
-	 * 1111110000000000
-	 * 5432109876543210
-	 * ||||||||++++++++-> acht Bits, druckbarer Ascii-Code ((char) ev_mkreturn)
-	 * |||||||+---------> rechte Shifttaste                (ev_mkreturn & NKF_RSH)
-	 * ||||||+----------> linke Shifttaste                 (ev_mkreturn & NKF_LSH)
-	 * ||||||                                beide Tasten: (ev_mkreturn & NKF_SHIFT)
-	 * |||||+-----------> Control-Taste                    (ev_mkreturn & NKF_CTRL)
-	 * ||||+------------> ALT-Taste                        (ev_mkreturn & NKF_ALT)
-	 * |||+-------------> CAPS-Taste                       (ev_mkreturn & NKF_CAPS)
-	 * ||+--------------> Eingabe Åber ALT-Num-Pad         (ev_mkreturn & NKF_NUM)
-	 * |+---------------> reserviert
-	 * +----------------> Taste mit 'Funktion',            (ev_mkreturn & NKF_FUNC)
-	 *                    wenn gesetzt, dann entweder ALT- oder CONTROL-Kombination oder
-	 *                    eine Sondertaste (also HELP, ESC, Cursortasten oder F-Tasten,
-	 *                    deren Codes unter NK_???? definiert sind (s.u.))
-	 */
+   #define __NKCC
+   /*******************************************************************************
+    * NKCC-Header
+    * Autor: Harald Siegmund (adequate systems)
+    * ACS verwendet ab Version 2.18 nur noch NKCC-Tastencodes (AO_SCANCODE ist
+    * also nicht mehr gÅltig).
+    * Es wird zwar kstate aus der Hauptschleife zurÅckgeliefert,
+    * allerdings lÑût sich die Taste samt der Umschalttasten komplett
+    * aus ev_mkretrun ableiten, die 16 Bits aus ev_mkreturn sind folgendermaûen
+    * belegt:
+    *
+    * 1111110000000000
+    * 5432109876543210
+    * ||||||||++++++++-> acht Bits, druckbarer Ascii-Code ((char) ev_mkreturn)
+    * |||||||+---------> rechte Shifttaste                (ev_mkreturn & NKF_RSH)
+    * ||||||+----------> linke Shifttaste                 (ev_mkreturn & NKF_LSH)
+    * ||||||                                beide Tasten: (ev_mkreturn & NKF_SHIFT)
+    * |||||+-----------> Control-Taste                    (ev_mkreturn & NKF_CTRL)
+    * ||||+------------> ALT-Taste                        (ev_mkreturn & NKF_ALT)
+    * |||+-------------> CAPS-Taste                       (ev_mkreturn & NKF_CAPS)
+    * ||+--------------> Eingabe Åber ALT-Num-Pad         (ev_mkreturn & NKF_NUM)
+    * |+---------------> reserviert
+    * +----------------> Taste mit 'Funktion',            (ev_mkreturn & NKF_FUNC)
+    *                    wenn gesetzt, dann entweder ALT- oder CONTROL-Kombination oder
+    *                    eine Sondertaste (also HELP, ESC, Cursortasten oder F-Tasten,
+    *                    deren Codes unter NK_???? definiert sind (s.u.))
+    */
 
 /* flags for special key code handling */
 /* not used */
 
 /* NKCC key code flags */
 
-	#define NKF_FUNC     0x8000         /* function          */
-	#define NKF_RESVD    0x4000         /* resvd, ignore it! */
-	#define NKF_NUM      0x2000         /* numeric pad       */
-	#define NKF_CAPS     0x1000         /* CapsLock          */
-	#define NKF_ALT      0x0800         /* Alternate         */
-	#define NKF_CTRL     0x0400         /* Control           */
-	#define NKF_SHIFT    0x0300         /* any Shift key     */
-	#define NKF_LSH      0x0200         /* left Shift key    */
-	#define NKF_RSH      0x0100         /* right Shift key   */
-	#define NKF_MODIFY   (NKF_CAPS|NKF_ALT|NKF_CTRL|NKF_SHIFT)
-	
-	#define NKF_IGNUM    NKF_RESVD      /* special flag for nkc_cmp() */
-	
-	/* Special Key-Codes for Keys performing a Function */
-	
-	#define NK_INVALID   0x00           /* invalid key code  */
-	#define NK_UP        0x01           /* cursor up         */
-	#define NK_DOWN      0x02           /* cursor down       */
-	#define NK_RIGHT     0x03           /* cursor right      */
-	#define NK_LEFT      0x04           /* cursor left       */
-	#define NK_RVD05     0x05           /* reserved!         */
-	#define NK_RVD06     0x06           /* reserved!         */
-	#define NK_RVD07     0x07           /* reserved!         */
-	#define NK_BS        0x08           /* Backspace         */
-	#define NK_TAB       0x09           /* Tab               */
-	#define NK_ENTER     0x0a           /* Enter             */
-	#define NK_INS       0x0b           /* Insert            */
-	#define NK_CLRHOME   0x0c           /* Clr/Home          */
-	#define NK_RET       0x0d           /* Return            */
-	#define NK_HELP      0x0e           /* Help              */
-	#define NK_UNDO      0x0f           /* Undo              */
-	#define NK_F1        0x10           /* function key #1   */
-	#define NK_F2        0x11           /* function key #2   */
-	#define NK_F3        0x12           /* function key #3   */
-	#define NK_F4        0x13           /* function key #4   */
-	#define NK_F5        0x14           /* function key #5   */
-	#define NK_F6        0x15           /* function key #6   */
-	#define NK_F7        0x16           /* function key #7   */
-	#define NK_F8        0x17           /* function key #8   */
-	#define NK_F9        0x18           /* function key #9   */
-	#define NK_F10       0x19           /* function key #10  */
-	#define NK_RVD1A     0x1a           /* reserved!         */
-	#define NK_ESC       0x1b           /* Esc               */
-	#define NK_RVD1C     0x1c           /* reserved!         */
-	#define NK_RVD1D     0x1d           /* reserved!         */
-	#define NK_RVD1E     0x1e           /* reserved!         */
-	#define NK_DEL       0x1f           /* Delete            */
-	
+   #define NKF_FUNC     0x8000         /* function          */
+   #define NKF_RESVD    0x4000         /* resvd, ignore it! */
+   #define NKF_NUM      0x2000         /* numeric pad       */
+   #define NKF_CAPS     0x1000         /* CapsLock          */
+   #define NKF_ALT      0x0800         /* Alternate         */
+   #define NKF_CTRL     0x0400         /* Control           */
+   #define NKF_SHIFT    0x0300         /* any Shift key     */
+   #define NKF_LSH      0x0200         /* left Shift key    */
+   #define NKF_RSH      0x0100         /* right Shift key   */
+   #define NKF_MODIFY   (NKF_CAPS|NKF_ALT|NKF_CTRL|NKF_SHIFT)
+   
+   #define NKF_IGNUM    NKF_RESVD      /* special flag for nkc_cmp() */
+   
+   /* Special Key-Codes for Keys performing a Function */
+   
+   #define NK_INVALID   0x00           /* invalid key code  */
+   #define NK_UP        0x01           /* cursor up         */
+   #define NK_DOWN      0x02           /* cursor down       */
+   #define NK_RIGHT     0x03           /* cursor right      */
+   #define NK_LEFT      0x04           /* cursor left       */
+   #define NK_RVD05     0x05           /* reserved!         */
+   #define NK_RVD06     0x06           /* reserved!         */
+   #define NK_RVD07     0x07           /* reserved!         */
+   #define NK_BS        0x08           /* Backspace         */
+   #define NK_TAB       0x09           /* Tab               */
+   #define NK_ENTER     0x0a           /* Enter             */
+   #define NK_INS       0x0b           /* Insert            */
+   #define NK_CLRHOME   0x0c           /* Clr/Home          */
+   #define NK_RET       0x0d           /* Return            */
+   #define NK_HELP      0x0e           /* Help              */
+   #define NK_UNDO      0x0f           /* Undo              */
+   #define NK_F1        0x10           /* function key #1   */
+   #define NK_F2        0x11           /* function key #2   */
+   #define NK_F3        0x12           /* function key #3   */
+   #define NK_F4        0x13           /* function key #4   */
+   #define NK_F5        0x14           /* function key #5   */
+   #define NK_F6        0x15           /* function key #6   */
+   #define NK_F7        0x16           /* function key #7   */
+   #define NK_F8        0x17           /* function key #8   */
+   #define NK_F9        0x18           /* function key #9   */
+   #define NK_F10       0x19           /* function key #10  */
+   #define NK_RVD1A     0x1a           /* reserved!         */
+   #define NK_ESC       0x1b           /* Esc               */
+   #define NK_RVD1C     0x1c           /* reserved!         */
+   #define NK_RVD1D     0x1d           /* reserved!         */
+   #define NK_RVD1E     0x1e           /* reserved!         */
+   #define NK_DEL       0x1f           /* Delete            */
+   
    /* terminator for key code tables */
-	#define NK_TERM      ((int16)(NKF_FUNC | NK_INVALID))
-	
-	/* ASCII codes less than 32 */
-	/* not supported by ACS, just for general purpose */
-	#define NUL          0x00           /* Null */
-	#define SOH          0x01           /* Start Of Header */
-	#define STX          0x02           /* Start Of Text */
-	#define ETX          0x03           /* End Of Text */
-	#define EOT          0x04           /* End Of Transmission */
-	#define ENQ          0x05           /* Enquiry */
-	#define ACK          0x06           /* positive Acknowledgement */
-	#define BEL          0x07           /* Bell */
-	#define BS           0x08           /* BackSpace */
-	#define HT           0x09           /* Horizontal Tab */
-	#define LF           0x0a           /* Line Feed */
-	#define VT           0x0b           /* Vertical Tab */
-	#define FF           0x0c           /* Form Feed */
-	#define CR           0x0d           /* Carriage Return */
-	#define SO           0x0e           /* Shift Out */
-	#define SI           0x0f           /* Shift In */
-	#define DLE          0x10           /* Data Link Escape */
-	#define DC1          0x11           /* Device Control 1 */
-	#define XON          0x11           /* same as DC1 */
-	#define DC2          0x12           /* Device Control 2 */
-	#define DC3          0x13           /* Device Control 3 */
-	#define XOFF         0x13           /* same as DC3 */
-	#define DC4          0x14           /* Device Control 4 */
-	#define NAK          0x15           /* Negative Acknowledgement */
-	#define SYN          0x16           /* Synchronize */
-	#define ETB          0x17           /* End of Transmission Block */
-	#define CAN          0x18           /* Cancel */
-	#define EM           0x19           /* End of Medium */
-	#define SUB          0x1a           /* Substitute */
-	#define ESC          0x1b           /* Escape */
-	#define FS           0x1c           /* Form Separator */
-	#define GS           0x1d           /* Group Separator */
-	#define RS           0x1e           /* Record Separator */
-	#define US           0x1f           /* Unit Separator */
+   #define NK_TERM      ((int16)(NKF_FUNC | NK_INVALID))
+   
+   /* ASCII codes less than 32 */
+   /* not supported by ACS, just for general purpose */
+   #define NUL          0x00           /* Null */
+   #define SOH          0x01           /* Start Of Header */
+   #define STX          0x02           /* Start Of Text */
+   #define ETX          0x03           /* End Of Text */
+   #define EOT          0x04           /* End Of Transmission */
+   #define ENQ          0x05           /* Enquiry */
+   #define ACK          0x06           /* positive Acknowledgement */
+   #define BEL          0x07           /* Bell */
+   #define BS           0x08           /* BackSpace */
+   #define HT           0x09           /* Horizontal Tab */
+   #define LF           0x0a           /* Line Feed */
+   #define VT           0x0b           /* Vertical Tab */
+   #define FF           0x0c           /* Form Feed */
+   #define CR           0x0d           /* Carriage Return */
+   #define SO           0x0e           /* Shift Out */
+   #define SI           0x0f           /* Shift In */
+   #define DLE          0x10           /* Data Link Escape */
+   #define DC1          0x11           /* Device Control 1 */
+   #define XON          0x11           /* same as DC1 */
+   #define DC2          0x12           /* Device Control 2 */
+   #define DC3          0x13           /* Device Control 3 */
+   #define XOFF         0x13           /* same as DC3 */
+   #define DC4          0x14           /* Device Control 4 */
+   #define NAK          0x15           /* Negative Acknowledgement */
+   #define SYN          0x16           /* Synchronize */
+   #define ETB          0x17           /* End of Transmission Block */
+   #define CAN          0x18           /* Cancel */
+   #define EM           0x19           /* End of Medium */
+   #define SUB          0x1a           /* Substitute */
+   #define ESC          0x1b           /* Escape */
+   #define FS           0x1c           /* Form Separator */
+   #define GS           0x1d           /* Group Separator */
+   #define RS           0x1e           /* Record Separator */
+   #define US           0x1f           /* Unit Separator */
 
-	/*******************************************************************************
-	 * PROTOTYPES
-	 */
-	
-	int16 nkc_tconv( long toskey );
-	int16 nkc_gconv( int16 gemkey );
-	long nkc_n2tos( int16 nkcode );
-	int16 nkc_n2gem( int16 nkcode );
-	int16 nkc_kstate( void );
-	int16 nkc_cmp( int16 refkey,int16 kcode );
-	int16 nkc_tolower( int16 key );
-	int16 nkc_toupper( int16 key );
+   /*******************************************************************************
+    * PROTOTYPES
+    */
+   
+   int16 nkc_tconv( long toskey );
+   int16 nkc_gconv( int16 gemkey );
+   long nkc_n2tos( int16 nkcode );
+   int16 nkc_n2gem( int16 nkcode );
+   int16 nkc_kstate( void );
+   int16 nkc_cmp( int16 refkey,int16 kcode );
+   int16 nkc_tolower( int16 key );
+   int16 nkc_toupper( int16 key );
 
 #endif      /* #ifndef __NKCC */
 
@@ -1736,24 +1737,24 @@ void DEBUG_MEM( void* defective );
 
 /* Minimum */
 #ifndef min
-	#define min(A,B) (((A) < (B)) ? (A) : (B))
+   #define min(A,B) (((A) < (B)) ? (A) : (B))
 #endif
 
 /* Maximum */
 #ifndef max
-	#define max(A,B) (((A) > (B)) ? (A) : (B))
+   #define max(A,B) (((A) > (B)) ? (A) : (B))
 #endif
 
-#define		EOS '\0'						/* Ende des Strings */
-#define		DIR	'\\'					/* Directory-Trenner */
-#define		DEV	':'					/* Device-Trenner */
-#define		SEP	'/'					/* Called by Trenner */
-#define		EXT '.'						/* Extension Trenner */
+#define     EOS '\0'                /* Ende des Strings */
+#define     DIR   '\\'              /* Directory-Trenner */
+#define     DEV   ':'               /* Device-Trenner */
+#define     SEP   '/'               /* Called by Trenner */
+#define     EXT '.'                 /* Extension Trenner */
 
 /* turns filedrv or Dgetdrv if non-exist */
 int16 Af_2drv( const char *file );
 
-/* Returns Path of file or "\\"	in dest and back */
+/* Returns Path of file or "\\"  in dest and back */
 char *Af_2path( char *dest, const char *file );
 
 /* Returns DEMO from [d:][bla\\bli]\\DEMO[.EXT] or "" in dest and back */
@@ -1767,7 +1768,7 @@ char *Af_2ext( char *dest, const char *file );
 
 /* Builds full Pathfilename, missing Parts were added to dest and back */
 char *Af_buildname( char *dest, int16 drv, const char *path,
-			const char *name, const char *ext );
+         const char *name, const char *ext );
 
 /* Changes the extension of a filename */
 char *Af_chgExt( char *file, char *new_ext );
@@ -1795,17 +1796,17 @@ void Ascrp_clear( const char *ext );
 /* Reads from clipboard SCRAP."ext" or first Scrap-file  */
 /* If buffer==NULL, only Length will be returned, Buffer */
 /* and real ext are returned and TRUE, if all is ok      */
-int16	Ascrp_get( char *ext, void **buffer, long *len );
+int16 Ascrp_get( char *ext, void **buffer, long *len );
 
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */
 /* to a possibly existing file. -> TRUE if all is ok */
-int16	Ascrp_put (char *ext, void *buffer, long len, int16 append );
+int16 Ascrp_put (char *ext, void *buffer, long len, int16 append );
 
 /******************************************************************************/
-/*																										*/
-/* Die lineare unsortierte Liste																*/
-/*																										*/
+/*                                                                            */
+/* Die lineare unsortierte Liste                                              */
+/*                                                                            */
 /******************************************************************************/
 
 /* Eine lineare Liste erzeugen */
@@ -1821,9 +1822,9 @@ int16 Alu_strCmp( void *para, void *elem );
 int16 Alu_striCmp( void *para, void *elem );
 
 /******************************************************************************/
-/*																										*/
-/* Die Konfigurations-String-UnterstÅtzung												*/
-/*																										*/
+/*                                                                            */
+/* Die Konfigurations-String-UnterstÅtzung                                    */
+/*                                                                            */
 /******************************************************************************/
 
 UConfig *Acfg_create( const UCfgInfo *info, int16 load );
@@ -1834,17 +1835,17 @@ int16 Acfg_load( UConfig *config, const char *filename );
 int16 Acfg_save( UConfig *config, const char *filename );
 int16 Acfg_isChanged( UConfig *config );
 char *Acfg_getValue( UConfig *config, const char *kategorie,
-		const char *name, char *value );
+      const char *name, char *value );
 char *Acfg_setValue( UConfig *config, const char *kategorie,
-		const char *name, const char *value );
+      const char *name, const char *value );
 char *Acfg_clearValue( UConfig *config, const char *kategorie,
-		const char *name, char *value );
+      const char *name, char *value );
 long Acfg_getLong( UConfig *config, const char *kategorie, const char *name );
 long Acfg_setLong( UConfig *config, const char *kategorie,
-			const char *name, const long value );
+         const char *name, const long value );
 int16 Acfg_getBool( UConfig *config, const char *kategorie, const char *name );
 int16 Acfg_setBool( UConfig *config, const char *kategorie,
-			const char *name, const int16 value );
+         const char *name, const int16 value );
 void Acfg_clearHeader( UConfig *config );
 int16 Acfg_headAnzahl( UConfig *config );
 char **Acfg_setHeader( UConfig *config, int16 anzahl, const char **head_lines );
@@ -1864,9 +1865,9 @@ UCfgInfo *Acfg_getInfo( UConfig *config, UCfgInfo *info );
 UCfgInfo *Acfg_copyInfo( UCfgInfo *dest, const UCfgInfo *source );
 
 
-#endif			/* #ifndef __ACS__ */
+#endif         /* #ifndef __ACS__ */
 
 /* Eines der Sprachen-Makros muû definiert sein! */
 #if !defined(ACS_LANG1) && !defined(ACS_LANG2) && !defined(ACS_LANG3) && !defined(ACS_LANG4)
-	#define ACS_LANG1
+   #define ACS_LANG1
 #endif

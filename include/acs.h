@@ -996,9 +996,9 @@ typedef int16 (*A_FontFkt)(void *para, A_FontSel *font);
 /******************************************************************************/
 
 /* Einige Messages fr Ergebnis-Meldungen der diversen Protokolle */
-#define AS_ACC_ACK         (400)       /* Best„tigung eines XAcc-Transfers eingegangen */
-#define AS_AV_STARTED      (401)       /* Best„tigung eines VA_START-Transfers eingegangen */
-#define AS_PC_VERSION      (402)       /* Versionsnummer der PureC-Hilfe als Best„tigung */
+#define AS_ACC_ACK         (100)       /* Best„tigung eines XAcc-Transfers eingegangen */
+#define AS_AV_STARTED      (101)       /* Best„tigung eines VA_START-Transfers eingegangen */
+#define AS_PC_VERSION      (102)       /* Versionsnummer der PureC-Hilfe als Best„tigung */
 
 /******************************************************************************/
 

@@ -1520,3 +1520,205 @@ void *ACS230[] = {
 	noop,
 	noop
 };
+
+
+AUSERBLK *Aus_create23x(const AUSERBLK *user)
+{
+	AUSERBLK *newuser;
+	
+	newuser = (AUSERBLK *)Ax_malloc(sizeof(*user));
+	if (newuser == NULL)
+		return NULL;
+	/*
+	 * create the 2 new members that were added in 3.0.0
+	 */
+	memcpy(newuser, user, sizeof(*user) - 2 * sizeof(char *));
+	newuser->bubble = newuser->context = Ast_create("");
+	return newuser;
+}
+
+
+OBJECT *Aob_create23x(const OBJECT *parent)
+{
+	size_t size;
+	OBJECT *ob;
+	OBJECT *newob;
+	int16 i;
+	void *spec;
+	AUSERBLK *user;
+	
+	size = 0;
+	ob = (OBJECT *)NO_CONST(parent);
+	do
+	{
+		size += sizeof(*ob);
+	} while (!((ob++)->ob_flags & OF_LASTOB));
+	newob = (OBJECT *)Ax_malloc(size);
+	if (newob == NULL)
+		return NULL;
+	memcpy(newob, parent, size);
+	i = 0;
+	ob = newob;
+	spec = ob;
+	do
+	{
+		if (!(ob->ob_flags & AEO) && !(ob->ob_state & AOS_CONST))
+		{
+			switch ((char)ob->ob_type)
+			{
+			case G_TEXT:
+			case G_BOXTEXT:
+			case G_FTEXT:
+			case G_FBOXTEXT:
+				ob->ob_spec.tedinfo = spec = Ate_create(ob->ob_spec.tedinfo);
+				break;
+			
+			case G_USERDEF:
+				user = Aus_create23x(ob->ob_spec.auserblk);
+				spec = user;
+				ob->ob_spec.auserblk = spec;
+				if (user->ub_serv != NULL)
+					user->ub_serv(ob, AUO_CREATE, &i);
+				if (i == FAIL)
+					return NULL; /* BUG: leaks all memory allocated so far */
+				break;
+			
+			case G_IMAGE:
+				ob->ob_spec.tedinfo = spec = Aim_create(ob->ob_spec.bitblk);
+				break;
+			
+			case G_ICON:
+			case G_CICON:
+				ob->ob_spec.ciconblk = spec = Aic_create(ob->ob_spec.ciconblk);
+				break;
+				
+			case G_BUTTON:
+			case G_STRING:
+			case G_TITLE:
+				ob->ob_spec.free_string = spec = Ast_create(ob->ob_spec.free_string);
+				break;
+			
+			case G_IBOX:
+			case G_BOXCHAR:
+			default:
+				break;
+			}
+			if (spec == NULL)
+				return NULL; /* BUG: leaks all memory allocated so far */
+		}
+	} while (!((ob++)->ob_flags & OF_LASTOB));
+	return newob;
+}
+
+
+Awindow *Awi_create23x(const Awindow *parent)
+{
+	Awindow *newwin;
+	int16 i;
+	
+	newwin = (Awindow *)Ax_malloc(sizeof(*newwin));
+	/* BUG: no check for NULL */
+	memcpy(newwin, parent, sizeof(*newwin) - 5 * sizeof(void *));
+	/*
+	 * create the 5 new members that were added in 3.0.0
+	 */
+	newwin->iconify = Awi_iconify;
+	newwin->uniconify = Awi_uniconify;
+	newwin->gemscript = Awi_gemscript;
+	newwin->help_title = newwin->help_file = Ast_create("");
+	if (newwin->work != NULL)
+	{
+		newwin->work = Aob_create23x(newwin->work);
+		if (newwin->work == NULL)
+		{
+			Ax_free(newwin);
+			return NULL;
+		}
+		Aob_fix(newwin->work);
+	}
+	if (newwin->toolbar != NULL)
+	{
+		newwin->toolbar = Aob_create23x(newwin->toolbar);
+		if (newwin->toolbar == NULL)
+		{
+			Aob_delete(newwin->work);
+			Ax_free(newwin);
+			return NULL;
+		}
+		Aob_fix(newwin->toolbar);
+	}
+	if (newwin->menu != NULL)
+	{
+		newwin->menu = Aob_create23x(newwin->menu);
+		if (newwin->menu == NULL)
+		{
+			Aob_delete(newwin->toolbar);
+			Aob_delete(newwin->work);
+			Ax_free(newwin);
+			return NULL;
+		}
+		Aob_fix(newwin->menu);
+		Ame_namefix(newwin->menu);
+	}
+	if (newwin->iconblk != NULL)
+	{
+		newwin->iconblk = Aic_create(newwin->iconblk);
+		if (newwin->iconblk == NULL)
+		{
+			Aob_delete(newwin->menu);
+			Aob_delete(newwin->toolbar);
+			Aob_delete(newwin->work);
+			Ax_free(newwin);
+			return NULL;
+		}
+	}
+	Awi_uoself(newwin);
+	if (newwin->name != NULL)
+	{
+		newwin->name = Ast_create(newwin->name);
+	}
+	if (newwin->info != NULL)
+	{
+		newwin->info = Ast_create(newwin->info);
+	}
+	newwin->state = AWS_MODIFIED;
+	newwin->icon = NIL;
+	newwin->ob_edit = NIL;
+	newwin->ob_len = 0;
+	for (i = 0; i < MAX_WINDS; i++)
+	{
+		if (_ACSv_winds[i] == NULL)
+		{
+			if (i > _Wmax_wi)
+				_Wmax_wi = i;
+			_ACSv_winds[i] = newwin;
+			if (Aroot_wi != NULL && (newwin->kind & AW_ICON))
+				Aroot_wi->service(Aroot_wi, AS_ACC_ACK, newwin);
+			newwin->wi_act.x = newwin->wi_act.x * ACSblk->gl_wbox;
+			newwin->wi_act.y = newwin->wi_act.y * ACSblk->gl_hbox;
+			newwin->wi_act.w = newwin->wi_act.w * ACSblk->gl_wbox;
+			newwin->wi_act.h = newwin->wi_act.h * ACSblk->gl_hbox;
+			return newwin;
+		}
+	}
+	mt_form_alert(1, _A_ERR_WISLOT, _globl);
+	return NULL;
+}
+
+
+void Awi_arrowed23x(Awindow *window, int16 which)
+{
+	Awi_arrowed(window, which, 1);
+}
+
+
+char *Af_first230(const char *start)
+{
+	return Af_first(start, NULL);
+}
+
+
+char *Af_next230(void)
+{
+	return Af_next(NULL);
+}

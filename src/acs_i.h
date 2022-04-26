@@ -1,9 +1,26 @@
 #include <acs.h>
 #include <acsaes.h>
+#include <string.h>
 
 #define __PS__ 128
 
-#define MAX_ACS 16
+#define MAX_ACS   16
+#define MAX_WINDS 256
+
+/*
+ * sometimes we have to cast away constness
+ */
+#ifndef NO_CONST
+#  ifdef __GNUC__
+#	 define NO_CONST(p) __extension__({ union { const void *cs; void *s; } x; x.cs = p; x.s; })
+#  else
+#	 define NO_CONST(p) ((void *)(p))
+#  endif
+#endif
+
+#undef UNUSED
+#define UNUSED(x) (void)(x)
+
 
 struct UConfig {
     /*   0 */ char id;
@@ -766,6 +783,12 @@ typedef struct {
 
 
 /*
+ * lib/main.c
+ */
+extern char const _A_ERR_WISLOT[];
+
+
+/*
  * lib/modul/modul.c
  */
 void Ax_mterm(void *);
@@ -782,9 +805,9 @@ extern void *ACS230[];
 AUSERBLK *Aus_create23x(const AUSERBLK *user);
 OBJECT *Aob_create23x(const OBJECT *parent);
 Awindow *Awi_create23x(const Awindow *x);
-void Awi_arrowed23x(Awindow *window, int16 which, int16 amount);
-char *Af_first230(const char *start, A_FileList *fileinfo);
-char *Af_next230(A_FileList *fileinfo);
+void Awi_arrowed23x(Awindow *window, int16 which);
+char *Af_first230(const char *start);
+char *Af_next230(void);
 
 
 /*
@@ -793,14 +816,21 @@ char *Af_next230(A_FileList *fileinfo);
 void accgemdos(void);
 void oldgemdos(void);
 
- 
+
 /*
- * messages/msgserv.c
+ * lib/window.c
+ */
+extern Awindow *_ACSv_winds[MAX_WINDS];
+extern int16 _Wmax_wi;
+
+
+/*
+ * lib/messages/msgserv.c
  */
 extern ULinListe *globProtData;
+
 
 /*
  * list/edmouse.c
  */
 extern LISTPARM list_mouse;
-

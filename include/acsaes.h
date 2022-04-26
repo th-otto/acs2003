@@ -1582,18 +1582,15 @@ typedef struct bit_block
 /******************************************************************************/
 
 /* Die USERBLK-Struktur (ACS verwendet stattdessen die AUSERBLK-Struktur!) */
-#ifndef __STDC__  /* Struktur nicht unter ANSI-C */
    typedef struct user_block
    {
       int16 CDECL (*ub_code)(struct parm_block *pb);  /* Zeiger auf die Zeichen-Funktion */
       int32 ub_parm;                                  /* Optionaler Parameter            */
    } USERBLK;
-#endif
 
 /******************************************************************************/
 
 /* Die AUSERBLK-Struktur (wird von ACS anstelle USERBLK verwendet) */
-#ifndef __STDC__  /* Struktur nicht unter ANSI-C */
    typedef struct auser_block
    {
       int16 CDECL (*ub_code)(struct parm_block *pb);  /* Zeichenroutine         */
@@ -1606,7 +1603,6 @@ typedef struct bit_block
       char  *bubble;                                  /* BubbleGEM-Hilfe-String */
       char  *context;                                 /* Context-Popup-String   */
    } AUSERBLK;
-#endif
 
 /******************************************************************************/
 
@@ -1637,10 +1633,8 @@ typedef union obspecptr
    ICONBLK  *iconblk;         /* Zeiger auf ICONBLK        */
    CICONBLK *ciconblk;
    BITBLK   *bitblk;          /* Zeiger auf BITBLK         */
-#ifndef __STDC__
    USERBLK  *userblk;         /* Zeiger auf USERBLK        */
    AUSERBLK *auserblk;        /* Zeiger auf AUSERBLK (ACS) */
-#endif
    char     *free_string;     /* zeiger auf String         */
 } OBSPEC;
 

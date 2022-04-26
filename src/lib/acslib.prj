@@ -78,4 +78,4 @@ wdialog\printsel.s
 wdialog\fontsel.s
 listen\ulinlist.s
 modul\modul.c
-modul\modulold.s
+modul\modulold.c
