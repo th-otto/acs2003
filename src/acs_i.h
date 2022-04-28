@@ -59,8 +59,8 @@ struct _Obj_Head {
 	/*   0 */ Obj_Head *next;
 	/*   4 */ void *object;
 	/*   8 */ uint16 oh_id;
-	/*  10 */ long size;
-	/*  14 */ long used;
+	/*  10 */ size_t size;
+	/*  14 */ size_t used;
 	/*  18 */ Awindow *window;
 	/*  22 */ char label[32];
 	/*  54 */ int16 usage;
@@ -68,6 +68,11 @@ struct _Obj_Head {
 	/*  58 */ Axywh pos;
 	/*  66 */
 };
+/* OBJ_HEAD.flags */
+#define OBJ_0100      0x0100
+#define OBJ_0200      0x0200
+#define OBJ_0400      0x0400
+
 
 typedef struct {
 	/*   0 */ ACS_HEAD *acs;
@@ -104,18 +109,18 @@ struct _ACS_HEAD {
 	/*   8 */ char *filename;
 	/*  12 */ Awindow *window;
 	/*  16 */ Obj_Head *labels;
-	/*  20 */ Obj_Head *wi_list;
-	/*  24 */ Obj_Head *ob_list;
-	/*  28 */ Obj_Head *me_list;
-	/*  32 */ Obj_Head *pu_list;
-	/*  36 */ Obj_Head *al_list;
-	/*  40 */ Obj_Head *te_list;
-	/*  44 */ Obj_Head *ic_list;
-	/*  48 */ Obj_Head *im_list;
-	/*  52 */ Obj_Head *st_list;
-	/*  56 */ Obj_Head *us_list;
-	/*  60 */ Obj_Head *rf_list;
-	/*  64 */ Obj_Head *mo_list;
+	/*  20 */ Obj_Head *wi_list;  /* windows */
+	/*  24 */ Obj_Head *ob_list;  /* objects */
+	/*  28 */ Obj_Head *me_list;  /* menus */
+	/*  32 */ Obj_Head *pu_list;  /* popups */
+	/*  36 */ Obj_Head *al_list;  /* alerts */
+	/*  40 */ Obj_Head *te_list;  /* tedinfos */
+	/*  44 */ Obj_Head *ic_list;  /* icons */
+	/*  48 */ Obj_Head *im_list;  /* images */
+	/*  52 */ Obj_Head *st_list;  /* strings */
+	/*  56 */ Obj_Head *us_list;  /* userdefs */
+	/*  60 */ Obj_Head *rf_list;  /* references */
+	/*  64 */ Obj_Head *mo_list;  /* mouses */
 	/*  68 */ Obj_Head *if_list;
 	/*  72 */ Obj_Head *list_3;
 	/*  76 */ Aolddescr descr; /* does not include mess[AD_COUNT] */
@@ -137,12 +142,18 @@ struct _ACS_HEAD {
 	/* 610 */
 };
 
+/*
+ * ACS_HEAD.flags
+ */
+#define ACS_8000      0x8000
+
+
 typedef struct {
 	/*   0 */ Obj_Head *label;
 	/*   4 */ Obj_Head *type;
 	/*   8 */ OBJECT obj;
 	/*  32 */ AOBJECT aobj;
-	/*  66 */
+	/*  56 */
 } OBJ_ENTRY;
 
 typedef struct {
@@ -772,6 +783,66 @@ void AboutGUIEditor(void);
  * general.c
  */
 extern void (*OldAboutMe)(void);
+
+
+/*
+ * io/protocol.c
+ */
+void protocol(ACS_HEAD *acs);
+
+
+/*
+ * io/fixacs.c
+ */
+boolean fix_all(ACS_HEAD *acs);
+void unfix_all(ACS_HEAD *acs);
+void wr_all(ACS_HEAD *acs);
+void rd_all(ACS_HEAD *acs);
+void release_err(void);
+void free_acs(ACS_HEAD *acs);
+void objfree(ACS_HEAD *acs, AOBJECT *obj);
+Obj_Head *objmalloc(ACS_HEAD *acs, size_t size);
+int16 objextent(ACS_HEAD *acs, size_t size);
+int16 uniquename(ACS_HEAD *acs, Obj_Head *obj);
+void objname(ACS_HEAD *acs, Obj_Head *obj, void *);
+
+
+/*
+ * io/rscin.c
+ */
+extern char iostring[1024];
+
+void read_rsc(ACS_HEAD *acs);
+
+
+/*
+ * io/pc_head.c
+ */
+void pc_header(ACS_HEAD *acs);
+
+
+/*
+ * io/pc_out.c
+ */
+void info_start(const char *filename);
+void info_end(void);
+void info_title(const char *title);
+void info_list(const char *name);
+void info_obj(const char *name);
+void pc_output(ACS_HEAD *acs);
+
+
+/*
+ * io/pp_out.c
+ */
+void pp_output(ACS_HEAD *acs);
+
+
+/*
+ * io/str_out.c
+ */
+void pp_output(ACS_HEAD *acs);
+
 
 
 /*

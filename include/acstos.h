@@ -230,6 +230,12 @@ extern "C" {
 
 /******************************************************************************/
 
+#if defined(__USE_MINT_SIGNAL)
+/*
+ * FIXME: these are wrong.
+ * The names are the ones for signal(), but the values
+ * are the ones for Psignal().
+ */
 /* signal handling */
 #define NSIG       31       /* number of signals recognized   */
 
@@ -267,6 +273,8 @@ extern "C" {
 
 #define SIG_DFL    0        /* default signal handler          */
 #define SIG_IGN    1        /* ignore the signal               */
+
+#endif
 
 /******************************************************************************/
 
