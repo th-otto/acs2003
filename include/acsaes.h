@@ -658,15 +658,6 @@ extern "C" {
 #define BEG_MCTRL             0x0003
 #define END_MCTRL             0x0002
 
-/* ErgÑnzungen von ACS */
-#define RESET_UPDATE          0x0010
-#define RESTART_UPDATE        0x0020
-
-/* Bisherige Konstanten von ACS */
-#define BEGIN_UPDATE          BEG_UPDATE
-#define BEGIN_MCTR            BEG_MCTRL
-#define END_MCTR              END_MCTRL
-
 /******************************************************************************/
 
 /* Daten-Strukturen im RSC-File (fÅr rsrc_gaddr) */
@@ -723,6 +714,7 @@ extern "C" {
 #define AES_PROCESS            4
 #define AES_PCGEM              5
 #define AES_INQUIRE            6
+#define AES_WDIALOG            7
 #define AES_MOUSE              8
 #define AES_MENU               9
 #define AES_SHELL             10
@@ -1582,27 +1574,28 @@ typedef struct bit_block
 /******************************************************************************/
 
 /* Die USERBLK-Struktur (ACS verwendet stattdessen die AUSERBLK-Struktur!) */
-   typedef struct user_block
-   {
-      int16 CDECL (*ub_code)(struct parm_block *pb);  /* Zeiger auf die Zeichen-Funktion */
-      int32 ub_parm;                                  /* Optionaler Parameter            */
-   } USERBLK;
+typedef struct user_block
+{
+   int16 CDECL (*ub_code)(struct parm_block *pb);  /* Zeiger auf die Zeichen-Funktion */
+   int32 ub_parm;                                  /* Optionaler Parameter            */
+} USERBLK;
 
 /******************************************************************************/
 
 /* Die AUSERBLK-Struktur (wird von ACS anstelle USERBLK verwendet) */
-   typedef struct auser_block
-   {
-      int16 CDECL (*ub_code)(struct parm_block *pb);  /* Zeichenroutine         */
-      int32 ub_parm;                                  /* Optionaler Parameter   */
-      int16 (*ub_serv)(struct object *entry,          /* Service-Routine des    */
-                  int16 task, void *in_out);          /* Userdefs               */
-      void  *ub_ptr1;                                 /* Userzeiger (Daten)     */
-      void  *ub_ptr2;                                 /* Userzeiger (Fenster)   */
-      void  *ub_ptr3;                                 /* Userzeiger (obnr)      */
-      char  *bubble;                                  /* BubbleGEM-Hilfe-String */
-      char  *context;                                 /* Context-Popup-String   */
-   } AUSERBLK;
+typedef struct auser_block
+{
+   /*  0 */ int16 CDECL (*ub_code)(struct parm_block *pb);  /* Zeichenroutine         */
+   /*  4 */ int32 ub_parm;                                  /* Optionaler Parameter   */
+   /*  8 */ int16 (*ub_serv)(struct object *entry,          /* Service-Routine des    */
+               int16 task, void *in_out);          /* Userdefs               */
+   /* 12 */ void  *ub_ptr1;                                 /* Userzeiger (Daten)     */
+   /* 16 */ void  *ub_ptr2;                                 /* Userzeiger (Fenster)   */
+   /* 20 */ void  *ub_ptr3;                                 /* Userzeiger (obnr)      */
+   /* 24 */ char  *bubble;                                  /* BubbleGEM-Hilfe-String */
+   /* 28 */ char  *context;                                 /* Context-Popup-String   */
+   /* 32 */ 
+} AUSERBLK;
 
 /******************************************************************************/
 
@@ -1686,16 +1679,16 @@ typedef void (*Aaction)(void);
 /* Die AOBJECT-Struktur fÅr die ACS-Erweiterungen */
 typedef struct __aobject
 {
-   Aaction click;    /* Klick-Routine                      */
-   Aaction drag;     /* Drag-Routine                       */
-   int16 ob_flags;   /* ob_flags wie im OBJECT zuvor       */
+   /*   0 */ Aaction click;    /* Klick-Routine                      */
+   /*   4 */ Aaction drag;     /* Drag-Routine                       */
+   /*   8 */ int16 ob_flags;   /* ob_flags wie im OBJECT zuvor       */
                      /* ACHTUNG: muû an gleicher Position  */
                      /*          sein, wird geprÅft!       */
-   int16 key;        /* TastenkÅrzel                       */
-   void *userp1;     /* Userzeiger 1                       */
-   void *userp2;     /* Userzeiger 2                       */
-   int16 mo_index;   /* Index der Mausform Åber diesem Obj */
-   int16 type;       /* ACS-Objekt-Typ                     */
+   /*  10 */ int16 key;        /* TastenkÅrzel                       */
+   /*  12 */ void *userp1;     /* Userzeiger 1                       */
+   /*  16 */ void *userp2;     /* Userzeiger 2                       */
+   /*  20 */ int16 mo_index;   /* Index der Mausform Åber diesem Obj */
+   /*  22 */ int16 type;       /* ACS-Objekt-Typ                     */
 } AOBJECT;
 
 /******************************************************************************/
@@ -2737,19 +2730,19 @@ int16 mt_fsel_boxinput( char *path, char *name, int16 *button,
 /*                                                                            */
 /******************************************************************************/
 
-void *mt_fslx_open( char *title, const int16 x, const int16 y, int16 *handle, char *path,
-            const int16 pathlen, char *fname, const int16 fnamelen, char *patterns,
-            XFSL_FILTER *filter, char *paths, const int16 sort_mode, const int16 flags,
+void *mt_fslx_open( const char *title, int16 x, int16 y, int16 *handle, char *path,
+            int16 pathlen, char *fname, int16 fnamelen, char *patterns,
+            XFSL_FILTER *filter, char *paths, int16 sort_mode, int16 flags,
             GlobalArray *globl );
 int16 mt_fslx_close( void *fsd, GlobalArray *globl );
 int16 mt_fslx_getnxtfile( void *fsd, char *fname, GlobalArray *globl );
 int16 mt_fslx_evnt( void *fsd, EVNT *events, char *path, char *fname, int16 *button,
          int16 *nfiles, int16 *sort_mode, char **pattern, GlobalArray *globl );
-void *mt_fslx_do( char *title, char *path, const int16 pathlen, char *fname,
-            const int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
-            int16 *sort_mode, const int16 flags, int16 *button, int16 *nfiles, char **pattern,
+void *mt_fslx_do( const char *title, char *path, int16 pathlen, char *fname,
+            int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
+            int16 *sort_mode, int16 flags, int16 *button, int16 *nfiles, char **pattern,
             GlobalArray *globl );
-int16 mt_fslx_set_flags( const int16 flags, int16 *oldval, GlobalArray *globl );
+int16 mt_fslx_set_flags( int16 flags, int16 *oldval, GlobalArray *globl );
 
 /******************************************************************************/
 /*                                                                            */
@@ -3677,17 +3670,17 @@ int16 fsel_boxinput( char *path, char *name, int16 *button,
 /******************************************************************************/
 
 /* Die FSLX-Funktionen (MagiC, WDialog) */
-void *fslx_open( char *title, const int16 x, const int16 y, int16 *handle, char *path,
-            const int16 pathlen, char *fname, const int16 fnamelen, char *patterns,
-            XFSL_FILTER *filter, char *paths, const int16 sort_mode, const int16 flags);
+void *fslx_open( const char *title, int16 x, int16 y, int16 *handle, char *path,
+            int16 pathlen, char *fname, int16 fnamelen, char *patterns,
+            XFSL_FILTER *filter, char *paths, int16 sort_mode, int16 flags);
 int16 fslx_close( void *fsd );
 int16 fslx_getnxtfile( void *fsd, char *fname );
 int16 fslx_evnt( void *fsd, EVNT *events, char *path, char *fname, int16 *button,
          int16 *nfiles, int16 *sort_mode, char **pattern );
-void *fslx_do( char *title, char *path, const int16 pathlen, char *fname,
-            const int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
-            int16 *sort_mode, const int16 flags, int16 *button, int16 *nfiles, char **pattern );
-int16 fslx_set_flags( const int16 flags, int16 *oldval );
+void *fslx_do( const char *title, char *path, int16 pathlen, char *fname,
+            int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
+            int16 *sort_mode, int16 flags, int16 *button, int16 *nfiles, char **pattern );
+int16 fslx_set_flags( int16 flags, int16 *oldval );
 
 /******************************************************************************/
 

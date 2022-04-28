@@ -1,11 +1,13 @@
+#include <stdio.h>
 #include <acs.h>
 #include <acsaes.h>
 #include <string.h>
 
-#define __PS__ 128
+#define __PS__   128
 
 #define MAX_ACS   16
 #define MAX_WINDS 256
+#define PATH_SEP  '\\'
 
 /*
  * sometimes we have to cast away constness
@@ -678,52 +680,28 @@ typedef struct {
 } EDT_DATA;
 
 typedef struct {
-	char *title;
-	int16 x;
-	int16 y;
-	int16 *handle;
-	char *path;
-	int16 pathlen;
-	char *fname;
-	int16 fnamelen;
-	char *patterns;
-	void (*filter)(void);
-	char *paths;
-	int16 sort_mode;
-	int16 flags;
-	void *dialog;
-	boolean modal;
-	int16 button;
-	int16 nfiles;
-	Awindow *meldung;
-	Awindow *window;
-	ULinListe *liste;
+	/*  0 */ const char *title;
+	/*  4 */ int16 x;
+	/*  6 */ int16 y;
+	/*  8 */ int16 *handle;
+	/* 12 */ char *path;
+	/* 16 */ int16 pathlen;
+	/* 18 */ char *fname;
+	/* 22 */ int16 fnamelen;
+	/* 24 */ char *patterns;
+	/* 28 */ XFSL_FILTER *filter;
+	/* 32 */ char *paths;
+	/* 36 */ int16 sort_mode;
+	/* 38 */ int16 flags;
+	/* 40 */ void *dialog;
+	/* 44 */ boolean modal;
+	/* 46 */ int16 button;
+	/* 48 */ int16 nfiles;
+	/* 50 */ Awindow *meldung;
+	/* 54 */ Awindow *window;
+	/* 58 */ ULinListe *liste;
+	/* 62 */ 
 } A_FileSelData;
-
-typedef struct {
-	unsigned long id;
-	int16 version;
-	struct {
-		unsigned int pthsav:1;
-		unsigned int stdest:1;
-		unsigned int autloc:1;
-		unsigned int numsrt:1;
-		unsigned int lower:1;
-		unsigned int dclick:1;
-		unsigned int hidden:1;
-		unsigned int bypass:1;
-	} config;
-	int16 sort;
-	int16 num_ext;
-	char **ext;
-	int16 num_paths;
-	char **paths;
-	int16 comm;
-	int16 in_count;
-	void *in_ptr;
-	int16 out_count;
-	void *out_ptr;
-} SLCT_STR;
 
 typedef struct {
 	char *title;
@@ -837,11 +815,28 @@ void oldgemdos(void);
 extern Awindow *_ACSv_winds[MAX_WINDS];
 extern int16 _Wmax_wi;
 
+int16 Awi_register(Awindow *win);
+
 
 /*
  * lib/messages/msgserv.c
  */
 extern ULinListe *globProtData;
+
+int16 Aev_message(int16 *msg);
+
+
+/*
+ * lib/wdialog/filesel.c
+ */
+extern Awindow WI_FILESEL;
+
+
+/*
+ * lib/mouse.c
+ */
+int16 Amo_restart(Amouse *mouse);
+void Amo_return(int16 busy, Amouse *mouse);
 
 
 /*

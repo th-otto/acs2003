@@ -54,9 +54,9 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-void *mt_fslx_open( char *title, const int16 x, const int16 y, int16 *handle, char *path,
-            const int16 pathlen, char *fname, const int16 fnamelen, char *patterns,
-            XFSL_FILTER *filter, char *paths, const int16 sort_mode, const int16 flags,
+void *mt_fslx_open( const char *title, int16 x, int16 y, int16 *handle, char *path,
+            int16 pathlen, char *fname, int16 fnamelen, char *patterns,
+            XFSL_FILTER *filter, char *paths, int16 sort_mode, int16 flags,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -201,9 +201,9 @@ int16 mt_fslx_evnt( void *fsd, EVNT *events, char *path, char *fname, int16 *but
 /*                                                                            */
 /******************************************************************************/
 
-void *mt_fslx_do( char *title, char *path, const int16 pathlen, char *fname,
-            const int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
-            int16 *sort_mode, const int16 flags, int16 *button, int16 *nfiles,
+void *mt_fslx_do( const char *title, char *path, int16 pathlen, char *fname,
+            int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
+            int16 *sort_mode, int16 flags, int16 *button, int16 *nfiles,
             char **pattern, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -252,7 +252,7 @@ void *mt_fslx_do( char *title, char *path, const int16 pathlen, char *fname,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fslx_set_flags( const int16 flags, int16 *oldval, GlobalArray *globl )
+int16 mt_fslx_set_flags( int16 flags, int16 *oldval, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {195, 2, 2, 0, 0};

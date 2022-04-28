@@ -23,9 +23,9 @@
 /*                                                                            */
 /******************************************************************************/
 
-void *fslx_open( char *title, const int16 x, const int16 y, int16 *handle, char *path,
-            const int16 pathlen, char *fname, const int16 fnamelen, char *patterns,
-            XFSL_FILTER *filter, char *paths, const int16 sort_mode, const int16 flags )
+void *fslx_open( const char *title, int16 x, int16 y, int16 *handle, char *path,
+            int16 pathlen, char *fname, int16 fnamelen, char *patterns,
+            XFSL_FILTER *filter, char *paths, int16 sort_mode, int16 flags )
 {
    return mt_fslx_open(title, x, y, handle, path, pathlen, fname, fnamelen, patterns,
             filter, paths, sort_mode, flags, _globl);
@@ -71,9 +71,9 @@ int16 fslx_evnt( void *fsd, EVNT *events, char *path, char *fname, int16 *button
 /*                                                                            */
 /******************************************************************************/
 
-void *fslx_do( char *title, char *path, const int16 pathlen, char *fname,
-            const int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
-            int16 *sort_mode, const int16 flags, int16 *button, int16 *nfiles,
+void *fslx_do( const char *title, char *path, int16 pathlen, char *fname,
+            int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
+            int16 *sort_mode, int16 flags, int16 *button, int16 *nfiles,
             char **pattern )
 
 {
@@ -88,7 +88,7 @@ void *fslx_do( char *title, char *path, const int16 pathlen, char *fname,
 /*                                                                            */
 /******************************************************************************/
 
-int16 fslx_set_flags( const int16 flags, int16 *oldval )
+int16 fslx_set_flags( int16 flags, int16 *oldval )
 {
    return mt_fslx_set_flags(flags, oldval, _globl);
 }

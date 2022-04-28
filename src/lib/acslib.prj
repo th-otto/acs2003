@@ -11,13 +11,20 @@ acslib.lib
 .C[ -K- ]		; Default Char is signed
 .C[ -P  ]		; Absolute calls
 .C[ -G- ]		; optimize for speed
-.C[ -S- ]       ; no standard stack frames
+.C[ -S- ]		; no standard stack frames
+
+; Flags for the Debug-Version
+.C[ -D_DEBUG -DDEBUG ]
+.C[ -J+ ]		; No jump optimization
+.C[ -Z+ ]		; No register optimization
+.C[ -M+ ]		; No String Merging
+.C[ -R+ ]		; No Register Variables
 
 ; Flags for the Release-Version
-.C[ -J- ]		; Jump optimization
-.C[ -Z- ]		; Register optimization
-.C[ -M- ]		; String Merging
-.C[ -R- ]		; Register Variables
+;.C[ -J- ]		; Jump optimization
+;.C[ -Z- ]		; Register optimization
+;.C[ -M- ]		; String Merging
+;.C[ -R- ]		; Register Variables
 
 ; For other localizations, change the COUNTRY code below
 ; supported:
@@ -73,9 +80,9 @@ userdef\picture.s
 userdef\boxed.s [-M-]
 utility\util.s
 utility\date.s
-wdialog\filesel.s
+wdialog\filesel.c
 wdialog\printsel.s
 wdialog\fontsel.s
 listen\ulinlist.s
-modul\modul.c
-modul\modulold.c
+modul\modul.c [-J- -Z- -M- -R-]
+modul\modulold.c [-J- -Z- -M- -R-]
