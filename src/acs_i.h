@@ -841,7 +841,7 @@ void pp_output(ACS_HEAD *acs);
 /*
  * io/str_out.c
  */
-void pp_output(ACS_HEAD *acs);
+void str_output(ACS_HEAD *acs);
 
 
 
