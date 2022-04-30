@@ -11,7 +11,7 @@ static void unused(void)
 }
 
 
-void out_string(Obj_Head *obj)
+static void out_string(Obj_Head *obj)
 {
 	int i, count;
 	Obj_Head **list;

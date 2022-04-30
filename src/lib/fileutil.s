@@ -1,4 +1,6 @@
-	.globl Af_cfgfile
+		.text
+
+		.globl Af_cfgfile
 Af_cfgfile:
 		subq.w     #4,a7
 		move.l     a0,(a7)

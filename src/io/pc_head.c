@@ -28,7 +28,7 @@ static void out_list(Obj_Head *obj, const char *str, const char *format)
 			o = list[i];
 			if (strncmp(o->label, "ACS(", 4) != 0)
 			{
-				if ((o->flags & (OBJ_0100 | OBJ_0400)) == OBJ_0100)
+				if ((o->flags & (OBJ_GLOBAL | OBJ_LOCAL)) == OBJ_GLOBAL)
 				{
 					info_obj(o->label);
 					sprintf(iostring, format, o->label, o->size);
@@ -57,7 +57,7 @@ static void out_obj(Obj_Head *obj, const char *str)
 		for (i = 0; i < count; i++)
 		{
 			o = list[i];
-			if ((o->flags & (OBJ_0100 | OBJ_0400)) == OBJ_0100)
+			if ((o->flags & (OBJ_GLOBAL | OBJ_LOCAL)) == OBJ_GLOBAL)
 			{
 				info_obj(o->label);
 				sprintf(iostring, NL "extern OBJECT %s;" NL, o->label);
@@ -107,7 +107,7 @@ static void out_declproto(ACS_HEAD *acs)
 		{
 			ref = list[i];
 			flags = ref->flags;
-			if ((flags & OBJ_0200) || (flags & (OBJ_0100 | OBJ_0400)) == OBJ_0100)
+			if ((flags & OBJ_USERDEFINED) || (flags & (OBJ_GLOBAL | OBJ_LOCAL)) == OBJ_GLOBAL)
 			{
 				info_obj(ref->label);
 				switch (flags & 0xff)

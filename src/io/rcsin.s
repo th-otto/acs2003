@@ -915,11 +915,5 @@ xa53e3:
 	.even
 
 	.bss
-	.globl mapX
-mapX: ds.w 1024
-iobuf: ds.b 131072
-	.globl iostring
-iostring: ds.b 1024
-
 dfna: ds.l 1
 dfn_size: ds.w 1
