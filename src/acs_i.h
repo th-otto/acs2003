@@ -167,25 +167,6 @@ typedef struct {
 } OBJ_ENTRY;
 
 typedef struct {
-	/*   0 */ void *windows;
-	/*   4 */ void *objects;
-	/*   8 */ void *menus;
-	/*  12 */ void *popups;
-	/*  16 */ void *alerts;
-	/*  20 */ void *tedinfos;
-	/*  24 */ void *iconblks;
-	/*  28 */ void *images;
-	/*  32 */ void *strings;
-	/*  36 */ void *users;
-	/*  40 */ void *references;
-	/*  44 */ void *mouses;
-	/*  48 */ void *int_list;
-	/*  52 */ void *m_strings;
-	/*  56 */ void *m_alerts;
-	/*  60 */
-} FixUnfixFkt;
-
-typedef struct {
 	/*   0 */ CICONBLK cicon;
 	/*  38 */ CICON c16;
 	/*  60 */ CICON c256;
@@ -805,6 +786,7 @@ extern const char *const mlmess[ /* AD_COUNT */ ];
  * edutil.c
  */
 void chk_new_label(void);
+void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname);
 
 
 
@@ -823,10 +805,10 @@ void wr_all(ACS_HEAD *acs);
 void rd_all(ACS_HEAD *acs);
 void release_err(void);
 void free_acs(ACS_HEAD *acs);
-void objfree(ACS_HEAD *acs, AOBJECT *obj);
+void objfree(ACS_HEAD *acs, Obj_Head *obj);
 Obj_Head *objmalloc(ACS_HEAD *acs, size_t size);
-int16 objextent(ACS_HEAD *acs, size_t size);
-int16 uniquename(ACS_HEAD *acs, Obj_Head *obj);
+int16 objextent(Obj_Head *obj, size_t size);
+int16 uniquename(ACS_HEAD *acs, Obj_Head *obj, Obj_Head ***list);
 void objname(ACS_HEAD *acs, Obj_Head *obj, const char *listname, const char *objname);
 
 
@@ -865,6 +847,48 @@ void pp_output(ACS_HEAD *acs);
 void str_output(ACS_HEAD *acs);
 
 
+
+/*
+ * edit2/edrefed.c
+ */
+#define REF_NONE           0
+#define REF_OBJ_CLICK      1
+#define REF_OBJ_DRAG       2
+#define REF_USER_DRAW      3
+#define REF_USER_SERVICE   4
+#define REF_WIN_UNUSED1    5
+#define REF_WIN_OPEN       6
+#define REF_WIN_CREATE     7
+#define REF_WIN_INIT       8
+#define REF_WIN_KEYS       9
+#define REF_WIN_CHANGE    10
+#define REF_WIN_REDRAW    11
+#define REF_WIN_TOPPED    12
+#define REF_WIN_UNUSED2   13
+#define REF_WIN_CLOSED    14
+#define REF_WIN_ARROWED   15
+#define REF_WIN_HSLIDE    16
+#define REF_WIN_VSLIDE    17
+#define REF_WIN_MOVED     18
+#define REF_WIN_SIZED     19
+#define REF_WIN_FULLED    20
+#define REF_WIN_SERVICE   21
+#define REF_WIN_ICONIFY   22
+#define REF_WIN_UNICONIFY 23
+#define REF_WIN_GEMSCRIPT 24
+#define REF_SYS_ACSINIT0  25
+#define REF_SYS_ACSINIT   26
+#define REF_SYS_TERM      27
+#define REF_SYS_ABOUTME   28
+#define REF_SYS_CLOSE     29
+#define REF_SYS_MESSAGE   30
+#define REF_SYS_MPROTO    31
+#define REF_SYS_TIMER     32
+#define REF_SYS_KEY       33
+#define REF_SYS_BUTTON    34
+#define REF_SYS_MOUSE     35
+#define REF_SYS_WIKEY     36
+#define REF_SYS_GEMSCRIPT 37
 
 
 

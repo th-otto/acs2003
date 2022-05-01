@@ -112,84 +112,84 @@ static void out_declproto(ACS_HEAD *acs)
 				info_obj(ref->label);
 				switch (flags & 0xff)
 				{
-				case 1:
-				case 2:
-				case 27:
-				case 28:
-				case 29:
-				case 32:
-				case 35:
+				case REF_OBJ_CLICK:
+				case REF_OBJ_DRAG:
+				case REF_SYS_TERM:
+				case REF_SYS_ABOUTME:
+				case REF_SYS_CLOSE:
+				case REF_SYS_TIMER:
+				case REF_SYS_MOUSE:
 					sprintf(iostring, "extern void %s( void );" NL, ref->label);
 					break;
-				case 3:
+				case REF_USER_DRAW:
 					sprintf(iostring, "extern INT16 CDECL %s( PARMBLK *pb );" NL, ref->label);
 					break;
-				case 4:
+				case REF_USER_SERVICE:
 					sprintf(iostring, "extern INT16 %s( OBJECT *entry, INT16 task, void *in_out );" NL, ref->label);
 					break;
-				case 6:
-				case 8:
-				case 23:
+				case REF_WIN_OPEN:
+				case REF_WIN_INIT:
+				case REF_WIN_UNICONIFY:
 					sprintf(iostring, "extern INT16 %s( Awindow *wind );" NL, ref->label);
 					break;
-				case 7:
+				case REF_WIN_CREATE:
 					sprintf(iostring, "extern Awindow *%s( void *para );" NL, ref->label);
 					break;
-				case 9:
+				case REF_WIN_KEYS:
 					sprintf(iostring, "extern INT16 %s( Awindow *wind, INT16 kstate, INT16 key );" NL, ref->label);
 					break;
-				case 10:
+				case REF_WIN_CHANGE:
 					sprintf(iostring, "extern void %s( Awindow *wind, INT16 obnr, INT16 state );" NL, ref->label);
 					break;
-				case 11:
-				case 18:
-				case 19:
+				case REF_WIN_REDRAW:
+				case REF_WIN_MOVED:
+				case REF_WIN_SIZED:
 					sprintf(iostring, "extern void %s( Awindow *wind, Axywh *area );" NL, ref->label);
 					break;
-				case 12:
-				case 14:
-				case 20:
+				case REF_WIN_TOPPED:
+				case REF_WIN_CLOSED:
+				case REF_WIN_FULLED:
 					sprintf(iostring, "extern void %s( Awindow *wind );" NL, ref->label);
 					break;
-				case 15:
+				case REF_WIN_ARROWED:
 					sprintf(iostring, "extern void %s( Awindow *wind, INT16 pos, INT16 amount );" NL, ref->label);
 					break;
-				case 16:
-				case 17:
+				case REF_WIN_HSLIDE:
+				case REF_WIN_VSLIDE:
 					sprintf(iostring, "extern void %s( Awindow *wind, INT16 pos );" NL, ref->label);
 					break;
-				case 21:
+				case REF_WIN_SERVICE:
 					sprintf(iostring, "extern INT16 %s( Awindow *wind, INT16 task, void *in_out );" NL, ref->label);
 					break;
-				case 0:
+				case REF_NONE:
 					iostring[0] = '\0';
 					break;
-				case 22:
+				case REF_WIN_ICONIFY:
 					sprintf(iostring, "extern INT16 %s( Awindow *wind, INT16 all );" NL, ref->label);
 					break;
-				case 24:
+				case REF_WIN_GEMSCRIPT:
 					sprintf(iostring, "extern INT16 %s( Awindow *wind, INT16 anz, char **cmd, A_GSAntwort *antwort );" NL, ref->label);
 					break;
-				case 25:
-				case 26:
+				case REF_SYS_ACSINIT0:
+				case REF_SYS_ACSINIT:
 					sprintf(iostring, "extern INT16 %s( void );" NL, ref->label);
 					break;
-				case 30:
-				case 31:
+				case REF_SYS_MESSAGE:
+				case REF_SYS_MPROTO:
 					sprintf(iostring, "extern INT16 %s( INT16 *message );" NL, ref->label);
 					break;
-				case 34:
+				case REF_SYS_BUTTON:
 					sprintf(iostring, "extern void %s( INT16 *button, INT16 *kreturn );" NL, ref->label);
 					break;
-				case 33:
-				case 36:
+				case REF_SYS_KEY:
+				case REF_SYS_WIKEY:
 					sprintf(iostring, "extern void %s( INT16 *kstate, INT16 *key );" NL, ref->label);
 					break;
-				case 37:
+				case REF_SYS_GEMSCRIPT:
 					sprintf(iostring, "extern INT16 %s( INT16 anz, char **cmd, A_GSAntwort *antwort );" NL, ref->label);
 					break;
-				case 5:
-				case 13:
+				case REF_WIN_UNUSED1:
+				case REF_WIN_UNUSED2:
 				default:
 					sprintf(iostring, "/* %s Type %d ?? */" NL, ref->label, flags & 0xff);
 					break;

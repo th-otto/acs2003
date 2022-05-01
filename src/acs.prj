@@ -55,7 +55,7 @@ about.c
 edutil.s
 
 io\protocol.s
-io\fixacs.s
+io\fixacs.c [-J- -Z- -R- -M-]
 io\acsio.c [-J- -Z- -R- -M-]
 io\rcsin.s
 io\pc_head.c [-J- -Z- -R- -M-]
