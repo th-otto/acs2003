@@ -493,7 +493,6 @@ int16 read_acs(long fd, ACS_HEAD *acs)
 	proto.filename = acs->filename;
 	memcpy(acs, &proto, sizeof(*acs));
 	proto.filename = NULL;
-	/* BUG: Af_length returns negative value if file does not exist */
 	if (fd < 0)
 	{
 		init_acs(acs);

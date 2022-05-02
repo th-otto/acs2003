@@ -5,6 +5,11 @@ acslib.lib
 .S[-I..]
 .C[-IC:\pc\include]
 
+; set this to 1 to apply some fixes
+; if set to 0, attempt to compile the original version
+.C[-DWITH_FIXES=0]
+.S[-DWITH_FIXES=0]
+
 .C[ -A- ]		; no strict ANSI
 .C[ -C- ]		; no nested comments
 .C[ -T- ]		; no stack checking

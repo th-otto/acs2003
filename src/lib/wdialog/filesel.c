@@ -74,11 +74,25 @@ char *Af_select(const char *title, char *path, const char *ext)
 	/*
 	 * allow either "*.ext" or just "ext"
 	 */
+#if WITH_FIXES
+	fname[1] = '\0';
+	if (Ast_incmp(ext, "*.", 2) != 0)
+	{
+		strcpy(fname + 1, "*.");
+		strcpy(fname + 3, ext);
+	} else
+	{
+		strcpy(fname + 1, ext);
+		/* do not append the wildcard to the selected filename */
+		ext += 2;
+	}
+#else
 	if (Ast_incmp(ext, "*.", 2) != 0)
 		strcpy(fname + 1, "*.");
 	else
 		fname[1] = '\0';
 	strcat(fname, ext);
+#endif
 	if (bkhndler != 0)
 	{
 		ret = fsel_boxinput(path, filename, &button, title, fsmesshndler);
