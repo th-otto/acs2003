@@ -60,7 +60,7 @@ io\acsio.c [-J- -Z- -R- -M-]
 io\rcsin.s
 io\pc_head.c [-J- -Z- -R- -M-]
 io\pc_out.c [-J- -Z- -R- -M-]
-io\pp_out.s
+io\pp_out.c [-J- -Z- -R- -M-]
 io\str_out.c [-J- -Z- -R- -M-]
 io\workout.c [-J- -Z- -R- -M-]
 
