@@ -50,7 +50,7 @@ static const char *const mlal_title[MAX_LANGS] = { al1_obj, al2_obj, al3_obj };
 static ACS_HEAD proto = {
 	ACS_MAGIC, /* ".ACS" */
 	401, /* ACS_VERSION */
-	ACS_8000 | ACS_2000 | ACS_1000 | ACS_0800,
+	ACS_SUBMODUL | ACS_PROTOTYPES | ACS_LOCAL | ACS_0800,
 	NULL,
 	NULL,
 	NULL,
@@ -436,7 +436,7 @@ void init_mess(ACS_HEAD *acs)
 	char buf[36];
 	
 	changed = FALSE;
-	if (!(acs->flags & ACS_8000))
+	if (!(acs->flags & ACS_SUBMODUL))
 	{
 		Amo_busy();
 		for (i = 0; i < AD_A_ATT; i++)

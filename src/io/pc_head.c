@@ -5,7 +5,7 @@
 
 static void out_acs(ACS_HEAD *acs)
 {
-	if (!(acs->flags & ACS_8000))
+	if (!(acs->flags & ACS_SUBMODUL))
 		save_string(NL NL "extern Adescr ACSdescr;" NL NL);
 }
 

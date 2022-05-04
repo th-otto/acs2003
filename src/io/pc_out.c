@@ -137,7 +137,7 @@ static void out_acs(ACS_HEAD *acs)
 	char buf[36];
 	Obj_Head *entry;
 	
-	if (!(acs->flags & ACS_8000))
+	if (!(acs->flags & ACS_SUBMODUL))
 	{
 		save_string(NL NL "Adescr ACSdescr =");
 		save_string(NL "\t{" NL);
@@ -1055,7 +1055,7 @@ void pc_output(ACS_HEAD *acs)
 			out_window(acs->wi_list);
 			out_mouse(acs->mo_list);
 			out_acs(acs);
-			if (acs->flags & ACS_2000)
+			if (acs->flags & ACS_PROTOTYPES)
 				out_refs(acs);
 			close_buf();
 		}

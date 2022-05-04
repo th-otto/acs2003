@@ -146,16 +146,22 @@ struct _ACS_HEAD {
 /*
  * ACS_HEAD.flags
  */
-#define ACS_CHANGED   0x0001
-#define ACS_0010      0x0010
-#define ACS_0020      0x0020
-#define ACS_0040      0x0040
-#define ACS_0080      0x0080
-#define ACS_0800      0x0800
-#define ACS_1000      0x1000
-#define ACS_2000      0x2000
-#define ACS_4000      0x4000
-#define ACS_8000      0x8000
+#define ACS_CHANGED     0x0001
+#define ACS_0002        0x0002
+#define ACS_0004        0x0004
+#define ACS_0008        0x0008
+#define ACS_0010        0x0010
+#define ACS_0020        0x0020
+#define ACS_0040        0x0040
+#define ACS_0080        0x0080
+#define ACS_0100        0x0100
+#define ACS_0200        0x0200
+#define ACS_0400        0x0400
+#define ACS_0800        0x0800
+#define ACS_LOCAL       0x1000
+#define ACS_PROTOTYPES  0x2000
+#define ACS_IGNORECASE  0x4000
+#define ACS_SUBMODUL    0x8000
 
 
 typedef struct {

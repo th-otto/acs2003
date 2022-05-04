@@ -984,7 +984,7 @@ Obj_Head *objmalloc(ACS_HEAD *acs, size_t size)
 		return NULL;
 	}
 	memset(obj, 0, sizeof(*obj));
-	if (acs->flags & ACS_1000)
+	if (acs->flags & ACS_LOCAL)
 		obj->flags |= OBJ_LOCAL;
 	obj->object = data;
 	obj->usage = 1;
@@ -1099,16 +1099,14 @@ int16 uniquename(ACS_HEAD *acs, Obj_Head *obj, Obj_Head ***list)
 void objname(ACS_HEAD *acs, Obj_Head *obj, const char *listname, const char *objname)
 {
 	Obj_Head **last;
-	Obj_Head **prev;
 	Obj_Head *next;
 
-	/* XXX uses a4 instead of a5 */	
 	strcpy(obj->label, listname);
 	last = &acs->labels;
-	while ((next = *(prev = last)) != obj)
+	while ((next = *last) != obj)
 		last = &next->next;
+	*last = obj->next;
 
-	*prev = obj->next;
 	for (; uniquename(acs, obj, &last) == FAIL && objname != NULL; )
 	{
 		newlabel(acs, obj, objname);
