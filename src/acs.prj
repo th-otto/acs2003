@@ -59,7 +59,7 @@ general.s
 about.c
 edutil.s
 
-io\protocol.s
+io\protocol.c [-J- -Z- -R- -M-]
 io\fixacs.c [-J- -Z- -R- -M-]
 io\acsio.c [-J- -Z- -R- -M-]
 io\rcsin.c [-J- -Z- -R- -M-]

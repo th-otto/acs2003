@@ -905,6 +905,12 @@ void str_output(ACS_HEAD *acs);
 #define REF_SYS_GEMSCRIPT 37
 
 
+/*
+ * editor/edobkeys.c
+ */
+char *key_string(int16 key);
+
+
 
 /*
  * lib/main.c
