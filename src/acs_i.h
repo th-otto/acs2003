@@ -180,14 +180,6 @@ typedef struct {
 } ACSCICONBLK;
 
 typedef struct {
-	int8 index;
-	int8 tree;
-	int8 type;
-	int8 nontree;
-	char label[10];
-} dfn;
-
-typedef struct {
 	ACS_HEAD *acs;
 	Obj_Head *obj;
 } EDPARM;
@@ -768,6 +760,16 @@ typedef struct {
 } funcListe;
 
 
+/* characters to mark key modifiers */
+#define ALT_C      '\007'
+#define ALT_S      "\007"
+#define CONTROL_C  '^'
+#define CONTROL_S  "^"
+#define SHIFT_C    '\001'
+#define SHIFT_S    "\001"
+
+
+
 /*
  * about.c
  */
@@ -780,6 +782,12 @@ void AboutGUIEditor(void);
  * general.c
  */
 extern void (*OldAboutMe)(void);
+extern char const _WGTITEL[];
+extern Awindow WI_GENERAL;
+extern Awindow WI_INFO_GENERAL;
+
+void save(ACS_HEAD *acs);
+void newclose(void);
 
 
 /*
@@ -989,5 +997,24 @@ void serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
  * list/edstring.c
  */
 void del_string(ACS_HEAD *acs, Obj_Head *str);
+Obj_Head *dup_string(ACS_HEAD *acs, const char *str);
 Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *str);
 void serv_str(ACS_HEAD *acs, int16 task, Obj_Head *str);
+
+
+/*
+ * list/edimage.c
+ */
+Obj_Head *dup_image(ACS_HEAD *acs, BITBLK *bit);
+
+
+/*
+ * list/edtedi.c
+ */
+Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
+
+
+/*
+ * list/edicon.c
+ */
+Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon);
