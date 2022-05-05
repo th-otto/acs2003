@@ -1,0 +1,66 @@
+; PCMTGEM.LIB - die multithreaded-only GEM-Bindings
+;
+; (c) 1998-2008 by Martin Els„sser @ LL, Gerhard Stoll @ B
+;
+;	 											Tabsize: 1 Tab = 3 Spaces
+;
+..\lib\pcmtgem.lib
+.C[-I..\include]
+.C[-IC:\pc\include]
+
+; Die Compiler-Flags
+.C[ -A- ]		; no strict ANSI
+.C[ -C- ]		; no nested comments
+.C[ -T- ]		; no stack checking
+.C[ -K- ]		; Default Char is signed
+.C[ -P  ]		; Absolute calls
+.C[ -G- ]		; optimize for speed
+.C[ -S- ]		; no standard stack frames
+.L[ -J ]		; generate library
+
+
+; Flags for the Debug-Version
+.C[ -J+ ]		; No jump optimization
+.C[ -Z+ ]		; No register optimization
+.C[ -M+ ]		; No String Merging
+.C[ -R+ ]		; No Register Variables
+
+; Flags for the Release-Version
+;.C[ -J- ]		; Jump optimization
+;.C[ -Z- ]		; Register optimization
+;.C[ -M- ]		; String Merging
+;.C[ -R- ]		; Register Variables
+
+=
+;
+; Die VDI-Bindings
+vdi\vdi_s.s
+vdi\vdi_c.c
+vdi\ctrl.c
+vdi\output.c
+vdi\attrib.c
+vdi\raster.c
+vdi\input.c
+vdi\inquire.c
+vdi\escape.c
+;
+; Die MT-AES-Bindings
+aes\aes_s.s
+aes\aes_c.c
+aes\appl.c [-M-]
+aes\evnt.c
+aes\menu.c
+aes\objc.c
+aes\form.c
+aes\graf.c
+aes\scrp.c
+aes\fsel.c
+aes\fslx.c
+aes\wind.c
+aes\rsrc.c
+aes\shel.c
+aes\fnts.c
+aes\lbox.c
+aes\pdlg.c
+aes\wdlg.c
+aes\edit.c

@@ -1,0 +1,55 @@
+; PCGEM.LIB - die GEM-Bindings (kompatibel zu PureC)
+;
+; (c) 1998-2008 by Martin Els„sser @ LL, Gerhard Stoll @ B
+;
+;	 											Tabsize: 1 Tab = 3 Spaces
+;
+..\lib\pcgem.lib
+.C[-I..\include]
+.C[-IC:\pc\include]
+
+; The Compiler-Flags
+.C[ -A- ]		; no strict ANSI
+.C[ -C- ]		; no nested comments
+.C[ -T- ]		; no stack checking
+.C[ -K- ]		; Default Char is signed
+.C[ -P  ]		; Absolute calls
+.C[ -G- ]		; optimize for speed
+.C[ -S- ]		; no standard stack frames
+.L[ -J ]		; generate library
+
+; Flags for the Debug-Version
+.C[ -J+ ]		; No jump optimization
+.C[ -Z+ ]		; No register optimization
+.C[ -M+ ]		; No String Merging
+.C[ -R+ ]		; No Register Variables
+
+; Flags for the Release-Version
+;.C[ -J- ]		; Jump optimization
+;.C[ -Z- ]		; Register optimization
+;.C[ -M- ]		; String Merging
+;.C[ -R- ]		; Register Variables
+
+=
+;
+; Die Bibliothek PCMTGEM.LIB um PureC-kompatible Bindings erg„nzen
+pcmtgem.prj
+;
+; Die PureC-AES-Bindings
+aes\purec\appl_pc.c
+aes\purec\evnt_pc.c
+aes\purec\menu_pc.c
+aes\purec\objc_pc.c
+aes\purec\form_pc.c
+aes\purec\graf_pc.c
+aes\purec\scrp_pc.c
+aes\purec\fsel_pc.c
+aes\purec\fslx_pc.c
+aes\purec\wind_pc.c
+aes\purec\rsrc_pc.c
+aes\purec\shel_pc.c
+aes\purec\fnts_pc.c
+aes\purec\lbox_pc.c
+aes\purec\pdlg_pc.c
+aes\purec\wdlg_pc.c
+aes\purec\edit_pc.c

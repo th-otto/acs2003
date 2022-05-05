@@ -1,0 +1,22 @@
+..\lib\pctos.lib
+.C[-I..\include]
+.C[-IC:\pc\include]
+
+.C[ -K- ]		; Default Char is signed
+.C[ -P  ]		; Absolute calls
+.C[ -G- ]		; optimize for speed
+.C[ -S- ]		; no standard stack frames
+
+.C[ -J- ]		; Jump optimization
+.C[ -Z- ]		; Register optimization
+.C[ -M- ]		; String Merging
+.C[ -R- ]		; Register Variables
+
+.L[ -J ]                ; generate lib
+=
+bios.s
+xbios.s
+gemdos.s
+mintnet.s
+pamsnet.s
+tos_util.c

@@ -27,7 +27,7 @@ acs.app
 .C[ -K- ]		; Default Char is signed
 .C[ -P  ]		; Absolute calls
 .C[ -G- ]		; optimize for speed
-.C[ -S- ]       ; no standard stack frames
+.C[ -S- ]		; no standard stack frames
 
 ; Flags for the Debug-Version
 .C[ -D_DEBUG -DDEBUG ]
@@ -137,57 +137,7 @@ acsplus\proto.s
 
 lib\acslib.prj
 
-vdi\vdi_s.s
-vdi\vdi_c.c
-vdi\ctrl.c
-vdi\output.c
-vdi\attrib.c
-vdi\raster.c
-vdi\input.c
-vdi\inquire.c
-vdi\escape.c
-
-aes\aes_s.s
-aes\appl.c [-M-]
-aes\evnt.c
-aes\menu.c
-aes\objc.c
-aes\form.c
-aes\graf.c
-aes\scrp.c
-aes\fsel.c
-aes\fslx.c
-aes\wind.c
-aes\rsrc.c
-aes\shel.c
-aes\fnts.c
-aes\lbox.c
-aes\pdlg.c
-aes\wdlg.c
-aes\edit.c
-aes\purec\appl_pc.c
-aes\purec\evnt_pc.c
-aes\purec\menu_pc.c
-aes\purec\objc_pc.c
-aes\purec\form_pc.c
-aes\purec\graf_pc.c
-aes\purec\scrp_pc.c
-aes\purec\fsel_pc.c
-aes\purec\fslx_pc.c
-aes\purec\wind_pc.c
-aes\purec\rsrc_pc.c
-aes\purec\shel_pc.c
-aes\purec\fnts_pc.c
-aes\purec\lbox_pc.c
-aes\purec\pdlg_pc.c
-aes\purec\wdlg_pc.c
-aes\purec\edit_pc.c
-
-tos\bios.s
-tos\xbios.s
-tos\gemdos.s
-tos\mintnet.s
-tos\pamsnet.s
-tos\tos_util.c [-J- -Z- -R- -M-]
+..\pcgem\pcgem.prj
+..\pctos\pctos.prj
 
 ..\lib\pcstdlib.lib
