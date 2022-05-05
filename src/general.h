@@ -1,0 +1,4 @@
+#define INFO_GENERAL_FILE    4
+#define INFO_GENERAL_OBJECTS 6
+#define INFO_GENERAL_SIZE    8
+

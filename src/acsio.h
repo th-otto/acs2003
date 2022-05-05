@@ -19,7 +19,7 @@ void save_buf(const void *data, size_t len);
 void save_string(const char *str);
 void close_buf(void);
 void read_buf(void *data, size_t len);
-int16 save_acs(ACS_HEAD *acs, int16 handle);
+int16 save_acs(int16 handle, ACS_HEAD *acs);
 void init_acs(ACS_HEAD *acs);
 void del_mess(ACS_HEAD *acs);
 void init_mess(ACS_HEAD *acs);

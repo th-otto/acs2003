@@ -210,80 +210,80 @@ void Aed_undo (void);
  */
 
 /* Nachrichten des Editor-Objektes */
-#define AUO_EDVERSLIDER    (200)          /* register vertical slider, Awiob * */
-#define AUO_EDHORSLIDER    (201)          /* register horizontal slider, Awiob * */
-#define AUO_EDGETROW       (202)          /* get pointer on line, EDITGETS * */
+#define AUO_EDVERSLIDER       (200)          /* register vertical slider, Awiob * */
+#define AUO_EDHORSLIDER       (201)          /* register horizontal slider, Awiob * */
+#define AUO_EDGETROW          (202)          /* get pointer on line, EDITGETS * */
 #define AUO_EDNEWLINE         (203)          /* append newline */
 #define AUO_EDAPPLINE         (204)          /* append text, char * */
 #define AUO_EDWRAP            (205)          /* set wrap lines, long * */
-#define AUO_EDDELETE       (206)          /* delete all text */
+#define AUO_EDDELETE          (206)          /* delete all text */
 #define AUO_EDFONT            (207)          /* font ID, int16 * */
-#define AUO_EDHEIGHT       (208)          /* font height, int16 * */
+#define AUO_EDHEIGHT          (208)          /* font height, int16 * */
 #define AUO_EDCOLOR           (209)          /* font color, int16 * */
 #define AUO_EDCFULL           (210)          /* columns (max 512), int16 * */
 #define AUO_EDCURON           (211)          /* cursor on */
-#define AUO_EDCUROFF       (212)          /* cursor off */
+#define AUO_EDCUROFF          (212)          /* cursor off */
 #define AUO_EDCURHIDE         (213)          /* hide cursor */
 #define AUO_EDCURSHOW         (214)          /* show cursor */
-#define AUO_EDCURPOS       (215)          /* set cursor pos, int16 * */
-#define AUO_EDGETPOS       (216)          /* get line, long * */
+#define AUO_EDCURPOS          (215)          /* set cursor pos, int16 * */
+#define AUO_EDGETPOS          (216)          /* get line, long * */
 #define AUO_EDHCOL            (217)          /* set home col, long * */
 #define AUO_EDHROW            (218)          /* set home row, long * */
 #define AUO_EDVIEW            (219)          /* set cursor pos in visible range */
 #define AUO_ED1SELECT         (220)          /* select exactly one */
-#define AUO_ED01SELECT     (221)          /* select one or nothing */
+#define AUO_ED01SELECT        (221)          /* select one or nothing */
 #define AUO_EDNSELECT         (222)          /* select countinous */
-#define AUO_EDNMSELECT     (223)          /* select discontinuos */
-#define AUO_EDCHARSELECT   (224)          /* select charmode */
-#define AUO_EDBLKSELECT    (225)          /* select blockchar mode */
-#define AUO_EDUNSELECT     (226)          /* unselect */
-#define AUO_EDGETSELECT    (227)          /* get selection block (row1,col1), (row2,col2), long [4] */
-#define AUO_EDSETSELECT    (228)          /* set selection block (row1,col1), (row2,col2), long [4] */
+#define AUO_EDNMSELECT        (223)          /* select discontinuos */
+#define AUO_EDCHARSELECT      (224)          /* select charmode */
+#define AUO_EDBLKSELECT       (225)          /* select blockchar mode */
+#define AUO_EDUNSELECT        (226)          /* unselect */
+#define AUO_EDGETSELECT       (227)          /* get selection block (row1,col1), (row2,col2), long [4] */
+#define AUO_EDSETSELECT       (228)          /* set selection block (row1,col1), (row2,col2), long [4] */
 #define AUO_EDCALL            (229)          /* set live selection call */
 #define AUO_EDLIVE            (230)          /* call live routine */
-#define AUO_EDGETCURPOS    (231)          /* get cursor pos, long * */
-#define AUO_EDGETLENGTH    (232)          /* get length of act line, long * */
+#define AUO_EDGETCURPOS       (231)          /* get cursor pos, long * */
+#define AUO_EDGETLENGTH       (232)          /* get length of act line, long * */
 #define AUO_EDGETROWS         (233)          /* get count of rows, long * */
 #define AUO_EDSUB             (234)          /* substitute val, EDITSUBS * */
 #define AUO_EDUNDO            (235)          /* UNDO */
 #define AUO_EDTABSIZE         (236)          /* Tabsize (def = 4), int16 * */
-#define AUO_EDCLEARUNDO    (237)          /* Clear UNDO Buffer*/
-#define AUO_EDRESIZE       (238)          /* Size has been modified, update internal vals */
-#define AUO_EDUPDATE       (239)          /* update without sliders */
-#define AUO_EDGETTABSIZE   (240)          /* get Tabsize, int16 * */
-#define AUO_EDBLOCKMODE    (241)          /* ? Blockmode, int16 *, TRUE / FALSE */
+#define AUO_EDCLEARUNDO       (237)          /* Clear UNDO Buffer*/
+#define AUO_EDRESIZE          (238)          /* Size has been modified, update internal vals */
+#define AUO_EDUPDATE          (239)          /* update without sliders */
+#define AUO_EDGETTABSIZE      (240)          /* get Tabsize, int16 * */
+#define AUO_EDBLOCKMODE       (241)          /* ? Blockmode, int16 *, TRUE / FALSE */
 #define AUO_EDFIND            (242)          /* Find string, char * */
-#define AUO_EDBACKWARD     (243)          /* Find direction backwards */
+#define AUO_EDBACKWARD        (243)          /* Find direction backwards */
 #define AUO_EDFORWARD         (244)          /* Find direction forward */
 #define AUO_EDCASE            (245)          /* Case sensitive */
-#define AUO_EDNOCASE       (246)          /* Not Case sensitive */
+#define AUO_EDNOCASE          (246)          /* Not Case sensitive */
 #define AUO_EDWORD            (247)          /* Word search */
-#define AUO_EDNOWORD       (248)          /* No word search */
+#define AUO_EDNOWORD          (248)          /* No word search */
 #define AUO_EDRESET           (249)          /* Set to unchanged */
-#define AUO_EDGETCHANGED   (250)          /* changed status, int16 * */
+#define AUO_EDGETCHANGED      (250)          /* changed status, int16 * */
 #define AUO_EDGETNEED         (251)          /* returns byte count needed for save, long * */
-#define AUO_EDSELECTWORD   (252)          /* select word at cursor pos */
+#define AUO_EDSELECTWORD      (252)          /* select word at cursor pos */
 #define AUO_EDSLIDERS         (253)          /* updates sliders */
-#define AUO_EDCURSOR       (254)          /* set cursorform, int16 * */
-#define AUO_EDGETVCURPOS   (255)          /* get !visible! cursor pos, long * */
+#define AUO_EDCURSOR          (254)          /* set cursorform, int16 * */
+#define AUO_EDGETVCURPOS      (255)          /* get !visible! cursor pos, long * */
 #define AUO_EDGETHCOL         (256)          /* get col number of visibile leftmost col */
 #define AUO_EDGETHROW         (257)          /* get row number of first visible row */
-#define AUO_EDGETERROR     (258)          /* get error flag (actually memory alloc errors only) */
-#define AUO_EDRESETERROR   (259)          /* reset error flag */
+#define AUO_EDGETERROR        (258)          /* get error flag (actually memory alloc errors only) */
+#define AUO_EDRESETERROR      (259)          /* reset error flag */
 #define AUO_EDPUTINFO         (260)          /* put info, not supported anymore */
 #define AUO_EDDIRTY           (261)          /* set's ditry-flag */
-#define AUO_EDSETSEPARATOR (262)       /* set's word-seps */
-#define AUO_EDGETSEPARATOR (263)       /* vice-versa */
+#define AUO_EDSETSEPARATOR    (262)          /* set's word-seps */
+#define AUO_EDGETSEPARATOR    (263)          /* vice-versa */
 
 /* Nachrichten des Editor-Fensters EDITOR */
 #define AS_EDGETENTRY      (200)                /* return Editors OBJECT-Entry, OBJECT ** */
 #define AS_EDEXT           (201)                /* Set Extension, char * */
 #define AS_EDLOADFILE      (202)                /* Load file, Path char * */
 #define AS_EDTITLE         (203)                /* Set normal Title format %s will by substituted by filename, char * */
-#define AS_EDTITLEDIRTY (204)                /* Set dirty Title format %s will by substituted by filename, char * */
-#define AS_EDPUTSTRING  (205)                /* Put NUL terminate string LineSep LF / CRLF, char * */
-#define AS_EDGETSTRING  (206)                /* Get NUL terminate string LineSep LF / CRLF, char * */
-#define AS_EDGETNEED    (207)                /* get memory size of string */
+#define AS_EDTITLEDIRTY    (204)                /* Set dirty Title format %s will by substituted by filename, char * */
+#define AS_EDPUTSTRING     (205)                /* Put NUL terminate string LineSep LF / CRLF, char * */
+#define AS_EDGETSTRING     (206)                /* Get NUL terminate string LineSep LF / CRLF, char * */
+#define AS_EDGETNEED       (207)                /* get memory size of string */
 #define AS_EDWINDOW        (208)                /* set controlling window */
 #define AS_EDTERM          (209)                /* send to controlling window, editor will terminate, Awindow* editor */
 #define AS_EDSAVE          (210)                /* send to controlling window, editor/user wants to save, Awindow* editor */
@@ -323,10 +323,10 @@ extern Awindow PROTOCOL;         /* parameter NULL, or PROTOCOLDATA */
 */
 
 /* Nachrichten des Plotter-Fensters PLOTTER */
-#define  AS_PLOTHANDLE        (300)             /* Plot windows VDI-handle, int16 * */
-#define  AS_PLOTMFDB          (301)             /* Plot windows MFDB, MFDB**  */
-#define  AS_PLOTSIZE          (302)             /* resize MFDB, int16 [2] (w, h) */
-#define  AS_PLOTENTRY         (303)             /* return Plotters OBJECT-Entry, OBJECT **   */
+#define AS_PLOTHANDLE        (300)             /* Plot windows VDI-handle, int16 * */
+#define AS_PLOTMFDB          (301)             /* Plot windows MFDB, MFDB**  */
+#define AS_PLOTSIZE          (302)             /* resize MFDB, int16 [2] (w, h) */
+#define AS_PLOTENTRY         (303)             /* return Plotters OBJECT-Entry, OBJECT **   */
 
 /*
    VDI-like Interface
@@ -374,20 +374,20 @@ typedef struct
 }  LISTITEM;
 
 /* Nachrichten des Listen-Fensters LIST */
-#define AS_LIST_UPDATE           (400)    /* NULL */
-#define  AS_LIST_COUNT              (401)    /* *long */
-#define  AS_LIST_ADD                (402)    /* *void */
-#define  AS_LIST_DELETE          (403)    /* *long */
+#define AS_LIST_UPDATE              (400)    /* NULL */
+#define AS_LIST_COUNT               (401)    /* *long */
+#define AS_LIST_ADD                 (402)    /* *void */
+#define AS_LIST_DELETE              (403)    /* *long */
 #define AS_LIST_GET                 (404)    /* *LISTITEM */
-#define AS_LIST_GET_DIRTY        (405)    /* *int16 */
-#define  AS_LIST_REPLACE            (406)    /* *LISTITEM */
-#define  AS_LIST_RESET_DIRTY     (407)    /* NULL */
+#define AS_LIST_GET_DIRTY           (405)    /* *int16 */
+#define AS_LIST_REPLACE             (406)    /* *LISTITEM */
+#define AS_LIST_RESET_DIRTY         (407)    /* NULL */
 
 /* Message-Codes */
-#define  LM_OUT_OF_MEM  (1)
-#define  LM_IDX_RANGE   (2)
-#define  LM_DBL_ITEM    (3)
-#define LM_INFO            (4)
+#define LM_OUT_OF_MEM  (1)
+#define LM_IDX_RANGE   (2)
+#define LM_DBL_ITEM    (3)
+#define LM_INFO        (4)
 
 /* Struktur zum Aufruf */
 typedef struct
@@ -395,8 +395,8 @@ typedef struct
    void *expara;           /* freier Parameter */
    char title[128];        /* Fenstertitel */
    Axywh winsize;          /* Fensterausmaže */
-   CICONBLK *icon;               /* Icon-Vorlage */
-   long len;                  /* L„nge eines Eintrags */
+   CICONBLK *icon;         /* Icon-Vorlage */
+   long len;               /* L„nge eines Eintrags */
    int16 (*acc_item) (AOBJECT *aob, void *expara);
    int16 (*comp_item) (void *org, void *new, void *expara);
    int16 (*drag_item) (AOBJECT *aob, void *item, void *expara);

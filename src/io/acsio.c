@@ -278,7 +278,7 @@ void read_buf(void *data, size_t len)
 }
 
 
-int16 save_acs(ACS_HEAD *acs, int16 h)
+int16 save_acs(int16 h, ACS_HEAD *acs)
 {
 	bpos = 0;
 	if (setjmp(*set_handle(h)) != 0)

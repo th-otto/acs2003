@@ -137,11 +137,16 @@ struct _ACS_HEAD {
 	/* 500 */ int16 language;
 	/* 502 */ Obj_Head *mlst_list[MAX_LANGS];
 	/* 514 */ Obj_Head *mlal_list[MAX_LANGS];
-	/* 526 */ int16 src_lang;
+	/* 526 */ int16 src_lang;     /* compiler output language */
 	/* 528 */ Awindow *wi_config;
 	/* 532 */ Aconfig config;
 	/* 610 */
 };
+#define ACS_MAGIC 0x2e414353L /* ".ACS" */
+
+#define ACS_LANG_C      0
+#define ACS_LANG_PASCAL 1
+
 
 /*
  * ACS_HEAD.flags
@@ -162,6 +167,12 @@ struct _ACS_HEAD {
 #define ACS_PROTOTYPES  0x2000
 #define ACS_IGNORECASE  0x4000
 #define ACS_SUBMODUL    0x8000
+
+/*
+ * ACS_HEAD.extflags
+ */
+#define ACS_EXT_PROTOCOL  0x0001
+#define ACS_EXT_BACKUP    0x0002
 
 
 typedef struct {
@@ -779,21 +790,45 @@ void AboutGUIEditor(void);
 
 
 /*
+ * acsbase.c
+ */
+extern CEWSDATA cews;
+extern boolean dirtysave;
+extern char *last_path;
+extern Awindow *base_window;
+extern Awindow WI_COMMON;
+
+
+/*
  * general.c
  */
+#define AS_GENERAL_10001   10001
+#define AS_GENERAL_10002   10002
+#define AS_GENERAL_10003   10003
+#define AS_GENERAL_10004   10004
+#define AS_GENERAL_10005   10005
+#define AS_GENERAL_10006   10006
+#define AS_GENERAL_10007   10007
+#define AS_GENERAL_10008   10008
+#define AS_GENERAL_10009   10009
+
+
 extern void (*OldAboutMe)(void);
-extern char const _WGTITEL[];
+extern char _WGTITEL[];
 extern Awindow WI_GENERAL;
 extern Awindow WI_INFO_GENERAL;
 
-void save(ACS_HEAD *acs);
-void newclose(void);
+void save(Awindow *self);
+int16 ACSinit0(void);
+int16 ACSinit(void);
 
 
 /*
  * edbehave.c
  */
 extern const char *const mlmess[ /* AD_COUNT */ ];
+extern Awindow WI_BEHAVE;
+extern Awindow WI_MAINMOD;
 
 
 /*
@@ -801,7 +836,13 @@ extern const char *const mlmess[ /* AD_COUNT */ ];
  */
 void chk_new_label(void);
 void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname);
+void wi_pos(Awindow *win, Axywh *pos, Axywh *lastpos);
 
+
+/*
+ * palette.c
+ */
+extern Awindow WI_PALETTE;
 
 
 /*
@@ -906,9 +947,127 @@ void str_output(ACS_HEAD *acs);
 
 
 /*
+ * edit2/edparts.c
+ */
+extern Awindow WI_PARTS;
+extern Awindow *parts_window;
+
+
+/*
  * editor/edobkeys.c
  */
 char *key_string(int16 key);
+
+
+/*
+ * list/edmouse.c
+ */
+extern LISTPARM list_mouse;
+
+
+/*
+ * list/edlist.c
+ */
+extern Awindow WI_LIST;
+
+Obj_Head *find_entry(Obj_Head *obj, const char *str);
+Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *src);
+int16 add_entry(Obj_Head *obj, Obj_Head *str);
+
+
+/*
+ * list/edalert.c
+ */
+extern LISTPARM list_alert;
+
+void del_alert(ACS_HEAD *acs, Obj_Head *str);
+Obj_Head *copy_alert(ACS_HEAD *acs, const Obj_Head *str);
+void serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
+
+
+/*
+ * list/edstring.c
+ */
+void del_string(ACS_HEAD *acs, Obj_Head *str);
+Obj_Head *dup_string(ACS_HEAD *acs, const char *str);
+Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *str);
+void serv_str(ACS_HEAD *acs, int16 task, Obj_Head *str);
+
+
+/*
+ * list/edimage.c
+ */
+extern LISTPARM list_image;
+
+Obj_Head *dup_image(ACS_HEAD *acs, BITBLK *bit);
+
+
+/*
+ * list/edtedi.c
+ */
+Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
+
+
+/*
+ * list/edicon.c
+ */
+extern LISTPARM list_icon;
+
+Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon);
+
+
+/*
+ * list/edmenu.c
+ */
+extern LISTPARM list_menu;
+
+
+/*
+ * list/eddata.c
+ */
+extern LISTPARM list_data;
+
+
+/*
+ * list/edobject.c
+ */
+extern LISTPARM list_object;
+
+
+/*
+ * list/edpopup.c
+ */
+extern LISTPARM list_popup;
+
+
+/*
+ * list/edref.c
+ */
+extern LISTPARM list_reference;
+
+
+/*
+ * list/edstring.c
+ */
+extern LISTPARM list_string;
+
+
+/*
+ * list/edtedi.c
+ */
+extern LISTPARM list_tedi;
+
+
+/*
+ * list/eduser.c
+ */
+extern LISTPARM list_user;
+
+
+/*
+ * list/edwind.c
+ */
+extern LISTPARM list_window;
 
 
 
@@ -975,52 +1134,3 @@ extern Awindow WI_FILESEL;
  */
 int16 Amo_restart(Amouse *mouse);
 void Amo_return(int16 busy, Amouse *mouse);
-
-
-/*
- * list/edmouse.c
- */
-extern LISTPARM list_mouse;
-
-
-/*
- * list/edlist.c
- */
-Obj_Head *find_entry(Obj_Head *obj, const char *str);
-Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *src);
-int16 add_entry(Obj_Head *obj, Obj_Head *str);
-
-
-/*
- * list/edalert.c
- */
-void del_alert(ACS_HEAD *acs, Obj_Head *str);
-Obj_Head *copy_alert(ACS_HEAD *acs, const Obj_Head *str);
-void serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
-
-
-/*
- * list/edstring.c
- */
-void del_string(ACS_HEAD *acs, Obj_Head *str);
-Obj_Head *dup_string(ACS_HEAD *acs, const char *str);
-Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *str);
-void serv_str(ACS_HEAD *acs, int16 task, Obj_Head *str);
-
-
-/*
- * list/edimage.c
- */
-Obj_Head *dup_image(ACS_HEAD *acs, BITBLK *bit);
-
-
-/*
- * list/edtedi.c
- */
-Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
-
-
-/*
- * list/edicon.c
- */
-Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon);

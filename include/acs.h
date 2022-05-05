@@ -1177,8 +1177,8 @@ typedef struct
 #define AE_GEN                (1)         /* general error occured */
 #define AE_GEN_MEM            (2)         /* general memory error, prefer following specialized numbers */
 #define AE_OUT_OF_MEM         (3)         /* not enough memory */
-#define AE_DEFECTIVE_MEM      (4)         /* mem orgininally not allocated */
-#define AE_RANGE_MEM          (5)         /* to much or not enough memory handled */
+#define AE_DEFECTIVE_MEM      (4)         /* mem originally not allocated */
+#define AE_RANGE_MEM          (5)         /* too much or not enough memory handled */
 #define AE_ODD_MEM            (6)         /* odd mem-adress */
 #define AE_GEN_IO             (7)         /* general io-error, prefer following specialized numbers */
 #define AE_OPEN_IO            (8)         /* IO-channel-open error */
@@ -1950,7 +1950,7 @@ void Ax_ifree( void *memory );
 int16 Ax_memCheck( const char *buffer, int32 len, int16 write );
 
 /* Liste fÅr recyclebaren Speicher erzeugen/Ñndern/lîschen */
-int16 Ax_setRecycleSize( int32 size, int16 amount, char *beschreibung );
+int16 Ax_setRecycleSize( int32 size, int16 amount, const char *beschreibung );
 
 /* Akt. Statistik Åber freie Listen zusammenstellen und liefern */
 MemFreeBlockStat *Ax_getRecycleStat( int16 *anzahl );
