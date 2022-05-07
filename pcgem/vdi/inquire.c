@@ -18,7 +18,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-void vq_extnd( const int16 handle, const int16 owflag, int16 *workout )
+void vq_extnd( int16 handle, int16 owflag, int16 *workout )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={102, 0, 6, 1, 45};
@@ -41,7 +41,7 @@ void vq_extnd( const int16 handle, const int16 owflag, int16 *workout )
 /*                                                                            */
 /******************************************************************************/
 
-void vq_scrninfo( const int16 handle, int16 *work_out )
+void vq_scrninfo( int16 handle, int16 *work_out )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={102, 0, 0, 1, 272, 1};
@@ -64,7 +64,7 @@ void vq_scrninfo( const int16 handle, int16 *work_out )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vq_color( const int16 handle, const int16 color, const int16 set_flag, int16 *rgb )
+int16 vq_color( int16 handle, int16 color, int16 set_flag, int16 *rgb )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={26, 0, 0, 2, 4};
@@ -95,7 +95,7 @@ int16 vq_color( const int16 handle, const int16 color, const int16 set_flag, int
 /*                                                                            */
 /******************************************************************************/
 
-void vql_attributes( const int16 handle, int16 *attrib )
+void vql_attributes( int16 handle, int16 *attrib )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={35, 0, 1, 0, 5};
@@ -131,7 +131,7 @@ void vql_attributes( const int16 handle, int16 *attrib )
 /*                                                                            */
 /******************************************************************************/
 
-void vqm_attributes( const int16 handle, int16 *attrib )
+void vqm_attributes( int16 handle, int16 *attrib )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={36, 0, 1, 0, 3};
@@ -149,7 +149,7 @@ void vqm_attributes( const int16 handle, int16 *attrib )
 /*                                                                            */
 /******************************************************************************/
 
-void vqf_attributes( const int16 handle, int16 *attrib )
+void vqf_attributes( int16 handle, int16 *attrib )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={37, 0, 0, 0, 5};
@@ -167,7 +167,7 @@ void vqf_attributes( const int16 handle, int16 *attrib )
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_attributes( const int16 handle, int16 *attrib )
+void vqt_attributes( int16 handle, int16 *attrib )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={38, 0, 2, 0, 6};
@@ -185,7 +185,7 @@ void vqt_attributes( const int16 handle, int16 *attrib )
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_extent( const int16 handle, const char *string, int16 *extent )
+void vqt_extent( int16 handle, const char *string, int16 *extent )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12] = {116, 0, 4, 0, 0};
@@ -219,7 +219,7 @@ void vqt_extent( const int16 handle, const char *string, int16 *extent )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vqt_width( const int16 handle, const int16 character, int16 *cell_width,
+int16 vqt_width( int16 handle, int16 character, int16 *cell_width,
          int16 *left_delta, int16 *right_delta )
 {
    /* contrl anlegen und fÅllen */
@@ -257,7 +257,7 @@ int16 vqt_width( const int16 handle, const int16 character, int16 *cell_width,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vqt_name( const int16 handle, const int16 element_num, char *name )
+int16 vqt_name( int16 handle, int16 element_num, char *name )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={130, 0, 0, 1, 33};
@@ -296,7 +296,7 @@ int16 vqt_name( const int16 handle, const int16 element_num, char *name )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vqt_ext_name( const int16 handle, const int16 element_num, char *name,
+int16 vqt_ext_name( int16 handle, int16 element_num, char *name,
             uint16 *font_format, uint16 *flags )
 {
    /* contrl anlegen und fÅllen */
@@ -365,8 +365,8 @@ int16 vqt_ext_name( const int16 handle, const int16 element_num, char *name,
 /*                                                                            */
 /******************************************************************************/
 
-void vq_cellarray( const int16 handle, const int16 *pxyarray, const int16 row_length,
-            const int16 num_rows, int16 *el_used, int16 *rows_used, int16 *status,
+void vq_cellarray( int16 handle, const int16 *pxyarray, int16 row_length,
+            int16 num_rows, int16 *el_used, int16 *rows_used, int16 *status,
             int16 *colarray )
 {
    /* contrl anlegen und fÅllen */
@@ -395,7 +395,7 @@ void vq_cellarray( const int16 handle, const int16 *pxyarray, const int16 row_le
 /*                                                                            */
 /******************************************************************************/
 
-void vqin_mode( const int16 handle, const int16 dev_type, int16 *input_mode )
+void vqin_mode( int16 handle, int16 dev_type, int16 *input_mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={115, 0, 0, 1, 1};
@@ -418,7 +418,7 @@ void vqin_mode( const int16 handle, const int16 dev_type, int16 *input_mode )
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_fontinfo( const int16 handle, int16 *minADE, int16 *maxADE, int16 *distances,
+void vqt_fontinfo( int16 handle, int16 *minADE, int16 *maxADE, int16 *distances,
          int16 *maxwidth, int16 *effects )
 {
    /* contrl anlegen und fÅllen */
@@ -463,8 +463,8 @@ void vqt_fontinfo( const int16 handle, int16 *minADE, int16 *maxADE, int16 *dist
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_justified( const int16 handle, const int16 x, const int16 y, const char *string,
-         const int16 length, const int16 word_space, const int16 char_space, int16 *offsets )
+void vqt_justified( int16 handle, int16 x, int16 y, const char *string,
+         int16 length, int16 word_space, int16 char_space, int16 *offsets )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={132, 3, 0, 2, 0};
@@ -509,8 +509,8 @@ void vqt_justified( const int16 handle, const int16 x, const int16 y, const char
 /*                                                                            */
 /******************************************************************************/
 
-uint16 vqt_char_index( const int16 handle, const uint16 src_index,
-               const int16 src_mode, const int16 dst_mode )
+uint16 vqt_char_index( int16 handle, uint16 src_index,
+               int16 src_mode, int16 dst_mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={190, 0, 0, 3, 1, 0};
@@ -538,7 +538,7 @@ uint16 vqt_char_index( const int16 handle, const uint16 src_index,
 /*                                                                            */
 /******************************************************************************/
 
-boolean vqt_isCharAvailable( const int16 handle, const uint16 unicode )
+boolean vqt_isCharAvailable( int16 handle, uint16 unicode )
 {
    uint16 direct = vqt_char_index(handle, unicode, CHARIDX_UNICODE, CHARIDX_DIRECT);
 
@@ -551,7 +551,7 @@ boolean vqt_isCharAvailable( const int16 handle, const uint16 unicode )
 /*                                                                            */
 /******************************************************************************/
 
-int32 vq_hilite_color( const int16 handle, COLOR_ENTRY *hilite_color )
+int32 vq_hilite_color( int16 handle, COLOR_ENTRY *hilite_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={209, 0, 0, 0, 6, 0};
@@ -583,7 +583,7 @@ int32 vq_hilite_color( const int16 handle, COLOR_ENTRY *hilite_color )
 /*                                                                            */
 /******************************************************************************/
 
-int32 vq_min_color( const int16 handle, COLOR_ENTRY *min_color )
+int32 vq_min_color( int16 handle, COLOR_ENTRY *min_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={209, 0, 0, 0, 6, 1};
@@ -615,7 +615,7 @@ int32 vq_min_color( const int16 handle, COLOR_ENTRY *min_color )
 /*                                                                            */
 /******************************************************************************/
 
-int32 vq_max_color( const int16 handle, COLOR_ENTRY *max_color )
+int32 vq_max_color( int16 handle, COLOR_ENTRY *max_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={209, 0, 0, 0, 6, 2};
@@ -647,7 +647,7 @@ int32 vq_max_color( const int16 handle, COLOR_ENTRY *max_color )
 /*                                                                            */
 /******************************************************************************/
 
-int32 vq_weight_color( const int16 handle, COLOR_ENTRY *weight_color )
+int32 vq_weight_color( int16 handle, COLOR_ENTRY *weight_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={209, 0, 0, 0, 6, 3};
@@ -679,8 +679,8 @@ int32 vq_weight_color( const int16 handle, COLOR_ENTRY *weight_color )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vqt_xfntinfo( const int16 handle, const int16 flags, const int16 id,
-            const int16 index, XFNT_INFO *info )
+int16 vqt_xfntinfo( int16 handle, int16 flags, int16 id,
+            int16 index, XFNT_INFO *info )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12] = {229, 0, 0, 5, 3, 0};
@@ -716,7 +716,7 @@ int16 vqt_xfntinfo( const int16 handle, const int16 flags, const int16 id,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vqt_name_and_id( const int16 handle, const int16 font_format,
+int16 vqt_name_and_id( int16 handle, int16 font_format,
             const char *font_name, char *ret_name )
 {
    register int16 i;
@@ -754,7 +754,7 @@ int16 vqt_name_and_id( const int16 handle, const int16 font_format,
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_fontheader( const int16 handle, void *buffer, char *tdf_name )
+void vqt_fontheader( int16 handle, void *buffer, char *tdf_name )
 {
    register int16 i;
 
@@ -786,7 +786,7 @@ void vqt_fontheader( const int16 handle, void *buffer, char *tdf_name )
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_trackkern( const int16 handle, fix31 *x_offset, fix31 *y_offset )
+void vqt_trackkern( int16 handle, fix31 *x_offset, fix31 *y_offset )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12] = {234, 0, 0, 0, 4, 0};
@@ -813,7 +813,7 @@ void vqt_trackkern( const int16 handle, fix31 *x_offset, fix31 *y_offset )
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_pairkern( const int16 handle, const int16 index1, const int16 index2,
+void vqt_pairkern( int16 handle, int16 index1, int16 index2,
             fix31 *x_offset, fix31 *y_offset )
 {
    /* contrl anlegen und fÅllen */
@@ -845,7 +845,7 @@ void vqt_pairkern( const int16 handle, const int16 index1, const int16 index2,
 /*                                                                            */
 /******************************************************************************/
 
-void v_getbitmap_info( const int16 handle, const int16 index,
+void v_getbitmap_info( int16 handle, int16 index,
          fix31 *x_advance, fix31 *y_advance, fix31 *x_offset, fix31 *y_offset,
          int16 *width, int16 *height, int16 **bitmap )
 {
@@ -888,7 +888,7 @@ void v_getbitmap_info( const int16 handle, const int16 index,
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_f_extent( const int16 handle, const char *string, int16 *extent )
+void vqt_f_extent( int16 handle, const char *string, int16 *extent )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={240, 0, 4, 0, 0, 0};
@@ -922,7 +922,7 @@ void vqt_f_extent( const int16 handle, const char *string, int16 *extent )
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_real_extent( const int16 handle, const int16 x, const int16 y,
+void vqt_real_extent( int16 handle, int16 x, int16 y,
          const char *string, int16 *extent )
 {
    /* contrl anlegen und fÅllen */
@@ -966,8 +966,8 @@ void vqt_real_extent( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /******************************************************************************/
 
-void v_getoutline( const int16 handle, const int16 index, int16 *xyarray,
-         uint8 *bezarray, const int16 max_pts, int16 *count )
+void v_getoutline( int16 handle, int16 index, int16 *xyarray,
+         uint8 *bezarray, int16 max_pts, int16 *count )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={243, 0, 0, 6, 0, 0};
@@ -999,8 +999,8 @@ void v_getoutline( const int16 handle, const int16 index, int16 *xyarray,
 /*                                                                            */
 /******************************************************************************/
 
-int16 v_get_outline( const int16 handle, const int16 index, const int16 x_offset,
-         const int16 y_offset, int16 *xyarray, uint8 *bezarray, const int16 max_pts )
+int16 v_get_outline( int16 handle, int16 index, int16 x_offset,
+         int16 y_offset, int16 *xyarray, uint8 *bezarray, int16 max_pts )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={243, 0, 0, 8, 0, 1};
@@ -1032,7 +1032,7 @@ int16 v_get_outline( const int16 handle, const int16 index, const int16 x_offset
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_advance( const int16 handle, const int16 ch, int16 *x_advance, int16 *y_advance,
+void vqt_advance( int16 handle, int16 ch, int16 *x_advance, int16 *y_advance,
             int16 *x_remainder, int16 *y_remainder )
 {
    /* contrl anlegen und fÅllen */
@@ -1069,7 +1069,7 @@ void vqt_advance( const int16 handle, const int16 ch, int16 *x_advance, int16 *y
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_advance32( const int16 handle, const int16 index, fix31 *x_advance, fix31 *y_advance )
+void vqt_advance32( int16 handle, int16 index, fix31 *x_advance, fix31 *y_advance )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={247, 0, 4, 1, 0, 0};
@@ -1101,7 +1101,7 @@ void vqt_advance32( const int16 handle, const int16 index, fix31 *x_advance, fix
 /*                                                                            */
 /******************************************************************************/
 
-void vq_devinfo( const int16 handle, const int16 device, boolean *dev_open,
+void vq_devinfo( int16 handle, int16 device, boolean *dev_open,
          char *file_name, char *device_name )
 {
    register int16 i;
@@ -1157,7 +1157,7 @@ void vq_devinfo( const int16 handle, const int16 device, boolean *dev_open,
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_devinfo( const int16 handle, const int16 devnum,
+void vqt_devinfo( int16 handle, int16 devnum,
             boolean *devexists, char *devstr )
 {
    register int16 i;
@@ -1197,7 +1197,7 @@ void vqt_devinfo( const int16 handle, const int16 devnum,
 /*                                                                            */
 /******************************************************************************/
 
-boolean vq_ext_devinfo( const int16 handle, const int16 device, boolean *dev_exists,
+boolean vq_ext_devinfo( int16 handle, int16 device, boolean *dev_exists,
          char *file_path, char *file_name, char *name )
 {
    /* contrl anlegen und fÅllen */
@@ -1233,7 +1233,7 @@ boolean vq_ext_devinfo( const int16 handle, const int16 device, boolean *dev_exi
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_get_table( const int16 handle, int16 **map )
+void vqt_get_table( int16 handle, int16 **map )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12] = {254, 0, 0, 0, 2};
@@ -1258,7 +1258,7 @@ void vqt_get_table( const int16 handle, int16 **map )
 /*                                                                            */
 /******************************************************************************/
 
-void vqt_cachesize( const int16 handle, const int16 which_cache, int32 *size )
+void vqt_cachesize( int16 handle, int16 which_cache, int32 *size )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12] = {255, 0, 0, 1, 2};

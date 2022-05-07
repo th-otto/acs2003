@@ -1592,7 +1592,7 @@ int16 Aob_state( Awindow *window, int16 obnr, int16 flag, int16 setflag );
 /* Nur fÅr die USERDEFS wird in UB_PTR1 dynamisch Speicher    */
 /* entsprechend der TextlÑnge angelegt, sonst darf auf keinen */
 /* Fall die TextlÑnge die vorhandene LÑnge Åberschreiten!!!   */
-void Aob_puttext( const OBJECT *ob, int16 obnr, char *text );
+void Aob_puttext( const OBJECT *ob, int16 obnr, const char *text );
 
 /* Gibt analog zu printf Text in ein Objekt aus, 1024 Zeichen Puffer */
 void Aob_printf( const OBJECT *ob, int16 obnr, const char *format, ... );
@@ -2192,7 +2192,7 @@ A_dd *Ash_nextdd( A_dd *act );
 int16 Ash_sendall( int16 *mess, int32 type );
 
 /* Looks for 'cookie' and writes its Value in val (returns TRUE on success) */
-int16 Ash_getcookie( long cookie, void *value );
+int16 Ash_getcookie( int32 cookie, void *value );
 
 /* looks for 'char' in Env and returns value */
 char *Ash_getenv( const char *var );
@@ -2514,7 +2514,7 @@ char *Af_first( const char *start, A_FileList *fileinfo );
 char *Af_next( A_FileList *fileinfo );
 
 /* Returns full Path of CFG-File */
-char *Af_cfgfile( char* file );
+char *Af_cfgfile( const char* file );
 
 /* Infos gem. Dpathconf, 1=A:, 2=B:, etc. */
 int32 Af_pathconf( int16 drv, int16 mode );

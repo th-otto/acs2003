@@ -17,7 +17,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsin_mode( const int16 handle, const int16 dev_type, const int16 mode )
+int16 vsin_mode( int16 handle, int16 dev_type, int16 mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={33, 0, 0, 2, 1};
@@ -44,7 +44,7 @@ int16 vsin_mode( const int16 handle, const int16 dev_type, const int16 mode )
 /*                                                                            */
 /******************************************************************************/
 
-void vrq_locator( const int16 handle, const int16 x_in, const int16 y_in,
+void vrq_locator( int16 handle, int16 x_in, int16 y_in,
       int16 *x_out, int16 *y_out, int16 *term )
 {
    /* contrl anlegen und fÅllen */
@@ -80,7 +80,7 @@ void vrq_locator( const int16 handle, const int16 x_in, const int16 y_in,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_locator( const int16 handle, const int16 x_in, const int16 y_in,
+int16 vsm_locator( int16 handle, int16 x_in, int16 y_in,
       int16 *x_out, int16 *y_out, int16 *term )
 {
    /* contrl anlegen und fÅllen */
@@ -119,7 +119,7 @@ int16 vsm_locator( const int16 handle, const int16 x_in, const int16 y_in,
 /*                                                                            */
 /******************************************************************************/
 
-void vrq_valuator( const int16 handle, const int16 value_in, int16 *value_out, int16 *term )
+void vrq_valuator( int16 handle, int16 value_in, int16 *value_out, int16 *term )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={29, 0, 0, 1, 2};
@@ -148,7 +148,7 @@ void vrq_valuator( const int16 handle, const int16 value_in, int16 *value_out, i
 /*                                                                            */
 /******************************************************************************/
 
-void vsm_valuator( const int16 handle, const int16 value_in,
+void vsm_valuator( int16 handle, int16 value_in,
       int16 *value_out, int16 *term, int16 *status )
 {
    /* contrl anlegen und fÅllen */
@@ -180,7 +180,7 @@ void vsm_valuator( const int16 handle, const int16 value_in,
 /*                                                                            */
 /******************************************************************************/
 
-void vrq_choice( const int16 handle, const int16 choice_in, int16 *choice_out )
+void vrq_choice( int16 handle, int16 choice_in, int16 *choice_out )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={30, 0, 0, 1, 1};
@@ -207,7 +207,7 @@ void vrq_choice( const int16 handle, const int16 choice_in, int16 *choice_out )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_choice( const int16 handle, int16 *choice )
+int16 vsm_choice( int16 handle, int16 *choice )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={30, 0, 0, 0, 1};
@@ -233,8 +233,8 @@ int16 vsm_choice( const int16 handle, int16 *choice )
 /*                                                                            */
 /******************************************************************************/
 
-void vrq_string( const int16 handle, const int16 max_length, const int16 echo_mode,
-      const int16 *echo_xy, char *string )
+void vrq_string( int16 handle, int16 max_length, int16 echo_mode,
+      int16 *echo_xy, char *string )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={31, 1, 0, 2, 0};
@@ -285,8 +285,8 @@ void vrq_string( const int16 handle, const int16 max_length, const int16 echo_mo
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_string( const int16 handle, const int16 max_length, const int16 echo_mode,
-      const int16 *echo_xy, char *string )
+int16 vsm_string( int16 handle, int16 max_length, int16 echo_mode,
+      int16 *echo_xy, char *string )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={31, 1, 0, 2, 0};
@@ -357,7 +357,7 @@ void vsc_form( const int16 handle, const int16 *pcur_form )
 /*                                                                            */
 /******************************************************************************/
 
-void vex_timv( const int16 handle, const int16 (*tim_addr)(),
+void vex_timv( int16 handle, int16 (*tim_addr)(),
       int16 (**otim_addr)(), int16 *tim_conv )
 {
    /* contrl anlegen und fÅllen */
@@ -381,7 +381,7 @@ void vex_timv( const int16 handle, const int16 (*tim_addr)(),
 /*                                                                            */
 /******************************************************************************/
 
-void v_show_c( const int16 handle, const int16 reset )
+void v_show_c( int16 handle, int16 reset )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={122, 0, 0, 1, 0};
@@ -404,7 +404,7 @@ void v_show_c( const int16 handle, const int16 reset )
 /*                                                                            */
 /******************************************************************************/
 
-void v_hide_c( const int16 handle )
+void v_hide_c( int16 handle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={123, 0, 0, 0, 0};
@@ -422,7 +422,7 @@ void v_hide_c( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-void vq_mouse( const int16 handle, int16 *pstatus, int16 *x, int16 *y )
+void vq_mouse( int16 handle, int16 *pstatus, int16 *x, int16 *y )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={124, 0, 1, 0, 1};
@@ -449,7 +449,7 @@ void vq_mouse( const int16 handle, int16 *pstatus, int16 *x, int16 *y )
 /*                                                                            */
 /******************************************************************************/
 
-void vex_butv( const int16 handle, const int16 (*pusrcode)(), int16 (**psavcode)() )
+void vex_butv( int16 handle, int16 (*pusrcode)(), int16 (**psavcode)() )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={125, 0, 0, 0, 0};
@@ -472,7 +472,7 @@ void vex_butv( const int16 handle, const int16 (*pusrcode)(), int16 (**psavcode)
 /*                                                                            */
 /******************************************************************************/
 
-void vex_wheelv( const int16 handle, const int16 (*pusrcode)(void), int16 (**psavcode)(void) )
+void vex_wheelv( int16 handle, int16 (*pusrcode)(void), int16 (**psavcode)(void) )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={134, 0, 0, 0, 0};
@@ -496,7 +496,7 @@ void vex_wheelv( const int16 handle, const int16 (*pusrcode)(void), int16 (**psa
 /*                                                                            */
 /******************************************************************************/
 
-void vex_motv( const int16 handle, const int16 (*pusrcode)(), int16 (**psavcode)() )
+void vex_motv( int16 handle, int16 (*pusrcode)(), int16 (**psavcode)() )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={126, 0, 0, 0, 0};
@@ -519,7 +519,7 @@ void vex_motv( const int16 handle, const int16 (*pusrcode)(), int16 (**psavcode)
 /*                                                                            */
 /******************************************************************************/
 
-void vex_curv( const int16 handle, const int16 (*pusrcode)(), int16 (**psavcode)() )
+void vex_curv( int16 handle, int16 (*pusrcode)(), int16 (**psavcode)() )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={127, 0, 0, 0, 0};
@@ -542,7 +542,7 @@ void vex_curv( const int16 handle, const int16 (*pusrcode)(), int16 (**psavcode)
 /*                                                                            */
 /******************************************************************************/
 
-void vq_key_s( const int16 handle, int16 *pstatus )
+void vq_key_s( int16 handle, int16 *pstatus )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={128, 0, 0, 0, 1};

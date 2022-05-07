@@ -31,13 +31,13 @@ struct UConfig {
     /* 129 */ char userserial[11];
     /* 140 */ char userkey[11];
     /* 151 */ char helpname[9];
-    /* 160 */ int16 gluepart;
+    /* 160 */ boolean gluepart;
     /* 162 */ int16 save;
-    /* 164 */ int16 dirty;
-    /* 166 */ int16 snapping;
-    /* 168 */ int16 copyindex;
+    /* 164 */ boolean dirty;
+    /* 166 */ boolean snapping;
+    /* 168 */ boolean copyindex;
     /* 170 */ int16 imagesnap;
-    /* 172 */ int16 refimages;
+    /* 172 */ boolean refimages;
     /* 174 */ int16 flags;
     /* 176 */ Axywh pxywh;
     /* 184 */ Axywh bxywh;
@@ -576,7 +576,7 @@ typedef struct {
 
 typedef struct {
 	int16 MsgNr;
-	void *(MsgFunktion)(void);
+	void (*MsgFunktion)(void);
 	char WindOffset;
 	char XOffset;
 	char YOffset;
@@ -792,20 +792,30 @@ void AboutGUIEditor(void);
 /*
  * acsbase.c
  */
-extern CEWSDATA cews;
-extern boolean dirtysave;
+extern boolean runasdemo;
+extern struct UConfig cfg;
 extern char *last_path;
+extern char *helpacc;
+extern boolean gluepart;
+extern boolean dirtysave;
+extern boolean snapping;
+extern boolean imagesnap;
+extern boolean copyindex;
+extern boolean refimages;
+extern CEWSDATA cews;
 extern Awindow *base_window;
 extern Awindow WI_COMMON;
+
+void acs_register(void);
 
 
 /*
  * general.c
  */
-#define AS_GENERAL_10001   10001
-#define AS_GENERAL_10002   10002
-#define AS_GENERAL_10003   10003
-#define AS_GENERAL_10004   10004
+#define AS_GUI_SAVECFG     10001 /* in_out = Awindow * */
+#define AS_GUI_SETUSED     10002 /* in_out = pathname */
+#define AS_GUI_AUTOSAVE    10003 /* in_out not used */
+#define AS_GUI_ISNOTUSED   10004 /* in_out = pathname */
 #define AS_GENERAL_10005   10005
 #define AS_GENERAL_10006   10006
 #define AS_GENERAL_10007   10007

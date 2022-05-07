@@ -258,7 +258,7 @@ void v_opnmeta( int16 *work_in, int16 *handle, int16 *work_out, const char *file
 /*                                                                            */
 /******************************************************************************/
 
-void v_clswk( const int16 handle )
+void v_clswk( int16 handle )
 {
    /* contrl anlegen */
    int16 contrl[12]={2, 0, 0, 0, 0, 0};
@@ -302,7 +302,7 @@ void v_opnvwk( int16 *work_in, int16 *handle, int16 *work_out )
 /*                                                                            */
 /******************************************************************************/
 
-void v_clsvwk( const int16 handle )
+void v_clsvwk( int16 handle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={101, 0, 0, 0, 0, 0};
@@ -320,7 +320,7 @@ void v_clsvwk( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-void v_clrwk( const int16 handle )
+void v_clrwk( int16 handle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={3, 0, 0, 0, 0, 0};
@@ -338,7 +338,7 @@ void v_clrwk( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-void v_updwk( const int16 handle )
+void v_updwk( int16 handle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={4, 0, 0, 0, 0, 0};
@@ -385,8 +385,8 @@ void v_opnbm( int16 *work_in, const MFDB *bitmap, int16 *handle, int16 *work_out
 /*                                                                            */
 /******************************************************************************/
 
-int16 v_resize_bm( const int16 handle, const int16 width, const int16 height,
-            const int32 byte_width, const uint8 *addr )
+int16 v_resize_bm( int16 handle, int16 width, int16 height,
+            int32 byte_width, const uint8 *addr )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={100, 0, 0, 6, 1, 2};
@@ -416,8 +416,8 @@ int16 v_resize_bm( const int16 handle, const int16 width, const int16 height,
 /*                                                                            */
 /******************************************************************************/
 
-int16 v_open_bm( const int16 base_handle, const GCBITMAP *bitmap, const int16 zero,
-            const int16 flags, const int16 pixel_width, const int16 pixel_height )
+int16 v_open_bm( int16 base_handle, const GCBITMAP *bitmap, int16 zero,
+            int16 flags, int16 pixel_width, int16 pixel_height )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={100, 0, 0, 4, 1, 3};
@@ -450,7 +450,7 @@ int16 v_open_bm( const int16 base_handle, const GCBITMAP *bitmap, const int16 ze
 /*                                                                            */
 /******************************************************************************/
 
-void v_clsbm( const int16 handle )
+void v_clsbm( int16 handle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={101, 0, 0, 0, 0, 1};
@@ -468,7 +468,7 @@ void v_clsbm( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_load_fonts( const int16 handle, const int16 select )
+int16 vst_load_fonts( int16 handle, int16 select )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={119, 0, 0, 1, 1, 0};
@@ -494,7 +494,7 @@ int16 vst_load_fonts( const int16 handle, const int16 select )
 /*                                                                            */
 /******************************************************************************/
 
-void vst_unload_fonts( const int16 handle, const int16 select )
+void vst_unload_fonts( int16 handle, int16 select )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={120, 0, 0, 1, 0, 0};
@@ -517,7 +517,7 @@ void vst_unload_fonts( const int16 handle, const int16 select )
 /*                                                                            */
 /******************************************************************************/
 
-void vs_clip( const int16 handle, const int16 clip_flag, const int16 *pxyarray )
+void vs_clip( int16 handle, int16 clip_flag, const int16 *pxyarray )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={129, 2, 0, 1, 0, 0};
@@ -540,7 +540,7 @@ void vs_clip( const int16 handle, const int16 clip_flag, const int16 *pxyarray )
 /*                                                                            */
 /******************************************************************************/
 
-void v_set_app_buff( const int16 handle, void *address, const int16 nparagraphs )
+void v_set_app_buff( int16 handle, void *address, int16 nparagraphs )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={-1, 0, 0, 3, 0, 6};

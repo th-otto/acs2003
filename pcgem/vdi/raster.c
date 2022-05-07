@@ -17,7 +17,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-void vro_cpyfm( const int16 handle, const int16 wr_mode, const int16 *pxyarray,
+void vro_cpyfm( int16 handle, int16 wr_mode, const int16 *pxyarray,
             const MFDB *source, MFDB *dest )
 {
    /* contrl anlegen und fÅllen */
@@ -45,7 +45,7 @@ void vro_cpyfm( const int16 handle, const int16 wr_mode, const int16 *pxyarray,
 /*                                                                            */
 /******************************************************************************/
 
-void vrt_cpyfm( const int16 handle, const int16 wr_mode, const int16 *pxyarray,
+void vrt_cpyfm( int16 handle, int16 wr_mode, const int16 *pxyarray,
             const MFDB *source, MFDB *dest, const int16 color[2] )
 {
    /* contrl anlegen und fÅllen */
@@ -75,7 +75,7 @@ void vrt_cpyfm( const int16 handle, const int16 wr_mode, const int16 *pxyarray,
 /*                                                                            */
 /******************************************************************************/
 
-void vr_trnfm( const int16 handle, const MFDB *source, MFDB *dest )
+void vr_trnfm( int16 handle, const MFDB *source, MFDB *dest )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={110, 0, 0, 0, 0};
@@ -96,7 +96,7 @@ void vr_trnfm( const int16 handle, const MFDB *source, MFDB *dest )
 /*                                                                            */
 /******************************************************************************/
 
-void v_get_pixel( const int16 handle, const int16 x, const int16 y,
+void v_get_pixel( int16 handle, int16 x, int16 y,
       int16 *pix_value, int16 *col_index )
 {
    /* contrl anlegen und fÅllen */
@@ -129,8 +129,8 @@ void v_get_pixel( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /******************************************************************************/
 
-void vr_transfer_bits( const int16 handle, const GCBITMAP *src_bm, const GCBITMAP *dst_bm,
-         const int16 *src_rect, const int16 *dst_rect, const int16 mode )
+void vr_transfer_bits( int16 handle, const GCBITMAP *src_bm, const GCBITMAP *dst_bm,
+         const int16 *src_rect, const int16 *dst_rect, int16 mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[15]={170, 4, 0, 4, 0, 0};

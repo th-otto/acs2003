@@ -799,7 +799,7 @@ char *Af_first( const char *start, A_FileList *fileinfo );
 char *Af_next( A_FileList *fileinfo );
 
 /* Returns full Path of CFG-File */
-char *Af_cfgfile( char* file );
+char *Af_cfgfile( const char* file );
 
 /******************************************************************************/
 /*                                                                            */

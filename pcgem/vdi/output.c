@@ -17,7 +17,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-void v_pline( const int16 handle, const int16 count, int16 *pxyarray )
+void v_pline( int16 handle, int16 count, const int16 *pxyarray )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={6, 0, 0, 0, 0, 0};
@@ -38,7 +38,7 @@ void v_pline( const int16 handle, const int16 count, int16 *pxyarray )
 /*                                                                            */
 /******************************************************************************/
 
-void v_bez( const int16 handle, const int16 count, int16 *pxyarray, char *bezarray,
+void v_bez( int16 handle, int16 count, int16 *pxyarray, char *bezarray,
          int16 *extent, int16 *totpts, int16 *totmoves )
 {
    register int16 i;
@@ -99,7 +99,7 @@ void v_bez( const int16 handle, const int16 count, int16 *pxyarray, char *bezarr
 /*                                                                            */
 /******************************************************************************/
 
-void v_pmarker( const int16 handle, const int16 count, int16 *pxyarray )
+void v_pmarker( int16 handle, int16 count, int16 *pxyarray )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={7, 0, 0, 0, 0, 0};
@@ -120,7 +120,7 @@ void v_pmarker( const int16 handle, const int16 count, int16 *pxyarray )
 /*                                                                            */
 /******************************************************************************/
 
-void v_gtext( const int16 handle, const int16 x, const int16 y, const char *string )
+void v_gtext( int16 handle, int16 x, int16 y, const char *string )
 {
    /* Ben”tigte Prototypen */
    int32 strlen( const char *s );
@@ -166,7 +166,7 @@ void v_gtext( const int16 handle, const int16 x, const int16 y, const char *stri
 /*                                                                            */
 /******************************************************************************/
 
-void v_fillarea( const int16 handle, const int16 count, int16 *pxyarray )
+void v_fillarea( int16 handle, int16 count, const int16 *pxyarray )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={9, 0, 0, 0, 0};
@@ -187,7 +187,7 @@ void v_fillarea( const int16 handle, const int16 count, int16 *pxyarray )
 /*                                                                            */
 /******************************************************************************/
 
-void v_bez_fill( const int16 handle, const int16 count, int16 *pxyarray, uint8 *bezarray,
+void v_bez_fill( int16 handle, int16 count, int16 *pxyarray, uint8 *bezarray,
          int16 *extent, int16 *totpts, int16 *totmoves )
 {
    register int16 i;
@@ -248,8 +248,8 @@ void v_bez_fill( const int16 handle, const int16 count, int16 *pxyarray, uint8 *
 /*                                                                            */
 /******************************************************************************/
 
-void v_cellarray( const int16 handle, int16 *pxyarray, const int16 row_length,
-         const int16 el_used, const int16 num_rows, const int16 wrt_mode,
+void v_cellarray( int16 handle, int16 *pxyarray, int16 row_length,
+         int16 el_used, int16 num_rows, int16 wrt_mode,
          const int16 *colarray )
 {
    /* contrl anlegen und fllen */
@@ -275,7 +275,7 @@ void v_cellarray( const int16 handle, int16 *pxyarray, const int16 row_length,
 /*                                                                            */
 /******************************************************************************/
 
-void v_contourfill( const int16 handle, const int16 x, const int16 y, const int16 index )
+void v_contourfill( int16 handle, int16 x, int16 y, int16 index )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={103, 1, 0, 1, 0};
@@ -301,7 +301,7 @@ void v_contourfill( const int16 handle, const int16 x, const int16 y, const int1
 /*                                                                            */
 /******************************************************************************/
 
-void vr_recfl( const int16 handle, const int16 *pxyarray )
+void vr_recfl( int16 handle, const int16 *pxyarray )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={114, 2, 0, 0, 0};
@@ -325,7 +325,7 @@ void vr_recfl( const int16 handle, const int16 *pxyarray )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_bar( const int16 handle, int16 *pxyarray )
+void v_bar( int16 handle, const int16 *pxyarray )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 2, 0, 0, 0, 1};
@@ -341,8 +341,8 @@ void v_bar( const int16 handle, int16 *pxyarray )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_arc( const int16 handle, const int16 x, const int16 y,
-      const int16 radius, const int16 beg_ang, const int16 end_ang )
+void v_arc( int16 handle, int16 x, int16 y,
+      int16 radius, int16 beg_ang, int16 end_ang )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 4, 0, 2, 0, 2};
@@ -373,8 +373,8 @@ void v_arc( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_pieslice( const int16 handle, const int16 x, const int16 y,
-      const int16 radius, const int16 beg_ang, const int16 end_ang )
+void v_pieslice( int16 handle, int16 x, int16 y,
+      int16 radius, int16 beg_ang, int16 end_ang )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 4, 0, 2, 0, 3};
@@ -405,7 +405,7 @@ void v_pieslice( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_circle( const int16 handle, const int16 x, const int16 y, const int16 radius )
+void v_circle( int16 handle, int16 x, int16 y, int16 radius )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12] = {11, 3, 0, 0, 0, 4};
@@ -430,8 +430,8 @@ void v_circle( const int16 handle, const int16 x, const int16 y, const int16 rad
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_ellipse( const int16 handle, const int16 x, const int16 y,
-      const int16 xradius, const int16 yradius )
+void v_ellipse( int16 handle, int16 x, int16 y,
+      int16 xradius, int16 yradius )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 2, 0, 0, 0, 5};
@@ -457,8 +457,8 @@ void v_ellipse( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_ellarc( const int16 handle, const int16 x, const int16 y,
-      const int16 xradius, const int16 yradius, const int16 beg_ang, const int16 end_ang )
+void v_ellarc( int16 handle, int16 x, int16 y,
+      int16 xradius, int16 yradius, int16 beg_ang, int16 end_ang )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 2, 0, 2, 0, 6};
@@ -490,8 +490,8 @@ void v_ellarc( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_ellpie( const int16 handle, const int16 x, const int16 y,
-      const int16 xradius, const int16 yradius, const int16 beg_ang, const int16 end_ang )
+void v_ellpie( int16 handle, int16 x, int16 y,
+      int16 xradius, int16 yradius, int16 beg_ang, int16 end_ang )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 2, 0, 2, 0, 7};
@@ -523,7 +523,7 @@ void v_ellpie( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_rbox( const int16 handle, const int16 *pxyarray )
+void v_rbox( int16 handle, int16 *pxyarray )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 2, 0, 0, 0, 8};
@@ -541,7 +541,7 @@ void v_rbox( const int16 handle, const int16 *pxyarray )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_rfbox( const int16 handle, const int16 *pxyarray )
+void v_rfbox( int16 handle, const int16 *pxyarray )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 2, 0, 0, 0, 9};
@@ -559,8 +559,8 @@ void v_rfbox( const int16 handle, const int16 *pxyarray )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_justified( const int16 handle, const int16 x, const int16 y, char *string,
-      const int16 length, const int16 word_space, const int16 char_space )
+void v_justified( int16 handle, int16 x, int16 y, const char *string,
+      int16 length, int16 word_space, int16 char_space )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 2, 0, 0, 0, 10};
@@ -606,7 +606,7 @@ void v_justified( const int16 handle, const int16 x, const int16 y, char *string
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 v_bez_on( const int16 handle )
+int16 v_bez_on( int16 handle )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 1, 0, 0, 1, 13};
@@ -631,7 +631,7 @@ int16 v_bez_on( const int16 handle )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_bez_off( const int16 handle )
+void v_bez_off( int16 handle )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={11, 0, 0, 0, 1, 13};
@@ -649,7 +649,7 @@ void v_bez_off( const int16 handle )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_bez_qual( const int16 handle, const int16 qual, int16 *set_qual )
+void v_bez_qual( int16 handle, int16 qual, int16 *set_qual )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={5, 0, 0, 3, 1, 99};
@@ -678,7 +678,7 @@ void v_bez_qual( const int16 handle, const int16 qual, int16 *set_qual )
 /*                                                                            */
 /******************************************************************************/
 
-void v_ftext( const int16 handle, const int16 x, const int16 y, const char *string )
+void v_ftext( int16 handle, int16 x, int16 y, const char *string )
 {
    /* Ben”tigte Prototypen */
    int32 strlen( const char *s );
@@ -725,7 +725,7 @@ void v_ftext( const int16 handle, const int16 x, const int16 y, const char *stri
 /*                                                                            */
 /******************************************************************************/
 
-void v_ftext_offset( const int16 handle, const int16 x, const int16 y,
+void v_ftext_offset( int16 handle, int16 x, int16 y,
          const char *string, const int16 *offsets )
 {
    /* Ben”tigte Prototypen */

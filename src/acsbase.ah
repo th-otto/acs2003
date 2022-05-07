@@ -1,0 +1,570 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#define BASE_USERNAME     5
+#define BASE_USERSERIAL   6
+#define BASE_USERKEY      7
+#define BASE_SNAPPING    11
+#define BASE_COPYINDEX   13
+#define BASE_REFIMAGES   15
+#define BASE_AUTOSAVE    17
+#define BASE_DIRTYSAVE   19
+#define BASE_GLUEPART    21
+#define BASE_HELPACC     24
+#define BASE_ICON_RASTER 27
+
+#define D_REGISTER_INSIDE_GERMANY   9
+#define D_REGISTER_OUTSIDE_GERMANY 11
+#define D_REGISTER_NAME            16
+#define D_REGISTER_STREET          17
+#define D_REGISTER_TOWN            18
+#define D_REGISTER_COUNTRY         19
+#define D_REGISTER_EMAIL           20
+#define D_REGISTER_REGKIND         23
+
+#ifdef __PUREC__
+#pragma warn -use
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char A_DEMO[] = "[4][ Dies ist eine Demoversion, | in der alle Funktionen| nutzbar sind, die jedoch | nur zwei Objekte in einer| Objektliste anlegen kann.][   OK   ]";
+static char ERR_WICLOSE[] = "[3][ Dieses Fenster darf| nicht gelîscht werden! ][    OK    ]";
+static char BUBBLE_01[] = "Tragen Sie hier bitte Ihren Namen ein.";
+static char BUBBLE_02[] = "Tragen Sie hier bitte Ihre Seriennummer ein.";
+static char BUBBLE_03[] = "Tragen Sie hier bitte Ihren persînlichen SchlÅssel fÅr diese ACS-Version ein.";
+static char BUBBLE_04[] = "Geben Sie hier bitte den Namen Ihres Hilfe-Accessories an.";
+static char BUBBLE_05[] = "Die Einstellungen werden sofort fÅr den nÑchsten ACS-Start gesichert.";
+static char BUBBLE_06[] = "Tragen Sie hier bitte Ihren Namen ein.";
+static char BUBBLE_07[] = "Hier wird festgelegt, ob Objekte bei Positions- oder GrîûenÑnderungen auf Zeichenpositionen einrasten sollen oder nicht.";
+static char BUBBLE_08[] = "Hier wird festgelegt, ob beim Kopieren von ObjektbÑumen die Bezeichner der Indizes mitkopiert werden sollen.";
+static char BUBBLE_09[] = "Hier wird eingestellt, ob Bild-Daten beim Kopieren innerhalb einer ACS-Datei kopiert oder nur referenziert werden sollen.";
+static char BUBBLE_10[] = "Hier wird eingestellt, ob beim Verlassen des GUI-Editors die Konfigurationsdatei abgespeichert wird oder nicht.";
+static char BUBBLE_11[] = "Hier wird eingestellt, ob beim Sichern die Editor-Fenster geîffnet bleiben sollen oder nicht (genauere Infos in der Online-Hilfe).";
+static char BUBBLE_12[] = "Hier wird eingestellt, ob das Teile-Fenster mit allen zur VerfÅgung stehenden Objekten links neben dem Objekt-Editor mitgefÅhrt werden soll oder nicht.";
+static char BUBBLE_13[] = "Hier wird der Rasterwert eingestellt, auf dessen Vielfaches bei Icon- und Bild-Operationen eingeschnappt werden soll.";
+static char DEMOT01[] = "*Willkommen beim ACSpro-GUI-Editor V3.0.0\341";
+static char DEMOT02[] = " ";
+static char DEMOT03[] = "Mit diesem Programm kînnen Sie";
+static char DEMOT04[] = "sehr komfortabel, Ñuûerst intuitiv";
+static char DEMOT05[] = "und Åbersichtlich die OberflÑche";
+static char DEMOT06[] = "und die Routinen Ihrer Programme";
+static char DEMOT07[] = "gestalten und entwickeln.";
+static char DEMOT08[] = "";
+static char DEMOT09[] = "Sie benutzen zur Zeit eine leicht";
+static char DEMOT10[] = "eingeschrÑnkte Version, in der Sie";
+static char DEMOT11[] = "alle Funktionen benutzen kînnen,";
+static char DEMOT12[] = "allerdings kînnen in den Objektlisten";
+static char DEMOT13[] = "nur maximal zwei Objekte angelegt werden.";
+static char DEMOT14[] = "";
+static char DEMOT15[] = "Mîchten Sie in den vollen Genuû";
+static char DEMOT16[] = "des ACSpro-Paketes gelangen, so";
+static char DEMOT17[] = "wenden Sie sich bitte an:";
+static char DEMOT18[] = "";
+static char DEMOT19[] = "*Martin ElsÑsser";
+static char DEMOT20[] = "*GartenÑcker 30";
+static char DEMOT21[] = "*D - 86938 Schondorf a.A.";
+static char DEMOT22[] = "";
+static char DEMOT23[] = "oder alternativ per EMail:";
+static char DEMOT24[] = "";
+static char DEMOT25[] = "*acspro@atari-home.de";
+static char DEMOT26[] = "";
+static char DEMOT27[] = "Aktuelle Informationen zu ACSpro";
+static char DEMOT28[] = "finden finden Sie im Internet unter:";
+static char DEMOT29[] = "";
+static char DEMOT30[] = "*http://acspro.atari.org/";
+static char DEMOT31[] = "";
+static char DEMOT32[] = "Viel Spaû wÅnscht...   Martin ElsÑsser";
+static char STGUIDE_01[] = "Die Einstellungen";
+static char TEXT_002[] = "";
+static char TEXT_005[] = "Sichern";
+static char TEXT_01[] = "Bildraster:";
+static char TEXT_02[] = "schnell sichern";
+static char TEXT_03[] = " Einstellungen ";
+static char TEXT_04[] = ".ACC";
+static char TEXT_05[] = "Hilfe:";
+static char TEXT_06[] = " Information ";
+static char TEXT_07[] = "Teilefenster mitfÅhren";
+static char TEXT_08[] = "Registrierung:";
+static char TEXT_09[] = "Name:";
+static char TEXT_10[] = "Seriennummer:";
+static char TEXT_11[] = "SchlÅssel:";
+static char TEXT_12[] = "GUI-Editor:";
+static char TEXT_13[] = " Information ";
+static char TEXT_14[] = "";
+static char TEXT_15[] = "Bitte lassen Sie sich fÅr ACSpro registrieren, daraufhin entfÑllt die lÑstige BeschrÑnkung auf zwei neue Objekte pro Objektliste.";
+static char TEXT_16[] = "Registrierung sichern";
+static char TEXT_17[] = "Name:";
+static char TEXT_18[] = "Straûe:";
+static char TEXT_19[] = " Ort:";
+static char TEXT_20[] = "   Land:";
+static char TEXT_21[] = "Zahlunsart:";
+static char TEXT_218[] = "Objekte einrasten";
+static char TEXT_22[] = "ST-GUIDE";
+static char TEXT_220[] = "Kopiere Index";
+static char TEXT_23[] = "Vorname & Name";
+static char TEXT_24[] = "Seriennummer";
+static char TEXT_25[] = "SchlÅssel";
+static char TEXT_26[] = "Nachnahme:";
+static char TEXT_260[] = "Hier werden globale Einstellungen am ACS-Editor vorgenommen.";
+static char TEXT_265[] = "Kopiere Bildteil";
+static char TEXT_27[] = "innerhalb oder";
+static char TEXT_28[] = "auûerhalb Deutschlands.";
+static char TEXT_29[] = "OK";
+static char TEXT_30[] = "EMail:";
+static char TEXT_31[] = "Abbrechen";
+static char TEXT_32[] = "Registrierdaten";
+static char TEXT_325[] = "automatisch Sichern";
+static char TEXT_33[] = "EINSTELLUNG";
+static char proto_winame[] = " Hinweis ";
+static char rkind0[] = "  Scheck";
+static char rkind1[] = "  öberweisung";
+static char rkind2[] = "  Nachnahme";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char A_DEMO[] = "[1][Alarmbox][ OK ]";
+static char ERR_WICLOSE[] = "[3][ This window cannot | be deleted.][  OK  ]";
+static char BUBBLE_01[] = "Please enter your name.";
+static char BUBBLE_02[] = "Please enter your serial number.";
+static char BUBBLE_03[] = "Please enter your personal key for this ACS version.";
+static char BUBBLE_04[] = "Please enter the name of your help accessory.";
+static char BUBBLE_05[] = "The preferences are saved for the next start of the ACS-GUI-Editor.";
+static char BUBBLE_06[] = "Please enter your name.";
+static char BUBBLE_07[] = "Objects lock when moving or sizing in char positions.";
+static char BUBBLE_08[] = "Copy the labels when object trees are copied.";
+static char BUBBLE_09[] = "Copy the image data or when the object is copied in the same ACS file. Otherwise the data is only referenced.";
+static char BUBBLE_10[] = "Autosave the config file of the ACS-GUI-Editor when terminating the GUI-Editor.";
+#if WITH_FIXES
+static char BUBBLE_11[] = "During saving the editor windows remain open (see online help for further information).";
+#else
+static char BUBBLE_11[] = "During saving the editor windows remain opend (see online help for further inormation).";
+#endif
+static char BUBBLE_12[] = "The windows with the parts is moved when the window of the object tree is moved.";
+static char BUBBLE_13[] = "This is the value of the raster for snapping.";
+static char DEMOT01[] = "*Welcome to ACSpro V3.0.0";
+static char DEMOT02[] = " ";
+static char DEMOT03[] = "This development-tool is an";
+static char DEMOT04[] = "interactive application-builder";
+static char DEMOT05[] = "and a well-suited library of";
+static char DEMOT06[] = "useful and highly stable";
+static char DEMOT07[] = "routines which helps you to design";
+#if WITH_FIXES
+static char DEMOT08[] = "clean GEM applications rapidly.";
+#else
+static char DEMOT08[] = "clean gem-applications rapidly.";
+#endif
+static char DEMOT09[] = "";
+static char DEMOT10[] = "This release limits the amount";
+static char DEMOT11[] = "within one object-list to two";
+static char DEMOT12[] = "objects.";
+static char DEMOT13[] = "";
+#if WITH_FIXES
+static char DEMOT14[] = "In Order to obtain the full version";
+#else
+static char DEMOT14[] = "In Order to obtain the full Version";
+#endif
+static char DEMOT15[] = "of ACSpro send your registration to:";
+static char DEMOT16[] = "";
+static char DEMOT17[] = "*Martin ElsÑsser";
+static char DEMOT18[] = "*GartenÑcker 30";
+static char DEMOT19[] = "*D - 86938 Schondorf a.A.";
+static char DEMOT20[] = "*Germany";
+static char DEMOT21[] = "";
+static char DEMOT22[] = "or via email to:";
+static char DEMOT23[] = "";
+static char DEMOT24[] = "*acspro@melsaesser.de";
+static char DEMOT25[] = "";
+static char DEMOT26[] = "The latest versions of ACSpro";
+static char DEMOT27[] = "can always be found on my";
+static char DEMOT28[] = "internet-site at:";
+static char DEMOT29[] = "";
+static char DEMOT30[] = "*http://acspro.atari.org/";
+static char DEMOT31[] = "";
+static char DEMOT32[] = "Best regards ...      Martin ElsÑsser";
+static char STGUIDE_01[] = "Die Einstellungen";
+static char TEXT_002[] = "";
+static char TEXT_005[] = "Save";
+static char TEXT_01[] = "Imagegrid:";
+static char TEXT_02[] = "fast saving    ";
+static char TEXT_03[] = " Options ";
+static char TEXT_04[] = ".ACC";
+static char TEXT_05[] = "Help:";
+static char TEXT_06[] = " Information ";
+static char TEXT_07[] = "glue toolbox-window   ";
+static char TEXT_08[] = "Registration:";
+static char TEXT_09[] = "Name:";
+static char TEXT_10[] = "Serialnumber:";
+static char TEXT_11[] = "      Key:";
+static char TEXT_12[] = "Reaction:";
+static char TEXT_13[] = " Information ";
+static char TEXT_14[] = " Window Info ";
+static char TEXT_15[] = "Please register for ACSpro in order to remove the restrictions of two objects within one object-list.";
+static char TEXT_16[] = "save registration...";
+static char TEXT_17[] = "Name:";
+static char TEXT_18[] = "Street:";
+static char TEXT_19[] = "Town:";
+static char TEXT_20[] = "Country:";
+static char TEXT_21[] = "   Payment:";
+static char TEXT_218[] = "grid for objects ";
+static char TEXT_22[] = "ST-GUIDE";
+static char TEXT_220[] = "copy index   ";
+static char TEXT_23[] = "Name";
+static char TEXT_24[] = "Serial Number";
+static char TEXT_25[] = "Key";
+static char TEXT_26[] = "$/delivery:";
+static char TEXT_260[] = "This icon represents general parameters of the ACS-Builder.";
+static char TEXT_265[] = "copy image-data ";
+static char TEXT_27[] = "within or     ";
+static char TEXT_28[] = "outside of germany.    ";
+static char TEXT_29[] = "3D";
+static char TEXT_30[] = "EMail:";
+static char TEXT_31[] = "3D";
+#if WITH_FIXES
+static char TEXT_32[] = "Title";
+#else
+static char TEXT_32[] = "Titel";
+#endif
+static char TEXT_325[] = "autosave files     ";
+static char TEXT_33[] = "PREFERENCES";
+static char proto_winame[] = " Notice ";
+#if WITH_FIXES
+static char rkind0[] = "  check ";
+#else
+static char rkind0[] = "  cheque";
+#endif
+static char rkind1[] = "  money order";
+static char rkind2[] = "  $/delivery";
+#endif
+
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x20219178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_005, NULL, NULL, BUBBLE_05, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x09f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, 0x28119170L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_16, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON10 = { A_3Dbutton, 0x09f10178L, Auo_string, rkind1, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON11 = { A_3Dbutton, 0x09f10178L, Auo_string, rkind0, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON12 = { A_3Dbutton, 0x09f10178L, Auo_string, rkind2, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON13 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON14 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_29, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON15 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_31, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS01 = { A_arrows, 0xb1010009L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, 0x88387f12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_01, NULL };
+static AUSERBLK A_BOXED02 = { A_boxed, 0x9018081aL, Auo_boxed, TEXT_22, NULL, NULL, BUBBLE_04, NULL };
+static AUSERBLK A_BOXED03 = { A_boxed, 0x90700a12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_BOXED04 = { A_boxed, 0x90400a1aL, Auo_boxed, NULL, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_BOXED05 = { A_boxed, 0x90383c12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED06 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_06, NULL };
+static AUSERBLK A_BOXED07 = { A_boxed, 0x90380a12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_BOXED08 = { A_boxed, 0x90380a12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_CHECKBOX01 = { A_checkbox, 0x00000001L, Auo_string, TEXT_218, NULL, NULL, BUBBLE_07, NULL };
+static AUSERBLK A_CHECKBOX02 = { A_checkbox, 0x00000001L, Auo_string, TEXT_07, NULL, NULL, BUBBLE_12, NULL };
+static AUSERBLK A_CHECKBOX03 = { A_checkbox, 0x00000001L, Auo_string, TEXT_220, NULL, NULL, BUBBLE_08, NULL };
+static AUSERBLK A_CHECKBOX04 = { A_checkbox, 0x00000001L, Auo_string, TEXT_265, NULL, NULL, BUBBLE_09, NULL };
+static AUSERBLK A_CHECKBOX05 = { A_checkbox, 0x00000001L, Auo_string, TEXT_325, NULL, NULL, BUBBLE_10, NULL };
+static AUSERBLK A_CHECKBOX06 = { A_checkbox, 0x00000001L, Auo_string, TEXT_02, NULL, NULL, BUBBLE_11, NULL };
+static AUSERBLK A_CHECKBOX07 = { A_checkbox, 0x00000001L, Auo_string, TEXT_27, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX08 = { A_checkbox, 0x00000001L, Auo_string, TEXT_28, NULL, NULL, NULL, NULL };
+
+static AUSERBLK A_FTEXT01 = { A_ftext, 0x0001010dL, Auo_ftext, TEXT_15, NULL, NULL, NULL, NULL };
+static AUSERBLK A_FTEXT02 = { A_ftext, 0x0001000dL, Auo_ftext, TEXT_260, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME01 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_01, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_12, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_08, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME04 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_05, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME05 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_26, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME06 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_32, NULL, NULL, NULL, NULL };
+static AUSERBLK A_SLIDER01 = { A_slider, 0x00000002L, Auo_slider, NULL, NULL, NULL, BUBBLE_13, NULL };
+static AUSERBLK SCROLLDEMO02 = { ScrollDemo, 0L, ScrollServ, NULL, NULL, NULL, NULL, NULL };
+
+static int16 _MSK_ICON_ADJUST[] = {
+	0xffff, 0xffff, 0xfffc, 0xffff, 0xffff, 0xfffe, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff,
+	0xffff, 0x7fff, 0xffff, 0xffff, 0x3fff, 0xffff, 0xffff, 0x0000,
+	0x0000, 0x0000
+};
+static int16 _DAT_ICON_ADJUST[] = {
+	0xffff, 0xffff, 0xfffc, 0x8000, 0x0000, 0x0006, 0x8000, 0x0000,
+	0x0007, 0x9fff, 0xffff, 0xffe7, 0x9fff, 0xffff, 0xffe7, 0x9800,
+	0x0000, 0x0027, 0x9800, 0x00e0, 0x0027, 0x9842, 0x11f0, 0x8427,
+	0x9842, 0x11b0, 0x8427, 0x9842, 0x11b0, 0x8427, 0x9800, 0x01b0,
+	0x0027, 0x99ff, 0xffbf, 0xff27, 0x9bff, 0xffbf, 0xffa7, 0x9b00,
+	0x01b8, 0x01a7, 0x9b00, 0x01b8, 0x01a7, 0x9b00, 0x01b8, 0x01a7,
+	0x99ff, 0xffbf, 0xff27, 0x9800, 0x01b0, 0x0027, 0x9842, 0x11b0,
+	0x8427, 0x9842, 0x11b0, 0x8427, 0x9842, 0x11f0, 0x8427, 0x9800,
+	0x00e0, 0x0027, 0x9800, 0x0000, 0x0027, 0x9fff, 0xffff, 0xffe7,
+	0x8000, 0x0000, 0x0007, 0x8000, 0x0000, 0x0007, 0xffff, 0xffff,
+	0xffff, 0x7fff, 0xffff, 0xffff, 0x3fff, 0xffff, 0xffff, 0x0000,
+	0x0000, 0x0000
+};
+static CICONBLK ICON_ADJUST = { { _MSK_ICON_ADJUST, _DAT_ICON_ADJUST, TEXT_33, 0x1000, 0, 0, 12, 0, 48, 30, 0, 32, 72, 8 }, NULL };
+
+static OBJECT  P_REGISTER =     { -1,  1,  3, G_BOX, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0x0000, 0x0000, 0x000f, 0x0003 };
+static OBJECT  _01_P_REGISTER = {  2, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_3DBUTTON11), 0x0000, 0x0000, 0x000f, 0x0001 };
+static OBJECT  _02_P_REGISTER = {  3, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_3DBUTTON10), 0x0000, 0x0001, 0x000f, 0x0001 };
+static OBJECT  _03_P_REGISTER = {  0, -1, -1, G_USERDEF, 0x0061, 0x0000, C_UNION(&A_3DBUTTON12), 0x0000, 0x0002, 0x000f, 0x0001 };
+
+static OBJECT  ACS_BASE =       { -1,  1, 29, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON03), 0x0000, 0x0000, 0x002c, 0x000e };
+static OBJECT  _01_ACS_BASE =   { 10,  2,  9, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 0x0001, 0x0000, 0x002a, 0x0005 };
+static OBJECT  _02_ACS_BASE =   {  3, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_09), 0x0009, 0x0001, 0x0005, 0x0001 };
+static OBJECT  _03_ACS_BASE =   {  8,  4,  4, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_3DBUTTON01), 0x000f, 0x0001, 0x001a, 0x0003 };
+static OBJECT  _04_ACS_BASE =   {  3,  5,  7, G_BOX, 0x0040, 0x0000, C_UNION(0x00ff0101L), 0x0000, 0x0000, 0x001a, 0x0003 };
+static OBJECT  _05_ACS_BASE =   {  6, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0x0000, 0x0000, 0x001a, 0x0001 };
+static OBJECT  _06_ACS_BASE =   {  7, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED03), 0x0000, 0x0001, 0x000a, 0x0001 };
+static OBJECT  _07_ACS_BASE =   {  4, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED04), 0x0000, 0x0002, 0x000a, 0x0001 };
+static OBJECT  _08_ACS_BASE =   {  9, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_10), 0x0001, 0x0002, 0x000d, 0x0001 };
+static OBJECT  _09_ACS_BASE =   {  1, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_11), 0x0004, 0x0003, 0x000a, 0x0001 };
+static OBJECT  _10_ACS_BASE =   { 23, 11, 21, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 0x0001, 0x0005, 0x001c, 0x0008 };
+static OBJECT  _11_ACS_BASE =   { 13, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_CHECKBOX01), 0x0001, 0x0001, 0x0014, 0x0001 };
+static AOBJECT _11aACS_BASE =   { ab_snap, 0, AEO, 0x884f, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _13_ACS_BASE =   { 15, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_CHECKBOX03), 0x0001, 0x0002, 0x0010, 0x0001 };
+static AOBJECT _13aACS_BASE =   { ab_copyindex, 0, AEO, 0x8849, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _15_ACS_BASE =   { 17, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_CHECKBOX04), 0x0001, 0x0003, 0x0013, 0x0001 };
+static AOBJECT _15aACS_BASE =   { ab_copyimage, 0, AEO, 0x8842, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _17_ACS_BASE =   { 19, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&A_CHECKBOX05), 0x0001, 0x0004, 0x0016, 0x0001 };
+static AOBJECT _17aACS_BASE =   { 0, 0, AEO, 0x8841, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _19_ACS_BASE =   { 21, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_CHECKBOX06), 0x0001, 0x0005, 0x0012, 0x0001 };
+static AOBJECT _19aACS_BASE =   { ab_dirty, 0, AEO, 0x884e, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _21_ACS_BASE =   { 10, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_CHECKBOX02), 0x0001, 0x0006, 0x0019, 0x0001 };
+static AOBJECT _21aACS_BASE =   { ab_glue, 0, AEO, 0x884d, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _23_ACS_BASE =   { 26, 24, 25, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME04), 0x001d, 0x0005, 0x000e, 0x0003 };
+static OBJECT  _24_ACS_BASE =   { 25, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED02), 0x0001, 0x0001, 0x0008, 0x0001 };
+static OBJECT  _25_ACS_BASE =   { 23, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_04), 0x0009, 0x0001, 0x0004, 0x0001 };
+static OBJECT  _26_ACS_BASE =   { 29, 27, 27, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME01), 0x001d, 0x0008, 0x000e, 0x0003 };
+static OBJECT  _27_ACS_BASE =   { 26, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_SLIDER01), 0x0001, 0x0001, 0x000c, 0x0001 };
+static AOBJECT _27aACS_BASE =   { Aus_slider, 0, AEO, 0x0000, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _29_ACS_BASE =   {  0, -1, -1, G_USERDEF, 0x0007, 0x0010, C_UNION(&A_3DBUTTON05), 0x001e, 0x000b, 0x000c, 0x0002 };
+static AOBJECT _29aACS_BASE =   { ab_save, 0, AEO | OF_LASTOB, 0x8853, 0, 0, 0x0000, 0x0000 };
+
+static OBJECT  ACS_DEMO =            { -1, -1, -1, G_USERDEF, 0x0042, 0x0000, C_UNION(&SCROLLDEMO02), 0x0000, 0x0000, 0x0024, 0x0009 };
+static AOBJECT _00aACS_DEMO =        { acs_register, 0, AEO | OF_LASTOB, 0x0000, 0, 0, 0x0000, 0x0000 };
+
+static OBJECT  ACS_RegisterObj =     { -1,  1, 10, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON13), 0x0000, 0x0000, 0x0024, 0x000a };
+static OBJECT  _01_ACS_RegisterObj = {  8,  2,  7, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_INNERFRAME06), 0x0001, 0x0000, 0x0022, 0x0007 };
+static OBJECT  _02_ACS_RegisterObj = {  3, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(&TEXT_23), 0x0001, 0x0001, 0x000e, 0x0001 };
+static OBJECT  _03_ACS_RegisterObj = {  4, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED06), 0x0011, 0x0001, 0x000e, 0x0001 };
+static OBJECT  _04_ACS_RegisterObj = {  5, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(&TEXT_24), 0x0001, 0x0003, 0x000c, 0x0001 };
+static OBJECT  _05_ACS_RegisterObj = {  6, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED07), 0x0011, 0x0003, 0x000a, 0x0001 };
+static OBJECT  _06_ACS_RegisterObj = {  7, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED08), 0x0011, 0x0005, 0x000a, 0x0001 };
+static OBJECT  _07_ACS_RegisterObj = {  1, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(&TEXT_25), 0x0001, 0x0005, 0x0009, 0x0001 };
+static OBJECT _08_ACS_RegisterObj =  { 10, -1, -1, G_USERDEF, 0x4007, 0x0000, C_UNION(&A_3DBUTTON14), 0x0004, 0x0007, 0x000b, 0x0002 };
+static AOBJECT _08aACS_RegisterObj = { 0, 0, AEO, 0x884f, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _10_ACS_RegisterObj = {  0, -1, -1, G_USERDEF, 0x4005, 0x0000, C_UNION(&A_3DBUTTON15), 0x0014, 0x0007, 0x000b, 0x0002 };
+static AOBJECT _10aACS_RegisterObj = { 0, 0, AEO | OF_LASTOB, 0x8841, 0, 0, 0x0000, 0x0000 };
+
+static OBJECT  D_REGISTER =          { -1,  1, 24, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_3DBUTTON06), 0x0000, 0x0000, 0x0028, 0x0012 };
+static OBJECT  _01_D_REGISTER =      {  2, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_FTEXT01), 0x0000, 0x0000, 0x0028, 0x0004 };
+static OBJECT  _02_D_REGISTER =      {  3, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS01), 0x0000, 0x0004, 0x0028, 0x0001 };
+static OBJECT  _03_D_REGISTER =      {  4, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_18), 0x0001, 0x0805, 0x0007, 0x0001 };
+static OBJECT  _04_D_REGISTER =      {  5, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_30), 0x0002, 0x0808, 0x0006, 0x0001 };
+static OBJECT  _05_D_REGISTER =      {  6, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_17), 0x0003, 0x0804, 0x0005, 0x0001 };
+static OBJECT  _06_D_REGISTER =      {  7, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_20), 0x0000, 0x0807, 0x0008, 0x0001 };
+static OBJECT  _07_D_REGISTER =      {  8, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_21), 0x0006, 0x000a, 0x000b, 0x0001 };
+static OBJECT  _08_D_REGISTER =      { 13,  9, 11, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME05), 0x0006, 0x000b, 0x001c, 0x0004 };
+static OBJECT  _09_D_REGISTER =      { 11, -1, -1, G_USERDEF, 0x0011, 0x0001, C_UNION(&A_CHECKBOX07), 0x0001, 0x0001, 0x0011, 0x0001 };
+static AOBJECT _09aD_REGISTER =      { 0, 0, AEO, 0x8849, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _11_D_REGISTER =      {  8, -1, -1, G_USERDEF, 0x0011, 0x0000, C_UNION(&A_CHECKBOX08), 0x0001, 0x0002, 0x001a, 0x0001 };
+static AOBJECT _11aD_REGISTER =      { 0, 0, AEO, 0x8841, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _13_D_REGISTER =      { 15, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&A_3DBUTTON09), 0x0006, 0x000f, 0x001c, 0x0002 };
+static AOBJECT _13aD_REGISTER =      { reg_me, 0, AEO, 0x8852, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _15_D_REGISTER =      { 21, 16, 20, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_3DBUTTON08), 0x0009, 0x0804, 0x001e, 0x0005 };
+static OBJECT  _16_D_REGISTER =      { 17, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED05), 0x0000, 0x0000, 0x001e, 0x0001 };
+static OBJECT  _17_D_REGISTER =      { 18, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED05), 0x0000, 0x0001, 0x001e, 0x0001 };
+static OBJECT  _18_D_REGISTER =      { 19, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED05), 0x0000, 0x0002, 0x001e, 0x0001 };
+static OBJECT  _19_D_REGISTER =      { 20, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED05), 0x0000, 0x0003, 0x001e, 0x0001 };
+static OBJECT  _20_D_REGISTER =      { 15, -1, -1, G_USERDEF, 0x0008, 0x0000, C_UNION(&A_BOXED05), 0x0000, 0x0004, 0x001e, 0x0001 };
+static OBJECT  _21_D_REGISTER =      { 24, 23, 23, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 0x0012, 0x000a, 0x000f, 0x0001 };
+static AOBJECT _21aD_REGISTER =      { reg_kind, 0, AEO, 0x0000, 0, 0, 0x0000, 0x0000 };
+static OBJECT  _23_D_REGISTER =      { 21, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON07), 0x0000, 0x0000, 0x000f, 0x0001 };
+static OBJECT  _24_D_REGISTER =      {  0, -1, -1, G_STRING, 0x0060, 0x0000, C_UNION(&TEXT_19), 0x0003, 0x0806, 0x0005, 0x0001 };
+
+static OBJECT  INFO_BASE =      { -1,  1,  1, 0x0019, 0x0000, 0x0000, C_UNION(0x00ff1178L), 0x0000, 0x0000, 0x001c, 0x0005 };
+static OBJECT  _01_INFO_BASE =  {  0,  2,  2, G_USERDEF, 0x0007, 0x0010, C_UNION(&A_3DBUTTON04), 0x0000, 0x0000, 0x001c, 0x0005 };
+static OBJECT  _02_INFO_BASE =  {  1,  3,  3, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_3DBUTTON02), 0x0002, 0x0001, 0x0018, 0x0003 };
+static OBJECT  _03_INFO_BASE =  {  2,  4,  4, G_BOX, 0x0000, 0x0000, C_UNION(0x00001101L), 0x0000, 0x0000, 0x0018, 0x0003 };
+static OBJECT  _04_INFO_BASE =  {  3, -1, -1, G_USERDEF, 0x0860, 0x0000, C_UNION(&A_FTEXT02), 0x0000, 0x0000, 0x0018, 0x0003 };
+
+Awindow WI_COMMON = {
+	0,
+	ab_service,
+	ab_make,
+	Awi_open,
+	Awi_init,
+	&ACS_BASE,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | MOVER | BACKDROP | ICONIFIER,
+	{ 0, 0, 99, 99 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xfcf8,
+	TEXT_03,
+	TEXT_002,
+	10000,
+	AW_ICON | AW_GHOSTICON | AW_TOOLBOX,
+	0,
+	-1,
+	&ICON_ADJUST,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	STGUIDE_01,
+	NULL
+};
+
+static Awindow WI_DEMO = {
+	NULL,
+	demo_serv,
+	Awi_selfcreate,
+	Awi_open,
+	demo_init,
+	&ACS_DEMO,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | MOVER,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_13,
+	TEXT_14,
+	0,
+	AW_TOOLBOX,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+static Awindow WI_INFO_BASE = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&INFO_BASE,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | MOVER,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_06,
+	TEXT_002,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+static Awindow WI_REGISTER = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&D_REGISTER,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | MOVER | ICONIFIER,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	proto_winame,
+	TEXT_002,
+	0,
+	AW_TOOLBOX,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};

@@ -1587,7 +1587,7 @@ typedef struct auser_block
 {
    /*  0 */ int16 CDECL (*ub_code)(struct parm_block *pb);  /* Zeichenroutine         */
    /*  4 */ int32 ub_parm;                                  /* Optionaler Parameter   */
-   /*  8 */ int16 (*ub_serv)(struct object *entry,          /* Service-Routine des    */
+   /*  8 */ boolean (*ub_serv)(struct object *entry,        /* Service-Routine des    */
                int16 task, void *in_out);          /* Userdefs               */
    /* 12 */ void  *ub_ptr1;                                 /* Userzeiger (Daten)     */
    /* 16 */ void  *ub_ptr2;                                 /* Userzeiger (Fenster)   */

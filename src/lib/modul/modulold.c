@@ -1,6 +1,7 @@
 #define __COMPATIBLE_FKT__
 #include "acs_i.h"
 #include "acsvdi.h"
+#include "acsplus.h"
 
 
 #define NUMFUNCS(a) ((int)(sizeof(a) / sizeof(a[0])))
@@ -1693,7 +1694,7 @@ Awindow *Awi_create23x(const Awindow *parent)
 				_Wmax_wi = i;
 			_ACSv_winds[i] = newwin;
 			if (Aroot_wi != NULL && (newwin->kind & AW_ICON))
-				Aroot_wi->service(Aroot_wi, AS_ACC_ACK, newwin);
+				Aroot_wi->service(Aroot_wi, AS_PLACEICON, newwin);
 			newwin->wi_act.x = newwin->wi_act.x * ACSblk->gl_wbox;
 			newwin->wi_act.y = newwin->wi_act.y * ACSblk->gl_hbox;
 			newwin->wi_act.w = newwin->wi_act.w * ACSblk->gl_wbox;

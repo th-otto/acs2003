@@ -19,6 +19,10 @@
 /*                                                                            */
 /******************************************************************************/
 
+#ifdef __GNUC__
+#include <stdint.h>
+#endif
+
 #ifndef __2B_UNIVERSAL_TYPES__
    #define __2B_UNIVERSAL_TYPES__
 
@@ -28,26 +32,6 @@
 
    /* Falls PORTAB bereits eingelesen wurde, werden diese Daten verwendet */
    #if defined(__PORTAB__)       /* Die PORTAB-Definitionen Åbernehmen */
-
-      /* Die Grîûe der Datentypen prÅfen */
-      #if sizeof(BYTE)!=1
-         #error "BYTE hat keine 8 Bit!"
-      #endif
-      #if sizeof(UBYTE)!=1
-         #error "UBYTE hat keine 8 Bit!"
-      #endif
-      #if sizeof(WORD)!=2
-         #error "WORD hat keine 16 Bit!"
-      #endif
-      #if sizeof(UWORD)!=2
-         #error "UWORD hat keine 16 Bit!"
-      #endif
-      #if sizeof(LONG)!=4
-         #error "LONG hat keine 32 Bit!"
-      #endif
-      #if sizeof(ULONG)!=4
-         #error "ULONG hat keine 32 Bit!"
-      #endif
 
       typedef BYTE      int8;
       typedef UBYTE     uint8;
@@ -60,26 +44,6 @@
 
    #elif defined(__PORTAB_H__)   /* Die PORTAB-Definitionen von CAT Åbernehmen */
 
-      /* Die Grîûe der Datentypen prÅfen */
-      #if sizeof(_BYTE)!=1
-         #error "_BYTE hat keine 8 Bit!"
-      #endif
-      #if sizeof(_UBYTE)!=1
-         #error "_UBYTE hat keine 8 Bit!"
-      #endif
-      #if sizeof(_WORD)!=2
-         #error "_WORD hat keine 16 Bit!"
-      #endif
-      #if sizeof(_UWORD)!=2
-         #error "_UWORD hat keine 16 Bit!"
-      #endif
-      #if sizeof(_LONG)!=4
-         #error "_LONG hat keine 32 Bit!"
-      #endif
-      #if sizeof(_ULONG)!=4
-         #error "_ULONG hat keine 32 Bit!"
-      #endif
-
       typedef _BYTE  int8;
       typedef _UBYTE uint8;
       typedef _WORD  int16;
@@ -90,32 +54,6 @@
       typedef _WORD  unicode;
 
    #elif defined(_STDINT_H) || defined(__STDINT__) /* Die Definitionen aus ISO-C Åbernehmen */
-
-      /* Die Grîûe der Datentypen prÅfen */
-      #if sizeof(int8_t)!=1
-         #error "int8_t hat keine 8 Bit!"
-      #endif
-      #if sizeof(uint_8)!=1
-         #error "uint8_t hat keine 8 Bit!"
-      #endif
-      #if sizeof(int16_t)!=2
-         #error "int16_t hat keine 16 Bit!"
-      #endif
-      #if sizeof(uint16_t)!=2
-         #error "uint16_t hat keine 16 Bit!"
-      #endif
-      #if sizeof(int32_t)!=4
-         #error "int32_t hat keine 32 Bit!"
-      #endif
-      #if sizeof(uint32_t)!=4
-         #error "uint32_t hat keine 32 Bit!"
-      #endif
-      #if sizeof(int64_t)!=4
-         #error "int64_t hat keine 64 Bit!"
-      #endif
-      #if sizeof(uint64_t)!=4
-         #error "uint64_t hat keine 64 Bit!"
-      #endif
 
       typedef int8_t    int8;
       typedef uint8_t   uint8;
@@ -210,45 +148,6 @@
 
    /* 2.30 vorzeichenbehaftet (fÅr Berechnungen im Zahlenbereich von -1.0 bis +1.0) */
    typedef int32  fixed2p30;
-
-   /*-------------------------------------------------------------------------*/
-   /* Ggf. die Grîûe der Datentypen prÅfen                                    */
-   /*-------------------------------------------------------------------------*/
-
-   #if defined(DEBUG) || defined(_DEBUG)
-      #if sizeof(int8)!=1
-         #error "int8 hat keine 8 Bit!"
-      #endif
-      #if sizeof(uint8)!=1
-         #error "uint8 hat keine 8 Bit!"
-      #endif
-      #if sizeof(int16)!=2
-         #error "int16 hat keine 16 Bit!"
-      #endif
-      #if sizeof(uint16)!=2
-         #error "uint16 hat keine 16 Bit!"
-      #endif
-      #if sizeof(int32)!=4
-         #error "int32 hat keine 32 Bit!"
-      #endif
-      #if sizeof(uint32)!=4
-         #error "uint32 hat keine 32 Bit!"
-      #endif
-#if 0
-      #if sizeof(int64)!=8
-         #error "int64 hat keine 64 Bit!"
-      #endif
-      #if sizeof(uint64)!=8
-         #error "uint64 hat keine 64 Bit!"
-      #endif
-#endif
-      #if sizeof(real)!=10
-         #error "real hat keine 80 Bit!"
-      #endif
-      #if sizeof(boolean)!=2
-         #error "boolean hat keine 16 Bit!"
-      #endif
-   #endif
 
    /*-------------------------------------------------------------------------*/
    /* Wandelmakros fÅr Festpunktformate                                       */

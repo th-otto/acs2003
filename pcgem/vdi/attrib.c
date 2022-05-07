@@ -17,7 +17,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-void vs_color( const int16 handle, const int16 index, const int16 *rgb_in )
+void vs_color( int16 handle, int16 index, const int16 *rgb_in )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={14, 0, 0, 4, 0};
@@ -43,7 +43,7 @@ void vs_color( const int16 handle, const int16 index, const int16 *rgb_in )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vswr_mode( const int16 handle, const int16 mode )
+int16 vswr_mode( int16 handle, int16 mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={32, 0, 0, 1, 1};
@@ -69,7 +69,7 @@ int16 vswr_mode( const int16 handle, const int16 mode )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsl_type( const int16 handle, const int16 style )
+int16 vsl_type( int16 handle, int16 style )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={15, 0, 0, 1, 1};
@@ -95,7 +95,7 @@ int16 vsl_type( const int16 handle, const int16 style )
 /*                                                                            */
 /******************************************************************************/
 
-void vsl_udsty( const int16 handle, const int16 pattern )
+void vsl_udsty( int16 handle, int16 pattern )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={113, 0, 0, 1, 0};
@@ -118,7 +118,7 @@ void vsl_udsty( const int16 handle, const int16 pattern )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsl_width( const int16 handle, const int16 width )
+int16 vsl_width( int16 handle, int16 width )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={16, 1, 1, 0, 0};
@@ -145,7 +145,7 @@ int16 vsl_width( const int16 handle, const int16 width )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsl_color( const int16 handle, const int16 color )
+int16 vsl_color( int16 handle, int16 color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={17, 0, 0, 1, 1};
@@ -171,7 +171,7 @@ int16 vsl_color( const int16 handle, const int16 color )
 /*                                                                            */
 /******************************************************************************/
 
-void vsl_ends( const int16 handle, const int16 beg_style, const int16 end_style )
+void vsl_ends( int16 handle, int16 beg_style, int16 end_style )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={108, 0, 0, 2, 0};
@@ -195,7 +195,7 @@ void vsl_ends( const int16 handle, const int16 beg_style, const int16 end_style 
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_type( const int16 handle, const int16 symbol )
+int16 vsm_type( int16 handle, int16 symbol )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={18, 0, 0, 1, 1};
@@ -221,7 +221,7 @@ int16 vsm_type( const int16 handle, const int16 symbol )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_height( const int16 handle, const int16 height )
+int16 vsm_height( int16 handle, int16 height )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={19, 1, 1, 0, 0};
@@ -248,7 +248,7 @@ int16 vsm_height( const int16 handle, const int16 height )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_color( const int16 handle, const int16 color )
+int16 vsm_color( int16 handle, int16 color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={20, 0, 0, 1, 1};
@@ -274,7 +274,7 @@ int16 vsm_color( const int16 handle, const int16 color )
 /*                                                                            */
 /******************************************************************************/
 
-void vst_height( const int16 handle, const int16 height,
+void vst_height( int16 handle, int16 height,
       int16 *char_width, int16 *char_height, int16 *cell_width, int16 *cell_height )
 {
    /* contrl anlegen und fÅllen */
@@ -310,7 +310,7 @@ void vst_height( const int16 handle, const int16 height,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_point( const int16 handle, const int16 point,
+int16 vst_point( int16 handle, int16 point,
       int16 *char_width, int16 *char_height, int16 *cell_width, int16 *cell_height )
 {
    /* contrl anlegen und fÅllen */
@@ -350,7 +350,7 @@ int16 vst_point( const int16 handle, const int16 point,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_rotation( const int16 handle, const int16 angle )
+int16 vst_rotation( int16 handle, int16 angle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={13, 0, 0, 1, 1};
@@ -376,7 +376,7 @@ int16 vst_rotation( const int16 handle, const int16 angle )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_font( const int16 handle, const int16 fontID )
+int16 vst_font( int16 handle, int16 fontID )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={21, 0, 0, 1, 1};
@@ -402,7 +402,7 @@ int16 vst_font( const int16 handle, const int16 fontID )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_color( const int16 handle, const int16 color )
+int16 vst_color( int16 handle, int16 color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={22, 0, 0, 1, 1};
@@ -428,7 +428,7 @@ int16 vst_color( const int16 handle, const int16 color )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_effects( const int16 handle, const int16 effect )
+int16 vst_effects( int16 handle, int16 effect )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={106, 0, 0, 1, 1};
@@ -454,7 +454,7 @@ int16 vst_effects( const int16 handle, const int16 effect )
 /*                                                                            */
 /******************************************************************************/
 
-void vst_alignment( const int16 handle, const int16 hor_in, const int16 ver_in,
+void vst_alignment( int16 handle, int16 hor_in, int16 ver_in,
       int16 *hor_out, int16 *ver_out )
 {
    /* contrl anlegen und fÅllen */
@@ -485,7 +485,7 @@ void vst_alignment( const int16 handle, const int16 hor_in, const int16 ver_in,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsf_interior( const int16 handle, const int16 style )
+int16 vsf_interior( int16 handle, int16 style )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={23, 0, 0, 1, 1};
@@ -511,7 +511,7 @@ int16 vsf_interior( const int16 handle, const int16 style )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsf_style( const int16 handle, const int16 style )
+int16 vsf_style( int16 handle, int16 style )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={24, 0, 0, 1, 1};
@@ -537,7 +537,7 @@ int16 vsf_style( const int16 handle, const int16 style )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsf_color( const int16 handle, const int16 color )
+int16 vsf_color( int16 handle, int16 color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={25, 0, 0, 1, 1};
@@ -563,7 +563,7 @@ int16 vsf_color( const int16 handle, const int16 color )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsf_perimeter( const int16 handle, const int16 per_vis )
+int16 vsf_perimeter( int16 handle, int16 per_vis )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={104, 0, 0, 1, 1};
@@ -589,7 +589,7 @@ int16 vsf_perimeter( const int16 handle, const int16 per_vis )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsf_perimeter3( const int16 handle, const int16 per_vis, const int16 style )
+int16 vsf_perimeter3( int16 handle, int16 per_vis, int16 style )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={104, 0, 0, 2, 1};
@@ -616,7 +616,7 @@ int16 vsf_perimeter3( const int16 handle, const int16 per_vis, const int16 style
 /*                                                                            */
 /******************************************************************************/
 
-void vsf_udpat( const int16 handle, const int16 *pattern, const int16 nplanes )
+void vsf_udpat( int16 handle, const int16 *pattern, int16 nplanes )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={112, 0, 0, 1, 0};
@@ -635,7 +635,7 @@ void vsf_udpat( const int16 handle, const int16 *pattern, const int16 nplanes )
 /*                                                                            */
 /******************************************************************************/
 
-void vsf_updat( const int16 handle, const int16 *pattern, const int16 nplanes )
+void vsf_updat( int16 handle, const int16 *pattern, int16 nplanes )
 {
    vsf_udpat(handle, pattern, nplanes);
 }
@@ -646,7 +646,7 @@ void vsf_updat( const int16 handle, const int16 *pattern, const int16 nplanes )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
+int16 vst_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={200, 0, 0, 6, 1, 0};
@@ -677,7 +677,7 @@ int16 vst_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsf_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
+int16 vsf_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={200, 0, 0, 6, 1, 1};
@@ -708,7 +708,7 @@ int16 vsf_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsl_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
+int16 vsl_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={200, 0, 0, 6, 1, 2};
@@ -739,7 +739,7 @@ int16 vsl_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
+int16 vsm_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={200, 0, 0, 6, 1, 3};
@@ -770,7 +770,7 @@ int16 vsm_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsr_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
+int16 vsr_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={200, 0, 0, 6, 1, 4};
@@ -801,7 +801,7 @@ int16 vsr_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
+int16 vst_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={201, 0, 0, 6, 1, 0};
@@ -832,7 +832,7 @@ int16 vst_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsf_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
+int16 vsf_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={201, 0, 0, 6, 1, 1};
@@ -863,7 +863,7 @@ int16 vsf_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsl_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
+int16 vsl_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={201, 0, 0, 6, 1, 2};
@@ -894,7 +894,7 @@ int16 vsl_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsm_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
+int16 vsm_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={201, 0, 0, 6, 1, 3};
@@ -925,7 +925,7 @@ int16 vsm_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vsr_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
+int16 vsr_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={201, 0, 0, 6, 1, 4};
@@ -956,7 +956,7 @@ int16 vsr_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color
 /*                                                                            */
 /******************************************************************************/
 
-int16 vs_ctab( const int16 handle, COLOR_TAB *ctab )
+int16 vs_ctab( int16 handle, COLOR_TAB *ctab )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={205, 0, 0, 6, 1, 0};
@@ -980,8 +980,8 @@ int16 vs_ctab( const int16 handle, COLOR_TAB *ctab )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vs_ctab_entry( const int16 handle, const int16 index,
-            const int32 color_space, COLOR_ENTRY *color )
+int16 vs_ctab_entry( int16 handle, int16 index,
+            int32 color_space, COLOR_ENTRY *color )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={205, 0, 0, 7, 1, 1};
@@ -1013,7 +1013,7 @@ int16 vs_ctab_entry( const int16 handle, const int16 index,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vs_dflt_ctab( const int16 handle )
+int16 vs_dflt_ctab( int16 handle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={205, 0, 0, 0, 1, 2};
@@ -1036,7 +1036,7 @@ int16 vs_dflt_ctab( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vs_hilite_color( const int16 handle, const int32 color_space,
+int16 vs_hilite_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *hilite_color )
 {
    /* contrl anlegen und fÅllen */
@@ -1068,7 +1068,7 @@ int16 vs_hilite_color( const int16 handle, const int32 color_space,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vs_min_color( const int16 handle, const int32 color_space,
+int16 vs_min_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *min_color )
 {
    /* contrl anlegen und fÅllen */
@@ -1100,7 +1100,7 @@ int16 vs_min_color( const int16 handle, const int32 color_space,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vs_max_color( const int16 handle, const int32 color_space,
+int16 vs_max_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *max_color )
 {
    /* contrl anlegen und fÅllen */
@@ -1132,7 +1132,7 @@ int16 vs_max_color( const int16 handle, const int32 color_space,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vs_weight_color( const int16 handle, const int32 color_space,
+int16 vs_weight_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *weight_color )
 {
    /* contrl anlegen und fÅllen */
@@ -1164,7 +1164,7 @@ int16 vs_weight_color( const int16 handle, const int32 color_space,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_name( const int16 handle, const int16 font_format, const char *font_name,
+int16 vst_name( int16 handle, int16 font_format, const char *font_name,
             char *ret_name )
 {
    /* Benîtigte Prototypen */
@@ -1205,7 +1205,7 @@ int16 vst_name( const int16 handle, const int16 font_format, const char *font_na
 /*                                                                            */
 /******************************************************************************/
 
-void vst_width( const int16 handle, const int16 width, int16 *char_width,
+void vst_width( int16 handle, int16 width, int16 *char_width,
                int16 *char_height, int16 *cell_width, int16 *cell_height )
 {
    /* Benîtigte Prototypen */
@@ -1244,7 +1244,7 @@ void vst_width( const int16 handle, const int16 width, int16 *char_width,
 /*                                                                            */
 /******************************************************************************/
 
-void vst_charmap( const int16 handle, const int16 mode )
+void vst_charmap( int16 handle, int16 mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={236, 0, 0, 1, 0};
@@ -1269,7 +1269,7 @@ void vst_charmap( const int16 handle, const int16 mode )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_map_mode( const int16 handle, const int16 mode )
+int16 vst_map_mode( int16 handle, int16 mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={236, 0, 0, 2, 1};
@@ -1298,7 +1298,7 @@ int16 vst_map_mode( const int16 handle, const int16 mode )
 /*                                                                            */
 /******************************************************************************/
 
-void vst_kern( const int16 handle, const int16 track_mode, const int16 pair_mode,
+void vst_kern( int16 handle, int16 track_mode, int16 pair_mode,
          int16 *tracks, int16 *pairs )
 {
    /* contrl anlegen und fÅllen */
@@ -1331,7 +1331,7 @@ void vst_kern( const int16 handle, const int16 track_mode, const int16 pair_mode
 /*                                                                            */
 /******************************************************************************/
 
-void vst_track_offset( const int16 handle, const fix31 offset, const int16 pair_mode,
+void vst_track_offset( int16 handle, fix31 offset, int16 pair_mode,
          int16 *tracks, int16 *pairs )
 {
    /* contrl anlegen und fÅllen */
@@ -1365,7 +1365,7 @@ void vst_track_offset( const int16 handle, const fix31 offset, const int16 pair_
 /*                                                                            */
 /******************************************************************************/
 
-void vst_kern_offset( const int16 handle, const fix31 offset, const int16 pair_mode,
+void vst_kern_offset( int16 handle, fix31 offset, int16 pair_mode,
          int16 *tracks, int16 *pairs )
 {
    vst_track_offset(handle, offset, pair_mode, tracks, pairs);
@@ -1377,7 +1377,7 @@ void vst_kern_offset( const int16 handle, const fix31 offset, const int16 pair_m
 /*                                                                            */
 /******************************************************************************/
 
-void vst_scratch( const int16 handle, const int16 mode )
+void vst_scratch( int16 handle, int16 mode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={244, 0, 0, 1, 0};
@@ -1401,7 +1401,7 @@ void vst_scratch( const int16 handle, const int16 mode )
 /*                                                                            */
 /******************************************************************************/
 
-void vst_error( const int16 handle, const int16 mode, int16 *errorcode )
+void vst_error( int16 handle, int16 mode, int16 *errorcode )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={245, 0, 1, 3, 0};
@@ -1426,7 +1426,7 @@ void vst_error( const int16 handle, const int16 mode, int16 *errorcode )
 /*                                                                            */
 /******************************************************************************/
 
-fix31 vst_arbpt32( const int16 handle, const fix31 height, int16 *char_width,
+fix31 vst_arbpt32( int16 handle, fix31 height, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height )
 {
    /* contrl anlegen und fÅllen */
@@ -1465,7 +1465,7 @@ fix31 vst_arbpt32( const int16 handle, const fix31 height, int16 *char_width,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_arbpt( const int16 handle, const int16 point, int16 *char_width,
+int16 vst_arbpt( int16 handle, int16 point, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height )
 {
    /* contrl anlegen und fÅllen */
@@ -1504,11 +1504,11 @@ int16 vst_arbpt( const int16 handle, const int16 point, int16 *char_width,
 /*                                                                            */
 /******************************************************************************/
 
-int16 v_savecache( const int16 handle, char *filename )
+int16 v_savecache( int16 handle, const char *filename )
 {
    register int16 i, len=(int16)strlen(filename);
    register int16 *i_ptr;
-   register char *c_ptr;
+   register const char *c_ptr;
 
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={249, 0, 0, 3, 1};
@@ -1545,7 +1545,7 @@ int16 v_savecache( const int16 handle, char *filename )
 /*                                                                            */
 /******************************************************************************/
 
-int16 v_loadcache( const int16 handle, const char *filename, const int16 mode )
+int16 v_loadcache( int16 handle, const char *filename, int16 mode )
 {
    register int16 i, len=(int16)strlen(filename);
    register int16 *i_ptr;
@@ -1587,7 +1587,7 @@ int16 v_loadcache( const int16 handle, const char *filename, const int16 mode )
 /*                                                                            */
 /******************************************************************************/
 
-int16 v_flushcache( const int16 handle )
+int16 v_flushcache( int16 handle )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={251, 0, 0, 0, 1};
@@ -1610,7 +1610,7 @@ int16 v_flushcache( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_setsize( const int16 handle, const int16 width, int16 *char_width,
+int16 vst_setsize( int16 handle, int16 width, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height )
 {
    /* contrl anlegen und fÅllen */
@@ -1649,7 +1649,7 @@ int16 vst_setsize( const int16 handle, const int16 width, int16 *char_width,
 /*                                                                            */
 /******************************************************************************/
 
-fix31 vst_setsize32( const int16 handle, const fix31 width, int16 *char_width,
+fix31 vst_setsize32( int16 handle, fix31 width, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height )
 {
    /* contrl anlegen und fÅllen */
@@ -1688,7 +1688,7 @@ fix31 vst_setsize32( const int16 handle, const fix31 width, int16 *char_width,
 /*                                                                            */
 /******************************************************************************/
 
-int16 vst_skew( const int16 handle, const int16 skew )
+int16 vst_skew( int16 handle, int16 skew )
 {
    /* contrl anlegen und fÅllen */
    int16 contrl[12]={253, 0, 0, 1, 1, 0};

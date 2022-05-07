@@ -657,12 +657,12 @@ static boolean ge_service(Awindow *self, int16 task, void *in_out)
 	
 	switch (task)
 	{
-	case AS_GENERAL_10001:
+	case AS_GUI_SAVECFG:
 		acs = (ACS_HEAD *)self->user;
 		if (acs != NULL)
 		{
 			win = in_out;
-			win->service(win, AS_GENERAL_10002, acs->filename);
+			win->service(win, AS_GUI_SETUSED, acs->filename);
 		}
 		break;
 	case AS_GENERAL_10005:
@@ -734,7 +734,7 @@ static void term(Awindow *win)
 static void exec_cmd(char *cmd)
 {
 	if (Ast_isEmpty(cmd) ||
-		base_window->service(base_window, AS_GENERAL_10004, cmd))
+		base_window->service(base_window, AS_GUI_ISNOTUSED, cmd))
 		WI_GENERAL.create(cmd);
 }
 
@@ -742,7 +742,7 @@ static void exec_cmd(char *cmd)
 
 static void newclose(void)
 {
-	base_window->service(base_window, AS_GENERAL_10003, NULL);
+	base_window->service(base_window, AS_GUI_AUTOSAVE, NULL);
 	save_aborted = FALSE;
 	Awi_sendall(AS_GENERAL_10005, NULL);
 	if (save_aborted == TRUE)
@@ -967,12 +967,12 @@ int16 ACSinit0(void)
 
 int16 ACSinit(void)
 {
-	int i; /* 152 */
-	char *filename; /* 148 */
+	int i;
+	char *filename;
 	char path[__PS__];
-	Awindow *root; /* 16; */
+	Awindow *root;
 	char program_name[] = "ACSpro";
-	char *AppLongName; /* 4 */
+	char *AppLongName;
 	void (*func)(char *);
 	
 	AppLongName = ACSblk->AppLongName;

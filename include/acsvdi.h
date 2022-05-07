@@ -801,7 +801,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-void CDECL vdi_( int16 *contrl, int16 *intin, int16 *ptsin, int16 *intout, int16 *ptsout );
+void CDECL vdi_( int16 *contrl, const int16 *intin, const int16 *ptsin, int16 *intout, int16 *ptsout );
 
 /******************************************************************************/
 /*                                                                            */
@@ -840,9 +840,9 @@ void vdi( VDIPB *vdipb );
 /*                                                                         */
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 vst_load_fonts( const int16 handle, const int16 select );
-void vst_unload_fonts( const int16 handle, const int16 select );
-void vs_clip( const int16 handle, const int16 clip_flag, const int16 *pxyarray );
+int16 vst_load_fonts( int16 handle, int16 select );
+void vst_unload_fonts( int16 handle, int16 select );
+void vs_clip( int16 handle, int16 clip_flag, const int16 *pxyarray );
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                         */
@@ -850,9 +850,9 @@ void vs_clip( const int16 handle, const int16 clip_flag, const int16 *pxyarray )
 /*                                                                         */
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void vr_recfl( const int16 handle, const int16 *pxyarray );
-void v_rfbox( const int16 handle, const int16 *rectangle );
-void v_rbox( const int16 handle, const int16 *pxyarray );
+void vr_recfl( int16 handle, const int16 *pxyarray );
+void v_rfbox( int16 handle, const int16 *rectangle );
+void v_rbox( int16 handle, int16 *pxyarray );
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                         */
@@ -860,11 +860,10 @@ void v_rbox( const int16 handle, const int16 *pxyarray );
 /*                                                                         */
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void vs_color( const int16 handle, const int16 index, const int16 *rgb );
-int16 vs_ctab( const int16 handle, COLOR_TAB *ctab );
-int16 vs_ctab_entry( const int16 handle, const int16 index,
-            const int32 color_space, COLOR_ENTRY *color );
-int16 vs_dflt_ctab( const int16 handle );
+void vs_color( int16 handle, int16 index, const int16 *rgb );
+int16 vs_ctab( int16 handle, COLOR_TAB *ctab );
+int16 vs_ctab_entry( int16 handle, int16 index, int32 color_space, COLOR_ENTRY *color );
+int16 vs_dflt_ctab( int16 handle );
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                         */
@@ -872,12 +871,10 @@ int16 vs_dflt_ctab( const int16 handle );
 /*                                                                         */
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void vro_cpyfm( const int16 handle, const int16 wr_mode, const int16 *pxyarray,
-            const MFDB *source, MFDB *dest );
-void vrt_cpyfm( const int16 handle, const int16 wr_mode, const int16 *pxyarray,
-            const MFDB *source, MFDB *dest, const int16 color[2] );
-void vr_transfer_bits( const int16 handle, const GCBITMAP *src_bm, const GCBITMAP *dst_bm,
-            const int16 *src_rect, const int16 *dst_rect, const int16 mode );
+void vro_cpyfm( int16 handle, int16 wr_mode, const int16 *pxyarray, const MFDB *source, MFDB *dest );
+void vrt_cpyfm( int16 handle, int16 wr_mode, const int16 *pxyarray, const MFDB *source, MFDB *dest, const int16 color[2] );
+void vr_transfer_bits( int16 handle, const GCBITMAP *src_bm, const GCBITMAP *dst_bm,
+            const int16 *src_rect, const int16 *dst_rect, int16 mode );
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                         */
@@ -885,9 +882,9 @@ void vr_transfer_bits( const int16 handle, const GCBITMAP *src_bm, const GCBITMA
 /*                                                                         */
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 vq_color( const int16 handle, const int16 color, const int16 set_flag, int16 *rgb );
-void vq_cellarray( const int16 handle, const int16 *pxyarray, const int16 row_length,
-            const int16 num_rows, int16 *el_used, int16 *rows_used, int16 *status,
+int16 vq_color( int16 handle, int16 color, int16 set_flag, int16 *rgb );
+void vq_cellarray( int16 handle, const int16 *pxyarray, int16 row_length,
+            int16 num_rows, int16 *el_used, int16 *rows_used, int16 *status,
             int16 *colarray );
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -896,10 +893,10 @@ void vq_cellarray( const int16 handle, const int16 *pxyarray, const int16 row_le
 /*                                                                         */
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_output_window( const int16 handle, const int16 *pxyarray );
-void v_bit_image( const int16 handle, const char *filename, const int16 aspect,
-            const int16 x_scale, const int16 y_scale, const int16 h_align,
-            const int16 v_align, const int16 *pxyarray );
+void v_output_window( int16 handle, const int16 *pxyarray );
+void v_bit_image( int16 handle, const char *filename, int16 aspect,
+            int16 x_scale, int16 y_scale, int16 h_align,
+            int16 v_align, const int16 *pxyarray );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -912,22 +909,22 @@ void v_opnprn( int16 *handle, PRN_SETTINGS *settings, int16 *work_out );
 void v_opnprnwrk( int16 *handle, int16 *work_in, PRN_SETTINGS *settings, int16 *work_out );
 void v_opnmatrixprn( int16 *work_in, int16 *handle, int16 *work_out, int16 max_x, int16 max_y );
 void v_opnmeta( int16 *work_in, int16 *handle, int16 *work_out, const char *filename );
-void v_clswk( const int16 handle );
+void v_clswk( int16 handle );
 void v_opnvwk( int16 *work_in, int16 *handle, int16 *work_out );
-void v_clsvwk( const int16 handle );
-void v_clrwk( const int16 handle );
-void v_updwk( const int16 handle );
+void v_clsvwk( int16 handle );
+void v_clrwk( int16 handle );
+void v_updwk( int16 handle );
 
 /* NVDI-Erweiterungen */
 void v_opnbm( int16 *work_in, const MFDB *bitmap, int16 *handle, int16 *work_out );
-void v_clsbm( const int16 handle );
-int16 v_open_bm( const int16 base_handle, const GCBITMAP *bitmap, const int16 zero,
-            const int16 flags, const int16 pixel_width, const int16 pixel_height );
-int16 v_resize_bm( const int16 handle, const int16 width, const int16 height,
-            const int32 byte_width, const uint8 *addr );
+void v_clsbm( int16 handle );
+int16 v_open_bm( int16 base_handle, const GCBITMAP *bitmap, int16 zero,
+            int16 flags, int16 pixel_width, int16 pixel_height );
+int16 v_resize_bm( int16 handle, int16 width, int16 height,
+            int32 byte_width, const uint8 *addr );
 
 /* Speedo-Erweiterung */
-void v_set_app_buff( const int16 handle, void *address, const int16 nparagraphs );
+void v_set_app_buff( int16 handle, void *address, int16 nparagraphs );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -935,48 +932,47 @@ void v_set_app_buff( const int16 handle, void *address, const int16 nparagraphs 
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_pline( const int16 handle, const int16 count, int16 *pxyarray );
-void v_pmarker( const int16 handle, const int16 count, int16 *pxyarray );
-void v_gtext( const int16 handle, const int16 x, const int16 y, const char *string );
-void v_fillarea( const int16 handle, const int16 count, int16 *pxyarray );
-void v_cellarray( const int16 handle, int16 *pxyarray, const int16 row_length,
-         const int16 el_used, const int16 num_rows, const int16 wrt_mode,
+void v_pline( int16 handle, int16 count, const int16 *pxyarray );
+void v_pmarker( int16 handle, int16 count, int16 *pxyarray );
+void v_gtext( int16 handle, int16 x, int16 y, const char *string );
+void v_fillarea( int16 handle, int16 count, const int16 *pxyarray );
+void v_cellarray( int16 handle, int16 *pxyarray, int16 row_length,
+         int16 el_used, int16 num_rows, int16 wrt_mode,
          const int16 *colarray );
-void v_contourfill( const int16 handle, const int16 x, const int16 y, const int16 index );
-void v_bar( const int16 handle, int16 *pxyarray );
-void v_arc( const int16 handle, const int16 x, const int16 y,
-         const int16 radius, const int16 beg_ang, const int16 end_ang );
-void v_pieslice( const int16 handle, const int16 x, const int16 y,
-         const int16 radius, const int16 beg_ang, const int16 end_ang );
-void v_circle( const int16 handle, const int16 x, const int16 y, const int16 radius );
-void v_ellipse( const int16 handle, const int16 x, const int16 y,
-         const int16 xradius, const int16 yradius );
-void v_ellarc( const int16 handle, const int16 x, const int16 y,
-      const int16 xradius, const int16 yradius, const int16 beg_ang, const int16 end_ang );
-void v_ellpie( const int16 handle, const int16 x, const int16 y,
-         const int16 xradius, const int16 yradius, const int16 beg_ang, const int16 end_ang );
-void v_justified( const int16 handle, const int16 x, const int16 y, char *string,
-         const int16 length, const int16 word_space, const int16 char_space );
+void v_contourfill( int16 handle, int16 x, int16 y, int16 index );
+void v_bar( int16 handle, const int16 *pxyarray );
+void v_arc( int16 handle, int16 x, int16 y,
+         int16 radius, int16 beg_ang, int16 end_ang );
+void v_pieslice( int16 handle, int16 x, int16 y,
+         int16 radius, int16 beg_ang, int16 end_ang );
+void v_circle( int16 handle, int16 x, int16 y, int16 radius );
+void v_ellipse( int16 handle, int16 x, int16 y, int16 xradius, int16 yradius );
+void v_ellarc( int16 handle, int16 x, int16 y,
+      int16 xradius, int16 yradius, int16 beg_ang, int16 end_ang );
+void v_ellpie( int16 handle, int16 x, int16 y,
+         int16 xradius, int16 yradius, int16 beg_ang, int16 end_ang );
+void v_justified( int16 handle, int16 x, int16 y, const char *string,
+         int16 length, int16 word_space, int16 char_space );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void v_bez( const int16 handle, const int16 count, int16 *pxyarray, char *bezarray,
+void v_bez( int16 handle, int16 count, int16 *pxyarray, char *bezarray,
          int16 *extent, int16 *totpts, int16 *totmoves );
-int16 v_bez_on( const int16 handle );
-void v_bez_off( const int16 handle );
-void v_bez_qual( const int16 handle, const int16 qual, int16 *set_qual );
-void v_bez_fill( const int16 handle, const int16 count, int16 *pxyarray, uint8 *bezarray,
+int16 v_bez_on( int16 handle );
+void v_bez_off( int16 handle );
+void v_bez_qual( int16 handle, int16 qual, int16 *set_qual );
+void v_bez_fill( int16 handle, int16 count, int16 *pxyarray, uint8 *bezarray,
          int16 *extent, int16 *totpts, int16 *totmoves );
-void v_ftext( const int16 handle, const int16 x, const int16 y, const char *string );
-void v_ftext_offset( const int16 handle, const int16 x, const int16 y,
+void v_ftext( int16 handle, int16 x, int16 y, const char *string );
+void v_ftext_offset( int16 handle, int16 x, int16 y,
          const char *string, const int16 *offsets );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 v_get_outline( const int16 handle, const int16 index, const int16 x_offset,
-         const int16 y_offset, int16 *xyarray, uint8 *bezarray, const int16 max_pts );
-void v_getoutline( const int16 handle, const int16 index, int16 *xyarray,
-         uint8 *bezarray, const int16 max_pts, int16 *count );
+int16 v_get_outline( int16 handle, int16 index, int16 x_offset,
+         int16 y_offset, int16 *xyarray, uint8 *bezarray, int16 max_pts );
+void v_getoutline( int16 handle, int16 index, int16 *xyarray,
+         uint8 *bezarray, int16 max_pts, int16 *count );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -986,73 +982,73 @@ void v_getoutline( const int16 handle, const int16 index, int16 *xyarray,
 
 int16 vq_gdos( void );
 int32 vq_vgdos( void );
-int16 vswr_mode( const int16 handle, const int16 mode );
-int16 vsl_type( const int16 handle, const int16 style );
-void vsl_udsty( const int16 handle, const int16 pattern );
-int16 vsl_width( const int16 handle, const int16 width );
-int16 vsl_color( const int16 handle, const int16 color );
-void vsl_ends( const int16 handle, const int16 beg_style, const int16 end_style );
-int16 vsm_type( const int16 handle, const int16 symbol );
-int16 vsm_height( const int16 handle, const int16 height );
-int16 vsm_color( const int16 handle, const int16 color );
-void vst_height( const int16 handle, const int16 height,
+int16 vswr_mode( int16 handle, int16 mode );
+int16 vsl_type( int16 handle, int16 style );
+void vsl_udsty( int16 handle, int16 pattern );
+int16 vsl_width( int16 handle, int16 width );
+int16 vsl_color( int16 handle, int16 color );
+void vsl_ends( int16 handle, int16 beg_style, int16 end_style );
+int16 vsm_type( int16 handle, int16 symbol );
+int16 vsm_height( int16 handle, int16 height );
+int16 vsm_color( int16 handle, int16 color );
+void vst_height( int16 handle, int16 height,
          int16 *char_width, int16 *char_height, int16 *cell_width, int16 *cell_height );
-int16 vst_point( const int16 handle, const int16 point,
+int16 vst_point( int16 handle, int16 point,
          int16 *char_width, int16 *char_height, int16 *cell_width, int16 *cell_height );
-int16 vst_arbpt( const int16 handle, const int16 point, int16 *char_width,
+int16 vst_arbpt( int16 handle, int16 point, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height );
-fix31 vst_arbpt32( const int16 handle, const fix31 height, int16 *char_width,
+fix31 vst_arbpt32( int16 handle, fix31 height, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height );
-int16 vst_setsize( const int16 handle, const int16 width, int16 *char_width,
+int16 vst_setsize( int16 handle, int16 width, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height );
-fix31 vst_setsize32( const int16 handle, const fix31 width, int16 *char_width,
+fix31 vst_setsize32( int16 handle, fix31 width, int16 *char_width,
          int16 *char_height, int16 *cell_width, int16 *cell_height );
-int16 vst_rotation( const int16 handle, const int16 angle );
-int16 vst_font( const int16 handle, const int16 fontID );
-int16 vst_color( const int16 handle, const int16 color );
-int16 vst_effects( const int16 handle, const int16 effect );
-void vst_error( const int16 handle, const int16 mode, int16 *errorcode );
-int16 v_savecache( const int16 handle, char *filename );
-int16 v_loadcache( const int16 handle, const char *filename, const int16 mode );
-int16 v_flushcache( const int16 handle );
-void vst_scratch( const int16 handle, const int16 mode );
-void vst_alignment( const int16 handle, const int16 hor_in, const int16 ver_in,
+int16 vst_rotation( int16 handle, int16 angle );
+int16 vst_font( int16 handle, int16 fontID );
+int16 vst_color( int16 handle, int16 color );
+int16 vst_effects( int16 handle, int16 effect );
+void vst_error( int16 handle, int16 mode, int16 *errorcode );
+int16 v_savecache( int16 handle, const char *filename );
+int16 v_loadcache( int16 handle, const char *filename, int16 mode );
+int16 v_flushcache( int16 handle );
+void vst_scratch( int16 handle, int16 mode );
+void vst_alignment( int16 handle, int16 hor_in, int16 ver_in,
          int16 *hor_out, int16 *ver_out );
-int16 vst_name( const int16 handle, const int16 font_format, const char *font_name,
+int16 vst_name( int16 handle, int16 font_format, const char *font_name,
          char *ret_name );
-void vst_width( const int16 handle, const int16 width, int16 *char_width,
+void vst_width( int16 handle, int16 width, int16 *char_width,
                int16 *char_height, int16 *cell_width, int16 *cell_height );
-void vst_charmap( const int16 handle, const int16 mode );
-int16 vst_map_mode( const int16 handle, const int16 mode );
-void vst_kern( const int16 handle, const int16 track_mode, const int16 pair_mode,
+void vst_charmap( int16 handle, int16 mode );
+int16 vst_map_mode( int16 handle, int16 mode );
+void vst_kern( int16 handle, int16 track_mode, int16 pair_mode,
          int16 *tracks, int16 *pairs );
-void vst_kern_offset( const int16 handle, const fix31 offset, const int16 pair_mode,
+void vst_kern_offset( int16 handle, fix31 offset, int16 pair_mode,
          int16 *tracks, int16 *pairs );
-void vst_track_offset( const int16 handle, const fix31 offset, const int16 pair_mode,
+void vst_track_offset( int16 handle, fix31 offset, int16 pair_mode,
          int16 *tracks, int16 *pairs );
-int16 vst_skew( const int16 handle, const int16 skew );
-int16 vsf_interior( const int16 handle, const int16 style );
-int16 vsf_style( const int16 handle, const int16 style );
-int16 vsf_color( const int16 handle, const int16 color );
-int16 vsf_perimeter( const int16 handle, const int16 per_vis );
-void vsf_udpat( const int16 handle, const int16 *pattern, const int16 nplanes );
-void vsf_updat( const int16 handle, const int16 *pattern, const int16 nplanes );
+int16 vst_skew( int16 handle, int16 skew );
+int16 vsf_interior( int16 handle, int16 style );
+int16 vsf_style( int16 handle, int16 style );
+int16 vsf_color( int16 handle, int16 color );
+int16 vsf_perimeter( int16 handle, int16 per_vis );
+void vsf_udpat( int16 handle, const int16 *pattern, int16 nplanes );
+void vsf_updat( int16 handle, const int16 *pattern, int16 nplanes );
 
 /* Aus PC-GEM/3 */
-int16 vsf_perimeter3( const int16 handle, const int16 per_vis, const int16 style );
+int16 vsf_perimeter3( int16 handle, int16 per_vis, int16 style );
 
 /* NVDI-Erweiterungen */
-int16 vst_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
-int16 vsf_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
-int16 vsl_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
-int16 vsm_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
-int16 vsr_fg_color( const int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
-int16 vst_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
-int16 vsf_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
-int16 vsl_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
-int16 vsm_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
-int16 vsr_bg_color( const int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
-fixed vq_prn_scaling( const int16 handle );
+int16 vst_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
+int16 vsf_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
+int16 vsl_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
+int16 vsm_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
+int16 vsr_fg_color( int16 handle, int32 color_space, COLOR_ENTRY *fg_color );
+int16 vst_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
+int16 vsf_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
+int16 vsl_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
+int16 vsm_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
+int16 vsr_bg_color( int16 handle, int32 color_space, COLOR_ENTRY *bg_color );
+fixed vq_prn_scaling( int16 handle );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -1060,21 +1056,21 @@ fixed vq_prn_scaling( const int16 handle );
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void vr_trnfm( const int16 handle, const MFDB *source, MFDB *dest );
-void v_get_pixel( const int16 handle, const int16 x, const int16 y,
+void vr_trnfm( int16 handle, const MFDB *source, MFDB *dest );
+void v_get_pixel( int16 handle, int16 x, int16 y,
          int16 *pix_value, int16 *col_index );
 
 /* NVDI-Erweiterungen */
-int16 v_orient( const int16 handle, const int16 orient );
-int16 vs_hilite_color( const int16 handle, const int32 color_space,
+int16 v_orient( int16 handle, int16 orient );
+int16 vs_hilite_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *hilite_color );
-int16 vs_min_color( const int16 handle, const int32 color_space,
+int16 vs_min_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *min_color );
-int16 vs_max_color( const int16 handle, const int32 color_space,
+int16 vs_max_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *min_color );
-int16 vs_weight_color( const int16 handle, const int32 color_space,
+int16 vs_weight_color( int16 handle, int32 color_space,
             const COLOR_ENTRY *weight_color );
-int16 vs_document_info( const int16 handle, const int16 type, const char *s, int16 wchar );
+int16 vs_document_info( int16 handle, int16 type, const char *s, int16 wchar );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -1082,30 +1078,30 @@ int16 vs_document_info( const int16 handle, const int16 type, const char *s, int
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 vsin_mode( const int16 handle, const int16 dev_type, const int16 mode );
-void vrq_locator( const int16 handle, const int16 x_in, const int16 y_in,
+int16 vsin_mode( int16 handle, int16 dev_type, int16 mode );
+void vrq_locator( int16 handle, int16 x_in, int16 y_in,
          int16 *x_out, int16 *y_out, int16 *term );
-int16 vsm_locator( const int16 handle, const int16 x_in, const int16 y_in,
+int16 vsm_locator( int16 handle, int16 x_in, int16 y_in,
          int16 *x_out, int16 *y_out, int16 *term );
-void vrq_valuator( const int16 handle, const int16 value_in, int16 *value_out, int16 *term );
-void vsm_valuator( const int16 handle, const int16 value_in,
+void vrq_valuator( int16 handle, int16 value_in, int16 *value_out, int16 *term );
+void vsm_valuator( int16 handle, int16 value_in,
          int16 *value_out, int16 *term, int16 *status );
-void vrq_choice( const int16 handle, const int16 choice_in, int16 *choice_out );
-int16 vsm_choice( const int16 handle, int16 *choice );
-void vrq_string( const int16 handle, const int16 max_length, const int16 echo_mode,
-         const int16 *echo_xy, char *string );
-int16 vsm_string( const int16 handle, const int16 max_length, const int16 echo_mode,
-         const int16 *echo_xy, char *string );
-void vex_timv( const int16 handle, const int16 (*tim_addr)(void),
+void vrq_choice( int16 handle, int16 choice_in, int16 *choice_out );
+int16 vsm_choice( int16 handle, int16 *choice );
+void vrq_string( int16 handle, int16 max_length, int16 echo_mode,
+         int16 *echo_xy, char *string );
+int16 vsm_string( int16 handle, int16 max_length, int16 echo_mode,
+         int16 *echo_xy, char *string );
+void vex_timv( int16 handle, int16 (*tim_addr)(void),
          int16 (**otim_addr)(void), int16 *tim_conv );
-void v_show_c( const int16 handle, const int16 reset );
-void v_hide_c( const int16 handle );
-void vq_mouse( const int16 handle, int16 *pstatus, int16 *x, int16 *y );
-void vex_butv( const int16 handle, const int16 (*pusrcode)(void), int16 (**psavcode)(void) );
-void vex_motv( const int16 handle, const int16 (*pusrcode)(void), int16 (**psavcode)(void) );
-void vex_curv( const int16 handle, const int16 (*pusrcode)(void), int16 (**psavcode)(void) );
-void vq_key_s( const int16 handle, int16 *pstatus );
-void vex_wheelv( const int16 handle, const int16 (*pusrcode)(void), int16 (**psavcode)(void) );
+void v_show_c( int16 handle, int16 reset );
+void v_hide_c( int16 handle );
+void vq_mouse( int16 handle, int16 *pstatus, int16 *x, int16 *y );
+void vex_butv( int16 handle, int16 (*pusrcode)(void), int16 (**psavcode)(void) );
+void vex_motv( int16 handle, int16 (*pusrcode)(void), int16 (**psavcode)(void) );
+void vex_curv( int16 handle, int16 (*pusrcode)(void), int16 (**psavcode)(void) );
+void vq_key_s( int16 handle, int16 *pstatus );
+void vex_wheelv( int16 handle, int16 (*pusrcode)(void), int16 (**psavcode)(void) );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -1113,67 +1109,67 @@ void vex_wheelv( const int16 handle, const int16 (*pusrcode)(void), int16 (**psa
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void vq_extnd( const int16 handle, const int16 owflag, int16 *workout );
-void vql_attributes( const int16 handle, int16 *attrib );
-void vqm_attributes( const int16 handle, int16 *attrib );
-void vqf_attributes( const int16 handle, int16 *attrib );
-void vqt_extent( const int16 handle, const char *string, int16 *extent );
-int16 vqt_width( const int16 handle, const int16 character, int16 *cell_width,
+void vq_extnd( int16 handle, int16 owflag, int16 *workout );
+void vql_attributes( int16 handle, int16 *attrib );
+void vqm_attributes( int16 handle, int16 *attrib );
+void vqf_attributes( int16 handle, int16 *attrib );
+void vqt_extent( int16 handle, const char *string, int16 *extent );
+int16 vqt_width( int16 handle, int16 character, int16 *cell_width,
          int16 *left_delta, int16 *right_delta );
-void vqin_mode( const int16 handle, const int16 dev_type, int16 *input_mode );
-void vqt_attributes( const int16 handle, int16 *attrib );
+void vqin_mode( int16 handle, int16 dev_type, int16 *input_mode );
+void vqt_attributes( int16 handle, int16 *attrib );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /* Speedo-Erweiterung */
-void vqt_get_table( const int16 handle, int16 **map );
-void vqt_cachesize( const int16 handle, const int16 which_cache, int32 *size );
+void vqt_get_table( int16 handle, int16 **map );
+void vqt_cachesize( int16 handle, int16 which_cache, int32 *size );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /* NVDI-Erweiterungen */
-void vqt_f_extent( const int16 handle, const char *string, int16 *extent );
-void vqt_real_extent( const int16 handle, const int16 x,
-         const int16 y, const char *string, int16 *extent );
-int16 vqt_name( const int16 handle, const int16 element_num, char *name );
-int16 vqt_ext_name( const int16 handle, const int16 element_num, char *name,
+void vqt_f_extent( int16 handle, const char *string, int16 *extent );
+void vqt_real_extent( int16 handle, int16 x,
+         int16 y, const char *string, int16 *extent );
+int16 vqt_name( int16 handle, int16 element_num, char *name );
+int16 vqt_ext_name( int16 handle, int16 element_num, char *name,
             uint16 *font_format, uint16 *flags );
-int16 vqt_xfntinfo( const int16 handle, const int16 flags, const int16 id,
-            const int16 index, XFNT_INFO *info );
-int16 vqt_name_and_id( const int16 handle, const int16 font_format,
+int16 vqt_xfntinfo( int16 handle, int16 flags, int16 id,
+            int16 index, XFNT_INFO *info );
+int16 vqt_name_and_id( int16 handle, int16 font_format,
             const char *font_name, char *ret_name );
-void vqt_fontinfo( const int16 handle, int16 *minADE, int16 *maxADE, int16 *distances,
+void vqt_fontinfo( int16 handle, int16 *minADE, int16 *maxADE, int16 *distances,
          int16 *maxwidth, int16 *effects );
-void vqt_justified( const int16 handle, const int16 x, const int16 y, const char *string,
-         const int16 length, const int16 word_space, const int16 char_space, int16 *offsets );
-void vq_devinfo( const int16 handle, const int16 device, boolean *dev_open,
+void vqt_justified( int16 handle, int16 x, int16 y, const char *string,
+         int16 length, int16 word_space, int16 char_space, int16 *offsets );
+void vq_devinfo( int16 handle, int16 device, boolean *dev_open,
          char *file_name, char *device_name );
-void vqt_devinfo( const int16 handle, const int16 devnum,
+void vqt_devinfo( int16 handle, int16 devnum,
             boolean *devexists, char *devstr );
-boolean vq_ext_devinfo( const int16 handle, const int16 device, boolean *dev_exists,
+boolean vq_ext_devinfo( int16 handle, int16 device, boolean *dev_exists,
          char *file_path, char *file_name, char *name );
-void vqt_fontheader( const int16 handle, void *buffer, char *tdf_name );
-void vq_scrninfo( const int16 handle, int16 *work_out );
-void vqt_trackkern( const int16 handle, fix31 *x_offset, fix31 *y_offset );
-void vqt_pairkern( const int16 handle, const int16 index1, const int16 index2,
+void vqt_fontheader( int16 handle, void *buffer, char *tdf_name );
+void vq_scrninfo( int16 handle, int16 *work_out );
+void vqt_trackkern( int16 handle, fix31 *x_offset, fix31 *y_offset );
+void vqt_pairkern( int16 handle, int16 index1, int16 index2,
             fix31 *x_offset, fix31 *y_offset );
-void vqt_advance( const int16 handle, const int16 ch, int16 *x_advance, int16 *y_advance,
+void vqt_advance( int16 handle, int16 ch, int16 *x_advance, int16 *y_advance,
             int16 *x_remainder, int16 *y_remainder );
-void vqt_advance32( const int16 handle, const int16 index,
+void vqt_advance32( int16 handle, int16 index,
             fix31 *x_advance, fix31 *y_advance );
-void v_getbitmap_info( const int16 handle, const int16 index,
+void v_getbitmap_info( int16 handle, int16 index,
          fix31 *x_advance, fix31 *y_advance, fix31 *x_offset, fix31 *y_offset,
          int16 *width, int16 *height, int16 **bitmap );
-int32 vq_hilite_color( const int16 handle, COLOR_ENTRY *hilite_color );
-int32 vq_min_color( const int16 handle, COLOR_ENTRY *min_color );
-int32 vq_max_color( const int16 handle, COLOR_ENTRY *min_color );
-int32 vq_weight_color( const int16 handle, COLOR_ENTRY *min_color );
+int32 vq_hilite_color( int16 handle, COLOR_ENTRY *hilite_color );
+int32 vq_min_color( int16 handle, COLOR_ENTRY *min_color );
+int32 vq_max_color( int16 handle, COLOR_ENTRY *min_color );
+int32 vq_weight_color( int16 handle, COLOR_ENTRY *min_color );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-uint16 vqt_char_index( const int16 handle, const uint16 src_index,
-               const int16 src_mode, const int16 dst_mode );
-boolean vqt_isCharAvailable( const int16 handle, const uint16 unicode );
+uint16 vqt_char_index( int16 handle, uint16 src_index,
+               int16 src_mode, int16 dst_mode );
+boolean vqt_isCharAvailable( int16 handle, uint16 unicode );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -1181,99 +1177,99 @@ boolean vqt_isCharAvailable( const int16 handle, const uint16 unicode );
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-void vq_chcells( const int16 handle, int16 *rows, int16 *cols );
-void v_exit_cur( const int16 handle );
-void v_enter_cur( const int16 handle );
-void v_curup( const int16 handle );
-void v_curdown( const int16 handle );
-void v_curright( const int16 handle );
-void v_curleft( const int16 handle );
-void v_curhome( const int16 handle );
-void v_eeos( const int16 handle );
-void v_eeol( const int16 handle );
-void v_curaddress( const int16 handle, const int16 row, const int16 col );
-void vs_curaddress( const int16 handle, const int16 row, const int16 col );
-void v_curtext( const int16 handle, const char *string );
-void v_rvon( const int16 handle );
-void v_rvoff( const int16 handle );
-void vq_curaddress( const int16 handle, int16 *row, int16 *col );
-int16 vq_tabstatus( const int16 handle );
-void v_hardcopy( const int16 handle );
-void v_dspcur( const int16 handle, const int16 x, const int16 y );
-void v_rmcur( const int16 handle );
-void v_form_adv( const int16 handle );
-void v_clear_disp_list( const int16 handle );
-void vq_scan( const int16 handle, int16 *g_slice, int16 *g_page,
+void vq_chcells( int16 handle, int16 *rows, int16 *cols );
+void v_exit_cur( int16 handle );
+void v_enter_cur( int16 handle );
+void v_curup( int16 handle );
+void v_curdown( int16 handle );
+void v_curright( int16 handle );
+void v_curleft( int16 handle );
+void v_curhome( int16 handle );
+void v_eeos( int16 handle );
+void v_eeol( int16 handle );
+void v_curaddress( int16 handle, int16 row, int16 col );
+void vs_curaddress( int16 handle, int16 row, int16 col );
+void v_curtext( int16 handle, const char *string );
+void v_rvon( int16 handle );
+void v_rvoff( int16 handle );
+void vq_curaddress( int16 handle, int16 *row, int16 *col );
+int16 vq_tabstatus( int16 handle );
+void v_hardcopy( int16 handle );
+void v_dspcur( int16 handle, int16 x, int16 y );
+void v_rmcur( int16 handle );
+void v_form_adv( int16 handle );
+void v_clear_disp_list( int16 handle );
+void vq_scan( int16 handle, int16 *g_slice, int16 *g_page,
          int16 *a_slice, int16 *a_page, int16 *div_fac );
-void v_alpha_text( const int16 handle, const char *string );
+void v_alpha_text( int16 handle, const char *string );
 int16 v_copies( int16 handle, int16 count );
-int16 v_trays( const int16 handle, const int16 input, const int16 output,
+int16 v_trays( int16 handle, int16 input, int16 output,
             int16 *set_input, int16 *set_output );
-int16 vq_tray_names( const int16 handle, char *input_name, char *output_name,
+int16 vq_tray_names( int16 handle, char *input_name, char *output_name,
             int16 *input, int16 *output );
-int16 v_page_size( const int16 handle, const int16 page_id );
-int16 vq_page_name( const int16 handle, const int16 page_id, char *page_name,
+int16 v_page_size( int16 handle, int16 page_id );
+int16 vq_page_name( int16 handle, int16 page_id, char *page_name,
             int32 *page_width, int32 *page_height );
-int16 vs_palette( const int16 handle, const int16 palette );
-void v_sound( const int16 handle, const int16 frequency, const int16 duration );
-int16 vs_mute( const int16 handle, const int16 action );
-void vt_resolution( const int16 handle, const int16 xres, const int16 yres,
+int16 vs_palette( int16 handle, int16 palette );
+void v_sound( int16 handle, int16 frequency, int16 duration );
+int16 vs_mute( int16 handle, int16 action );
+void vt_resolution( int16 handle, int16 xres, int16 yres,
          int16 *xset, int16 *yset );
-void vt_axis( const int16 handle, const int16 xres, const int16 yres,
+void vt_axis( int16 handle, int16 xres, int16 yres,
          int16 *xset, int16 *yset );
-void vt_origin( const int16 handle, const int16 xorigin, const int16 yorigin );
-void vq_tdimensions( const int16 handle, int16 *xdim, int16 *ydim );
-void vt_alignment( const int16 handle, const int16 dx, const int16 dy );
-void vsp_film( const int16 handle, const int16 index, const int16 lightness );
-int16 vqp_filmname( const int16 handle, const int16 index, char *name );
-void vsc_expose( const int16 handle, const int16 status );
-void v_meta_extents( const int16 handle, const int16 min_x, const int16 min_y,
-         const int16 max_x, const int16 max_y );
-void v_write_meta( const int16 handle, const int16 num_intin, const int16 *a_intin,
-         const int16 num_ptsin, const int16 *a_ptsin );
-void vm_pagesize( const int16 handle, const int16 pgwidth, const int16 pgheight );
-void vm_coords( const int16 handle, const int16 llx, const int16 lly,
-         const int16 urx, const int16 ury );
-void vm_filename( const int16 handle, const char *filename );
-void v_offset( const int16 handle, const int16 offset );
-void v_fontinit( const int16 handle, const void *font_header );
-void v_escape2000( const int16 handle, const int16 times );
+void vt_origin( int16 handle, int16 xorigin, int16 yorigin );
+void vq_tdimensions( int16 handle, int16 *xdim, int16 *ydim );
+void vt_alignment( int16 handle, int16 dx, int16 dy );
+void vsp_film( int16 handle, int16 index, int16 lightness );
+int16 vqp_filmname( int16 handle, int16 index, char *name );
+void vsc_expose( int16 handle, int16 status );
+void v_meta_extents( int16 handle, int16 min_x, int16 min_y,
+         int16 max_x, int16 max_y );
+void v_write_meta( int16 handle, int16 num_intin, const int16 *a_intin,
+         int16 num_ptsin, const int16 *a_ptsin );
+void vm_pagesize( int16 handle, int16 pgwidth, int16 pgheight );
+void vm_coords( int16 handle, int16 llx, int16 lly,
+         int16 urx, int16 ury );
+void vm_filename( int16 handle, const char *filename );
+void v_offset( int16 handle, int16 offset );
+void v_fontinit( int16 handle, const void *font_header );
+void v_escape2000( int16 handle, int16 times );
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /* NVDI-Erweiterungen */
-int16 vs_calibrate( const int16 handle, const boolean flag, const RGB1000 *table );
-int16 vq_calibrate( const int16 handle, boolean *flag );
+int16 vs_calibrate( int16 handle, boolean flag, const RGB1000 *table );
+int16 vq_calibrate( int16 handle, boolean *flag );
 
-int32 vqt_fg_color( const int16 handle, COLOR_ENTRY *fg_color );
-int32 vqf_fg_color( const int16 handle, COLOR_ENTRY *fg_color );
-int32 vql_fg_color( const int16 handle, COLOR_ENTRY *fg_color );
-int32 vqm_fg_color( const int16 handle, COLOR_ENTRY *fg_color );
-int32 vqr_fg_color( const int16 handle, COLOR_ENTRY *fg_color );
-int32 vqt_bg_color( const int16 handle, COLOR_ENTRY *bg_color );
-int32 vqf_bg_color( const int16 handle, COLOR_ENTRY *bg_color );
-int32 vql_bg_color( const int16 handle, COLOR_ENTRY *bg_color );
-int32 vqm_bg_color( const int16 handle, COLOR_ENTRY *bg_color );
-int32 vqr_bg_color( const int16 handle, COLOR_ENTRY *bg_color );
-void v_setrgb( const int16 handle, const int16 type,
-            const int16 r, const int16 g, const int16 b );
-uint32 v_color2value( const int16 handle, const int32 color_space, COLOR_ENTRY *color );
-int32 v_value2color( const int16 handle, const uint32 value, COLOR_ENTRY *color );
-int32 v_color2nearest( const int16 handle, const int32 color_space, const COLOR_ENTRY *color,
+int32 vqt_fg_color( int16 handle, COLOR_ENTRY *fg_color );
+int32 vqf_fg_color( int16 handle, COLOR_ENTRY *fg_color );
+int32 vql_fg_color( int16 handle, COLOR_ENTRY *fg_color );
+int32 vqm_fg_color( int16 handle, COLOR_ENTRY *fg_color );
+int32 vqr_fg_color( int16 handle, COLOR_ENTRY *fg_color );
+int32 vqt_bg_color( int16 handle, COLOR_ENTRY *bg_color );
+int32 vqf_bg_color( int16 handle, COLOR_ENTRY *bg_color );
+int32 vql_bg_color( int16 handle, COLOR_ENTRY *bg_color );
+int32 vqm_bg_color( int16 handle, COLOR_ENTRY *bg_color );
+int32 vqr_bg_color( int16 handle, COLOR_ENTRY *bg_color );
+void v_setrgb( int16 handle, int16 type,
+            int16 r, int16 g, int16 b );
+uint32 v_color2value( int16 handle, int32 color_space, COLOR_ENTRY *color );
+int32 v_value2color( int16 handle, uint32 value, COLOR_ENTRY *color );
+int32 v_color2nearest( int16 handle, int32 color_space, const COLOR_ENTRY *color,
          COLOR_ENTRY *nearest );
-int32 vq_px_format( const int16 handle, uint32 *px_format );
-int16 vq_ctab( const int16 handle, const int32 ctab_length, COLOR_TAB *ctab );
-int32 vq_ctab_entry( const int16 handle, const int16 index, COLOR_ENTRY *color );
-int32 vq_ctab_id( const int16 handle );
-int16 v_ctab_idx2vdi( const int16 handle, const int16 index );
-int16 v_ctab_vdi2idx( const int16 handle, const int16 index );
-int32 v_ctab_idx2value( const int16 handle, const int16 index );
-int32 v_get_ctab_id( const int16 handle );
-int16 vq_dflt_ctab( const int16 handle, int32 ctab_length, COLOR_TAB *ctab );
-COLOR_TAB *v_create_ctab( const int16 handle, const int32 color_space, uint32 px_format );
-int16 v_delete_ctab( const int16 handle, COLOR_TAB *ctab );
-ITAB_REF v_create_itab( const int16 handle, COLOR_TAB *ctab, int16 bits );
-int16 v_delete_itab( const int16 handle, ITAB_REF *itab );
+int32 vq_px_format( int16 handle, uint32 *px_format );
+int16 vq_ctab( int16 handle, int32 ctab_length, COLOR_TAB *ctab );
+int32 vq_ctab_entry( int16 handle, int16 index, COLOR_ENTRY *color );
+int32 vq_ctab_id( int16 handle );
+int16 v_ctab_idx2vdi( int16 handle, int16 index );
+int16 v_ctab_vdi2idx( int16 handle, int16 index );
+int32 v_ctab_idx2value( int16 handle, int16 index );
+int32 v_get_ctab_id( int16 handle );
+int16 vq_dflt_ctab( int16 handle, int32 ctab_length, COLOR_TAB *ctab );
+COLOR_TAB *v_create_ctab( int16 handle, int32 color_space, uint32 px_format );
+int16 v_delete_ctab( int16 handle, COLOR_TAB *ctab );
+ITAB_REF v_create_itab( int16 handle, COLOR_TAB *ctab, int16 bits );
+int16 v_delete_itab( int16 handle, ITAB_REF *itab );
 
 /******************************************************************************/
 /*                                                                            */
