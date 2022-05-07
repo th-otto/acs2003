@@ -166,7 +166,7 @@ void save(Awindow *self)
 				backup(acs);
 		}
 	}
-	if ((acs->flags & ACS_0800) && changed && (!dirtysave || (self->state & AWS_INTERM)))
+	if ((acs->flags & ACS_SRCOUTPUT) && changed && (!dirtysave || (self->state & AWS_INTERM)))
 		compiler(self);
 }
 

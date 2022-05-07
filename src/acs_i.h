@@ -127,16 +127,16 @@ struct _ACS_HEAD {
 	/*  76 */ Aolddescr descr; /* does not include mess[AD_COUNT] */
 	/* 324 */ Awindow *wi_palette;
 	/* 328 */ Awindow *wi_descr;
-	/* 332 */ Axywh pos_ge;
-	/* 340 */ Axywh pos_pa;
-	/* 348 */ Axywh pos_ds;
+	/* 332 */ Axywh pos_ge;       /* position of general window */
+	/* 340 */ Axywh pos_pa;       /* position of palette window */
+	/* 348 */ Axywh pos_ds;       /* position of description window */
 	/* 356 */ long obj_count;
 	/* 360 */ Axywh last_rez;
 	/* 368 */ long extflags;
-	/* 372 */ char backup[__PS__];
-	/* 500 */ int16 language;
-	/* 502 */ Obj_Head *mlst_list[MAX_LANGS];
-	/* 514 */ Obj_Head *mlal_list[MAX_LANGS];
+	/* 372 */ char backup[__PS__]; /* path for backups */
+	/* 500 */ int16 language;     /* current language being edited */
+	/* 502 */ Obj_Head *mlst_list[MAX_LANGS]; /* strings of other languages */
+	/* 514 */ Obj_Head *mlal_list[MAX_LANGS]; /* alert strings of other languages */
 	/* 526 */ int16 src_lang;     /* compiler output language */
 	/* 528 */ Awindow *wi_config;
 	/* 532 */ Aconfig config;
@@ -162,7 +162,7 @@ struct _ACS_HEAD {
 #define ACS_0100        0x0100
 #define ACS_0200        0x0200
 #define ACS_0400        0x0400
-#define ACS_0800        0x0800
+#define ACS_SRCOUTPUT   0x0800
 #define ACS_LOCAL       0x1000
 #define ACS_PROTOTYPES  0x2000
 #define ACS_IGNORECASE  0x4000
@@ -173,6 +173,7 @@ struct _ACS_HEAD {
  */
 #define ACS_EXT_PROTOCOL  0x0001
 #define ACS_EXT_BACKUP    0x0002
+
 
 
 typedef struct {
@@ -847,6 +848,7 @@ extern Awindow WI_MAINMOD;
 void chk_new_label(void);
 void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname);
 void wi_pos(Awindow *win, Axywh *pos, Axywh *lastpos);
+void set_flag(int16 setit, OBJECT *obj);
 
 
 /*
@@ -910,6 +912,11 @@ void pp_output(ACS_HEAD *acs);
  * io/str_out.c
  */
 void str_output(ACS_HEAD *acs);
+
+/*
+ * io/acsio.c
+ */
+void acs_closewi(ACS_HEAD *acs, boolean all);
 
 
 
@@ -1055,6 +1062,9 @@ extern LISTPARM list_popup;
  */
 extern LISTPARM list_reference;
 
+Obj_Head *dup_ref(ACS_HEAD *acs, const char *title, int16 type);
+void del_ref(ACS_HEAD *acs, Obj_Head *label);
+
 
 /*
  * list/edstring.c
@@ -1079,6 +1089,7 @@ extern LISTPARM list_user;
  */
 extern LISTPARM list_window;
 
+void del_window(ACS_HEAD *acs, Obj_Head *label);
 
 
 /*

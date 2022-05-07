@@ -14,7 +14,7 @@ acs.app
 .C[-IC:\pc\include]
 
 ; set this to 1 to remove the demo check
-.C[-DKILLDEMO=0]
+.S[-DKILLDEMO=0]
 
 ; set this to 1 to apply some fixes
 ; if set to 0, attempt to compile the original version
@@ -54,7 +54,7 @@ acs.app
 
 acsbase.c
 palette.s
-edbehave.s
+edbehave.c
 general.c
 about.c
 edutil.s

@@ -309,7 +309,7 @@ boolean fix_all(ACS_HEAD *acs)
 
 
 /*
- * convert IDs to pointers aftrer reading from disk
+ * convert IDs to pointers after reading from disk
  */
 void unfix_all(ACS_HEAD *acs)
 {

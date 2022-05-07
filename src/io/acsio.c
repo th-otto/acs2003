@@ -49,8 +49,8 @@ static const char *const ml_title[MAX_LANGS] = { ml1_obj, ml2_obj, ml3_obj };
 static const char *const mlal_title[MAX_LANGS] = { al1_obj, al2_obj, al3_obj };
 static ACS_HEAD proto = {
 	ACS_MAGIC, /* ".ACS" */
-	401, /* ACS_VERSION */
-	ACS_SUBMODUL | ACS_PROTOTYPES | ACS_LOCAL | ACS_0800,
+	FUTURE_VERSION, /* ACS_VERSION */
+	ACS_SUBMODUL | ACS_PROTOTYPES | ACS_LOCAL | ACS_SRCOUTPUT,
 	NULL,
 	NULL,
 	NULL,

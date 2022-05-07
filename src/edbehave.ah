@@ -1,0 +1,812 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#ifdef __PUREC__
+#pragma warn -use
+#endif
+
+#define EDIT_BEHAVE_SRCOUTPUT   3
+#define EDIT_BEHAVE_COMPILER    5
+#define EDIT_BEHAVE_PROTOTYPES 10
+#define EDIT_BEHAVE_LOCAL      12
+#define EDIT_BEHAVE_PROTOCOL   14
+#define EDIT_BEHAVE_LANGUAGE   24
+#define EDIT_BEHAVE_IGNORECASE 29
+#define EDIT_BEHAVE_BACKUP     31
+#define EDIT_BEHAVE_BACKUPPATH 33
+
+#define EDIT_MAINMOD_ISMAINMOD          1
+#define EDIT_MAINMOD_OLGA               4
+#define EDIT_MAINMOD_GEMSCRIPT          6
+#define EDIT_MAINMOD_BUBBLEGEM          8
+#define EDIT_MAINMOD_OLGA_WAIT         10
+#define EDIT_MAINMOD_ACC_ENTRY         16
+#define EDIT_MAINMOD_ACC_WINDOW        17
+#define EDIT_MAINMOD_DESKTOP           19
+#define EDIT_MAINMOD_ACSINIT0          29
+#define EDIT_MAINMOD_ACSINIT           30
+#define EDIT_MAINMOD_XACC_TYPE         33
+#define EDIT_MAINMOD_CLICKMENU         36
+#define EDIT_MAINMOD_HIDEPOINTER       38
+#define EDIT_MAINMOD_BEEP              40
+#define EDIT_MAINMOD_CENTERDIALOG      42
+#define EDIT_MAINMOD_GDOSFONT          44
+#define EDIT_MAINMOD_MENUFIRST         46
+#define EDIT_MAINMOD_3D                48
+#define EDIT_MAINMOD_VISUAL_FEEDBACK   50
+#define EDIT_MAINMOD_MEMCHECK          52
+#define EDIT_MAINMOD_SECURITY_CHECKS   54
+#define EDIT_MAINMOD_MODERN_3D         56
+#define EDIT_MAINMOD_ACSABOUTME        62
+#define EDIT_MAINMOD_ACSCLOSE          63
+#define EDIT_MAINMOD_ACSMESSAGE        64
+#define EDIT_MAINMOD_ACSTIMER          65
+#define EDIT_MAINMOD_ACSTERM           66
+#define EDIT_MAINMOD_ACSMPROTO         75
+#define EDIT_MAINMOD_ACSKEY            76
+#define EDIT_MAINMOD_ACSWIKEY          77
+#define EDIT_MAINMOD_ACSBUTTON         78
+#define EDIT_MAINMOD_ACSMOUSE          79
+#define EDIT_MAINMOD_DX                86
+#define EDIT_MAINMOD_DY                88
+#define EDIT_MAINMOD_ACSGEMSCRIPT      95
+
+
+#if COUNTRY == COUNTRY_DE
+static char A_DELMESS[] = "[2][ Sollen die Applikations-| Meldungen gel”scht werden, | die als Hauptmodul gltig| waren?][ Ja | Nein | Abbruch ]";
+static char _A_COLREZ[] = "[1][ Die Anzahl der momentan| darstellbaren Farben oder| die aktuelle Bildaufl”sung | ist nicht korrekt!][ Abbruch ]";
+static char _A_CREATE_IO[] = "[1][ Eine Datei liež sich | nicht erzeugen!][ Abbruch ]";
+static char _A_CREATE_STR[] = "[3][ Die Datei '%s'| l„žt sich nicht erzeugen! ][ Abbruch ]";
+static char _A_DEFECTIVE_MEM[] = "[1][ Auf fremden Speicher | wurde zugegriffen!][ Abbruch ]";
+static char _A_ERR_ACC[] = "[2][ | Soll das Accessory | >>               << | gestartet werden?| ][Ja|  Nein  ]";
+static char _A_ERR_MESS[] = "[2][ Unbekannte GEM-Nachricht | erhalten.| ID = '%s'| Weiterhin berichten?][Ja|  Nein  ]";
+static char _A_ERR_WINDOW[] = "[3][ Keine freie GEM-Fenster-ID | mehr vorhanden!| Abhilfe: Ein offenes| GEM-Fenster schliežen.][    OK    ]";
+static char const _A_ERR_WISLOT[] = "[3][ Kein freier ACS-Fenster- | Platz mehr vorhanden!| Abhilfe: Ein ACS-Fenster| l”schen.][    OK    ]";
+static char _A_GENERAL[] = "[3][ Es ist ein allgemeiner | Fehler aufgetreten! ][ Abbruch ]";
+static char _A_GENERAL_STR[] = "[1][ Ein Fehler ist aufgetreten! | %s][ Abbruch ]";
+static char _A_GEN_IO[] = "[1][ Es ist ein Fehler bei der | Ein-/Ausgabe aufgetreten!][ Abbruch ]";
+static char _A_GEN_MEM[] = "[1][ Es ist ein Fehler in| der Speicherverwaltung | aufgetreten!][ Abbruch ]";
+static char _A_GEN_MOD[] = "[1][ Das Modul konnte nicht | geladen werden!][ Abbruch ]";
+static char _A_GEN_MOD_STR[] = "[1][ Das Modul '%s' | konnte nicht geladen werden! ][ Abbruch ]";
+static char _A_LOAD_MOD[] = "[1][ Beim Laden des Moduls | (mit Pexec-3) ist ein| Fehler aufgetreten!][ Abbruch ]";
+static char _A_LOAD_MOD_STR[] = "[1][ Beim Laden des Moduls | '%s' ist ein | Fehler aufgetreten!][ Abbruch ]";
+static char _A_MEM_MOD[] = "[1][ Der dem Modul folgende| Restspeicher kann nicht | freigegeben werden!][ Abbruch ]";
+static char _A_MEM_MOD_STR[] = "[1][ Der dem Modul '%s' | folgenden Restspeicher kann | nicht freigegeben werden!][ Abbruch ]";
+static char _A_ODD_MEM[] = "[1][ Die Adresse eines Speicher- | blocks ist ungerade!][ Abbruch ]";
+static char _A_OPEN_IO[] = "[1][ Eine Datei liež sich| nicht korrekt ”ffnen! ][ Abbruch ]";
+static char _A_OPEN_STR[] = "[1][ Die Datei '%s' | l„žt sich nicht ”ffnen!][ Abbruch ]";
+static char _A_OUT_OF_MEM[] = "[1][ Es steht nicht gengend | Speicher zur Verfgung!][ Abbruch ]";
+static char _A_PORT[] = "[1][ Ein Fehler trat auf einem| Ein-/Ausgabekanal auf!][ Abbruch ]";
+static char _A_RANGE_MEM[] = "[1][ Ein Speicherblock| befindet sich aužerhalb | der legalen Bereiche!][ Abbruch ]";
+static char _A_READ_IO[] = "[1][ Beim Lesen aus einer Datei| ist ein Fehler aufgetreten! ][ Abbruch ]";
+static char _A_READ_STR[] = "[1][ Beim Lesen aus der Datei | '%s' ist ein | Fehler aufgetreten!][ Abbruch ]";
+static char _A_VER_MOD[] = "[1][ Das Modul hat leider eine | falsche Versionsnummer!][ Abbruch ]";
+static char _A_VER_MOD_STR[] = "[1][Das Modul|'%s'|hat eine falsche|Versionsnummer!][ Abbruch ]";
+static char _A_WRITE_IO[] = "[1][ Beim Schreiben in eine Datei | ist ein Fehler aufgetreten!][ Abbruch ]";
+static char _A_WRITE_STR[] = "[1][ Beim Schreiben in die Datei | '%s' ist ein | Fehler aufgetreten!][ Abbruch ]";
+static char BUBBLE_01[] = "Die Žnderungen werden bernommen und berschreiben die alten Einstellungen.";
+static char BUBBLE_02[] = "Die Žnderungen werden verworfen, die alten Einstellungen bleiben erhalten.";
+static char BUBBLE_03[] = "Hier kann das Modul als Hauptmodul bestimmt werden. Jede ACS-Anwendung ben”tigt mindestens ein Hauptmodul, ACS-Module drfen keines besitzen.";
+static char BUBBLE_04[] = "Hier wird angegeben, ob das OLGA-Protokoll beim Start initialisiert werden soll. Ggf. wird versucht, den OLGA-Manager nachzustarten.";
+static char BUBBLE_05[] = "Hier wird angegeben, ob beim Nachstarten des OLGA-Managers gewartet werden soll, bis er l„uft. Der Start der Anwendung wird dadurch z.T. drastisch verz”gert.";
+static char BUBBLE_06[] = "Hier wird angegeben, ob das GEMScript-Protokoll initialisiert werden soll.";
+static char BUBBLE_07[] = "Hier wird angegeben, ob BubbleGEM initialisiert werden soll. Ggf. wird BubbleGEM nachgestartet.";
+static char BUBBLE_08[] = "Hier wird angegeben, ob die Anwendung im 3D-Modus laufen soll oder nicht. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_09[] = "Hier wird angegeben, ob modale (Fenster-)Dialoge zentriert werden sollen oder an der Maus-Position erscheinen sollen. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_10[] = "Hier wird angegeben, ob Fehler akustisch signalisiert werden sollen oder nicht. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_11[] = "Hier wird angegeben, ob beim Start GDOS-Fonts geladen werden sollen oder nicht. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_12[] = "Hier wird angegeben, ob bei Tastendrcken erst das Hauptmen und dann der Fenster-Dialog bercksichtigt wird oder andersherum. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_13[] = "Hier wird angegeben, ob bei Tastendrcken der Maus-Zeiger versteckt werden sollen nicht. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_14[] = "Hier wird angegeben, ob sich Fenstermens erst nach einem Maus-Klick oder bereits beim Berhren mit dem Maus-Zeiger ”ffnen. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_15[] = "Importierte Texte werden in ACS neu angelegt, wenn sie nicht vorhanden sind.";
+static char BUBBLE_16[] = "Hier wird der XAcc-Typ der Anwendung angegeben. Genauere Informationen ber den Typ finden Sie in der XAcc-Dokumentation.";
+static char BUBBLE_17[] = "Hier wird angegeben, ob optische Rckmeldungen (wachsende Rechtecke, Meldung beim Ende von TOS-Programmen) verwendet werden sollen oder nicht. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_18[] = "Hier wird angegeben, ob allozierte und freigegebene Speicherbl”cke geprft werden sollen oder nicht. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_19[] = "Hier wird angegeben, ob Sicherheitsprfungen (wie z.B. vor Dsetdrv/Dsetpath) durchgefhrt werden sollen oder nicht. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_20[] = "Hier k”nnen Sie in Zukunft angeben, fr welche Zielplattform Code erzeugt werden soll. Noch hat diese Einstellung keinen Effekt!";
+static char BUBBLE_21[] = "Hier stellen Sie die Programmiersprache ein, die fr dieses ACS-Modul verwendet werden soll.";
+static char BUBBLE_22[] = "Hier geben Sie an, welche Oberfl„chensprache aktiviert und ausgegeben werden soll.";
+static char BUBBLE_23[] = "Sie k”nnen bei jedem Sichern automatisch ein Backup der alten Datei anlegen lassen. Hier schalten Sie dieses ein. Geben Sie bitte auch den Pfad des Backups an!";
+static char BUBBLE_24[] = "Hier geben Sie bitte den Pfad an, in dem das Backup gemacht werden soll.";
+static char BUBBLE_25[] = "Alle Objektnamen werden automatisch in Grožbuchstaben gewandelt.";
+static char BUBBLE_26[] = "Hier wird eingestellt, ob die Prototypen fr den Compiler mit exportiert werden sollen.";
+static char BUBBLE_27[] = "Alle nicht-globalen Definitionen werden als modul-lokal exportiert. Damit k”nnen sich gleiche Bezeichner in verschiedenen Modulen nicht berschneiden.";
+static char BUBBLE_28[] = "Es wird automatisch eine Liste der Definitionen und Bezeichner erstellt.";
+static char BUBBLE_29[] = "Hier schalten Sie die Ausgabe fr den im Popup ausgew„hlten Compiler ein.";
+static char BUBBLE_30[] = "Hier wird der Name der entsprechenden Funktion eingetragen.";
+static char BUBBLE_31[] = "Hier wird definiert, welchen Abstand Fenster vom Bildschirmrand haben sollen.";
+static char BUBBLE_32[] = "Hier schalten Sie die Verwendung von modernen 3D-Mens ein und aus. Die Einstellung kann jederzeit zur Laufzeit ge„ndert werden.";
+static char BUBBLE_33[] = "Die Texte der ausgew„hlten Sprache werden trotz Auslagerung der Texte in die Anwendung als Default-Texte integriert.";
+static char BUBBLE_34[] = "Alle Texte werden in eine ASCII-Datei ausgelagert. Diese kann gegen die einer anderen Sprache ausgetauscht werden. Das Zusammenbinden der ASCII-Dateien zur globalen ASCII-Datei der Anwendung muž getrennt erfolgen.";
+static char HELPFILE_01[] = "ACSPRO";
+static char STGUIDE_01[] = "Der Hauptmodul-Dialog";
+static char STGUIDE_02[] = "Der Eigenschaften-Dialog";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Abbrechen";
+static char TEXT_009[] = "Lade GDOS-Fonts";
+static char TEXT_01[] = "Sprache, Texte";
+static char TEXT_012[] = "dy:";
+static char TEXT_014[] = "dx:";
+static char TEXT_018[] = "Definitionen als 'lokal'";
+static char TEXT_02[] = "Ausgabe:";
+static char TEXT_03[] = "Taste zuerst Mens";
+static char TEXT_04[] = "Verhalten";
+static char TEXT_05[] = "Optionen";
+static char TEXT_06[] = "Plattform & Entwicklungsumgebung";
+static char TEXT_07[] = "Rahmen";
+static char TEXT_08[] = " Pure-C / GNU-C | Pure-Pascal ";
+static char TEXT_09[] = "ACS-Ausgabe";
+static char TEXT_10[] = " Eigenschaften ";
+static char TEXT_11[] = " 1. Sprache (D)| 2. Sprache (E)| 3. Sprache    | 4. Sprache";
+static char TEXT_110[] = "Sprache";
+static char TEXT_111[] = "Oberfl„che:";
+static char TEXT_112[] = "Texte";
+static char TEXT_118[] = "Pulldown Mens";
+static char TEXT_12[] = "Importieren";
+static char TEXT_13[] = "Namen";
+static char TEXT_14[] = "Verstecke Maus";
+static char TEXT_15[] = "Liste der Definitionen";
+static char TEXT_16[] = "BackUp anlegen";
+static char TEXT_17[] = " Atari ST | Macintosh | Windows | Linux ";
+static char TEXT_18[] = "Plattform";
+static char TEXT_19[] = " Hauptmodul-Eigenschaften ";
+static char TEXT_20[] = "Import-Texte ggf. neu anlegen";
+static char TEXT_21[] = "ACC-Fenster:";
+static char TEXT_22[] = "ACC-Eintrag:";
+static char TEXT_23[] = "OK";
+static char TEXT_24[] = "Abbrechen";
+static char TEXT_25[] = "Initialisierungs-Funktionen & -Daten";
+static char TEXT_26[] = "Modul ist Hauptmodul";
+static char TEXT_263[] = "Zentriere Dialog";
+static char TEXT_27[] = "ACSinit0";
+static char TEXT_28[] = "ACSinit";
+static char TEXT_29[] = "ACSterm";
+static char TEXT_30[] = "ACSaboutme";
+static char TEXT_31[] = "ACSclose";
+static char TEXT_32[] = "ACSmessage";
+static char TEXT_33[] = "ACSmproto";
+static char TEXT_331[] = "VERHALTEN";
+static char TEXT_34[] = "ACStimer";
+static char TEXT_345[] = "abc = ABC";
+static char TEXT_347[] = "Prototypen";
+static char TEXT_35[] = "ACSkey";
+static char TEXT_350[] = "Fehler akustisch";
+static char TEXT_36[] = "ACSbutton";
+static char TEXT_37[] = "ACSmouse";
+static char TEXT_38[] = "ACSwikey";
+static char TEXT_39[] = "ACSGEMScript";
+static char TEXT_40[] = "Protokollierungs-Funktionen";
+static char TEXT_41[] = "Kommunikations-Protokolle";
+static char TEXT_42[] = "3D-Darstellung";
+static char TEXT_43[] = "Sonstige Funktionen";
+static char TEXT_44[] = "XAcc-Typ";
+static char TEXT_45[] = "      keine | WP - Textverarbeitung | DP - DTP | ED - Editor | DB - Datenbank | SS - Tabellenkalkulation | RG - Pixelgraphik | VG - Vektorgraphik | GG - Graphik | MU - Musik | CD - CAD | DC - Kommunikation | DT - Desktop | PE - Programmierumgebung";
+static char TEXT_46[] = "Initialisierung";
+static char TEXT_47[] = "OLGA";
+static char TEXT_48[] = "warten";
+static char TEXT_49[] = "GEMScript";
+static char TEXT_50[] = "BubbleGEM";
+static char TEXT_51[] = "Optisches Feedback";
+static char TEXT_52[] = "Speichertest";
+static char TEXT_53[] = "Sicherheitschecks";
+static char TEXT_54[] = "Moderne 3D-Mens";
+static char TEXT_55[] = "Texte aus Anwendung auslagern";
+static char TEXT_56[] = "Default-Texte behalten";
+static char _AL_ATT[] = " Achtung ";
+static char _AL_QUEST[] = " Frage ";
+static char _AL_STOP[] = " Stop ";
+static char _AL_TIMER[] = " Meldung ";
+#endif
+
+#if COUNTRY == COUNTRY_US
+#if WITH_FIXES
+static char A_DELMESS[] = "[1][ Do you want to delete the | general messages, which are | used in your application | in main-module-mode?][ Yes | No | Cancel ]";
+#else
+static char A_DELMESS[] = "[1][ Do you want to delete the | general messages, which are | used in your application | in main-module-mode?][ OK | Cancel ]";
+#endif
+static char _A_COLREZ[] = "[1][ Wrong number of colors | on this screen!][ Cancel ]";
+static char _A_CREATE_IO[] = "[1][ Cannot create | this file.][ Cancel ]";
+static char _A_CREATE_STR[] = "[3][ Cannot create file | '%s'!][ Cancel ]";
+static char _A_DEFECTIVE_MEM[] = "[1][ You accessed | foreign memory! ][ Cancel ]";
+static char _A_ERR_ACC[] = "[2][ | Do you want to load| >>               << | as a acessory?| ][ Yes | No ]";
+static char _A_ERR_MESS[] = "[2][ Unknown GEM-message| received.| ID = '%s'| Continue displaying?][ Yes | No ]";
+static char _A_ERR_WINDOW[] = "[3][ No more free window-slots | available. Please close an | open GEM-Window.][  OK  ]";
+static char const _A_ERR_WISLOT[] = "[3][ No more free ACS-window-slot | available, please delete an | ACS-window.][  OK  ]";
+static char _A_GENERAL[] = "[3][ A general error occured. ][ Cancel ]";
+static char _A_GENERAL_STR[] = "[1][ A general error occured:| %s][ Cancel ]";
+static char _A_GEN_IO[] = "[1][ A general i/o-error| occured.][ Cancel ]";
+static char _A_GEN_MEM[] = "[1][ An error within the | memory-management occurs. ][ Cancel ]";
+static char _A_GEN_MOD[] = "[1][ The module cannot | be loaded.][ Cancel ]";
+static char _A_GEN_MOD_STR[] = "[1][ The module '%s'| cannot be loaded.][ Cancel ]";
+static char _A_LOAD_MOD[] = "[1][ An error occured while | loading the module with | Pexec-3.][ Cancel ]";
+static char _A_LOAD_MOD_STR[] = "[1][ An error occured while | loading the module | '%s'.][ Cancel ]";
+static char _A_MEM_MOD[] = "[1][ The memory following the | module could not be freed.][ Cancel ]";
+static char _A_MEM_MOD_STR[] = "[1][ The memory, following the | module '%s',| could not be freed.][ Cancel ]";
+#if WITH_FIXES
+static char _A_ODD_MEM[] = "[1][ The address of a memory| block is odd.][ Cancel ]";
+#else
+static char _A_ODD_MEM[] = "[1][ The adress of a memory-| block is odd.][ Cancel ]";
+#endif
+static char _A_OPEN_IO[] = "[1][ A file could not| be opened.][ Cancel ]";
+static char _A_OPEN_STR[] = "[1][ The file '%s' | could not be opened.][ Cancel ]";
+#if WITH_FIXES
+static char _A_OUT_OF_MEM[] = "[1][ Not enough | free memory.  ][ Cancel ]";
+#else
+static char _A_OUT_OF_MEM[] = "[1][ Not enough| memory aviable.][ Cancel ]";
+#endif
+static char _A_PORT[] = "[1][ An error occured | on a i/o-channel.][ Cancel ]";
+static char _A_RANGE_MEM[] = "[1][ The memory-block is| out of the legal ranges.][ Cancel ]";
+static char _A_READ_IO[] = "[1][ An error occured while | reading from a file.][ Cancel ]";
+static char _A_READ_STR[] = "[1][ An error occured while | reading from the file| '%s'.][ Cancel ]";
+static char _A_VER_MOD[] = "[1][ Wrong version-number | of the module.][ Cancel ]";
+static char _A_VER_MOD_STR[] = "[1][ Wrong version-number of | module '%s'.][ Cancel ]";
+static char _A_WRITE_IO[] = "[1][ An error occured while | writing into a file. ][ Cancel ]";
+static char _A_WRITE_STR[] = "[1][ An error occured while | writing into the file| '%s'.][ Cancel ]";
+static char BUBBLE_01[] = "The changes are accepted an override the old values.";
+static char BUBBLE_02[] = "The changes are lost, the old values remain.";
+#if WITH_FIXES
+static char BUBBLE_03[] = "This Module is Main-Module.";
+#else
+static char BUBBLE_03[] = "This Modul is the Main-Modul.";
+#endif
+static char BUBBLE_04[] = "Initialize the OLGA protocol when starting. When not running the OLGA-Manager is started.";
+#if WITH_FIXES
+static char BUBBLE_05[] = "When starting the OLGA-Manager wait for the manager to be ready. The start of the application is delayed.";
+#else
+static char BUBBLE_05[] = "When starting the OLGA-Manager wait for the manager to be ready. The start of the application is retarded.";
+#endif
+static char BUBBLE_06[] = "Initialize the GEMScript-Protocol when starting?";
+static char BUBBLE_07[] = "Initialize BubbleGEM when starting? BubleGEM will be started when not running.";
+#if WITH_FIXES
+static char BUBBLE_08[] = "Switch the 3D-Mode on/off. This can be changed during runtime.";
+#else
+static char BUBBLE_08[] = "Switch the 3D-Modus on/off. This can be changed during runtime.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_09[] = "Center modal (window-)dialogs. This can be changed during runtime.";
+#else
+static char BUBBLE_09[] = "Center modal (window-)dialoges. This can be changed during runtime.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_10[] = "Audible signal for errors. This can be changed during runtime.";
+#else
+static char BUBBLE_10[] = "Acustic signal for errors. This can be changed during runtime.";
+#endif
+static char BUBBLE_11[] = "Load GDOS fonts at startup.";
+#if WITH_FIXES
+static char BUBBLE_12[] = "Send a keypress first to the main menu and second to the window dialog. This can be changed during runtime.";
+#else
+static char BUBBLE_12[] = "Send a keypress first to the main menu and second to the window dialoge. This can be changed during runtime.";
+#endif
+static char BUBBLE_13[] = "Hide the mouse pointer when a keypress is reported. This can be changed during runtime.";
+#if WITH_FIXES
+static char BUBBLE_14[] = "Open window menus on mouse clicks. Otherwise they are opened when touching them. This can be changed at runtime.";
+#else
+static char BUBBLE_14[] = "Open window menus on mouse clicks. Otherwise they are opend when touching them. This can be changed during runtime.";
+#endif
+static char BUBBLE_15[] = "Imported strings are created in ACS when they are not present.";
+#if WITH_FIXES
+static char BUBBLE_16[] = "This is the XACC-Type of the application. Further information about this type can be found in the XAcc documentation.";
+#else
+static char BUBBLE_16[] = "This is the XAC-Type of the application. Further informations about this type can be found in the XAcc documentation.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_17[] = "Use visual clues such as expanding rectangles, message after termination of TOS applications. This can be changed during runtime.";
+#else
+static char BUBBLE_17[] = "Use optical signals - i.e. growing rectangles, message after termination of TOS applications. This can be changed during runtime.";
+#endif
+static char BUBBLE_18[] = "Check allocated and freed memory blocks. This can be changed during runtime.";
+static char BUBBLE_19[] = "Use security checks - i.e. before Dsetdrv/Dsetpath. This can be changed during runtime.";
+static char BUBBLE_20[] = "Here you can specify the platform in the future.";
+static char BUBBLE_21[] = "The programming language used in this ACS module.";
+#if WITH_FIXES
+static char BUBBLE_22[] = "This is the language used by the GUI.";
+#else
+static char BUBBLE_22[] = "This is the activ language of the GUI.";
+#endif
+static char BUBBLE_23[] = "You can create backups when saving an ACS file. Here you switch this backup on/off.";
+static char BUBBLE_24[] = "This is the path for the automatic backup.";
+#if WITH_FIXES
+static char BUBBLE_25[] = "All names of the objects are automatically converted into upper case.";
+#else
+static char BUBBLE_25[] = "All name of the objects are automatically converted into upper cases.";
+#endif
+static char BUBBLE_26[] = "Export the prototypes for the C compiler.";
+#if WITH_FIXES
+static char BUBBLE_27[] = "All definitions not global are exported as local to this module. So same names can be used in differnt modules.";
+#else
+static char BUBBLE_27[] = "All not global definitions are exported als local to this module. So same names can be used in differnt modules.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_28[] = "Automatically create a list of the definitions and identifiers when saving this ACS module.";
+#else
+static char BUBBLE_28[] = "Create automatically a list of the definitions and identifiers when saving this ACS module.";
+#endif
+static char BUBBLE_29[] = "The output for the specified compiler can be switched on/off.";
+static char BUBBLE_30[] = "Please enter the name of the function.";
+static char BUBBLE_31[] = "This defines the distance of the windows to the sides of the desktop.";
+#if WITH_FIXES
+static char BUBBLE_32[] = "Use modern 3D-menus (like MagiC 6 with prop. Systemfont) in all windows.";
+#else
+static char BUBBLE_32[] = "Use modern 3D-menues (like MagiC 6 with prop. Systemfont) in all windows.";
+#endif
+static char BUBBLE_33[] = "The strings of the selected language are integrated as default strings into the application.";
+#if WITH_FIXES
+static char BUBBLE_34[] = "All strings are written into an ASCII file. Change this file for another language. The merging of the ASCII files into the global file of the application must be done outside ACS.";
+#else
+static char BUBBLE_34[] = "All strings are written into an ASCII file. Change this file for another language. The merging of the ASCII files into the globale file of the application must be done outside ACS.";
+#endif
+static char HELPFILE_01[] = "ACSPRO";
+static char STGUIDE_01[] = "Der Hauptmodul-Dialog";
+static char STGUIDE_02[] = "Der Eigenschaften-Dialog";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Cancel";
+static char TEXT_009[] = "Load GDOS-Fonts";
+#if WITH_FIXES
+static char TEXT_01[] = "Language, Title";
+#else
+static char TEXT_01[] = "Language, Titel";
+#endif
+static char TEXT_012[] = "dy:";
+static char TEXT_014[] = "dx:";
+static char TEXT_018[] = "Definitions as 'local'  ";
+static char TEXT_02[] = "Output: ";
+static char TEXT_03[] = "Keys to main menu ";
+static char TEXT_04[] = "Behaviour:";
+static char TEXT_05[] = "Options:";
+static char TEXT_06[] = "Platform & Development System";
+static char TEXT_07[] = "Frame:";
+static char TEXT_08[] = " Pure-C / GNU-C | Pure-Pascal ";
+static char TEXT_09[] = "ACS-Output";
+static char TEXT_10[] = " Behaviour ";
+static char TEXT_11[] = "1. Language (D)|2. Language (E)|3. Language    |4. Language    ";
+static char TEXT_110[] = "Language:";
+static char TEXT_111[] = "Surface:";
+static char TEXT_112[] = "Strings";
+static char TEXT_118[] = "Pulldown menus";
+static char TEXT_12[] = "Import";
+static char TEXT_13[] = "Names";
+static char TEXT_14[] = "Hide mouse    ";
+static char TEXT_15[] = "List of definitions   ";
+static char TEXT_16[] = "create backup ";
+static char TEXT_17[] = " Atari ST | Macintosh | Windows | Linux ";
+static char TEXT_18[] = "Platform";
+static char TEXT_19[] = " Main module Preferences ";
+static char TEXT_20[] = "Create new Import-Strings    ";
+static char TEXT_21[] = "ACC-Fenster:";
+static char TEXT_22[] = "ACC Entry:";
+static char TEXT_23[] = "OK";
+static char TEXT_24[] = "Cancel";
+static char TEXT_25[] = "Functions & Data for Initializing";
+static char TEXT_26[] = "module is main module";
+static char TEXT_263[] = "Center dialogue ";
+static char TEXT_27[] = "ACSinit0";
+static char TEXT_28[] = "ACSinit";
+static char TEXT_29[] = "ACSterm";
+static char TEXT_30[] = "ACSaboutme";
+static char TEXT_31[] = "ACSclose";
+static char TEXT_32[] = "ACSmessage";
+static char TEXT_33[] = "ACSmproto";
+static char TEXT_331[] = "BEHAVIOUR";
+static char TEXT_34[] = "ACStimer";
+static char TEXT_345[] = "abc = ABC";
+static char TEXT_347[] = "Prototypes";
+static char TEXT_35[] = "ACSkey";
+static char TEXT_350[] = "Sound on errors ";
+static char TEXT_36[] = "ACSbutton";
+static char TEXT_37[] = "ACSmouse";
+static char TEXT_38[] = "ACSwikey";
+static char TEXT_39[] = "ACSGEMScript";
+static char TEXT_40[] = "Protocol function";
+#if WITH_FIXES
+static char TEXT_41[] = "Communication protocols";
+#else
+static char TEXT_41[] = "Communitation protocols";
+#endif
+static char TEXT_42[] = "3D Display    ";
+static char TEXT_43[] = "Other functions";
+static char TEXT_44[] = "XAcc-Type";
+static char TEXT_45[] = "      none | WP - Word processing | DP - DTP | ED - Editor | DB - Database | SS - Sheet | RG - Raster graphic | VG - Vektor graphic | GG - Graphic | MU - Music | CD - CAD | DC - Data Communication | DT - Desktop | PE - Programming environment";
+static char TEXT_46[] = "Initializing";
+static char TEXT_47[] = "OLGA";
+static char TEXT_48[] = "wait  ";
+static char TEXT_49[] = "GEMScript";
+static char TEXT_50[] = "BubbleGEM";
+#if WITH_FIXES
+static char TEXT_51[] = "Visual feedback   ";
+#else
+static char TEXT_51[] = "Optical feedback  ";
+#endif
+static char TEXT_52[] = "Memory check";
+static char TEXT_53[] = "Security checks  ";
+#if WITH_FIXES
+static char TEXT_54[] = "Modern 3D-Menus ";
+#else
+static char TEXT_54[] = "Modern 3D-Menues";
+#endif
+static char TEXT_55[] = "Swap Strings out of the App. ";
+static char TEXT_56[] = "Use Default-Strings   ";
+static char _AL_ATT[] = " Attention ";
+static char _AL_QUEST[] = " Question ";
+static char _AL_STOP[] = " Stop ";
+static char _AL_TIMER[] = " Message ";
+#endif
+
+static int16 DATAS_07[] = {
+	0x0000, 0x0000, 0x02c0, 0x0000, 0x0000, 0x0000, 0x07ff, 0xffff,
+	0xffe0, 0x0400, 0x0000, 0x0020, 0x0400, 0x0000, 0x0020, 0x0401,
+	0xe007, 0x8020, 0x0407, 0xf81f, 0xe020, 0x040f, 0xfc3f, 0xf020,
+	0x040e, 0x1c38, 0xf020, 0x041c, 0xce7b, 0x7820, 0x041d, 0xfe7b,
+	0x7820, 0x041d, 0xfe78, 0xf820, 0x041c, 0xce7b, 0x7820, 0x040e,
+	0x1c3b, 0x7020, 0x040f, 0xfc3f, 0xf020, 0x0407, 0xf81f, 0xe020,
+	0x0401, 0xe007, 0x8020, 0x0400, 0x0000, 0x0020, 0x0400, 0x0000,
+	0x0020, 0x0491, 0x2244, 0x8920, 0x0460, 0xc183, 0x1fa0, 0x0463,
+	0xf183, 0x1fa0, 0x0463, 0xf7e3, 0x0620, 0x0460, 0xc7e3, 0x0620,
+	0x05f8, 0xc18f, 0xc620, 0x05f8, 0xc18f, 0xc620, 0x0491, 0x2244,
+	0x8920, 0x0400, 0x0000, 0x0020, 0x07ff, 0xffff, 0xffe0, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x07ff, 0xffff, 0xffe0,
+	0x0400, 0x0000, 0x0020, 0x0400, 0x0000, 0x0020, 0x0401, 0xe007,
+	0x8020, 0x0407, 0xf81f, 0xe020, 0x040f, 0xfc3f, 0xf020, 0x040e,
+	0x1c38, 0xf020, 0x041c, 0xce7b, 0x7820, 0x041d, 0xfe7b, 0x7820,
+	0x041d, 0xfe78, 0xf820, 0x041c, 0xce7b, 0x7820, 0x040e, 0x1c3b,
+	0x7020, 0x040f, 0xfc3f, 0xf020, 0x0407, 0xf81f, 0xe020, 0x0401,
+	0xe007, 0x8020, 0x0400, 0x0000, 0x0020, 0x0400, 0x0000, 0x0020,
+	0x0491, 0x2244, 0x8920, 0x0460, 0xc183, 0x0020, 0x0463, 0x3183,
+	0x0020, 0x0463, 0x3003, 0x0620, 0x0460, 0xc003, 0x0620, 0x0598,
+	0xc180, 0x0620, 0x0598, 0xc180, 0x0620, 0x0491, 0x2244, 0x8920,
+	0x0400, 0x0000, 0x0020, 0x07ff, 0xffff, 0xffe0, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x07ff, 0xffff, 0xffe0, 0x0400,
+	0x0000, 0x0020, 0x0400, 0x0000, 0x0020, 0x0401, 0xe007, 0x8020,
+	0x0407, 0xf81f, 0xe020, 0x040f, 0xfc3f, 0xf020, 0x040f, 0xfc3f,
+	0xf020, 0x041f, 0xfe7f, 0xf820, 0x041f, 0xfe7f, 0xf820, 0x041f,
+	0xfe7f, 0xf820, 0x041f, 0xfe7f, 0xf820, 0x040f, 0xfc3f, 0xf020,
+	0x040f, 0xfc3f, 0xf020, 0x0407, 0xf81f, 0xe020, 0x0401, 0xe007,
+	0x8020, 0x0400, 0x0000, 0x0020, 0x0400, 0x0000, 0x0020, 0x0491,
+	0x2244, 0x8920, 0x0460, 0xc183, 0x0020, 0x0463, 0x3183, 0x0020,
+	0x0463, 0x3003, 0x0620, 0x0460, 0xc003, 0x0620, 0x0598, 0xc180,
+	0x0620, 0x0598, 0xc180, 0x0620, 0x0491, 0x2244, 0x8920, 0x0400,
+	0x0000, 0x0020, 0x07ff, 0xffff, 0xffe0, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x07ff, 0xffff, 0xffe0, 0x0400, 0x0000,
+	0x0020, 0x0400, 0x0000, 0x0020, 0x0401, 0xe007, 0x8020, 0x0406,
+	0x1818, 0x6020, 0x0408, 0x0420, 0x1020, 0x0408, 0x0420, 0x1020,
+	0x0410, 0x0240, 0x0820, 0x0410, 0x0240, 0x0820, 0x0410, 0x0240,
+	0x0820, 0x0410, 0x0240, 0x0820, 0x0408, 0x0420, 0x1020, 0x0408,
+	0x0420, 0x1020, 0x0406, 0x1818, 0x6020, 0x0401, 0xe007, 0x8020,
+	0x0400, 0x0000, 0x0020, 0x0400, 0x0000, 0x0020, 0x0460, 0xc183,
+	0x0620, 0x04f1, 0xe3c7, 0x99a0, 0x04f3, 0x33c7, 0x99a0, 0x04f3,
+	0x3667, 0x8f20, 0x04f1, 0xe667, 0x8f20, 0x0599, 0xe3cc, 0xcf20,
+	0x0599, 0xe3cc, 0xcf20, 0x0460, 0xc183, 0x0620, 0x0400, 0x0000,
+	0x0020, 0x07ff, 0xffff, 0xffe0, 0x0000, 0x0000, 0x0000
+};
+
+static int16 DATAS_08[] = {
+	0x0000, 0x0000, 0x0000, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff,
+	0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0,
+	0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff,
+	0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0,
+	0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff,
+	0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0,
+	0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x0000, 0x0000, 0x0000
+};
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x20119178L, Auo_string, 0, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x21f10178L, Auo_string, 0, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29f10178L, Auo_string, TEXT_12, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x29f10178L, Auo_string, 0, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_004, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_23, 0, 0, BUBBLE_01, 0 };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_24, 0, 0, BUBBLE_02, 0 };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, 0x20119178L, Auo_string, 0, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON10 = { A_3Dbutton, 0x20119178L, Auo_string, 0, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON11 = { A_3Dbutton, 0x20119178L, Auo_string, 0, 0, 0, 0, 0 };
+static AUSERBLK A_3DBUTTON12 = { A_3Dbutton, 0x20119178L, Auo_string, 0, 0, 0, 0, 0 };
+static AUSERBLK A_BOXED01 = { A_boxed, 0x90780512L, Auo_boxed, 0, 0, 0, BUBBLE_31, 0 };
+static AUSERBLK A_BOXED02 = { A_boxed, 0x90382012L, Auo_boxed, 0, 0, 0, 0, 0 };
+static AUSERBLK A_BOXED03 = { A_boxed, 0x9008ff12L, Auo_boxed, 0, 0, 0, BUBBLE_24, 0 };
+static AUSERBLK A_BOXED04 = { A_boxed, 0x90382012L, Auo_boxed, 0, 0, 0, BUBBLE_30, 0 };
+static AUSERBLK A_BOXED05 = { A_boxed, 0x90381d12L, Auo_boxed, 0, 0, 0, 0, 0 };
+static AUSERBLK A_CHECKBOX01 = { A_checkbox, 00001L, Auo_string, TEXT_02, 0, 0, BUBBLE_29, 0 };
+static AUSERBLK A_CHECKBOX02 = { A_checkbox, 00001L, Auo_string, TEXT_20, 0, 0, BUBBLE_15, 0 };
+static AUSERBLK A_CHECKBOX03 = { A_checkbox, 00001L, Auo_string, TEXT_14, 0, 0, BUBBLE_13, 0 };
+static AUSERBLK A_CHECKBOX04 = { A_checkbox, 00001L, Auo_string, TEXT_350, 0, 0, BUBBLE_10, 0 };
+static AUSERBLK A_CHECKBOX05 = { A_checkbox, 00001L, Auo_string, TEXT_118, 0, 0, BUBBLE_14, 0 };
+static AUSERBLK A_CHECKBOX06 = { A_checkbox, 00001L, Auo_string, TEXT_55, 0, 0, BUBBLE_34, 0 };
+static AUSERBLK A_CHECKBOX07 = { A_checkbox, 00001L, Auo_string, TEXT_03, 0, 0, BUBBLE_12, 0 };
+static AUSERBLK A_CHECKBOX08 = { A_checkbox, 00001L, Auo_string, TEXT_263, 0, 0, BUBBLE_09, 0 };
+static AUSERBLK A_CHECKBOX09 = { A_checkbox, 00001L, Auo_string, TEXT_009, 0, 0, BUBBLE_11, 0 };
+static AUSERBLK A_CHECKBOX10 = { A_checkbox, 00001L, Auo_string, TEXT_15, 0, 0, BUBBLE_28, 0 };
+static AUSERBLK A_CHECKBOX11 = { A_checkbox, 00001L, Auo_string, TEXT_345, 0, 0, BUBBLE_25, 0 };
+static AUSERBLK A_CHECKBOX12 = { A_checkbox, 00001L, Auo_string, TEXT_347, 0, 0, BUBBLE_26, 0 };
+static AUSERBLK A_CHECKBOX13 = { A_checkbox, 00001L, Auo_string, TEXT_018, 0, 0, BUBBLE_27, 0 };
+static AUSERBLK A_CHECKBOX14 = { A_checkbox, 00001L, Auo_string, TEXT_16, 0, 0, BUBBLE_23, 0 };
+static AUSERBLK A_CHECKBOX15 = { A_checkbox, 00001L, Auo_string, TEXT_26, 0, 0, BUBBLE_03, 0 };
+static AUSERBLK A_CHECKBOX16 = { A_checkbox, 00001L, Auo_string, TEXT_42, 0, 0, BUBBLE_08, 0 };
+static AUSERBLK A_CHECKBOX17 = { A_checkbox, 00001L, Auo_string, TEXT_47, 0, 0, BUBBLE_04, 0 };
+static AUSERBLK A_CHECKBOX18 = { A_checkbox, 00001L, Auo_string, TEXT_48, 0, 0, BUBBLE_05, 0 };
+static AUSERBLK A_CHECKBOX19 = { A_checkbox, 00001L, Auo_string, TEXT_49, 0, 0, BUBBLE_06, 0 };
+static AUSERBLK A_CHECKBOX20 = { A_checkbox, 00001L, Auo_string, TEXT_50, 0, 0, BUBBLE_07, 0 };
+static AUSERBLK A_CHECKBOX21 = { A_checkbox, 00001L, Auo_string, TEXT_51, 0, 0, BUBBLE_17, 0 };
+static AUSERBLK A_CHECKBOX22 = { A_checkbox, 00001L, Auo_string, TEXT_52, 0, 0, BUBBLE_18, 0 };
+static AUSERBLK A_CHECKBOX23 = { A_checkbox, 00001L, Auo_string, TEXT_53, 0, 0, BUBBLE_19, 0 };
+static AUSERBLK A_CHECKBOX24 = { A_checkbox, 00001L, Auo_string, TEXT_54, 0, 0, BUBBLE_32, 0 };
+static AUSERBLK A_CHECKBOX25 = { A_checkbox, 00001L, Auo_string, TEXT_56, 0, 0, BUBBLE_33, 0 };
+static AUSERBLK A_CYCLE01 = { A_cycle, 0x00010290L, Auo_cycle, TEXT_08, 0, 0, BUBBLE_21, 0 };
+static AUSERBLK A_CYCLE02 = { A_cycle, 0x00010290L, Auo_cycle, TEXT_17, 0, 0, BUBBLE_20, 0 };
+static AUSERBLK A_CYCLE03 = { A_cycle, 0x00010290L, Auo_cycle, TEXT_11, 0, 0, BUBBLE_22, 0 };
+static AUSERBLK A_CYCLE04 = { A_cycle, 0x00010290L, Auo_cycle, TEXT_45, 0, 0, BUBBLE_16, 0 };
+static AUSERBLK A_INNERFRAME01 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_04, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_09, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_07, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME04 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_13, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME05 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_05, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME06 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_06, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME07 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_25, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME08 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_40, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME09 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_41, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME10 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_43, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME11 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_46, 0, 0, 0, 0 };
+static AUSERBLK A_INNERFRAME12 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_01, 0, 0, 0, 0 };
+
+static CICON _C4_IC_BEHAVE = { 4, &DATAS_07[3], DATAS_08, 0, 0, 0 };
+
+static int16 _MSK_IC_BEHAVE[] = {
+	0x0000, 0x0000, 0x0000, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff,
+	0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0,
+	0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff,
+	0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0,
+	0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff,
+	0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0,
+	0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff, 0xffe0, 0x07ff, 0xffff,
+	0xffe0, 0x07ff, 0xffff, 0xffe0, 0x0000, 0x0000, 0x0000
+};
+static int16 _DAT_IC_BEHAVE[] = {
+	0x0000, 0x0000, 0x0000, 0x07ff, 0xffff, 0xffe0, 0x0400, 0x0000,
+	0x0020, 0x0400, 0x0000, 0x0020, 0x0401, 0xe007, 0x8020, 0x0406,
+	0x1818, 0x6020, 0x0408, 0x0420, 0x1020, 0x0409, 0xe427, 0x1020,
+	0x0413, 0x3244, 0x8820, 0x0412, 0x0244, 0x8820, 0x0412, 0x0247,
+	0x0820, 0x0413, 0x3244, 0x8820, 0x0409, 0xe424, 0x9020, 0x0408,
+	0x0420, 0x1020, 0x0406, 0x1818, 0x6020, 0x0401, 0xe007, 0x8020,
+	0x0400, 0x0000, 0x0020, 0x0400, 0x0000, 0x0020, 0x0460, 0xc183,
+	0x0620, 0x0491, 0x2244, 0x9fa0, 0x0493, 0xf244, 0x9fa0, 0x0493,
+	0xf7e4, 0x8920, 0x0491, 0x27e4, 0x8920, 0x05f9, 0x224f, 0xc920,
+	0x05f9, 0x224f, 0xc920, 0x0460, 0xc183, 0x0620, 0x0400, 0x0000,
+	0x0020, 0x07ff, 0xffff, 0xffe0, 0x0000, 0x0000, 0x0000
+};
+
+static CICONBLK IC_BEHAVE = { { _MSK_IC_BEHAVE, _DAT_IC_BEHAVE, TEXT_331, 0x1000, 0, 0, 12, 0, 48, 29, 0, 32, 72, 8 }, &_C4_IC_BEHAVE };
+
+static OBJECT  EDIT_BEHAVE =      { -1,  1, 36, G_USERDEF, 0, 0x0010, C_UNION(&A_3DBUTTON03), 0, 0, 0x0044, 0x0011 };
+static OBJECT  _01_EDIT_BEHAVE =  {  9,  2,  7, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME06), 0x0001, 0, 0x0021, 0x0005 };
+static OBJECT  _02_EDIT_BEHAVE =  {  3, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_18), 0x0001, 0x0001, 0x0009, 1 };
+static OBJECT  _03_EDIT_BEHAVE =  {  5, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX01), 0x0001, 0x0003, 0x000b, 1 };
+static AOBJECT _03aEDIT_BEHAVE =  {  0, 0, AEO, 0x8855, 0, 0, 0, 0 };
+static OBJECT  _05_EDIT_BEHAVE =  {  7, -1, -1, G_USERDEF, 0x0040, 0x0030, C_UNION(&A_CYCLE01), 0x000d, 0x0003, 0x0012, 1 };
+static AOBJECT _05aEDIT_BEHAVE =  { Aus_cycle, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _07_EDIT_BEHAVE =  {  1, -1, -1, G_USERDEF, 0, 0x0038, C_UNION(&A_CYCLE02), 0x000d, 0x0001, 0x0012, 1 };
+static AOBJECT _07aEDIT_BEHAVE =  { Aus_cycle, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _09_EDIT_BEHAVE =  { 16, 10, 14, G_USERDEF, 0x0040, 0, C_UNION(&A_INNERFRAME02), 0x0022, 0, 0x0021, 0x0005 };
+static OBJECT  _10_EDIT_BEHAVE =  { 12, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX12), 0x0001, 0x0001, 0x000d, 1 };
+static AOBJECT _10aEDIT_BEHAVE =  {  0,  0, AEO, 0x8852, 0, 0, 0, 0 };
+static OBJECT  _12_EDIT_BEHAVE =  { 14, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX13), 0x0001, 0x0002, 0x001b, 1 };
+static AOBJECT _12aEDIT_BEHAVE =  { 0, 0, AEO, 0x884c, 0, 0, 0, 0 };
+static OBJECT  _14_EDIT_BEHAVE =  {  9, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX10), 0x0001, 0x0003, 0x0019, 1 };
+static AOBJECT _14aEDIT_BEHAVE =  { 0, 0, AEO, 0x8849, 0, 0, 0, 0 };
+static OBJECT  _16_EDIT_BEHAVE =  { 28, 17, 26, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME12), 0x0001, 0x0005, 0x0042, 0x0005 };
+static OBJECT  _17_EDIT_BEHAVE =  { 19, -1, -1, G_STRING, 0x0040, 0, C_UNION(TEXT_110), 0x0001, 0x0001, 0x0007, 1 };
+static AOBJECT _17aEDIT_BEHAVE =  { edbh_list, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _19_EDIT_BEHAVE =  { 21, -1, -1, G_STRING, 0x0040, 0, C_UNION(TEXT_112), 0x0001, 0x0003, 0x0005, 1 };
+static AOBJECT _19aEDIT_BEHAVE =  { edbh_list, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _21_EDIT_BEHAVE =  { 22, -1, -1, G_USERDEF, 0x0001, 0x0009, C_UNION(&A_CHECKBOX25), 0x001f, 0x0002, 0x0019, 1 };
+static OBJECT  _22_EDIT_BEHAVE =  { 23, -1, -1, G_USERDEF, 0x0001, 0x0009, C_UNION(&A_CHECKBOX06), 0x001f, 0x0001, 0x0020, 1 };
+static OBJECT  _23_EDIT_BEHAVE =  { 24, -1, -1, G_USERDEF, 0x0001, 0x0008, C_UNION(&A_CHECKBOX02), 0x001f, 0x0003, 0x0020, 1 };
+static OBJECT  _24_EDIT_BEHAVE =  { 26, -1, -1, G_USERDEF, 0x0040, 0x0030, C_UNION(&A_CYCLE03), 0x000a, 0x0001, 0x0012, 1 };
+static AOBJECT _24aEDIT_BEHAVE =  { Aus_cycle, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _26_EDIT_BEHAVE =  { 16, -1, -1, G_USERDEF, 0x0005, 0x0008, C_UNION(&A_3DBUTTON04), 0x000a, 0x0003, 0x0012, 1 };
+static AOBJECT _26aEDIT_BEHAVE =  { 0, 0, AEO, 0x8849, 0, 0, 0, 0 };
+static OBJECT  _28_EDIT_BEHAVE =  { 34, 29, 33, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME05), 0x0001, 0x000a, 0x0042, 0x0004 };
+static OBJECT  _29_EDIT_BEHAVE =  { 31, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX11), 0x0001, 0x0001, 0x000c, 1 };
+static AOBJECT _29aEDIT_BEHAVE =  { 0, 0, AEO, 0x8842, 0, 0, 0, 0 };
+static OBJECT  _31_EDIT_BEHAVE =  { 33, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX14), 0x0001, 0x0002, 0x0011, 1 };
+static AOBJECT _31aEDIT_BEHAVE =  { 0, 0, AEO, 0x8843, 0, 0, 0, 0 };
+static OBJECT  _33_EDIT_BEHAVE =  { 28, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED03), 0x0013, 0x0002, 0x002d, 1 };
+static OBJECT  _34_EDIT_BEHAVE =  { 36, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON02), 0x0015, 0x000e, 0x000c, 0x0002 };
+static AOBJECT _34aEDIT_BEHAVE =  { edbh_ok, 0, AEO, 0x884f, 0, 0, 0, 0 };
+static OBJECT  _36_EDIT_BEHAVE =  {  0, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON06), 0x0023, 0x000e, 0x000c, 0x0002 };
+static AOBJECT _36aEDIT_BEHAVE =  { edbh_abort, 0, AEO | OF_LASTOB, 0x8841, 0, 0, 0, 0 };
+
+static OBJECT  EDIT_MAINMOD =     { -1,  1, 96, G_USERDEF, 0, 0x0010, C_UNION(&A_3DBUTTON05), 0, 0, 0x0047, 0x001e };
+static OBJECT  _01_EDIT_MAINMOD = {  3, -1, -1, G_USERDEF, 0x0041, 0x0001, C_UNION(&A_CHECKBOX15), 0x0001, 0, 0x0018, 0x0002 };
+static AOBJECT _01aEDIT_MAINMOD = { edmm_ismain, 0, AEO, 0x8848, 0, 0, 0, 0 };
+static OBJECT  _03_EDIT_MAINMOD = { 12,  4, 10, G_USERDEF, 0x0040, 0, C_UNION(&A_INNERFRAME11), 0x0030, 0x0001, 0x0017, 0x0006 };
+static OBJECT  _04_EDIT_MAINMOD = {  6, -1, -1, G_USERDEF, 0x0041, 0x0001, C_UNION(&A_CHECKBOX17), 0x0001, 0x0001, 0x0007, 1 };
+static AOBJECT _04aEDIT_MAINMOD = { edmm_init_olga, 0, AEO, 0x884f, 0, 0, 0, 0 };
+static OBJECT  _06_EDIT_MAINMOD = {  8, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX19), 0x0001, 0x0003, 0x000c, 1 };
+static AOBJECT _06aEDIT_MAINMOD = { 0, 0, AEO, 0x8853, 0, 0, 0, 0 };
+static OBJECT  _08_EDIT_MAINMOD = { 10, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX20), 0x0001, 0x0004, 0x000c, 1 };
+static AOBJECT _08aEDIT_MAINMOD = { 0, 0, AEO, 0x8842, 0, 0, 0, 0 };
+static OBJECT  _10_EDIT_MAINMOD = {  3, -1, -1, G_USERDEF, 0x0001, 0, C_UNION(&A_CHECKBOX18), 0x0004, 0x0002, 0x0009, 1 };
+static AOBJECT _10aEDIT_MAINMOD = { 0, 0, AEO, 0x8857, 0, 0, 0, 0 };
+static OBJECT  _12_EDIT_MAINMOD = { 25, 13, 23, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME04), 0, 0x0002, 0x0030, 0x0005 };
+static OBJECT  _13_EDIT_MAINMOD = { 14, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_22), 0x0001, 0x0001, 0x000c, 1 };
+static OBJECT  _14_EDIT_MAINMOD = { 21, 15, 15, G_USERDEF, 0, 0, C_UNION(&A_3DBUTTON01), 0x000e, 0x0001, 0x0020, 0x0003 };
+static OBJECT  _15_EDIT_MAINMOD = { 14, 16, 19, G_BOX, 0, 0, C_UNION(0x00ff0101L), 0, 0, 0x0020, 0x0003 };
+static OBJECT  _16_EDIT_MAINMOD = { 17, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED05), 0, 0, 0x001e, 1 };
+static OBJECT  _17_EDIT_MAINMOD = { 19, -1, -1, G_USERDEF, 0x1008, 0, C_UNION(&A_BOXED02), 0, 0x0001, 0x0020, 1 };
+static AOBJECT _17aEDIT_MAINMOD = { 0, edbh_wi, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _19_EDIT_MAINMOD = { 15, -1, -1, G_USERDEF, 0x1008, 0, C_UNION(&A_BOXED02), 0, 0x0002, 0x0020, 1 };
+static AOBJECT _19aEDIT_MAINMOD = { 0, edbh_wi, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _21_EDIT_MAINMOD = { 23, -1, -1, G_STRING, 0x0040, 0, C_UNION(TEXT_21), 0x0001, 0x0002, 0x000c, 1 };
+static AOBJECT _21aEDIT_MAINMOD = { edbh_list, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _23_EDIT_MAINMOD = { 12, -1, -1, G_STRING, 0x0040, 0, C_UNION(TEXT_111), 0x0002, 0x0003, 0x000b, 1 };
+static AOBJECT _23aEDIT_MAINMOD = { edbh_list, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _25_EDIT_MAINMOD = { 35, 26, 33, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME07), 0, 0x0007, 0x0030, 0x0006 };
+static OBJECT  _26_EDIT_MAINMOD = { 27, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_27), 0x0001, 0x0001, 0x0008, 1 };
+static OBJECT  _27_EDIT_MAINMOD = { 31, 28, 28, G_USERDEF, 0, 0, C_UNION(&A_3DBUTTON09), 0x000e, 0x0001, 0x0020, 0x0002 };
+static OBJECT  _28_EDIT_MAINMOD = { 27, 29, 30, G_BOX, 0, 0, C_UNION(0x1101L), 0, 0, 0x0020, 0x0002 };
+static OBJECT  _29_EDIT_MAINMOD = { 30, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0, 32, 1 };
+static OBJECT  _30_EDIT_MAINMOD = { 28, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 1, 32, 1 };
+static OBJECT  _31_EDIT_MAINMOD = { 32, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_28), 0x0001, 0x0002, 0x0007, 1 };
+static OBJECT  _32_EDIT_MAINMOD = { 33, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_44), 0x0001, 0x0004, 0x0008, 1 };
+static OBJECT  _33_EDIT_MAINMOD = { 25, -1, -1, G_USERDEF, 0x0040, 0x0030, C_UNION(&A_CYCLE04), 0x000e, 0x0004, 0x0020, 1 };
+static AOBJECT _33aEDIT_MAINMOD = { Aus_cycle, 0, AEO, 0, 0, 0, 0, 0 };
+static OBJECT  _35_EDIT_MAINMOD = { 58, 36, 56, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME01), 0x0030, 0x0007, 0x0017, 0x000d };
+static OBJECT  _36_EDIT_MAINMOD = { 38, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX05), 0x0001, 0x0001, 0x0011, 1 };
+static AOBJECT _36aEDIT_MAINMOD = { 0, 0, AEO, 0x8850, 0, 0, 0, 0 };
+static OBJECT  _38_EDIT_MAINMOD = { 40, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX03), 0x0001, 0x0003, 0x0011, 1 };
+static AOBJECT _38aEDIT_MAINMOD = { 0, 0, AEO, 0x8856, 0, 0, 0, 0 };
+static OBJECT  _40_EDIT_MAINMOD = { 42, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX04), 0x0001, 0x0004, 0x0013, 1 };
+static AOBJECT _40aEDIT_MAINMOD = { 0, 0, AEO, 0x8846, 0, 0, 0, 0 };
+static OBJECT  _42_EDIT_MAINMOD = { 44, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX08), 0x0001, 0x0005, 0x0013, 1 };
+static AOBJECT _42aEDIT_MAINMOD = { 0, 0, AEO, 0x885a, 0, 0, 0, 0 };
+static OBJECT  _44_EDIT_MAINMOD = { 46, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX09), 0x0001, 0x0006, 0x0012, 1 };
+static AOBJECT _44aEDIT_MAINMOD = { 0, 0, AEO, 0x884c, 0, 0, 0, 0 };
+static OBJECT  _46_EDIT_MAINMOD = { 48, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX07), 0x0001, 0x0007, 0x0015, 1 };
+static AOBJECT _46aEDIT_MAINMOD = { 0, 0, AEO, 0x8854, 0, 0, 0, 0 };
+static OBJECT  _48_EDIT_MAINMOD = { 50, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX16), 0x0001, 0x0008, 0x0011, 1 };
+static AOBJECT _48aEDIT_MAINMOD = { 0, 0, AEO, 0x8844, 0, 0, 0, 0 };
+static OBJECT  _50_EDIT_MAINMOD = { 52, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX21), 0x0001, 0x0002, 0x0015, 1 };
+static AOBJECT _50aEDIT_MAINMOD = { 0, 0, AEO, 0x8849, 0, 0, 0, 0 };
+static OBJECT  _52_EDIT_MAINMOD = { 54, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX22), 0x0001, 0x0009, 0x000f, 1 };
+static AOBJECT _52aEDIT_MAINMOD = { 0, 0, AEO, 0x8845, 0, 0, 0, 0 };
+static OBJECT  _54_EDIT_MAINMOD = { 56, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX23), 0x0001, 0x000a, 0x0014, 1 };
+static AOBJECT _54aEDIT_MAINMOD = { 0, 0, AEO, 0x8843, 0, 0, 0, 0 };
+static OBJECT  _56_EDIT_MAINMOD = { 35, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX24), 0x0001, 0x000b, 0x0013, 1 };
+static AOBJECT _56aEDIT_MAINMOD = { 0, 0, AEO, 0x884d, 0, 0, 0, 0 };
+static OBJECT  _58_EDIT_MAINMOD = { 71, 59, 70, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME10), 0, 0x000d, 0x0030, 0x0007 };
+static OBJECT  _59_EDIT_MAINMOD = { 60, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_30), 0x0001, 0x0001, 0x000a, 1 };
+static OBJECT  _60_EDIT_MAINMOD = { 67, 61, 61, G_USERDEF, 0, 0, C_UNION(&A_3DBUTTON12), 0x000e, 0x0001, 0x0020, 0x0005 };
+static OBJECT  _61_EDIT_MAINMOD = { 60, 62, 66, G_BOX, 0, 0, C_UNION(0x1101L), 0, 0, 0x0020, 0x0005 };
+static OBJECT  _62_EDIT_MAINMOD = { 63, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0, 0x0020, 1 };
+static OBJECT  _63_EDIT_MAINMOD = { 64, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0x0001, 0x0020, 1 };
+static OBJECT  _64_EDIT_MAINMOD = { 65, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0x0002, 0x0020, 1 };
+static OBJECT  _65_EDIT_MAINMOD = { 66, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0x0003, 0x0020, 1 };
+static OBJECT  _66_EDIT_MAINMOD = { 61, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0x0004, 0x0020, 1 };
+static OBJECT  _67_EDIT_MAINMOD = { 68, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_31), 0x0001, 0x0002, 0x0008, 1 };
+static OBJECT  _68_EDIT_MAINMOD = { 69, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_32), 0x0001, 0x0003, 0x000a, 1 };
+static OBJECT  _69_EDIT_MAINMOD = { 70, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_34), 0x0001, 0x0004, 0x0008, 1 };
+static OBJECT  _70_EDIT_MAINMOD = { 58, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_29), 0x0001, 0x0005, 0x0007, 1 };
+static OBJECT  _71_EDIT_MAINMOD = { 84, 72, 83, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME08), 0, 0x0014, 0x0030, 0x0007 };
+static OBJECT  _72_EDIT_MAINMOD = { 73, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_33), 0x0001, 0x0001, 0x0009, 1 };
+static OBJECT  _73_EDIT_MAINMOD = { 80, 74, 74, G_USERDEF, 0, 0, C_UNION(&A_3DBUTTON10), 0x000e, 0x0001, 0x0020, 0x0005 };
+static OBJECT  _74_EDIT_MAINMOD = { 73, 75, 79, G_BOX, 0, 0, C_UNION(0x1101L), 0, 0, 0x0020, 0x0005 };
+static OBJECT  _75_EDIT_MAINMOD = { 76, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0, 0x0020, 1 };
+static OBJECT  _76_EDIT_MAINMOD = { 77, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 1, 0x0020, 1 };
+static OBJECT  _77_EDIT_MAINMOD = { 78, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 2, 0x0020, 1 };
+static OBJECT  _78_EDIT_MAINMOD = { 79, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 3, 0x0020, 1 };
+static OBJECT  _79_EDIT_MAINMOD = { 74, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 4, 0x0020, 1 };
+static OBJECT  _80_EDIT_MAINMOD = { 81, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_35), 0x0001, 0x0002, 0x0006, 1 };
+static OBJECT  _81_EDIT_MAINMOD = { 82, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_38), 0x0001, 0x0003, 0x0008, 1 };
+static OBJECT  _82_EDIT_MAINMOD = { 83, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_36), 0x0001, 0x0004, 0x0009, 1 };
+static OBJECT  _83_EDIT_MAINMOD = { 71, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_37), 0x0001, 0x0005, 0x0008, 1 };
+static OBJECT  _84_EDIT_MAINMOD = { 89, 85, 88, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME03), 0x0030, 0x0014, 0x0017, 0x0003 };
+static OBJECT  _85_EDIT_MAINMOD = { 86, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_014), 0x0001, 0x0001, 0x0003, 1 };
+static OBJECT  _86_EDIT_MAINMOD = { 87, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED01), 0x0005, 0x0001, 0x0005, 1 };
+static OBJECT  _87_EDIT_MAINMOD = { 88, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_012), 0x000c, 0x0001, 0x0003, 1 };
+static OBJECT  _88_EDIT_MAINMOD = { 84, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED01), 0x0010, 0x0001, 0x0005, 1 };
+static OBJECT  _89_EDIT_MAINMOD = { 91, -1, -1, G_USERDEF, 0x4005, 0, C_UNION(&A_3DBUTTON08), 0x003b, 0x0019, 0x000b, 0x0002 };
+static AOBJECT _89aEDIT_MAINMOD = { edmm_cancel, 0, AEO, 0x8841, 0, 0, 0, 0 };
+static OBJECT  _91_EDIT_MAINMOD = { 96, 92, 93, G_USERDEF, 0, 0, C_UNION(&A_INNERFRAME09), 0, 0x001b, 0x0030, 0x0003 };
+static OBJECT  _92_EDIT_MAINMOD = { 93, -1, -1, G_STRING, 0, 0, C_UNION(TEXT_39), 0x0001, 0x0001, 0x000c, 1 };
+static OBJECT  _93_EDIT_MAINMOD = { 91, 94, 94, G_USERDEF, 0, 0, C_UNION(&A_3DBUTTON11), 0x000e, 0x0001, 0x0020, 1 };
+static OBJECT  _94_EDIT_MAINMOD = { 93, 95, 95, G_BOX, 0, 0, C_UNION(0x1101L), 0, 0, 0x0020, 1 };
+static OBJECT  _95_EDIT_MAINMOD = { 94, -1, -1, G_USERDEF, 0x0008, 0, C_UNION(&A_BOXED04), 0, 0, 0x0020, 1 };
+static OBJECT  _96_EDIT_MAINMOD = {  0, -1, -1, G_USERDEF, 0x4007, 0, C_UNION(&A_3DBUTTON07), 0x003b, 0x001b, 0x000b, 0x0002 };
+static AOBJECT _96aEDIT_MAINMOD = { edmm_ok, 0, AEO | OF_LASTOB, 0, 0, 0, 0, 0 };
+
+
+Awindow WI_BEHAVE = {
+	NULL,
+	bh_service,
+	bh_make,
+	Awi_open,
+	Awi_init,
+	&EDIT_BEHAVE,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | FULLER | MOVER | INFO | BACKDROP | ICONIFIER,
+	{ 0, 0, 99, 99 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xfcf8,
+	TEXT_10,
+	TEXT_002,
+	10000,
+	AW_TOOLBOX,
+	0,
+	-1,
+	&IC_BEHAVE,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	STGUIDE_02,
+	NULL
+};
+
+Awindow WI_MAINMOD = {
+	NULL,
+	edmm_service,
+	edmm_create,
+	Awi_open,
+	Awi_init,
+	&EDIT_MAINMOD,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | FULLER | MOVER | SIZER | UPARROW | DNARROW | VSLIDE | LFARROW | RTARROW | HSLIDE | BACKDROP | ICONIFIER,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_19,
+	TEXT_002,
+	0,
+	AW_TOOLBOX,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	STGUIDE_01,
+	HELPFILE_01
+};
