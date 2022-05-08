@@ -57,7 +57,7 @@ palette.c
 edbehave.c
 general.c
 about.c
-edutil.s
+edutil.c
 
 io\protocol.c [-J- -Z- -R- -M-]
 io\fixacs.c [-J- -Z- -R- -M-]

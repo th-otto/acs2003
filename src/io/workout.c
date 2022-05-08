@@ -36,8 +36,12 @@ static char TEXT_191[] = "Name:";
 char const A_MISSENTRY[] = "[3][ An object entry | does not exist!][ Cancel ]\0";
 char const ERR_FILETYP[] = "[3][ Wrong file-type. ][ Cancel ]\0\0";
 char const ERR_OPEN[] = "[3][ Could not find file | '%s' | or an error occured | while reading.][ Cancel ]\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+#if WITH_FIXES
+char const ERR_TRANS[] = "[3][ An overflow occured within | the translation table. | Please split the ACS-file | in several parts.][ Cancel ]";
+#else
 /* BUG: following string is not zero-terminated */
 char const ERR_TRANS[115] = "[3][ An overflow occured within | the translation table. | Please split the ACS-file | in several parts.][ Cancel ]";
+#endif
 char const ERR_TYPE[] = "[1][ An unknown object-| type was imported!][ Cancel ]\0\0\0\0\0\0\0\0\0";
 
 static char TEXT_002[] = "";

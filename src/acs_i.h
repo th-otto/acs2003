@@ -800,7 +800,7 @@ extern char *helpacc;
 extern boolean gluepart;
 extern boolean dirtysave;
 extern boolean snapping;
-extern boolean imagesnap;
+extern int16 imagesnap;
 extern boolean copyindex;
 extern boolean refimages;
 extern CEWSDATA cews;
@@ -845,10 +845,19 @@ extern Awindow WI_MAINMOD;
 /*
  * edutil.c
  */
+void set_flag(int16 setit, OBJECT *obj);
+void mod_ref(ACS_HEAD *acs, Obj_Head **ref, const char *title, int16 type);
+void set_ref(Obj_Head *ref, char *label);
+void set_val(Obj_Head *ref, char *label);
+boolean A_rubberbox(int16 x, int16 y, int16 minw, int16 minh, int16 *dstw, int16 *dsth, int16 maxw, int16 maxh);
+void view_grow(Awindow *win);
+void view_shrink(Awindow *win);
+void new_name(Awindow *win, Obj_Head *title);
 void chk_new_label(void);
 void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname);
+boolean new2label(ACS_HEAD *acs, Obj_Head *obj, const char *objname);
 void wi_pos(Awindow *win, Axywh *pos, Axywh *lastpos);
-void set_flag(int16 setit, OBJECT *obj);
+void *to_cicon(int16 *data, int16 *mask, CICONBLK *icon, int16 planes);
 
 
 /*

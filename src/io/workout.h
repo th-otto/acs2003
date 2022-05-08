@@ -3,6 +3,15 @@
 #define OUTPUT_INFO_LIST                  10 /* BOXTEXT in tree OUTPUT_INFO */
 #define OUTPUT_INFO_OBJECT                12 /* BOXTEXT in tree OUTPUT_INFO */
 
+#define INFO_OB_LINE  1
+#define INFO_OB_LINE2 2
+
+#define NEW_LABEL_NAME 2
+
+#define NEW2_LABEL_NAME   2
+#define NEW2_LABEL_OK     3
+#define NEW2_LABEL_CANCEL 4
+
 extern char const A_MISSENTRY[];
 extern char const ERR_FILETYP[];
 extern char const ERR_OPEN[];
