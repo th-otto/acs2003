@@ -66,7 +66,7 @@ static void set_behave(Awindow *win);
 
 static void edbh_wi(void)
 {
-	OBJECT *obj;
+	AOBJECT *aobj;
 	Obj_Head *head;
 	Awindow *select;
 	int16 next;
@@ -79,10 +79,10 @@ static void edbh_wi(void)
 	ACSblk->Aselect.next = 0;
 	if ((next = Adr_next()) > 0)
 	{
-		obj = &select->work[next + 1];
-		if (obj->ob_height == 10007) /* WTF? */
+		aobj = (AOBJECT *)&select->work[next + 1];
+		if (aobj->type == 10007)
 		{
-			head = (Obj_Head *)obj->ob_spec.free_string;
+			head = (Obj_Head *)aobj->userp1;
 			Aob_puttext(tree, ACSblk->ev_obnr, head->label);
 			Awi_diaend();
 			self->obchange(self, ACSblk->ev_obnr, -1);

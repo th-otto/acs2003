@@ -971,6 +971,12 @@ extern Awindow *parts_window;
 
 
 /*
+ * edit2/edmoused.c
+ */
+void set_mouse(Awindow *win);
+
+
+/*
  * editor/edobkeys.c
  */
 char *key_string(int16 key);
@@ -1064,6 +1070,13 @@ extern LISTPARM list_reference;
 
 Obj_Head *dup_ref(ACS_HEAD *acs, const char *title, int16 type);
 void del_ref(ACS_HEAD *acs, Obj_Head *label);
+
+
+/*
+ * list/edmouse.c
+ */
+MFORM *add_mouse(ACS_HEAD *acs, void *form);
+void del_mouse(ACS_HEAD *acs, MFORM *form);
 
 
 /*
