@@ -113,7 +113,7 @@ editor\edobkeys.s
 
 list\edlist.c [-J- -Z- -R- -M-]
 list\edalert.c [-J- -Z- -R- -M-]
-list\eddata.s
+list\eddata.c [-J- -Z- -R- -M-]
 list\edwind.s
 list\edicon.s
 list\edimage.s

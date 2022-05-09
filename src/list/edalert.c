@@ -1,32 +1,32 @@
 #include "acs_i.h"
 
 static Obj_Head protoalert = {
-		NULL,
-		proto_alert,
-		0,
-		sizeof(proto_alert),
-		sizeof(proto_alert),
-		NULL,
-		"ALERTBOX_01",
-		1,
-		0,
-		{ 0, 0, 0, 0 }
+	NULL,
+	proto_alert,
+	0,
+	sizeof(proto_alert),
+	sizeof(proto_alert),
+	NULL,
+	"ALERTBOX_01",
+	1,
+	0,
+	{ 0, 0, 0, 0 }
 };
 
 static OBJECT *new_work(Obj_Head *objlist);
 
 LISTPARM list_alert = {
-		NULL,
-		NULL,
-		&WI_ALERT,
-		al_list,
-		al_name,
-		LIST_ALERT,
-		&protoalert,
-		copy_alert,
-		del_alert,
-		new_work,
-		serv_alert
+	NULL,
+	NULL,
+	&WI_ALERT,
+	al_list,
+	al_name,
+	LIST_ALERT,
+	&protoalert,
+	copy_alert,
+	del_alert,
+	new_work,
+	serv_alert
 };
 
 /******************************************************************************/

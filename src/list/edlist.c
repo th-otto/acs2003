@@ -526,14 +526,14 @@ static boolean li_service(Awindow *self, int16 task, void *in_out)
 	
 	case AS_SELECTADD:
 	case AS_SELECTDEL:
-		self->menu[MEN_LIST_26].ob_state |= OS_DISABLED;
+		self->menu[MEN_LIST_SCOPE].ob_state |= OS_DISABLED;
 		if (ACSblk->Aselect.actlen == 1)
 		{
 			self->menu[MEN_LIST_NAME].ob_state &= ~OS_DISABLED;
 			aobj = (AOBJECT *)&self->work[ACSblk->Aselect.array[0]] + 1;
 			obj = aobj->userp1;
 			if (obj->flags & OBJ_GLOBAL)
-				self->menu[MEN_LIST_26].ob_state &= ~OS_DISABLED;
+				self->menu[MEN_LIST_SCOPE].ob_state &= ~OS_DISABLED;
 		} else
 		{
 			self->menu[MEN_LIST_NAME].ob_state |= OS_DISABLED;

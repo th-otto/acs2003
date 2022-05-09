@@ -1014,6 +1014,12 @@ extern Awindow *parts_window;
 
 
 /*
+ * edit2/eddataed.c
+ */
+extern Awindow WI_DATA;
+
+
+/*
  * edit2/edmoused.c
  */
 void set_mouse(Awindow *win);
@@ -1132,6 +1138,10 @@ extern LISTPARM list_menu;
  * list/eddata.c
  */
 extern LISTPARM list_data;
+
+Obj_Head *add_data(ACS_HEAD *acs, Obj_Head *data);
+void del_data(ACS_HEAD *acs, Obj_Head *data);
+Obj_Head *dup_data(ACS_HEAD *acs, void *data, size_t size);
 
 
 /*
