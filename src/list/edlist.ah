@@ -1,0 +1,480 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+char proto_alert[] = "[1][Alarmbox][ OK ]";
+char ABOUT[] = "  šber mich ...";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_006[] = "1234567890123456789012345678901";
+static char TEXT_008[] = "Abbruch";
+static char TEXT_009[] = "Global";
+static char TEXT_01[] = "  Info...   ^I";
+static char TEXT_010[] = "Lokal";
+static char TEXT_02[] = "  Scope...  \007C";
+static char TEXT_03[] = "  Neu...    ^N";
+static char TEXT_04[] = "  Frei      ^F";
+static char TEXT_05[] = "  ™ffnen    ^O";
+static char TEXT_059[] = "12345678901234567890";
+static char TEXT_069[] = "Datei:";
+static char TEXT_07[] = " Referenztypen-Kollision ";
+static char TEXT_070[] = "Liste:";
+static char TEXT_071[] = "Objekt:";
+static char TEXT_08[] = "Neu:";
+static char TEXT_09[] = " Information ";
+static char TEXT_10[] = "Alt";
+static char TEXT_11[] = "Neu";
+static char TEXT_12[] = "Alt:";
+static char TEXT_13[] = " Listen-Information ";
+static char TEXT_133[] = "123456";
+static char TEXT_14[] = " Sichtbarkeit ";
+static char TEXT_15[] = "  Name...   \007N";
+static char TEXT_170[] = "  šber mich ...     ";
+static char TEXT_171[] = "--------------------";
+static char TEXT_176[] = " Optionen ";
+static char TEXT_190[] = "Gr”že:";
+static char TEXT_192[] = "Nutzen:";
+static char TEXT_195[] = "Objekte:";
+
+char al_list[] = " ALARMBOX LISTE ";
+char al_name[] = "ALARMBOX NAME";
+char ic_list[] = " IKONEN LISTE ";
+char ic_name[] = "IKONEN NAME";
+char if_list[] = " DATEN LISTE ";
+char if_name[] = "DATEN NAME";
+char im_list[] = " BILDER LISTE ";
+char im_name[] = "BILD NAME";
+char me_list[] = " MENš LISTE ";
+char me_name[] = "MENš NAME";
+char mf_list[] = " MAUSFORMEN LISTE ";
+char mf_name[] = "MAUSFORM NAME";
+char ob_list[] = " OBJEKTBŽUME LISTE ";
+char ob_name[] = "OBJEKTBAUM NAME";
+char proto_string[] = "Freier String";
+char proto_wihelpfile[] = "";
+char proto_wihelptitle[] = "";
+char proto_wiinfo[] = "";
+char proto_winame[] = " Hinweis ";
+char pu_list[] = " POPUP LISTE ";
+char pu_name[] = "POPUP NAME";
+char rf_list[] = " REFERENZEN LISTE ";
+char rf_name[] = "REFERENZ NAME";
+char st_list[] = " TEXTE LISTE ";
+char st_name[] = "TEXT NAME";
+char te_list[] = " TEDINFO LISTE ";
+char te_name[] = "TEDINFO NAME";
+char us_list[] = " USERBLK LISTE ";
+char us_name[] = "USERBLK NAME";
+char wi_list[] = " FENSTER LISTE ";
+char wi_name[] = "FENSTER NAME";
+#endif
+
+#if COUNTRY == COUNTRY_US
+char proto_alert[] = "[1][Alarmbox][ OK ]";
+char ABOUT[] = "  About me...\0\0";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_006[] = "1234567890123456789012345678901";
+static char TEXT_008[] = "Cancel";
+static char TEXT_009[] = "Global";
+static char TEXT_01[] = "  Info...   ^I";
+static char TEXT_010[] = "Local";
+static char TEXT_02[] = "  Scope...  \007C";
+static char TEXT_03[] = "  New...    ^N";
+static char TEXT_04[] = "  free      ^F";
+static char TEXT_05[] = "  Open      ^O";
+static char TEXT_059[] = "12345678901234567890";
+static char TEXT_069[] = "File:";
+static char TEXT_07[] = " Referencetype-Collision ";
+static char TEXT_070[] = "List:";
+static char TEXT_071[] = "Object:";
+static char TEXT_08[] = "new:";
+static char TEXT_09[] = " Information ";
+static char TEXT_10[] = "Old";
+static char TEXT_11[] = "New";
+static char TEXT_12[] = "old:";
+static char TEXT_13[] = " List-Information ";
+static char TEXT_133[] = "123456";
+static char TEXT_14[] = " Scope ";
+static char TEXT_15[] = "  Name...   \007N";
+static char TEXT_170[] = "  About me ...     ";
+static char TEXT_171[] = "--------------------";
+static char TEXT_176[] = " Options ";
+static char TEXT_190[] = "Size:";
+static char TEXT_192[] = "Usage:";
+static char TEXT_195[] = "Objects:";
+
+char al_list[] = " ALARMBOX LIST \0";
+char al_name[] = "ALARMBOX NAME";
+char ic_list[] = " ICONS LIST \0\0";
+char ic_name[] = "ICONS NAME\0";
+char if_list[] = " DATA LIST \0\0";
+char if_name[] = "DATA NAME\0";
+char im_list[] = " PICTURE LIST ";
+char im_name[] = "PICTURE NAME";
+char me_list[] = " MENU LIST \0";
+char me_name[] = "MENU NAME";
+char mf_list[] = " MOUSEFORMS LIST \0";
+#if WITH_FIXES
+char mf_name[] = "MOUSEFORM NAME";
+#else
+char mf_name[14] = "MOUSEFORM NAME";
+#endif
+char ob_list[] = " OBJECTTREES LIST \0";
+char ob_name[] = "OBJECTTREE NAME";
+char proto_string[] = "Free String\0\0";
+char proto_wihelpfile[] = "";
+char proto_wihelptitle[] = "";
+char proto_wiinfo[] = "";
+char proto_winame[] = " Window \0";
+char pu_list[] = " POPUP LIST \0";
+char pu_name[] = "POPUP NAME";
+char rf_list[] = " REFERENCES LIST \0";
+#if WITH_FIXES
+char rf_name[] = "REFERENCE NAME";
+#else
+char rf_name[14] = "REFERENCE NAME";
+#endif
+char st_list[] = " TEXT LIST \0\0";
+char st_name[] = "TEXT NAME";
+char te_list[] = " TEDINFO LIST \0";
+char te_name[] = "TEDINFO NAME";
+char us_list[] = " USERBLK LIST \0";
+char us_name[] = "USERBLK NAME";
+char wi_list[] = " WINDOW LIST \0\0";
+char wi_name[] = "WINDOW NAME\0\0";
+#endif
+
+static TEDINFO TEDI_002 = { TEXT_133, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0001, 0x1101, 0x0000, 0x0000, 0x0007, 0x0001 };
+static TEDINFO TEDI_003 = { TEXT_006, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0000, 0x1180, 0x0000, 0x0000, 0x0020, 0x0001 };
+static TEDINFO TEDI_006 = { TEXT_133, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0001, 0x1180, 0x0000, 0x0000, 0x0007, 0x0001 };
+static TEDINFO TEDI_008 = { TEXT_006, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1180, 0x0000, 0x0000, 0x0020, 0x0001 };
+static TEDINFO TEDI_009 = { TEXT_059, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0000, 0x1180, 0x0000, 0x0000, 0x0015, 0x0001 };
+static TEDINFO TEDI_011 = { TEXT_006, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0000, 0x1100, 0x0000, 0x0000, 0x0020, 0x0001 };
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_11, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x29e201f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_008, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_10, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX01 = { A_checkbox, 0x00000001L, Auo_string, TEXT_009, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX03 = { A_checkbox, 0x00000001L, Auo_string, TEXT_010, NULL, NULL, NULL, NULL };
+
+#define MEN_LIST_NEW    16
+#define MEN_LIST_FREE   18
+#define MEN_LIST_OPEN   22
+#define MEN_LIST_NAME   24
+#define MEN_LIST_26     26
+
+static OBJECT  MEN_LIST =     { -1,  1,  5, G_IBOX, 0x0000, 0x0000, C_UNION(0), 0x0000, 0x0000, 0x005a, 0x0019 };
+static OBJECT  _01_MEN_LIST = {  5,  2,  2, G_BOX, 0x0000, 0x0000, C_UNION(0x00001100), 0x0000, 0x0000, 0x005a, 0x0201 };
+static OBJECT  _02_MEN_LIST = {  1,  3,  4, G_IBOX, 0x0000, 0x0000, C_UNION(0x00000000), 0x0002, 0x0000, 0x0010, 0x0301 };
+static OBJECT  _03_MEN_LIST = {  4, -1, -1, G_TITLE, 0x0000, 0x0000, C_UNION(TEXT_002), 0x0000, 0x0000, 0x0006, 0x0301 };
+static OBJECT  _04_MEN_LIST = {  2, -1, -1, G_TITLE, 0x0000, 0x0000, C_UNION(TEXT_176), 0x0006, 0x0000, 0x000a, 0x0301 };
+static OBJECT  _05_MEN_LIST = {  0,  6, 15, G_IBOX, 0x0000, 0x0000, C_UNION(0x00000000L), 0x0000, 0x0301, 0x0050, 0x0013 };
+static OBJECT  _06_MEN_LIST = { 15,  7, 14, G_BOX, 0x0000, 0x0000, C_UNION(0x00ff1100L), 0x0002, 0x0000, 0x0014, 0x0008 };
+static OBJECT  _07_MEN_LIST = {  8, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_170), 0x0000, 0x0000, 0x0014, 0x0001 };
+static OBJECT  _08_MEN_LIST = {  9, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_171), 0x0000, 0x0001, 0x0014, 0x0001 };
+static OBJECT  _09_MEN_LIST = { 10, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_002), 0x0000, 0x0002, 0x0014, 0x0001 };
+static OBJECT  _10_MEN_LIST = { 11, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_002), 0x0000, 0x0003, 0x0014, 0x0001 };
+static OBJECT  _11_MEN_LIST = { 12, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_002), 0x0000, 0x0004, 0x0014, 0x0001 };
+static OBJECT  _12_MEN_LIST = { 13, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_002), 0x0000, 0x0005, 0x0014, 0x0001 };
+static OBJECT  _13_MEN_LIST = { 14, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_002), 0x0000, 0x0006, 0x0014, 0x0001 };
+static OBJECT  _14_MEN_LIST = {  6, -1, -1, G_STRING, 0x0000, 0x2000, C_UNION(TEXT_002), 0x0000, 0x0007, 0x0012, 0x0001 };
+static OBJECT  _15_MEN_LIST = {  5, 16, 26, G_BOX, 0x0000, 0x0000, C_UNION(0x00ff1101L), 0x0008, 0x0000, 0x0015, 0x0006 };
+static OBJECT  _16_MEN_LIST = { 18, -1, -1, G_STRING, 0x0000, 0x0100, C_UNION(TEXT_03), 0x0000, 0x0000, 0x0015, 0x0001 };
+static AOBJECT _16aMEN_LIST = { li_new, NULL, 0x8000, 0x844e, NULL, NULL, 0, 0 };
+static OBJECT  _18_MEN_LIST = { 20, -1, -1, G_STRING, 0x0000, 0x0108, C_UNION(TEXT_04), 0x0000, 0x0004, 0x0015, 0x0001 };
+static AOBJECT _18aMEN_LIST = { li_setfree, NULL, 0x8000, 0x8446, NULL, NULL, 0, 0 };
+static OBJECT  _20_MEN_LIST = { 22, -1, -1, G_STRING, 0x0000, 0x0100, C_UNION(TEXT_01), 0x0000, 0x0003, 0x0015, 0x0001 };
+static AOBJECT _20aMEN_LIST = { li_info, NULL, 0x8000, 0x8449, NULL, NULL, 0, 0 };
+static OBJECT  _22_MEN_LIST = { 24, -1, -1, G_STRING, 0x0000, 0x0108, C_UNION(TEXT_05), 0x0000, 0x0002, 0x0015, 0x0001 };
+static AOBJECT _22aMEN_LIST = { li_open, NULL, 0x8000, 0x844f, NULL, NULL, 0, 0 };
+static OBJECT  _24_MEN_LIST = { 26, -1, -1, G_STRING, 0x0000, 0x0108, C_UNION(TEXT_15), 0x0000, 0x0001, 0x0015, 0x0001 };
+static AOBJECT _24aMEN_LIST = { li_changename, NULL, 0x8000, 0x884e, NULL, NULL, 0, 0 };
+static OBJECT  _26_MEN_LIST = { 15, -1, -1, G_STRING, 0x0000, 0x0108, C_UNION(TEXT_02), 0x0000, 0x0005, 0x0015, 0x0001 };
+static AOBJECT _26aMEN_LIST = { li_scope, NULL, 0x8020, 0x8843, NULL, NULL, 0, 0 };
+
+static OBJECT  DIFF_TYPE =     { -1,  1,  1, G_IBOX, 0x0000, 0x0000, C_UNION(0x00ff1141L), 0x0000, 0x0000, 0x0024, 0x0009 };
+static OBJECT  _01_DIFF_TYPE = {  0,  2, 12, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON05), 0x0000, 0x0000, 0x0024, 0x0009 };
+static OBJECT  _02_DIFF_TYPE = {  3, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(TEXT_12), 0x0005, 0x0003, 0x0004, 0x0001 };
+static OBJECT  _03_DIFF_TYPE = {  4, -1, -1, G_BOXTEXT, 0x0040, 0x0000, C_UNION(&TEDI_009), 0x000b, 0x0003, 0x0014, 0x0001 };
+static OBJECT  _04_DIFF_TYPE = {  5, -1, -1, G_BOXTEXT, 0x0040, 0x0000, C_UNION(&TEDI_009), 0x000b, 0x0004, 0x0014, 0x0001 };
+static OBJECT  _05_DIFF_TYPE = {  6, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(TEXT_08), 0x0005, 0x0004, 0x0004, 0x0001 };
+static OBJECT  _06_DIFF_TYPE = {  8, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON01), 0x0001, 0x0006, 0x000a, 0x0002 };
+static AOBJECT _06aDIFF_TYPE = { NULL, NULL, 0x8000, 0x884e, NULL, NULL, 0, 0 };
+static OBJECT  _08_DIFF_TYPE = { 10, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON07), 0x000d, 0x0006, 0x000a, 0x0002 };
+static AOBJECT _08aDIFF_TYPE = { NULL, NULL, 0x8000, 0x884c, NULL, NULL, 0, 0 };
+static OBJECT  _10_DIFF_TYPE = { 12, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON06), 0x0019, 0x0006, 0x000a, 0x0002 };
+static AOBJECT _10aDIFF_TYPE = { NULL, NULL, 0x8000, 0x8841, NULL, NULL, 0, 0 };
+static OBJECT  _12_DIFF_TYPE = {  1, -1, -1, G_BOXTEXT, 0x0060, 0x0000, C_UNION(&TEDI_008), 0x0002, 0x0001, 0x0020, 0x0001 };
+
+#define INFO_LIST_FILENAME  8
+#define INFO_LIST_LISTNAME  9
+#define INFO_LIST_OBJNAME  10
+#define INFO_LIST_USED     11
+#define INFO_LIST_USAGE    13
+
+static OBJECT  INFO_LIST =     { -1,  1,  1, G_IBOX, 0x0000, 0x0000, C_UNION(0x00ff1141L), 0x0000, 0x0000, 0x0028, 0x0009 };
+static OBJECT  _01_INFO_LIST = {  0,  2, 13, G_USERDEF, 0x0000, 0x0010, C_UNION(&A_3DBUTTON05), 0x0000, 0x0000, 0x0028, 0x0009 };
+static OBJECT  _02_INFO_LIST = {  4, -1, -1, G_USERDEF, 0x0007, 0x0010, C_UNION(&A_3DBUTTON09), 0x000e, 0x0006, 0x000c, 0x0002 };
+static AOBJECT _02aINFO_LIST = { NULL, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 };
+static OBJECT  _04_INFO_LIST = {  5, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_069), 0x0001, 0x0001, 0x0006, 0x0001 };
+static OBJECT  _05_INFO_LIST = {  6, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_070), 0x0001, 0x0002, 0x0006, 0x0001 };
+static OBJECT  _06_INFO_LIST = {  7, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_071), 0x0001, 0x0003, 0x0007, 0x0001 };
+static OBJECT  _07_INFO_LIST = {  8, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_190), 0x0001, 0x0004, 0x0006, 0x0001 };
+static OBJECT  _08_INFO_LIST = {  9, -1, -1, G_BOXTEXT, 0x0000, 0x0000, C_UNION(&TEDI_011), 0x0008, 0x0001, 0x001f, 0x0001 };
+static OBJECT  _09_INFO_LIST = { 10, -1, -1, G_BOXTEXT, 0x0000, 0x0000, C_UNION(&TEDI_011), 0x0008, 0x0002, 0x001f, 0x0001 };
+static OBJECT  _10_INFO_LIST = { 11, -1, -1, G_BOXTEXT, 0x0000, 0x0000, C_UNION(&TEDI_011), 0x0008, 0x0003, 0x001f, 0x0001 };
+static OBJECT  _11_INFO_LIST = { 12, -1, -1, G_BOXTEXT, 0x0000, 0x0000, C_UNION(&TEDI_002), 0x0008, 0x0004, 0x0006, 0x0001 };
+static OBJECT  _12_INFO_LIST = { 13, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_192), 0x001a, 0x0004, 0x0007, 0x0001 };
+static OBJECT  _13_INFO_LIST = {  1, -1, -1, G_BOXTEXT, 0x0020, 0x0000, C_UNION(&TEDI_002), 0x0021, 0x0004, 0x0006, 0x0001 };
+
+#define INFO_LISTSELF_USED     5
+#define INFO_LISTSELF_OBJNAME  6
+#define INFO_LISTSELF_FILENAME 7
+
+static OBJECT  INFO_LISTSELF =     { -1,  1,  1, G_IBOX, 0x0000, 0x0000, C_UNION(0x00ff1141L), 0x0000, 0x0000, 0x002a, 0x0008 };
+static OBJECT  _01_INFO_LISTSELF = {  0,  2,  8, G_USERDEF, 0x0000, 0x0510, C_UNION(&A_3DBUTTON05), 0x0000, 0x0000, 0x002a, 0x0008 };
+static OBJECT  _02_INFO_LISTSELF = {  3, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_069), 0x0001, 0x0001, 0x0006, 0x0001 };
+static OBJECT  _03_INFO_LISTSELF = {  4, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_070), 0x0001, 0x0002, 0x0006, 0x0001 };
+static OBJECT  _04_INFO_LISTSELF = {  5, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(TEXT_195), 0x0001, 0x0003, 0x0008, 0x0001 };
+static OBJECT  _05_INFO_LISTSELF = {  6, -1, -1, G_BOXTEXT, 0x0000, 0x0000, C_UNION(&TEDI_006), 0x000a, 0x0003, 0x0006, 0x0001 };
+static OBJECT  _06_INFO_LISTSELF = {  7, -1, -1, G_BOXTEXT, 0x0000, 0x0000, C_UNION(&TEDI_003), 0x000a, 0x0002, 0x001f, 0x0001 };
+static OBJECT  _07_INFO_LISTSELF = {  8, -1, -1, G_BOXTEXT, 0x0000, 0x0000, C_UNION(&TEDI_003), 0x000a, 0x0001, 0x001f, 0x0001 };
+static OBJECT  _08_INFO_LISTSELF = {  1, -1, -1, G_USERDEF, 0x0007, 0x0010, C_UNION(&A_3DBUTTON09), 0x000f, 0x0005, 0x000c, 0x0002 };
+static AOBJECT _08aINFO_LISTSELF = { NULL, NULL, 0x8020, 0x884f, NULL, NULL, 0, 0 };
+
+#define INFO_SCOPE_LOCAL    2
+#define INFO_SCOPE_GLOBAL   4
+#define INFO_SCOPE_OK       6
+#define INFO_SCOPE_CANCEL   8
+
+static OBJECT  INFO_SCOPE =     { -1,  1,  1, G_IBOX, 0x0000, 0x0000, C_UNION(0x00ff1141L), 0x0000, 0x0000, 0x0018, 0x0006 };
+static OBJECT  _01_INFO_SCOPE = {  0,  2,  8, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON05), 0x0000, 0x0000, 0x0018, 0x0006 };
+static OBJECT  _02_INFO_SCOPE = {  4, -1, -1, G_USERDEF, 0x0011, 0x0000, C_UNION(&A_CHECKBOX03), 0x0002, 0x0001, 0x0008, 0x0001 };
+static AOBJECT _02aINFO_SCOPE = { NULL, NULL, 0x8000, 0x884c, NULL, NULL, 0, 0 };
+static OBJECT  _04_INFO_SCOPE = {  6, -1, -1, G_USERDEF, 0x0011, 0x0000, C_UNION(&A_CHECKBOX01), 0x000d, 0x0001, 0x0009, 0x0001 };
+static AOBJECT _04aINFO_SCOPE = { NULL, NULL, 0x8000, 0x8847, NULL, NULL, 0, 0 };
+static OBJECT  _06_INFO_SCOPE = {  8, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON09), 0x0001, 0x0003, 0x000a, 0x0002 };
+static AOBJECT _06aINFO_SCOPE = { NULL, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 };
+static OBJECT  _08_INFO_SCOPE = {  1, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON06), 0x000d, 0x0003, 0x000a, 0x0002 };
+static AOBJECT _08aINFO_SCOPE = { NULL, NULL, 0x8020, 0x8841, NULL, NULL, 0, 0 };
+
+static OBJECT  LIST_NOT = { -1, -1, -1, G_BOX, 0x0060, 0x0000, C_UNION(0x00001142), 0x0000, 0x0000, 0x0020, 0x000c };
+
+Awindow WI_DIFF_TYPE = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&DIFF_TYPE,
+	NULL,
+	0, 0,
+	-1,
+	0x200b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_07,
+	TEXT_002,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+Awindow WI_INFO_LIST = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&INFO_LIST,
+	NULL,
+	0, 0,
+	-1,
+	0x200b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_13,
+	TEXT_002,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+Awindow WI_INFO_LISTSELF = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&INFO_LISTSELF,
+	NULL,
+	0, 0,
+	-1,
+	0x200b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_09,
+	TEXT_002,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+Awindow WI_INFO_SCOPE = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&INFO_SCOPE,
+	NULL,
+	0, 0,
+	-1,
+	0x200b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_14,
+	TEXT_002,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+Awindow WI_LIST = {
+	NULL,
+	li_service,
+	li_make,
+	Awi_open,
+	li_init,
+	NULL,
+	NULL,
+	0, 0,
+	-1,
+	0x61ff,
+	{ 0, 0, 34, 14 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_002,
+	TEXT_002,
+	10000,
+	AW_TOOLBOX | AW_ICONACCEPT | AW_OBLIST | AW_ICON | AW_GHOSTICON,
+	0,
+	-1,
+	NULL,
+	&MEN_LIST,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};

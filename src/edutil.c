@@ -256,7 +256,7 @@ void chk_new_label(void)
 
 /* -------------------------------------------------------------------------- */
 
-void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname)
+void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *title)
 {
 	Awindow *win;
 	char buf[__PS__];
@@ -264,7 +264,7 @@ void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname)
 	if ((win = WI_NEW_LABEL.create(&WI_NEW_LABEL)) == NULL)
 		return;
 	Ast_delete(win->name);
-	win->name = Ast_create(objname);
+	win->name = Ast_create(title);
 	Aob_puttext(win->work, NEW_LABEL_NAME, obj->label);
 	do
 	{
@@ -279,7 +279,7 @@ void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname)
 
 /* -------------------------------------------------------------------------- */
 
-boolean new2label(ACS_HEAD *acs, Obj_Head *obj, const char *objname)
+boolean new2label(ACS_HEAD *acs, Obj_Head *obj, const char *title)
 {
 	Awindow *win;
 	int16 ret;
@@ -288,7 +288,7 @@ boolean new2label(ACS_HEAD *acs, Obj_Head *obj, const char *objname)
 	if ((win = WI_NEW2_LABEL.create(&WI_NEW2_LABEL)) == NULL)
 		return FALSE;
 	Ast_delete(win->name);
-	win->name = Ast_create(objname);
+	win->name = Ast_create(title);
 	Aob_puttext(win->work, NEW2_LABEL_NAME, obj->label);
 	ret = Awi_dialog(win);
 	Aob_gettext(win->work, NEW2_LABEL_NAME, buf);

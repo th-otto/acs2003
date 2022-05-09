@@ -111,7 +111,7 @@ editor\edobaflm.s
 editor\edobaeom.s
 editor\edobkeys.s
 
-list\edlist.s
+list\edlist.c [-J- -Z- -R- -M-]
 list\edalert.s
 list\eddata.s
 list\edwind.s

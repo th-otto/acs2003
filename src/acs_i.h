@@ -79,16 +79,32 @@ typedef struct {
 	/*   0 */ ACS_HEAD *acs;
 	/*   4 */ Obj_Head *objlist;
 	/*   8 */ Awindow *window;
-	/*  12 */ const char *name;
+	/*  12 */ char *name;
 	/*  16 */ const char *asktitle;
 	/*  20 */ int16 type;
 	/*  22 */ Obj_Head *prototyp;
-	/*  26 */ void (*copy_ob)(void);
-	/*  30 */ void (*del_ob)(void);
-	/*  34 */ void (*new_work)(void);
-	/*  38 */ void (*service)(void);
+	/*  26 */ Obj_Head *(*copy_ob)(ACS_HEAD *acs, Obj_Head *obj);
+	/*  30 */ void (*del_ob)(ACS_HEAD *acs, Obj_Head *obj);
+	/*  34 */ OBJECT *(*new_work)(Obj_Head *objlist);
+	/*  38 */ int16 (*service)(ACS_HEAD *acs, int16 task, void *parm);
 	/*  42 */ 
 } LISTPARM;
+/*
+ * LISTPARM.type
+ */
+#define LIST_OBJECT      10000
+#define LIST_MENU        10001
+#define LIST_POPUP       10002
+#define LIST_WINDOWS     10007
+#define LIST_STRING      10010
+#define LIST_TEDINFO     10011
+#define LIST_REFS        10012
+#define LIST_ALERT       10014
+#define LIST_USERBLK     10015
+#define LIST_ICON        10016
+#define LIST_IMAGE       10017
+#define LIST_MOUSE       10018
+#define LIST_DATA        10020
 
 typedef struct {
 	/*   0 */ char magic[8];
@@ -144,6 +160,9 @@ struct _ACS_HEAD {
 };
 #define ACS_MAGIC 0x2e414353L /* ".ACS" */
 
+/*
+ * ACS_HEAD.src_lang
+ */
 #define ACS_LANG_C      0
 #define ACS_LANG_PASCAL 1
 
@@ -813,6 +832,7 @@ void acs_register(void);
 /*
  * general.c
  */
+#define AS_GUI_10000       10000 /* in_out not used */
 #define AS_GUI_SAVECFG     10001 /* in_out = Awindow * */
 #define AS_GUI_SETUSED     10002 /* in_out = pathname */
 #define AS_GUI_AUTOSAVE    10003 /* in_out not used */
@@ -854,8 +874,8 @@ void view_grow(Awindow *win);
 void view_shrink(Awindow *win);
 void new_name(Awindow *win, Obj_Head *title);
 void chk_new_label(void);
-void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *objname);
-boolean new2label(ACS_HEAD *acs, Obj_Head *obj, const char *objname);
+void newlabel(ACS_HEAD *acs, Obj_Head *obj, const char *title);
+boolean new2label(ACS_HEAD *acs, Obj_Head *obj, const char *title);
 void wi_pos(Awindow *win, Axywh *pos, Axywh *lastpos);
 void *to_cicon(int16 *data, int16 *mask, CICONBLK *icon, int16 planes);
 
@@ -1000,11 +1020,51 @@ extern LISTPARM list_mouse;
 /*
  * list/edlist.c
  */
+extern char proto_alert[];
+extern char ABOUT[];
+extern char al_list[];
+extern char al_name[];
+extern char ic_list[];
+extern char ic_name[];
+extern char if_list[];
+extern char if_name[];
+extern char im_list[];
+extern char im_name[];
+extern char me_list[];
+extern char me_name[];
+extern char mf_list[];
+extern char mf_name[];
+extern char ob_list[];
+extern char ob_name[];
+extern char proto_string[];
+extern char proto_wihelpfile[];
+extern char proto_wihelptitle[];
+extern char proto_wiinfo[];
+extern char proto_winame[];
+extern char pu_list[];
+extern char pu_name[];
+extern char rf_list[];
+extern char rf_name[];
+extern char st_list[];
+extern char st_name[];
+extern char te_list[];
+extern char te_name[];
+extern char us_list[];
+extern char us_name[];
+extern char wi_list[];
+extern char wi_name[];
+
+extern Awindow WI_DIFF_TYPE;
+extern Awindow WI_INFO_LIST;
+extern Awindow WI_INFO_LISTSELF;
+extern Awindow WI_INFO_SCOPE;
 extern Awindow WI_LIST;
 
 Obj_Head *find_entry(Obj_Head *obj, const char *str);
-Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *src);
 int16 add_entry(Obj_Head *obj, Obj_Head *str);
+void del_entry(Obj_Head *obj, Obj_Head *str);
+Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *src);
+OBJECT *work_icon(Obj_Head *objlist, int16 type, CICONBLK *icon);
 
 
 /*
