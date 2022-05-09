@@ -454,7 +454,7 @@ void init_mess(ACS_HEAD *acs)
 				str->flags |= OBJ_GLOBAL;
 				if (add_entry(acs->al_list, str) == FAIL)
 					return;
-				serv_alert(acs, 1, str);
+				serv_alert(acs, LS_CREATEOBJ, str);
 				changed = TRUE;
 			}
 
@@ -474,7 +474,7 @@ void init_mess(ACS_HEAD *acs)
 				str->flags |= OBJ_GLOBAL;
 				if (add_entry(acs->st_list, str) == FAIL)
 					return;
-				serv_str(acs, 1, str);
+				serv_str(acs, LS_CREATEOBJ, str);
 				changed = TRUE;
 			}
 		}

@@ -153,7 +153,7 @@ static void li_changename(void)
 			del_entry(list->objlist, obj);
 			add_entry(list->objlist, obj);
 			if (list->service)
-				list->service(list->acs, AUO_TERM, obj);
+				list->service(list->acs, LS_CHANGEOBJ, obj);
 			if ((win = obj->window) != NULL)
 				win->service(win, AS_GUI_10000, NULL);
 		}
@@ -303,7 +303,7 @@ static Obj_Head *generate(LISTPARM *list, Obj_Head *obj)
 		objname(list->acs, copy, copy->label, list->asktitle);
 		add_entry(objlist, copy);
 		if (list->service)
-			list->service(list->acs, AUO_CREATE, copy);
+			list->service(list->acs, LS_CREATEOBJ, copy);
 		copy->flags |= OBJ_GLOBAL;
 	}
 	return copy;
@@ -601,7 +601,7 @@ static void term(Awindow *self)
 
 /* -------------------------------------------------------------------------- */
 
-OBJECT *work_icon(Obj_Head *objlist, int16 type, CICONBLK *icon)
+OBJECT *work_icon(Obj_Head *objlist, CICONBLK *icon, int16 type)
 {
 	Obj_Head **entries;
 	int i, count;

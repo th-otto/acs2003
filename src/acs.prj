@@ -112,7 +112,7 @@ editor\edobaeom.s
 editor\edobkeys.s
 
 list\edlist.c [-J- -Z- -R- -M-]
-list\edalert.s
+list\edalert.c [-J- -Z- -R- -M-]
 list\eddata.s
 list\edwind.s
 list\edicon.s

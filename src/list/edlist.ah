@@ -3,7 +3,8 @@
 #endif
 
 #if COUNTRY == COUNTRY_DE
-char proto_alert[] = "[1][Alarmbox][ OK ]";
+/* FIXME: size needed by protoalert in edalert.c */
+char proto_alert[20] = "[1][Alarmbox][ OK ]";
 char ABOUT[] = "  šber mich ...";
 static char TEXT_002[] = "";
 static char TEXT_003[] = "OK";
@@ -71,7 +72,8 @@ char wi_name[] = "FENSTER NAME";
 #endif
 
 #if COUNTRY == COUNTRY_US
-char proto_alert[] = "[1][Alarmbox][ OK ]";
+/* FIXME: size needed by protoalert in edalert.c */
+char proto_alert[20] = "[1][Alarmbox][ OK ]";
 char ABOUT[] = "  About me...\0\0";
 static char TEXT_002[] = "";
 static char TEXT_003[] = "OK";

@@ -83,10 +83,10 @@ typedef struct {
 	/*  16 */ const char *asktitle;
 	/*  20 */ int16 type;
 	/*  22 */ Obj_Head *prototyp;
-	/*  26 */ Obj_Head *(*copy_ob)(ACS_HEAD *acs, Obj_Head *obj);
+	/*  26 */ Obj_Head *(*copy_ob)(ACS_HEAD *acs, const Obj_Head *obj);
 	/*  30 */ void (*del_ob)(ACS_HEAD *acs, Obj_Head *obj);
 	/*  34 */ OBJECT *(*new_work)(Obj_Head *objlist);
-	/*  38 */ int16 (*service)(ACS_HEAD *acs, int16 task, void *parm);
+	/*  38 */ boolean (*service)(ACS_HEAD *acs, int16 task, Obj_Head *obj);
 	/*  42 */ 
 } LISTPARM;
 /*
@@ -105,6 +105,14 @@ typedef struct {
 #define LIST_IMAGE       10017
 #define LIST_MOUSE       10018
 #define LIST_DATA        10020
+
+/*
+ * LIST services
+ */
+#define LS_CREATEOBJ   1
+#define LS_CHANGEOBJ   2
+#define LS_DELETEOBJ   3
+
 
 typedef struct {
 	/*   0 */ char magic[8];
@@ -950,6 +958,12 @@ void acs_closewi(ACS_HEAD *acs, boolean all);
 
 
 /*
+ * edit2/edaled.c
+ */
+extern Awindow WI_ALERT;
+
+
+/*
  * edit2/edrefed.c
  */
 #define REF_NONE           0
@@ -1020,7 +1034,7 @@ extern LISTPARM list_mouse;
 /*
  * list/edlist.c
  */
-extern char proto_alert[];
+extern char proto_alert[20];
 extern char ABOUT[];
 extern char al_list[];
 extern char al_name[];
@@ -1064,7 +1078,7 @@ Obj_Head *find_entry(Obj_Head *obj, const char *str);
 int16 add_entry(Obj_Head *obj, Obj_Head *str);
 void del_entry(Obj_Head *obj, Obj_Head *str);
 Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *src);
-OBJECT *work_icon(Obj_Head *objlist, int16 type, CICONBLK *icon);
+OBJECT *work_icon(Obj_Head *objlisttype, CICONBLK *icon, int16 );
 
 
 /*
@@ -1074,7 +1088,7 @@ extern LISTPARM list_alert;
 
 void del_alert(ACS_HEAD *acs, Obj_Head *str);
 Obj_Head *copy_alert(ACS_HEAD *acs, const Obj_Head *str);
-void serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
+boolean serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
 
 
 /*
@@ -1083,7 +1097,7 @@ void serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
 void del_string(ACS_HEAD *acs, Obj_Head *str);
 Obj_Head *dup_string(ACS_HEAD *acs, const char *str);
 Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *str);
-void serv_str(ACS_HEAD *acs, int16 task, Obj_Head *str);
+boolean serv_str(ACS_HEAD *acs, int16 task, Obj_Head *str);
 
 
 /*
