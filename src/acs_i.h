@@ -1040,6 +1040,12 @@ extern Awindow WI_ICON;
 
 
 /*
+ * edit2/edimageed.c
+ */
+extern Awindow WI_IMAGE;
+
+
+/*
  * editor/edobkeys.c
  */
 char *key_string(int16 key);
@@ -1128,7 +1134,9 @@ boolean serv_str(ACS_HEAD *acs, int16 task, Obj_Head *str);
  */
 extern LISTPARM list_image;
 
+Obj_Head *add_image(ACS_HEAD *acs, Obj_Head *image);
 Obj_Head *dup_image(ACS_HEAD *acs, BITBLK *bit);
+void del_image(ACS_HEAD *acs, Obj_Head *image);
 
 
 /*

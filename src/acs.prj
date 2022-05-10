@@ -116,7 +116,7 @@ list\edalert.c [-J- -Z- -R- -M-]
 list\eddata.c [-J- -Z- -R- -M-]
 list\edwind.c [-J- -Z- -R- -M-]
 list\edicon.c [-J- -Z- -R- -M-]
-list\edimage.s
+list\edimage.c [-J- -Z- -R- -M-]
 list\eduser.s
 list\edmenu.s
 list\edmouse.s
