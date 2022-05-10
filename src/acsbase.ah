@@ -116,7 +116,7 @@ static char TEXT_31[] = "Abbrechen";
 static char TEXT_32[] = "Registrierdaten";
 static char TEXT_325[] = "automatisch Sichern";
 static char TEXT_33[] = "EINSTELLUNG";
-static char proto_winame[] = " Hinweis ";
+static char proto_winame_base[] = " Hinweis ";
 static char rkind0[] = "  Scheck";
 static char rkind1[] = "  šberweisung";
 static char rkind2[] = "  Nachnahme";
@@ -227,7 +227,7 @@ static char TEXT_32[] = "Titel";
 #endif
 static char TEXT_325[] = "autosave files     ";
 static char TEXT_33[] = "PREFERENCES";
-static char proto_winame[] = " Notice ";
+static char proto_winame_base[] = " Notice ";
 #if WITH_FIXES
 static char rkind0[] = "  check ";
 #else
@@ -543,7 +543,7 @@ static Awindow WI_REGISTER = {
 	{ -1, -1, -1, -1 },
 	0, 0,
 	0xf8f8,
-	proto_winame,
+	proto_winame_base,
 	TEXT_002,
 	0,
 	AW_TOOLBOX,

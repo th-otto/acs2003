@@ -464,7 +464,7 @@ acc_window_35:
 		beq.s      acc_window_36
 		movea.l    d0,a1
 		movea.l    a5,a0
-		jsr        del_men
+		jsr        del_menu
 acc_window_36:
 		move.l     144(a7),94(a2)
 		move.l     90(a2),148(a7)

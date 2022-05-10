@@ -1,7 +1,7 @@
 		.text
 
-	.globl add_men
-add_men:
+	.globl add_menu
+add_menu:
 		movem.l    a2-a5,-(a7)
 		movea.l    a0,a2
 		movea.l    a1,a4
@@ -78,8 +78,8 @@ copy_men_2:
 		movem.l    (a7)+,d3-d4/a2-a6
 		rts
 
-	.globl del_men
-del_men:
+	.globl del_menu
+del_menu:
 		movem.l    d3-d4/a2-a5,-(a7)
 		movea.l    a0,a2
 		movea.l    a1,a3
@@ -654,7 +654,7 @@ list_menu:
 		dc.w $2711
 		dc.l protomenu
 		dc.l copy_men
-		dc.l del_men
+		dc.l del_menu
 		dc.l new_work
 		dc.w $0000
 		dc.w $0000

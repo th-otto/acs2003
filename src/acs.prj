@@ -114,7 +114,7 @@ editor\edobkeys.s
 list\edlist.c [-J- -Z- -R- -M-]
 list\edalert.c [-J- -Z- -R- -M-]
 list\eddata.c [-J- -Z- -R- -M-]
-list\edwind.s
+list\edwind.c [-J- -Z- -R- -M-]
 list\edicon.s
 list\edimage.s
 list\eduser.s

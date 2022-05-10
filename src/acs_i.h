@@ -964,6 +964,12 @@ extern Awindow WI_ALERT;
 
 
 /*
+ * edit2/edwinded.c
+ */
+extern Awindow WI_WINDOW;
+
+
+/*
  * edit2/edrefed.c
  */
 #define REF_NONE           0
@@ -1057,10 +1063,10 @@ extern char mf_name[];
 extern char ob_list[];
 extern char ob_name[];
 extern char proto_string[];
-extern char proto_wihelpfile[];
-extern char proto_wihelptitle[];
-extern char proto_wiinfo[];
-extern char proto_winame[];
+extern char proto_wihelpfile[1];
+extern char proto_wihelptitle[1];
+extern char proto_wiinfo[1];
+extern char proto_winame[10];
 extern char pu_list[];
 extern char pu_name[];
 extern char rf_list[];
@@ -1100,6 +1106,9 @@ boolean serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
 /*
  * list/edstring.c
  */
+extern LISTPARM list_string;
+
+char *add_string(ACS_HEAD *acs, char *str);
 void del_string(ACS_HEAD *acs, Obj_Head *str);
 Obj_Head *dup_string(ACS_HEAD *acs, const char *str);
 Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *str);
@@ -1126,12 +1135,17 @@ Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
 extern LISTPARM list_icon;
 
 Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon);
+CICONBLK *add_icon(ACS_HEAD *acs, CICONBLK *icon);
+void del_icon(ACS_HEAD *acs, Obj_Head *icon);
 
 
 /*
  * list/edmenu.c
  */
 extern LISTPARM list_menu;
+
+OBJECT *add_menu(ACS_HEAD *acs, OBJECT *menu);
+void del_menu(ACS_HEAD *acs, Obj_Head *menu);
 
 
 /*
@@ -1149,6 +1163,9 @@ Obj_Head *dup_data(ACS_HEAD *acs, void *data, size_t size);
  */
 extern LISTPARM list_object;
 
+OBJECT *add_object(ACS_HEAD *acs, OBJECT *tree);
+void del_object(ACS_HEAD *acs, Obj_Head *tree);
+
 
 /*
  * list/edpopup.c
@@ -1163,6 +1180,7 @@ extern LISTPARM list_reference;
 
 Obj_Head *dup_ref(ACS_HEAD *acs, const char *title, int16 type);
 void del_ref(ACS_HEAD *acs, Obj_Head *label);
+Obj_Head *add_ref(ACS_HEAD *acs, Obj_Head *obj);
 
 
 /*
@@ -1170,12 +1188,6 @@ void del_ref(ACS_HEAD *acs, Obj_Head *label);
  */
 MFORM *add_mouse(ACS_HEAD *acs, void *form);
 void del_mouse(ACS_HEAD *acs, MFORM *form);
-
-
-/*
- * list/edstring.c
- */
-extern LISTPARM list_string;
 
 
 /*
