@@ -157,7 +157,7 @@ static Obj_Head *copy_window(ACS_HEAD *acs, const Obj_Head *src)
 	win->name = add_string(acs, win->name);
 	win->info = add_string(acs, win->info);
 	if (win->iconblk != NULL)
-		win->iconblk = add_icon(acs, win->iconblk);
+		win->iconblk = (CICONBLK *)add_icon(acs, (Obj_Head *)win->iconblk);
 	if (win->menu != NULL)
 		win->menu = add_menu(acs, win->menu);
 	copyref(acs, &win->init);

@@ -218,6 +218,8 @@ typedef struct {
 	/*  82 */
 } ACSCICONBLK;
 
+#define DATA_OFFSET 3
+
 typedef struct {
 	ACS_HEAD *acs;
 	Obj_Head *obj;
@@ -327,7 +329,7 @@ typedef struct {
 	Awindow *window;
 	void (*call)(void);
 	void *obj;
-} WI_SLDIER;
+} WI_SLIDER;
 
 typedef struct {
 	char *text;
@@ -1032,6 +1034,12 @@ void set_mouse(Awindow *win);
 
 
 /*
+ * edit2/ediconed.c
+ */
+extern Awindow WI_ICON;
+
+
+/*
  * editor/edobkeys.c
  */
 char *key_string(int16 key);
@@ -1134,8 +1142,8 @@ Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
  */
 extern LISTPARM list_icon;
 
+Obj_Head *add_icon(ACS_HEAD *acs, Obj_Head *icon);
 Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon);
-CICONBLK *add_icon(ACS_HEAD *acs, CICONBLK *icon);
 void del_icon(ACS_HEAD *acs, Obj_Head *icon);
 
 
