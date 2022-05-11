@@ -1054,6 +1054,12 @@ extern Awindow WI_USER;
 
 
 /*
+ * edit2/edobclas.c
+ */
+extern Awindow WI_MENU;
+
+
+/*
  * editor/edobkeys.c
  */
 char *key_string(int16 key);

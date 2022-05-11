@@ -5,7 +5,7 @@
 #if COUNTRY == COUNTRY_DE
 /* FIXME: size needed by protoalert in edalert.c */
 char proto_alert[20] = "[1][Alarmbox][ OK ]";
-char ABOUT[] = "  šber mich ...";
+char ABOUT[16] = "  šber mich ...";
 static char TEXT_002[] = "";
 static char TEXT_003[] = "OK";
 static char TEXT_006[] = "1234567890123456789012345678901";
@@ -75,7 +75,7 @@ char wi_name[] = "FENSTER NAME";
 #if COUNTRY == COUNTRY_US
 /* FIXME: size needed by protoalert in edalert.c */
 char proto_alert[20] = "[1][Alarmbox][ OK ]";
-char ABOUT[] = "  About me...\0\0";
+char ABOUT[16] = "  About me...\0\0";
 static char TEXT_002[] = "";
 static char TEXT_003[] = "OK";
 static char TEXT_006[] = "1234567890123456789012345678901";
