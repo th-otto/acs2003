@@ -12,6 +12,7 @@ static Awindow *li_make(void *para);
 static int16 li_init(Awindow *window);
 
 #include "edlist.ah"
+#include "edlist.h"
 
 static AUSERBLK dither = { A_3Dbutton, 0x00000078L, Auo_string, NULL, NULL, NULL, NULL, NULL };
 

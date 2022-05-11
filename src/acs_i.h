@@ -9,6 +9,7 @@
 #define MAX_WINDS 256
 #define PATH_SEP  '\\'
 #define MAX_LANGS 3
+#define LABEL_MAX 32
 
 /*
  * sometimes we have to cast away constness
@@ -63,7 +64,7 @@ struct _Obj_Head {
 	/*  10 */ size_t size;
 	/*  14 */ size_t used;
 	/*  18 */ Awindow *window;
-	/*  22 */ char label[32];
+	/*  22 */ char label[LABEL_MAX];
 	/*  54 */ int16 usage;
 	/*  56 */ int16 flags;
 	/*  58 */ Axywh pos;
@@ -1014,6 +1015,10 @@ extern Awindow WI_WINDOW;
 #define REF_SYS_WIKEY     36
 #define REF_SYS_GEMSCRIPT 37
 
+extern Awindow WI_REF;
+extern OBJECT REF_TYPE[];
+extern int16 const cross_type[];
+
 
 /*
  * edit2/edparts.c
@@ -1224,7 +1229,7 @@ extern LISTPARM list_popup;
  */
 extern LISTPARM list_reference;
 
-Obj_Head *dup_ref(ACS_HEAD *acs, const char *title, int16 type);
+Obj_Head *dup_ref(ACS_HEAD *acs, const char *label, int16 type);
 void del_ref(ACS_HEAD *acs, Obj_Head *label);
 Obj_Head *add_ref(ACS_HEAD *acs, Obj_Head *obj);
 

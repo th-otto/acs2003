@@ -3605,7 +3605,6 @@ cross_type:
 		dc.w $004a
 		dc.w $004c
 		dc.w $004e
-	.globl cross_type_anz
 cross_type_anz:
 		dc.w $0026
 p_type:
