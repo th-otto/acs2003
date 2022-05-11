@@ -98,10 +98,6 @@ static Obj_Head free_icon = {
 	{ 0, 0, 0, 0 }
 };
 
-#ifdef __PUREC__
-#pragma warn .use
-#endif
-
 /******************************************************************************/
 /* -------------------------------------------------------------------------- */
 /******************************************************************************/
@@ -144,7 +140,7 @@ static Obj_Head *copy_icon(ACS_HEAD *acs, const Obj_Head *src)
 	srcicon = src->object;
 	icon = newicon->object;
 	memcpy(icon, srcicon, src->used);
-	icon->cicon.monoblk.ib_ptext = add_string(acs, srcicon->cicon.monoblk.ib_ptext);
+	icon->cicon.monoblk.ib_ptext = (char *)add_string(acs, (Obj_Head *)srcicon->cicon.monoblk.ib_ptext);
 	icon->cicon.mainlist = NULL;
 	icon->c16.col_data = NULL;
 	icon->c16.col_mask = NULL;

@@ -117,7 +117,7 @@ list\eddata.c [-J- -Z- -R- -M-]
 list\edwind.c [-J- -Z- -R- -M-]
 list\edicon.c [-J- -Z- -R- -M-]
 list\edimage.c [-J- -Z- -R- -M-]
-list\eduser.s
+list\eduser.c [-J- -Z- -R- -M-]
 list\edmenu.s
 list\edmouse.s
 list\edobject.s

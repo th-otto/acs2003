@@ -1030,6 +1030,8 @@ extern Awindow WI_DATA;
 /*
  * edit2/edmoused.c
  */
+extern Awindow WI_MOUSE;
+
 void set_mouse(Awindow *win);
 
 
@@ -1040,9 +1042,15 @@ extern Awindow WI_ICON;
 
 
 /*
- * edit2/edimageed.c
+ * edit2/edimaged.c
  */
 extern Awindow WI_IMAGE;
+
+
+/*
+ * edit2/edusered.c
+ */
+extern Awindow WI_USER;
 
 
 /*
@@ -1055,6 +1063,9 @@ char *key_string(int16 key);
  * list/edmouse.c
  */
 extern LISTPARM list_mouse;
+
+MFORM *add_mouse(ACS_HEAD *acs, void *form);
+void del_mouse(ACS_HEAD *acs, MFORM *form);
 
 
 /*
@@ -1122,11 +1133,12 @@ boolean serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str);
  */
 extern LISTPARM list_string;
 
-char *add_string(ACS_HEAD *acs, char *str);
+Obj_Head *add_string(ACS_HEAD *acs, Obj_Head *str);
 void del_string(ACS_HEAD *acs, Obj_Head *str);
 Obj_Head *dup_string(ACS_HEAD *acs, const char *str);
 Obj_Head *copy_str(ACS_HEAD *acs, const Obj_Head *str);
 boolean serv_str(ACS_HEAD *acs, int16 task, Obj_Head *str);
+Obj_Head *change_string(ACS_HEAD *acs, Obj_Head *obj, const char *str);
 
 
 /*
@@ -1142,6 +1154,8 @@ void del_image(ACS_HEAD *acs, Obj_Head *image);
 /*
  * list/edtedi.c
  */
+extern LISTPARM list_tedi;
+
 Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
 
 
@@ -1200,22 +1214,13 @@ Obj_Head *add_ref(ACS_HEAD *acs, Obj_Head *obj);
 
 
 /*
- * list/edmouse.c
- */
-MFORM *add_mouse(ACS_HEAD *acs, void *form);
-void del_mouse(ACS_HEAD *acs, MFORM *form);
-
-
-/*
- * list/edtedi.c
- */
-extern LISTPARM list_tedi;
-
-
-/*
  * list/eduser.c
  */
 extern LISTPARM list_user;
+
+Obj_Head *add_user(ACS_HEAD *acs, Obj_Head *obj);
+void del_user(ACS_HEAD *acs, Obj_Head *obj);
+Obj_Head *change_user(ACS_HEAD *acs, Obj_Head *obj, char *str[8]);
 
 
 /*

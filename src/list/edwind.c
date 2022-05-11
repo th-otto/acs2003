@@ -154,8 +154,8 @@ static Obj_Head *copy_window(ACS_HEAD *acs, const Obj_Head *src)
 		win->work = add_object(acs, win->work);
 	if (win->toolbar != NULL)
 		win->toolbar = add_object(acs, win->toolbar);
-	win->name = add_string(acs, win->name);
-	win->info = add_string(acs, win->info);
+	win->name = (char *)add_string(acs, (Obj_Head *)win->name);
+	win->info = (char *)add_string(acs, (Obj_Head *)win->info);
 	if (win->iconblk != NULL)
 		win->iconblk = (CICONBLK *)add_icon(acs, (Obj_Head *)win->iconblk);
 	if (win->menu != NULL)
@@ -175,8 +175,8 @@ static Obj_Head *copy_window(ACS_HEAD *acs, const Obj_Head *src)
 	copyref(acs, &win->iconify);
 	copyref(acs, &win->uniconify);
 	copyref(acs, &win->gemscript);
-	win->help_file = add_string(acs, win->help_file);
-	win->help_title = add_string(acs, win->help_title);
+	win->help_file = (char *)add_string(acs, (Obj_Head *)win->help_file);
+	win->help_title = (char *)add_string(acs, (Obj_Head *)win->help_title);
 	return obj;
 }
 
