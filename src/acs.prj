@@ -121,7 +121,7 @@ list\eduser.c [-J- -Z- -R- -M-]
 list\edmenu.c [-J- -Z- -R- -M-]
 list\edmouse.c [-J- -Z- -R- -M-]
 list\edobject.c [-J- -Z- -R- -M-]
-list\edpopup.s
+list\edpopup.c [-J- -Z- -R- -M-]
 list\edref.s
 list\edstring.s
 list\edtedi.s

@@ -1059,6 +1059,7 @@ extern Awindow WI_USER;
  */
 extern Awindow WI_MENU;
 extern Awindow WI_OBJECT;
+extern Awindow WI_POPUP;
 
 
 /*
