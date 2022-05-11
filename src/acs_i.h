@@ -1055,9 +1055,10 @@ extern Awindow WI_USER;
 
 
 /*
- * edit2/edobclas.c
+ * editor/edobclas.c
  */
 extern Awindow WI_MENU;
+extern Awindow WI_OBJECT;
 
 
 /*
@@ -1207,7 +1208,7 @@ Obj_Head *dup_data(ACS_HEAD *acs, void *data, size_t size);
  */
 extern LISTPARM list_object;
 
-OBJECT *add_object(ACS_HEAD *acs, OBJECT *tree);
+Obj_Head *add_object(ACS_HEAD *acs, Obj_Head *tree);
 void del_object(ACS_HEAD *acs, Obj_Head *tree);
 
 

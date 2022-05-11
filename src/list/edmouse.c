@@ -91,6 +91,7 @@ void del_mouse(ACS_HEAD *acs, Obj_Head *mouse)
 {
 	Awindow *win;
 	
+	/* FIXME: acs not marked as changed */
 	mouse->usage -= 1;
 	if (mouse->usage > 0)
 		return;

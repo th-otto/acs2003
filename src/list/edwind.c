@@ -151,9 +151,9 @@ static Obj_Head *copy_window(ACS_HEAD *acs, const Obj_Head *src)
 	copyref(acs, &win->service);
 	copyref(acs, &win->create);
 	if (win->work != NULL)
-		win->work = add_object(acs, win->work);
+		win->work = (OBJECT *)add_object(acs, (Obj_Head *)win->work);
 	if (win->toolbar != NULL)
-		win->toolbar = add_object(acs, win->toolbar);
+		win->toolbar = (OBJECT *)add_object(acs, (Obj_Head *)win->toolbar);
 	win->name = (char *)add_string(acs, (Obj_Head *)win->name);
 	win->info = (char *)add_string(acs, (Obj_Head *)win->info);
 	if (win->iconblk != NULL)
