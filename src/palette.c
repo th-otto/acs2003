@@ -38,26 +38,26 @@ static void edmp_acc(void)
 	ACSblk->Aselect.next = 0;
 	if ((next = Adr_next()) > 0)
 	{
-		asel = (AOBJECT *)&select->work[next + 1];
-		if (asel->type == 10018 || asel->type == 10019)
+		asel = (AOBJECT *)&select->work[next] + 1;
+		if (asel->type == LIST_MOUSE || asel->type == LIST_AMOUSE)
 		{
-			aobj = (AOBJECT *)&tree[obnr + 1];
+			aobj = (AOBJECT *)&tree[obnr] + 1;
 			Adr_del(select, next);
 			acs = self->user;
-			if (asel->type == 10018)
+			if (asel->type == LIST_MOUSE)
 			{
-				mouse = add_mouse(acs, asel->userp1);
+				mouse = (MFORM *)add_mouse(acs, (Obj_Head *)asel->userp1);
 			} else
 			{
 				mform = asel->userp1;
 				if (mform->number == USER_DEF)
-					mouse = add_mouse(acs, mform->form);
+					mouse = (MFORM *)add_mouse(acs, (Obj_Head *)mform->form);
 				else
 					mouse = NULL;
 			}
 			oldform = aobj->userp1;
 			if (oldform->number == USER_DEF)
-				del_mouse(acs, oldform->form);
+				del_mouse(acs, (Obj_Head *)oldform->form);
 			if (mouse != NULL)
 			{
 				oldform->number = USER_DEF;
@@ -81,7 +81,7 @@ static void edmp_set(void)
 	Amouse *mouse;
 	MFORM *mform;
 	
-	aobj = (AOBJECT *)&ACSblk->ev_object[ACSblk->ev_obnr + 1];
+	aobj = (AOBJECT *)&ACSblk->ev_object[ACSblk->ev_obnr] + 1;
 	mouse = aobj->userp1;
 	ACSblk->description->mouse[31].number = mouse->number;
 	if (mouse->number == USER_DEF)
@@ -150,12 +150,12 @@ static void set_mouse(Awindow *win)
 	MFORM *form;
 	Amouse *mouse;
 	int16 idx;
-	char *p2;
+	long mo_index;
 	
 	acs = win->user;
 	tree = win->work;
 	atree = (AOBJECT *)(tree + 1);
-	p2 = NULL;
+	mo_index = 0;
 	mouse = acs->descr.mouse;
 	for (idx = tree->ob_head; idx != ROOT; idx = tree[idx].ob_next)
 	{
@@ -168,9 +168,9 @@ static void set_mouse(Awindow *win)
 		icon->ib_wtext = 16;
 		icon->ib_htext = 2;
 		atree[idx].userp1 = mouse;
-		atree[idx].userp2 = p2;
-		p2++;
-		atree[idx].type = 10019;
+		atree[idx].userp2 = (void *)mo_index;
+		mo_index++;
+		atree[idx].type = LIST_AMOUSE;
 		switch (mouse->number)
 		{
 		case ARROW:

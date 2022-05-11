@@ -119,7 +119,7 @@ list\edicon.c [-J- -Z- -R- -M-]
 list\edimage.c [-J- -Z- -R- -M-]
 list\eduser.c [-J- -Z- -R- -M-]
 list\edmenu.c [-J- -Z- -R- -M-]
-list\edmouse.s
+list\edmouse.c [-J- -Z- -R- -M-]
 list\edobject.s
 list\edpopup.s
 list\edref.s

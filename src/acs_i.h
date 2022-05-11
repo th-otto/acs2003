@@ -104,6 +104,7 @@ typedef struct {
 #define LIST_ICON        10016
 #define LIST_IMAGE       10017
 #define LIST_MOUSE       10018
+#define LIST_AMOUSE      10019
 #define LIST_DATA        10020
 
 /*
@@ -1077,8 +1078,8 @@ void del_ob(ACS_HEAD *acs, OBJ_ENTRY *obj);
  */
 extern LISTPARM list_mouse;
 
-MFORM *add_mouse(ACS_HEAD *acs, void *form);
-void del_mouse(ACS_HEAD *acs, MFORM *form);
+Obj_Head *add_mouse(ACS_HEAD *acs, Obj_Head *form);
+void del_mouse(ACS_HEAD *acs, Obj_Head *form);
 
 
 /*
