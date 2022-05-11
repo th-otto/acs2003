@@ -159,7 +159,7 @@ static Obj_Head *copy_window(ACS_HEAD *acs, const Obj_Head *src)
 	if (win->iconblk != NULL)
 		win->iconblk = (CICONBLK *)add_icon(acs, (Obj_Head *)win->iconblk);
 	if (win->menu != NULL)
-		win->menu = add_menu(acs, win->menu);
+		win->menu = (OBJECT *)add_menu(acs, (Obj_Head *)win->menu);
 	copyref(acs, &win->init);
 	copyref(acs, &win->keys);
 	copyref(acs, &win->obchange);
@@ -195,6 +195,7 @@ void del_window(ACS_HEAD *acs, Obj_Head *obj)
 {
 	Awindow *win;
 	
+	/* FIXME: acs not marked as changed */
 	obj->usage -= 1;
 	if (obj->usage > 0)
 		return;

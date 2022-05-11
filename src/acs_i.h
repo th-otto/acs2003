@@ -1054,9 +1054,22 @@ extern Awindow WI_USER;
 
 
 /*
+ * edit2/edobclas.c
+ */
+extern Awindow WI_MENU;
+
+
+/*
  * editor/edobkeys.c
  */
 char *key_string(int16 key);
+
+
+/*
+ * editor/edobstru.c
+ */
+void copy_ob(ACS_HEAD *acs, OBJ_ENTRY *dst, const OBJ_ENTRY *src);
+void del_ob(ACS_HEAD *acs, OBJ_ENTRY *obj);
 
 
 /*
@@ -1072,7 +1085,7 @@ void del_mouse(ACS_HEAD *acs, MFORM *form);
  * list/edlist.c
  */
 extern char proto_alert[20];
-extern char ABOUT[];
+extern char ABOUT[16];
 extern char al_list[];
 extern char al_name[];
 extern char ic_list[];
@@ -1174,7 +1187,7 @@ void del_icon(ACS_HEAD *acs, Obj_Head *icon);
  */
 extern LISTPARM list_menu;
 
-OBJECT *add_menu(ACS_HEAD *acs, OBJECT *menu);
+Obj_Head *add_menu(ACS_HEAD *acs, Obj_Head *menu);
 void del_menu(ACS_HEAD *acs, Obj_Head *menu);
 
 
