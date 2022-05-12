@@ -1,6 +1,8 @@
 #include "acs_i.h"
 #include "edlist.h"
 
+extern OBJECT REF_TYPE;
+
 #ifndef C_UNION
 #  define C_UNION(x) { (int32)(x) }
 #endif
@@ -97,7 +99,7 @@ Obj_Head *add_ref(ACS_HEAD *acs, Obj_Head *obj)
 			{
 				if (type != REF_NONE && objtype != type)
 				{
-					const OBJECT *tree = REF_TYPE;
+					const OBJECT *tree = &REF_TYPE;
 					if ((win = WI_DIFF_TYPE.create(&WI_DIFF_TYPE)) == NULL)
 						return NULL;
 					Aob_puttext(win->work, DIFF_TYPE_TITLE, entry->label);

@@ -1016,7 +1016,6 @@ extern Awindow WI_WINDOW;
 #define REF_SYS_GEMSCRIPT 37
 
 extern Awindow WI_REF;
-extern OBJECT REF_TYPE[];
 extern int16 const cross_type[];
 
 

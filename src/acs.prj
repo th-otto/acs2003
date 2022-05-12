@@ -70,7 +70,7 @@ io\str_out.c [-J- -Z- -R- -M-]
 io\workout.c [-J- -Z- -R- -M-]
 
 edit2\eddataed.s
-edit2\edrefed.s
+edit2\edrefed.c [-J- -Z- -R- -M-]
 edit2\edaled.s
 edit2\ediconed.s
 edit2\edimaged.s

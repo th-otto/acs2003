@@ -1,0 +1,439 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char BUBBLE_01[] = "Die énderungen werden Åbernommen.";
+static char BUBBLE_02[] = "Die énderungen werden verworfen.";
+static char BUBBLE_03[] = "Der Editor wird aufgerufen, um die Routine zu bearbeiten.";
+static char BUBBLE_04[] = "Die Routine wird extern definiert, also u.U. in einem anderen Modul.";
+static char BUBBLE_05[] = "In diesem Popup wird der Typ der Routine angegeben.";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Abbruch";
+static char TEXT_01[] = " Closed";
+static char TEXT_02[] = "Typ:";
+static char TEXT_03[] = "GEMScript";
+static char TEXT_04[] = "  Iconify";
+static char TEXT_05[] = " Fulled";
+static char TEXT_06[] = " Arrowed";
+static char TEXT_07[] = " Hslid";
+static char TEXT_08[] = " Vslid";
+static char TEXT_09[] = " Moved";
+static char TEXT_10[] = " Sized";
+static char TEXT_11[] = " Referenz-Editor ";
+static char TEXT_12[] = "  Uniconify";
+static char TEXT_13[] = "  GEMScript";
+static char TEXT_14[] = "Edit";
+static char TEXT_15[] = "extern";
+static char TEXT_16[] = "REFERENZ";
+static char TEXT_17[] = "  Objekt   \003";
+static char TEXT_174[] = "  UOservice";
+static char TEXT_18[] = "  Userdef  \003";
+static char TEXT_19[] = "  kein Typ";
+static char TEXT_20[] = "  Fenster  \003";
+static char TEXT_21[] = "  DrawCode";
+static char TEXT_22[] = "  UO-Service";
+static char TEXT_23[] = "  Closed";
+static char TEXT_24[] = "  System   \003";
+static char TEXT_25[] = "  Fulled";
+static char TEXT_26[] = "  Arrowed";
+static char TEXT_27[] = "  V-Slide";
+static char TEXT_28[] = "  Change";
+static char TEXT_29[] = "  Moved";
+static char TEXT_30[] = "  Sized";
+static char TEXT_31[] = "  H-Slide";
+static char TEXT_32[] = "  ACSinit";
+static char TEXT_33[] = "  ACSmessage";
+static char TEXT_34[] = "  ACSkey";
+static char TEXT_35[] = "  ACSbutton";
+static char TEXT_357[] = "  Drag";
+static char TEXT_358[] = "  Keys";
+static char TEXT_359[] = "  Service";
+static char TEXT_36[] = "  ACSGEMScript";
+static char TEXT_360[] = "  Create";
+static char TEXT_364[] = "  Click";
+static char TEXT_365[] = "  Open";
+static char TEXT_366[] = "  Topped";
+static char TEXT_367[] = "  Userdef";
+static char TEXT_37[] = "  ACSinit0";
+static char TEXT_370[] = "  Init";
+static char TEXT_371[] = "  Changed";
+static char TEXT_372[] = "  Redraw";
+static char TEXT_38[] = "  ACSterm";
+static char TEXT_39[] = "  ACSaboutme";
+static char TEXT_40[] = "  ACSclose";
+static char TEXT_41[] = "  ACSmproto";
+static char TEXT_42[] = "  ACStimer";
+static char TEXT_43[] = "  ACSmouse";
+static char TEXT_44[] = "  ACSwikey";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char BUBBLE_01[] = "The changes are accepted.";
+static char BUBBLE_02[] = "The changes are ignored.";
+static char BUBBLE_03[] = "The editor is called to change the function.";
+static char BUBBLE_04[] = "The function is defined extern, i.e. in another module.";
+static char BUBBLE_05[] = "In this popup you choose the type of the function.";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Cancel";
+static char TEXT_01[] = " Closed";
+static char TEXT_02[] = "Type:";
+static char TEXT_03[] = "GEMScript";
+static char TEXT_04[] = "  Iconify";
+static char TEXT_05[] = " Fulled";
+static char TEXT_06[] = " Arrowed";
+static char TEXT_07[] = " Hslid";
+static char TEXT_08[] = " Vslid";
+static char TEXT_09[] = " Moved";
+static char TEXT_10[] = " Sized";
+static char TEXT_11[] = " Reference-Editor ";
+static char TEXT_12[] = "  Uniconify";
+static char TEXT_13[] = "  GEMScript";
+static char TEXT_14[] = "Edit";
+static char TEXT_15[] = "extern";
+static char TEXT_16[] = "REFERENCE";
+static char TEXT_17[] = "  Object   \003";
+static char TEXT_174[] = "  UOservice";
+static char TEXT_18[] = "  Userdef  \003";
+static char TEXT_19[] = "  no type";
+static char TEXT_20[] = "  Window   \003";
+static char TEXT_21[] = "  DrawCode";
+static char TEXT_22[] = "  UO-Service";
+static char TEXT_23[] = "  Closed";
+static char TEXT_24[] = "  System   \003";
+static char TEXT_25[] = "  Fulled";
+static char TEXT_26[] = "  Arrowed";
+static char TEXT_27[] = "  V-Slide";
+static char TEXT_28[] = "  Change";
+static char TEXT_29[] = "  Moved";
+static char TEXT_30[] = "  Sized";
+static char TEXT_31[] = "  H-Slide";
+static char TEXT_32[] = "  ACSinit";
+static char TEXT_33[] = "  ACSmessage";
+static char TEXT_34[] = "  ACSkey";
+static char TEXT_35[] = "  ACSbutton";
+static char TEXT_357[] = "  Drag";
+static char TEXT_358[] = "  Keys";
+static char TEXT_359[] = "  Service";
+static char TEXT_36[] = "  ACSGEMScript";
+static char TEXT_360[] = "  Create";
+static char TEXT_364[] = "  Click";
+static char TEXT_365[] = "  Open";
+static char TEXT_366[] = "  Topped";
+static char TEXT_367[] = "  Userdef";
+static char TEXT_37[] = "  ACSinit0";
+static char TEXT_370[] = "  Init";
+static char TEXT_371[] = "  Changed";
+static char TEXT_372[] = "  Redraw";
+static char TEXT_38[] = "  ACSterm";
+static char TEXT_39[] = "  ACSaboutme";
+static char TEXT_40[] = "  ACSclose";
+static char TEXT_41[] = "  ACSmproto";
+static char TEXT_42[] = "  ACStimer";
+static char TEXT_43[] = "  ACSmouse";
+static char TEXT_44[] = "  ACSwikey";
+#endif
+	
+static int16 DATAS_05[] = {
+	0x0000, 0x0000, 0x020e, 0x0001, 0x0000, 0x0003, 0x8000, 0x0006,
+	0xc000, 0x000c, 0x6000, 0x0018, 0x3000, 0x0031, 0x1800, 0x0062,
+	0x8c00, 0x00c4, 0x4600, 0x0188, 0x2300, 0x0310, 0x1180, 0x0790,
+	0x20c0, 0x0fc8, 0x4860, 0x1f84, 0x9830, 0x3703, 0x3218, 0x6200,
+	0x640c, 0xc000, 0xc906, 0x6200, 0x920c, 0x3101, 0xf418, 0x1886,
+	0xac04, 0x0c4d, 0xf404, 0x062a, 0x3804, 0x031f, 0xfc04, 0x018b,
+	0xe804, 0x00c5, 0x5404, 0x0063, 0xa804, 0x0031, 0xfc04, 0x0018,
+	0x0c04, 0x000c, 0x1bf8, 0x0006, 0x3000, 0x0003, 0x6000, 0x0001,
+	0xc000, 0x0000, 0x8000, 0x0001, 0x0000, 0x0003, 0x8000, 0x0006,
+	0xc000, 0x000c, 0x6000, 0x0018, 0x3000, 0x0031, 0x1800, 0x0063,
+	0x8c00, 0x00c6, 0xc600, 0x018d, 0x6300, 0x031a, 0xb180, 0x0795,
+	0x60c0, 0x0fca, 0xc860, 0x1f85, 0x9830, 0x3703, 0x3218, 0x6200,
+	0x640c, 0xc000, 0xc906, 0x6200, 0x920c, 0x3101, 0xf418, 0x1886,
+	0xac04, 0x0c4d, 0xf404, 0x062a, 0x3804, 0x031f, 0xfc04, 0x018b,
+	0xe804, 0x00c5, 0x5404, 0x0063, 0xa804, 0x0031, 0xfc04, 0x0018,
+	0x0c04, 0x000c, 0x1bf8, 0x0006, 0x3000, 0x0003, 0x6000, 0x0001,
+	0xc000, 0x0000, 0x8000, 0x0001, 0x0000, 0x0003, 0x8000, 0x0006,
+	0xc000, 0x000c, 0x6000, 0x0018, 0x3000, 0x0031, 0x1800, 0x0063,
+	0x8c00, 0x00c7, 0xc600, 0x018f, 0xe300, 0x031f, 0xf180, 0x079f,
+	0xe0c0, 0x0fcf, 0xc860, 0x1f87, 0x9830, 0x3703, 0x3218, 0x6200,
+	0x640c, 0xc000, 0xc906, 0x6200, 0x920c, 0x3101, 0xf418, 0x1886,
+	0x0ffc, 0x0c4d, 0xe7fc, 0x062a, 0x33fc, 0x031f, 0xfbfc, 0x0189,
+	0xe3fc, 0x00c4, 0x03fc, 0x0063, 0x03fc, 0x0031, 0xfffc, 0x0018,
+	0x0ffc, 0x000c, 0x1bf8, 0x0006, 0x3000, 0x0003, 0x6000, 0x0001,
+	0xc000, 0x0000, 0x8000, 0x0000, 0x0000, 0x0001, 0x0000, 0x0002,
+	0x8000, 0x0004, 0x4000, 0x0008, 0x2000, 0x0011, 0x1000, 0x0022,
+	0x8800, 0x0044, 0x4400, 0x0088, 0x2200, 0x0110, 0x1100, 0x0390,
+	0x2080, 0x07c8, 0x4840, 0x0f84, 0x9820, 0x1703, 0x3210, 0x2200,
+	0x6408, 0x4000, 0xc904, 0x2200, 0x9208, 0x1101, 0xf410, 0x0886,
+	0x0c00, 0x044d, 0xe400, 0x022a, 0x3000, 0x011f, 0xf800, 0x0089,
+	0xe000, 0x0044, 0x0000, 0x0023, 0x0000, 0x0011, 0xfc00, 0x0008,
+	0x0800, 0x0004, 0x1000, 0x0002, 0x2000, 0x0001, 0x4000, 0x0000,
+	0x8000, 0x0000, 0x0000
+};
+static int16 DATAS_06[] = {
+	0x0001, 0x0000, 0x0003, 0x8000, 0x0007, 0xc000, 0x000f, 0xe000,
+	0x001f, 0xf000, 0x003f, 0xf800, 0x007f, 0xfc00, 0x00ff, 0xfe00,
+	0x01ff, 0xff00, 0x03ff, 0xff80, 0x07ff, 0xffc0, 0x0fff, 0xffe0,
+	0x1fff, 0xfff0, 0x3fff, 0xfff8, 0x7fff, 0xfffc, 0xffff, 0xfffe,
+	0x7fff, 0xfffc, 0x3fff, 0xfff8, 0x1fff, 0xfffc, 0x0fff, 0xfffc,
+	0x07ff, 0xfffc, 0x03ff, 0xfffc, 0x01ff, 0xfffc, 0x00ff, 0xfffc,
+	0x007f, 0xfffc, 0x003f, 0xfffc, 0x001f, 0xfffc, 0x000f, 0xfbf8,
+	0x0007, 0xf000, 0x0003, 0xe000, 0x0001, 0xc000, 0x0000, 0x8000
+};
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_19, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_14, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, BUBBLE_01, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_18, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_17, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_004, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_20, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_357, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON10 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_364, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON11 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_21, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON12 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_22, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON13 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_370, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON14 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_365, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON15 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_360, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON16 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_359, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON17 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_358, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON18 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_04, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON19 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_372, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON20 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_366, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON21 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_23, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON22 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_25, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON23 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_26, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON24 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_27, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON25 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_28, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON26 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_29, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON27 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_30, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON28 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_31, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON29 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, BUBBLE_05, NULL };
+static AUSERBLK A_3DBUTTON30 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_12, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON31 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_13, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON32 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_24, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON33 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_32, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON34 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_33, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON35 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_34, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON36 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_35, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON37 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_36, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON38 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_37, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON39 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_38, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON40 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_39, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON41 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_40, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON42 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_41, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON43 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_42, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON44 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_43, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON45 = { A_3Dbutton, 0x09f10178L, Auo_string, TEXT_44, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS02 = { A_arrows, 0x13010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX01 = { A_checkbox, 0x00000001L, Auo_string, TEXT_15, NULL, NULL, BUBBLE_04, NULL };
+
+static CICON _C4_IC_REF = { 4, &DATAS_05[3], DATAS_06, NULL, NULL, NULL };
+
+static int16 _MSK_IC_REF[] = {
+	0x0000, 0x0000, 0x0001, 0x0000, 0x0003, 0x8000, 0x0007, 0xc000,
+	0x000f, 0xe000, 0x001f, 0xf000, 0x003e, 0xf800, 0x007d, 0x7c00,
+	0x00fa, 0xbe00, 0x01f5, 0x5f00, 0x03fa, 0xbf80, 0x07fd, 0x7fc0,
+	0x0ffe, 0xffe0, 0x1fff, 0xfff0, 0x3fff, 0xfff8, 0x7fff, 0xfffc,
+	0x3fff, 0xfffe, 0x1fff, 0xfffc, 0x0fff, 0xfffe, 0x07ff, 0xfffe,
+	0x03ff, 0xfffe, 0x01ff, 0xfffe, 0x00ff, 0xfffe, 0x007f, 0xfffe,
+	0x003f, 0xfffe, 0x001f, 0xfffe, 0x000f, 0xfbfe, 0x0007, 0xf000,
+	0x0003, 0xe000, 0x0001, 0xc000, 0x0000, 0x8000, 0x0000, 0x0000
+};
+static int16 _DAT_IC_REF[] = {
+	0x0000, 0x0000, 0x0001, 0x0000, 0x0002, 0x8000, 0x0004, 0x4000,
+	0x0008, 0x2000, 0x0011, 0x1000, 0x0022, 0x8800, 0x0045, 0x4400,
+	0x008a, 0xa200, 0x0115, 0x5100, 0x039a, 0xa080, 0x07cd, 0x4840,
+	0x0f86, 0x9820, 0x1703, 0x3210, 0x2200, 0x6408, 0x4000, 0xc904,
+	0x2200, 0x0202, 0x1101, 0xf404, 0x0886, 0x0bfe, 0x044d, 0xe600,
+	0x022a, 0x3200, 0x011f, 0xfa00, 0x0089, 0xe200, 0x0044, 0x0200,
+	0x0023, 0x0200, 0x0011, 0xfe00, 0x0008, 0x0bfe, 0x0004, 0x1000,
+	0x0002, 0x2000, 0x0001, 0x4000, 0x0000, 0x8000, 0x0000, 0x0000
+};
+static CICONBLK IC_REF = { { _MSK_IC_REF, _DAT_IC_REF, TEXT_16, 0x1000, 0, 0, 20, 0, 32, 32, 0, 32, 72, 8 }, &_C4_IC_REF };
+
+OBJECT REF_TYPE =              {  -1,   1,  86, G_BOX, 0, 0x0020, C_UNION(0x00ff1100L), 0, 0, 13, 5 };
+static OBJECT  _01_REF_TYPE =  {  34,   2,  32, G_BOX, OF_HIDETREE, 0x0020, C_UNION(0x00ff1101L), 0, 3, 20, 8 };
+static OBJECT  _02_REF_TYPE =  {   4,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_365), 0, 0, 10, 1 };
+static AOBJECT _02aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_OPEN, NULL, 0, 0 };
+static OBJECT  _04_REF_TYPE =  {   6,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_01), 10, 0, 10, 1 };
+static AOBJECT _04aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_CLOSED, NULL, 0, 0 };
+static OBJECT  _06_REF_TYPE =  {   8,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_360), 0, 1, 10, 1 };
+static AOBJECT _06aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_CREATE, NULL, 0, 0 };
+static OBJECT  _08_REF_TYPE =  {  10,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_05), 10, 1, 10, 1 };
+static AOBJECT _08aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_FULLED, NULL, 0, 0 };
+static OBJECT  _10_REF_TYPE =  {  12,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_359), 0, 2, 10, 1 };
+static AOBJECT _10aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_SERVICE, NULL, 0, 0 };
+static OBJECT  _12_REF_TYPE =  {  14,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_06), 10, 2, 10, 1 };
+static AOBJECT _12aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_ARROWED, NULL, 0, 0 };
+static OBJECT  _14_REF_TYPE =  {  16,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_370), 0, 3, 10, 1 };
+static AOBJECT _14aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_INIT, NULL, 0, 0 };
+static OBJECT  _16_REF_TYPE =  {  18,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_07), 10, 3, 10, 1 };
+static AOBJECT _16aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_HSLIDE, NULL, 0, 0 };
+static OBJECT  _18_REF_TYPE =  {  20,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_358), 0, 4, 10, 1 };
+static AOBJECT _18aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_KEYS, NULL, 0, 0 };
+static OBJECT  _20_REF_TYPE =  {  22,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_08), 10, 4, 10, 1 };
+static AOBJECT _20aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_VSLIDE, NULL, 0, 0 };
+static OBJECT  _22_REF_TYPE =  {  24,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_371), 0, 5, 10, 1 };
+static AOBJECT _22aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_CHANGE, NULL, 0, 0 };
+static OBJECT  _24_REF_TYPE =  {  26,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_09), 10, 5, 10, 1 };
+static AOBJECT _24aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_MOVED, NULL, 0, 0 };
+static OBJECT  _26_REF_TYPE =  {  28,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_372), 0, 6, 10, 1 };
+static AOBJECT _26aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_REDRAW, NULL, 0, 0 };
+static OBJECT  _28_REF_TYPE =  {  30,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_10), 10, 6, 10, 1 };
+static AOBJECT _28aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_SIZED, NULL, 0, 0 };
+static OBJECT  _30_REF_TYPE =  {  32,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_366), 0, 7, 10, 1 };
+static AOBJECT _30aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_TOPPED, NULL, 0, 0 };
+static OBJECT  _32_REF_TYPE =  {   1,  -1,  -1, G_STRING, 0, 0, C_UNION(TEXT_03), 11, 7, 9, 1 };
+static AOBJECT _32aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_GEMSCRIPT, NULL, 0, 0 };
+static OBJECT  _34_REF_TYPE =  {  44,  35,  37, G_BOX, OF_HIDETREE, 0x0020, C_UNION(0x00ff1101L), 0, 1, 9, 2 };
+static OBJECT  _35_REF_TYPE =  {  37,  -1, -1, G_STRING, 0x0001, 0, C_UNION(TEXT_364), 0, 0, 9, 1 };
+static AOBJECT _35aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_OBJ_CLICK, NULL, 0, 0 };
+static OBJECT  _37_REF_TYPE =  {  34,  39,  39, G_STRING, 0x0001, 0, C_UNION(TEXT_357), 0, 1, 9, 1 };
+static AOBJECT _37aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_OBJ_DRAG, NULL, 0, 0 };
+static OBJECT  _39_REF_TYPE =  {  37,  40,  42, G_BOX, OF_HIDETREE, 0x0020, C_UNION(0x00ff1101L), 0, 0, 13, 2 };
+static OBJECT  _40_REF_TYPE =  {  42,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_367), 0, 0, 13, 1 };
+static AOBJECT _40aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_USER_DRAW, NULL, 0, 0 };
+static OBJECT  _42_REF_TYPE =  {  39,  -1,  -1, G_STRING, 0x0001, 0, C_UNION(TEXT_174), 0, 1, 13, 1 };
+static AOBJECT _42aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_USER_SERVICE, NULL, 0, 0 };
+static OBJECT  _44_REF_TYPE =  {  46,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON01), 0, 0, 13, 1 };
+static AOBJECT _44aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_NONE, NULL, 0, 0 };
+static OBJECT  _46_REF_TYPE =  {  52,  47,  47, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON06), 0, 1, 13, 1 };
+static OBJECT  _47_REF_TYPE =  {  46,  48,  50, G_BOX, OF_HIDETREE, 0x0020, C_UNION(0x00ff1101L), 0, 0, 9, 2 };
+static OBJECT  _48_REF_TYPE =  {  50,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON10), 0, 0, 9, 1 };
+static AOBJECT _48aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_OBJ_CLICK, NULL, 0, 0 };
+static OBJECT  _50_REF_TYPE =  {  47,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON09), 0, 1, 9, 1 };
+static AOBJECT _50aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_OBJ_DRAG, NULL, 0, 0 };
+static OBJECT  _52_REF_TYPE =  {  80,  53,  53, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON32), 0, 4, 13, 1 };
+static OBJECT  _53_REF_TYPE =  {  52,  54,  78, G_BOX, OF_HIDETREE, 0x0020, C_UNION(0x00ff1101L), 0, 0, 15, 13 };
+static OBJECT  _54_REF_TYPE =  {  56,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON38), 0, 0, 15, 1 };
+static AOBJECT _54aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_ACSINIT0, NULL, 0, 0 };
+static OBJECT  _56_REF_TYPE =  {  58,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON33), 0, 1, 15, 1 };
+static AOBJECT _56aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_ACSINIT, NULL, 0, 0 };
+static OBJECT  _58_REF_TYPE =  {  60,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON39), 0, 2, 15, 1 };
+static AOBJECT _58aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_TERM, NULL, 0, 0 };
+static OBJECT  _60_REF_TYPE =  {  62,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON40), 0, 3, 15, 1 };
+static AOBJECT _60aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_ABOUTME, NULL, 0, 0 };
+static OBJECT  _62_REF_TYPE =  {  64,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON41), 0, 4, 15, 1 };
+static AOBJECT _62aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_CLOSE, NULL, 0, 0 };
+static OBJECT  _64_REF_TYPE =  {  66,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON34), 0, 5, 15, 1 };
+static AOBJECT _64aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_MESSAGE, NULL, 0, 0 };
+static OBJECT  _66_REF_TYPE =  {  68,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON42), 0, 6, 15, 1 };
+static AOBJECT _66aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_MPROTO, NULL, 0, 0 };
+static OBJECT  _68_REF_TYPE =  {  70,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON43), 0, 7, 15, 1 };
+static AOBJECT _68aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_TIMER, NULL, 0, 0 };
+static OBJECT  _70_REF_TYPE =  {  72,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON35), 0, 8, 15, 1 };
+static AOBJECT _70aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_KEY, NULL, 0, 0 };
+static OBJECT  _72_REF_TYPE =  {  74,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON36), 0, 9, 15, 1 };
+static AOBJECT _72aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_BUTTON, NULL, 0, 0 };
+static OBJECT  _74_REF_TYPE =  {  76,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON44), 0, 10, 15, 1 };
+static AOBJECT _74aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_MOUSE, NULL, 0, 0 };
+static OBJECT  _76_REF_TYPE =  {  78,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON45), 0, 11, 15, 1 };
+static AOBJECT _76aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_WIKEY, NULL, 0, 0 };
+static OBJECT  _78_REF_TYPE =  {  53,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON37), 0, 12, 15, 1 };
+static AOBJECT _78aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_SYS_GEMSCRIPT, NULL, 0, 0 };
+static OBJECT  _80_REF_TYPE =  {  86,  81,  81, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON05), 0, 2, 13, 1 };
+static OBJECT  _81_REF_TYPE =  {  80,  82,  84, G_BOX, OF_HIDETREE, 0x0020, C_UNION(0x00ff1101L), 0, 0, 14, 2 };
+static OBJECT  _82_REF_TYPE =  {  84,  -1,  -1, G_USERDEF, 0x0005, 0, C_UNION(&A_3DBUTTON11), 0, 0, 14, 1 };
+static AOBJECT _82aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_USER_DRAW, NULL, 0, 0 };
+static OBJECT  _84_REF_TYPE =  {  81,  -1,  -1, G_USERDEF, 0x0005, 0, C_UNION(&A_3DBUTTON12), 0, 1, 14, 1 };
+static AOBJECT _84aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_USER_SERVICE, NULL, 0, 0 };
+static OBJECT  _86_REF_TYPE =  {   0,  87,  87, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON08), 0, 3, 13, 1 };
+static OBJECT  _87_REF_TYPE =  {  86,  88, 122, G_BOX, OF_HIDETREE, 0x0020, C_UNION(0x00ff1101L), 0, 0, 12, 18 };
+static OBJECT  _88_REF_TYPE =  {  90,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON14), 0, 0, 12, 1 };
+static AOBJECT _88aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_OPEN, NULL, 0, 0 };
+static OBJECT  _90_REF_TYPE =  {  92,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON15), 0, 1, 12, 1 };
+static AOBJECT _90aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_CREATE, NULL, 0, 0 };
+static OBJECT  _92_REF_TYPE =  {  94,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON16), 0, 2, 12, 1 };
+static AOBJECT _92aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_SERVICE, NULL, 0, 0 };
+static OBJECT  _94_REF_TYPE =  {  96,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON13), 0, 3, 12, 1 };
+static AOBJECT _94aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_INIT, NULL, 0, 0 };
+static OBJECT  _96_REF_TYPE =  {  98,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON17), 0, 4, 12, 1 };
+static AOBJECT _96aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_KEYS, NULL, 0, 0 };
+static OBJECT  _98_REF_TYPE =  { 100,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON25), 0, 5, 12, 1 };
+static AOBJECT _98aREF_TYPE =  { NULL, NULL, AEO, 0, (void *)REF_WIN_CHANGE, NULL, 0, 0 };
+static OBJECT  _100_REF_TYPE = { 102,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON19), 0, 6, 12, 1 };
+static AOBJECT _100aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_REDRAW, NULL, 0, 0 };
+static OBJECT  _102_REF_TYPE = { 104,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON20), 0, 7, 12, 1 };
+static AOBJECT _102aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_TOPPED, NULL, 0, 0 };
+static OBJECT  _104_REF_TYPE = { 106,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON21), 0, 8, 12, 1 };
+static AOBJECT _104aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_CLOSED, NULL, 0, 0 };
+static OBJECT  _106_REF_TYPE = { 108,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON22), 0, 9, 12, 1 };
+static AOBJECT _106aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_FULLED, NULL, 0, 0 };
+static OBJECT  _108_REF_TYPE = { 110,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON23), 0, 10, 12, 1 };
+static AOBJECT _108aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_ARROWED, NULL, 0, 0 };
+static OBJECT  _110_REF_TYPE = { 112,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON28), 0, 11, 12, 1 };
+static AOBJECT _110aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_HSLIDE, NULL, 0, 0 };
+static OBJECT  _112_REF_TYPE = { 114,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON24), 0, 12, 12, 1 };
+static AOBJECT _112aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_VSLIDE, NULL, 0, 0 };
+static OBJECT  _114_REF_TYPE = { 116,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON26), 0, 13, 12, 1 };
+static AOBJECT _114aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_MOVED, NULL, 0, 0 };
+static OBJECT  _116_REF_TYPE = { 118,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON27), 0, 14, 12, 1 };
+static AOBJECT _116aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_SIZED, NULL, 0, 0 };
+static OBJECT  _118_REF_TYPE = { 120,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON18), 0, 15, 12, 1 };
+static AOBJECT _118aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_ICONIFY, NULL, 0, 0 };
+static OBJECT  _120_REF_TYPE = { 122,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON30), 0, 16, 12, 1 };
+static AOBJECT _120aREF_TYPE = { NULL, NULL, AEO, 0, (void *)REF_WIN_UNICONIFY, NULL, 0, 0 };
+static OBJECT  _122_REF_TYPE = {  87,  -1,  -1, G_USERDEF, 0x0041, 0, C_UNION(&A_3DBUTTON31), 0, 17, 12, 1 };
+static AOBJECT _122aREF_TYPE = { NULL, NULL, AEO | OF_LASTOB, 0, (void *)REF_WIN_GEMSCRIPT, NULL, 0, 0 };
+
+static OBJECT  EDIT_REF =     { -1,  1, 11, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON03), 0, 0, 38, 6 };
+static OBJECT  _01_EDIT_REF = {  3,  2,  2, G_STRING, 0x0040, 0, C_UNION(TEXT_02), 2, 1, 5, 1 };
+static OBJECT  _02_EDIT_REF = {  1, -1, -1, G_USERDEF, 0x0040, 0, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _03_EDIT_REF = {  5, -1, -1, G_USERDEF, 0x0001, 0x0001, C_UNION(&A_CHECKBOX01), 26, 1, 9, 1 };
+static AOBJECT _03aEDIT_REF = { NULL, NULL, AEO, 0x8858, NULL, NULL, 0, 0 };
+static OBJECT  _05_EDIT_REF = {  7, -1, -1, G_USERDEF, 0x0005, 0x0010, C_UNION(&A_3DBUTTON02), 2, 3, 10, 2 };
+static AOBJECT _05aEDIT_REF = { editref_edit, NULL, AEO, 0x8845, NULL, NULL, 0, 0 };
+static OBJECT  _07_EDIT_REF = {  9, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON04), 14, 3, 10, 2 };
+static AOBJECT _07aEDIT_REF = { editref_ok, NULL, AEO, 0x884f, NULL, NULL, 0, 0 };
+static OBJECT  _09_EDIT_REF = { 11, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON07), 26, 3, 10, 2 };
+static AOBJECT _09aEDIT_REF = { editref_abort, NULL, AEO, 0x8841, NULL, NULL, 0, 0 };
+static OBJECT  _11_EDIT_REF = {  0, 13, 13, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 8, 1, 14, 1 };
+static AOBJECT _11aEDIT_REF = { editref_choose, NULL, AEO, 0x8854, NULL, NULL, 0, 0 };
+static OBJECT  _13_EDIT_REF = { 11, -1, -1, G_USERDEF, 0, 0, C_UNION(&A_3DBUTTON29), 0, 0, 14, 1 };
+static AOBJECT _13aEDIT_REF = { NULL, NULL, AEO | OF_LASTOB, 0, NULL, NULL, 0, 0 };
+
+Awindow WI_REF = {
+	NULL,
+	rf_service,
+	rf_make,
+	Awi_open,
+	Awi_init,
+	&EDIT_REF,
+	NULL,
+	0, 0,
+	-1,
+	0x601f,
+	{ 0, 0, 99, 99 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xfcf8,
+	TEXT_11,
+	TEXT_002,
+	10000,
+	AW_TOOLBOX,
+	0,
+	-1,
+	&IC_REF,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
