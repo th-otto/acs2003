@@ -231,6 +231,7 @@ typedef struct {
 	ACS_HEAD *acs;
 	Obj_Head *obj;
 	Awindow *editor;
+	/* ^^^ must match first entries of LISTPARM */
 } REFPARM;
 
 typedef struct {
@@ -1065,6 +1066,12 @@ extern Awindow WI_STRING;
 
 
 /*
+ * edit2/edteded.c
+ */
+extern Awindow WI_TEDI;
+
+
+/*
  * editor/edobclas.c
  */
 extern Awindow WI_MENU;
@@ -1183,6 +1190,7 @@ void del_image(ACS_HEAD *acs, Obj_Head *image);
 extern LISTPARM list_tedi;
 
 Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
+void del_tedinfo(ACS_HEAD *acs, Obj_Head *ted);
 
 
 /*

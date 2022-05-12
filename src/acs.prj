@@ -124,7 +124,7 @@ list\edobject.c [-J- -Z- -R- -M-]
 list\edpopup.c [-J- -Z- -R- -M-]
 list\edref.c [-J- -Z- -R- -M-]
 list\edstring.c [-J- -Z- -R- -M-]
-list\edtedi.s
+list\edtedi.c [-J- -Z- -R- -M-]
 
 acsplus\slider.s
 acsplus\wislider.s
