@@ -1059,6 +1059,12 @@ extern Awindow WI_USER;
 
 
 /*
+ * edit2/edstred.c
+ */
+extern Awindow WI_STRING;
+
+
+/*
  * editor/edobclas.c
  */
 extern Awindow WI_MENU;
@@ -1107,7 +1113,7 @@ extern char mf_list[];
 extern char mf_name[];
 extern char ob_list[];
 extern char ob_name[];
-extern char proto_string[];
+extern char proto_string[14];
 extern char proto_wihelpfile[1];
 extern char proto_wihelptitle[1];
 extern char proto_wiinfo[1];

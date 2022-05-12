@@ -52,7 +52,7 @@ char mf_list[] = " MAUSFORMEN LISTE ";
 char mf_name[] = "MAUSFORM NAME";
 char ob_list[] = " OBJEKTBŽUME LISTE ";
 char ob_name[] = "OBJEKTBAUM NAME";
-char proto_string[] = "Freier String";
+char proto_string[14] = "Freier String";
 /* FIXME: size needed in edwind.c */
 char proto_wihelpfile[1] = "";
 char proto_wihelptitle[1] = "";
@@ -126,7 +126,7 @@ char mf_name[14] = "MOUSEFORM NAME";
 #endif
 char ob_list[] = " OBJECTTREES LIST \0";
 char ob_name[] = "OBJECTTREE NAME";
-char proto_string[] = "Free String\0\0";
+char proto_string[14] = "Free String\0\0";
 /* FIXME: size needed in edwind.c */
 char proto_wihelpfile[1] = "";
 char proto_wihelptitle[1] = "";

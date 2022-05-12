@@ -104,12 +104,12 @@ boolean serv_alert(ACS_HEAD *acs, int16 task, Obj_Head *str)
 		/* BUG? mlcount overwritten */
 		for (mlcount = 0; mlcount < alcount; mlcount++)
 		{
-			entries[mlcount]->label[29] = '\0';
+			entries[mlcount]->label[LABEL_MAX - 3] = '\0';
 		}
 		for (j = 0; j < mlcount; j++)
 		{
 			label[0] = '\0';
-			ptr = strncat(label, mlentries[j]->label, 28);
+			ptr = strncat(label, mlentries[j]->label, LABEL_MAX - 4);
 			do
 			{
 				ptr = strchr(label, '\001');
