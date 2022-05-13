@@ -69,7 +69,8 @@ io\pp_out.c [-J- -Z- -R- -M-]
 io\str_out.c [-J- -Z- -R- -M-]
 io\workout.c [-J- -Z- -R- -M-]
 
-edit2\eddataed.s
+edit2\eddescr.c [-J- -Z- -R- -M-]
+edit2\eddataed.c [-J- -Z- -R- -M-]
 edit2\edrefed.c [-J- -Z- -R- -M-]
 edit2\edaled.s
 edit2\ediconed.s

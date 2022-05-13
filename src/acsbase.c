@@ -4,11 +4,6 @@
 #include <stddef.h>
 #include "version.h"
 
-#undef __STRING
-#undef __STRINGIFY
-#define __STRING(x)	#x
-#define __STRINGIFY(x)	__STRING(x)
-
 static const char *const regstart[] = {
 		"",
 		"\tAn",

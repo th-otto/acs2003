@@ -225,6 +225,7 @@ typedef struct {
 typedef struct {
 	ACS_HEAD *acs;
 	Obj_Head *obj;
+	/* ^^^ must match first entries of LISTPARM */
 } EDPARM;
 
 typedef struct {
@@ -1031,6 +1032,8 @@ extern Awindow *parts_window;
  * edit2/eddataed.c
  */
 extern Awindow WI_DATA;
+extern Adescr ACSdescr;
+extern Aconfig ACSconfig;
 
 
 /*
@@ -1263,6 +1266,12 @@ Obj_Head *change_user(ACS_HEAD *acs, Obj_Head *obj, char *str[8]);
 extern LISTPARM list_window;
 
 void del_window(ACS_HEAD *acs, Obj_Head *label);
+
+
+/*
+ * acsplus/pur_desk.c
+ */
+extern Awindow PUR_DESK;
 
 
 /*
