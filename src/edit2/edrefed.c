@@ -821,7 +821,7 @@ static boolean rf_service(Awindow *self, int16 task, void *in_out)
 		term(self);
 		break;
 	
-	case AS_GUI_10000:
+	case AS_GUI_RENAME_OBJ:
 		new_name(self, ref->obj);
 		break;
 

@@ -846,7 +846,7 @@ void acs_register(void);
 /*
  * general.c
  */
-#define AS_GUI_10000       10000 /* in_out not used */
+#define AS_GUI_RENAME_OBJ  10000 /* in_out not used */
 #define AS_GUI_SAVECFG     10001 /* in_out = Awindow * */
 #define AS_GUI_SETUSED     10002 /* in_out = pathname */
 #define AS_GUI_AUTOSAVE    10003 /* in_out not used */
@@ -1093,6 +1093,12 @@ char *key_string(int16 key);
  */
 void copy_ob(ACS_HEAD *acs, OBJ_ENTRY *dst, const OBJ_ENTRY *src);
 void del_ob(ACS_HEAD *acs, OBJ_ENTRY *obj);
+
+
+/*
+ * editor/edobobjc.c
+ */
+void oe_beself(Awindow *win, OBJECT *tree, int16 obnr);
 
 
 /*

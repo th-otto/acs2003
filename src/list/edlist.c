@@ -156,7 +156,7 @@ static void li_changename(void)
 			if (list->service)
 				list->service(list->acs, LS_CHANGEOBJ, obj);
 			if ((win = obj->window) != NULL)
-				win->service(win, AS_GUI_10000, NULL);
+				win->service(win, AS_GUI_RENAME_OBJ, NULL);
 		}
 	}
 }

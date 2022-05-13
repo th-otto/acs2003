@@ -67,7 +67,7 @@ static boolean dt_service(Awindow *self, int16 task, void *in_out)
 	case AS_TERM:
 		term(self);
 		break;
-	case AS_GUI_10000:
+	case AS_GUI_RENAME_OBJ:
 		new_name(self, parm->obj);
 		break;
 	default:

@@ -72,7 +72,7 @@ io\workout.c [-J- -Z- -R- -M-]
 edit2\eddescr.c [-J- -Z- -R- -M-]
 edit2\eddataed.c [-J- -Z- -R- -M-]
 edit2\edrefed.c [-J- -Z- -R- -M-]
-edit2\edaled.s
+edit2\edaled.c [-J- -Z- -R- -M-]
 edit2\ediconed.s
 edit2\edimaged.s
 edit2\edmoused.s
