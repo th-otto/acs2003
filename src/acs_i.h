@@ -61,8 +61,8 @@ struct _Obj_Head {
 	/*   0 */ Obj_Head *next;
 	/*   4 */ void *object;
 	/*   8 */ uint16 oh_id;
-	/*  10 */ size_t size;
-	/*  14 */ size_t used;
+	/*  10 */ ssize_t size;
+	/*  14 */ ssize_t used;
 	/*  18 */ Awindow *window;
 	/*  22 */ char label[LABEL_MAX];
 	/*  54 */ int16 usage;
@@ -204,6 +204,15 @@ struct _ACS_HEAD {
 #define ACS_EXT_BACKUP    0x0002
 
 
+/*
+ * extra mouse forms
+ */
+#define MOUSE_BRUSH_BLACK  8
+#define MOUSE_BRUSH_WHITE  9
+#define MOUSE_BRUSH_TRANS 10
+#define MOUSE_OBJ_DRAG    11
+#define MOUSE_OBJ_ADD     12
+
 
 typedef struct {
 	/*   0 */ Obj_Head *label;
@@ -240,8 +249,8 @@ typedef struct {
 	Obj_Head *obj;
 	OBJECT *work;
 	OBJECT *edit;
-	void *data;
-	void *mask;
+	int16 *data;
+	int16 *mask;
 	CICON c16;
 	CICON c256;
 	int16 color;
@@ -253,7 +262,7 @@ typedef struct {
 	Obj_Head *obj;
 	OBJECT *work;
 	OBJECT *edit;
-	void *data;
+	int16 *data;
 } IMAGEPARM;
 
 typedef struct {
@@ -1099,6 +1108,13 @@ void del_ob(ACS_HEAD *acs, OBJ_ENTRY *obj);
  * editor/edobobjc.c
  */
 void oe_beself(Awindow *win, OBJECT *tree, int16 obnr);
+int16 oe_colsel(int16 color, int16 backbox, int16 popup, int16 colorbox);
+
+
+/*
+ * editor/edobboxm.c
+ */
+extern const char *const colour_text[];
 
 
 /*

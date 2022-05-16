@@ -349,9 +349,9 @@ void wi_pos(Awindow *win, Axywh *pos, Axywh *lastpos)
 static void convert(MFDB *src, MFDB *dst, int16 *mask)
 {
 	int16 pixel;
-	long size;
-	long srcoffset;
-	long srcpos;
+	ssize_t size;
+	ssize_t srcoffset;
+	ssize_t srcpos;
 	int16 pixelmask;
 	int16 *srcptr;
 	int16 *maskptr;
@@ -425,9 +425,9 @@ static void convert(MFDB *src, MFDB *dst, int16 *mask)
 void *to_cicon(int16 *data, int16 *mask, CICONBLK *icon, int16 planes)
 {
 	int16 width;
-	long planesize;
-	long dstsize;
-	long srcsize;
+	ssize_t planesize;
+	ssize_t dstsize;
+	ssize_t srcsize;
 	MFDB dst;
 	MFDB src;
 	int16 *tmp;

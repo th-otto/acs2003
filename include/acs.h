@@ -1592,10 +1592,10 @@ int16 Aob_state( Awindow *window, int16 obnr, int16 flag, int16 setflag );
 /* Nur fÅr die USERDEFS wird in UB_PTR1 dynamisch Speicher    */
 /* entsprechend der TextlÑnge angelegt, sonst darf auf keinen */
 /* Fall die TextlÑnge die vorhandene LÑnge Åberschreiten!!!   */
-void Aob_puttext( const OBJECT *ob, int16 obnr, const char *text );
+void Aob_puttext( OBJECT *ob, int16 obnr, const char *text );
 
 /* Gibt analog zu printf Text in ein Objekt aus, 1024 Zeichen Puffer */
-void Aob_printf( const OBJECT *ob, int16 obnr, const char *format, ... );
+void Aob_printf( OBJECT *ob, int16 obnr, const char *format, ... );
 
 /* Holt Text aus Objekt, TEXT muû lang genug sein!           */
 /* zurÅckgeleifert wird die LÑnge des Textes oder -1         */
@@ -1606,7 +1606,7 @@ int16 Aob_gettext( const OBJECT *ob, int16 obnr, char *text );
 
 /* Holt Werte analog zu scanf, liefert analog zu Aob_gettext */
 /* nur LÑnge wenn format!=NULL, 1024 Zeichen Puffer          */
-int16 Aob_scanf( const OBJECT *ob, int16 obnr, const char *format, ... );
+int16 Aob_scanf( OBJECT *ob, int16 obnr, const char *format, ... );
 
 /* Is x/y in Rectangle? */
 int16 Aob_within( const Axywh* rect, int16 x, int16 y );
