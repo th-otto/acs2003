@@ -8,7 +8,7 @@ static int16 CDECL user_control(PARMBLK *pb);
 
 static void edic_frontcol(void);
 static void edic_backcol(void);
-static void edic_acc(void);
+static void edic_accept(void);
 static void edic_control(void);
 static void edic_newplane(void);
 static void edic_select(void);
@@ -477,8 +477,8 @@ static void edic_resize(Awindow *self, int16 w, int16 h)
 			do_plane(&src, &dst, 1, planesize, pxy, &parm->c256.sel_mask);
 		}
 	}
-	parm->work[EDIT_ICON_DRAWBOX].ob_width = icon->monoblk.ib_wicon = snap(w);
-	parm->work[EDIT_ICON_DRAWBOX].ob_height = icon->monoblk.ib_hicon = snap(h);
+	parm->work[EDIT_ICON_SIZEBOX].ob_width = icon->monoblk.ib_wicon = snap(w);
+	parm->work[EDIT_ICON_SIZEBOX].ob_height = icon->monoblk.ib_hicon = snap(h);
 	edic_link(self);
 }
 
@@ -598,7 +598,7 @@ static void edic_direct(void)
 		icon->monoblk.ib_hicon = oldh;
 		/* BUG: Awi_dialog may have changed global variables in ACSblk */
 		edic_resize(ACSblk->ev_window, w, h);
-		ACSblk->ev_object[EDIT_ICON_DRAWBOX].ob_flags |= OF_HIDETREE;
+		ACSblk->ev_object[EDIT_ICON_SIZEBOX].ob_flags |= OF_HIDETREE;
 		ACSblk->ev_window->obchange(ACSblk->ev_window, EDIT_ICON_DRAWFRAME, -1);
 	}
 	Awi_delete(win);
@@ -715,17 +715,17 @@ static void edic_left(void)
 
 static int16 control(OBJECT *tree, Axywh *pos, int16 x, int16 y)
 {
-	if ((tree[EDIT_ICON_DRAWBOX].ob_flags & OF_HIDETREE) ||
-		tree[EDIT_ICON_DRAWBOX].ob_x != pos->x ||
-		tree[EDIT_ICON_DRAWBOX].ob_y != pos->y ||
-		tree[EDIT_ICON_DRAWBOX].ob_width != pos->w ||
-		tree[EDIT_ICON_DRAWBOX].ob_height != pos->h)
+	if ((tree[EDIT_ICON_SIZEBOX].ob_flags & OF_HIDETREE) ||
+		tree[EDIT_ICON_SIZEBOX].ob_x != pos->x ||
+		tree[EDIT_ICON_SIZEBOX].ob_y != pos->y ||
+		tree[EDIT_ICON_SIZEBOX].ob_width != pos->w ||
+		tree[EDIT_ICON_SIZEBOX].ob_height != pos->h)
 	{
-		tree[EDIT_ICON_DRAWBOX].ob_flags &= ~OF_HIDETREE;
-		tree[EDIT_ICON_DRAWBOX].ob_x = pos->x;
-		tree[EDIT_ICON_DRAWBOX].ob_y = pos->y;
-		tree[EDIT_ICON_DRAWBOX].ob_width = pos->w;
-		tree[EDIT_ICON_DRAWBOX].ob_height = pos->h;
+		tree[EDIT_ICON_SIZEBOX].ob_flags &= ~OF_HIDETREE;
+		tree[EDIT_ICON_SIZEBOX].ob_x = pos->x;
+		tree[EDIT_ICON_SIZEBOX].ob_y = pos->y;
+		tree[EDIT_ICON_SIZEBOX].ob_width = pos->w;
+		tree[EDIT_ICON_SIZEBOX].ob_height = pos->h;
 		return 0;
 	}
 	x = (pos->x + pos->w - 1) - x;
@@ -806,8 +806,8 @@ static void edic_control(void)
 					8, 8,
 					&destx, &desty, w - icon->ib_xtext, h - icon->ib_ytext))
 				{
-					tree[EDIT_ICON_DRAWBOX].ob_width = icon->ib_wtext = snap(destx);
-					tree[EDIT_ICON_DRAWBOX].ob_height = icon->ib_htext = snap(desty);
+					tree[EDIT_ICON_SIZEBOX].ob_width = icon->ib_wtext = snap(destx);
+					tree[EDIT_ICON_SIZEBOX].ob_height = icon->ib_htext = snap(desty);
 				}
 				break;
 			
@@ -817,8 +817,8 @@ static void edic_control(void)
 					obx + icon->ib_xtext, oby + icon->ib_ytext,
 					obx, oby, w, h,
 					&destx, &desty);
-				tree[EDIT_ICON_DRAWBOX].ob_x = icon->ib_xtext = snap(destx - obx);
-				tree[EDIT_ICON_DRAWBOX].ob_y = icon->ib_ytext = snap(desty - oby);
+				tree[EDIT_ICON_SIZEBOX].ob_x = icon->ib_xtext = snap(destx - obx);
+				tree[EDIT_ICON_SIZEBOX].ob_y = icon->ib_ytext = snap(desty - oby);
 				break;
 			}
 		} else
@@ -944,16 +944,16 @@ static void edic_control(void)
 						graf_dragbox(icon->ib_wicon, icon->ib_hicon,
 							obx + icon->ib_xicon, oby + icon->ib_yicon,
 							obx, oby, w, h, &destx, &desty);
-						tree[EDIT_ICON_DRAWBOX].ob_x = icon->ib_xicon = snap(destx - obx);
-						tree[EDIT_ICON_DRAWBOX].ob_y = icon->ib_yicon = snap(desty - oby);
+						tree[EDIT_ICON_SIZEBOX].ob_x = icon->ib_xicon = snap(destx - obx);
+						tree[EDIT_ICON_SIZEBOX].ob_y = icon->ib_yicon = snap(desty - oby);
 					}
 					break;
 				}
 			} else
 			{
-				if (tree[EDIT_ICON_DRAWBOX].ob_flags & OF_HIDETREE)
+				if (tree[EDIT_ICON_SIZEBOX].ob_flags & OF_HIDETREE)
 					return;
-				tree[EDIT_ICON_DRAWBOX].ob_flags |= OF_HIDETREE;
+				tree[EDIT_ICON_SIZEBOX].ob_flags |= OF_HIDETREE;
 			}
 		}
 	}
@@ -1259,7 +1259,7 @@ static void edic_newplane(void)
 
 /* -------------------------------------------------------------------------- */
 
-static void edic_acc(void)
+static void edic_accept(void)
 {
 	Awindow *self;
 	Awindow *select;
@@ -1415,7 +1415,7 @@ static void edic_acc(void)
 	}
 	edic_link(self);
 	Abp_delete(dst);
-	tree[EDIT_ICON_DRAWBOX].ob_flags |= OF_HIDETREE;
+	tree[EDIT_ICON_SIZEBOX].ob_flags |= OF_HIDETREE;
 	self->obchange(self, EDIT_ICON_DRAWFRAME, -1);
 	Adr_del(select, obnr);
 }
@@ -1795,6 +1795,7 @@ static void accept_icon(Awindow *self)
 	
 	parm = self->user;
 	acs = parm->acs;
+	/* BUG: nor maked as changed */
 	icon = parm->work[EDIT_ICON_ICON].ob_spec.ciconblk;
 	memcpy(&newicon.cicon, icon, sizeof(newicon.cicon.monoblk));
 	memset(&newicon.c16, 0, sizeof(newicon.c16));

@@ -64,7 +64,7 @@
 #define EDIT_ICON_DRAWFRAME               14 /* BOXTEXT in tree EDIT_ICON_DIALOG */
 #define EDIT_ICON_ICON                    16 /* ICON in tree EDIT_ICON_DIALOG */
 #define EDIC_CONTROL                      17 /* USERDEF in tree EDIT_ICON_DIALOG */
-#define EDIT_ICON_DRAWBOX                 18 /* USERDEF in tree EDIT_ICON_DIALOG */
+#define EDIT_ICON_SIZEBOX                 18 /* USERDEF in tree EDIT_ICON_DIALOG */
 #define EDIT_ICON_CORNER                  19 /* IBOX in tree EDIT_ICON_DIALOG */
 #define EDIT_ICON_TEXT                    26 /* FBOXTEXT in tree EDIT_ICON_DIALOG */
 #define EDIT_ICON_CHAR                    27 /* FBOXTEXT in tree EDIT_ICON_DIALOG */

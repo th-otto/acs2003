@@ -519,7 +519,7 @@ edob_specs_4:
 		bra        edob_specs_2
 edob_specs_5:
 		movea.l    a3,a0
-		jsr        set_image
+		jsr        edoim_set_image
 		movea.l    a0,a4
 		bra        edob_specs_2
 edob_specs_6:
