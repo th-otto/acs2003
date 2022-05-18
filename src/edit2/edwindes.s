@@ -1,5 +1,6 @@
 		.text
 
+	.globl edwi_tme
 edwi_tme:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -19,6 +20,7 @@ edwi_tme:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl edwi_two
 edwi_two:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -38,6 +40,7 @@ edwi_two:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl edwi_tic
 edwi_tic:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -57,6 +60,7 @@ edwi_tic:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl edwi_ref
 edwi_ref:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -76,6 +80,7 @@ edwi_ref:
 		movea.l    (a7)+,a2
 		rts
 
+	.globl edwi_ok
 edwi_ok:
 		clr.w      d0
 		movea.l    ACSblk,a0
@@ -86,12 +91,14 @@ edwi_ok:
 		jsr        term
 		rts
 
+	.globl edwi_abort
 edwi_abort:
 		movea.l    ACSblk,a0
 		movea.l    600(a0),a0
 		jsr        term
 		rts
 
+	.globl edwi_acc
 edwi_acc:
 		movem.l    d3/a2-a4,-(a7)
 		subq.w     #4,a7
@@ -775,6 +782,7 @@ acc_window_48:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
+	.globl wi_make
 wi_make:
 		movem.l    a2-a4,-(a7)
 		subq.w     #4,a7
@@ -836,6 +844,7 @@ wi_make_5:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl wi_service
 wi_service:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a2

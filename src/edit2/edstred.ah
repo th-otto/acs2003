@@ -1,3 +1,7 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
 #if COUNTRY == COUNTRY_DE
 static char TEXT_002[] = "";
 static char TEXT_003[] = "OK";
@@ -16,108 +20,89 @@ static char TEXT_12[] = "TEXT";
 #endif
 
 
-static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
-static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, $21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
-static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, $20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
-static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
-static AUSERBLK A_BOXED01 = { A_boxed, $9000ff12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, 0x9000ff12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
 
 static int16 _MSK_IC_STRING[] = {
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $1ffb, $fb81,
-	$dff8, $1ffb, $fb81, $dff8, $118b, $09c3, $9188, $0183,
-	$00e7, $0180, $0183, $207e, $0180, $0183, $e03c, $0180,
-	$0183, $e03c, $0180, $0183, $207e, $0180, $0183, $00e7,
-	$0180, $0183, $09c3, $8180, $03c3, $fb81, $c3c0, $07e3,
-	$fb81, $c7e0, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x1ffb, 0xfb81,
+	0xdff8, 0x1ffb, 0xfb81, 0xdff8, 0x118b, 0x09c3, 0x9188, 0x0183,
+	0x00e7, 0x0180, 0x0183, 0x207e, 0x0180, 0x0183, 0xe03c, 0x0180,
+	0x0183, 0xe03c, 0x0180, 0x0183, 0x207e, 0x0180, 0x0183, 0x00e7,
+	0x0180, 0x0183, 0x09c3, 0x8180, 0x03c3, 0xfb81, 0xc3c0, 0x07e3,
+	0xfb81, 0xc7e0, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 };
 static int16 _DAT_IC_STRING[] = {
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $1ffb, $fb81,
-	$dff8, $1ffb, $fb81, $dff8, $118b, $09c3, $9188, $0183,
-	$00e7, $0180, $0183, $207e, $0180, $0183, $e03c, $0180,
-	$0183, $e03c, $0180, $0183, $207e, $0180, $0183, $00e7,
-	$0180, $0183, $09c3, $8180, $03c3, $fb81, $c3c0, $07e3,
-	$fb81, $c7e0, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x1ffb, 0xfb81,
+	0xdff8, 0x1ffb, 0xfb81, 0xdff8, 0x118b, 0x09c3, 0x9188, 0x0183,
+	0x00e7, 0x0180, 0x0183, 0x207e, 0x0180, 0x0183, 0xe03c, 0x0180,
+	0x0183, 0xe03c, 0x0180, 0x0183, 0x207e, 0x0180, 0x0183, 0x00e7,
+	0x0180, 0x0183, 0x09c3, 0x8180, 0x03c3, 0xfb81, 0xc3c0, 0x07e3,
+	0xfb81, 0xc7e0, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 };
-static CICONBLK IC_STRING = { { _MSK_IC_STRING, _DAT_IC_STRING, TEXT_12, $1000, 0, 0, 12, 0, 48, 29, 0, 32, 72, 8 }, NULL };
+static CICONBLK IC_STRING = { { _MSK_IC_STRING, _DAT_IC_STRING, TEXT_12, 0x1000, 0, 0, 12, 0, 48, 29, 0, 32, 72, 8 }, NULL };
 
-static OBJECT  EDIT_STRING = { $ffff, $0001, $0007, $0018, $0040, $0010, C_UNION(&A_3DBUTTON02), $0000, $0000, $0034, $0007 };
-static OBJECT  _01_EDIT_STRING = { $0005, $0002, $0002, $0018, $0040, $0000, C_UNION(&A_3DBUTTON03), $0001, $0001, $0032, $0002 };
-static OBJECT  _02_EDIT_STRING = { $0001, $0003, $0004, $0014, $0040, $0000, C_UNION(&$00ff0101), $0000, $0000, $0032, $0002 };
-static OBJECT  _03_EDIT_STRING = { $0004, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED01), $0000, $0000, $0032, $0001 };
-static OBJECT  _04_EDIT_STRING = { $0002, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED01), $0000, $0001, $0032, $0001 };
-static OBJECT  _05_EDIT_STRING = { $0007, $ffff, $ffff, $0018, $4007, $0010, C_UNION(&A_3DBUTTON05), $000d, $0004, $000c, $0002 };
-static AOBJECT _05aEDIT_STRING = { editstr_ok, $00000000, $8000, $884f, $00000000, $00000000, $0000, $0000 };
-static OBJECT  _07_EDIT_STRING = { $0000, $ffff, $ffff, $0018, $4005, $0010, C_UNION(&A_3DBUTTON01), $001d, $0004, $000c, $0002 };
-static AOBJECT _07aEDIT_STRING = { editstr_abort, $00000000, $8020, $8841, $00000000, $00000000, $0000, $0000 };
+static OBJECT  EDIT_STRING =     { -1,  1,  7, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 52, 7 };
+static OBJECT  _01_EDIT_STRING = {  5,  2,  2, 0x0018, 0x0040, 0x0000, C_UNION(&A_3DBUTTON03), 1, 1, 50, 2 };
+static OBJECT  _02_EDIT_STRING = {  1,  3,  4, 0x0014, 0x0040, 0x0000, C_UNION(0x00ff0101L), 0, 0, 50, 2 };
+static OBJECT  _03_EDIT_STRING = {  4, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 0, 50, 1 };
+static OBJECT  _04_EDIT_STRING = {  2, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 1, 50, 1 };
+static OBJECT  _05_EDIT_STRING = {  7, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON05), 13, 4, 12, 2 };
+static AOBJECT _05aEDIT_STRING = { editstr_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 };
+static OBJECT  _07_EDIT_STRING = {  0, -1, -1, 0x0018, 0x4005, 0x0010, C_UNION(&A_3DBUTTON01), 29, 4, 12, 2 };
+static AOBJECT _07aEDIT_STRING = { editstr_abort, NULL, 0x8020, 0x8841, NULL, NULL, 0, 0 };
 
-	.globl WI_STRING
-WI_STRING:
-	dc.w $0000
-	dc.w $0000
-	dc.l st_service
-	dc.l st_make
-	dc.l Awi_open
-	dc.l Awi_init
-	dc.l EDIT_STRING
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $ffff
-	dc.w $601f
-	dc.w $0000
-	dc.w $0000
-	dc.w $0063
-	dc.w $0063
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $ffff
-	dc.w $ffff
-	dc.w $ffff
-	dc.w $ffff
-	dc.w $0000
-	dc.w $0000
-	dc.w $fcf8
-	dc.l TEXT_01
-	dc.l TEXT_002
-	dc.w $2710
-	dc.w $0100
-	dc.w $0000
-	dc.w $ffff
-	dc.l IC_STRING
-	dc.w $0000
-	dc.w $0000
-	dc.l Awi_keys
-	dc.l Awi_obchange
-	dc.l Awi_redraw
-	dc.l Awi_topped
-	dc.l Awi_closed
-	dc.l Awi_fulled
-	dc.l Awi_arrowed
-	dc.l Awi_hslid
-	dc.l Awi_vslid
-	dc.l Awi_sized
-	dc.l Awi_moved
-	dc.l Awi_iconify
-	dc.l Awi_uniconify
-	dc.l Awi_gemscript
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
+Awindow WI_STRING = {
+	NULL,
+	st_service,
+	st_make,
+	Awi_open,
+	Awi_init,
+	&EDIT_STRING,
+	NULL,
+	0, 0,
+	-1,
+	0x601f,
+	{ 0, 0, 99, 99 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xfcf8,
+	TEXT_01,
+	TEXT_002,
+	10000,
+	AW_TOOLBOX,
+	0,
+	-1,
+	&IC_STRING,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};

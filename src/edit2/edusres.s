@@ -1,11 +1,13 @@
 		.text
 
+	.globl editus_ok
 editus_ok:
 		movea.l    ACSblk,a0
 		movea.l    600(a0),a0
 		jsr        term
 		rts
 
+	.globl user_make
 user_make:
 		movem.l    a2-a4,-(a7)
 		subq.w     #4,a7
@@ -64,6 +66,7 @@ user_make_4:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl user_service
 user_service:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a2

@@ -1,3 +1,7 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
 static char TEXT_002[] = "";
 static char TEXT_006[] = "1234567890123456789012345678901";
 static char TEXT_01[] = "Code:";
@@ -12,190 +16,171 @@ static char TEXT_10[] = "USER-BLOCK";
 
 
 static int16 DATAS_25[] = {
-	$0000, $0000, $02f0, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0ffe, $0000, $03e0, $0803, $0000, $03e0, $fbfb, $ffe0,
-	$03e0, $f803, $ffe0, $03e0, $ffff, $ffe0, $03e0, $ffff,
-	$ffe0, $0000, $ffff, $ffe0, $0000, $ffff, $ffe0, $0000,
-	$ffff, $ffe0, $0000, $ffff, $ffe0, $0000, $ffff, $ffe0,
-	$01c0, $ffff, $ffe0, $03e0, $ffff, $ffe0, $03e0, $ffff,
-	$ffe0, $03e0, $ffff, $ffe0, $01c0, $0000, $0000, $0000,
-	$0402, $0000, $0000, $0703, $8000, $0000, $0402, $0000,
-	$0000, $0402, $0000, $0000, $743a, $0000, $0000, $f87c,
-	$0000, $0000, $7038, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0ffe, $0000, $03e0,
-	$0803, $0000, $03e0, $fbfb, $ffe0, $03e0, $f803, $ffe0,
-	$03e0, $ffff, $ffe0, $03e0, $ffff, $ffe0, $0000, $ffff,
-	$ffe0, $0000, $ffff, $ffe0, $0000, $ffff, $ffe0, $0000,
-	$ffff, $ffe0, $0000, $ffff, $ffe0, $01c0, $ffff, $ffe0,
-	$03e0, $ffff, $ffe0, $03e0, $ffff, $ffe0, $03e0, $ffff,
-	$ffe0, $01c0, $0000, $0000, $0000, $0402, $0000, $0000,
-	$0703, $8000, $0000, $0402, $0000, $0000, $0402, $0000,
-	$0000, $743a, $0000, $0000, $f87c, $0000, $0000, $7038,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0ffe, $0000, $03e0, $0803, $0000, $03e0,
-	$fbfb, $ffe0, $03e0, $f803, $ffe0, $03e0, $ffff, $ffe0,
-	$03e0, $ffff, $ffe0, $0000, $ffff, $ffe0, $0000, $ffff,
-	$ffe0, $0000, $ffff, $ffe0, $0000, $ffff, $ffe0, $0000,
-	$ffff, $ffe0, $01c0, $ffff, $ffe0, $03e0, $ffff, $ffe0,
-	$03e0, $ffff, $ffe0, $03e0, $ffff, $ffe0, $01c0, $0000,
-	$0000, $0000, $0402, $0000, $0000, $0703, $8000, $0000,
-	$0402, $0000, $0000, $0402, $0000, $0000, $743a, $0000,
-	$0000, $f87c, $0000, $0000, $7038, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $07f0, $0ffe,
-	$0000, $0410, $0803, $0000, $0550, $fbfb, $ffe0, $0490,
-	$8803, $0020, $0550, $8fff, $0020, $0410, $87ff, $0020,
-	$07f0, $8000, $0020, $0000, $8000, $0020, $0000, $8000,
-	$0020, $0000, $8000, $0020, $01c0, $8000, $0020, $0220,
-	$8000, $0020, $0490, $8000, $0020, $05d0, $8000, $0020,
-	$0490, $ffff, $ffe0, $0220, $0000, $0000, $01c0, $0402,
-	$0000, $0000, $0703, $8000, $0000, $0402, $0000, $0000,
-	$0402, $0000, $0000, $743a, $0000, $0000, $f87c, $0000,
-	$0000, $7038, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000
+	0x0000, 0x0000, 0x02f0, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0ffe, 0x0000, 0x03e0, 0x0803, 0x0000, 0x03e0, 0xfbfb, 0xffe0,
+	0x03e0, 0xf803, 0xffe0, 0x03e0, 0xffff, 0xffe0, 0x03e0, 0xffff,
+	0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000,
+	0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0,
+	0x01c0, 0xffff, 0xffe0, 0x03e0, 0xffff, 0xffe0, 0x03e0, 0xffff,
+	0xffe0, 0x03e0, 0xffff, 0xffe0, 0x01c0, 0x0000, 0x0000, 0x0000,
+	0x0402, 0x0000, 0x0000, 0x0703, 0x8000, 0x0000, 0x0402, 0x0000,
+	0x0000, 0x0402, 0x0000, 0x0000, 0x743a, 0x0000, 0x0000, 0xf87c,
+	0x0000, 0x0000, 0x7038, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0ffe, 0x0000, 0x03e0,
+	0x0803, 0x0000, 0x03e0, 0xfbfb, 0xffe0, 0x03e0, 0xf803, 0xffe0,
+	0x03e0, 0xffff, 0xffe0, 0x03e0, 0xffff, 0xffe0, 0x0000, 0xffff,
+	0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000,
+	0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x01c0, 0xffff, 0xffe0,
+	0x03e0, 0xffff, 0xffe0, 0x03e0, 0xffff, 0xffe0, 0x03e0, 0xffff,
+	0xffe0, 0x01c0, 0x0000, 0x0000, 0x0000, 0x0402, 0x0000, 0x0000,
+	0x0703, 0x8000, 0x0000, 0x0402, 0x0000, 0x0000, 0x0402, 0x0000,
+	0x0000, 0x743a, 0x0000, 0x0000, 0xf87c, 0x0000, 0x0000, 0x7038,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0ffe, 0x0000, 0x03e0, 0x0803, 0x0000, 0x03e0,
+	0xfbfb, 0xffe0, 0x03e0, 0xf803, 0xffe0, 0x03e0, 0xffff, 0xffe0,
+	0x03e0, 0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000, 0xffff,
+	0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000,
+	0xffff, 0xffe0, 0x01c0, 0xffff, 0xffe0, 0x03e0, 0xffff, 0xffe0,
+	0x03e0, 0xffff, 0xffe0, 0x03e0, 0xffff, 0xffe0, 0x01c0, 0x0000,
+	0x0000, 0x0000, 0x0402, 0x0000, 0x0000, 0x0703, 0x8000, 0x0000,
+	0x0402, 0x0000, 0x0000, 0x0402, 0x0000, 0x0000, 0x743a, 0x0000,
+	0x0000, 0xf87c, 0x0000, 0x0000, 0x7038, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x07f0, 0x0ffe,
+	0x0000, 0x0410, 0x0803, 0x0000, 0x0550, 0xfbfb, 0xffe0, 0x0490,
+	0x8803, 0x0020, 0x0550, 0x8fff, 0x0020, 0x0410, 0x87ff, 0x0020,
+	0x07f0, 0x8000, 0x0020, 0x0000, 0x8000, 0x0020, 0x0000, 0x8000,
+	0x0020, 0x0000, 0x8000, 0x0020, 0x01c0, 0x8000, 0x0020, 0x0220,
+	0x8000, 0x0020, 0x0490, 0x8000, 0x0020, 0x05d0, 0x8000, 0x0020,
+	0x0490, 0xffff, 0xffe0, 0x0220, 0x0000, 0x0000, 0x01c0, 0x0402,
+	0x0000, 0x0000, 0x0703, 0x8000, 0x0000, 0x0402, 0x0000, 0x0000,
+	0x0402, 0x0000, 0x0000, 0x743a, 0x0000, 0x0000, 0xf87c, 0x0000,
+	0x0000, 0x7038, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 };
 static int16 DATAS_26[] = {
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $07f0, $0ffe, $0000, $07f0,
-	$0fff, $0000, $07f0, $ffff, $ffe0, $07f0, $ffff, $ffe0,
-	$07f0, $ffff, $ffe0, $07f0, $ffff, $ffe0, $07f0, $ffff,
-	$ffe0, $0000, $ffff, $ffe0, $0000, $ffff, $ffe0, $0000,
-	$ffff, $ffe0, $01c0, $ffff, $ffe0, $03e0, $ffff, $ffe0,
-	$07f0, $ffff, $ffe0, $07f0, $ffff, $ffe0, $07f0, $ffff,
-	$ffe0, $03e0, $0402, $0000, $01c0, $0f07, $8000, $0000,
-	$0f87, $c000, $0000, $0f07, $8000, $0000, $7e3f, $0000,
-	$0000, $fe7f, $0000, $0001, $fcfe, $0000, $0000, $f87c,
-	$0000, $0000, $7038, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x07f0, 0x0ffe, 0x0000, 0x07f0,
+	0x0fff, 0x0000, 0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff, 0xffe0,
+	0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff,
+	0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000,
+	0xffff, 0xffe0, 0x01c0, 0xffff, 0xffe0, 0x03e0, 0xffff, 0xffe0,
+	0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff,
+	0xffe0, 0x03e0, 0x0402, 0x0000, 0x01c0, 0x0f07, 0x8000, 0x0000,
+	0x0f87, 0xc000, 0x0000, 0x0f07, 0x8000, 0x0000, 0x7e3f, 0x0000,
+	0x0000, 0xfe7f, 0x0000, 0x0001, 0xfcfe, 0x0000, 0x0000, 0xf87c,
+	0x0000, 0x0000, 0x7038, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 };
 
-static TEDINFO TEDINFO_01 = { TEXT_01, TEXT_002, TEXT_002, $0003, $0006, $0002, $1100, $0000, $ffff, $0006, $0001 };
-static TEDINFO TEDINFO_02 = { TEXT_02, TEXT_002, TEXT_002, $0003, $0006, $0002, $1100, $0000, $ffff, $0006, $0001 };
-static TEDINFO TEDINFO_03 = { TEXT_03, TEXT_002, TEXT_002, $0003, $0006, $0002, $1100, $0000, $ffff, $0006, $0001 };
-static TEDINFO TEDINFO_04 = { TEXT_04, TEXT_002, TEXT_002, $0003, $0006, $0002, $1100, $0000, $ffff, $0006, $0001 };
-static TEDINFO TEDINFO_05 = { TEXT_05, TEXT_002, TEXT_002, $0003, $0006, $0002, $1100, $0000, $ffff, $0006, $0001 };
-static TEDINFO TEDINFO_06 = { TEXT_06, TEXT_002, TEXT_002, $0003, $0006, $0002, $1100, $0000, $ffff, $0006, $0001 };
-static TEDINFO TEDI_007 = { TEXT_006, TEXT_002, TEXT_002, $0003, $0006, $0000, $1100, $0000, $0000, $0020, $0001 };
-static TEDINFO TEDI_008 = { TEXT_006, TEXT_002, TEXT_002, $0003, $0006, $0000, $1180, $0000, $0000, $0020, $0001 };
+static TEDINFO TEDINFO_01 = { TEXT_01, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0xffff, 0x0006, 0x0001 };
+static TEDINFO TEDINFO_02 = { TEXT_02, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0xffff, 0x0006, 0x0001 };
+static TEDINFO TEDINFO_03 = { TEXT_03, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0xffff, 0x0006, 0x0001 };
+static TEDINFO TEDINFO_04 = { TEXT_04, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0xffff, 0x0006, 0x0001 };
+static TEDINFO TEDINFO_05 = { TEXT_05, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0xffff, 0x0006, 0x0001 };
+static TEDINFO TEDINFO_06 = { TEXT_06, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0xffff, 0x0006, 0x0001 };
+static TEDINFO TEDI_007 = { TEXT_006, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0000, 0x1100, 0x0000, 0x0000, 0x0020, 0x0001 };
+static TEDINFO TEDI_008 = { TEXT_006, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0000, 0x1180, 0x0000, 0x0000, 0x0020, 0x0001 };
 
-static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, $21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
-static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_011, NULL, NULL, NULL, NULL };
-static AUSERBLK A_INNERFRAME02 = { A_innerframe, $10008f19L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_011, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x10008f19L, Auo_string, NULL, NULL, NULL, NULL, NULL };
 
 static CICON _C4_IC_USER = { 4, &DATAS_25[3], DATAS_26, NULL, NULL, NULL };
 
 static int16 _MSK_IC_USER[] = {
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $07f0, $0ffe, $0000, $07f0,
-	$0fff, $0000, $07f0, $ffff, $ffe0, $07f0, $ffff, $ffe0,
-	$07f0, $ffff, $ffe0, $07f0, $ffff, $ffe0, $07f0, $ffff,
-	$ffe0, $0000, $ffff, $ffe0, $0000, $ffff, $ffe0, $0000,
-	$ffff, $ffe0, $01c0, $ffff, $ffe0, $03e0, $ffff, $ffe0,
-	$07f0, $ffff, $ffe0, $07f0, $ffff, $ffe0, $07f0, $ffff,
-	$ffe0, $03e0, $0402, $0000, $01c0, $0f07, $8000, $0000,
-	$0f87, $c000, $0000, $0f07, $8000, $0000, $7e3f, $0000,
-	$0000, $fe7f, $0000, $0001, $fcfe, $0000, $0000, $f87c,
-	$0000, $0000, $7038, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x07f0, 0x0ffe, 0x0000, 0x07f0,
+	0x0fff, 0x0000, 0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff, 0xffe0,
+	0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff,
+	0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000, 0xffff, 0xffe0, 0x0000,
+	0xffff, 0xffe0, 0x01c0, 0xffff, 0xffe0, 0x03e0, 0xffff, 0xffe0,
+	0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff, 0xffe0, 0x07f0, 0xffff,
+	0xffe0, 0x03e0, 0x0402, 0x0000, 0x01c0, 0x0f07, 0x8000, 0x0000,
+	0x0f87, 0xc000, 0x0000, 0x0f07, 0x8000, 0x0000, 0x7e3f, 0x0000,
+	0x0000, 0xfe7f, 0x0000, 0x0001, 0xfcfe, 0x0000, 0x0000, 0xf87c,
+	0x0000, 0x0000, 0x7038, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 };
 static int16 _DAT_IC_USER[] = {
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $07f0, $0ffe, $0000, $0630,
-	$0803, $0000, $0550, $fbfb, $ffe0, $0490, $8803, $0020,
-	$0550, $8fff, $0020, $0630, $87ff, $0020, $07f0, $8000,
-	$0020, $0000, $8000, $0020, $0000, $8000, $0020, $0000,
-	$8000, $0020, $01c0, $8000, $0020, $0220, $8000, $0020,
-	$0490, $8000, $0020, $05d0, $8000, $0020, $0490, $ffff,
-	$ffe0, $0220, $0000, $0000, $01c0, $0402, $0000, $0000,
-	$0703, $8000, $0000, $0402, $0000, $0000, $0402, $0000,
-	$0000, $743a, $0000, $0000, $f87c, $0000, $0000, $7038,
-	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
-	$0000, $0000, $0000, $0000, $0000
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x07f0, 0x0ffe, 0x0000, 0x0630,
+	0x0803, 0x0000, 0x0550, 0xfbfb, 0xffe0, 0x0490, 0x8803, 0x0020,
+	0x0550, 0x8fff, 0x0020, 0x0630, 0x87ff, 0x0020, 0x07f0, 0x8000,
+	0x0020, 0x0000, 0x8000, 0x0020, 0x0000, 0x8000, 0x0020, 0x0000,
+	0x8000, 0x0020, 0x01c0, 0x8000, 0x0020, 0x0220, 0x8000, 0x0020,
+	0x0490, 0x8000, 0x0020, 0x05d0, 0x8000, 0x0020, 0x0490, 0xffff,
+	0xffe0, 0x0220, 0x0000, 0x0000, 0x01c0, 0x0402, 0x0000, 0x0000,
+	0x0703, 0x8000, 0x0000, 0x0402, 0x0000, 0x0000, 0x0402, 0x0000,
+	0x0000, 0x743a, 0x0000, 0x0000, 0xf87c, 0x0000, 0x0000, 0x7038,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 };
 
-static CICONBLK IC_USER = { { _MSK_IC_USER, _DAT_IC_USER, TEXT_10, $1000, 0, 0, 12, 0, 48, 31, 0, 32, 72, 8 }, &_C4_IC_USER };
+static CICONBLK IC_USER = { { _MSK_IC_USER, _DAT_IC_USER, TEXT_10, 0x1000, 0, 0, 12, 0, 48, 31, 0, 32, 72, 8 }, &_C4_IC_USER };
 
-static OBJECT  EDIT_USER = { $ffff, $0001, $000e, $0018, $0040, $0010, C_UNION(&A_3DBUTTON02), $0000, $0000, $0028, $000b };
-static OBJECT  _01_EDIT_USER = { $000e, $0002, $000d, $0018, $0040, $0000, C_UNION(&A_INNERFRAME02), $0001, $0000, $0026, $0008 };
-static OBJECT  _02_EDIT_USER = { $0003, $ffff, $ffff, $0015, $0000, $0000, C_UNION(&TEDINFO_01), $0001, $0001, $0005, $0001 };
-static OBJECT  _03_EDIT_USER = { $0004, $ffff, $ffff, $0015, $0000, $0000, C_UNION(&TEDINFO_02), $0001, $0002, $0005, $0001 };
-static OBJECT  _04_EDIT_USER = { $0005, $ffff, $ffff, $0015, $0000, $0000, C_UNION(&TEDINFO_03), $0001, $0003, $0005, $0001 };
-static OBJECT  _05_EDIT_USER = { $0006, $ffff, $ffff, $0015, $0000, $0000, C_UNION(&TEDINFO_04), $0001, $0004, $0005, $0001 };
-static OBJECT  _06_EDIT_USER = { $0007, $ffff, $ffff, $0015, $0000, $0000, C_UNION(&TEDINFO_05), $0001, $0005, $0005, $0001 };
-static OBJECT  _07_EDIT_USER = { $0008, $ffff, $ffff, $0015, $0000, $0000, C_UNION(&TEDINFO_06), $0001, $0006, $0005, $0001 };
-static OBJECT  _08_EDIT_USER = { $0009, $ffff, $ffff, $0016, $0000, $0000, C_UNION(&TEDI_008), $0006, $0001, $001f, $0001 };
-static OBJECT  _09_EDIT_USER = { $000a, $ffff, $ffff, $0016, $0000, $0000, C_UNION(&TEDI_008), $0006, $0002, $001f, $0001 };
-static OBJECT  _10_EDIT_USER = { $000b, $ffff, $ffff, $0016, $0000, $0000, C_UNION(&TEDI_008), $0006, $0003, $001f, $0001 };
-static OBJECT  _11_EDIT_USER = { $000c, $ffff, $ffff, $0016, $0000, $0000, C_UNION(&TEDI_008), $0006, $0004, $001f, $0001 };
-static OBJECT  _12_EDIT_USER = { $000d, $ffff, $ffff, $0016, $0000, $0000, C_UNION(&TEDI_007), $0006, $0005, $001f, $0001 };
-static OBJECT  _13_EDIT_USER = { $0001, $ffff, $ffff, $0016, $0000, $0000, C_UNION(&TEDI_008), $0006, $0006, $001f, $0001 };
-static OBJECT  _14_EDIT_USER = { $0000, $ffff, $ffff, $0018, $4007, $0010, C_UNION(&A_3DBUTTON04), $000e, $0008, $000c, $0002 };
-static AOBJECT _14aEDIT_USER = { editus_ok, $00000000, $8020, $884f, $00000000, $00000000, $0000, $0000 };
+static OBJECT  EDIT_USER =     { -1,  1, 14, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 40, 11 };
+static OBJECT  _01_EDIT_USER = { 14,  2, 13, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 0, 38, 8 };
+static OBJECT  _02_EDIT_USER = {  3, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_01), 1, 1, 5, 1 };
+static OBJECT  _03_EDIT_USER = {  4, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_02), 1, 2, 5, 1 };
+static OBJECT  _04_EDIT_USER = {  5, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_03), 1, 3, 5, 1 };
+static OBJECT  _05_EDIT_USER = {  6, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_04), 1, 4, 5, 1 };
+static OBJECT  _06_EDIT_USER = {  7, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_05), 1, 5, 5, 1 };
+static OBJECT  _07_EDIT_USER = {  8, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_06), 1, 6, 5, 1 };
+static OBJECT  _08_EDIT_USER = {  9, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 1, 31, 1 };
+static OBJECT  _09_EDIT_USER = { 10, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 2, 31, 1 };
+static OBJECT  _10_EDIT_USER = { 11, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 3, 31, 1 };
+static OBJECT  _11_EDIT_USER = { 12, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 4, 31, 1 };
+static OBJECT  _12_EDIT_USER = { 13, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_007), 6, 5, 31, 1 };
+static OBJECT  _13_EDIT_USER = {  1, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 6, 31, 1 };
+static OBJECT  _14_EDIT_USER = {  0, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON04), 14, 8, 12, 2 };
+static AOBJECT _14aEDIT_USER = { editus_ok, NULL, 0x8020, 0x884f, NULL, NULL, 0, 0 };
 
-	.globl WI_USER
-WI_USER:
-	dc.w $0000
-	dc.w $0000
-	dc.l user_service
-	dc.l user_make
-	dc.l Awi_open
-	dc.l Awi_init
-	dc.l EDIT_USER
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $ffff
-	dc.w $601f
-	dc.w $0000
-	dc.w $0000
-	dc.w $00a0
-	dc.w $0032
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $ffff
-	dc.w $ffff
-	dc.w $ffff
-	dc.w $ffff
-	dc.w $0000
-	dc.w $0000
-	dc.w $fcf8
-	dc.l TEXT_07
-	dc.l TEXT_002
-	dc.w $2710
-	dc.w $0103
-	dc.w $0000
-	dc.w $ffff
-	dc.l IC_USER
-	dc.w $0000
-	dc.w $0000
-	dc.l Awi_keys
-	dc.l Awi_obchange
-	dc.l Awi_redraw
-	dc.l Awi_topped
-	dc.l Awi_closed
-	dc.l Awi_fulled
-	dc.l Awi_arrowed
-	dc.l Awi_hslid
-	dc.l Awi_vslid
-	dc.l Awi_sized
-	dc.l Awi_moved
-	dc.l Awi_iconify
-	dc.l Awi_uniconify
-	dc.l Awi_gemscript
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
-	dc.w $0000
+Awindow WI_USER = {
+	NULL,
+	user_service,
+	user_make,
+	Awi_open,
+	Awi_init,
+	&EDIT_USER,
+	NULL,
+	0, 0,
+	-1,
+	0x601f,
+	{ 0, 0, 160, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xfcf8,
+	TEXT_07,
+	TEXT_002,
+	10000,
+	AW_TOOLBOX | AW_ICON | AW_GHOSTICON,
+	0,
+	-1,
+	&IC_USER,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};

@@ -268,12 +268,6 @@ typedef struct {
 typedef struct {
 	ACS_HEAD *acs;
 	Obj_Head *obj;
-	int16 image[32];
-} MOUSEPARM;
-
-typedef struct {
-	ACS_HEAD *acs;
-	Obj_Head *obj;
 	int16 flags;
 	int16 act_obnr;
 	int16 px;

@@ -1,11 +1,13 @@
 		.text
 
+	.globl editte_ok
 editte_ok:
 		movea.l    ACSblk,a0
 		movea.l    600(a0),a0
 		jsr        term
 		rts
 
+	.globl tedi_make
 tedi_make:
 		movem.l    a2-a4,-(a7)
 		subq.w     #4,a7
@@ -60,6 +62,7 @@ tedi_make_4:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl tedi_service
 tedi_service:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a2

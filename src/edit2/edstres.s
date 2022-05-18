@@ -1,11 +1,13 @@
 		.text
 
+	.globl editstr_abort
 editstr_abort:
 		movea.l    ACSblk,a0
 		movea.l    600(a0),a0
 		jsr        term
 		rts
 
+	.globl editstr_ok
 editstr_ok:
 		movea.l    ACSblk,a0
 		movea.l    600(a0),a0
@@ -63,6 +65,7 @@ acc_string_1:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl st_make
 st_make:
 		movem.l    a2-a4,-(a7)
 		subq.w     #4,a7
@@ -116,6 +119,7 @@ st_make_4:
 		movem.l    (a7)+,a2-a4
 		rts
 
+	.globl st_service
 st_service:
 		movem.l    d3/a2-a4,-(a7)
 		movea.l    a0,a2
