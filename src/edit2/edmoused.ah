@@ -1,0 +1,186 @@
+#if COUNTRY == COUNTRY_DE
+static char TEXT_001[] = "Abbruch";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_01[] = "neues Muster";
+static char TEXT_03[] = "Pinsel:";
+static char TEXT_04[] = " Maus-Editor ";
+static char TEXT_05[] = "Beispiel:";
+static char TEXT_09[] = "hinten:";
+static char TEXT_10[] = "vorne:";
+static char TEXT_18[] = "Farbe:";
+static char TEXT_210[] = "MŽUSE";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char TEXT_001[] = "Cancel";
+static char TEXT_002[] = = "";
+static char TEXT_003[] = "OK";
+static char TEXT_01[] = "new pattern";
+static char TEXT_03[] = "Brush:";
+static char TEXT_04[] = " Mouse-Editor ";
+static char TEXT_05[] = "Example:";
+static char TEXT_09[] = "back:";
+static char TEXT_10[] = "front:";
+static char TEXT_18[] = "Color:";
+static char TEXT_210[] = "MOUSES";
+#endif
+
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_001, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_01, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, $200091c8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, $a02191f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, $21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON27 = { A_3Dbutton, $09f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS02 = { A_arrows, $13010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, $10008f19L, Auo_string, TEXT_18, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, $10008f19L, Auo_string, TEXT_03, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME04 = { A_innerframe, $10008f19L, Auo_string, TEXT_05, NULL, NULL, NULL, NULL };
+
+static AUSERBLK USER_004 = { edmo_bitmap, 0L, NULL, NULL, NULL, NULL, NULL, NULL };
+
+static int16 _MSK_IC_MOUSE[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0200, $0100, $1c00, $0700, $0380, $3e00, $0780,
+	$0380, $3e00, $07c0, $0380, $ff80, $07e0, $1ff1, $ffc0,
+	$07f0, $3ff9, $ffc0, $07e0, $1ff1, $ffc0, $07e0, $0380,
+	$ff80, $02e0, $0380, $3e00, $0040, $0380, $3e00, $0000,
+	$0100, $1c00, $0000, $0000, $0000, $03fc, $0000, $1c00,
+	$07fe, $06c0, $3e00, $07fe, $0fe0, $7f00, $07fe, $07c0,
+	$2700, $03fc, $0380, $0700, $01f8, $0380, $0e00, $00f0,
+	$0380, $1c00, $01f8, $0380, $1c00, $03fc, $0380, $0800,
+	$07fe, $07c0, $1c00, $07fe, $0fe0, $1c00, $07fe, $06c0,
+	$0800, $03fc, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000
+}
+static int16 _DAT_IC_MOUSE[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0200, $0100, $1c00, $0300,
+	$0100, $1c00, $0380, $0100, $1c00, $03c0, $0100, $f780,
+	$03e0, $1ef0, $e380, $0380, $0100, $f780, $02c0, $0100,
+	$1c00, $0040, $0100, $1c00, $0000, $0100, $1c00, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$03fc, $0000, $1c00, $0204, $06c0, $2200, $0204, $0100,
+	$0200, $01b8, $0100, $0200, $00f0, $0100, $0400, $0060,
+	$0100, $0800, $00f0, $0100, $0800, $0148, $0100, $0000,
+	$0244, $0100, $0800, $02f4, $06c0, $0800, $03fc, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000
+};
+
+static CICONBLK IC_MOUSE = { { _MSK_IC_MOUSE, _DAT_IC_MOUSE, TEXT_210, $1000, 0, 0, 12, 0, 48, 30, 0, 32, 72, 8 }, NULL };
+
+static int16 _MSK_MOUSEDUMMY[] = {
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff
+};
+static int16 _DAT_MOUSEDUMMY[] = {
+	$7ffe, $bffd, $dffb, $eff7, $f7ef, $fbdf, $fdbf, $fe7f,
+	$fe7f, $fdbf, $fbdf, $f7ef, $eff7, $dffb, $bffd, $7ffe
+static CICONBLK MOUSEDUMMY = { { _MSK_MOUSEDUMMY, _DAT_MOUSEDUMMY, TEXT_002, $1000, 10, 10, 0, 0, 16, 16, 0, 0, 8, 8 }, NULL };
+
+static OBJECT  EDIT_MOUSE =     { $ffff, $0001, $0026, $0018, $0040, $0010, C_UNION(&A_3DBUTTON07), $0000, $0000, $0032, $000d };
+static OBJECT  _01_EDIT_MOUSE = { $0008, $0002, $0006, $0018, $0040, $0000, C_UNION(&A_INNERFRAME03), $000a, $0000, $000a, $0003 };
+static OBJECT  _02_EDIT_MOUSE = { $0004, $ffff, $ffff, $0014, $0005, $0000, C_UNION(&$00010171), $0001, $0001, $0002, $0001 };
+static AOBJECT _02aEDIT_MOUSE = { edmo_black, $00000000, $8000, $0053, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _04_EDIT_MOUSE = { $0006, $ffff, $ffff, $0014, $0005, $0000, C_UNION(&$00011170), $0004, $0001, $0002, $0001 };
+static AOBJECT _04aEDIT_MOUSE = { edmo_white, $00000000, $8000, $0057, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _06_EDIT_MOUSE = { $0001, $ffff, $ffff, $0014, $0005, $0000, C_UNION(&$00011141), $0007, $0001, $0002, $0001 };
+static AOBJECT _06aEDIT_MOUSE = { edmo_invisible, $00000000, $8000, $0054, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _08_EDIT_MOUSE = { $0015, $0009, $0011, $0018, $0040, $0000, C_UNION(&A_INNERFRAME02), $0015, $0000, $001c, $0005 };
+static OBJECT  _09_EDIT_MOUSE = { $000b, $000a, $000a, $001c, $0040, $0000, C_UNION(&TEXT_10), $0001, $0001, $0006, $0001 };
+static OBJECT  _10_EDIT_MOUSE = { $0009, $ffff, $ffff, $0018, $0040, $0000, C_UNION(&A_ARROWS02), $0000, $0000, $0001, $0001 };
+static OBJECT  _11_EDIT_MOUSE = { $000f, $000d, $000e, $0014, $0040, $0020, C_UNION(&$00ff1101), $0009, $0001, $0012, $0001 };
+static AOBJECT _11aEDIT_MOUSE = { edmo_frontcol, $00000000, $8000, $8856, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _13_EDIT_MOUSE = { $000e, $ffff, $ffff, $0014, $0000, $0000, C_UNION(&$00011171), $0010, $0000, $0002, $0001 };
+static OBJECT  _14_EDIT_MOUSE = { $000b, $ffff, $ffff, $0018, $0000, $0000, C_UNION(&A_3DBUTTON27), $0000, $0000, $0010, $0001 };
+static OBJECT  _15_EDIT_MOUSE = { $0011, $0010, $0010, $001c, $0040, $0000, C_UNION(&TEXT_09), $0001, $0003, $0007, $0001 };
+static OBJECT  _16_EDIT_MOUSE = { $000f, $ffff, $ffff, $0018, $0040, $0000, C_UNION(&A_ARROWS02), $0000, $0000, $0001, $0001 };
+static OBJECT  _17_EDIT_MOUSE = { $0008, $0013, $0014, $0014, $0040, $0020, C_UNION(&$00ff1101), $0009, $0003, $0012, $0001 };
+static AOBJECT _17aEDIT_MOUSE = { edmo_backcol, $00000000, $8000, $8848, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _19_EDIT_MOUSE = { $0014, $ffff, $ffff, $0014, $0000, $0000, C_UNION(&$00011171), $0010, $0000, $0002, $0001 };
+static OBJECT  _20_EDIT_MOUSE = { $0011, $ffff, $ffff, $0018, $0000, $0000, C_UNION(&A_3DBUTTON27), $0000, $0000, $0010, $0001 };
+static OBJECT  _21_EDIT_MOUSE = { $0016, $ffff, $ffff, $0014, $0000, $0000, C_UNION(&$00011171), $0002, $0001, $0002, $0001 };
+static OBJECT  _22_EDIT_MOUSE = { $001f, $0017, $001d, $0018, $0000, $0010, C_UNION(&A_3DBUTTON06), $0002, $0003, $0012, $000a };
+static OBJECT  _23_EDIT_MOUSE = { $001a, $0019, $0019, $0014, $0040, $0000, C_UNION(&$56011101), $0002, $0000, $0010, $0001 };
+static AOBJECT _23aEDIT_MOUSE = { edmo_x, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _25_EDIT_MOUSE = { $0017, $ffff, $ffff, $0014, $0000, $0000, C_UNION(&$56011141), $0007, $0000, $0002, $0001 };
+static OBJECT  _26_EDIT_MOUSE = { $001d, $001c, $001c, $0014, $0040, $0000, C_UNION(&$00011101), $0000, $0001, $0002, $0009 };
+static AOBJECT _26aEDIT_MOUSE = { edmo_y, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _28_EDIT_MOUSE = { $001a, $ffff, $ffff, $0014, $0000, $0000, C_UNION(&$56011141), $0000, $0002, $0002, $0001 };
+static OBJECT  _29_EDIT_MOUSE = { $0016, $ffff, $ffff, $0018, $0040, $0000, C_UNION(&USER_004), $0002, $0001, $0010, $0009 };
+static AOBJECT _29aEDIT_MOUSE = { edmo_set, $00000000, $8000, $0000, $00000000, $00000000, $0008, $0000 };
+static OBJECT  _31_EDIT_MOUSE = { $0024, $0020, $0022, $0018, $0040, $0000, C_UNION(&A_INNERFRAME04), $0015, $0005, $001c, $0005 };
+static OBJECT  _32_EDIT_MOUSE = { $0022, $0021, $0021, $0018, $0000, $0010, C_UNION(&A_3DBUTTON05), $0001, $0001, $0008, $0003 };
+static OBJECT  _33_EDIT_MOUSE = { $0020, $ffff, $ffff, $001f, $0000, $0000, C_UNION(&MOUSEDUMMY), $0003, $0001, $0002, $0001 };
+static OBJECT  _34_EDIT_MOUSE = { $001f, $ffff, $ffff, $0018, $0040, $0000, C_UNION(&A_3DBUTTON04), $000b, $0001, $000f, $0002 };
+static AOBJECT _34aEDIT_MOUSE = { edmo_next, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _36_EDIT_MOUSE = { $0026, $ffff, $ffff, $0018, $4007, $0010, C_UNION(&A_3DBUTTON03), $0016, $000a, $000c, $0002 };
+static AOBJECT _36aEDIT_MOUSE = { edmo_ok, $00000000, $8000, $884f, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _38_EDIT_MOUSE = { $0000, $ffff, $ffff, $0018, $4005, $0010, C_UNION(&A_3DBUTTON01), $0024, $000a, $000c, $0002 };
+static AOBJECT _38aEDIT_MOUSE = { edmo_abort, $00000000, $8020, $8841, $00000000, $00000000, $0000, $0000 };
+
+	.globl WI_MOUSE
+WI_MOUSE:
+	dc.w $0000
+	dc.w $0000
+	dc.l mo_service
+	dc.l mo_make
+	dc.l Awi_open
+	dc.l Awi_init
+	dc.l EDIT_MOUSE
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $601f
+	dc.w $0000
+	dc.w $0000
+	dc.w $0063
+	dc.w $0063
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $0000
+	dc.w $0000
+	dc.w $fcf8
+	dc.l TEXT_04
+	dc.l TEXT_002
+	dc.w $2710
+	dc.w $0100
+	dc.w $0000
+	dc.w $ffff
+	dc.l IC_MOUSE
+	dc.w $0000
+	dc.w $0000
+	dc.l Awi_keys
+	dc.l Awi_obchange
+	dc.l Awi_redraw
+	dc.l Awi_topped
+	dc.l Awi_closed
+	dc.l Awi_fulled
+	dc.l Awi_arrowed
+	dc.l Awi_hslid
+	dc.l Awi_vslid
+	dc.l Awi_sized
+	dc.l Awi_moved
+	dc.l Awi_iconify
+	dc.l Awi_uniconify
+	dc.l Awi_gemscript
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+

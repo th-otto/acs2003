@@ -1,0 +1,123 @@
+#if COUNTRY == COUNTRY_DE
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Abbruch";
+static char TEXT_01[] = " Text-Editor ";
+static char TEXT_12[] = "TEXT";
+#endif
+
+
+#if COUNTRY == COUNTRY_US
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Abbruch";
+static char TEXT_01[] = " Text-Editor ";
+static char TEXT_12[] = "TEXT";
+#endif
+
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, $21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, $20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, $9000ff12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+
+static int16 _MSK_IC_STRING[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $1ffb, $fb81,
+	$dff8, $1ffb, $fb81, $dff8, $118b, $09c3, $9188, $0183,
+	$00e7, $0180, $0183, $207e, $0180, $0183, $e03c, $0180,
+	$0183, $e03c, $0180, $0183, $207e, $0180, $0183, $00e7,
+	$0180, $0183, $09c3, $8180, $03c3, $fb81, $c3c0, $07e3,
+	$fb81, $c7e0, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000
+};
+static int16 _DAT_IC_STRING[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $1ffb, $fb81,
+	$dff8, $1ffb, $fb81, $dff8, $118b, $09c3, $9188, $0183,
+	$00e7, $0180, $0183, $207e, $0180, $0183, $e03c, $0180,
+	$0183, $e03c, $0180, $0183, $207e, $0180, $0183, $00e7,
+	$0180, $0183, $09c3, $8180, $03c3, $fb81, $c3c0, $07e3,
+	$fb81, $c7e0, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000
+};
+static CICONBLK IC_STRING = { { _MSK_IC_STRING, _DAT_IC_STRING, TEXT_12, $1000, 0, 0, 12, 0, 48, 29, 0, 32, 72, 8 }, NULL };
+
+static OBJECT  EDIT_STRING = { $ffff, $0001, $0007, $0018, $0040, $0010, C_UNION(&A_3DBUTTON02), $0000, $0000, $0034, $0007 };
+static OBJECT  _01_EDIT_STRING = { $0005, $0002, $0002, $0018, $0040, $0000, C_UNION(&A_3DBUTTON03), $0001, $0001, $0032, $0002 };
+static OBJECT  _02_EDIT_STRING = { $0001, $0003, $0004, $0014, $0040, $0000, C_UNION(&$00ff0101), $0000, $0000, $0032, $0002 };
+static OBJECT  _03_EDIT_STRING = { $0004, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED01), $0000, $0000, $0032, $0001 };
+static OBJECT  _04_EDIT_STRING = { $0002, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED01), $0000, $0001, $0032, $0001 };
+static OBJECT  _05_EDIT_STRING = { $0007, $ffff, $ffff, $0018, $4007, $0010, C_UNION(&A_3DBUTTON05), $000d, $0004, $000c, $0002 };
+static AOBJECT _05aEDIT_STRING = { editstr_ok, $00000000, $8000, $884f, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _07_EDIT_STRING = { $0000, $ffff, $ffff, $0018, $4005, $0010, C_UNION(&A_3DBUTTON01), $001d, $0004, $000c, $0002 };
+static AOBJECT _07aEDIT_STRING = { editstr_abort, $00000000, $8020, $8841, $00000000, $00000000, $0000, $0000 };
+
+	.globl WI_STRING
+WI_STRING:
+	dc.w $0000
+	dc.w $0000
+	dc.l st_service
+	dc.l st_make
+	dc.l Awi_open
+	dc.l Awi_init
+	dc.l EDIT_STRING
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $601f
+	dc.w $0000
+	dc.w $0000
+	dc.w $0063
+	dc.w $0063
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $0000
+	dc.w $0000
+	dc.w $fcf8
+	dc.l TEXT_01
+	dc.l TEXT_002
+	dc.w $2710
+	dc.w $0100
+	dc.w $0000
+	dc.w $ffff
+	dc.l IC_STRING
+	dc.w $0000
+	dc.w $0000
+	dc.l Awi_keys
+	dc.l Awi_obchange
+	dc.l Awi_redraw
+	dc.l Awi_topped
+	dc.l Awi_closed
+	dc.l Awi_fulled
+	dc.l Awi_arrowed
+	dc.l Awi_hslid
+	dc.l Awi_vslid
+	dc.l Awi_sized
+	dc.l Awi_moved
+	dc.l Awi_iconify
+	dc.l Awi_uniconify
+	dc.l Awi_gemscript
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000

@@ -1,0 +1,733 @@
+#if COUNTRY == COUNTRY_DE
+static char ERR_IC_DEL[] = "[3][ Die Ikone| '%s' | ist nicht (mehr) Teil | dieser Datei][    OK    ]";
+static char ERR_ME_DEL[] = "[3][ Das MenÅ| '%s' | ist nicht (mehr) Teil | dieser Datei.][    OK    ]";
+static char ERR_OB_DEL[] = "[3][ Der Objektbaum| '%s' | ist nicht (mehr) Teil | dieser Datei.][    OK    ]";
+static char WARN_CREATE[] = "[1][ Die 'create'-Routine wurde| nicht definiert. Es wird| 'Awi_selfcreate' eingesetzt! ][   OK   ]";
+static char BUBBLE_01[] = "Hier kann der Dateinamen des ST-Guide-Hypertextes angeben werden, der fÅr die Anzeige der Hilfe verwendet werden soll.";
+static char BUBBLE_02[] = "Hier kann die Infozeile des Fensters angegeben werden.";
+static char BUBBLE_03[] = "Bei dem Fenster handlet es sich um ein Listenfenster.";
+static char BUBBLE_04[] = "Das Fenster kann nicht automatisch von ACS geschlossen werden.";
+static char BUBBLE_05[] = "Das Fenster kann im Hintergrund wie ein Werkzeug-Fenster bedient werden.";
+static char BUBBLE_06[] = "Das offene Fenster wird durch ein grau schattiertes Icon auf dem Desktop reprÑsentiert.";
+static char BUBBLE_07[] = "Das geschlossene Fenster wird auf dem Desktop durch ein Icon dargestellt.|ACHTUNG: Beim Schlieûen des Fensters ohne dieses Flag wird das Fenster gelîscht!";
+static char BUBBLE_08[] = "Das Fenster akzeptiert Objekte, die auf das Icon des Fensters auf dem Desktop gezogen werden.";
+static char BUBBLE_09[] = "Hier kann der Namen des Fensters angegeben werden, der in der Titelzeile erscheinen soll.";
+static char BUBBLE_10[] = "Hier kann das Thema der Hilfe angegeben werden. Das Thema wird als Referenz an ST-Guide Åbergeben.";
+static char BUBBLE_11[] = "Hier kann dem Fenster ein Fenster-MenÅ zugeordnet werden. Der Name des MenÅ-Baumes kann eingegeben werden oder per Drag&Drop aus der MenÅ-Liste Åbergeben werden.";
+static char BUBBLE_12[] = "Hier kann dem Fenster eine Toolbar zugeordnet werden. Der Name des Objekt-Baumes kann eingegeben werden oder per Drag&Drop aus der Objekt-Liste Åbergeben werden.";
+static char BUBBLE_13[] = "Hier wird dem Fenster das Arbeits-Objekt, das sog. Work-Objekt, zugeordnet. Der Name des Objekt-Baumes kann eingegeben werden oder per Drag&Drop aus der Objekt-Liste Åbergeben werden.";
+static char BUBBLE_14[] = "Hier kann dem Fenster ein Icon zugeordnet werden. Der Name des Icons kann eingegeben werden oder per Drag&Drop aus der Icon-Liste Åbergeben werden.";
+static char BUBBLE_15[] = "Hier kann der user-Zeiger des Fensters, in die Daten des Fensters abgelegt sind, vorbelegt werden (s. Online-Hilfe). Sinnvoll ist dies z.B. fÅr eine statische Struktur, die Åber ein Fenster editiert werden soll.";
+static char BUBBLE_16[] = "Die Schrittweite bei Scroll-Operationen in X- und Y-Richtung wird hier angegeben.|Tip: Schneller wird es ab 8 Pixeln, da dann im VDI immer Wort-Grenzen getroffen werden";
+static char BUBBLE_17[] = "Hier wird die X-Position des Fensters eingegeben. Falls die Y-Position 0 ist, wird beim ôffnen des Fensters die X-Position bestimmt.";
+static char BUBBLE_18[] = "Hier wird die Y-Position des Fensters eingegeben. Falls die Y-Position 0 ist, wird beim ôffnen des Fensters die Y-Position bestimmt.";
+static char BUBBLE_19[] = "Hier wird die Breite des Fensters eingegeben. Falls die Y-Position 0 ist, wird beim ôffnen des Fensters die Breite automatisch bestimmt.";
+static char BUBBLE_20[] = "Hier wird die Hîhe des Fensters eingegeben. Falls die Y-Position 0 ist, wird beim ôffnen des Fensters die Hîhe automatisch bestimmt werden.";
+static char BUBBLE_21[] = "Einstellung, ob das Fenster einen CLOSER hat.";
+static char BUBBLE_22[] = "Einstellung, ob das Fenster einen MOVER hat.";
+static char BUBBLE_23[] = "Einstellung, ob das Fenster eine Titelzeile hat - ggf. muû die Titelzeile NAME unten angegeben werden.";
+static char BUBBLE_24[] = "Einstellung, ob das Fenster eine Infozeile hat - ggf. muû die Infozeile unten angegeben werden.";
+static char BUBBLE_25[] = "Einstellung, ob das Fenster einen FULLER hat.";
+static char BUBBLE_26[] = "Einstellung, ob das Fenster ICONIFY hat.";
+static char BUBBLE_27[] = "Einstellung, ob das Fenster BACKDROP selbst Åbernimmt (sollte eigentlich immer eingeschaltet sein).";
+static char BUBBLE_28[] = "Einstellung, ob das Fenster einen Up-Scrollpfeil UPARROW hat.";
+static char BUBBLE_29[] = "Einstellung, ob das Fenster einen Down-Scrollpfeil DNARROW hat.";
+static char BUBBLE_30[] = "Einstellung, ob das Fenster einen Rechts-Scrollpfeil RTARROW hat.";
+static char BUBBLE_31[] = "Einstellung, ob das Fenster einen Links-Scrollpfeil LFARROW hat.";
+static char BUBBLE_32[] = "Einstellung, ob das Fenster einen SIZER hat.";
+static char BUBBLE_33[] = "Einstellung, ob das Fenster einen vertikalen Scrollbalken VSLIDE hat.";
+static char BUBBLE_34[] = "Einstellung, ob das Fenster einen horizontalen Scrollbalken HSLIDE hat.";
+static char BUBBLE_35[] = "Hier sollte dem Fenster eine Create-Routine zugeordnet werden - ansonsten wird Awi_selfcreate verwendet. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_36[] = "Hier kann dem Fenster eine Open-Routine zugeordnet werden - Default ist Awi_open. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_37[] = "Hier kann dem Fenster eine Service-Routine zugeordnet werden - Default ist Awi_service. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_38[] = "Hier kann dem Fenster eine Change-Routine zugeordnet werden - Default ist Awi_obchange. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_39[] = "Hier kann dem Fenster eine Key-Routine zugeordnet werden - Default ist Awi_keys. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_40[] = "Hier kann dem Fenster eine Init-Routine zugeordnet werden - Default ist Awi_init. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_41[] = "Hier kann dem Fenster eine Redraw-Routine zugeordnet werden - Default ist Awi_redraw. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_42[] = "Hier kann dem Fenster eine Topped-Routine zugeordnet werden - Default ist Awi_topped. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_43[] = "Hier kann dem Fenster eine Closed-Routine zugeordnet werden - Default ist Awi_closed. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_44[] = "Hier kann dem Fenster eine Fulled-Routine zugeordnet werden - Default ist Awi_fulled. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_45[] = "Hier kann dem Fenster eine Arrowed-Routine zugeordnet werden - Default ist Awi_arrowed. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben werden.";
+static char BUBBLE_46[] = "Hier kann dem Fenster eine HSlide-Routine zugeordnet werden - Default ist Awi_hslid. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben ";
+static char BUBBLE_47[] = "Hier kann dem Fenster eine VSlide-Routine zugeordnet werden - Default ist Awi_vslid. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben ";
+static char BUBBLE_48[] = "Hier kann dem Fenster eine Moved-Routine zugeordnet werden - Default ist Awi_moved. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben ";
+static char BUBBLE_49[] = "Hier kann dem Fenster eine Sized-Routine zugeordnet werden - Default ist Awi_sized. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben ";
+static char BUBBLE_50[] = "Hier kann dem Fenster eine Iconify-Routine zugeordnet werden - Default ist Awi_iconify. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben ";
+static char BUBBLE_51[] = "Hier kann dem Fenster eine Uniconify-Routine zugeordnet werden - Default ist Awi_uniconify. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben ";
+static char BUBBLE_52[] = "Hier kann dem Fenster eine GEMScript-Routine zugeordnet werden - Default ist Awi_gemscript. Der Name der Routine kann eingegeben werden oder per Drag&Drop aus der Referenz-Liste Åbergeben ";
+static char BUBBLE_53[] = "Einstellung, ob das Fenster eine HOTCLOSEBOX hat.";
+static char STGUIDE_01[] = "Der Fenster-Editor";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Abbruch";
+static char TEXT_01[] = " Info";
+static char TEXT_012[] = "Y:";
+static char TEXT_013[] = "X:";
+static char TEXT_014[] = "W:";
+static char TEXT_015[] = "H:";
+static char TEXT_02[] = "\001";
+static char TEXT_03[] = "Liste";
+static char TEXT_04[] = "Bleibt";
+static char TEXT_05[] = "Icon";
+static char TEXT_06[] = "Geisticon";
+static char TEXT_07[] = "Nimmt an ";
+static char TEXT_08[] = "Hintergrd.";
+static char TEXT_09[] = "Toolbar:";
+static char TEXT_10[] = "Position:";
+static char TEXT_11[] = "Attribute:";
+static char TEXT_12[] = "Name:";
+static char TEXT_13[] = "Menu:";
+static char TEXT_14[] = "Open:";
+static char TEXT_15[] = " Fenster-Editor ";
+static char TEXT_16[] = "Raster:";
+static char TEXT_17[] = "Routinen:";
+static char TEXT_18[] = "Info:";
+static char TEXT_19[] = "Objekte:";
+static char TEXT_20[] = "Work:";
+static char TEXT_205[] = "FENSTER";
+static char TEXT_21[] = "Icon:";
+static char TEXT_22[] = "User:";
+static char TEXT_23[] = "Service:";
+static char TEXT_24[] = "\002";
+static char TEXT_25[] = "Create:";
+static char TEXT_26[] = "Init:";
+static char TEXT_27[] = "Keys:";
+static char TEXT_28[] = "Change:";
+static char TEXT_29[] = "Redraw:";
+static char TEXT_30[] = "Topped:";
+static char TEXT_31[] = "Closed:";
+static char TEXT_32[] = "Fulled:";
+static char TEXT_33[] = "Arrowed:";
+static char TEXT_34[] = "H-Slide:";
+static char TEXT_35[] = "V-Slide:";
+static char TEXT_36[] = "Moved:";
+static char TEXT_37[] = "Sized:";
+static char TEXT_38[] = "Texte:";
+static char TEXT_39[] = "Komponenten:";
+static char TEXT_40[] = "\007";
+static char TEXT_41[] = "\177";
+static char TEXT_42[] = "\037";
+static char TEXT_43[] = "Name";
+static char TEXT_44[] = "Mover";
+static char TEXT_45[] = "\005";
+static char TEXT_46[] = "\006";
+static char TEXT_47[] = "\003";
+static char TEXT_48[] = "\004";
+static char TEXT_49[] = "Iconify:";
+static char TEXT_50[] = ".HYP";
+static char TEXT_51[] = "UnIcon.:";
+static char TEXT_52[] = "GEMScr.:";
+static char TEXT_53[] = "Titel:";
+static char TEXT_54[] = "Datei:";
+static char TEXT_55[] = "ST-Guide-Hilfe";
+static char TEXT_56[] = "\372";
+#endif
+
+#if COUNTRY == COUNTRY_US
+#if WITH_FIXES
+static char ERR_IC_DEL[] = "[3][ Icon '%s' | is no longer part of the | file.][    OK    ]";
+#else
+static char ERR_IC_DEL[] = "[3][ Icon '%s' | is nomore a part of this | file.][    OK    ]";
+#endif
+#if WITH_FIXES
+static char ERR_ME_DEL[] = "[3][ Menu '%s' | is removed from the | this file. ][    OK    ]";
+#else
+static char ERR_ME_DEL[] = "[3][ Menu '%s' | is nomore a part of | this file. ][    OK    ]";
+#endif
+#if WITH_FIXES
+static char ERR_OB_DEL[] = "[3][ The object '%s' | is removed from  | this file.   ][    OK    ]";
+#else
+static char ERR_OB_DEL[] = "[3][ The object '%s' | is nomore a part | of this file.][    OK    ]";
+#endif
+static char WARN_CREATE[] = "[1][ You didn't specify the | create-routine. The default | 'Awi_selfcreate' will be | inserted.][   OK   ]";
+static char BUBBLE_01[] = "Here you can edit the filename of the ST-Guide hypertext to use as online help.";
+static char BUBBLE_02[] = "Here you edit the infoline of your window.";
+static char BUBBLE_03[] = "The window is a list window.";
+static char BUBBLE_04[] = "The window can't be closed automatically by ACS.";
+static char BUBBLE_05[] = "The window can be used in the background without topping it.";
+static char BUBBLE_06[] = "The opened window owns a shadowed icon onto the desktop.";
+static char BUBBLE_07[] = "The closed window owns a icon onto the desktop. ATTENTION: Closing the window with this flag cleared, deletes the window!";
+static char BUBBLE_08[] = "The window accepts objects dragged onto the icon of it on the desktop.";
+static char BUBBLE_09[] = "Here you edit the name of the window shown in the window title.";
+static char BUBBLE_10[] = "Here you edit the help topic of this window. This topic is send to ST-Guide.";
+#if WITH_FIXES
+static char BUBBLE_11[] = "Here you can add a window menu to this window. The name of the menu can be edited or it can be dragged from the menu list..";
+#else
+static char BUBBLE_11[] = "Here you can add a window menu to this window. The name of the menu can be edited or it can be dragged out of th menu list.";
+#endif
+static char BUBBLE_12[] = "Here you can add a toolbar to the window. The name of the object tree can be edited or it can be dragged out of the object list.";
+static char BUBBLE_13[] = "Here you can add the work object to the window. You can edit the name of the object tree or drag it out of the object list.";
+static char BUBBLE_14[] = "Here you can add an icon to the window. The name of the icon can be edited or it can be dragged out of the icon list.";
+static char BUBBLE_15[] = "The user pointer of the window may be assigned here (see online help).";
+static char BUBBLE_16[] = "The raster can be edited here.";
+static char BUBBLE_17[] = "The position and the size of the window is edited here.";
+static char BUBBLE_18[] = "The y position of the window is edited here. If the y position is equal zero, a positon will be assigned by ACS when opening the window.";
+static char BUBBLE_19[] = "The width of the window is edited here. If the y position is equal zero, a positon will be assigned by ACS when opening the window.";
+static char BUBBLE_20[] = "The height of the window is edited here. If the y position is equal to zero, the position will be assigned by ACS when opening the window.";
+static char BUBBLE_21[] = "The window has a CLOSER.";
+static char BUBBLE_22[] = "The window has a MOVER.";
+static char BUBBLE_23[] = "The window has a TITLE.";
+static char BUBBLE_24[] = "The window has an infoline - the infoline must be edited.";
+static char BUBBLE_25[] = "The widow has a FULLER.";
+static char BUBBLE_26[] = "The window has ICONIFY.";
+static char BUBBLE_27[] = "The window has BACKDROP. This should always be switched on - otherwise MagiC backdrops the window.";
+static char BUBBLE_28[] = "The window has an ARROW UP.";
+static char BUBBLE_29[] = "The window has an ARROW DOWN.";
+static char BUBBLE_30[] = "The window has an ARROW RIGHT.";
+static char BUBBLE_31[] = "The window has an ARROW LEFT.";
+static char BUBBLE_32[] = "The window has a SIZER.";
+static char BUBBLE_33[] = "The window has a vertical slider VSLIDE.";
+static char BUBBLE_34[] = "THe window has a horizontal slider HSLIDE.";
+#if WITH_FIXES
+static char BUBBLE_35[] = "You should add a create function to the window (default: Awi_selfcreate). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_35[] = "You should add a create function to the window (default: Awi_selfcreate). THe name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_36[] = "You can add an open function to the window (default: Awi_open). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_36[] = "You can add an open function to the window (default: Awi_open). THe name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_37[] = "You can add an service function to the window (default: Awi_service). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_37[] = "You can add an service function to the window (default: Awi_service). THe name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_38[] = "You can add a change function to the window (default: Awi_obchange). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_38[] = "You can add a change function to the window (default: Awi_obchange). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_39[] = "You can add a key function to the window (default: Awi_keys). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_39[] = "You can add a key function to the window (default: Awi_keys). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_40[] = "You can add an init function to the window (default: Awi_init). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_40[] = "You can add an init function to the window (default: Awi_init). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_41[] = "You can add a redraw function to the window (default: Awi_redraw). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_41[] = "You can add a redraw function to the window (default: Awi_redraw). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_42[] = "You can add a topped function to the window (default: Awi_topped). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_42[] = "You can add a topped function to the window (default: Awi_topped). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_43[] = "You can add a closed function to the window (default: Awi_closed). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_43[] = "You can add a closed function to the window (default: Awi_closed). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_44[] = "You can add a fulled function to the window (default: Awi_fulled). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_44[] = "You can add a fulled function to the window (default: Awi_fulled). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_45[] = "You can add an arrowed function to the window (default: Awi_arrowed). The name can be entered or the routine can be dragged from the reference list. ";
+#else
+static char BUBBLE_45[] = "You can add a arrowed function to the window (default: Awi_arrowed). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_46[] = "You can add a hslide function to the window (default: Awi_hslide). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_46[] = "You can add a hslide function to the window (default: Awi_hslide). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_47[] = "You can add a vslide function to the window (default: Awi_vslide). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_47[] = "You can add a vslide function to the window (default: Awi_vslide). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_48[] = "You can add a moved function to the window (default: Awi_moved). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_48[] = "You can add a moved function to the window (default: Awi_moved). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_49[] = "You can add a sized function to the window (default: Awi_sized). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_49[] = "You can add a sized function to the window (default: Awi_sized). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_50[] = "You can add an iconify function to the window (default: Awi_iconify). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_50[] = "You can add an iconify function to the window (default: Awi_iconify). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_51[] = "You can add an uniconify function to the window (default: Awi_uniconify). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_51[] = "You can add an uniconify function to the window (default: Awi_uniconify). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_52[] = "You can add a GEMScript function to the window (default: Awi_gemscript). The name can be entered or the routine can be dragged from the reference list.  ";
+#else
+static char BUBBLE_52[] = "You can add a GEMScript function to the window (default: Awi_gemscript). The name can be entered oder the routine can be dragged from the reference list.";
+#endif
+static char BUBBLE_53[] = "The window has a HOTCLOSEBOX.";
+static char STGUIDE_01[] = "Der Fenster-Editor";
+static char TEXT_002[] = ";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Cancel";
+static char TEXT_01[] = " Info";
+static char TEXT_012[] = "Y:";
+static char TEXT_013[] = "X:";
+static char TEXT_014[] = "W:";
+static char TEXT_015[] = "H:";
+static char TEXT_02[] = "0";
+static char TEXT_03[] = "List ";
+static char TEXT_04[] = "Stays ";
+static char TEXT_05[] = "Icon";
+static char TEXT_06[] = "Ghosticon";
+static char TEXT_07[] = "Accepting";
+static char TEXT_08[] = "Backgrd.  ";
+static char TEXT_09[] = "Toolbar:";
+static char TEXT_10[] = "Position:";
+static char TEXT_11[] = "Attributes:";
+static char TEXT_12[] = "Name:";
+static char TEXT_13[] = "Menu:";
+static char TEXT_14[] = "Open:";
+static char TEXT_15[] = " Window-Editor ";
+static char TEXT_16[] = "Grid:";
+static char TEXT_17[] = "Routines:";
+static char TEXT_18[] = "Info:";
+static char TEXT_19[] = "Objects:";
+static char TEXT_20[] = "Work:";
+static char TEXT_205[] = "WINDOW";
+static char TEXT_21[] = "Icon:";
+static char TEXT_22[] = "User:";
+static char TEXT_23[] = "Service:";
+static char TEXT_24[] = "\002";
+static char TEXT_25[] = "Create:";
+static char TEXT_26[] = "Init:";
+static char TEXT_27[] = "Keys:";
+static char TEXT_28[] = "Change:";
+static char TEXT_29[] = "Redraw:";
+static char TEXT_30[] = "Topped:";
+static char TEXT_31[] = "Closed:";
+static char TEXT_32[] = "Fulled:";
+static char TEXT_33[] = "Arrowed:";
+static char TEXT_34[] = "H-Slide:";
+static char TEXT_35[] = "V-Slide:";
+static char TEXT_36[] = "Moved:";
+static char TEXT_37[] = "Sized:";
+static char TEXT_38[] = "Texts:";
+static char TEXT_39[] = "Gadgets:";
+static char TEXT_40[] = "\007";
+static char TEXT_41[] = "\177";
+static char TEXT_42[] = "\037";
+static char TEXT_43[] = "Name";
+static char TEXT_44[] = "Mover";
+static char TEXT_45[] = "\005";
+static char TEXT_46[] = "\006";
+static char TEXT_47[] = "\003";
+static char TEXT_48[] = "\004";
+static char TEXT_49[] = "Iconify:";
+static char TEXT_50[] = ".HYP";
+static char TEXT_51[] = "UnIcon.:";
+static char TEXT_52[] = "GEMScr.:";
+static char TEXT_53[] = "Title:";
+static char TEXT_54[] = "File:";
+static char TEXT_55[] = "ST-Guide-Help";
+static char TEXT_56[] = "\372";
+#endif
+
+
+static int16 DATAS_27[] = {
+	$0000, $0000, $02f0, $0000, $0000, $0000, $7fff, $ffff,
+	$fffe, $5f00, $0000, $00bf, $7700, $65b0, $00d7, $6b00,
+	$54e0, $00ef, $7700, $4db0, $00d7, $7f00, $0000, $00ff,
+	$7fff, $ffff, $ffff, $4fff, $f800, $00bf, $4edb, $f800,
+	$00ef, $4e1b, $f800, $00c7, $4ed8, $f800, $00ff, $4fff,
+	$f800, $00ff, $7fff, $ffff, $ffff, $4800, $0c00, $0083,
+	$4a40, $0c00, $00bf, $4bcf, $0c00, $00bf, $4800, $0c00,
+	$00ff, $4fff, $fc00, $00bf, $47ff, $fc00, $00ff, $4000,
+	$0000, $00c7, $4000, $0000, $00ef, $4000, $0000, $00ff,
+	$7fff, $ffff, $ffff, $5f01, $0080, $2fbf, $7701, $7f80,
+	$3bc7, $6701, $7f80, $39cf, $7701, $7f80, $3bd7, $7f01,
+	$7f80, $3fff, $7fff, $ffff, $ffff, $3fff, $ffff, $ffff,
+	$0000, $0000, $0000, $7fff, $ffff, $fffe, $5f00, $0000,
+	$00bf, $7700, $0000, $00d7, $6b00, $0000, $00ef, $7700,
+	$0000, $00d7, $7f00, $0000, $00ff, $7fff, $ffff, $ffff,
+	$4fff, $f800, $00bf, $4edb, $f800, $00ef, $4e1b, $f800,
+	$00c7, $4ed8, $f800, $00ff, $4fff, $f800, $00ff, $7fff,
+	$ffff, $ffff, $4800, $0c00, $0083, $4a40, $0c00, $00bf,
+	$4bcf, $0c00, $00bf, $4800, $0c00, $00ff, $4fff, $fc00,
+	$00bf, $47ff, $fc00, $00ff, $4000, $0000, $00c7, $4000,
+	$0000, $00ef, $4000, $0000, $00ff, $7fff, $ffff, $ffff,
+	$5f01, $0080, $2fbf, $7701, $7f80, $3bc7, $6701, $7f80,
+	$39cf, $7701, $7f80, $3bd7, $7f01, $7f80, $3fff, $7fff,
+	$ffff, $ffff, $3fff, $ffff, $ffff, $0000, $0000, $0000,
+	$7fff, $ffff, $fffe, $5fff, $ffff, $ffbf, $77ff, $9a4f,
+	$ffd7, $6bff, $ab1f, $ffef, $77ff, $b24f, $ffd7, $7fff,
+	$ffff, $ffff, $7fff, $ffff, $ffff, $4fff, $f800, $00bf,
+	$4edb, $f800, $00ef, $4e1b, $f800, $00c7, $4ed8, $f800,
+	$00ff, $4fff, $f800, $00ff, $7fff, $ffff, $ffff, $4800,
+	$0c00, $0083, $4a40, $0c00, $00bf, $4bcf, $0c00, $00bf,
+	$4800, $0c00, $00ff, $4fff, $fc00, $00bf, $47ff, $fc00,
+	$00ff, $4000, $0000, $00c7, $4000, $0000, $00ef, $4000,
+	$0000, $00ff, $7fff, $ffff, $ffff, $5f01, $0080, $2fbf,
+	$7701, $7f80, $3bc7, $6701, $7f80, $39cf, $7701, $7f80,
+	$3bd7, $7f01, $7f80, $3fff, $7fff, $ffff, $ffff, $3fff,
+	$ffff, $ffff, $0000, $0000, $0000, $7fff, $ffff, $fffe,
+	$4100, $0000, $0083, $4900, $0000, $00ab, $5500, $0000,
+	$0093, $4900, $0000, $00ab, $4100, $0000, $0083, $7fff,
+	$ffff, $ffff, $4fff, $f800, $0083, $4edb, $f800, $0093,
+	$4e1b, $f800, $00bb, $4ed8, $f800, $0083, $4fff, $f800,
+	$0083, $7fff, $ffff, $ffff, $4800, $0c00, $0083, $4a40,
+	$0c00, $0083, $4bcf, $0c00, $0083, $4800, $0c00, $00ff,
+	$4fff, $fc00, $0083, $47ff, $fc00, $0083, $4000, $0000,
+	$00bb, $4000, $0000, $0093, $4000, $0000, $0083, $7fff,
+	$ffff, $ffff, $41ff, $00ff, $e083, $49ff, $00ff, $e4bb,
+	$59ff, $00ff, $e6b3, $49ff, $00ff, $e4ab, $41ff, $00ff,
+	$e083, $7fff, $ffff, $ffff, $3fff, $ffff, $ffff
+};
+static int16 DATAS_28[] = {
+	$0000, $0000, $0000, $7fff, $ffff, $fffe, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff,
+	$7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff,
+	$7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff,
+	$7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $3fff, $ffff, $ffff
+};
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, $20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, $21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, $29f10108L, Auo_string, TEXT_40, NULL, NULL, BUBBLE_25, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, $29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, $29f10108L, Auo_string, TEXT_41, NULL, NULL, BUBBLE_26, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, $29f10188L, Auo_string, TEXT_42, NULL, NULL, BUBBLE_27, NULL };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, $29f10191L, Auo_string, TEXT_43, NULL, NULL, BUBBLE_23, NULL };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, $29f10191L, Auo_string, TEXT_44, NULL, NULL, BUBBLE_22, NULL };
+static AUSERBLK A_3DBUTTON10 = { A_3Dbutton, $29f10101L, Auo_string, TEXT_45, NULL, NULL, BUBBLE_21, NULL };
+static AUSERBLK A_3DBUTTON11 = { A_3Dbutton, $09f10101L, Auo_string, TEXT_01, NULL, NULL, BUBBLE_24, NULL };
+static AUSERBLK A_3DBUTTON12 = { A_3Dbutton, $21021178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON13 = { A_3Dbutton, $29f10188L, Auo_string, TEXT_02, NULL, NULL, BUBBLE_28, NULL };
+static AUSERBLK A_3DBUTTON14 = { A_3Dbutton, $29f10181L, Auo_string, TEXT_24, NULL, NULL, BUBBLE_29, NULL };
+static AUSERBLK A_3DBUTTON15 = { A_3Dbutton, $29f10181L, Auo_string, TEXT_46, NULL, NULL, BUBBLE_32, NULL };
+static AUSERBLK A_3DBUTTON16 = { A_3Dbutton, $29f10181L, Auo_string, TEXT_47, NULL, NULL, BUBBLE_30, NULL };
+static AUSERBLK A_3DBUTTON17 = { A_3Dbutton, $29f10181L, Auo_string, TEXT_48, NULL, NULL, BUBBLE_31, NULL };
+static AUSERBLK A_3DBUTTON18 = { A_3Dbutton, $29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON19 = { A_3Dbutton, $29d10101L, Auo_string, NULL, NULL, NULL, BUBBLE_33, NULL };
+static AUSERBLK A_3DBUTTON20 = { A_3Dbutton, $29f10121L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON21 = { A_3Dbutton, $29f10121L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON22 = { A_3Dbutton, $29d10101L, Auo_string, NULL, NULL, NULL, BUBBLE_34, NULL };
+static AUSERBLK A_3DBUTTON23 = { A_3Dbutton, $20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON24 = { A_3Dbutton, $29f10101L, Auo_string, TEXT_56, NULL, NULL, BUBBLE_53, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_10, NULL };
+static AUSERBLK A_BOXED02 = { A_boxed, $907a0512L, Auo_boxed, NULL, NULL, NULL, BUBBLE_17, NULL };
+static AUSERBLK A_BOXED03 = { A_boxed, $90700512L, Auo_boxed, NULL, NULL, NULL, BUBBLE_19, NULL };
+static AUSERBLK A_BOXED04 = { A_boxed, $90180812L, Auo_boxed, NULL, NULL, NULL, BUBBLE_01, NULL };
+static AUSERBLK A_BOXED05 = { A_boxed, $90780512L, Auo_boxed, NULL, NULL, NULL, BUBBLE_18, NULL };
+static AUSERBLK A_BOXED06 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_09, NULL };
+static AUSERBLK A_BOXED07 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_BOXED08 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_11, NULL };
+static AUSERBLK A_BOXED09 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_12, NULL };
+static AUSERBLK A_BOXED10 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_13, NULL };
+static AUSERBLK A_BOXED11 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_14, NULL };
+static AUSERBLK A_BOXED12 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_15, NULL };
+static AUSERBLK A_BOXED13 = { A_boxed, $90700512L, Auo_boxed, NULL, NULL, NULL, BUBBLE_20, NULL };
+static AUSERBLK A_BOXED14 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_37, NULL };
+static AUSERBLK A_BOXED15 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_35, NULL };
+static AUSERBLK A_BOXED16 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_36, NULL };
+static AUSERBLK A_BOXED17 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_40, NULL };
+static AUSERBLK A_BOXED18 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_39, NULL };
+static AUSERBLK A_BOXED19 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_38, NULL };
+static AUSERBLK A_BOXED20 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_41, NULL };
+static AUSERBLK A_BOXED21 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_42, NULL };
+static AUSERBLK A_BOXED22 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_43, NULL };
+static AUSERBLK A_BOXED23 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_44, NULL };
+static AUSERBLK A_BOXED24 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_45, NULL };
+static AUSERBLK A_BOXED25 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_46, NULL };
+static AUSERBLK A_BOXED26 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_47, NULL };
+static AUSERBLK A_BOXED27 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_48, NULL };
+static AUSERBLK A_BOXED28 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_49, NULL };
+static AUSERBLK A_BOXED29 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_50, NULL };
+static AUSERBLK A_BOXED30 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_51, NULL };
+static AUSERBLK A_BOXED31 = { A_boxed, $90382012L, Auo_boxed, NULL, NULL, NULL, BUBBLE_52, NULL };
+static AUSERBLK A_CHECKBOX01 = { A_checkbox, $00000001L, Auo_string, TEXT_04, NULL, NULL, BUBBLE_04, NULL };
+static AUSERBLK A_CHECKBOX02 = { A_checkbox, $00000001L, Auo_string, TEXT_05, NULL, NULL, BUBBLE_07, NULL };
+static AUSERBLK A_CHECKBOX03 = { A_checkbox, $00000001L, Auo_string, TEXT_06, NULL, NULL, BUBBLE_06, NULL };
+static AUSERBLK A_CHECKBOX04 = { A_checkbox, $00000001L, Auo_string, TEXT_07, NULL, NULL, BUBBLE_08, NULL };
+static AUSERBLK A_CHECKBOX05 = { A_checkbox, $00000001L, Auo_string, TEXT_08, NULL, NULL, BUBBLE_05, NULL };
+static AUSERBLK A_CHECKBOX07 = { A_checkbox, $00000001L, Auo_string, TEXT_03, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_INNERFRAME01 = { A_innerframe, $18008f19L, Auo_string, TEXT_10, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, $18008f19L, Auo_string, TEXT_39, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, $18008f19L, Auo_string, TEXT_16, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME04 = { A_innerframe, $18008f19L, Auo_string, TEXT_19, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME05 = { A_innerframe, $18008f19L, Auo_string, TEXT_38, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME06 = { A_innerframe, $18008f19L, Auo_string, TEXT_55, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME07 = { A_innerframe, $18008f19L, Auo_string, TEXT_17, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME08 = { A_innerframe, $18008f19L, Auo_string, TEXT_11, NULL, NULL, NULL, NULL };
+static AUSERBLK A_SLIDER01 = { A_slider, $00000002L, Auo_slider, NULL, NULL, NULL, BUBBLE_16, NULL };
+
+static CICON _C4_IC_WINDOW = { 4, &DATAS_27[3], DATAS_28, NULL, NULL, NULL };
+static int16 _MSK_IC_WINDOW[] = {
+	$0000, $0000, $0000, $7fff, $ffff, $fffe, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff,
+	$7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff,
+	$7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff,
+	$7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff, $ffff,
+	$ffff, $7fff, $ffff, $ffff, $7fff, $ffff, $ffff, $7fff,
+	$ffff, $ffff, $3fff, $ffff, $ffff
+};
+static int16 _DAT_IC_WINDOW[] = {
+	$0000, $0000, $0000, $7fff, $ffff, $fffe, $4155, $0002,
+	$aa83, $49aa, $6401, $55ab, $5555, $5492, $aa93, $49aa,
+	$4cf1, $55ab, $4155, $0002, $aa83, $7fff, $ffff, $ffff,
+	$4fff, $f800, $0093, $4edb, $f800, $00bb, $4e1b, $f800,
+	$0093, $4ed8, $f800, $0093, $4fff, $f800, $0083, $7fff,
+	$ffff, $ffff, $4800, $0c00, $0083, $4a40, $0c00, $0083,
+	$4bcf, $0c00, $0083, $4800, $0c00, $00ff, $4fff, $fc00,
+	$0083, $47ff, $fc00, $0093, $4000, $0000, $0093, $4000,
+	$0000, $00bb, $4000, $0000, $0093, $7fff, $ffff, $ffff,
+	$4155, $00aa, $a083, $51ab, $00d5, $62bb, $7d55, $00aa,
+	$afb3, $51ab, $00d5, $62ab, $4155, $00aa, $a083, $7fff,
+	$ffff, $ffff, $3fff, $ffff, $ffff
+};
+static CICONBLK IC_WINDOW = { _MSK_IC_WINDOW, _DAT_IC_WINDOW, TEXT_205, $1000, 0, 0, 12, 0, 48, 31, 0, 32, 72, 8 }, &_C4_IC_WINDOW };
+
+static OBJECT  EDIT_WINDOW = { $ffff, $0001, $005c, $0018, $0000, $0010, C_UNION(&A_3DBUTTON02), $0000, $0000, $002e, $0031 };
+static OBJECT  _01_EDIT_WINDOW = { $000a, $0002, $0009, $0018, $0000, $0000, C_UNION(&A_INNERFRAME01), $0001, $0000, $001d, $0003 };
+static OBJECT  _02_EDIT_WINDOW = { $0003, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_013), $0001, $0001, $0002, $0001 };
+static OBJECT  _03_EDIT_WINDOW = { $0004, $ffff, $ffff, $0018, $0008, $0010, C_UNION(&A_BOXED02), $0003, $0001, $0004, $0001 };
+static OBJECT  _04_EDIT_WINDOW = { $0005, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_012), $0008, $0001, $0002, $0001 };
+static OBJECT  _05_EDIT_WINDOW = { $0006, $ffff, $ffff, $0018, $0008, $0010, C_UNION(&A_BOXED05), $000a, $0001, $0004, $0001 };
+static OBJECT  _06_EDIT_WINDOW = { $0007, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_014), $000f, $0001, $0002, $0001 };
+static OBJECT  _07_EDIT_WINDOW = { $0008, $ffff, $ffff, $0018, $0008, $0010, C_UNION(&A_BOXED03), $0011, $0001, $0004, $0001 };
+static OBJECT  _08_EDIT_WINDOW = { $0009, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_015), $0016, $0001, $0002, $0001 };
+static OBJECT  _09_EDIT_WINDOW = { $0001, $ffff, $ffff, $0018, $0008, $0010, C_UNION(&A_BOXED13), $0018, $0001, $0004, $0001 };
+static OBJECT  _10_EDIT_WINDOW = { $000c, $ffff, $ffff, $0018, $4007, $0010, C_UNION(&A_3DBUTTON05), $0020, $0001, $000c, $0002 };
+static AOBJECT _10aEDIT_WINDOW = { edwi_ok, $00000000, $8000, $884f, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _12_EDIT_WINDOW = { $0013, $000d, $0011, $0018, $0000, $0000, C_UNION(&A_INNERFRAME03), $0001, $0003, $001d, $0003 };
+static OBJECT  _13_EDIT_WINDOW = { $000e, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_013), $0001, $0001, $0002, $0001 };
+static OBJECT  _14_EDIT_WINDOW = { $0010, $ffff, $ffff, $0018, $0040, $0000, C_UNION(&A_SLIDER01), $0003, $0001, $000b, $0001 };
+static AOBJECT _14aEDIT_WINDOW = { Aus_slider, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _16_EDIT_WINDOW = { $0011, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_012), $000f, $0001, $0002, $0001 };
+static OBJECT  _17_EDIT_WINDOW = { $000c, $ffff, $ffff, $0018, $0040, $0000, C_UNION(&A_SLIDER01), $0011, $0001, $000b, $0001 };
+static AOBJECT _17aEDIT_WINDOW = { Aus_slider, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _19_EDIT_WINDOW = { $0015, $ffff, $ffff, $0018, $4005, $0010, C_UNION(&A_3DBUTTON04), $0020, $0003, $000c, $0002 };
+static AOBJECT _19aEDIT_WINDOW = { edwi_abort, $00000000, $8000, $8841, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _21_EDIT_WINDOW = { $0029, $0016, $0016, $0018, $0000, $0000, C_UNION(&A_INNERFRAME02), $0001, $0006, $001d, $0008 };
+static OBJECT  _22_EDIT_WINDOW = { $0015, $0017, $0028, $0018, $0000, $0000, C_UNION(&A_3DBUTTON12), $0002, $0001, $0019, $0006 };
+static OBJECT  _23_EDIT_WINDOW = { $0018, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON10), $0000, $0000, $0002, $0001 };
+static OBJECT  _24_EDIT_WINDOW = { $0019, $ffff, $ffff, $0018, $0001, $0030, C_UNION(&A_3DBUTTON11), $0000, $0001, $0017, $0001 };
+static OBJECT  _25_EDIT_WINDOW = { $001a, $ffff, $ffff, $0018, $0000, $0000, C_UNION(&A_3DBUTTON18), $0000, $0002, $0017, $0003 };
+static OBJECT  _26_EDIT_WINDOW = { $001c, $001b, $001b, $0018, $0000, $0000, C_UNION(&A_3DBUTTON21), $0002, $0005, $0013, $0001 };
+static OBJECT  _27_EDIT_WINDOW = { $001a, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON22), $0002, $0000, $000a, $0001 };
+static OBJECT  _28_EDIT_WINDOW = { $001d, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON17), $0000, $0005, $0002, $0001 };
+static OBJECT  _29_EDIT_WINDOW = { $001e, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON16), $0015, $0005, $0002, $0001 };
+static OBJECT  _30_EDIT_WINDOW = { $001f, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON15), $0017, $0005, $0002, $0001 };
+static OBJECT  _31_EDIT_WINDOW = { $0020, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON14), $0017, $0004, $0002, $0001 };
+static OBJECT  _32_EDIT_WINDOW = { $0022, $0021, $0021, $0018, $0000, $0000, C_UNION(&A_3DBUTTON20), $0017, $0002, $0002, $0002 };
+static OBJECT  _33_EDIT_WINDOW = { $0020, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON19), $0000, $0001, $0002, $0001 };
+static OBJECT  _34_EDIT_WINDOW = { $0023, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON13), $0017, $0001, $0002, $0001 };
+static OBJECT  _35_EDIT_WINDOW = { $0024, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON03), $0017, $0000, $0002, $0001 };
+static OBJECT  _36_EDIT_WINDOW = { $0025, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON06), $0015, $0000, $0002, $0001 };
+static OBJECT  _37_EDIT_WINDOW = { $0026, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON07), $0013, $0000, $0002, $0001 };
+static OBJECT  _38_EDIT_WINDOW = { $0027, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON08), $000c, $0000, $0007, $0001 };
+static OBJECT  _39_EDIT_WINDOW = { $0028, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON09), $0004, $0000, $0008, $0001 };
+static OBJECT  _40_EDIT_WINDOW = { $0016, $ffff, $ffff, $0018, $0001, $0000, C_UNION(&A_3DBUTTON24), $0002, $0000, $0002, $0001 };
+static OBJECT  _41_EDIT_WINDOW = { $0036, $002a, $0034, $0018, $0000, $0000, C_UNION(&A_INNERFRAME08), $001e, $0006, $000f, $0008 };
+static OBJECT  _42_EDIT_WINDOW = { $002c, $ffff, $ffff, $0018, $0001, $0001, C_UNION(&A_CHECKBOX07), $0001, $0001, $0008, $0001 };
+static AOBJECT _42aEDIT_WINDOW = { $00000000, $00000000, $8000, $884c, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _44_EDIT_WINDOW = { $002e, $ffff, $ffff, $0018, $0001, $0001, C_UNION(&A_CHECKBOX01), $0001, $0002, $0009, $0001 };
+static AOBJECT _44aEDIT_WINDOW = { $00000000, $00000000, $8000, $8842, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _46_EDIT_WINDOW = { $0030, $ffff, $ffff, $0018, $0001, $0001, C_UNION(&A_CHECKBOX02), $0001, $0003, $0007, $0001 };
+static AOBJECT _46aEDIT_WINDOW = { $00000000, $00000000, $8000, $8849, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _48_EDIT_WINDOW = { $0032, $ffff, $ffff, $0018, $0001, $0001, C_UNION(&A_CHECKBOX03), $0001, $0004, $000c, $0001 };
+static AOBJECT _48aEDIT_WINDOW = { $00000000, $00000000, $8000, $8847, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _50_EDIT_WINDOW = { $0034, $ffff, $ffff, $0018, $0001, $0001, C_UNION(&A_CHECKBOX04), $0001, $0005, $000c, $0001 };
+static AOBJECT _50aEDIT_WINDOW = { $00000000, $00000000, $8000, $884e, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _52_EDIT_WINDOW = { $0029, $ffff, $ffff, $0018, $0001, $0001, C_UNION(&A_CHECKBOX05), $0001, $0006, $000d, $0001 };
+static AOBJECT _52aEDIT_WINDOW = { $00000000, $00000000, $8000, $8854, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _54_EDIT_WINDOW = { $003d, $0037, $003c, $0018, $0000, $0000, C_UNION(&A_INNERFRAME05), $0001, $000e, $002c, $0004 };
+static OBJECT  _55_EDIT_WINDOW = { $0038, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_12), $0001, $0001, $0005, $0001 };
+static OBJECT  _56_EDIT_WINDOW = { $003c, $0039, $0039, $0018, $0040, $0000, C_UNION(&A_3DBUTTON01), $000a, $0001, $0020, $0002 };
+static OBJECT  _57_EDIT_WINDOW = { $0038, $003a, $003b, $0014, $0040, $0000, C_UNION(&$00ff0101), $0000, $0000, $0020, $0002 };
+static OBJECT  _58_EDIT_WINDOW = { $003b, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED06), $0000, $0000, $0020, $0001 };
+static OBJECT  _59_EDIT_WINDOW = { $0039, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED07), $0000, $0001, $0020, $0001 };
+static OBJECT  _60_EDIT_WINDOW = { $0036, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_18), $0001, $0002, $0005, $0001 };
+static OBJECT  _61_EDIT_WINDOW = { $0045, $003e, $0040, $0018, $0040, $0000, C_UNION(&A_INNERFRAME06), $0001, $0012, $002c, $0004 };
+static OBJECT  _62_EDIT_WINDOW = { $003f, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_53), $0001, $0001, $0006, $0001 };
+static OBJECT  _63_EDIT_WINDOW = { $0040, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_54), $0001, $0002, $0006, $0001 };
+static OBJECT  _64_EDIT_WINDOW = { $003d, $0041, $0041, $0018, $0000, $0000, C_UNION(&A_3DBUTTON23), $000a, $0001, $0020, $0002 };
+static OBJECT  _65_EDIT_WINDOW = { $0040, $0042, $0044, $0014, $0000, $0000, C_UNION(&$00001101), $0000, $0000, $0020, $0002 };
+static OBJECT  _66_EDIT_WINDOW = { $0043, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED01), $0000, $0000, $0020, $0001 };
+static OBJECT  _67_EDIT_WINDOW = { $0044, $ffff, $ffff, $0018, $0008, $0000, C_UNION(&A_BOXED04), $0000, $0001, $0008, $0001 };
+static OBJECT  _68_EDIT_WINDOW = { $0041, $ffff, $ffff, $001c, $0000, $0000, C_UNION(&TEXT_50), $0008, $0001, $0004, $0001 };
+static OBJECT  _69_EDIT_WINDOW = { $005c, $0046, $005a, $0018, $0000, $0000, C_UNION(&A_INNERFRAME04), $0001, $0016, $002c, $0007 };
+static OBJECT  _70_EDIT_WINDOW = { $0048, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_13), $0001, $0001, $0005, $0001 };
+static AOBJECT _70aEDIT_WINDOW = { edwi_tme, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _72_EDIT_WINDOW = { $0054, $0049, $0049, $0018, $0040, $0000, C_UNION(&A_3DBUTTON01), $000a, $0001, $0020, $0005 };
+static OBJECT  _73_EDIT_WINDOW = { $0048, $004a, $0052, $0014, $0040, $0000, C_UNION(&$00ff0101), $0000, $0000, $0020, $0005 };
+static OBJECT  _74_EDIT_WINDOW = { $004c, $ffff, $ffff, $0018, $1008, $0010, C_UNION(&A_BOXED08), $0000, $0000, $0020, $0001 };
+static AOBJECT _74aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _76_EDIT_WINDOW = { $004e, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED09), $0000, $0001, $0020, $0001 };
+static AOBJECT _76aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _78_EDIT_WINDOW = { $0050, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED10), $0000, $0002, $0020, $0001 };
+static AOBJECT _78aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _80_EDIT_WINDOW = { $0052, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED11), $0000, $0003, $0020, $0001 };
+static AOBJECT _80aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _82_EDIT_WINDOW = { $0049, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED12), $0000, $0004, $0020, $0001 };
+static AOBJECT _82aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _84_EDIT_WINDOW = { $0056, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_09), $0001, $0002, $0008, $0001 };
+static AOBJECT _84aEDIT_WINDOW = { edwi_two, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _86_EDIT_WINDOW = { $0058, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_20), $0001, $0003, $0005, $0001 };
+static AOBJECT _86aEDIT_WINDOW = { edwi_two, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _88_EDIT_WINDOW = { $005a, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_21), $0001, $0004, $0005, $0001 };
+static AOBJECT _88aEDIT_WINDOW = { edwi_tic, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _90_EDIT_WINDOW = { $0045, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_22), $0001, $0005, $0005, $0001 };
+static AOBJECT _90aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _92_EDIT_WINDOW = { $0000, $005d, $00a5, $0018, $0000, $0000, C_UNION(&A_INNERFRAME07), $0001, $001d, $002c, $0014 };
+static OBJECT  _93_EDIT_WINDOW = { $005f, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_14), $0001, $0001, $0005, $0001 };
+static AOBJECT _93aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _95_EDIT_WINDOW = { $0085, $0060, $0060, $0018, $0040, $0000, C_UNION(&A_3DBUTTON01), $000a, $0001, $0020, $0012 };
+static OBJECT  _96_EDIT_WINDOW = { $005f, $0061, $0083, $0014, $0040, $0000, C_UNION(&$00ff0101), $0000, $0000, $0020, $0012 };
+static OBJECT  _97_EDIT_WINDOW = { $0063, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED16), $0000, $0000, $0020, $0001 };
+static AOBJECT _97aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _99_EDIT_WINDOW = { $0065, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED15), $0000, $0001, $0020, $0001 };
+static AOBJECT _99aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _101_EDIT_WINDOW = { $0067, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED14), $0000, $0002, $0020, $0001 };
+static AOBJECT _101aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _103_EDIT_WINDOW = { $0069, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED17), $0000, $0003, $0020, $0001 };
+static AOBJECT _103aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _105_EDIT_WINDOW = { $006b, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED18), $0000, $0004, $0020, $0001 };
+static AOBJECT _105aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _107_EDIT_WINDOW = { $006d, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED19), $0000, $0005, $0020, $0001 };
+static AOBJECT _107aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _109_EDIT_WINDOW = { $006f, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED20), $0000, $0006, $0020, $0001 };
+static AOBJECT _109aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _111_EDIT_WINDOW = { $0071, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED21), $0000, $0007, $0020, $0001 };
+static AOBJECT _111aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _113_EDIT_WINDOW = { $0073, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED22), $0000, $0008, $0020, $0001 };
+static AOBJECT _113aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _115_EDIT_WINDOW = { $0075, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED23), $0000, $0009, $0020, $0001 };
+static AOBJECT _115aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _117_EDIT_WINDOW = { $0077, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED24), $0000, $000a, $0020, $0001 };
+static AOBJECT _117aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _119_EDIT_WINDOW = { $0079, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED25), $0000, $000b, $0020, $0001 };
+static AOBJECT _119aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _121_EDIT_WINDOW = { $007b, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED26), $0000, $000c, $0020, $0001 };
+static AOBJECT _121aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _123_EDIT_WINDOW = { $007d, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED27), $0000, $000d, $0020, $0001 };
+static AOBJECT _123aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _125_EDIT_WINDOW = { $007f, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED28), $0000, $000e, $0020, $0001 };
+static AOBJECT _125aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _127_EDIT_WINDOW = { $0081, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED29), $0000, $000f, $0020, $0001 };
+static AOBJECT _127aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _129_EDIT_WINDOW = { $0083, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED30), $0000, $0010, $0020, $0001 };
+static AOBJECT _129aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _131_EDIT_WINDOW = { $0060, $ffff, $ffff, $0018, $1008, $0000, C_UNION(&A_BOXED31), $0000, $0011, $0020, $0001 };
+static AOBJECT _131aEDIT_WINDOW = { $00000000, edwi_acc, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _133_EDIT_WINDOW = { $0087, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_25), $0001, $0002, $0007, $0001 };
+static AOBJECT _133aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _135_EDIT_WINDOW = { $0089, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_23), $0001, $0003, $0008, $0001 };
+static AOBJECT _135aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _137_EDIT_WINDOW = { $008b, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_26), $0001, $0004, $0005, $0001 };
+static AOBJECT _137aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _139_EDIT_WINDOW = { $008d, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_27), $0001, $0005, $0005, $0001 };
+static AOBJECT _139aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _141_EDIT_WINDOW = { $008f, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_28), $0001, $0006, $0007, $0001 };
+static AOBJECT _141aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _143_EDIT_WINDOW = { $0091, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_29), $0001, $0007, $0007, $0001 };
+static AOBJECT _143aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _145_EDIT_WINDOW = { $0093, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_30), $0001, $0008, $0007, $0001 };
+static AOBJECT _145aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _147_EDIT_WINDOW = { $0095, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_31), $0001, $0009, $0007, $0001 };
+static AOBJECT _147aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _149_EDIT_WINDOW = { $0097, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_32), $0001, $000a, $0007, $0001 };
+static AOBJECT _149aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _151_EDIT_WINDOW = { $0099, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_33), $0001, $000b, $0008, $0001 };
+static AOBJECT _151aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _153_EDIT_WINDOW = { $009b, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_34), $0001, $000c, $0008, $0001 };
+static AOBJECT _153aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _155_EDIT_WINDOW = { $009d, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_35), $0001, $000d, $0008, $0001 };
+static AOBJECT _155aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _157_EDIT_WINDOW = { $009f, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_36), $0001, $000e, $0006, $0001 };
+static AOBJECT _157aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _159_EDIT_WINDOW = { $00a1, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_37), $0001, $000f, $0006, $0001 };
+static AOBJECT _159aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _161_EDIT_WINDOW = { $00a3, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_49), $0001, $0010, $0008, $0001 };
+static AOBJECT _161aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _163_EDIT_WINDOW = { $00a5, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_51), $0001, $0011, $0008, $0001 };
+static AOBJECT _163aEDIT_WINDOW = { edwi_ref, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _165_EDIT_WINDOW = { $005c, $ffff, $ffff, $001c, $0005, $0000, C_UNION(&TEXT_52), $0001, $0012, $0008, $0001 };
+static AOBJECT _165aEDIT_WINDOW = { edwi_ref, $00000000, $8020, $0000, $00000000, $00000000, $0000, $0000 };
+
+	.globl WI_WINDOW
+WI_WINDOW:
+	dc.w $0000
+	dc.w $0000
+	dc.l wi_service
+	dc.l wi_make
+	dc.l Awi_open
+	dc.l Awi_init
+	dc.l EDIT_WINDOW
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $61ff
+	dc.w $0000
+	dc.w $0000
+	dc.w $0063
+	dc.w $0063
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $0000
+	dc.w $0000
+	dc.w $f8f8
+	dc.l TEXT_15
+	dc.l TEXT_002
+	dc.w $2710
+	dc.w $0100
+	dc.w $0000
+	dc.w $ffff
+	dc.l IC_WINDOW
+	dc.w $0000
+	dc.w $0000
+	dc.l Awi_keys
+	dc.l Awi_obchange
+	dc.l Awi_redraw
+	dc.l Awi_topped
+	dc.l Awi_closed
+	dc.l Awi_fulled
+	dc.l Awi_arrowed
+	dc.l Awi_hslid
+	dc.l Awi_vslid
+	dc.l Awi_sized
+	dc.l Awi_moved
+	dc.l Awi_iconify
+	dc.l Awi_uniconify
+	dc.l Awi_gemscript
+	dc.l STGUIDE_01
+	dc.w $0000
+	dc.w $0000

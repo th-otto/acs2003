@@ -1,0 +1,599 @@
+#if COUNTRY == COUNTRY_DE
+static char BUBBLE_01[] = "Dieser Button ruft den Flag-Editor auf.";
+static char BUBBLE_02[] = "Dieser Button ruft den Objekt-Editor auf.";
+static char BUBBLE_03[] = "Dieser Button ruft den Referenz-Editor auf.";
+static char BUBBLE_04[] = "Dieser Button ruft den Positions-Editor auf.";
+static char STGUIDE_01[] = "Das Teile-Fenster";
+static char TEMPLATE_001[] = "EDIT:____";
+static char TEXT_002[] = "";
+static char TEXT_02[] = " Teilefenster ";
+static char TEXT_024[] = "abc";
+static char TEXT_030[] = "TEXT";
+static char TEXT_038[] = "STRING";
+static char TEXT_039[] = "BUTTON";
+static char TEXT_040[] = "TITLE";
+static char TEXT_065[] = "ICON";
+static char TEXT_258[] = "USERDEF";
+static char VALID_001[] = "XXXX";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char BUBBLE_01[] = "This button calls the flag editor.";
+static char BUBBLE_02[] = "This button calls th object editor.";
+static char BUBBLE_03[] = "This button calls the reference editor.";
+static char BUBBLE_04[] = "This button calls the position editor.";
+static char STGUIDE_01[] = "Das Teile-Fenster";
+static char TEMPLATE_001[] = "EDIT:____";
+static char TEXT_002[] = "";
+static char TEXT_02[] = " Toolbox ";
+static char TEXT_024[] = "abc";
+static char TEXT_030[] = "TEXT";
+static char TEXT_038[] = "STRING";
+static char TEXT_039[] = "BUTTON";
+static char TEXT_040[] = "TITLE";
+static char TEXT_065[] = "ICON";
+static char TEXT_258[] = "USERDEF";
+static char VALID_001[] = "XXXX";
+#endif
+
+
+static int16 DATAS_01[] = {
+	$0000, $0000, $0208, $0001, $0000, $0003, $8000, $0006,
+	$c000, $0000, $0200, $0000, $0600, $07ff, $fe00, $07ff,
+	$fe00, $07ff, $fe00, $07ff, $ff00, $07ff, $ff80, $07ff,
+	$fec0, $07ff, $fe60, $07ff, $fe30, $2fff, $fe18, $7fff,
+	$fe0c, $c000, $c906, $6200, $920c, $3101, $f418, $1886,
+	$ac04, $0c4d, $f404, $062a, $3804, $031f, $fc04, $018b,
+	$e804, $00c5, $5404, $0063, $a804, $0031, $fc04, $0018,
+	$0c04, $000c, $1bf8, $0006, $3000, $0003, $6000, $0001,
+	$c000, $0000, $8000, $0001, $0000, $0003, $8000, $0006,
+	$c000, $0000, $0200, $0000, $0600, $07ff, $fe00, $071d,
+	$de00, $06ed, $be00, $06ed, $7f00, $06ec, $7f80, $06ed,
+	$bec0, $071d, $de60, $07ff, $fe30, $2fff, $fe18, $7fff,
+	$fe0c, $c000, $c906, $6200, $920c, $3101, $f418, $1886,
+	$ac04, $0c4d, $f404, $062a, $3804, $031f, $fc04, $018b,
+	$e804, $00c5, $5404, $0063, $a804, $0031, $fc04, $0018,
+	$0c04, $000c, $1bf8, $0006, $3000, $0003, $6000, $0001,
+	$c000, $0000, $8000, $0001, $0000, $0003, $8000, $0006,
+	$c000, $0000, $0200, $0000, $0600, $07ff, $fe00, $071d,
+	$de00, $06ed, $be00, $06ed, $7f00, $06ec, $7f80, $06ed,
+	$bec0, $071d, $de60, $07ff, $fe30, $2fff, $fe18, $7fff,
+	$fe0c, $c000, $c906, $6200, $920c, $3101, $f418, $1886,
+	$0ffc, $0c4d, $e7fc, $062a, $33fc, $031f, $fbfc, $0189,
+	$e3fc, $00c4, $03fc, $0063, $03fc, $0031, $fffc, $0018,
+	$0ffc, $000c, $1bf8, $0006, $3000, $0003, $6000, $0001,
+	$c000, $0000, $8000, $0000, $0000, $0001, $0000, $0002,
+	$8000, $1fff, $fe00, $1fff, $fe00, $1800, $0600, $1800,
+	$0600, $1800, $0600, $1800, $0600, $1800, $0700, $1800,
+	$0680, $1800, $0640, $1800, $0620, $1fff, $fe10, $3fff,
+	$fe08, $4000, $c904, $2200, $9208, $1101, $f410, $0886,
+	$0c00, $044d, $e400, $022a, $3000, $011f, $f800, $0089,
+	$e000, $0044, $0000, $0023, $0000, $0011, $fc00, $0008,
+	$0800, $0004, $1000, $0002, $2000, $0001, $4000, $0000,
+	$8000, $0000, $0000
+};
+static int16 DATAS_02[] = {
+	$0001, $0000, $0003, $8000, $0007, $c000, $1fff, $fe00,
+	$1fff, $fe00, $1fff, $fe00, $1fff, $fe00, $1fff, $fe00,
+	$1fff, $ff00, $1fff, $ff80, $1fff, $ffc0, $1fff, $ffe0,
+	$1fff, $fff0, $3fff, $fff8, $7fff, $fffc, $ffff, $fffe,
+	$7fff, $fffc, $3fff, $fff8, $1fff, $fffc, $0fff, $fffc,
+	$07ff, $fffc, $03ff, $fffc, $01ff, $fffc, $00ff, $fffc,
+	$007f, $fffc, $003f, $fffc, $001f, $fffc, $000f, $fbf8,
+	$0007, $f000, $0003, $e000, $0001, $c000, $0000, $8000
+};
+static int16 DATAS_03[] = {
+	$0000, $0000, $0208, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $fc00, $007f, $fc00, $00ff, $fcff, $ffff, $fcff,
+	$ffff, $fcff, $ffff, $fcff, $ffff, $fcff, $ffff, $fcff,
+	$ffff, $fcff, $ffff, $fcff, $ffff, $fdff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $faaa, $aaaf, $f888,
+	$888f, $f800, $000f, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $fc00, $007f, $fc00, $00ff, $fcff, $ffff, $fce3,
+	$bbff, $fcdd, $b7ff, $fcdd, $afff, $fcdd, $8fff, $fcdd,
+	$b7ff, $fce3, $bbff, $fcff, $ffff, $fdff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $faaa, $aaaf, $f888,
+	$888f, $f800, $000f, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $fc00, $007f, $fc00, $00ff, $fcff, $ffff, $fce3,
+	$bbff, $fcdd, $b7ff, $fcdd, $afff, $fcdd, $8fff, $fcdd,
+	$b7ff, $fce3, $bbff, $fcff, $ffff, $fdff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $faaa, $aaaf, $f888,
+	$888f, $f800, $000f, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0800, $0000, $1c00, $0000, $3e00, $0000, $0800,
+	$0000, $0bff, $ffc0, $0bff, $ffc0, $0b00, $00c0, $0b00,
+	$00c0, $0b00, $00c0, $0b00, $00c0, $0b00, $00c0, $0b00,
+	$00c0, $0b00, $00c0, $0b00, $00c0, $0bff, $ffc0, $0bff,
+	$ffd0, $0800, $0018, $3fff, $fffc, $0800, $0018, $0800,
+	$0010, $0000, $0000, $0fff, $fff8, $0aaa, $aaa8, $0888,
+	$8888, $0800, $0008, $0fff, $fff8, $0000, $0000, $0000,
+	$0000, $0000, $0000
+};
+static int16 DATAS_04[] = {
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff
+};
+static int16 DATAS_05[] = {
+	$0000, $0000, $0208, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $e000, $03ff, $e000, $077f, $e7ff, $ffef, $e7ff,
+	$ff3f, $e7ff, $fef7, $e7ff, $fcff, $e7ff, $f87f, $e7ff,
+	$f0ef, $e7ff, $e1ff, $e7ff, $d3ff, $efff, $bfff, $ffff,
+	$3fff, $fffe, $1fff, $fffc, $3fff, $fff8, $7fff, $fff4,
+	$ffff, $ffef, $ffff, $ffcf, $ffff, $ff87, $ffff, $fb0f,
+	$ffff, $fe1f, $ffff, $fd3f, $ffff, $ebff, $ffff, $fbef,
+	$ffff, $ffff, $ffff, $f77f, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $e000, $03ff, $e000, $077f, $e7ff, $ffef, $e71d,
+	$df3f, $e6ed, $be37, $e6ed, $7d3f, $e6ec, $7bff, $e6ed,
+	$b3ef, $e71d, $e1ff, $e7ff, $c3ff, $efff, $87ff, $ffff,
+	$4fff, $fffe, $ffff, $fffc, $ffff, $fff8, $7fff, $fff0,
+	$ffff, $ffe1, $ffff, $ffd3, $ffff, $ffbf, $ffff, $fb3f,
+	$ffff, $fe1f, $ffff, $fc3f, $ffff, $e87f, $ffff, $f8ef,
+	$ffff, $ffff, $ffff, $f77f, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $e000, $037f, $e000, $0777, $e7ff, $ffef, $e71d,
+	$df3f, $e6ed, $be33, $e6ed, $7c3f, $e6ec, $787f, $e6ed,
+	$b4ef, $e71d, $eff7, $e7ff, $cfff, $efff, $87ff, $ffff,
+	$0fff, $fffe, $1fff, $fffd, $3fff, $fffb, $ffff, $fff3,
+	$ffff, $ffe1, $ffff, $ffc3, $ffff, $f787, $ffff, $fb4f,
+	$ffff, $feff, $ffff, $fcff, $ffff, $c87f, $ffff, $f8ef,
+	$ffff, $fff7, $ffff, $f77f, $ffff, $ef7f, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $0000, $0000, $0000, $0000, $0000,
+	$0000, $1fff, $fe00, $1fff, $fe00, $1800, $0600, $1800,
+	$06c0, $1800, $0520, $1800, $0260, $1800, $04c0, $1800,
+	$0980, $1800, $1300, $1800, $2600, $1fff, $4c00, $1ffe,
+	$9800, $0001, $3000, $0002, $6000, $0004, $c000, $0009,
+	$8000, $0013, $0000, $0026, $0000, $004c, $0000, $0098,
+	$0000, $0130, $0000, $0260, $0000, $04c0, $0000, $0580,
+	$0000, $0300, $0000, $0000, $0000, $0000, $0000, $0000,
+	$0000, $0000, $0000
+};
+static int16 DATAS_06[] = {
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff
+};
+static int16 DATAS_07[] = {
+	$0000, $0000, $0208, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $e000, $07ff, $c000, $0fff, $cfff, $ffff, $cfff,
+	$ffff, $cfff, $f80f, $cfff, $f007, $cfff, $f007, $cfff,
+	$e003, $cfff, $e183, $cfff, $f1c3, $dfff, $ffc3, $ffff,
+	$ffc3, $ffff, $ff87, $ffff, $ff07, $ffff, $ff0f, $ffff,
+	$fe1f, $ffff, $ee1f, $ffff, $ee1f, $ffff, $fe1f, $ffff,
+	$fe1f, $ffff, $ff3f, $ffff, $ffff, $ffff, $fe3f, $ffff,
+	$fe1f, $ffff, $fe1f, $ffff, $ff3f, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $e000, $07ff, $c000, $0fff, $cfff, $ffff, $ce3b,
+	$bfff, $cddb, $79ef, $cdda, $f7f7, $cdd8, $fff7, $cddb,
+	$6e7b, $ce3b, $adbb, $cfff, $fdfb, $dfff, $fffb, $ffff,
+	$fffb, $ffff, $fff7, $ffff, $fff7, $ffff, $ffef, $ffff,
+	$ffdf, $ffff, $efdf, $ffff, $efdf, $ffff, $ffdf, $ffff,
+	$ffdf, $ffff, $ff3f, $ffff, $ffff, $ffff, $ffbf, $ffff,
+	$ffdf, $ffff, $fedf, $ffff, $ff3f, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $e000, $07ff, $c000, $0fff, $cfff, $ffff, $ce3b,
+	$bfff, $cddb, $79ef, $cdda, $f7f7, $cdd8, $fff7, $cddb,
+	$6e7b, $ce3b, $adbb, $cfff, $fdfb, $dfff, $fffb, $ffff,
+	$fffb, $ffff, $fff7, $ffff, $fff7, $ffff, $ffef, $ffff,
+	$ffdf, $ffff, $efdf, $ffff, $efdf, $ffff, $ffdf, $ffff,
+	$ffdf, $ffff, $ff3f, $ffff, $ffff, $ffff, $ffbf, $ffff,
+	$ffdf, $ffff, $fedf, $ffff, $ff3f, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $0000, $0000, $0000, $0000, $0000,
+	$0000, $1fff, $f800, $3fff, $fc00, $3000, $0c00, $3000,
+	$0c00, $3000, $0810, $3000, $0018, $3000, $0198, $3000,
+	$03cc, $3000, $064c, $3000, $0e0c, $3fff, $fc0c, $1fff,
+	$f80c, $0018, $0018, $003c, $0018, $007e, $0030, $00ff,
+	$0060, $01db, $f060, $0399, $f060, $0718, $0160, $039e,
+	$01e0, $019f, $80c0, $0019, $e000, $0038, $7040, $0070,
+	$3060, $00e0, $31e0, $01c0, $30c0, $0180, $3000, $0000,
+	$0000, $0000, $0000
+};
+static int16 DATAS_08[] = {
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff,
+	$ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff, $ffff
+};
+
+static TEDINFO TEDINFO_015 = { TEXT_024, TEMPLATE_001, VALID_001, $0003, $0006, $0002, $1180, $0000, $ffff, $0004, $000a };
+static TEDINFO TEDINFO_069 = { TEXT_030, TEXT_002, TEXT_002, $0003, $0006, $0002, $1180, $0000, $ffff, $0005, $0001 };
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, $21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, $21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, $a9e10178L, Auo_string, NULL, NULL, NULL, BUBBLE_01, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, $a9e10178L, Auo_string, NULL, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, $a9e10178L, Auo_string, NULL, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, $a9e10178L, Auo_string, NULL, NULL, NULL, BUBBLE_04, NULL };
+
+static int16 _MSK_ICON_001[] = {
+	$00ff, $ffff, $fe00, $00ff, $ffff, $fe00, $00ff, $ffff,
+	$fe00, $00ff, $ffff, $fe00, $00ff, $ffff, $fe00, $00ff,
+	$ffff, $fe00, $00ff, $ffff, $fe00, $00ff, $ffff, $fe00,
+	$00ff, $ffff, $fe00, $00ff, $ffff, $fe00, $00ff, $ffff,
+	$fe00, $00ff, $ffff, $fe00, $00ff, $ffff, $fe00, $00ff,
+	$ffff, $fe00, $00ff, $ffff, $fe00, $0fff, $ffff, $fff0,
+	$0fff, $ffff, $fff0, $0fff, $ffff, $fff0, $0fff, $ffff,
+	$fff0, $0fff, $ffff, $fff0, $0fff, $ffff, $fff0, $0fff,
+	$ffff, $fff0, $0fff, $ffff, $fff0, $0000, $0000, $0000
+};
+static int16 _DAT_ICON_001[] = {
+	$00ff, $ffff, $fe00, $00c0, $0000, $0600, $00c0, $7fff,
+	$8600, $00c0, $c000, $8600, $00c1, $4000, $8600, $00c3,
+	$c000, $8600, $00c2, $0000, $8600, $00c2, $0000, $8600,
+	$00c2, $0000, $8600, $00c2, $0000, $8600, $00c2, $0000,
+	$8600, $00c2, $0000, $8600, $00c2, $0000, $8600, $00c2,
+	$0000, $8600, $00c2, $0000, $8600, $0fc3, $ffff, $87f0,
+	$0c00, $0000, $0030, $0c1c, $f9f9, $8830, $0c08, $8109,
+	$4830, $0c08, $8109, $2830, $0c1c, $f9f9, $1830, $0c00,
+	$0000, $0030, $0fff, $ffff, $fff0, $0000, $0000, $0000
+};
+static CICONBLK ICON_001 = { { _MSK_ICON_001, _DAT_ICON_001, TEXT_065, $1041, 20, 6, 0, 0, 48, 24, 0, 24, 48, 8 }, NULL };
+static CICON _C4_I_FLAGS = { 4, &DATAS_07[3], DATAS_08, NULL, NULL, NULL };
+static int16 _MSK_I_FLAGS[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $1fff, $f800,
+	$3fff, $fc00, $3fff, $fc00, $3fff, $fc00, $3fff, $fdf0,
+	$3fff, $fff8, $3fff, $fff8, $3fff, $fffc, $3fff, $fe7c,
+	$3fff, $fe3c, $3fff, $fc3c, $1fff, $f83c, $0018, $0078,
+	$003c, $00f8, $007e, $00f0, $00ff, $01e0, $01db, $e1e0,
+	$0399, $e1e0, $0718, $01e0, $039e, $01e0, $019f, $80c0,
+	$0019, $e000, $0038, $70c0, $0070, $31e0, $00e0, $31e0,
+	$01c0, $30c0, $0180, $3000, $0000, $0000, $0000, $0000
+};
+static int16 _DAT_I_FLAGS[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $1fff, $f800,
+	$3fff, $fc00, $3000, $0c00, $31c4, $4c00, $3224, $89f0,
+	$3225, $07f8, $3227, $0ff8, $3224, $8ffc, $31c4, $4e7c,
+	$3000, $0e3c, $3fff, $f43c, $1fff, $f83c, $0018, $0078,
+	$003c, $00f8, $007e, $00f0, $00ff, $01e0, $01db, $e1e0,
+	$0399, $e1e0, $0718, $01e0, $039e, $01e0, $019f, $80c0,
+	$0019, $e000, $0038, $70c0, $0070, $31e0, $00e0, $31e0,
+	$01c0, $30c0, $0180, $3000, $0000, $0000, $0000, $0000
+};
+static CICONBLK I_FLAGS = { { _MSK_I_FLAGS, _DAT_I_FLAGS, TEXT_002, $1000, 0, 0, 0, 0, 32, 32, 8, 8, 0, 0 }, &_C4_I_FLAGS };
+static CICON _C4_I_POS = { 4, &DATAS_03[3], DATAS_04, NULL, NULL, NULL };
+static int16 _MSK_I_POS[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $0800, $0000,
+	$1c00, $0000, $3e00, $0000, $0800, $0000, $0bff, $ffc0,
+	$0bff, $ffc0, $0bff, $ffc0, $0bff, $ffc0, $0bff, $ffc0,
+	$0bff, $ffc0, $0bff, $ffc0, $0bff, $ffc0, $0bff, $ffc0,
+	$0bff, $ffc0, $0bff, $ffc0, $0bff, $ffd0, $0800, $0018,
+	$3fff, $fffc, $0800, $0018, $0800, $0010, $0000, $0000,
+	$0fff, $fff8, $0fff, $fff8, $0fff, $fff8, $0fff, $fff8,
+	$0fff, $fff8, $0000, $0000, $0000, $0000, $0000, $0000
+};
+static int16 _DAT_I_POS[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $0800, $0000,
+	$1c00, $0000, $3e00, $0000, $0800, $0000, $0bff, $ffc0,
+	$0bff, $ffc0, $0b00, $00c0, $0b1c, $44c0, $0b22, $48c0,
+	$0b22, $50c0, $0b22, $70c0, $0b22, $48c0, $0b1c, $44c0,
+	$0b00, $00c0, $0bff, $ffc0, $0bff, $ffd0, $0800, $0018,
+	$3fff, $fffc, $0800, $0018, $0800, $0010, $0000, $0000,
+	$0fff, $fff8, $0aaa, $aaa8, $0888, $8888, $0800, $0008,
+	$0fff, $fff8, $0000, $0000, $0000, $0000, $0000, $0000
+};
+static CICONBLK I_POS = { { _MSK_I_POS, _DAT_I_POS, TEXT_002, $1000, 0, 0, 0, 0, 32, 32, 8, 16, 0, 0 }, &_C4_I_POS };
+static CICON _C4_I_REF = { 4, &DATAS_01[3], DATAS_02, NULL, NULL, NULL };
+static int16 _MSK_I_REF[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $1fff, $fe00,
+	$1fff, $fe00, $1fff, $fe00, $1fff, $fe00, $1fff, $fe00,
+	$1fff, $fe00, $1fff, $ff00, $1fff, $ff80, $1fff, $ffc0,
+	$1fff, $ffe0, $1fff, $fff0, $1fff, $fff8, $1fff, $fffc,
+	$3fff, $fffc, $3fff, $fff8, $1fff, $fff0, $0fff, $ffe0,
+	$07ff, $fff8, $03ff, $fff8, $01ff, $fff8, $00ff, $fff8,
+	$007f, $fff8, $003f, $fff8, $001f, $fc00, $000f, $f800,
+	$0007, $f000, $0003, $e000, $0001, $c000, $0000, $0000
+};
+static int16 _DAT_I_REF[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $1fff, $fe00,
+	$1fff, $fe00, $1800, $0600, $18e2, $2600, $1912, $4600,
+	$1912, $8600, $1913, $8700, $1912, $4680, $18e2, $2640,
+	$1800, $0620, $1fff, $fe10, $1fff, $fe08, $1800, $c904,
+	$3200, $920c, $3101, $f418, $1886, $ac30, $0c4d, $f460,
+	$062a, $3bf8, $031f, $fff8, $018b, $ebf8, $00c5, $57f8,
+	$0063, $abf8, $0031, $f7f8, $0018, $0c00, $000c, $1800,
+	$0006, $3000, $0003, $6000, $0001, $c000, $0000, $0000
+};
+static CICONBLK I_REF = { { _MSK_I_REF, _DAT_I_REF, TEXT_002, $1000, 0, 0, 0, 0, 32, 32, 8, 8, 0, 0 }, &_C4_I_REF };
+static CICON _C4_I_SPEC = { 4, &DATAS_05[3], DATAS_06, NULL, NULL, NULL };
+
+static int16 _MSK_I_SPEC[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $1fff, $fe88,
+	$1fff, $fe90, $1fff, $fe80, $1fff, $fe00, $1fff, $feec,
+	$1fff, $ffe0, $1fff, $ffc0, $1fff, $ff90, $1fff, $ff08,
+	$1fff, $fe00, $1fff, $fc00, $1fff, $f800, $0000, $f000,
+	$0001, $e000, $0003, $c000, $0007, $8000, $000f, $0000,
+	$001e, $0000, $043c, $0000, $0278, $0000, $00f0, $0000,
+	$11e0, $0000, $0bc0, $0000, $0380, $0000, $0320, $0000,
+	$0910, $0000, $1100, $0000, $0000, $0000, $0000, $0000
+};
+static int16 _DAT_I_SPEC[] = {
+	$0000, $0000, $0000, $0000, $0000, $0000, $1fff, $fe00,
+	$1fff, $fe00, $1800, $0600, $18e2, $2600, $1912, $46e0,
+	$1912, $85e0, $1913, $8240, $1912, $4480, $18e2, $0900,
+	$1800, $1200, $1fff, $bc00, $1fff, $7800, $0000, $9000,
+	$0001, $2000, $0002, $4000, $0004, $8000, $000f, $0000,
+	$001e, $0000, $0024, $0000, $0048, $0000, $0090, $0000,
+	$0120, $0000, $03c0, $0000, $0380, $0000, $0300, $0000,
+	$0000, $0000, $0000, $0000, $0000, $0000, $0000, $0000
+};
+static CICONBLK I_SPEC = { { _MSK_I_SPEC, _DAT_I_SPEC, TEXT_002, $1000, 0, 0, 0, 0, 32, 32, 8, 8, 0, 0 }, &_C4_I_SPEC };
+
+static int16 _IMG_IMAGE_001[] = {
+	$07ff, $ffff, $ff80, $0c00, $0000, $00c0, $183f, $f03f,
+	$f060, $187f, $f860, $1860, $187f, $f860, $1860, $187f,
+	$f860, $1860, $187f, $f860, $1860, $187f, $f860, $1860,
+	$187f, $f860, $1860, $187f, $f860, $1860, $187f, $f860,
+	$1860, $187f, $f860, $1860, $187f, $f860, $1860, $187f,
+	$f860, $1860, $183f, $f03f, $f060, $0c00, $0000, $00c0,
+	$07ff, $ffff, $ff80, $0000, $0000, $0000, $3f30, $c787,
+	$8fe0, $0c39, $cccc, $cc00, $0c36, $cfcc, $0f80, $0c30,
+	$cccd, $cc00, $3f30, $ccc7, $cfe0, $0000, $0000, $0000
+};
+static BITBLK IMAGE_001 = { _IMG_IMAGE_001, 6, 24, 0, 0, 1 };
+
+static OBJECT  PARTS = { $ffff, $0001, $00a5, $0018, $0000, $0010, C_UNION(&A_3DBUTTON01), $0000, $0000, $003b, $0014 };
+static OBJECT  _01_PARTS = { $0003, $ffff, $ffff, $001a, $2000, $0000, C_UNION(&TEXT_039), $0800, $0800, $000a, $0001 };
+static AOBJECT _01aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000000, $0000, $2af8 };
+static OBJECT  _03_PARTS = { $0005, $ffff, $ffff, $001c, $2000, $0000, C_UNION(&TEXT_038), $000c, $0001, $0008, $0001 };
+static AOBJECT _03aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000001, $0000, $2af8 };
+static OBJECT  _05_PARTS = { $0007, $ffff, $ffff, $001d, $2000, $0000, C_UNION(&TEDINFO_015), $0014, $0001, $000a, $0001 };
+static AOBJECT _05aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000002, $0000, $2af8 };
+static OBJECT  _07_PARTS = { $0009, $ffff, $ffff, $001e, $2000, $0000, C_UNION(&TEDINFO_015), $001f, $0001, $000a, $0001 };
+static AOBJECT _07aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000003, $0000, $2af8 };
+static OBJECT  _09_PARTS = { $000b, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00ff1101), $002b, $0001, $000a, $0001 };
+static AOBJECT _09aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000004, $0000, $2af8 };
+static OBJECT  _11_PARTS = { $000d, $ffff, $ffff, $0014, $2000, $0000, C_UNION(&$00ff1101), $0001, $0003, $000a, $0001 };
+static AOBJECT _11aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000005, $0000, $2af8 };
+static OBJECT  _13_PARTS = { $000f, $ffff, $ffff, $0015, $2000, $0000, C_UNION(&TEDINFO_069), $000c, $0003, $0004, $0001 };
+static AOBJECT _13aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000006, $0000, $2af8 };
+static OBJECT  _15_PARTS = { $0011, $ffff, $ffff, $001b, $2000, $0000, C_UNION(&$43ff1101), $0015, $0003, $0008, $0001 };
+static AOBJECT _15aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000007, $0000, $2af8 };
+static OBJECT  _17_PARTS = { $0013, $ffff, $ffff, $0016, $2000, $0000, C_UNION(&TEDINFO_069), $001f, $0003, $000a, $0001 };
+static AOBJECT _17aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000008, $0000, $2af8 };
+static OBJECT  _19_PARTS = { $0015, $ffff, $ffff, $001a, $2000, $0000, C_UNION(&TEXT_040), $002b, $0003, $000a, $0001 };
+static AOBJECT _19aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000009, $0000, $2af8 };
+static OBJECT  _21_PARTS = { $0017, $ffff, $ffff, $0017, $2000, $0000, C_UNION(&IMAGE_001), $0001, $0005, $0006, $0002 };
+static AOBJECT _21aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000000a, $0000, $2af8 };
+static OBJECT  _23_PARTS = { $0019, $ffff, $ffff, $001f, $2000, $0000, C_UNION(&ICON_001), $000c, $0005, $0006, $0002 };
+static AOBJECT _23aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000000b, $0000, $2af8 };
+static OBJECT  _25_PARTS = { $001b, $ffff, $ffff, $001a, $2000, $0000, C_UNION(&TEXT_258), $0015, $0005, $000a, $0002 };
+static AOBJECT _25aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000000c, $0000, $2af8 };
+static OBJECT  _27_PARTS = { $001e, $001c, $001c, $0019, $0080, $0000, C_UNION(&$00011101), $0002, $0008, $0005, $0001 };
+static OBJECT  _28_PARTS = { $001b, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _28aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000000d, $0000, $2af8 };
+static OBJECT  _30_PARTS = { $0021, $001f, $001f, $0019, $0080, $0000, C_UNION(&$00011101), $0009, $0008, $0005, $0001 };
+static OBJECT  _31_PARTS = { $001e, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _31aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000000e, $0000, $2af8 };
+static OBJECT  _33_PARTS = { $0024, $0022, $0022, $0019, $0080, $0000, C_UNION(&$00011101), $0010, $0008, $0005, $0001 };
+static OBJECT  _34_PARTS = { $0021, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _34aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000000f, $0000, $2af8 };
+static OBJECT  _36_PARTS = { $0027, $0025, $0025, $0019, $0080, $0000, C_UNION(&$00011101), $0017, $0008, $0005, $0001 };
+static OBJECT  _37_PARTS = { $0024, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _37aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000010, $0000, $2af8 };
+static OBJECT  _39_PARTS = { $002a, $0028, $0028, $0019, $0080, $0000, C_UNION(&$00011101), $001e, $0008, $0005, $0001 };
+static OBJECT  _40_PARTS = { $0027, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _40aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000011, $0000, $2af8 };
+static OBJECT  _42_PARTS = { $002d, $002b, $002b, $0019, $0080, $0000, C_UNION(&$00011101), $0025, $0008, $0005, $0001 };
+static OBJECT  _43_PARTS = { $002a, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _43aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000012, $0000, $2af8 };
+static OBJECT  _45_PARTS = { $0030, $002e, $002e, $0019, $0080, $0000, C_UNION(&$00011101), $002c, $0008, $0005, $0001 };
+static OBJECT  _46_PARTS = { $002d, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _46aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000013, $0000, $2af8 };
+static OBJECT  _48_PARTS = { $0033, $0031, $0031, $0019, $0080, $0000, C_UNION(&$00011101), $0002, $000a, $0005, $0001 };
+static OBJECT  _49_PARTS = { $0030, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _49aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000014, $0000, $2af8 };
+static OBJECT  _51_PARTS = { $0036, $0034, $0034, $0019, $0080, $0000, C_UNION(&$00011101), $0009, $000a, $0005, $0001 };
+static OBJECT  _52_PARTS = { $0033, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _52aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000015, $0000, $2af8 };
+static OBJECT  _54_PARTS = { $0039, $0037, $0037, $0019, $0080, $0000, C_UNION(&$00011101), $0010, $000a, $0005, $0001 };
+static OBJECT  _55_PARTS = { $0036, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _55aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000016, $0000, $2af8 };
+static OBJECT  _57_PARTS = { $003c, $003a, $003a, $0019, $0080, $0000, C_UNION(&$00011101), $0017, $000a, $0005, $0001 };
+static OBJECT  _58_PARTS = { $0039, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _58aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000017, $0000, $2af8 };
+static OBJECT  _60_PARTS = { $003f, $003d, $003d, $0019, $0080, $0000, C_UNION(&$00011101), $001e, $000a, $0005, $0001 };
+static OBJECT  _61_PARTS = { $003c, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _61aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000018, $0000, $2af8 };
+static OBJECT  _63_PARTS = { $0042, $0040, $0040, $0019, $0080, $0000, C_UNION(&$00011101), $0025, $000a, $0005, $0001 };
+static OBJECT  _64_PARTS = { $003f, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _64aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000019, $0000, $2af8 };
+static OBJECT  _66_PARTS = { $0045, $0043, $0043, $0019, $0080, $0000, C_UNION(&$00011101), $002c, $000a, $0005, $0001 };
+static OBJECT  _67_PARTS = { $0042, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _67aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000001a, $0000, $2af8 };
+static OBJECT  _69_PARTS = { $0048, $0046, $0046, $0019, $0080, $0000, C_UNION(&$00011101), $0033, $000a, $0005, $0001 };
+static OBJECT  _70_PARTS = { $0045, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _70aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000001b, $0000, $2af8 };
+static OBJECT  _72_PARTS = { $004b, $0049, $0049, $0019, $0080, $0000, C_UNION(&$00011101), $0002, $000c, $0005, $0001 };
+static OBJECT  _73_PARTS = { $0048, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _73aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000001c, $0000, $2af8 };
+static OBJECT  _75_PARTS = { $004e, $004c, $004c, $0019, $0080, $0000, C_UNION(&$00011101), $0009, $000c, $0005, $0001 };
+static OBJECT  _76_PARTS = { $004b, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _76aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000001d, $0000, $2af8 };
+static OBJECT  _78_PARTS = { $0051, $004f, $004f, $0019, $0080, $0000, C_UNION(&$00011101), $0010, $000c, $0005, $0001 };
+static OBJECT  _79_PARTS = { $004e, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _79aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000001e, $0000, $2af8 };
+static OBJECT  _81_PARTS = { $0054, $0052, $0052, $0019, $0080, $0000, C_UNION(&$00011101), $0017, $000c, $0005, $0001 };
+static OBJECT  _82_PARTS = { $0051, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _82aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000001f, $0000, $2af8 };
+static OBJECT  _84_PARTS = { $0057, $0055, $0055, $0019, $0080, $0000, C_UNION(&$00011101), $001e, $000c, $0005, $0001 };
+static OBJECT  _85_PARTS = { $0054, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _85aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000020, $0000, $2af8 };
+static OBJECT  _87_PARTS = { $005a, $0058, $0058, $0019, $0080, $0000, C_UNION(&$00011101), $0025, $000c, $0005, $0001 };
+static OBJECT  _88_PARTS = { $0057, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _88aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000021, $0000, $2af8 };
+static OBJECT  _90_PARTS = { $005d, $005b, $005b, $0019, $0080, $0000, C_UNION(&$00011101), $002c, $000c, $0005, $0001 };
+static OBJECT  _91_PARTS = { $005a, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _91aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000022, $0000, $2af8 };
+static OBJECT  _93_PARTS = { $0060, $005e, $005e, $0019, $0080, $0000, C_UNION(&$00011101), $0033, $000c, $0005, $0001 };
+static OBJECT  _94_PARTS = { $005d, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _94aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000023, $0000, $2af8 };
+static OBJECT  _96_PARTS = { $0063, $0061, $0061, $0019, $0080, $0000, C_UNION(&$00011101), $0002, $000e, $0005, $0001 };
+static OBJECT  _97_PARTS = { $0060, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _97aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000024, $0000, $2af8 };
+static OBJECT  _99_PARTS = { $0066, $0064, $0064, $0019, $0080, $0000, C_UNION(&$00011101), $0009, $000e, $0005, $0001 };
+static OBJECT  _100_PARTS = { $0063, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _100aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000025, $0000, $2af8 };
+static OBJECT  _102_PARTS = { $0069, $0067, $0067, $0019, $0080, $0000, C_UNION(&$00011101), $0010, $000e, $0005, $0001 };
+static OBJECT  _103_PARTS = { $0066, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _103aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000026, $0000, $2af8 };
+static OBJECT  _105_PARTS = { $006c, $006a, $006a, $0019, $0080, $0000, C_UNION(&$00011101), $0017, $000e, $0005, $0001 };
+static OBJECT  _106_PARTS = { $0069, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _106aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000027, $0000, $2af8 };
+static OBJECT  _108_PARTS = { $006f, $006d, $006d, $0019, $0080, $0000, C_UNION(&$00011101), $001e, $000e, $0005, $0001 };
+static OBJECT  _109_PARTS = { $006c, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _109aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000028, $0000, $2af8 };
+static OBJECT  _111_PARTS = { $0072, $0070, $0070, $0019, $0080, $0000, C_UNION(&$00011101), $0025, $000e, $0005, $0001 };
+static OBJECT  _112_PARTS = { $006f, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _112aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000029, $0000, $2af8 };
+static OBJECT  _114_PARTS = { $0075, $0073, $0073, $0019, $0080, $0000, C_UNION(&$00011101), $002c, $000e, $0005, $0001 };
+static OBJECT  _115_PARTS = { $0072, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _115aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000002a, $0000, $2af8 };
+static OBJECT  _117_PARTS = { $0078, $0076, $0076, $0019, $0080, $0000, C_UNION(&$00011101), $0033, $000e, $0005, $0001 };
+static OBJECT  _118_PARTS = { $0075, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _118aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000002b, $0000, $2af8 };
+static OBJECT  _120_PARTS = { $007b, $0079, $0079, $0019, $0080, $0000, C_UNION(&$00011101), $0002, $0010, $0005, $0001 };
+static OBJECT  _121_PARTS = { $0078, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _121aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000002c, $0000, $2af8 };
+static OBJECT  _123_PARTS = { $007e, $007c, $007c, $0019, $0080, $0000, C_UNION(&$00011101), $0009, $0010, $0005, $0001 };
+static OBJECT  _124_PARTS = { $007b, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _124aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000002d, $0000, $2af8 };
+static OBJECT  _126_PARTS = { $0081, $007f, $007f, $0019, $0080, $0000, C_UNION(&$00011101), $0010, $0010, $0005, $0001 };
+static OBJECT  _127_PARTS = { $007e, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _127aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000002e, $0000, $2af8 };
+static OBJECT  _129_PARTS = { $0084, $0082, $0082, $0019, $0080, $0000, C_UNION(&$00011101), $0017, $0010, $0005, $0001 };
+static OBJECT  _130_PARTS = { $0081, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _130aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000002f, $0000, $2af8 };
+static OBJECT  _132_PARTS = { $0087, $0085, $0085, $0019, $0080, $0000, C_UNION(&$00011101), $001e, $0010, $0005, $0001 };
+static OBJECT  _133_PARTS = { $0084, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _133aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000030, $0000, $2af8 };
+static OBJECT  _135_PARTS = { $008a, $0088, $0088, $0019, $0080, $0000, C_UNION(&$00011101), $0025, $0010, $0005, $0001 };
+static OBJECT  _136_PARTS = { $0087, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _136aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000031, $0000, $2af8 };
+static OBJECT  _138_PARTS = { $008d, $008b, $008b, $0019, $0080, $0000, C_UNION(&$00011101), $002c, $0010, $0005, $0001 };
+static OBJECT  _139_PARTS = { $008a, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _139aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000032, $0000, $2af8 };
+static OBJECT  _141_PARTS = { $0090, $008e, $008e, $0019, $0080, $0000, C_UNION(&$00011101), $0033, $0010, $0005, $0001 };
+static OBJECT  _142_PARTS = { $008d, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _142aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000033, $0000, $2af8 };
+static OBJECT  _144_PARTS = { $0093, $0091, $0091, $0019, $0080, $0000, C_UNION(&$00011101), $0002, $0012, $0005, $0001 };
+static OBJECT  _145_PARTS = { $0090, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _145aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000034, $0000, $2af8 };
+static OBJECT  _147_PARTS = { $0096, $0094, $0094, $0019, $0080, $0000, C_UNION(&$00011101), $0009, $0012, $0005, $0001 };
+static OBJECT  _148_PARTS = { $0093, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _148aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000035, $0000, $2af8 };
+static OBJECT  _150_PARTS = { $0099, $0097, $0097, $0019, $0080, $0000, C_UNION(&$00011101), $0010, $0012, $0005, $0001 };
+static OBJECT  _151_PARTS = { $0096, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _151aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000036, $0000, $2af8 };
+static OBJECT  _153_PARTS = { $009c, $009a, $009a, $0019, $0080, $0000, C_UNION(&$00011101), $0017, $0012, $0005, $0001 };
+static OBJECT  _154_PARTS = { $0099, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _154aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000037, $0000, $2af8 };
+static OBJECT  _156_PARTS = { $009f, $009d, $009d, $0019, $0080, $0000, C_UNION(&$00011101), $001e, $0012, $0005, $0001 };
+static OBJECT  _157_PARTS = { $009c, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _157aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000038, $0000, $2af8 };
+static OBJECT  _159_PARTS = { $00a2, $00a0, $00a0, $0019, $0080, $0000, C_UNION(&$00011101), $0025, $0012, $0005, $0001 };
+static OBJECT  _160_PARTS = { $009f, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _160aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $00000039, $0000, $2af8 };
+static OBJECT  _162_PARTS = { $00a5, $00a3, $00a3, $0019, $0080, $0000, C_UNION(&$00011101), $002c, $0012, $0005, $0001 };
+static OBJECT  _163_PARTS = { $00a2, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _163aPARTS = { $00000000, $00000000, $8000, $0000, part_palette, $0000003a, $0000, $2af8 };
+static OBJECT  _165_PARTS = { $0000, $00a6, $00a6, $0019, $0080, $0000, C_UNION(&$00011101), $0033, $0012, $0005, $0001 };
+static OBJECT  _166_PARTS = { $00a5, $ffff, $ffff, $0019, $2000, $0000, C_UNION(&$00001101), $0000, $0000, $0002, $0001 };
+static AOBJECT _166aPARTS = { $00000000, $00000000, $8020, $0000, part_palette, $0000003b, $0000, $2af8 };
+
+static OBJECT  PARTS_TOOL = { $ffff, $0001, $000a, $0018, $0040, $0000, C_UNION(&A_3DBUTTON03), $0000, $0000, $0014, $2000 };
+static OBJECT  _01_PARTS_TOOL = { $0004, $0002, $0002, $001f, $0040, $0000, C_UNION(&I_SPEC), $0000, $0000, $0004, $0002 };
+static OBJECT  _02_PARTS_TOOL = { $0001, $ffff, $ffff, $0018, $1005, $0000, C_UNION(&A_3DBUTTON06), $0000, $0000, $2000, $2000 };
+static AOBJECT _02aPARTS_TOOL = { go_spec_edit, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _04_PARTS_TOOL = { $0007, $0005, $0005, $001f, $0040, $0000, C_UNION(&I_FLAGS), $0004, $0000, $0004, $0002 };
+static OBJECT  _05_PARTS_TOOL = { $0004, $ffff, $ffff, $0018, $1005, $0000, C_UNION(&A_3DBUTTON05), $0000, $0000, $2000, $2000 };
+static AOBJECT _05aPARTS_TOOL = { go_flag_edit, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _07_PARTS_TOOL = { $000a, $0008, $0008, $001f, $0040, $0000, C_UNION(&I_REF), $0008, $0000, $0004, $0002 };
+static OBJECT  _08_PARTS_TOOL = { $0007, $ffff, $ffff, $0018, $1005, $0000, C_UNION(&A_3DBUTTON07), $0000, $0000, $2000, $2000 };
+static AOBJECT _08aPARTS_TOOL = { go_ref_edit, $00000000, $8000, $0000, $00000000, $00000000, $0000, $0000 };
+static OBJECT  _10_PARTS_TOOL = { $0000, $000b, $000b, $001f, $0040, $0000, C_UNION(&I_POS), $000c, $0000, $0004, $0002 };
+static OBJECT  _11_PARTS_TOOL = { $000a, $ffff, $ffff, $0018, $1005, $0000, C_UNION(&A_3DBUTTON08), $0000, $0000, $2000, $2000 };
+static AOBJECT _11aPARTS_TOOL = { go_pos_edit, $00000000, $8020, $0000, $00000000, $00000000, $0000, $0000 };
+
+	.globl WI_PARTS
+WI_PARTS:
+	dc.w $0000
+	dc.w $0000
+	dc.l part_service
+	dc.l part_make
+	dc.l Awi_open
+	dc.l part_init
+	dc.l PARTS
+	dc.l PARTS_TOOL
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $6fed
+	dc.w $0004
+	dc.w $0002
+	dc.w $0014
+	dc.w $0014
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $ffff
+	dc.w $0000
+	dc.w $0000
+	dc.w $fcf8
+	dc.l TEXT_02
+	dc.l TEXT_002
+	dc.w $2710
+	dc.w $010c
+	dc.w $0000
+	dc.w $ffff
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.w $0000
+	dc.l Awi_nokey
+	dc.l Awi_obchange
+	dc.l Awi_redraw
+	dc.l Awi_topped
+	dc.l part_close
+	dc.l Awi_fulled
+	dc.l Awi_arrowed
+	dc.l Awi_hslid
+	dc.l Awi_vslid
+	dc.l Awi_sized
+	dc.l Awi_moved
+	dc.l Awi_iconify
+	dc.l Awi_uniconify
+	dc.l Awi_gemscript
+	dc.l STGUIDE_01
+	dc.w $0000
+	dc.w $0000
