@@ -154,7 +154,7 @@ static const char *const demotext[] = {
 #define NUM_DEMO_TEXT ((int)(sizeof(demotext) / sizeof(demotext[0])))
 
 
-static char *live_snap(int32 val);
+static char *live_snap(void *obj, int32 val);
 static void validate(void);
 
 
@@ -258,8 +258,7 @@ static Awindow *ab_make(void *para)
 	Awindow *win;
 	OBJECT *tree;
 	char buf[6];
-	OBJECT *slider;
-	char *(*func)(int32 val);
+	SLLIVE live;
 	int32 size;
 	
 	win = Awi_create(&WI_COMMON);
@@ -396,15 +395,14 @@ static Awindow *ab_make(void *para)
 	Auo_slider(&tree[BASE_ICON_RASTER], AUO_POS, &size);
 	sprintf(buf, "%d", imagesnap);
 	Auo_slider(&tree[BASE_ICON_RASTER], AUO_SETVAL, buf);
-	func = live_snap;
-	slider = &tree[BASE_ICON_RASTER];
-	Auo_slider(&tree[BASE_ICON_RASTER], AUO_SLCALL, &func);
+	live.call = live_snap;
+	live.obj = &tree[BASE_ICON_RASTER];
+	Auo_slider(&tree[BASE_ICON_RASTER], AUO_SLCALL, &live);
 	if (((ACSblk->description->flags & AB_NO3D) ^ no3d) != 0)
 	{
 		Aev_WmRedraw(ACSblk->gl_apid, -1, &ACSblk->desk);
 	}
 	validate();
-	(void)&slider; /* FIXME: unused */
 	return win;
 }
 
@@ -606,8 +604,15 @@ static int16 ab_service(Awindow *self, int16 task, void *in_out)
 
 /* -------------------------------------------------------------------------- */
 
-static char *live_snap(int32 val)
+#ifdef __PUREC__
+#pragma warn -par
+#endif
+
+static char *live_snap(void *obj, int32 val)
 {
+#if WITH_FIXES
+static
+#endif
 	char buf[6];
 	
 	switch ((int)val)
@@ -631,6 +636,10 @@ static char *live_snap(int32 val)
 	/* BUG: returns address of local var */
 	return buf;
 }
+
+#ifdef __PUREC__
+#pragma warn .par
+#endif
 
 /* -------------------------------------------------------------------------- */
 

@@ -1,8 +1,6 @@
 #include "acs_i.h"
 #include "country.h"
 
-#define STATIC
-
 static void editstr_ok(void);
 static void editstr_abort(void);
 
@@ -35,7 +33,7 @@ static void editstr_ok(void)
 
 /* -------------------------------------------------------------------------- */
 
-STATIC void acc_string(Awindow *self)
+static void acc_string(Awindow *self)
 {
 	EDPARM *parm;
 	char buf[512];
@@ -62,6 +60,7 @@ STATIC void acc_string(Awindow *self)
 		(void)tree; /* FIXME: useless cast to get registers right */
 	}
 }
+
 /* -------------------------------------------------------------------------- */
 
 static Awindow *st_make(void *a)

@@ -3,10 +3,10 @@
 #endif
 
 #if COUNTRY == COUNTRY_DE
-STATIC char ERR_IC_DEL[] = "[3][ Die Ikone| '%s' | ist nicht (mehr) Teil | dieser Datei][    OK    ]";
-STATIC char ERR_ME_DEL[] = "[3][ Das MenÅ| '%s' | ist nicht (mehr) Teil | dieser Datei.][    OK    ]";
-STATIC char ERR_OB_DEL[] = "[3][ Der Objektbaum| '%s' | ist nicht (mehr) Teil | dieser Datei.][    OK    ]";
-STATIC char WARN_CREATE[] = "[1][ Die 'create'-Routine wurde| nicht definiert. Es wird| 'Awi_selfcreate' eingesetzt! ][   OK   ]";
+static char ERR_IC_DEL[] = "[3][ Die Ikone| '%s' | ist nicht (mehr) Teil | dieser Datei][    OK    ]";
+static char ERR_ME_DEL[] = "[3][ Das MenÅ| '%s' | ist nicht (mehr) Teil | dieser Datei.][    OK    ]";
+static char ERR_OB_DEL[] = "[3][ Der Objektbaum| '%s' | ist nicht (mehr) Teil | dieser Datei.][    OK    ]";
+static char WARN_CREATE[] = "[1][ Die 'create'-Routine wurde| nicht definiert. Es wird| 'Awi_selfcreate' eingesetzt! ][   OK   ]";
 static char BUBBLE_01[] = "Hier kann der Dateinamen des ST-Guide-Hypertextes angeben werden, der fÅr die Anzeige der Hilfe verwendet werden soll.";
 static char BUBBLE_02[] = "Hier kann die Infozeile des Fensters angegeben werden.";
 static char BUBBLE_03[] = "Bei dem Fenster handlet es sich um ein Listenfenster.";
@@ -129,21 +129,21 @@ static char TEXT_56[] = "\372";
 
 #if COUNTRY == COUNTRY_US
 #if WITH_FIXES
-STATIC char ERR_IC_DEL[] = "[3][ Icon '%s' | is no longer part of the | file.][    OK    ]";
+static char ERR_IC_DEL[] = "[3][ Icon '%s' | is no longer part of the | file.][    OK    ]";
 #else
-STATIC char ERR_IC_DEL[] = "[3][ Icon '%s' | is nomore a part of this | file.][    OK    ]";
+static char ERR_IC_DEL[] = "[3][ Icon '%s' | is nomore a part of this | file.][    OK    ]";
 #endif
 #if WITH_FIXES
-STATIC char ERR_ME_DEL[] = "[3][ Menu '%s' | is removed from the | this file. ][    OK    ]";
+static char ERR_ME_DEL[] = "[3][ Menu '%s' | is removed from the | this file. ][    OK    ]";
 #else
-STATIC char ERR_ME_DEL[] = "[3][ Menu '%s' | is nomore a part of | this file. ][    OK    ]";
+static char ERR_ME_DEL[] = "[3][ Menu '%s' | is nomore a part of | this file. ][    OK    ]";
 #endif
 #if WITH_FIXES
-STATIC char ERR_OB_DEL[] = "[3][ The object '%s' | is removed from  | this file.   ][    OK    ]";
+static char ERR_OB_DEL[] = "[3][ The object '%s' | is removed from  | this file.   ][    OK    ]";
 #else
-STATIC char ERR_OB_DEL[] = "[3][ The object '%s' | is nomore a part | of this file.][    OK    ]";
+static char ERR_OB_DEL[] = "[3][ The object '%s' | is nomore a part | of this file.][    OK    ]";
 #endif
-STATIC char WARN_CREATE[] = "[1][ You didn't specify the | create-routine. The default | 'Awi_selfcreate' will be | inserted.][   OK   ]";
+static char WARN_CREATE[] = "[1][ You didn't specify the | create-routine. The default | 'Awi_selfcreate' will be | inserted.][   OK   ]";
 static char BUBBLE_01[] = "Here you can edit the filename of the ST-Guide hypertext to use as online help.";
 static char BUBBLE_02[] = "Here you edit the infoline of your window.";
 static char BUBBLE_03[] = "The window is a list window.";
