@@ -571,7 +571,7 @@ edob_specs_6:
 		bra.s      edob_specs_1
 edob_specs_9:
 		movea.l    a3,a0
-		jsr        set_user
+		jsr        edus_set_user
 		movea.l    a0,a4
 		bra.s      edob_specs_2
 edob_specs_7:

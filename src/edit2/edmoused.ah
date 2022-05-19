@@ -18,7 +18,7 @@ static char TEXT_210[] = "MŽUSE";
 
 #if COUNTRY == COUNTRY_US
 static char TEXT_001[] = "Cancel";
-static char TEXT_002[] = = "";
+static char TEXT_002[] = "";
 static char TEXT_003[] = "OK";
 static char TEXT_01[] = "new pattern";
 static char TEXT_03[] = "Brush:";

@@ -129,21 +129,21 @@ static char TEXT_56[] = "\372";
 
 #if COUNTRY == COUNTRY_US
 #if WITH_FIXES
-static char ERR_IC_DEL[] = "[3][ Icon '%s' | is no longer part of the | file.][    OK    ]";
+STATIC char ERR_IC_DEL[] = "[3][ Icon '%s' | is no longer part of the | file.][    OK    ]";
 #else
-static char ERR_IC_DEL[] = "[3][ Icon '%s' | is nomore a part of this | file.][    OK    ]";
+STATIC char ERR_IC_DEL[] = "[3][ Icon '%s' | is nomore a part of this | file.][    OK    ]";
 #endif
 #if WITH_FIXES
-static char ERR_ME_DEL[] = "[3][ Menu '%s' | is removed from the | this file. ][    OK    ]";
+STATIC char ERR_ME_DEL[] = "[3][ Menu '%s' | is removed from the | this file. ][    OK    ]";
 #else
-static char ERR_ME_DEL[] = "[3][ Menu '%s' | is nomore a part of | this file. ][    OK    ]";
+STATIC char ERR_ME_DEL[] = "[3][ Menu '%s' | is nomore a part of | this file. ][    OK    ]";
 #endif
 #if WITH_FIXES
-static char ERR_OB_DEL[] = "[3][ The object '%s' | is removed from  | this file.   ][    OK    ]";
+STATIC char ERR_OB_DEL[] = "[3][ The object '%s' | is removed from  | this file.   ][    OK    ]";
 #else
-static char ERR_OB_DEL[] = "[3][ The object '%s' | is nomore a part | of this file.][    OK    ]";
+STATIC char ERR_OB_DEL[] = "[3][ The object '%s' | is nomore a part | of this file.][    OK    ]";
 #endif
-static char WARN_CREATE[] = "[1][ You didn't specify the | create-routine. The default | 'Awi_selfcreate' will be | inserted.][   OK   ]";
+STATIC char WARN_CREATE[] = "[1][ You didn't specify the | create-routine. The default | 'Awi_selfcreate' will be | inserted.][   OK   ]";
 static char BUBBLE_01[] = "Here you can edit the filename of the ST-Guide hypertext to use as online help.";
 static char BUBBLE_02[] = "Here you edit the infoline of your window.";
 static char BUBBLE_03[] = "The window is a list window.";
@@ -274,7 +274,7 @@ static char BUBBLE_52[] = "You can add a GEMScript function to the window (defau
 #endif
 static char BUBBLE_53[] = "The window has a HOTCLOSEBOX.";
 static char STGUIDE_01[] = "Der Fenster-Editor";
-static char TEXT_002[] = ";
+static char TEXT_002[] = "";
 static char TEXT_003[] = "OK";
 static char TEXT_004[] = "Cancel";
 static char TEXT_01[] = " Info";
@@ -282,7 +282,7 @@ static char TEXT_012[] = "Y:";
 static char TEXT_013[] = "X:";
 static char TEXT_014[] = "W:";
 static char TEXT_015[] = "H:";
-static char TEXT_02[] = "0";
+static char TEXT_02[] = "\001";
 static char TEXT_03[] = "List ";
 static char TEXT_04[] = "Stays ";
 static char TEXT_05[] = "Icon";

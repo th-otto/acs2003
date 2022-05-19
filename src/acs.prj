@@ -77,7 +77,6 @@ edit2\ediconed.c [-J- -Z- -R- -M-]
 edit2\edimaged.c [-J- -Z- -R- -M-]
 edit2\edmoused.c [-J- -Z- -R- -M-]
 edit2\edusred.c [-J- -Z- -R- -M-]
-edit2\edusres.s
 edit2\edteded.c [-J- -Z- -R- -M-]
 edit2\edtedes.s
 edit2\edstred.c [-J- -Z- -R- -M-]

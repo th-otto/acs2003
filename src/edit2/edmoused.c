@@ -382,7 +382,7 @@ static void accept_mouse(Awindow *self)
 
 static Awindow *mo_make(void *a)
 {
-	MOUSEPARM *parm;
+	EDPARM *parm;
 	MOUSEPARM *newparm;
 	Awindow *win;
 	Obj_Head *obj;
