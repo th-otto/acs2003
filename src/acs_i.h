@@ -860,6 +860,9 @@ void acs_register(void);
 #define AS_GENERAL_10008   10008
 #define AS_GENERAL_10009   10009
 
+#define AS_ACS_PART_CHECK  9000
+#define AS_ACS_PART_ADD    9001
+
 
 extern void (*OldAboutMe)(void);
 extern char _WGTITEL[];
@@ -1030,6 +1033,8 @@ extern int16 const cross_type[];
 extern Awindow WI_PARTS;
 extern Awindow *parts_window;
 
+void glue_parts(Awindow *win);
+
 
 /*
  * edit2/eddataed.c
@@ -1103,12 +1108,94 @@ void del_ob(ACS_HEAD *acs, OBJ_ENTRY *obj);
  */
 void oe_beself(Awindow *win, OBJECT *tree, int16 obnr);
 int16 oe_colsel(int16 color, int16 backbox, int16 popup, int16 colorbox);
+void edob_specs(void);
+void edob_aflags(void);
+void edob_refs(void);
+void edob_pos(void);
 
 
 /*
  * editor/edobboxm.c
  */
 extern const char *const colour_text[];
+
+
+/*
+ * editor/ueboxed.c
+ */
+void init_boxed(Awindow *win);
+
+
+/*
+ * editor/uetitle.c
+ */
+void init_title(Awindow *win);
+
+
+/*
+ * editor/ue3dbutt.c
+ */
+void init_3Dbutton(Awindow *win);
+
+
+/*
+ * editor/uecheck.c
+ */
+void init_check(Awindow *win);
+
+
+/*
+ * editor/uecycle.c
+ */
+void init_cycle(Awindow *win);
+
+
+/*
+ * editor/ueslider.c
+ */
+void init_slider(Awindow *win);
+
+
+/*
+ * editor/ueftext.c
+ */
+void init_ftext(Awindow *win);
+
+
+/*
+ * editor/ueinner.c
+ */
+void init_inner(Awindow *win);
+
+
+/*
+ * editor/uepictur.c
+ */
+void init_picture(Awindow *win);
+
+
+/*
+ * editor/uepatter.c
+ */
+void init_pattern(Awindow *win);
+
+
+/*
+ * editor/uearrow.c
+ */
+void init_arrow(Awindow *win);
+
+
+/*
+ * editor/ueselect.c
+ */
+void init_select(Awindow *win);
+
+
+/*
+ * editor/ueeditor.c
+ */
+void init_editor(Awindow *win);
 
 
 /*

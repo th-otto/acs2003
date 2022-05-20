@@ -81,7 +81,6 @@ edit2\edteded.c [-J- -Z- -R- -M-]
 edit2\edstred.c [-J- -Z- -R- -M-]
 edit2\edwinded.c [-J- -Z- -R- -M-]
 edit2\edparts.c [-J- -Z- -R- -M-]
-edit2\edpartss.s
 
 editor\edobjced.s
 editor\edmenued.s
