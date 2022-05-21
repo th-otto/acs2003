@@ -10,6 +10,7 @@
 #define PATH_SEP  '\\'
 #define MAX_LANGS 3
 #define LABEL_MAX 32
+#define STRING_MAX 256
 
 /*
  * sometimes we have to cast away constness
@@ -294,7 +295,7 @@ typedef struct {
 typedef struct {
 	OBJECT *tree;
 	void (*ok)(void);
-	void (*cleanup)(void);
+	void (*cleanup)(OBJECT *tree);
 	char *title;
 	char *help_title;
 	char *help_file;
@@ -1083,11 +1084,45 @@ extern Awindow WI_TEDI;
 
 
 /*
+ * editor/edobjced.c
+ */
+Awindow *ob_make(void *a);
+
+
+/*
+ * editor/edobicm.c
+ */
+void edoic_set_icon(CICONBLK *icon);
+
+
+/*
+ * editor/edobimm.c
+ */
+void edoim_set_image(BITBLK *bit);
+
+
+/*
+ * editor/edobstrm.c
+ */
+void set_str(const char *str);
+
+
+/*
+ * editor/edobtedm.c
+ */
+void set_ted(TEDINFO *ted);
+
+
+/*
  * editor/edobclas.c
  */
 extern Awindow WI_MENU;
 extern Awindow WI_OBJECT;
 extern Awindow WI_POPUP;
+
+boolean ed_service(Awindow *self, int16 task, void *in_out);
+void ed_init(Awindow *win);
+void ed_term(Awindow *win);
 
 
 /*
@@ -1112,12 +1147,41 @@ void edob_specs(void);
 void edob_aflags(void);
 void edob_refs(void);
 void edob_pos(void);
+void ed_abort(void);
+void edob_resetref(void);
+void edob_specs(void);
+void edob_aflags(void);
+void edob_refs(void);
+void edob_pos(void);
+void edob_left(void);
+void edob_center(void);
+void edob_right(void);
+void edob_horfill(void);
+void edob_top(void);
+void edob_mid(void);
+void edob_bottom(void);
+void edob_verfill(void);
+void edob_hide(void);
+void edob_unhide(void);
+void edob_lock(void);
+void edob_unlock(void);
+void edob_up(void);
+void edob_down(void);
+void edob_sortyx(void);
+void edob_sortxy(void);
 
 
 /*
  * editor/edobboxm.c
  */
 extern const char *const colour_text[];
+extern char HPOS_TEXT1[];
+extern char HPOS_TEXT2[];
+extern char HPOS_TEXT3[];
+extern char SIZE_TEXT0[];
+extern char SIZE_TEXT1[];
+
+void set_box(void);
 
 
 /*
@@ -1205,6 +1269,12 @@ extern LISTPARM list_mouse;
 
 Obj_Head *add_mouse(ACS_HEAD *acs, Obj_Head *form);
 void del_mouse(ACS_HEAD *acs, Obj_Head *form);
+
+
+/*
+ * editor/edobusrm.c
+ */
+void edus_set_user(AUSERBLK *user);
 
 
 /*
@@ -1360,7 +1430,7 @@ extern LISTPARM list_user;
 
 Obj_Head *add_user(ACS_HEAD *acs, Obj_Head *obj);
 void del_user(ACS_HEAD *acs, Obj_Head *obj);
-Obj_Head *change_user(ACS_HEAD *acs, Obj_Head *obj, char *str[8]);
+Obj_Head *change_user(ACS_HEAD *acs, Obj_Head *obj, char *str[6]);
 
 
 /*

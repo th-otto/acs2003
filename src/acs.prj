@@ -82,7 +82,7 @@ edit2\edstred.c [-J- -Z- -R- -M-]
 edit2\edwinded.c [-J- -Z- -R- -M-]
 edit2\edparts.c [-J- -Z- -R- -M-]
 
-editor\edobjced.s
+editor\edobjced.c [-J- -Z- -R- -M-]
 editor\edmenued.s
 editor\edpuped.s
 editor\ueboxed.s
