@@ -1119,6 +1119,10 @@ void set_ted(TEDINFO *ted);
 extern Awindow WI_MENU;
 extern Awindow WI_OBJECT;
 extern Awindow WI_POPUP;
+extern char NEW_POPUP[];
+extern char WARN_SAME[];
+extern char WARN_XSHRINK[];
+extern char WARN_YSHRINK[];
 
 boolean ed_service(Awindow *self, int16 task, void *in_out);
 int16 ed_init(Awindow *win);
@@ -1144,8 +1148,10 @@ void pack_ob(Obj_Head *obj);
 /*
  * editor/edobsurf.c
  */
-void del_obentry(Awindow *self, int16 obnr, boolean delref);
+void del_obentry(Awindow *win, int16 obnr, boolean delref);
 void min_size(OBJ_ENTRY *entry, OBJECT *obj, int16 *minw, int16 *minh);
+void ed_edit(void);
+void undraw(Awindow *win, int16 obnr);
 
 
 /*
@@ -1293,6 +1299,14 @@ void edus_set_user(AUSERBLK *user);
 int16 me_init(Awindow *self);
 Awindow *me_make(void *a);
 boolean me_service(Awindow *self, int16 task, void *in_out);
+
+
+/*
+ * editor/edpuped.c
+ */
+Awindow *pu_make(void *a);
+int16 pu_init(Awindow *self);
+
 
 
 /*
