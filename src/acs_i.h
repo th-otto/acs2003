@@ -1121,7 +1121,7 @@ extern Awindow WI_OBJECT;
 extern Awindow WI_POPUP;
 
 boolean ed_service(Awindow *self, int16 task, void *in_out);
-void ed_init(Awindow *win);
+int16 ed_init(Awindow *win);
 void ed_term(Awindow *win);
 
 
@@ -1136,6 +1136,16 @@ char *key_string(int16 key);
  */
 void copy_ob(ACS_HEAD *acs, OBJ_ENTRY *dst, const OBJ_ENTRY *src);
 void del_ob(ACS_HEAD *acs, OBJ_ENTRY *obj);
+void unlink_ob(OBJ_ENTRY *objtree, int16 obnr);
+int16 copysub_ob(ACS_HEAD *acs, Obj_Head *obj, int16 obnr, Obj_Head *proto);
+void pack_ob(Obj_Head *obj);
+
+
+/*
+ * editor/edobsurf.c
+ */
+void del_obentry(Awindow *self, int16 obnr, boolean delref);
+void min_size(OBJ_ENTRY *entry, OBJECT *obj, int16 *minw, int16 *minh);
 
 
 /*
@@ -1275,6 +1285,14 @@ void del_mouse(ACS_HEAD *acs, Obj_Head *form);
  * editor/edobusrm.c
  */
 void edus_set_user(AUSERBLK *user);
+
+
+/*
+ * editor/edmenued.c
+ */
+int16 me_init(Awindow *self);
+Awindow *me_make(void *a);
+boolean me_service(Awindow *self, int16 task, void *in_out);
 
 
 /*
