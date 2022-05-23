@@ -87,7 +87,7 @@ editor\edmenued.c [-J- -Z- -R- -M-]
 editor\edpuped.c [-J- -Z- -R- -M-]
 editor\ueboxed.c [-J- -Z- -R- -M-]
 editor\ueselect.c [-J- -Z- -R- -M-]
-editor\ueeditor.s
+editor\ueeditor.c [-J- -Z- -R- -M-]
 editor\ueslider.s
 editor\uepictur.s
 editor\uecycle.s
