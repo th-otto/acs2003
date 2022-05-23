@@ -89,7 +89,7 @@ editor\ueboxed.c [-J- -Z- -R- -M-]
 editor\ueselect.c [-J- -Z- -R- -M-]
 editor\ueeditor.c [-J- -Z- -R- -M-]
 editor\ueslider.c [-J- -Z- -R- -M-]
-editor\uepictur.s
+editor\uepictur.c [-J- -Z- -R- -M-]
 editor\uecycle.s
 editor\uearrow.s
 editor\uepatter.s
