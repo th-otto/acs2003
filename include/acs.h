@@ -1441,7 +1441,7 @@ void Awi_obchange( Awindow *window, int16 obnr, int16 new_state );
 void Awi_obredraw(Awindow *window, int16 obnr );
 
 /* Send a message zu the window-object */
-int16 Awi_observice( Awindow *wind, int16 obnr, int16 task, void *in_out );
+boolean Awi_observice( Awindow *wind, int16 obnr, int16 task, void *in_out );
 
 /* Find obnr for which Flagmask becomes TRUE, obnr is start object */
 OBJECT *Awi_obfind( Awindow *window, int16 x, int16 y, OBJECT **tree, int16 *obnr );
@@ -1612,7 +1612,7 @@ int16 Aob_scanf( OBJECT *ob, int16 obnr, const char *format, ... );
 int16 Aob_within( const Axywh* rect, int16 x, int16 y );
 
 /* Send a message to an object */
-int16 Aob_service( OBJECT *tree, int16 obnr, int16 task, void *in_out );
+boolean Aob_service( OBJECT *tree, int16 obnr, int16 task, void *in_out );
 
 /******************************************************************************/
 /*                                                                            */
@@ -2060,8 +2060,8 @@ int16 CDECL A_boxed( PARMBLK *pb );
 
 /******************************************************************************/
 
-int16 Auo_ftext( OBJECT* entry, int16 task, void* in_out );
-int16 Auo_string( OBJECT* entry, int16 task, void* in_out );
+boolean Auo_ftext( OBJECT* entry, int16 task, void* in_out );
+boolean Auo_string( OBJECT* entry, int16 task, void* in_out );
 
 /******************************************************************************/
 /*                                                                            */
@@ -2075,7 +2075,7 @@ int16 Auo_string( OBJECT* entry, int16 task, void* in_out );
 
 /******************************************************************************/
 
-int16 Auo_cycle( OBJECT* entry, int16 task, void* in_out );
+boolean Auo_cycle( OBJECT* entry, int16 task, void* in_out );
 void Aus_cycle( void );
 
 /******************************************************************************/
@@ -2086,7 +2086,7 @@ void Aus_cycle( void );
 
 #define AUO_PICMFDB           (500)                /* take MFDB, will not copy MFDB */
 
-int16 Auo_picture( OBJECT* entry, int16 task, void* in_out );
+boolean Auo_picture( OBJECT* entry, int16 task, void* in_out );
 
 /******************************************************************************/
 /*                                                                            */
@@ -2103,13 +2103,13 @@ typedef struct
    unsigned upcol       :4;
    unsigned downcol     :4;
    unsigned mask        :5;
+   unsigned resv        :3;
    unsigned textlen     :8;
    unsigned textcol     :4;
    unsigned capital     :1;
    unsigned smallfont   :1;
    unsigned threedim    :1;
    unsigned secret      :1;
-   unsigned resv        :3;
 } beparm;
 
 /******************************************************************************/
@@ -2166,7 +2166,7 @@ typedef struct
 
 /******************************************************************************/
 
-int16 Auo_boxed( OBJECT *entry, int16 task, void *in_out );
+boolean Auo_boxed( OBJECT *entry, int16 task, void *in_out );
 void Aus_boxed( void );
 
 /******************************************************************************/

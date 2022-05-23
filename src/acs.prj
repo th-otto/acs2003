@@ -85,7 +85,7 @@ edit2\edparts.c [-J- -Z- -R- -M-]
 editor\edobjced.c [-J- -Z- -R- -M-]
 editor\edmenued.c [-J- -Z- -R- -M-]
 editor\edpuped.c [-J- -Z- -R- -M-]
-editor\ueboxed.s
+editor\ueboxed.c [-J- -Z- -R- -M-]
 editor\ueselect.s
 editor\ueeditor.s
 editor\ueslider.s

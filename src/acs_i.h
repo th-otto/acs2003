@@ -1196,6 +1196,7 @@ extern char HPOS_TEXT2[];
 extern char HPOS_TEXT3[];
 extern char SIZE_TEXT0[];
 extern char SIZE_TEXT1[];
+extern OBJECT POP_SIZESEL;
 
 void set_box(void);
 
