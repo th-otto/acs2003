@@ -43,8 +43,10 @@
 /*
       SLIDER
 
-      ub_code  = A_slider
+      ub_code = A_slider
       ub_parm = Bit 0      0 = horizontal, 1 = vertical
+                Bit 1      0 = flat, 1 = 3D
+                Bit 2      0 = normal, 1 = no slider (only arrows)
       ub_serv = Auo_slider
       ub_ptr1 = 'object'
       ub_ptr2 = unused
@@ -58,6 +60,10 @@
             AUO_UPDATE           AUO_WINDOW
             AUO_FULLUPDATE
 */
+
+#define AUO_SLIDER_VERTICAL 0x0001UL
+#define AUO_SLIDER_3D       0x0002UL
+#define AUO_SLIDER_NOSLIDER 0x0004UL
 
 typedef struct {
    char* (*call) (void* obj, long pos);
@@ -88,8 +94,8 @@ int16 Auo_wislider (OBJECT *entry, int16 task, void* in_out);     /* Standard se
 /*
       EDITOR
 
-      ub_code  = A_editor
-      ub_parm =
+      ub_code = A_editor
+      ub_parm = unused
       ub_serv = Auo_editor
       ub_ptr1 = 'object'
       ub_ptr2 = unused

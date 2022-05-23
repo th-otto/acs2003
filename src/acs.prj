@@ -88,7 +88,7 @@ editor\edpuped.c [-J- -Z- -R- -M-]
 editor\ueboxed.c [-J- -Z- -R- -M-]
 editor\ueselect.c [-J- -Z- -R- -M-]
 editor\ueeditor.c [-J- -Z- -R- -M-]
-editor\ueslider.s
+editor\ueslider.c [-J- -Z- -R- -M-]
 editor\uepictur.s
 editor\uecycle.s
 editor\uearrow.s
