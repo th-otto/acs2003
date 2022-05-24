@@ -817,6 +817,27 @@ typedef struct {
 #define SHIFT_C    '\001'
 #define SHIFT_S    "\001"
 
+/* values for ub_parm of cycle objects */
+#define ACS_CYCLE_3D     0x10000L 
+#define ACS_CYCLE_OUTCOL 0x0000FL
+#define ACS_CYCLE_INCOL  0x000F0L
+#define ACS_CYCLE_CHAR   0x0FF00L
+
+/* values for ub_parm of arrow objects */
+#define ACS_ARROW_3D        0x80000000L
+#define ACS_ARROW_DIR_END   0x30000000L
+#define ACS_ARROW_DIR_START 0x03000000L
+#define ACS_ARROW_END_END   0x00c00000L
+#define ACS_ARROW_END_START 0x00300000L
+#define ACS_ARROW_LEN_END   0x40000000L
+#define ACS_ARROW_LEN_START 0x04000000L
+#define ACS_ARROW_FAT       0x00080000L
+#define ACS_ARROW_STYLE     0x00070000L
+#define ACS_ARROW_COLOR     0x0000000FL
+
+/* values for ub_parm of button objects */
+#define ACS_BUTTON_COLOR    0x0000000FL
+
 
 
 /*

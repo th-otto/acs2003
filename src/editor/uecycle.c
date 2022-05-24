@@ -81,10 +81,10 @@ static OBJECT *edcyc_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	oe_beself(ACSblk->ev_window, tree, ED_CYCLE_BUBBLE);
 	oe_beself(ACSblk->ev_window, tree, ED_CYCLE_CONTEXT);
 	sscanf(userdef->parm, "0x%lxL", &parm);
-	if (parm == 0x10000L)
+	if (parm == ACS_CYCLE_3D)
 	{
 		if (Awi_alert(1, A_ADAPTCYC) == 1)
-			parm = 0x10290L;
+			parm = ACS_CYCLE_3D | (2 << 8) | (9 << 4) | (0 << 0);
 	}
 	user->ub_parm = parm;
 	if (userdef->type1 == STR_PAR)
@@ -101,7 +101,7 @@ static OBJECT *edcyc_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	boxchar[0] = (char)(parm >> 8);
 	Aob_puttext(tree, ED_CYCLE_CHAR, boxchar);
 	Aob_puttext(tree, ED_CYCLE_TEXT, strval);
-	if (parm & 0x10000L)
+	if (parm & ACS_CYCLE_3D)
 		tree[ED_CYCLE_3D].ob_state |= OS_SELECTED;
 	user->bubble = tree[ED_CYCLE_BUBBLE].ob_spec.auserblk->ub_ptr1;
 	if (Ast_isEmpty(userdef->bubble))
@@ -195,7 +195,7 @@ static void edcyc_outcol(void)
 	color = oe_colsel((int)*parm & 15, ED_CYCLE_OUT_COLOR_BOX, ED_CYCLE_OUT_COLOR_POPUP, ED_CYCLE_OUT_COLOR);
 	if (color >= 0)
 	{
-		*parm = (*parm & -16) | color;
+		*parm = (*parm & ~ACS_CYCLE_OUTCOL) | color;
 		ACSblk->ev_window->obchange(ACSblk->ev_window, ED_CYCLE_SAMPLE_BOX, -1);
 	}
 }
@@ -210,7 +210,7 @@ static void edcyc_incol(void)
 	parm = &ACSblk->ev_object[ED_CYCLE_SAMPLE].ob_spec.auserblk->ub_parm;
 	if ((color = oe_colsel((int)(*parm >> 4) & 15, ED_CYCLE_IN_COLOR_BOX, ED_CYCLE_IN_COLOR_POPUP, ED_CYCLE_IN_COLOR)) >= 0)
 	{
-		*parm = (*parm & ~0xf0) | (color << 4);
+		*parm = (*parm & ~ACS_CYCLE_INCOL) | (color << 4);
 		ACSblk->ev_window->obchange(ACSblk->ev_window, ED_CYCLE_SAMPLE_BOX, -1);
 	}
 }

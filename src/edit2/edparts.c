@@ -287,8 +287,6 @@ static ACSCICONBLK iconblk = {
 };
 static int16 part_ucnt = 0;
 
-static void set_userdata(AUSER_DEF *user, int16 width, int16 height);
-
 static UOCALLS uocall = { ed_abort, set_userdata };
 Awindow *parts_window = NULL;
 

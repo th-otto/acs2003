@@ -1,0 +1,163 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char BUBBLE_01[] = "Hier wird angegeben, ob eine 3D-Darstellung verwendet werden soll.";
+static char BUBBLE_02[] = "Hier wird angegeben, ob die Linie breit sein soll oder normal.";
+static char BUBBLE_03[] = "Hier kann der String, der fÅr BubbleGEM verwendet werden soll, eingegeben werden.";
+static char BUBBLE_05[] = "Hier kann der String eingegeben werden, der das aufzurufende Context-Popup beschreibt (siehe in der Dokumentation zu Ame_strpopup).";
+static char TEXT_005[] = "OK";
+static char TEXT_009[] = "Abbruch";
+static char TEXT_05[] = "Sonstiges";
+static char TEXT_06[] = "3D-Modus";
+static char TEXT_07[] = "Richtung:";
+static char TEXT_08[] = "breit";
+static char TEXT_09[] = "LÑngen:";
+static char TEXT_10[] = "Enden:";
+static char TEXT_11[] = "Farbe:";
+static char TEXT_12[] = "Stil:";
+static char TEXT_13[] = "BubbleGEM-Text";
+static char TEXT_14[] = "Context-Popup";
+static char help_title[] = "Der Arrows-Editor";
+static char title[] = "PFEILE -";
+#endif
+
+#if COUNTRY == COUNTRY_US
+#if WITH_FIXES
+static char BUBBLE_01[] = "Here you specify if the control is drawn as 3D or not.";
+#else
+static char BUBBLE_01[] = "Here you specify if the control is drawed as 3D or not.";
+#endif
+#if WITH_FIXES
+static char BUBBLE_02[] = "Here you specify if the line should be thick or normal.";
+#else
+static char BUBBLE_02[] = "Here you specify if the line should be thik or normal.";
+#endif
+static char BUBBLE_03[] = "Here you enter the string which is used as a bubble help text.";
+static char BUBBLE_05[] = "Here you enter the string which is used to create the context popup (see the docu of Ame_strpopup).";
+static char TEXT_005[] = "OK";
+static char TEXT_009[] = "Cancel";
+static char TEXT_05[] = "Strings";
+static char TEXT_06[] = "3D-Mode ";
+static char TEXT_07[] = "Direction:";
+static char TEXT_08[] = "fat  ";
+static char TEXT_09[] = "Length:";
+static char TEXT_10[] = "Ends:";
+static char TEXT_11[] = "Color:";
+static char TEXT_12[] = "Style:";
+static char TEXT_13[] = "BubbleGEM-Text";
+static char TEXT_14[] = "Context-Popup";
+static char help_title[] = "Der Arrows-Editor";
+static char title[] = "ARROWS -";
+#endif
+
+static AUSERBLK ARROW001 = { A_arrows, 0x22510001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW002 = { A_arrows, 0x22110001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW003 = { A_arrows, 0x22010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW004 = { A_arrows, 0x26010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW005 = { A_arrows, 0x22410001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW006 = { A_arrows, 0x62010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW007 = { A_arrows, 0x66010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW008 = { A_arrows, 0x00110001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW009 = { A_arrows, 0x11110001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW010 = { A_arrows, 0x33110001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW011 = { A_arrows, 0x00410001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW012 = { A_arrows, 0x11410001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK ARROW013 = { A_arrows, 0x33410001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_005, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_009, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON23 = { A_3Dbutton, 0x09f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS01 = { A_arrows, 0x13010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS02 = { A_arrows, 0x66020001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS03 = { A_arrows, 0x66030001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS04 = { A_arrows, 0x66040001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS05 = { A_arrows, 0x66050001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS06 = { A_arrows, 0x66060001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS07 = { A_arrows, 0x66070001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS08 = { A_arrows, 0x26110001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS09 = { A_arrows, 0x62410001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED03 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_BOXED04 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_05, NULL };
+static AUSERBLK A_CHECKBOX02 = { A_checkbox, 0x00000001L, Auo_string, TEXT_06, NULL, NULL, BUBBLE_01, NULL };
+static AUSERBLK A_CHECKBOX03 = { A_checkbox, 0x00000001L, Auo_string, TEXT_08, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_05, NULL, NULL, NULL, NULL };
+
+static OBJECT  POP_ARR =     { -1,  1,  8, G_BOX, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0, 0, 6, 4 };
+static OBJECT  _01_POP_ARR = {  2, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW008), 0, 0, 3, 1 };
+static OBJECT  _02_POP_ARR = {  3, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW011), 3, 0, 3, 1 };
+static OBJECT  _03_POP_ARR = {  4, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW009), 0, 1, 3, 1 };
+static OBJECT  _04_POP_ARR = {  5, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW012), 3, 1, 3, 1 };
+static OBJECT  _05_POP_ARR = {  6, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW002), 0, 2, 3, 1 };
+static OBJECT  _06_POP_ARR = {  7, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW005), 3, 2, 3, 1 };
+static OBJECT  _07_POP_ARR = {  8, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW010), 0, 3, 3, 1 };
+static OBJECT  _08_POP_ARR = {  0, -1, -1, G_USERDEF, 0x0021, 0x0000, C_UNION(&ARROW013), 3, 3, 3, 1 };
+
+static OBJECT  POP_END =     { -1,  1,  4, G_BOX, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0, 0, 6, 2 };
+static OBJECT  _01_POP_END = {  2, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW004), 0, 0, 3, 1 };
+static OBJECT  _02_POP_END = {  3, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW006), 3, 0, 3, 1 };
+static OBJECT  _03_POP_END = {  4, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&A_ARROWS08), 0, 1, 3, 1 };
+static OBJECT  _04_POP_END = {  0, -1, -1, G_USERDEF, 0x0021, 0x0000, C_UNION(&A_ARROWS09), 3, 1, 3, 1 };
+
+static OBJECT  POP_LEN =     { -1,  1,  4, G_BOX, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0, 0, 6, 2 };
+static OBJECT  _01_POP_LEN = {  2, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW003), 0, 0, 3, 1 };
+static OBJECT  _02_POP_LEN = {  3, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW003), 3, 0, 3, 1 };
+static OBJECT  _03_POP_LEN = {  4, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW004), 0, 1, 3, 1 };
+static OBJECT  _04_POP_LEN = {  0, -1, -1, G_USERDEF, 0x0021, 0x0000, C_UNION(&ARROW006), 3, 1, 3, 1 };
+
+static OBJECT  POP_STYLESEL =     { -1,  1,  7, G_BOX, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0, 0, 6, 7 };
+static OBJECT  _01_POP_STYLESEL = {  2, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&ARROW007), 0, 0, 6, 1 };
+static OBJECT  _02_POP_STYLESEL = {  3, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&A_ARROWS02), 0, 1, 6, 1 };
+static OBJECT  _03_POP_STYLESEL = {  4, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&A_ARROWS03), 0, 2, 6, 1 };
+static OBJECT  _04_POP_STYLESEL = {  5, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&A_ARROWS04), 0, 3, 6, 1 };
+static OBJECT  _05_POP_STYLESEL = {  6, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&A_ARROWS05), 0, 4, 6, 1 };
+static OBJECT  _06_POP_STYLESEL = {  7, -1, -1, G_USERDEF, 0x0001, 0x0000, C_UNION(&A_ARROWS06), 0, 5, 6, 1 };
+static OBJECT  _07_POP_STYLESEL = {  0, -1, -1, G_USERDEF, 0x0021, 0x0000, C_UNION(&A_ARROWS07), 0, 6, 6, 1 };
+
+static OBJECT  ED_ARROW =     { -1,  1, 40, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON06), 0, 0, 46, 16 };
+static OBJECT  _01_ED_ARROW = {  3,  2,  2, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_3DBUTTON02), 0, 0, 12, 4 };
+static OBJECT  _02_ED_ARROW = {  1, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW001), 2, 1, 8, 2 };
+static OBJECT  _03_ED_ARROW = {  5, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON03), 19, 1, 12, 2 };
+static AOBJECT _03aED_ARROW = { edar_ok, NULL, AEO, 0x884f, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _05_ED_ARROW = {  7, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON05), 33, 1, 12, 2 };
+static AOBJECT _05aED_ARROW = { edar_abort, NULL, AEO, 0x8841, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _07_ED_ARROW = {  9,  8,  8, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_07), 1, 5, 10, 1 };
+static OBJECT  _08_ED_ARROW = {  7, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS01), 0, 0, 1, 1 };
+static OBJECT  _09_ED_ARROW = { 13, 11, 12, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 11, 5, 6, 1 };
+static AOBJECT _09aED_ARROW = { edar_arr, NULL, AEO, 0x8852, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _11_ED_ARROW = { 12, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW008), 0, 0, 3, 1 };
+static OBJECT  _12_ED_ARROW = {  9, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW011), 3, 0, 3, 1 };
+static OBJECT  _13_ED_ARROW = { 15, 14, 14, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_11), 19, 5, 6, 1 };
+static OBJECT  _14_ED_ARROW = { 13, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS01), 0, 0, 1, 1 };
+static OBJECT  _15_ED_ARROW = { 19, 17, 18, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 26, 5, 18, 1 };
+static AOBJECT _15aED_ARROW = { edar_col, NULL, AEO, 0x8846, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _17_ED_ARROW = { 18, -1, -1, G_BOX, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 0, 2, 1 };
+static OBJECT  _18_ED_ARROW = { 15, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON23), 0, 0, 16, 1 };
+static OBJECT  _19_ED_ARROW = { 21, 20, 20, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_09), 3, 7, 7, 1 };
+static OBJECT  _20_ED_ARROW = { 19, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS01), 0, 0, 1, 1 };
+static OBJECT  _21_ED_ARROW = { 25, 23, 24, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 11, 7, 6, 1 };
+static AOBJECT _21aED_ARROW = { edar_len, NULL, AEO, 0x884c, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _23_ED_ARROW = { 24, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW003), 0, 0, 3, 1 };
+static OBJECT  _24_ED_ARROW = { 21, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW003), 3, 0, 3, 1 };
+static OBJECT  _25_ED_ARROW = { 27, 26, 26, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_12), 20, 7, 6, 1 };
+static OBJECT  _26_ED_ARROW = { 25, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS01), 0, 0, 1, 1 };
+static OBJECT  _27_ED_ARROW = { 30, 29, 29, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 26, 7, 6, 1 };
+static AOBJECT _27aED_ARROW = { edar_style, NULL, AEO, 0x8853, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _29_ED_ARROW = { 27, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW007), 0, 0, 6, 1 };
+static OBJECT  _30_ED_ARROW = { 32, 31, 31, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_10), 4, 9, 6, 1 };
+static OBJECT  _31_ED_ARROW = { 30, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS01), 0, 0, 1, 1 };
+static OBJECT  _32_ED_ARROW = { 36, 34, 35, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 11, 9, 6, 1 };
+static AOBJECT _32aED_ARROW = { edar_ends, NULL, AEO, 0x8845, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _34_ED_ARROW = { 35, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW003), 0, 0, 3, 1 };
+static OBJECT  _35_ED_ARROW = { 32, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&ARROW003), 3, 0, 3, 1 };
+static OBJECT  _36_ED_ARROW = { 38, -1, -1, G_USERDEF, 0x0041, 0x0001, C_UNION(&A_CHECKBOX03), 23, 9, 8, 1 };
+static AOBJECT _36aED_ARROW = { edar_fat, NULL, AEO, 0x8842, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _38_ED_ARROW = { 40, -1, -1, G_USERDEF, 0x0041, 0x0001, C_UNION(&A_CHECKBOX02), 33, 9, 11, 1 };
+static AOBJECT _38aED_ARROW = { edar_3d, NULL, AEO, 0x8844, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _40_ED_ARROW = {  0, 41, 44, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 1, 11, 44, 5 };
+static OBJECT  _41_ED_ARROW = { 42, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(&TEXT_13), 1, 1, 14, 1 };
+static OBJECT  _42_ED_ARROW = { 43, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(&TEXT_14), 1, 3, 13, 1 };
+static OBJECT  _43_ED_ARROW = { 44, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED03), 16, 1, 27, 1 };
+static OBJECT  _44_ED_ARROW = { 40, -1, -1, G_USERDEF, 0x0028, 0x0010, C_UNION(&A_BOXED04), 16, 3, 27, 1 };

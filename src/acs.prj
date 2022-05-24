@@ -91,7 +91,7 @@ editor\ueeditor.c [-J- -Z- -R- -M-]
 editor\ueslider.c [-J- -Z- -R- -M-]
 editor\uepictur.c [-J- -Z- -R- -M-]
 editor\uecycle.c [-J- -Z- -R- -M-]
-editor\uearrow.s
+editor\uearrow.c [-J- -Z- -R- -M-]
 editor\uepatter.s
 editor\ueinner.s
 editor\ue3dbutt.s
