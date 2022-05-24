@@ -1,0 +1,109 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char A_ADAPTCYC[] = "[2][ Dies ist wahrscheinlich ein| Objekt nach alter Definition.| Soll es auf den Standardwert| gesetzt werden?][OK| Abbruch ]";
+static char BUBBLE_01[] = "Die énderungen werden Åbernommen und Åberschreiben die alten Einstellungen.";
+static char BUBBLE_02[] = "Die énderungen werden verworfen, die alten Einstellungen bleiben erhalten.";
+static char BUBBLE_03[] = "Hier kann der String, der fÅr BubbleGEM verwendet werden soll, eingegeben werden.";
+static char BUBBLE_04[] = "Hier kann der String eingegeben werden, der das aufzurufende Context-Popup beschreibt (siehe in der Dokumentation zu Ame_strpopup).";
+static char BUBBLE_05[] = "Hier wird das Zeichen eingegeben, das im Popup auf der rechten Seite beim Anklicken zum nÑchsten Wert blÑttert.";
+static char BUBBLE_06[] = "Dieser Button stellt das Beispiel-Popup links oben um auf den gerade eingegebenen Text. Damit kînnen Sie Ihr Popup direkt ausprobieren.";
+static char BUBBLE_07[] = "Durch diese Checkbox kann die 3D-Darstellung ein- und ausgeschaltet werden. Das Ergebnis wird nach Klick auf den Button \"Probe\" am Beispiel-Popup oben links dargestellt.";
+static char TEXT_001[] = "Weiû|Rot|GrÅn|Blau|Gelb|TÅrkis|Lila|Schwarz";
+static char TEXT_005[] = "OK";
+static char TEXT_008[] = "Probe";
+static char TEXT_009[] = "Abbruch";
+static char TEXT_01[] = "3D-Modus";
+static char TEXT_02[] = "Zyklus-Zeichen:";
+static char TEXT_05[] = "Sonstiges";
+static char TEXT_08[] = "BubbleGEM-Text";
+static char TEXT_09[] = "unten:";
+static char TEXT_10[] = "Rahmen:";
+static char TEXT_16[] = "Context-Popup";
+static char TEXT_19[] = "oben:";
+static char TEXT_21[] = "links/";
+static char TEXT_22[] = "rechts/";
+static char help_title[] = "Der Cycle-Button-Editor";
+static char title[] = "CYCLEBUTTON -";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char A_ADAPTCYC[] = "[2][ Die Schriftgrîûe ist negativ| und ist wahrscheinlich ein| Objekt nach alter Definition.| Soll es auf den Standardwert| gesetzt werden? ][OK| Abbruch ]";
+static char BUBBLE_01[] = "The changes are accepted and override the old values.";
+static char BUBBLE_02[] = "The changes are discarded, the old values are unchanged.";
+static char BUBBLE_03[] = "Here the string is entered which is used for BubbleGEM.";
+static char BUBBLE_04[] = "Here the string is entered which is used to create the context popup (see Ame_strpopup).";
+static char BUBBLE_05[] = "Hier wird das Zeichen eingegeben, das ";
+static char BUBBLE_06[] = "This button transfers the entered string to the example popup above to test the popup.";
+static char BUBBLE_07[] = "The 3D mode is switched on and off by this checkbox.";
+static char TEXT_001[] = "White|Red|Green|Blue|Yellow|Violet|Black";
+static char TEXT_005[] = "OK";
+static char TEXT_008[] = "Test";
+static char TEXT_009[] = "Cancel";
+static char TEXT_01[] = "3D mode ";
+static char TEXT_02[] = "Cycle Char";
+static char TEXT_05[] = "Sonstiges";
+static char TEXT_08[] = "BubbleGEM-Text";
+static char TEXT_09[] = "bottom";
+static char TEXT_10[] = "Frame: ";
+static char TEXT_16[] = "Context-Popup";
+static char TEXT_19[] = "top:";
+static char TEXT_21[] = "left/";
+static char TEXT_22[] = "right/";
+static char help_title[] = "Der Checkbox-/Radiobutton-Editor";
+static char title[] = "CYCLEBUTTON -";
+#endif
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0xa9f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_005, NULL, NULL, BUBBLE_01, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_009, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_008, NULL, NULL, BUBBLE_06, NULL };
+static AUSERBLK A_3DBUTTON27 = { A_3Dbutton, 0x09f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS02 = { A_arrows, 0x13010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, 0x90000112L, Auo_boxed, NULL, NULL, NULL, BUBBLE_05, NULL };
+static AUSERBLK A_BOXED02 = { A_boxed, 0x9000ff12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED04 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_BOXED05 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_04, NULL };
+static AUSERBLK A_CHECKBOX01 = { A_checkbox, 0x00000001L, Auo_string, TEXT_01, NULL, NULL, BUBBLE_07, NULL };
+static AUSERBLK A_INNERFRAME01 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_10, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_05, NULL, NULL, NULL, NULL };
+static AUSERBLK A_cycle002 = { A_cycle, 0x00010290L, Auo_cycle, TEXT_001, NULL, NULL, NULL, NULL };
+
+static OBJECT  ED_CYCLE =     { -1,  1, 30, 24, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 51, 19 };
+static OBJECT  _01_ED_CYCLE = {  4,  2,  2, 24, 0x0000, 0x0010, C_UNION(&A_3DBUTTON01), 0, 0, 22, 3 };
+static OBJECT  _02_ED_CYCLE = {  1, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_cycle002), 1, 1, 20, 1 };
+static AOBJECT _02aED_CYCLE = { Aus_cycle, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
+static OBJECT  _04_ED_CYCLE = {  6, -1, -1, 24, 0x4007, 0x0010, C_UNION(&A_3DBUTTON03), 24, 1, 12, 2 };
+static AOBJECT _04aED_CYCLE = { edcyc_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 };
+static OBJECT  _06_ED_CYCLE = {  8, -1, -1, 24, 0x4005, 0x0010, C_UNION(&A_3DBUTTON06), 38, 1, 12, 2 };
+static AOBJECT _06aED_CYCLE = { edcyc_abort, NULL, 0x8000, 0x8841, NULL, NULL, 0, 0 };
+static OBJECT  _08_ED_CYCLE = {  9, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED02), 1, 4, 49, 1 };
+static OBJECT  _09_ED_CYCLE = { 11, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX01), 1, 6, 11, 1 };
+static AOBJECT _09aED_CYCLE = { NULL, NULL, 0x8000, 0x8844, NULL, NULL, 0, 0 };
+static OBJECT  _11_ED_CYCLE = { 26, 12, 22, 24, 0x0040, 0x0000, C_UNION(&A_INNERFRAME01), 22, 6, 28, 6 };
+static OBJECT  _12_ED_CYCLE = { 14, 13, 13, 28, 0x0040, 0x0000, C_UNION(&TEXT_21), 2, 1, 6, 1 };
+static OBJECT  _13_ED_CYCLE = { 12, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _14_ED_CYCLE = { 15, -1, -1, 28, 0x0040, 0x0000, C_UNION(&TEXT_19), 3, 2, 5, 1 };
+static OBJECT  _15_ED_CYCLE = { 19, 17, 18, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 2, 18, 1 };
+static AOBJECT _15aED_CYCLE = { edcyc_outcol, NULL, 0x8000, 0x884c, NULL, NULL, 0, 0 };
+static OBJECT  _17_ED_CYCLE = { 18, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x43011371L), 16, 0, 2, 1 };
+static OBJECT  _18_ED_CYCLE = { 15, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 };
+static OBJECT  _19_ED_CYCLE = { 21, 20, 20, 28, 0x0040, 0x0000, C_UNION(&TEXT_22), 1, 3, 7, 1 };
+static OBJECT  _20_ED_CYCLE = { 19, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _21_ED_CYCLE = { 22, -1, -1, 28, 0x0040, 0x0000, C_UNION(&TEXT_09), 2, 4, 6, 1 };
+static OBJECT  _22_ED_CYCLE = { 11, 24, 25, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 4, 18, 1 };
+static AOBJECT _22aED_CYCLE = { edcyc_incol, NULL, 0x8000, 0x8852, NULL, NULL, 0, 0 };
+static OBJECT  _24_ED_CYCLE = { 25, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x43011371L), 16, 0, 2, 1 };
+static OBJECT  _25_ED_CYCLE = { 22, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 };
+static OBJECT  _26_ED_CYCLE = { 27, -1, -1, 28, 0x0040, 0x0000, C_UNION(&TEXT_02), 1, 2055, 15, 1 };
+static OBJECT  _27_ED_CYCLE = { 28, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED01), 17, 2055, 1, 1 };
+static OBJECT  _28_ED_CYCLE = { 30, -1, -1, 24, 0x0005, 0x0010, C_UNION(&A_3DBUTTON07), 1, 9, 11, 2 };
+static AOBJECT _28aED_CYCLE = { edcyc_prepair, NULL, 0x8000, 0x8850, NULL, NULL, 0, 0 };
+static OBJECT  _30_ED_CYCLE = {  0, 31, 34, 24, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 1, 12, 49, 5 };
+static OBJECT  _31_ED_CYCLE = { 32, -1, -1, 28, 0x0000, 0x0000, C_UNION(&TEXT_08), 1, 1, 14, 1 };
+static OBJECT  _32_ED_CYCLE = { 33, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED04), 16, 1, 32, 1 };
+static OBJECT  _33_ED_CYCLE = { 34, -1, -1, 28, 0x0000, 0x0000, C_UNION(&TEXT_16), 1, 3, 13, 1 };
+static OBJECT  _34_ED_CYCLE = { 30, -1, -1, 24, 0x0028, 0x0010, C_UNION(&A_BOXED05), 16, 3, 32, 1 };
