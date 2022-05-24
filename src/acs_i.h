@@ -838,6 +838,11 @@ typedef struct {
 /* values for ub_parm of button objects */
 #define ACS_BUTTON_COLOR    0x0000000FL
 
+/* values for ub_parm of patternn objects */
+#define ACS_PATTERN_COLOR   0x0000000FL
+#define ACS_PATTERN_FRAME   0x00200000L
+#define ACS_PATTERN_PATTERN 0x00DF0000L
+
 
 
 /*
