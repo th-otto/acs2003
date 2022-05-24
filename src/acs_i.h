@@ -838,11 +838,26 @@ typedef struct {
 /* values for ub_parm of button objects */
 #define ACS_BUTTON_COLOR    0x0000000FL
 
-/* values for ub_parm of patternn objects */
+/* values for ub_parm of pattern objects */
 #define ACS_PATTERN_COLOR   0x0000000FL
 #define ACS_PATTERN_FRAME   0x00200000L
 #define ACS_PATTERN_PATTERN 0x00DF0000L
 
+/* values for ub_parm of innerframe objects */
+#define ACS_INNER_DITHER    0x10000000L
+#define ACS_INNER_INCOL     0x000F0000L
+#define ACS_INNER_INTERCOL  0x0000F000L
+#define ACS_INNER_OUTCOL    0x0000000FL
+#define ACS_INNER_TEXTCOL   0x000000F0L
+#define ACS_INNER_PATTERN   0x00000E00L
+#define ACS_INNER_POS       0x07000000L
+#define ACS_INNER_POS_TOPLEFT   0x00000000L
+#define ACS_INNER_POS_TOPMID    0x01000000L
+#define ACS_INNER_POS_TOPRIGHT  0x02000000L
+#define ACS_INNER_POS_BOTLEFT   0x04000000L
+#define ACS_INNER_POS_BOTMID    0x05000000L
+#define ACS_INNER_POS_BOTRIGHT  0x06000000L
+#define ACS_INNER_SMALL     0x08000000L
 
 
 /*
@@ -1223,6 +1238,7 @@ extern char HPOS_TEXT3[];
 extern char SIZE_TEXT0[];
 extern char SIZE_TEXT1[];
 extern OBJECT POP_SIZESEL;
+extern OBJECT POP_PATSEL;
 
 void set_box(void);
 

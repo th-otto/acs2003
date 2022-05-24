@@ -93,7 +93,7 @@ editor\uepictur.c [-J- -Z- -R- -M-]
 editor\uecycle.c [-J- -Z- -R- -M-]
 editor\uearrow.c [-J- -Z- -R- -M-]
 editor\uepatter.c [-J- -Z- -R- -M-]
-editor\ueinner.s
+editor\ueinner.c [-J- -Z- -R- -M-]
 editor\ue3dbutt.s
 editor\uecheck.s
 editor\ueftext.s
