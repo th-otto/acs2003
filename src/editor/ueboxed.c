@@ -231,8 +231,8 @@ static void edbe_ok(void)
 	auser = tree[ED_BOXED_SAMPLE].ob_spec.auserblk;
 	beparm = (union beunion *)&auser->ub_parm;
 	Aob_scanf(tree, ED_BOXED_LENGTH, "%d", &length);
-	if (length > 255)
-		length = 255;
+	if (length > BE_MAXLEN)
+		length = BE_MAXLEN;
 	beparm->parm.textlen = length;
 	sprintf(parm, "0x%lxL", beparm->val);
 	userdef.parm = parm;

@@ -36,7 +36,7 @@ static void editstr_ok(void)
 static void acc_string(Awindow *self)
 {
 	EDPARM *parm;
-	char buf[512];
+	char buf[BE_MAXLEN * 2 + 2];
 	char *str2;
 	char *str1;
 	OBJECT *tree;
@@ -131,18 +131,18 @@ static void set_string(Awindow *self)
 {
 	EDPARM *parm = self->user;
 	OBJECT *tree;
-	char buf[256];
+	char buf[BE_MAXLEN + 1];
 	int len;
 	char *str;
 	
 	tree = self->work;
 	str = parm->obj->object;
 	len = (int)strlen(str);
-	if (len > 255)
+	if (len > BE_MAXLEN)
 	{
-		strncpy(buf, &str[255], 255);
-		buf[255] = '\0';
-		len = 255;
+		strncpy(buf, &str[BE_MAXLEN], BE_MAXLEN);
+		buf[BE_MAXLEN] = '\0';
+		len = BE_MAXLEN;
 	} else
 	{
 		buf[0] = '\0';
