@@ -875,6 +875,9 @@ typedef struct {
 #define ACS_3DBUTTON_PATTERN   0x00000070L /* same as bfopspec.fillpattern */
 #define ACS_3DBUTTON_INTERCOL  0x0000000FL /* same as bfopspec.interiorcol */
 
+/* values for ub_parm of checkbox objects */
+#define ACS_CHECKBOX_3D        0x00000001L
+
 
 /*
  * about.c
