@@ -878,6 +878,21 @@ typedef struct {
 /* values for ub_parm of checkbox objects */
 #define ACS_CHECKBOX_3D        0x00000001L
 
+/* values for ub_parm of ftext objects */
+#define ACS_FTEXT_FONTID       0xffff0000L
+#define ACS_FTEXT_FONTSIZE     0x000000ffL
+#define ACS_FTEXT_ALIGNMENT    0x0000c000L
+#define ACS_FTEXT_ALIGN_CENTER    0x00000000L
+#define ACS_FTEXT_ALIGN_LEFT      0x00004000L
+#define ACS_FTEXT_ALIGN_RIGHT     0x00008000L
+#define ACS_FTEXT_ALIGN_BLOCK     0x0000c000L
+#define ACS_FTEXT_BOLD         0x00000100L
+#define ACS_FTEXT_LIGHT        0x00000200L
+#define ACS_FTEXT_ITALIC       0x00000400L
+#define ACS_FTEXT_UNDERLINED   0x00000800L
+#define ACS_FTEXT_OUTLINED     0x00001000L
+#define ACS_FTEXT_SHADOWED     0x00002000L
+
 
 /*
  * about.c
