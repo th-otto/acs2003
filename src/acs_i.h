@@ -859,6 +859,22 @@ typedef struct {
 #define ACS_INNER_POS_BOTRIGHT  0x06000000L
 #define ACS_INNER_SMALL     0x08000000L
 
+/* values for ub_parm of 3dbutton objects */
+#define ACS_3DBUTTON_NOFILL    0x80000000L /* part of bfopspec.character */
+#define ACS_3DBUTTON_SMALL     0x40000000L /* part of bfopspec.character */
+#define ACS_3DBUTTON_HORPOS    0x30000000L /* part of bfopspec.character */
+#define ACS_3DBUTTON_HORPOS_LEFT   0x00000000L
+#define ACS_3DBUTTON_HORPOS_CENTER 0x20000000L
+#define ACS_3DBUTTON_HORPOS_RIGHT  0x10000000L
+#define ACS_3DBUTTON_INCOL     0x0F000000L /* part of bfopspec.character */
+#define ACS_3DBUTTON_OFFSET    0x00F00000L /* part of bfopspec.framesize */
+#define ACS_3DBUTTON_FRAMESIZE 0x000F0000L /* part of bfopspec.framesize */
+#define ACS_3DBUTTON_OUTCOL    0x0000F000L /* same as bfopspec.framecol */
+#define ACS_3DBUTTON_TEXTCOL   0x00000F00L /* same as bfopspec.textcol */
+#define ACS_3DBUTTON_TEXTMODE  0x00000080L /* same as bfopspec.textmode */
+#define ACS_3DBUTTON_PATTERN   0x00000070L /* same as bfopspec.fillpattern */
+#define ACS_3DBUTTON_INTERCOL  0x0000000FL /* same as bfopspec.interiorcol */
+
 
 /*
  * about.c
@@ -1239,6 +1255,7 @@ extern char SIZE_TEXT0[];
 extern char SIZE_TEXT1[];
 extern OBJECT POP_SIZESEL;
 extern OBJECT POP_PATSEL;
+extern OBJECT POP_HORPOSSEL;
 
 void set_box(void);
 

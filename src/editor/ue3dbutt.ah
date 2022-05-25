@@ -1,0 +1,170 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char BUBBLE_01[] = "Die énderungen werden Åbernommen und Åberschreiben die alten Einstellungen.";
+static char BUBBLE_02[] = "Die énderungen werden verworfen, die alten Einstellungen bleiben erhalten.";
+static char BUBBLE_03[] = "Hier kann der String, der fÅr BubbleGEM verwendet werden soll, eingegeben werden.";
+static char BUBBLE_04[] = "Hier wird die Beschriftung des 3D-Buttons eingegeben.";
+static char BUBBLE_05[] = "Hier kann der String eingegeben werden, der das aufzurufende Context-Popup beschreibt (siehe in der Dokumentation zu Ame_strpopup).";
+static char BUBBLE_07[] = "Hier wird die Schriftgrîûe eingestellt.";
+static char CONTEXT_01[] = "Kopieren|EinfÅgen|Lîschen";
+static char TEXT_005[] = "OK";
+static char TEXT_009[] = "Abbruch";
+static char TEXT_01[] = "Offset:";
+static char TEXT_02[] = "leeres FÅllmuster";
+static char TEXT_03[] = "StÑrke:";
+static char TEXT_037[] = "ABC";
+static char TEXT_04[] = "Position:";
+static char TEXT_05[] = "Sonstiges";
+static char TEXT_06[] = "BubbleGEM-Text";
+static char TEXT_07[] = "Context-Popup";
+static char TEXT_09[] = "unten:";
+static char TEXT_10[] = "Rahmen:";
+static char TEXT_11[] = "Farbe:";
+static char TEXT_12[] = "Grîûe:";
+static char TEXT_13[] = "Modus:";
+static char TEXT_14[] = "Text:";
+static char TEXT_15[] = "InnenflÑche:";
+static char TEXT_17[] = "Muster:";
+static char TEXT_19[] = "oben:";
+static char TEXT_20[] = "DitherModus";
+static char TEXT_21[] = "links/";
+static char TEXT_22[] = "rechts/";
+static char help_title[] = "Der 3D-Button-Editor";
+static char title[] = "3D-Button -";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char BUBBLE_01[] = "Sets the values";
+static char BUBBLE_02[] = "Discards the values";
+static char BUBBLE_03[] = "Here you enter the string which is used for BubbleGEM.";
+static char BUBBLE_04[] = "Here you enter the text of the 3D button.";
+static char BUBBLE_05[] = "Here you enter the string for the context-popup.";
+static char BUBBLE_07[] = "Here you enter the size of the text.";
+static char CONTEXT_01[] = "Copy|Paste|Delete";
+static char TEXT_005[] = "OK";
+static char TEXT_009[] = "Cancel";
+static char TEXT_01[] = "Offset:";
+static char TEXT_02[] = "empty pattern    ";
+static char TEXT_03[] = "  Size:";
+static char TEXT_037[] = "ABC";
+static char TEXT_04[] = "Position:";
+#if WITH_FIXES
+static char TEXT_05[] = "Title";
+#else
+static char TEXT_05[] = "Titel";
+#endif
+static char TEXT_06[] = "BubbleGEM-Text";
+static char TEXT_07[] = "Context-Popup";
+static char TEXT_09[] = "down:";
+static char TEXT_10[] = "Frame:";
+static char TEXT_11[] = "Color:";
+static char TEXT_12[] = "Size:";
+static char TEXT_13[] = " Mode:";
+static char TEXT_14[] = "Text:";
+static char TEXT_15[] = "Interior:";
+static char TEXT_17[] = "Pattern:";
+static char TEXT_19[] = "up:";
+#if WITH_FIXES
+static char TEXT_20[] = "Dither Mode";
+#else
+static char TEXT_20[] = "DitherModus";
+#endif
+static char TEXT_21[] = "left/";
+static char TEXT_22[] = "right/";
+static char help_title[] = "Der 3D-Button-Editor";
+static char title[] = "3D-Button -";
+#endif
+
+
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_005, NULL, NULL, BUBBLE_01, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, BUBBLE_07, NULL };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, 0x21020191L, Auo_string, TEXT_037, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_009, NULL, NULL, BUBBLE_02, NULL };
+static AUSERBLK A_3DBUTTON27 = { A_3Dbutton, 0x09f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS02 = { A_arrows, 0x13010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, 0x9000ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_04, CONTEXT_01 };
+static AUSERBLK A_BOXED03 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_03, NULL };
+static AUSERBLK A_BOXED04 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, BUBBLE_05, NULL };
+static AUSERBLK A_CHECKBOX02 = { A_checkbox, 0x00000001L, Auo_string, TEXT_02, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX03 = { A_checkbox, 0x00000001L, Auo_string, TEXT_20, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME01 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_10, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_14, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_05, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME05 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_15, NULL, NULL, NULL, NULL };
+static AUSERBLK A_SLIDER02 = { A_slider, 0x00000002L, Auo_slider, NULL, NULL, NULL, NULL, NULL };
+
+static OBJECT  ED_3DBUTTON =     { -1,  1, 66, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON06), 0, 0, 58, 24 };
+static OBJECT  _01_ED_3DBUTTON = {  3,  2,  2, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON07), 0, 0, 14, 4 - 4*256 };
+static OBJECT  _02_ED_3DBUTTON = {  1, -1, -1, G_USERDEF, 0x0000, 0x0010, C_UNION(&A_3DBUTTON08), 2, 1, 10, 2 };
+static OBJECT  _03_ED_3DBUTTON = {  5, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON04), 29, 1, 12, 2 };
+static AOBJECT _03aED_3DBUTTON = { ed3d_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _05_ED_3DBUTTON = {  7, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON09), 44, 1, 12, 2 };
+static AOBJECT _05aED_3DBUTTON = { ed3d_abort, NULL, 0x8000, 0x8841, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _07_ED_3DBUTTON = { 30,  8, 29, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 4, 56, 7 };
+static OBJECT  _08_ED_3DBUTTON = { 10,  9,  9, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_11), 4, 1, 6, 1 };
+static OBJECT  _09_ED_3DBUTTON = {  8, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _10_ED_3DBUTTON = { 14, 12, 13, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 11, 1, 18, 1 };
+static AOBJECT _10aED_3DBUTTON = { ed3d_textcol, NULL, 0x8000, 0x8846, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _12_ED_3DBUTTON = { 13, -1, -1, G_BOX, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 0, 2, 1 };
+static OBJECT  _13_ED_3DBUTTON = { 10, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 };
+static OBJECT  _14_ED_3DBUTTON = { 16, 15, 15, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_12), 34, 1, 6, 1 };
+static OBJECT  _15_ED_3DBUTTON = { 14, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _16_ED_3DBUTTON = { 19, 18, 18, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 41, 1, 8, 1 };
+static AOBJECT _16aED_3DBUTTON = { ed3d_size, NULL, 0x8000, 0x8847, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _18_ED_3DBUTTON = { 16, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON07), 0, 0, 8, 1 };
+static OBJECT  _19_ED_3DBUTTON = { 21, 20, 20, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_04), 1, 3, 9, 1 };
+static OBJECT  _20_ED_3DBUTTON = { 19, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _21_ED_3DBUTTON = { 24, 23, 23, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 11, 3, 10, 1 };
+static AOBJECT _21aED_3DBUTTON = { ed3d_pos, NULL, 0x8000, 0x8850, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _23_ED_3DBUTTON = { 21, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 10, 1 };
+static OBJECT  _24_ED_3DBUTTON = { 26, -1, -1, 27, 0x0005, 0x0000, C_UNION(0x43ff1121L), 41, 3, 3, 1 };
+static AOBJECT _24aED_3DBUTTON = { ed3d_trans, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _26_ED_3DBUTTON = { 28, -1, -1, 27, 0x0005, 0x0000, C_UNION(0x43ff11a1L), 45, 3, 3, 1 };
+static AOBJECT _26aED_3DBUTTON = { ed3d_replace, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _28_ED_3DBUTTON = { 29, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED01), 1, 5, 54, 1 };
+static OBJECT  _29_ED_3DBUTTON = {  7, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_13), 34, 3, 6, 1 };
+static OBJECT  _30_ED_3DBUTTON = { 51, 31, 47, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME01), 1, 11, 28, 8 };
+static OBJECT  _31_ED_3DBUTTON = { 32, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_01), 1, 1, 7, 1 };
+static OBJECT  _32_ED_3DBUTTON = { 34, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_SLIDER02), 9, 1, 18, 1 };
+static AOBJECT _32aED_3DBUTTON = { Aus_slider, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _34_ED_3DBUTTON = { 35, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_03), 1, 2, 7, 1 };
+static OBJECT  _35_ED_3DBUTTON = { 37, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_SLIDER02), 9, 2, 18, 1 };
+static AOBJECT _35aED_3DBUTTON = { Aus_slider, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _37_ED_3DBUTTON = { 39, 38, 38, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_21), 2, 3, 6, 1 };
+static OBJECT  _38_ED_3DBUTTON = { 37, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _39_ED_3DBUTTON = { 40, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_19), 3, 4, 5, 1 };
+static OBJECT  _40_ED_3DBUTTON = { 44, 42, 43, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 4, 18, 1 };
+static AOBJECT _40aED_3DBUTTON = { ed3d_outcol, NULL, 0x8000, 0x884c, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _42_ED_3DBUTTON = { 43, -1, -1, G_BOX, 0x0000, 0x0000, C_UNION(0x43011371L), 16, 0, 2, 1 };
+static OBJECT  _43_ED_3DBUTTON = { 40, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 };
+static OBJECT  _44_ED_3DBUTTON = { 46, 45, 45, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_22), 1, 5, 7, 1 };
+static OBJECT  _45_ED_3DBUTTON = { 44, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _46_ED_3DBUTTON = { 47, -1, -1, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_09), 2, 6, 6, 1 };
+static OBJECT  _47_ED_3DBUTTON = { 30, 49, 50, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 6, 18, 1 };
+static AOBJECT _47aED_3DBUTTON = { ed3d_incol, NULL, 0x8000, 0x8852, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _49_ED_3DBUTTON = { 50, -1, -1, G_BOX, 0x0000, 0x0000, C_UNION(0x43011371L), 16, 0, 2, 1 };
+static OBJECT  _50_ED_3DBUTTON = { 47, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 };
+static OBJECT  _51_ED_3DBUTTON = { 66, 52, 62, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME05), 29, 11, 28, 8 };
+static OBJECT  _52_ED_3DBUTTON = { 54, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_CHECKBOX03), 1, 1, 14, 1 };
+static AOBJECT _52aED_3DBUTTON = { ed3d_dither, NULL, 0x8000, 0x8844, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _54_ED_3DBUTTON = { 56, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_CHECKBOX02), 1, 2, 20, 1 };
+static AOBJECT _54aED_3DBUTTON = { ed3d_nofill, NULL, 0x8000, 0x8845, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _56_ED_3DBUTTON = { 58, 57, 57, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_17), 1, 4, 8, 1 };
+static OBJECT  _57_ED_3DBUTTON = { 56, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _58_ED_3DBUTTON = { 60, -1, -1, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 4, 18, 1 };
+static AOBJECT _58aED_3DBUTTON = { ed3d_pattern, NULL, 0x8000, 0x884d, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _60_ED_3DBUTTON = { 62, 61, 61, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_11), 2, 6, 6, 1 };
+static OBJECT  _61_ED_3DBUTTON = { 60, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 3, 0, 1, 1 };
+static OBJECT  _62_ED_3DBUTTON = { 51, 64, 65, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 6, 18, 1 };
+static AOBJECT _62aED_3DBUTTON = { ed3d_intercol, NULL, 0x8000, 0x8842, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _64_ED_3DBUTTON = { 65, -1, -1, G_BOX, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 0, 2, 1 };
+static OBJECT  _65_ED_3DBUTTON = { 62, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 };
+static OBJECT  _66_ED_3DBUTTON = {  0, 67, 70, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 1, 19, 56, 5 };
+static OBJECT  _67_ED_3DBUTTON = { 68, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(&TEXT_06), 1, 1, 14, 1 };
+static OBJECT  _68_ED_3DBUTTON = { 69, -1, -1, G_STRING, 0x0000, 0x0000, C_UNION(&TEXT_07), 1, 3, 13, 1 };
+static OBJECT  _69_ED_3DBUTTON = { 70, -1, -1, G_USERDEF, 0x0008, 0x0010, C_UNION(&A_BOXED03), 16, 1, 39, 1 };
+static OBJECT  _70_ED_3DBUTTON = { 66, -1, -1, G_USERDEF, 0x0028, 0x0010, C_UNION(&A_BOXED04), 16, 3, 39, 1 };

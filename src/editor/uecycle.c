@@ -95,7 +95,7 @@ static OBJECT *edcyc_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	color = (int)((parm >> 4) & 15);
 	Aob_puttext(tree, ED_CYCLE_IN_COLOR_POPUP, colour_text[color]);
 	tree[ED_CYCLE_IN_COLOR].ob_spec.obspec.interiorcol = color;
-	color = (int)((parm) & 15);
+	color = (int)((parm) & ACS_CYCLE_OUTCOL);
 	Aob_puttext(tree, ED_CYCLE_OUT_COLOR_POPUP, colour_text[color]);
 	tree[ED_CYCLE_OUT_COLOR].ob_spec.obspec.interiorcol = color;
 	boxchar[0] = (char)(parm >> 8);
@@ -192,7 +192,7 @@ static void edcyc_outcol(void)
 	int16 color;
 	
 	parm = &ACSblk->ev_object[ED_CYCLE_SAMPLE].ob_spec.auserblk->ub_parm;
-	color = oe_colsel((int)*parm & 15, ED_CYCLE_OUT_COLOR_BOX, ED_CYCLE_OUT_COLOR_POPUP, ED_CYCLE_OUT_COLOR);
+	color = oe_colsel((int)(*parm & ACS_CYCLE_OUTCOL), ED_CYCLE_OUT_COLOR_BOX, ED_CYCLE_OUT_COLOR_POPUP, ED_CYCLE_OUT_COLOR);
 	if (color >= 0)
 	{
 		*parm = (*parm & ~ACS_CYCLE_OUTCOL) | color;
