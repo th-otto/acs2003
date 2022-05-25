@@ -1,3 +1,4 @@
+#include "acsport.h"
 #include "acs_i.h"
 
 #ifndef C_UNION
@@ -201,7 +202,7 @@ static void pup_edit(void)
 		tree[next].ob_tail = active;
 		tree[active].ob_next = next;
 		/* BUG? should be ob_state */
-		self->obchange(self, next - 1, tree[next - 1].ob_flags & 0xeffe); /* XXX was 0xfffe */
+		self->obchange(self, next - 1, tree[next - 1].ob_flags & ~OS_SELECTED);
 		parm->active = active = Aob_up(tree, next);
 		if (active >= 0)
 		{

@@ -1049,8 +1049,8 @@ static int16 CDECL ScrollDemo(PARMBLK *pb)
 	obj = &pb->pb_tree[pb->pb_obj];
 	vswr_mode(ACSblk->vdi_handle, MD_TRANS);
 	vst_color(ACSblk->vdi_handle, G_BLACK);
-	vst_font(ACSblk->vdi_handle, (int16)((obj->ob_spec.auserblk->ub_parm) >> 16) & 0xffff);
-	cell_height = (int16)obj->ob_spec.auserblk->ub_parm & 0xffff;
+	vst_font(ACSblk->vdi_handle, (short)((obj->ob_spec.auserblk->ub_parm) >> 16) & 0xffff);
+	cell_height = (short)obj->ob_spec.auserblk->ub_parm & (short)0xffff;
 	vst_height(ACSblk->vdi_handle, cell_height, &dummy, &dummy, &cell_width, &cell_height);
 	vst_alignment(ACSblk->vdi_handle, TA_CENTER, TA_TOP, &dummy, &dummy);
 	x = (pb->pb_w >> 1) + pb->pb_x;

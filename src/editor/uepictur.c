@@ -51,7 +51,7 @@ static void edpi_col(void)
 	int16 color;
 	
 	parm = &ACSblk->ev_object[ED_PICTURE_IMAGE].ob_spec.auserblk->ub_parm;
-	if ((color = oe_colsel((*parm >> 4) & 15, ED_PICTURE_COLOR_BOX, ED_PICTURE_COLOR_POPUP, ED_PICTURE_COLOR)) >= 0)
+	if ((color = oe_colsel((int16)((*parm >> 4) & 15), ED_PICTURE_COLOR_BOX, ED_PICTURE_COLOR_POPUP, ED_PICTURE_COLOR)) >= 0)
 	{
 		*parm = (*parm & ~0xf0) | ((int32)color << 4);
 		ACSblk->ev_window->obchange(ACSblk->ev_window, ED_PICTURE_IMAGE_BOX, -1);

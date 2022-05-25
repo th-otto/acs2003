@@ -301,7 +301,7 @@ static void backup(ACS_HEAD *acs)
 	}
 	Dsetdrv(time);
 	if (slash == NULL && Af_length(filename) < -1 && (fd = Fcreate(filename, 0)) > 0)
-		save_acs(fd, acs);
+		save_acs((int16)fd, acs);
 	Ax_free(filename);
 }
 

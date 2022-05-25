@@ -433,7 +433,7 @@ void rd_all(ACS_HEAD *acs)
 	switch (version)
 	{
 	case 100:
-		obj_size = sizeof(Obj_Head) - sizeof(Axywh);
+		obj_size = (int16)(sizeof(Obj_Head) - sizeof(Axywh));
 		read_buf(&acs->flags, offsetof(ACS_HEAD, pos_ge) - header_size);
 		memcpy(&acs->pos_ge, &zero, sizeof(acs->pos_ge));
 		memcpy(&acs->pos_pa, &zero, sizeof(acs->pos_pa));
@@ -449,7 +449,7 @@ void rd_all(ACS_HEAD *acs)
 	
 	case 200:
 	case 205:
-		obj_size = sizeof(Obj_Head);
+		obj_size = (int16)sizeof(Obj_Head);
 		read_buf(&acs->flags, offsetof(ACS_HEAD, obj_count) - header_size);
 		memcpy(&acs->last_rez, &ACSblk->desk, sizeof(acs->last_rez));
 		acs->extflags = 0;
@@ -461,21 +461,21 @@ void rd_all(ACS_HEAD *acs)
 		break;
 	
 	case 300:
-		obj_size = sizeof(Obj_Head);
+		obj_size = (int16)sizeof(Obj_Head);
 		read_buf(&acs->flags, offsetof(ACS_HEAD, src_lang) - header_size);
 		obj_count = acs->obj_count;
 		acs->src_lang = acs->flags & ACS_0010 ? 1 : 0;
 		break;
 	
 	case 400:
-		obj_size = sizeof(Obj_Head);
+		obj_size = (int16)sizeof(Obj_Head);
 		read_buf(&acs->flags, offsetof(ACS_HEAD, config) - header_size);
 		read_buf(&acs->config, sizeof(acs->config) - 2 * sizeof(void *));
 		obj_count = acs->obj_count;
 		break;
 	
 	default:
-		obj_size = sizeof(Obj_Head);
+		obj_size = (int16)sizeof(Obj_Head);
 		read_buf(&acs->flags, offsetof(ACS_HEAD, config) - header_size);
 		read_buf(&acs->config, sizeof(acs->config));
 		obj_count = acs->obj_count;

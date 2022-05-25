@@ -35,9 +35,9 @@ static Obj_Head atitle = { NULL, " TITLE ", 0, sizeof(" TITLE "), sizeof(" TITLE
 static Obj_Head abutton = { NULL, "BUTTON", 0, sizeof("BUTTON"), sizeof("BUTTON"), NULL, "TEXT_01", 1, 0, { 0, 0, 0, 0 } };
 static Obj_Head astrnull = { NULL, "", 0, sizeof(""), sizeof(""), NULL, "NULL_STRING", 1, 0, { 0, 0, 0, 0 } };
 static Obj_Head astrtext = { NULL, "TEXT", 0, sizeof("TEXT"), sizeof("TEXT"), NULL, "TEXT_01", 1, 0, { 0, 0, 0, 0 } };
-static TEDINFO agtext_obj = { (char *)&astrtext, (char *)&astrnull, (char *)&astrnull, 3, 6, 2, 0x1180, 0, -1, sizeof("TEXT"), 0 };
+static TEDINFO agtext_obj = { (char *)&astrtext, (char *)&astrnull, (char *)&astrnull, 3, 6, 2, 0x1180, 0, -1, (int16)sizeof("TEXT"), 0 };
 static Obj_Head agtext = { NULL, &agtext_obj, 0, sizeof(agtext_obj), sizeof(agtext_obj), NULL, "TEDINFO_01", 1, 0, { 0, 0, 0, 0 } };
-static TEDINFO aeditext_obj = { (char *)&astrabs, (char *)&astredit, (char *)&astrvalid, 3, 6, 2, 0x1180, 0, -1, sizeof("abc"), sizeof("EDIT:____") };
+static TEDINFO aeditext_obj = { (char *)&astrabs, (char *)&astredit, (char *)&astrvalid, 3, 6, 2, 0x1180, 0, -1, (int16)sizeof("abc"), (int16)sizeof("EDIT:____") };
 static Obj_Head aeditext = { NULL, &aeditext_obj, 0, sizeof(aeditext_obj), sizeof(aeditext_obj), NULL, "TEDINFO_01", 1, 0, { 0, 0, 0, 0 } };
 static struct {
 	BITBLK bit;

@@ -375,7 +375,7 @@ static void convert(MFDB *src, MFDB *dst, int16 *mask)
 				maskptr = &mask[srcpos];
 				srcptr = (int16 *)src->fd_addr + srcpos;
 				pxy[4] = pxy[6] = x;
-				pixelmask = 0x8000L >> (x & 15);
+				pixelmask = (int16)(0x8000L >> (x & 15));
 				if (*maskptr & pixelmask)
 				{
 					pixel = 0;

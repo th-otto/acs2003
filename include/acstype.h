@@ -399,7 +399,7 @@
 #ifndef __PORTAB_H__
    #define __PORTAB_H__
 
-   /* "Datentypen" nur definieren, wen sie nicht existieren */
+   /* "Datentypen" nur definieren, wenn sie nicht existieren */
    #ifndef _BYTE
       #define _BYTE     int8
    #endif
@@ -407,7 +407,7 @@
       #define _UBYTE    uint8
    #endif
    #ifndef _WORD
-      #define __WORD    int16
+      #define _WORD     int16
    #endif
    #ifndef _UWORD
       #define _UWORD    uint16
