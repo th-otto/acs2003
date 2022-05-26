@@ -1,0 +1,9 @@
+#define ED_TITLE_SAMPLE_BOX     1
+#define ED_TITLE_SAMPLE         2
+#define ED_TITLE_SIZE           11
+#define ED_TITLE_SIZE_POPUP     13
+#define ED_TITLE_TEXT           14
+#define ED_TITLE_BUBBLE         23
+#define ED_TITLE_CONTEXT        24
+#define ED_TITLE_HORPOS         25
+#define ED_TITLE_HORPOS_POPUP   27

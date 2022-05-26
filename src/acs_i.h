@@ -893,6 +893,14 @@ typedef struct {
 #define ACS_FTEXT_OUTLINED     0x00001000L
 #define ACS_FTEXT_SHADOWED     0x00002000L
 
+/* values for ub_parm of title objects */
+#define ACS_TITLE_HORPOS    0x00000003L
+#define ACS_TITLE_HORPOS_LEFT   0x00000000L
+#define ACS_TITLE_HORPOS_CENTER 0x00000001L
+#define ACS_TITLE_HORPOS_RIGHT  0x00000002L
+#define ACS_TITLE_SMALL     0x00000004L
+#define ACS_TITLE_TEXTMODE  0x00000008L
+
 
 /*
  * about.c
