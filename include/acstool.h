@@ -43,7 +43,7 @@ typedef struct _ACSNextStruct
 /* Infos Åber die Listen der freien Blîcke von ACS */
 typedef struct
 {
-   int32 block_size;
+   ssize_t block_size;
    char *descr_text;
    int16 max_liste;
    int16 aktuell_liste;
@@ -188,8 +188,8 @@ typedef struct
    int32 resvd1;
    int16 cdecl (*GetImpNrFromId)(int16 iid);
    char  cdecl (*CharX2Atari)(int16 inr, char ichr);
-   void  cdecl (*BlockAtari2X)(int16 enr, int32 elen, char *echrs);
-   void  cdecl (*BlockX2Atari)(int16 inr, int32 ilen, char *ichrs);
+   void  cdecl (*BlockAtari2X)(int16 enr, ssize_t elen, char *echrs);
+   void  cdecl (*BlockX2Atari)(int16 inr, ssize_t ilen, char *ichrs);
    char *cdecl (*GetExpNameFromNr)(int16 enr);
    char *cdecl (*GetImpNameFromNr)(int16 inr);
    char *cdecl (*GetExpShortNameFromNr)(int16 enr);
@@ -202,20 +202,20 @@ typedef struct
    int32 cdecl (*GetEuro)(void);
    int16 cdecl (*CharX2Unicode)(int16 nr, char ch);
    char cdecl  (*CharUnicode2X)(int16 nr, int16 unicode);
-   void cdecl (*BlockX2Unicode)( int16 *unicode, int16 nr, char *x_chrs, int32 len );
-   void cdecl (*BlockUnicode2X)( char *x_chrs, int16 nr, int16 *unicode, int32 len );
+   void cdecl (*BlockX2Unicode)( int16 *unicode, int16 nr, char *x_chrs, ssize_t len );
+   void cdecl (*BlockUnicode2X)( char *x_chrs, int16 nr, int16 *unicode, ssize_t len );
    int16 cdecl (*GetExpMinNr)(void);
    int16 cdecl (*GetImpMinNr)(void);
-   int32  cdecl (*CharXUtf2Unicode)( int16 nr, char *string, int32 len, int16 *read_chars );
-   char *cdecl (*CharUnicode2XUtf)( int16 nr, int32 lunicode, char *result, int16 *used_chars );
-   void cdecl (*BlockXUtf2Unicode)( int16 *unicode, int32 *uni_len, int16 nr,
-                  char *string, int32 len );
-   void cdecl (*BlockUnicode2XUtf)( char *string, int32 *str_len, int16 nr,
-                  int16 *unicode, int32 len );
-   void cdecl (*BlockXUtf2U2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
-                  char *source, int32 src_len, int16 src_nr );
-   void cdecl (*BlockXUtf2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
-                  char *source, int32 src_len, int16 src_nr );
+   int32  cdecl (*CharXUtf2Unicode)( int16 nr, char *string, ssize_t len, int16 *read_chars );
+   char *cdecl (*CharUnicode2XUtf)( int16 nr, ssize_t lunicode, char *result, int16 *used_chars );
+   void cdecl (*BlockXUtf2Unicode)( int16 *unicode, ssize_t *uni_len, int16 nr,
+                  char *string, ssize_t len );
+   void cdecl (*BlockUnicode2XUtf)( char *string, ssize_t *str_len, int16 nr,
+                  int16 *unicode, ssize_t len );
+   void cdecl (*BlockXUtf2U2XUtf)( char *dest, ssize_t *dest_len, int16 dest_nr,
+                  char *source, ssize_t src_len, int16 src_nr );
+   void cdecl (*BlockXUtf2XUtf)( char *dest, ssize_t *dest_len, int16 dest_nr,
+                  char *source, ssize_t src_len, int16 src_nr );
    int16 cdecl (*GetInfoShort)( int16 nr, int16 what, int16 *info );
    int16 cdecl (*GetInfoString)( int16 nr, int16 what, char *info, int16 maxLen );
 } KEYT;
@@ -640,24 +640,24 @@ char Akt_CharAtari2X( int16 nr, char ch );
 char Akt_CharX2Atari( int16 nr, char ch );
 int16 Akt_CharX2Unicode( int16 nr, char ch );
 char Akt_CharUnicode2X( int16 nr, int16 unicode );
-int32 Akt_CharXUtf2Unicode( int16 nr, char *string, int32 len, int16 *read_chars );
-char *Akt_CharUnicode2XUtf( int16 nr, int32 lunicode, char *result, int16 *used_chars );
+int32 Akt_CharXUtf2Unicode( int16 nr, char *string, ssize_t len, int16 *read_chars );
+char *Akt_CharUnicode2XUtf( int16 nr, ssize_t lunicode, char *result, int16 *used_chars );
 
-char *Akt_BlockAtari2X( char *dest_string, int16 nr, char *source_string, int32 len );
-char *Akt_BlockX2Atari( char *dest_string, int16 nr, char *source_string, int32 len );
-int16 *Akt_BlockX2Unicode( int16 *unicode, int16 nr, char *x_chrs, int32 len );
-char *Akt_BlockUnicode2X( char *x_chrs, int16 nr, int16 *unicode, int32 len );
-int16 *Akt_BlockXUtf2Unicode( int16 *unicode, int32 *uni_len, int16 nr, char *x_chrs, int32 len );
-char *Akt_BlockUnicode2XUtf( char *x_chrs, int32 *str_len, int16 nr, int16 *unicode, int32 len );
-char *Akt_BlockXUtf2U2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int32 src_len, int16 src_nr );
-char *Akt_BlockXUtf2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int32 src_len, int16 src_nr );
+char *Akt_BlockAtari2X( char *dest_string, int16 nr, char *source_string, ssize_t len );
+char *Akt_BlockX2Atari( char *dest_string, int16 nr, char *source_string, ssize_t len );
+int16 *Akt_BlockX2Unicode( int16 *unicode, int16 nr, char *x_chrs, ssize_t len );
+char *Akt_BlockUnicode2X( char *x_chrs, int16 nr, int16 *unicode, ssize_t len );
+int16 *Akt_BlockXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *x_chrs, ssize_t len );
+char *Akt_BlockUnicode2XUtf( char *x_chrs, ssize_t *str_len, int16 nr, int16 *unicode, ssize_t len );
+char *Akt_BlockXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr );
+char *Akt_BlockXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr );
 
 char *Akt_StringAtari2X( char *dest_string, int16 nr, char *source_string );
 char *Akt_StringX2Atari( char *dest_string, int16 nr, char *source_string );
 int16 *Akt_StringX2Unicode( int16 *unicode, int16 nr, char *string );
-int16 *Akt_StringXUtf2Unicode( int16 *unicode, int32 *uni_len, int16 nr, char *string );
-char *Akt_StringXUtf2U2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int16 src_nr );
-char *Akt_StringXUtf2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int16 src_nr );
+int16 *Akt_StringXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *string );
+char *Akt_StringXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr );
+char *Akt_StringXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr );
 
 /******************************************************************************/
 
@@ -671,19 +671,19 @@ int32 Akt_getEuro( void );
 /******************************************************************************/
 
 /* Speicher allozieren */
-void *Ax_malloc( int32 size );
-void *Ax_glmalloc( int32 size );
+void *Ax_malloc( ssize_t size );
+void *Ax_glmalloc( ssize_t size );
 
 /* Speicher freigeben */
-void Ax_recycle( void *memory, INT32 size );
+void Ax_recycle( void *memory, ssize_t size );
 void Ax_free( void *memory );
 void Ax_glfree( void *memory );
 
 /* Speicher auf Les-/Schreibbarkeit prÅfen (Speicherschutz!) */
-int16 Ax_memCheck( const char *buffer, int32 len, int16 write );
+int16 Ax_memCheck( const char *buffer, ssize_t len, int16 write );
 
 /* Lineare Liste fÅr recyclebaren Speicher erzeugen/Ñndern/lîschen */
-int16 Ax_setRecycleSize( int32 size, int16 amount, char *beschreibung );
+int16 Ax_setRecycleSize( ssize_t size, int16 amount, char *beschreibung );
 
 /* Akt. Statistik Åber freie Listen zusammenstellen und liefern */
 MemFreeBlockStat *Ax_getRecycleStat( int16 *anzahl );

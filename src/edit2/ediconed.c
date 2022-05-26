@@ -4,7 +4,6 @@
 static int16 CDECL edic_bitmap(PARMBLK *pb);
 static int16 CDECL IcnCol(PARMBLK *pb);
 static int16 CDECL piccolor(PARMBLK *pb);
-static int16 CDECL user_control(PARMBLK *pb);
 
 static void edic_frontcol(void);
 static void edic_backcol(void);

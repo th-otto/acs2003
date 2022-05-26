@@ -98,7 +98,7 @@ editor\ue3dbutt.c [-J- -Z- -R- -M-]
 editor\uecheck.c [-J- -Z- -R- -M-]
 editor\ueftext.c [-J- -Z- -R- -M-]
 editor\uetitle.c [-J- -Z- -R- -M-]
-editor\edobclas.s
+editor\edobclas.c [-J- -Z- -R- -M-]
 editor\edobstru.s
 editor\edobsurf.s
 editor\edobobjc.s

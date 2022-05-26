@@ -25,7 +25,6 @@ static void edim_struct(void);
 static void edim_set(void);
 
 static int16 CDECL edim_bitmap(PARMBLK *pb);
-static int16 CDECL user_control(PARMBLK *pb);
 
 #include "edimaged.ah"
 #include "edimaged.h"

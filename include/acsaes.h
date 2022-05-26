@@ -96,7 +96,7 @@ extern "C" {
 #define OF_FL3DIND            FL3DIND
 #define OF_FL3DBAK            FL3DBAK
 #define OF_FL3DACT            FL3DACT
-#define OF_SUBMENU            SUMBENU
+#define OF_SUBMENU            SUBMENU
 #define OF_FLAG12             0x1000
 #define OF_FLAG13             0x2000
 #define OF_FLAG14             0x4000

@@ -58,7 +58,7 @@ typedef struct _ACSNextStruct
 /* Infos ber die Listen der freien Bl”cke von ACS */
 typedef struct
 {
-   int32 block_size;
+   ssize_t block_size;
    char *descr_text;
    int16 max_liste;
    int16 aktuell_liste;
@@ -538,8 +538,8 @@ typedef struct
    int32 resvd1;
    int16 cdecl (*GetImpNrFromId)(int16 id);
    char  cdecl (*CharX2Atari)(int16 nr, char chr);
-   void  cdecl (*BlockAtari2X)(int16 nr, int32 len, char *chrs);
-   void  cdecl (*BlockX2Atari)(int16 nr, int32 len, char *chrs);
+   void  cdecl (*BlockAtari2X)(int16 nr, ssize_t len, char *chrs);
+   void  cdecl (*BlockX2Atari)(int16 nr, ssize_t len, char *chrs);
    char *cdecl (*GetExpNameFromNr)(int16 nr);
    char *cdecl (*GetImpNameFromNr)(int16 nr);
    char *cdecl (*GetExpShortNameFromNr)(int16 nr);
@@ -552,20 +552,20 @@ typedef struct
    int32 cdecl (*GetEuro)(void);
    int16 cdecl (*CharX2Unicode)(int16 nr, char ch);
    char cdecl  (*CharUnicode2X)(int16 nr, int16 unicode);
-   void cdecl (*BlockX2Unicode)( int16 *unicode, int16 nr, char *x_chrs, int32 len );
-   void cdecl (*BlockUnicode2X)( char *x_chrs, int16 nr, int16 *unicode, int32 len );
+   void cdecl (*BlockX2Unicode)( int16 *unicode, int16 nr, char *x_chrs, ssize_t len );
+   void cdecl (*BlockUnicode2X)( char *x_chrs, int16 nr, int16 *unicode, ssize_t len );
    int16 cdecl (*GetExpMinNr)(void);
    int16 cdecl (*GetImpMinNr)(void);
-   int32  cdecl (*CharXUtf2Unicode)( int16 nr, char *string, int32 len, int16 *read_chars );
-   char *cdecl (*CharUnicode2XUtf)( int16 nr, int32 lunicode, char *result, int16 *used_chars );
-   void cdecl (*BlockXUtf2Unicode)( int16 *unicode, int32 *uni_len, int16 nr,
-                  char *string, int32 len );
-   void cdecl (*BlockUnicode2XUtf)( char *string, int32 *str_len, int16 nr,
-                  int16 *unicode, int32 len );
-   void cdecl (*BlockXUtf2U2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
-                  char *source, int32 src_len, int16 src_nr );
-   void cdecl (*BlockXUtf2XUtf)( char *dest, int32 *dest_len, int16 dest_nr,
-                  char *source, int32 src_len, int16 src_nr );
+   int32  cdecl (*CharXUtf2Unicode)( int16 nr, char *string, ssize_t len, int16 *read_chars );
+   char *cdecl (*CharUnicode2XUtf)( int16 nr, ssize_t lunicode, char *result, int16 *used_chars );
+   void cdecl (*BlockXUtf2Unicode)( int16 *unicode, ssize_t *uni_len, int16 nr,
+                  char *string, ssize_t len );
+   void cdecl (*BlockUnicode2XUtf)( char *string, ssize_t *str_len, int16 nr,
+                  int16 *unicode, ssize_t len );
+   void cdecl (*BlockXUtf2U2XUtf)( char *dest, ssize_t *dest_len, int16 dest_nr,
+                  char *source, ssize_t src_len, int16 src_nr );
+   void cdecl (*BlockXUtf2XUtf)( char *dest, ssize_t *dest_len, int16 dest_nr,
+                  char *source, ssize_t src_len, int16 src_nr );
    /* new in 3.0.0 from 2005 */
    int16 cdecl (*GetInfoShort)( int16 nr, int16 what, int16 *info );
    int16 cdecl (*GetInfoString)( int16 nr, int16 what, char *info, int16 maxLen );
@@ -1706,7 +1706,7 @@ int16 Abp_img2mfdb( IMG_HEADER *org, MFDB **dest, int16 do_trnsfm );
 
 /* Converts dev-depend. MFDB to IMG-Format, gives IMG-DATA-Length */
 /* dest=NULL serves ONLY img_len, returns OK on sucess */
-int16 Abp_mfdb2img( MFDB* org, IMG_HEADER **dest, int32 *img_len );
+int16 Abp_mfdb2img( MFDB* org, IMG_HEADER **dest, ssize_t *img_len );
 
 /******************************************************************************/
 /*                                                                            */
@@ -1783,9 +1783,9 @@ int16 Ast_isEmpty( const char *string );
 char *Ast_add( int16 anzahl, char *ergebnis, ... );
 
 /* Einen String mitels Blanks links-/rehtsbndig bzw. zentriert auf bestimte L„nge bringen */
-char *Ast_adl( char *string, int32 len );
-char *Ast_adr( char *string, int32 len );
-char *Ast_adc( char *string, int32 len );
+char *Ast_adl( char *string, ssize_t len );
+char *Ast_adr( char *string, ssize_t len );
+char *Ast_adc( char *string, ssize_t len );
 
 /* Zeichen aus einem String herausfiltern */
 char *Ast_filter( char *string, char *wrg_char, char *right_char );
@@ -1848,26 +1848,26 @@ char Akt_CharAtari2X( int16 nr, char ch );
 char Akt_CharX2Atari( int16 nr, char ch );
 int16 Akt_CharX2Unicode( int16 nr, char ch );
 char Akt_CharUnicode2X( int16 nr, int16 unicode );
-int32 Akt_CharXUtf2Unicode( int16 nr, char *string, int32 len, int16 *read_chars );
-char *Akt_CharUnicode2XUtf( int16 nr, int32 lunicode, char *result, int16 *used_chars );
+int32 Akt_CharXUtf2Unicode( int16 nr, char *string, ssize_t len, int16 *read_chars );
+char *Akt_CharUnicode2XUtf( int16 nr, ssize_t lunicode, char *result, int16 *used_chars );
 
 /* Konvertieren von Speicherbl”cken - Conversion of memory blocks */
-char *Akt_BlockAtari2X( char *dest_string, int16 nr, char *source_string, int32 len );
-char *Akt_BlockX2Atari( char *dest_string, int16 nr, char *source_string, int32 len );
-int16 *Akt_BlockX2Unicode( int16 *unicode, int16 nr, char *x_chrs, int32 len );
-char *Akt_BlockUnicode2X( char *x_chrs, int16 nr, int16 *unicode, int32 len );
-int16 *Akt_BlockXUtf2Unicode( int16 *unicode, int32 *uni_len, int16 nr, char *x_chrs, int32 len );
-char *Akt_BlockUnicode2XUtf( char *x_chrs, int32 *str_len, int16 nr, int16 *unicode, int32 len );
-char *Akt_BlockXUtf2U2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int32 src_len, int16 src_nr );
-char *Akt_BlockXUtf2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int32 src_len, int16 src_nr );
+char *Akt_BlockAtari2X( char *dest_string, int16 nr, char *source_string, ssize_t len );
+char *Akt_BlockX2Atari( char *dest_string, int16 nr, char *source_string, ssize_t len );
+int16 *Akt_BlockX2Unicode( int16 *unicode, int16 nr, char *x_chrs, ssize_t len );
+char *Akt_BlockUnicode2X( char *x_chrs, int16 nr, int16 *unicode, ssize_t len );
+int16 *Akt_BlockXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *x_chrs, ssize_t len );
+char *Akt_BlockUnicode2XUtf( char *x_chrs, ssize_t *str_len, int16 nr, int16 *unicode, ssize_t len );
+char *Akt_BlockXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr );
+char *Akt_BlockXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr );
 
 /* Konvertieren von Strings - Conversion of Strings */
 char *Akt_StringAtari2X( char *dest_string, int16 nr, char *source_string );
 char *Akt_StringX2Atari( char *dest_string, int16 nr, char *source_string );
 int16 *Akt_StringX2Unicode( int16 *unicode, int16 nr, char *string );
-int16 *Akt_StringXUtf2Unicode( int16 *unicode, int32 *uni_len, int16 nr, char *string );
-char *Akt_StringXUtf2U2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int16 src_nr );
-char *Akt_StringXUtf2XUtf( char *dest, int32 *dest_len, int16 dest_nr, char *source, int16 src_nr );
+int16 *Akt_StringXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *string );
+char *Akt_StringXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr );
+char *Akt_StringXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr );
 
 /******************************************************************************/
 
@@ -1935,11 +1935,11 @@ void Ate_delete( TEDINFO *tedi );
 
 /* ACS Malloc can be overwritten if linked before Library */
 /* Speicher allozieren */
-void *Ax_malloc( int32 size );
-void *Ax_glmalloc( int32 size );
+void *Ax_malloc( ssize_t size );
+void *Ax_glmalloc( ssize_t size );
 
 /* Mark Memory as free */
-void Ax_recycle( void *memory, int32 size );
+void Ax_recycle( void *memory, ssize_t size );
 void Ax_free( void *memory );
 void Ax_glfree( void *memory );
 
@@ -1947,10 +1947,10 @@ void Ax_glfree( void *memory );
 void Ax_ifree( void *memory );
 
 /* Speicher auf Les-/Schreibbarkeit prfen (Speicherschutz!) */
-int16 Ax_memCheck( const char *buffer, int32 len, int16 write );
+int16 Ax_memCheck( const char *buffer, ssize_t len, int16 write );
 
 /* Liste fr recyclebaren Speicher erzeugen/„ndern/l”schen */
-int16 Ax_setRecycleSize( int32 size, int16 amount, const char *beschreibung );
+int16 Ax_setRecycleSize( ssize_t size, int16 amount, const char *beschreibung );
 
 /* Akt. Statistik ber freie Listen zusammenstellen und liefern */
 MemFreeBlockStat *Ax_getRecycleStat( int16 *anzahl );
@@ -2539,12 +2539,12 @@ void Ascrp_clear( const char *ext );
 /* Reads from clipboard SCRAP."ext" or first Scrap-file  */
 /* If buffer==NULL, only Length will be returned, Buffer */
 /* and real ext are returned and TRUE, if all is ok      */
-int16 Ascrp_get( char *ext, void **buffer, int32 *len );
+int16 Ascrp_get( char *ext, void **buffer, ssize_t *len );
 
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */
 /* to a possibly existing file. -> TRUE if all is ok */
-int16 Ascrp_put (char *ext, void *buffer, int32 len, int16 append );
+int16 Ascrp_put (char *ext, void *buffer, ssize_t len, int16 append );
 
 /******************************************************************************/
 /*                                                                            */

@@ -1210,12 +1210,14 @@ extern char WARN_YSHRINK[];
 boolean ed_service(Awindow *self, int16 task, void *in_out);
 int16 ed_init(Awindow *win);
 void ed_term(Awindow *win);
+int16 CDECL user_control(PARMBLK *pb);
 
 
 /*
  * editor/edobkeys.c
  */
 char *key_string(int16 key);
+int16 key_code(const char *str);
 
 
 /*
@@ -1234,7 +1236,10 @@ void pack_ob(Obj_Head *obj);
 void del_obentry(Awindow *win, int16 obnr, boolean delref);
 void min_size(OBJ_ENTRY *entry, OBJECT *obj, int16 *minw, int16 *minh);
 void ed_edit(void);
+void ed_dragged(void);
 void undraw(Awindow *win, int16 obnr);
+void edob_next(void);
+void ed_delete(Awindow *self);
 
 
 /*
@@ -1248,10 +1253,6 @@ void edob_refs(void);
 void edob_pos(void);
 void ed_abort(void);
 void edob_resetref(void);
-void edob_specs(void);
-void edob_aflags(void);
-void edob_refs(void);
-void edob_pos(void);
 void edob_left(void);
 void edob_center(void);
 void edob_right(void);
@@ -1268,6 +1269,7 @@ void edob_up(void);
 void edob_down(void);
 void edob_sortyx(void);
 void edob_sortxy(void);
+void change_work(Awindow *win, OBJECT *tree, const char *title, void (*abort)(void), void (*cleanup)(OBJECT *tree), OBJECT *tree2, void (*f2)(void), void (*f3)(void));
 
 
 /*
@@ -1628,3 +1630,11 @@ extern Awindow WI_FILESEL;
  */
 int16 Amo_restart(Amouse *mouse);
 void Amo_return(int16 busy, Amouse *mouse);
+
+
+/*
+ * lib/drag.c
+ */
+void xline2(int16 x1, int16 x2, int16 y);
+void yline2(int16 y1, int16 y2, int16 x);
+
