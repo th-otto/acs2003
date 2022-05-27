@@ -321,7 +321,7 @@ static void make_title(Awindow *self, int16 title, int16 entry, boolean moveit)
 	{
 		if (aobj->type == 11000)
 		{
-			newbox = copysub_ob(acs, obj, 0, &protodrop);
+			newbox = copysub_ob(acs, obj, &protodrop, ROOT);
 		} else
 		{
 			thebar = objtree[ROOT].obj.ob_head;
@@ -334,9 +334,9 @@ static void make_title(Awindow *self, int16 title, int16 entry, boolean moveit)
 				stitle = objtree[stitle].obj.ob_next;
 				box = objtree[box].obj.ob_next;
 			}
-			newbox = copysub_ob(acs, obj, box, palette);
+			newbox = copysub_ob(acs, obj, palette, box);
 		}
-		newtitle = copysub_ob(acs, obj, idx, palette);
+		newtitle = copysub_ob(acs, obj, palette, idx);
 	}
 	
 	Adr_del(select, title);

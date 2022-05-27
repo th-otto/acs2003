@@ -114,7 +114,7 @@ static void new_menu(Awindow *self, int16 obnr)
 	parm = self->user;
 	acs = parm->acs;
 	obj = parm->obj;
-	newob = copysub_ob(acs, obj, ROOT, &protosub);
+	newob = copysub_ob(acs, obj, &protosub, ROOT);
 	obnr = (obnr - 2) / 3;
 	objtree = obj->object;
 	objtree[obnr].obj.ob_head = objtree[obnr].obj.ob_tail = newob;

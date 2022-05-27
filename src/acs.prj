@@ -99,7 +99,7 @@ editor\uecheck.c [-J- -Z- -R- -M-]
 editor\ueftext.c [-J- -Z- -R- -M-]
 editor\uetitle.c [-J- -Z- -R- -M-]
 editor\edobclas.c [-J- -Z- -R- -M-]
-editor\edobstru.s
+editor\edobstru.c [-J- -Z- -R- -M-]
 editor\edobsurf.s
 editor\edobobjc.s
 editor\edobusrm.s

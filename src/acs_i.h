@@ -1226,8 +1226,11 @@ int16 key_code(const char *str);
 void copy_ob(ACS_HEAD *acs, OBJ_ENTRY *dst, const OBJ_ENTRY *src);
 void del_ob(ACS_HEAD *acs, OBJ_ENTRY *obj);
 void unlink_ob(OBJ_ENTRY *objtree, int16 obnr);
-int16 copysub_ob(ACS_HEAD *acs, Obj_Head *obj, int16 obnr, Obj_Head *proto);
+int16 copysub_ob(ACS_HEAD *acs, Obj_Head *obj, Obj_Head *proto, int16 obnr);
 void pack_ob(Obj_Head *obj);
+void delsub_ob(ACS_HEAD *acs, Obj_Head *obj, int16 obnr);
+void moveto_ob(OBJ_ENTRY *tree, int16 src, int16 dst);
+void resize_ob(OBJ_ENTRY *objtree, int16 obnr, int16 w, int16 h, OBJECT *tree);
 
 
 /*
@@ -1240,6 +1243,10 @@ void ed_dragged(void);
 void undraw(Awindow *win, int16 obnr);
 void edob_next(void);
 void ed_delete(Awindow *self);
+int16 char_x(int16 x);
+int16 pixel_x(int16 x);
+int16 char_y(int16 x);
+int16 pixel_y(int16 x);
 
 
 /*
@@ -1487,6 +1494,7 @@ extern LISTPARM list_tedi;
 
 Obj_Head *dup_tedinfo(ACS_HEAD *acs, TEDINFO *ted);
 void del_tedinfo(ACS_HEAD *acs, Obj_Head *ted);
+Obj_Head *add_tedinfo(ACS_HEAD *acs, Obj_Head *obj);
 
 
 /*
