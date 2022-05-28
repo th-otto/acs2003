@@ -1,8 +1,12 @@
 #include "acs_i.h"
 
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
 static OBJ_ENTRY protoobj = {
 	NULL, NULL,
-	{ -1, -1, -1, G_BOX, 0, OS_OUTLINED, 0x00021100L, 0, 0, 32, 12 },
+	{ -1, -1, -1, G_BOX, 0, OS_OUTLINED, C_UNION(0x00021100L), 0, 0, 32, 12 },
 	{ NULL, NULL, AEO, 0, NULL, NULL, 0, 0 }
 };
 static Obj_Head protoobject = {

@@ -806,7 +806,7 @@ typedef struct
     /*  722 */ void (*DEBUG_MEM)(void *defective);       /* Debuggable */
     /*  726 */ char cfg_path [__PS__];                   /* config path initially = apppath*/
     /*  854 */ char scrp_path [__PS__];                  /* initialised scrap-path */
-    /*  982 */ void (*ACSerror)(int16 errmess, void *para);    /* error-Routine */
+    /*  982 */ void (*ACSerror)(int16 errmess, const void *para);    /* error-Routine */
     /*  986 */ int16 menu_id;                            /* ACC-Menu-ID or -1 */
     /*  988 */ char *dd_name;                            /* global available name for DD-Protos */
     /*  992 */ char *alert_name;                         /* own WinAlert-Name */
@@ -2434,6 +2434,7 @@ void DEBUG_MEM( void *defective );
    int16 nkc_cmp( int16 refkey, int16 kcode );
    int16 nkc_tolower( int16 key );
    int16 nkc_toupper( int16 key );
+   int16 nkc_exit(void);
 
 #endif      /* #ifndef __NKCC */
 

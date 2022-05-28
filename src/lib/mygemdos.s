@@ -1,14 +1,16 @@
+		.text
+
 mygemdos:
-		movea.l    ($000004F2).w,a0
+		movea.l    (0x000004F2).w,a0
 		move.l     40(a0),d0
-		cmpi.w     #$0102,2(a0)
+		cmpi.w     #0x0102,2(a0)
 		bge.s      chg1
 		move.w     28(a0),d0
-		lea.l      ($0000602C).w,a0
+		lea.l      (0x0000602C).w,a0
 		lsr.w      #1,d0
-		cmp.w      #$0004,d0
+		cmp.w      #0x0004,d0
 		bne.s      chg01
-		lea.l      $0000873C,a0
+		lea.l      0x0000873C,a0
 
 chg01:
 		move.l     a0,d0
@@ -30,7 +32,7 @@ post:
 		jmp        (a0)
 
 unset:
-		move.l     sint7,($0000007C).w
+		move.l     sint7,(0x0000007C).w
 		rts
 
 int7:
@@ -38,7 +40,7 @@ int7:
 		movea.l    sint7,a1
 		movea.l    _run,a0
 		move.l     oldpd,(a0)
-		tst.w      ($0000059E).w
+		tst.w      (0x0000059E).w
 		beq.s      short
 		move.w     14(a7),-(a7)
 
@@ -55,8 +57,10 @@ intret:
 
 	.globl accgemdos
 accgemdos:
+	.globl _accgemdos
+_accgemdos:
 		pea.l      mygemdos
-		move.l     #$00050021,-(a7)
+		move.l     #0x00050021,-(a7)
 		trap       #13
 		addq.l     #8,a7
 		move.l     d0,oldvec
@@ -64,8 +68,10 @@ accgemdos:
 
 	.globl oldgemdos
 oldgemdos:
+	.globl _oldgemdos
+_oldgemdos:
 		move.l     oldvec,-(a7)
-		move.l     #$00050021,-(a7)
+		move.l     #0x00050021,-(a7)
 		trap       #13
 		addq.l     #8,a7
 		rts

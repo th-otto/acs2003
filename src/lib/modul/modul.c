@@ -119,7 +119,9 @@ int16 Ash_module(const char *path)
 	}
 	if (oldmodule)
 	{
+#ifndef __GNUC__ /* silence compiler; already checked above */
 		if (mod->magic1 >= 0x41435336L && mod->magic1 <= 0x41435337L) /* 'ACS6', 'ACS7' */
+#endif
 		{
 			entry = ((struct ACSoldmod *)mod)->entry;
 			((struct ACSoldmod *)mod)->acsblk = ACSblk;

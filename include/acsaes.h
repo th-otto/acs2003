@@ -2615,7 +2615,7 @@ int16 mt_form_dial( const int16 flag, const int16 xlittle,
             const int16 ylittle, const int16 wlittle, const int16 hlittle,
             const int16 xbig, const int16 ybig, const int16 wbig, const int16 hbig,
             GlobalArray *globl );
-int16 mt_form_alert( const int16 defbutton, char *string, GlobalArray *globl );
+int16 mt_form_alert( const int16 defbutton, const char *string, GlobalArray *globl );
 int16 mt_form_error( const int16 errnum, GlobalArray *globl );
 int16 mt_form_center_grect( OBJECT *tree, GRECT *r, GlobalArray *globl );
 int16 mt_form_center( OBJECT *tree, int16 *x, int16 *y, int16 *w, int16 *h,
@@ -3305,7 +3305,7 @@ int16 wind_set( const int16 handle, const int16 what, ... );
 #define lbox_ascroll_to(box, first, box_rect, slider_rect) \
                                     mt_lbox_ascroll_to(box, first, box_rect, slider_rect, _globl)
 #define lbox_scroll_to(box, first, box_rect, slider_rect) \
-                                    mt_lbox_scroll_to(box, first, box_rect, slider_rect, _globl)
+                                    mt_lbox_ascroll_to(box, first, box_rect, slider_rect, _globl)
 #define lbox_bscroll_to(box, first, box_rect, slider_rect) \
                                     mt_lbox_bscroll_to(box, first, box_rect, slider_rect, _globl)
 #define lbox_cnt_items(box)         mt_lbox_cnt_items(box, _globl)
@@ -3592,7 +3592,7 @@ int16 form_do( OBJECT *tree, const int16 start );
 int16 form_dial( const int16 flag, const int16 xlittle, const int16 ylittle,
             const int16 wlittle, const int16 hlittle, const int16 xbig, const int16 ybig,
             const int16 wbig, const int16 hbig );
-int16 form_alert( const int16 defbutton, char *string );
+int16 form_alert( const int16 defbutton, const char *string );
 int16 form_error( const int16 errnum );
 int16 form_center( OBJECT *tree, int16 *x, int16 *y, int16 *w, int16 *h );
 int16 form_center_grect( OBJECT *tree, GRECT *r );

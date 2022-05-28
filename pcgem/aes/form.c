@@ -120,7 +120,7 @@ int16 mt_form_dial( const int16 flag, const int16 xlittle, const int16 ylittle,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_alert( const int16 defbutton, char *string, GlobalArray *globl )
+int16 mt_form_alert( const int16 defbutton, const char *string, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {52, 1, 1, 1, 0};

@@ -338,7 +338,7 @@ ULinList *Ash_fileselect(const char *title, int16 x, int16 y, char *path, char *
 }
 
 
-char *ConvertExt4Use(char *dst, char *src, char sep, boolean shortnames, boolean duplicates, boolean skip)
+static char *ConvertExt4Use(char *dst, char *src, char sep, boolean shortnames, boolean duplicates, boolean skip)
 {
 	char *lastsep;
 	char *srcptr;

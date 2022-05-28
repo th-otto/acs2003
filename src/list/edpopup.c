@@ -1,8 +1,12 @@
 #include "acs_i.h"
 
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
 static OBJ_ENTRY protopup = {
 	NULL, NULL,
-	{ -1, -1, -1, G_BOX, 0, OS_SHADOWED, 0x00ff1100L, 0, 0, 12, 6 },
+	{ -1, -1, -1, G_BOX, 0, OS_SHADOWED, C_UNION(0x00ff1100L), 0, 0, 12, 6 },
 	{ NULL, NULL, AEO, 0, NULL, NULL, 0, 0 }
 };
 static Obj_Head protopopup = {

@@ -106,7 +106,6 @@ static Obj_Head protowindow = {
 };
 
 static Obj_Head *copy_window(ACS_HEAD *acs, const Obj_Head *src);
-static void del_window(ACS_HEAD *acs, Obj_Head *obj);
 static OBJECT *new_work(Obj_Head *objlist);
 
 LISTPARM list_window = {

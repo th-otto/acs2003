@@ -48,7 +48,7 @@ int16 form_dial( const int16 flag, const int16 xlittle, const int16 ylittle,
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_alert( const int16 defbutton, char *string )
+int16 form_alert( const int16 defbutton, const char *string )
 {
    return mt_form_alert(defbutton, string, _globl);
 }

@@ -1576,6 +1576,20 @@ extern Awindow PUR_DESK;
 
 
 /*
+ * lib/initterm.c
+ */
+void ACSinitialize(void);
+void ACSterminate(void);
+
+
+/*
+ * lib/vdi_data.c
+ */
+void ACSInitLineA(void);
+
+
+
+/*
  * lib/main.c
  */
 extern char const _A_ERR_WISLOT[];
@@ -1645,4 +1659,3 @@ void Amo_return(int16 busy, Amouse *mouse);
  */
 void xline2(int16 x1, int16 x2, int16 y);
 void yline2(int16 y1, int16 y2, int16 x);
-

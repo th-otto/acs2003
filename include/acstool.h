@@ -436,7 +436,7 @@ typedef struct
    int16 argc;                   /* parameter passed to main routine */
    char **argv;                  /* argument list */
    char **env;                   /* environment */
-   void (*ACSerror)(int16 errmess, void *para);    /* Error-Routine */
+   void (*ACSerror)(int16 errmess, const void *para);    /* Error-Routine */
    void (*ACSaboutme)(void);     /* call used for 'about me' */
    int16 (*ACSinit0)(void);      /* Initialisierung vor der ACS-Initialisierung */
    int16 (*ACSinit)(void);       /* Initialisierung nach der ACS-Initialisierung */
