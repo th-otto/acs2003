@@ -100,7 +100,7 @@ editor\ueftext.c [-J- -Z- -R- -M-]
 editor\uetitle.c [-J- -Z- -R- -M-]
 editor\edobclas.c [-J- -Z- -R- -M-]
 editor\edobstru.c [-J- -Z- -R- -M-]
-editor\edobsurf.s
+editor\edobsurf.c [-J- -Z- -R- -M-]
 editor\edobobjc.s
 editor\edobusrm.s
 editor\edobboxm.s

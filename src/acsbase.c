@@ -154,7 +154,7 @@ static const char *const demotext[] = {
 #define NUM_DEMO_TEXT ((int)(sizeof(demotext) / sizeof(demotext[0])))
 
 
-static char *live_snap(void *obj, int32 val);
+static char *live_snap(void *obj, long val);
 static void validate(void);
 
 
@@ -608,9 +608,9 @@ static int16 ab_service(Awindow *self, int16 task, void *in_out)
 #pragma warn -par
 #endif
 
-static char *live_snap(void *obj, int32 val)
+static char *live_snap(void *obj, long val)
 {
-#if WITH_FIXES
+#if WITH_FIXES || defined(__GNUC__)
 static
 #endif
 	char buf[6];

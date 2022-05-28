@@ -15,8 +15,6 @@ static Awindow *part_make(void *a);
 static int16 part_init(Awindow *self);
 static void part_close(Awindow *self);
 
-static void ed_abort(void);
-
 #include "edparts.ah"
 
 static TEDINFO button = { "BUTTON", "", "", 3, 6, 2, 0x1180, 0, -1, 6, 0 };

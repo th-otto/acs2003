@@ -692,7 +692,6 @@ static void term(Awindow *self);
 static void acc_eref(Awindow *self);
 static void set_eref(Awindow *win);
 static void ref_edit(Awindow *win);
-static void new_name(Awindow *self, Obj_Head *obj);
 
 /******************************************************************************/
 /* -------------------------------------------------------------------------- */

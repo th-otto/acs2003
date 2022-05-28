@@ -209,14 +209,14 @@ static void fix_ob(void **ptr)
 {
 	if (*ptr != NULL)
 	{
-		*ptr = (void *)(((Obj_Head *)(*ptr))->oh_id);
+		*ptr = (void *)(int32)(((Obj_Head *)(*ptr))->oh_id);
 	}
 }
 
 
 static void unfix_ob(void **ptr)
 {
-	*ptr = trans[(short)*ptr];
+	*ptr = trans[(short)(int32)*ptr];
 }
 
 
@@ -278,30 +278,30 @@ boolean fix_all(ACS_HEAD *acs)
 	{
 		fix_list(acs->mlal_list[i], fix->m_alerts);
 	}
-	acs->wi_list = (Obj_Head *)acs->wi_list->oh_id; /* aka fix_ob(&acs->wi_list) */
-	acs->ob_list = (Obj_Head *)acs->ob_list->oh_id;
-	acs->me_list = (Obj_Head *)acs->me_list->oh_id;
-	acs->pu_list = (Obj_Head *)acs->pu_list->oh_id;
-	acs->al_list = (Obj_Head *)acs->al_list->oh_id;
-	acs->te_list = (Obj_Head *)acs->te_list->oh_id;
-	acs->ic_list = (Obj_Head *)acs->ic_list->oh_id;
-	acs->im_list = (Obj_Head *)acs->im_list->oh_id;
-	acs->st_list = (Obj_Head *)acs->st_list->oh_id;
-	acs->us_list = (Obj_Head *)acs->us_list->oh_id;
-	acs->rf_list = (Obj_Head *)acs->rf_list->oh_id;
-	acs->mo_list = (Obj_Head *)acs->mo_list->oh_id;
-	acs->if_list = (Obj_Head *)acs->if_list->oh_id;
+	acs->wi_list = (Obj_Head *)(int32)acs->wi_list->oh_id; /* aka fix_ob(&acs->wi_list) */
+	acs->ob_list = (Obj_Head *)(int32)acs->ob_list->oh_id;
+	acs->me_list = (Obj_Head *)(int32)acs->me_list->oh_id;
+	acs->pu_list = (Obj_Head *)(int32)acs->pu_list->oh_id;
+	acs->al_list = (Obj_Head *)(int32)acs->al_list->oh_id;
+	acs->te_list = (Obj_Head *)(int32)acs->te_list->oh_id;
+	acs->ic_list = (Obj_Head *)(int32)acs->ic_list->oh_id;
+	acs->im_list = (Obj_Head *)(int32)acs->im_list->oh_id;
+	acs->st_list = (Obj_Head *)(int32)acs->st_list->oh_id;
+	acs->us_list = (Obj_Head *)(int32)acs->us_list->oh_id;
+	acs->rf_list = (Obj_Head *)(int32)acs->rf_list->oh_id;
+	acs->mo_list = (Obj_Head *)(int32)acs->mo_list->oh_id;
+	acs->if_list = (Obj_Head *)(int32)acs->if_list->oh_id;
 	fix_ob((void **)&acs->descr.root);
 	fix_ob((void **)&acs->descr.acc);
 	for (mouse = acs->descr.mouse, i = 32 - 1; i >= 0; mouse++, i--)
 		fix_ob((void **)&mouse->form);
 	for (i = 0; i < MAX_LANGS; i++)
 	{
-		acs->mlst_list[i] = (Obj_Head *)acs->mlst_list[i]->oh_id;
+		acs->mlst_list[i] = (Obj_Head *)(int32)acs->mlst_list[i]->oh_id;
 	}
 	for (i = 0; i < MAX_LANGS; i++)
 	{
-		acs->mlal_list[i] = (Obj_Head *)acs->mlal_list[i]->oh_id;
+		acs->mlal_list[i] = (Obj_Head *)(int32)acs->mlal_list[i]->oh_id;
 	}
 	fix_config(&acs->config);
 	return TRUE;
@@ -692,7 +692,7 @@ static void fix_list(Obj_Head *list, void (*func)(Obj_Head *obj))
 			obj = items[i];
 			if (func != 0)
 				func(obj);
-			items[i] = (Obj_Head *)obj->oh_id;
+			items[i] = (Obj_Head *)(int32)obj->oh_id;
 		}
 	}
 }

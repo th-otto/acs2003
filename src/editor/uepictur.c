@@ -156,7 +156,7 @@ static OBJECT *edpi_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 static void edpi_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_picture;
-	sscanf(userdef->parm, "0x%lxL", &userblk->ub_parm);
+	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
 	userblk->ub_parm |= 1;
 	userblk->ub_serv = Auo_picture;
 	userblk->ub_ptr1 = userdef->data1;
@@ -198,7 +198,7 @@ static void edpi_ok(void)
 			newfdb->org.fd_addr = newfdb + 1;
 			newfdb->org.fd_stand = TRUE;
 			vr_trnfm(ACSblk->vdi_handle, &fdb->org, &newfdb->org);
-			sprintf(parm, "0x%lxL", auser->ub_parm & ~1);
+			sprintf(parm, "0x%lxL", (long)auser->ub_parm & ~1);
 			userdef.parm = parm;
 			userdef.serv = "Auo_picture";
 			userdef.type1 = DATA_PAR;

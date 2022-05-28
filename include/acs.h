@@ -1385,7 +1385,7 @@ int16 Awi_doform( Awindow *mod_dia, void *para );
 void Awi_diaabort( void );
 
 /* Shows Window-Alert */
-int16 Awi_alert( int16 but, char *text );
+int16 Awi_alert( int16 but, const char *text );
 
 /* Creates a Copy of Awindow x */
 Awindow *Awi_selfcreate( void *x );

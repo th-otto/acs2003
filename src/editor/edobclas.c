@@ -18,7 +18,6 @@ static void move_me(Awindow *self, Axywh *rect);
 #include "edobclas.ah"
 #include "edobclas.h"
 
-static int16 CDECL user_control(PARMBLK *pb);
 static int16 CDECL user_dummy(PARMBLK *pb);
 static void ed_info(Awindow *self);
 static void reorg(Obj_Head *obj, Awindow *win);
@@ -972,7 +971,7 @@ static void map_user(Obj_Head *src, AUSERBLK *dst)
 	} else
 	{
 		dst->ub_code = user_dummy;
-		sscanf(((Obj_Head *)user->ub_parm)->label, "0x%lx", &dst->ub_parm);
+		sscanf(((Obj_Head *)user->ub_parm)->label, "0x%lx", (long *)&dst->ub_parm);
 	}
 }
 

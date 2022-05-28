@@ -407,7 +407,7 @@ static OBJECT *edar_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 static void edar_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_arrows;
-	sscanf(userdef->parm, "0x%lxL", &userblk->ub_parm);
+	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
 	userblk->ub_serv = userblk->ub_ptr1 = userblk->ub_ptr2 = userblk->ub_ptr3 = NULL;
 	userblk->bubble = Ast_isEmpty(userdef->bubble) ? NULL : userdef->bubble;
 	userblk->context = Ast_isEmpty(userdef->context) ? NULL : userdef->context;
@@ -436,7 +436,7 @@ static void edar_ok(void)
 	tree = ACSblk->ev_window->work;
 	auser = tree[ED_ARROW_SAMPLE].ob_spec.auserblk;
 	
-	sprintf(parm, "0x%lxL", auser->ub_parm);
+	sprintf(parm, "0x%lxL", (long)auser->ub_parm);
 	userdef.parm = parm;
 	userdef.serv = "";
 	userdef.type1 = userdef.type2 = userdef.type3 = NONE_PAR;

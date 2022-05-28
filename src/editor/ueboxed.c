@@ -193,7 +193,7 @@ static OBJECT *edbe_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 static void edbe_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_boxed;
-	sscanf(userdef->parm, "0x%lxL", &userblk->ub_parm);
+	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
 	userblk->ub_serv = Auo_boxed;
 	if (userdef->type1 == STR_PAR)
 		userblk->ub_ptr1 = userdef->data1;
@@ -234,7 +234,7 @@ static void edbe_ok(void)
 	if (length > BE_MAXLEN)
 		length = BE_MAXLEN;
 	beparm->parm.textlen = length;
-	sprintf(parm, "0x%lxL", beparm->val);
+	sprintf(parm, "0x%lxL", (long)beparm->val);
 	userdef.parm = parm;
 	userdef.serv = "Auo_boxed";
 	Auo_boxed(&tree[ED_BOXED_TEXT], AUO_GETVAL, &text);

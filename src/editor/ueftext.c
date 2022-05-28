@@ -142,7 +142,7 @@ static OBJECT *edf_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	if (userdef->type1 == STR_PAR)
 	{
 		str = userdef->data1;
-		user->ub_serv(ptr, AUO_SETVAL, str);
+		user->ub_serv(ptr, AUO_SETVAL, NO_CONST(str));
 	} else
 	{
 		str = "";
@@ -179,7 +179,7 @@ static OBJECT *edf_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 static void edf_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_ftext;
-	sscanf(userdef->parm, "0x%lxL", &userblk->ub_parm);
+	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
 	userblk->ub_serv = Auo_ftext;
 	if (userdef->type1 == STR_PAR)
 		userblk->ub_ptr1 = userdef->data1;
@@ -215,7 +215,7 @@ static void edf_ok(void)
 	tree = ACSblk->ev_window->work;
 	auser = tree[ED_FTEXT_SAMPLE].ob_spec.auserblk;
 	
-	sprintf(parm, "0x%lxL", auser->ub_parm);
+	sprintf(parm, "0x%lxL", (long)auser->ub_parm);
 	userdef.parm = parm;
 	userdef.serv = "Auo_ftext";
 	Aob_gettext(tree, ED_FTEXT_TEXT1, buf);

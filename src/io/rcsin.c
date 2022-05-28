@@ -12,10 +12,14 @@ typedef struct {
 static dfn *dfna;
 static short dfn_size;
 
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
 static OBJ_ENTRY const obsproto = {
 	NULL,
 	NULL,
-	{ NIL, NIL, NIL, G_BOX, OF_NONE, OS_OUTLINED, 0x00021100L, 0, 0, 32, 12 },
+	{ NIL, NIL, NIL, G_BOX, OF_NONE, OS_OUTLINED, C_UNION(0x00021100L), 0, 0, 32, 12 },
 	{ NULL, NULL, AEO, 0, NULL, NULL, 0, 0, }
 };
 

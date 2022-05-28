@@ -21,8 +21,8 @@ static void ed3d_ok(void);
 #include "ue3dbutt.ah"
 #include "ue3dbutt.h"
 
-static char *live_offset(void *obj, int32 val);
-static char *live_thickness(void *obj, int32 val);
+static char *live_offset(void *obj, long val);
+static char *live_thickness(void *obj, long val);
 
 static OBJECT *ed3d_object_tree(AUSER_DEF *user, OBJECT *obj);
 static void ed3d_test_it(AUSER_DEF *user, AUSERBLK *userblk);
@@ -455,7 +455,7 @@ static OBJECT *ed3d_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 static void ed3d_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_3Dbutton;
-	sscanf(userdef->parm, "0x%lxL", &userblk->ub_parm);
+	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
 	userblk->ub_serv = Auo_string;
 	if (userdef->type1 == STR_PAR)
 		userblk->ub_ptr1 = userdef->data1;
@@ -491,7 +491,7 @@ static void ed3d_ok(void)
 	tree = ACSblk->ev_window->work;
 	auser = tree[ED_3DBUTTON_SAMPLE].ob_spec.auserblk;
 	
-	sprintf(parm, "0x%lxL", auser->ub_parm);
+	sprintf(parm, "0x%lxL", (long)auser->ub_parm);
 	userdef.parm = parm;
 	userdef.serv = "Auo_string";
 	Auo_boxed(&tree[ED_3DBUTTON_TEXT], AUO_GETVAL, &text);
@@ -522,8 +522,11 @@ static void ed3d_ok(void)
 
 /* -------------------------------------------------------------------------- */
 
-static char *live_offset(void *obj, int32 val)
+static char *live_offset(void *obj, long val)
 {
+#if WITH_FIXES || defined(__GNUC__)
+	static
+#endif
 	char buf[6];
 	Awiob ob;
 	int32 sval;
@@ -555,8 +558,11 @@ static char *live_offset(void *obj, int32 val)
 
 /* -------------------------------------------------------------------------- */
 
-static char *live_thickness(void *obj, int32 val)
+static char *live_thickness(void *obj, long val)
 {
+#if WITH_FIXES || defined(__GNUC__)
+	static
+#endif
 	char buf[6];
 	Awiob ob;
 	int16 sval;

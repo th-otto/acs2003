@@ -788,8 +788,8 @@ typedef struct
    int16 res5;                      /*                            */
    void  *res6;                     /*                            */
    void  *res7;                     /* interne DOS- Speicherliste */
-   void  (*resv_intmem)();          /* DOS- Speicher erweitern    */
-   int32 (*etv_critic)();           /* etv_critic des GEMDOS      */
+   void  (*resv_intmem)(void);      /* DOS- Speicher erweitern    */
+   int32 (*etv_critic)(short err);  /* etv_critic des GEMDOS      */
    char  *((*err_to_str)(char e));  /* Umrechnung Code->Klartext  */
    int32 res8;                      /*                            */
    int32 res9;                      /*                            */
@@ -897,29 +897,25 @@ extern long _PgmSize;         /* Im Startup-Code definiert */
 /******************************************************************************/
 
 #ifndef __GNUC__
-   #define TOSFKT
-   
    /* Achtung: Diese Funktion ist NICHT multithreading-fest! */
    int32 cdecl bios( int16 fkt_nr, ... );
-#else
-   #define TOSFKT static
 #endif
 
 /******************************************************************************/
 
-TOSFKT int32 Bconin( const int16 dev );
-TOSFKT void Bconout( const int16 dev, const int16 c );
-TOSFKT int16 Bconstat( const int16 dev );
-TOSFKT int32 Bcostat( const int16 dev );
-TOSFKT int32 Drvmap( void );
-TOSFKT BPB *Getbpb( const int16 dev );
-TOSFKT int32 Getmpb( const MPB *p_mpb );
-TOSFKT int32 Kbshift( const int16 mode );
-TOSFKT int32 Mediach( const int16 dev );
-TOSFKT int32 Rwabs( const int16 rwflag, const void *buf, const int16 count,
+int32 Bconin( const int16 dev );
+void Bconout( const int16 dev, const int16 c );
+int16 Bconstat( const int16 dev );
+int32 Bcostat( const int16 dev );
+int32 Drvmap( void );
+BPB *Getbpb( const int16 dev );
+int32 Getmpb( const MPB *p_mpb );
+int32 Kbshift( const int16 mode );
+int32 Mediach( const int16 dev );
+int32 Rwabs( const int16 rwflag, const void *buf, const int16 count,
          const int16 recno, const int16 dev, const int32 lrecno );
-TOSFKT void (*Setexc( const int16 vecnum, const void (*vec)(void) ))(void);
-TOSFKT int32 Tickcal( void );
+void (*Setexc( const int16 vecnum, const void (*vec)(void) ))(void);
+int32 Tickcal( void );
 
 /******************************************************************************/
 /*                                                                            */
@@ -934,53 +930,53 @@ TOSFKT int32 Tickcal( void );
 
 /******************************************************************************/
 
-TOSFKT int32 Bconmap( const int16 devno );
-TOSFKT int16 HasBconmap( void );
-TOSFKT void Bioskeys( void );
-TOSFKT int16 Blitmode( const int16 mode );
-TOSFKT int32 Buffoper( const int16 mode );
-TOSFKT int32 Buffptr( const SBUFPTR *sptr );
-TOSFKT int16 Cursconf( const int16 function, const int16 operand );
-TOSFKT void Dbmsg( const int16 rsrvd, const int16 msg_num, const int32 msg_arg );
-TOSFKT int32 Devconnect( int16 source, int16 dest, int16 clk, int16 prescale, int16 protocol );
-TOSFKT int32 DMAread( const int32 sector, const int16 count, void *buffer, const int16 devno );
-TOSFKT int32 DMAwrite( const int32 sector, const int16 count, void *buffer, const int16 devno );
-TOSFKT void Dosound( const char *ptr );
-TOSFKT void Dsp_Available( int32 *xavail, int32 *yavail );
-TOSFKT void Dsp_BlkBytes( UCHAR *data_in, int32 size_in, UCHAR *data_out, int32 size_out );
-TOSFKT void Dsp_BlkHandShake( UCHAR *data_in, int32 size_in, UCHAR *data_out, int32 size_out );
-TOSFKT void Dsp_BlkUnpacked( int32 *data_in, int32 size_in, int32 *data_out, int32 size_out );
-TOSFKT void Dsp_BlkWords( int16 *data_in, int32 size_in, int16 *data_out, int32 size_out );
-TOSFKT void Dsp_DoBlock( char *data_in, int32 size_in, char *data_out, int32 size_out );
-TOSFKT void Dsp_ExecBoot( char *codeptr, int32 codesize, int16 ability );
-TOSFKT void Dsp_ExecProg( char *codeptr, int32 codesize, int16 ability );
-TOSFKT void Dsp_FlushSubroutines( void );
-TOSFKT int16 Dsp_GetProgAbility( void );
-TOSFKT int16 Dsp_GetWordSize( void );
-TOSFKT int16 Dsp_Hf0( int16 flag );
-TOSFKT int16 Dsp_Hf1( int16 flag );
-TOSFKT int16 Dsp_Hf2( void );
-TOSFKT int16 Dsp_Hf3( void );
-TOSFKT CHAR Dsp_HStat( void );
-TOSFKT CHAR Dsp_InqSubrAbility( int16 ability );
-TOSFKT void Dsp_InStream( char *data_in, int32 block_size, int32 num_blocks, int32 *blocks_done );
-TOSFKT void Dsp_IOStream( char *data_in, char *data_out, int32 block_insize, int32 block_outsize,
+int32 Bconmap( const int16 devno );
+int16 HasBconmap( void );
+void Bioskeys( void );
+int16 Blitmode( const int16 mode );
+int32 Buffoper( const int16 mode );
+int32 Buffptr( const SBUFPTR *sptr );
+int16 Cursconf( const int16 function, const int16 operand );
+void Dbmsg( const int16 rsrvd, const int16 msg_num, const int32 msg_arg );
+int32 Devconnect( int16 source, int16 dest, int16 clk, int16 prescale, int16 protocol );
+int32 DMAread( const int32 sector, const int16 count, void *buffer, const int16 devno );
+int32 DMAwrite( const int32 sector, const int16 count, void *buffer, const int16 devno );
+void Dosound( const char *ptr );
+void Dsp_Available( int32 *xavail, int32 *yavail );
+void Dsp_BlkBytes( UCHAR *data_in, int32 size_in, UCHAR *data_out, int32 size_out );
+void Dsp_BlkHandShake( UCHAR *data_in, int32 size_in, UCHAR *data_out, int32 size_out );
+void Dsp_BlkUnpacked( int32 *data_in, int32 size_in, int32 *data_out, int32 size_out );
+void Dsp_BlkWords( int16 *data_in, int32 size_in, int16 *data_out, int32 size_out );
+void Dsp_DoBlock( char *data_in, int32 size_in, char *data_out, int32 size_out );
+void Dsp_ExecBoot( char *codeptr, int32 codesize, int16 ability );
+void Dsp_ExecProg( char *codeptr, int32 codesize, int16 ability );
+void Dsp_FlushSubroutines( void );
+int16 Dsp_GetProgAbility( void );
+int16 Dsp_GetWordSize( void );
+int16 Dsp_Hf0( int16 flag );
+int16 Dsp_Hf1( int16 flag );
+int16 Dsp_Hf2( void );
+int16 Dsp_Hf3( void );
+CHAR Dsp_HStat( void );
+CHAR Dsp_InqSubrAbility( int16 ability );
+void Dsp_InStream( char *data_in, int32 block_size, int32 num_blocks, int32 *blocks_done );
+void Dsp_IOStream( char *data_in, char *data_out, int32 block_insize, int32 block_outsize,
          int32 num_blocks, int32 *blocks_done );
-TOSFKT int16 Dsp_LoadProg( char *file, int16 ability, char *buf );
-TOSFKT int16 Dsp_LoadSubroutine( char *ptr, int32 size, int16 ability );
-TOSFKT CHAR Dsp_Lock( void );
-TOSFKT int32 Dsp_LodToBinary( char *file, char *codeptr );
-TOSFKT CHAR Dsp_MultBlocks( int32 numsend, int32 numreceive, DSPBLOCK *sendblk,
+int16 Dsp_LoadProg( char *file, int16 ability, char *buf );
+int16 Dsp_LoadSubroutine( char *ptr, int32 size, int16 ability );
+CHAR Dsp_Lock( void );
+int32 Dsp_LodToBinary( char *file, char *codeptr );
+CHAR Dsp_MultBlocks( int32 numsend, int32 numreceive, DSPBLOCK *sendblk,
          DSPBLOCK *receiveblock );
-TOSFKT void Dsp_OutStream( char *data_out, int32 block_size, int32 num_blocks, int32 *blocks_done );
-TOSFKT void Dsp_RemoveInterrupts( int16 mask );
-TOSFKT int16 Dsp_RequestUniqueAbility( void );
-TOSFKT int16 Dsp_Reserve( int32 xreserve, int32 yreserve );
-TOSFKT int16 Dsp_RunSubroutine( int16 handle );
-TOSFKT void Dsp_SetVectors( void (*receiver)(void), int32 (*transmitter)(void) );
-TOSFKT void Dsp_TriggerHC( int16 vector );
-TOSFKT void Dsp_Unlock( void );
-TOSFKT int32 Dsptristate( int16 dspxmit, int16 dsprec );
+void Dsp_OutStream( char *data_out, int32 block_size, int32 num_blocks, int32 *blocks_done );
+void Dsp_RemoveInterrupts( int16 mask );
+int16 Dsp_RequestUniqueAbility( void );
+int16 Dsp_Reserve( int32 xreserve, int32 yreserve );
+int16 Dsp_RunSubroutine( int16 handle );
+void Dsp_SetVectors( void (*receiver)(void), int32 (*transmitter)(void) );
+void Dsp_TriggerHC( int16 vector );
+void Dsp_Unlock( void );
+int32 Dsptristate( int16 dspxmit, int16 dsprec );
 void EgetPalette( int16 colorNum, int16 count, int16 *palettePtr );
 int16 EgetShift( void );
 int16 EsetBank( int16 bankNum );
@@ -1145,7 +1141,7 @@ int16 Fsfirst( const char *fspec, int16 attribs );
 int16 Fsnext( void );
 int32 Fsymlink( char *oldname, char *newname );
 int32 Funlock( int16 handle );
-int32 Fwrite( int16 handle, int32 count, void *buf );
+int32 Fwrite( int16 handle, int32 count, const void *buf );
 int32 Fxattr( int16 flag, char *name, XATTR *xattr );
 int32 Lock( const char *path );
 int32 Maddalt( void *start, int32 size );

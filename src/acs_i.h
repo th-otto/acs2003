@@ -1133,8 +1133,6 @@ extern Aconfig ACSconfig;
  */
 extern Awindow WI_MOUSE;
 
-void set_mouse(Awindow *win);
-
 
 /*
  * edit2/ediconed.c
@@ -1231,12 +1229,13 @@ void pack_ob(Obj_Head *obj);
 void delsub_ob(ACS_HEAD *acs, Obj_Head *obj, int16 obnr);
 void moveto_ob(OBJ_ENTRY *tree, int16 src, int16 dst);
 void resize_ob(OBJ_ENTRY *objtree, int16 obnr, int16 w, int16 h, OBJECT *tree);
+void free_ob(OBJ_ENTRY *tree, int16 obnr);
 
 
 /*
  * editor/edobsurf.c
  */
-void del_obentry(Awindow *win, int16 obnr, boolean delref);
+void del_obentry(Awindow *win, int16 obnr, boolean flatten);
 void min_size(OBJ_ENTRY *entry, OBJECT *obj, int16 *minw, int16 *minh);
 void ed_edit(void);
 void ed_dragged(void);
@@ -1277,6 +1276,7 @@ void edob_down(void);
 void edob_sortyx(void);
 void edob_sortxy(void);
 void change_work(Awindow *win, OBJECT *tree, const char *title, void (*abort)(void), void (*cleanup)(OBJECT *tree), OBJECT *tree2, void (*f2)(void), void (*f3)(void));
+void open_it(void);
 
 
 /*

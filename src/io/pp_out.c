@@ -650,7 +650,7 @@ static void out_obj(Obj_Head *list, const char *title)
 					(char)object.ob_type == G_IBOX ||
 					(char)object.ob_type == G_BOXCHAR)
 				{
-					sprintf(iostring, "ob_spec: (index: $%08lx);", object.ob_spec.index);
+					sprintf(iostring, "ob_spec: (index: $%08lx);", (long)object.ob_spec.index);
 #if 0 /* FIXME: missing */
 				} else if ((char)object.ob_type == G_TEXT ||
 					(char)object.ob_type == G_FTEXT ||
@@ -676,7 +676,11 @@ static void out_obj(Obj_Head *list, const char *title)
 						str = entry->type->label;
 					else
 						str = "0";
+#if WITH_FIXES || defined(__GNUC__)
+					sprintf(iostring, "(acs: (");
+#else
 					sprintf(iostring, "(acs: (", mapptr[j], tree->label); /* BUG: too many arguments for format */
+#endif
 					save_string(iostring);
 					if (aobject.click != NULL)
 					{

@@ -365,7 +365,7 @@ static OBJECT *edin_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 static void edin_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_innerframe;
-	sscanf(userdef->parm, "0x%lxL", &userblk->ub_parm);
+	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
 	userblk->ub_serv = Auo_string;
 	if (userdef->type1 == STR_PAR)
 		userblk->ub_ptr1 = userdef->data1;
@@ -401,7 +401,7 @@ static void edin_ok(void)
 	tree = ACSblk->ev_window->work;
 	auser = tree[ED_INNER_SAMPLE].ob_spec.auserblk;
 	
-	sprintf(parm, "0x%lxL", auser->ub_parm);
+	sprintf(parm, "0x%lxL", (long)auser->ub_parm);
 	userdef.parm = parm;
 	userdef.serv = "Auo_string";
 	Auo_boxed(&tree[ED_INNER_TEXT], AUO_GETVAL, &text);

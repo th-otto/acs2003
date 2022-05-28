@@ -541,7 +541,7 @@ static void out_obj(Obj_Head *list, const char *title)
 					(char)object.ob_type == G_IBOX ||
 					(char)object.ob_type == G_BOXCHAR)
 				{
-					sprintf(iostring, " %#010lxL\t\t\t\t", object.ob_spec.index);
+					sprintf(iostring, " %#010lxL\t\t\t\t", (long)object.ob_spec.index);
 				} else if ((char)object.ob_type == G_TITLE ||
 					(char)object.ob_type == G_STRING ||
 					(char)object.ob_type == G_BUTTON)

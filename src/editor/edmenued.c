@@ -463,7 +463,7 @@ boolean me_service(Awindow *self, int16 task, void *in_out)
 
 static void ti_delete(Awindow *self)
 {
-	boolean delref;
+	boolean flatten;
 	int16 obnr;
 	int16 title;
 	OBJEDPARM *parm;
@@ -471,7 +471,7 @@ static void ti_delete(Awindow *self)
 	
 	if (self != ACSblk->Aselect.window)
 		return;
-	delref = (ACSblk->ev_mmokstate & K_CTRL) != 0;
+	flatten = (ACSblk->ev_mmokstate & K_CTRL) != 0;
 	parm = self->user;
 	ACSblk->Aselect.next = 0; /* Adr_start() */
 	while ((obnr = Adr_next()) >= 0)
@@ -480,7 +480,7 @@ static void ti_delete(Awindow *self)
 		if (aobj->type == 11000)
 		{
 			Adr_del(self, obnr);
-			del_obentry(self, obnr, delref);
+			del_obentry(self, obnr, flatten);
 		}
 		if (aobj->type == 11001)
 		{

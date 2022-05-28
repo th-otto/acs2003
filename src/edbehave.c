@@ -29,7 +29,7 @@ const char *const mlmess[AD_COUNT] = {
 	_A_ERR_ACC,
 	_A_ERR_MESS,
 	_A_ERR_WINDOW,
-	_A_ERR_WISLOT,
+	_A_ERR_WISLOT_GENERAL,
 	_A_GEN_IO,
 	_A_GEN_MEM,
 	_A_GEN_MOD,

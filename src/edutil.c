@@ -305,7 +305,7 @@ boolean new2label(ACS_HEAD *acs, Obj_Head *obj, const char *title)
 
 /* -------------------------------------------------------------------------- */
 
-static wicalc_pos(long val, long div, long mul, int16 min, int16 max)
+static int16 wicalc_pos(long val, long div, long mul, int16 min, int16 max)
 {
 	int16 newval;
 	

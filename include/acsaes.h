@@ -283,6 +283,9 @@ extern "C" {
 #define K_LSHIFT              0x0002
 #define K_CTRL                0x0004
 #define K_ALT                 0x0008
+#ifndef K_SHIFT
+#define K_SHIFT (K_LSHIFT | K_RSHIFT)
+#endif
 
 /******************************************************************************/
 
@@ -3061,11 +3064,11 @@ void mt_edit_set_color( OBJECT *tree, const int16 obj, const int16 tcolor, const
                                        mt_evnt_mouse(a, b, c, d, e, f, g, h, i, _globl)
 #define evnt_mesag(pbuff)              mt_evnt_mesag(pbuff, _globl)
 #define evnt_timer(ev_tlocount, ev_thicount) \
-                                       mt_evnt_timer(((int32)(ev_thicount)<<32) | (int32)(ev_tlocount), _globl)
+                                       mt_evnt_timer(((int32)(ev_thicount)<<16) | (uint32)(uint16)(ev_tlocount), _globl)
 #define evnt_multi(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w) \
-                                       mt_evnt_multi(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, ((int32)(q)<<16)|(int32)(p), r, s, t, u, v, w, _globl)
+                                       mt_evnt_multi(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, ((int32)(q)<<16)|(uint32)(uint16)(p), r, s, t, u, v, w, _globl)
 #define evnt_xmulti(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x) \
-                                       mt_evnt_xmulti(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, ((int32)(q)<<16)|(int32)(p), r, s, t, u, v, w, x, _globl)
+                                       mt_evnt_xmulti(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, ((int32)(q)<<16)|(uint32)(uint16)(p), r, s, t, u, v, w, x, _globl)
 #define EVNT_multi(a, b, c, d, e, f, g, h) \
                                        mt_EVNT_multi(a, b, c, d, e, f, g, h, _globl)
 #define evnt_dclick(rate, setit)       mt_evnt_dclick(rate, setit, _globl)

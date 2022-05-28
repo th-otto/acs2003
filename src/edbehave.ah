@@ -62,7 +62,8 @@ static char _A_DEFECTIVE_MEM[] = "[1][ Auf fremden Speicher | wurde zugegriffen!
 static char _A_ERR_ACC[] = "[2][ | Soll das Accessory | >>               << | gestartet werden?| ][Ja|  Nein  ]";
 static char _A_ERR_MESS[] = "[2][ Unbekannte GEM-Nachricht | erhalten.| ID = '%s'| Weiterhin berichten?][Ja|  Nein  ]";
 static char _A_ERR_WINDOW[] = "[3][ Keine freie GEM-Fenster-ID | mehr vorhanden!| Abhilfe: Ein offenes| GEM-Fenster schliežen.][    OK    ]";
-static char const _A_ERR_WISLOT[] = "[3][ Kein freier ACS-Fenster- | Platz mehr vorhanden!| Abhilfe: Ein ACS-Fenster| l”schen.][    OK    ]";
+/* FIXME: duplicate in library */
+static char const _A_ERR_WISLOT_GENERAL[] = "[3][ Kein freier ACS-Fenster- | Platz mehr vorhanden!| Abhilfe: Ein ACS-Fenster| l”schen.][    OK    ]";
 static char _A_GENERAL[] = "[3][ Es ist ein allgemeiner | Fehler aufgetreten! ][ Abbruch ]";
 static char _A_GENERAL_STR[] = "[1][ Ein Fehler ist aufgetreten! | %s][ Abbruch ]";
 static char _A_GEN_IO[] = "[1][ Es ist ein Fehler bei der | Ein-/Ausgabe aufgetreten!][ Abbruch ]";
@@ -213,7 +214,8 @@ static char _A_DEFECTIVE_MEM[] = "[1][ You accessed | foreign memory! ][ Cancel 
 static char _A_ERR_ACC[] = "[2][ | Do you want to load| >>               << | as a acessory?| ][ Yes | No ]";
 static char _A_ERR_MESS[] = "[2][ Unknown GEM-message| received.| ID = '%s'| Continue displaying?][ Yes | No ]";
 static char _A_ERR_WINDOW[] = "[3][ No more free window-slots | available. Please close an | open GEM-Window.][  OK  ]";
-static char const _A_ERR_WISLOT[] = "[3][ No more free ACS-window-slot | available, please delete an | ACS-window.][  OK  ]";
+/* FIXME: duplicate in library */
+static char const _A_ERR_WISLOT_GENERAL[] = "[3][ No more free ACS-window-slot | available, please delete an | ACS-window.][  OK  ]";
 static char _A_GENERAL[] = "[3][ A general error occured. ][ Cancel ]";
 static char _A_GENERAL_STR[] = "[1][ A general error occured:| %s][ Cancel ]";
 static char _A_GEN_IO[] = "[1][ A general i/o-error| occured.][ Cancel ]";

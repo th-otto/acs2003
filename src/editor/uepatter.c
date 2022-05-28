@@ -125,7 +125,7 @@ static OBJECT *edpa_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 static void edpa_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_pattern;
-	sscanf(userdef->parm, "0x%lxL", &userblk->ub_parm);
+	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
 	userblk->ub_serv = NULL;
 	userblk->ub_ptr1 = userblk->ub_ptr2 = userblk->ub_ptr3 = NULL;
 	userblk->bubble =  NULL;
@@ -150,7 +150,7 @@ static void edpa_ok(void)
 	tree = ACSblk->ev_window->work;
 	auser = tree[ED_PATTERN_SAMPLE].ob_spec.auserblk;
 	
-	sprintf(parm, "0x%lxL", auser->ub_parm);
+	sprintf(parm, "0x%lxL", (long)auser->ub_parm);
 	userdef.parm = parm;
 	userdef.serv = "";
 	userdef.type1 = userdef.type2 = userdef.type3 = NONE_PAR;

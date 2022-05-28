@@ -659,9 +659,9 @@ static void set_window(Awindow *self)
 #pragma warn -par
 #endif
 
-static char *live_snap(void *obj, int32 val)
+static char *live_snap(void *obj, long val)
 {
-#if WITH_FIXES
+#if WITH_FIXES || defined(__GNUC__)
 static
 #endif
 	char buf[6];
@@ -669,6 +669,9 @@ static
 	
 	switch ((int)val)
 	{
+#if WITH_FIXES || defined(__GNUC__)
+	default:
+#endif
 	case 0:
 		snap = 1;
 		break;
