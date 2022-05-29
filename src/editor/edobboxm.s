@@ -315,8 +315,8 @@ edbo_ok:
 		movem.l    (a7)+,a2-a4
 		rts
 
-	.globl set_box
-set_box:
+	.globl edbo_set_box
+edbo_set_box:
 		movem.l    d3/a2-a4,-(a7)
 		subq.w     #2,a7
 		movea.l    a0,a3

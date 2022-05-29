@@ -578,7 +578,7 @@ static void eded_try(void)
 				Aob_delete(tree);
 			} else
 			{
-				change_work(self, tree, testmode, ed_abort, Aob_delete, NULL, 0, 0);
+				change_work(self, tree, testmode, ed_abort, Aob_delete, NULL, NULL, NULL);
 			}
 		} else if (find_entry(acs->me_list, obj->label) == obj)
 		{
@@ -587,7 +587,7 @@ static void eded_try(void)
 			menu->ob_width = self->wi_work.w;
 			menu->ob_height = self->wi_work.h;
 			menu->ob_state |= AOS_FIXED;
-			change_work(self, menu, testmode, ed_abort, Aob_delete, tree, 0, 0);
+			change_work(self, menu, testmode, ed_abort, Aob_delete, tree, NULL, NULL);
 		} else if (find_entry(acs->pu_list, obj->label) == obj)
 		{
 			self->init(self);

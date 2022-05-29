@@ -771,6 +771,12 @@ static boolean rubberbox(Awindow *self, int16 obnr, int16 x, int16 y, int16 *dst
 			case AOS_CLRIGHT:
 				maxx = tree[obnr].ob_width - tree[child].ob_width + ACSblk->gl_wbox;
 				break;
+#ifdef __GNUC__
+			/* shut up compiler */
+			default:
+				maxx = 0;
+				break;
+#endif
 			}
 			if (minw < maxx)
 				minw = maxx;
@@ -792,6 +798,12 @@ static boolean rubberbox(Awindow *self, int16 obnr, int16 x, int16 y, int16 *dst
 			case AOS_CLBOTTOM:
 				maxy = tree[obnr].ob_height - tree[child].ob_height + ACSblk->gl_hbox;
 				break;
+#ifdef __GNUC__
+			/* shut up compiler */
+			default:
+				maxy = 0;
+				break;
+#endif
 			}
 			if (minh < maxy)
 				minh = maxy;
@@ -817,6 +829,11 @@ static boolean rubberbox(Awindow *self, int16 obnr, int16 x, int16 y, int16 *dst
 	} else
 	{
 		rw = rh = 30000;
+#ifdef __GNUC__
+		/* shut up compiler */
+		parent = 0;
+		px = py = 0;
+#endif
 	}
 	graf_mkstate(&mox, &moy, &button, &kstate);
 	for (;;)

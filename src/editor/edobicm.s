@@ -112,8 +112,8 @@ edoic_ok_2:
 		movem.l    (a7)+,a2-a5
 		rts
 
-	.globl set_icon
-set_icon:
+	.globl edoic_set_icon
+edoic_set_icon:
 		movem.l    a2-a4,-(a7)
 		movea.l    a0,a3
 		lea.l      sm,a4

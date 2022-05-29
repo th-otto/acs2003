@@ -65,7 +65,7 @@ static void edpi_dither(void)
 	AUSERBLK *auser;
 	
 	auser = ACSblk->ev_object[ED_PICTURE_IMAGE].ob_spec.auserblk;
-	auser->ub_parm ^= 0x00100000L;
+	auser->ub_parm ^= ACS_PICTURE_DITHER;
 	ACSblk->ev_window->obchange(ACSblk->ev_window, ED_PICTURE_IMAGE_BOX, -1);
 }
 
@@ -89,7 +89,7 @@ static void edpi_tile(void)
 	AUSERBLK *auser;
 	
 	auser = ACSblk->ev_object[ED_PICTURE_IMAGE].ob_spec.auserblk;
-	auser->ub_parm ^= 0x00000002L;
+	auser->ub_parm ^= ACS_PICTURE_TILE;
 	ACSblk->ev_window->obchange(ACSblk->ev_window, ED_PICTURE_IMAGE_BOX, -1);
 }
 
@@ -138,11 +138,11 @@ static OBJECT *edpi_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 		user = ptr->ob_spec.auserblk;
 		user->ub_serv(ptr, AUO_TERM, NULL);
 		sscanf(userdef->parm, "0x%lxL", &parm);
-		if (parm & 2)
+		if (parm & ACS_PICTURE_TILE)
 			tree[ED_PICTURE_TILE].ob_state |= OS_SELECTED;
-		if (parm & 0x00100000L)
+		if (parm & ACS_PICTURE_DITHER)
 			tree[ED_PICTURE_DITHER].ob_state |= OS_SELECTED;
-		user->ub_parm = parm | 1;
+		user->ub_parm = parm | ACS_PICTURE_TESTMODE;
 		user->ub_ptr1 = userdef->data1;
 		user->ub_serv(ptr, AUO_CREATE, &done);
 		Aob_puttext(tree, ED_PICTURE_COLOR_POPUP, colour_text[(int)((parm >> 4) & 15)]);
@@ -157,7 +157,7 @@ static void edpi_test_it(AUSER_DEF *userdef, AUSERBLK *userblk)
 {
 	userblk->ub_code = A_picture;
 	sscanf(userdef->parm, "0x%lxL", (long *)&userblk->ub_parm);
-	userblk->ub_parm |= 1;
+	userblk->ub_parm |= ACS_PICTURE_TESTMODE;
 	userblk->ub_serv = Auo_picture;
 	userblk->ub_ptr1 = userdef->data1;
 	userblk->ub_ptr2 = userblk->ub_ptr3 = NULL;
@@ -198,7 +198,7 @@ static void edpi_ok(void)
 			newfdb->org.fd_addr = newfdb + 1;
 			newfdb->org.fd_stand = TRUE;
 			vr_trnfm(ACSblk->vdi_handle, &fdb->org, &newfdb->org);
-			sprintf(parm, "0x%lxL", (long)auser->ub_parm & ~1);
+			sprintf(parm, "0x%lxL", (long)auser->ub_parm & ~ACS_PICTURE_TESTMODE);
 			userdef.parm = parm;
 			userdef.serv = "Auo_picture";
 			userdef.type1 = DATA_PAR;

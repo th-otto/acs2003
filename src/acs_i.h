@@ -279,8 +279,8 @@ typedef struct {
 	int16 h;
 	int16 active;
 	void (*ok)(void);
-	int16 *(*select)(void);
-	void (*cleanup)(void);
+	int16 *select;
+	void (*cleanup)(OBJECT *tree);
 	char *oldtitle;
 	char *oldhlptitle;
 	char *oldhlpfile;
@@ -901,6 +901,11 @@ typedef struct {
 #define ACS_TITLE_SMALL     0x00000004L
 #define ACS_TITLE_TEXTMODE  0x00000008L
 
+/* values for ub_parm of picture objects */
+#define ACS_PICTURE_TESTMODE   0x00000001L
+#define ACS_PICTURE_TILE       0x00000002L
+#define ACS_PICTURE_DITHER     0x00100000L
+
 
 /*
  * about.c
@@ -1173,25 +1178,60 @@ Awindow *ob_make(void *a);
 /*
  * editor/edobicm.c
  */
-void edoic_set_icon(CICONBLK *icon);
+SUBMODE *edoic_set_icon(OBJ_ENTRY *entry);
 
 
 /*
  * editor/edobimm.c
  */
-void edoim_set_image(BITBLK *bit);
+SUBMODE *edoim_set_image(OBJ_ENTRY *entry);
 
 
 /*
  * editor/edobstrm.c
  */
-void set_str(const char *str);
+SUBMODE *edst_set_str(OBJ_ENTRY *entry);
 
 
 /*
  * editor/edobtedm.c
  */
-void set_ted(TEDINFO *ted);
+SUBMODE *edte_set_ted(OBJ_ENTRY *entry);
+
+
+/*
+ * editor/edobusrm.c
+ */
+SUBMODE *edus_set_user(OBJ_ENTRY *entry);
+
+
+/*
+ * editor/edobboxm.c
+ */
+extern const char *const colour_text[];
+extern char HPOS_TEXT1[];
+extern char HPOS_TEXT2[];
+extern char HPOS_TEXT3[];
+extern char SIZE_TEXT0[];
+extern char SIZE_TEXT1[];
+extern OBJECT POP_SIZESEL;
+extern OBJECT POP_PATSEL;
+extern OBJECT POP_HORPOSSEL;
+extern OBJECT POP_COLSEL;
+
+SUBMODE *edbo_set_box(OBJ_ENTRY *entry);
+
+
+/*
+ * editor/edobaeom.c
+ */
+SUBMODE *set_aeo(OBJ_ENTRY *entry);
+
+
+/*
+ * editor/edobaflm.c
+ */
+SUBMODE *set_aflags(OBJ_ENTRY *entry);
 
 
 /*
@@ -1200,10 +1240,12 @@ void set_ted(TEDINFO *ted);
 extern Awindow WI_MENU;
 extern Awindow WI_OBJECT;
 extern Awindow WI_POPUP;
+extern Awindow WI_POSITION;
 extern char NEW_POPUP[];
 extern char WARN_SAME[];
 extern char WARN_XSHRINK[];
 extern char WARN_YSHRINK[];
+extern OBJECT OBJ_POPUP;
 
 boolean ed_service(Awindow *self, int16 task, void *in_out);
 int16 ed_init(Awindow *win);
@@ -1275,24 +1317,8 @@ void edob_up(void);
 void edob_down(void);
 void edob_sortyx(void);
 void edob_sortxy(void);
-void change_work(Awindow *win, OBJECT *tree, const char *title, void (*abort)(void), void (*cleanup)(OBJECT *tree), OBJECT *tree2, void (*f2)(void), void (*f3)(void));
+void change_work(Awindow *win, OBJECT *tree, const char *title, void (*abort)(void), void (*cleanup)(OBJECT *tree), OBJECT *tree2, const char *help_title, const char *help_file);
 void open_it(void);
-
-
-/*
- * editor/edobboxm.c
- */
-extern const char *const colour_text[];
-extern char HPOS_TEXT1[];
-extern char HPOS_TEXT2[];
-extern char HPOS_TEXT3[];
-extern char SIZE_TEXT0[];
-extern char SIZE_TEXT1[];
-extern OBJECT POP_SIZESEL;
-extern OBJECT POP_PATSEL;
-extern OBJECT POP_HORPOSSEL;
-
-void set_box(void);
 
 
 /*
@@ -1380,12 +1406,6 @@ extern LISTPARM list_mouse;
 
 Obj_Head *add_mouse(ACS_HEAD *acs, Obj_Head *form);
 void del_mouse(ACS_HEAD *acs, Obj_Head *form);
-
-
-/*
- * editor/edobusrm.c
- */
-void edus_set_user(AUSERBLK *user);
 
 
 /*
