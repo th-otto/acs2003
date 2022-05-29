@@ -1,0 +1,15 @@
+#define ED_BOX_SAMPLE_BOX          1
+#define ED_BOX_SAMPLE              2
+#define ED_BOX_TYPE                5
+#define ED_BOX_TYPE_POPUP          7
+#define ED_BOX_TEXTCOLOR_BOX      13
+#define ED_BOX_TEXTCOLOR          15
+#define ED_BOX_TEXTCOLOR_POPUP    16
+#define ED_BOX_CHAR               21
+#define ED_BOX_FRAMECOLOR_BOX     41
+#define ED_BOX_FRAMECOLOR         43
+#define ED_BOX_FRAMECOLOR_POPUP   44
+#define ED_BOX_PATTERN            49
+#define ED_BOX_INTERCOLOR_BOX     51
+#define ED_BOX_INTERCOLOR         53
+#define ED_BOX_INTERCOLOR_POPUP   54

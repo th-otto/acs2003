@@ -103,7 +103,7 @@ editor\edobstru.c [-J- -Z- -R- -M-]
 editor\edobsurf.c [-J- -Z- -R- -M-]
 editor\edobobjc.c [-J- -Z- -R- -M-]
 editor\edobusrm.c [-J- -Z- -R- -M-]
-editor\edobboxm.s
+editor\edobboxm.c [-J- -Z- -R- -M-]
 editor\edobicm.s
 editor\edobimm.s
 editor\edobstrm.s
