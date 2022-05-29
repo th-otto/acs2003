@@ -1,0 +1,80 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char ERR_MUST[] = "[3][ | Es mÅssen Werte | eingegeben werden ][ OK ]";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Abbruch";
+static char TEXT_01[] = "Code:";
+static char TEXT_02[] = "Parm:";
+static char TEXT_03[] = "Serv:";
+static char TEXT_04[] = "Ptr1:";
+static char TEXT_05[] = "Ptr2:";
+static char TEXT_06[] = "Ptr3:";
+static char TEXT_07[] = "Bubb:";
+static char TEXT_08[] = "CMen:";
+static char help_title[] = "Der USERDEF-Editor";
+static char title[] = " USERBLK -";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char ERR_MUST[] = "[3][ You must specify | some values!][ OK ]";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Cancel";
+static char TEXT_01[] = "Code:";
+static char TEXT_02[] = "Parm:";
+static char TEXT_03[] = "Serv:";
+static char TEXT_04[] = "Ptr1:";
+static char TEXT_05[] = "Ptr2:";
+static char TEXT_06[] = "Ptr3:";
+static char TEXT_07[] = "Bubb:";
+static char TEXT_08[] = "CMen:";
+static char help_title[] = "Der USERDEF-Editor";
+static char title[] = " USERBLK -";
+#endif
+
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x21f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, 0x90381f12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED02 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED03 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x10008f19L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+
+static OBJECT  ED_USER =     { -1, 1, 33, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 42, 13 };
+static OBJECT  _01_ED_USER = { 31, 2, 30, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 0, 40, 10 };
+static OBJECT  _02_ED_USER = { 4, -1, -1, 0x001c, 0x0005, 0x0000, C_UNION(&TEXT_01), 1, 1, 5, 1 };
+static AOBJECT _02aED_USER = { edus_list, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _04_ED_USER = { 6, -1, -1, 0x001c, 0x0005, 0x0000, C_UNION(&TEXT_02), 1, 2, 5, 1 };
+static AOBJECT _04aED_USER = { edus_list, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _06_ED_USER = { 8, -1, -1, 0x001c, 0x0005, 0x0000, C_UNION(&TEXT_03), 1, 3, 5, 1 };
+static AOBJECT _06aED_USER = { edus_list, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _08_ED_USER = { 10, -1, -1, 0x001c, 0x0005, 0x0000, C_UNION(&TEXT_04), 1, 4, 5, 1 };
+static AOBJECT _08aED_USER = { edus_list, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _10_ED_USER = { 12, -1, -1, 0x001c, 0x0005, 0x0000, C_UNION(&TEXT_05), 1, 5, 5, 1 };
+static AOBJECT _10aED_USER = { edus_list, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _12_ED_USER = { 14, -1, -1, 0x001c, 0x0005, 0x0000, C_UNION(&TEXT_06), 1, 6, 5, 1 };
+static AOBJECT _12aED_USER = { edus_list, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _14_ED_USER = { 29, 15, 28, 0x0018, 0x0040, 0x0000, C_UNION(&A_3DBUTTON05), 7, 1, 31, 8 };
+static OBJECT  _15_ED_USER = { 17, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 0, 31, 1 };
+static AOBJECT _15aED_USER = { NULL, edus_ref, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _17_ED_USER = { 19, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 1, 31, 1 };
+static AOBJECT _17aED_USER = { NULL, edus_ref, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _19_ED_USER = { 21, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 2, 31, 1 };
+static AOBJECT _19aED_USER = { NULL, edus_ref, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _21_ED_USER = { 23, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 3, 31, 1 };
+static AOBJECT _21aED_USER = { NULL, edus_ptr, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _23_ED_USER = { 25, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 4, 31, 1 };
+static AOBJECT _23aED_USER = { NULL, edus_ptr, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _25_ED_USER = { 27, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 5, 31, 1 };
+static AOBJECT _25aED_USER = { NULL, edus_ptr, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _27_ED_USER = { 28, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED02), 0, 6, 31, 1 };
+static OBJECT  _28_ED_USER = { 14, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED03), 0, 7, 31, 1 };
+static OBJECT  _29_ED_USER = { 30, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_07), 1, 7, 5, 1 };
+static OBJECT  _30_ED_USER = { 1, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_08), 1, 8, 5, 1 };
+static OBJECT  _31_ED_USER = { 33, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON04), 8, 10, 12, 2 };
+static AOBJECT _31aED_USER = { edus_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _33_ED_USER = { 0, -1, -1, 0x0018, 0x4005, 0x0010, C_UNION(&A_3DBUTTON03), 22, 10, 12, 2 };
+static AOBJECT _33aED_USER = { ed_abort, NULL, 0x8020, 0x8841, NULL, NULL, 0x0000, 0x0000 };

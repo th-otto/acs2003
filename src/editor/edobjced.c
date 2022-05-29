@@ -19,7 +19,11 @@ Awindow *ob_make(void *a)
 	OBJEDPARM *tmpparm;
 	OBJ_ENTRY *entries;
 	AUSERBLK *olduser;
+#if WITH_FIXES
+	char *strs[8];
+#else
 	char *strs[6];
+#endif
 	char *tmp[8];
 	int count;
 	
@@ -53,7 +57,7 @@ Awindow *ob_make(void *a)
 		
 		/* why only 31 here per element? */
 		mem = Ax_malloc((6 * (LABEL_MAX - 1)) + 2 * STRING_MAX);
-		tmp[0] = mem;
+		tmp[0] = mem; /* ub_code */
 		if (mem == NULL)
 		{
 			/* FIXME: leaks memory allocated above */
@@ -81,6 +85,10 @@ Awindow *ob_make(void *a)
 		strs[3] = tmp[3];
 		strs[4] = tmp[4];
 		strs[5] = tmp[5];
+#if WITH_FIXES
+		strs[6] = tmp[6];
+		strs[7] = tmp[7];
+#endif
 		
 		tmpparm = win->user;
 		tmpobj = tmpparm->obj;

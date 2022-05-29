@@ -102,7 +102,7 @@ editor\edobclas.c [-J- -Z- -R- -M-]
 editor\edobstru.c [-J- -Z- -R- -M-]
 editor\edobsurf.c [-J- -Z- -R- -M-]
 editor\edobobjc.c [-J- -Z- -R- -M-]
-editor\edobusrm.s
+editor\edobusrm.c [-J- -Z- -R- -M-]
 editor\edobboxm.s
 editor\edobicm.s
 editor\edobimm.s

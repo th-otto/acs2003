@@ -3,6 +3,12 @@
 #include <acsaes.h>
 #include <string.h>
 
+#ifdef __GNUC__
+/* no need to attempt to generate identical image */
+#undef WITH_FIXES
+#define WITH_FIXES 1
+#endif
+
 #define __PS__   128
 
 #define MAX_ACS   16
@@ -1578,7 +1584,7 @@ extern LISTPARM list_user;
 
 Obj_Head *add_user(ACS_HEAD *acs, Obj_Head *obj);
 void del_user(ACS_HEAD *acs, Obj_Head *obj);
-Obj_Head *change_user(ACS_HEAD *acs, Obj_Head *obj, char *str[6]);
+Obj_Head *change_user(ACS_HEAD *acs, Obj_Head *obj, char *str[8]);
 
 
 /*
