@@ -1,0 +1,54 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char ERR_IC_DEL[] = "[3][ Die Ikone| '%s' | ist nicht (mehr) Teil | dieser Datei][ OK ]";
+static char TEXT_001[] = "Abbruch";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Edit";
+static char TEXT_005[] = "1234567890123456789012345678901";
+static char TEXT_02[] = "Ikone (aus Liste ablegen):";
+static char help_title[] = "Die Icon-Zuordnung";
+static char title[] = " ICONS -";
+#endif
+
+#if COUNTRY == COUNTRY_US
+#if WITH_FIXES
+static char ERR_IC_DEL[] = "[3][ Icon '%s' is |  removed from this file.  ][ OK ]";
+#else
+static char ERR_IC_DEL[] = "[3][ Icon '%s' is | nomore part of this file. ][ OK ]";
+#endif
+static char TEXT_001[] = "Cancel";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Edit";
+static char TEXT_005[] = "1234567890123456789012345678901";
+#if WITH_FIXES
+static char TEXT_02[] = "Icon (drag from icon-list):";
+#else
+static char TEXT_02[] = "Icon (drag form icon-list):";
+#endif
+static char help_title[] = "Die Icon-Zuordnung";
+static char title[] = " ICONS -";
+#endif
+
+static TEDINFO TEDI_001 = { TEXT_005, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1180, 0x0000, 0x0000, 0x0020, 0x0001 };
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_001, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME01 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_02, NULL, NULL, NULL, NULL };
+
+static OBJECT  ED_ICON =     { -1,  1,  8, G_USERDEF, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 36, 6 };
+static OBJECT  _01_ED_ICON = {  4,  2,  2, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME01), 1, 0, 34, 3 };
+static OBJECT  _02_ED_ICON = {  1, -1, -1, G_BOXTEXT, 0x1005, 0x0000, C_UNION(&TEDI_001), 1, 1, 32, 1 };
+static AOBJECT _02aED_ICON = { edoic_list, edoic_new, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _04_ED_ICON = {  6, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON06), 1, 3, 10, 2 };
+static AOBJECT _04aED_ICON = { edoic_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _06_ED_ICON = {  8, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON05), 13, 3, 10, 2 };
+static AOBJECT _06aED_ICON = { ed_abort, NULL, 0x8000, 0x8841, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _08_ED_ICON = {  0, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON01), 25, 3, 10, 2 };
+static AOBJECT _08aED_ICON = { edoic_edit, NULL, 0x8020, 0x8845, NULL, NULL, 0x0000, 0x0000 };

@@ -104,7 +104,7 @@ editor\edobsurf.c [-J- -Z- -R- -M-]
 editor\edobobjc.c [-J- -Z- -R- -M-]
 editor\edobusrm.c [-J- -Z- -R- -M-]
 editor\edobboxm.c [-J- -Z- -R- -M-]
-editor\edobicm.s
+editor\edobicm.c [-J- -Z- -R- -M-]
 editor\edobimm.s
 editor\edobstrm.s
 editor\edobtedm.s
