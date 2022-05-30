@@ -1,0 +1,54 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char ERR_IM_DEL[] = "[3][ Das Bild| '%s' | ist nicht (mehr) Teil | dieser Datei][ OK ]";
+static char TEXT_001[] = "Abbruch";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Edit";
+static char TEXT_005[] = "1234567890123456789012345678901";
+static char TEXT_03[] = "Bild (aus Liste ablegen):";
+static char help_title[] = "Die Graphik-Zuordnung";
+static char title[] = " BILD -";
+#endif
+
+#if COUNTRY == COUNTRY_US
+#if WITH_FIXES
+static char ERR_IM_DEL[] = "[3][ Image '%s' is | now removed from this file. ][ OK ]";
+#else
+static char ERR_IM_DEL[] = "[3][ Image '%s' is | nomore a part of this file. ][ OK ]";
+#endif
+static char TEXT_001[] = "Cancel";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Edit";
+static char TEXT_005[] = "1234567890123456789012345678901";
+#if WITH_FIXES
+static char TEXT_03[] = "Image (Drag from Image-List): ";
+#else
+static char TEXT_03[] = "Image (Drag from Image-Liste):";
+#endif
+static char help_title[] = "Die Graphik-Zuordnung";
+static char title[] = " IMAGE -";
+#endif
+
+static TEDINFO TEDI_001 = { TEXT_005, TEXT_002, TEXT_002, 0x0003, 0x0006, 0x0002, 0x1180, 0x0000, 0x0000, 0x0020, 0x0001 };
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_001, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_03, NULL, NULL, NULL, NULL };
+
+static OBJECT  ED_IMAGE =     { -1, 1, 8, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 36, 6 };
+static OBJECT  _01_ED_IMAGE = { 4, 2, 2, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 0, 34, 3 };
+static OBJECT  _02_ED_IMAGE = { 1, -1, -1, 0x0016, 0x1005, 0x0000, C_UNION(&TEDI_001), 1, 1, 32, 1 };
+static AOBJECT _02aED_IMAGE = { edoim_list, edoim_new, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _04_ED_IMAGE = { 6, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON04), 1, 3, 10, 2 };
+static AOBJECT _04aED_IMAGE = { edoim_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _06_ED_IMAGE = { 8, -1, -1, 0x0018, 0x4005, 0x0010, C_UNION(&A_3DBUTTON03), 13, 3, 10, 2 };
+static AOBJECT _06aED_IMAGE = { ed_abort, NULL, 0x8000, 0x8841, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _08_ED_IMAGE = { 0, -1, -1, 0x0018, 0x4005, 0x0010, C_UNION(&A_3DBUTTON01), 25, 3, 10, 2 };
+static AOBJECT _08aED_IMAGE = { edoim_edit, NULL, 0x8020, 0x8845, NULL, NULL, 0x0000, 0x0000 };
