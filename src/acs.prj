@@ -106,7 +106,7 @@ editor\edobusrm.c [-J- -Z- -R- -M-]
 editor\edobboxm.c [-J- -Z- -R- -M-]
 editor\edobicm.c [-J- -Z- -R- -M-]
 editor\edobimm.c [-J- -Z- -R- -M-]
-editor\edobstrm.s
+editor\edobstrm.c [-J- -Z- -R- -M-]
 editor\edobtedm.s
 editor\edobaflm.s
 editor\edobaeom.s
