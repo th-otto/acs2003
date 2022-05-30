@@ -407,7 +407,6 @@ evkeybrd_3:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl ev_dobutton
 ev_dobutton:
 		lea.l      -34(a7),a7
 		move.l     a0,30(a7)
@@ -595,7 +594,6 @@ ev_dobutton_2:
 		lea.l      34(a7),a7
 		rts
 
-	.globl evmwheel
 evmwheel:
 		lea.l      -14(a7),a7
 		move.l     a0,10(a7)

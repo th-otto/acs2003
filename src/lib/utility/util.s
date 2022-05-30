@@ -1120,7 +1120,6 @@ A_dialog2:
 		addq.w     #4,a7
 		rts
 
-	.globl fitin
 fitin:
 		subq.w     #8,a7
 		move.l     a0,4(a7)

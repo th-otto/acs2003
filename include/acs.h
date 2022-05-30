@@ -1315,16 +1315,16 @@ void Awi_show( Awindow *window );
 int16 Awi_init( Awindow *window );
 
 /* create a copy of window x */
-Awindow *Awi_create( const Awindow *x );
+Awindow *Awi_create( const Awindow *parent );
 
 /* Open Window */
-int16 Awi_open( Awindow *x );
+int16 Awi_open( Awindow *win );
 
 /* Close Window */
-void Awi_closed( Awindow *x );
+void Awi_closed( Awindow *win );
 
 /* Free Window */
-void Awi_delete( Awindow *x );
+void Awi_delete( Awindow *win );
 
 /* Top this Window */
 void Awi_topped( Awindow *window );
@@ -1336,8 +1336,8 @@ Awindow *Awi_ontop( void );
 void Awi_fulled( Awindow *window );
 
 /* Move/Resize Window */
-void Awi_sized( Awindow *window, Axywh *new );
-void Awi_moved( Awindow *window, Axywh *new );
+void Awi_sized( Awindow *window, Axywh *area );
+void Awi_moved( Awindow *window, Axywh *area );
 
 /* Iconify (FALSE: ein Fenster, TRUE: alle) & Uniconify */
 int16 Awi_iconify (Awindow *wi, boolean all);
@@ -1391,7 +1391,7 @@ int16 Awi_alert( int16 but, const char *text );
 Awindow *Awi_selfcreate( void *x );
 
 /* tree-look & send AUO_SELF to USERDEFs */
-void Awi_uoself( Awindow *wi );
+void Awi_uoself( Awindow *win );
 
 /* Bisherige Konstanten von ACS */
 #define BEGIN_UPDATE          BEG_UPDATE
@@ -1447,7 +1447,7 @@ boolean Awi_observice( Awindow *wind, int16 obnr, int16 task, void *in_out );
 OBJECT *Awi_obfind( Awindow *window, int16 x, int16 y, OBJECT **tree, int16 *obnr );
 
 /* PrÅfen, ob ein Objekt sichtbar ist (bzw. je nach Slider-Stellungen sein kînnte) */
-int16 Awi_obvisible( Awindow *window, int16 obnr );
+boolean Awi_obvisible( Awindow *window, int16 obnr );
 
 /* Das Kontext-Popup fÅr Objekt unter (mx, my) aufrufen */
 int16 Awi_context( Awindow *window, int16 mx, int16 my );
@@ -1507,14 +1507,14 @@ int16 Awi_bubblegem( Awindow *window, int16 mx, int16 my );
 int16 Aev_FontBubbleGEM( int16 font_id, int16 points );
 
 /* OLGA-Protokoll */
-int16 Aev_OlgaIdle( void );
-int16 Aev_OlgaUpdate( const char *datei );
-int16 Aev_OlgaGetInfo( int16 id );
-int16 Aev_OlgaRename( const char *old_datei, const char *new_datei );
-int16 Aev_OlgaBreaklink( const char *datei );
+boolean Aev_OlgaIdle( void );
+boolean Aev_OlgaUpdate( const char *datei );
+boolean Aev_OlgaGetInfo( int16 id );
+boolean Aev_OlgaRename( const char *old_datei, const char *new_datei );
+boolean Aev_OlgaBreaklink( const char *datei );
 
 /* DHST-Protokoll */
-int16 Aev_DhstAdd( const char *docname, const char *docpath );
+boolean Aev_DhstAdd( const char *docname, const char *docpath );
 int16 Aev_DhstSaved( const char *file );
 
 /******************************************************************************/
@@ -1579,7 +1579,7 @@ void Aob_help( void );
 int16 Aob_findflag( OBJECT *ob, int16 obnr, int16 flag );
 
 /* PrÅfen, ob ein Objekt sichtbar ist (bzw. je nach Slider-Stellungen sein kînnte) */
-int16 Aob_visible( OBJECT *tree, int16 obnr );
+boolean Aob_visible( OBJECT *tree, int16 obnr );
 
 /* Find parent Objectnr, returns -1 on top level */
 int16 Aob_up( OBJECT* ob, int16 obnr );
@@ -1746,11 +1746,11 @@ void Adr_unselect( void );
 /******************************************************************************/
 
 /* Zeichen in Groû-/Kleinbuchstaben wandeln (incl. Umlaute!) */
-char Ach_toupper( const char ch );
-char Ach_tolower( const char ch );
+char Ach_toupper(char ch);
+char Ach_tolower(char ch);
 
 /* Ist ein Zeichen ein "Blank"? (incl. '\r', '\n' & '\t') */
-int16 Ach_isWhite( const char c );
+int16 Ach_isWhite(char c);
 
 /******************************************************************************/
 
@@ -1777,7 +1777,7 @@ int16 Ast_incmp( const char *str_1, const char *str_2, int16 max_char );
 char *Ast_istr( const char *s1, const char *s2 );
 
 /* Ist ein String leer, bis auf "Blanks"? */
-int16 Ast_isEmpty( const char *string );
+boolean Ast_isEmpty(const char *string);
 
 /* Mehrere Strings linksbÅndig zusammensetzen, GesamtlÑnge vorgegeben */
 char *Ast_add( int16 anzahl, char *ergebnis, ... );
@@ -1794,7 +1794,7 @@ char *Ast_filter( char *string, char *wrg_char, char *right_char );
 int32 Ast_count( const char *string, const char *zeichen );
 
 /* Zwei Dateinamen vergleichen, der erste darf die Åblichen Wildcards enthalten */
-int16 Ast_fcmp( char *filename1, char *filename2 );
+int16 Ast_fcmp(const char *filename1, const char *filename2);
 
 /* Einen String umdrehen, d.h. letztes Zeichen als erstes usw. */
 char *Ast_reverse( char *reverse, const char *string );
@@ -1810,6 +1810,8 @@ char *Ast_mergeASCIIZZ( const char **strings, int16 anzahl, int16 global );
 
 /* Ein Array von Strings komplett freigeben */
 void Ast_deleteAry( char **strings, int16 anzahl );
+
+char *Ast_copy(const char *str, int16 max_len);
 
 /******************************************************************************/
 /*                                                                            */
@@ -1984,7 +1986,7 @@ int16 A_dialog2( OBJECT* dia );
 int16 alert_str( const char* alert, const char* para );
 
 /* Veschneidet beide Rechtecke, TRUE wenn Schnitt existiert */
-int16 intersect( Axywh* to, const Axywh* from );
+boolean intersect( Axywh* to, const Axywh* from );
 
 /* Wandelt Axywh in pxyarray */
 void xywh2array( int16 *to, const Axywh *from );
@@ -2003,6 +2005,14 @@ uint32 Ash_gettimer( void );
 
 /* Die Farbwerte ab NVDI 5.x liefern */
 const RGB1000 * const Avdi_getRGB( int16 index );
+
+/******************************************************************************/
+
+/* Kommandozeile parsen und Optionen befÅllen */
+int16 Ash_cmdParsen( char *options[256], const int16 argc, char **argv,
+         const char *optionBeginChars, const char *optionsAllowed,
+         const char *optionsWithParam, int16 (*wrongOption)(const char c),
+         ULinList *params );
 
 /******************************************************************************/
 /*                                                                            */
@@ -2189,7 +2199,7 @@ A_dd *Ash_nextdd( A_dd *act );
 
 /* sendet DD-Partnern (mit Typ type) oder unter MTOS/MagiC */
 /* allen (type<0) den 8 int16-langen Messageblock */
-int16 Ash_sendall( int16 *mess, int32 type );
+boolean Ash_sendall( int16 *mess, int32 type );
 
 /* Looks for 'cookie' and writes its Value in val (returns TRUE on success) */
 int16 Ash_getcookie( int32 cookie, void *value );
@@ -2204,8 +2214,7 @@ void Ash_fontSetIcon( CICONBLK *icon, int16 ghost );
 void Ash_fileSetIcon( CICONBLK *icon, int16 ghost );
 
 /* Die WDIALOG-Druck-Dialoge aufrufen */
-int16 Ash_print( PRN_SETTINGS *setting, int16 x, int16 y, int16 option,
-                  char *title, Awindow *window );
+int16 Ash_print( PRN_SETTINGS *setting, int16 x, int16 y, int16 option, const char *title, Awindow *window );
 
 /* Die Zeichensatz-Auswahl Åber die fnts_xx-Funktionen aufrufen */
 int16 Ash_font( const char *title, int16 x, int16 y, int16 font_flag,
@@ -2486,8 +2495,7 @@ char *Af_2fullname( char *dest, const char *file );
 char *Af_2ext( char *dest, const char *file );
 
 /* Builds full Pathfilename, missing Parts were added to dest and back */
-char *Af_buildname( char *dest, int16 drv, const char *path,
-         const char *name, const char *ext );
+char *Af_buildname( char *dest, int16 drv, const char *path, const char *name, const char *ext );
 
 /* Changes the extension of a filename */
 char *Af_chgExt( char *file, char *new_ext );
@@ -2505,8 +2513,7 @@ char *Af_next_fsel( void );
 /* Neue Dateiauswahl, bevorzugt Åber fslx_xx-Funktionen, */
 /* zur Not per Af_first_sel/Af_next_sel oder Af_select   */
 /* RÅckgabe: Lineare Liste mit EintrÑgen char *file      */
-ULinList *Af_fileselect( const char *title, char *path, char *ext,
-                  int16 sort_mode, boolean multi, Awindow *window );
+ULinList *Af_fileselect( const char *title, char *path, char *ext, int16 sort_mode, boolean multi, Awindow *window );
 
 /* Dateien suchen, Verzeichnisse einlesen */
 A_FileList *Af_readdir( const char *path );
@@ -2614,22 +2621,16 @@ int16 Acfg_flags( UConfig *config, int16 flags, int16 set );
 int16 Acfg_isGroupPresent( UConfig *config, const char *kategorie );
 int16 Acfg_isStringPresent( UConfig *config, const char *kategorie, const char *name );
 
-char *Acfg_getValue( UConfig *config, const char *kategorie,
-      const char *name, char *value );
-char *Acfg_setValue( UConfig *config, const char *kategorie,
-      const char *name, const char *value );
-char *Acfg_clearValue( UConfig *config, const char *kategorie,
-      const char *name, char *value );
+char *Acfg_getValue( UConfig *config, const char *kategorie, const char *name, char *value );
+char *Acfg_setValue( UConfig *config, const char *kategorie, const char *name, const char *value );
+char *Acfg_clearValue( UConfig *config, const char *kategorie, const char *name, char *value );
 char *Acfg_getString( UConfig *config, const char *kategorie, const char *name );
 int32 Acfg_getLong( UConfig *config, const char *kategorie, const char *name );
-int32 Acfg_setLong( UConfig *config, const char *kategorie,
-         const char *name, int32 value );
+int32 Acfg_setLong( UConfig *config, const char *kategorie, const char *name, int32 value );
 char Acfg_getChar( UConfig *config, const char *kategorie, const char *name );
-char Acfg_setChar( UConfig *config, const char *kategorie,
-         const char *name, char value );
+char Acfg_setChar( UConfig *config, const char *kategorie, const char *name, char value );
 int16 Acfg_getBool( UConfig *config, const char *kategorie, const char *name );
-int16 Acfg_setBool( UConfig *config, const char *kategorie,
-         const char *name, int16 value );
+int16 Acfg_setBool( UConfig *config, const char *kategorie, const char *name, int16 value );
 double Acfg_getDouble( UConfig *config, const char *kategorie, const char *name );
 double Acfg_setDouble( UConfig *config, const char *kategorie, const char *name, double value );
 

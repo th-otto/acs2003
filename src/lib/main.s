@@ -87,7 +87,6 @@ DEBUG_MEM:
 		addq.w     #4,a7
 		rts
 
-	.globl acs_call
 acs_call:
 		lea.l      -10(a7),a7
 		move.w     d0,8(a7)
@@ -115,7 +114,6 @@ acs_call_2:
 		lea.l      10(a7),a7
 		rts
 
-	.globl get_acsblk
 get_acsblk:
 		move.l     #_ACSblk,ACSblk
 		move.l     #0x00000506,d1
@@ -15515,7 +15513,6 @@ A_TITLE05:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__CHK_1D_DS
 _MSK__CHK_1D_DS:
 		dc.w $fffe
 		dc.w $fffe
@@ -15672,7 +15669,6 @@ _CHK_1D_S:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__CHK_1D_U
 _MSK__CHK_1D_U:
 		dc.w $fffe
 		dc.w $fffe
@@ -16003,7 +15999,6 @@ _CHK_3D_U:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__CHK_3D_U
-	.globl _MSK__IM_EXCLAM
 _MSK__IM_EXCLAM:
 		dc.w $0003
 		dc.w $c000
@@ -16151,7 +16146,6 @@ _IM_EXCLAM:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__IM_QUEST
 _MSK__IM_QUEST:
 		dc.w $3fff
 		dc.w $fffc
@@ -16299,7 +16293,6 @@ _IM_QUEST:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _MSK__IM_STOP
 _MSK__IM_STOP:
 		dc.w $007f
 		dc.w $fe00
@@ -16447,7 +16440,6 @@ _IM_STOP:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _C4__IM_TIME0
 _C4__IM_TIME0:
 		dc.w $0004
 		dc.l DATAS_27+6
@@ -16604,7 +16596,6 @@ _IM_TIME0:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME0
-	.globl _C4__IM_TIME1
 _C4__IM_TIME1:
 		dc.w $0004
 		dc.l DATAS_19+6
@@ -16761,7 +16752,6 @@ _IM_TIME1:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME1
-	.globl _C4__IM_TIME2
 _C4__IM_TIME2:
 		dc.w $0004
 		dc.l DATAS_29+6
@@ -16918,7 +16908,6 @@ _IM_TIME2:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME2
-	.globl _C4__IM_TIME3
 _C4__IM_TIME3:
 		dc.w $0004
 		dc.l DATAS_09+6
@@ -17075,7 +17064,6 @@ _IM_TIME3:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME3
-	.globl _C4__IM_TIME4
 _C4__IM_TIME4:
 		dc.w $0004
 		dc.l DATAS_13+6
@@ -17232,7 +17220,6 @@ _IM_TIME4:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME4
-	.globl _C4__IM_TIME5
 _C4__IM_TIME5:
 		dc.w $0004
 		dc.l DATAS_15+6
@@ -17389,7 +17376,6 @@ _IM_TIME5:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME5
-	.globl _C4__IM_TIME6
 _C4__IM_TIME6:
 		dc.w $0004
 		dc.l DATAS_17+6
@@ -17546,7 +17532,6 @@ _IM_TIME6:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME6
-	.globl _C4__IM_TIME7
 _C4__IM_TIME7:
 		dc.w $0004
 		dc.l DATAS_21+6
@@ -17703,7 +17688,6 @@ _IM_TIME7:
 		dc.w $0000
 		dc.w $0000
 		dc.l _C4__IM_TIME7
-	.globl _C4__IM_TIME8
 _C4__IM_TIME8:
 		dc.w $0004
 		dc.l DATAS_23+6
@@ -18481,7 +18465,6 @@ _WIN:
 		dc.w $0040
 		dc.w $0008
 		dc.l _C4__WIN
-	.globl _ABOUT_ME
 _ABOUT_ME:
 		dc.w $ffff
 		dc.w $0002
@@ -18687,7 +18670,6 @@ _16__ABOUT_ME:
 		dc.w $000c
 		dc.w $0010
 		dc.w $0001
-	.globl _ALERT
 _ALERT:
 		dc.w $ffff
 		dc.w $0001
@@ -19017,7 +18999,6 @@ _25a_ALERT:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _DDD
 _DDD:
 		dc.w $ffff
 		dc.w $0002
@@ -19170,7 +19151,6 @@ _WDD:
 		dc.w $0000
 		dc.w $0000
 		dc.w $0000
-	.globl _W_ABOUT
 _W_ABOUT:
 		dc.w $0000
 		dc.w $0000

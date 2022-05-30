@@ -141,6 +141,9 @@ OBJS = \
 	lib/modul/modul.o \
 	lib/modul/modulold.o \
 	\
+	lib/gemlib.o \
+	rest.o \
+	\
 	$(empty)
 
 .s.o:

@@ -7109,7 +7109,6 @@ _gs_search:
 		addq.w     #8,a7
 		rts
 
-	.globl gs_str2key
 gs_str2key:
 		lea.l      -48(a7),a7
 		move.l     a0,44(a7)

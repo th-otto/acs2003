@@ -1042,7 +1042,6 @@ Ax_getRecycleStat_2:
 
 	.data
 
-	.globl in_use
 in_use:
 		dc.w $0000
 		dc.w $0000
