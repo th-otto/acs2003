@@ -1,0 +1,157 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Abbruch";
+static char TEXT_01[] = "Position:";
+static char TEXT_02[] = "1234";
+static char TEXT_03[] = "EDIT:____";
+static char TEXT_04[] = "9999";
+static char TEXT_05[] = "Typ:";
+static char TEXT_06[] = "Modus:";
+static char TEXT_07[] = "Muster:";
+static char TEXT_08[] = "Text:";
+static char TEXT_09[] = "Rand:";
+static char TEXT_11[] = "Tmp:";
+static char TEXT_12[] = "Val:";
+static char TEXT_13[] = "Rahmen:";
+static char TEXT_14[] = "Gr”že:";
+static char TEXT_15[] = "Farbe:";
+static char TEXT_17[] = "Innenfl„che:";
+static char TYPE0[] = "  Text";
+static char TYPE1[] = "  BoxText";
+static char TYPE2[] = "  F-Text";
+static char TYPE3[] = "  F-BoxText";
+static char help_title[] = "Der TEDINFO-Editor";
+static char title[] = " TEDINFOS -";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char TEXT_003[] = "OK";
+static char TEXT_004[] = "Cancel";
+static char TEXT_01[] = "Position:";
+static char TEXT_02[] = "1234";
+static char TEXT_03[] = "EDIT:____";
+static char TEXT_04[] = "9999";
+static char TEXT_05[] = "Type:";
+static char TEXT_06[] = " Mode:";
+static char TEXT_07[] = "Pattern:";
+static char TEXT_08[] = "Text:";
+static char TEXT_09[] = "Frame:";
+static char TEXT_11[] = "Tmp:";
+static char TEXT_12[] = "Val:";
+static char TEXT_13[] = "Border:";
+static char TEXT_14[] = "Size:";
+static char TEXT_15[] = "Color:";
+static char TEXT_17[] = "Interior:";
+static char TYPE0[] = "  Text";
+static char TYPE1[] = "  BoxText";
+static char TYPE2[] = "  F-Text";
+static char TYPE3[] = "  F-BoxText";
+static char help_title[] = "Der TEDINFO-Editor";
+static char title[] = " TEDINFOS -";
+#endif
+
+
+static TEDINFO TEDINFO_01 = { TEXT_02, TEXT_03, TEXT_04, 0x0003, 0x0006, 0x0002, 0x1180, 0x0000, 0xffff, 0x0005, 0x000a };
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x20119178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_004, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x09f10178L, Auo_string, TYPE2, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x21f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x09f10178L, Auo_string, TYPE1, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON10 = { A_3Dbutton, 0x09f10178L, Auo_string, TYPE0, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON11 = { A_3Dbutton, 0x09f10178L, Auo_string, TYPE3, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON23 = { A_3Dbutton, 0x09f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS02 = { A_arrows, 0x13010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED01 = { A_boxed, 0x90385012L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED02 = { A_boxed, 0x90005012L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME01 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_08, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_17, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME04 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_13, NULL, NULL, NULL, NULL };
+
+static OBJECT  POP_TYPESEL =     { -1, 1, 4, 0x0014, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0, 0, 13, 4 };
+static OBJECT  _01_POP_TYPESEL = { 2, -1, -1, 0x0018, 0x0041, 0x0000, C_UNION(&A_3DBUTTON10), 0, 0, 13, 1 };
+static OBJECT  _02_POP_TYPESEL = { 3, -1, -1, 0x0018, 0x0041, 0x0000, C_UNION(&A_3DBUTTON07), 0, 1, 13, 1 };
+static OBJECT  _03_POP_TYPESEL = { 4, -1, -1, 0x0018, 0x0041, 0x0000, C_UNION(&A_3DBUTTON04), 0, 2, 13, 1 };
+static OBJECT  _04_POP_TYPESEL = { 0, -1, -1, 0x0018, 0x0061, 0x0000, C_UNION(&A_3DBUTTON11), 0, 3, 13, 1 };
+
+static OBJECT  ED_TEDI =     { -1, 1, 64, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON05), 0, 0, 67, 18 };
+static OBJECT  _01_ED_TEDI = { 3, 2, 2, 0x0018, 0x0000, 0x0010, C_UNION(&A_3DBUTTON09), 0, 0, 14, 4 };
+static OBJECT  _02_ED_TEDI = { 1, -1, -1, 0x001e, 0x0040, 0x0000, C_UNION(&TEDINFO_01), 1, 1, 12, 2 };
+static OBJECT  _03_ED_TEDI = { 5, 4, 4, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_05), 16, 1, 5, 1 };
+static OBJECT  _04_ED_TEDI = { 3, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _05_ED_TEDI = { 8, 7, 7, 0x0014, 0x0040, 0x0020, C_UNION(0x00ff1101L), 21, 1, 13, 1 };
+static AOBJECT _05aED_TEDI = { edte_type, NULL, 0x8000, 0x8854, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _07_ED_TEDI = { 5, -1, -1, 0x0018, 0x0000, 0x0000, C_UNION(&A_3DBUTTON23), 0, 0, 13, 1 };
+static OBJECT  _08_ED_TEDI = { 10, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON02), 39, 1, 12, 2 };
+static AOBJECT _08aED_TEDI = { edte_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _10_ED_TEDI = { 12, -1, -1, 0x0018, 0x4005, 0x0010, C_UNION(&A_3DBUTTON03), 53, 1, 12, 2 };
+static AOBJECT _10aED_TEDI = { ed_abort, NULL, 0x8000, 0x8841, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _12_ED_TEDI = { 42, 13, 41, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME01), 1, 4, 65, 9 };
+static OBJECT  _13_ED_TEDI = { 15, 14, 14, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_15), 1, 1, 6, 1 };
+static OBJECT  _14_ED_TEDI = { 13, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _15_ED_TEDI = { 19, 17, 18, 0x0014, 0x0040, 0x0020, C_UNION(0x00ff1101L), 8, 1, 18, 1 };
+static AOBJECT _15aED_TEDI = { edte_textcol, NULL, 0x8000, 0x8846, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _17_ED_TEDI = { 18, -1, -1, 0x0014, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 0, 2, 1 };
+static OBJECT  _18_ED_TEDI = { 15, -1, -1, 0x0018, 0x0000, 0x0000, C_UNION(&A_3DBUTTON23), 0, 0, 16, 1 };
+static OBJECT  _19_ED_TEDI = { 21, 20, 20, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_01), 32, 1, 9, 1 };
+static OBJECT  _20_ED_TEDI = { 19, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _21_ED_TEDI = { 24, 23, 23, 0x0014, 0x0040, 0x0020, C_UNION(0x00ff1101L), 42, 1, 10, 1 };
+static AOBJECT _21aED_TEDI = { edte_pos, NULL, 0x8000, 0x8850, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _23_ED_TEDI = { 21, -1, -1, 0x0018, 0x0000, 0x0000, C_UNION(&A_3DBUTTON23), 0, 0, 10, 1 };
+static OBJECT  _24_ED_TEDI = { 26, 25, 25, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_14), 1, 3, 6, 1 };
+static OBJECT  _25_ED_TEDI = { 24, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _26_ED_TEDI = { 29, 28, 28, 0x0014, 0x0040, 0x0020, C_UNION(0x00ff1101L), 8, 3, 8, 1 };
+static AOBJECT _26aED_TEDI = { edte_size, NULL, 0x8000, 0x8847, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _28_ED_TEDI = { 26, -1, -1, 0x0018, 0x0000, 0x0000, C_UNION(&A_3DBUTTON09), 0, 0, 8, 1 };
+static OBJECT  _29_ED_TEDI = { 30, -1, -1, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_06), 35, 3, 6, 1 };
+static OBJECT  _30_ED_TEDI = { 32, -1, -1, 0x001b, 0x0005, 0x0000, C_UNION(0x43ff1121L), 42, 3, 3, 1 };
+static AOBJECT _30aED_TEDI = { edte_trans, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _32_ED_TEDI = { 34, -1, -1, 0x001b, 0x0005, 0x0000, C_UNION(0x43ff11a1L), 46, 3, 3, 1 };
+static AOBJECT _32aED_TEDI = { edte_replace, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _34_ED_TEDI = { 35, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_08), 1, 5, 5, 1 };
+static OBJECT  _35_ED_TEDI = { 40, 36, 36, 0x0018, 0x0040, 0x0000, C_UNION(&A_3DBUTTON01), 7, 5, 57, 3 };
+static OBJECT  _36_ED_TEDI = { 35, 37, 39, 0x0014, 0x0040, 0x0000, C_UNION(0x00ff0101L), 0, 0, 57, 3 };
+static OBJECT  _37_ED_TEDI = { 38, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED02), 0, 0, 57, 1 };
+static OBJECT  _38_ED_TEDI = { 39, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED02), 0, 1, 57, 1 };
+static OBJECT  _39_ED_TEDI = { 36, -1, -1, 0x0018, 0x0008, 0x0000, C_UNION(&A_BOXED01), 0, 2, 57, 1 };
+static OBJECT  _40_ED_TEDI = { 41, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_11), 2, 6, 4, 1 };
+static OBJECT  _41_ED_TEDI = { 12, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_12), 2, 7, 4, 1 };
+static OBJECT  _42_ED_TEDI = { 64, 43, 62, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME04), 1, 13, 32, 5 };
+static OBJECT  _43_ED_TEDI = { 45, 44, 44, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_15), 1, 1, 6, 1 };
+static OBJECT  _44_ED_TEDI = { 43, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 2, 0, 1, 1 };
+static OBJECT  _45_ED_TEDI = { 49, 47, 48, 0x0014, 0x0040, 0x0020, C_UNION(0x00ff1101L), 8, 1, 18, 1 };
+static AOBJECT _45aED_TEDI = { edte_framecol, NULL, 0x8000, 0x8852, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _47_ED_TEDI = { 48, -1, -1, 0x0014, 0x0000, 0x0000, C_UNION(0x43011371L), 16, 0, 2, 1 };
+static OBJECT  _48_ED_TEDI = { 45, -1, -1, 0x0018, 0x0000, 0x0000, C_UNION(&A_3DBUTTON23), 0, 0, 16, 1 };
+static OBJECT  _49_ED_TEDI = { 50, -1, -1, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_09), 2, 3, 6, 1 };
+static OBJECT  _50_ED_TEDI = { 52, -1, -1, 0x0014, 0x0005, 0x0000, C_UNION(0x00031111L), 8, 3, 2, 1 };
+static AOBJECT _50aED_TEDI = { edte_thickness, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _52_ED_TEDI = { 54, -1, -1, 0x0014, 0x0005, 0x0000, C_UNION(0x00021111L), 11, 3, 2, 1 };
+static AOBJECT _52aED_TEDI = { edte_thickness, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _54_ED_TEDI = { 56, -1, -1, 0x0014, 0x0005, 0x0000, C_UNION(0x00011111L), 14, 3, 2, 1 };
+static AOBJECT _54aED_TEDI = { edte_thickness, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _56_ED_TEDI = { 58, -1, -1, 0x0014, 0x0005, 0x0000, C_UNION(0x00001111L), 17, 3, 2, 1 };
+static AOBJECT _56aED_TEDI = { edte_thickness, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _58_ED_TEDI = { 60, -1, -1, 0x0014, 0x0005, 0x0000, C_UNION(0x00ff1111L), 20, 3, 2, 1 };
+static AOBJECT _58aED_TEDI = { edte_thickness, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _60_ED_TEDI = { 62, -1, -1, 0x0014, 0x0005, 0x0000, C_UNION(0x00fe1111L), 23, 3, 2, 1 };
+static AOBJECT _60aED_TEDI = { edte_thickness, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _62_ED_TEDI = { 42, -1, -1, 0x0014, 0x0005, 0x0000, C_UNION(0x00fd1111L), 26, 3, 2, 1 };
+static AOBJECT _62aED_TEDI = { edte_thickness, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _64_ED_TEDI = { 0, 65, 71, 0x0018, 0x0000, 0x0000, C_UNION(&A_INNERFRAME02), 34, 13, 32, 5 };
+static OBJECT  _65_ED_TEDI = { 67, 66, 66, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_07), 1, 1, 8, 1 };
+static OBJECT  _66_ED_TEDI = { 65, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
+static OBJECT  _67_ED_TEDI = { 69, -1, -1, 0x0014, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 1, 18, 1 };
+static AOBJECT _67aED_TEDI = { edte_pattern, NULL, 0x8000, 0x884d, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _69_ED_TEDI = { 71, 70, 70, 0x001c, 0x0040, 0x0000, C_UNION(&TEXT_15), 2, 3, 6, 1 };
+static OBJECT  _70_ED_TEDI = { 69, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 3, 0, 1, 1 };
+static OBJECT  _71_ED_TEDI = { 64, 73, 74, 0x0014, 0x0040, 0x0020, C_UNION(0x00ff1101L), 9, 3, 18, 1 };
+static AOBJECT _71aED_TEDI = { edte_intercol, NULL, 0x8000, 0x8842, NULL, NULL, 0x0000, 0x0000 };
+static OBJECT  _73_ED_TEDI = { 74, -1, -1, 0x0014, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 0, 2, 1 };
+static OBJECT  _74_ED_TEDI = { 71, -1, -1, 0x0018, 0x0020, 0x0000, C_UNION(&A_3DBUTTON23), 0, 0, 16, 1 };

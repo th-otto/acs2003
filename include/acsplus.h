@@ -193,6 +193,7 @@ void Aed_cut (void);
 void Aed_cutline (void);
 void Aed_find (void);
 void Aed_findnext (void);
+void Aed_findsel (void);
 void Aed_fkey (void);
 void Aed_gotoline (void);
 void Aed_info (void);
@@ -318,7 +319,7 @@ typedef struct {
 /*
    "printf"-Interface
 */
-int16 wputs (char *text, Awindow *wi);
+int16 wputs (const char *text, Awindow *wi);
 int16 wvprintf (Awindow *wi, const char *format, va_list arglist);
 int16 wprintf (Awindow *wi, const char *format, ... );
 
@@ -421,7 +422,7 @@ extern Awindow LIST_WINDOW;
 --------------------------------------------------------------
 */
 
-int16 A_fontsel( int16 *fontid, int16 *height, int16 prop) ;
+int16 A_fontsel( int16 *fontid, int16 *height, int16 prop);
 
 /*
 --------------------------------------------------------------

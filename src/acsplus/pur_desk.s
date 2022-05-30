@@ -802,7 +802,6 @@ mod_load_1:
 		movem.l    (a7)+,a2-a4
 		rts
 
-	.globl modul_close
 modul_close:
 		move.l     a2,-(a7)
 		move.l     a3,-(a7)
@@ -1932,7 +1931,6 @@ purGEMScript_2:
 
 	.data
 
-	.globl module_window
 module_window:
 		dc.w $0000
 		dc.w $0000

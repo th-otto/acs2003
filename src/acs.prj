@@ -107,7 +107,7 @@ editor\edobboxm.c [-J- -Z- -R- -M-]
 editor\edobicm.c [-J- -Z- -R- -M-]
 editor\edobimm.c [-J- -Z- -R- -M-]
 editor\edobstrm.c [-J- -Z- -R- -M-]
-editor\edobtedm.s
+editor\edobtedm.c [-J- -Z- -R- -M-]
 editor\edobaflm.s
 editor\edobaeom.s
 editor\edobkeys.s

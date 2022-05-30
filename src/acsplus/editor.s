@@ -2237,7 +2237,6 @@ uedit_scroll_2:
 		movem.l    (a7)+,d3-d7/a2-a5
 		rts
 
-	.globl edit_invers
 edit_invers:
 		movem.l    d3-d5/a2-a3,-(a7)
 		movea.l    a0,a2
@@ -3471,7 +3470,6 @@ edit_add_3:
 		movem.l    (a7)+,d3/a2-a5
 		rts
 
-	.globl edit_appline
 edit_appline:
 		move.l     a2,-(a7)
 		movea.l    12(a0),a0
@@ -3494,7 +3492,6 @@ edit_appline_2:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl edit_free
 edit_free:
 		movem.l    d3/a2-a3,-(a7)
 		movea.l    a0,a2
