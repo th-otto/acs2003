@@ -308,11 +308,6 @@ typedef struct {
 } SUBMODE;
 
 typedef struct {
-	char *string;
-	int16 code;
-} sc;
-
-typedef struct {
 	long full;
 	long size;
 	long pos;
