@@ -109,7 +109,7 @@ editor\edobimm.c [-J- -Z- -R- -M-]
 editor\edobstrm.c [-J- -Z- -R- -M-]
 editor\edobtedm.c [-J- -Z- -R- -M-]
 editor\edobaflm.c [-J- -Z- -R- -M-]
-editor\edobaeom.s
+editor\edobaeom.c [-J- -Z- -R- -M-]
 editor\edobkeys.s
 
 list\edlist.c [-J- -Z- -R- -M-]
