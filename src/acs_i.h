@@ -308,16 +308,6 @@ typedef struct {
 } SUBMODE;
 
 typedef struct {
-	int32 full;
-	int32 size;
-	int32 pos;
-	int32 step;
-	Awindow *window;
-	void (*call)(void);
-	void *obj;
-} WI_SLIDER;
-
-typedef struct {
 	char *text;
 	int16 size;
 	int16 flags;
