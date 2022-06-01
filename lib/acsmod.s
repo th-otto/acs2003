@@ -960,7 +960,7 @@ D000560:   .DC.L   vsf_style
 D000564:   .DC.L   vsf_color
 D000568:   .DC.L   vsf_perimeter
 D00056c:   .DC.L   vsf_udpat
-D000570:   .DC.L   vsf_updat
+D000570:   .DC.L   vsf_udpat
 D000574:   .DC.L   vs_color
 D000578:   .DC.L   vr_trnfm
 D00057c:   .DC.L   vro_cpyfm

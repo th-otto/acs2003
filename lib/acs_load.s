@@ -1355,7 +1355,7 @@ vsf_udpat:
 [00001168] 2f3c 0000 00cc            move.l     #$000000CC,-(a7)
 [0000116e] 2f3a ef22                 move.l     funcVdi(pc),-(a7)
 [00001172] 6000 ef3e                 bra        indirect
-vsf_updat:
+vsf_udpat:
 [00001176] 2f3c 0000 00d0            move.l     #$000000D0,-(a7)
 [0000117c] 2f3a ef14                 move.l     funcVdi(pc),-(a7)
 [00001180] 6000 ef30                 bra        indirect
@@ -4595,8 +4595,8 @@ _FilSysVec:
 0000115a T VSF_PERIMETER
 00001168 T vsf_udpat
 00001168 T VSF_UDPAT
-00001176 T vsf_updat
-00001176 T VSF_UPDAT
+00001176 T vsf_udpat
+00001176 T VSF_UDPAT
 00001184 T vs_color
 00001184 T VS_COLOR
 00001192 T vr_trnfm

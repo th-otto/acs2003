@@ -23,7 +23,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-void lbox_ascroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *slider_rect )
+void lbox_ascroll_to( LIST_BOX *box, int16 first, GRECT *box_rect, GRECT *slider_rect )
 {
    mt_lbox_ascroll_to(box, first, box_rect, slider_rect, _globl);
 }
@@ -34,7 +34,7 @@ void lbox_ascroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *
 /*                                                                            */
 /******************************************************************************/
 
-void lbox_scroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *slider_rect )
+void lbox_scroll_to( LIST_BOX *box, int16 first, GRECT *box_rect, GRECT *slider_rect )
 {
    mt_lbox_scroll_to(box, first, box_rect, slider_rect, _globl);
 }
@@ -45,7 +45,7 @@ void lbox_scroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *s
 /*                                                                            */
 /******************************************************************************/
 
-void lbox_bscroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *slider_rect )
+void lbox_bscroll_to( LIST_BOX *box, int16 first, GRECT *box_rect, GRECT *slider_rect )
 {
    mt_lbox_bscroll_to(box, first, box_rect, slider_rect, _globl);
 }
@@ -68,10 +68,10 @@ int16 lbox_cnt_items( LIST_BOX *box )
 /******************************************************************************/
 
 LIST_BOX *lbox_create( OBJECT *tree, SLCT_ITEM slct, SET_ITEM set, LBOX_ITEM *items,
-            const int16 visible_a, const int16 first_a, const int16 *ctrl_objs,
-            const int16 *objs, const int16 flags, const int16 pause_a, void *user_data,
-            DIALOG *dialog, const int16 visible_b, const int16 first_b, const int16 entries_b,
-            const int16 pause_b )
+            int16 visible_a, int16 first_a, const int16 *ctrl_objs,
+            const int16 *objs, int16 flags, int16 pause_a, void *user_data,
+            DIALOG *dialog, int16 visible_b, int16 first_b, int16 entries_b,
+            int16 pause_b )
 {
    return mt_lbox_create(tree, slct, set, items, visible_a, first_a, ctrl_objs, objs, flags,
       pause_a, user_data, dialog, visible_b, first_b, entries_b, pause_b, _globl);
@@ -94,7 +94,7 @@ int16 lbox_delete( LIST_BOX *box )
 /*                                                                            */
 /******************************************************************************/
 
-int16 lbox_do( LIST_BOX *box, const int16 obj )
+int16 lbox_do( LIST_BOX *box, int16 obj )
 {
    return mt_lbox_do(box, obj, _globl);
 }
@@ -215,7 +215,7 @@ int16 lbox_get_idx( LBOX_ITEM *items, LBOX_ITEM *search )
 /*                                                                            */
 /******************************************************************************/
 
-LBOX_ITEM *lbox_get_item( LIST_BOX *box, const int16 n )
+LBOX_ITEM *lbox_get_item( LIST_BOX *box, int16 n )
 {
    return mt_lbox_get_item(box, n, _globl);
 }
@@ -281,7 +281,7 @@ void *lbox_get_udata( LIST_BOX *box )
 /*                                                                            */
 /******************************************************************************/
 
-void lbox_set_asldr( LIST_BOX *box, const int16 first, GRECT *rect )
+void lbox_set_asldr( LIST_BOX *box, int16 first, GRECT *rect )
 {
    mt_lbox_set_asldr(box, first, rect, _globl);
 }
@@ -292,7 +292,7 @@ void lbox_set_asldr( LIST_BOX *box, const int16 first, GRECT *rect )
 /*                                                                            */
 /******************************************************************************/
 
-void lbox_set_slider( LIST_BOX *box, const int16 first, GRECT *rect )
+void lbox_set_slider( LIST_BOX *box, int16 first, GRECT *rect )
 {
    mt_lbox_set_slider(box, first, rect, _globl);
 }
@@ -303,7 +303,7 @@ void lbox_set_slider( LIST_BOX *box, const int16 first, GRECT *rect )
 /*                                                                            */
 /******************************************************************************/
 
-void lbox_set_bentries( LIST_BOX *box, const int16 entries )
+void lbox_set_bentries( LIST_BOX *box, int16 entries )
 {
    mt_lbox_set_bentries(box, entries, _globl);
 }
@@ -314,7 +314,7 @@ void lbox_set_bentries( LIST_BOX *box, const int16 entries )
 /*                                                                            */
 /******************************************************************************/
 
-void lbox_set_bsldr( LIST_BOX *box, const int16 first, GRECT *rect )
+void lbox_set_bsldr( LIST_BOX *box, int16 first, GRECT *rect )
 {
    mt_lbox_set_bsldr(box, first, rect, _globl);
 }

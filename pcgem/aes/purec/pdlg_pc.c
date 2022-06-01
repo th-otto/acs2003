@@ -56,7 +56,7 @@ int16 pdlg_close( PRN_DIALOG *prn_dialog, int16 *x, int16 *y )
 /*                                                                            */
 /******************************************************************************/
 
-PRN_DIALOG *pdlg_create( const int16 dialog_flags )
+PRN_DIALOG *pdlg_create( int16 dialog_flags )
 {
    return mt_pdlg_create(dialog_flags, _globl);
 }
@@ -90,7 +90,7 @@ int16 pdlg_dflt_settings( PRN_DIALOG *prn_dialog, PRN_SETTINGS *settings )
 /******************************************************************************/
 
 int16 pdlg_do( PRN_DIALOG *prn_dialog, PRN_SETTINGS *settings, char *document_name,
-            const int16 option_flags )
+            int16 option_flags )
 {
    return mt_pdlg_do(prn_dialog, settings, document_name, option_flags, _globl);
 }
@@ -146,7 +146,7 @@ PRN_SETTINGS *pdlg_new_settings( PRN_DIALOG *prn_dialog )
 /******************************************************************************/
 
 int16 pdlg_open( PRN_DIALOG *prn_dialog, PRN_SETTINGS *settings, char *document_name,
-            const int16 option_flags, const int16 x, const int16 y )
+            int16 option_flags, int16 x, int16 y )
 {
    return mt_pdlg_open(prn_dialog, settings, document_name, option_flags, x, y, _globl);
 }

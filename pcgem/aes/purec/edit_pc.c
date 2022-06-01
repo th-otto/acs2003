@@ -35,7 +35,7 @@ XEDITINFO *edit_create( void )
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_open( OBJECT *tree, const int16 obj )
+int16 edit_open( OBJECT *tree, int16 obj )
 {
    return mt_edit_open(tree, obj, _globl);
 }
@@ -46,7 +46,7 @@ int16 edit_open( OBJECT *tree, const int16 obj )
 /*                                                                            */
 /******************************************************************************/
 
-void edit_close( OBJECT *tree, const int16 obj )
+void edit_close( OBJECT *tree, int16 obj )
 {
    mt_edit_close(tree, obj, _globl);
 }
@@ -68,7 +68,7 @@ void edit_delete( XEDITINFO *editinfo )
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_cursor( OBJECT *tree, const int16 obj, const int16 whdl, const int16 show )
+int16 edit_cursor( OBJECT *tree, int16 obj, int16 whdl, int16 show )
 {
    return mt_edit_cursor(tree, obj, whdl, show, _globl);
 }
@@ -79,7 +79,7 @@ int16 edit_cursor( OBJECT *tree, const int16 obj, const int16 whdl, const int16 
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_evnt( OBJECT *tree, const int16 obj, const int16 whdl,
+int16 edit_evnt( OBJECT *tree, int16 obj, int16 whdl,
             EVNT *events, int32 *errcode )
 {
    return mt_edit_evnt(tree, obj, whdl, events, errcode, _globl);
@@ -91,7 +91,7 @@ int16 edit_evnt( OBJECT *tree, const int16 obj, const int16 whdl,
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_get_buf( OBJECT *tree, const int16 obj, char **buffer,
+int16 edit_get_buf( OBJECT *tree, int16 obj, char **buffer,
             int32 *buflen, int32 *txtlen )
 {
    return mt_edit_get_buf(tree, obj, buffer, buflen, txtlen, _globl);
@@ -103,7 +103,7 @@ int16 edit_get_buf( OBJECT *tree, const int16 obj, char **buffer,
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_get_format( OBJECT *tree, const int16 obj, int16 *tabwidth, int16 *autowrap )
+int16 edit_get_format( OBJECT *tree, int16 obj, int16 *tabwidth, int16 *autowrap )
 {
    return mt_edit_get_format(tree, obj, tabwidth, autowrap, _globl);
 }
@@ -114,7 +114,7 @@ int16 edit_get_format( OBJECT *tree, const int16 obj, int16 *tabwidth, int16 *au
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_get_colour( OBJECT *tree, const int16 obj, int16 *tcolour, int16 *bcolour )
+int16 edit_get_colour( OBJECT *tree, int16 obj, int16 *tcolour, int16 *bcolour )
 {
    return mt_edit_get_colour(tree, obj, tcolour, bcolour, _globl);
 }
@@ -125,7 +125,7 @@ int16 edit_get_colour( OBJECT *tree, const int16 obj, int16 *tcolour, int16 *bco
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_get_color( OBJECT *tree, const int16 obj, int16 *tcolor, int16 *bcolor )
+int16 edit_get_color( OBJECT *tree, int16 obj, int16 *tcolor, int16 *bcolor )
 {
    return mt_edit_get_colour(tree, obj, tcolor, bcolor, _globl);
 }
@@ -136,7 +136,7 @@ int16 edit_get_color( OBJECT *tree, const int16 obj, int16 *tcolor, int16 *bcolo
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_get_font( OBJECT *tree, const int16 obj, int16 *fontID, int16 *fontH,
+int16 edit_get_font( OBJECT *tree, int16 obj, int16 *fontID, int16 *fontH,
             boolean *fontPix, boolean *mono )
 {
    return mt_edit_get_font(tree, obj, fontID, fontH, fontPix, mono, _globl);
@@ -148,7 +148,7 @@ int16 edit_get_font( OBJECT *tree, const int16 obj, int16 *fontID, int16 *fontH,
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_get_cursor( OBJECT *tree, const int16 obj, char **cursorpos )
+int16 edit_get_cursor( OBJECT *tree, int16 obj, char **cursorpos )
 {
    return mt_edit_get_cursor(tree, obj, cursorpos, _globl);
 }
@@ -159,7 +159,7 @@ int16 edit_get_cursor( OBJECT *tree, const int16 obj, char **cursorpos )
 /*                                                                            */
 /******************************************************************************/
 
-void edit_get_pos( OBJECT *tree, const int16 obj, int16 *xscroll, int32 *yscroll,
+void edit_get_pos( OBJECT *tree, int16 obj, int16 *xscroll, int32 *yscroll,
             char **cyscroll, char **cursorpos, int16 *cx, int16 *cy )
 {
    mt_edit_get_pos(tree, obj, xscroll, yscroll, cyscroll, cursorpos, cx, cy, _globl);
@@ -171,7 +171,7 @@ void edit_get_pos( OBJECT *tree, const int16 obj, int16 *xscroll, int32 *yscroll
 /*                                                                            */
 /******************************************************************************/
 
-boolean edit_get_dirty( OBJECT *tree, const int16 obj )
+boolean edit_get_dirty( OBJECT *tree, int16 obj )
 {
    return mt_edit_get_dirty(tree, obj, _globl);
 }
@@ -182,7 +182,7 @@ boolean edit_get_dirty( OBJECT *tree, const int16 obj )
 /*                                                                            */
 /******************************************************************************/
 
-void edit_get_sel( OBJECT *tree, const int16 obj, char **bsel, char **esel )
+void edit_get_sel( OBJECT *tree, int16 obj, char **bsel, char **esel )
 {
    mt_edit_get_sel(tree, obj, bsel, esel, _globl);
 }
@@ -193,7 +193,7 @@ void edit_get_sel( OBJECT *tree, const int16 obj, char **bsel, char **esel )
 /*                                                                            */
 /******************************************************************************/
 
-void edit_get_scrollinfo( OBJECT *tree, const int16 obj, int32 *nlines, int32 *yscroll,
+void edit_get_scrollinfo( OBJECT *tree, int16 obj, int32 *nlines, int32 *yscroll,
             int16 *yvis, int16 *yval, int16 *ncols, int16 *xscroll, int16 *xvis )
 {
    mt_edit_get_scrollinfo(tree, obj, nlines, yscroll, yvis, yval, ncols, xscroll,
@@ -206,7 +206,7 @@ void edit_get_scrollinfo( OBJECT *tree, const int16 obj, int32 *nlines, int32 *y
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_buf( OBJECT *tree, const int16 obj, char *buffer, const int32 buflen )
+void edit_set_buf( OBJECT *tree, int16 obj, char *buffer, int32 buflen )
 {
    mt_edit_set_buf(tree, obj, buffer, buflen, _globl);
 }
@@ -217,8 +217,8 @@ void edit_set_buf( OBJECT *tree, const int16 obj, char *buffer, const int32 bufl
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_format( OBJECT *tree, const int16 obj, const int16 tabwidth,
-            const int16 autowrap )
+void edit_set_format( OBJECT *tree, int16 obj, int16 tabwidth,
+            int16 autowrap )
 {
    mt_edit_set_format(tree, obj, tabwidth, autowrap, _globl);
 }
@@ -229,8 +229,8 @@ void edit_set_format( OBJECT *tree, const int16 obj, const int16 tabwidth,
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_colour( OBJECT *tree, const int16 obj, const int16 tcolour,
-            const int16 bcolour )
+void edit_set_colour( OBJECT *tree, int16 obj, int16 tcolour,
+            int16 bcolour )
 {
    mt_edit_set_colour(tree, obj, tcolour, bcolour, _globl);
 }
@@ -241,7 +241,7 @@ void edit_set_colour( OBJECT *tree, const int16 obj, const int16 tcolour,
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_color( OBJECT *tree, const int16 obj, const int16 tcolor, const int16 bcolor )
+void edit_set_color( OBJECT *tree, int16 obj, int16 tcolor, int16 bcolor )
 {
    mt_edit_set_colour(tree, obj, tcolor, bcolor, _globl);
 }
@@ -252,8 +252,8 @@ void edit_set_color( OBJECT *tree, const int16 obj, const int16 tcolor, const in
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_font( OBJECT *tree, const int16 obj, const int16 fontID, const int16 fontH,
-            const int16 fontPix, const int16 mono )
+void edit_set_font( OBJECT *tree, int16 obj, int16 fontID, int16 fontH,
+            int16 fontPix, int16 mono )
 {
    mt_edit_set_font(tree, obj, fontID, fontH, fontPix, mono, _globl);
 }
@@ -264,7 +264,7 @@ void edit_set_font( OBJECT *tree, const int16 obj, const int16 fontID, const int
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_cursor( OBJECT *tree, const int16 obj, char *cursorpos )
+void edit_set_cursor( OBJECT *tree, int16 obj, char *cursorpos )
 {
    mt_edit_set_cursor(tree, obj, cursorpos, _globl);
 }
@@ -275,9 +275,9 @@ void edit_set_cursor( OBJECT *tree, const int16 obj, char *cursorpos )
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_pos( OBJECT *tree, const int16 obj, const int16 xscroll,
-            const int32 yscroll, char *cyscroll, char *cursorpos, const int16 cx,
-            const int16 cy )
+void edit_set_pos( OBJECT *tree, int16 obj, int16 xscroll,
+            int32 yscroll, char *cyscroll, char *cursorpos, int16 cx,
+            int16 cy )
 {
    mt_edit_set_pos(tree, obj, xscroll, yscroll, cyscroll, cursorpos, cx, cy, _globl);
 }
@@ -288,7 +288,7 @@ void edit_set_pos( OBJECT *tree, const int16 obj, const int16 xscroll,
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_resized( OBJECT *tree, const int16 obj, int16 *oldrh, int16 *newrh )
+int16 edit_resized( OBJECT *tree, int16 obj, int16 *oldrh, int16 *newrh )
 {
    return mt_edit_resized(tree, obj, oldrh, newrh, _globl);
 }
@@ -299,7 +299,7 @@ int16 edit_resized( OBJECT *tree, const int16 obj, int16 *oldrh, int16 *newrh )
 /*                                                                            */
 /******************************************************************************/
 
-void edit_set_dirty( OBJECT *tree, const int16 obj, const boolean dirty )
+void edit_set_dirty( OBJECT *tree, int16 obj, boolean dirty )
 {
    mt_edit_set_dirty(tree, obj, dirty, _globl);
 }
@@ -310,8 +310,8 @@ void edit_set_dirty( OBJECT *tree, const int16 obj, const boolean dirty )
 /*                                                                            */
 /******************************************************************************/
 
-int16 edit_scroll( OBJECT *tree, const int16 obj, const int16 whdl, const int32 yscroll,
-            const int16 xscroll )
+int16 edit_scroll( OBJECT *tree, int16 obj, int16 whdl, int32 yscroll,
+            int16 xscroll )
 {
    return mt_edit_scroll(tree, obj, whdl, yscroll, xscroll, _globl);
 }

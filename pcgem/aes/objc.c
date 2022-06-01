@@ -54,7 +54,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_add( OBJECT *tree, const int16 parent, const int16 child, GlobalArray *globl )
+int16 mt_objc_add( OBJECT *tree, int16 parent, int16 child, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {40, 2, 1, 1, 0};
@@ -84,7 +84,7 @@ int16 mt_objc_add( OBJECT *tree, const int16 parent, const int16 child, GlobalAr
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_delete( OBJECT *tree, const int16 objnr, GlobalArray *globl )
+int16 mt_objc_delete( OBJECT *tree, int16 objnr, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {41, 1, 1, 1, 0};
@@ -113,8 +113,8 @@ int16 mt_objc_delete( OBJECT *tree, const int16 objnr, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_draw( OBJECT *tree, const int16 start, const int16 depth, const int16 xclip,
-            const int16 yclip, const int16 wclip, const int16 hclip, GlobalArray *globl )
+int16 mt_objc_draw( OBJECT *tree, int16 start, int16 depth, int16 xclip,
+            int16 yclip, int16 wclip, int16 hclip, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {42, 6, 1, 1, 0};
@@ -145,7 +145,7 @@ int16 mt_objc_draw( OBJECT *tree, const int16 start, const int16 depth, const in
 /******************************************************************************/
 
 #if 0
-int16 mt_objc_draw_grect( OBJECT *tree, const int16 start, const int16 depth,
+int16 mt_objc_draw_grect( OBJECT *tree, int16 start, int16 depth,
             const GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -181,8 +181,8 @@ int16 mt_objc_draw_grect( OBJECT *tree, const int16 start, const int16 depth,
 /*                                                                            */
 /******************************************************************************/
 
-void mt_objc_wdraw( OBJECT *tree, const int16 start, const int16 depth, GRECT *clip,
-            const int16 whandle, GlobalArray *globl )
+void mt_objc_wdraw( OBJECT *tree, int16 start, int16 depth, GRECT *clip,
+            int16 whandle, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {60, 3, 0, 2, 0};
@@ -212,8 +212,8 @@ void mt_objc_wdraw( OBJECT *tree, const int16 start, const int16 depth, GRECT *c
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_find( OBJECT *tree, const int16 start, const int16 depth, const int16 mx,
-            const int16 my, GlobalArray *globl )
+int16 mt_objc_find( OBJECT *tree, int16 start, int16 depth, int16 mx,
+            int16 my, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {43, 4, 1, 1, 0};
@@ -245,7 +245,7 @@ int16 mt_objc_find( OBJECT *tree, const int16 start, const int16 depth, const in
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_offset( OBJECT *tree, const int16 objnr, int16 *x, int16 *y,
+int16 mt_objc_offset( OBJECT *tree, int16 objnr, int16 *x, int16 *y,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -281,7 +281,7 @@ int16 mt_objc_offset( OBJECT *tree, const int16 objnr, int16 *x, int16 *y,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_order( OBJECT *tree, const int16 objnr, const int16 new_nr, GlobalArray *globl )
+int16 mt_objc_order( OBJECT *tree, int16 objnr, int16 new_nr, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {45, 2, 1, 1, 0};
@@ -311,8 +311,8 @@ int16 mt_objc_order( OBJECT *tree, const int16 objnr, const int16 new_nr, Global
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_edit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *idx,
-            const int16 kind, GlobalArray *globl )
+int16 mt_objc_edit( OBJECT *tree, int16 objnr, int16 inchar, int16 *idx,
+            int16 kind, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {46, 4, 2, 1, 0};
@@ -351,7 +351,7 @@ int16 mt_objc_edit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_xedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *idx,
+int16 mt_objc_xedit( OBJECT *tree, int16 objnr, int16 inchar, int16 *idx,
             int16 kind, GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -392,8 +392,8 @@ int16 mt_objc_xedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_wedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *idx,
-            const int16 kind, const int16 whandle, GlobalArray *globl )
+int16 mt_objc_wedit( OBJECT *tree, int16 objnr, int16 inchar, int16 *idx,
+            int16 kind, int16 whandle, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {65, 5, 2, 1, 0};
@@ -436,9 +436,9 @@ int16 mt_objc_wedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 
 /* Parameter 'reserved' wird nicht benutzt */
 #pragma warn -par
 
-int16 mt_objc_change( OBJECT *tree, const int16 objnr, const int16 reserved,
-            const int16 xclip, const int16 yclip, const int16 wclip, const int16 hclip,
-            const int16 newstate, const int16 redraw, GlobalArray *globl )
+int16 mt_objc_change( OBJECT *tree, int16 objnr, int16 reserved,
+            int16 xclip, int16 yclip, int16 wclip, int16 hclip,
+            int16 newstate, int16 redraw, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {47, 8, 1, 1, 0};
@@ -476,8 +476,8 @@ int16 mt_objc_change( OBJECT *tree, const int16 objnr, const int16 reserved,
 /*                                                                            */
 /******************************************************************************/
 
-void mt_objc_wchange( OBJECT *tree, const int16 objnr, const int16 newstate,
-            GRECT *clip, const int16 whandle, GlobalArray *globl )
+void mt_objc_wchange( OBJECT *tree, int16 objnr, int16 newstate,
+            GRECT *clip, int16 whandle, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {61, 3, 0, 2, 0};
@@ -507,7 +507,7 @@ void mt_objc_wchange( OBJECT *tree, const int16 objnr, const int16 newstate,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_sysvar( const int16 mode, const int16 which, const int16 in1, const int16 in2,
+int16 mt_objc_sysvar( int16 mode, int16 which, int16 in1, int16 in2,
             int16 *out1, int16 *out2, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -544,8 +544,8 @@ int16 mt_objc_sysvar( const int16 mode, const int16 which, const int16 in1, cons
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_objc_xfind( OBJECT *obj, const int16 start, const int16 depth,
-            const int16 x, const int16 y, GlobalArray *globl )
+int16 mt_objc_xfind( OBJECT *obj, int16 start, int16 depth,
+            int16 x, int16 y, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {49, 4, 1, 1, 0};

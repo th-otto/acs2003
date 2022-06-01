@@ -78,7 +78,11 @@ int16 Ash_module(const char *path)
 	/*
 	 * BUG: why +1024? that may exceed TPA size
 	 */
+#ifdef __GNUC__
+	if (Mshrink(pd, pd->p_tlen + pd->p_dlen + pd->p_blen + 1024) != 0)
+#else
 	if (Mshrink(0, pd, pd->p_tlen + pd->p_dlen + pd->p_blen + 1024) != 0)
+#endif
 		ACSblk->ACSerror(AE_MEM_MOD, path);
 	if (mod->magic1 >= 0x41435336L && mod->magic1 <= 0x41435337L) /* 'ACS6', 'ACS7' */
 	{

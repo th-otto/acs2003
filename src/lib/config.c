@@ -247,3 +247,24 @@ int16 Acfg_isCfgfile(UConfig *config, const char *filename)
 {
 	return 0;
 }
+
+/* -------------------------------------------------------------------------- */
+
+int16 Acfg_isChanged( UConfig *config )
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 Acfg_isGroupPresent( UConfig *config, const char *kategorie )
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 Acfg_isStringPresent( UConfig *config, const char *kategorie, const char *name )
+{
+	return 0;
+}

@@ -54,7 +54,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_add( const FNT_DIALOG *fnt_dialog, const FNTS_ITEM *user_fonts,
+int16 mt_fnts_add( FNT_DIALOG *fnt_dialog, FNTS_ITEM *user_fonts,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -85,7 +85,7 @@ int16 mt_fnts_add( const FNT_DIALOG *fnt_dialog, const FNTS_ITEM *user_fonts,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_close( const FNT_DIALOG *fnt_dialog, int16 *x, int16 *y, GlobalArray *globl )
+int16 mt_fnts_close( FNT_DIALOG *fnt_dialog, int16 *x, int16 *y, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {183, 0, 3, 1, 0};
@@ -122,8 +122,8 @@ int16 mt_fnts_close( const FNT_DIALOG *fnt_dialog, int16 *x, int16 *y, GlobalArr
 /*                                                                            */
 /******************************************************************************/
 
-FNT_DIALOG *mt_fnts_create( const int16 vdi_handle, const int16 no_fonts,
-            const int16 font_flags, const int16 dialog_flags, const char *sample,
+FNT_DIALOG *mt_fnts_create( int16 vdi_handle, int16 no_fonts,
+            int16 font_flags, int16 dialog_flags, const char *sample,
             const char *opt_button, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -157,7 +157,7 @@ FNT_DIALOG *mt_fnts_create( const int16 vdi_handle, const int16 no_fonts,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_delete( const FNT_DIALOG *fnt_dialog, const int16 vdi_handle,
+int16 mt_fnts_delete( FNT_DIALOG *fnt_dialog, int16 vdi_handle,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -187,8 +187,8 @@ int16 mt_fnts_delete( const FNT_DIALOG *fnt_dialog, const int16 vdi_handle,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_do( FNT_DIALOG *fnt_dialog, const int16 button_flags, const int32 id_in,
-            const int32 pt_in, const int32 ratio_in, int16 *check_boxes, int32 *id,
+int16 mt_fnts_do( FNT_DIALOG *fnt_dialog, int16 button_flags, int32 id_in,
+            int32 pt_in, int32 ratio_in, int16 *check_boxes, int32 *id,
             fix31 *pt, int32 *ratio, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -272,7 +272,7 @@ int16 mt_fnts_evnt( FNT_DIALOG *fnt_dialog, EVNT *events, int16 *button, int16 *
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_get_info( FNT_DIALOG *fnt_dialog, const int32 id, int16 *mono, int16 *outline,
+int16 mt_fnts_get_info( FNT_DIALOG *fnt_dialog, int32 id, int16 *mono, int16 *outline,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -309,7 +309,7 @@ int16 mt_fnts_get_info( FNT_DIALOG *fnt_dialog, const int32 id, int16 *mono, int
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_get_name( FNT_DIALOG *fnt_dialog, const int32 id, char *full_name,
+int16 mt_fnts_get_name( FNT_DIALOG *fnt_dialog, int32 id, char *full_name,
             char *family_name, char *style_name, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -343,7 +343,7 @@ int16 mt_fnts_get_name( FNT_DIALOG *fnt_dialog, const int32 id, char *full_name,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_get_no_styles( FNT_DIALOG *fnt_dialog, const int32 id, GlobalArray *globl )
+int16 mt_fnts_get_no_styles( FNT_DIALOG *fnt_dialog, int32 id, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {184, 3, 1, 1, 0};
@@ -373,7 +373,7 @@ int16 mt_fnts_get_no_styles( FNT_DIALOG *fnt_dialog, const int32 id, GlobalArray
 /*                                                                            */
 /******************************************************************************/
 
-int32 mt_fnts_get_style( FNT_DIALOG *fnt_dialog, const int32 id, const int16 index,
+int32 mt_fnts_get_style( FNT_DIALOG *fnt_dialog, int32 id, int16 index,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -405,8 +405,8 @@ int32 mt_fnts_get_style( FNT_DIALOG *fnt_dialog, const int32 id, const int16 ind
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_open( FNT_DIALOG *fnt_dialog, const int16 button_flags, const int16 x,
-            const int16 y, const int32 id, const fix31 pt, const fix31 ratio,
+int16 mt_fnts_open( FNT_DIALOG *fnt_dialog, int16 button_flags, int16 x,
+            int16 y, int32 id, fix31 pt, fix31 ratio,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -468,8 +468,8 @@ void mt_fnts_remove( FNT_DIALOG *fnt_dialog, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_fnts_update( FNT_DIALOG *fnt_dialog, const int16 button_flags, const int32 id,
-            const fix31 pt, const int32 ratio, GlobalArray *globl )
+int16 mt_fnts_update( FNT_DIALOG *fnt_dialog, int16 button_flags, int32 id,
+            fix31 pt, int32 ratio, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {185, 8, 1, 1, 0};

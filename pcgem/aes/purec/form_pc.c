@@ -23,7 +23,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_do( OBJECT *tree, const int16 start )
+int16 form_do( OBJECT *tree, int16 start )
 {
    return mt_form_do(tree, start, _globl);
 }
@@ -34,9 +34,9 @@ int16 form_do( OBJECT *tree, const int16 start )
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_dial( const int16 flag, const int16 xlittle, const int16 ylittle,
-            const int16 wlittle, const int16 hlittle, const int16 xbig, const int16 ybig,
-            const int16 wbig, const int16 hbig )
+int16 form_dial( int16 flag, int16 xlittle, int16 ylittle,
+            int16 wlittle, int16 hlittle, int16 xbig, int16 ybig,
+            int16 wbig, int16 hbig )
 {
    return mt_form_dial(flag, xlittle, ylittle, wlittle, hlittle,
                xbig, ybig, wbig, hbig, _globl);
@@ -48,7 +48,7 @@ int16 form_dial( const int16 flag, const int16 xlittle, const int16 ylittle,
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_alert( const int16 defbutton, const char *string )
+int16 form_alert( int16 defbutton, const char *string )
 {
    return mt_form_alert(defbutton, string, _globl);
 }
@@ -59,7 +59,7 @@ int16 form_alert( const int16 defbutton, const char *string )
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_error( const int16 errnum )
+int16 form_error( int16 errnum )
 {
    return mt_form_error(errnum, _globl);
 }
@@ -88,8 +88,8 @@ int16 form_center_grect( OBJECT *tree, GRECT *r )
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_keybd( OBJECT *tree, const int16 obj, const int16 next,
-            const int16 input_char, int16 *next_obj, int16 *pchar )
+int16 form_keybd( OBJECT *tree, int16 obj, int16 next,
+            int16 input_char, int16 *next_obj, int16 *pchar )
 {
    return mt_form_keybd(tree, obj, next, input_char, next_obj, pchar, _globl);
 }
@@ -108,7 +108,7 @@ int16 form_keybd( OBJECT *tree, const int16 obj, const int16 next,
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_button( OBJECT *tree, const int16 obj, const int16 clicks, int16 *next_obj )
+int16 form_button( OBJECT *tree, int16 obj, int16 clicks, int16 *next_obj )
 {
    return mt_form_button(tree, obj, clicks, next_obj, _globl);
 }
@@ -119,7 +119,7 @@ int16 form_button( OBJECT *tree, const int16 obj, const int16 clicks, int16 *nex
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_popup( OBJECT *tree, const int16 x, const int16 y)
+int16 form_popup( OBJECT *tree, int16 x, int16 y)
 {
    return mt_form_popup(tree, x, y, _globl);
 }
@@ -130,8 +130,8 @@ int16 form_popup( OBJECT *tree, const int16 x, const int16 y)
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_wbutton( const OBJECT *fo_btree, const int16 fo_bobject,
-               const int16 fo_bclicks, int16 *fo_bnxtobj, const int16 whandle )
+int16 form_wbutton( OBJECT *fo_btree, int16 fo_bobject,
+               int16 fo_bclicks, int16 *fo_bnxtobj, int16 whandle )
 {
    return mt_form_wbutton(fo_btree, fo_bobject, fo_bclicks, fo_bnxtobj, whandle, _globl);
 }
@@ -142,9 +142,9 @@ int16 form_wbutton( const OBJECT *fo_btree, const int16 fo_bobject,
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_xdial( const int16 fo_diflag, const int16 fo_dilittlx, const int16 fo_dilittly,
-            const int16 fo_dilittlw, const int16 fo_dilittlh, const int16 fo_dibigx,
-            const int16 fo_dibigy, const int16 fo_dibigw, const int16 fo_dibigh,
+int16 form_xdial( int16 fo_diflag, int16 fo_dilittlx, int16 fo_dilittly,
+            int16 fo_dilittlw, int16 fo_dilittlh, int16 fo_dibigx,
+            int16 fo_dibigy, int16 fo_dibigw, int16 fo_dibigh,
             void **flydial )
 {
    return mt_form_xdial(fo_diflag, fo_dilittlx, fo_dilittly, fo_dilittlw, fo_dilittlh,
@@ -153,7 +153,7 @@ int16 form_xdial( const int16 fo_diflag, const int16 fo_dilittlx, const int16 fo
 
 /******************************************************************************/
 
-int16 form_xdial_grect( const int16 fo_diflag, const GRECT *fo_dilittl, const GRECT *fo_dibig,
+int16 form_xdial_grect( int16 fo_diflag, const GRECT *fo_dilittl, const GRECT *fo_dibig,
             void **flydial )
 {
    return mt_form_xdial_grect(fo_diflag, fo_dilittl, fo_dibig, flydial, _globl);
@@ -165,7 +165,7 @@ int16 form_xdial_grect( const int16 fo_diflag, const GRECT *fo_dilittl, const GR
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_xdo( const OBJECT *tree, const int16 startob,
+int16 form_xdo( OBJECT *tree, int16 startob,
             int16 *lastcrsr, const XDO_INF *tabs, void *flydial )
 {
    return mt_form_xdo(tree, startob, lastcrsr, tabs, flydial, _globl);
@@ -177,7 +177,7 @@ int16 form_xdo( const OBJECT *tree, const int16 startob,
 /*                                                                            */
 /******************************************************************************/
 
-int16 form_xerr( const int32 errcode, int8 *errfile )
+int16 form_xerr( int32 errcode, const char *errfile )
 {
    return mt_form_xerr(errcode, errfile, _globl);
 }

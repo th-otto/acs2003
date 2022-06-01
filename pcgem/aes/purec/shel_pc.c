@@ -34,7 +34,7 @@ int16 shel_read( char *cmd, char *tail )
 /*                                                                            */
 /******************************************************************************/
 
-int16 shel_write( const int16 do_execute, const int16 is_graph, const int16 is_overlay,
+int16 shel_write( int16 do_execute, int16 is_graph, int16 is_overlay,
             char *cmd, char *tail )
 {
    return mt_shel_write(do_execute, is_graph, is_overlay, cmd, tail, _globl);
@@ -46,7 +46,7 @@ int16 shel_write( const int16 do_execute, const int16 is_graph, const int16 is_o
 /*                                                                            */
 /******************************************************************************/
 
-int16 shel_get( char *addr, const int16 len )
+int16 shel_get( char *addr, int16 len )
 {
    return mt_shel_get(addr, len, _globl);
 }
@@ -57,7 +57,7 @@ int16 shel_get( char *addr, const int16 len )
 /*                                                                            */
 /******************************************************************************/
 
-int16 shel_put( char *addr, const int16 len )
+int16 shel_put( char *addr, int16 len )
 {
    return mt_shel_put(addr, len, _globl);
 }
@@ -112,7 +112,7 @@ int16 shel_wdef( char *cmd, char *dir )
 /*                                                                            */
 /******************************************************************************/
 
-int16 shel_help( const int16 mode, char *file, char *key )
+int16 shel_help( int16 mode, char *file, char *key )
 {
    return mt_shel_help(mode, file, key, _globl);
 }

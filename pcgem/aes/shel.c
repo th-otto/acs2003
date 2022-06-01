@@ -82,7 +82,7 @@ int16 mt_shel_read( char *cmd, char *tail, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_shel_write( const int16 do_execute, const int16 is_graph, const int16 is_overlay,
+int16 mt_shel_write( int16 do_execute, int16 is_graph, int16 is_overlay,
             char *cmd, char *tail, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -115,7 +115,7 @@ int16 mt_shel_write( const int16 do_execute, const int16 is_graph, const int16 i
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_shel_get( char *addr, const int16 len, GlobalArray *globl )
+int16 mt_shel_get( char *addr, int16 len, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {122, 1, 1, 1, 0};
@@ -144,7 +144,7 @@ int16 mt_shel_get( char *addr, const int16 len, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_shel_put( char *addr, const int16 len, GlobalArray *globl )
+int16 mt_shel_put( char *addr, int16 len, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {123, 1, 1, 1, 0};
@@ -291,7 +291,7 @@ int16 mt_shel_wdef( char *cmd, char *dir, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_shel_help( const int16 mode, char *file, char *key, GlobalArray *globl )
+int16 mt_shel_help( int16 mode, char *file, char *key, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {128, 1, 1, 2, 0};

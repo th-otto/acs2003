@@ -78,7 +78,7 @@ XEDITINFO *mt_edit_create( GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_open( OBJECT *tree, const int16 obj, GlobalArray *globl )
+int16 mt_edit_open( OBJECT *tree, int16 obj, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {211, 1, 1, 1, 0};
@@ -107,7 +107,7 @@ int16 mt_edit_open( OBJECT *tree, const int16 obj, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_close( OBJECT *tree, const int16 obj, GlobalArray *globl )
+void mt_edit_close( OBJECT *tree, int16 obj, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {212, 1, 0, 1, 0};
@@ -159,7 +159,7 @@ void mt_edit_delete( XEDITINFO *editinfo, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_cursor( OBJECT *tree, const int16 obj, const int16 whdl, const int16 show,
+int16 mt_edit_cursor( OBJECT *tree, int16 obj, int16 whdl, int16 show,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -191,7 +191,7 @@ int16 mt_edit_cursor( OBJECT *tree, const int16 obj, const int16 whdl, const int
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_evnt( OBJECT *tree, const int16 obj, const int16 whdl,
+int16 mt_edit_evnt( OBJECT *tree, int16 obj, int16 whdl,
             EVNT *events, int32 *errcode, GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -230,7 +230,7 @@ int16 mt_edit_evnt( OBJECT *tree, const int16 obj, const int16 whdl,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_get_buf( OBJECT *tree, const int16 obj, char **buffer,
+int16 mt_edit_get_buf( OBJECT *tree, int16 obj, char **buffer,
             int32 *buflen, int32 *txtlen, GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -269,7 +269,7 @@ int16 mt_edit_get_buf( OBJECT *tree, const int16 obj, char **buffer,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_get_format( OBJECT *tree, const int16 obj, int16 *tabwidth, int16 *autowrap,
+int16 mt_edit_get_format( OBJECT *tree, int16 obj, int16 *tabwidth, int16 *autowrap,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -306,7 +306,7 @@ int16 mt_edit_get_format( OBJECT *tree, const int16 obj, int16 *tabwidth, int16 
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_get_colour( OBJECT *tree, const int16 obj, int16 *tcolour, int16 *bcolour,
+int16 mt_edit_get_colour( OBJECT *tree, int16 obj, int16 *tcolour, int16 *bcolour,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -343,7 +343,7 @@ int16 mt_edit_get_colour( OBJECT *tree, const int16 obj, int16 *tcolour, int16 *
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_get_color( OBJECT *tree, const int16 obj, int16 *tcolor, int16 *bcolor,
+int16 mt_edit_get_color( OBJECT *tree, int16 obj, int16 *tcolor, int16 *bcolor,
             GlobalArray *globl )
 {
    return mt_edit_get_colour(tree, obj, tcolor, bcolor, globl);
@@ -355,7 +355,7 @@ int16 mt_edit_get_color( OBJECT *tree, const int16 obj, int16 *tcolor, int16 *bc
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_get_font( OBJECT *tree, const int16 obj, int16 *fontID, int16 *fontH,
+int16 mt_edit_get_font( OBJECT *tree, int16 obj, int16 *fontID, int16 *fontH,
             boolean *fontPix, boolean *mono, GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -399,7 +399,7 @@ int16 mt_edit_get_font( OBJECT *tree, const int16 obj, int16 *fontID, int16 *fon
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_get_cursor( OBJECT *tree, const int16 obj, char **cursorpos,
+int16 mt_edit_get_cursor( OBJECT *tree, int16 obj, char **cursorpos,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -434,7 +434,7 @@ int16 mt_edit_get_cursor( OBJECT *tree, const int16 obj, char **cursorpos,
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_get_pos( OBJECT *tree, const int16 obj, int16 *xscroll, int32 *yscroll,
+void mt_edit_get_pos( OBJECT *tree, int16 obj, int16 *xscroll, int32 *yscroll,
             char **cyscroll, char **cursorpos, int16 *cx, int16 *cy,
             GlobalArray *globl )
 {
@@ -478,7 +478,7 @@ void mt_edit_get_pos( OBJECT *tree, const int16 obj, int16 *xscroll, int32 *yscr
 /*                                                                            */
 /******************************************************************************/
 
-boolean mt_edit_get_dirty( OBJECT *tree, const int16 obj, GlobalArray *globl )
+boolean mt_edit_get_dirty( OBJECT *tree, int16 obj, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {216, 2, 1, 1, 0};
@@ -508,7 +508,7 @@ boolean mt_edit_get_dirty( OBJECT *tree, const int16 obj, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_get_sel( OBJECT *tree, const int16 obj, char **bsel, char **esel,
+void mt_edit_get_sel( OBJECT *tree, int16 obj, char **bsel, char **esel,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -543,7 +543,7 @@ void mt_edit_get_sel( OBJECT *tree, const int16 obj, char **bsel, char **esel,
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_get_scrollinfo( OBJECT *tree, const int16 obj, int32 *nlines,
+void mt_edit_get_scrollinfo( OBJECT *tree, int16 obj, int32 *nlines,
             int32 *yscroll, int16 *yvis, int16 *yval, int16 *ncols,
             int16 *xscroll, int16 *xvis, GlobalArray *globl )
 {
@@ -589,7 +589,7 @@ void mt_edit_get_scrollinfo( OBJECT *tree, const int16 obj, int32 *nlines,
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_buf( OBJECT *tree, const int16 obj, char *buffer, const int32 buflen,
+void mt_edit_set_buf( OBJECT *tree, int16 obj, char *buffer, int32 buflen,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -620,8 +620,8 @@ void mt_edit_set_buf( OBJECT *tree, const int16 obj, char *buffer, const int32 b
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_format( OBJECT *tree, const int16 obj, const int16 tabwidth,
-            const int16 autowrap, GlobalArray *globl )
+void mt_edit_set_format( OBJECT *tree, int16 obj, int16 tabwidth,
+            int16 autowrap, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {217, 4, 0, 1, 0};
@@ -651,8 +651,8 @@ void mt_edit_set_format( OBJECT *tree, const int16 obj, const int16 tabwidth,
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_colour( OBJECT *tree, const int16 obj, const int16 tcolour,
-            const int16 bcolour, GlobalArray *globl )
+void mt_edit_set_colour( OBJECT *tree, int16 obj, int16 tcolour,
+            int16 bcolour, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {217, 4, 0, 1, 0};
@@ -682,7 +682,7 @@ void mt_edit_set_colour( OBJECT *tree, const int16 obj, const int16 tcolour,
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_color( OBJECT *tree, const int16 obj, const int16 tcolor, const int16 bcolor,
+void mt_edit_set_color( OBJECT *tree, int16 obj, int16 tcolor, int16 bcolor,
             GlobalArray *globl )
 {
    mt_edit_set_colour(tree, obj, tcolor, bcolor, globl);
@@ -694,8 +694,8 @@ void mt_edit_set_color( OBJECT *tree, const int16 obj, const int16 tcolor, const
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_font( OBJECT *tree, const int16 obj, const int16 fontID, const int16 fontH,
-            const int16 fontPix, const int16 mono, GlobalArray *globl )
+void mt_edit_set_font( OBJECT *tree, int16 obj, int16 fontID, int16 fontH,
+            int16 fontPix, int16 mono, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {217, 6, 0, 1, 0};
@@ -727,7 +727,7 @@ void mt_edit_set_font( OBJECT *tree, const int16 obj, const int16 fontID, const 
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_cursor( OBJECT *tree, const int16 obj, char *cursorpos, GlobalArray *globl )
+void mt_edit_set_cursor( OBJECT *tree, int16 obj, char *cursorpos, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {217, 2, 0, 2, 0};
@@ -756,9 +756,9 @@ void mt_edit_set_cursor( OBJECT *tree, const int16 obj, char *cursorpos, GlobalA
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_pos( OBJECT *tree, const int16 obj, const int16 xscroll,
-            const int32 yscroll, char *cyscroll, char *cursorpos, const int16 cx,
-            const int16 cy, GlobalArray *globl )
+void mt_edit_set_pos( OBJECT *tree, int16 obj, int16 xscroll,
+            int32 yscroll, char *cyscroll, char *cursorpos, int16 cx,
+            int16 cy, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {217, 7, 0, 3, 0};
@@ -792,7 +792,7 @@ void mt_edit_set_pos( OBJECT *tree, const int16 obj, const int16 xscroll,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_resized( OBJECT *tree, const int16 obj, int16 *oldrh, int16 *newrh,
+int16 mt_edit_resized( OBJECT *tree, int16 obj, int16 *oldrh, int16 *newrh,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -829,7 +829,7 @@ int16 mt_edit_resized( OBJECT *tree, const int16 obj, int16 *oldrh, int16 *newrh
 /*                                                                            */
 /******************************************************************************/
 
-void mt_edit_set_dirty( OBJECT *tree, const int16 obj, const boolean dirty, GlobalArray *globl )
+void mt_edit_set_dirty( OBJECT *tree, int16 obj, boolean dirty, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {217, 3, 0, 1, 0};
@@ -858,8 +858,8 @@ void mt_edit_set_dirty( OBJECT *tree, const int16 obj, const boolean dirty, Glob
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_edit_scroll( OBJECT *tree, const int16 obj, const int16 whdl, const int32 yscroll,
-            const int16 xscroll, GlobalArray *globl )
+int16 mt_edit_scroll( OBJECT *tree, int16 obj, int16 whdl, int32 yscroll,
+            int16 xscroll, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {217, 6, 1, 1, 0};

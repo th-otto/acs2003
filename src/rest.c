@@ -21,6 +21,7 @@ char A_ERR_ACC[1];
 char A_ERR_MESS[1];
 char A_ERR_WINDOW[1];
 char A_ERR_WISLOT[1];
+char const _A_ERR_WISLOT[1];
 char NULL_STRING[1] = "";
 
 CICONBLK _CHK_1D_DS;
@@ -56,6 +57,7 @@ Awindow *Aroot_wi;
 Awindow *_ACSv_winds[MAX_WINDS];
 CICONBLK *_ACSv_wiicons[MAX_WINDS];
 int16 _ACSv_wmenu;
+int16 _Wmax_wi;
 
 /******************************************************************************/
 /* -------------------------------------------------------------------------- */
@@ -333,7 +335,7 @@ int16 A_fontsel(int16 *fontid, int16 *height, int16 prop)
 
 /* -------------------------------------------------------------------------- */
 
-int16 wprintf(Awindow *wi, const char *format, ... )
+int16 wprintf(Awindow *wi, const char *format, ...)
 {
 	return 0;
 }
@@ -708,7 +710,7 @@ char *Af_buildname(char *dest, int16 drv, const char *path, const char *name, co
 
 /* -------------------------------------------------------------------------- */
 
-char *Af_chgExt( char *file, char *new_ext )
+char *Af_chgExt(char *file, char *new_ext)
 {
 	return 0;
 }
@@ -749,7 +751,7 @@ char *Af_next(A_FileList *fileinfo)
 
 /* -------------------------------------------------------------------------- */
 
-int32 Af_pathconf( int16 drv, int16 mode )
+int32 Af_pathconf(int16 drv, int16 mode)
 {
 	return 0;
 }
@@ -932,6 +934,20 @@ void Amo_show(void)
 {
 }
 
+
+/* -------------------------------------------------------------------------- */
+
+int16 Amo_restart(Amouse *mouse)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Amo_return(int16 busy, Amouse *mouse)
+{
+}
+
 /* -------------------------------------------------------------------------- */
 
 OBJECT *Aob_create(const OBJECT *parent)
@@ -947,21 +963,21 @@ void Aob_delete(OBJECT *object)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_count( const OBJECT *tree, boolean count_aobject )
+int16 Aob_count(const OBJECT *tree, boolean count_aobject)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-CICONBLK *Aic_create( const CICONBLK *icon )
+CICONBLK *Aic_create(const CICONBLK *icon)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Aic_delete( CICONBLK *icon )
+void Aic_delete(CICONBLK *icon)
 {
 }
 
@@ -974,64 +990,64 @@ BITBLK *Aim_create(const BITBLK *bitblk)
 
 /* -------------------------------------------------------------------------- */
 
-void Aim_delete( BITBLK *bitblk )
+void Aim_delete(BITBLK *bitblk)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-TEDINFO *Ate_create( const TEDINFO *tedi )
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Ate_delete( TEDINFO *tedi )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-AUSERBLK *Aus_create( const AUSERBLK *user )
+TEDINFO *Ate_create(const TEDINFO *tedi)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Aus_delete( AUSERBLK *user )
+void Ate_delete(TEDINFO *tedi)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Aob_fix( OBJECT *object )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Aob_icon( OBJECT *object )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Aob_offset( Axywh *redraw, OBJECT *ob, int16 entry )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-MFDB *Aob_save( Axywh *rect )
+AUSERBLK *Aus_create(const AUSERBLK *user)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Aob_restore( MFDB *save, Axywh *rect )
+void Aus_delete(AUSERBLK *user)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Aob_fix(OBJECT *object)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Aob_icon(OBJECT *object)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Aob_offset(Axywh *redraw, OBJECT *ob, int16 entry)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+MFDB *Aob_save(Axywh *rect)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Aob_restore(MFDB *save, Axywh *rect)
 {
 }
 
@@ -1058,7 +1074,7 @@ int16 Aob_execute(Awindow *win, OBJECT *tree, int16 obnr)
 
 /* -------------------------------------------------------------------------- */
 
-void Aob_alias( void )
+void Aob_alias(void)
 {
 }
 
@@ -1071,127 +1087,127 @@ int16 Aob_select(Awindow *win, OBJECT *tree, int16 kstate, int16 key)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_watch( Awindow *window, int16 obnr )
+int16 Aob_watch(Awindow *window, int16 obnr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Aev_release( void )
+void Aev_release(void)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_findflag( OBJECT *ob, int16 obnr, int16 flag )
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aob_up( OBJECT *ob, int16 obnr )
+int16 Aob_findflag(OBJECT *ob, int16 obnr, int16 flag)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Aob_printf( OBJECT *ob, int16 obnr, const char *format, ... )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Aob_puttext( OBJECT *ob, int16 obnr, const char *text )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aob_scanf( OBJECT *ob, int16 obnr, const char *format, ... )
+int16 Aob_up(OBJECT *ob, int16 obnr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_gettext( const OBJECT *ob, int16 obnr, char *text )
+void Aob_printf(OBJECT *ob, int16 obnr, const char *format, ...)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Aob_puttext(OBJECT *ob, int16 obnr, const char *text)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 Aob_scanf(OBJECT *ob, int16 obnr, const char *format, ...)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_diaend( void )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_diastart( void )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_uoself( Awindow *wi )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_obchange( Awindow *window, int16 obnr, int16 new_state )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_obredraw(Awindow *window, int16 obnr )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_redraw( Awindow *window, Axywh *limit )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_arrowed( Awindow *window, int16 which, int16 amount)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_hslid( Awindow *window, int16 pos )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_vslid( Awindow *window, int16 pos )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Awi_wheeled( Awindow *wind, int16 wheels[16], int16 mx, int16 my )
+int16 Aob_gettext(const OBJECT *ob, int16 obnr, char *text)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_obview( Awindow *window, Axywh *xywh )
+void Awi_diaend(void)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_chdef( Awindow *window, Axywh *xywh )
+void Awi_diastart(void)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_uoself(Awindow *wi)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_obchange(Awindow *window, int16 obnr, int16 new_state)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_obredraw(Awindow *window, int16 obnr)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_redraw(Awindow *window, Axywh *limit)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_arrowed(Awindow *window, int16 which, int16 amount)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_hslid(Awindow *window, int16 pos)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_vslid(Awindow *window, int16 pos)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 Awi_wheeled(Awindow *wind, int16 wheels[16], int16 mx, int16 my)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_obview(Awindow *window, Axywh *xywh)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Awi_chdef(Awindow *window, Axywh *xywh)
 {
 }
 
@@ -1204,54 +1220,54 @@ boolean Awi_focuschg(Awindow *win, int16 from, int16 to)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_help( Awindow *window )
+int16 Awi_help(Awindow *window)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Aus_help( void )
+void Aus_help(void)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_keysend( Awindow *window, int16 kstate, int16 key )
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Awi_scroll( Awindow *window, int16 x, int16 y )
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aob_flags( Awindow *window, int16 obnr, int16 flag, int16 setflag )
+int16 Awi_keysend(Awindow *window, int16 kstate, int16 key)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_state( Awindow *window, int16 obnr, int16 flag, int16 setflag )
+void Awi_scroll(Awindow *window, int16 x, int16 y)
+{
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 Aob_flags(Awindow *window, int16 obnr, int16 flag, int16 setflag)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aob_service( OBJECT *tree, int16 obnr, int16 task, void *in_out )
+int16 Aob_state(Awindow *window, int16 obnr, int16 flag, int16 setflag)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Awi_observice( Awindow *win, int16 obnr, int16 task, void *in_out )
+boolean Aob_service(OBJECT *tree, int16 obnr, int16 task, void *in_out)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+boolean Awi_observice(Awindow *win, int16 obnr, int16 task, void *in_out)
 {
 	return 0;
 }
@@ -1264,14 +1280,14 @@ void Aob_help(void)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aob_visible( OBJECT *tree, int16 obnr )
+boolean Aob_visible(OBJECT *tree, int16 obnr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Awi_obvisible( Awindow *win, int16 obnr )
+boolean Awi_obvisible(Awindow *win, int16 obnr)
 {
 	return 0;
 }
@@ -1284,39 +1300,39 @@ void INbackplan(void)
 
 /* -------------------------------------------------------------------------- */
 
-MFDB *Abp_create( int16 w, int16 h )
+MFDB *Abp_create(int16 w, int16 h)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Abp_delete( MFDB *backplane )
+void Abp_delete(MFDB *backplane)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Abp_start( MFDB *backplane )
+void Abp_start(MFDB *backplane)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Abp_end( void )
+void Abp_end(void)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Abp_mfdb2img(MFDB *org, IMG_HEADER **dest, ssize_t *img_len )
+int16 Abp_mfdb2img(MFDB *org, IMG_HEADER **dest, ssize_t *img_len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Abp_img2mfdb( IMG_HEADER *org, MFDB **dest, int16 do_trnsfm )
+int16 Abp_img2mfdb(IMG_HEADER *org, MFDB **dest, int16 do_trnsfm)
 {
 	return 0;
 }
@@ -1335,7 +1351,7 @@ void TRwindow(void)
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_ontop( void )
+Awindow *Awi_ontop(void)
 {
 	return 0;
 }
@@ -1354,42 +1370,42 @@ void Awi_invalid(void)
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_wid( int16 wid )
+Awindow *Awi_wid(int16 wid)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_root( void )
+Awindow *Awi_root(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_init( Awindow *window )
+int16 Awi_init(Awindow *window)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int32 Ash_prog( char *path, char *command, char **env )
+int32 Ash_prog(char *path, char *command, char **env)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_list( void )
+Awindow *Awi_list(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_sendall( int16 task, void *in_out )
+void Awi_sendall(int16 task, void *in_out)
 {
 }
 
@@ -1401,38 +1417,38 @@ void Awi_lateupdate(void)
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_up( void )
+void Awi_up(void)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_down( void )
+void Awi_down(void)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_show( Awindow *window )
+void Awi_show(Awindow *window)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_selfcreate( void *x )
+Awindow *Awi_selfcreate(void *x)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_layout( int16 flag3D, int16 flagModernMenu, int16 redraw )
+void Awi_layout(int16 flag3D, int16 flagModernMenu, int16 redraw)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_create( const Awindow *parent )
+Awindow *Awi_create(const Awindow *parent)
 {
 	return 0;
 }
@@ -1445,7 +1461,7 @@ void Awi_slider(Awindow *win)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_open( Awindow *win )
+int16 Awi_open(Awindow *win)
 {
 	return 0;
 }
@@ -1466,14 +1482,14 @@ int16 Awi_backdrop(Awindow *win)
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_modal( void )
+Awindow *Awi_modal(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_up_modal( void )
+Awindow *Awi_up_modal(void)
 {
 	return 0;
 }
@@ -1486,37 +1502,37 @@ void Awi_show_menu(boolean show)
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_closed( Awindow *win )
+void Awi_closed(Awindow *win)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_delete( Awindow *win )
+void Awi_delete(Awindow *win)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_topped( Awindow *win )
+void Awi_topped(Awindow *win)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_fulled( Awindow *win )
+void Awi_fulled(Awindow *win)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_sized( Awindow *window, Axywh *area )
+void Awi_sized(Awindow *window, Axywh *area)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_moved( Awindow *window, Axywh *area )
+void Awi_moved(Awindow *window, Axywh *area)
 {
 }
 
@@ -1542,28 +1558,28 @@ int16 Awi_uniconify(Awindow *win)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Awi_service( Awindow *window, int16 task, void *in_out )
+boolean Awi_service(Awindow *window, int16 task, void *in_out)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_dialog( Awindow *win )
+int16 Awi_dialog(Awindow *win)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_doform( Awindow *mod_dia, void *para )
+int16 Awi_doform(Awindow *mod_dia, void *para)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_diaabort( void )
+void Awi_diaabort(void)
 {
 }
 
@@ -1576,72 +1592,72 @@ int16 _init_alert(Awindow *win)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_alert( int16 but, const char *text )
+int16 Awi_alert(int16 but, const char *text)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_update( int16 mode )
+void Awi_update(int16 mode)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-OBJECT *Awi_obfind( Awindow *window, int16 x, int16 y, OBJECT **tree, int16 *obnr )
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Awi_bubblegem( Awindow *window, int16 mx, int16 my )
+OBJECT *Awi_obfind(Awindow *window, int16 x, int16 y, OBJECT **tree, int16 *obnr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_context( Awindow *window, int16 mx, int16 my )
+int16 Awi_bubblegem(Awindow *window, int16 mx, int16 my)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-Awindow *Awi_name( const char *title, int16 sensitiv )
+int16 Awi_context(Awindow *window, int16 mx, int16 my)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_gemscript( Awindow *wi, int16 anz, char **cmds, A_GSAntwort *antwort )
+Awindow *Awi_name(const char *title, int16 sensitiv)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Ash_error( int16 messerr, void *para )
+int16 Awi_gemscript(Awindow *wi, int16 anz, char **cmds, A_GSAntwort *antwort)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+void Ash_error(int16 messerr, void *para)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
 /* Kommandozeile parsen und Optionen befüllen */
-int16 Ash_cmdParsen( char *options[256], const int16 argc, char **argv,
+int16 Ash_cmdParsen(char *options[256], const int16 argc, char **argv,
          const char *optionBeginChars, const char *optionsAllowed,
          const char *optionsWithParam, int16 (*wrongOption)(const char c),
-         ULinList *params )
+         ULinList *params)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Ash_getenv( const char *var )
+char *Ash_getenv(const char *var)
 {
 	return 0;
 }
@@ -1650,303 +1666,303 @@ char *Ash_getenv( const char *var )
 
 Awindow ThermWind;
 
-int16 Ash_thermometer( int16 kind, const char *titel, int16 color, void *data,
+int16 Ash_thermometer(int16 kind, const char *titel, int16 color, void *data,
          A_ThermFkt init, A_ThermFkt start, A_ThermFkt cont, A_ThermFkt fkt,
-         A_ThermFkt stop, A_ThermFkt quit )
+         A_ThermFkt stop, A_ThermFkt quit)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-KEYT *Akt_getKeyTab( void )
+KEYT *Akt_getKeyTab(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getExpMinNr( void )
+int16 Akt_getExpMinNr(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getExpMaxNr( void )
+int16 Akt_getExpMaxNr(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getImpMinNr( void )
+int16 Akt_getImpMinNr(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getImpMaxNr( void )
+int16 Akt_getImpMaxNr(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_getExpNameFromNr( int16 nr )
+char *Akt_getExpNameFromNr(int16 nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_getImpNameFromNr( int16 nr )
+char *Akt_getImpNameFromNr(int16 nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_getExpShortNameFromNr( int16 nr )
+char *Akt_getExpShortNameFromNr(int16 nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_getImpShortNameFromNr( int16 nr )
+char *Akt_getImpShortNameFromNr(int16 nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getRelease( void )
+int16 Akt_getRelease(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getExpNrFromId( int16 id )
+int16 Akt_getExpNrFromId(int16 id)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getImpNrFromId( int16 id )
+int16 Akt_getImpNrFromId(int16 id)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getExpIdFromNr( int16 nr )
+int16 Akt_getExpIdFromNr(int16 nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getImpIdFromNr( int16 nr )
+int16 Akt_getImpIdFromNr(int16 nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getExpNrFromName( char *name )
+int16 Akt_getExpNrFromName(char *name)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getImpNrFromName( char *name )
+int16 Akt_getImpNrFromName(char *name)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getInfoShort( int16 nr, int16 what, int16 *info )
+int16 Akt_getInfoShort(int16 nr, int16 what, int16 *info)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_getInfoString( int16 nr, int16 what, char *info, int16 max_len )
+int16 Akt_getInfoString(int16 nr, int16 what, char *info, int16 max_len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int32 Akt_getEuro( void )
+int32 Akt_getEuro(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char Akt_CharAtari2X( int16 nr, char ch )
+char Akt_CharAtari2X(int16 nr, char ch)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char Akt_CharX2Atari( int16 nr, char ch )
+char Akt_CharX2Atari(int16 nr, char ch)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_BlockAtari2X( char *dest_string, int16 nr, char *source_string, ssize_t len )
+char *Akt_BlockAtari2X(char *dest_string, int16 nr, char *source_string, ssize_t len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_BlockX2Atari( char *dest_string, int16 nr, char *source_string, ssize_t len )
+char *Akt_BlockX2Atari(char *dest_string, int16 nr, char *source_string, ssize_t len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_StringAtari2X( char *dest_string, int16 nr, char *source_string )
+char *Akt_StringAtari2X(char *dest_string, int16 nr, char *source_string)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_StringX2Atari( char *dest_string, int16 nr, char *source_string )
+char *Akt_StringX2Atari(char *dest_string, int16 nr, char *source_string)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_CharX2Unicode( int16 nr, char ch )
+int16 Akt_CharX2Unicode(int16 nr, char ch)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char Akt_CharUnicode2X( int16 nr, int16 unicode )
+char Akt_CharUnicode2X(int16 nr, int16 unicode)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 *Akt_BlockX2Unicode( int16 *unicode, int16 nr, char *x_chrs, ssize_t len )
+int16 *Akt_BlockX2Unicode(int16 *unicode, int16 nr, char *x_chrs, ssize_t len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_BlockUnicode2X( char *x_chrs, int16 nr, int16 *unicode, ssize_t len )
+char *Akt_BlockUnicode2X(char *x_chrs, int16 nr, int16 *unicode, ssize_t len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 *Akt_StringX2Unicode( int16 *unicode, int16 nr, char *string )
+int16 *Akt_StringX2Unicode(int16 *unicode, int16 nr, char *string)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int32 Akt_CharXUtf2Unicode( int16 nr, char *string, ssize_t len, int16 *read_chars )
+int32 Akt_CharXUtf2Unicode(int16 nr, char *string, ssize_t len, int16 *read_chars)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 *Akt_BlockXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *x_chrs, ssize_t len )
+int16 *Akt_BlockXUtf2Unicode(int16 *unicode, ssize_t *uni_len, int16 nr, char *x_chrs, ssize_t len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_BlockUnicode2XUtf( char *x_chrs, ssize_t *str_len, int16 nr, int16 *unicode, ssize_t len )
+char *Akt_BlockUnicode2XUtf(char *x_chrs, ssize_t *str_len, int16 nr, int16 *unicode, ssize_t len)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_BlockXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr )
+char *Akt_BlockXUtf2U2XUtf(char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_BlockXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr )
+char *Akt_BlockXUtf2XUtf(char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 *Akt_StringXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *string )
+int16 *Akt_StringXUtf2Unicode(int16 *unicode, ssize_t *uni_len, int16 nr, char *string)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_StringXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr )
+char *Akt_StringXUtf2U2XUtf(char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_StringXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr )
+char *Akt_StringXUtf2XUtf(char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_popExpName( int16 *width )
+char *Akt_popExpName(int16 *width)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Akt_popImpName( int16 *width )
+char *Akt_popImpName(int16 *width)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_chooseExpNr( Awindow *window, int16 x, int16 y )
+int16 Akt_chooseExpNr(Awindow *window, int16 x, int16 y)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Akt_chooseImpNr( Awindow *window, int16 x, int16 y )
+int16 Akt_chooseImpNr(Awindow *window, int16 x, int16 y)
 {
 	return 0;
 }
@@ -2053,14 +2069,14 @@ void Ash_sendmsg(int16 d0, int16 d1, void *a0)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Ash_sendall( int16 *mess, int32 type )
+boolean Ash_sendall(int16 *mess, int32 type)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-A_dd *Ash_nextdd( A_dd *act )
+A_dd *Ash_nextdd(A_dd *act)
 {
 	return 0;
 }
@@ -2272,7 +2288,7 @@ boolean Aev_GetAcOpen(MsgFktParams *params)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_WmRedraw( int16 dest_id, int16 wind_id, const Axywh *area )
+int16 Aev_WmRedraw(int16 dest_id, int16 wind_id, const Axywh *area)
 {
 	return 0;
 }
@@ -2348,35 +2364,35 @@ int16 Aev_GetAccMeta(void *a0)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AccID( int16 dest_id, Awindow *window, int16 timeout )
+int16 Aev_AccID(int16 dest_id, Awindow *window, int16 timeout)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AccAcc( int16 dest_id, int16 *message, Awindow *window, int16 timeout )
+int16 Aev_AccAcc(int16 dest_id, int16 *message, Awindow *window, int16 timeout)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AccExit( int16 dest_id, Awindow *window, int16 timeout )
+int16 Aev_AccExit(int16 dest_id, Awindow *window, int16 timeout)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AccAck( int16 dest_id, int16 ok )
+int16 Aev_AccAck(int16 dest_id, int16 ok)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AccKey( int16 dest_id, int16 key, Awindow *window, int16 timeout )
+int16 Aev_AccKey(int16 dest_id, int16 key, Awindow *window, int16 timeout)
 {
 	return 0;
 }
@@ -2459,28 +2475,28 @@ boolean Aev_GetVaPathUpdate(MsgFktParams *params)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AvProtokoll( int16 dest_id, Awindow *window, int16 timeout )
+int16 Aev_AvProtokoll(int16 dest_id, Awindow *window, int16 timeout)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AvExit( int16 dest_id, Awindow *window, int16 timeout )
+int16 Aev_AvExit(int16 dest_id, Awindow *window, int16 timeout)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_VaStart( int16 dest_id, const char *cmd, Awindow *window, int16 timeout )
+int16 Aev_VaStart(int16 dest_id, const char *cmd, Awindow *window, int16 timeout)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AvStarted( int16 dest_id, int16 ok, const char *cmd )
+int16 Aev_AvStarted(int16 dest_id, int16 ok, const char *cmd)
 {
 	return 0;
 }
@@ -2543,14 +2559,14 @@ boolean Aev_GetDhstAck(MsgFktParams *params)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_DhstAdd( const char *docname, const char *docpath )
+boolean Aev_DhstAdd(const char *docname, const char *docpath)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_DhstSaved( const char *file )
+int16 Aev_DhstSaved(const char *file)
 {
 	return 0;
 }
@@ -2592,7 +2608,7 @@ boolean Aev_GetRequestBubbleGEM(MsgFktParams *params)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_FontBubbleGEM( int16 font_id, int16 points )
+int16 Aev_FontBubbleGEM(int16 font_id, int16 points)
 {
 	return 0;
 }
@@ -2662,7 +2678,7 @@ int16 _gs_strcmp(const char *str1, const char *str2)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_GEMScript( int16 anz, char **cmd, A_GSAntwort *antwort )
+int16 Aev_GEMScript(int16 anz, char **cmd, A_GSAntwort *antwort)
 {
 	return 0;
 }
@@ -2683,7 +2699,7 @@ boolean Aev_ExitOlga(void)
 
 /* -------------------------------------------------------------------------- */
 
-void Awi_saved( Awindow *window, const char *datei )
+void Awi_saved(Awindow *window, const char *datei)
 {
 }
 
@@ -2759,35 +2775,35 @@ boolean Aev_OleExit(void)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_OlgaIdle( void )
+boolean Aev_OlgaIdle(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_OlgaUpdate( const char *datei )
+boolean Aev_OlgaUpdate(const char *datei)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_OlgaGetInfo( int16 id )
+boolean Aev_OlgaGetInfo(int16 id)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_OlgaRename( const char *old_datei, const char *new_datei )
+boolean Aev_OlgaRename(const char *old_datei, const char *new_datei)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_OlgaBreaklink( const char *datei )
+boolean Aev_OlgaBreaklink(const char *datei)
 {
 	return 0;
 }
@@ -2827,7 +2843,7 @@ void CheckSTGuide(void *a0)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_STGuideHelp( char *hyp_text, char *referenz, Awindow *window )
+int16 Aev_STGuideHelp(char *hyp_text, char *referenz, Awindow *window)
 {
 	return 0;
 }
@@ -2882,7 +2898,7 @@ void CheckPcHelp(void *a0)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_PCHelpVersion( void )
+int16 Aev_PCHelpVersion(void)
 {
 	return 0;
 }
@@ -2896,21 +2912,21 @@ boolean Aev_GetAcReply(MsgFktParams *params)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AcHelp( char *help_acc, char *referenz, Awindow *window )
+int16 Aev_AcHelp(char *help_acc, char *referenz, Awindow *window)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AcVersion( char *help_acc, Awindow *window )
+int16 Aev_AcVersion(char *help_acc, Awindow *window)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_AcCopy( char *help_acc, Awindow *window )
+int16 Aev_AcCopy(char *help_acc, Awindow *window)
 {
 	return 0;
 }
@@ -2930,98 +2946,98 @@ void TRuserobj(void)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Auo_string( OBJECT *entry, int16 task, void *in_out )
+boolean Auo_string(OBJECT *entry, int16 task, void *in_out)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_radiobutton( PARMBLK *pb )
+int16 CDECL A_radiobutton(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_checkbox( PARMBLK *pb )
+int16 CDECL A_checkbox(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_innerframe( PARMBLK *pb )
+int16 CDECL A_innerframe(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_3Dbutton( PARMBLK *pb )
+int16 CDECL A_3Dbutton(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_title( PARMBLK *pb )
+int16 CDECL A_title(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_pattern( PARMBLK *pb )
+int16 CDECL A_pattern(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_arrows( PARMBLK *pb )
+int16 CDECL A_arrows(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_select( PARMBLK *pb )
+int16 CDECL A_select(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_ftext( PARMBLK *pb )
+int16 CDECL A_ftext(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Auo_ftext( OBJECT *entry, int16 task, void *in_out )
+boolean Auo_ftext(OBJECT *entry, int16 task, void *in_out)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_cycle( PARMBLK *pb )
+int16 CDECL A_cycle(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Auo_cycle( OBJECT *entry, int16 task, void *in_out )
+boolean Auo_cycle(OBJECT *entry, int16 task, void *in_out)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-char *Ame_strpopup( Awindow *wi, char *pstr, char *chk, int16 width, int16 x, int16 y )
+char *Ame_strpopup(Awindow *wi, char *pstr, char *chk, int16 width, int16 x, int16 y)
 {
 	return 0;
 }
@@ -3034,14 +3050,14 @@ void Aus_cycle(void)
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_picture( PARMBLK *pb )
+int16 CDECL A_picture(PARMBLK *pb)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Auo_picture( OBJECT *entry, int16 task, void *in_out )
+boolean Auo_picture(OBJECT *entry, int16 task, void *in_out)
 {
 	return 0;
 }
@@ -3060,14 +3076,14 @@ void Aus_objboxed(void *a0, void *a1, int16 d0)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Auo_boxed( OBJECT *entry, int16 task, void *in_out )
+boolean Auo_boxed(OBJECT *entry, int16 task, void *in_out)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 CDECL A_boxed( PARMBLK *pb )
+int16 CDECL A_boxed(PARMBLK *pb)
 {
 	return 0;
 }
@@ -3080,7 +3096,7 @@ void Aud_boxed(void)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_keys( Awindow *window, int16 kstate, int16 key )
+int16 Awi_keys(Awindow *window, int16 kstate, int16 key)
 {
 	return 0;
 }
@@ -3094,21 +3110,21 @@ int16 Awi_sendkey(Awindow *wi, int16 kstate, int16 key)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_nokey( Awindow *wi, int16 kstate, int16 key )
+int16 Awi_nokey(Awindow *wi, int16 kstate, int16 key)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_within( const Axywh* rect, int16 x, int16 y )
+int16 Aob_within(const Axywh* rect, int16 x, int16 y)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 alert_str( const char* alert, const char* para )
+int16 alert_str(const char* alert, const char* para)
 {
 	return 0;
 }
@@ -3134,46 +3150,46 @@ boolean A_isModDia(void)
 
 /* -------------------------------------------------------------------------- */
 
-int16 A_dialog( OBJECT *dia )
+int16 A_dialog(OBJECT *dia)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 A_dialog2( OBJECT *dia )
+int16 A_dialog2(OBJECT *dia)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean intersect( Axywh* to, const Axywh* from )
+boolean intersect(Axywh* to, const Axywh* from)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void xywh2array( int16 *to, const Axywh *from )
+void xywh2array(int16 *to, const Axywh *from)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void array2xywh( Axywh *to, const int16 *from )
+void array2xywh(Axywh *to, const int16 *from)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Ascrp_clear( const char *ext )
+void Ascrp_clear(const char *ext)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Ascrp_get( char *ext, void **buffer, ssize_t *len )
+int16 Ascrp_get(char *ext, void **buffer, ssize_t *len)
 {
 	return 0;
 }
@@ -3182,7 +3198,7 @@ int16 Ascrp_get( char *ext, void **buffer, ssize_t *len )
 
 int16 a_dialog_active;
 
-int16 Ascrp_put (char *ext, void *buffer, long len, int16 append )
+int16 Ascrp_put (char *ext, void *buffer, long len, int16 append)
 {
 	return 0;
 }
@@ -3195,20 +3211,20 @@ void Adate_ymd2dow(void)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Adate_getMonth( const char *date, char *out_month )
+int16 Adate_getMonth(const char *date, char *out_month)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Ash_printSetIcon( CICONBLK *icon, int16 ghost )
+void Ash_printSetIcon(CICONBLK *icon, int16 ghost)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Ash_print( PRN_SETTINGS *setting, int16 x, int16 y, int16 option, const char *title, Awindow *window )
+int16 Ash_print(PRN_SETTINGS *setting, int16 x, int16 y, int16 option, const char *title, Awindow *window)
 {
 	return 0;
 }
@@ -3219,15 +3235,15 @@ Awindow PrintSelWind;
 
 /* -------------------------------------------------------------------------- */
 
-void Ash_fontSetIcon( CICONBLK *icon, int16 ghost )
+void Ash_fontSetIcon(CICONBLK *icon, int16 ghost)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Ash_font( const char *title, int16 x, int16 y, int16 font_flag,
+int16 Ash_font(const char *title, int16 x, int16 y, int16 font_flag,
          int16 button_flag, A_FontSel *font, const char *sample, const char *opt_button,
-         A_FontFkt set, A_FontFkt mark, A_FontFkt opt, void *para, Awindow *window )
+         A_FontFkt set, A_FontFkt mark, A_FontFkt opt, void *para, Awindow *window)
 {
 	return 0;
 }
@@ -3238,55 +3254,83 @@ Awindow FontSelWind;
 
 /* -------------------------------------------------------------------------- */
 
-ULinList *Alu_create( void )
+ULinList *Alu_create(void)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void Alu_delete( ULinList *liste )
+void Alu_delete(ULinList *liste)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Alu_ptrCmp( void *para, void *elem )
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Alu_longCmp( void *para, void *elem )
+int16 Alu_ptrCmp(void *para, void *elem)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Alu_intCmp( void *para, void *elem )
+int16 Alu_longCmp(void *para, void *elem)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Alu_charCmp( void *para, void *elem )
+int16 Alu_intCmp(void *para, void *elem)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Alu_strCmp( void *para, void *elem )
+int16 Alu_charCmp(void *para, void *elem)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Alu_striCmp( void *para, void *elem )
+int16 Alu_strCmp(void *para, void *elem)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 Alu_striCmp(void *para, void *elem)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 nkc_tolower( int16 key )
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 nkc_toupper( int16 key )
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int32 nkc_n2tos( int16 nkcode )
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 nkc_tos2n( int32 toskey )
 {
 	return 0;
 }

@@ -23,7 +23,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-int16 rsrc_load( char *name )
+int16 rsrc_load( const char *name )
 {
    return mt_rsrc_load(name, _globl);
 }
@@ -45,7 +45,7 @@ int16 rsrc_free( void )
 /*                                                                            */
 /******************************************************************************/
 
-int16 rsrc_gaddr( const int16 type, const int16 id, void *addr )
+int16 rsrc_gaddr( int16 type, int16 id, void *addr )
 {
    return mt_rsrc_gaddr(type, id, addr, _globl);
 }
@@ -56,7 +56,7 @@ int16 rsrc_gaddr( const int16 type, const int16 id, void *addr )
 /*                                                                            */
 /******************************************************************************/
 
-int16 rsrc_saddr( const int16 type, const int16 id, void *addr )
+int16 rsrc_saddr( int16 type, int16 id, void *addr )
 {
    return mt_rsrc_saddr(type, id, addr, _globl);
 }
@@ -67,7 +67,7 @@ int16 rsrc_saddr( const int16 type, const int16 id, void *addr )
 /*                                                                            */
 /******************************************************************************/
 
-int16 rsrc_obfix( OBJECT *tree, const int16 obj )
+int16 rsrc_obfix( OBJECT *tree, int16 obj )
 {
    return mt_rsrc_obfix(tree, obj, _globl);
 }

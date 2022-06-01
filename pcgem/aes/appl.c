@@ -56,7 +56,7 @@ typedef struct
    int32 af_magic;
    int16 version;
    int16 installed;
-   int16 cdecl (*afnt_getinfo )( const int16 af_gtype, int16 *af_gout1,
+   int16 cdecl (*afnt_getinfo )( int16 af_gtype, int16 *af_gout1,
                   int16 *af_gout2, int16 *af_gout3, int16 *af_gout4 );
 } SGAFNT;
 
@@ -94,7 +94,7 @@ int16 mt_appl_init( GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_read( const int16 rwid, const int16 length, void *pbuff, GlobalArray *globl )
+int16 mt_appl_read( int16 rwid, int16 length, void *pbuff, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {11, 2, 1, 1, 0};
@@ -124,7 +124,7 @@ int16 mt_appl_read( const int16 rwid, const int16 length, void *pbuff, GlobalArr
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_write( const int16 rwid, const int16 length, void *pbuff, GlobalArray *globl )
+int16 mt_appl_write( int16 rwid, int16 length, void *pbuff, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {12, 2, 1, 1, 0};
@@ -181,7 +181,7 @@ int16 mt_appl_find( char *pname, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_tplay( APPLRECORD *tbuffer, const int16 tlength, const int16 tscale,
+int16 mt_appl_tplay( APPLRECORD *tbuffer, int16 tlength, int16 tscale,
             GlobalArray *globl )
 {
    /* contrl anlegen */
@@ -212,7 +212,7 @@ int16 mt_appl_tplay( APPLRECORD *tbuffer, const int16 tlength, const int16 tscal
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_trecord( APPLRECORD *tbuffer, const int16 tlength, GlobalArray *globl )
+int16 mt_appl_trecord( APPLRECORD *tbuffer, int16 tlength, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {15, 1, 1, 1, 0};
@@ -241,7 +241,7 @@ int16 mt_appl_trecord( APPLRECORD *tbuffer, const int16 tlength, GlobalArray *gl
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_bvset( const uint16 bvdisk, const uint16 bvhard, GlobalArray *globl )
+int16 mt_appl_bvset( uint16 bvdisk, uint16 bvhard, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {16, 2, 1, 0, 0};
@@ -293,7 +293,7 @@ int16 mt_appl_yield( GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_search( const int16 mode, char *fname, int16 *type, int16 *ap_id, GlobalArray *globl )
+int16 mt_appl_search( int16 mode, char *fname, int16 *type, int16 *ap_id, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {18, 1, 3, 1, 0};
@@ -351,7 +351,7 @@ int16 mt_appl_exit( GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_getinfo( const int16 type, int16 *out1, int16 *out2, int16 *out3, int16 *out4,
+int16 mt_appl_getinfo( int16 type, int16 *out1, int16 *out2, int16 *out3, int16 *out4,
             GlobalArray *globl )
 {
    AESData data;
@@ -432,7 +432,7 @@ int16 mt_appl_getinfo( const int16 type, int16 *out1, int16 *out2, int16 *out3, 
 /******************************************************************************/
 
 #if 0
-int16 mt_appl_getinfo_str( const int16 type, char *str1, char *str2, char *str3, char *str4,
+int16 mt_appl_getinfo_str( int16 type, char *str1, char *str2, char *str3, char *str4,
             GlobalArray *globl )
 {
    /* UnterstÅtzt das System appl_getinfo? */
@@ -491,7 +491,7 @@ int16 mt_appl_getinfo_str( const int16 type, char *str1, char *str2, char *str3,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_control( const int16 ap_cid, const int16 ap_cwhat, void *ap_cout,
+int16 mt_appl_control( int16 ap_cid, int16 ap_cwhat, void *ap_cout,
                            GlobalArray *globl )
 {
    /* contrl anlegen */

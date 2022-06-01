@@ -78,8 +78,8 @@ int16 mt_evnt_keybd( GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_evnt_button( const int16 ev_bclicks, const uint16 ev_bmask,
-            const uint16 ev_bstate, int16 *ev_bmx, int16 *ev_bmy, int16 *ev_bbutton,
+int16 mt_evnt_button( int16 ev_bclicks, uint16 ev_bmask,
+            uint16 ev_bstate, int16 *ev_bmx, int16 *ev_bmy, int16 *ev_bbutton,
             int16 *ev_bkstate, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -119,8 +119,8 @@ int16 mt_evnt_button( const int16 ev_bclicks, const uint16 ev_bmask,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_evnt_xbutton( const int16 ev_bclicks, const uint16 ev_bmask,
-            const uint16 ev_bstate, int16 *ev_bmx, int16 *ev_bmy, int16 *ev_bbutton,
+int16 mt_evnt_xbutton( int16 ev_bclicks, uint16 ev_bmask,
+            uint16 ev_bstate, int16 *ev_bmx, int16 *ev_bmy, int16 *ev_bbutton,
             int16 *ev_bkstate, int16 *ev_bwhlpbuff, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -162,8 +162,8 @@ int16 mt_evnt_xbutton( const int16 ev_bclicks, const uint16 ev_bmask,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_evnt_mouse( const int16 ev_moflags, const int16 ev_mox, const int16 ev_moy,
-            const int16 ev_mowidth, const int16 ev_moheight, int16 *ev_momx, int16 *ev_momy,
+int16 mt_evnt_mouse( int16 ev_moflags, int16 ev_mox, int16 ev_moy,
+            int16 ev_mowidth, int16 ev_moheight, int16 *ev_momx, int16 *ev_momy,
             int16 *ev_mobutton, int16 *ev_mokstate, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -232,7 +232,7 @@ int16 mt_evnt_mesag( int16 *pbuff, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_evnt_timer( const uint32 count, GlobalArray *globl )
+int16 mt_evnt_timer( uint32 count, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {24, 2, 1, 0, 0};
@@ -260,12 +260,12 @@ int16 mt_evnt_timer( const uint32 count, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_evnt_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev_mbmask,
-            const int16 ev_mbstate, const int16 ev_mm1flags, const int16 ev_mm1x,
-            const int16 ev_mm1y, const int16 ev_mm1width, const int16 ev_mm1height,
-            const int16 ev_mm2flags, const int16 ev_mm2x, const int16 ev_mm2y,
-            const int16 ev_mm2width, const int16 ev_mm2height, int16 *ev_mmgpbuff,
-            const int32 ev_mtimer, int16 *ev_mmox, int16 *ev_mmoy, int16 *ev_mmbutton,
+int16 mt_evnt_multi( int16 ev_mflags, int16 ev_mbclicks, int16 ev_mbmask,
+            int16 ev_mbstate, int16 ev_mm1flags, int16 ev_mm1x,
+            int16 ev_mm1y, int16 ev_mm1width, int16 ev_mm1height,
+            int16 ev_mm2flags, int16 ev_mm2x, int16 ev_mm2y,
+            int16 ev_mm2width, int16 ev_mm2height, int16 *ev_mmgpbuff,
+            int32 ev_mtimer, int16 *ev_mmox, int16 *ev_mmoy, int16 *ev_mmbutton,
             int16 *ev_mmokstate, int16 *ev_mkreturn, int16 *ev_mbreturn, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -340,12 +340,12 @@ int16 mt_evnt_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_evnt_xmulti( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev_mbmask,
-            const int16 ev_mbstate, const int16 ev_mm1flags, const int16 ev_mm1x,
-            const int16 ev_mm1y, const int16 ev_mm1width, const int16 ev_mm1height,
-            const int16 ev_mm2flags, const int16 ev_mm2x, const int16 ev_mm2y,
-            const int16 ev_mm2width, const int16 ev_mm2height, int16 *ev_mmgpbuff,
-            const int32 ev_mtimer, int16 *ev_mmox, int16 *ev_mmoy, int16 *ev_mmbutton,
+int16 mt_evnt_xmulti( int16 ev_mflags, int16 ev_mbclicks, int16 ev_mbmask,
+            int16 ev_mbstate, int16 ev_mm1flags, int16 ev_mm1x,
+            int16 ev_mm1y, int16 ev_mm1width, int16 ev_mm1height,
+            int16 ev_mm2flags, int16 ev_mm2x, int16 ev_mm2y,
+            int16 ev_mm2width, int16 ev_mm2height, int16 *ev_mmgpbuff,
+            int32 ev_mtimer, int16 *ev_mmox, int16 *ev_mmoy, int16 *ev_mmbutton,
             int16 *ev_mmokstate, int16 *ev_mkreturn, int16 *ev_mbreturn, int16 *ev_mwhlpbuff,
             GlobalArray *globl )
 {
@@ -427,8 +427,8 @@ int16 mt_evnt_xmulti( const int16 ev_mflags, const int16 ev_mbclicks, const int1
 /******************************************************************************/
 
 #if 0
-void mt_EVNT_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev_mbmask,
-            const int16 ev_mbstate, MOBLK *m1, MOBLK *m2, const int32 ev_mtimer,
+void mt_EVNT_multi( int16 ev_mflags, int16 ev_mbclicks, int16 ev_mbmask,
+            int16 ev_mbstate, MOBLK *m1, MOBLK *m2, int32 ev_mtimer,
             EVNT *event, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -559,7 +559,7 @@ int16 mt_EvntMulti( EVENT *evnt_data, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_evnt_dclick( const int16 rate, const int16 setit, GlobalArray *globl )
+int16 mt_evnt_dclick( int16 rate, int16 setit, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {26, 2, 1, 0, 0};

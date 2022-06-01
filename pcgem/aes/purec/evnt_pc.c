@@ -34,8 +34,8 @@ int16 evnt_keybd( void )
 /*                                                                            */
 /******************************************************************************/
 
-int16 evnt_button( const int16 ev_bclicks, const uint16 ev_bmask,
-            const uint16 ev_bstate, int16 *ev_bmx, int16 *ev_bmy, int16 *ev_bbutton,
+int16 evnt_button( int16 ev_bclicks, uint16 ev_bmask,
+            uint16 ev_bstate, int16 *ev_bmx, int16 *ev_bmy, int16 *ev_bbutton,
             int16 *ev_bkstate )
 {
    return mt_evnt_button(ev_bclicks, ev_bmask, ev_bstate, ev_bmx, ev_bmy,
@@ -48,8 +48,8 @@ int16 evnt_button( const int16 ev_bclicks, const uint16 ev_bmask,
 /*                                                                            */
 /******************************************************************************/
 
-int16 evnt_mouse( const int16 ev_moflags, const int16 ev_mox,
-            const int16 ev_moy, const int16 ev_mowidth, const int16 ev_moheight,
+int16 evnt_mouse( int16 ev_moflags, int16 ev_mox,
+            int16 ev_moy, int16 ev_mowidth, int16 ev_moheight,
             int16 *ev_momx, int16 *ev_momy, int16 *ev_mobutton, int16 *ev_mokstate )
 {
    return mt_evnt_mouse(ev_moflags, ev_mox, ev_moy, ev_mowidth, ev_moheight, ev_momx,
@@ -84,12 +84,12 @@ int16 evnt_timer( int16 ev_tlocount, int16 ev_thicount )
 /*                                                                            */
 /******************************************************************************/
 
-int16 evnt_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev_mbmask,
-            const int16 ev_mbstate, const int16 ev_mm1flags, const int16 ev_mm1x,
-            const int16 ev_mm1y, const int16 ev_mm1width, const int16 ev_mm1height,
-            const int16 ev_mm2flags, const int16 ev_mm2x, const int16 ev_mm2y,
-            const int16 ev_mm2width, const int16 ev_mm2height, int16 *ev_mmgpbuff,
-            const int16 ev_mtlocount, const int16 ev_mthicount, int16 *ev_mmox,
+int16 evnt_multi( int16 ev_mflags, int16 ev_mbclicks, int16 ev_mbmask,
+            int16 ev_mbstate, int16 ev_mm1flags, int16 ev_mm1x,
+            int16 ev_mm1y, int16 ev_mm1width, int16 ev_mm1height,
+            int16 ev_mm2flags, int16 ev_mm2x, int16 ev_mm2y,
+            int16 ev_mm2width, int16 ev_mm2height, int16 *ev_mmgpbuff,
+            int16 ev_mtlocount, int16 ev_mthicount, int16 *ev_mmox,
             int16 *ev_mmoy, int16 *ev_mmbutton, int16 *ev_mmokstate, int16 *ev_mkreturn,
             int16 *ev_mbreturn )
 {
@@ -106,12 +106,12 @@ int16 evnt_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev
 /*                                                                            */
 /******************************************************************************/
 
-int16 evnt_xmulti( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev_mbmask,
-            const int16 ev_mbstate, const int16 ev_mm1flags, const int16 ev_mm1x,
-            const int16 ev_mm1y, const int16 ev_mm1width, const int16 ev_mm1height,
-            const int16 ev_mm2flags, const int16 ev_mm2x, const int16 ev_mm2y,
-            const int16 ev_mm2width, const int16 ev_mm2height, int16 *ev_mmgpbuff,
-            const int16 ev_mtlocount, const int16 ev_mthicount, int16 *ev_mmox,
+int16 evnt_xmulti( int16 ev_mflags, int16 ev_mbclicks, int16 ev_mbmask,
+            int16 ev_mbstate, int16 ev_mm1flags, int16 ev_mm1x,
+            int16 ev_mm1y, int16 ev_mm1width, int16 ev_mm1height,
+            int16 ev_mm2flags, int16 ev_mm2x, int16 ev_mm2y,
+            int16 ev_mm2width, int16 ev_mm2height, int16 *ev_mmgpbuff,
+            int16 ev_mtlocount, int16 ev_mthicount, int16 *ev_mmox,
             int16 *ev_mmoy, int16 *ev_mmbutton, int16 *ev_mmokstate, int16 *ev_mkreturn,
             int16 *ev_mbreturn, int16 *ev_mwhlpbuff )
 {
@@ -128,8 +128,8 @@ int16 evnt_xmulti( const int16 ev_mflags, const int16 ev_mbclicks, const int16 e
 /*                                                                            */
 /******************************************************************************/
 
-void EVNT_multi( const int16 ev_mflags, const int16 ev_mbclicks, const int16 ev_mbmask,
-            const int16 ev_mbstate, MOBLK *m1, MOBLK *m2, const int32 ev_mtimer,
+void EVNT_multi( int16 ev_mflags, int16 ev_mbclicks, int16 ev_mbmask,
+            int16 ev_mbstate, MOBLK *m1, MOBLK *m2, int32 ev_mtimer,
             EVNT *event )
 {
    mt_EVNT_multi(ev_mflags, ev_mbclicks, ev_mbmask, ev_mbstate, m1, m2, ev_mtimer,
@@ -164,7 +164,7 @@ int16 EvntMulti( EVENT *evnt_data )
 /*                                                                            */
 /******************************************************************************/
 
-int16 evnt_dclick( const int16 rate, const int16 setit )
+int16 evnt_dclick( int16 rate, int16 setit )
 {
    return mt_evnt_dclick(rate, setit, _globl);
 }

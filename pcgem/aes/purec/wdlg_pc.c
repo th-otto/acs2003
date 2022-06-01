@@ -24,7 +24,7 @@
 /******************************************************************************/
 
 DIALOG *wdlg_create( HNDL_OBJ handle_exit, OBJECT *tree, void *user_data,
-            const int16 code, void *data, const int16 flags )
+            int16 code, void *data, int16 flags )
 {
    return mt_wdlg_create(handle_exit, tree, user_data, code, data, flags, _globl);
 }
@@ -35,8 +35,8 @@ DIALOG *wdlg_create( HNDL_OBJ handle_exit, OBJECT *tree, void *user_data,
 /*                                                                            */
 /******************************************************************************/
 
-int16 wdlg_open( DIALOG *dialog, char *title, const int16 kind, const int16 x,
-            const int16 y, const int16 code, void *data )
+int16 wdlg_open( DIALOG *dialog, char *title, int16 kind, int16 x,
+            int16 y, int16 code, void *data )
 {
    return mt_wdlg_open(dialog, title, kind, x, y, code, data, _globl);
 }
@@ -113,7 +113,7 @@ int16 wdlg_get_handle( DIALOG *dialog )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wdlg_set_edit( DIALOG *dialog, const int16 obj )
+int16 wdlg_set_edit( DIALOG *dialog, int16 obj )
 {
    return mt_wdlg_set_edit(dialog, obj, _globl);
 }
@@ -146,7 +146,7 @@ int16 wdlg_set_size( DIALOG *dialog, GRECT *new_size )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wdlg_set_iconify( DIALOG *dialog, GRECT *g, char *title, OBJECT *tree, const int16 obj )
+int16 wdlg_set_iconify( DIALOG *dialog, GRECT *g, char *title, OBJECT *tree, int16 obj )
 {
    return mt_wdlg_set_iconify(dialog, g, title, tree, obj, _globl);
 }
@@ -179,7 +179,7 @@ int16 wdlg_evnt( DIALOG *dialog, EVNT *events )
 /*                                                                            */
 /******************************************************************************/
 
-void wdlg_redraw( DIALOG *dialog, GRECT *rect, const int16 obj, const int16 depth )
+void wdlg_redraw( DIALOG *dialog, GRECT *rect, int16 obj, int16 depth )
 {
    mt_wdlg_redraw(dialog, rect, obj, depth, _globl);
 }

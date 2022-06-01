@@ -135,6 +135,7 @@
 .EXPORT			exit
 .EXPORT			_app
 .EXPORT			_BasPag
+.EXPORT			__base
 .EXPORT			_AtExitVec
 .EXPORT			_FilSysVec
 .EXPORT			_StkLim
@@ -198,6 +199,7 @@ _HeapOnStk:		.DC.L	0
 .BSS
 
 __bss:
+__base:
 _BasPag:		.DS.L	1					* Zeiger auf Basepage
 _app:			.DS.W	1					* Applikationsflag
 _StkLim:		.DS.L	1					* Stacklimit

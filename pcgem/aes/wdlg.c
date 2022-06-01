@@ -55,7 +55,7 @@ typedef struct
 /******************************************************************************/
 
 DIALOG *mt_wdlg_create( HNDL_OBJ handle_exit, OBJECT *tree, void *user_data,
-            const int16 code, void *data, const int16 flags, GlobalArray *globl )
+            int16 code, void *data, int16 flags, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {160, 2, 0, 4, 1};
@@ -89,8 +89,8 @@ DIALOG *mt_wdlg_create( HNDL_OBJ handle_exit, OBJECT *tree, void *user_data,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wdlg_open( DIALOG *dialog, char *title, const int16 kind, const int16 x,
-            const int16 y, const int16 code, void *data, GlobalArray *globl )
+int16 mt_wdlg_open( DIALOG *dialog, char *title, int16 kind, int16 x,
+            int16 y, int16 code, void *data, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {161, 4, 1, 3, 0};
@@ -320,7 +320,7 @@ int16 mt_wdlg_get_handle( DIALOG *dialog, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wdlg_set_edit( DIALOG *dialog, const int16 obj, GlobalArray *globl )
+int16 mt_wdlg_set_edit( DIALOG *dialog, int16 obj, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {165, 2, 1, 1, 0};
@@ -414,7 +414,7 @@ int16 mt_wdlg_set_size( DIALOG *dialog, GRECT *new_size, GlobalArray *globl )
 /******************************************************************************/
 
 int16 mt_wdlg_set_iconify( DIALOG *dialog, GRECT *g, char *title, OBJECT *tree,
-            const int16 obj, GlobalArray *globl )
+            int16 obj, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {165, 2, 1, 4, 0};
@@ -511,7 +511,7 @@ int16 mt_wdlg_evnt( DIALOG *dialog, EVNT *events, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-void mt_wdlg_redraw( DIALOG *dialog, GRECT *rect, const int16 obj, const int16 depth,
+void mt_wdlg_redraw( DIALOG *dialog, GRECT *rect, int16 obj, int16 depth,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */

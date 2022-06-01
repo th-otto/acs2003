@@ -149,7 +149,7 @@ int16 mt_pdlg_close( PRN_DIALOG *prn_dialog, int16 *x, int16 *y, GlobalArray *gl
 /*                                                                            */
 /******************************************************************************/
 
-PRN_DIALOG *mt_pdlg_create( const int16 dialog_flags, GlobalArray *globl )
+PRN_DIALOG *mt_pdlg_create( int16 dialog_flags, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {200, 1, 0, 0, 1};
@@ -235,7 +235,7 @@ int16 mt_pdlg_dflt_settings( PRN_DIALOG *prn_dialog, PRN_SETTINGS *settings,
 /******************************************************************************/
 
 int16 mt_pdlg_do( PRN_DIALOG *prn_dialog, PRN_SETTINGS *settings, char *document_name,
-            const int16 option_flags, GlobalArray *globl )
+            int16 option_flags, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {207, 1, 1, 3, 0};
@@ -386,7 +386,7 @@ PRN_SETTINGS *mt_pdlg_new_settings( PRN_DIALOG *prn_dialog, GlobalArray *globl )
 /******************************************************************************/
 
 int16 mt_pdlg_open( PRN_DIALOG *prn_dialog, PRN_SETTINGS *settings, char *document_name,
-            const int16 option_flags, const int16 x, const int16 y, GlobalArray *globl )
+            int16 option_flags, int16 x, int16 y, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {202, 3, 1, 3, 0};

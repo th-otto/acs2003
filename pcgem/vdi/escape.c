@@ -206,7 +206,7 @@ void v_eeol( int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-void v_curaddress( int16 handle, int16 row, int16 col )
+void (v_curaddress)( int16 handle, int16 row, int16 col )
 {
    /* contrl anlegen und fllen */
    int16 contrl[12]={5, 0, 0, 2, 0, 11};
@@ -232,7 +232,7 @@ void v_curaddress( int16 handle, int16 row, int16 col )
 
 void vs_curaddress( int16 handle, int16 row, int16 col )
 {
-   v_curaddress(handle, row, col);
+   (v_curaddress)(handle, row, col);
 }
 
 /******************************************************************************/

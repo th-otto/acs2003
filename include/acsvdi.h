@@ -1032,7 +1032,6 @@ int16 vsf_style( int16 handle, int16 style );
 int16 vsf_color( int16 handle, int16 color );
 int16 vsf_perimeter( int16 handle, int16 per_vis );
 void vsf_udpat( int16 handle, const int16 *pattern, int16 nplanes );
-void vsf_updat( int16 handle, const int16 *pattern, int16 nplanes );
 
 /* Aus PC-GEM/3 */
 int16 vsf_perimeter3( int16 handle, int16 per_vis, int16 style );
@@ -1187,7 +1186,7 @@ void v_curleft( int16 handle );
 void v_curhome( int16 handle );
 void v_eeos( int16 handle );
 void v_eeol( int16 handle );
-void v_curaddress( int16 handle, int16 row, int16 col );
+#define v_curaddress(handle, row, col) vs_curaddress(handle, row, col)
 void vs_curaddress( int16 handle, int16 row, int16 col );
 void v_curtext( int16 handle, const char *string );
 void v_rvon( int16 handle );

@@ -23,7 +23,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_bar( OBJECT *tree, const int16 show )
+int16 menu_bar( OBJECT *tree, int16 show )
 {
    return mt_menu_bar(tree, show, _globl);
 }
@@ -34,7 +34,7 @@ int16 menu_bar( OBJECT *tree, const int16 show )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_icheck( OBJECT *tree, const int16 item, const int16 check )
+int16 menu_icheck( OBJECT *tree, int16 item, int16 check )
 {
    return mt_menu_icheck(tree, item, check, _globl);
 }
@@ -45,7 +45,7 @@ int16 menu_icheck( OBJECT *tree, const int16 item, const int16 check )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_ienable( OBJECT *tree, const int16 item, const int16 enable )
+int16 menu_ienable( OBJECT *tree, int16 item, int16 enable )
 {
    return mt_menu_ienable(tree, item, enable, _globl);
 }
@@ -56,7 +56,7 @@ int16 menu_ienable( OBJECT *tree, const int16 item, const int16 enable )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_tnormal( OBJECT *tree, const int16 title, const int16 normal )
+int16 menu_tnormal( OBJECT *tree, int16 title, int16 normal )
 {
    return mt_menu_tnormal(tree, title, normal, _globl);
 }
@@ -67,7 +67,7 @@ int16 menu_tnormal( OBJECT *tree, const int16 title, const int16 normal )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_text( OBJECT *tree, const int16 item, char *text )
+int16 menu_text( OBJECT *tree, int16 item, char *text )
 {
    return mt_menu_text(tree, item, text, _globl);
 }
@@ -78,7 +78,7 @@ int16 menu_text( OBJECT *tree, const int16 item, char *text )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_register( const int16 apid, char *string )
+int16 menu_register( int16 apid, char *string )
 {
    return mt_menu_register(apid, string, _globl);
 }
@@ -89,7 +89,7 @@ int16 menu_register( const int16 apid, char *string )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_unregister( const int16 apid )
+int16 menu_unregister( int16 apid )
 {
    return mt_menu_unregister(apid, _globl);
 }
@@ -100,7 +100,7 @@ int16 menu_unregister( const int16 apid )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_click( const int16 click, const int16 setit )
+int16 menu_click( int16 click, int16 setit )
 {
    return mt_menu_click(click, setit, _globl);
 }
@@ -111,7 +111,7 @@ int16 menu_click( const int16 click, const int16 setit )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_attach( const int16 flag, OBJECT *tree, const int16 item, MENU *mdata )
+int16 menu_attach( int16 flag, OBJECT *tree, int16 item, MENU *mdata )
 {
    return mt_menu_attach(flag, tree, item, mdata, _globl);
 }
@@ -122,7 +122,7 @@ int16 menu_attach( const int16 flag, OBJECT *tree, const int16 item, MENU *mdata
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_istart( const int16 flag, OBJECT *tree, const int16 imenu, const int16 item )
+int16 menu_istart( int16 flag, OBJECT *tree, int16 imenu, int16 item )
 {
    return mt_menu_istart(flag, tree, imenu, item, _globl);
 }
@@ -133,7 +133,7 @@ int16 menu_istart( const int16 flag, OBJECT *tree, const int16 imenu, const int1
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_popup( MENU *menu, const int16 xpos, const int16 ypos, MENU *mdata )
+int16 menu_popup( MENU *menu, int16 xpos, int16 ypos, MENU *mdata )
 {
    return mt_menu_popup(menu, xpos, ypos, mdata, _globl);
 }
@@ -144,7 +144,7 @@ int16 menu_popup( MENU *menu, const int16 xpos, const int16 ypos, MENU *mdata )
 /*                                                                            */
 /******************************************************************************/
 
-int16 menu_settings( const int16 flag, MN_SET *set )
+int16 menu_settings( int16 flag, MN_SET *set )
 {
    return mt_menu_settings(flag, set, _globl);
 }

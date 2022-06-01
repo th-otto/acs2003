@@ -23,7 +23,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_add( OBJECT *tree, const int16 parent, const int16 child )
+int16 objc_add( OBJECT *tree, int16 parent, int16 child )
 {
    return mt_objc_add(tree, parent, child, _globl);
 }
@@ -34,7 +34,7 @@ int16 objc_add( OBJECT *tree, const int16 parent, const int16 child )
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_delete( OBJECT *tree, const int16 objnr )
+int16 objc_delete( OBJECT *tree, int16 objnr )
 {
    return mt_objc_delete(tree, objnr, _globl);
 }
@@ -45,15 +45,15 @@ int16 objc_delete( OBJECT *tree, const int16 objnr )
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_draw( OBJECT *tree, const int16 start, const int16 depth, const int16 xclip,
-            const int16 yclip, const int16 wclip, const int16 hclip )
+int16 objc_draw( OBJECT *tree, int16 start, int16 depth, int16 xclip,
+            int16 yclip, int16 wclip, int16 hclip )
 {
    return mt_objc_draw(tree, start, depth, xclip, yclip, wclip, hclip, _globl);
 }
 
 /******************************************************************************/
 
-int16 objc_draw_grect( OBJECT *tree, const int16 start, const int16 depth,
+int16 objc_draw_grect( OBJECT *tree, int16 start, int16 depth,
             const GRECT *r )
 {
    return mt_objc_draw_grect(tree, start, depth, r, _globl);
@@ -65,8 +65,8 @@ int16 objc_draw_grect( OBJECT *tree, const int16 start, const int16 depth,
 /*                                                                            */
 /******************************************************************************/
 
-void objc_wdraw( OBJECT *tree, const int16 start, const int16 depth, GRECT *clip,
-            const int16 whandle )
+void objc_wdraw( OBJECT *tree, int16 start, int16 depth, GRECT *clip,
+            int16 whandle )
 {
    mt_objc_wdraw(tree, start, depth, clip, whandle, _globl);
 }
@@ -77,8 +77,8 @@ void objc_wdraw( OBJECT *tree, const int16 start, const int16 depth, GRECT *clip
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_find( OBJECT *tree, const int16 start, const int16 depth,
-            const int16 mx, const int16 my )
+int16 objc_find( OBJECT *tree, int16 start, int16 depth,
+            int16 mx, int16 my )
 {
    return mt_objc_find(tree, start, depth, mx, my, _globl);
 }
@@ -89,7 +89,7 @@ int16 objc_find( OBJECT *tree, const int16 start, const int16 depth,
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_offset( OBJECT *tree, const int16 objnr, int16 *x, int16 *y )
+int16 objc_offset( OBJECT *tree, int16 objnr, int16 *x, int16 *y )
 {
    return mt_objc_offset(tree, objnr, x, y, _globl);
 }
@@ -100,7 +100,7 @@ int16 objc_offset( OBJECT *tree, const int16 objnr, int16 *x, int16 *y )
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_order( OBJECT *tree, const int16 objnr, const int16 new_nr )
+int16 objc_order( OBJECT *tree, int16 objnr, int16 new_nr )
 {
    return mt_objc_order(tree, objnr, new_nr, _globl);
 }
@@ -111,8 +111,8 @@ int16 objc_order( OBJECT *tree, const int16 objnr, const int16 new_nr )
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_edit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *idx,
-            const int16 kind )
+int16 objc_edit( OBJECT *tree, int16 objnr, int16 inchar, int16 *idx,
+            int16 kind )
 {
    return mt_objc_edit(tree, objnr, inchar, idx, kind, _globl);
 }
@@ -123,7 +123,7 @@ int16 objc_edit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *idx
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_xedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *idx,
+int16 objc_xedit( OBJECT *tree, int16 objnr, int16 inchar, int16 *idx,
             int16 kind, GRECT *r )
 {
    return mt_objc_xedit(tree, objnr, inchar, idx, kind, r, _globl);
@@ -135,8 +135,8 @@ int16 objc_xedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *id
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_wedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *idx,
-            const int16 kind, const int16 whandle )
+int16 objc_wedit( OBJECT *tree, int16 objnr, int16 inchar, int16 *idx,
+            int16 kind, int16 whandle )
 {
    return mt_objc_wedit(tree, objnr, inchar, idx, kind, whandle, _globl);
 }
@@ -147,9 +147,9 @@ int16 objc_wedit( OBJECT *tree, const int16 objnr, const int16 inchar, int16 *id
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_change( OBJECT *tree, const int16 objnr, const int16 reserved,
-            const int16 xclip, const int16 yclip, const int16 wclip, const int16 hclip,
-            const int16 newstate, const int16 redraw )
+int16 objc_change( OBJECT *tree, int16 objnr, int16 reserved,
+            int16 xclip, int16 yclip, int16 wclip, int16 hclip,
+            int16 newstate, int16 redraw )
 {
    return mt_objc_change(tree, objnr, reserved,  xclip, yclip, wclip, hclip, newstate,
                redraw, _globl);
@@ -161,8 +161,8 @@ int16 objc_change( OBJECT *tree, const int16 objnr, const int16 reserved,
 /*                                                                            */
 /******************************************************************************/
 
-void objc_wchange( OBJECT *tree, const int16 objnr, const int16 newstate,
-            GRECT *clip, const int16 whandle )
+void objc_wchange( OBJECT *tree, int16 objnr, int16 newstate,
+            GRECT *clip, int16 whandle )
 {
    mt_objc_wchange(tree, objnr, newstate, clip, whandle, _globl);
 }
@@ -173,7 +173,7 @@ void objc_wchange( OBJECT *tree, const int16 objnr, const int16 newstate,
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_sysvar( const int16 mode, const int16 which, const int16 in1, const int16 in2,
+int16 objc_sysvar( int16 mode, int16 which, int16 in1, int16 in2,
             int16 *out1, int16 *out2 )
 {
    return mt_objc_sysvar(mode, which, in1, in2, out1, out2, _globl);
@@ -185,8 +185,8 @@ int16 objc_sysvar( const int16 mode, const int16 which, const int16 in1, const i
 /*                                                                            */
 /******************************************************************************/
 
-int16 objc_xfind( OBJECT *obj, const int16 start, const int16 depth,
-            const int16 x, const int16 y )
+int16 objc_xfind( OBJECT *obj, int16 start, int16 depth,
+            int16 x, int16 y )
 {
    return mt_objc_xfind(obj, start, depth, x, y, _globl);
 }

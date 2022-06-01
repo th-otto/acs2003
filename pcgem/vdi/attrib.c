@@ -1365,8 +1365,7 @@ void vst_track_offset( int16 handle, fix31 offset, int16 pair_mode,
 /*                                                                            */
 /******************************************************************************/
 
-void vst_kern_offset( int16 handle, fix31 offset, int16 pair_mode,
-         int16 *tracks, int16 *pairs )
+void vst_kern_offset( int16 handle, fix31 offset, int16 pair_mode, int16 *tracks, int16 *pairs )
 {
    vst_track_offset(handle, offset, pair_mode, tracks, pairs);
 }

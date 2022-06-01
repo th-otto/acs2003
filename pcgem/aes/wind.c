@@ -102,8 +102,8 @@ int16 AnzMaxParmsWindGetSet =
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_create( const int16 kind, const int16 max_x, const int16 max_y,
-            const int16 max_w, const int16 max_h, GlobalArray *globl )
+int16 mt_wind_create( int16 kind, int16 max_x, int16 max_y,
+            int16 max_w, int16 max_h, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {100, 5, 1, 0, 0};
@@ -131,7 +131,7 @@ int16 mt_wind_create( const int16 kind, const int16 max_x, const int16 max_y,
 /******************************************************************************/
 
 #if 0
-int16 mt_wind_create_grect( const int16 kind, const GRECT *r, GlobalArray *globl )
+int16 mt_wind_create_grect( int16 kind, const GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {100, 5, 1, 0, 0};
@@ -163,8 +163,8 @@ int16 mt_wind_create_grect( const int16 kind, const GRECT *r, GlobalArray *globl
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_open( const int16 handle, const int16 x, const int16 y,
-            const int16 w, const int16 h, GlobalArray *globl )
+int16 mt_wind_open( int16 handle, int16 x, int16 y,
+            int16 w, int16 h, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {101, 5, 1, 0, 0};
@@ -192,7 +192,7 @@ int16 mt_wind_open( const int16 handle, const int16 x, const int16 y,
 /******************************************************************************/
 
 #if 0
-int16 mt_wind_open_grect( const int16 handle, const GRECT *r, GlobalArray *globl )
+int16 mt_wind_open_grect( int16 handle, const GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {101, 5, 1, 0, 0};
@@ -224,7 +224,7 @@ int16 mt_wind_open_grect( const int16 handle, const GRECT *r, GlobalArray *globl
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_close( const int16 handle, GlobalArray *globl )
+int16 mt_wind_close( int16 handle, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {102, 1, 1, 0, 0};
@@ -251,7 +251,7 @@ int16 mt_wind_close( const int16 handle, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_delete( const int16 handle, GlobalArray *globl )
+int16 mt_wind_delete( int16 handle, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {103, 1, 1, 0, 0};
@@ -280,7 +280,7 @@ int16 mt_wind_delete( const int16 handle, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_get( const int16 handle, const int16 what, int16 *value1, int16 *value2,
+int16 mt_wind_get( int16 handle, int16 what, int16 *value1, int16 *value2,
             int16 *value3, int16 *value4, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -349,7 +349,7 @@ int16 mt_wind_get( const int16 handle, const int16 what, int16 *value1, int16 *v
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 mt_wind_getQSB( const int16 handle, void **buffer, int32 *length, GlobalArray *globl )
+int16 mt_wind_getQSB( int16 handle, void **buffer, int32 *length, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {104, 2, 5, 0, 0};
@@ -393,7 +393,7 @@ int16 mt_wind_getQSB( const int16 handle, void **buffer, int32 *length, GlobalAr
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #if 0
-int16 mt_wind_get_grect( const int16 handle, int16 what, GRECT *r, GlobalArray *globl )
+int16 mt_wind_get_grect( int16 handle, int16 what, GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {104, 2, 5, 0, 0};
@@ -430,7 +430,7 @@ int16 mt_wind_get_grect( const int16 handle, int16 what, GRECT *r, GlobalArray *
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #if 0
-int16 mt_wind_get_int( const int16 handle, int16 what, int16 *g1, GlobalArray *globl )
+int16 mt_wind_get_int( int16 handle, int16 what, int16 *g1, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {104, 2, 5, 0, 0};
@@ -467,7 +467,7 @@ int16 mt_wind_get_int( const int16 handle, int16 what, int16 *g1, GlobalArray *g
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #if 0
-int16 mt_wind_xget_grect( const int16 handle, int16 what, const GRECT *clip, GRECT *r, GlobalArray *globl )
+int16 mt_wind_xget_grect( int16 handle, int16 what, const GRECT *clip, GRECT *r, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {104, 6, 5, 0, 0};
@@ -509,8 +509,8 @@ int16 mt_wind_xget_grect( const int16 handle, int16 what, const GRECT *clip, GRE
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_set( const int16 handle, const int16 what, const int16 value1,
-            const int16 value2, const int16 value3, const int16 value4, GlobalArray *globl )
+int16 mt_wind_set( int16 handle, int16 what, int16 value1,
+            int16 value2, int16 value3, int16 value4, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {105, 6, 1, 0, 0};
@@ -547,7 +547,7 @@ int16 mt_wind_set( const int16 handle, const int16 what, const int16 value1,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 mt_wind_xset_grect( const int16 handle, const int16 what, const GRECT *xywh,
+int16 mt_wind_xset_grect( int16 handle, int16 what, const GRECT *xywh,
             GRECT *ret, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -582,7 +582,7 @@ int16 mt_wind_xset_grect( const int16 handle, const int16 what, const GRECT *xyw
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #if 0
-int16 mt_wind_setGRECT( const int16 handle, const int16 what, const GRECT *xywh,
+int16 mt_wind_setGRECT( int16 handle, int16 what, const GRECT *xywh,
             GlobalArray *globl )
 {
    return mt_wind_xset_grect(handle, what, xywh, NULL, globl);
@@ -596,7 +596,7 @@ int16 mt_wind_setGRECT( const int16 handle, const int16 what, const GRECT *xywh,
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #if 0
-int16 mt_wind_set_grect( const int16 handle, const int16 what, const GRECT *r,
+int16 mt_wind_set_grect( int16 handle, int16 what, const GRECT *r,
             GlobalArray *globl )
 {
    return mt_wind_xset_grect(handle, what, r, NULL, globl);
@@ -610,7 +610,7 @@ int16 mt_wind_set_grect( const int16 handle, const int16 what, const GRECT *r,
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #if 0
-int16 mt_wind_set_string( const int16 handle, const int16 what, const char *str,
+int16 mt_wind_set_string( int16 handle, int16 what, const char *str,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -653,7 +653,7 @@ int16 mt_wind_set_string( const int16 handle, const int16 what, const char *str,
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #if 0
-int16 mt_wind_set_int( const int16 handle, const int16 what, const int16 g1,
+int16 mt_wind_set_int( int16 handle, int16 what, int16 g1,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -687,7 +687,7 @@ int16 mt_wind_set_int( const int16 handle, const int16 what, const int16 g1,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_find( const int16 x, const int16 y, GlobalArray *globl )
+int16 mt_wind_find( int16 x, int16 y, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {106, 2, 1, 0, 0};
@@ -715,7 +715,7 @@ int16 mt_wind_find( const int16 x, const int16 y, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_update( const int16 what, GlobalArray *globl )
+int16 mt_wind_update( int16 what, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {107, 1, 1, 0, 0};
@@ -742,8 +742,8 @@ int16 mt_wind_update( const int16 what, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_calc( const int16 wtype, const int16 kind, const int16 x, const int16 y,
-            const int16 w, const int16 h, int16 *px, int16 *py, int16 *pw, int16 *ph,
+int16 mt_wind_calc( int16 wtype, int16 kind, int16 x, int16 y,
+            int16 w, int16 h, int16 *px, int16 *py, int16 *pw, int16 *ph,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -786,7 +786,7 @@ int16 mt_wind_calc( const int16 wtype, const int16 kind, const int16 x, const in
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 mt_wind_calcGRECT( const int16 wtype, const int16 kind, const GRECT *input,
+int16 mt_wind_calcGRECT( int16 wtype, int16 kind, const GRECT *input,
             GRECT *output, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -816,7 +816,7 @@ int16 mt_wind_calcGRECT( const int16 wtype, const int16 kind, const GRECT *input
 
 /******************************************************************************/
 
-int16 mt_wind_calc_grect( const int16 type, const int16 parts, const GRECT *In,
+int16 mt_wind_calc_grect( int16 type, int16 parts, const GRECT *In,
             GRECT *Out, GlobalArray *globl )
 {
    return mt_wind_calcGRECT(type,parts,In,Out, globl);
@@ -852,7 +852,7 @@ int16 mt_wind_new( GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_wind_draw( const int16 handle, const int16 startob, GlobalArray *globl )
+int16 mt_wind_draw( int16 handle, int16 startob, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {99, 2, 1, 0, 0};

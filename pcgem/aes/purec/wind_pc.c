@@ -51,8 +51,8 @@ extern int16 AnzMaxParmsWindGetSet;
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_create( const int16 kind, const int16 max_x, const int16 max_y,
-            const int16 max_w, const int16 max_h )
+int16 wind_create( int16 kind, int16 max_x, int16 max_y,
+            int16 max_w, int16 max_h )
 {
    return mt_wind_create(kind, max_x, max_y, max_w, max_h, _globl);
 }
@@ -63,7 +63,7 @@ int16 wind_create( const int16 kind, const int16 max_x, const int16 max_y,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_create_grect( const int16 kind,  const GRECT *r )
+int16 wind_create_grect( int16 kind, const GRECT *r )
 {
    return mt_wind_create_grect(kind, r, _globl);
 }
@@ -74,8 +74,8 @@ int16 wind_create_grect( const int16 kind,  const GRECT *r )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_open( const int16 handle, const int16 x, const int16 y,
-            const int16 w, const int16 h )
+int16 wind_open( int16 handle, int16 x, int16 y,
+            int16 w, int16 h )
 {
    return mt_wind_open(handle, x, y, w, h, _globl);
 }
@@ -86,7 +86,7 @@ int16 wind_open( const int16 handle, const int16 x, const int16 y,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_open_grect( const int16 handle, const GRECT *g )
+int16 wind_open_grect( int16 handle, const GRECT *g )
 {
    return mt_wind_open_grect(handle, g, _globl);
 }
@@ -97,7 +97,7 @@ int16 wind_open_grect( const int16 handle, const GRECT *g )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_close( const int16 handle )
+int16 wind_close( int16 handle )
 {
    return mt_wind_close(handle, _globl);
 }
@@ -108,7 +108,7 @@ int16 wind_close( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_delete( const int16 handle )
+int16 wind_delete( int16 handle )
 {
    return mt_wind_delete(handle, _globl);
 }
@@ -119,7 +119,7 @@ int16 wind_delete( const int16 handle )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_get( const int16 handle, const int16 what, ... )
+int16 wind_get( int16 handle, int16 what, ... )
 {
    /* AES-Datenblock anlegen */
    AESData data = {{104, 2, 5, 0, 0}};
@@ -194,7 +194,7 @@ int16 wind_get( const int16 handle, const int16 what, ... )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_get_opt( const int16 handle, const int16 what, ... )
+int16 wind_get_opt( int16 handle, int16 what, ... )
 {
    /* AES-Datenblock anlegen */
    AESData data={{104, 2, 5, 0, 0}};
@@ -302,7 +302,7 @@ int16 wind_get_opt( const int16 handle, const int16 what, ... )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_getQSB( const int16 handle, void **buffer, int32 *length )
+int16 wind_getQSB( int16 handle, void **buffer, int32 *length )
 {
    return mt_wind_getQSB(handle, buffer, length, _globl);
 }
@@ -313,7 +313,7 @@ int16 wind_getQSB( const int16 handle, void **buffer, int32 *length )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_get_grect( const int16 handle, int16 what, GRECT *r )
+int16 wind_get_grect( int16 handle, int16 what, GRECT *r )
 {
    return mt_wind_get_grect(handle, what, r, _globl);
 }
@@ -324,7 +324,7 @@ int16 wind_get_grect( const int16 handle, int16 what, GRECT *r )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_get_int( const int16 handle, int16 what, int16 *g1 )
+int16 wind_get_int( int16 handle, int16 what, int16 *g1 )
 {
    return mt_wind_get_int(handle, what, g1, _globl);
 }
@@ -335,7 +335,7 @@ int16 wind_get_int( const int16 handle, int16 what, int16 *g1 )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_xget_grect( const int16 handle, int16 what, const GRECT *clip, GRECT *r )
+int16 wind_xget_grect( int16 handle, int16 what, const GRECT *clip, GRECT *r )
 {
    return mt_wind_xget_grect(handle, what, clip, r, _globl);
 }
@@ -346,7 +346,7 @@ int16 wind_xget_grect( const int16 handle, int16 what, const GRECT *clip, GRECT 
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_set( const int16 handle, const int16 what, ... )
+int16 wind_set( int16 handle, int16 what, ... )
 {
    /* AES-Datenblock anlegen */
    AESData data={{105, 6, 1, 0, 0}};
@@ -388,7 +388,7 @@ int16 wind_set( const int16 handle, const int16 what, ... )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_xset_grect( const int16 handle, const int16 what, const GRECT *xywh, GRECT *ret )
+int16 wind_xset_grect( int16 handle, int16 what, const GRECT *xywh, GRECT *ret )
 {
    return mt_wind_xset_grect(handle, what, xywh, ret, _globl);
 }
@@ -399,7 +399,9 @@ int16 wind_xset_grect( const int16 handle, const int16 what, const GRECT *xywh, 
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_setGRECT( const int16 handle, const int16 what, const GRECT *xywh )
+int16 mt_wind_setGRECT( int16 handle, int16 what, const GRECT *xywh, GlobalArray *globl );
+
+int16 wind_setGRECT( int16 handle, int16 what, const GRECT *xywh )
 {
    return mt_wind_setGRECT(handle, what, xywh, _globl);
 }
@@ -410,7 +412,7 @@ int16 wind_setGRECT( const int16 handle, const int16 what, const GRECT *xywh )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 (wind_set_grect)( const int16 handle, const int16 what, const GRECT *xywh )
+int16 (wind_set_grect)( int16 handle, int16 what, const GRECT *xywh )
 {
    return mt_wind_set_grect(handle, what, xywh, _globl);
 }
@@ -421,9 +423,9 @@ int16 (wind_set_grect)( const int16 handle, const int16 what, const GRECT *xywh 
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_set_string( const int16 handle, const int16 what, const char *str )
+int16 wind_set_str( int16 handle, int16 what, const char *str )
 {
-   return mt_wind_set_string(handle, what, str, _globl);
+   return mt_wind_set_str(handle, what, str, _globl);
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -432,7 +434,7 @@ int16 wind_set_string( const int16 handle, const int16 what, const char *str )
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-int16 wind_set_int( const int16 handle, const int16 what, const int g1 )
+int16 wind_set_int( int16 handle, int16 what, int g1 )
 {
    return mt_wind_set_int(handle, what, g1, _globl);
 }
@@ -443,7 +445,7 @@ int16 wind_set_int( const int16 handle, const int16 what, const int g1 )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_find( const int16 x, const int16 y )
+int16 wind_find( int16 x, int16 y )
 {
    return mt_wind_find(x, y, _globl);
 }
@@ -454,7 +456,7 @@ int16 wind_find( const int16 x, const int16 y )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_update( const int16 what )
+int16 wind_update( int16 what )
 {
    return mt_wind_update(what, _globl);
 }
@@ -465,8 +467,8 @@ int16 wind_update( const int16 what )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_calc( const int16 wtype, const int16 kind, const int16 x, const int16 y,
-            const int16 w, const int16 h, int16 *px, int16 *py, int16 *pw, int16 *ph )
+int16 wind_calc( int16 wtype, int16 kind, int16 x, int16 y,
+            int16 w, int16 h, int16 *px, int16 *py, int16 *pw, int16 *ph )
 {
    return mt_wind_calc(wtype, kind, x, y, w, h, px, py, pw, ph, _globl);
 }
@@ -477,7 +479,10 @@ int16 wind_calc( const int16 wtype, const int16 kind, const int16 x, const int16
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_calcGRECT( const int16 wtype, const int16 kind, const GRECT *input,
+int16 mt_wind_calcGRECT( int16 wtype, int16 kind, const GRECT *input,
+            GRECT *output, GlobalArray *globl );
+
+int16 wind_calcGRECT( int16 wtype, int16 kind, const GRECT *input,
             GRECT *output )
 {
    return mt_wind_calcGRECT(wtype, kind, input, output, _globl);
@@ -489,7 +494,7 @@ int16 wind_calcGRECT( const int16 wtype, const int16 kind, const GRECT *input,
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_calc_grect( const int16 wtype, const int16 kind, const GRECT *input,
+int16 wind_calc_grect( int16 wtype, int16 kind, const GRECT *input,
             GRECT *output )
 {
    return mt_wind_calcGRECT(wtype, kind, input, output, _globl);
@@ -512,7 +517,7 @@ int16 wind_new( void )
 /*                                                                            */
 /******************************************************************************/
 
-int16 wind_draw( const int16 handle, const int16 startob )
+int16 wind_draw( int16 handle, int16 startob )
 {
    return mt_wind_draw(handle, startob, _globl);
 }

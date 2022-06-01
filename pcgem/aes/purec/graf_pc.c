@@ -23,8 +23,8 @@
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_rubbox( const int16 x, const int16 y, const int16 w_min,
-            const int16 h_min, int16 *w_end, int16 *h_end )
+int16 graf_rubbox( int16 x, int16 y, int16 w_min,
+            int16 h_min, int16 *w_end, int16 *h_end )
 {
    return mt_graf_rubbox(x, y, w_min, h_min, w_end, h_end, _globl);
 }
@@ -35,8 +35,8 @@ int16 graf_rubbox( const int16 x, const int16 y, const int16 w_min,
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_rubberbox( const int16 x, const int16 y, const int16 w_min,
-            const int16 h_min, int16 *w_end, int16 *h_end )
+int16 graf_rubberbox( int16 x, int16 y, int16 w_min,
+            int16 h_min, int16 *w_end, int16 *h_end )
 {
    return mt_graf_rubbox(x, y, w_min, h_min, w_end, h_end, _globl);
 }
@@ -47,8 +47,8 @@ int16 graf_rubberbox( const int16 x, const int16 y, const int16 w_min,
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_rubbbox( const int16 x, const int16 y, const int16 w_min,
-            const int16 h_min, int16 *w_end, int16 *h_end )
+int16 graf_rubbbox( int16 x, int16 y, int16 w_min,
+            int16 h_min, int16 *w_end, int16 *h_end )
 {
    return mt_graf_rubbox(x, y, w_min, h_min, w_end, h_end, _globl);
 }
@@ -59,8 +59,8 @@ int16 graf_rubbbox( const int16 x, const int16 y, const int16 w_min,
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_dragbox( const int16 w, const int16 h, const int16 sx, const int16 sy,
-            const int16 xc, const int16 yc, const int16 wc, const int16 hc,
+int16 graf_dragbox( int16 w, int16 h, int16 sx, int16 sy,
+            int16 xc, int16 yc, int16 wc, int16 hc,
             int16 *x, int16 *y )
 {
    return mt_graf_dragbox(w, h, sx, sy, xc, yc, wc, hc, x, y, _globl);
@@ -72,8 +72,8 @@ int16 graf_dragbox( const int16 w, const int16 h, const int16 sx, const int16 sy
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_mbox( const int16 w, const int16 h, const int16 start_x, const int16 start_y,
-            const int16 ende_x, const int16 ende_y )
+int16 graf_mbox( int16 w, int16 h, int16 start_x, int16 start_y,
+            int16 ende_x, int16 ende_y )
 {
    return mt_graf_mbox(w, h, start_x, start_y, ende_x, ende_y, _globl);
 }
@@ -84,8 +84,8 @@ int16 graf_mbox( const int16 w, const int16 h, const int16 start_x, const int16 
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_movebox( const int16 w, const int16 h, const int16 start_x, int16 const start_y,
-            const int16 ende_x, const int16 ende_y )
+int16 graf_movebox( int16 w, int16 h, int16 start_x, int16 start_y,
+            int16 ende_x, int16 ende_y )
 {
    return mt_graf_movebox(w, h, start_x, start_y, ende_x, ende_y, NULL);
 }
@@ -96,9 +96,9 @@ int16 graf_movebox( const int16 w, const int16 h, const int16 start_x, int16 con
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_growbox( const int16 start_x, const int16 start_y, const int16 start_w,
-            const int16 start_h, const int16 ende_x, const int16 ende_y, const int16 ende_w,
-            const int16 ende_h )
+int16 graf_growbox( int16 start_x, int16 start_y, int16 start_w,
+            int16 start_h, int16 ende_x, int16 ende_y, int16 ende_w,
+            int16 ende_h )
 {
    return mt_graf_growbox(start_x, start_y, start_w, start_h,
                ende_x, ende_y, ende_w, ende_h, _globl);
@@ -110,9 +110,9 @@ int16 graf_growbox( const int16 start_x, const int16 start_y, const int16 start_
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_shrinkbox( const int16 start_x, const int16 start_y, const int16 start_w,
-            const int16 start_h, const int16 ende_x, const int16 ende_y, const int16 ende_w,
-            const int16 ende_h )
+int16 graf_shrinkbox( int16 start_x, int16 start_y, int16 start_w,
+            int16 start_h, int16 ende_x, int16 ende_y, int16 ende_w,
+            int16 ende_h )
 {
    return mt_graf_shrinkbox(start_x, start_y, start_w, start_h,
                ende_x, ende_y, ende_w, ende_h, _globl);
@@ -124,8 +124,8 @@ int16 graf_shrinkbox( const int16 start_x, const int16 start_y, const int16 star
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_watchbox( OBJECT *tree, const int16 obj_nr, const int16 instate,
-            const int16 outstate )
+int16 graf_watchbox( OBJECT *tree, int16 obj_nr, int16 instate,
+            int16 outstate )
 {
    return mt_graf_watchbox(tree, obj_nr, instate, outstate, _globl);
 }
@@ -136,8 +136,8 @@ int16 graf_watchbox( OBJECT *tree, const int16 obj_nr, const int16 instate,
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_wwatchbox( const OBJECT *gr_wptree, const int16 gr_wobject,
-            const int16 gr_winstate, const int16 gr_woutstate, const int16 whandle )
+int16 graf_wwatchbox( OBJECT *gr_wptree, int16 gr_wobject,
+            int16 gr_winstate, int16 gr_woutstate, int16 whandle )
 {
    return mt_graf_wwatchbox(gr_wptree, gr_wobject, gr_winstate,
                gr_woutstate, whandle, _globl);
@@ -149,8 +149,8 @@ int16 graf_wwatchbox( const OBJECT *gr_wptree, const int16 gr_wobject,
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_slidebox( OBJECT *tree, const int16 parent, const int16 obj_nr,
-            const int16 isvert )
+int16 graf_slidebox( OBJECT *tree, int16 parent, int16 obj_nr,
+            int16 isvert )
 {
    return mt_graf_slidebox(tree, parent, obj_nr, isvert, _globl);
 }
@@ -183,7 +183,7 @@ int16 graf_xhandle( int16 *wchar, int16 *hchar, int16 *wbox, int16 *hbox, int16 
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_mouse( const int16 mouse_nr, MFORM *form )
+int16 graf_mouse( int16 mouse_nr, MFORM *form )
 {
    return mt_graf_mouse(mouse_nr, form, _globl);
 }
@@ -205,7 +205,7 @@ int16 graf_mkstate( int16 *x, int16 *y, int16 *mstate, int16 *kstate )
 /*                                                                            */
 /******************************************************************************/
 
-int16 graf_multirubber( const int16 x, const int16 y, const int16 minw, const int16 minh,
+int16 graf_multirubber( int16 x, int16 y, int16 minw, int16 minh,
             GRECT *rec, int16 *outw, int16 *outh )
 {
    return mt_graf_multirubber(x, y, minw, minh, rec, outw, outh, _globl);

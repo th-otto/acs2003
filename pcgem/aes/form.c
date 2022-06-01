@@ -54,7 +54,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_do( OBJECT *tree, const int16 start, GlobalArray *globl )
+int16 mt_form_do( OBJECT *tree, int16 start, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {50, 1, 1, 1, 0};
@@ -83,9 +83,9 @@ int16 mt_form_do( OBJECT *tree, const int16 start, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_dial( const int16 flag, const int16 xlittle, const int16 ylittle,
-            const int16 wlittle, const int16 hlittle, const int16 xbig, const int16 ybig,
-            const int16 wbig, const int16 hbig, GlobalArray *globl )
+int16 mt_form_dial( int16 flag, int16 xlittle, int16 ylittle,
+            int16 wlittle, int16 hlittle, int16 xbig, int16 ybig,
+            int16 wbig, int16 hbig, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {51, 9, 1, 0, 0};
@@ -120,7 +120,7 @@ int16 mt_form_dial( const int16 flag, const int16 xlittle, const int16 ylittle,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_alert( const int16 defbutton, const char *string, GlobalArray *globl )
+int16 mt_form_alert( int16 defbutton, const char *string, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {52, 1, 1, 1, 0};
@@ -149,7 +149,7 @@ int16 mt_form_alert( const int16 defbutton, const char *string, GlobalArray *glo
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_error( const int16 errnum, GlobalArray *globl )
+int16 mt_form_error( int16 errnum, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {53, 1, 1, 0, 0};
@@ -243,8 +243,8 @@ int16 mt_form_center_grect( OBJECT *tree, GRECT *r, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_keybd( OBJECT *tree, const int16 obj, const int16 next,
-            const int16 input_char, int16 *next_obj, int16 *pchar, GlobalArray *globl )
+int16 mt_form_keybd( OBJECT *tree, int16 obj, int16 next,
+            int16 input_char, int16 *next_obj, int16 *pchar, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {55, 3, 3, 1, 0};
@@ -289,7 +289,7 @@ int16 mt_form_keybd( OBJECT *tree, const int16 obj, const int16 next,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_button( OBJECT *tree, const int16 obj, const int16 clicks, int16 *next_obj,
+int16 mt_form_button( OBJECT *tree, int16 obj, int16 clicks, int16 *next_obj,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -324,7 +324,7 @@ int16 mt_form_button( OBJECT *tree, const int16 obj, const int16 clicks, int16 *
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_popup( OBJECT *tree, const int16 x, const int16 y, GlobalArray *globl )
+int16 mt_form_popup( OBJECT *tree, int16 x, int16 y, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {135, 2, 1, 1, 0};
@@ -354,8 +354,8 @@ int16 mt_form_popup( OBJECT *tree, const int16 x, const int16 y, GlobalArray *gl
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_wbutton( const OBJECT *fo_btree, const int16 fo_bobject,
-               const int16 fo_bclicks, int16 *fo_bnxtobj, const int16 whandle,
+int16 mt_form_wbutton( OBJECT *fo_btree, int16 fo_bobject,
+               int16 fo_bclicks, int16 *fo_bnxtobj, int16 whandle,
                GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -391,9 +391,9 @@ int16 mt_form_wbutton( const OBJECT *fo_btree, const int16 fo_bobject,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_xdial( const int16 fo_diflag, const int16 fo_dilittlx, const int16 fo_dilittly,
-            const int16 fo_dilittlw, const int16 fo_dilittlh, const int16 fo_dibigx,
-            const int16 fo_dibigy, const int16 fo_dibigw, const int16 fo_dibigh,
+int16 mt_form_xdial( int16 fo_diflag, int16 fo_dilittlx, int16 fo_dilittly,
+            int16 fo_dilittlw, int16 fo_dilittlh, int16 fo_dibigx,
+            int16 fo_dibigy, int16 fo_dibigw, int16 fo_dibigh,
             void **flydial, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -431,7 +431,7 @@ int16 mt_form_xdial( const int16 fo_diflag, const int16 fo_dilittlx, const int16
 /******************************************************************************/
 
 #if 0
-int16 mt_form_xdial_grect( const int16 fo_diflag,
+int16 mt_form_xdial_grect( int16 fo_diflag,
             const GRECT *fo_dilittl, const GRECT *fo_dibig,
             void **flydial, GlobalArray *globl )
 {
@@ -469,7 +469,7 @@ int16 mt_form_xdial_grect( const int16 fo_diflag,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_xdo( const OBJECT *tree, const int16 startob, int16 *lastcrsr,
+int16 mt_form_xdo( OBJECT *tree, int16 startob, int16 *lastcrsr,
             const XDO_INF *tabs, void *flydial, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -505,7 +505,7 @@ int16 mt_form_xdo( const OBJECT *tree, const int16 startob, int16 *lastcrsr,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_form_xerr( const int32 errcode, int8 *errfile, GlobalArray *globl )
+int16 mt_form_xerr( int32 errcode, const char *errfile, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {136, 2, 1, 1, 0};

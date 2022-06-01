@@ -3,6 +3,16 @@
 #include "acsvdi.h"
 #include "acsplus.h"
 
+#ifdef __PUREC__
+/* misnamed functions no longer declared in header */
+void (vsf_updat)( int16 handle, const int16 *pattern, int16 nplanes );
+void (v_curaddress)( int16 handle, int16 row, int16 col );
+#endif
+
+#ifdef __GNUC__
+void CDECL pc_aes( int16 *contrl, GlobalArray *global, int16 *intin, int16 *intout, void *addrin, void *addrout );
+#endif
+
 
 #define NUMFUNCS(a) ((int)(sizeof(a) / sizeof(a[0])))
 
@@ -418,7 +428,11 @@ static void *func1Vdi[] = {
 	vsf_color,
 	vsf_perimeter,
 	vsf_udpat,
+#ifdef __PUREC__
 	vsf_updat,
+#else
+	vsf_udpat,
+#endif
 	vs_color,
 	vr_trnfm,
 	vro_cpyfm,
@@ -464,7 +478,11 @@ static void *func1Vdi[] = {
 	v_curhome,
 	v_eeos,
 	v_eeol,
+#ifdef __PUREC__
 	v_curaddress,
+#else
+	vs_curaddress,
+#endif
 	v_curtext,
 	v_rvon,
 	v_rvoff,
@@ -616,7 +634,11 @@ static funcVersion const funcVdi[] = { { func1Vdi, 0 } };
 static int16 const funcAnzVdi = NUMFUNCS(funcVdi);
 
 static void *func1Aes[] = {
+#ifdef __GNUC__
+	pc_aes,
+#else
 	aes,
+#endif
 	appl_init,
 	appl_read,
 	appl_write,
@@ -827,7 +849,11 @@ static void *func1Aes[] = {
 	form_xdial,
 	form_xdo,
 	form_xerr,
+#ifdef __GNUC__
+	aes,
+#else
 	_crystal,
+#endif
 	graf_wwatchbox,
 	graf_xhandle,
 	wdlg_create,

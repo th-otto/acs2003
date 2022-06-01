@@ -19,7 +19,7 @@ chg1:
 		movea.l    d0,a0
 		move.l     (a0),oldpd
 		move.l     a0,_run
-		move.l     _BasPag,(a0)
+		move.l     __base,(a0)
 		move.l     2(a7),oldret
 		move.l     #post,2(a7)
 		movea.l    oldvec,a0
@@ -51,7 +51,7 @@ short:
 
 intret:
 		movea.l    _run,a0
-		move.l     _BasPag,(a0)
+		move.l     __base,(a0)
 		movem.l    (a7)+,a0-a1
 		rte
 

@@ -75,11 +75,9 @@ void *fslx_do( const char *title, char *path, int16 pathlen, char *fname,
             int16 fnamelen, char *patterns, XFSL_FILTER *filter, char *paths,
             int16 *sort_mode, int16 flags, int16 *button, int16 *nfiles,
             char **pattern )
-
 {
    return mt_fslx_do(title, path, pathlen, fname, fnamelen, patterns, filter, paths,
                sort_mode, flags, button, nfiles, pattern, _globl);
-
 }
 
 /******************************************************************************/

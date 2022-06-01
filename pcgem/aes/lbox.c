@@ -54,7 +54,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-void mt_lbox_ascroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *slider_rect,
+void mt_lbox_ascroll_to( LIST_BOX *box, int16 first, GRECT *box_rect, GRECT *slider_rect,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -85,7 +85,7 @@ void mt_lbox_ascroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GREC
 /*                                                                            */
 /******************************************************************************/
 
-void mt_lbox_scroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *slider_rect,
+void mt_lbox_scroll_to( LIST_BOX *box, int16 first, GRECT *box_rect, GRECT *slider_rect,
             GlobalArray *globl )
 {
    mt_lbox_ascroll_to(box, first, box_rect, slider_rect, globl);
@@ -97,7 +97,7 @@ void mt_lbox_scroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT
 /*                                                                            */
 /******************************************************************************/
 
-void mt_lbox_bscroll_to( LIST_BOX *box, const int16 first, GRECT *box_rect, GRECT *slider_rect,
+void mt_lbox_bscroll_to( LIST_BOX *box, int16 first, GRECT *box_rect, GRECT *slider_rect,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -158,10 +158,10 @@ int16 mt_lbox_cnt_items( LIST_BOX *box, GlobalArray *globl )
 /******************************************************************************/
 
 LIST_BOX *mt_lbox_create( OBJECT *tree, SLCT_ITEM slct, SET_ITEM set, LBOX_ITEM *items,
-            const int16 visible_a, const int16 first_a, const int16 *ctrl_objs,
-            const int16 *objs, const int16 flags, const int16 pause_a, void *user_data,
-            DIALOG *dialog, const int16 visible_b, const int16 first_b, const int16 entries_b,
-            const int16 pause_b, GlobalArray *globl )
+            int16 visible_a, int16 first_a, const int16 *ctrl_objs,
+            const int16 *objs, int16 flags, int16 pause_a, void *user_data,
+            DIALOG *dialog, int16 visible_b, int16 first_b, int16 entries_b,
+            int16 pause_b, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {170, 8, 0, 8, 1};
@@ -231,7 +231,7 @@ int16 mt_lbox_delete( LIST_BOX *box, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_lbox_do( LIST_BOX *box, const int16 obj, GlobalArray *globl )
+int16 mt_lbox_do( LIST_BOX *box, int16 obj, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {172, 1, 1, 1, 0};
@@ -511,7 +511,7 @@ int16 mt_lbox_get_idx( LBOX_ITEM *items, LBOX_ITEM *search, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-LBOX_ITEM *mt_lbox_get_item( LIST_BOX *box, const int16 n, GlobalArray *globl )
+LBOX_ITEM *mt_lbox_get_item( LIST_BOX *box, int16 n, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {174, 2, 0, 1, 1};
@@ -686,7 +686,7 @@ void *mt_lbox_get_udata( LIST_BOX *box, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-void mt_lbox_set_asldr( LIST_BOX *box, const int16 first, GRECT *rect, GlobalArray *globl )
+void mt_lbox_set_asldr( LIST_BOX *box, int16 first, GRECT *rect, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {175, 2, 0, 2, 0};
@@ -715,7 +715,7 @@ void mt_lbox_set_asldr( LIST_BOX *box, const int16 first, GRECT *rect, GlobalArr
 /*                                                                            */
 /******************************************************************************/
 
-void mt_lbox_set_slider( LIST_BOX *box, const int16 first, GRECT *rect, GlobalArray *globl )
+void mt_lbox_set_slider( LIST_BOX *box, int16 first, GRECT *rect, GlobalArray *globl )
 {
    mt_lbox_set_asldr(box, first, rect, globl);
 }
@@ -726,7 +726,7 @@ void mt_lbox_set_slider( LIST_BOX *box, const int16 first, GRECT *rect, GlobalAr
 /*                                                                            */
 /******************************************************************************/
 
-void mt_lbox_set_bentries( LIST_BOX *box, const int16 entries, GlobalArray *globl )
+void mt_lbox_set_bentries( LIST_BOX *box, int16 entries, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {175, 2, 0, 1, 0};
@@ -754,7 +754,7 @@ void mt_lbox_set_bentries( LIST_BOX *box, const int16 entries, GlobalArray *glob
 /*                                                                            */
 /******************************************************************************/
 
-void mt_lbox_set_bsldr( LIST_BOX *box, const int16 first, GRECT *rect, GlobalArray *globl )
+void mt_lbox_set_bsldr( LIST_BOX *box, int16 first, GRECT *rect, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {175, 2, 0, 2, 0};

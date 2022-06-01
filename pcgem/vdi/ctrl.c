@@ -23,7 +23,7 @@
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-static void initVdiParams( const int16 handle )
+static void initVdiParams( int16 handle )
 {
    short dummy;
 

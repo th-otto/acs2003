@@ -54,7 +54,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_bar( OBJECT *tree, const int16 show, GlobalArray *globl )
+int16 mt_menu_bar( OBJECT *tree, int16 show, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {30, 1, 1, 1, 0};
@@ -83,7 +83,7 @@ int16 mt_menu_bar( OBJECT *tree, const int16 show, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_icheck( OBJECT *tree, const int16 item, const int16 check, GlobalArray *globl )
+int16 mt_menu_icheck( OBJECT *tree, int16 item, int16 check, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {31, 2, 1, 1, 0};
@@ -113,7 +113,7 @@ int16 mt_menu_icheck( OBJECT *tree, const int16 item, const int16 check, GlobalA
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_ienable( OBJECT *tree, const int16 item, const int16 enable,
+int16 mt_menu_ienable( OBJECT *tree, int16 item, int16 enable,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -144,7 +144,7 @@ int16 mt_menu_ienable( OBJECT *tree, const int16 item, const int16 enable,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_tnormal( OBJECT *tree, const int16 title, const int16 normal,
+int16 mt_menu_tnormal( OBJECT *tree, int16 title, int16 normal,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -175,7 +175,7 @@ int16 mt_menu_tnormal( OBJECT *tree, const int16 title, const int16 normal,
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_text( OBJECT *tree, const int16 item, char *text, GlobalArray *globl )
+int16 mt_menu_text( OBJECT *tree, int16 item, char *text, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {34, 1, 1, 2, 0};
@@ -205,7 +205,7 @@ int16 mt_menu_text( OBJECT *tree, const int16 item, char *text, GlobalArray *glo
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_register( const int16 apid, char *string, GlobalArray *globl )
+int16 mt_menu_register( int16 apid, char *string, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {35, 1, 1, 1, 0};
@@ -234,7 +234,7 @@ int16 mt_menu_register( const int16 apid, char *string, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_unregister( const int16 apid, GlobalArray *globl )
+int16 mt_menu_unregister( int16 apid, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {36, 1, 1, 0, 0};
@@ -261,7 +261,7 @@ int16 mt_menu_unregister( const int16 apid, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_click( const int16 click, const int16 setit,GlobalArray *globl )
+int16 mt_menu_click( int16 click, int16 setit,GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {37, 2, 1, 0, 0};
@@ -289,7 +289,7 @@ int16 mt_menu_click( const int16 click, const int16 setit,GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_attach( const int16 flag, OBJECT *tree, const int16 item, MENU *mdata,
+int16 mt_menu_attach( int16 flag, OBJECT *tree, int16 item, MENU *mdata,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -321,7 +321,7 @@ int16 mt_menu_attach( const int16 flag, OBJECT *tree, const int16 item, MENU *md
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_istart( const int16 flag, OBJECT *tree, const int16 imenu, const int16 item,
+int16 mt_menu_istart( int16 flag, OBJECT *tree, int16 imenu, int16 item,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -353,7 +353,7 @@ int16 mt_menu_istart( const int16 flag, OBJECT *tree, const int16 imenu, const i
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_popup( MENU *menu, const int16 xpos, const int16 ypos, MENU *mdata,
+int16 mt_menu_popup( MENU *menu, int16 xpos, int16 ypos, MENU *mdata,
             GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
@@ -385,7 +385,7 @@ int16 mt_menu_popup( MENU *menu, const int16 xpos, const int16 ypos, MENU *mdata
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_menu_settings( const int16 flag, MN_SET *set, GlobalArray *globl )
+int16 mt_menu_settings( int16 flag, MN_SET *set, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {39, 1, 1, 1, 0};

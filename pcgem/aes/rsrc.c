@@ -54,7 +54,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_rsrc_load( char *name, GlobalArray *globl )
+int16 mt_rsrc_load( const char *name, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {110, 0, 1, 1, 0};
@@ -105,7 +105,7 @@ int16 mt_rsrc_free( GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_rsrc_gaddr( const int16 type, const int16 id, void *addr, GlobalArray *globl )
+int16 mt_rsrc_gaddr( int16 type, int16 id, void *addr, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {112, 2, 1, 0, 1};
@@ -137,7 +137,7 @@ int16 mt_rsrc_gaddr( const int16 type, const int16 id, void *addr, GlobalArray *
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_rsrc_saddr( const int16 type, const int16 id, void *addr, GlobalArray *globl )
+int16 mt_rsrc_saddr( int16 type, int16 id, void *addr, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {113, 2, 1, 1, 0};
@@ -167,7 +167,7 @@ int16 mt_rsrc_saddr( const int16 type, const int16 id, void *addr, GlobalArray *
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_rsrc_obfix( OBJECT *tree, const int16 obj,GlobalArray *globl )
+int16 mt_rsrc_obfix( OBJECT *tree, int16 obj, GlobalArray *globl )
 {
    /* AES-Datenblock anlegen */
    static int16 contrl[] = {114, 1, 1, 1, 0};
