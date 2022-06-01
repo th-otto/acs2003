@@ -137,7 +137,7 @@ typedef struct {
 } Aolddescr;
 
 struct _ACS_HEAD {
-	/*   0 */ long magic;
+	/*   0 */ int32 magic;
 	/*   4 */ int16 version;
 	/*   6 */ int16 flags;
 	/*   8 */ char *filename;
@@ -165,7 +165,7 @@ struct _ACS_HEAD {
 	/* 348 */ Axywh pos_ds;       /* position of description window */
 	/* 356 */ long obj_count;
 	/* 360 */ Axywh last_rez;
-	/* 368 */ long extflags;
+	/* 368 */ int32 extflags;
 	/* 372 */ char backup[__PS__]; /* path for backups */
 	/* 500 */ int16 language;     /* current language being edited */
 	/* 502 */ Obj_Head *mlst_list[MAX_LANGS]; /* strings of other languages */
@@ -308,33 +308,10 @@ typedef struct {
 } SUBMODE;
 
 typedef struct {
-	long full;
-	long size;
-	long pos;
-	long step;
-	int16 len;
-	char text[12];
-	void (*call)(void);
-	void *obj;
-	int16 flags;
-	int16 left;
-	int16 bar;
-	int16 right;
-	int16 oleft;
-	int16 oright;
-	int16 obar;
-	int16 opos;
-	int16 omax;
-	Awiob self;
-	int16 width;
-	int16 height;
-} ADT_SLIDER;
-
-typedef struct {
-	long full;
-	long size;
-	long pos;
-	long step;
+	int32 full;
+	int32 size;
+	int32 pos;
+	int32 step;
 	Awindow *window;
 	void (*call)(void);
 	void *obj;
@@ -403,11 +380,11 @@ typedef struct {
 } USER;
 
 typedef struct {
-	long id;
+	int32 id;
 	char path[256];
 	int16 count;
 	Axywh box;
-	long flag;
+	int32 flag;
 	uint16 descflags;
 	void (*new)(void);
 } MODDATA;
@@ -418,7 +395,7 @@ typedef struct {
 } FKeyLine;
 
 typedef struct {
-	long id;
+	int32 id;
 	int16 tab;
 	int16 w;
 	int16 h;

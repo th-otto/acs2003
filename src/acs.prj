@@ -127,7 +127,7 @@ list\edref.c [-J- -Z- -R- -M-]
 list\edstring.c [-J- -Z- -R- -M-]
 list\edtedi.c [-J- -Z- -R- -M-]
 
-acsplus\slider.s
+acsplus\slider.c [-J- -Z- -R- -M-]
 acsplus\wislider.s
 acsplus\editor.s
 acsplus\pur_desk.s

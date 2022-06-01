@@ -71,17 +71,17 @@ typedef struct {
 } SLLIVE;
 
 /* Nachrichten des Slider-Objektes */
-#define AUO_SLFULL            (100)    /* set full */
-#define AUO_SLSIZE            (101)    /* set size */
-#define AUO_SLSTEP            (102)    /* set step */
-#define AUO_SLCALL            (103)    /* set display routine and its object */
-#define AUO_SLLEN             (104)    /* set display char length    */
+#define AUO_SLFULL            (100)    /* set full, int32 * */
+#define AUO_SLSIZE            (101)    /* set size, int32 * */
+#define AUO_SLSTEP            (102)    /* set step, int32 * */
+#define AUO_SLCALL            (103)    /* set display routine and its object, SLLIVE * */
+#define AUO_SLLEN             (104)    /* set display char length, int16 * */
 #define AUO_SLLIVE            (105)    /* call live update routine */
 #define AUO_SLWIPOS           (106)    /* accept pos as received from WM_HSLID / WM_VSLID, int16 * */
-#define AUO_SLGETPOS          (107)    /* get actual pos */
+#define AUO_SLGETPOS          (107)    /* get actual pos, int32 * */
 
 int16 CDECL A_slider (PARMBLK* pb);    /* Draw routine */
-int16 Auo_slider (OBJECT *entry, int16 task, void* in_out);    /* Standard service routine */
+boolean Auo_slider (OBJECT *entry, int16 task, void* in_out);    /* Standard service routine */
 void Aus_slider (void);                      /* standard click routine */
 
 /*
@@ -89,7 +89,7 @@ void Aus_slider (void);                      /* standard click routine */
  */
 
 int16 CDECL A_wislider (PARMBLK* pb);     /* 'Draw' routine */
-int16 Auo_wislider (OBJECT *entry, int16 task, void* in_out);     /* Standard service routine */
+boolean Auo_wislider (OBJECT *entry, int16 task, void* in_out);     /* Standard service routine */
 
 /*
       EDITOR
@@ -130,7 +130,7 @@ typedef struct {
 } EDITLIVE;
 
 int16 CDECL A_editor (PARMBLK *pb);          /* Draw routine */
-int16 Auo_editor (OBJECT *entry, int16 task, void* in_out);    /* Standard service routine */
+boolean Auo_editor (OBJECT *entry, int16 task, void* in_out);    /* Standard service routine */
 void Aus_editor (void);                            /* standard click routine */
 
 /*

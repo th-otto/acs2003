@@ -863,9 +863,9 @@ typedef struct
 #define AUO_PREV           (11)              /* dec pos     */
 #define AUO_NEXTPAGE       (12)              /* inc pos by 'step' */
 #define AUO_PREVPAGE       (13)              /* dec pos     by 'step' */
-#define AUO_BEGIN          (14)              /* pos = 0     */
+#define AUO_BEGIN          (14)              /* pos = 0 */
 #define AUO_END            (15)              /* pos = max */
-#define AUO_POS            (17)              /* set pos     */
+#define AUO_POS            (17)              /* set pos */
 #define AUO_OWNER          (18)              /* gets own identity, Awiob */
 #define AUO_GETBUBBLE      (19)              /* Text fÅr BubbleGEM-Hilfe erfragen */
 #define AUO_GETCONTEXT     (20)              /* Text fÅr Context-Popup erfragen */
