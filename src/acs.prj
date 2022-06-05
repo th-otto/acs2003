@@ -129,7 +129,7 @@ list\edtedi.c [-J- -Z- -R- -M-]
 
 acsplus\slider.c [-J- -Z- -R- -M-]
 acsplus\wislider.c [-J- -Z- -R- -M-]
-acsplus\editor.s
+acsplus\editor.c [-J- -Z- -R- -M-]
 acsplus\pur_desk.s
 acsplus\editwi.s
 acsplus\fontsel.s [-M-]

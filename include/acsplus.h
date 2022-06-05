@@ -75,7 +75,7 @@ typedef struct {
 #define AUO_SLSIZE            (101)    /* set size, int32 * */
 #define AUO_SLSTEP            (102)    /* set step, int32 * */
 #define AUO_SLCALL            (103)    /* set display routine and its object, SLLIVE * */
-#define AUO_SLLEN             (104)    /* set display char length, int16 * */
+#define AUO_SLLEN             (104)    /* set display char length, int16 * (wrong in docu) */
 #define AUO_SLLIVE            (105)    /* call live update routine */
 #define AUO_SLWIPOS           (106)    /* accept pos as received from WM_HSLID / WM_VSLID, int16 * */
 #define AUO_SLGETPOS          (107)    /* get actual pos, int32 * */
@@ -115,17 +115,24 @@ typedef struct {
    long row2;
    long col2;
    long nrow;           /* number of new lines */
-   char **text;            /* all lines */
+   char **text;         /* all lines */
 } EDITSUBS;
 
 typedef struct {
-   long row;               /* which line */
+   long row;            /* which line */
    long size;           /* char size of line */
-   char *text;          /* pointer to line */
+   const char *text;    /* pointer to line */
 } EDITGETS;
 
 typedef struct {
-   void (*call) (void* obj, char* text);
+   long row1;           /* range of selection */
+   long col1;
+   long row2;
+   long col2;
+} EDITSEL;
+
+typedef struct {
+   void (*call) (void* obj, const char *text);
    void* obj;
 } EDITLIVE;
 
@@ -232,20 +239,20 @@ void Aed_undo (void);
 #define AUO_EDCUROFF          (212)          /* cursor off */
 #define AUO_EDCURHIDE         (213)          /* hide cursor */
 #define AUO_EDCURSHOW         (214)          /* show cursor */
-#define AUO_EDCURPOS          (215)          /* set cursor pos, int16 * */
+#define AUO_EDCURPOS          (215)          /* set cursor pos, long * (wrong in docu) */
 #define AUO_EDGETPOS          (216)          /* get line, long * */
 #define AUO_EDHCOL            (217)          /* set home col, long * */
 #define AUO_EDHROW            (218)          /* set home row, long * */
 #define AUO_EDVIEW            (219)          /* set cursor pos in visible range */
 #define AUO_ED1SELECT         (220)          /* select exactly one */
 #define AUO_ED01SELECT        (221)          /* select one or nothing */
-#define AUO_EDNSELECT         (222)          /* select countinous */
+#define AUO_EDNSELECT         (222)          /* select continous */
 #define AUO_EDNMSELECT        (223)          /* select discontinuos */
 #define AUO_EDCHARSELECT      (224)          /* select charmode */
 #define AUO_EDBLKSELECT       (225)          /* select blockchar mode */
 #define AUO_EDUNSELECT        (226)          /* unselect */
-#define AUO_EDGETSELECT       (227)          /* get selection block (row1,col1), (row2,col2), long [4] */
-#define AUO_EDSETSELECT       (228)          /* set selection block (row1,col1), (row2,col2), long [4] */
+#define AUO_EDGETSELECT       (227)          /* get selection block, EDITSEL * */
+#define AUO_EDSETSELECT       (228)          /* set selection block, EDITSEL * */
 #define AUO_EDCALL            (229)          /* set live selection call */
 #define AUO_EDLIVE            (230)          /* call live routine */
 #define AUO_EDGETCURPOS       (231)          /* get cursor pos, long * */
@@ -254,11 +261,11 @@ void Aed_undo (void);
 #define AUO_EDSUB             (234)          /* substitute val, EDITSUBS * */
 #define AUO_EDUNDO            (235)          /* UNDO */
 #define AUO_EDTABSIZE         (236)          /* Tabsize (def = 4), int16 * */
-#define AUO_EDCLEARUNDO       (237)          /* Clear UNDO Buffer*/
+#define AUO_EDCLEARUNDO       (237)          /* Clear UNDO Buffer */
 #define AUO_EDRESIZE          (238)          /* Size has been modified, update internal vals */
 #define AUO_EDUPDATE          (239)          /* update without sliders */
 #define AUO_EDGETTABSIZE      (240)          /* get Tabsize, int16 * */
-#define AUO_EDBLOCKMODE       (241)          /* ? Blockmode, int16 *, TRUE / FALSE */
+#define AUO_EDBLOCKMODE       (241)          /* ? Blockmode, boolean *, TRUE / FALSE */
 #define AUO_EDFIND            (242)          /* Find string, char * */
 #define AUO_EDBACKWARD        (243)          /* Find direction backwards */
 #define AUO_EDFORWARD         (244)          /* Find direction forward */
@@ -267,7 +274,7 @@ void Aed_undo (void);
 #define AUO_EDWORD            (247)          /* Word search */
 #define AUO_EDNOWORD          (248)          /* No word search */
 #define AUO_EDRESET           (249)          /* Set to unchanged */
-#define AUO_EDGETCHANGED      (250)          /* changed status, int16 * */
+#define AUO_EDGETCHANGED      (250)          /* changed status, boolean * */
 #define AUO_EDGETNEED         (251)          /* returns byte count needed for save, long * */
 #define AUO_EDSELECTWORD      (252)          /* select word at cursor pos */
 #define AUO_EDSLIDERS         (253)          /* updates sliders */
@@ -275,7 +282,7 @@ void Aed_undo (void);
 #define AUO_EDGETVCURPOS      (255)          /* get !visible! cursor pos, long * */
 #define AUO_EDGETHCOL         (256)          /* get col number of visibile leftmost col */
 #define AUO_EDGETHROW         (257)          /* get row number of first visible row */
-#define AUO_EDGETERROR        (258)          /* get error flag (actually memory alloc errors only) */
+#define AUO_EDGETERROR        (258)          /* get error flag (actually memory alloc errors only), int16 * */
 #define AUO_EDRESETERROR      (259)          /* reset error flag */
 #define AUO_EDPUTINFO         (260)          /* put info, not supported anymore */
 #define AUO_EDDIRTY           (261)          /* set's ditry-flag */

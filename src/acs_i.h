@@ -308,60 +308,6 @@ typedef struct {
 } SUBMODE;
 
 typedef struct {
-	char *text;
-	int16 size;
-	int16 flags;
-} EDITLINE;
-
-typedef struct {
-	int16 color;
-	int16 face;
-	int16 cheight;
-	int16 height;
-	int16 width;
-	long row;
-	long col;
-	int16 flags;
-	long wrap;
-	long start_row;
-	long start_col;
-	long max_col;
-	long t_size;
-	EDITLINE *table;
-	long sel1row;
-	long sel1col;
-	long sel2row;
-	long sel2col;
-	long curv1;
-	long curv2;
-	int16 pheight;
-	int16 pwidth;
-	long orow;
-	long ocol;
-	Awiob self;
-	OBJECT *hor;
-	OBJECT *ver;
-	long single;
-	long till;
-	int16 wraps;
-	int16 select;
-	void (*call)(void);
-	void *obj;
-	long cut1row;
-	long cut1col;
-	long cut2row;
-	long cut2col;
-	long ins2row;
-	long ins2col;
-	long nrow;
-	char **text;
-	int16 tab;
-	int16 cursor;
-	int16 err;
-	char separator[257];
-} EDITTEXT;
-
-typedef struct {
 	void (*new)(void);
 	int16 sort;
 	int16 max_icon;
