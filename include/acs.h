@@ -762,7 +762,7 @@ typedef struct
     /* others */
     /*  562 */ int32 ev_mtcount;                         /* Timerintervall in milli sec (initial 500 ms) */
     /*  566 */ int16 application;                        /* runs as an application */
-    /*  568 */ int16 multitask;                          /* more than 1 applications possible */
+    /*  568 */ boolean multitask;                        /* more than 1 applications possible */
     /*  570 */ int16 appexit;                            /* application is in system termination mode */
     /*  572 */ Adescr *description;                      /* surface description, pointer for late assignment */
     /*  576 */ Asel Aselect;                             /* list of selected objects */

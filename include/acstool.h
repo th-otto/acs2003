@@ -724,7 +724,7 @@ int16 Ash_cmdParsen( char *options[256], const int16 argc, char **argv,
 long Ash_prog( char *path, char *command, char **env );
 
 /* Load and initialize an ACS-Module (returns OK or FAIL) */
-int16 Ash_module( char* path );
+int16 Ash_module( const char* path );
 
 /* Standard-Error-Handler */
 void Ash_error( int16 messerr, void *para );

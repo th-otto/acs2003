@@ -316,16 +316,6 @@ typedef struct {
 } USER;
 
 typedef struct {
-	int32 id;
-	char path[256];
-	int16 count;
-	Axywh box;
-	int32 flag;
-	uint16 descflags;
-	void (*new)(void);
-} MODDATA;
-
-typedef struct {
 	int16 key;
 	char text[256];
 } FKeyLine;

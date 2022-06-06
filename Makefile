@@ -1,2 +1,2 @@
 all clean::
-	for i in src; do make -C $$i $@; done
+	for i in src; do ${MAKE} -C $$i $@; done
