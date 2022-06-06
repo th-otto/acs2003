@@ -205,10 +205,24 @@ static void accept_window(Awindow *self, boolean force)
 	sscanf(str, "%d", &snapy);
 	win->snap_mask = -snapx & ((-snapy << 8) | 0xff);
 
-	Aob_scanf(tree, EDIT_WINDOW_ACT_X, "%d", &win->wi_act.x); /* FIXME: act.x is short, not int */
+#ifdef __GNUC__
+	{
+	int x;
+	Aob_scanf(tree, EDIT_WINDOW_ACT_X, "%d", &x);
+	win->wi_act.x = x;
+	Aob_scanf(tree, EDIT_WINDOW_ACT_Y, "%d", &x);
+	x = win->wi_act.y;
+	Aob_scanf(tree, EDIT_WINDOW_ACT_W, "%d", &x);
+	win->wi_act.w = x;
+	Aob_scanf(tree, EDIT_WINDOW_ACT_H, "%d", &x);
+	win->wi_act.h = x;
+	}
+#else
+	Aob_scanf(tree, EDIT_WINDOW_ACT_X, "%d", &win->wi_act.x);
 	Aob_scanf(tree, EDIT_WINDOW_ACT_Y, "%d", &win->wi_act.y);
 	Aob_scanf(tree, EDIT_WINDOW_ACT_W, "%d", &win->wi_act.w);
 	Aob_scanf(tree, EDIT_WINDOW_ACT_H, "%d", &win->wi_act.h);
+#endif
 	
 	Auo_boxed(&tree[EDIT_WINDOW_NAMESTR], AUO_GETVAL, &str);
 	change_string(acs, (Obj_Head *)win->name, str);

@@ -213,13 +213,6 @@ void Aed_fkey(void)
 
 /* -------------------------------------------------------------------------- */
 
-int16 A_fontsel(int16 *fontid, int16 *height, int16 prop)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
 int16 wprintf(Awindow *wi, const char *format, ...)
 {
 	return 0;

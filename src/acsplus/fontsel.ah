@@ -1,0 +1,104 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char TEXT_002[] = "";
+static char TEXT_01[] = "ÑîÅéôöû The quick brown fox jumps over the lazy dog";
+static char TEXT_013[] = "OK";
+static char TEXT_02[] = "Pixel:";
+static char TEXT_026[] = "Abbruch";
+static char TEXT_03[] = "Hîhe:";
+static char TEXT_04[] = "Schrift:";
+static char TEXT_05[] = "Test:";
+static char TEXT_06[] = " Schrift-Auswahl ";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char TEXT_002[] = "";
+static char TEXT_01[] = "ÑîÅéôöû The quick brown fox jumps over the lazy dog";
+static char TEXT_013[] = "OK";
+static char TEXT_02[] = "Pixel:";
+static char TEXT_026[] = "Cancel";
+static char TEXT_03[] = "Height:";
+static char TEXT_04[] = "Font:";
+static char TEXT_05[] = "Test:";
+static char TEXT_06[] = " Font-Selector ";
+#endif
+
+		
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_026, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_013, NULL, NULL, NULL, NULL };
+static AUSERBLK A_BOXED02 = { A_boxed, 0x90700512L, Auo_boxed, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_EDITOR01 = { A_editor, 0L, Auo_editor, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_FTEXT01 = { A_ftext, 0x0001000dL, Auo_ftext, TEXT_01, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_04, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME03 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_03, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME04 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_05, NULL, NULL, NULL, NULL };
+static AUSERBLK A_SLIDER01 = { A_slider, 0x00000003L, Auo_slider, NULL, NULL, NULL, NULL, NULL };
+
+static OBJECT  FONTSEL =     { -1,  1,  1, 0x0019, 0x0000, 0x0000, C_UNION(0x00ff1100L), 0, 0, 46, 17 };
+static OBJECT  _01_FONTSEL = {  0,  2, 14, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 46, 17 };
+static OBJECT  _02_FONTSEL = {  7,  3,  5, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 1, 33, 9 };
+static OBJECT  _03_FONTSEL = {  5, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_EDITOR01), 1, 1, 29, 7 };
+static AOBJECT _03aFONTSEL = { Aus_editor, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
+static OBJECT  _05_FONTSEL = {  2, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_SLIDER01), 30, 1, 2, 7 };
+static AOBJECT _05aFONTSEL = { Aus_slider, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
+static OBJECT  _07_FONTSEL = { 10,  8,  8, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME04), 1, 10, 44, 4 };
+static OBJECT  _08_FONTSEL = {  7,  9,  9, 0x0014, 0x0040, 0x0500, C_UNION(0x00001101L), 1, 1, 42, 2 };
+static OBJECT  _09_FONTSEL = {  8, -1, -1, 0x0018, 0x0040, 0x0500, C_UNION(&A_FTEXT01), 1, 0, 40, 2 };
+static OBJECT  _10_FONTSEL = { 12, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON06), 10, 14, 12, 2 };
+static AOBJECT _10aFONTSEL = { NULL, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 };
+static OBJECT  _12_FONTSEL = { 14, -1, -1, 0x0018, 0x4005, 0x0010, C_UNION(&A_3DBUTTON03), 24, 14, 12, 2 };
+static AOBJECT _12aFONTSEL = { NULL, NULL, 0x8000, 0x8841, NULL, NULL, 0, 0 };
+static OBJECT  _14_FONTSEL = {  1, 15, 20, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 35, 1, 10, 9 };
+static OBJECT  _15_FONTSEL = { 17, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_EDITOR01), 1, 1, 6, 5 };
+static AOBJECT _15aFONTSEL = { mod_height, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
+static OBJECT  _17_FONTSEL = { 19, -1, -1, 0x0018, 0x0040, 0x0000, C_UNION(&A_SLIDER01), 7, 1, 2, 5 };
+static AOBJECT _17aFONTSEL = { Aus_slider, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
+static OBJECT  _19_FONTSEL = { 20, -1, -1, 0x001c, 0x0040, 0x0000, C_UNION(TEXT_02), 1, 6, 6, 1 };
+static OBJECT  _20_FONTSEL = { 14, -1, -1, 0x0018, 0x0028, 0x0010, C_UNION(&A_BOXED02), 2, 7, 5, 1 };
+
+Awindow WI_FONTSEL = {
+	NULL,
+	serv_wi_font,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&FONTSEL,
+	NULL,
+	0, 0,
+	-1,
+	0x200b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_06,
+	TEXT_002,
+	10000,
+	AW_TOOLBOX,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};

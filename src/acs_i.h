@@ -369,12 +369,6 @@ typedef struct {
 } xFSL;
 
 typedef struct {
-	char name[33];
-	int16 id;
-	int16 points[12];
-} FONTINFO;
-
-typedef struct {
 	void *expara;
 	char title[128];
 	long len;

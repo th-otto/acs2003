@@ -185,8 +185,8 @@ extern Awindow PUR_DESK;
 */
 
 int16 uputs (char* text, OBJECT *entry);
-int16 uvprintf (OBJECT* entry, const char* format, va_list arglist);
-int16 uprintf (OBJECT* entry, const char* format, ... );
+int16 uvprintf (OBJECT* entry, const char* format, va_list arglist) __attribute__((format(printf, 2, 0)));
+int16 uprintf (OBJECT* entry, const char* format, ... ) __attribute__((format(printf, 2, 3)));
 
    /*
     * Routines from EDITOR-Menu
@@ -327,8 +327,8 @@ typedef struct {
    "printf"-Interface
 */
 int16 wputs (const char *text, Awindow *wi);
-int16 wvprintf (Awindow *wi, const char *format, va_list arglist);
-int16 wprintf (Awindow *wi, const char *format, ... );
+int16 wvprintf (Awindow *wi, const char *format, va_list arglist) __attribute__((format(printf, 2, 0)));
+int16 wprintf (Awindow *wi, const char *format, ... ) __attribute__((format(printf, 2, 3)));
 
 extern Awindow PROTOCOL;         /* parameter NULL, or PROTOCOLDATA */
 
@@ -429,7 +429,7 @@ extern Awindow LIST_WINDOW;
 --------------------------------------------------------------
 */
 
-int16 A_fontsel( int16 *fontid, int16 *height, int16 prop);
+int16 A_fontsel( int16 *fontid, int16 *height, boolean prop);
 
 /*
 --------------------------------------------------------------

@@ -116,7 +116,15 @@ static void edao_ok(void)
 	{
 		entry->aobj.key = 0;
 	}
+#ifdef __GNUC__
+	{
+	int x;
+	Aob_scanf(tree, ED_AEO_MOUSEINDEX, "%d", &x);
+	entry->aobj.mo_index = x;
+	}
+#else
 	Aob_scanf(tree, ED_AEO_MOUSEINDEX, "%d", &entry->aobj.mo_index);
+#endif
 
 	if (entry->label != NULL)
 		objfree(acs, entry->label);

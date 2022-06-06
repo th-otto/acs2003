@@ -644,8 +644,18 @@ static boolean edmm_getval(Awindow *self)
 	obj = (Obj_Head *)config->ACSinit;
 	config->ACSinit = add_fkt(acs, obj, name, REF_SYS_ACSINIT);
 	
-	Aob_scanf(tree, EDIT_MAINMOD_DX, "%3d", &descr->dx); /* FIXME: int16 is not int */
-	Aob_scanf(tree, EDIT_MAINMOD_DY, "%3d", &descr->dy); /* FIXME: int16 is not int */
+#ifdef __GNUC__
+	{
+	int x;
+	Aob_scanf(tree, EDIT_MAINMOD_DX, "%3d", &x);
+	descr->dx = x;
+	Aob_scanf(tree, EDIT_MAINMOD_DY, "%3d", &x);
+	descr->dy = x;
+	}
+#else
+	Aob_scanf(tree, EDIT_MAINMOD_DX, "%3d", &descr->dx);
+	Aob_scanf(tree, EDIT_MAINMOD_DY, "%3d", &descr->dy);
+#endif
 	
 	Auo_cycle(&tree[EDIT_MAINMOD_XACC_TYPE], AUO_CYCGETINDEX, &config->XAccType);
 	

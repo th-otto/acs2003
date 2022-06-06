@@ -580,7 +580,32 @@ static void edic_direct(void)
 	{
 		oldw = icon->monoblk.ib_wicon;
 		oldh = icon->monoblk.ib_hicon;
-		Aob_scanf(win->work, IC_POS_XCHAR, "%d", &icon->monoblk.ib_xchar); /* FIXME: format wrong for short */
+#ifdef __GNUC__
+		{
+		int x;
+		Aob_scanf(win->work, IC_POS_XCHAR, "%d", &x);
+		icon->monoblk.ib_xchar = x;
+		Aob_scanf(win->work, IC_POS_YCHAR, "%d", &x);
+		icon->monoblk.ib_ychar = x;
+		Aob_scanf(win->work, IC_POS_XICON, "%d", &x);
+		icon->monoblk.ib_xicon = x;
+		Aob_scanf(win->work, IC_POS_YICON, "%d", &x);
+		icon->monoblk.ib_yicon = x;
+		Aob_scanf(win->work, IC_POS_WICON, "%d", &x);
+		icon->monoblk.ib_wicon = x;
+		Aob_scanf(win->work, IC_POS_HICON, "%d", &x);
+		icon->monoblk.ib_hicon = x;
+		Aob_scanf(win->work, IC_POS_XTEXT, "%d", &x);
+		icon->monoblk.ib_xtext = x;
+		Aob_scanf(win->work, IC_POS_YTEXT, "%d", &x);
+		icon->monoblk.ib_ytext = x;
+		Aob_scanf(win->work, IC_POS_WTEXT, "%d", &x);
+		icon->monoblk.ib_wtext = x;
+		Aob_scanf(win->work, IC_POS_HTEXT, "%d", &x);
+		icon->monoblk.ib_htext = x;
+		}
+#else
+		Aob_scanf(win->work, IC_POS_XCHAR, "%d", &icon->monoblk.ib_xchar);
 		Aob_scanf(win->work, IC_POS_YCHAR, "%d", &icon->monoblk.ib_ychar);
 		Aob_scanf(win->work, IC_POS_XICON, "%d", &icon->monoblk.ib_xicon);
 		Aob_scanf(win->work, IC_POS_YICON, "%d", &icon->monoblk.ib_yicon);
@@ -590,6 +615,7 @@ static void edic_direct(void)
 		Aob_scanf(win->work, IC_POS_YTEXT, "%d", &icon->monoblk.ib_ytext);
 		Aob_scanf(win->work, IC_POS_WTEXT, "%d", &icon->monoblk.ib_wtext);
 		Aob_scanf(win->work, IC_POS_HTEXT, "%d", &icon->monoblk.ib_htext);
+#endif
 		edic_check(icon);
 		w = icon->monoblk.ib_wicon;
 		h = icon->monoblk.ib_hicon;

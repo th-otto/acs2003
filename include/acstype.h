@@ -600,4 +600,10 @@ typedef void *UConfig;
 
 /******************************************************************************/
 
+#ifndef __attribute__
+#  ifndef __GNUC__
+#    define __attribute__(x)
+#  endif
+#endif
+
 #endif
