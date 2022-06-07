@@ -369,26 +369,6 @@ typedef struct {
 } xFSL;
 
 typedef struct {
-	void *expara;
-	char title[128];
-	long len;
-	long memcount;
-	long memskip;
-	long count;
-	uint8 *mem;
-	uint8 *buff;
-	long flag;
-	int16 (*acc_item) (AOBJECT *aob, void *expara);
-	int16 (*comp_item) (void *org, void *new, void *expara);
-	int16 (*drag_item) (AOBJECT *aob, void *item, void *expara);
-	int16 (*edit_item) (void *item, void *expara);
-	long (*key_item) (int16 key, void *expara);
-	int16 (*message) (int16 mess, void *expara);
-	int16 (*print_item) (char *line, void *item, void *expara);
-	int16 (*term_list) (void *expara);
-} RealList;
-
-typedef struct {
 	int16 handle;
 	int16 w;
 	int16 h;

@@ -13371,6 +13371,7 @@ xd4906:
 		dc.l xd4a61
 		dc.l xd4a65
 		dc.l xd4a69
+		/* LIST_DATA */
 xd492e:
 		dc.w $0000
 		dc.w $0000

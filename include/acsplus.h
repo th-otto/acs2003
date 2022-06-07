@@ -411,14 +411,14 @@ typedef struct
    Axywh winsize;          /* Fensterausmaže */
    CICONBLK *icon;         /* Icon-Vorlage */
    long len;               /* L„nge eines Eintrags */
-   int16 (*acc_item) (AOBJECT *aob, void *expara);
+   boolean (*acc_item) (AOBJECT *aob, void *expara);
    int16 (*comp_item) (void *org, void *new, void *expara);
-   int16 (*drag_item) (AOBJECT *aob, void *item, void *expara);
-   int16 (*edit_item) (void *item, void *expara);
+   boolean (*drag_item) (AOBJECT *aob, void *item, void *expara);
+   boolean (*edit_item) (void *item, void *expara);
    long  (*key_item) (int16 key, void *expara);
-   int16 (*message) (int16 mess, void *expara);
-   int16 (*print_item) (char *line, void *item, void *expara);
-   int16 (*term_list) (void *expara);
+   boolean (*message) (int16 mess, void *expara);
+   boolean (*print_item) (char *line, void *item, void *expara);
+   boolean (*term_list) (void *expara);
 }  LISTDATA;
 
 extern Awindow LIST_WINDOW;
