@@ -1,8 +1,9 @@
 CROSS=m68k-atari-mint-
 
 OPT = -O2 -fomit-frame-pointer
-WARN = -Wall -Wstrict-prototypes -Wmissing-prototypes -Wno-unused -Werror
-CFLAGS = -I. -I../include $(OPT) $(WARN)
+DEFS = -DCOUNTRY=1 -DKILLDEMO=1
+WARN = -Wall -Wstrict-prototypes -Wmissing-prototypes -Wno-unused -Wundef -Werror
+CFLAGS = -I. -I../include $(OPT) $(WARN) $(DEFS)
 CC = $(CROSS)gcc
 AS = $(CROSS)gcc
 

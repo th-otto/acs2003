@@ -13,9 +13,6 @@ Awindow WIED_OPTION;
 Awindow WIED_REPLACE;
 Awindow WIED_WRAP;
 Awindow WI_FONTSEL;
-Awindow LIST_WINDOW;
-Awindow PROTOCOL;
-Awindow WIPR_INFO;
 
 char A_ERR_ACC[1];
 char A_ERR_MESS[1];
@@ -209,13 +206,6 @@ void Aed_saveoptions(void)
 
 void Aed_fkey(void)
 {
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 wprintf(Awindow *wi, const char *format, ...)
-{
-	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
