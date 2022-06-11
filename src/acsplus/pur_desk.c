@@ -274,7 +274,7 @@ static void OpenDraggedFiles(MODDATA *parm)
 				aobj = (AOBJECT *)obj + 1;
 			else
 				aobj = NULL;
-			if (aobj != NULL && aobj->type == 20)
+			if (aobj != NULL && aobj->type == AT_FILE)
 			{
 				open_files(parm, aobj->userp1);
 			}
@@ -324,7 +324,7 @@ static boolean CheckDraggedFiles(boolean *found)
 				aobj = (AOBJECT *)obj + 1;
 			else
 				aobj = NULL;
-			if (aobj != NULL && aobj->type == 20)
+			if (aobj != NULL && aobj->type == AT_FILE)
 			{
 				*found = TRUE;
 				return TRUE;
@@ -700,7 +700,7 @@ static boolean modul_serv(Awindow *self, int16 task, void *in_out)
 				for (obnr = 0; obnr < count; obnr++)
 				{
 					aobj = (AOBJECT *)&self->work[selection[obnr]] + 1;
-					if (aobj->type == 1)
+					if (aobj->type == AT_ICONWINDOW)
 					{
 						Adr_del(self, selection[obnr]);
 						win = aobj->userp1;
@@ -961,7 +961,7 @@ static void place_icon(Awindow *self, Awindow *win)
 		obj = &self->work[icon];
 		obj->ob_flags &= ~OF_HIDETREE;
 		aobj = (AOBJECT *)obj + 1;
-		aobj->type = 1;
+		aobj->type = AT_ICONWINDOW;
 		aobj->click = click_modwin;
 		aobj->drag = drag_modwin;
 		aobj->userp1 = win;

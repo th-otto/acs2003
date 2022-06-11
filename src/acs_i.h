@@ -316,47 +316,6 @@ typedef struct {
 } USER;
 
 typedef struct {
-	int16 key;
-	char text[256];
-} FKeyLine;
-
-typedef struct {
-	int32 id;
-	int16 tab;
-	int16 w;
-	int16 h;
-	int16 fontid;
-	int16 height;
-	int16 cursor;
-	char ext[16];
-	char filename[256];
-	int16 wrap;
-	int16 flags;
-	char find_string[256];
-	char replace_search[256];
-	char replace_by[256];
-	char separator[257];
-	char helpacc[9];
-} EDCONF;
-
-typedef struct {
-	Awindow *control;
-	Awindow *wifkeys;
-	char open_title[32];
-	char merge_title[32];
-	char save_title[32];
-	char normal_format[32];
-	char changed_format[32];
-	char icontext[16];
-	char ic_name[16];
-	int16 counter;
-	long oldc;
-	long oldr;
-	FKeyLine *fkeys[40];
-	EDCONF cnf;
-} EDITDATA;
-
-typedef struct {
 	unsigned long xfsl;
 	uint16 revision;
 	unsigned long product;
@@ -409,6 +368,7 @@ typedef struct {
 	long len;
 } ddPopStruc;
 
+#if 0
 /* local to editwi */
 typedef struct {
 	int16 xr;
@@ -419,6 +379,7 @@ typedef struct {
 	int16 y2;
 	int16 m[8];
 } t;
+#endif
 
 typedef struct {
 	Awindow *window;

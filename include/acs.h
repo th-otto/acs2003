@@ -1498,7 +1498,7 @@ int16 Aev_STGuideHelp( char *hyp_text, char *referenz, Awindow *window );
 
 /* PureC-Hilfe */
 int16 Aev_PCHelpVersion( void );
-int16 Aev_AcHelp( char *help_acc, char *referenz, Awindow *window );
+boolean Aev_AcHelp( const char *help_acc, const char *referenz, Awindow *window );
 int16 Aev_AcVersion( char *help_acc, Awindow *window );
 int16 Aev_AcCopy( char *help_acc, Awindow *window );
 
@@ -1602,7 +1602,7 @@ void Aob_printf( OBJECT *ob, int16 obnr, const char *format, ... ) __attribute__
 /* wenn die L„nge nicht ermittelt werden konnte.             */
 /* wird TEXT=NULL gesetzt, wird nur die L„nge ermittelt,     */
 /* was dazu dienen kann, die Textl„nge dynamisch zu erfragen */
-int16 Aob_gettext( const OBJECT *ob, int16 obnr, char *text );
+boolean Aob_gettext( const OBJECT *ob, int16 obnr, char *text );
 
 /* Holt Werte analog zu scanf, liefert analog zu Aob_gettext */
 /* nur L„nge wenn format!=NULL, 1024 Zeichen Puffer          */

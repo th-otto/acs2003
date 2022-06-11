@@ -488,19 +488,19 @@ int16 CDECL A_editor(PARMBLK *pb)
 		sel[3] = sel[1] + editor->height - 1;
 		switch (editor->cursor)
 		{
-		case 1:
+		case AUO_EDCURSOR_UNDERSCORE:
 			sel[1] = sel[3] - 1;
 			vr_recfl(ACSblk->vdi_handle, sel);
 			break;
-		case 2:
+		case AUO_EDCURSOR_BLOCK:
 			vr_recfl(ACSblk->vdi_handle, sel);
 			break;
-		case 3:
+		case AUO_EDCURSOR_FRAME:
 			vsf_perimeter(ACSblk->vdi_handle, TRUE);
 			vsf_interior(ACSblk->vdi_handle, FIS_HOLLOW);
 			v_bar(ACSblk->vdi_handle, sel);
 			break;
-		default:
+		default: /* AUO_EDCURSOR_LINE */
 			sel[2] = sel[0] + 1;
 			vr_recfl(ACSblk->vdi_handle, sel);
 			break;

@@ -289,6 +289,12 @@ void Aed_undo (void);
 #define AUO_EDSETSEPARATOR    (262)          /* set's word-seps */
 #define AUO_EDGETSEPARATOR    (263)          /* vice-versa */
 
+/* cursor forms */
+#define AUO_EDCURSOR_LINE       0
+#define AUO_EDCURSOR_UNDERSCORE 1
+#define AUO_EDCURSOR_BLOCK      2
+#define AUO_EDCURSOR_FRAME      3
+
 /* Nachrichten des Editor-Fensters EDITOR */
 #define AS_EDGETENTRY      (200)                /* return Editors OBJECT-Entry, OBJECT ** */
 #define AS_EDEXT           (201)                /* Set Extension, char * */
