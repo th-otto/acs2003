@@ -66,8 +66,8 @@
 #define AUO_SLIDER_NOSLIDER 0x0004UL
 
 typedef struct {
-   char* (*call) (void* obj, long pos);
-   void* obj;
+   char *(*call)(void *obj, long pos);
+   void *obj;
 } SLLIVE;
 
 /* Nachrichten des Slider-Objektes */
@@ -80,16 +80,16 @@ typedef struct {
 #define AUO_SLWIPOS           (106)    /* accept pos as received from WM_HSLID / WM_VSLID, int16 * */
 #define AUO_SLGETPOS          (107)    /* get actual pos, int32 * */
 
-int16 CDECL A_slider (PARMBLK* pb);    /* Draw routine */
-boolean Auo_slider (OBJECT *entry, int16 task, void* in_out);    /* Standard service routine */
-void Aus_slider (void);                      /* standard click routine */
+int16 CDECL A_slider(PARMBLK *pb);    /* Draw routine */
+boolean Auo_slider(OBJECT *entry, int16 task, void* in_out);    /* Standard service routine */
+void Aus_slider(void);                      /* standard click routine */
 
 /*
  * Userdef controls Windowslider like slider (as far as possible)
  */
 
-int16 CDECL A_wislider (PARMBLK* pb);     /* 'Draw' routine */
-boolean Auo_wislider (OBJECT *entry, int16 task, void* in_out);     /* Standard service routine */
+int16 CDECL A_wislider(PARMBLK *pb);     /* 'Draw' routine */
+boolean Auo_wislider(OBJECT *entry, int16 task, void *in_out);     /* Standard service routine */
 
 /*
       EDITOR
@@ -132,13 +132,13 @@ typedef struct {
 } EDITSEL;
 
 typedef struct {
-   void (*call) (void* obj, const char *text);
-   void* obj;
+   void (*call)(void *obj, const char *text);
+   void *obj;
 } EDITLIVE;
 
-int16 CDECL A_editor (PARMBLK *pb);          /* Draw routine */
-boolean Auo_editor (OBJECT *entry, int16 task, void* in_out);    /* Standard service routine */
-void Aus_editor (void);                            /* standard click routine */
+int16 CDECL A_editor(PARMBLK *pb);          /* Draw routine */
+boolean Auo_editor(OBJECT *entry, int16 task, void *in_out);    /* Standard service routine */
+void Aus_editor(void);                            /* standard click routine */
 
 /*
  *    ACS Plus Windows
@@ -156,68 +156,68 @@ void Aus_editor (void);                            /* standard click routine */
 #define AS_ICONWINDOW      (108)          /* Set Default-Icon, ACSinit0 ! (wi == NULL) */
 #define AS_UPDATEICON      (109)          /* updates icon, int16 * */
 
-void Awd_quit (void);
-void Awd_open (void);
-void Awd_close (void);
-void Awd_delete (void);
-void Awd_info (void);
-void Awd_hor (void);
-void Awd_list (void);
-void Awd_ver (void);
-void Awd_behaviour (void);
-void Awd_save (void);
-void Awd_module (void);
+void Awd_quit(void);
+void Awd_open(void);
+void Awd_close(void);
+void Awd_delete(void);
+void Awd_info(void);
+void Awd_hor(void);
+void Awd_list(void);
+void Awd_ver(void);
+void Awd_behaviour(void);
+void Awd_save(void);
+void Awd_module(void);
 
 extern Awindow DESKTOP;
 
-void Apd_close (void);
-void Apd_delete (void);
-void Apd_info (void);
-void Apd_list (void);
-void Apd_module (void);
-void Apd_new (void);
-void Apd_open (void);
-void Apd_quit (void);
+void Apd_close(void);
+void Apd_delete(void);
+void Apd_info(void);
+void Apd_list(void);
+void Apd_module(void);
+void Apd_new(void);
+void Apd_open(void);
+void Apd_quit(void);
 extern Awindow PUR_DESK;
 
 /*
    "printf"-Interface for 'EDITOR'
 */
 
-int16 uputs (char* text, OBJECT *entry);
-int16 uvprintf (OBJECT* entry, const char* format, va_list arglist) __attribute__((format(printf, 2, 0)));
-int16 uprintf (OBJECT* entry, const char* format, ... ) __attribute__((format(printf, 2, 3)));
+int16 uputs(const char *text, OBJECT *entry);
+int16 uvprintf(OBJECT *entry, const char *format, va_list arglist) __attribute__((format(printf, 2, 0)));
+int16 uprintf(OBJECT *entry, const char *format, ... ) __attribute__((format(printf, 2, 3)));
 
-   /*
-    * Routines from EDITOR-Menu
-    */
+/*
+ * Routines from EDITOR-Menu
+ */
 
-void Aed_wrap (void);
-void Aed_toclip (void);
-void Aed_fromclip (void);
-void Aed_copy (void);
-void Aed_cut (void);
-void Aed_cutline (void);
-void Aed_find (void);
-void Aed_findnext (void);
-void Aed_findsel (void);
-void Aed_fkey (void);
-void Aed_gotoline (void);
-void Aed_info (void);
-void Aed_open (void);
-void Aed_merge (void);
-void Aed_paste (void);
-void Aed_quit (void);
-void Aed_replace (void);
-void Aed_replacenext (void);
-void Aed_save (void);
-void Aed_saveas (void);
-void Aed_saveoptions (void);
-void Aed_selall (void);
-void Aed_swap (void);
-void Aed_font (void);
-void Aed_option (void);
-void Aed_undo (void);
+void Aed_wrap(void);
+void Aed_toclip(void);
+void Aed_fromclip(void);
+void Aed_copy(void);
+void Aed_cut(void);
+void Aed_cutline(void);
+void Aed_find(void);
+void Aed_findnext(void);
+void Aed_findsel(void);
+void Aed_fkey(void);
+void Aed_gotoline(void);
+void Aed_info(void);
+void Aed_open(void);
+void Aed_merge(void);
+void Aed_paste(void);
+void Aed_quit(void);
+void Aed_replace(void);
+void Aed_replacenext(void);
+void Aed_save(void);
+void Aed_saveas(void);
+void Aed_saveoptions(void);
+void Aed_selall(void);
+void Aed_swap(void);
+void Aed_font(void);
+void Aed_option(void);
+void Aed_undo(void);
 
 /*
  *    EDITOR
@@ -332,9 +332,9 @@ typedef struct {
 /*
    "printf"-Interface
 */
-int16 wputs (const char *text, Awindow *wi);
-int16 wvprintf (Awindow *wi, const char *format, va_list arglist) __attribute__((format(printf, 2, 0)));
-int16 wprintf (Awindow *wi, const char *format, ... ) __attribute__((format(printf, 2, 3)));
+int16 wputs(const char *text, Awindow *wi);
+int16 wvprintf(Awindow *wi, const char *format, va_list arglist) __attribute__((format(printf, 2, 0)));
+int16 wprintf(Awindow *wi, const char *format, ... ) __attribute__((format(printf, 2, 3)));
 
 extern Awindow PROTOCOL;         /* parameter NULL, or PROTOCOLDATA */
 
@@ -352,27 +352,27 @@ extern Awindow PROTOCOL;         /* parameter NULL, or PROTOCOLDATA */
    VDI-like Interface
 */
 
-void w_pline (Awindow *wi, int16 count, int16 *pxy);
-void w_pmarker (Awindow *wi, int16 count, int16 *pxy);
-void w_gtext (Awindow *wi, int16 x, int16 y, char* string);
-void w_fillarea (Awindow *wi, int16 count, int16 *pxy);
-void w_contourfill (Awindow *wi, int16 x, int16 y, int16 index);
-void wr_recfl (Awindow *wi, int16 *pxy);
-void w_bar (Awindow *wi, int16 *pxy);
-void w_arc (Awindow *wi, int16 x, int16 y, int16 rad, int16 begang, int16 endang);
-void w_pieslice (Awindow *wi, int16 x, int16 y, int16 rad, int16 begang, int16 endang);
-void w_circle (Awindow *wi, int16 x, int16 y, int16 rad);
-void w_ellipse (Awindow *wi, int16 x, int16 y, int16 xrad, int16 yrad);
-void w_ellarc (Awindow *wi, int16 x, int16 y, int16 xrad, int16 yrad, int16 begang, int16 endang);
-void w_ellpie (Awindow *wi, int16 x, int16 y, int16 xrad, int16 yrad, int16 begang, int16 endang);
-void w_rbox (Awindow *wi, int16 *pxy);
-void w_rfbox (Awindow *wi, int16 *pxy);
-void w_justified (Awindow *wi, int16 x, int16 y, char* string, int16 length, int16 word_space, int16 char_space);
+void w_pline(Awindow *win, int16 count, int16 *pxy);
+void w_pmarker(Awindow *win, int16 count, int16 *pxy);
+void w_gtext(Awindow *win, int16 x, int16 y, const char *string);
+void w_fillarea(Awindow *win, int16 count, int16 *pxy);
+void w_contourfill(Awindow *win, int16 x, int16 y, int16 index);
+void wr_recfl(Awindow *win, int16 *pxy);
+void w_bar(Awindow *win, int16 *pxy);
+void w_arc(Awindow *win, int16 x, int16 y, int16 rad, int16 begang, int16 endang);
+void w_pieslice(Awindow *win, int16 x, int16 y, int16 rad, int16 begang, int16 endang);
+void w_circle(Awindow *win, int16 x, int16 y, int16 rad);
+void w_ellipse(Awindow *win, int16 x, int16 y, int16 xrad, int16 yrad);
+void w_ellarc(Awindow *win, int16 x, int16 y, int16 xrad, int16 yrad, int16 begang, int16 endang);
+void w_ellpie(Awindow *win, int16 x, int16 y, int16 xrad, int16 yrad, int16 begang, int16 endang);
+void w_rbox(Awindow *win, int16 *pxy);
+void w_rfbox(Awindow *win, int16 *pxy);
+void w_justified(Awindow *win, int16 x, int16 y, const char *string, int16 length, int16 word_space, int16 char_space);
 
-void w_draw (Awindow *wi, int16 x1, int16 y1, int16 x2, int16 y2);
-void w_update (Awindow *wi);        /* update */
-void w_clr (Awindow *wi);           /* clear */
-void w_inv (Awindow *wi);           /* invert */
+void w_draw(Awindow *wi, int16 x1, int16 y1, int16 x2, int16 y2);
+void w_update(Awindow *wi);        /* update */
+void w_clr(Awindow *wi);           /* clear */
+void w_inv(Awindow *wi);           /* invert */
 
 
 typedef struct {
@@ -417,14 +417,14 @@ typedef struct
    Axywh winsize;          /* Fensterausmaže */
    CICONBLK *icon;         /* Icon-Vorlage */
    long len;               /* L„nge eines Eintrags */
-   boolean (*acc_item) (AOBJECT *aob, void *expara);
-   int16 (*comp_item) (void *org, void *new, void *expara);
-   boolean (*drag_item) (AOBJECT *aob, void *item, void *expara);
-   boolean (*edit_item) (void *item, void *expara);
-   long  (*key_item) (int16 key, void *expara);
-   boolean (*message) (int16 mess, void *expara);
-   boolean (*print_item) (char *line, void *item, void *expara);
-   boolean (*term_list) (void *expara);
+   boolean (*acc_item)(AOBJECT *aob, void *expara);
+   int16 (*comp_item)(void *org, void *new, void *expara);
+   boolean (*drag_item)(AOBJECT *aob, void *item, void *expara);
+   boolean (*edit_item)(void *item, void *expara);
+   long  (*key_item)(int16 key, void *expara);
+   boolean (*message)(int16 mess, void *expara);
+   boolean (*print_item)(char *line, void *item, void *expara);
+   boolean (*term_list)(void *expara);
 }  LISTDATA;
 
 extern Awindow LIST_WINDOW;
@@ -443,8 +443,8 @@ int16 A_fontsel( int16 *fontid, int16 *height, boolean prop);
 --------------------------------------------------------------
 */
 
-void read_multiline (char* dest, int16 len, char** from, int16 lines);
-void write_multiline (char* dest, int16 len, char** from, int16 lines);
+void read_multiline(char *dest, int16 len, char **from, int16 lines);
+void write_multiline(char *dest, int16 len, char **from, int16 lines);
 
 /******************************************************************************/
 

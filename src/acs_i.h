@@ -328,14 +328,6 @@ typedef struct {
 } xFSL;
 
 typedef struct {
-	int16 handle;
-	int16 w;
-	int16 h;
-	MFDB *plane;
-	int16 offscreen;
-} GRAF_WI;
-
-typedef struct {
 	char *grp_name;
 	int16 anzahl;
 	char **cfg_strings;
@@ -1429,9 +1421,42 @@ void del_window(ACS_HEAD *acs, Obj_Head *label);
 
 
 /*
+ * acsplus/deskop.c
+ */
+Awindow *get_desktop(void);
+
+
+/*
  * acsplus/pur_desk.c
  */
 extern Awindow PUR_DESK;
+
+Awindow *get_pur_desk(void);
+Awindow *get_module_window(void);
+
+
+/*
+ * acsplus/editwi.c
+ */
+Awindow *get_editor(void);
+
+
+/*
+ * acsplus/list.c
+ */
+Awindow *get_list(void);
+
+
+/*
+ * acsplus/protocol.c
+ */
+Awindow *get_protocol(void);
+
+
+/*
+ * acsplus/plotter.c
+ */
+Awindow *get_plotter(void);
 
 
 /*

@@ -31,16 +31,16 @@ acs.app
 
 ; Flags for the Debug-Version
 .C[ -D_DEBUG -DDEBUG ]
-.C[ -J+ ]		; No jump optimization
-.C[ -Z+ ]		; No register optimization
-.C[ -M+ ]		; No String Merging
-.C[ -R+ ]		; No Register Variables
+;.C[ -J+ ]		; No jump optimization
+;.C[ -Z+ ]		; No register optimization
+;.C[ -M+ ]		; No String Merging
+;.C[ -R+ ]		; No Register Variables
 
 ; Flags for the Release-Version
-;.C[ -J- ]		; Jump optimization
-;.C[ -Z- ]		; Register optimization
-;.C[ -M- ]		; String Merging
-;.C[ -R- ]		; Register Variables
+.C[ -J- ]		; Jump optimization
+.C[ -Z- ]		; Register optimization
+.C[ -M- ]		; String Merging
+.C[ -R- ]		; Register Variables
 
 .S[-DCOUNTRY=1]
 .C[-DCOUNTRY=1]
@@ -52,90 +52,82 @@ acs.app
 =
 ..\lib\stupargv.s
 
-acsbase.c
-palette.c
-edbehave.c
-general.c
-about.c
-edutil.c
+acsbase.c [-J -Z -R -M]
+palette.c [-J -Z -R -M]
+edbehave.c [-J -Z -R -M]
+general.c [-J -Z -R -M]
+about.c [-J -Z -R -M]
+edutil.c [-J -Z -R -M]
 
-io\protocol.c [-J- -Z- -R- -M-]
-io\fixacs.c [-J- -Z- -R- -M-]
-io\acsio.c [-J- -Z- -R- -M-]
-io\rcsin.c [-J- -Z- -R- -M-]
-io\pc_head.c [-J- -Z- -R- -M-]
-io\pc_out.c [-J- -Z- -R- -M-]
-io\pp_out.c [-J- -Z- -R- -M-]
-io\str_out.c [-J- -Z- -R- -M-]
-io\workout.c [-J- -Z- -R- -M-]
+io\protocol.c
+io\fixacs.c
+io\acsio.c
+io\rcsin.c
+io\pc_head.c
+io\pc_out.c
+io\pp_out.c
+io\str_out.c
+io\workout.c
 
-edit2\eddescr.c [-J- -Z- -R- -M-]
-edit2\eddataed.c [-J- -Z- -R- -M-]
-edit2\edrefed.c [-J- -Z- -R- -M-]
-edit2\edaled.c [-J- -Z- -R- -M-]
-edit2\ediconed.c [-J- -Z- -R- -M-]
-edit2\edimaged.c [-J- -Z- -R- -M-]
-edit2\edmoused.c [-J- -Z- -R- -M-]
-edit2\edusred.c [-J- -Z- -R- -M-]
-edit2\edteded.c [-J- -Z- -R- -M-]
-edit2\edstred.c [-J- -Z- -R- -M-]
-edit2\edwinded.c [-J- -Z- -R- -M-]
-edit2\edparts.c [-J- -Z- -R- -M-]
+edit2\eddescr.c
+edit2\eddataed.c
+edit2\edrefed.c
+edit2\edaled.c
+edit2\ediconed.c
+edit2\edimaged.c
+edit2\edmoused.c
+edit2\edusred.c
+edit2\edteded.c
+edit2\edstred.c
+edit2\edwinded.c
+edit2\edparts.c
 
-editor\edobjced.c [-J- -Z- -R- -M-]
-editor\edmenued.c [-J- -Z- -R- -M-]
-editor\edpuped.c [-J- -Z- -R- -M-]
-editor\ueboxed.c [-J- -Z- -R- -M-]
-editor\ueselect.c [-J- -Z- -R- -M-]
-editor\ueeditor.c [-J- -Z- -R- -M-]
-editor\ueslider.c [-J- -Z- -R- -M-]
-editor\uepictur.c [-J- -Z- -R- -M-]
-editor\uecycle.c [-J- -Z- -R- -M-]
-editor\uearrow.c [-J- -Z- -R- -M-]
-editor\uepatter.c [-J- -Z- -R- -M-]
-editor\ueinner.c [-J- -Z- -R- -M-]
-editor\ue3dbutt.c [-J- -Z- -R- -M-]
-editor\uecheck.c [-J- -Z- -R- -M-]
-editor\ueftext.c [-J- -Z- -R- -M-]
-editor\uetitle.c [-J- -Z- -R- -M-]
-editor\edobclas.c [-J- -Z- -R- -M-]
-editor\edobstru.c [-J- -Z- -R- -M-]
-editor\edobsurf.c [-J- -Z- -R- -M-]
-editor\edobobjc.c [-J- -Z- -R- -M-]
-editor\edobusrm.c [-J- -Z- -R- -M-]
-editor\edobboxm.c [-J- -Z- -R- -M-]
-editor\edobicm.c [-J- -Z- -R- -M-]
-editor\edobimm.c [-J- -Z- -R- -M-]
-editor\edobstrm.c [-J- -Z- -R- -M-]
-editor\edobtedm.c [-J- -Z- -R- -M-]
-editor\edobaflm.c [-J- -Z- -R- -M-]
-editor\edobaeom.c [-J- -Z- -R- -M-]
-editor\edobkeys.c [-J- -Z- -R- -M-]
+editor\edobjced.c
+editor\edmenued.c
+editor\edpuped.c
+editor\ueboxed.c
+editor\ueselect.c
+editor\ueeditor.c
+editor\ueslider.c
+editor\uepictur.c
+editor\uecycle.c
+editor\uearrow.c
+editor\uepatter.c
+editor\ueinner.c
+editor\ue3dbutt.c
+editor\uecheck.c
+editor\ueftext.c
+editor\uetitle.c
+editor\edobclas.c
+editor\edobstru.c
+editor\edobsurf.c
+editor\edobobjc.c
+editor\edobusrm.c
+editor\edobboxm.c
+editor\edobicm.c
+editor\edobimm.c
+editor\edobstrm.c
+editor\edobtedm.c
+editor\edobaflm.c
+editor\edobaeom.c
+editor\edobkeys.c
 
-list\edlist.c [-J- -Z- -R- -M-]
-list\edalert.c [-J- -Z- -R- -M-]
-list\eddata.c [-J- -Z- -R- -M-]
-list\edwind.c [-J- -Z- -R- -M-]
-list\edicon.c [-J- -Z- -R- -M-]
-list\edimage.c [-J- -Z- -R- -M-]
-list\eduser.c [-J- -Z- -R- -M-]
-list\edmenu.c [-J- -Z- -R- -M-]
-list\edmouse.c [-J- -Z- -R- -M-]
-list\edobject.c [-J- -Z- -R- -M-]
-list\edpopup.c [-J- -Z- -R- -M-]
-list\edref.c [-J- -Z- -R- -M-]
-list\edstring.c [-J- -Z- -R- -M-]
-list\edtedi.c [-J- -Z- -R- -M-]
+list\edlist.c
+list\edalert.c
+list\eddata.c
+list\edwind.c
+list\edicon.c
+list\edimage.c
+list\eduser.c
+list\edmenu.c
+list\edmouse.c
+list\edobject.c
+list\edpopup.c
+list\edref.c
+list\edstring.c
+list\edtedi.c
 
-acsplus\slider.c [-J- -Z- -R- -M-]
-acsplus\wislider.c [-J- -Z- -R- -M-]
-acsplus\editor.c [-J- -Z- -R- -M-]
-acsplus\pur_desk.c [-J- -Z- -R- -M-]
-acsplus\editwi.c [-J- -Z- -R- -M-]
-acsplus\fontsel.c [-J- -Z- -R- -M-]
-acsplus\list.c [-J- -Z- -R- -M-]
-acsplus\proto.c [-J- -Z- -R- -M-]
-
+acsplus\acsplus.prj
 lib\acslib.prj
 
 ..\pcgem\pcgem.prj

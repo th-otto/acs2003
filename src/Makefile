@@ -87,11 +87,14 @@ OBJS = \
 	acsplus/slider.o \
 	acsplus/wislider.o \
 	acsplus/editor.o \
+	acsplus/desktop.o \
 	acsplus/pur_desk.o \
 	acsplus/editwi.o \
 	acsplus/fontsel.o \
 	acsplus/list.o \
 	acsplus/proto.o \
+	acsplus/plotter.o \
+	acsplus/goodies.o \
 	\
 	lib/main.o \
 	lib/initterm.o \

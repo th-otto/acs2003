@@ -3263,3 +3263,10 @@ void Aed_fkey(void)
 	}
 	Awi_show(editdata->wifkeys);
 }
+
+/* -------------------------------------------------------------------------- */
+
+Awindow *get_editor(void)
+{
+	return &EDITOR;
+}

@@ -1,0 +1,54 @@
+acsplus.lib
+
+.C[-I..\..\include]
+.C[-I..]
+.C[-IC:\pc\include]
+
+; set this to 1 to apply some fixes
+; if set to 0, attempt to compile the original version
+.C[-DWITH_FIXES=0]
+.S[-DWITH_FIXES=0]
+
+.C[ -A- ]		; no strict ANSI
+.C[ -C- ]		; no nested comments
+.C[ -T- ]		; no stack checking
+.C[ -K- ]		; Default Char is signed
+.C[ -P  ]		; Absolute calls
+.C[ -G- ]		; optimize for speed
+.C[ -S- ]		; no standard stack frames
+
+; Flags for the Debug-Version
+;.C[ -D_DEBUG -DDEBUG ]
+;.C[ -J+ ]		; No jump optimization
+;.C[ -Z+ ]		; No register optimization
+;.C[ -M+ ]		; No String Merging
+;.C[ -R+ ]		; No Register Variables
+
+; Flags for the Release-Version
+.C[ -J- ]		; Jump optimization
+.C[ -Z- ]		; Register optimization
+.C[ -M- ]		; String Merging
+.C[ -R- ]		; Register Variables
+
+; For other localizations, change the COUNTRY code below
+; supported:
+; 0=english
+; 1=german
+.S[-DCOUNTRY=1]
+.C[-DCOUNTRY=1]
+
+.S[-U]
+
+.L[-J] ; generate library
+
+=
+
+slider.c
+wislider.c
+editor.c
+pur_desk.c
+editwi.c
+fontsel.c
+list.c
+proto.c
+plotter.c

@@ -3396,12 +3396,12 @@ static char *vertical(void *ob, long pos)
 
 /* -------------------------------------------------------------------------- */
 
-static int16 wwputs(char *str, OBJECT *entry)
+static int16 wwputs(const char *str, OBJECT *entry)
 {
 	int16 newline_ok, append_ok;
 	char *lf;
 	char *cr;
-	char *ptr;
+	const char *ptr;
 	
 	append_ok = newline_ok = OK;
 	ptr = str;
@@ -3433,6 +3433,21 @@ static int16 wwputs(char *str, OBJECT *entry)
 
 /* -------------------------------------------------------------------------- */
 
+int16 uputs(const char *text, OBJECT *entry)
+{
+	AUSERBLK *auser;
+	
+	auser = entry->ob_spec.auserblk;
+	if (wwputs(text, entry) == FAIL)
+		return FAIL;
+	auser->ub_serv(entry, AUO_EDUPDATE, NULL);
+	edit_newline(entry);
+	auser->ub_serv(entry, AUO_UPDATE, NULL);
+	return '\n';
+}
+
+/* -------------------------------------------------------------------------- */
+
 int16 uvprintf(OBJECT *entry, const char *format, va_list args)
 {
 	int count;
@@ -3443,4 +3458,17 @@ int16 uvprintf(OBJECT *entry, const char *format, va_list args)
 	wwputs(buffer, entry);
 	auser->ub_serv(entry, AUO_UPDATE, NULL);
 	return count;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 uprintf(OBJECT *entry, const char *format, ... )
+{
+	va_list args;
+	int16 ret;
+	
+	va_start(args, format);
+	ret = uvprintf(entry, format, args);
+	va_end(args);
+	return ret;
 }

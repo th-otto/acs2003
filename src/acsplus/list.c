@@ -748,3 +748,10 @@ static void vslide_list(Awindow *self, int16 pos)
 	auser->ub_serv(slider, AUO_UPDATE, NULL);
 	auser->ub_serv(slider, AUO_SLLIVE, NULL);
 }
+
+/* -------------------------------------------------------------------------- */
+
+Awindow *get_list(void)
+{
+	return &LIST_WINDOW;
+}

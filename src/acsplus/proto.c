@@ -345,6 +345,24 @@ static void proto_vslid(Awindow *self, int16 pos)
 
 /* -------------------------------------------------------------------------- */
 
+int16 wputs(const char *text, Awindow *win)
+{
+	if (win != NULL)
+		return uputs(text, &win->work[PROTOCOL_EDITOR]);
+	return FAIL;
+}
+
+/* -------------------------------------------------------------------------- */
+
+int16 wvprintf(Awindow *win, const char *format, va_list args)
+{
+	if (win != NULL)
+		return uvprintf(&win->work[PROTOCOL_EDITOR], format, args);
+	return FAIL;
+}
+
+/* -------------------------------------------------------------------------- */
+
 int16 wprintf(Awindow *win, const char *format, ...)
 {
 	int len;
@@ -358,4 +376,11 @@ int16 wprintf(Awindow *win, const char *format, ...)
 		va_end(args);
 	}
 	return len;
+}
+
+/* -------------------------------------------------------------------------- */
+
+Awindow *get_protocol(void)
+{
+	return &PROTOCOL;
 }

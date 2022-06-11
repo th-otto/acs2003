@@ -1092,6 +1092,20 @@ static int sort_obnr(const void *ob1, const void *ob2)
 
 /* -------------------------------------------------------------------------- */
 
+Awindow *get_pur_desk(void)
+{
+	return &PUR_DESK;
+}
+
+/* -------------------------------------------------------------------------- */
+
+Awindow *get_module_window(void)
+{
+	return &PUR_MODULE;
+}
+
+/* -------------------------------------------------------------------------- */
+
 static int16 purGEMScript(Awindow *win, int16 anz, char **cmds, A_GSAntwort *antwort)
 {
 	if (Ast_icmp(cmds[0], "GetFront") == 0)
