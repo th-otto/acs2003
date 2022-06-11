@@ -39,7 +39,7 @@ static int16 edit_key(Awindow *self, int16 kstate, int16 key);
 #define NO_BRACKET   " No bracket."
 #define OPEN_TITLE   "Open text"
 #define MERGE_TITLE  "Insert text"
-#define SAVE_TITLE   "Save text",
+#define SAVE_TITLE   "Save text"
 #define FONTS        "Fonts"
 #define NEW_FILE     " New text."
 #endif

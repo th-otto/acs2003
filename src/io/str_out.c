@@ -2,6 +2,10 @@
 #include "acsio.h"
 #include <time.h>
 
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wclobbered"
+#endif
+
 
 static void unused(void)
 {

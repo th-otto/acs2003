@@ -2004,7 +2004,7 @@ void dotted_yline( int16 y1, int16 y2, int16 x );
 uint32 Ash_gettimer( void );
 
 /* Die Farbwerte ab NVDI 5.x liefern */
-const RGB1000 * const Avdi_getRGB( int16 index );
+const RGB1000 *Avdi_getRGB( int16 index );
 
 /******************************************************************************/
 

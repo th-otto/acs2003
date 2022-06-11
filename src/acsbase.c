@@ -83,7 +83,9 @@ boolean runasdemo = TRUE;
 
 static Awindow *wdemo = NULL;
 static long stepper = 0;
-struct UConfig cfg = { 0, };
+struct UConfig cfg = { 0, "", "", "", "", FALSE, 0, FALSE, FALSE, FALSE, 0, FALSE, 0,
+	{ 0, 0, 0, 0 }, { 0, 0, 0, 0 },
+	"", 0, { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" } };
 char *last_path = cfg.last_path;
 char *helpacc = cfg.helpname;
 boolean gluepart = TRUE;
@@ -257,7 +259,11 @@ static Awindow *ab_make(void *para)
 	int16 no3d;
 	Awindow *win;
 	OBJECT *tree;
+#if WITH_FIXES
+	char buf[8];
+#else
 	char buf[6];
+#endif
 	SLLIVE live;
 	int32 size;
 	
@@ -610,10 +616,11 @@ static int16 ab_service(Awindow *self, int16 task, void *in_out)
 
 static char *live_snap(void *obj, long val)
 {
-#if WITH_FIXES || defined(__GNUC__)
-static
-#endif
+#if WITH_FIXES
+	static char buf[8];
+#else
 	char buf[6];
+#endif
 	
 	switch ((int)val)
 	{

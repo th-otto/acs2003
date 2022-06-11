@@ -524,10 +524,11 @@ static void ed3d_ok(void)
 
 static char *live_offset(void *obj, long val)
 {
-#if WITH_FIXES || defined(__GNUC__)
-	static
-#endif
+#if WITH_FIXES
+	static char buf[8];
+#else
 	char buf[6];
+#endif
 	Awiob ob;
 	int32 sval;
 	int32 *parm;
@@ -560,10 +561,12 @@ static char *live_offset(void *obj, long val)
 
 static char *live_thickness(void *obj, long val)
 {
-#if WITH_FIXES || defined(__GNUC__)
-	static
-#endif
+#if WITH_FIXES
+	static char buf[8];
+#else
 	char buf[6];
+#endif
+
 	Awiob ob;
 	int16 sval;
 	int32 *parm;

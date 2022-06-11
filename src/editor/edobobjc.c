@@ -174,8 +174,14 @@ void change_work(Awindow *win, OBJECT *tree, const char *title, void (*abort)(vo
 	parm->cleanup = cleanup;
 	if (title != NULL)
 	{
+#if WITH_FIXES
+		strncpy(buf, title, sizeof(buf) - 1);
+		strncat(buf, win->name, sizeof(buf) - 1);
+		buf[sizeof(buf) - 1] = '\0';
+#else
 		strncpy(buf, title, sizeof(buf));
 		strncat(buf, win->name, sizeof(buf));
+#endif
 		name = Ast_create(buf);
 		if (name != NULL)
 		{
@@ -345,7 +351,7 @@ void edob_specs(void)
 		case G_CICON:
 			mode = edoic_set_icon(entry);
 			break;
-#if WITH_FIXES || defined(__GNUC__)
+#if WITH_FIXES
 		default:
 			mode = NULL;
 			break;

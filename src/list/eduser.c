@@ -311,7 +311,7 @@ Obj_Head *change_user(ACS_HEAD *acs, Obj_Head *obj, char *str[8])
 	if (str[2][0] != '\0')
 	{
 		strncpy(serv.label, str[2], 31);
-#if WITH_FIXES || defined(__GNUC__)
+#if WITH_FIXES
 		serv.label[31] = '\0';
 #else
 		serv.label[32] = '\0'; /* BUG: will write beyond end of buffer */

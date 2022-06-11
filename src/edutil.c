@@ -77,7 +77,11 @@ boolean A_rubberbox(int16 x, int16 y, int16 minw, int16 minh, int16 *dstw, int16
 	int16 pxy[8];
 	OBJECT *info;
 	MFDB *back;
+#if WITH_FIXES
+	char buf[20];
+#else
 	char buf[12];
+#endif
 
 	if ((info = Aob_create(&INFO_OB_WH)) != NULL)
 	{

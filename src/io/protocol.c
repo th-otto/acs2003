@@ -165,6 +165,10 @@ static void prot_labellist(ACS_HEAD *acs)
 /* -------------------------------------------------------------------------- */
 /******************************************************************************/
 
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wclobbered"
+#endif
+
 void protocol(ACS_HEAD *acs)
 {
 	time_t t;

@@ -387,8 +387,18 @@ static ACSCICONBLK *fix_cicon(ACSCICONBLK *icon)
 		return NULL;
 	memcpy(newicon, icon, sizeof(*newicon));
 	offset = (int32)icon;
+#ifdef __GNUC__ /* to avoid dereferinc type-punned pointer */
+	{
+		char **pp;
+		pp = (char **)&newicon->cicon.monoblk.ib_pmask;
+		*pp += offset;
+		pp = (char **)&newicon->cicon.monoblk.ib_pdata;
+		*pp += offset;
+	}
+#else
 	*((char **)&newicon->cicon.monoblk.ib_pmask) += offset;
 	*((char **)&newicon->cicon.monoblk.ib_pdata) += offset;
+#endif
 	newicon->cicon.monoblk.ib_ptext = Ast_create(((Obj_Head *)newicon->cicon.monoblk.ib_ptext)->object);
 	next = NULL;
 	if (icon->c16.num_planes != 0 && ACSblk->nplanes >= 4)

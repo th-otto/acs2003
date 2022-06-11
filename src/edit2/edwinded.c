@@ -675,15 +675,16 @@ static void set_window(Awindow *self)
 
 static char *live_snap(void *obj, long val)
 {
-#if WITH_FIXES || defined(__GNUC__)
-static
-#endif
+#if WITH_FIXES
+	static char buf[8];
+#else
 	char buf[6];
+#endif
 	int snap;
 	
 	switch ((int)val)
 	{
-#if WITH_FIXES || defined(__GNUC__)
+#if WITH_FIXES
 	default:
 #endif
 	case 0:

@@ -75,7 +75,7 @@ boolean Ash_getcookie( int32 cookie, void *value )
 	}
 	else	/* Den CookieJar selbst durchkramen */
 	{
-		cookiejar = (COOKJAR *)(Setexc(COOKIEJAR/4,(const void (*)(void))-1));
+		cookiejar = (COOKJAR *)(Setexc(COOKIEJAR/4,(void (*)(void))-1));
 		if( cookiejar )
 		{
 			for( i=0 ; cookiejar[i].id ; i++ )

@@ -4,13 +4,21 @@
 #include "io/workout.h"
 #include "version.h"
 
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wclobbered"
+#endif
+
 
 static int16 mapX[1000]; /* FIXME: duplicate */
 
 
 static void p_string(const char *str, char term)
 {
+#if WITH_FIXES
+	char buf[10];
+#else
 	char buf[4];
+#endif
 	char lineend[4] = ";" NL;
 	
 	save_string("'");
@@ -676,7 +684,7 @@ static void out_obj(Obj_Head *list, const char *title)
 						str = entry->type->label;
 					else
 						str = "0";
-#if WITH_FIXES || defined(__GNUC__)
+#if WITH_FIXES
 					sprintf(iostring, "(acs: (");
 #else
 					sprintf(iostring, "(acs: (", mapptr[j], tree->label); /* BUG: too many arguments for format */

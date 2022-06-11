@@ -254,7 +254,7 @@ void read_buf(void *data, size_t len)
 		if ((long)len >= IOBUF_SIZE)
 		{
 			bfill = Fread(handle, len, data);
-			if (bfill != len)
+			if (bfill != (long)len)
 			{
 				ACSblk->ACSerror(AE_READ_IO, NULL);
 				longjmp(err_jmp, 1);
@@ -277,6 +277,10 @@ void read_buf(void *data, size_t len)
 	}
 }
 
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wclobbered"
+#endif
 
 int16 save_acs(int16 h, ACS_HEAD *acs)
 {

@@ -27,6 +27,10 @@ static char const xacc_types[][3] = {
 	"PE"
 };
 
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wclobbered"
+#endif
+
 
 void info_start(const char *filename)
 {
@@ -141,6 +145,7 @@ static void out_acs(ACS_HEAD *acs)
 	{
 		save_string(NL NL "Adescr ACSdescr =");
 		save_string(NL "\t{" NL);
+		/* FIXME: acc_reg may contain special chars */
 		sprintf(iostring, "\t\t\"%s\", %d," NL "\t\t%2d, %2d," NL "\t\t%#4x," NL "\t\t\"%s\"," NL "\t\t",
 			"ACS3.00", ACS_VERSION, acs->descr.dx, acs->descr.dy, acs->descr.flags | AB_SMARTREDRAW, acs->descr.acc_reg);
 		save_string(iostring);
@@ -165,6 +170,7 @@ static void out_acs(ACS_HEAD *acs)
 		{
 			sprintf(buf, "ACS(%02d)", i);
 			entry = find_entry(acs->st_list, buf);
+			/* FIXME: messages may contain special chars */
 			if (entry == NULL &&
 				(entry = find_entry(acs->al_list, buf)) == NULL)
 			{

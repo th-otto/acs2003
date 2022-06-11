@@ -360,7 +360,11 @@ static int16 ge_init(Awindow *self)
 		ACSblk->ACSerror(AE_OUT_OF_MEM, NULL);
 		return FAIL;
 	}
+#if WITH_FIXES
+	memset(acs, 0, sizeof(*acs));
+#else
 	memset(acs, 0, sizeof(acs)); /* BUG: only zeroes size of a pointer */
+#endif
 	self->user = acs;
 	fd = Fopen(filename, FO_READ);
 	acs->filename = filename;
@@ -609,7 +613,7 @@ static void *openFile(void *para, void *filename)
 	{
 		Ash_module(filename);
 		/* BUG: win not set */
-#if WITH_FIXES || defined(__GNUC__)
+#if WITH_FIXES
 		win = NULL;
 #endif
 	} else

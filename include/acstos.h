@@ -903,18 +903,17 @@ extern long _PgmSize;         /* Im Startup-Code definiert */
 
 /******************************************************************************/
 
-int32 Bconin( const int16 dev );
-void Bconout( const int16 dev, const int16 c );
-int16 Bconstat( const int16 dev );
-int32 Bcostat( const int16 dev );
+int32 Bconin( int16 dev );
+void Bconout( int16 dev, int16 c );
+int16 Bconstat( int16 dev );
+int32 Bcostat( int16 dev );
 int32 Drvmap( void );
-BPB *Getbpb( const int16 dev );
-int32 Getmpb( const MPB *p_mpb );
-int32 Kbshift( const int16 mode );
-int32 Mediach( const int16 dev );
-int32 Rwabs( const int16 rwflag, const void *buf, const int16 count,
-         const int16 recno, const int16 dev, const int32 lrecno );
-void (*Setexc( const int16 vecnum, const void (*vec)(void) ))(void);
+BPB *Getbpb( int16 dev );
+int32 Getmpb( MPB *p_mpb );
+int32 Kbshift( int16 mode );
+int32 Mediach( int16 dev );
+int32 Rwabs( int16 rwflag, void *buf, int16 count, int16 recno, int16 dev, int32 lrecno );
+void (*Setexc( int16 vecnum, void (*vec)(void) ))(void);
 int32 Tickcal( void );
 
 /******************************************************************************/
@@ -930,23 +929,23 @@ int32 Tickcal( void );
 
 /******************************************************************************/
 
-int32 Bconmap( const int16 devno );
+int32 Bconmap( int16 devno );
 int16 HasBconmap( void );
 void Bioskeys( void );
-int16 Blitmode( const int16 mode );
-int32 Buffoper( const int16 mode );
-int32 Buffptr( const SBUFPTR *sptr );
-int16 Cursconf( const int16 function, const int16 operand );
-void Dbmsg( const int16 rsrvd, const int16 msg_num, const int32 msg_arg );
+int16 Blitmode( int16 mode );
+int32 Buffoper( int16 mode );
+int32 Buffptr( SBUFPTR *sptr );
+int16 Cursconf( int16 function, int16 operand );
+void Dbmsg( int16 rsrvd, int16 msg_num, int32 msg_arg );
 int32 Devconnect( int16 source, int16 dest, int16 clk, int16 prescale, int16 protocol );
-int32 DMAread( const int32 sector, const int16 count, void *buffer, const int16 devno );
-int32 DMAwrite( const int32 sector, const int16 count, void *buffer, const int16 devno );
+int32 DMAread( int32 sector, int16 count, void *buffer, int16 devno );
+int32 DMAwrite( int32 sector, int16 count, void *buffer, int16 devno );
 void Dosound( const char *ptr );
 void Dsp_Available( int32 *xavail, int32 *yavail );
-void Dsp_BlkBytes( UCHAR *data_in, int32 size_in, UCHAR *data_out, int32 size_out );
-void Dsp_BlkHandShake( UCHAR *data_in, int32 size_in, UCHAR *data_out, int32 size_out );
-void Dsp_BlkUnpacked( int32 *data_in, int32 size_in, int32 *data_out, int32 size_out );
-void Dsp_BlkWords( int16 *data_in, int32 size_in, int16 *data_out, int32 size_out );
+void Dsp_BlkBytes( const UCHAR *data_in, int32 size_in, UCHAR *data_out, int32 size_out );
+void Dsp_BlkHandShake( const void *data_in, int32 size_in, void *data_out, int32 size_out );
+void Dsp_BlkUnpacked( const int32 *data_in, int32 size_in, int32 *data_out, int32 size_out );
+void Dsp_BlkWords( const int16 *data_in, int32 size_in, int16 *data_out, int32 size_out );
 void Dsp_DoBlock( char *data_in, int32 size_in, char *data_out, int32 size_out );
 void Dsp_ExecBoot( char *codeptr, int32 codesize, int16 ability );
 void Dsp_ExecProg( char *codeptr, int32 codesize, int16 ability );
@@ -959,15 +958,14 @@ int16 Dsp_Hf2( void );
 int16 Dsp_Hf3( void );
 CHAR Dsp_HStat( void );
 CHAR Dsp_InqSubrAbility( int16 ability );
-void Dsp_InStream( char *data_in, int32 block_size, int32 num_blocks, int32 *blocks_done );
-void Dsp_IOStream( char *data_in, char *data_out, int32 block_insize, int32 block_outsize,
+void Dsp_InStream( const void *data_in, int32 block_size, int32 num_blocks, int32 *blocks_done );
+void Dsp_IOStream( const void *data_in, void *data_out, int32 block_insize, int32 block_outsize,
          int32 num_blocks, int32 *blocks_done );
 int16 Dsp_LoadProg( char *file, int16 ability, char *buf );
-int16 Dsp_LoadSubroutine( char *ptr, int32 size, int16 ability );
+int16 Dsp_LoadSubroutine( const void *ptr, int32 size, int16 ability );
 CHAR Dsp_Lock( void );
-int32 Dsp_LodToBinary( char *file, char *codeptr );
-CHAR Dsp_MultBlocks( int32 numsend, int32 numreceive, DSPBLOCK *sendblk,
-         DSPBLOCK *receiveblock );
+int32 Dsp_LodToBinary( const char *file, void *codeptr );
+CHAR Dsp_MultBlocks( int32 numsend, int32 numreceive, const DSPBLOCK *sendblk, DSPBLOCK *receiveblock );
 void Dsp_OutStream( char *data_out, int32 block_size, int32 num_blocks, int32 *blocks_done );
 void Dsp_RemoveInterrupts( int16 mask );
 int16 Dsp_RequestUniqueAbility( void );
@@ -998,7 +996,7 @@ int16 Getrez( void );
 int32 Gettime( void );
 char Giaccess( int16 c, int16 recno );
 int32 Gpio( int16 mode, int16 data );
-void Ikbdws( int16 cnt, const char *ptr );
+void Ikbdws( int16 cnt, const void *ptr );
 void Initmouse( int16 type, InitMouseParam *param, void *(*vec)(void) );
 IOREC *Iorec( int16 devno );
 void Jdisint( int16 intno );
@@ -1021,8 +1019,8 @@ int32 Metastopaudio( int16 drive );
 int32 Metastatus( int16 drive, void *buffer );
 int32 Metawrite( int16 drive, void *buffer, int32 blockno, int16 count );
 void Mfpint( int16 intno, void (*vector)(void) );
-void Midiws( int16 cnt, const char *buffer );
-int16 NVMaccess( int16 op, int16 start, int16 count, char *buffer );
+void Midiws( int16 cnt, const void *buffer );
+int16 NVMaccess( int16 op, int16 start, int16 count, void *buffer );
 void Offgibit( int16 bitno );
 void Ongibit( int16 bitno );
 void *Physbase( void );
@@ -1090,7 +1088,7 @@ int16 Cprnout( int16 c );
 int32 Crawcin( void );
 int32 Crawio( int16 c );
 int32 Dclosedir( int32 dirhandle );
-int32 Dcntl( int16 cmd, char *name, int32 arg );
+int32 Dcntl( int16 cmd, const char *name, int32 arg );
 int32 Dcreate( const char *path );
 int32 Ddelete( const char *path );
 int32 Dfree( DISKINFO *buf, int16 drive );
@@ -1099,7 +1097,7 @@ int16 Dgetdrv( void );
 int32 Dgetpath( char *buf, int16 drive );
 int32 Dlock( int16 mode, int16 drv );
 int32 Dopendir( const char *name, int16 flag );
-int32 Dpathconf( char *name, int16 mode );
+int32 Dpathconf( const char *name, int16 mode );
 int32 Dreaddir( int16 len, int32 dirhandle, char *buf );
 int32 Dreadlabel( const char *path, char *label, int16 maxlen );
 int32 Dsetkey( int32 hidev, int32 lowdev, char *key, int16 cipher);
@@ -1122,7 +1120,7 @@ int32 Fforce( int16 shandle, int16 nhandle );
 int32 Fgetchar( int16 handle, int16 mode );
 DTA *Fgetdta( void );
 int32 Finstat( int16 handle );
-int32 Flink( char *oldname, char *newname );
+int32 Flink( const char *oldname, const char *newname );
 int32 Flock( int16 handle, int16 mode, int32 start, int32 length );
 int32 Fmidipipe( int16 pid, int16 in, int16 out );
 int32 Fopen( const char *fname, int16 mode );
@@ -1130,8 +1128,8 @@ int32 Foutstat( int16 handle );
 int32 Fpipe( int16 fhandle[2] );
 int32 Fputchar( int16 handle, int32 lchar, int16 mode );
 int32 Fread( int16 handle, int32 length, void *buf );
-int32 Freadlink( int16 bufsiz, char *buf, char *name );
-int32 Frename( const int16 zero, const char *oldname, const char *newname );
+int32 Freadlink( int16 bufsiz, char *buf, const char *name );
+int32 Frename( int16 zero, const char *oldname, const char *newname );
 int32 Frlock( int16 handle, int32 start, int32 count );
 int32 Frunlock( int16 handle, int32 start );
 int32 Fseek( int32 offset, int16 handle, int16 mode );
@@ -1139,10 +1137,10 @@ int16 Fselect( uint16 timeout, int32 *rfds, int32 *wfds, int32 *xfds );
 void Fsetdta( DTA *ndta );
 int16 Fsfirst( const char *fspec, int16 attribs );
 int16 Fsnext( void );
-int32 Fsymlink( char *oldname, char *newname );
+int32 Fsymlink( const char *oldname, const char *newname );
 int32 Funlock( int16 handle );
 int32 Fwrite( int16 handle, int32 count, const void *buf );
-int32 Fxattr( int16 flag, char *name, XATTR *xattr );
+int32 Fxattr( int16 flag, const char *name, XATTR *xattr );
 int32 Lock( const char *path );
 int32 Maddalt( void *start, int32 size );
 void *Malloc( int32 amount );
@@ -1152,7 +1150,7 @@ int16 Mshrink( int16 zero, void *startadr, int32 newsize );
 void *Mxalloc( int32 amount, int16 mode );
 void Pause( void );
 int16 Pdomain( int16 domain );
-int32 Pexec( int16 mode, const char *fname, const COMMAND *cmdline, const char *envstr );
+int32 Pexec( int16 mode, const char *fname, const void *cmdline, const void *envstr );
 int16 Pfork( void );
 int32 Pgetauid( void );
 int16 Pgetegid( void );
@@ -1202,8 +1200,8 @@ void Salert( char *str );
 int32 Sconfig( int16 mode, int32 value );
 int32 Scookie( int16 action, void *yummy );
 int32 Shutdown( int32 restart );
-int32 Slbopen( char *name, char *path, int32 min_ver, SHARED_LIB *sl, SLB_EXEC *fn );
-int32 Slbclose( SHARED_LIB *sl );
+int32 Slbopen( const char *name, const char *path, int32 min_ver, SHARED_LIB *sl, SLB_EXEC *fn );
+int32 Slbclose( SHARED_LIB sl );
 int32 Srealloc( int32 size );
 int32 Ssystem( int16 mode, int32 arg1, int32 arg2 );
 
@@ -1284,7 +1282,7 @@ int32 Fgetsockname( int16 fd, sockaddrPtr addr, socklen_t *addrlen );
 int32 Fgetsockopt( int16 fd, int32 level, int32 optname,
                   void *optval, socklen_t *optlen );
 int32 Flisten( int16 fd, int32 backlog );
-int32 Freadv( int16 fd, const iovecPtr iovp, ssize_t iovcnt );
+int32 Freadv( int16 fd, iovecPtr iovp, ssize_t iovcnt );
 int32 Frecvfrom( int16 fd, void *buf, ssize_t buflen, int32 flags,
                   sockaddrPtr from, socklen_t *fromlen );
 int32 Frecvmsg( int16 fd, msghdrPtr msg, int32 flags );
@@ -1295,7 +1293,7 @@ int32 Fsetsockopt( int16 fd, int32 level, int32 optname,
 int32 Fshutdown( int16 fh, int32 how );
 int32 Fsocket( int32 domain, int32 type, int32 protocol );
 int32 Fsocketpair( int32 domain, int32 type, int32 protocol, int16 rsv[2] );
-int32 Fwritev( int16 fd, const iovecPtr iov, ssize_t niov );
+int32 Fwritev( int16 fd, iovecPtr iov, ssize_t niov );
 
 /******************************************************************************/
 /*                                                                            */

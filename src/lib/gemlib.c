@@ -174,6 +174,9 @@ static void initVdiParams( int16 handle )
 
 void v_opnmeta( int16 *work_in, int16 *handle, int16 *work_out, const char *filename )
 {
+   const char **pp;
+   int32 *pi;
+   
    /* Wurde etwas fr die erweiterten NVDI-Parameter bergeben? */
    if( filename!=NULL )
    {
@@ -198,8 +201,10 @@ void v_opnmeta( int16 *work_in, int16 *handle, int16 *work_out, const char *file
 
       /* Die Werte zus„tzlich eintragen */
       intin[11] = 0;
-      *(const char **)&(intin[12]) = filename;
-      *(int32 *)&intin[14] = 0;
+      pp = (const char **)&(intin[12]);
+      *pp = filename;
+      pi = (int32 *)&intin[14];
+      *pi = 0;
 
       /* VDI aufrufen */
       vdi_(contrl, intin, _VDIParBlk.ptsin, work_out, &(work_out[45]));
@@ -226,6 +231,8 @@ void v_opnprnwrk( int16 *handle, int16 *work_in, PRN_SETTINGS *settings, int16 *
    /* intin anlegen und fllen */
    int16 intin[16];
    int16 i;
+   int8 **pp;
+   PRN_SETTINGS **ps;
 
    /* Die Werte bertragen */
    if( settings!=NULL )
@@ -251,8 +258,10 @@ void v_opnprnwrk( int16 *handle, int16 *work_in, PRN_SETTINGS *settings, int16 *
    if( settings!=NULL )
    {
       intin[11] = (int16) settings->size_id;
-      *(int8 **) &intin[12] = settings->device;
-      *(PRN_SETTINGS **)&(intin[14]) = settings;
+      pp = (int8 **) &intin[12];
+      *pp = settings->device;
+      ps = (PRN_SETTINGS **)&(intin[14]);
+      *ps = settings;
 
       /* 5 int-Parameter mehr */
       contrl[3] += 5;
@@ -394,7 +403,7 @@ boolean Ash_getcookie(int32 cookie, void *value)
 	}
 	else	/* Den CookieJar selbst durchkramen */
 	{
-		cookiejar = (COOKJAR *)(Setexc(COOKIEJAR/4,(const void (*)(void))-1));
+		cookiejar = (COOKJAR *)(Setexc(COOKIEJAR/4, (void (*)(void))-1));
 		if (cookiejar)
 		{
 			for (i=0 ; cookiejar[i].id ; i++)
@@ -531,7 +540,7 @@ AESVARS *Ash_getMagiCAESVars(void)
 			else
 			{
 				aesvars = (AESVARS *)Ash_getOSHeader()->os_magic;
-				if (aesvars->magic!=0x87654321l || aesvars->magic2 != 0x4d414758L) /* 'MAGX' */
+				if (aesvars->magic != (int32)0x87654321L || aesvars->magic2 != 0x4d414758L) /* 'MAGX' */
 					aesvars = NULL;
 			}
 		}

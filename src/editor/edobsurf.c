@@ -708,7 +708,11 @@ static boolean rubberbox(Awindow *self, int16 obnr, int16 x, int16 y, int16 *dst
 	int16 clip[4];
 	int16 pxy[8];
 	MFDB *bp;
+#if WITH_FIXES
+	char buf[20];
+#else
 	char buf[12];
+#endif
 	OBJEDPARM *parm;
 	OBJ_ENTRY *objtree;
 	OBJ_ENTRY *obj;
