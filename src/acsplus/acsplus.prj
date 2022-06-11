@@ -52,3 +52,4 @@ fontsel.c
 list.c
 proto.c
 plotter.c
+goodies.c
