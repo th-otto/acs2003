@@ -308,14 +308,6 @@ typedef struct {
 } SUBMODE;
 
 typedef struct {
-	void (*new)(void);
-	int16 sort;
-	int16 max_icon;
-	int16 n_row;
-	int16 n_col;
-} USER;
-
-typedef struct {
 	unsigned long xfsl;
 	uint16 revision;
 	unsigned long product;

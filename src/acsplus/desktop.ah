@@ -1,0 +1,584 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+#if COUNTRY == COUNTRY_DE
+static char COLOUR00[] = "  Weiû";
+static char COLOUR01[] = "  Schwarz";
+static char COLOUR02[] = "  Rot";
+static char COLOUR03[] = "  GrÅn";
+static char COLOUR04[] = "  Blau";
+static char COLOUR05[] = "  Cyan";
+static char COLOUR06[] = "  Gelb";
+static char COLOUR07[] = "  Magenta";
+static char COLOUR08[] = "  Hellgrau";
+static char COLOUR09[] = "  Dunkelgrau";
+static char COLOUR10[] = "  Dunkelrot";
+static char COLOUR11[] = "  DunkelgrÅn";
+static char COLOUR12[] = "  Dunkelblau";
+static char COLOUR13[] = "  Dunkelcyan";
+static char COLOUR14[] = "  Dunkelgelb";
+static char COLOUR15[] = "  Dunkelmagenta";
+
+static char NULL_STRING[] = "";
+
+static char TEXT_003[] = "OK";
+static char TEXT_006[] = "--------------------";
+static char TEXT_01[] = "Pulldown MenÅs";
+static char TEXT_014[] = " Fenster ";
+static char TEXT_017[] = " Optionen ";
+static char TEXT_02[] = "Das Ziehen des Neu-Symboles auf ein anderes Objekt erzeugt ein neues Objekt. Ein Doppelklick darauf erzeugt ein weiteres Fenster der Applikation.";
+static char TEXT_03[] = "Taste erst an MenÅs";
+static char TEXT_04[] = "3D-Modus";
+static char TEXT_05[] = " Datei ";
+static char TEXT_06[] = "  Modul laden...  ^M";
+static char TEXT_07[] = "Zentriere Dialoge";
+static char TEXT_08[] = "Fehler akustisch";
+static char TEXT_09[] = "Smart-Redraw";
+static char TEXT_10[] = " Muster:";
+static char TEXT_11[] = "  Schlieûen       ^U";
+static char TEXT_12[] = "Abbruch";
+static char TEXT_13[] = "  ôffnen          ^O";
+static char TEXT_14[] = "  Icons horizontal  ^Z";
+static char TEXT_15[] = "Verstecke Maus";
+static char TEXT_16[] = "Objekte werden durch Ziehen auf den Papierkorb gelîscht.";
+static char TEXT_17[] = "  ...Sichern        \007S";
+static char TEXT_18[] = "  öber mich...      ";
+static char TEXT_19[] = " Farbe:";
+static char TEXT_20[] = "  Icons vertikal    ^T";
+static char TEXT_21[] = " Verhalten ";
+static char TEXT_22[] = " Information ";
+static char TEXT_23[] = "  Lîschen         ^D";
+static char TEXT_24[] = "  Information...  ^I";
+static char TEXT_25[] = "  Beenden         ^Q";
+static char TEXT_26[] = "  aus Liste  ^L";
+static char TEXT_27[] = "  Wechseln   ^W";
+static char TEXT_28[] = "Hintergrund:";
+static char TEXT_30[] = "  Verhalten...      \007V";
+static char TEXT_31[] = "opt. RÅckkopplung ";
+static char _TITLE_MODULE[] = "Modul nachladen";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char COLOUR00[] = "  White";
+static char COLOUR01[] = "  Black";
+static char COLOUR02[] = "  Red";
+static char COLOUR03[] = "  Green";
+static char COLOUR04[] = "  Blue";
+static char COLOUR05[] = "  Cyan";
+static char COLOUR06[] = "  Yellow";
+static char COLOUR07[] = "  Magenta";
+static char COLOUR08[] = "  Light grey";
+static char COLOUR09[] = "  Dark grey";
+static char COLOUR10[] = "  Dark red";
+static char COLOUR11[] = "  Dark green";
+static char COLOUR12[] = "  Dark blue";
+static char COLOUR13[] = "  Dark cyan";
+static char COLOUR14[] = "  Dark yellow";
+static char COLOUR15[] = "  Dark magenta";
+
+static char NULL_STRING[] = "";
+
+static char TEXT_003[] = "OK";
+static char TEXT_006[] = "--------------------";
+static char TEXT_01[] = "Pulldown menu ";
+static char TEXT_014[] = " Window ";
+static char TEXT_017[] = " Options ";
+static char TEXT_02[] = "Dragging this icon onto a window creates a new object of the specific type.||Doubleclick on the icon to create a new window.";
+static char TEXT_03[] = "Keys to menu first ";
+static char TEXT_04[] = "3D-Mode ";
+static char TEXT_05[] = " File ";
+static char TEXT_06[] = "  Load module...  ^M";
+static char TEXT_07[] = "Center dialogues ";
+static char TEXT_08[] = "Sound on errors ";
+static char TEXT_09[] = "Smart-Redraw";
+static char TEXT_10[] = "Pattern:";
+static char TEXT_11[] = "  Close           ^U";
+static char TEXT_12[] = "Cancel";
+static char TEXT_13[] = "  Open            ^O";
+static char TEXT_14[] = "  Icons horizontal  ^Z";
+static char TEXT_15[] = "Hide mouse    ";
+static char TEXT_16[] = "Dragging objects onto the trash-icon will delete them.";
+static char TEXT_17[] = "  ...Save           \007S";
+static char TEXT_18[] = "  About me...";
+static char TEXT_19[] = "Colour:";
+static char TEXT_20[] = "  Icons vertical    ^T";
+static char TEXT_21[] = " Behaviour ";
+static char TEXT_22[] = " Information ";
+static char TEXT_23[] = "  Delete          ^D";
+static char TEXT_24[] = "  Information...  ^I";
+static char TEXT_25[] = "  Quit            ^Q";
+static char TEXT_26[] = "  From list  ^L";
+static char TEXT_27[] = "  Cycle      ^W";
+static char TEXT_28[] = "Background:";
+static char TEXT_30[] = "  Behaviour...      \007V";
+static char TEXT_31[] = "Optical feedback  ";
+static char _TITLE_MODULE[] = "Load Module";
+#endif
+
+
+static int16 DATAS_01[] = {
+	0x0000,0x0000,0x0208,0x0000,0x0000,0x7fff,0xfffe,0x4000,
+	0x0012,0x4000,0x0012,0x7fff,0xfffe,0x4000,0x0012,0x4000,
+	0x0012,0x4000,0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,
+	0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,
+	0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,
+	0x001e,0x4000,0x001e,0x4000,0x0012,0x4000,0x0012,0x7fff,
+	0xfffe,0x4fff,0xff92,0x4fff,0xff92,0x7fff,0xfffe,0x0000,
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,
+	0x0000,0x0000,0x0000,0x7fff,0xfffe,0x4000,0x0012,0x4000,
+	0x0012,0x4000,0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,
+	0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,
+	0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,0x001e,0x4000,
+	0x001e,0x4000,0x001e,0x4000,0x0012,0x4000,0x0012,0x7fff,
+	0xfffe,0x4fff,0xff92,0x4fff,0xff92,0x7fff,0xfffe,0x0000,
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x7fff,0xfffe,0x4000,
+	0x0012,0x4000,0x0012,0x0000,0x0000,0x0000,0x0000,0x0000,
+	0x0000,0x0000,0x0000,0x5555,0x555e,0x4000,0x001e,0x5555,
+	0x555e,0x4000,0x001e,0x5555,0x555e,0x4000,0x001e,0x5555,
+	0x555e,0x4000,0x001e,0x5555,0x555e,0x4000,0x001e,0x5555,
+	0x555e,0x4000,0x001e,0x5555,0x5552,0x4000,0x0012,0x7fff,
+	0xfffe,0x4fff,0xff92,0x4fff,0xff92,0x7fff,0xfffe,0x0000,
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x7fff,0xfffe,0x4fff,
+	0xff93,0x4fff,0xff93,0x7fff,0xffff,0x4000,0x0013,0x4000,
+	0x0013,0x4000,0x001f,0x0000,0x0000,0x0000,0x0000,0x0000,
+	0x0000,0x0000,0x0000,0x4000,0x0013,0x4000,0x0013,0x4000,
+	0x0013,0x4000,0x0013,0x4000,0x0013,0x4000,0x0013,0x4000,
+	0x0013,0x4000,0x001f,0x4000,0x0013,0x4000,0x0013,0x7fff,
+	0xffff,0x4800,0x0093,0x4800,0x0093,0x7fff,0xffff,0x3fff,
+	0xffff,0x0000,0x0000,0x94f1,0x6e07,0x0000,0x0078,0x0000,
+	0x0000,0x7fff,0xfffe,0x7fff,0xffff,0x7fff,0xffff,0x7fff,
+	0xffff,0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,0x7fff,
+	0xffff,0x7fff,0xffff,0x0000,0x0000,0x0000,0x0000,0x0000,
+	0x0000,0x0000,0x0000
+};
+static int16 DATAS_02[] = {
+	0x0000,0x0000,0x7fff,0xfffe,0x7fff,0xffff,0x7fff,0xffff,
+	0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,
+	0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,
+	0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,
+	0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,
+	0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,0x7fff,0xffff,
+	0x7fff,0xffff,0x7fff,0xffff,0x3fff,0xffff,0x0000,0x0000,
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000
+};
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x29f101f8L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON03 = { A_3Dbutton, 0x20219178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR01, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_12, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR02, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON09 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR00, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON10 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR03, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON11 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR04, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON12 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR05, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON13 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON14 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR06, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON15 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR07, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON16 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR08, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON17 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR09, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON18 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR10, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON19 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR11, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON20 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR12, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON21 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR13, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON22 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR14, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON23 = { A_3Dbutton, 0x09f10178L, Auo_string, COLOUR15, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON24 = { A_3Dbutton, 0x09f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS02 = { A_arrows, 0x22090001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_ARROWS03 = { A_arrows, 0x13010001L, NULL, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX01 = { A_checkbox, 0x00000001L, Auo_string, TEXT_08, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX02 = { A_checkbox, 0x00000001L, Auo_string, TEXT_31, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX03 = { A_checkbox, 0x00000001L, Auo_string, TEXT_09, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX05 = { A_checkbox, 0x00000001L, Auo_string, TEXT_01, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX06 = { A_checkbox, 0x00000001L, Auo_string, TEXT_15, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX07 = { A_checkbox, 0x00000001L, Auo_string, TEXT_03, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX08 = { A_checkbox, 0x00000001L, Auo_string, TEXT_07, NULL, NULL, NULL, NULL };
+static AUSERBLK A_CHECKBOX09 = { A_checkbox, 0x00000001L, Auo_string, TEXT_04, NULL, NULL, NULL, NULL };
+static AUSERBLK A_FTEXT01 = { A_ftext, 0x0001000dL, Auo_ftext, TEXT_02, NULL, NULL, NULL, NULL };
+static AUSERBLK A_FTEXT02 = { A_ftext, 0x0001000dL, Auo_ftext, TEXT_16, NULL, NULL, NULL, NULL };
+static AUSERBLK A_INNERFRAME02 = { A_innerframe, 0x10008f19L, Auo_string, TEXT_28, NULL, NULL, NULL, NULL };
+
+static int16 _MSK___NEW_IC[] = {
+	0x0000,0x0001,0xffc0,0x0000,0x01ff,0xffe0,0x0001,0xffff,
+	0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,
+	0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,
+	0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,
+	0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,
+	0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,
+	0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,
+	0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,
+	0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,
+	0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,
+	0xfff0,0x07ff,0xffff,0xfff0,0x07ff,0xffff,0xf000,0x03ff,
+	0xfff0,0x0000,0x01ff,0xf000,0x0000,0x0000,0x0000,0x0000
+};
+static int16 _DAT___NEW_IC[] = {
+	0x0000,0x0001,0xffc0,0x0000,0x01fe,0x0060,0x0001,0xfe00,
+	0xff70,0x07fe,0x00ff,0xff70,0x0400,0xffff,0x0170,0x05ff,
+	0xff00,0x0170,0x05ff,0x0000,0x0170,0x0580,0x0000,0x0170,
+	0x0580,0x0006,0x3170,0x0580,0x0fe6,0x3170,0x0598,0xcfe6,
+	0x3170,0x0598,0xcc06,0x3170,0x0598,0xcc06,0x3170,0x059c,
+	0xcc06,0x3170,0x059c,0xcf06,0x3170,0x059a,0xcf06,0x3170,
+	0x059a,0xcc06,0x3170,0x0599,0xcc06,0x3170,0x0599,0xcc07,
+	0xf170,0x0598,0xcfe3,0xe170,0x0598,0xcfe0,0x0170,0x0598,
+	0xc000,0x0170,0x0580,0x0000,0x0170,0x0580,0x0000,0xff70,
+	0x0580,0x00ff,0x0070,0x0580,0xff00,0x7ff0,0x05ff,0x007f,
+	0xfff0,0x0400,0x7fff,0xfff0,0x07ff,0xffff,0xf000,0x03ff,
+	0xfff0,0x0000,0x01ff,0xf000,0x0000,0x0000,0x0000,0x0000
+};
+static CICONBLK __NEW_IC = { { _MSK___NEW_IC, _DAT___NEW_IC, NULL_STRING, 0x1000, 0x000a, 0x000a, 0x0000, 0x0000, 0x0030, 0x0020, 0x000a, 0x000a, 0x0000, 0x0000 }, NULL };
+static int16 _MSK___TRASH_IC[] = {
+	0x000f,0xe000,0x01ff,0xff00,0x03ff,0xff80,0x07ff,0xffc0,
+	0x07ff,0xffe0,0x07ff,0xfff0,0x03ff,0xfff0,0x03ff,0xfff0,
+	0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,
+	0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,
+	0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,
+	0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,
+	0x03ff,0xffe0,0x03ff,0xffe0,0x03ff,0xffe0,0x01ff,0xffe0,
+	0x00ff,0xffe0,0x007f,0xffc0,0x001f,0xff00,0x0000,0x0000
+};
+static int16 _DAT___TRASH_IC[] = {
+	0x000f,0xe000,0x01fd,0x7f00,0x038d,0x6380,0x0400,0x0040,
+	0x0780,0x03e0,0x06ff,0xfef0,0x0200,0x00f0,0x0288,0x44f0,
+	0x0288,0x44e0,0x0288,0x44e0,0x0288,0x44e0,0x0288,0x44e0,
+	0x0289,0x14e0,0x0289,0xb4e0,0x0288,0xe4e0,0x0288,0x44e0,
+	0x0288,0x44e0,0x0288,0x44e0,0x0288,0x44e0,0x0288,0x44e0,
+	0x0288,0x44e0,0x0288,0x44e0,0x0288,0x44e0,0x0288,0x44e0,
+	0x0288,0x44e0,0x02c8,0x4ce0,0x030c,0xc1e0,0x01c0,0x07e0,
+	0x00ff,0xffe0,0x007f,0xffc0,0x001f,0xff00,0x0000,0x0000
+};
+static CICONBLK __TRASH_IC = { { _MSK___TRASH_IC, _DAT___TRASH_IC, NULL_STRING, 0x1000, 0x000a, 0x000c, 0x0000, 0x0000, 0x0020, 0x0020, 0x000a, 0x000c, 0x0000, 0x0000 }, NULL };
+
+static CICON _C4___WINDOW_IC = { 4, &DATAS_01[3], DATAS_02, NULL, NULL, NULL };
+static int16 _MSK___WINDOW_IC[] = {
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x7fff,0xfffe,
+	0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,
+	0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,
+	0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,
+	0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,
+	0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,
+	0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,0x7fff,0xfffe,
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000
+};
+static int16 _DAT___WINDOW_IC[] = {
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x7fff,0xfffe,
+	0x4fff,0xff92,0x4fff,0xff92,0x7fff,0xfffe,0x4000,0x0012,
+	0x5555,0x5552,0x4000,0x001e,0x5555,0x5552,0x4000,0x0012,
+	0x5555,0x5552,0x4000,0x0012,0x5555,0x5552,0x4000,0x0012,
+	0x5555,0x5552,0x4000,0x0012,0x5555,0x5552,0x4000,0x0012,
+	0x5555,0x5552,0x4000,0x001e,0x5555,0x5552,0x4000,0x0012,
+	0x7fff,0xfffe,0x4800,0x0092,0x4800,0x0092,0x7fff,0xfffe,
+	0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000
+};
+static CICONBLK __WINDOW_IC = { { _MSK___WINDOW_IC, _DAT___WINDOW_IC, NULL_STRING, 0x1000, 8, 8, 0, 0, 32, 32, 8, 8, 0, 0 }, &_C4___WINDOW_IC };
+
+static OBJECT  __MENU =     { -1,  1,  7, 25, 0x0000, 0x0000, C_UNION(0x00000000L), 0, 0, 90, 25 };
+static OBJECT  _01___MENU = {  7,  2,  2, 20, 0x0000, 0x0000, C_UNION(0x00001100L), 0, 0, 90, 513 };
+static OBJECT  _02___MENU = {  1,  3,  6, 25, 0x0000, 0x0000, C_UNION(0x00000000L), 2, 0, 32, 769 };
+static OBJECT  _03___MENU = {  4, -1, -1, 32, 0x0000, 0x0000, C_UNION(&NULL_STRING), 0, 0, 6, 769 };
+static OBJECT  _04___MENU = {  5, -1, -1, 32, 0x0000, 0x0000, C_UNION(TEXT_05), 6, 0, 7, 769 };
+static OBJECT  _05___MENU = {  6, -1, -1, 32, 0x0000, 0x0000, C_UNION(TEXT_014), 13, 0, 9, 769 };
+static OBJECT  _06___MENU = {  2, -1, -1, 32, 0x0000, 0x0000, C_UNION(TEXT_017), 22, 0, 10, 769 };
+static OBJECT  _07___MENU = {  0,  8, 39, 25, 0x0000, 0x0000, C_UNION(0x00000000L), 0, 769, 80, 19 };
+static OBJECT  _08___MENU = { 17,  9, 16, 20, 0x0000, 0x0000, C_UNION(0x00ff1100L), 2, 0, 20, 8 };
+static OBJECT  _09___MENU = { 10, -1, -1, 28, 0x0000, 0x2000, C_UNION(TEXT_18), 0, 0, 20, 1 };
+static OBJECT  _10___MENU = { 11, -1, -1, 28, 0x0000, 0x2008, C_UNION(TEXT_006), 0, 1, 20, 1 };
+static OBJECT  _11___MENU = { 12, -1, -1, 28, 0x0000, 0x2000, C_UNION(&NULL_STRING), 0, 2, 20, 1 };
+static OBJECT  _12___MENU = { 13, -1, -1, 28, 0x0000, 0x2000, C_UNION(&NULL_STRING), 0, 3, 20, 1 };
+static OBJECT  _13___MENU = { 14, -1, -1, 28, 0x0000, 0x2000, C_UNION(&NULL_STRING), 0, 4, 20, 1 };
+static OBJECT  _14___MENU = { 15, -1, -1, 28, 0x0000, 0x2000, C_UNION(&NULL_STRING), 0, 5, 20, 1 };
+static OBJECT  _15___MENU = { 16, -1, -1, 28, 0x0000, 0x2000, C_UNION(&NULL_STRING), 0, 6, 20, 1 };
+static OBJECT  _16___MENU = {  8, -1, -1, 28, 0x0000, 0x2000, C_UNION(&NULL_STRING), 0, 7, 20, 1 };
+static OBJECT  _17___MENU = { 33, 18, 31, 20, 0x0000, 0x0000, C_UNION(0x00ff1101L), 8, 0, 21, 9 };
+static OBJECT  _18___MENU = { 20, -1, -1, 28, 0x0000, 0x0100, C_UNION(TEXT_13), 0, 0, 21, 1 };
+static AOBJECT _18a__MENU = { Awd_open, NULL, 0x8000, 0x844f, NULL, NULL, 0, 0 };
+static OBJECT  _20___MENU = { 22, -1, -1, 28, 0x0000, 0x0000, C_UNION(TEXT_11), 0, 1, 21, 1 };
+static AOBJECT _20a__MENU = { Awd_close, NULL, 0x8000, 0x8455, NULL, NULL, 0, 0 };
+static OBJECT  _22___MENU = { 24, -1, -1, 28, 0x0000, 0x0000, C_UNION(TEXT_23), 0, 2, 21, 1 };
+static AOBJECT _22a__MENU = { Awd_delete, NULL, 0x8000, 0x8444, NULL, NULL, 0, 0 };
+static OBJECT  _24___MENU = { 25, -1, -1, 24, 0x0000, 0x0008, C_UNION(&A_ARROWS02), 0, 3, 21, 1 };
+static OBJECT  _25___MENU = { 27, -1, -1, 28, 0x0000, 0x0000, C_UNION(TEXT_24), 0, 4, 21, 1 };
+static AOBJECT _25a__MENU = { Awd_info, NULL, 0x8000, 0x8449, NULL, NULL, 0, 0 };
+static OBJECT  _27___MENU = { 28, -1, -1, 24, 0x0000, 0x0008, C_UNION(&A_ARROWS02), 0, 5, 21, 1 };
+static OBJECT  _28___MENU = { 30, -1, -1, 28, 0x0000, 0x0000, C_UNION(TEXT_06), 0, 6, 21, 1 };
+static AOBJECT _28a__MENU = { Awd_module, NULL, 0x8000, 0x844d, NULL, NULL, 0, 0 };
+static OBJECT  _30___MENU = { 31, -1, -1, 24, 0x0000, 0x0008, C_UNION(&A_ARROWS02), 0, 7, 21, 1 };
+static OBJECT  _31___MENU = { 17, -1, -1, 28, 0x0000, 0x0000, C_UNION(TEXT_25), 0, 8, 21, 1 };
+static AOBJECT _31a__MENU = { Awd_quit, NULL, 0x8000, 0x8451, NULL, NULL, 0, 0 };
+static OBJECT  _33___MENU = { 39, 34, 37, 20, 0x0000, 0x0000, C_UNION(0x00ff1101L), 15, 0, 16, 3 };
+static OBJECT  _34___MENU = { 36, -1, -1, 28, 0x0000, 0x0100, C_UNION(TEXT_27), 0, 0, 16, 1 };
+static AOBJECT _34a__MENU = { Awi_up, NULL, 0x8000, 0x8457, NULL, NULL, 0, 0 };
+static OBJECT  _36___MENU = { 37, -1, -1, 24, 0x0000, 0x0108, C_UNION(&A_ARROWS02), 0, 1, 16, 1 };
+static OBJECT  _37___MENU = { 33, -1, -1, 28, 0x0000, 0x0100, C_UNION(TEXT_26), 0, 2, 16, 1 };
+static AOBJECT _37a__MENU = { Awd_list, NULL, 0x8000, 0x844c, NULL, NULL, 0, 0 };
+static OBJECT  _39___MENU = {  7, 40, 47, 20, 0x0000, 0x0000, C_UNION(0x00ff1101L), 24, 0, 23, 5 };
+static OBJECT  _40___MENU = { 42, -1, -1, 28, 0x0000, 0x0100, C_UNION(TEXT_14), 0, 0, 23, 1 };
+static AOBJECT _40a__MENU = { Awd_hor, NULL, 0x8000, 0x845a, NULL, NULL, 0, 0 };
+static OBJECT  _42___MENU = { 44, -1, -1, 28, 0x0000, 0x0100, C_UNION(TEXT_20), 0, 1, 23, 1 };
+static AOBJECT _42a__MENU = { Awd_ver, NULL, 0x8000, 0x8454, NULL, NULL, 0, 0 };
+static OBJECT  _44___MENU = { 45, -1, -1, 24, 0x0000, 0x0008, C_UNION(&A_ARROWS02), 0, 2, 23, 1 };
+static OBJECT  _45___MENU = { 47, -1, -1, 28, 0x0000, 0x0100, C_UNION(TEXT_30), 0, 3, 23, 1 };
+static AOBJECT _45a__MENU = { Awd_behaviour, NULL, 0x8000, 0x8856, NULL, NULL, 0, 0 };
+static OBJECT  _47___MENU = { 39, -1, -1, 28, 0x0000, 0x0100, C_UNION(TEXT_17), 0, 4, 23, 1 };
+static AOBJECT _47a__MENU = { Awd_save, NULL, 0x8020, 0x8853, NULL, NULL, 0, 0 };
+
+static OBJECT  DPOP_COLSEL    = { -1,  1, 32, 20, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0, 0, 18, 16 };
+static OBJECT  _01_POP_COLSEL = {  2, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON09), 0, 0, 16, 1 };
+static OBJECT  _02_POP_COLSEL = {  3, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011170L), 16, 0, 2, 1 };
+static OBJECT  _03_POP_COLSEL = {  4, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON04), 0, 1, 16, 1 };
+static OBJECT  _04_POP_COLSEL = {  5, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 1, 2, 1 };
+static OBJECT  _05_POP_COLSEL = {  6, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON08), 0, 2, 16, 1 };
+static OBJECT  _06_POP_COLSEL = {  7, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011172L), 16, 2, 2, 1 };
+static OBJECT  _07_POP_COLSEL = {  8, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON10), 0, 3, 16, 1 };
+static OBJECT  _08_POP_COLSEL = {  9, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011173L), 16, 3, 2, 1 };
+static OBJECT  _09_POP_COLSEL = { 10, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON11), 0, 4, 16, 1 };
+static OBJECT  _10_POP_COLSEL = { 11, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011174L), 16, 4, 2, 1 };
+static OBJECT  _11_POP_COLSEL = { 12, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON12), 0, 5, 16, 1 };
+static OBJECT  _12_POP_COLSEL = { 13, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011175L), 16, 5, 2, 1 };
+static OBJECT  _13_POP_COLSEL = { 14, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON14), 0, 6, 16, 1 };
+static OBJECT  _14_POP_COLSEL = { 15, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011176L), 16, 6, 2, 1 };
+static OBJECT  _15_POP_COLSEL = { 16, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON15), 0, 7, 16, 1 };
+static OBJECT  _16_POP_COLSEL = { 17, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011177L), 16, 7, 2, 1 };
+static OBJECT  _17_POP_COLSEL = { 18, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON16), 0, 8, 16, 1 };
+static OBJECT  _18_POP_COLSEL = { 19, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011178L), 16, 8, 2, 1 };
+static OBJECT  _19_POP_COLSEL = { 20, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON17), 0, 9, 16, 1 };
+static OBJECT  _20_POP_COLSEL = { 21, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x00011179L), 16, 9, 2, 1 };
+static OBJECT  _21_POP_COLSEL = { 22, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON18), 0, 10, 16, 1 };
+static OBJECT  _22_POP_COLSEL = { 23, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x0001117aL), 16, 10, 2, 1 };
+static OBJECT  _23_POP_COLSEL = { 24, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON19), 0, 11, 16, 1 };
+static OBJECT  _24_POP_COLSEL = { 25, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x0001117bL), 16, 11, 2, 1 };
+static OBJECT  _25_POP_COLSEL = { 26, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON20), 0, 12, 16, 1 };
+static OBJECT  _26_POP_COLSEL = { 27, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x0001117cL), 16, 12, 2, 1 };
+static OBJECT  _27_POP_COLSEL = { 28, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON21), 0, 13, 16, 1 };
+static OBJECT  _28_POP_COLSEL = { 29, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x0001117dL), 16, 13, 2, 1 };
+static OBJECT  _29_POP_COLSEL = { 30, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON22), 0, 14, 16, 1 };
+static OBJECT  _30_POP_COLSEL = { 31, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x0001117eL), 16, 14, 2, 1 };
+static OBJECT  _31_POP_COLSEL = { 32, -1, -1, 24, 0x0041, 0x0000, C_UNION(&A_3DBUTTON23), 0, 15, 16, 1 };
+static OBJECT  _32_POP_COLSEL = { 0, -1, -1, 20, 0x0020, 0x0000, C_UNION(0x0001117fL), 16, 15, 2, 1 };
+
+static OBJECT  DPOP_PATSEL    = { -1,  1,  8, 20, 0x0000, 0x0020, C_UNION(0x00ff1100L), 0, 0, 18, 8 };
+static OBJECT  _01_POP_PATSEL = {  2, -1, -1, 20, 0x0001, 0x0000, C_UNION(0x00011101L), 0, 0, 18, 1 };
+static OBJECT  _02_POP_PATSEL = {  3, -1, -1, 20, 0x0001, 0x0000, C_UNION(0x00011111L), 0, 1, 18, 1 };
+static OBJECT  _03_POP_PATSEL = {  4, -1, -1, 20, 0x0001, 0x0000, C_UNION(0x00011121L), 0, 2, 18, 1 };
+static OBJECT  _04_POP_PATSEL = {  5, -1, -1, 20, 0x0001, 0x0000, C_UNION(0x00011131L), 0, 3, 18, 1 };
+static OBJECT  _05_POP_PATSEL = {  6, -1, -1, 20, 0x0001, 0x0000, C_UNION(0x00011141L), 0, 4, 18, 1 };
+static OBJECT  _06_POP_PATSEL = {  7, -1, -1, 20, 0x0001, 0x0000, C_UNION(0x00011151L), 0, 5, 18, 1 };
+static OBJECT  _07_POP_PATSEL = {  8, -1, -1, 20, 0x0001, 0x0000, C_UNION(0x00011161L), 0, 6, 18, 1 };
+static OBJECT  _08_POP_PATSEL = {  0, -1, -1, 20, 0x0021, 0x0000, C_UNION(0x00011171L), 0, 7, 18, 1 };
+
+static OBJECT  _NEW_INFO      = { -1,  1,  1, 25, 0x0000, 0x0000, C_UNION(0x00011141L), 0, 0, 34, 8 };
+static OBJECT  _01__NEW_INFO  = {  0,  2,  2, 24, 0x0040, 0x0510, C_UNION(&A_3DBUTTON13), 0, 0, 34, 8 };
+static OBJECT  _02__NEW_INFO  = {  1,  3,  3, 24, 0x0040, 0x0000, C_UNION(&A_3DBUTTON03), 2, 1, 30, 6 };
+static OBJECT  _03__NEW_INFO  = {  2, -1, -1, 24, 0x0060, 0x0500, C_UNION(&A_FTEXT01), 0, 0, 30, 6 };
+
+static OBJECT  _TRASH_INFO     = { -1,  1,  1, 25, 0x0000, 0x0000, C_UNION(0x00ff1141L), 0, 0, 28, 5 };
+static OBJECT  _01__TRASH_INFO = {  0,  2,  2, 24, 0x0040, 0x0510, C_UNION(&A_3DBUTTON02), 0, 0, 28, 5 };
+static OBJECT  _02__TRASH_INFO = {  1,  3,  3, 24, 0x0040, 0x0000, C_UNION(&A_3DBUTTON03), 2, 1, 24, 3 };
+static OBJECT  _03__TRASH_INFO = {  2, -1, -1, 24, 0x0060, 0x0000, C_UNION(&A_FTEXT02), 0, 0, 24, 3 };
+
+static OBJECT  _BEHAVIOUR     = { -1,  1,  1, 25, 0x0000, 0x0000, C_UNION(0x00ff1141L), 0, 0, 42, 13 };
+static OBJECT  _01__BEHAVIOUR = {  0,  2, 31, 24, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 42, 13 };
+static OBJECT  _02__BEHAVIOUR = {  4, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX07), 1, 1, 22, 1 };
+static AOBJECT _02a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x8854, NULL, NULL, 0, 0 };
+static OBJECT  _04__BEHAVIOUR = {  6, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX05), 24, 1, 17, 1 };
+static AOBJECT _04a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x8850, NULL, NULL, 0, 0 };
+static OBJECT  _06__BEHAVIOUR = {  8, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX02), 1, 2, 21, 1 };
+static AOBJECT _06a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x8852, NULL, NULL, 0, 0 };
+static OBJECT  _08__BEHAVIOUR = { 10, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX06), 24, 2, 17, 1 };
+static AOBJECT _08a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x8856, NULL, NULL, 0, 0 };
+static OBJECT  _10__BEHAVIOUR = { 12, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX01), 1, 3, 19, 1 };
+static AOBJECT _10a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x8846, NULL, NULL, 0, 0 };
+static OBJECT  _12__BEHAVIOUR = { 14, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX03), 24, 3, 15, 1 };
+static AOBJECT _12a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x8853, NULL, NULL, 0, 0 };
+static OBJECT  _14__BEHAVIOUR = { 16, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX08), 1, 4, 20, 1 };
+static AOBJECT _14a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x885a, NULL, NULL, 0, 0 };
+static OBJECT  _16__BEHAVIOUR = { 18, -1, -1, 24, 0x0001, 0x0000, C_UNION(&A_CHECKBOX09), 24, 4, 11, 1 };
+static AOBJECT _16a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x8844, NULL, NULL, 0, 0 };
+static OBJECT  _18__BEHAVIOUR = { 29, 19, 27, 24, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 5, 5, 32, 5 };
+static OBJECT  _19__BEHAVIOUR = { 23, 21, 22, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 10, 1, 18, 1 };
+static AOBJECT _19a_BEHAVIOUR = { wd_color, NULL, 0x8000, 0x8846, NULL, NULL, 0, 0 };
+static OBJECT  _21__BEHAVIOUR = { 22, -1, -1, 20, 0x0000, 0x0000, C_UNION(0x43011371L), 16, 0, 2, 1 };
+static OBJECT  _22__BEHAVIOUR = { 19, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON24), 0, 0, 16, 1 };
+static OBJECT  _23__BEHAVIOUR = { 25, -1, -1, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 10, 3, 18, 1 };
+static AOBJECT _23a_BEHAVIOUR = { wd_pattern, NULL, 0x8000, 0x884d, NULL, NULL, 0, 0 };
+static OBJECT  _25__BEHAVIOUR = { 27, 26, 26, 28, 0x0040, 0x0000, C_UNION(TEXT_19), 2, 1, 7, 1 };
+static OBJECT  _26__BEHAVIOUR = { 25, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS03), 1, 0, 1, 1 };
+static OBJECT  _27__BEHAVIOUR = { 18, 28, 28, 28, 0x0040, 0x0000, C_UNION(TEXT_10), 1, 3, 8, 1 };
+static OBJECT  _28__BEHAVIOUR = { 27, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS03), 1, 0, 1, 1 };
+static OBJECT  _29__BEHAVIOUR = { 31, -1, -1, 24, 0x4007, 0x0010, C_UNION(&A_3DBUTTON01), 8, 10, 12, 2 };
+static AOBJECT _29a_BEHAVIOUR = { NULL, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 };
+static OBJECT  _31__BEHAVIOUR = {  1, -1, -1, 24, 0x4005, 0x0010, C_UNION(&A_3DBUTTON07), 22, 10, 12, 2 };
+static AOBJECT _31a_BEHAVIOUR = { NULL, NULL, 0x8020, 0x8841, NULL, NULL, 0, 0 };
+
+Awindow DESKTOP = {
+	NULL,
+	wd_service,
+	wd_make,
+	Awi_open,
+	Awi_init,
+	NULL,
+	NULL,
+	0, 0,
+	-1,
+	0x4fef,
+	{ 0, 0, 256, 256 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	NULL_STRING,
+	NULL_STRING,
+	10000,
+	0x0105,
+	0,
+	-1,
+	NULL,
+	&__MENU,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	wd_deskclose,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+STATIC Awindow _WI_NEW_INFO = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&_NEW_INFO,
+	NULL,
+	0, 0,
+	-1,
+	0x000b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_22,
+	NULL_STRING,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+STATIC Awindow _WI_TRASH_INFO = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&_TRASH_INFO,
+	NULL,
+	0, 0,
+	-1,
+	0x000b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_22,
+	NULL_STRING,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};
+
+STATIC Awindow _WI_BEHAVIOUR = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&_BEHAVIOUR,
+	NULL,
+	0, 0,
+	-1,
+	0x000b,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_21,
+	NULL_STRING,
+	10000,
+	0x0100,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	Awi_gemscript,
+	NULL,
+	NULL
+};

@@ -2511,7 +2511,7 @@ char *Af_first_fsel( const char *titel, char *path, const char *ext);
 char *Af_next_fsel( void );
 
 /* Neue Dateiauswahl, bevorzugt Åber fslx_xx-Funktionen, */
-/* zur Not per Af_first_sel/Af_next_sel oder Af_select   */
+/* zur Not per Af_first_fsel/Af_next_fsel oder Af_select   */
 /* RÅckgabe: Lineare Liste mit EintrÑgen char *file      */
 ULinList *Af_fileselect( const char *title, char *path, char *ext, int16 sort_mode, boolean multi, Awindow *window );
 

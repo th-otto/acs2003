@@ -46,6 +46,7 @@ acsplus.lib
 slider.c
 wislider.c
 editor.c
+desktop.c
 pur_desk.c
 editwi.c
 fontsel.c
