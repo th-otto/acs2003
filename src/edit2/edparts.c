@@ -17,6 +17,7 @@ static void part_close(Awindow *self);
 
 #include "edparts.ah"
 
+#if !WITH_FIXES
 static TEDINFO button = { "BUTTON", "", "", 3, 6, 2, 0x1180, 0, -1, 6, 0 };
 static TEDINFO gtext = { "TEXT", "", "", 3, 6, 2, 0x1180, 0, -1, 5, 0 };
 static TEDINFO title = { " TITLE ", "", "", 3, 6, 2, 0x1180, 0, -1, 8, 0 };
@@ -25,6 +26,7 @@ static TEDINFO usertext = { "USERDEF", "", "", 3, 6, 2, 0x1180, 0, -1, 8, 0 };
 static AUSERBLK check = { A_checkbox, 0L, NULL, NULL, NULL, NULL, NULL, NULL };
 static AUSERBLK radio = { A_radiobutton, 0L, NULL, NULL, NULL, NULL, NULL, NULL };
 static AUSERBLK frame = { A_innerframe, 0x00031101L, NULL, NULL, NULL, NULL, NULL, NULL };
+#endif
 static Obj_Head astrabs = { NULL, "abc", 0, sizeof("abc"), sizeof("abc"), NULL, "TEXT_01", 1, 0, { 0, 0, 0, 0 } };
 static Obj_Head astredit = { NULL, "EDIT:____", 0, sizeof("EDIT:____"), sizeof("EDIT:____"), NULL, "TEXT_01", 1, 0, { 0, 0, 0, 0 } };
 static Obj_Head astrvalid = { NULL, "XXXX", 0, sizeof("XXXX"), sizeof("XXXX"), NULL, "TEXT_01", 1, 0, { 0, 0, 0, 0 } };
@@ -53,10 +55,12 @@ static struct {
 	  0xcccd, 0xcc00, 0x3f30, 0xccc7, 0xcfe0, 0x0000, 0x0000, 0x0000 }
 };
 static Obj_Head abitblk = { NULL, &abitblk_obj, 0, sizeof(abitblk_obj), sizeof(abitblk_obj), NULL, "IMAGE_01", 1, 0, { 0, 0, 0, 0 } };
+#if !WITH_FIXES
 static Obj_Head asepcall = { NULL, NULL, 0, 0, 0, NULL, "A_innerframe", 1, 0x203, { 0, 0, 0, 0 } };
 static Obj_Head asepparm = { NULL, NULL, 0, 0, 0, NULL, "0x11101L", 1, 0, { 0, 0, 0, 0 } };
 static AUSERBLK asep_obj = { (void *)&asepcall, (int32)(void *)&asepparm, NULL, NULL, NULL, NULL, NULL, NULL };
 static Obj_Head asep = { NULL, &asep_obj, 0, sizeof(asep_obj), sizeof(asep_obj), NULL, "SEPERATOR000", 1, 0, { 0, 0, 0, 0 } };
+#endif
 static Obj_Head ausercall = { NULL, NULL, 0, 0, 0, NULL, "USER_OBJ", 1, 3, { 0, 0, 0, 0 } };
 static Obj_Head auserparm = { NULL, NULL, 0, 0, 0, NULL, "0x0L", 1, 0, { 0, 0, 0, 0 } };
 static AUSERBLK auserblk_obj = { (void *)&ausercall, (int32)(void *)&auserparm, NULL, NULL, NULL, NULL, NULL, NULL };
@@ -277,12 +281,14 @@ static OBJ_ENTRY tree[60] = {
 	  { NULL, NULL, 0x8000, 0x0000, NULL, NULL, 0x0000, 0x0000 } }
 };
 Obj_Head part_palette = { NULL, tree, 0, sizeof(tree), sizeof(tree), NULL, "PALETTE", 1, 0, { 0, 0, 0, 0 } };
+#if !WITH_FIXES
 static BITBLK bitblk = { abitblk_obj.imagedata, 6, 24, 0, 0, 1 };
 static ACSCICONBLK iconblk = {
 	{ { aiconblk_obj.iconmask, aiconblk_obj.icondata, "CICON", 0x1041, 20, 6, 0, 0, 48, 24, 0, 24, 48, 8 }, NULL },
 	{ 0, NULL, NULL, NULL, NULL, NULL },
 	{ 0, NULL, NULL, NULL, NULL, NULL }
 };
+#endif
 static int16 part_ucnt = 0;
 
 static UOCALLS uocall = { ed_abort, set_userdata };
@@ -322,14 +328,14 @@ static Obj_Head *omalloc(ssize_t size)
 
 static int16 part_add(UODATAS *uodata)
 {
-	OBJECT *work; /* 20 */
+	OBJECT *work;
 	int16 obnr;
-	OBJECT *ptr; /* a4 */
-	OBJECT *head; /* 16 */
-	AOBJECT *aobj; /* 12 */
-	OBJ_ENTRY *objentry; /* 8 */
-	AUSERBLK *user; /* 4 */
-	Obj_Head *obj; /* 0 */
+	OBJECT *ptr;
+	OBJECT *head;
+	AOBJECT *aobj;
+	OBJ_ENTRY *objentry;
+	AUSERBLK *user;
+	Obj_Head *obj;
 	AUSER_DEF *aud;
 	Obj_Head *entry;
 	size_t len;

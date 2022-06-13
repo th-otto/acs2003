@@ -69,7 +69,7 @@ static OBJECT *edcyc_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	long parm;
 	int color;
 	
-	tree = Aob_create(&ED_CYCLE);
+	tree = Aob_create(&ED_CYCLE.root);
 	if (tree == NULL)
 		return NULL;
 	ptr = &tree[ED_CYCLE_SAMPLE];

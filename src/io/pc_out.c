@@ -4,6 +4,7 @@
 #include "io/workout.h"
 #include "version.h"
 
+extern OBJECT OUTPUT_INFO;
 
 static Axywh info_xywh;
 static MFDB *info_bp;

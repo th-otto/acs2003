@@ -658,7 +658,7 @@ static void reg_kind(void)
 	int16 idx;
 	int16 sel;
 	
-	if ((tree = Aob_create(&P_REGISTER)) == NULL)
+	if ((tree = Aob_create(&P_REGISTER.root)) == NULL)
 		return;
 	Aob_offset(&pos, ACSblk->ev_window->work, D_REGISTER_REGKIND);
 	pos.x += ACSblk->ev_window->wi_work.x;
@@ -767,6 +767,7 @@ void acs_register(void)
 
 /* -------------------------------------------------------------------------- */
 
+#if !KILLDEMO
 static void demoabout(void)
 {
 	if (wdemo != NULL)
@@ -777,6 +778,7 @@ static void demoabout(void)
 		Awi_alert(1, A_DEMO);
 	}
 }
+#endif
 
 /* -------------------------------------------------------------------------- */
 

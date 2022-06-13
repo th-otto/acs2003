@@ -403,7 +403,7 @@ static int16 li_init(Awindow *self)
 	tree = list->new_work(objlist);
 	if (tree == NULL)
 	{
-		tree = Aob_create(&LIST_NOT);
+		tree = Aob_create(&LIST_NOT.root);
 		self->work = tree;
 		return FAIL;
 	}

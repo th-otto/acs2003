@@ -100,7 +100,7 @@ static OBJECT *edpa_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	AUSERBLK *user;
 	long parm;
 	
-	tree = Aob_create(&ED_PATTERN);
+	tree = Aob_create(&ED_PATTERN.root);
 	if (tree != NULL)
 	{
 		ptr = &tree[ED_PATTERN_SAMPLE];

@@ -1037,10 +1037,6 @@ extern char HPOS_TEXT2[];
 extern char HPOS_TEXT3[];
 extern char SIZE_TEXT0[];
 extern char SIZE_TEXT1[];
-extern OBJECT POP_SIZESEL;
-extern OBJECT POP_PATSEL;
-extern OBJECT POP_HORPOSSEL;
-extern OBJECT POP_COLSEL;
 
 SUBMODE *edbo_set_box(OBJ_ENTRY *entry);
 
@@ -1068,7 +1064,6 @@ extern char NEW_POPUP[];
 extern char WARN_SAME[];
 extern char WARN_XSHRINK[];
 extern char WARN_YSHRINK[];
-extern OBJECT OBJ_POPUP;
 
 boolean ed_service(Awindow *self, int16 task, void *in_out);
 int16 ed_init(Awindow *win);

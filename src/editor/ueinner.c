@@ -12,11 +12,12 @@ static void edin_size(void);
 static void edin_textcol(void);
 static void edin_abort(void);
 static void edin_ok(void);
-static void edin_font_sel(void);
-static void edin_effect(void);
 
 #include "ueinner.ah"
 #include "ueinner.h"
+
+extern OBJECT POP_SIZESEL;
+extern OBJECT POP_PATSEL;
 
 static void edin_minsize(AUSERBLK *user, int16 *w, int16 *h);
 static OBJECT *edin_object_tree(AUSER_DEF *user, OBJECT *obj);
@@ -147,7 +148,7 @@ static void edin_pos(void)
 	int16 sel;
 	int32 *parm;
 	
-	popup = Aob_create(&POP_POSSEL);
+	popup = Aob_create(&POP_POSSEL.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_INNER_POS_BOX);
@@ -274,7 +275,7 @@ static OBJECT *edin_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	long val;
 	int16 color;
 	
-	tree = Aob_create(&ED_INNER);
+	tree = Aob_create(&ED_INNER.root);
 	if (tree == NULL)
 		return NULL;
 	ptr = &tree[ED_INNER_SAMPLE];

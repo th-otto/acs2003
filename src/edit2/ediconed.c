@@ -288,9 +288,9 @@ static void edic_black(void)
 	int16 color;
 	
 	if (parm->c16.num_planes == ACSblk->nplanes)
-		color = Ame_popup(ACSblk->ev_window, &COLOR, -1, -1);
+		color = Ame_popup(ACSblk->ev_window, &COLOR.root, -1, -1);
 	else if (parm->c256.num_planes == ACSblk->nplanes)
-		color = Ame_popup(ACSblk->ev_window, &COLOR256, -1, -1);
+		color = Ame_popup(ACSblk->ev_window, &COLOR256.root, -1, -1);
 	else
 		color = G_BLACK + 1;
 	if (color > 0)
@@ -658,6 +658,9 @@ static void edit_shift(Awindow *self, int16 direction)
 	iconobj = &parm->work[EDIT_ICON_ICON];
 	icon = iconobj->ob_spec.ciconblk;
 	mfdb_dm(&data, &mask, parm, iconobj);
+#if WITH_FIXES
+	bp = NULL;
+#endif
 	if (!(ACSblk->description->flags & AB_NOTRANSICON) ||
 		(bp = Abp_create(data.fd_w, data.fd_h)) != NULL)
 	{
@@ -1058,6 +1061,9 @@ static void edic_set(void)
 	}
 	icon = parm->work[EDIT_ICON_ICON].ob_spec.iconblk;
 	mfdb_dm(&data, &mask, parm, &parm->work[EDIT_ICON_ICON]);
+#if WITH_FIXES
+	bp = NULL;
+#endif
 	if ((ACSblk->description->flags & AB_NOTRANSICON) &&
 		(bp = Abp_create(data.fd_w, data.fd_h)) == NULL)
 		return;
@@ -1930,7 +1936,7 @@ static Awindow *ic_make(void *a)
 		win->work[EDIT_ICON_CORNER].ob_flags |= OF_HIDETREE;
 		win->user = newparm;
 		newparm->work = win->work;
-		if ((newparm->edit = Aob_create(&EDIT_ICON2)) == NULL)
+		if ((newparm->edit = Aob_create(&EDIT_ICON2.root)) == NULL)
 		{
 			Ax_free(win);
 			Ax_free(newparm);

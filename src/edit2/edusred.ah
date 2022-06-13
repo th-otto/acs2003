@@ -125,22 +125,42 @@ static int16 _DAT_IC_USER[] = {
 
 static CICONBLK IC_USER = { { _MSK_IC_USER, _DAT_IC_USER, TEXT_10, 0x1000, 0, 0, 12, 0, 48, 31, 0, 32, 72, 8 }, &_C4_IC_USER };
 
-static OBJECT  EDIT_USER =     { -1,  1, 14, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 40, 11 };
-static OBJECT  _01_EDIT_USER = { 14,  2, 13, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 0, 38, 8 };
-static OBJECT  _02_EDIT_USER = {  3, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_01), 1, 1, 5, 1 };
-static OBJECT  _03_EDIT_USER = {  4, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_02), 1, 2, 5, 1 };
-static OBJECT  _04_EDIT_USER = {  5, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_03), 1, 3, 5, 1 };
-static OBJECT  _05_EDIT_USER = {  6, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_04), 1, 4, 5, 1 };
-static OBJECT  _06_EDIT_USER = {  7, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_05), 1, 5, 5, 1 };
-static OBJECT  _07_EDIT_USER = {  8, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_06), 1, 6, 5, 1 };
-static OBJECT  _08_EDIT_USER = {  9, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 1, 31, 1 };
-static OBJECT  _09_EDIT_USER = { 10, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 2, 31, 1 };
-static OBJECT  _10_EDIT_USER = { 11, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 3, 31, 1 };
-static OBJECT  _11_EDIT_USER = { 12, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 4, 31, 1 };
-static OBJECT  _12_EDIT_USER = { 13, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_007), 6, 5, 31, 1 };
-static OBJECT  _13_EDIT_USER = {  1, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 6, 31, 1 };
-static OBJECT  _14_EDIT_USER = {  0, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON04), 14, 8, 12, 2 };
-static AOBJECT _14aEDIT_USER = { editus_ok, NULL, 0x8020, 0x884f, NULL, NULL, 0, 0 };
+static struct {
+	OBJECT  root;
+	OBJECT  _01_EDIT_USER;
+	OBJECT  _02_EDIT_USER;
+	OBJECT  _03_EDIT_USER;
+	OBJECT  _04_EDIT_USER;
+	OBJECT  _05_EDIT_USER;
+	OBJECT  _06_EDIT_USER;
+	OBJECT  _07_EDIT_USER;
+	OBJECT  _08_EDIT_USER;
+	OBJECT  _09_EDIT_USER;
+	OBJECT  _10_EDIT_USER;
+	OBJECT  _11_EDIT_USER;
+	OBJECT  _12_EDIT_USER;
+	OBJECT  _13_EDIT_USER;
+	OBJECT  _14_EDIT_USER;
+	AOBJECT _14aEDIT_USER;
+	
+} EDIT_USER = {
+	{ -1,  1, 14, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 40, 11 },
+	{ 14,  2, 13, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 0, 38, 8 },
+	{  3, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_01), 1, 1, 5, 1 },
+	{  4, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_02), 1, 2, 5, 1 },
+	{  5, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_03), 1, 3, 5, 1 },
+	{  6, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_04), 1, 4, 5, 1 },
+	{  7, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_05), 1, 5, 5, 1 },
+	{  8, -1, -1, 0x0015, 0x0000, 0x0000, C_UNION(&TEDINFO_06), 1, 6, 5, 1 },
+	{  9, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 1, 31, 1 },
+	{ 10, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 2, 31, 1 },
+	{ 11, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 3, 31, 1 },
+	{ 12, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 4, 31, 1 },
+	{ 13, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_007), 6, 5, 31, 1 },
+	{  1, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_008), 6, 6, 31, 1 },
+	{  0, -1, -1, 0x0018, 0x4007, 0x0010, C_UNION(&A_3DBUTTON04), 14, 8, 12, 2 },
+	{ editus_ok, NULL, 0x8020, 0x884f, NULL, NULL, 0, 0 }
+};
 
 Awindow WI_USER = {
 	NULL,
@@ -148,7 +168,7 @@ Awindow WI_USER = {
 	user_make,
 	Awi_open,
 	Awi_init,
-	&EDIT_USER,
+	&EDIT_USER.root,
 	NULL,
 	0, 0,
 	-1,

@@ -133,72 +133,141 @@ static int16 _DAT_MO_THIN_CROSS[] = {
 static CICONBLK MO_THIN_CROSS = { { _MSK_MO_THIN_CROSS, _DAT_MO_THIN_CROSS, TEXT_002, 0x1000, 0x000a, 0x000a, 0, 0, 0x0010, 0x0010, 0, 0, 0x0008, 0x0008 }, NULL };
 
 
-static OBJECT  PALETTE_MOUSE =     { -1,  2, 64, G_USERDEF, 0, 0x0010, C_UNION(&A_3DBUTTON01), 0, 0, 0x0022, 0x0009 };
-static AOBJECT _00aPALETTE_MOUSE = { 0, 0, 0x8000, 0, 0, 0, 0x001f, 0 };
-static OBJECT  _02_PALETTE_MOUSE = {  4, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0400, 0x0400, 0x0004, 0x0002 };
-static AOBJECT _02aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _04_PALETTE_MOUSE = {  6, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0001, 0x0004, 0x0002 };
-static AOBJECT _04aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _06_PALETTE_MOUSE = {  8, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0001, 0x0004, 0x0002 };
-static AOBJECT _06aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _08_PALETTE_MOUSE = { 10, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0001, 0x0004, 0x0002 };
-static AOBJECT _08aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _10_PALETTE_MOUSE = { 12, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0001, 0x0004, 0x0002 };
-static AOBJECT _10aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _12_PALETTE_MOUSE = { 14, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0001, 0x0004, 0x0002 };
-static AOBJECT _12aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _14_PALETTE_MOUSE = { 16, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0001, 0x0004, 0x0002 };
-static AOBJECT _14aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _16_PALETTE_MOUSE = { 18, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0001, 0x0004, 0x0002 };
-static AOBJECT _16aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _18_PALETTE_MOUSE = { 20, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0001, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _18aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _20_PALETTE_MOUSE = { 22, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _20aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _22_PALETTE_MOUSE = { 24, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _22aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _24_PALETTE_MOUSE = { 26, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _24aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _26_PALETTE_MOUSE = { 28, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _26aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _28_PALETTE_MOUSE = { 30, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _28aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _30_PALETTE_MOUSE = { 32, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _30aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _32_PALETTE_MOUSE = { 34, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0003, 0x0004, 0x0002 };
-static AOBJECT _32aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _34_PALETTE_MOUSE = { 36, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0001, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _34aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _36_PALETTE_MOUSE = { 38, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _36aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _38_PALETTE_MOUSE = { 40, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _38aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _40_PALETTE_MOUSE = { 42, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _40aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _42_PALETTE_MOUSE = { 44, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _42aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _44_PALETTE_MOUSE = { 46, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _44aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _46_PALETTE_MOUSE = { 48, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _46aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _48_PALETTE_MOUSE = { 50, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0005, 0x0004, 0x0002 };
-static AOBJECT _48aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _50_PALETTE_MOUSE = { 52, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0001, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _50aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _52_PALETTE_MOUSE = { 54, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _52aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _54_PALETTE_MOUSE = { 56, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _54aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _56_PALETTE_MOUSE = { 58, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _56aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _58_PALETTE_MOUSE = { 60, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _58aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _60_PALETTE_MOUSE = { 62, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _60aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _62_PALETTE_MOUSE = { 64, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _62aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 };
-static OBJECT  _64_PALETTE_MOUSE = {  0, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0007, 0x0004, 0x0002 };
-static AOBJECT _64aPALETTE_MOUSE = { edmp_set, edmp_acc, 0x8020, 0, 0, 0, 0, 0 };
+static struct {
+	OBJECT  root;
+	AOBJECT _00aPALETTE_MOUSE;
+	OBJECT  _02_PALETTE_MOUSE;
+	AOBJECT _02aPALETTE_MOUSE;
+	OBJECT  _04_PALETTE_MOUSE;
+	AOBJECT _04aPALETTE_MOUSE;
+	OBJECT  _06_PALETTE_MOUSE;
+	AOBJECT _06aPALETTE_MOUSE;
+	OBJECT  _08_PALETTE_MOUSE;
+	AOBJECT _08aPALETTE_MOUSE;
+	OBJECT  _10_PALETTE_MOUSE;
+	AOBJECT _10aPALETTE_MOUSE;
+	OBJECT  _12_PALETTE_MOUSE;
+	AOBJECT _12aPALETTE_MOUSE;
+	OBJECT  _14_PALETTE_MOUSE;
+	AOBJECT _14aPALETTE_MOUSE;
+	OBJECT  _16_PALETTE_MOUSE;
+	AOBJECT _16aPALETTE_MOUSE;
+	OBJECT  _18_PALETTE_MOUSE;
+	AOBJECT _18aPALETTE_MOUSE;
+	OBJECT  _20_PALETTE_MOUSE;
+	AOBJECT _20aPALETTE_MOUSE;
+	OBJECT  _22_PALETTE_MOUSE;
+	AOBJECT _22aPALETTE_MOUSE;
+	OBJECT  _24_PALETTE_MOUSE;
+	AOBJECT _24aPALETTE_MOUSE;
+	OBJECT  _26_PALETTE_MOUSE;
+	AOBJECT _26aPALETTE_MOUSE;
+	OBJECT  _28_PALETTE_MOUSE;
+	AOBJECT _28aPALETTE_MOUSE;
+	OBJECT  _30_PALETTE_MOUSE;
+	AOBJECT _30aPALETTE_MOUSE;
+	OBJECT  _32_PALETTE_MOUSE;
+	AOBJECT _32aPALETTE_MOUSE;
+	OBJECT  _34_PALETTE_MOUSE;
+	AOBJECT _34aPALETTE_MOUSE;
+	OBJECT  _36_PALETTE_MOUSE;
+	AOBJECT _36aPALETTE_MOUSE;
+	OBJECT  _38_PALETTE_MOUSE;
+	AOBJECT _38aPALETTE_MOUSE;
+	OBJECT  _40_PALETTE_MOUSE;
+	AOBJECT _40aPALETTE_MOUSE;
+	OBJECT  _42_PALETTE_MOUSE;
+	AOBJECT _42aPALETTE_MOUSE;
+	OBJECT  _44_PALETTE_MOUSE;
+	AOBJECT _44aPALETTE_MOUSE;
+	OBJECT  _46_PALETTE_MOUSE;
+	AOBJECT _46aPALETTE_MOUSE;
+	OBJECT  _48_PALETTE_MOUSE;
+	AOBJECT _48aPALETTE_MOUSE;
+	OBJECT  _50_PALETTE_MOUSE;
+	AOBJECT _50aPALETTE_MOUSE;
+	OBJECT  _52_PALETTE_MOUSE;
+	AOBJECT _52aPALETTE_MOUSE;
+	OBJECT  _54_PALETTE_MOUSE;
+	AOBJECT _54aPALETTE_MOUSE;
+	OBJECT  _56_PALETTE_MOUSE;
+	AOBJECT _56aPALETTE_MOUSE;
+	OBJECT  _58_PALETTE_MOUSE;
+	AOBJECT _58aPALETTE_MOUSE;
+	OBJECT  _60_PALETTE_MOUSE;
+	AOBJECT _60aPALETTE_MOUSE;
+	OBJECT  _62_PALETTE_MOUSE;
+	AOBJECT _62aPALETTE_MOUSE;
+	OBJECT  _64_PALETTE_MOUSE;
+	AOBJECT _64aPALETTE_MOUSE;
+} PALETTE_MOUSE = {
+	{ -1,  2, 64, G_USERDEF, 0, 0x0010, C_UNION(&A_3DBUTTON01), 0, 0, 0x0022, 0x0009 },
+	{ 0, 0, 0x8000, 0, 0, 0, 0x001f, 0 },
+	{  4, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0400, 0x0400, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{  6, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0001, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{  8, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0001, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 10, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0001, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 12, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0001, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 14, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0001, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 16, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0001, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 18, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0001, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 20, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0001, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 22, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 24, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 26, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 28, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 30, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 32, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 34, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0003, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 36, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0001, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 38, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 40, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 42, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 44, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 46, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 48, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 50, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0005, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 52, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0001, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 54, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0005, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 56, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0009, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 58, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x000d, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 60, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0011, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 62, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0015, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{ 64, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x0019, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8000, 0, 0, 0, 0, 0 },
+	{  0, -1, -1, G_ICON, 0x3005, 0, C_UNION(&MOUSEDUMMY), 0x001d, 0x0007, 0x0004, 0x0002 },
+	{ edmp_set, edmp_acc, 0x8020, 0, 0, 0, 0, 0 }
+};
 
 Awindow WI_PALETTE = {
 	NULL,
@@ -206,7 +275,7 @@ Awindow WI_PALETTE = {
 	mp_make,
 	Awi_open,
 	Awi_init,
-	&PALETTE_MOUSE,
+	&PALETTE_MOUSE.root,
 	NULL,
 	0, 0,
 	-1,

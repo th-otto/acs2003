@@ -216,23 +216,45 @@ static int16 _DAT_IC_PASTE[] = {
 };
 static CICONBLK IC_PASTE = { { _MSK_IC_PASTE, _DAT_IC_PASTE, TEXT_002, 0x1000, 0x0006, 0x0006, 0x0000, 0x0000, 0x0010, 0x0010, 0x0006, 0x0006, 0x0000, 0x0000 }, &_C4_IC_PASTE };
 
-static OBJECT  D_LIST =     { -1,  2,  4, 0x0018, 0x1840, 0x0000, C_UNION(&A_EDITOR01), 0, 0, 30, 10 };
-static AOBJECT _00aD_LIST = { list_click, list_acc, 0x8000, 0x0000, NULL, NULL, 0, 0 };
-static OBJECT  _02_D_LIST = {  4, -1, -1, 0x0018, 0x2000, 0x0000, C_UNION(&A_SELECT01), 0, 0, 0, 0 };
-static AOBJECT _02aD_LIST = { NULL, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
-static OBJECT  _04_D_LIST = {  0, -1, -1, 0x0018, 0x0060, 0x0000, C_UNION(&A_WISLIDER01), 28, 0, 0, 0 };
+static struct {
+	OBJECT  root;
+	AOBJECT _00aD_LIST;
+	OBJECT  _02_D_LIST;
+	AOBJECT _02aD_LIST;
+	OBJECT  _04_D_LIST;
+} D_LIST = {
+	{ -1,  2,  4, 0x0018, 0x1840, 0x0000, C_UNION(&A_EDITOR01), 0, 0, 30, 10 },
+	{ list_click, list_acc, 0x8000, 0x0000, NULL, NULL, 0, 0 },
+	{  4, -1, -1, 0x0018, 0x2000, 0x0000, C_UNION(&A_SELECT01), 0, 0, 0, 0 },
+	{ NULL, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 },
+	{  0, -1, -1, 0x0018, 0x0060, 0x0000, C_UNION(&A_WISLIDER01), 28, 0, 0, 0 }
+};
 
-static OBJECT  T_LIST =     { -1,  1,  9, 0x0018, 0x0040, 0x0000, C_UNION(&A_3DBUTTON06), 0, 0, 50, 5632 };
-static OBJECT  _01_T_LIST = {  3, -1, -1, 0x001f, 0x0005, 0x0000, C_UNION(&IC_NEW), 768, 768, 4096, 4096 };
-static AOBJECT _01aT_LIST = { list_new, NULL, 0x8000, 0x844e, NULL, NULL, 0, 0 };
-static OBJECT  _03_T_LIST = {  5, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_OPEN), 770, 768, 4096, 4096 };
-static AOBJECT _03aT_LIST = { list_open, NULL, 0x8000, 0x844f, NULL, NULL, 0, 0 };
-static OBJECT  _05_T_LIST = {  7, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_CUT), 774, 768, 4096, 4096 };
-static AOBJECT _05aT_LIST = { list_cut, NULL, 0x8000, 0x8458, NULL, NULL, 0, 0 };
-static OBJECT  _07_T_LIST = {  9, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_COPY), 776, 768, 4096, 4096 };
-static AOBJECT _07aT_LIST = { list_copy, NULL, 0x8000, 0x8443, NULL, NULL, 0, 0 };
-static OBJECT  _09_T_LIST = {  0, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_PASTE), 778, 768, 4096, 4096 };
-static AOBJECT _09aT_LIST = { list_paste, NULL, 0x8020, 0x8456, NULL, NULL, 0, 0 };
+static struct {
+	OBJECT  root;
+	OBJECT  _01_T_LIST;
+	AOBJECT _01aT_LIST;
+	OBJECT  _03_T_LIST;
+	AOBJECT _03aT_LIST;
+	OBJECT  _05_T_LIST;
+	AOBJECT _05aT_LIST;
+	OBJECT  _07_T_LIST;
+	AOBJECT _07aT_LIST;
+	OBJECT  _09_T_LIST;
+	AOBJECT _09aT_LIST;
+} T_LIST = {
+	{ -1,  1,  9, 0x0018, 0x0040, 0x0000, C_UNION(&A_3DBUTTON06), 0, 0, 50, 5632 },
+	{  3, -1, -1, 0x001f, 0x0005, 0x0000, C_UNION(&IC_NEW), 768, 768, 4096, 4096 },
+	{ list_new, NULL, 0x8000, 0x844e, NULL, NULL, 0, 0 },
+	{  5, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_OPEN), 770, 768, 4096, 4096 },
+	{ list_open, NULL, 0x8000, 0x844f, NULL, NULL, 0, 0 },
+	{  7, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_CUT), 774, 768, 4096, 4096 },
+	{ list_cut, NULL, 0x8000, 0x8458, NULL, NULL, 0, 0 },
+	{  9, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_COPY), 776, 768, 4096, 4096 },
+	{ list_copy, NULL, 0x8000, 0x8443, NULL, NULL, 0, 0 },
+	{  0, -1, -1, 0x001f, 0x0005, 0x0008, C_UNION(&IC_PASTE), 778, 768, 4096, 4096 },
+	{ list_paste, NULL, 0x8020, 0x8456, NULL, NULL, 0, 0 }
+};
 
 Awindow LIST_WINDOW = {
 	NULL,
@@ -240,8 +262,8 @@ Awindow LIST_WINDOW = {
 	make_list,
 	Awi_open,
 	Awi_init,
-	&D_LIST,
-	&T_LIST,
+	&D_LIST.root,
+	&T_LIST.root,
 	0, 0,
 	-1,
 	0x41ef,

@@ -180,7 +180,7 @@ SUBMODE *set_aeo(OBJ_ENTRY *entry)
 	OBJECT *tree;
 	char text[LABEL_MAX + 4];
 	
-	tree = Aob_create(&ED_AEO);
+	tree = Aob_create(&ED_AEO.root);
 	if (tree == NULL)
 		return NULL;
 	

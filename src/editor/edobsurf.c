@@ -2,6 +2,8 @@
 #include "acs_uo.h"
 #include "io/workout.h"
 
+extern OBJECT INFO_OB_WH;
+
 static void new_ob(Awindow *self, int16 obnr, boolean moveit, int16 *idx);
 static void ob_addselect(Awindow *win, int16 obnr);
 static int16 sizing(Awindow *self, int16 obnr, int16 mox, int16 moy);

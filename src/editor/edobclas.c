@@ -592,7 +592,7 @@ static void eded_try(void)
 			}
 		} else if (find_entry(acs->me_list, obj->label) == obj)
 		{
-			menu = Aob_create(&MINIOB);
+			menu = Aob_create(&MINIOB.root);
 			/* BUG: no null-pointer check */
 			menu->ob_width = self->wi_work.w;
 			menu->ob_height = self->wi_work.h;

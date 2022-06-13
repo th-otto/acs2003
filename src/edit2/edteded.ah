@@ -107,16 +107,29 @@ static int16 _DAT_IC_TEDI[] = {
 };
 static CICONBLK IC_TEDI = { { _MSK_IC_TEDI, _DAT_IC_TEDI, TEXT_13, 0x1000, 0, 0, 12, 0, 48, 29, 0, 32, 72, 8 }, &_C4_IC_TEDI };
 
-static OBJECT  EDIT_TEDI =     { -1,  1,  8, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 66, 8 };
-static OBJECT  _01_EDIT_TEDI = {  8,  2,  7, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 0, 64, 5 };
-static OBJECT  _02_EDIT_TEDI = {  3, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_01), 1, 1, 5, 1 };
-static OBJECT  _03_EDIT_TEDI = {  4, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_001), 7, 1, 56, 1 };
-static OBJECT  _04_EDIT_TEDI = {  5, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_02), 1, 2, 4, 1 };
-static OBJECT  _05_EDIT_TEDI = {  6, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_001), 7, 2, 56, 1 };
-static OBJECT  _06_EDIT_TEDI = {  7, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_03), 1, 3, 4, 1 };
-static OBJECT  _07_EDIT_TEDI = {  1, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_001), 7, 3, 56, 1 };
-static OBJECT  _08_EDIT_TEDI = {  0, -1, -1, 0x0018, 0x4007, 0x0000, C_UNION(&A_3DBUTTON04), 27, 5, 12, 2 };
-static AOBJECT _08aEDIT_TEDI = { editte_ok, NULL, 0x8020, 0x884f, NULL, NULL, 0, 0 };
+static struct {
+	OBJECT  root;
+	OBJECT  _01_EDIT_TEDI;
+	OBJECT  _02_EDIT_TEDI;
+	OBJECT  _03_EDIT_TEDI;
+	OBJECT  _04_EDIT_TEDI;
+	OBJECT  _05_EDIT_TEDI;
+	OBJECT  _06_EDIT_TEDI;
+	OBJECT  _07_EDIT_TEDI;
+	OBJECT  _08_EDIT_TEDI;
+	AOBJECT _08aEDIT_TEDI;
+} EDIT_TEDI = {
+	{ -1,  1,  8, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 66, 8 },
+	{  8,  2,  7, 0x0018, 0x0040, 0x0000, C_UNION(&A_INNERFRAME02), 1, 0, 64, 5 },
+	{  3, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_01), 1, 1, 5, 1 },
+	{  4, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_001), 7, 1, 56, 1 },
+	{  5, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_02), 1, 2, 4, 1 },
+	{  6, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_001), 7, 2, 56, 1 },
+	{  7, -1, -1, 0x001c, 0x0000, 0x0000, C_UNION(&TEXT_03), 1, 3, 4, 1 },
+	{  1, -1, -1, 0x0016, 0x0000, 0x0000, C_UNION(&TEDI_001), 7, 3, 56, 1 },
+	{  0, -1, -1, 0x0018, 0x4007, 0x0000, C_UNION(&A_3DBUTTON04), 27, 5, 12, 2 },
+	{ editte_ok, NULL, 0x8020, 0x884f, NULL, NULL, 0, 0 }
+};
 
 Awindow WI_TEDI = {
 	NULL,
@@ -124,7 +137,7 @@ Awindow WI_TEDI = {
 	tedi_make,
 	Awi_open,
 	Awi_init,
-	&EDIT_TEDI,
+	&EDIT_TEDI.root,
 	NULL,
 	0, 0,
 	-1,

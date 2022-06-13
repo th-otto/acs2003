@@ -75,7 +75,7 @@ static OBJECT *edsl_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	long parm;
 	OBJECT *slider;
 	
-	tree = Aob_create(&ED_SLIDER);
+	tree = Aob_create(&ED_SLIDER.root);
 	if (tree != NULL)
 	{
 		Aob_fix(tree);

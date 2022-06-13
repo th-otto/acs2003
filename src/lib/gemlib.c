@@ -2294,7 +2294,7 @@ int16 (wind_get)(int16 handle, int16 what, ...)
    w3 = va_arg(args, short *);
    w4 = va_arg(args, short *);
    va_end(args);
-   return mt_wind_get(handle, what, w1, w2, w3, w3, _globl);
+   return mt_wind_get(handle, what, w1, w2, w3, w4, _globl);
 }
 
 /* -------------------------------------------------------------------------- */

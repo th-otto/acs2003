@@ -4,7 +4,9 @@
 
 #if COUNTRY == COUNTRY_DE
 static char TEXT_002[] = "";
+#if !WITH_FIXES
 static char TEXT_02[] = "PROTOCOL";
+#endif
 static char TEXT_03[] = " PROTOCOL ";
 static char TEXT_04[] = "PROTOKOLL";
 static char TEXT_05[] = "Auf diesem Fenster k”nnen Ausgaben analog zu printf erfolgen!|Ein ACSpro-Feature...";
@@ -12,7 +14,9 @@ static char TEXT_08[] = " Information ";
 #endif
 #if COUNTRY == COUNTRY_US
 static char TEXT_002[] = "";
+#if !WITH_FIXES
 static char TEXT_02[] = "PROTOCOL";
+#endif
 static char TEXT_03[] = " PROTOCOL ";
 static char TEXT_04[] = "PROTOCOL";
 static char TEXT_05[] = "This window supports text that can be printed with printf-analogons.";
@@ -137,6 +141,7 @@ static int16 _DAT_PROTO_ICON[] = {
 };
 static CICONBLK PROTO_ICON = { { _MSK_PROTO_ICON, _DAT_PROTO_ICON, TEXT_04, 0x1000, 0x0000, 0x0000, 0x0014, 0x0000, 0x0020, 0x0020, 0x0000, 0x0020, 0x0048, 0x0008 }, &_C4_PROTO_ICON };
 
+#if !WITH_FIXES
 static int16 _MSK_PROT_ICON[] = {
 	0x0fff, 0xffff, 0xff00, 0x0fff, 0xffff, 0xff80, 0x0fff, 0xffff,
 	0xfffc, 0x0fff, 0xffff, 0xfffc, 0x0fff, 0xffff, 0xfffc, 0x0fff,
@@ -166,6 +171,7 @@ static int16 _DAT_PROT_ICON[] = {
 	0x0000, 0x0004, 0x03ff, 0xffff, 0xfffc
 };
 static CICONBLK PROT_ICON = { { _MSK_PROT_ICON, _DAT_PROT_ICON, TEXT_02, 0x1000, 0x0000, 0x0000, 0x000c, 0x0000, 0x0030, 0x001f, 0x0000, 0x0020, 0x0048, 0x0008 }, NULL };
+#endif
 
 static OBJECT INFOBOX[] = {
 	{ -1,  1,  1, 0x0019, 0x0040, 0x0000, C_UNION(0x00ff1141L), 0, 0, 28, 6 },

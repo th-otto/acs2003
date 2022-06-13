@@ -99,7 +99,7 @@ SUBMODE *edoic_set_icon(OBJ_ENTRY *entry)
 	OBJECT *tree;
 	Obj_Head *obj;
 	
-	tree = Aob_create(&ED_ICON);
+	tree = Aob_create(&ED_ICON.root);
 	if (tree == NULL)
 		return NULL;
 	obj = (Obj_Head *)entry->obj.ob_spec.ciconblk;

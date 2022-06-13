@@ -128,7 +128,7 @@ static OBJECT *edpi_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	long parm;
 	boolean done;
 	
-	tree = Aob_create(&ED_PICTURE);
+	tree = Aob_create(&ED_PICTURE.root);
 	if (tree != NULL)
 	{
 		Aob_fix(tree);

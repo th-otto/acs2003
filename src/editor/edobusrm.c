@@ -113,7 +113,7 @@ SUBMODE *edus_set_user(OBJ_ENTRY *entry)
 	AUSERBLK *auser;
 	char buf[STRING_MAX + 2];
 	
-	tree = Aob_create(&ED_USER);
+	tree = Aob_create(&ED_USER.root);
 	if (tree == NULL)
 		return NULL;
 	obj = (Obj_Head *)entry->obj.ob_spec.auserblk;

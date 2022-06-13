@@ -13,6 +13,8 @@ static void edbe_size(void);
 static void edbe_mask(void);
 static void edbe_textcol(void);
 
+extern OBJECT POP_SIZESEL;
+
 #include "ueboxed.ah"
 #include "ueboxed.h"
 
@@ -121,7 +123,7 @@ static OBJECT *edbe_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	beparm *spec;
 	beparm *betext;
 	
-	tree = Aob_create(&ED_BOXED);
+	tree = Aob_create(&ED_BOXED.root);
 	if (tree != NULL)
 	{
 		/* BUG? no call to Aob_fix here */
@@ -387,7 +389,7 @@ static void edbe_mask(void)
 	int16 sel;
 	AOBJECT *aobj;
 	
-	popup = Aob_create(&POP_MASKSEL);
+	popup = Aob_create(&POP_MASKSEL.root);
 	if (popup == NULL)
 		return;
 	Aob_offset(&rect, ACSblk->ev_window->work, ED_BOXED_MASK_POPUP_BOX);

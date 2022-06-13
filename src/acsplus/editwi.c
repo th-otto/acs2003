@@ -1495,7 +1495,7 @@ static Awindow *edit_make(void *a)
 	protocnf.flags &= 0x7f;
 	memcpy(&editdata->cnf, &protocnf, sizeof(editdata->cnf));
 	
-	if (EDITOR.toolbar != &_ED_TOOL)
+	if (EDITOR.toolbar != &_ED_TOOL.root)
 		editdata->cnf.flags |= EDCONF_USERTOOLBAR;
 	self->kind |= AW_UVSLIDER | AW_UHSLIDER;
 	self->work[EDIT_SELECT].ob_width = self->work[EDIT_SELECT].ob_height = 0;

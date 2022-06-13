@@ -140,7 +140,7 @@ SUBMODE *set_aflags(OBJ_ENTRY *entry)
 	
 	UNUSED(entry);
 	count = 0;
-	tree = Aob_create(&ED_AFLAGS);
+	tree = Aob_create(&ED_AFLAGS.root);
 	if (tree == NULL)
 		return NULL;
 	ea_sm.tree = tree;

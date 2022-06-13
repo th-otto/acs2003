@@ -101,7 +101,7 @@ SUBMODE *edoim_set_image(OBJ_ENTRY *entry)
 	OBJECT *tree;
 	Obj_Head *obj;
 	
-	tree = Aob_create(&ED_IMAGE);
+	tree = Aob_create(&ED_IMAGE.root);
 	if (tree == NULL)
 		return NULL;
 	obj = (Obj_Head *)entry->obj.ob_spec.bitblk;

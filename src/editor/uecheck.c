@@ -105,7 +105,7 @@ static OBJECT *edce_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	AUSERBLK *user;
 	long val;
 
-	tree = Aob_create(&ED_CHECKBOX);
+	tree = Aob_create(&ED_CHECKBOX.root);
 	if (tree == NULL)
 		return NULL;
 	oe_beself(ACSblk->ev_window, tree, ED_CHECKBOX_TEXT);

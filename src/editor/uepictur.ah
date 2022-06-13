@@ -146,95 +146,190 @@ static AUSERBLK USER_042 = { A_pattern, 0x00750001L, NULL, NULL, NULL, NULL, NUL
 static AUSERBLK USER_043 = { A_pattern, 0x00760001L, NULL, NULL, NULL, NULL, NULL, NULL };
 static AUSERBLK USER_044 = { A_pattern, 0x00770001L, NULL, NULL, NULL, NULL, NULL, NULL };
 
-static OBJECT  ED_PICTURE =     { -1,  1, 12, G_USERDEF, 0x0000, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 42, 13 };
-static OBJECT  _01_ED_PICTURE = {  4,  2,  2, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_3DBUTTON01), 0, 0, 13, 5 };
-static OBJECT  _02_ED_PICTURE = {  1, -1, -1, G_USERDEF, 0x1800, 0x0000, C_UNION(&A_PICTURE01), 0, 0, 13, 5 };
-static AOBJECT _02aED_PICTURE = { NULL, edpi_acc, AEO, 0x0000, NULL, NULL, 0, 0 };
-static OBJECT  _04_ED_PICTURE = {  6, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON03), 15, 1, 12, 2 };
-static AOBJECT _04aED_PICTURE = { edpi_ok, NULL, AEO, 0x884f, NULL, NULL, 0, 0 };
-static OBJECT  _06_ED_PICTURE = {  8, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON04), 29, 1, 12, 2 };
-static AOBJECT _06aED_PICTURE = { edpi_abort, NULL, AEO, 0x8841, NULL, NULL, 0, 0 };
-static OBJECT  _08_ED_PICTURE = { 10, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_CHECKBOX02), 15, 4, 15, 1 };
-static AOBJECT _08aED_PICTURE = { edpi_tile, NULL, AEO, 0x884b, NULL, NULL, 0, 0 };
-static OBJECT  _10_ED_PICTURE = { 12, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_CHECKBOX03), 15, 5, 15, 1 };
-static AOBJECT _10aED_PICTURE = { edpi_dither, NULL, AEO, 0x8844, NULL, NULL, 0, 0 };
-static OBJECT  _12_ED_PICTURE = {  0, 13, 19, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME01), 1, 6, 40, 7 };
-static OBJECT  _13_ED_PICTURE = { 15, 14, 14, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_11), 3, 1, 6, 1 };
-static OBJECT  _14_ED_PICTURE = { 13, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
-static OBJECT  _15_ED_PICTURE = { 19, 17, 18, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 10, 1, 18, 1 };
-static AOBJECT _15aED_PICTURE = { edpi_col, NULL, AEO, 0x8846, NULL, NULL, 0, 0 };
-static OBJECT  _17_ED_PICTURE = { 18, -1, -1, G_BOX, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 0, 2, 1 };
-static OBJECT  _18_ED_PICTURE = { 15, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 };
-static OBJECT  _19_ED_PICTURE = { 12, 20, 90, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 1, 2, 38, 5 };
-static OBJECT  _20_ED_PICTURE = { 22, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_007), 1, 1, 3, 1 };
-static AOBJECT _20aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030100L, NULL, 0, 0 };
-static OBJECT  _22_ED_PICTURE = { 24, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_012), 1, 2, 3, 1 };
-static AOBJECT _22aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030200L, NULL, 0, 0 };
-static OBJECT  _24_ED_PICTURE = { 26, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&A_PATTERN01), 1, 3, 3, 1 };
-static AOBJECT _24aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030300L, NULL, 0, 0 };
-static OBJECT  _26_ED_PICTURE = { 28, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_013), 4, 1, 3, 1 };
-static AOBJECT _26aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030400L, NULL, 0, 0 };
-static OBJECT  _28_ED_PICTURE = { 30, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_014), 4, 2, 3, 1 };
-static AOBJECT _28aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030500L, NULL, 0, 0 };
-static OBJECT  _30_ED_PICTURE = { 32, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_015), 4, 3, 3, 1 };
-static AOBJECT _30aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030600L, NULL, 0, 0 };
-static OBJECT  _32_ED_PICTURE = { 34, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_016), 7, 1, 3, 1 };
-static AOBJECT _32aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030700L, NULL, 0, 0 };
-static OBJECT  _34_ED_PICTURE = { 36, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_017), 7, 2, 3, 1 };
-static AOBJECT _34aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030800L, NULL, 0, 0 };
-static OBJECT  _36_ED_PICTURE = { 38, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_018), 7, 3, 3, 1 };
-static AOBJECT _36aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030900L, NULL, 0, 0 };
-static OBJECT  _38_ED_PICTURE = { 40, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_019), 10, 1, 3, 1 };
-static AOBJECT _38aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030a00L, NULL, 0, 0 };
-static OBJECT  _40_ED_PICTURE = { 42, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_020), 10, 2, 3, 1 };
-static AOBJECT _40aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030b00L, NULL, 0, 0 };
-static OBJECT  _42_ED_PICTURE = { 44, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_021), 10, 3, 3, 1 };
-static AOBJECT _42aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030c00L, NULL, 0, 0 };
-static OBJECT  _44_ED_PICTURE = { 46, -1, -1, G_BOX, 0x0005, 0x0000, C_UNION(0x00011101L), 13, 1, 3, 1 };
-static AOBJECT _44aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, NULL, NULL, 0, 0 };
-static OBJECT  _46_ED_PICTURE = { 48, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_022), 13, 2, 3, 1 };
-static AOBJECT _46aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020100L, NULL, 0, 0 };
-static OBJECT  _48_ED_PICTURE = { 50, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_023), 13, 3, 3, 1 };
-static AOBJECT _48aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020200L, NULL, 0, 0 };
-static OBJECT  _50_ED_PICTURE = { 52, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_024), 16, 1, 3, 1 };
-static AOBJECT _50aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020300L, NULL, 0, 0 };
-static OBJECT  _52_ED_PICTURE = { 54, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_025), 16, 2, 3, 1 };
-static AOBJECT _52aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020400L, NULL, 0, 0 };
-static OBJECT  _54_ED_PICTURE = { 56, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_026), 16, 3, 3, 1 };
-static AOBJECT _54aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020500L, NULL, 0, 0 };
-static OBJECT  _56_ED_PICTURE = { 58, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_027), 19, 1, 3, 1 };
-static AOBJECT _56aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020600L, NULL, 0, 0 };
-static OBJECT  _58_ED_PICTURE = { 60, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_028), 19, 2, 3, 1 };
-static AOBJECT _58aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020700L, NULL, 0, 0 };
-static OBJECT  _60_ED_PICTURE = { 62, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_029), 19, 3, 3, 1 };
-static AOBJECT _60aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020800L, NULL, 0, 0 };
-static OBJECT  _62_ED_PICTURE = { 64, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_030), 22, 1, 3, 1 };
-static AOBJECT _62aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020900L, NULL, 0, 0 };
-static OBJECT  _64_ED_PICTURE = { 66, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_032), 22, 2, 3, 1 };
-static AOBJECT _64aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020a00L, NULL, 0, 0 };
-static OBJECT  _66_ED_PICTURE = { 68, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_031), 22, 3, 3, 1 };
-static AOBJECT _66aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020b00L, NULL, 0, 0 };
-static OBJECT  _68_ED_PICTURE = { 70, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_033), 25, 1, 3, 1 };
-static AOBJECT _68aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020c00L, NULL, 0, 0 };
-static OBJECT  _70_ED_PICTURE = { 72, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_034), 25, 2, 3, 1 };
-static AOBJECT _70aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020d00L, NULL, 0, 0 };
-static OBJECT  _72_ED_PICTURE = { 74, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_035), 25, 3, 3, 1 };
-static AOBJECT _72aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020e00L, NULL, 0, 0 };
-static OBJECT  _74_ED_PICTURE = { 76, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_036), 28, 1, 3, 1 };
-static AOBJECT _74aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020f00L, NULL, 0, 0 };
-static OBJECT  _76_ED_PICTURE = { 78, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_037), 28, 2, 3, 1 };
-static AOBJECT _76aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021000L, NULL, 0, 0 };
-static OBJECT  _78_ED_PICTURE = { 80, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_038), 28, 3, 3, 1 };
-static AOBJECT _78aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021100L, NULL, 0, 0 };
-static OBJECT  _80_ED_PICTURE = { 82, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_039), 31, 1, 3, 1 };
-static AOBJECT _80aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021200L, NULL, 0, 0 };
-static OBJECT  _82_ED_PICTURE = { 84, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_040), 31, 2, 3, 1 };
-static AOBJECT _82aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021300L, NULL, 0, 0 };
-static OBJECT  _84_ED_PICTURE = { 86, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_041), 31, 3, 3, 1 };
-static AOBJECT _84aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021400L, NULL, 0, 0 };
-static OBJECT  _86_ED_PICTURE = { 88, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_042), 34, 1, 3, 1 };
-static AOBJECT _86aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021500L, NULL, 0, 0 };
-static OBJECT  _88_ED_PICTURE = { 90, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_043), 34, 2, 3, 1 };
-static AOBJECT _88aED_PICTURE = { edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021600L, NULL, 0, 0 };
-static OBJECT  _90_ED_PICTURE = { 19, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_044), 34, 3, 3, 1 };
-static AOBJECT _90aED_PICTURE = { edpi_pattern, NULL, AEO | OF_LASTOB, 0x0000, (void *)(int32)0x00021700L, NULL, 0, 0 };
+static struct {
+	OBJECT  root;
+	OBJECT  _01_ED_PICTURE;
+	OBJECT  _02_ED_PICTURE;
+	AOBJECT _02aED_PICTURE;
+	OBJECT  _04_ED_PICTURE;
+	AOBJECT _04aED_PICTURE;
+	OBJECT  _06_ED_PICTURE;
+	AOBJECT _06aED_PICTURE;
+	OBJECT  _08_ED_PICTURE;
+	AOBJECT _08aED_PICTURE;
+	OBJECT  _10_ED_PICTURE;
+	AOBJECT _10aED_PICTURE;
+	OBJECT  _12_ED_PICTURE;
+	OBJECT  _13_ED_PICTURE;
+	OBJECT  _14_ED_PICTURE;
+	OBJECT  _15_ED_PICTURE;
+	AOBJECT _15aED_PICTURE;
+	OBJECT  _17_ED_PICTURE;
+	OBJECT  _18_ED_PICTURE;
+	OBJECT  _19_ED_PICTURE;
+	OBJECT  _20_ED_PICTURE;
+	AOBJECT _20aED_PICTURE;
+	OBJECT  _22_ED_PICTURE;
+	AOBJECT _22aED_PICTURE;
+	OBJECT  _24_ED_PICTURE;
+	AOBJECT _24aED_PICTURE;
+	OBJECT  _26_ED_PICTURE;
+	AOBJECT _26aED_PICTURE;
+	OBJECT  _28_ED_PICTURE;
+	AOBJECT _28aED_PICTURE;
+	OBJECT  _30_ED_PICTURE;
+	AOBJECT _30aED_PICTURE;
+	OBJECT  _32_ED_PICTURE;
+	AOBJECT _32aED_PICTURE;
+	OBJECT  _34_ED_PICTURE;
+	AOBJECT _34aED_PICTURE;
+	OBJECT  _36_ED_PICTURE;
+	AOBJECT _36aED_PICTURE;
+	OBJECT  _38_ED_PICTURE;
+	AOBJECT _38aED_PICTURE;
+	OBJECT  _40_ED_PICTURE;
+	AOBJECT _40aED_PICTURE;
+	OBJECT  _42_ED_PICTURE;
+	AOBJECT _42aED_PICTURE;
+	OBJECT  _44_ED_PICTURE;
+	AOBJECT _44aED_PICTURE;
+	OBJECT  _46_ED_PICTURE;
+	AOBJECT _46aED_PICTURE;
+	OBJECT  _48_ED_PICTURE;
+	AOBJECT _48aED_PICTURE;
+	OBJECT  _50_ED_PICTURE;
+	AOBJECT _50aED_PICTURE;
+	OBJECT  _52_ED_PICTURE;
+	AOBJECT _52aED_PICTURE;
+	OBJECT  _54_ED_PICTURE;
+	AOBJECT _54aED_PICTURE;
+	OBJECT  _56_ED_PICTURE;
+	AOBJECT _56aED_PICTURE;
+	OBJECT  _58_ED_PICTURE;
+	AOBJECT _58aED_PICTURE;
+	OBJECT  _60_ED_PICTURE;
+	AOBJECT _60aED_PICTURE;
+	OBJECT  _62_ED_PICTURE;
+	AOBJECT _62aED_PICTURE;
+	OBJECT  _64_ED_PICTURE;
+	AOBJECT _64aED_PICTURE;
+	OBJECT  _66_ED_PICTURE;
+	AOBJECT _66aED_PICTURE;
+	OBJECT  _68_ED_PICTURE;
+	AOBJECT _68aED_PICTURE;
+	OBJECT  _70_ED_PICTURE;
+	AOBJECT _70aED_PICTURE;
+	OBJECT  _72_ED_PICTURE;
+	AOBJECT _72aED_PICTURE;
+	OBJECT  _74_ED_PICTURE;
+	AOBJECT _74aED_PICTURE;
+	OBJECT  _76_ED_PICTURE;
+	AOBJECT _76aED_PICTURE;
+	OBJECT  _78_ED_PICTURE;
+	AOBJECT _78aED_PICTURE;
+	OBJECT  _80_ED_PICTURE;
+	AOBJECT _80aED_PICTURE;
+	OBJECT  _82_ED_PICTURE;
+	AOBJECT _82aED_PICTURE;
+	OBJECT  _84_ED_PICTURE;
+	AOBJECT _84aED_PICTURE;
+	OBJECT  _86_ED_PICTURE;
+	AOBJECT _86aED_PICTURE;
+	OBJECT  _88_ED_PICTURE;
+	AOBJECT _88aED_PICTURE;
+	OBJECT  _90_ED_PICTURE;
+	AOBJECT _90aED_PICTURE;
+} ED_PICTURE = {
+	{ -1,  1, 12, G_USERDEF, 0x0000, 0x0010, C_UNION(&A_3DBUTTON02), 0, 0, 42, 13 },
+	{  4,  2,  2, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_3DBUTTON01), 0, 0, 13, 5 },
+	{  1, -1, -1, G_USERDEF, 0x1800, 0x0000, C_UNION(&A_PICTURE01), 0, 0, 13, 5 },
+	{ NULL, edpi_acc, AEO, 0x0000, NULL, NULL, 0, 0 },
+	{  6, -1, -1, G_USERDEF, 0x4007, 0x0010, C_UNION(&A_3DBUTTON03), 15, 1, 12, 2 },
+	{ edpi_ok, NULL, AEO, 0x884f, NULL, NULL, 0, 0 },
+	{  8, -1, -1, G_USERDEF, 0x4005, 0x0010, C_UNION(&A_3DBUTTON04), 29, 1, 12, 2 },
+	{ edpi_abort, NULL, AEO, 0x8841, NULL, NULL, 0, 0 },
+	{ 10, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_CHECKBOX02), 15, 4, 15, 1 },
+	{ edpi_tile, NULL, AEO, 0x884b, NULL, NULL, 0, 0 },
+	{ 12, -1, -1, G_USERDEF, 0x0041, 0x0000, C_UNION(&A_CHECKBOX03), 15, 5, 15, 1 },
+	{ edpi_dither, NULL, AEO, 0x8844, NULL, NULL, 0, 0 },
+	{  0, 13, 19, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME01), 1, 6, 40, 7 },
+	{ 15, 14, 14, G_STRING, 0x0040, 0x0000, C_UNION(&TEXT_11), 3, 1, 6, 1 },
+	{ 13, -1, -1, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 },
+	{ 19, 17, 18, G_BOX, 0x0040, 0x0020, C_UNION(0x00ff1101L), 10, 1, 18, 1 },
+	{ edpi_col, NULL, AEO, 0x8846, NULL, NULL, 0, 0 },
+	{ 18, -1, -1, G_BOX, 0x0000, 0x0000, C_UNION(0x00011171L), 16, 0, 2, 1 },
+	{ 15, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 16, 1 },
+	{ 12, 20, 90, G_USERDEF, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 1, 2, 38, 5 },
+	{ 22, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_007), 1, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030100L, NULL, 0, 0 },
+	{ 24, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_012), 1, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030200L, NULL, 0, 0 },
+	{ 26, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&A_PATTERN01), 1, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030300L, NULL, 0, 0 },
+	{ 28, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_013), 4, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030400L, NULL, 0, 0 },
+	{ 30, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_014), 4, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030500L, NULL, 0, 0 },
+	{ 32, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_015), 4, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030600L, NULL, 0, 0 },
+	{ 34, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_016), 7, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030700L, NULL, 0, 0 },
+	{ 36, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_017), 7, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030800L, NULL, 0, 0 },
+	{ 38, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_018), 7, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030900L, NULL, 0, 0 },
+	{ 40, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_019), 10, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030a00L, NULL, 0, 0 },
+	{ 42, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_020), 10, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030b00L, NULL, 0, 0 },
+	{ 44, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_021), 10, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00030c00L, NULL, 0, 0 },
+	{ 46, -1, -1, G_BOX, 0x0005, 0x0000, C_UNION(0x00011101L), 13, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, NULL, NULL, 0, 0 },
+	{ 48, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_022), 13, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020100L, NULL, 0, 0 },
+	{ 50, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_023), 13, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020200L, NULL, 0, 0 },
+	{ 52, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_024), 16, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020300L, NULL, 0, 0 },
+	{ 54, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_025), 16, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020400L, NULL, 0, 0 },
+	{ 56, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_026), 16, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020500L, NULL, 0, 0 },
+	{ 58, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_027), 19, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020600L, NULL, 0, 0 },
+	{ 60, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_028), 19, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020700L, NULL, 0, 0 },
+	{ 62, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_029), 19, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020800L, NULL, 0, 0 },
+	{ 64, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_030), 22, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020900L, NULL, 0, 0 },
+	{ 66, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_032), 22, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020a00L, NULL, 0, 0 },
+	{ 68, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_031), 22, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020b00L, NULL, 0, 0 },
+	{ 70, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_033), 25, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020c00L, NULL, 0, 0 },
+	{ 72, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_034), 25, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020d00L, NULL, 0, 0 },
+	{ 74, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_035), 25, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020e00L, NULL, 0, 0 },
+	{ 76, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_036), 28, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00020f00L, NULL, 0, 0 },
+	{ 78, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_037), 28, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021000L, NULL, 0, 0 },
+	{ 80, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_038), 28, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021100L, NULL, 0, 0 },
+	{ 82, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_039), 31, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021200L, NULL, 0, 0 },
+	{ 84, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_040), 31, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021300L, NULL, 0, 0 },
+	{ 86, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_041), 31, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021400L, NULL, 0, 0 },
+	{ 88, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_042), 34, 1, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021500L, NULL, 0, 0 },
+	{ 90, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_043), 34, 2, 3, 1 },
+	{ edpi_pattern, NULL, AEO, 0x0000, (void *)(int32)0x00021600L, NULL, 0, 0 },
+	{ 19, -1, -1, G_USERDEF, 0x0005, 0x0000, C_UNION(&USER_044), 34, 3, 3, 1 },
+	{ edpi_pattern, NULL, AEO | OF_LASTOB, 0x0000, (void *)(int32)0x00021700L, NULL, 0, 0 }
+};

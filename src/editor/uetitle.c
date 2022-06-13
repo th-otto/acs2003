@@ -12,6 +12,9 @@ static void edti_replace(void);
 #include "uetitle.ah"
 #include "uetitle.h"
 
+extern OBJECT POP_SIZESEL;
+extern OBJECT POP_HORPOSSEL;
+
 static OBJECT *edti_object_tree(AUSER_DEF *user, OBJECT *obj);
 static void edti_test_it(AUSER_DEF *user, AUSERBLK *userblk);
 static void edti_minsize(AUSERBLK *user, int16 *w, int16 *h);
@@ -179,7 +182,7 @@ static OBJECT *edti_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	AUSERBLK *user;
 	long val;
 	
-	tree = Aob_create(&ED_TITLE);
+	tree = Aob_create(&ED_TITLE.root);
 	if (tree == NULL)
 		return NULL;
 	ptr = &tree[ED_TITLE_SAMPLE];

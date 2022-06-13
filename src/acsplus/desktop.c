@@ -318,7 +318,7 @@ static void wd_color(void)
 	Axywh rect;
 	int16 sel;
 	
-	popup = Aob_create(&DPOP_COLSEL);
+	popup = Aob_create(&DPOP_COLSEL.root);
 	if (popup == NULL)
 		return;
 	Aob_offset(&rect, ACSblk->ev_window->work, BEHAVIOUR_COLOR_POPUP_BOX);
@@ -344,7 +344,7 @@ static void wd_pattern(void)
 	Axywh rect;
 	int16 sel;
 	
-	popup = Aob_create(&DPOP_PATSEL);
+	popup = Aob_create(&DPOP_PATSEL.root);
 	if (popup == NULL)
 		return;
 	Aob_offset(&rect, ACSblk->ev_window->work, BEHAVIOUR_PATTERN_POPUP);
@@ -640,7 +640,7 @@ static Awindow *wd_make(void *a)
 	if (CONFIG.path[0] < 'C' && (Dsetdrv(Dgetdrv()) & 4))
 		CONFIG.path[0] = 'C';
 	menu = DESKTOP.menu;
-	if (menu == &__MENU)
+	if (menu == &__MENU.root)
 	{
 		sep = menu[menu[menu[menu[ROOT].ob_tail].ob_head].ob_head].ob_next;
 		menu[sep].ob_type = G_USERDEF;
@@ -830,6 +830,7 @@ static void norm_icon(Awindow *self, int16 obnr)
 
 /* -------------------------------------------------------------------------- */
 
+#if 0
 static void open_icon(Awindow *self, int16 obnr)
 {
 	AOBJECT *aobj;
@@ -843,6 +844,7 @@ static void open_icon(Awindow *self, int16 obnr)
 		aobj->click();
 	}
 }
+#endif
 
 /* -------------------------------------------------------------------------- */
 

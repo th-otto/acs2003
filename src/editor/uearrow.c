@@ -85,7 +85,7 @@ static void edar_arr(void)
 	int32 *parm;
 	int32 *selparm;
 	
-	popup = Aob_create(&POP_ARR);
+	popup = Aob_create(&POP_ARR.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_ARROW_DIR_BOX);
@@ -144,7 +144,7 @@ static void edar_ends(void)
 	int16 sel;
 	int32 *parm;
 	
-	popup = Aob_create(&POP_END);
+	popup = Aob_create(&POP_END.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_ARROW_END_BOX);
@@ -204,7 +204,7 @@ static void edar_len(void)
 	int16 sel;
 	int32 *parm;
 	
-	popup = Aob_create(&POP_LEN);
+	popup = Aob_create(&POP_LEN.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_ARROW_LEN_BOX);
@@ -256,7 +256,7 @@ static void edar_style(void)
 	int16 sel;
 	int32 *parm;
 	
-	popup = Aob_create(&POP_STYLESEL);
+	popup = Aob_create(&POP_STYLESEL.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_ARROW_STYLE_BOX);
@@ -303,7 +303,7 @@ static OBJECT *edar_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	long val;
 	int32 *parm;
 	
-	tree = Aob_create(&ED_ARROW);
+	tree = Aob_create(&ED_ARROW.root);
 	if (tree == NULL)
 		return NULL;
 	ptr = &tree[ED_ARROW_SAMPLE];

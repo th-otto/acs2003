@@ -17,8 +17,6 @@ static Awindow *make_graf(void *a);
 
 #include "plotter.ah"
 
-static VDIPARBLK _pb;
-
 typedef struct {
 	int16 handle;
 	int16 w;
@@ -27,7 +25,11 @@ typedef struct {
 	boolean offscreen;
 } GRAF_WI;
 
+#if !WITH_FIXES
+static VDIPARBLK _pb;
+
 static VDIPB pb = { _pb.contrl, _pb.intin, _pb.ptsin, _pb.intout, _pb.ptsout };
+#endif
 
 /******************************************************************************/
 /* -------------------------------------------------------------------------- */

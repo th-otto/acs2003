@@ -73,7 +73,7 @@ static OBJECT *edf_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	int16 i;
 	int16 id;
 	
-	tree = Aob_create(&ED_FTEXT);
+	tree = Aob_create(&ED_FTEXT.root);
 	if (tree == NULL)
 		return NULL;
 

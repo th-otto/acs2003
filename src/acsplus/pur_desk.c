@@ -364,7 +364,7 @@ static OBJECT *build_work(void)
 	done = OK;
 	if ((ptr = tree = Ax_malloc((MAX_ICONS * 2 + 1) * sizeof(*tree))) == NULL)
 		return NULL;
-	root = &PUR_ICONS;
+	root = &PUR_ICONS.root;
 	memcpy(ptr, root, sizeof(*ptr));
 	src = root + 1;
 	ptr++;
@@ -806,7 +806,7 @@ static Awindow *pd_make(void *a)
 	A_FileList *list;
 	
 	module = NULL;
-	if (PUR_DESK.menu == &_PMENU)
+	if (PUR_DESK.menu == &_PMENU.root)
 	{
 		OBJECT *tree = PUR_DESK.menu;
 		tree = &tree[tree[tree[tree[tree[ROOT].ob_tail].ob_head].ob_head].ob_next];
@@ -821,7 +821,7 @@ static Awindow *pd_make(void *a)
 	if (ACSblk->application)
 	{
 		if (ACSblk->multitask == FALSE && PUR_DESK.work == NULL)
-			PUR_DESK.work = &PUR_BACK;
+			PUR_DESK.work = &PUR_BACK.root;
 		if ((self = Awi_create(&PUR_DESK)) == NULL)
 			return NULL;
 		if ((self->user = PUR_MODULE.create(NULL)) != NULL)

@@ -1,6 +1,8 @@
 #include "acs_i.h"
 #include "io/workout.h"
 
+extern OBJECT INFO_OB_WH;
+
 char const hex[] = "0123456789ABCDEF"; /* FIXME: unused */
 static char const a_planemess[] = "[1][ |planes > nplanes!| ][   OK   ]";
 static int16 const map[16] = { 0, 2, 3, 6, 4, 7, 5, 8, 9, 10, 11, 14, 12, 15, 13, 1 };

@@ -3,6 +3,9 @@
 
 #include "edobclas.h"
 
+extern OBJECT POP_COLSEL;
+extern OBJECT OBJ_POPUP;
+
 static void ed_wabort(Awindow *self);
 
 #define SORT_YX  0

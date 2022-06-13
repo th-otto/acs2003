@@ -857,7 +857,7 @@ static void editref_choose(void)
 	AOBJECT *aobj;
 	OBJECT *popup;
 	
-	popup = &REF_TYPE;
+	popup = &REF_TYPE.root;
 	select = Ame_popup(ACSblk->ev_window, popup, -1, -1);
 	if (select >= 0)
 	{
@@ -880,7 +880,7 @@ static void set_eref(Awindow *self)
 	type = ref->obj->flags & 0xff;
 	if (type < 0 || type >= cross_type_anz)
 		type = REF_NONE;
-	set_type(self->work, &REF_TYPE, cross_type[type]);
+	set_type(self->work, &REF_TYPE.root, cross_type[type]);
 	set_flag(ref->obj->flags & OBJ_USERDEFINED, &self->work[EDIT_REF_EXTERN]);
 }
 

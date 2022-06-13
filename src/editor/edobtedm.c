@@ -28,6 +28,10 @@ static void edte_xftext(void);
 #include "edobtedm.ah"
 #include "edobtedm.h"
 
+extern OBJECT POP_PATSEL;
+extern OBJECT POP_SIZESEL;
+extern OBJECT POP_HORPOSSEL;
+
 static SUBMODE edte_sm = { NULL, edte_ok, Aob_delete, title, help_title, NULL };
 
 /******************************************************************************/
@@ -236,7 +240,7 @@ static void edte_type(void)
 	int16 type;
 #endif
 	
-	popup = Aob_create(&POP_TYPESEL);
+	popup = Aob_create(&POP_TYPESEL.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_TEDI_TYPE);
@@ -347,7 +351,7 @@ SUBMODE *edte_set_ted(OBJ_ENTRY *entry)
 	TEDINFO *sted;
 	int16 color;
 
-	tree = Aob_create(&ED_TEDI);
+	tree = Aob_create(&ED_TEDI.root);
 	if (tree == NULL)
 		return NULL;
 	oe_beself(ACSblk->ev_window, tree, ED_TEDI_TEXT);

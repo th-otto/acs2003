@@ -39,7 +39,7 @@ static void edal_newim(void)
 	int16 select;
 	OBJECT *popup;
 	
-	popup = &NEW_IMAGE;
+	popup = &NEW_IMAGE.root;
 	if ((select = Ame_popup(self, popup, -1, -1)) >= 0)
 	{
 		self->work[EDIT_ALERT_ICON].ob_spec.bitblk = popup[select].ob_spec.bitblk;

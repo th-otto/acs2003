@@ -7,12 +7,14 @@
 #endif
 
 
+#if defined __PUREC__ && !WITH_FIXES
 static void unused(void)
 {
 	save_string("%-12s");
 	save_string("&%-12s");
 	save_string("&%-12s[3]");
 }
+#endif
 
 
 static void out_string(Obj_Head *obj)

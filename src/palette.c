@@ -47,6 +47,9 @@ static void edmp_acc(void)
 			if (asel->type == LIST_MOUSE)
 			{
 				mouse = (MFORM *)add_mouse(acs, (Obj_Head *)asel->userp1);
+#if WITH_FIXES
+				mform = NULL;
+#endif
 			} else
 			{
 				mform = asel->userp1;
@@ -63,6 +66,9 @@ static void edmp_acc(void)
 				oldform->number = USER_DEF;
 				oldform->form = mouse;
 			} else
+#if WITH_FIXES
+			if (mform != NULL)
+#endif
 			{
 				oldform->number = mform->number;
 				oldform->form = NULL;

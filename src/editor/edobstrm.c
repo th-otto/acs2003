@@ -19,7 +19,7 @@ static void edst_type(void)
 	Axywh rect;
 	int16 sel;
 	
-	popup = Aob_create(&POP_TYPESEL);
+	popup = Aob_create(&POP_TYPESEL.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_STR_TYPE);
@@ -96,7 +96,7 @@ SUBMODE *edst_set_str(OBJ_ENTRY *entry)
 {
 	OBJECT *tree;
 	
-	tree = Aob_create(&ED_STR);
+	tree = Aob_create(&ED_STR.root);
 	if (tree == NULL)
 		return NULL;
 	oe_beself(ACSblk->ev_window, tree, ED_STR_TEXT);

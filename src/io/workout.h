@@ -39,10 +39,6 @@ extern char const wi_obj[];
 extern BITBLK IM_SORT_XY;
 extern BITBLK IM_SORT_YX;
 extern BITBLK SUNRISE;
-extern OBJECT INFO_OB_WH;
-extern OBJECT NEW2_LABEL;
-extern OBJECT NEW_LABEL;
-extern OBJECT OUTPUT_INFO;
 extern Awindow WI_NEW2_LABEL;
 extern Awindow WI_NEW_LABEL;
 

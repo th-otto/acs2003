@@ -30,7 +30,6 @@ static int16 CDECL edim_bitmap(PARMBLK *pb);
 #include "edimaged.h"
 
 static void edim_resize(OBJECT *tree, BITBLK *bit, int16 w, int16 h);
-static void accecpt_image(Awindow *self);
 static void edim_set_image(Awindow *self);
 static void edim_term(Awindow *self);
 static void accept_image(Awindow *self);
@@ -893,7 +892,7 @@ static Awindow *im_make(void *a)
 		wi_pos(win, &obj->pos, &parm->acs->last_rez);
 		win->user = newparm;
 		newparm->work = win->work;
-		newparm->edit = Aob_create(&EDIT_IMAGE2);
+		newparm->edit = Aob_create(&EDIT_IMAGE2.root);
 		if (newparm->edit == NULL)
 		{
 			/* Ax_free(win); BUG: missing */

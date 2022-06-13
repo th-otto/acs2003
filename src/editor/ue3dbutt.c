@@ -21,6 +21,10 @@ static void ed3d_ok(void);
 #include "ue3dbutt.ah"
 #include "ue3dbutt.h"
 
+extern OBJECT POP_SIZESEL;
+extern OBJECT POP_PATSEL;
+extern OBJECT POP_HORPOSSEL;
+
 static char *live_offset(void *obj, long val);
 static char *live_thickness(void *obj, long val);
 
@@ -331,7 +335,7 @@ static OBJECT *ed3d_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	SLLIVE live;
 	char buf[10];
 	
-	tree = Aob_create(&ED_3DBUTTON);
+	tree = Aob_create(&ED_3DBUTTON.root);
 	if (tree == NULL)
 		return NULL;
 	oe_beself(ACSblk->ev_window, tree, ED_3DBUTTON_TEXT);

@@ -54,31 +54,62 @@ static AUSERBLK A_BOXED04 = { A_boxed, 0x9038ff12L, Auo_boxed, NULL, NULL, NULL,
 static AUSERBLK A_INNERFRAME03 = { A_innerframe, 0x18008f19L, Auo_string, TEXT_05, NULL, NULL, NULL, NULL };
 static AUSERBLK A_TITLE01 = { A_title, 0, Auo_string, TEXT_006, NULL, NULL, NULL, NULL };
 
-static OBJECT  ED_TITLE =     { -1,  1, 25, 24, 0x0040, 0x0010, C_UNION(&A_3DBUTTON05), 0, 0, 44, 13 };
-static OBJECT  _01_ED_TITLE = {  3,  2,  2, 24, 0x0040, 0x0000, C_UNION(&A_3DBUTTON04), 0, 0, 12, 3 };
-static OBJECT  _02_ED_TITLE = {  1, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_TITLE01), 1, 1, 10, 1 };
-static OBJECT  _03_ED_TITLE = {  5, -1, -1, 24, 0x4007, 0x0000, C_UNION(&A_3DBUTTON03), 16, 1, 12, 2 };
-static AOBJECT _03aED_TITLE = { edti_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 };
-static OBJECT  _05_ED_TITLE = {  7, -1, -1, 24, 0x4005, 0x0000, C_UNION(&A_3DBUTTON06), 31, 1, 12, 2 };
-static AOBJECT _05aED_TITLE = { edti_abort, NULL, 0x8000, 0x8841, NULL, NULL, 0, 0 };
-static OBJECT  _07_ED_TITLE = {  9,  8,  8, 28, 0x0040, 0x0000, C_UNION(&TEXT_04), 2, 4, 9, 1 };
-static OBJECT  _08_ED_TITLE = {  7, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
-static OBJECT  _09_ED_TITLE = { 11, 10, 10, 28, 0x0040, 0x0000, C_UNION(&TEXT_12), 28, 4, 6, 1 };
-static OBJECT  _10_ED_TITLE = {  9, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 };
-static OBJECT  _11_ED_TITLE = { 14, 13, 13, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 35, 4, 8, 1 };
-static AOBJECT _11aED_TITLE = { edti_size, NULL, 0x8000, 0x8847, NULL, NULL, 0, 0 };
-static OBJECT  _13_ED_TITLE = { 11, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON04), 0, 0, 8, 1 };
-static OBJECT  _14_ED_TITLE = { 15, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED02), 2, 6, 24, 1 };
-static OBJECT  _15_ED_TITLE = { 16, -1, -1, 28, 0x0040, 0x0000, C_UNION(&TEXT_13), 28, 6, 6, 1 };
-static OBJECT  _16_ED_TITLE = { 18, -1, -1, 27, 0x0005, 0x0000, C_UNION(0x43ff1121L), 35, 6, 3, 1 };
-static AOBJECT _16aED_TITLE = { edti_trans, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
-static OBJECT  _18_ED_TITLE = { 20, -1, -1, 27, 0x0005, 0x0000, C_UNION(0x43ff11a1L), 39, 6, 3, 1 };
-static AOBJECT _18aED_TITLE = { edti_replace, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 };
-static OBJECT  _20_ED_TITLE = { 25, 21, 24, 24, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 1, 8, 42, 5 };
-static OBJECT  _21_ED_TITLE = { 22, -1, -1, 28, 0x0000, 0x0000, C_UNION(&TEXT_06), 1, 1, 14, 1 };
-static OBJECT  _22_ED_TITLE = { 23, -1, -1, 28, 0x0000, 0x0000, C_UNION(&TEXT_07), 1, 3, 13, 1 };
-static OBJECT  _23_ED_TITLE = { 24, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED03), 16, 1, 25, 1 };
-static OBJECT  _24_ED_TITLE = { 20, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED04), 16, 3, 25, 1 };
-static OBJECT  _25_ED_TITLE = {  0, 27, 27, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 16, 4, 10, 1 };
-static AOBJECT _25aED_TITLE = { edti_pos, NULL, 0x8000, 0x8850, NULL, NULL, 0, 0 };
-static OBJECT  _27_ED_TITLE = { 25, -1, -1, 24, 0x0020, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 10, 1 };
+static struct {
+	OBJECT  root;
+	OBJECT  _01_ED_TITLE;
+	OBJECT  _02_ED_TITLE;
+	OBJECT  _03_ED_TITLE;
+	AOBJECT _03aED_TITLE;
+	OBJECT  _05_ED_TITLE;
+	AOBJECT _05aED_TITLE;
+	OBJECT  _07_ED_TITLE;
+	OBJECT  _08_ED_TITLE;
+	OBJECT  _09_ED_TITLE;
+	OBJECT  _10_ED_TITLE;
+	OBJECT  _11_ED_TITLE;
+	AOBJECT _11aED_TITLE;
+	OBJECT  _13_ED_TITLE;
+	OBJECT  _14_ED_TITLE;
+	OBJECT  _15_ED_TITLE;
+	OBJECT  _16_ED_TITLE;
+	AOBJECT _16aED_TITLE;
+	OBJECT  _18_ED_TITLE;
+	AOBJECT _18aED_TITLE;
+	OBJECT  _20_ED_TITLE;
+	OBJECT  _21_ED_TITLE;
+	OBJECT  _22_ED_TITLE;
+	OBJECT  _23_ED_TITLE;
+	OBJECT  _24_ED_TITLE;
+	OBJECT  _25_ED_TITLE;
+	AOBJECT _25aED_TITLE;
+	OBJECT  _27_ED_TITLE;
+} ED_TITLE = {
+	{ -1,  1, 25, 24, 0x0040, 0x0010, C_UNION(&A_3DBUTTON05), 0, 0, 44, 13 },
+	{  3,  2,  2, 24, 0x0040, 0x0000, C_UNION(&A_3DBUTTON04), 0, 0, 12, 3 },
+	{  1, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_TITLE01), 1, 1, 10, 1 },
+	{  5, -1, -1, 24, 0x4007, 0x0000, C_UNION(&A_3DBUTTON03), 16, 1, 12, 2 },
+	{ edti_ok, NULL, 0x8000, 0x884f, NULL, NULL, 0, 0 },
+	{  7, -1, -1, 24, 0x4005, 0x0000, C_UNION(&A_3DBUTTON06), 31, 1, 12, 2 },
+	{ edti_abort, NULL, 0x8000, 0x8841, NULL, NULL, 0, 0 },
+	{  9,  8,  8, 28, 0x0040, 0x0000, C_UNION(&TEXT_04), 2, 4, 9, 1 },
+	{  7, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 },
+	{ 11, 10, 10, 28, 0x0040, 0x0000, C_UNION(&TEXT_12), 28, 4, 6, 1 },
+	{  9, -1, -1, 24, 0x0040, 0x0000, C_UNION(&A_ARROWS02), 0, 0, 1, 1 },
+	{ 14, 13, 13, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 35, 4, 8, 1 },
+	{ edti_size, NULL, 0x8000, 0x8847, NULL, NULL, 0, 0 },
+	{ 11, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON04), 0, 0, 8, 1 },
+	{ 15, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED02), 2, 6, 24, 1 },
+	{ 16, -1, -1, 28, 0x0040, 0x0000, C_UNION(&TEXT_13), 28, 6, 6, 1 },
+	{ 18, -1, -1, 27, 0x0005, 0x0000, C_UNION(0x43ff1121L), 35, 6, 3, 1 },
+	{ edti_trans, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 },
+	{ 20, -1, -1, 27, 0x0005, 0x0000, C_UNION(0x43ff11a1L), 39, 6, 3, 1 },
+	{ edti_replace, NULL, 0x8000, 0x0000, NULL, NULL, 0, 0 },
+	{ 25, 21, 24, 24, 0x0040, 0x0000, C_UNION(&A_INNERFRAME03), 1, 8, 42, 5 },
+	{ 22, -1, -1, 28, 0x0000, 0x0000, C_UNION(&TEXT_06), 1, 1, 14, 1 },
+	{ 23, -1, -1, 28, 0x0000, 0x0000, C_UNION(&TEXT_07), 1, 3, 13, 1 },
+	{ 24, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED03), 16, 1, 25, 1 },
+	{ 20, -1, -1, 24, 0x0008, 0x0010, C_UNION(&A_BOXED04), 16, 3, 25, 1 },
+	{  0, 27, 27, 20, 0x0040, 0x0020, C_UNION(0x00ff1101L), 16, 4, 10, 1 },
+	{ edti_pos, NULL, 0x8000, 0x8850, NULL, NULL, 0, 0 },
+	{ 25, -1, -1, 24, 0x0020, 0x0000, C_UNION(&A_3DBUTTON27), 0, 0, 10, 1 }
+};

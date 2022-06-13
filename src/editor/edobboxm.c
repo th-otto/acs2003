@@ -72,7 +72,7 @@ static void edbo_pattern(void)
 	Axywh rect;
 	int16 sel;
 	
-	popup = Aob_create(&POP_PATSEL);
+	popup = Aob_create(&POP_PATSEL.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_BOX_PATTERN);
@@ -128,7 +128,7 @@ static void edbo_type(void)
 	Axywh rect;
 	int16 sel;
 	
-	popup = Aob_create(&POP_TYPESEL);
+	popup = Aob_create(&POP_TYPESEL.root);
 	if (popup != NULL)
 	{
 		Aob_offset(&rect, ACSblk->ev_window->work, ED_BOX_TYPE);
@@ -203,7 +203,7 @@ SUBMODE *edbo_set_box(OBJ_ENTRY *entry)
 	int16 color;
 	static SUBMODE edbo_sm = { NULL, edbo_ok, Aob_delete, title, help_title, NULL };
 	
-	tree = Aob_create(&ED_BOX);
+	tree = Aob_create(&ED_BOX.root);
 	if (tree == NULL)
 		return NULL;
 	tree[ED_BOX_SAMPLE].ob_type = entry->obj.ob_type;
