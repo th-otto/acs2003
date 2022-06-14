@@ -1,53 +1,6 @@
 #include "acs_i.h"
 #include "acsplus.h"
 
-Awindow PUR_DESK;
-Awindow PUR_MODULE;
-Awindow EDITOR;
-Awindow WIED_FIND;
-Awindow WIED_GOTOLINE;
-Awindow WIED_INFO;
-Awindow WIED_INFOBOX;
-Awindow WIED_NEWFKEY;
-Awindow WIED_OPTION;
-Awindow WIED_REPLACE;
-Awindow WIED_WRAP;
-Awindow WI_FONTSEL;
-
-char A_ERR_ACC[1];
-char A_ERR_MESS[1];
-char A_ERR_WINDOW[1];
-char A_ERR_WISLOT[1];
-char const _A_ERR_WISLOT[1];
-char NULL_STRING[1] = "";
-
-CICONBLK _CHK_1D_DS;
-CICONBLK _CHK_1D_DU;
-CICONBLK _CHK_1D_S;
-CICONBLK _CHK_1D_U;
-CICONBLK _CHK_3D_DS;
-CICONBLK _CHK_3D_DU;
-CICONBLK _CHK_3D_U;
-CICONBLK _RD_1D_DS;
-CICONBLK _RD_1D_DU;
-CICONBLK _RD_1D_S;
-CICONBLK _RD_1D_U;
-CICONBLK _RD_3D_DS;
-CICONBLK _RD_3D_DU;
-CICONBLK _RD_3D_S;
-CICONBLK _RD_3D_U;
-OBJECT ICO;
-Awindow _WDD;
-Awindow _W_ALERT;
-void *SentMsg;
-void *ListOfApps;
-Ablk *ACSblk;
-int16 _ACSv_magix;
-void *Linea;
-void *Vdiesc;
-void *Fonts;
-void *Linea_funp;
-
 char null_string[] = "";
 
 Awindow *Aroot_wi;
@@ -1360,7 +1313,7 @@ int16 Awi_gemscript(Awindow *wi, int16 anz, char **cmds, A_GSAntwort *antwort)
 
 /* -------------------------------------------------------------------------- */
 
-void Ash_error(int16 messerr, void *para)
+void Ash_error(int16 messerr, const void *para)
 {
 }
 

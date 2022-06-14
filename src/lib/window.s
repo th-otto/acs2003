@@ -1232,7 +1232,7 @@ Awi_catch_7:
 		bra.s      Awi_catch_6
 Awi_catch_10:
 		movea.l    _globl,a1
-		lea.l      _A_ERR_WINDOW,a0
+		lea.l      _ALIB_ERR_WINDOW,a0
 		moveq.l    #1,d0
 		jsr        mt_form_alert
 		moveq.l    #-1,d0
@@ -2029,7 +2029,7 @@ Awi_create_15:
 		cmpi.w     #$0100,4(a7)
 		blt        Awi_create_19
 		movea.l    _globl,a1
-		lea.l      _A_ERR_WISLOT,a0
+		lea.l      _ALIB_ERR_WISLOT,a0
 		moveq.l    #1,d0
 		jsr        mt_form_alert
 		suba.l     a0,a0

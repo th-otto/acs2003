@@ -1792,7 +1792,7 @@ Awindow *Awi_create23x(const Awindow *parent)
 			return newwin;
 		}
 	}
-	mt_form_alert(1, _A_ERR_WISLOT, _globl);
+	mt_form_alert(1, _ALIB_ERR_WISLOT, _globl);
 	return NULL;
 }
 

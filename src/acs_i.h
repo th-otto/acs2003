@@ -1449,7 +1449,7 @@ Awindow *get_plotter(void);
 /*
  * lib/initterm.c
  */
-void ACSinitialize(void);
+int16 ACSinitialize(void);
 void ACSterminate(void);
 
 
@@ -1463,7 +1463,30 @@ void ACSInitLineA(void);
 /*
  * lib/main.c
  */
-extern char const _A_ERR_WISLOT[];
+extern int16 _ACSv_magix;
+extern char _ALIB_ERR_ACC[];
+extern char const _ALIB_ERR_WINDOW[];
+extern char const _ALIB_ERR_WISLOT[];
+extern CICONBLK _CHK_1D_DS;
+extern CICONBLK _CHK_1D_DU;
+extern CICONBLK _CHK_1D_S;
+extern CICONBLK _CHK_1D_U;
+extern CICONBLK _CHK_3D_DS;
+extern CICONBLK _CHK_3D_DU;
+extern CICONBLK _CHK_3D_S;
+extern CICONBLK _CHK_3D_U;
+extern CICONBLK _RD_1D_DS;
+extern CICONBLK _RD_1D_DU;
+extern CICONBLK _RD_1D_S;
+extern CICONBLK _RD_1D_U;
+extern CICONBLK _RD_3D_DS;
+extern CICONBLK _RD_3D_DU;
+extern CICONBLK _RD_3D_S;
+extern CICONBLK _RD_3D_U;
+extern Awindow _WDD;
+extern Awindow _W_ALERT;
+extern void *SentMsg;
+extern void *ListOfApps;
 
 
 /*

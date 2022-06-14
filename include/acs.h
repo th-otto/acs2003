@@ -761,9 +761,9 @@ typedef struct
 
     /* others */
     /*  562 */ int32 ev_mtcount;                         /* Timerintervall in milli sec (initial 500 ms) */
-    /*  566 */ int16 application;                        /* runs as an application */
+    /*  566 */ boolean application;                      /* runs as an application */
     /*  568 */ boolean multitask;                        /* more than 1 applications possible */
-    /*  570 */ int16 appexit;                            /* application is in system termination mode */
+    /*  570 */ boolean appexit;                          /* application is in system termination mode */
     /*  572 */ Adescr *description;                      /* surface description, pointer for late assignment */
     /*  576 */ Asel Aselect;                             /* list of selected objects */
 
@@ -829,7 +829,7 @@ typedef struct
     /* Einstellung, ob eine nicht verarbeitete "normale" Taste zusammen mit */
     /* ALT oder CTRL als TastenkÅrzel fÅr Toolbar/Work-Objekt ausprobiert   */
     /* werden soll */
-    /* 1276 */ int16 keyAltCtrlSwitch;
+    /* 1276 */ boolean keyAltCtrlSwitch;
 
     /* Der MagiC-Cookie */
     /* 1278 */ MAGX_COOKIE *MagiCCookie;
@@ -2192,7 +2192,7 @@ int32 Ash_prog( char *path, char *command, char **env );
 int16 Ash_module(const char *path);
 
 /* Standard-Error-Handler */
-void Ash_error( int16 messerr, void *para );
+void Ash_error( int16 messerr, const void *para );
 
 /* Returns cyclic D&D-Partners, init act with NULL, end is NULL */
 A_dd *Ash_nextdd( A_dd *act );

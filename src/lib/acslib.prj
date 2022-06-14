@@ -43,7 +43,7 @@ acslib.lib
 .L[-J] ; generate library
 
 =
-main.s
+main.c
 initterm.s
 vdi_data.s
 mygemdos.s [-S]

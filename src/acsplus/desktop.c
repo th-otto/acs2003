@@ -11,8 +11,6 @@
 #include "acsplus.h"
 #include "country.h"
 
-#define STATIC
-
 typedef struct {
 	void (*newcall)(char *filename);
 	int16 sort;

@@ -604,7 +604,7 @@ Awindow DESKTOP = {
 	NULL
 };
 
-STATIC Awindow _WI_NEW_INFO = {
+static Awindow _WI_NEW_INFO = {
 	NULL,
 	Awi_service,
 	Awi_selfcreate,
@@ -647,7 +647,7 @@ STATIC Awindow _WI_NEW_INFO = {
 	NULL
 };
 
-STATIC Awindow _WI_TRASH_INFO = {
+static Awindow _WI_TRASH_INFO = {
 	NULL,
 	Awi_service,
 	Awi_selfcreate,
@@ -690,7 +690,7 @@ STATIC Awindow _WI_TRASH_INFO = {
 	NULL
 };
 
-STATIC Awindow _WI_BEHAVIOUR = {
+static Awindow _WI_BEHAVIOUR = {
 	NULL,
 	Awi_service,
 	Awi_selfcreate,
