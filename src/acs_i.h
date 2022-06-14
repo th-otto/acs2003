@@ -1485,8 +1485,14 @@ extern CICONBLK _RD_3D_S;
 extern CICONBLK _RD_3D_U;
 extern Awindow _WDD;
 extern Awindow _W_ALERT;
-extern void *SentMsg;
-extern void *ListOfApps;
+extern ULinList *SentMsg;
+extern ULinList *ListOfApps;
+
+
+/*
+ * lib/nkcc.c
+ */
+void nkc_init(unsigned long flags, int16 vdi_handle, int16 *pglobl);
 
 
 /*
@@ -1501,7 +1507,7 @@ void ACSeventhandler(void);
 /*
  * lib/memory.c
  */
-void INmemory(void);
+int16 INmemory(void);
 void TRmemory(void);
 void Ax_release(void *memory);
 
@@ -1517,7 +1523,7 @@ int16 Ame_key(OBJECT *menu, int16 kstate, int16 key);
 /*
  * lib/mouse.c
  */
-void INmouse(void);
+int16 INmouse(void);
 void TRmouse(void);
 void Amo_point(void);
 int16 Amo_restart(Amouse *mouse);
@@ -1561,7 +1567,7 @@ extern CICONBLK *_ACSv_wiicons[MAX_WINDS];
 extern int16 _ACSv_wmenu;
 extern int16 _Wmax_wi;
 
-void INwindow(void);
+int16 INwindow(void);
 void TRwindow(void);
 int16 Awi_register(Awindow *win);
 void Awi_setontop(Awindow *win);
@@ -1581,7 +1587,7 @@ int16 _init_alert(Awindow *win);
  */
 extern ULinListe *globProtData;
 
-void INMsgService(void);
+int16 INMsgService(void);
 void TRMsgService(void);
 int16 Aev_message(int16 *msg);
 int16 Aev_CmpMsgInList(void *list, int16 *msg);
@@ -1594,7 +1600,7 @@ boolean Aev_SendAllMsg(void *a0, int16 d0, void *a1, int16 d1);
 void *Aev_DDSearch(int16 id);
 boolean Aev_DDAdd(int16 d0, int16 d1, void *a0, void *a1);
 boolean Aev_DDDelete(int16 id);
-boolean Aev_DDRemove(void *a0);
+boolean Aev_DDRemove(void *elem);
 void Ash_sendmsg(int16 d0, int16 d1, void *a0);
 boolean GetImgIntoObj(void *a0, void *a1, int16 d0);
 boolean GetTxtIntoObj(void *a0, void *a1, int16 d0, int16 d1);

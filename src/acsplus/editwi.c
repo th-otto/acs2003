@@ -2480,7 +2480,7 @@ static void save_it(OBJECT *editor, const char *filename)
 		if (save_text(editor, fd) != OK)
 		{
 			Fdelete(filename);
-			Frename(0, path, filename);
+			(void) Frename(0, path, filename);
 		} else
 		{
 			if (err == 0)
@@ -2490,7 +2490,7 @@ static void save_it(OBJECT *editor, const char *filename)
 		Aev_DhstSaved(filename);
 	} else
 	{
-		Frename(0, path, filename);
+		(void) Frename(0, path, filename);
 	}
 }
 

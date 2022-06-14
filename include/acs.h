@@ -2598,7 +2598,7 @@ void Aqu_delete( Queue *queue );
 /*                                                                            */
 /******************************************************************************/
 
-UConfig *Acfg_create( const UCfgInfo *info, int16 load );
+UConfig *Acfg_create( const UCfgInfo *info, boolean load );
 void Acfg_delete( UConfig *config );
 void Acfg_clear( UConfig *cfg, const UCfgInfo *info );
 void Acfg_clearAllGroups( UConfig *config );

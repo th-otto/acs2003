@@ -544,6 +544,9 @@ void Awd_behaviour(void)
 		win->work[BEHAVIOUR_PULLDOWN].ob_state &= ~OS_SELECTED;
 		win->work[BEHAVIOUR_FEEDBACK].ob_state &= ~OS_SELECTED;
 		win->work[BEHAVIOUR_HIDEMOUSE].ob_state &= ~OS_SELECTED;
+#if WITH_FIXES
+		win->work[BEHAVIOUR_ACUSTIC].ob_state &= ~OS_SELECTED;
+#endif
 		win->work[BEHAVIOUR_CENTER_DIALOG].ob_state &= ~OS_SELECTED;
 		win->work[BEHAVIOUR_SMART_REDRAW].ob_state &= ~OS_SELECTED;
 		win->work[BEHAVIOUR_MENU_FIRST].ob_state &= ~OS_SELECTED;

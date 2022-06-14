@@ -452,8 +452,9 @@ ULinList *Af_parseCmdLine(char *file_string)
 
 /* -------------------------------------------------------------------------- */
 
-void INmemory(void)
+int16 INmemory(void)
 {
+	return OK;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -561,8 +562,9 @@ void Ame_namefix(OBJECT *menu)
 
 /* -------------------------------------------------------------------------- */
 
-void INmouse(void)
+int16 INmouse(void)
 {
+	return OK;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1012,8 +1014,9 @@ int16 Abp_img2mfdb(IMG_HEADER *org, MFDB **dest, int16 do_trnsfm)
 
 /* -------------------------------------------------------------------------- */
 
-void INwindow(void)
+int16 INwindow(void)
 {
+	return OK;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1642,8 +1645,9 @@ int16 Akt_chooseImpNr(Awindow *window, int16 x, int16 y)
 
 /* -------------------------------------------------------------------------- */
 
-void INMsgService(void)
+int16 INMsgService(void)
 {
+	return OK;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -3006,4 +3010,13 @@ int32 nkc_n2tos( int16 nkcode )
 int16 nkc_tos2n( int32 toskey )
 {
 	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
+void nkc_init(unsigned long flags, int16 vdi_handle, int16 *pglobl)
+{
+	(void)flags;
+	(void)vdi_handle;
+	(void)pglobl;
 }

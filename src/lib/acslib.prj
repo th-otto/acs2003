@@ -44,7 +44,7 @@ acslib.lib
 
 =
 main.c
-initterm.s
+initterm.c
 vdi_data.s
 mygemdos.s [-S]
 nkcc_s.s

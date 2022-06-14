@@ -148,14 +148,14 @@ void save(Awindow *self)
 	if (fd < 0)
 	{
 		ACSblk->ACSerror(AE_CREATE_IO, dot);
-		Frename(0, filename, acs->filename);
+		(void) Frename(0, filename, acs->filename);
 	} else
 	{
 		if (save_acs(fd, acs) != OK)
 		{
 			ACSblk->ACSerror(AE_WRITE_IO, dot);
 			Fdelete(acs->filename);
-			Frename(0, filename, acs->filename);
+			(void) Frename(0, filename, acs->filename);
 			save_aborted = TRUE;
 		} else
 		{
