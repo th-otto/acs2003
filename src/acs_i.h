@@ -8,6 +8,7 @@
 #undef WITH_FIXES
 #define WITH_FIXES 1
 #endif
+#define WITH_UNUSED_ICONS (!WITH_FIXES)
 
 #define __PS__   128
 

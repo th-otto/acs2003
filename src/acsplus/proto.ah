@@ -4,7 +4,7 @@
 
 #if COUNTRY == COUNTRY_DE
 static char TEXT_002[] = "";
-#if !WITH_FIXES
+#if WITH_UNUSED_ICONS
 static char TEXT_02[] = "PROTOCOL";
 #endif
 static char TEXT_03[] = " PROTOCOL ";
@@ -14,7 +14,7 @@ static char TEXT_08[] = " Information ";
 #endif
 #if COUNTRY == COUNTRY_US
 static char TEXT_002[] = "";
-#if !WITH_FIXES
+#if WITH_UNUSED_ICONS
 static char TEXT_02[] = "PROTOCOL";
 #endif
 static char TEXT_03[] = " PROTOCOL ";
@@ -141,7 +141,7 @@ static int16 _DAT_PROTO_ICON[] = {
 };
 static CICONBLK PROTO_ICON = { { _MSK_PROTO_ICON, _DAT_PROTO_ICON, TEXT_04, 0x1000, 0x0000, 0x0000, 0x0014, 0x0000, 0x0020, 0x0020, 0x0000, 0x0020, 0x0048, 0x0008 }, &_C4_PROTO_ICON };
 
-#if !WITH_FIXES
+#if WITH_UNUSED_ICONS
 static int16 _MSK_PROT_ICON[] = {
 	0x0fff, 0xffff, 0xff00, 0x0fff, 0xffff, 0xff80, 0x0fff, 0xffff,
 	0xfffc, 0x0fff, 0xffff, 0xfffc, 0x0fff, 0xffff, 0xfffc, 0x0fff,
