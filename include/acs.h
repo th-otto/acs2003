@@ -448,7 +448,7 @@ typedef struct
 typedef struct
 {
    int16       id;            /* The AES-ID of another PRG        */
-   int32       type;          /* Same bitvec as dd_active         */
+   int32       type;          /* DD_* protocol flags              */
    uint16      xacc_val;      /* DD-dependant-value: XACC->groups */
    const char  *xacc_name;    /* Name of Partner, or NULL         */
    uint16      va_val[3];     /* Status-Bits of VA_PROTOSTATUS    */
@@ -998,9 +998,9 @@ typedef int16 (*A_FontFkt)(void *para, A_FontSel *font);
 /******************************************************************************/
 
 /* Einige Messages fr Ergebnis-Meldungen der diversen Protokolle */
-#define AS_ACC_ACK         (100)       /* Best„tigung eines XAcc-Transfers eingegangen */
-#define AS_AV_STARTED      (101)       /* Best„tigung eines VA_START-Transfers eingegangen */
-#define AS_PC_VERSION      (102)       /* Versionsnummer der PureC-Hilfe als Best„tigung */
+#define AS_ACC_ACK         (400)       /* Best„tigung eines XAcc-Transfers eingegangen */
+#define AS_AV_STARTED      (401)       /* Best„tigung eines VA_START-Transfers eingegangen */
+#define AS_PC_VERSION      (402)       /* Versionsnummer der PureC-Hilfe als Best„tigung */
 
 /******************************************************************************/
 
@@ -1487,11 +1487,12 @@ int16 Aev_VaStart( int16 dest_id, const char *cmd, Awindow *window, int16 timeou
 int16 Aev_AvStarted( int16 dest_id, int16 ok, const char *cmd );
 
 /* XAcc-Protokoll */
-int16 Aev_AccID( int16 dest_id, Awindow *window, int16 timeout );
-int16 Aev_AccExit( int16 dest_id, Awindow *window, int16 timeout );
-int16 Aev_AccAck( int16 dest_id, int16 ok );
-int16 Aev_AccAcc( int16 dest_id, int16 *message, Awindow *window, int16 timeout );
-int16 Aev_AccKey( int16 dest_id, int16 key, Awindow *window, int16 timeout );
+boolean Aev_AccID( int16 dest_id, Awindow *window, int16 timeout );
+boolean Aev_AccExit( int16 dest_id, Awindow *window, int16 timeout );
+boolean Aev_AccAck( int16 dest_id, boolean ok );
+boolean Aev_AccAcc( int16 dest_id, int16 *message, Awindow *window, int16 timeout );
+boolean Aev_AccKey( int16 dest_id, int16 key, Awindow *window, int16 timeout );
+boolean Aev_AccText(int16 dest_id, const char *text, Awindow *window, int16 timeout);
 
 /* ST-Guide-Hilfe anfordern */
 int16 Aev_STGuideHelp( char *hyp_text, char *referenz, Awindow *window );
@@ -1949,7 +1950,7 @@ void Ax_glfree( void *memory );
 void Ax_ifree( void *memory );
 
 /* Speicher auf Les-/Schreibbarkeit prfen (Speicherschutz!) */
-int16 Ax_memCheck( const char *buffer, ssize_t len, int16 write );
+int16 Ax_memCheck( const char *buffer, ssize_t len, boolean write );
 
 /* Liste fr recyclebaren Speicher erzeugen/„ndern/l”schen */
 int16 Ax_setRecycleSize( ssize_t size, int16 amount, const char *beschreibung );
@@ -2547,12 +2548,12 @@ void Ascrp_clear( const char *ext );
 /* Reads from clipboard SCRAP."ext" or first Scrap-file  */
 /* If buffer==NULL, only Length will be returned, Buffer */
 /* and real ext are returned and TRUE, if all is ok      */
-int16 Ascrp_get( char *ext, void **buffer, ssize_t *len );
+boolean Ascrp_get( const char *ext, void **buffer, ssize_t *len );
 
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */
 /* to a possibly existing file. -> TRUE if all is ok */
-int16 Ascrp_put (char *ext, void *buffer, ssize_t len, int16 append );
+boolean Ascrp_put (const char *ext, void *buffer, ssize_t len, boolean append );
 
 /******************************************************************************/
 /*                                                                            */

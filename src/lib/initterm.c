@@ -1,5 +1,6 @@
 #include "acs_i.h"
 #include <ctype.h>
+#include "messages/msgserv.h"
 
 #ifndef C_UNION
 #  define C_UNION(x) { (int32)(x) }

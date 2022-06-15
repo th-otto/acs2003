@@ -813,12 +813,12 @@ void Ascrp_clear( const char *ext );
 /* Reads from clipboard SCRAP."ext" or first Scrap-file  */
 /* If buffer==NULL, only Length will be returned, Buffer */
 /* and real ext are returned and TRUE, if all is ok      */
-int16 Ascrp_get( char *ext, void **buffer, long *len );
+boolean Ascrp_get( const char *ext, void **buffer, ssize_t *len );
 
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */
 /* to a possibly existing file. -> TRUE if all is ok */
-int16 Ascrp_put (char *ext, void *buffer, long len, int16 append );
+boolean Ascrp_put (const char *ext, void *buffer, ssize_t len, boolean append );
 
 /******************************************************************************/
 /*                                                                            */

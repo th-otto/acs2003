@@ -1,5 +1,6 @@
 #include "acs_i.h"
 #include "acsplus.h"
+#include "lib/messages/msgserv.h"
 
 char null_string[] = "";
 
@@ -1661,7 +1662,7 @@ int16 Aev_CmpMsgInList(void *list, int16 *msg)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_CmpDestID(void *list, int16 *msg)
+int16 Aev_CmpDestID(void *list, void *msg)
 {
 	return 0;
 }
@@ -1681,7 +1682,7 @@ boolean Aev_DeleteMsg(void *a0)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_SendMsg(int16 d0, int16 d1, void *a0, void *a1, int16 d2)
+boolean Aev_SendMsg(int16 dest_id, int16 type, int16 *message, Awindow *win, int16 timeout)
 {
 	return 0;
 }
@@ -1694,21 +1695,21 @@ void Aev_SendMsg2all(void *a0, void *a1)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_SendAllMsg(void *a0, int16 d0, void *a1, int16 d1)
+boolean Aev_SendAllMsg(int16 *message, int16 type, Awindow *win, int16 timeout)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-void *Aev_DDSearch(int16 id)
+A_dd_int *Aev_DDSearch(int16 id)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_DDAdd(int16 d0, int16 d1, void *a0, void *a1)
+boolean Aev_DDAdd(int16 id, int16 type, void *msg, const char *name)
 {
 	return 0;
 }
@@ -1749,7 +1750,7 @@ A_dd *Ash_nextdd(A_dd *act)
 
 /* -------------------------------------------------------------------------- */
 
-boolean GetImgIntoObj(void *a0, void *a1, int16 d0)
+boolean GetImgIntoObj(void *data, Awindow *win, int16 obnr, AOBJECT *aobj, OBJECT *obj)
 {
 	return 0;
 }
@@ -1758,7 +1759,7 @@ boolean GetImgIntoObj(void *a0, void *a1, int16 d0)
 
 ULinListe *globProtData;
 
-boolean GetTxtIntoObj(void *a0, void *a1, int16 d0, int16 d1)
+boolean GetTxtIntoObj(const char *text, const char *type, Awindow *win, int16 obnr, int16 obednr, AOBJECT *aobj, OBJECT *obj)
 {
 	return 0;
 }
@@ -1955,117 +1956,6 @@ boolean Aev_GetAcOpen(MsgFktParams *params)
 /* -------------------------------------------------------------------------- */
 
 int16 Aev_WmRedraw(int16 dest_id, int16 wind_id, const Axywh *area)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_InitXAcc(void)
-{
-	return TRUE;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_ExitXAcc(void)
-{
-	return TRUE;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void XAccDataDelete(void *a0)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GetAccID(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GetAccAck(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GetAccAcc(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GetAccKey(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GetAccText(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GetAccImg(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GetAccMeta(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_AccID(int16 dest_id, Awindow *window, int16 timeout)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_AccAcc(int16 dest_id, int16 *message, Awindow *window, int16 timeout)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_AccExit(int16 dest_id, Awindow *window, int16 timeout)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_AccAck(int16 dest_id, int16 ok)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_AccKey(int16 dest_id, int16 key, Awindow *window, int16 timeout)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_AccText(int16 dest_id, void *a0, void *a1, int16 d1)
 {
 	return 0;
 }
@@ -2855,7 +2745,7 @@ void Ascrp_clear(const char *ext)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Ascrp_get(char *ext, void **buffer, ssize_t *len)
+int16 Ascrp_get(const char *ext, void **buffer, ssize_t *len)
 {
 	return 0;
 }
@@ -2864,7 +2754,7 @@ int16 Ascrp_get(char *ext, void **buffer, ssize_t *len)
 
 int16 a_dialog_active;
 
-int16 Ascrp_put (char *ext, void *buffer, long len, int16 append)
+boolean Ascrp_put (const char *ext, void *buffer, long len, boolean append)
 {
 	return 0;
 }

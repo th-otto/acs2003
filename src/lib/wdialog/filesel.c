@@ -1,5 +1,6 @@
 #include "acs_i.h"
 #include "filesel.ah"
+#include "messages/msgserv.h"
 
 typedef struct {
 	unsigned long id;			/* Selectric ID (SLCT) */
