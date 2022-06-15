@@ -33,14 +33,14 @@ static int16 prozNr[]  = { THERMO_MINIMAL_PROC, THERMO_TEXT_PROC, THERMO_CANCEL_
 
 typedef struct {
 	ThermoData aktData;
-/* 92 */	const char *title;
-/* 96 */	int16 prozent;
-/* 98 */	int16 thermArt;
-/* 100 */	int16 thermComp;
-/* 102 */	int16 color;
-/* 104 */	boolean running;
-/* 106 */	long timer;
-/* 110 */	Awindow *thermo;
+	const char *title;
+	int16 prozent;
+	int16 thermArt;
+	int16 thermComp;
+	int16 color;
+	boolean running;
+	int32 timer;
+	Awindow *thermo;
 } ThermoStruct;
 
 /******************************************************************************/
