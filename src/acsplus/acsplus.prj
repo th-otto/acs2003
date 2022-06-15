@@ -4,11 +4,6 @@ acsplus.lib
 .C[-I..]
 .C[-IC:\pc\include]
 
-; set this to 1 to apply some fixes
-; if set to 0, attempt to compile the original version
-.C[-DWITH_FIXES=0]
-.S[-DWITH_FIXES=0]
-
 .C[ -A- ]		; no strict ANSI
 .C[ -C- ]		; no nested comments
 .C[ -T- ]		; no stack checking
@@ -29,13 +24,6 @@ acsplus.lib
 .C[ -Z- ]		; Register optimization
 .C[ -M- ]		; String Merging
 .C[ -R- ]		; Register Variables
-
-; For other localizations, change the COUNTRY code below
-; supported:
-; 0=english
-; 1=german
-.S[-DCOUNTRY=1]
-.C[-DCOUNTRY=1]
 
 .S[-U]
 

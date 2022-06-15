@@ -13,14 +13,6 @@ acs.app
 .C[-I..\include]
 .C[-IC:\pc\include]
 
-; set this to 1 to remove the demo check
-.S[-DKILLDEMO=0]
-
-; set this to 1 to apply some fixes
-; if set to 0, attempt to compile the original version
-.C[-DWITH_FIXES=0]
-.S[-DWITH_FIXES=0]
-
 .C[ -A- ]		; no strict ANSI
 .C[ -C- ]		; no nested comments
 .C[ -T- ]		; no stack checking
@@ -41,9 +33,6 @@ acs.app
 .C[ -Z- ]		; Register optimization
 .C[ -M- ]		; String Merging
 .C[ -R- ]		; Register Variables
-
-.S[-DCOUNTRY=1]
-.C[-DCOUNTRY=1]
 
 .S[-U]
 

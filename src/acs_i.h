@@ -1,12 +1,51 @@
+/******************************************************************************/
+/*                                                                            */
+/*    ACS               Application Construction System                       */
+/*    DESCRIPTION:      Internal include file for application & library       */
+/*                                                                            */
+/* (c) 1991-2004 Stefan Bachert, Oliver Michalak, Martin Elsaesser            */
+/* (c) 2022 Thorsten Otto                                                     */
+/******************************************************************************/
+
 #include <stdio.h>
 #include <acs.h>
 #include <acsaes.h>
 #include <string.h>
 
+/*
+ * Library configuration:
+ */
+/*
+ * set this to 1 to apply some fixes
+ * if set to 0, attempt to compile the original version
+ */
+#ifndef WITH_FIXES
+#  define WITH_FIXES 0
+#endif
+
+/* set this to 1 to remove the demo check */
+#ifndef KILLDEMO
+#  define KILLDEMO 0
+#endif
+
+
+/*
+ * For other localizations, change the COUNTRY code below
+ * supported:
+ * 0=english
+ * 1=german
+ */
+#ifndef COUNTRY
+#  define COUNTRY 1
+#endif
+
+
 #ifdef __GNUC__
 /* no need to attempt to generate identical image */
 #undef WITH_FIXES
 #define WITH_FIXES 1
+#undef KILLDEMO
+#define KILLDEMO 1
 #endif
 #define WITH_UNUSED_ICONS (!WITH_FIXES)
 
