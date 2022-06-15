@@ -414,18 +414,6 @@ typedef struct {
 } gs_cmd;
 
 typedef struct {
-	ThermoData aktData;
-	const char *title;
-	int16 prozent;
-	int16 thermArt;
-	int16 thermComp;
-	int16 color;
-	int16 running;
-	long timer;
-	Awindow *thermo;
-} ThermoStruct;
-
-typedef struct {
 	int16 *message;
 	Axywh area;
 	Awindow *window;

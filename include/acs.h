@@ -2249,7 +2249,7 @@ ULinList *Ash_fileselect( const char *title, int16 x, int16 y, char *path, char 
 
 /* Ben”tigte Funktionszeiger */
 struct _ThermoData;
-typedef int16 (*A_ThermFkt)( struct _ThermoData *thermo );
+typedef boolean (*A_ThermFkt)( struct _ThermoData *thermo );
 
 /******************************************************************************/
 

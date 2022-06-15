@@ -1340,17 +1340,6 @@ char *Ash_getenv(const char *var)
 
 /* -------------------------------------------------------------------------- */
 
-Awindow ThermWind;
-
-int16 Ash_thermometer(int16 kind, const char *titel, int16 color, void *data,
-         A_ThermFkt init, A_ThermFkt start, A_ThermFkt cont, A_ThermFkt fkt,
-         A_ThermFkt stop, A_ThermFkt quit)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
 KEYT *Akt_getKeyTab(void)
 {
 	return 0;

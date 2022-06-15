@@ -1,0 +1,124 @@
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+static char TEXT_02[] = "";
+static char TEXT_03[] = "Initialisierung...                                ";
+static char TEXT_04[] = "Abbrechen";
+static char TEXT_05[] = "";
+static char TEXT_06[] = "100 %";
+
+static TEDINFO TEDINFO_02 = { TEXT_06, TEXT_02, TEXT_02, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0x0000, 0x0006, 0x0001 };
+static TEDINFO TEDINFO_03 = { TEXT_06, TEXT_02, TEXT_02, 0x0003, 0x0006, 0x0002, 0x1100, 0x0000, 0xffff, 0x0006, 0x0001 };
+static TEDINFO TEDINFO_04 = { TEXT_03, TEXT_02, TEXT_02, 0x0005, 0x0006, 0x0000, 0x1100, 0x0000, 0xffff, 0x0033, 0x0001 };
+
+static AUSERBLK A_3DBUTTON01 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON02 = { A_3Dbutton, 0x20019178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON04 = { A_3Dbutton, 0x29010178L, Auo_string, TEXT_04, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON05 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON06 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON07 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+static AUSERBLK A_3DBUTTON08 = { A_3Dbutton, 0x29f10178L, Auo_string, NULL, NULL, NULL, NULL, NULL };
+
+static struct {
+	OBJECT  root;
+	OBJECT  _01_ThermAObj;
+	AOBJECT _01aThermAObj;
+	OBJECT  _03_ThermAObj;
+	OBJECT  _04_ThermAObj;
+	OBJECT  _05_ThermAObj;
+} ThermAObj = {
+	{ -1,  1,  3, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON01), 0, 0, 41, 1028 },
+	{  3, -1, -1, 24, 0x0045, 0x0000, C_UNION(&A_3DBUTTON04), 13, 3074, 16, 1 },
+	{ ThermCancel, NULL, 0x8000, 0x8841, NULL, NULL, 0, 0 },
+	{  0,  4,  5, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON02), 1, 1, 39, 1025 },
+	{  5, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON05), 0, 0, 11, 1025 },
+	{  3, -1, -1, 21, 0x0020, 0x0000, C_UNION(&TEDINFO_03), 17, 512, 5, 1 }
+};
+
+static struct {
+	OBJECT  root;
+	OBJECT  _01_ThermObj;
+	OBJECT  _02_ThermObj;
+	OBJECT  _03_ThermObj;
+} ThermObj = {
+	{ -1,  1,  1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON01), 0, 0, 41, 1027 },
+	{  0,  2,  3, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON02), 1, 1, 39, 1025 },
+	{  3, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON06), 0, 0, 11, 1025 },
+	{  1, -1, -1, 21, 0x0020, 0x0000, C_UNION(&TEDINFO_03), 17, 512, 5, 1 }
+};
+
+static struct {
+	OBJECT  root;
+	OBJECT  _01_ThermTAObj;
+	OBJECT  _02_ThermTAObj;
+	OBJECT  _03_ThermTAObj;
+	OBJECT  _04_ThermTAObj;
+	OBJECT  _05_ThermTAObj;
+	AOBJECT _05aThermTAObj;
+} ThermTAObj = {
+	{ -1,  1,  5, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON01), 0, 0, 41, 1029 },
+	{  2, -1, -1, 21, 0x0000, 0x0000, C_UNION(&TEDINFO_04), 1, 0, 39, 2 },
+	{  5,  3,  4, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON02), 1, 2, 39, 1025 },
+	{  4, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON07), 0, 0, 11, 1025 },
+	{  2, -1, -1, 21, 0x0000, 0x0000, C_UNION(&TEDINFO_03), 17, 512, 5, 1 },
+	{  0, -1, -1, 24, 0x0045, 0x0000, C_UNION(&A_3DBUTTON04), 13, 3075, 16, 1 },
+	{ ThermCancel, NULL, 0x8020, 0x8841, NULL, NULL, 0, 0 }
+};
+
+static struct {
+	OBJECT  root;
+	OBJECT  _01_ThermTObj;
+	OBJECT  _02_ThermTObj;
+	OBJECT  _03_ThermTObj;
+	OBJECT  _04_ThermTObj;
+} ThermTObj = {
+	{ -1,  1,  2, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON01), 0, 0, 41, 1028 },
+	{  2, -1, -1, 21, 0x0000, 0x0000, C_UNION(&TEDINFO_04), 1, 0, 39, 2 },
+	{  0,  3,  4, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON02), 1, 2, 39, 1025 },
+	{  4, -1, -1, 24, 0x0000, 0x0000, C_UNION(&A_3DBUTTON08), 0, 0, 11, 1025 },
+	{  2, -1, -1, 21, 0x0020, 0x0000, C_UNION(&TEDINFO_02), 17, 512, 5, 1 }
+};
+
+Awindow ThermWind = {
+	NULL,
+	ThermoService,
+	ThermoCreate,
+	Awi_open,
+	ThermoInit,
+	NULL,
+	NULL,
+	0, 0,
+	-1,
+	0x2009,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_05,
+	TEXT_02,
+	0,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	ThermoClosed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+	Awi_iconify,
+	Awi_uniconify,
+	ThermoGEMScript,
+	NULL,
+	NULL
+};

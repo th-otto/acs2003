@@ -62,7 +62,7 @@ wobject.s
 backplan.s
 window.s
 shelutil.s
-thermo.s
+thermo.c
 keytab.s [-M-]
 messages\msgserv.s [-M-]
 messages\screen.s
