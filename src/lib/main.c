@@ -9,9 +9,6 @@
 
 #include "acs_i.h"
 #include "country.h"
-#ifdef __PUREC__
-#include <linea.h>
-#endif
 #include <ctype.h>
 #include "version.h"
 
@@ -45,13 +42,6 @@ static Ablk _ACSblk;
 static int16 list[256];
 static void *DEBUG_DEFECT_MEM;
 int16 _ACSv_magix;
-
-#ifdef __PUREC__
-LINEA *Linea;
-VDIESC *Vdiesc;
-FONTS *Fonts;
-LINEA_FUNP *Linea_funp;
-#endif
 
 #if COUNTRY == COUNTRY_DE
 #define AS_OF "vom %s"
@@ -231,6 +221,6 @@ int main(int argc, char **argv, char **envp)
 
 /* -------------------------------------------------------------------------- */
 
-#if defined(__PUREC__) && !WITH_FIXES
+#if defined(__PUREC__) && WITH_UNUSED_ICONS
 #pragma warn -use
 #endif

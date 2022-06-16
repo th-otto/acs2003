@@ -33,7 +33,8 @@ acslib.lib
 =
 main.c
 initterm.c
-vdi_data.s
+vdi_data.c
+vdidatas.s
 mygemdos.s [-S]
 nkcc_s.s
 nkcc.c
