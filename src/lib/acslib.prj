@@ -36,7 +36,7 @@ initterm.c
 vdi_data.s
 mygemdos.s [-S]
 nkcc_s.s
-nkcc.s
+nkcc.c
 config.s
 string.s
 drag.s

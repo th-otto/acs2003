@@ -100,7 +100,6 @@ OBJS = \
 	lib/initterm.o \
 	lib/vdi_data.o \
 	lib/mygemdos.o \
-	lib/nkcc_s.o \
 	lib/nkcc.o \
 	lib/config.o \
 	lib/string.o \

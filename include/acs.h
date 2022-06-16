@@ -2431,15 +2431,21 @@ void DEBUG_MEM( void *defective );
    #define nkc_tconv( toskey )   nkc_tos2n(toskey)
 
    /* GEM-Key & NKCC-Key */
+   /* convert gem key & state to NKC code */
    int16 nkc_gemks2n( int16 gemkey, int16 kstate );
+   /* convert gem key to NKC code */
    int16 nkc_gem2n( int16 gemkey );
+   /* convert NKC code to GEM key & state */
    void nkc_n2gemks( int16 norm, int16 *kstate, int16 *gemkey );
+   /* convert NKC code to GEM key */
    int16 nkc_n2gem( int16 nkcode );
+   /* convert NKC code to GEM state */
    int16 nkc_n2kstate( int16 nkcode );
 
    #define nkc_gconv( gemkey )   nkc_gem2n(gemkey)
 
    /* Sonstiges */
+   /* get current shift state from OS */
    int16 nkc_kstate( void );
    int16 nkc_cmp( int16 refkey, int16 kcode );
    int16 nkc_tolower( int16 key );
