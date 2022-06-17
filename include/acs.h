@@ -1789,7 +1789,7 @@ char *Ast_adr( char *string, ssize_t len );
 char *Ast_adc( char *string, ssize_t len );
 
 /* Zeichen aus einem String herausfiltern */
-char *Ast_filter( char *string, char *wrg_char, char *right_char );
+char *Ast_filter( char *string, const char *wrg_char, const char *right_char );
 
 /* Die Anzahl von bestimmten Zeichen z„hlen */
 int32 Ast_count( const char *string, const char *zeichen );
@@ -2609,10 +2609,10 @@ UConfig *Acfg_create( const UCfgInfo *info, boolean load );
 void Acfg_delete( UConfig *config );
 void Acfg_clear( UConfig *cfg, const UCfgInfo *info );
 void Acfg_clearAllGroups( UConfig *config );
-void Acfg_clearGroup( UConfig *config, char *kategorie );
-int16 Acfg_load( UConfig *config, const char *filename );
-int16 Acfg_save( UConfig *config, const char *filename );
-int16 Acfg_isChanged( UConfig *config );
+void Acfg_clearGroup( UConfig *config, const char *category );
+boolean Acfg_load( UConfig *config, const char *filename );
+boolean Acfg_save( UConfig *config, const char *filename );
+boolean Acfg_isChanged( UConfig *config );
 
 /* Achtung: Alle Flags zwischen 0x0002 und 0x0800 sind */
 /*          fr zuknftige Zwecke fr ACS reserviert!  */
@@ -2623,23 +2623,23 @@ int16 Acfg_isChanged( UConfig *config );
 #define ACFG_USER4      0x8000   /* User-Flag, Funktion frei definierbar    */
 
 /* Flags setzen (set>0), l”schen (set=0) oder nur anfragen (set<0) */
-int16 Acfg_flags( UConfig *config, int16 flags, int16 set );
+int16 Acfg_flags( UConfig *config, int16 flags, boolean set );
 
-int16 Acfg_isGroupPresent( UConfig *config, const char *kategorie );
-int16 Acfg_isStringPresent( UConfig *config, const char *kategorie, const char *name );
+boolean Acfg_isGroupPresent( UConfig *config, const char *category );
+boolean Acfg_isStringPresent( UConfig *config, const char *category, const char *name );
 
-char *Acfg_getValue( UConfig *config, const char *kategorie, const char *name, char *value );
-char *Acfg_setValue( UConfig *config, const char *kategorie, const char *name, const char *value );
-char *Acfg_clearValue( UConfig *config, const char *kategorie, const char *name, char *value );
-char *Acfg_getString( UConfig *config, const char *kategorie, const char *name );
-int32 Acfg_getLong( UConfig *config, const char *kategorie, const char *name );
-int32 Acfg_setLong( UConfig *config, const char *kategorie, const char *name, int32 value );
-char Acfg_getChar( UConfig *config, const char *kategorie, const char *name );
-char Acfg_setChar( UConfig *config, const char *kategorie, const char *name, char value );
-int16 Acfg_getBool( UConfig *config, const char *kategorie, const char *name );
-int16 Acfg_setBool( UConfig *config, const char *kategorie, const char *name, int16 value );
-double Acfg_getDouble( UConfig *config, const char *kategorie, const char *name );
-double Acfg_setDouble( UConfig *config, const char *kategorie, const char *name, double value );
+char *Acfg_getValue( UConfig *config, const char *category, const char *name, char *value );
+const char *Acfg_setValue( UConfig *config, const char *category, const char *name, const char *value );
+char *Acfg_clearValue( UConfig *config, const char *category, const char *name, char *value );
+char *Acfg_getString( UConfig *config, const char *category, const char *name );
+int32 Acfg_getLong( UConfig *config, const char *category, const char *name );
+int32 Acfg_setLong( UConfig *config, const char *category, const char *name, int32 value );
+char Acfg_getChar( UConfig *config, const char *category, const char *name );
+char Acfg_setChar( UConfig *config, const char *category, const char *name, char value );
+int16 Acfg_getBool( UConfig *config, const char *category, const char *name );
+int16 Acfg_setBool( UConfig *config, const char *category, const char *name, int16 value );
+double Acfg_getDouble( UConfig *config, const char *category, const char *name );
+double Acfg_setDouble( UConfig *config, const char *category, const char *name, double value );
 
 void Acfg_clearHeader( UConfig *config );
 int16 Acfg_headAnzahl( UConfig *config );
@@ -2652,7 +2652,7 @@ int16 Acfg_strAnzahl( UConfig *config, int16 grp_nr );
 char *Acfg_strName( UConfig *config, int16 grp_nr, int16 str_nr, char *name );
 char *Acfg_strValue( UConfig *config, int16 grp_nr, int16 str_nr, char *value );
 
-int16 Acfg_strIsComment( UConfig *config, int16 grp_nr, int16 str_nr );
+boolean Acfg_strIsComment( UConfig *config, int16 grp_nr, int16 str_nr );
 int16 Acfg_isCfgfile( UConfig *config, const char *filename );
 
 UCfgInfo *Acfg_createInfo( void );

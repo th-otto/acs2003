@@ -38,7 +38,7 @@ vdidatas.s
 mygemdos.s [-S]
 nkcc_s.s
 nkcc.c
-config.s
+config.c
 string.s
 drag.s
 event.s

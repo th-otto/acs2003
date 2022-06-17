@@ -155,7 +155,7 @@ char *Ast_adc(char *string, ssize_t len)
 
 /* -------------------------------------------------------------------------- */
 
-char *Ast_filter(char *string, char *wrg_char, char *right_char)
+char *Ast_filter(char *string, const char *wrg_char, const char *right_char)
 {
 	return 0;
 }

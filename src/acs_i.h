@@ -8,6 +8,7 @@
 /******************************************************************************/
 
 #include <stdio.h>
+#include <acstype.h>
 #include <acs.h>
 #include <acsaes.h>
 #include <string.h>
@@ -358,30 +359,6 @@ typedef struct {
 	int16 CDECL (*xfsl_exit)(int16 xfsl_handle);
 	long CDECL (*xfsl_info)(void);
 } xFSL;
-
-typedef struct {
-	char *grp_name;
-	int16 anzahl;
-	char **cfg_strings;
-} ACSCfgGruppe;
-
-typedef struct {
-	UCfgInfo info;
-	int16 changed;
-	int16 grp_anzahl;
-	ACSCfgGruppe **cfg_grp;
-	int16 flags;
-	int16 head_anz;
-	char **header;
-} ACSConfig;
-
-typedef struct {
-	char *grp_name;
-	ACSCfgGruppe *gruppe;
-	char *name;
-	char *value;
-	int16 index;
-} ACSCfgSearchStruct;
 
 typedef struct {
 	int16 v[8];
