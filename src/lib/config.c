@@ -33,10 +33,8 @@ typedef struct {
 	int16 index;
 } ACSCfgSearchStruct;
 
-#define BUFFER_SIZE 8192
-
 static UCfgInfo const default_info = { "", "%;", NULL, FALSE, FALSE, 32 };
-static char s_val[BUFFER_SIZE];
+static char s_val[MAX_CFGLEN];
 
 static void InitConfigStruct(ACSConfig *config, const UCfgInfo *info);
 static void Acfg_initInfo(UCfgInfo *info, const char *comment);
@@ -308,7 +306,7 @@ static boolean Acfg_makeName(char **buf, const char *filename, char *path, char 
 			*path = '\0';
 		}
 	}
-	*buf = Ax_malloc(BUFFER_SIZE);
+	*buf = Ax_malloc(MAX_CFGLEN);
 	if (*buf == NULL)
 		return FALSE;
 	Af_buildname(*buf, drv, path, name, ext);
@@ -335,7 +333,7 @@ static void FoundNextGroup(FILE *fp, int16 *num_values, int16 *num_empty, char *
 	found = FALSE;
 	while (!feof(fp) && !found)
 	{
-		if (fgets(buf, BUFFER_SIZE, fp) != NULL)
+		if (fgets(buf, MAX_CFGLEN, fp) != NULL)
 		{
 			Ast_alltrim(buf);
 			if (IsNewGroup(buf))
@@ -376,7 +374,7 @@ static boolean ReadUntilNextGroup(FILE *fp, ACSCfgGruppe *grp, int16 max, int16 
 #endif
 	}
 	i = 0;
-	fgets(buf, BUFFER_SIZE, fp);
+	fgets(buf, MAX_CFGLEN, fp);
 	Ast_alltrim(buf);
 	while ((!feof(fp) || !Ast_isEmpty(buf)) && !IsNewGroup(buf))
 	{
@@ -386,7 +384,7 @@ static boolean ReadUntilNextGroup(FILE *fp, ACSCfgGruppe *grp, int16 max, int16 
 			i++;
 		}
 		*buf = '\0';
-		fgets(buf, BUFFER_SIZE, fp);
+		fgets(buf, MAX_CFGLEN, fp);
 		Ast_alltrim(buf);
 	}
 	if (i > count)
@@ -417,10 +415,10 @@ boolean Acfg_load(UConfig *uconfig, const char *filename)
 	Acfg_clearAllGroups((UConfig *)config);
 	Acfg_clearHeader((UConfig *)config);
 	config->changed = FALSE;
-	buf = Ax_malloc(2 * BUFFER_SIZE + 4);
+	buf = Ax_malloc(2 * MAX_CFGLEN + 4);
 	if (buf == NULL)
 		return FALSE;
-	grp_name = buf + BUFFER_SIZE + 3;
+	grp_name = buf + MAX_CFGLEN + 3;
 	if (Acfg_makeName(&path, cfgname, buf, grp_name) == FALSE)
 	{
 		Ax_free(buf);
@@ -441,7 +439,7 @@ boolean Acfg_load(UConfig *uconfig, const char *filename)
 	fseek(fp, 0, SEEK_SET);
 	while (!feof(fp))
 	{
-		if (fgets(buf, BUFFER_SIZE, fp) != NULL)
+		if (fgets(buf, MAX_CFGLEN, fp) != NULL)
 		{
 			if (IsNewGroup(Ast_alltrim(buf)))
 				++num_groups;
@@ -535,10 +533,10 @@ boolean Acfg_save(UConfig *uconfig, const char *filename)
 	boolean header_done;
 	
 	cfgname = !Ast_isEmpty(filename) ? filename : config->info.dateiname;
-	buf = Ax_malloc(2 * BUFFER_SIZE + 4);
+	buf = Ax_malloc(2 * MAX_CFGLEN + 4);
 	if (buf == NULL)
 		return FALSE;
-	grp_name = buf + BUFFER_SIZE + 3;
+	grp_name = buf + MAX_CFGLEN + 3;
 	if (Acfg_makeName(&path, cfgname, buf, grp_name) == FALSE)
 	{
 #if !WITH_FIXES
@@ -713,7 +711,7 @@ char *Acfg_getString(UConfig *config, const char *category, const char *name)
 
 int32 Acfg_getLong(UConfig *config, const char *category, const char *name)
 {
-	char buf[BUFFER_SIZE];
+	char buf[MAX_CFGLEN];
 	
 	return atol(Acfg_getValue(config, category, name, buf));
 }
@@ -733,7 +731,7 @@ int32 Acfg_setLong(UConfig *config, const char *category, const char *name, int3
 #if 0
 double Acfg_getDouble(UConfig *config, const char *category, const char *name)
 {
-	char buf[BUFFER_SIZE];
+	char buf[MAX_CFGLEN];
 	
 	return atof(Acfg_getValue(config, category, name, buf));
 }

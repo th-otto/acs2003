@@ -1751,7 +1751,7 @@ char Ach_toupper(char ch);
 char Ach_tolower(char ch);
 
 /* Ist ein Zeichen ein "Blank"? (incl. '\r', '\n' & '\t') */
-int16 Ach_isWhite(char c);
+boolean Ach_isWhite(char c);
 
 /******************************************************************************/
 
@@ -1789,13 +1789,13 @@ char *Ast_adr( char *string, ssize_t len );
 char *Ast_adc( char *string, ssize_t len );
 
 /* Zeichen aus einem String herausfiltern */
-char *Ast_filter( char *string, const char *wrg_char, const char *right_char );
+char *Ast_filter( char *string, const char *wrong_char, const char *right_char );
 
 /* Die Anzahl von bestimmten Zeichen zÑhlen */
 int32 Ast_count( const char *string, const char *zeichen );
 
 /* Zwei Dateinamen vergleichen, der erste darf die Åblichen Wildcards enthalten */
-int16 Ast_fcmp(const char *filename1, const char *filename2);
+boolean Ast_fcmp(const char *filename1, const char *filename2);
 
 /* Einen String umdrehen, d.h. letztes Zeichen als erstes usw. */
 char *Ast_reverse( char *reverse, const char *string );
@@ -1804,7 +1804,7 @@ char *Ast_reverse( char *reverse, const char *string );
 int16 Ast_countASCIZZ( const char *asciizz );
 
 /* Einen ASCIIZZ-String in ein Array von Strings splitten */
-int16 Ast_splitASCIIZZ( const char *ascizz, char ***strings, int16 *anz );
+boolean Ast_splitASCIIZZ( const char *ascizz, char ***strings, int16 *anz );
 
 /* Aus einem String-Array einen ASCIIZZ-String machen */
 char *Ast_mergeASCIIZZ( const char **strings, int16 anzahl, int16 global );
@@ -1812,7 +1812,7 @@ char *Ast_mergeASCIIZZ( const char **strings, int16 anzahl, int16 global );
 /* Ein Array von Strings komplett freigeben */
 void Ast_deleteAry( char **strings, int16 anzahl );
 
-char *Ast_copy(const char *str, int16 max_len);
+char *Ast_copy(const char *str, boolean global);
 
 /******************************************************************************/
 /*                                                                            */

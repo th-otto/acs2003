@@ -538,11 +538,11 @@ int16 ACSinit0 (void);
 /******************************************************************************/
 
 /* Zeichen in Groû-/Kleinbuchstaben wandeln (incl. Umlaute!) */
-char Ach_toupper( const char ch );
-char Ach_tolower( const char ch );
+char Ach_toupper(char ch);
+char Ach_tolower(char ch);
 
 /* Ist ein Zeichen ein "Blank"? (incl. '\r', '\n' & '\t') */
-int16 Ach_isWhite( const char c );
+boolean Ach_isWhite( char c );
 
 /******************************************************************************/
 
@@ -562,14 +562,14 @@ char *Ast_alltrim( char *string );
 /* Stringvergleiche mit und ohne Groû/Klein-Unterscheidung */
 int16 Ast_cmp( const char *str_1, const char *str_2 );
 int16 Ast_icmp( const char *str_1, const char *str_2 );
-int16 Ast_ncmp( const char *str_1, const char *str_2, const int16 max_char );
-int16 Ast_incmp( const char *str_1, const char *str_2, const int16 max_char );
+int16 Ast_ncmp( const char *str_1, const char *str_2, int16 max_char );
+int16 Ast_incmp( const char *str_1, const char *str_2, int16 max_char );
 
 /* String im String suchen ohne Groû/Klein-Unterscheidung */
 char *Ast_istr( const char *s1, const char *s2 );
 
 /* Ist ein String leer, bis auf "Blanks"? */
-int16 Ast_isEmpty( const char *string );
+boolean Ast_isEmpty( const char *string );
 
 /* Mehrere Strings linksbÅndig zusammensetzen, GesamtlÑnge vorgegeben */
 char *Ast_add( int16 anzahl, char *ergebnis, ... );
@@ -580,13 +580,13 @@ char *Ast_adr( char *string, long len );
 char *Ast_adc( char *string, long len );
 
 /* Zeichen aus einem String herausfiltern */
-char *Ast_filter( char *string, char *wrg_char, char *right_char );
+char *Ast_filter( char *string, const char *wrong_char, const char *right_char );
 
 /* Die Anzahl von bestimmten Zeichen zÑhlen */
 long Ast_count( const char *string, const char *zeichen );
 
 /* Zwei Dateinamen vergleichen, der erste darf die Åblichen Wildcards enthalten */
-int16 Ast_fcmp( char *filename1, char *filename2 );
+boolean Ast_fcmp( const char *filename1, const char *filename2 );
 
 /* Einen String umdrehen, d.h. letztes Zeichen als erstes usw. */
 char *Ast_reverse( char *reverse, const char *string );
@@ -595,10 +595,10 @@ char *Ast_reverse( char *reverse, const char *string );
 int16 Ast_countASCIZZ( const char *asciizz );
 
 /* Einen ASCIIZZ-String in ein Array von Strings splitten */
-int16 Ast_splitASCIIZZ( const char *ascizz, char ***strings, int16 *anz );
+boolean Ast_splitASCIIZZ( const char *ascizz, char ***strings, int16 *anz );
 
 /* Aus einem String-Array einen ASCIIZZ-String machen */
-char *Ast_mergeASCIIZZ( const char **strings, const int16 anzahl, const int16 global );
+char *Ast_mergeASCIIZZ( const char **strings, int16 anzahl, int16 global );
 
 /* Ein Array von Strings komplett freigeben */
 void Ast_deleteAry( char **strings, int16 anzahl );
@@ -709,7 +709,7 @@ uint32 Ash_gettimer( void );
 /******************************************************************************/
 
 /* Kommandozeile parsen und Optionen befÅllen */
-int16 Ash_cmdParsen( char *options[256], const int16 argc, char **argv,
+int16 Ash_cmdParsen( char *options[256], int16 argc, char **argv,
          const char *optionBeginChars, const char *optionsAllowed,
          const char *optionsWithParam, int16 (*wrongOption)(const char c),
          ULinList *params );
@@ -892,7 +892,7 @@ char Acfg_setChar( UConfig *config, const char *kategorie,
          const char *name, const char value );
 int16 Acfg_getBool( UConfig *config, const char *kategorie, const char *name );
 int16 Acfg_setBool( UConfig *config, const char *kategorie,
-         const char *name, const int16 value );
+         const char *name, int16 value );
 
 void Acfg_clearHeader( UConfig *config );
 int16 Acfg_headAnzahl( UConfig *config );
@@ -901,11 +901,11 @@ char **Acfg_getHeader( UConfig *config, char **head_lines );
 
 int16 Acfg_grpAnzahl( UConfig *config );
 char *Acfg_grpName( UConfig *config, int16 grp_nr, char *name );
-int16 Acfg_strAnzahl( UConfig *config, const int16 grp_nr );
-char *Acfg_strName( UConfig *config, const int16 grp_nr, const int16 str_nr, char *name );
-char *Acfg_strValue( UConfig *config, const int16 grp_nr, const int16 str_nr, char *value );
+int16 Acfg_strAnzahl( UConfig *config, int16 grp_nr );
+char *Acfg_strName( UConfig *config, int16 grp_nr, int16 str_nr, char *name );
+char *Acfg_strValue( UConfig *config, int16 grp_nr, int16 str_nr, char *value );
 
-int16 Acfg_strIsComment( UConfig *config, const int16 grp_nr, const int16 str_nr );
+int16 Acfg_strIsComment( UConfig *config, int16 grp_nr, int16 str_nr );
 int16 Acfg_isCfgfile( UConfig *config, const char *filename );
 
 UCfgInfo *Acfg_createInfo( void );

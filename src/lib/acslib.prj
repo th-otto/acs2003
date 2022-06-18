@@ -39,7 +39,7 @@ mygemdos.s [-S]
 nkcc_s.s
 nkcc.c
 config.c
-string.s
+string.c
 drag.s
 event.s
 fileutil.s
