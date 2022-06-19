@@ -93,7 +93,7 @@ extern ULinList *globProtData;
 
 int16 INMsgService(void);
 void TRMsgService(void);
-int16 Aev_message(int16 *msg);
+boolean Aev_message(int16 *msg);
 A_dd_int *Aev_DDSearch(int16 id);
 int16 Aev_CmpMsgInList(void *list, int16 *msg);
 int16 Aev_CmpDestID(void *list, void /* int16 */ *msg);

@@ -253,7 +253,19 @@ struct _ACS_HEAD {
 
 
 /*
- * extra mouse forms
+ * builtin mouse forms.
+ * (confusingly, they have different indices than AES)
+ */
+#define MOUSE_ARROW        0
+#define MOUSE_BUSYBEE      1
+#define MOUSE_POINT_HAND   2
+#define MOUSE_FLAT_HAND    3
+#define MOUSE_TEXT_CRSR    4
+#define MOUSE_THIN_CROSS   5
+#define MOUSE_THICK_CROSS  6
+#define MOUSE_OUTLN_CROSS  7
+/*
+ * extra mouse forms for this application
  */
 #define MOUSE_BRUSH_BLACK  8
 #define MOUSE_BRUSH_WHITE  9
@@ -1435,8 +1447,8 @@ void nkc_init(unsigned long flags, int16 vdi_handle, int16 *pglobl);
 /*
  * lib/event.c
  */
-int16 evkeybrd(int16 *msg);
-int evbutton(int16 mox, int moy);
+int16 evkeybrd(Awindow *win);
+int16 evbutton(int16 button, int16 clicks);
 void evmouse(void);
 void ACSeventhandler(void);
 
@@ -1446,15 +1458,15 @@ void ACSeventhandler(void);
  */
 int16 INmemory(void);
 void TRmemory(void);
-void Ax_release(void *memory);
+void Ax_release(void);
 
 
 /*
  * lib/menu.c
  */
 void Ame_root(int16 title, int16 idx);
-void Ame_drop(OBJECT *menu, int16 title, int16 idx);
-int16 Ame_key(OBJECT *menu, int16 kstate, int16 key);
+void Ame_drop(Awindow *win, int16 mx, int16 my);
+int16 Ame_key(Awindow *win, int16 kstate, int16 key);
 
 
 /*
@@ -1501,7 +1513,7 @@ void oldgemdos(void);
  */
 extern Awindow *_ACSv_winds[MAX_WINDS];
 extern CICONBLK *_ACSv_wiicons[MAX_WINDS];
-extern int16 _ACSv_wmenu;
+extern boolean _ACSv_wmenu;
 extern int16 _Wmax_wi;
 
 int16 INwindow(void);
@@ -1515,7 +1527,7 @@ int16 Awi_backdrop(Awindow *win);
 Awindow *Awi_up_modal( void );
 void Awi_show_menu(boolean show);
 void Awi_cleanup(Awindow *win);
-void Awi_shadow(Awindow *win);
+boolean Awi_shadow(Awindow *win);
 int16 _init_alert(Awindow *win);
 
 
@@ -1547,10 +1559,10 @@ void yline2(int16 y1, int16 y2, int16 x);
 /*
  * lib/object.c
  */
-int16 Aob_tobkey(OBJECT *tree, int16 kstate, int16 key);
-int16 Aob_wobkey(OBJECT *tree, int16 kstate, int16 key);
+int16 Aob_tobkey(Awindow *win, int16 kstate, int16 key);
+int16 Aob_wobkey(Awindow *win, int16 kstate, int16 key);
 int16 Aob_execute(Awindow *win, OBJECT *tree, int16 obnr);
-int16 Aob_select(Awindow *win, OBJECT *tree, int16 kstate, int16 key);
+boolean Aob_select(Awindow *win, OBJECT *tree, int16 obnr, boolean dclick);
 void Aob_key(Awindow *win, int16 key);
 
 

@@ -264,16 +264,16 @@ typedef struct
    /*  18 */ char *BaseName;                                       /* Zu verwendender Name fr basename */
 
    /* Initialisierungszeiger in ACSblk fr ACS-Interna */
-   /*  22 */ void (*ACSterm)( void );                              /* Vor dem Terminieren von ACS */
-   /*  26 */ void (*ACSaboutme)( void );                           /* Der Eintrag 'šber mich' */
-   /*  30 */ void (*ACSclose)( void );                             /* ACS beenden (Eintrag 'Quit') */
-   /*  34 */ void (*ACSmessage)( int16 *ev_mmgpbuf );              /* Unbekannte Messages bearbeiten */
-   /*  38 */ void (*ACSmproto)( int16 *ev_mmgpbuf );               /* Message-Filter-Routine */
-   /*  42 */ void (*ACStimer)( void );                             /* Timer am Ende der Event-Schleife */
-   /*  46 */ void (*ACSkey)( int16 *kstate, int16 *key );          /* Tastendruck-Filter-Routine */
-   /*  50 */ void (*ACSbutton)( int16 *button, int16 *breturn );   /* Maus-Button-Filter-Routine */
-   /*  54 */ void (*ACSmouse)( void );                             /* Maus-Bewegungs-Filter-Routine */
-   /*  58 */ void (*ACSwikey)( int16 *kstate, int16 *key );        /* Tastendruck-Filter-Routine vor wi->keys */
+   /*  22 */ void (*ACSterm)( void );                              /* called before terminating ACS */
+   /*  26 */ void (*ACSaboutme)( void );                           /* call used for 'about me' */
+   /*  30 */ void (*ACSclose)( void );                             /* call used for 'Quit' */
+   /*  34 */ void (*ACSmessage)( int16 *ev_mmgpbuf );              /* handle unprocessed messages */
+   /*  38 */ void (*ACSmproto)( int16 *ev_mmgpbuf );               /* filter unprocessed messages */
+   /*  42 */ void (*ACStimer)( void );                             /* called at end of event loop */
+   /*  46 */ void (*ACSkey)( int16 *kstate, int16 *key );          /* filter keys */
+   /*  50 */ void (*ACSbutton)( int16 *button, int16 *breturn );   /* filter mouse buttons */
+   /*  54 */ void (*ACSmouse)( void );                             /* filter mouse moves (ev_mmox/y) */
+   /*  58 */ void (*ACSwikey)( int16 *kstate, int16 *key );        /* filter keystroke before wi->keys call */
 
    /*  62 */ int16 init_prot;                                      /* Welche Protokolle sollen (komplett) initialisiert werden? */
    /*  64 */ int16 XAccType;                                       /* Maschinenlesbarer XAcc-Programmtyp */
@@ -775,7 +775,7 @@ typedef struct
     /*  614 */ int16 ev_mmokstate;                       /* Keyboard state */
     /*  616 */ int16 dia_abort;                          /* Abort modal dialog */
     /*  618 */ MFDB screenMFDB;                          /* exactly this */
-    /*  638 */ int16 apterm;                             /* AP_TERM received */
+    /*  638 */ boolean apterm;                           /* AP_TERM received */
     /*  640 */ int16 *AESglobal;                         /* points to initialized (AES) global */
     /*  644 */ int16 fonts;                              /* count of available fonts */
     /*  646 */ int16 argc;                               /* parameter passed to main routine */
@@ -1422,7 +1422,7 @@ void Awi_hslid( Awindow *window, int16 pos );
 void Awi_vslid( Awindow *window, int16 pos );
 
 /* Mausrad-Ereignisse verarbeiten - get mouse wheel events */
-int16 Awi_wheeled( Awindow *wind, int16 wheels[16], int16 mx, int16 my );
+boolean Awi_wheeled( Awindow *wind, int16 wheels[16], int16 mx, int16 my );
 
 /* Daten wurden gesichert, andere Fenster und OLGA davon informieren */
 void Awi_saved( Awindow *window, const char *datei );
@@ -1571,7 +1571,7 @@ void Aob_restore( MFDB *save, Axywh *rect );
 
 /* Watched Object, select, if pointer upon obnr  */
 /* returns TRUE, if button was release upon obnr */
-int16 Aob_watch( Awindow *window, int16 obnr );
+boolean Aob_watch( Awindow *window, int16 obnr );
 
 /* Klick-Routine, die Awi_help(ev_window) aufruft */
 void Aob_help( void );

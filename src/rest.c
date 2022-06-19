@@ -5,56 +5,12 @@
 Awindow *Aroot_wi;
 Awindow *_ACSv_winds[MAX_WINDS];
 CICONBLK *_ACSv_wiicons[MAX_WINDS];
-int16 _ACSv_wmenu;
+boolean _ACSv_wmenu;
 int16 _Wmax_wi;
 
 /******************************************************************************/
 /* -------------------------------------------------------------------------- */
 /******************************************************************************/
-
-void Aev_unhidepointer(void)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Aev_quit(void)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 evkeybrd(int16 *msg)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int evbutton(int16 mox, int moy)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void evmouse(void)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Aev_mess(void)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-void ACSeventhandler(void)
-{
-}
-
-/* -------------------------------------------------------------------------- */
 
 char *Af_cfgfile(const char *file)
 {
@@ -206,7 +162,7 @@ void Ax_free(void *memory)
 
 /* -------------------------------------------------------------------------- */
 
-void Ax_release(void *memory)
+void Ax_release(void)
 {
 }
 
@@ -265,13 +221,13 @@ void Ame_root(int16 title, int16 idx)
 
 /* -------------------------------------------------------------------------- */
 
-void Ame_drop(OBJECT *menu, int16 title, int16 idx)
+void Ame_drop(Awindow *win, int16 mx, int16 my)
 {
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Ame_key(OBJECT *menu, int16 kstate, int16 key)
+int16 Ame_key(Awindow *win, int16 kstate, int16 key)
 {
 	return 0;
 }
@@ -450,14 +406,14 @@ void Aob_restore(MFDB *save, Axywh *rect)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_tobkey(OBJECT *tree, int16 kstate, int16 key)
+int16 Aob_tobkey(Awindow *win, int16 kstate, int16 key)
 {
 	return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aob_wobkey(OBJECT *tree, int16 kstate, int16 key)
+int16 Aob_wobkey(Awindow *win, int16 kstate, int16 key)
 {
 	return 0;
 }
@@ -591,7 +547,7 @@ void Awi_vslid(Awindow *window, int16 pos)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_wheeled(Awindow *wind, int16 wheels[16], int16 mx, int16 my)
+boolean Awi_wheeled(Awindow *wind, int16 wheels[16], int16 mx, int16 my)
 {
 	return 0;
 }
@@ -1038,6 +994,13 @@ int16 Awi_gemscript(Awindow *wi, int16 anz, char **cmds, A_GSAntwort *antwort)
 
 /* -------------------------------------------------------------------------- */
 
+boolean Awi_shadow(Awindow *win)
+{
+	return 0;
+}
+
+/* -------------------------------------------------------------------------- */
+
 void Ash_error(int16 messerr, const void *para)
 {
 }
@@ -1369,7 +1332,7 @@ void TRMsgService(void)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Aev_message(int16 *msg)
+boolean Aev_message(int16 *msg)
 {
 	return 0;
 }

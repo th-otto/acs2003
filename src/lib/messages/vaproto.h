@@ -1,0 +1,40 @@
+#define AV_PROTOKOLL_SETSTATUS   0x01
+#define AV_PROTOKOLL_START       0x02
+#define AV_PROTOKOLL_STARTED     0x04
+#define AV_PROTOKOLL_FONTCHANGED 0x08
+#define AV_PROTOKOLL_QUOTING     0x10
+#define AV_PROTOKOLL_PATH_UPDATE 0x20
+
+#define VA_PROT_SENDKEY          0x0001
+#define VA_PROT_ASKFILEFONT      0x0002
+#define VA_PROT_ASKCONFONT       0x0004
+#define VA_PROT_OPENCONSOLE      0x0004
+#define VA_PROT_ASKOBJECT        0x0008
+#define VA_PROT_OPENWIND         0x0010
+#define VA_PROT_STARTPROG        0x0020
+#define VA_PROT_ACCWINDOPEN      0x0040
+#define VA_PROT_ACCWINDCLOSED    0x0040
+#define VA_PROT_STATUS           0x0080
+#define VA_PROT_GETSTATUS        0x0080
+#define VA_PROT_COPY_DRAGGED     0x0100
+#define VA_PROT_PATH_UPDATE      0x0200
+#define VA_PROT_WHAT_IZIT        0x0200
+#define VA_PROT_DRAG_ON_WINDOW   0x0200
+#define VA_PROT_EXIT             0x0400
+#define VA_PROT_XWIND            0x0800
+#define VA_PROT_FONTCHANGED      0x1000
+#define VA_PROT_STARTED          0x2000
+#define VA_PROT_QUOTING          0x4000
+#define VA_PROT_FILEINFO         0x8000
+#define VA_PROT_FILECHANGED      0x8000
+
+#define VA_PROT_COPYFILE         0x0001
+#define VA_PROT_FILECOPIED       0x0001
+#define VA_PROT_DELFILE          0x0002
+#define VA_PROT_FILEDELETED      0x0002
+#define VA_PROT_VIEW             0x0004
+#define VA_PROT_VIEWED           0x0004
+#define VA_PROT_SETWINDPOS       0x0008
+#define VA_PROT_SYMLINKS         0x0010
+#define VA_PROT_SENDCLICK        0x0020
+

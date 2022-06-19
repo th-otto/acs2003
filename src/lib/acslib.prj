@@ -41,7 +41,7 @@ nkcc.c
 config.c
 string.c
 drag.c
-event.s
+event.c
 fileutil.s
 memory.s
 menu.s
