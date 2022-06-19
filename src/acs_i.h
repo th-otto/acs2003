@@ -389,7 +389,7 @@ typedef struct {
 	int16 mmox;
 	int16 mmoy;
 	int16 mmokstate;
-	int16 busy;
+	boolean busy;
 	Amouse mouse;
 } CONTEXT;
 
@@ -1463,8 +1463,8 @@ int16 Ame_key(OBJECT *menu, int16 kstate, int16 key);
 int16 INmouse(void);
 void TRmouse(void);
 void Amo_point(void);
-int16 Amo_restart(Amouse *mouse);
-void Amo_return(int16 busy, Amouse *mouse);
+boolean Amo_restart(Amouse *mouse);
+void Amo_return(boolean busy, Amouse *mouse);
 
 
 /*
@@ -1587,8 +1587,8 @@ void Aud_boxed(void);
  */
 extern int16 a_dialog_active;
 
-void Act_save(void *a0);
-void Act_restore(void *a0);
+void Act_save(CONTEXT *ctx);
+void Act_restore(CONTEXT *ctx);
 boolean A_isModDia(void);
 void Adate_ymd2dow(void);
 int16 Awi_sendkey(Awindow *wi, int16 kstate, int16 key);

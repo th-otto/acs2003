@@ -40,7 +40,7 @@ nkcc_s.s
 nkcc.c
 config.c
 string.c
-drag.s
+drag.c
 event.s
 fileutil.s
 memory.s
