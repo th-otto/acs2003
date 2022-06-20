@@ -2486,7 +2486,7 @@ void DEBUG_MEM( void *defective );
 
 /******************************************************************************/
 
-/* turns filedrv or Dgetdrv if non-exist */
+/* returns filedrv or Dgetdrv if non-exist */
 int16 Af_2drv( const char *file );
 
 /* Returns Path of file or "\\"  in dest and back */
@@ -2495,7 +2495,7 @@ char *Af_2path( char *dest, const char *file );
 /* Returns DEMO from [d:][bla\\bli]\\DEMO[.EXT] or "" in dest and back */
 char *Af_2name( char *dest, const char *file );
 
-/* Returns DEMO[.EXT] from [d:][bla\\bli]\\DEMO[.EXT] or "" in dest an back */
+/* Returns DEMO[.EXT] from [d:][bla\\bli]\\DEMO[.EXT] or "" in dest and back */
 char *Af_2fullname( char *dest, const char *file );
 
 /* Returns Extension from the Filename(!) or "" in dest and back */
@@ -2505,9 +2505,9 @@ char *Af_2ext( char *dest, const char *file );
 char *Af_buildname( char *dest, int16 drv, const char *path, const char *name, const char *ext );
 
 /* Changes the extension of a filename */
-char *Af_chgExt( char *file, char *new_ext );
+char *Af_chgExt( char *file, const char *new_ext );
 
-/* Ermittelt Dateil„nge (nicht Dirlength) */
+/* determine file size */
 int32 Af_length( const char *file );
 
 /* Calls Fileselector */
@@ -2525,8 +2525,8 @@ ULinList *Af_fileselect( const char *title, char *path, char *ext, int16 sort_mo
 /* Dateien suchen, Verzeichnisse einlesen */
 A_FileList *Af_readdir( const char *path );
 void Af_freedir( A_FileList *list );
-char *Af_first( const char *start, A_FileList *fileinfo );
-char *Af_next( A_FileList *fileinfo );
+char *Af_first( const char *start, XATTR *fileinfo );
+char *Af_next( XATTR *fileinfo );
 
 /* Returns full Path of CFG-File */
 char *Af_cfgfile( const char* file );
@@ -2535,12 +2535,12 @@ char *Af_cfgfile( const char* file );
 int32 Af_pathconf( int16 drv, int16 mode );
 
 /* Dateinamen ggf. quoten bzw. Quote-Zeichen entfernen */
-char *Af_quote( char *dest, char *source );
-char *Af_unquote( char *dest, char *source );
+char *Af_quote( char *dest, const char *source );
+char *Af_unquote( char *dest, const char *source );
 
 /* Datei-Zeile parsen und in Liste von Dateinamen zerlegen */
 /* Quoting wird beachtet!                                  */
-ULinList *Af_parseCmdLine( char *file_string );
+ULinList *Af_parseCmdLine( const char *file_string );
 
 /******************************************************************************/
 /*                                                                            */

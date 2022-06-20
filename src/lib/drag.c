@@ -1058,6 +1058,9 @@ void Adr_drag(int16 x, int16 y)
 			if (Dsetdrv(Dgetdrv()) & (1L << ('U' - 'A')) &&
 				Fxattr(0, "U:\\PIPE", &xattr) == 0)
 			{
+#ifdef __GNUC__ /* silence compiler */
+				fd = 0;
+#endif
 				do
 				{
 					pipename[18]++;

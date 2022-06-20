@@ -8,3 +8,4 @@
 #define _MINT_OSTRUCT_H
 #include <mint/osbind.h>
 #include <mint/mintbind.h>
+#define _DTA DTA

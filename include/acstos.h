@@ -647,7 +647,7 @@ typedef struct
 
 /******************************************************************************/
 
-/* Struktur fr Fdatime gem. PureC und TOS.HYP */
+/* Struktur fr Fdatime gem. PureC und TOS.HYP */
 typedef struct
 {
    uint16 time;

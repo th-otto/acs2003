@@ -42,7 +42,7 @@ config.c
 string.c
 drag.c
 event.c
-fileutil.s
+fileutil.c
 memory.s
 menu.s
 mouse.s
