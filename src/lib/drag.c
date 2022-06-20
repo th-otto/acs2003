@@ -511,7 +511,7 @@ void Adr_box(int16 x, int16 y)
 	rect.y = lastrect.y = newy = lasty = y;
 	rect.w = lastrect.w = rect.h = lastrect.h = 0;
 	win->service(win, AS_REALSEL_START, NULL);
-	Amo_new(&ACSblk->description->mouse[BUSYBEE]);
+	Amo_new(&ACSblk->description->mouse[MOUSE_POINT_HAND]);
 	Awi_update(BEG_MCTRL);
 	
 	do
@@ -639,7 +639,7 @@ void Adr_box(int16 x, int16 y)
 	win->service(win, AS_REALSEL_END, NULL);
 	if (sel.array != NULL)
 		Ax_ifree(sel.array);
-	Amo_new(&ACSblk->description->mouse[ARROW]);
+	Amo_new(&ACSblk->description->mouse[MOUSE_ARROW]);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -931,7 +931,7 @@ void Adr_drag(int16 x, int16 y)
 		}
 	} while (button != 0);
 	
-	Amo_new(&ACSblk->description->mouse[ARROW]);
+	Amo_new(&ACSblk->description->mouse[MOUSE_ARROW]);
 	ACSblk->Aselect.dragback = TRUE;
 	if (lastobj >= 0)
 	{

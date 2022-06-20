@@ -517,7 +517,7 @@ static void title_rubber(OBJ_ENTRY *entry, OBJECT *obj, int16 x, int16 y, int16 
 	int16 x2;
 	int16 x3;
 	
-	Amo_new(&ACSblk->description->mouse[BUSYBEE]); /* FIXME: why BUSYBEE? */
+	Amo_new(&ACSblk->description->mouse[MOUSE_POINT_HAND]);
 	min_size(entry, obj, &minw, &minh);
 	minw += x;
 	y2 = obj->ob_height + y;
@@ -549,7 +549,7 @@ static void title_rubber(OBJ_ENTRY *entry, OBJECT *obj, int16 x, int16 y, int16 
 		{
 			vs_clip(ACSblk->vdi_handle, FALSE, clip);
 			*destx -= x - 1;
-			Amo_new(&ACSblk->description->mouse[ARROW]);
+			Amo_new(&ACSblk->description->mouse[MOUSE_ARROW]);
 			break;
 		}
 		

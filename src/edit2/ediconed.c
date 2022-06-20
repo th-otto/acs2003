@@ -1008,7 +1008,7 @@ static void edic_nextcol(Awindow *self)
 		++parm->color;
 		if (parm->color < colors)
 		{
-			Amo_new(&ACSblk->description->mouse[TEXT_CRSR]);
+			Amo_new(&ACSblk->description->mouse[MOUSE_BUSYBEE]);
 			edic_black0();
 		} else
 		{

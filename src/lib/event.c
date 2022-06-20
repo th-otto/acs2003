@@ -422,7 +422,7 @@ void evmouse(void)
 	}
 	if (Awi_shadow(win))
 	{
-		Amo_new(&ACSblk->description->mouse[ARROW]);
+		Amo_new(&ACSblk->description->mouse[MOUSE_ARROW]);
 		return;
 	}
 	if (Aob_within(&win->wi_work, ACSblk->ev_mmox, ACSblk->ev_mmoy))

@@ -113,7 +113,7 @@ boolean A_rubberbox(int16 x, int16 y, int16 minw, int16 minh, int16 *dstw, int16
 		snap = 1;
 	snapmask = ~(imagesnap - 1);
 	
-	Amo_new(&ACSblk->description->mouse[BUSYBEE]);
+	Amo_new(&ACSblk->description->mouse[MOUSE_POINT_HAND]);
 	clip[0] = clip[1] = 0;
 	clip[2] = ACSblk->desk.x + ACSblk->desk.w /* - 1 */; /* BUG: missing -1 */
 	clip[3] = ACSblk->desk.y + ACSblk->desk.h /* - 1 */;
@@ -143,7 +143,7 @@ boolean A_rubberbox(int16 x, int16 y, int16 minw, int16 minh, int16 *dstw, int16
 			vs_clip(ACSblk->vdi_handle, 0, clip);
 			*dstw = newx - x + 1;
 			*dsth = newy - y + 1;
-			Amo_new(&ACSblk->description->mouse[ARROW]);
+			Amo_new(&ACSblk->description->mouse[MOUSE_ARROW]);
 			if (info != NULL)
 			{
 				if (back != NULL)

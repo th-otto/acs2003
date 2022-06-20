@@ -272,7 +272,7 @@ static void draw_box(Awindow *self)
 	tree = self->work;
 	if ((ACSblk->ev_mmokstate & K_SHIFT) == 0)
 		Adr_unselect();
-	Amo_new(&ACSblk->description->mouse[BUSYBEE]);
+	Amo_new(&ACSblk->description->mouse[MOUSE_POINT_HAND]);
 	rect.x = ACSblk->ev_mmox;
 	rect.y = ACSblk->ev_mmoy;
 	Awi_update(BEG_MCTRL);
@@ -295,7 +295,7 @@ static void draw_box(Awindow *self)
 	rect.w += 4;
 	rect.h += 4;
 	ob_find(self, obnr, &rect);
-	Amo_new(&ACSblk->description->mouse[ARROW]);
+	Amo_new(&ACSblk->description->mouse[MOUSE_ARROW]);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -753,7 +753,7 @@ static boolean rubberbox(Awindow *self, int16 obnr, int16 x, int16 y, int16 *dst
 	
 	objtree = parm->obj->object;
 	obj = &objtree[(obnr - 2) / 3];
-	Amo_new(&ACSblk->description->mouse[BUSYBEE]);
+	Amo_new(&ACSblk->description->mouse[MOUSE_POINT_HAND]);
 	min_size(obj, &tree[obnr] - 1, &minw, &minh);
 	child = tree[obnr].ob_head;
 	if (child > 0 && !(tree[obnr].ob_state & OS_WHITEBAK))
@@ -920,7 +920,7 @@ static boolean rubberbox(Awindow *self, int16 obnr, int16 x, int16 y, int16 *dst
 			vs_clip(ACSblk->vdi_handle, 0, clip);
 			*dstx -= x;
 			*dsty -= y;
-			Amo_new(&ACSblk->description->mouse[ARROW]);
+			Amo_new(&ACSblk->description->mouse[MOUSE_ARROW]);
 			if (popup != NULL)
 			{
 				if (bp != NULL)
