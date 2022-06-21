@@ -95,13 +95,20 @@ extern "C" {
 
 /******************************************************************************/
 
-/* Mode fÅr Mxalloc */
+/* Modes for Mxalloc() */
 #define MONLYST            0x00
 #define MONLYTT            0x01
 #define MEGALST            0x02
 #define MEGALTT            0x03
 #define MPRIVATE           0x10
 #define MGLOBAL            0x20
+
+#define MX_STRAM           MONLYST
+#define MX_TTRAM           MONLYTT
+#define MX_PREFSTRAM       MEGALST
+#define MX_PREFTTRAM       MEGALTT
+#define MX_PRIVATE         MPRIVATE
+#define MX_GLOBAL          MGLOBAL
 
 /******************************************************************************/
 

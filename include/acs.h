@@ -59,7 +59,7 @@ typedef struct _ACSNextStruct
 typedef struct
 {
    ssize_t block_size;
-   char *descr_text;
+   const char *descr_text;
    int16 max_liste;
    int16 aktuell_liste;
    int16 max_used;
@@ -1950,10 +1950,10 @@ void Ax_glfree( void *memory );
 void Ax_ifree( void *memory );
 
 /* Speicher auf Les-/Schreibbarkeit prÅfen (Speicherschutz!) */
-int16 Ax_memCheck( const char *buffer, ssize_t len, boolean write );
+boolean Ax_memCheck( const char *buffer, ssize_t len, boolean write );
 
 /* Liste fÅr recyclebaren Speicher erzeugen/Ñndern/lîschen */
-int16 Ax_setRecycleSize( ssize_t size, int16 amount, const char *beschreibung );
+boolean Ax_setRecycleSize(ssize_t size, int16 amount, const char *description);
 
 /* Akt. Statistik Åber freie Listen zusammenstellen und liefern */
 MemFreeBlockStat *Ax_getRecycleStat( int16 *anzahl );

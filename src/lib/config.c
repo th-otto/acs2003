@@ -8,30 +8,7 @@
 /******************************************************************************/
 
 #include "acs_i.h"
-
-typedef struct {
-	char *grp_name;
-	int16 anzahl;
-	char **cfg_strings;
-} ACSCfgGruppe;
-
-typedef struct _ACSConfig {
-	UCfgInfo info;
-	/* 18 */ boolean changed;
-	/* 20 */ int16 grp_anzahl;
-	/* 22 */ ACSCfgGruppe **cfg_grp;
-	/* 26 */ int16 flags;
-	/* 28 */ int16 head_anz;
-	/* 30 */ char **header;
-} ACSConfig;
-
-typedef struct {
-	char *grp_name;
-	ACSCfgGruppe *gruppe;
-	char *name;
-	char *value;
-	int16 index;
-} ACSCfgSearchStruct;
+#include "memory.h"
 
 static UCfgInfo const default_info = { "", "%;", NULL, FALSE, FALSE, 32 };
 static char s_val[MAX_CFGLEN];

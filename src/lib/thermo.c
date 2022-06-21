@@ -9,6 +9,7 @@
 
 #include "acs_i.h"
 #include "country.h"
+#include "memory.h"
 
 static void ThermCancel(void);
 static boolean ThermoService(Awindow *self, int16 task, void *in_out);
@@ -30,18 +31,6 @@ static int16 textNr[]  = { NIL, THERMO_TEXT_TEXT, NIL, THERMO_PERCENT_TEXT };
 static int16 laufBNr[] = { THERMO_MINIMAL_RUN, THERMO_TEXT_RUN, THERMO_CANCEL_RUN, THERMO_PERCENT_RUN };
 static int16 fixBNr[]  = { THERMO_MINIMAL_FIX, THERMO_TEXT_FIX, THERMO_CANCEL_FIX, THERMO_PERCENT_FIX };
 static int16 prozNr[]  = { THERMO_MINIMAL_PROC, THERMO_TEXT_PROC, THERMO_CANCEL_PROC, THERMO_PERCENT_PROC };
-
-typedef struct {
-	ThermoData aktData;
-	const char *title;
-	int16 prozent;
-	int16 thermArt;
-	int16 thermComp;
-	int16 color;
-	boolean running;
-	int32 timer;
-	Awindow *thermo;
-} ThermoStruct;
 
 /******************************************************************************/
 /* -------------------------------------------------------------------------- */

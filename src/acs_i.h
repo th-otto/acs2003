@@ -413,24 +413,6 @@ struct _ACSLinListElemStruct
 	void *data;
 };
 
-typedef struct
-{
-	int32 block_size;
-	char *descr_text;
-	int16 max_liste;
-	int16 aktuell_liste;
-	int16 max_used;
-	int16 opt_anzahl;
-	/* ^^^ same as MemFreeBlockStat */
-	ACSLinListElemStruct *liste;
-} MemFreeBlockList;
-
-typedef struct memx {
-	struct memx *prev;
-	long used;
-	void *entry[32];
-} MEMX;
-
 typedef struct {
 	int16 count;
 	int16 *planes;
@@ -1451,6 +1433,12 @@ int16 evkeybrd(Awindow *win);
 int16 evbutton(int16 button, int16 clicks);
 void evmouse(void);
 void ACSeventhandler(void);
+
+
+/*
+ * lib/string.c
+ */
+extern char null_string[];
 
 
 /*

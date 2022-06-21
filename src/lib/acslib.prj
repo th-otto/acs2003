@@ -43,7 +43,7 @@ string.c
 drag.c
 event.c
 fileutil.c
-memory.s
+memory.c
 menu.s
 mouse.s
 object.s
