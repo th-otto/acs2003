@@ -1551,7 +1551,7 @@ int16 Aob_tobkey(Awindow *win, int16 kstate, int16 key);
 int16 Aob_wobkey(Awindow *win, int16 kstate, int16 key);
 int16 Aob_execute(Awindow *win, OBJECT *tree, int16 obnr);
 boolean Aob_select(Awindow *win, OBJECT *tree, int16 obnr, boolean dclick);
-void Aob_key(Awindow *win, int16 key);
+int16 Aob_key(OBJECT *tree, int16 kstate, int16 key);
 
 
 /*

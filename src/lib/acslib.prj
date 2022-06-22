@@ -44,7 +44,7 @@ drag.c
 event.c
 fileutil.c
 memory.c
-menu.s
+menu.c
 mouse.s
 object.s
 wobject.s
