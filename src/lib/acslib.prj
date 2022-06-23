@@ -46,7 +46,7 @@ fileutil.c
 memory.c
 menu.c
 mouse.c
-object.s
+object.c
 wobject.s
 backplan.s
 window.s

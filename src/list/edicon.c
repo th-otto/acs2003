@@ -212,12 +212,12 @@ Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon)
 			data = cicon->col_data;
 			if (data != NULL)
 			{
-				copy = dup_data(acs, &data[-DATA_OFFSET], size * 4 + DATA_OFFSET * sizeof(*data));
+				copy = dup_data(acs, &data[-(sizeof(a_hcicon) / sizeof(*data))], size * 4 + sizeof(a_hcicon));
 				/* BUG: no null-pointer check */
 				my_icon.c16.col_data = (int16 *)copy;
 				copy->usage--;
 				data = copy->object;
-				*data = 0;
+				((a_hcicon *)data)->count = 0;
 			}
 			if (cicon->col_mask != NULL)
 			{
@@ -231,11 +231,11 @@ Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon)
 			if (data != NULL)
 			{
 				/* BUG: no null-pointer check */
-				copy = dup_data(acs, &data[-DATA_OFFSET], size * 4 + DATA_OFFSET * sizeof(*data));
+				copy = dup_data(acs, &data[-(sizeof(a_hcicon) / sizeof(*data))], size * 4 + sizeof(a_hcicon));
 				my_icon.c16.sel_data = (int16 *)copy;
 				copy->usage--;
 				data = copy->object;
-				*data = 0;
+				((a_hcicon *)data)->count = 0;
 			}
 			if (cicon->sel_mask != NULL)
 			{
@@ -253,12 +253,12 @@ Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon)
 			data = cicon->col_data;
 			if (data != NULL)
 			{
-				copy = dup_data(acs, &data[-DATA_OFFSET], size * 8 + DATA_OFFSET * sizeof(*data));
+				copy = dup_data(acs, &data[-(sizeof(a_hcicon) / sizeof(*data))], size * 8 + sizeof(a_hcicon));
 				/* BUG: no null-pointer check */
 				my_icon.c256.col_data = (int16 *)copy;
 				copy->usage--;
 				data = copy->object;
-				*data = 0;
+				((a_hcicon *)data)->count = 0;
 			}
 			if (cicon->col_mask != NULL)
 			{
@@ -271,12 +271,12 @@ Obj_Head *dup_icon(ACS_HEAD *acs, CICONBLK *icon)
 			data = cicon->sel_data;
 			if (data != NULL)
 			{
-				copy = dup_data(acs, &data[-DATA_OFFSET], size * 8 + DATA_OFFSET * sizeof(*data));
+				copy = dup_data(acs, &data[-(sizeof(a_hcicon) / sizeof(*data))], size * 8 + sizeof(a_hcicon));
 				/* BUG: no null-pointer check */
 				my_icon.c256.sel_data = (int16 *)copy;
 				copy->usage--;
 				data = copy->object;
-				*data = 0;
+				((a_hcicon *)data)->count = 0;
 			}
 			if (cicon->sel_mask != NULL)
 			{

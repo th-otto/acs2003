@@ -107,7 +107,7 @@ static int16 getFgColor(int16 color)
 static void *ito_cicon(int16 *data, int16 *mask, CICONBLK *icon, int16 planes)
 {
 	ssize_t size;
-	int16 *newdata;
+	char *newdata;
 	
 	if (planes == ACSblk->nplanes)
 	{
@@ -116,11 +116,11 @@ static void *ito_cicon(int16 *data, int16 *mask, CICONBLK *icon, int16 planes)
 	{
 		size = (((icon->monoblk.ib_wicon + 15) & -16) * icon->monoblk.ib_hicon) >> 3;
 		size = size * planes;
-		newdata = Ax_malloc(size + DATA_OFFSET * sizeof(int16));
+		newdata = Ax_malloc(size + sizeof(a_hcicon));
 		if (newdata == NULL)
 			return NULL;
-		memcpy(&newdata[DATA_OFFSET], &data[DATA_OFFSET], size);
-		return &newdata[DATA_OFFSET];
+		memcpy(newdata + sizeof(a_hcicon), (char *)data + sizeof(a_hcicon), size);
+		return newdata + sizeof(a_hcicon);
 	}
 }
 
@@ -366,9 +366,9 @@ static void do_plane(MFDB *src, MFDB *dst, short planes, ssize_t planesize, int1
 		ptr = Ax_malloc(planes * planesize);
 	} else
 	{
-		ptr = Ax_malloc(planes * planesize + DATA_OFFSET * sizeof(*ptr));
+		ptr = Ax_malloc(planes * planesize + sizeof(a_hcicon));
 		if (ptr != NULL)
-			ptr += DATA_OFFSET;
+			ptr += sizeof(a_hcicon) / sizeof(*ptr);
 	}
 	if (ptr == NULL)
 		return;
@@ -388,7 +388,7 @@ static void do_plane(MFDB *src, MFDB *dst, short planes, ssize_t planesize, int1
 				if (planes == 1)
 					Ax_free(dst->fd_addr);
 				else
-					Ax_free((int16 *)dst->fd_addr - DATA_OFFSET);
+					Ax_free((int16 *)dst->fd_addr - sizeof(a_hcicon) / sizeof(*ptr));
 				return;
 			}
 			src->fd_stand = dst->fd_stand = 1;
@@ -421,7 +421,7 @@ static void do_plane(MFDB *src, MFDB *dst, short planes, ssize_t planesize, int1
 	if (planes == 1)
 		Ax_ifree(*data);
 	else
-		Ax_ifree(*data - DATA_OFFSET);
+		Ax_ifree(*data - sizeof(a_hcicon) / sizeof(*ptr));
 	*data = ptr;
 }
 
@@ -1215,7 +1215,7 @@ static void edic_newplane(void)
 	switch (ACSblk->nplanes)
 	{
 	case 4:
-		datalen = len * 4 + DATA_OFFSET * sizeof(*data);
+		datalen = len * 4 + sizeof(a_hcicon);
 		data = Ax_malloc(datalen);
 		if (data != NULL)
 		{
@@ -1224,16 +1224,16 @@ static void edic_newplane(void)
 			if (selected && parm->c16.col_data != NULL)
 			{
 				if (parm->c16.sel_data != NULL)
-					Ax_free(parm->c16.sel_data - DATA_OFFSET);
+					Ax_free(parm->c16.sel_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c16.sel_mask);
-				parm->c16.sel_data = &data[DATA_OFFSET];
+				parm->c16.sel_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c16.sel_mask = mask;
 			} else
 			{
 				if (parm->c16.col_data != NULL)
-					Ax_free(parm->c16.col_data - DATA_OFFSET);
+					Ax_free(parm->c16.col_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c16.col_mask);
-				parm->c16.col_data = &data[DATA_OFFSET];
+				parm->c16.col_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c16.col_mask = mask;
 			}
 		} else
@@ -1243,7 +1243,7 @@ static void edic_newplane(void)
 		break;
 		
 	case 8:
-		datalen = len * 8 + DATA_OFFSET * sizeof(*data);
+		datalen = len * 8 + sizeof(a_hcicon);
 		data = Ax_malloc(datalen);
 		if (data != NULL)
 		{
@@ -1252,16 +1252,16 @@ static void edic_newplane(void)
 			if (selected && parm->c256.col_data != NULL)
 			{
 				if (parm->c256.sel_data != NULL)
-					Ax_free(parm->c256.sel_data - DATA_OFFSET);
+					Ax_free(parm->c256.sel_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c256.sel_mask);
-				parm->c256.sel_data = &data[DATA_OFFSET];
+				parm->c256.sel_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c256.sel_mask = mask;
 			} else
 			{
 				if (parm->c256.col_data != NULL)
-					Ax_free(parm->c256.col_data - DATA_OFFSET);
+					Ax_free(parm->c256.col_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c256.col_mask);
-				parm->c256.col_data = &data[DATA_OFFSET];
+				parm->c256.col_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c256.col_mask = mask;
 			}
 		} else
@@ -1382,49 +1382,49 @@ static void edic_accept(void)
 	switch (ACSblk->nplanes)
 	{
 	case 4:
-		datalen = len * 4 + DATA_OFFSET * sizeof(*data);
+		datalen = len * 4 + sizeof(a_hcicon);
 		if ((data = Ax_malloc(datalen)) != NULL)
 		{
-			memcpy(&data[DATA_OFFSET], dst->fd_addr, datalen);
+			memcpy(&data[sizeof(a_hcicon) / sizeof(*data)], dst->fd_addr, datalen);
 			parm->c16.num_planes = 4;
 			if (selected && parm->c16.col_data != NULL)
 			{
 				if (parm->c16.sel_data != NULL)
-					Ax_free(parm->c16.sel_data - DATA_OFFSET);
+					Ax_free(parm->c16.sel_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c16.sel_mask);
-				parm->c16.sel_data = &data[DATA_OFFSET];
+				parm->c16.sel_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c16.sel_mask = mask;
 			} else
 			{
 				if (parm->c16.col_data != NULL)
-					Ax_free(parm->c16.col_data - DATA_OFFSET);
+					Ax_free(parm->c16.col_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c16.col_mask);
-				parm->c16.col_data = &data[DATA_OFFSET];
+				parm->c16.col_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c16.col_mask = mask;
 			}
 		}
 		break;
 	
 	case 8:
-		datalen = len * 8 + DATA_OFFSET * sizeof(*data);
+		datalen = len * 8 + sizeof(a_hcicon);
 		data = Ax_malloc(datalen);
 		if (data != NULL)
 		{
-			memcpy(&data[DATA_OFFSET], dst->fd_addr, datalen);
+			memcpy(&data[sizeof(a_hcicon) / sizeof(*data)], dst->fd_addr, datalen);
 			parm->c256.num_planes = 8;
 			if (selected && parm->c256.col_data != NULL)
 			{
 				if (parm->c256.sel_data != NULL)
-					Ax_free(parm->c256.sel_data - DATA_OFFSET);
+					Ax_free(parm->c256.sel_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c256.sel_mask);
-				parm->c256.sel_data = &data[DATA_OFFSET];
+				parm->c256.sel_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c256.sel_mask = mask;
 			} else
 			{
 				if (parm->c256.col_data != NULL)
-					Ax_free(parm->c256.col_data - DATA_OFFSET);
+					Ax_free(parm->c256.col_data - sizeof(a_hcicon) / sizeof(*data));
 				Ax_free(parm->c256.col_mask);
-				parm->c256.col_data = &data[DATA_OFFSET];
+				parm->c256.col_data = &data[sizeof(a_hcicon) / sizeof(*data)];
 				parm->c256.col_mask = mask;
 			}
 		}
@@ -1469,14 +1469,14 @@ static void edic_delplane(void)
 		if (!selected)
 		{
 			if (parm->c16.col_data != NULL)
-				Ax_free(parm->c16.col_data - DATA_OFFSET);
+				Ax_free(parm->c16.col_data - sizeof(a_hcicon) / sizeof(*parm->c16.col_data));
 			Ax_free(parm->c16.col_mask);
 			parm->c16.col_data = NULL;
 			parm->c16.col_mask = NULL;
 			parm->c16.num_planes = 0;
 		}
 		if (parm->c16.sel_data != NULL)
-			Ax_free(parm->c16.sel_data - DATA_OFFSET);
+			Ax_free(parm->c16.sel_data - sizeof(a_hcicon) / sizeof(*parm->c16.sel_data));
 		Ax_free(parm->c16.sel_mask);
 		parm->c16.sel_data = NULL;
 		parm->c16.sel_mask = NULL;
@@ -1486,14 +1486,14 @@ static void edic_delplane(void)
 		if (!selected)
 		{
 			if (parm->c256.col_data != NULL)
-				Ax_free(parm->c256.col_data - DATA_OFFSET);
+				Ax_free(parm->c256.col_data - sizeof(a_hcicon) / sizeof(*parm->c256.col_data));
 			Ax_free(parm->c256.col_mask);
 			parm->c256.col_data = NULL;
 			parm->c256.col_mask = NULL;
 			parm->c256.num_planes = 0;
 		}
 		if (parm->c256.sel_data != NULL)
-			Ax_free(parm->c256.sel_data - DATA_OFFSET);
+			Ax_free(parm->c256.sel_data - sizeof(a_hcicon) / sizeof(*parm->c256.sel_data));
 		Ax_free(parm->c256.sel_mask);
 		parm->c256.sel_data = NULL;
 		parm->c256.sel_mask = NULL;
@@ -2079,16 +2079,16 @@ static void edic_term(Awindow *self)
 	Ax_free(parm->data);
 	Ax_free(parm->mask);
 	if (parm->c16.col_data != NULL)
-		Ax_free(parm->c16.col_data - DATA_OFFSET);
+		Ax_free(parm->c16.col_data - sizeof(a_hcicon) / sizeof(*parm->c16.col_data));
 	Ax_free(parm->c16.col_mask);
 	if (parm->c16.sel_data != NULL)
-		Ax_free(parm->c16.sel_data - DATA_OFFSET);
+		Ax_free(parm->c16.sel_data - sizeof(a_hcicon) / sizeof(*parm->c16.col_data));
 	Ax_free(parm->c16.sel_mask);
 	if (parm->c256.col_data != NULL)
-		Ax_free(parm->c256.col_data - DATA_OFFSET);
+		Ax_free(parm->c256.col_data - sizeof(a_hcicon) / sizeof(*parm->c256.col_data));
 	Ax_free(parm->c256.col_mask);
 	if (parm->c256.sel_data != NULL)
-		Ax_free(parm->c256.sel_data - DATA_OFFSET);
+		Ax_free(parm->c256.sel_data - sizeof(a_hcicon) / sizeof(*parm->c256.col_data));
 	Ax_free(parm->c256.sel_mask);
 	Ax_free(parm);
 	Awi_delete(self);

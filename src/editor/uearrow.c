@@ -315,7 +315,7 @@ static OBJECT *edar_object_tree(AUSER_DEF *userdef, OBJECT *edit)
 	sscanf(userdef->parm, "0x%lxL", &val);
 	user->ub_parm = val;
 	parm = &tree[ED_ARROW_SAMPLE_BOX].ob_spec.userblk->ub_parm;
-	*parm &= ~ACS_BUTTON_COLOR;
+	*parm &= ~ACS_ARROW_COLOR;
 	if (((int)val & ACS_ARROW_COLOR) == G_WHITE)
 		*parm |= G_BLACK;
 	else

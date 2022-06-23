@@ -589,9 +589,6 @@ typedef struct {
 #define ACS_ARROW_STYLE     0x00070000L
 #define ACS_ARROW_COLOR     0x0000000FL
 
-/* values for ub_parm of button objects */
-#define ACS_BUTTON_COLOR    0x0000000FL
-
 /* values for ub_parm of pattern objects */
 #define ACS_PATTERN_COLOR   0x0000000FL
 #define ACS_PATTERN_FRAME   0x00200000L
@@ -1578,7 +1575,7 @@ void TRuserobj(void);
 /*
  * lib/userdef/boxed.c
  */
-void Aus_objboxed(void *a0, void *a1, int16 d0);
+void Aus_objboxed(Awindow *win, OBJECT *tree, int16 obnr);
 void Aud_boxed(void);
 
 

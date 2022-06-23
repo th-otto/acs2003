@@ -1566,48 +1566,50 @@ int16 Aob_count( const OBJECT *tree, boolean count_aobject );
 /* save rectangle of desktop */
 MFDB *Aob_save( Axywh *rect );
 
-/* restore desktop previously save with Aob_save */
+/* restore desktop previously saved with Aob_save */
 void Aob_restore( MFDB *save, Axywh *rect );
 
 /* Watched Object, select, if pointer upon obnr  */
-/* returns TRUE, if button was release upon obnr */
+/* returns TRUE, if button was released upon obnr */
 boolean Aob_watch( Awindow *window, int16 obnr );
 
 /* Klick-Routine, die Awi_help(ev_window) aufruft */
 void Aob_help( void );
 
 /* Find obnr for which Flagmask becomes TRUE, obnr is start object */
-int16 Aob_findflag( OBJECT *ob, int16 obnr, int16 flag );
+int16 Aob_findflag( OBJECT *tree, int16 obnr, int16 flag );
 
 /* PrÅfen, ob ein Objekt sichtbar ist (bzw. je nach Slider-Stellungen sein kînnte) */
 boolean Aob_visible( OBJECT *tree, int16 obnr );
 
 /* Find parent Objectnr, returns -1 on top level */
-int16 Aob_up( OBJECT* ob, int16 obnr );
+int16 Aob_up( OBJECT *tree, int16 obnr );
 
-/* Bits aus ob_flags und ob_state setzen oder lîschen */
+/* delete or set bits in ob_flags */
 int16 Aob_flags( Awindow *window, int16 obnr, int16 flag, int16 setflag );
+
+/* delete or set bits in ob_state */
 int16 Aob_state( Awindow *window, int16 obnr, int16 flag, int16 setflag );
 
 /* Setzt TEXT in das Objekt ein, betrachtet die Typen!        */
 /* Nur fÅr die USERDEFS wird in UB_PTR1 dynamisch Speicher    */
 /* entsprechend der TextlÑnge angelegt, sonst darf auf keinen */
 /* Fall die TextlÑnge die vorhandene LÑnge Åberschreiten!!!   */
-void Aob_puttext( OBJECT *ob, int16 obnr, const char *text );
+void Aob_puttext( OBJECT *tree, int16 obnr, const char *text );
 
 /* Gibt analog zu printf Text in ein Objekt aus, 1024 Zeichen Puffer */
-void Aob_printf( OBJECT *ob, int16 obnr, const char *format, ... ) __attribute__((format(printf, 3, 4)));
+void Aob_printf( OBJECT *tree, int16 obnr, const char *format, ... ) __attribute__((format(printf, 3, 4)));
 
 /* Holt Text aus Objekt, TEXT muû lang genug sein!           */
 /* zurÅckgeleifert wird die LÑnge des Textes oder -1         */
 /* wenn die LÑnge nicht ermittelt werden konnte.             */
 /* wird TEXT=NULL gesetzt, wird nur die LÑnge ermittelt,     */
 /* was dazu dienen kann, die TextlÑnge dynamisch zu erfragen */
-boolean Aob_gettext( const OBJECT *ob, int16 obnr, char *text );
+boolean Aob_gettext( OBJECT *tree, int16 obnr, char *text );
 
 /* Holt Werte analog zu scanf, liefert analog zu Aob_gettext */
 /* nur LÑnge wenn format!=NULL, 1024 Zeichen Puffer          */
-int16 Aob_scanf( OBJECT *ob, int16 obnr, const char *format, ... ) __attribute__((format(scanf, 3, 4)));
+int16 Aob_scanf( OBJECT *tree, int16 obnr, const char *format, ... ) __attribute__((format(scanf, 3, 4)));
 
 /* Is x/y in Rectangle? */
 int16 Aob_within( const Axywh* rect, int16 x, int16 y );
@@ -1617,7 +1619,7 @@ boolean Aob_service( OBJECT *tree, int16 obnr, int16 task, void *in_out );
 
 /******************************************************************************/
 /*                                                                            */
-/* MenÅ-Handling                                                              */
+/* Menu-Handling                                                              */
 /*                                                                            */
 /******************************************************************************/
 

@@ -436,13 +436,13 @@ void *to_cicon(int16 *data, int16 *mask, CICONBLK *icon, int16 planes)
 	ssize_t srcsize;
 	MFDB dst;
 	MFDB src;
-	int16 *tmp;
+	a_hcicon *tmp;
 	
 	width = (icon->monoblk.ib_wicon + 15) & -16;
 	planesize = (width * icon->monoblk.ib_hicon) >> 3;
 	if (planes > ACSblk->nplanes)
 		Awi_alert(1, a_planemess); /* FIXME: debug code? */
-	dstsize = planesize * ACSblk->nplanes + DATA_OFFSET * sizeof(int16);
+	dstsize = planesize * ACSblk->nplanes + sizeof(a_hcicon);
 	srcsize = planesize * planes;
 	dst.fd_stand = 0;
 	src.fd_stand = 1;
@@ -458,15 +458,15 @@ void *to_cicon(int16 *data, int16 *mask, CICONBLK *icon, int16 planes)
 	}
 	src.fd_addr = tmp;
 	memset(src.fd_addr, 0, dstsize);
-	memcpy(src.fd_addr, &data[DATA_OFFSET], srcsize);
+	memcpy(src.fd_addr, (char *)data + sizeof(a_hcicon), srcsize);
 	if ((tmp = Ax_malloc(dstsize)) == NULL)
 	{
 		Ax_ifree(src.fd_addr);
 		icon->mainlist = NULL;
 		return NULL;
 	}
-	dst.fd_addr = tmp + DATA_OFFSET;
-	tmp[0] = 1;
+	dst.fd_addr = tmp + 1;
+	tmp->count = 1;
 	if (ACSblk->description->flags & AB_NOTRANSICON)
 		memcpy(dst.fd_addr, src.fd_addr, srcsize);
 	else
