@@ -206,7 +206,7 @@ static Ablk *get_acsblk(void)
 	strcpy(ACSblk->separator, " \t=+-*/()!&|[]{}<>,.;:\335$%?`'^#~@\\\"");
 	ACSblk->screenMFDB.fd_addr = NULL;
 	ACSblk->ev_mkdead[0] = '\0';
-	ACSblk->keyAltCtrlSwitch = TRUE;
+	ACSblk->keyAltCtrlSwitch = KEY_AC_ALT_WORK;
 	
 	return ACSblk;
 }

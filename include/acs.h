@@ -829,7 +829,7 @@ typedef struct
     /* Einstellung, ob eine nicht verarbeitete "normale" Taste zusammen mit */
     /* ALT oder CTRL als TastenkÅrzel fÅr Toolbar/Work-Objekt ausprobiert   */
     /* werden soll */
-    /* 1276 */ boolean keyAltCtrlSwitch;
+    /* 1276 */ int16 keyAltCtrlSwitch;
 
     /* Der MagiC-Cookie */
     /* 1278 */ MAGX_COOKIE *MagiCCookie;
@@ -1437,16 +1437,16 @@ void Awi_saved( Awindow *window, const char *datei );
 /* ! changed behaviour to 1.0                   */
 void Awi_obchange( Awindow *window, int16 obnr, int16 new_state );
 
-/* Redraws everthing in the Area of obnr (uses window->redraw) */
+/* Redraws everything in the Area of obnr (uses window->redraw) */
 void Awi_obredraw(Awindow *window, int16 obnr );
 
-/* Send a message zu the window-object */
+/* Send a message to the window-object */
 boolean Awi_observice( Awindow *wind, int16 obnr, int16 task, void *in_out );
 
 /* Find obnr for which Flagmask becomes TRUE, obnr is start object */
 OBJECT *Awi_obfind( Awindow *window, int16 x, int16 y, OBJECT **tree, int16 *obnr );
 
-/* PrÅfen, ob ein Objekt sichtbar ist (bzw. je nach Slider-Stellungen sein kînnte) */
+/* check whether an object is visible (or could be depending on slider settings) */
 boolean Awi_obvisible( Awindow *window, int16 obnr );
 
 /* Das Kontext-Popup fÅr Objekt unter (mx, my) aufrufen */
@@ -1579,17 +1579,17 @@ void Aob_help( void );
 /* Find obnr for which Flagmask becomes TRUE, obnr is start object */
 int16 Aob_findflag( OBJECT *tree, int16 obnr, int16 flag );
 
-/* PrÅfen, ob ein Objekt sichtbar ist (bzw. je nach Slider-Stellungen sein kînnte) */
+/* check whether an object is visible (or could be depending on slider settings) */
 boolean Aob_visible( OBJECT *tree, int16 obnr );
 
 /* Find parent Objectnr, returns -1 on top level */
 int16 Aob_up( OBJECT *tree, int16 obnr );
 
 /* delete or set bits in ob_flags */
-int16 Aob_flags( Awindow *window, int16 obnr, int16 flag, int16 setflag );
+int16 Aob_flags( Awindow *window, int16 obnr, int16 flag, boolean setflag );
 
 /* delete or set bits in ob_state */
-int16 Aob_state( Awindow *window, int16 obnr, int16 flag, int16 setflag );
+int16 Aob_state( Awindow *window, int16 obnr, int16 flag, boolean setflag );
 
 /* Setzt TEXT in das Objekt ein, betrachtet die Typen!        */
 /* Nur fÅr die USERDEFS wird in UB_PTR1 dynamisch Speicher    */

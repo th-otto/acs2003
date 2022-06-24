@@ -54,6 +54,7 @@
 
 #define MAX_ACS   16
 #define MAX_WINDS 256
+#define MAX_WI_ICONS 128
 #define PATH_SEP  '\\'
 #define MAX_LANGS 3
 #define LABEL_MAX 32
@@ -1497,7 +1498,7 @@ void oldgemdos(void);
  * lib/window.c
  */
 extern Awindow *_ACSv_winds[MAX_WINDS];
-extern CICONBLK *_ACSv_wiicons[MAX_WINDS];
+extern OBJECT *_ACSv_wiicons[MAX_WI_ICONS];
 extern boolean _ACSv_wmenu;
 extern int16 _Wmax_wi;
 
@@ -1554,7 +1555,7 @@ int16 Aob_key(OBJECT *tree, int16 kstate, int16 key);
 /*
  * lib/wobject.c
  */
-void Awi_chdef(Awindow *window, Axywh *xywh);
+boolean Aob_chdef(Awindow *window, OBJECT *tree);
 boolean Awi_focuschg(Awindow *win, int16 from, int16 to);
 void Aob_help(void);
 

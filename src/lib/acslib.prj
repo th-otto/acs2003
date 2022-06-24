@@ -47,7 +47,7 @@ memory.c
 menu.c
 mouse.c
 object.c
-wobject.s
+wobject.c
 backplan.s
 window.s
 shelutil.s
