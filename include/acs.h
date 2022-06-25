@@ -1705,7 +1705,7 @@ void Abp_start( MFDB *backplane );
 void Abp_end( void );
 
 /* Converts IMAGE to MFDB, transform into dev-fmt, if do_trnsfm=TRUE, OK on success */
-int16 Abp_img2mfdb( IMG_HEADER *org, MFDB **dest, int16 do_trnsfm );
+int16 Abp_img2mfdb( const IMG_HEADER *org, MFDB **dest, boolean do_trnsfm );
 
 /* Converts dev-depend. MFDB to IMG-Format, gives IMG-DATA-Length */
 /* dest=NULL serves ONLY img_len, returns OK on sucess */

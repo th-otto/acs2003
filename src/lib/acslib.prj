@@ -48,7 +48,7 @@ menu.c
 mouse.c
 object.c
 wobject.c
-backplan.s
+backplan.c
 window.s
 shelutil.s
 thermo.c

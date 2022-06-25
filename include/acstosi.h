@@ -9,3 +9,4 @@
 #include <mint/osbind.h>
 #include <mint/mintbind.h>
 #define _DTA DTA
+#define _KBDVECS KBDVECS
