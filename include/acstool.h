@@ -121,104 +121,7 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
-#ifdef __KEYTAB_LIB__
-   #error "KeyTab-Library is in ACS implemented!"
-#endif
-#ifdef KEYTAB_H
-   #error "KeyTab-Header-File is in ACS included!"
-#endif
-
-/******************************************************************************/
-/*                                                                            */
-/* Globale Konstanten fÅr KEYTAB - Global Constants for KEYTAB                */
-/*                                                                            */
-/******************************************************************************/
-
-/* Konstanten fÅr die Short-Informationen der 8-Bit-ZeichensÑtze */
-/* Constants for the Short-Informations of the 8-Bit-Charsets   */
-#define KT_SINFO_8BIT_ASK_MAX_SINFO       KT_SINFO_8BIT_MAX
-#define KT_SINFO_8BIT_ASK_MAX_CINFO       KT_CINFO_8BIT_MAX
-#define KT_SINFO_8BIT_CONV_ATARI          2
-#define KT_SINFO_8BIT_CONV_UNICODE        3
-#define KT_SINFO_8BIT_MAX                 3
-
-/******************************************************************************/
-
-/* Konstanten fÅr die String-Informationen der 8-Bit-ZeichensÑtze */
-/* Constants for the String-Informations of the 8-Bit-Charsets    */
-#define KT_CINFO_8BIT_LONGNAME            0
-#define KT_CINFO_8BIT_SHORTNAME           1
-#define KT_CINFO_8BIT_MAX                 1
-
-/******************************************************************************/
-
-/* Konstanten fÅr die Short-Informationen der Unicode-Codierungen */
-/* Constants for the Short-Informations of the Unicode-Encodings  */
-#define KT_SINFO_UNICODE_ASK_MAX_SINFO    KT_SINFO_UNICODE_MAX
-#define KT_SINFO_UNICODE_ASK_MAX_CINFO    KT_CINFO_UNICODE_MAX
-#define KT_SINFO_UNICODE_MAX              1
-
-/******************************************************************************/
-
-/* Konstanten fÅr die String-Informationen der Unicode-Codierungen */
-/* Constants for the String-Informations of the Unicode-Encodings  */
-#define KT_CINFO_UNICODE_LONGNAME         0
-#define KT_CINFO_UNICODE_SHORTNAME        1
-#define KT_CINFO_UNICODE_MAX              1
-
-/******************************************************************************/
-
-/* Konstanten fÅr maximale LÑnge der Zeichensatz-Namen */
-/* Constants for the maximum length of charsets names  */
-#define KT_MAX_LONG_NAME   38
-#define KT_MAX_SHORT_NAME  14
-
-/******************************************************************************/
-
-/* Daten-Struktur, auf die der KEYT-Cookie verweist */
-typedef struct
-{
-   int32  magic;
-   int32 size;
-   int16 cdecl (*GetExpMaxNr)(void);
-   int32 resvd0;
-   int16 cdecl (*GetExpNrFromId)(int16 eid);
-   char  cdecl (*CharAtari2X)(int16 enr, char echr);
-   int16 cdecl (*GetImpMaxNr)(void);
-   int32 resvd1;
-   int16 cdecl (*GetImpNrFromId)(int16 iid);
-   char  cdecl (*CharX2Atari)(int16 inr, char ichr);
-   void  cdecl (*BlockAtari2X)(int16 enr, ssize_t elen, char *echrs);
-   void  cdecl (*BlockX2Atari)(int16 inr, ssize_t ilen, char *ichrs);
-   char *cdecl (*GetExpNameFromNr)(int16 enr);
-   char *cdecl (*GetImpNameFromNr)(int16 inr);
-   char *cdecl (*GetExpShortNameFromNr)(int16 enr);
-   char *cdecl (*GetImpShortNameFromNr)(int16 inr);
-   int16 cdecl (*GetRelease)(void);
-   int16 cdecl (*GetExpIdFromNr)(int16 enr);
-   int16 cdecl (*GetImpIdFromNr)(int16 inr);
-   int16 cdecl (*GetExpNrFromName)(char *name);
-   int16 cdecl (*GetImpNrFromName)(char *name);
-   int32 cdecl (*GetEuro)(void);
-   int16 cdecl (*CharX2Unicode)(int16 nr, char ch);
-   char cdecl  (*CharUnicode2X)(int16 nr, int16 unicode);
-   void cdecl (*BlockX2Unicode)( int16 *unicode, int16 nr, char *x_chrs, ssize_t len );
-   void cdecl (*BlockUnicode2X)( char *x_chrs, int16 nr, int16 *unicode, ssize_t len );
-   int16 cdecl (*GetExpMinNr)(void);
-   int16 cdecl (*GetImpMinNr)(void);
-   int32  cdecl (*CharXUtf2Unicode)( int16 nr, char *string, ssize_t len, int16 *read_chars );
-   char *cdecl (*CharUnicode2XUtf)( int16 nr, ssize_t lunicode, char *result, int16 *used_chars );
-   void cdecl (*BlockXUtf2Unicode)( int16 *unicode, ssize_t *uni_len, int16 nr,
-                  char *string, ssize_t len );
-   void cdecl (*BlockUnicode2XUtf)( char *string, ssize_t *str_len, int16 nr,
-                  int16 *unicode, ssize_t len );
-   void cdecl (*BlockXUtf2U2XUtf)( char *dest, ssize_t *dest_len, int16 dest_nr,
-                  char *source, ssize_t src_len, int16 src_nr );
-   void cdecl (*BlockXUtf2XUtf)( char *dest, ssize_t *dest_len, int16 dest_nr,
-                  char *source, ssize_t src_len, int16 src_nr );
-   int16 cdecl (*GetInfoShort)( int16 nr, int16 what, int16 *info );
-   int16 cdecl (*GetInfoString)( int16 nr, int16 what, char *info, int16 maxLen );
-} KEYT;
+#include "keytab.h"
 
 /******************************************************************************/
 /*                                                                            */
@@ -605,67 +508,6 @@ void Ast_deleteAry( char **strings, int16 anzahl );
 
 /******************************************************************************/
 /*                                                                            */
-/* Funktionen zur Zeichensatz-Wandelung mittels KEYTAB                        */
-/*                                                                            */
-/******************************************************************************/
-
-/* Funktionen rund um den CookieJar - Functions around the CookieJar   */
-KEYT *Akt_getKeyTab( void );
-int16 Akt_GetRelease( void );
-
-/******************************************************************************/
-
-/* Auskunfts-Funktionen Åber Filter - Info-Functions about the Filters */
-int16 Akt_getExpMinNr( void );
-int16 Akt_getExpMaxNr( void );
-int16 Akt_getImpMinNr( void );
-int16 Akt_getImpMaxNr( void );
-char *Akt_getExpNameFromNr( int16 nr );
-char *Akt_getImpNameFromNr( int16 nr );
-char *Akt_getExpShortNameFromNr( int16 nr );
-char *Akt_getImpShortNameFromNr( int16 nr );
-int16 Akt_getExpNrFromId( int16 id );
-int16 Akt_getImpNrFromId( int16 id );
-int16 Akt_getExpIdFromNr( int16 nr );
-int16 Akt_getImpIdFromNr( int16 nr );
-int16 Akt_getExpNrFromName( char *name );
-int16 Akt_getImpNrFromName( char *name );
-int16 Akt_getInfoShort( int16 nr, int16 what, int16 *info );
-int16 Akt_getInfoString( int16 nr, int16 what, char *info, int16 max_len );
-
-/******************************************************************************/
-
-/* Konvertieren von Zeichen und Strings - Conversion of Chars and Strings */
-char Akt_CharAtari2X( int16 nr, char ch );
-char Akt_CharX2Atari( int16 nr, char ch );
-int16 Akt_CharX2Unicode( int16 nr, char ch );
-char Akt_CharUnicode2X( int16 nr, int16 unicode );
-int32 Akt_CharXUtf2Unicode( int16 nr, char *string, ssize_t len, int16 *read_chars );
-char *Akt_CharUnicode2XUtf( int16 nr, ssize_t lunicode, char *result, int16 *used_chars );
-
-char *Akt_BlockAtari2X( char *dest_string, int16 nr, char *source_string, ssize_t len );
-char *Akt_BlockX2Atari( char *dest_string, int16 nr, char *source_string, ssize_t len );
-int16 *Akt_BlockX2Unicode( int16 *unicode, int16 nr, char *x_chrs, ssize_t len );
-char *Akt_BlockUnicode2X( char *x_chrs, int16 nr, int16 *unicode, ssize_t len );
-int16 *Akt_BlockXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *x_chrs, ssize_t len );
-char *Akt_BlockUnicode2XUtf( char *x_chrs, ssize_t *str_len, int16 nr, int16 *unicode, ssize_t len );
-char *Akt_BlockXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr );
-char *Akt_BlockXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, ssize_t src_len, int16 src_nr );
-
-char *Akt_StringAtari2X( char *dest_string, int16 nr, char *source_string );
-char *Akt_StringX2Atari( char *dest_string, int16 nr, char *source_string );
-int16 *Akt_StringX2Unicode( int16 *unicode, int16 nr, char *string );
-int16 *Akt_StringXUtf2Unicode( int16 *unicode, ssize_t *uni_len, int16 nr, char *string );
-char *Akt_StringXUtf2U2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr );
-char *Akt_StringXUtf2XUtf( char *dest, ssize_t *dest_len, int16 dest_nr, char *source, int16 src_nr );
-
-/******************************************************************************/
-
-/* Das Euro-Zeichen - The Euro-Sign */
-int32 Akt_getEuro( void );
-
-/******************************************************************************/
-/*                                                                            */
 /* Funktionen rund ums Speicher-Management                                    */
 /*                                                                            */
 /******************************************************************************/
@@ -730,7 +572,7 @@ int16 Ash_module( const char* path );
 void Ash_error( int16 messerr, void *para );
 
 /* Looks for 'cookie' and writes its Value in val (returns TRUE on success) */
-int16 Ash_getcookie( long cookie, void *value );
+short Ash_getcookie( long cookie, void *value );
 
 /* looks for 'char' in Env and returns value */
 char *Ash_getenv( const char *var );

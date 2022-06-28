@@ -1246,7 +1246,7 @@ SYSHDR *Ash_getOSHeader( void );
 
 /* Den Cookie suchen und den Wert in 'value' schreiben */
 /* liefert TRUE bei gefundenem Cookie                  */
-int16 Ash_getcookie( int32 cookie, void *value );
+short Ash_getcookie( long cookie, void *value );
 
 /* Den MagiC-Cookie 'MagX' auslesen und liefern */
 MAGX_COOKIE *Ash_getMagiC( void );

@@ -52,7 +52,7 @@ backplan.c
 window.c
 shelutil.c
 thermo.c
-keytab.s [-M-]
+keytab.c
 messages\msgserv.s [-M-]
 messages\screen.s
 messages\xacc.c

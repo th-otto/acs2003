@@ -380,7 +380,7 @@ int16 Mxmask(void)
 
 /******************************************************************************/
 
-boolean Ash_getcookie(int32 cookie, void *value)
+boolean Ash_getcookie(long cookie, void *value)
 {
 	static int16 use_ssystem = -1; 
 	COOKJAR	*cookiejar;
