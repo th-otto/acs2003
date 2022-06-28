@@ -609,42 +609,11 @@ int16 mt_wind_set_grect( int16 handle, int16 what, const GRECT *r,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#if 0
-int16 mt_wind_set_string( int16 handle, int16 what, const char *str,
+int16 mt_wind_set_str( int16 handle, int16 what, const char *str,
             GlobalArray *globl )
 {
-   /* AES-Datenblock anlegen */
-   static int16 contrl[] = {105, 6, 1, 0, 0};
-   AESData data;
-
-   /* Das contrl-Array initialisieren */
-   CTRLCOPY(data.contrl, contrl);
-
-   /* Das globl-Array eintragen */
-   data.globl = globl;
-
-   /* Die Arrays fllen */
-   data.intin[0] = handle;
-   data.intin[1] = what;
-   /* Optimierung: Anstelle von                                */
-   /*                                                          */
-   /* data.intin[2] = (int16)((((int32)str) >> 16) & 0xFFFF);  */
-   /* data.intin[3] = (int16)(((int32)str) & 0xFFFF);          */
-   /*                                                          */
-   /* heit es nun:                                            */
-   if( str!=NULL )
-      *((const char **)&data.intin[2]) = str;
-   else
-      return -1;
-   data.intin[4] = 0;
-   data.intin[5] = 0;
-
-   /* Ab in die AES... */
-   aes(data.contrl, data.globl, data.intin, data.intout, data.addrin, data.addrout);
-
-   return data.intout[0];
+	return mt_wind_set(handle, what, (int16)((int32)str >> 16), (int16)(int32)str, 0, 0, globl);
 }
-#endif
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*                                                                            */
@@ -652,34 +621,11 @@ int16 mt_wind_set_string( int16 handle, int16 what, const char *str,
 /*                                                                            */
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#if 0
 int16 mt_wind_set_int( int16 handle, int16 what, int16 g1,
             GlobalArray *globl )
 {
-   /* AES-Datenblock anlegen */
-   static int16 contrl[] = {105, 6, 1, 0, 0};
-   AESData data;
-
-   /* Das contrl-Array initialisieren */
-   CTRLCOPY(data.contrl, contrl);
-
-   /* Das globl-Array eintragen */
-   data.globl = globl;
-
-   /* Die Arrays fllen */
-   data.intin[0] = handle;
-   data.intin[1] = what;
-   data.intin[2] = g1;
-   data.intin[3] = 0;
-   data.intin[4] = 0;
-   data.intin[5] = 0;
-
-   /* Ab in die AES... */
-   aes(data.contrl, data.globl, data.intin, data.intout, data.addrin, data.addrout);
-
-   return data.intout[0];
+	return mt_wind_set(handle, what, g1, 0, 0, 0, globl);
 }
-#endif
 
 /******************************************************************************/
 /*                                                                            */

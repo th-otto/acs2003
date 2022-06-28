@@ -198,7 +198,7 @@ boolean Aev_ExitBubble(void);
 boolean Aev_GetAckBubbleGEM(MsgFktParams *params);
 boolean Aev_GetAskFontBubbleGEM(MsgFktParams *params);
 boolean Aev_GetRequestBubbleGEM(MsgFktParams *params);
-boolean Aev_ShowBubbleGEM(void *a0, int16 d0, int16 d1);
+boolean Aev_ShowBubbleGEM(const char *text, int16 mx, int16 my);
 boolean Aev_HideBubbleGEM(int16 d0);
 
 
@@ -211,7 +211,7 @@ boolean Aev_GetGSRequest(MsgFktParams *params);
 boolean Aev_GetGSQuit(MsgFktParams *params);
 boolean Aev_GetGSCommand(MsgFktParams *params);
 boolean Aev_GetGSAck(MsgFktParams *params);
-int16 _gs_strcmp(const char *str1, const char *str2);
+int _gs_strcmp(const void *str1, const void *str2);
 
 
 /*
@@ -238,7 +238,7 @@ boolean A_OlgaDelete(int16 d0);
  */
 boolean Aev_InitSTGuide(void);
 boolean Aev_ExitSTGuide(void);
-void CheckSTGuide(void *a0);
+void CheckSTGuide(Awindow *win);
 
 
 /*
@@ -260,5 +260,5 @@ boolean Aev_ExitSSP(void);
  */
 boolean Aev_InitPCHelp(void);
 boolean Aev_ExitPCHelp(void);
-void CheckPcHelp(void *a0);
+void CheckPcHelp(Awindow *win);
 boolean Aev_GetAcReply(MsgFktParams *params);

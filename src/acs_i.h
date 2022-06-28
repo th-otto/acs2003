@@ -421,7 +421,7 @@ typedef struct {
 
 typedef struct {
 	const char *cmd;
-	void (*gs_fkt)(void);
+	int16 (*gs_fkt)(Awindow *win, int16 count, char **cmds, A_GSAntwort *answer);
 } gs_cmd;
 
 typedef struct {
@@ -1505,12 +1505,12 @@ extern int16 _Wmax_wi;
 int16 INwindow(void);
 void TRwindow(void);
 int16 Awi_register(Awindow *win);
-void Awi_setontop(Awindow *win);
+Awindow *Awi_setontop(Awindow *win);
 void Awi_invalid(void);
 void Awi_lateupdate(void);
 void Awi_slider(Awindow *win);
 int16 Awi_backdrop(Awindow *win);
-Awindow *Awi_up_modal( void );
+void Awi_up_modal(void);
 void Awi_show_menu(boolean show);
 void Awi_cleanup(Awindow *win);
 boolean Awi_shadow(Awindow *win);
@@ -1583,7 +1583,7 @@ void Aud_boxed(void);
 /*
  * lib/util.c
  */
-extern int16 a_dialog_active;
+extern boolean a_dialog_active;
 
 void Act_save(CONTEXT *ctx);
 void Act_restore(CONTEXT *ctx);

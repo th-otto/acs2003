@@ -109,7 +109,7 @@ typedef struct wd
    /*   0 */ void *user;                      /* Users object pointer */
    /*   4 */ boolean (*service)(swd *a,         /* Service call */
                   int16 task, void *in_out);
-   /*   8 */ swd *(*create)(void *a);         /* create window passing window specific parameters*/
+   /*   8 */ swd *(*create)(void *a);         /* create window passing window specific parameters */
    /*  12 */ int16 (*open)(swd *a);           /* open window return success */
    /*  16 */ int16 (*init)(swd *a);           /* init window return success */
    /*  20 */ OBJECT *work;                    /* Object within window */
@@ -747,7 +747,7 @@ typedef struct
     /*   16 */ int16 vdi_handle;                         /* virtual VDI workstation for ACS */
     /*   18 */ int16 gl_wbox;                            /* cell width of standard char */
     /*   20 */ int16 gl_hbox;                            /* cell height of standard char */
-    /*   22 */ int16 gl_wchar;                           /* max width of standard char*/
+    /*   22 */ int16 gl_wchar;                           /* max width of standard char */
     /*   24 */ int16 gl_hchar;                           /* max height of standard char */
     /*   26 */ int16 ncolors;                            /* number of colors (2=mono) */
     /*   28 */ int16 nplanes;                            /* number of colors expressed in planes */
@@ -1340,15 +1340,17 @@ void Awi_sized( Awindow *window, Axywh *area );
 void Awi_moved( Awindow *window, Axywh *area );
 
 /* Iconify (FALSE: ein Fenster, TRUE: alle) & Uniconify */
-int16 Awi_iconify (Awindow *wi, boolean all);
-int16 Awi_uniconify (Awindow *wi);
+boolean Awi_iconify (Awindow *wi, boolean all);
+boolean Awi_uniconify (Awindow *wi);
 
-/* Allgemeine GEMScript-Funktion der Anwendung und eines Fensters */
-int16 Aev_GEMScript( int16 anz, char **cmd, A_GSAntwort *antwort );
-int16 Awi_gemscript( Awindow *wi, int16 anz, char **cmds, A_GSAntwort *antwort );
+/* Default GEMScript function for the application */
+int16 Aev_GEMScript( int16 anz, char **cmd, A_GSAntwort *answer );
 
-/* Fenstern anhand des Titels bestimmen */
-Awindow *Awi_name( const char *title, int16 sensitiv );
+/* Default GEMScript function for window */
+int16 Awi_gemscript( Awindow *wi, int16 anz, char **cmds, A_GSAntwort *answer );
+
+/* Find a window by title */
+Awindow *Awi_name( const char *title, boolean sensitiv );
 
 /* Finish open Dialog */
 void Awi_diaend( void );
@@ -1403,8 +1405,8 @@ void Awi_uoself( Awindow *win );
 #define RESTART_UPDATE  (0x0020)
 void Awi_update( int16 mode );
 
-/* Das Layout umschalten */
-void Awi_layout( int16 flag3D, int16 flagModernMenu, int16 redraw );
+/* Toggle the layout */
+void Awi_layout( int16 flag3D, int16 flagModernMenu, boolean redraw );
 
 /* ST-Guide-Hilfe zum Fenster anzeigen */
 int16 Awi_help( Awindow *window );
@@ -1450,7 +1452,7 @@ OBJECT *Awi_obfind( Awindow *window, int16 x, int16 y, OBJECT **tree, int16 *obn
 boolean Awi_obvisible( Awindow *window, int16 obnr );
 
 /* Das Kontext-Popup fÅr Objekt unter (mx, my) aufrufen */
-int16 Awi_context( Awindow *window, int16 mx, int16 my );
+boolean Awi_context( Awindow *window, int16 mx, int16 my );
 
 /******************************************************************************/
 /*                                                                            */
@@ -1504,7 +1506,7 @@ int16 Aev_AcVersion( char *help_acc, Awindow *window );
 int16 Aev_AcCopy( char *help_acc, Awindow *window );
 
 /* BubbleGEM */
-int16 Awi_bubblegem( Awindow *window, int16 mx, int16 my );
+boolean Awi_bubblegem( Awindow *window, int16 mx, int16 my );
 int16 Aev_FontBubbleGEM( int16 font_id, int16 points );
 
 /* OLGA-Protokoll */
@@ -1634,7 +1636,7 @@ int16 Ame_popup( Awindow *window, OBJECT *popup, int16 x, int16 y );
 /* Build a Popup out of pstr, the Entry chk will be checked,        */
 /* should be a substring of pstr, Width is the Pixel-Width of Popup */
 /* returns the selected Substring or NULL in none                   */
-char* Ame_strpopup( Awindow* wi, char* pstr, char* chk, int16 width, int16 x, int16 y );
+char *Ame_strpopup( Awindow* wi, char *pstr, char *chk, int16 width, int16 x, int16 y );
 
 /******************************************************************************/
 /*                                                                            */
@@ -1758,7 +1760,7 @@ boolean Ach_isWhite(char c);
 /******************************************************************************/
 
 /* Neue Kopie eines Strings anlegen bzw. freigeben */
-char* Ast_create( const char *parent );
+char *Ast_create( const char *parent );
 void Ast_delete( char *string );
 
 /* Strings in Groû-/Kleinbuchstaben wandeln */
@@ -1986,7 +1988,7 @@ int16 A_dialog2( OBJECT* dia );
 
 /* Display an Alert-Box with one String-Parameter */
 /* alert must have the form [X][...%s....][Y] */
-int16 alert_str( const char* alert, const char* para );
+int16 alert_str( const char *alert, const char *para );
 
 /* Veschneidet beide Rechtecke, TRUE wenn Schnitt existiert */
 boolean intersect( Axywh* to, const Axywh* from );
@@ -2188,8 +2190,8 @@ void Aus_boxed( void );
 /*                                                                            */
 /******************************************************************************/
 
-/* Call an other Program (return retvalue of Pexec(Basepage)) */
-int32 Ash_prog( char *path, char *command, char **env );
+/* Call another Program (return retvalue of Pexec(Basepage)) */
+int32 Ash_prog( char *path, char *command, char *env );
 
 /* Load and initialize an ACS-Module (returns OK or FAIL) */
 int16 Ash_module(const char *path);
@@ -2531,7 +2533,7 @@ char *Af_first( const char *start, XATTR *fileinfo );
 char *Af_next( XATTR *fileinfo );
 
 /* Returns full Path of CFG-File */
-char *Af_cfgfile( const char* file );
+char *Af_cfgfile( const char *file );
 
 /* Infos gem. Dpathconf, 1=A:, 2=B:, etc. */
 int32 Af_pathconf( int16 drv, int16 mode );

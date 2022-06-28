@@ -204,7 +204,12 @@ static void ge_saveas(void)
 	self->iconblk->monoblk.ib_ptext = Ast_create(strrchr(filename, PATH_SEP) + 1);
 	wh = self->wi_id;
 	if (wh >= 0)
+#if WITH_FIXES
+		if (self->wi_kind & INFO)
+			wind_set_str(wh, WF_INFO, self->info);
+#else
 		wind_set(wh, WF_INFO, self->info, 0, 0);
+#endif
 	if (self->icon >= 0)
 	{
 		win = Awi_root();

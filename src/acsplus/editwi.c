@@ -1605,7 +1605,12 @@ static void set_title(Awindow *self, const char *title)
 	{
 		Ast_delete(name);
 		if (self->wi_id > 0)
+#if WITH_FIXES
+			if (self->wi_kind & NAME)
+				wind_set_str(self->wi_id, WF_NAME, self->name);
+#else
 			wind_set(self->wi_id, WF_NAME, self->name, 0, 0);
+#endif
 	}
 }
 

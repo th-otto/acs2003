@@ -49,7 +49,7 @@ mouse.c
 object.c
 wobject.c
 backplan.c
-window.s
+window.c
 shelutil.s
 thermo.c
 keytab.s [-M-]

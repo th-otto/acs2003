@@ -42,7 +42,12 @@ static void ed_wabort(Awindow *self)
 		Ast_delete(self->name);
 		self->name = parm->oldtitle;
 		if (self->wi_id > 0)
+#if WITH_FIXES
+			if (self->wi_kind & NAME)
+				wind_set_str(self->wi_id, WF_NAME, self->name ? self->name : "");
+#else
 			wind_set(self->wi_id, WF_NAME, self->name, 0, 0);
+#endif
 	}
 	if (!Ast_isEmpty(self->help_title))
 		Ast_delete(self->help_title);

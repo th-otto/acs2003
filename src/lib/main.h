@@ -1,3 +1,19 @@
 #define ABOUT_DATE            6
 #define ABOUT_VERSION         7
 
+#define ALERT_BOX             1
+#define ALERT_STOP            2
+#define ALERT_EXCLAM          3
+#define ALERT_QUEST           4
+#define ALERT_TIME0           5
+#define ALERT_TIME8          13
+#define ALERT_ICON           14
+#define ALERT_TEXT_BOX       15
+#define ALERT_TEXT1          16
+#define ALERT_TEXT2          17
+#define ALERT_TEXT3          18
+#define ALERT_TEXT4          19
+#define ALERT_TEXT5          20
+#define ALERT_BUTTON1        21
+#define ALERT_BUTTON2        23
+#define ALERT_BUTTON3        25

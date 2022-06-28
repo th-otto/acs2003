@@ -244,7 +244,14 @@ void new_name(Awindow *win, Obj_Head *title)
 	win->info = Ast_create(title->label);
 	id = win->wi_id;
 	if (id >= 0)
+	{
+#if WITH_FIXES
+		if ((win->wi_kind & INFO) != 0)
+			wind_set_str(id, WF_INFO, win->info != NULL ? win->info : "");
+#else
 		wind_set(id, WF_INFO, win->info, 0, 0);
+#endif
+	}
 }
 
 /* -------------------------------------------------------------------------- */
