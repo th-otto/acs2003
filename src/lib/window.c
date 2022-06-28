@@ -2316,7 +2316,7 @@ int16 Awi_dialog(Awindow *win)
 				if ((win->work[button].ob_flags & (OF_EXIT | OF_SELECTABLE)) == (OF_EXIT | OF_SELECTABLE))
 				{
 #if WITH_FIXES
-					if ((win->work[tbutton].ob_flags & OF_LASTOB) || !(win->work[button + 1].ob_flags & AEO) || ((AOBJECT *)&win->work[button + 1])->click == NULL)
+					if ((win->work[button].ob_flags & OF_LASTOB) || !(win->work[button + 1].ob_flags & AEO) || ((AOBJECT *)&win->work[button + 1])->click == NULL)
 						break;
 #else
 					if (!(win->work[button + 1].ob_flags & AEO) || ((AOBJECT *)&win->work[button + 1])->click == NULL)

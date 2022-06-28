@@ -50,7 +50,7 @@ object.c
 wobject.c
 backplan.c
 window.c
-shelutil.s
+shelutil.c
 thermo.c
 keytab.s [-M-]
 messages\msgserv.s [-M-]

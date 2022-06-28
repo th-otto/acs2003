@@ -8,37 +8,6 @@
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_gemscript(Awindow *wi, int16 anz, char **cmds, A_GSAntwort *antwort)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Ash_error(int16 messerr, const void *para)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-/* Kommandozeile parsen und Optionen befüllen */
-int16 Ash_cmdParsen(char *options[256], const int16 argc, char **argv,
-         const char *optionBeginChars, const char *optionsAllowed,
-         const char *optionsWithParam, int16 (*wrongOption)(const char c),
-         ULinList *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-char *Ash_getenv(const char *var)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
 KEYT *Akt_getKeyTab(void)
 {
 	return 0;
@@ -869,7 +838,7 @@ int16 Aev_FontBubbleGEM(int16 font_id, int16 points)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_ShowBubbleGEM(void *a0, int16 d0, int16 d1)
+boolean Aev_ShowBubbleGEM(const char *text, int16 mx, int16 my)
 {
 	return 0;
 }
@@ -925,7 +894,7 @@ boolean Aev_GetGSAck(MsgFktParams *params)
 
 /* -------------------------------------------------------------------------- */
 
-int16 _gs_strcmp(const char *str1, const char *str2)
+int _gs_strcmp(const void *str1, const void *str2)
 {
 	return 0;
 }

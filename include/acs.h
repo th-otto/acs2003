@@ -2013,10 +2013,10 @@ const RGB1000 *Avdi_getRGB( int16 index );
 
 /******************************************************************************/
 
-/* Kommandozeile parsen und Optionen befÅllen */
-int16 Ash_cmdParsen( char *options[256], const int16 argc, char **argv,
+/* parse commandline and fill options */
+boolean Ash_cmdParsen( char *options[256], int16 argc, char **argv,
          const char *optionBeginChars, const char *optionsAllowed,
-         const char *optionsWithParam, int16 (*wrongOption)(const char c),
+         const char *optionsWithParam, boolean (*wrongOption)(const char c),
          ULinList *params );
 
 /******************************************************************************/
@@ -2209,7 +2209,7 @@ boolean Ash_sendall( int16 *mess, int32 type );
 /* Looks for 'cookie' and writes its Value in val (returns TRUE on success) */
 int16 Ash_getcookie( int32 cookie, void *value );
 
-/* looks for 'char' in Env and returns value */
+/* looks for 'var' in Env and returns value */
 char *Ash_getenv( const char *var );
 
 /* Die Icons fÅr das Fenster der Druck-Dialoge, Zeichensatz- */
