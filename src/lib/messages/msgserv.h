@@ -19,18 +19,6 @@ typedef struct {
 } MsgFktParams;
 
 typedef struct {
-	int16 MsgNr;
-	void (*MsgFunktion)(void);
-	char WindOffset;
-	char XOffset;
-	char YOffset;
-	char WOffset;
-	char HOffset;
-	char draginfos;
-	int16 scrolloffset;
-} MsgService;
-
-typedef struct {
 	int16 dest_id;
 	Awindow *window;
 	int16 timeout;
@@ -95,17 +83,16 @@ int16 INMsgService(void);
 void TRMsgService(void);
 boolean Aev_message(int16 *msg);
 A_dd_int *Aev_DDSearch(int16 id);
-int16 Aev_CmpMsgInList(void *list, int16 *msg);
-int16 Aev_CmpDestID(void *list, void /* int16 */ *msg);
-void Aev_SearchMsg(void *a0);
-boolean Aev_DeleteMsg(void *a0);
+boolean Aev_CmpMsgInList(void /* MsgSearchForOriginal */ *para, void /* MsgWaitForAnswer */ *msg);
+int16 Aev_CmpDestID(void /* MsgSearchForOriginal */ *para, void /* MsgWaitForAnswer */ *msg);
+MsgWaitForAnswer *Aev_SearchMsg(MsgSearchForOriginal *msg);
+boolean Aev_DeleteMsg(MsgSearchForOriginal *msg);
 boolean Aev_SendMsg(int16 dest_id, int16 type, int16 *message, Awindow *win, int16 timeout);
-void Aev_SendMsg2all(void *a0, void *a1);
 boolean Aev_SendAllMsg(int16 *message, int16 type, Awindow *win, int16 timeout);
-boolean Aev_DDAdd(int16 id, int16 type, void *msg, const char *name);
+boolean Aev_DDAdd(int16 id, int16 type, int16 *msg, const char *name);
 boolean Aev_DDDelete(int16 id);
-boolean Aev_DDRemove(void *elem);
-void Ash_sendmsg(int16 d0, int16 d1, void *a0);
+boolean Aev_DDRemove(A_dd_int *dd);
+boolean Ash_sendmsg(int16 dest_id, int16 type, int16 *message);
 boolean GetImgIntoObj(void *data, Awindow *win, int16 obnr, AOBJECT *aobj, OBJECT *obj);
 boolean GetTxtIntoObj(const char *text, const char *type, Awindow *win, int16 obnr, int16 obednr, AOBJECT *aobj, OBJECT *obj);
 
@@ -162,7 +149,7 @@ boolean Aev_GetAccMeta(MsgFktParams *params);
  */
 boolean Aev_InitVA(void);
 boolean Aev_ExitVA(void);
-void VaDataDelete(void);
+void VaDataDelete(AVData *data);
 boolean Aev_GetAvExit(MsgFktParams *params);
 boolean Aev_GetVaProtoStatus(MsgFktParams *params);
 boolean Aev_GetVaStart(MsgFktParams *params);
@@ -225,7 +212,7 @@ boolean Aev_GetOleNew(MsgFktParams *params);
 boolean Aev_GetOlgaAck(MsgFktParams *params);
 boolean Aev_GetOlgaUpdated(MsgFktParams *params);
 boolean Aev_GetOlgaGetInfo(MsgFktParams *params);
-boolean Aev_GetOlgaCLientTerminated(MsgFktParams *params);
+boolean Aev_GetOlgaClientTerminated(MsgFktParams *params);
 boolean Aev_GetOlgaIdle(MsgFktParams *params);
 boolean Aev_OleInit(void);
 boolean Aev_OleExit(void);

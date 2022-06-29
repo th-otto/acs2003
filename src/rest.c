@@ -8,137 +8,6 @@
 
 /* -------------------------------------------------------------------------- */
 
-int16 INMsgService(void)
-{
-	return OK;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void TRMsgService(void)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_message(int16 *msg)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_CmpMsgInList(void *list, int16 *msg)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_CmpDestID(void *list, void *msg)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Aev_SearchMsg(void *a0)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_DeleteMsg(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_SendMsg(int16 dest_id, int16 type, int16 *message, Awindow *win, int16 timeout)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Aev_SendMsg2all(void *a0, void *a1)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_SendAllMsg(int16 *message, int16 type, Awindow *win, int16 timeout)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-A_dd_int *Aev_DDSearch(int16 id)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_DDAdd(int16 id, int16 type, void *msg, const char *name)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_DDDelete(int16 id)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_DDRemove(void *a0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-void Ash_sendmsg(int16 d0, int16 d1, void *a0)
-{
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Ash_sendall(int16 *mess, int32 type)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-A_dd *Ash_nextdd(A_dd *act)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean GetImgIntoObj(void *data, Awindow *win, int16 obnr, AOBJECT *aobj, OBJECT *obj)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-ULinListe *globProtData;
-
-boolean GetTxtIntoObj(const char *text, const char *type, Awindow *win, int16 obnr, int16 obednr, AOBJECT *aobj, OBJECT *obj)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
 boolean Aev_GetMnSelected(MsgFktParams *params)
 {
 	return 0;
@@ -349,7 +218,7 @@ boolean Aev_ExitVA(void)
 
 /* -------------------------------------------------------------------------- */
 
-void VaDataDelete(void)
+void VaDataDelete(AVData *data)
 {
 }
 
@@ -676,7 +545,7 @@ boolean Aev_GetOlgaGetInfo(MsgFktParams *params)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_GetOlgaCLientTerminated(MsgFktParams *params)
+boolean Aev_GetOlgaClientTerminated(MsgFktParams *params)
 {
 	return 0;
 }

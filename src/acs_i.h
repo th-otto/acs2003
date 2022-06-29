@@ -612,20 +612,20 @@ typedef struct {
 #define ACS_INNER_SMALL     0x08000000L
 
 /* values for ub_parm of 3dbutton objects */
-#define ACS_3DBUTTON_NOFILL    0x80000000L /* part of bfopspec.character */
-#define ACS_3DBUTTON_SMALL     0x40000000L /* part of bfopspec.character */
-#define ACS_3DBUTTON_HORPOS    0x30000000L /* part of bfopspec.character */
+#define ACS_3DBUTTON_NOFILL    0x80000000L /* part of bfobspec.character */
+#define ACS_3DBUTTON_SMALL     0x40000000L /* part of bfobspec.character */
+#define ACS_3DBUTTON_HORPOS    0x30000000L /* part of bfobspec.character */
 #define ACS_3DBUTTON_HORPOS_LEFT   0x00000000L
 #define ACS_3DBUTTON_HORPOS_CENTER 0x20000000L
 #define ACS_3DBUTTON_HORPOS_RIGHT  0x10000000L
-#define ACS_3DBUTTON_INCOL     0x0F000000L /* part of bfopspec.character */
-#define ACS_3DBUTTON_OFFSET    0x00F00000L /* part of bfopspec.framesize */
-#define ACS_3DBUTTON_FRAMESIZE 0x000F0000L /* part of bfopspec.framesize */
-#define ACS_3DBUTTON_OUTCOL    0x0000F000L /* same as bfopspec.framecol */
-#define ACS_3DBUTTON_TEXTCOL   0x00000F00L /* same as bfopspec.textcol */
-#define ACS_3DBUTTON_TEXTMODE  0x00000080L /* same as bfopspec.textmode */
-#define ACS_3DBUTTON_PATTERN   0x00000070L /* same as bfopspec.fillpattern */
-#define ACS_3DBUTTON_INTERCOL  0x0000000FL /* same as bfopspec.interiorcol */
+#define ACS_3DBUTTON_INCOL     0x0F000000L /* part of bfobspec.character */
+#define ACS_3DBUTTON_OFFSET    0x00F00000L /* part of bfobspec.framesize */
+#define ACS_3DBUTTON_FRAMESIZE 0x000F0000L /* part of bfobspec.framesize */
+#define ACS_3DBUTTON_OUTCOL    0x0000F000L /* same as bfobspec.framecol */
+#define ACS_3DBUTTON_TEXTCOL   0x00000F00L /* same as bfobspec.textcol */
+#define ACS_3DBUTTON_TEXTMODE  0x00000080L /* same as bfobspec.textmode */
+#define ACS_3DBUTTON_PATTERN   0x00000070L /* same as bfobspec.fillpattern */
+#define ACS_3DBUTTON_INTERCOL  0x0000000FL /* same as bfobspec.interiorcol */
 
 /* values for ub_parm of checkbox objects */
 #define ACS_CHECKBOX_3D        0x00000001L
@@ -1414,7 +1414,9 @@ extern CICONBLK _RD_3D_S;
 extern CICONBLK _RD_3D_U;
 extern Awindow _WDD;
 extern Awindow _W_ALERT;
+/* element is MsgWaitForAnswer * */
 extern ULinList *SentMsg;
+/* element is A_dd_int * */
 extern ULinList *ListOfApps;
 
 

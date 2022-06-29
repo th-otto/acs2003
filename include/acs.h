@@ -502,7 +502,7 @@ typedef struct _ULinList
    /*   8 */ void (*clear)( struct _ULinList *liste );
 
    /* Anh„ngen neuer Daten an die Liste */
-   /*  12 */ int16 (*append)( struct _ULinList *liste, void *new_data );
+   /*  12 */ boolean (*append)( struct _ULinList *liste, void *new_data );
 
    /* Einfgen neuer Daten in die Liste */
    /*  16 */ int16 (*insert)( struct _ULinList *liste, void *new_data, int16 before_obj );
@@ -514,7 +514,7 @@ typedef struct _ULinList
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
    /* bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
    /*  24 */ int32 (*deleteFor)( struct _ULinList *liste, void *para,
-         int16 (*to_delete)(void *para, void *elem) );
+         boolean (*to_delete)(void *para, void *elem) );
 
    /* Die Daten Nummer nr holen */
    /*  28 */ void *(*search)( struct _ULinList *liste, int32 nr );
@@ -522,7 +522,7 @@ typedef struct _ULinList
    /* Daten suchen, die eine Bedingung erfllen                                 */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
    /* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
-   /*  32 */ void *(*searchFor)( struct _ULinList *liste, void *para, int16 (*found)(void *para,void *elem) );
+   /*  32 */ void *(*searchFor)( struct _ULinList *liste, void *para, boolean (*found)(void *para, void *elem) );
 
    /* Das erste Element der Liste */
    /*  36 */ void *(*first)( struct _ULinList *liste );
@@ -537,7 +537,7 @@ typedef struct _ULinList
    /*  48 */ int32 (*aktNr)( struct _ULinList *liste );
 
    /* Das aktuelle Element vorw„rts/rckw„rts bewegen */
-   /*  52 */ void *(*skip)( struct _ULinList *liste, int16 vorwaerts, int32 amount );
+   /*  52 */ void *(*skip)( struct _ULinList *liste, boolean forwards, int32 amount );
 
    /* Die Anzahl der verwalteten Daten */
    /*  56 */ int32 (*count)( struct _ULinList *liste);

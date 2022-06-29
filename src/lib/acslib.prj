@@ -53,7 +53,7 @@ window.c
 shelutil.c
 thermo.c
 keytab.c
-messages\msgserv.s [-M-]
+messages\msgserv.c
 messages\screen.s
 messages\xacc.c
 messages\av.s
