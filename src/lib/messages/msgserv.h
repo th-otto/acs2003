@@ -59,8 +59,9 @@ typedef struct {
 
 
 /* MsgSearchForOriginal.type */
-#define DATATYPE_VA   1
-#define DATATYPE_DHST 3
+#define DATATYPE_VA     1
+#define DATATYPE_DHST   3
+#define DATATYPE_BUBBLE 4
 
 
 #ifdef __GNUC__
@@ -191,7 +192,7 @@ boolean Aev_GetAckBubbleGEM(MsgFktParams *params);
 boolean Aev_GetAskFontBubbleGEM(MsgFktParams *params);
 boolean Aev_GetRequestBubbleGEM(MsgFktParams *params);
 boolean Aev_ShowBubbleGEM(const char *text, int16 mx, int16 my);
-boolean Aev_HideBubbleGEM(int16 d0);
+boolean Aev_HideBubbleGEM(void);
 
 
 /*

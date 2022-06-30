@@ -8,62 +8,6 @@
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_InitBubble(void)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_ExitBubble(void)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_GetAckBubbleGEM(MsgFktParams *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_GetAskFontBubbleGEM(MsgFktParams *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_GetRequestBubbleGEM(MsgFktParams *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_FontBubbleGEM(int16 font_id, int16 points)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_ShowBubbleGEM(const char *text, int16 mx, int16 my)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_HideBubbleGEM(int16 d0)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
 boolean Aev_InitGEMScript(void)
 {
 	return TRUE;

@@ -59,7 +59,7 @@ messages\xacc.c
 messages\av.c
 messages\dd.c
 messages\dhst.c
-messages\bubble.s [-M-]
+messages\bubble.c
 messages\gemscr.s
 messages\olga.s
 messages\stguide.s [-M]
