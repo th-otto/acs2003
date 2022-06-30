@@ -165,7 +165,7 @@ boolean Aev_GetVaPathUpdate(MsgFktParams *params);
 boolean Aev_InitDD(void);
 boolean Aev_ExitDD(void);
 boolean Aev_GetAPDragDrop(MsgFktParams *params);
-boolean Aev_APDragDropMemory(int16 dp, int16 d1, int16 d2, void *a0, void *a2);
+boolean Aev_APDragDropMemory(int16 dest_id, int16 wh, int16 mx, int16 my, int16 kstate, const char *type, void *data, int32 size);
 
 
 /*
