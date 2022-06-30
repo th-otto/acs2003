@@ -1,9 +1,9 @@
-	.globl Aev_InitSTGuide
+		.globl Aev_InitSTGuide
 Aev_InitSTGuide:
 		moveq.l    #1,d0
 		rts
 
-	.globl Aev_ExitSTGuide
+		.globl Aev_ExitSTGuide
 Aev_ExitSTGuide:
 		move.l     help_string,d0
 		beq.s      Aev_ExitSTGuide_1
@@ -15,7 +15,7 @@ Aev_ExitSTGuide_1:
 		moveq.l    #1,d0
 		rts
 
-	.globl CheckSTGuide
+		.globl CheckSTGuide
 CheckSTGuide:
 		subq.w     #4,a7
 		move.l     a0,(a7)
@@ -42,7 +42,7 @@ SendMeldung_1:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl Aev_STGuideHelp
+		.globl Aev_STGuideHelp
 Aev_STGuideHelp:
 		lea.l      -14(a7),a7
 		move.l     a0,10(a7)
@@ -137,7 +137,7 @@ Aev_STGuideHelp_2:
 		lea.l      14(a7),a7
 		rts
 
-	.data
+		.data
 
 help_string:
 		dc.w $0000

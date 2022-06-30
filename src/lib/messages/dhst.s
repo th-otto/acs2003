@@ -1,9 +1,9 @@
-	.globl Aev_InitDHST
+		.globl Aev_InitDHST
 Aev_InitDHST:
 		moveq.l    #1,d0
 		rts
 
-	.globl Aev_ExitDHST
+		.globl Aev_ExitDHST
 Aev_ExitDHST:
 		moveq.l    #1,d0
 		rts
@@ -71,12 +71,12 @@ freeDhstInfo_4:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl Aev_GetDhstAdd
+		.globl Aev_GetDhstAdd
 Aev_GetDhstAdd:
 		moveq.l    #1,d0
 		rts
 
-	.globl Aev_GetDhstAck
+		.globl Aev_GetDhstAck
 Aev_GetDhstAck:
 		move.l     a2,-(a7)
 		lea.l      -54(a7),a7
@@ -127,7 +127,7 @@ Aev_GetDhstAck_1:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl Aev_DhstAdd
+		.globl Aev_DhstAdd
 Aev_DhstAdd:
 		move.l     a2,-(a7)
 		lea.l      -34(a7),a7
@@ -230,7 +230,7 @@ Aev_DhstAdd_3:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl Aev_DhstSaved
+		.globl Aev_DhstSaved
 Aev_DhstSaved:
 		lea.l      -10(a7),a7
 		move.l     a0,6(a7)

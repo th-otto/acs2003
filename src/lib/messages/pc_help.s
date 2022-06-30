@@ -1,9 +1,9 @@
-	.globl Aev_InitPCHelp
+		.globl Aev_InitPCHelp
 Aev_InitPCHelp:
 		moveq.l    #1,d0
 		rts
 
-	.globl Aev_ExitPCHelp
+		.globl Aev_ExitPCHelp
 Aev_ExitPCHelp:
 		move.l     help_string,d0
 		beq.s      Aev_ExitPCHelp_1
@@ -68,7 +68,7 @@ FindPCHelp_5:
 		addq.w     #6,a7
 		rts
 
-	.globl CheckPcHelp
+		.globl CheckPcHelp
 CheckPcHelp:
 		subq.w     #4,a7
 		move.l     a0,(a7)
@@ -102,7 +102,13 @@ SendMeldung_1:
 		movea.l    (a7)+,a2
 		rts
 
-	.globl Aev_GetAcReply
+	.IFNE 0 /* only in lib */
+Aev_PCHelpVersion:
+		move.w     ~_897,d0
+		rts
+	.ENDC
+
+		.globl Aev_GetAcReply
 Aev_GetAcReply:
 		subq.w     #8,a7
 		move.l     a0,4(a7)
@@ -139,7 +145,7 @@ Aev_GetAcReply_3:
 		addq.w     #8,a7
 		rts
 
-	.globl Aev_AcHelp
+		.globl Aev_AcHelp
 Aev_AcHelp:
 		lea.l      -26(a7),a7
 		move.l     a0,22(a7)
@@ -199,7 +205,107 @@ Aev_AcHelp_4:
 		lea.l      26(a7),a7
 		rts
 
-	.data
+	.IFNE 0 /* only in lib */
+Aev_AcVersion:
+		lea.l      -26(a7),a7
+		move.l     a0,22(a7)
+		move.l     a1,18(a7)
+		movea.l    22(a7),a0
+		bsr.w      ~_203
+		move.w     d0,16(a7)
+		move.w     16(a7),d0
+		bmi.s      Aev_AcVersion_1
+		movea.l    ACSblk,a0
+		move.w     16(a7),d0
+		cmp.w      (a0),d0
+		beq.s      Aev_AcVersion_1
+		clr.w      d0
+		bsr.w      ~_204
+		move.l     ~_896,d0
+		beq.s      Aev_AcVersion_2
+		movea.l    ~_896,a0
+		jsr        Ax_glfree
+Aev_AcVersion_2:
+		clr.l      ~_896
+		moveq.l    #16,d1
+		clr.w      d0
+		lea.l      (a7),a0
+		jsr        memset
+		move.w     #$0403,(a7)
+		movea.l    ACSblk,a0
+		move.w     (a0),2(a7)
+		move.l     18(a7),~_898
+		movea.l    _globl,a1
+		lea.l      (a7),a0
+		moveq.l    #16,d1
+		move.w     16(a7),d0
+		jsr        mt_appl_write
+		tst.w      d0
+		beq.s      Aev_AcVersion_3
+		moveq.l    #1,d0
+		bra.s      Aev_AcVersion_4
+Aev_AcVersion_3:
+		clr.w      d0
+Aev_AcVersion_4:
+		bra.s      Aev_AcVersion_5
+Aev_AcVersion_1:
+		clr.w      d0
+Aev_AcVersion_5:
+		lea.l      26(a7),a7
+		rts
+	.ENDC
+
+	.IFNE 0 /* only in lib */
+Aev_AcCopy:
+		lea.l      -26(a7),a7
+		move.l     a0,22(a7)
+		move.l     a1,18(a7)
+		movea.l    22(a7),a0
+		bsr.w      ~_203
+		move.w     d0,16(a7)
+		move.w     16(a7),d0
+		bmi.s      Aev_AcCopy_1
+		movea.l    ACSblk,a0
+		move.w     16(a7),d0
+		cmp.w      (a0),d0
+		beq.s      Aev_AcCopy_1
+		clr.w      d0
+		bsr.w      ~_204
+		move.l     ~_896,d0
+		beq.s      Aev_AcCopy_2
+		movea.l    ~_896,a0
+		jsr        Ax_glfree
+Aev_AcCopy_2:
+		clr.l      ~_896
+		moveq.l    #16,d1
+		clr.w      d0
+		lea.l      (a7),a0
+		jsr        memset
+		move.w     #$0404,(a7)
+		movea.l    ACSblk,a0
+		move.w     (a0),2(a7)
+		move.l     18(a7),~_898
+		movea.l    _globl,a1
+		lea.l      (a7),a0
+		moveq.l    #16,d1
+		move.w     16(a7),d0
+		jsr        mt_appl_write
+		tst.w      d0
+		beq.s      Aev_AcCopy_3
+		moveq.l    #1,d0
+		bra.s      Aev_AcCopy_4
+Aev_AcCopy_3:
+		clr.w      d0
+Aev_AcCopy_4:
+		bra.s      Aev_AcCopy_5
+Aev_AcCopy_1:
+		clr.w      d0
+Aev_AcCopy_5:
+		lea.l      26(a7),a7
+		rts
+	.ENDC
+
+		.data
 
 help_string:
 		dc.w $0000

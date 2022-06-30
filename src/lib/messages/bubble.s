@@ -1,4 +1,4 @@
-	.globl Aev_InitBubble
+		.globl Aev_InitBubble
 Aev_InitBubble:
 		subq.w     #2,a7
 		moveq.l    #8,d0
@@ -13,7 +13,7 @@ Aev_InitBubble_1:
 		addq.w     #2,a7
 		rts
 
-	.globl Aev_ExitBubble
+		.globl Aev_ExitBubble
 Aev_ExitBubble:
 		move.w     #$0001,phase
 		move.l     bubble_string,d0
@@ -90,7 +90,7 @@ FindBubbleGEM_1:
 		addq.w     #8,a7
 		rts
 
-	.globl Aev_GetAckBubbleGEM
+		.globl Aev_GetAckBubbleGEM
 Aev_GetAckBubbleGEM:
 		subq.w     #8,a7
 		move.l     a0,4(a7)
@@ -120,6 +120,29 @@ Aev_GetAckBubbleGEM_3:
 		addq.w     #8,a7
 		rts
 
+	.IFNE 0 /* only in lib */
+Aev_GetAskFontBubbleGEM:
+		subq.w     #8,a7
+		move.l     a0,4(a7)
+		movea.l    4(a7),a0
+		move.l     (a0),(a7)
+		movea.l    (a7),a0
+		move.l     a0,-(a7)
+		bsr.w      ~_167
+		movea.l    (a7)+,a0
+		cmp.w      2(a0),d0
+		bne.s      Aev_GetAskFontBubbleGEM_1
+		clr.w      d1
+		clr.w      d0
+		jsr        Aev_FontBubbleGEM
+		bra.s      Aev_GetAskFontBubbleGEM_2
+Aev_GetAskFontBubbleGEM_1:
+		clr.w      d0
+Aev_GetAskFontBubbleGEM_2:
+		addq.w     #8,a7
+		rts
+	.ENDC
+
 	.globl Aev_GetRequestBubbleGEM
 Aev_GetRequestBubbleGEM:
 		subq.w     #4,a7
@@ -134,7 +157,98 @@ Aev_GetRequestBubbleGEM:
 		addq.w     #4,a7
 		rts
 
-	.globl Aev_ShowBubbleGEM
+	.IFNE 0 /* only in lib */
+Aev_FontBubbleGEM:
+		lea.l      -22(a7),a7
+		move.w     d0,20(a7)
+		move.w     d1,18(a7)
+		cmpi.w     #$0001,18(a7)
+		bge.s      Aev_FontBubbleGEM_1
+		moveq.l    #1,d0
+		bra.s      Aev_FontBubbleGEM_2
+Aev_FontBubbleGEM_1:
+		bsr.w      ~_167
+		move.w     d0,16(a7)
+		move.w     16(a7),d0
+		bmi.s      Aev_FontBubbleGEM_3
+		movea.l    ACSblk,a0
+		move.w     16(a7),d0
+		cmp.w      (a0),d0
+		beq.s      Aev_FontBubbleGEM_3
+		bsr.w      ~_166
+		tst.w      d0
+		bne.s      Aev_FontBubbleGEM_4
+		clr.w      d0
+		bra.s      Aev_FontBubbleGEM_2
+Aev_FontBubbleGEM_4:
+		move.w     #$BABE,(a7)
+		movea.l    ACSblk,a0
+		move.w     (a0),2(a7)
+		clr.w      4(a7)
+		move.w     20(a7),6(a7)
+		move.w     18(a7),8(a7)
+		clr.w      14(a7)
+		moveq.l    #-1,d2
+		suba.l     a1,a1
+		lea.l      (a7),a0
+		moveq.l    #4,d1
+		move.w     16(a7),d0
+		jsr        Aev_SendMsg
+		tst.w      d0
+		beq.s      Aev_FontBubbleGEM_5
+		moveq.l    #1,d0
+		bra.s      Aev_FontBubbleGEM_6
+Aev_FontBubbleGEM_5:
+		clr.w      d0
+Aev_FontBubbleGEM_6:
+		bra.s      Aev_FontBubbleGEM_2
+Aev_FontBubbleGEM_3:
+		clr.w      d0
+Aev_FontBubbleGEM_2:
+		lea.l      22(a7),a7
+		rts
+	.ENDC
+
+	.IFNE 0 /* only in lib */
+Aev_HideBubbleGEM:
+		lea.l      -18(a7),a7
+		bsr.w      ~_167
+		move.w     d0,16(a7)
+		move.w     16(a7),d0
+		bmi.s      Aev_HideBubbleGEM_1
+		movea.l    ACSblk,a0
+		move.w     16(a7),d0
+		cmp.w      (a0),d0
+		beq.s      Aev_HideBubbleGEM_1
+		moveq.l    #16,d1
+		clr.w      d0
+		lea.l      (a7),a0
+		jsr        memset
+		move.w     #$BABF,(a7)
+		movea.l    ACSblk,a0
+		move.w     (a0),2(a7)
+		moveq.l    #-1,d2
+		suba.l     a1,a1
+		lea.l      (a7),a0
+		moveq.l    #4,d1
+		move.w     16(a7),d0
+		jsr        Aev_SendMsg
+		tst.w      d0
+		beq.s      Aev_HideBubbleGEM_2
+		moveq.l    #1,d0
+		bra.s      Aev_HideBubbleGEM_3
+Aev_HideBubbleGEM_2:
+		clr.w      d0
+Aev_HideBubbleGEM_3:
+		bra.s      Aev_HideBubbleGEM_4
+Aev_HideBubbleGEM_1:
+		clr.w      d0
+Aev_HideBubbleGEM_4:
+		lea.l      18(a7),a7
+		rts
+	.ENDC
+
+		.globl Aev_ShowBubbleGEM
 Aev_ShowBubbleGEM:
 		lea.l      -30(a7),a7
 		move.l     a0,26(a7)
@@ -228,7 +342,7 @@ Aev_ShowBubbleGEM_2:
 		lea.l      30(a7),a7
 		rts
 
-	.data
+		.data
 
 bubble_string:
 		dc.w $0000
