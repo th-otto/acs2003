@@ -1381,14 +1381,14 @@ void Aev_release( void );
 /******************************************************************************/
 
 /* Screen-Messages */
-int16 Aev_WmRedraw( int16 dest_id, int16 wind_id, const Axywh *area );
+boolean Aev_WmRedraw( int16 dest_id, int16 wind_id, const Axywh *area );
 
 /* AV-Protokoll */
-int16 Aev_AvProtokoll( int16 dest_id, Awindow *window, int16 timeout );
-int16 Aev_AvExit( int16 dest_id, Awindow *window, int16 timeout );
-int16 Aev_VaProtoStatus( int16 dest_id, Awindow *window, int16 timeout );
-int16 Aev_VaStart( int16 dest_id, const char *cmd, Awindow *window, int16 timeout );
-int16 Aev_AvStarted( int16 dest_id, int16 ok, const char *cmd );
+boolean Aev_AvProtokoll( int16 dest_id, Awindow *window, int16 timeout );
+boolean Aev_AvExit( int16 dest_id, Awindow *window, int16 timeout );
+boolean Aev_VaProtoStatus( int16 dest_id, Awindow *window, int16 timeout );
+boolean Aev_VaStart( int16 dest_id, const char *cmd, Awindow *window, int16 timeout );
+boolean Aev_AvStarted( int16 dest_id, boolean ok, const char *cmd );
 
 /* XAcc-Protokoll */
 boolean Aev_AccID( int16 dest_id, Awindow *window, int16 timeout );

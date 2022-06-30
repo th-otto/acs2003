@@ -56,7 +56,8 @@ keytab.c
 messages\msgserv.c
 messages\screen.c
 messages\xacc.c
-messages\av.s
+messages\av.c
+new\av.s
 messages\dd.s
 messages\dhst.s
 messages\bubble.s [-M-]
