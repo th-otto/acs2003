@@ -136,7 +136,7 @@ boolean Aev_GetAvStarted(MsgFktParams *params)
 	ref_msg0 = VA_START;
 	filename = *msg_ptr(message, 3);
 	search.dest_id = message[1];
-	search.type = 1;
+	search.type = DATATYPE_VA;
 	search.ref_msg[0] = &ref_msg0;
 	search.ref_msg[1] = NULL;
 	search.ref_msg[2] = NULL;
@@ -152,7 +152,11 @@ boolean Aev_GetAvStarted(MsgFktParams *params)
 		{
 			answer->window->service(answer->window, AS_AV_STARTED, filename);
 		}
-		SentMsg->searchFor(SentMsg, answer, Alu_ptrCmp); /* BUG? should be deleteFor */
+#if WITH_FIXES
+		SentMsg->deleteFor(SentMsg, answer, Alu_ptrCmp);
+#else
+		SentMsg->searchFor(SentMsg, answer, Alu_ptrCmp);
+#endif
 	}
 	Ax_glfree(filename);
 	return TRUE;
@@ -225,9 +229,9 @@ boolean Aev_AvProtokoll(int16 dest_id, Awindow *window, int16 timeout)
 		*msg_ptr(msg, 6) = ACSblk->dd_name;
 		msg[3] = AV_PROTOKOLL_START | AV_PROTOKOLL_STARTED | AV_PROTOKOLL_QUOTING | AV_PROTOKOLL_PATH_UPDATE;
 		if (dest_id >= 0)
-			return Aev_SendMsg(dest_id, 1, msg, window, timeout);
+			return Aev_SendMsg(dest_id, DATATYPE_VA, msg, window, timeout);
 		else
-			return Aev_SendAllMsg(msg, 1, window, timeout);
+			return Aev_SendAllMsg(msg, DATATYPE_VA, window, timeout);
 	}
 	return FALSE;
 }
@@ -249,9 +253,9 @@ boolean Aev_AvExit(int16 dest_id, Awindow *window, int16 timeout)
 		msg[6] = 0;
 		msg[7] = 0;
 		if (dest_id >= 0)
-			return Aev_SendMsg(dest_id, 1, msg, window, timeout);
+			return Aev_SendMsg(dest_id, DATATYPE_VA, msg, window, timeout);
 		else
-			return Aev_SendAllMsg(msg, 1, window, timeout);
+			return Aev_SendAllMsg(msg, DATATYPE_VA, window, timeout);
 	}
 	return FALSE;
 }
@@ -272,9 +276,9 @@ boolean Aev_VaProtoStatus(int16 dest_id, Awindow *window, int16 timeout)
 		msg[5] = 0;
 		*msg_ptr(msg, 6) = ACSblk->dd_name;
 		if (dest_id >= 0)
-			return Aev_SendMsg(dest_id, 1, msg, window, timeout);
+			return Aev_SendMsg(dest_id, DATATYPE_VA, msg, window, timeout);
 		else
-			return Aev_SendAllMsg(msg, 1, window, timeout);
+			return Aev_SendAllMsg(msg, DATATYPE_VA, window, timeout);
 	}
 	return FALSE;
 }
@@ -299,9 +303,9 @@ boolean Aev_VaStart(int16 dest_id, const char *cmd, Awindow *window, int16 timeo
 		msg[7] = 0;
 		*msg_ptr(msg, 3) = copy;
 		if (dest_id >= 0)
-			return Aev_SendMsg(dest_id, 1, msg, window, timeout);
+			return Aev_SendMsg(dest_id, DATATYPE_VA, msg, window, timeout);
 		else
-			return Aev_SendAllMsg(msg, 1, window, timeout);
+			return Aev_SendAllMsg(msg, DATATYPE_VA, window, timeout);
 	}
 	return FALSE;
 }
@@ -323,9 +327,9 @@ boolean Aev_AvStarted(int16 dest_id, boolean ok, const char *cmd)
 		msg[1] = ACSblk->gl_apid;
 		*msg_ptr(msg, 3) = NO_CONST(cmd);
 		if (dest_id >= 0)
-			return Aev_SendMsg(dest_id, 1, msg, NULL, -1);
+			return Aev_SendMsg(dest_id, DATATYPE_VA, msg, NULL, -1);
 		else
-			return Aev_SendAllMsg(msg, 1, NULL, -1);
+			return Aev_SendAllMsg(msg, DATATYPE_VA, NULL, -1);
 	}
 	return FALSE;
 }

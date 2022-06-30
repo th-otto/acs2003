@@ -58,6 +58,11 @@ typedef struct {
 } MsgAllStruct;
 
 
+/* MsgSearchForOriginal.type */
+#define DATATYPE_VA   1
+#define DATATYPE_DHST 3
+
+
 #ifdef __GNUC__
 /* to avoid "dereferencing type-punned pointer" */
 static __inline void **msg_ptr(int16 *message, int n)

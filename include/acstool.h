@@ -157,7 +157,7 @@ typedef struct _ULinList
    void (*clear)( _ll *liste );
 
    /* AnhÑngen neuer Daten an die Liste */
-   int16 (*append)( _ll *liste, void *new_data );
+   boolean (*append)( _ll *liste, void *new_data );
 
    /* EinfÅgen neuer Daten in die Liste */
    int16 (*insert)( _ll *liste, void *new_data, int16 before_obj );
@@ -168,8 +168,7 @@ typedef struct _ULinList
    /* Alle Daten aus der Liste lîschen, die eine bestimmte Bedingung erfÅllen     */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
    /* Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
-   int32 (*deleteFor)( _ll *liste, void *para,
-         int16 (*to_delete)(void *para, void *elem) );
+   int32 (*deleteFor)( _ll *liste, void *para, boolean (*to_delete)(void *para, void *elem) );
 
    /* Die Daten Nummer nr holen */
    void *(*search)( _ll *liste, int32 nr );
@@ -177,7 +176,7 @@ typedef struct _ULinList
    /* Daten suchen, die eine Bedingung erfÅllen                                 */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found Åber- */
    /* gebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien)   */
-   void *(*searchFor)( _ll *liste, void *para, int16 (*found)(void *para,void *elem) );
+   void *(*searchFor)( _ll *liste, void *para, boolean (*found)(void *para, void *elem) );
 
    /* Das erste Element der Liste */
    void *(*first)( _ll *liste );
@@ -192,7 +191,7 @@ typedef struct _ULinList
    int32 (*aktNr)( _ll *liste );
 
    /* Das aktuelle Element vorwÑrts/rÅckwÑrts bewegen */
-   void *(*skip)( _ll *liste, int16 vorwaerts, int32 amount );
+   void *(*skip)( _ll *liste, boolean forwards, int32 amount );
 
    /* Die Anzahl der verwalteten Daten */
    int32 (*count)( _ll *liste);
@@ -200,13 +199,13 @@ typedef struct _ULinList
    /* Die Anzahl der Daten ermitteln, die eine Bedingung erfÅllen */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found Åber- */
    /* gebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien)   */
-   int32 (*countFor)( _ll *liste, void *para, int16 (*count)(void *para, void *elem) );
+   int32 (*countFor)( _ll *liste, void *para, boolean (*count)(void *para, void *elem) );
 
    /* FÅr alle Daten, die eine Bedingung erfÅllen, eine Aktion ausfÅhren               */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
    /* work Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
    void (*doFor)( _ll *liste, void *para,
-            int16 (*to_work)(void *para, void *elem),
+            boolean (*to_work)(void *para, void *elem),
             void (*work)(void *para, void *elem) );
 } ULinList;
 

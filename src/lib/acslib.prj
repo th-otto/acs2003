@@ -58,7 +58,7 @@ messages\screen.c
 messages\xacc.c
 messages\av.c
 messages\dd.c
-messages\dhst.s
+messages\dhst.c
 messages\bubble.s [-M-]
 messages\gemscr.s
 messages\olga.s

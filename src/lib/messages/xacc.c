@@ -485,7 +485,7 @@ boolean Aev_AccText(int16 dest_id, const char *text, Awindow *window, int16 time
 				return FALSE;
 			XAccDataDelete(&dd->xacc_data);
 		}
-		str = Ast_copy(text, 1);
+		str = Ast_copy(text, TRUE);
 		if (str == NULL)
 			return FALSE;
 		globProtData->append(globProtData, str);

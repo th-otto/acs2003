@@ -513,8 +513,7 @@ typedef struct _ULinList
    /* Alle Daten aus der Liste lîschen, die eine bestimmte Bedingung erfÅllen     */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
    /* Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
-   /*  24 */ int32 (*deleteFor)( struct _ULinList *liste, void *para,
-         boolean (*to_delete)(void *para, void *elem) );
+   /*  24 */ int32 (*deleteFor)( struct _ULinList *liste, void *para, boolean (*to_delete)(void *para, void *elem) );
 
    /* Die Daten Nummer nr holen */
    /*  28 */ void *(*search)( struct _ULinList *liste, int32 nr );
@@ -545,13 +544,13 @@ typedef struct _ULinList
    /* Die Anzahl der Daten ermitteln, die eine Bedingung erfÅllen */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found Åber- */
    /* gebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien)   */
-   /*  60 */ int32 (*countFor)( struct _ULinList *liste, void *para, int16 (*count)(void *para, void *elem) );
+   /*  60 */ int32 (*countFor)( struct _ULinList *liste, void *para, boolean (*count)(void *para, void *elem) );
 
    /* FÅr alle Daten, die eine Bedingung erfÅllen, eine Aktion ausfÅhren               */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
    /* work Åbergebenen Funktion weitergereicht (z.B. öbergabe der Vergleichskriterien) */
    /*  64 */ void (*doFor)( struct _ULinList *liste, void *para,
-            int16 (*to_work)(void *para, void *elem),
+            boolean (*to_work)(void *para, void *elem),
             void (*work)(void *para, void *elem) );
 } ULinList;
 
@@ -1420,7 +1419,7 @@ boolean Aev_OlgaBreaklink( const char *datei );
 
 /* DHST-Protokoll */
 boolean Aev_DhstAdd( const char *docname, const char *docpath );
-int16 Aev_DhstSaved( const char *file );
+boolean Aev_DhstSaved( const char *file );
 
 /******************************************************************************/
 /*                                                                            */
