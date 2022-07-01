@@ -4,7 +4,8 @@
 #define GEMSCRIPT_VERSION 0x120
 
 
-#if 0
+#ifndef __gemscript__
+   #define __gemscript__
 typedef struct {
 	int32	len;			/* Laenge der Struktur in Bytes */
 	int16	version;		/* Versionsnummer des Protokolles beim Sender */

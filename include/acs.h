@@ -412,39 +412,6 @@ typedef struct
 
 /******************************************************************************/
 
-#ifndef __gemscript__
-   #define __gemscript__
-   typedef struct
-   {
-      int32 len;     /* LÑnge der Struktur in Bytes */
-      int16 version; /* Versionsnummer des Protokolles beim Sender (z.Z. 0x0120 = 1.2) */
-      int16 msgs;    /* Bitmap der unterstÅtzten Nachrichten und FÑhigkeiten (GSM_xxx) */
-      int32 ext;     /* benutzte Endung, etwa '.SIC'                     */
-   } GS_INFO;
-
-   /* Kennung fÅr den Empfang von GS_COMMAND */
-   #define GSM_COMMAND     0x0001
-
-   /* Kennung fÅr Empfang von GS_OPENMACRO, GS_WRITE */
-   /* und GS_CLOSEMACRO und Senden von GS_MACRO      */
-   #define GSM_MACRO       0x0002
-
-   /* Kennung fÅr Versand von GS_OPENMACRO, GS_WRITE */
-   /* und GS_CLOSEMACRO und Empfang von GS_MACRO     */
-   #define GSM_WRITE       0x0004
-
-   /* Hex-Codierung wird verstanden */
-   #define GSM_HEXCODING   0x0008
-
-   /* RÅckgabewerte der GEMScript-Funktionen (Anwendung & Fenster) */
-   #define GSACK_OK        0
-   #define GSACK_UNKNOWN   1
-   #define GSACK_ERROR     2
-
-#endif
-
-/******************************************************************************/
-
 typedef struct
 {
    int16       id;            /* The AES-ID of another PRG        */
@@ -1712,7 +1679,7 @@ int16 Ast_countASCIZZ( const char *asciizz );
 boolean Ast_splitASCIIZZ( const char *ascizz, char ***strings, int16 *anz );
 
 /* Aus einem String-Array einen ASCIIZZ-String machen */
-char *Ast_mergeASCIIZZ( const char **strings, int16 anzahl, int16 global );
+char *Ast_mergeASCIIZZ( char **strings, int16 anzahl, boolean global );
 
 /* Ein Array von Strings komplett freigeben */
 void Ast_deleteAry( char **strings, int16 anzahl );

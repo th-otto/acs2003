@@ -64,6 +64,27 @@ typedef struct {
 #define DATATYPE_BUBBLE 4
 
 
+typedef struct {
+	int16 message[8];
+	A_GSAntwort antwort;
+} gs_answer;
+
+typedef struct {
+	int16 ap_id;
+	GS_INFO info;
+	int16 gs_id;
+	int16 status;
+} gs_con;
+
+typedef struct {
+	int16 ap_id;
+	int16 gs_id;
+	int16 status;
+	boolean set_flag;
+} gs_search;
+
+
+
 #ifdef __GNUC__
 /* to avoid "dereferencing type-punned pointer" */
 static __inline void **msg_ptr(int16 *message, int n)

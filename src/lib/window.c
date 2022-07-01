@@ -2936,6 +2936,11 @@ Awindow *Awi_name(const char *title, boolean sensitiv)
 /* -------------------------------------------------------------------------- */
 /******************************************************************************/
 
+typedef struct {
+	const char *cmd;
+	int16 (*gs_fkt)(Awindow *win, int16 count, char **cmds, A_GSAntwort *answer);
+} gs_cmd;
+
 /* -------------------------------------------------------------------------- */
 
 static int _gs_cmp(const void *cmd1, const void *cmd2)
@@ -3013,7 +3018,7 @@ int16 Awi_gemscript(Awindow *win, int16 count, char **cmds, A_GSAntwort *answer)
 {
 	gs_cmd *cmd;
 
-	answer->ret_wert = 1;
+	answer->ret_wert = GSACK_UNKNOWN;
 	
 	if (!_gs_sorted)
 	{
@@ -3029,7 +3034,7 @@ int16 Awi_gemscript(Awindow *win, int16 count, char **cmds, A_GSAntwort *answer)
 			answer->ret_wert = cmd->gs_fkt(win, count, cmds, answer);
 		} else
 		{
-			answer->ret_wert = 0;
+			answer->ret_wert = GSACK_OK;
 		}
 	}
 
@@ -3047,12 +3052,12 @@ static int16 gs_CheckCommand(Awindow *win, int16 count, char **cmds, A_GSAntwort
 	gs_cmd *cmd;
 
 	if (count < 2)
-		return 2;
+		return GSACK_ERROR;
 	cmd = bsearch(cmds[1], _gs_commands, _gs_cmd_anzahl, sizeof(_gs_commands[0]), _gs_search);
 	Ast_delete(answer->antwort[0]);
 	answer->antwort[0] = Ast_create(cmd == NULL ? "0" : "1");
 	answer->anzahl = 1;
-	answer->ret_wert = 0;
+	answer->ret_wert = GSACK_OK;
 	return answer->ret_wert;
 }
 
@@ -3063,7 +3068,7 @@ static int16 gs_GetFront(Awindow *win, int16 count, char **cmds, A_GSAntwort *an
 	Ast_delete(answer->antwort[0]);
 	answer->antwort[0] = Ast_create(win->name);
 	answer->anzahl = 1;
-	return 0;
+	return GSACK_OK;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -3074,7 +3079,7 @@ static int16 gs_ToFront(Awindow *win, int16 count, char **cmds, A_GSAntwort *ans
 	Ast_delete(answer->antwort[0]);
 	answer->antwort[0] = Ast_create("1");
 	answer->anzahl = 1;
-	return 0;
+	return GSACK_OK;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -3085,10 +3090,10 @@ static int16 gs_KeyPress(Awindow *win, int16 count, char **cmds, A_GSAntwort *an
 	char **ans;
 	
 	if (count < 2)
-		return 2;
+		return GSACK_ERROR;
 	ans = Ax_malloc((count - 1) * sizeof(*ans));
 	if (ans == NULL)
-		return 2;
+		return GSACK_ERROR;
 	memset(ans, 0, (count - 1) * sizeof(*ans));
 	for (i = 0; i < count - 1; i++)
 	{
@@ -3096,7 +3101,7 @@ static int16 gs_KeyPress(Awindow *win, int16 count, char **cmds, A_GSAntwort *an
 		if (ans[i] == NULL)
 		{
 			Ast_deleteAry(ans, count - 1);
-			return 2;
+			return GSACK_ERROR;
 		}
 	}
 	Ast_deleteAry(answer->antwort, answer->anzahl);
@@ -3107,7 +3112,7 @@ static int16 gs_KeyPress(Awindow *win, int16 count, char **cmds, A_GSAntwort *an
 		ACSblk->ev_mkreturn = gs_str2key(cmds[i]);
 		answer->antwort[0][0] = evkeybrd(win) == -1 ? '0' : '1';
 	}
-	return 0;
+	return GSACK_OK;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -3133,14 +3138,14 @@ static int16 gs_GetAllCommands(Awindow *win, int16 count, char **cmds, A_GSAntwo
 	}
 	ans = Ax_malloc(cmdcount * sizeof(*ans));
 	if (ans == NULL)
-		return 2;
+		return GSACK_ERROR;
 	for (i = 0; i < _gs_cmd_anzahl; i++)
 	{
 		ans[i] = Ast_create(_gs_commands[i].cmd);
 		if (ans[i] == NULL)
 		{
 			Ast_deleteAry(ans, _gs_cmd_anzahl);
-			return 2;
+			return GSACK_ERROR;
 		}
 	}
 	if (!all)
@@ -3179,7 +3184,7 @@ static int16 gs_GetAllCommands(Awindow *win, int16 count, char **cmds, A_GSAntwo
 		Ax_free(answer->antwort);
 	answer->antwort = arr;
 	answer->anzahl = cmdcount;
-	return 0;
+	return GSACK_OK;
 }
 
 #ifdef __PUREC__

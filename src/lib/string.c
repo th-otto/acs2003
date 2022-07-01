@@ -601,7 +601,7 @@ boolean Ast_splitASCIIZZ(const char *ascizz, char ***strings, int16 *anz)
 
 /* -------------------------------------------------------------------------- */
 
-char *Ast_mergeASCIIZZ(const char **strings, int16 anzahl, int16 global)
+char *Ast_mergeASCIIZZ(char **strings, int16 anzahl, boolean global)
 {
 	int16 i;
 	char *ptr;

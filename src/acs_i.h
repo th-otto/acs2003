@@ -420,30 +420,6 @@ typedef struct {
 } a_hcicon;
 
 typedef struct {
-	const char *cmd;
-	int16 (*gs_fkt)(Awindow *win, int16 count, char **cmds, A_GSAntwort *answer);
-} gs_cmd;
-
-typedef struct {
-	int16 ap_id;
-	GS_INFO info;
-	int16 gs_id;
-	int16 status;
-} gs_con;
-
-typedef struct {
-	int16 ap_id;
-	int16 gs_id;
-	int16 status;
-	int16 set_flag;
-} gs_search;
-
-typedef struct {
-	int16 message[8];
-	A_GSAntwort antwort;
-} gs_answer;
-
-typedef struct {
 	OLGA_Infos info;
 	int16 olga_flags;
 	int16 grp_id;

@@ -8,62 +8,6 @@
 
 /* -------------------------------------------------------------------------- */
 
-boolean Aev_InitGEMScript(void)
-{
-	return TRUE;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_ExitGEMScript(void)
-{
-	return TRUE;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_GetGSRequest(MsgFktParams *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_GetGSQuit(MsgFktParams *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_GetGSCommand(MsgFktParams *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-boolean Aev_GetGSAck(MsgFktParams *params)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int _gs_strcmp(const void *str1, const void *str2)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int16 Aev_GEMScript(int16 anz, char **cmd, A_GSAntwort *antwort)
-{
-	return 0;
-}
-
-/* -------------------------------------------------------------------------- */
-
 boolean Aev_InitOlga(void)
 {
 	return TRUE;
