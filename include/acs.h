@@ -1370,8 +1370,8 @@ boolean Aev_STGuideHelp( const char *hyp_text, const char *referenz, Awindow *wi
 /* PureC-Hilfe */
 int16 Aev_PCHelpVersion( void );
 boolean Aev_AcHelp( const char *help_acc, const char *referenz, Awindow *window );
-int16 Aev_AcVersion( char *help_acc, Awindow *window );
-int16 Aev_AcCopy( char *help_acc, Awindow *window );
+int16 Aev_AcVersion( const char *help_acc, Awindow *window );
+int16 Aev_AcCopy( const char *help_acc, Awindow *window );
 
 /* BubbleGEM */
 boolean Awi_bubblegem( Awindow *window, int16 mx, int16 my );

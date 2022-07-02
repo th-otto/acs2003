@@ -14,6 +14,7 @@
 #include "olga.h"
 #include "bubble.h"
 #include "gscript.h"
+#include "pc_help.h"
 
 ULinList *globProtData = NULL;
 
@@ -59,7 +60,7 @@ static MsgService MsgListe[] = {
 	{ GS_QUIT,               Aev_GetGSQuit,               -1, -1, -1, -1, -1, 0, -1 },
 	{ GS_COMMAND,            Aev_GetGSCommand,            -1, -1, -1, -1, -1, 0, -1 },
 	{ GS_ACK,                Aev_GetGSAck,                -1, -1, -1, -1, -1, 0, -1 },
-	{ ACC_CLOSE,             Aev_GetAcReply,              -1, -1, -1, -1, -1, 0, -1 },
+	{ AC_REPLY,              Aev_GetAcReply,              -1, -1, -1, -1, -1, 0, -1 },
 	{ DHST_ADD,              Aev_GetDhstAdd,              -1, -1, -1, -1, -1, 0, -1 },
 	{ DHST_ACK,              Aev_GetDhstAck,              -1, -1, -1, -1, -1, 0, -1 },
 	{ MN_SELECTED,           Aev_GetMnSelected,           -1, -1, -1, -1, -1, 0, -1 },

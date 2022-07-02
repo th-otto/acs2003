@@ -65,7 +65,7 @@ messages\olga.c
 messages\stguide.c
 messages\seproto.c
 messages\ssp.c
-messages\pc_help.s [-M]
+messages\pc_help.c
 userdef\userobj.s
 userdef\userobj2.s
 userdef\ftext.s [-M-]
