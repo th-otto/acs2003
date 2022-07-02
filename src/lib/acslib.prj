@@ -63,7 +63,7 @@ messages\bubble.c
 messages\gemscr.c
 messages\olga.c
 messages\stguide.c
-messages\seproto.s
+messages\seproto.c
 messages\ssp.s
 messages\pc_help.s [-M]
 userdef\userobj.s
