@@ -62,7 +62,7 @@ messages\dhst.c
 messages\bubble.c
 messages\gemscr.c
 messages\olga.c
-messages\stguide.s [-M]
+messages\stguide.c
 messages\seproto.s
 messages\ssp.s
 messages\pc_help.s [-M]

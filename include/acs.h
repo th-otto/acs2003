@@ -1365,7 +1365,7 @@ boolean Aev_AccKey( int16 dest_id, int16 key, Awindow *window, int16 timeout );
 boolean Aev_AccText(int16 dest_id, const char *text, Awindow *window, int16 timeout);
 
 /* ST-Guide-Hilfe anfordern */
-int16 Aev_STGuideHelp( char *hyp_text, char *referenz, Awindow *window );
+boolean Aev_STGuideHelp( const char *hyp_text, const char *referenz, Awindow *window );
 
 /* PureC-Hilfe */
 int16 Aev_PCHelpVersion( void );
