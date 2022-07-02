@@ -64,7 +64,7 @@ messages\gemscr.c
 messages\olga.c
 messages\stguide.c
 messages\seproto.c
-messages\ssp.s
+messages\ssp.c
 messages\pc_help.s [-M]
 userdef\userobj.s
 userdef\userobj2.s
