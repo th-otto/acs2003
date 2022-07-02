@@ -61,7 +61,7 @@ messages\dd.c
 messages\dhst.c
 messages\bubble.c
 messages\gemscr.c
-messages\olga.s
+messages\olga.c
 messages\stguide.s [-M]
 messages\seproto.s
 messages\ssp.s

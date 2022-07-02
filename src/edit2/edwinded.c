@@ -437,19 +437,19 @@ static boolean wi_service(Awindow *self, int16 task, void *in_out)
 		case EDIT_WINDOW_TOOLBAR:
 		case EDIT_WINDOW_WORK:
 			if (aobj->type != LIST_OBJECT)
-				((int16 *)in_out)[1] = 0;
+				((int16 *)in_out)[1] = FALSE;
 			break;
 		case EDIT_WINDOW_MENU:
 			if (aobj->type != LIST_MENU)
-				((int16 *)in_out)[1] = 0;
+				((int16 *)in_out)[1] = FALSE;
 			break;
 		case EDIT_WINDOW_ICONBLK:
 			if (aobj->type != LIST_ICON)
-				((int16 *)in_out)[1] = 0;
+				((int16 *)in_out)[1] = FALSE;
 			break;
 		default:
 			if (aobj->type != LIST_REFS)
-				((int16 *)in_out)[1] = 0;
+				((int16 *)in_out)[1] = FALSE;
 			break;
 		}
 		break;

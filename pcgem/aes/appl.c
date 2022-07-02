@@ -154,7 +154,7 @@ int16 mt_appl_write( int16 rwid, int16 length, void *pbuff, GlobalArray *globl )
 /*                                                                            */
 /******************************************************************************/
 
-int16 mt_appl_find( char *pname, GlobalArray *globl )
+int16 mt_appl_find( const char *pname, GlobalArray *globl )
 {
    /* contrl anlegen */
    static int16 contrl[] = {13, 0, 1, 1, 0};
@@ -167,7 +167,7 @@ int16 mt_appl_find( char *pname, GlobalArray *globl )
    data.globl = globl;
 
    /* Die Arrays fÅllen */
-   data.addrin[0] = pname;
+   data.addrin[0] = (void *)pname;
 
    /* Ab in die AES... */
    aes(data.contrl, data.globl, data.intin, data.intout, data.addrin, data.addrout);

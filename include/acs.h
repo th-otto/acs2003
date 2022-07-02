@@ -796,24 +796,24 @@ typedef struct
 #define AS_UNSHADED        (35)        /* Fenster wurde gerade unshaded (WINX, MagiC) */
 
 /* Meldungen BubbleGEM betreffend */
-#define AS_ALLOWBUBBLE     (36)        /* Soll fÅr dieses Fenster BubbleGEM unterstÅtzt werden? */
-#define AS_GETBUBBLE       (37)        /* Text fÅr BubbleGEM-Hilfe wird gefragt */
+#define AS_ALLOWBUBBLE     (36)        /* Soll fÅr dieses Fenster BubbleGEM unterstÅtzt werden? in_out: boolean * */
+#define AS_GETBUBBLE       (37)        /* Text fÅr BubbleGEM-Hilfe wird gefragt, in_out: AGetObjText * */
 
 /* Meldungen das Context-Popup betreffend */
-#define AS_ALLOWCONTEXT    (38)        /* Soll fÅr dieses Fenster ein Context-Popup unterstÅtzt werden? */
-#define AS_GETCONTEXT      (39)        /* Text fÅr Context-Popup wird gefragt */
-#define AS_CONTEXT         (40)        /* Aus dem Context-Popup ausgewÑhlter Substring */
+#define AS_ALLOWCONTEXT    (38)        /* Soll fÅr dieses Fenster ein Context-Popup unterstÅtzt werden? in_out: boolean * */
+#define AS_GETCONTEXT      (39)        /* Text fÅr Context-Popup wird gefragt, in_out: AGetObjText *  */
+#define AS_CONTEXT         (40)        /* Aus dem Context-Popup ausgewÑhlter Substring, in_out: int16 *obnr */
 
 /* Erlaubt das Fenster die ST-Guide-Hilfe? */
 #define AS_ASK_STGUIDE     (41)        /* Nachfrage nach dem ST-Guide-Text, das fÅr das Fenster angegebene Thema wird mitgegeben und kann geÑndert werden */
 
 /* Meldungen OLGA betreffend */
 #define AS_OLGA_CONNECT    (42)        /* Die OLGA-Verbindung ist hergestellt */
-#define AS_OLGA_UPDATED    (43)        /* Ein verknÅpftes OLGA-Dokument wurde geÑndert */
+#define AS_OLGA_UPDATED    (43)        /* Ein verknÅpftes OLGA-Dokument wurde geÑndert, in_out: OLGA_Infos * */
 #define AS_OLGA_DISCONNECT (44)        /* Die OLGA-Verbindung ist getrennt */
-#define AS_OLGA_MAKE_INFO  (45)        /* Eine Info-Datei zu einer OLGA-Verbindung soll erzeugt werden */
-#define AS_OLGA_INFO       (46)        /* Eine (bestellte) Info-Datei einer OLGA-Verbindung steht zur VerfÅgung */
-#define AS_OLGA_CLEAR_INFO (47)        /* Eine erzeugt Info-Datei einer OLGA-Verbindung kann wieder gelîscht werden */
+#define AS_OLGA_MAKE_INFO  (45)        /* Eine Info-Datei zu einer OLGA-Verbindung soll erzeugt werden, in_out: OLGA_Infos *  */
+#define AS_OLGA_INFO       (46)        /* Eine (bestellte) Info-Datei einer OLGA-Verbindung steht zur VerfÅgung, in_out: OLGA_Infos * */
+#define AS_OLGA_CLEAR_INFO (47)        /* Eine erzeugte Info-Datei einer OLGA-Verbindung kann wieder gelîscht werden */
 
 /* Ergebnis einer (MagiC-)Multi-Dateiauswahl wird gemeldet */
 #define AS_FILESELECT      (48)
@@ -1295,7 +1295,7 @@ void Awi_vslid( Awindow *window, int16 pos );
 boolean Awi_wheeled( Awindow *wind, int16 wheels[16], int16 mx, int16 my );
 
 /* Daten wurden gesichert, andere Fenster und OLGA davon informieren */
-void Awi_saved( Awindow *window, const char *datei );
+void Awi_saved( Awindow *window, const char *filename );
 
 /******************************************************************************/
 /*                                                                            */
@@ -1379,10 +1379,10 @@ int16 Aev_FontBubbleGEM( int16 font_id, int16 points );
 
 /* OLGA-Protokoll */
 boolean Aev_OlgaIdle( void );
-boolean Aev_OlgaUpdate( const char *datei );
+boolean Aev_OlgaUpdate( const char *filename );
 boolean Aev_OlgaGetInfo( int16 id );
-boolean Aev_OlgaRename( const char *old_datei, const char *new_datei );
-boolean Aev_OlgaBreaklink( const char *datei );
+boolean Aev_OlgaRename( const char *old_filename, const char *new_filename );
+boolean Aev_OlgaBreaklink( const char *filename );
 
 /* DHST-Protokoll */
 boolean Aev_DhstAdd( const char *docname, const char *docpath );

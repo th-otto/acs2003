@@ -83,6 +83,17 @@ typedef struct {
 	boolean set_flag;
 } gs_search;
 
+typedef struct {
+	OLGA_Infos info;
+	int16 olga_flags;
+	int16 grp_id;
+	int16 server_id;
+	int16 info_index;
+	int16 aktiv;
+	int16 aktiv_anz;
+	boolean delete;
+} OLGA_Data;
+
 
 
 #ifdef __GNUC__
@@ -243,8 +254,8 @@ boolean Aev_GetOlgaClientTerminated(MsgFktParams *params);
 boolean Aev_GetOlgaIdle(MsgFktParams *params);
 boolean Aev_OleInit(void);
 boolean Aev_OleExit(void);
-void A_OlgaCreate(void *a0, void *a1, int16 d0);
-boolean A_OlgaDelete(int16 d0);
+OLGA_Infos *A_OlgaCreate(Awindow *win, char *filename, char *info_filename, int16 flags);
+boolean A_OlgaDelete(int16 id);
 
 
 /*

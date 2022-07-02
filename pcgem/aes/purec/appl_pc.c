@@ -65,7 +65,7 @@ int16 appl_write( int16 rwid, int16 length, void *pbuff )
 /*                                                                            */
 /******************************************************************************/
 
-int16 appl_find( char *pname )
+int16 appl_find( const char *pname )
 {
    return mt_appl_find(pname, _globl);
 }

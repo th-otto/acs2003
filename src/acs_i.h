@@ -420,17 +420,6 @@ typedef struct {
 } a_hcicon;
 
 typedef struct {
-	OLGA_Infos info;
-	int16 olga_flags;
-	int16 grp_id;
-	int16 server_id;
-	int16 info_index;
-	int16 aktiv;
-	int16 aktiv_anz;
-	int16 delete;
-} OLGA_Data;
-
-typedef struct {
 	int16 col;
 	char *text;
 	Awiob self;

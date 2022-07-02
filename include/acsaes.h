@@ -2477,7 +2477,7 @@ void _crystal( AESPB *pb );
 int16 mt_appl_init( GlobalArray *globl );
 int16 mt_appl_read( int16 rwid, int16 length, void *pbuff, GlobalArray *globl );
 int16 mt_appl_write( int16 rwid, int16 length, void *pbuff, GlobalArray *globl );
-int16 mt_appl_find( char *pname, GlobalArray *globl );
+int16 mt_appl_find( const char *pname, GlobalArray *globl );
 int16 mt_appl_search( int16 mode, char *fname, int16 *type, int16 *ap_id,
             GlobalArray *globl );
 int16 mt_appl_tplay( APPLRECORD *tbuffer, int16 tlength, int16 tscale,
@@ -3475,7 +3475,7 @@ int16 wind_set( int16 handle, int16 what, ... );
 int16 appl_init( void );
 int16 appl_read( int16 rwid, int16 length, void *pbuff );
 int16 appl_write( int16 rwid, int16 length, void *pbuff );
-int16 appl_find( char *pname );
+int16 appl_find( const char *pname );
 int16 appl_search( int16 mode, char *fname, int16 *type, int16 *ap_id );
 int16 appl_tplay( APPLRECORD *tbuffer, int16 tlength, int16 tscale );
 int16 appl_trecord( APPLRECORD *tbuffer, int16 tlength );
