@@ -420,12 +420,6 @@ typedef struct {
 } a_hcicon;
 
 typedef struct {
-	int16 col;
-	char *text;
-	Awiob self;
-} FTEXTDATA;
-
-typedef struct {
 	char *act;
 	char *pos;
 	char *popup;

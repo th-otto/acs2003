@@ -68,7 +68,7 @@ messages\ssp.c
 messages\pc_help.c
 userdef\userobj.c
 userdef\userobj2.c
-userdef\ftext.s [-M-]
+userdef\ftext.c
 userdef\cycle.s [-M-]
 userdef\picture.s
 userdef\boxed.s [-M-]
