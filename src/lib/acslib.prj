@@ -67,7 +67,7 @@ messages\seproto.c
 messages\ssp.c
 messages\pc_help.c
 userdef\userobj.c
-userdef\userobj2.s
+userdef\userobj2.c
 userdef\ftext.s [-M-]
 userdef\cycle.s [-M-]
 userdef\picture.s
