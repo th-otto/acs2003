@@ -563,7 +563,7 @@ static int16 ab_service(Awindow *self, int16 task, void *in_out)
 						strcmp(first->name, _WGTITEL) == 0 &&
 						strcmp(first->info + 1, in_out) == 0)
 					{
-						save(first);
+						saveacs(first);
 					}
 					first = Awi_list();
 				} while (first != win && win->wi_id >= 0);
@@ -1076,12 +1076,12 @@ static int16 CDECL ScrollDemo(PARMBLK *pb)
 				if (ACSblk->nplanes >= 4)
 					vst_color(ACSblk->vdi_handle, G_RED);
 				else
-					vst_effects(ACSblk->vdi_handle, 1);
+					vst_effects(ACSblk->vdi_handle, TF_THICKENED);
 				v_gtext(ACSblk->vdi_handle, x, y, demotext[i] + 1);
 			} else
 			{
 				vst_color(ACSblk->vdi_handle, G_BLACK);
-				vst_effects(ACSblk->vdi_handle, 0);
+				vst_effects(ACSblk->vdi_handle, TF_NORMAL);
 				v_gtext(ACSblk->vdi_handle, x, y, demotext[i]);
 			}
 		}

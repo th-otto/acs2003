@@ -105,12 +105,12 @@ static void ge_loadews(void)
 
 static void ge_save(void)
 {
-	save(ACSblk->ev_window);
+	saveacs(ACSblk->ev_window);
 }
 
 /* -------------------------------------------------------------------------- */
 
-void save(Awindow *self)
+void saveacs(Awindow *self)
 {
 	ACS_HEAD *acs;
 	char filename[__PS__];
@@ -216,7 +216,7 @@ static void ge_saveas(void)
 		win->service(win, AS_UPDATEICON, &self->icon);
 	}
 	acs->filename = self->info + 1;
-	save(self);
+	saveacs(self);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -726,7 +726,7 @@ static void term(Awindow *win)
 			{
 			case 1:
 				win->state |= AWS_INTERM;
-				save(win);
+				saveacs(win);
 				break;
 			case 3:
 				save_aborted = TRUE;

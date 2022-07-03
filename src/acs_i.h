@@ -675,7 +675,7 @@ extern char _WGTITEL[];
 extern Awindow WI_GENERAL;
 extern Awindow WI_INFO_GENERAL;
 
-void save(Awindow *self);
+void saveacs(Awindow *self);
 int16 ACSinit0(void);
 int16 ACSinit(void);
 
