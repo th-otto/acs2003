@@ -420,13 +420,6 @@ typedef struct {
 } a_hcicon;
 
 typedef struct {
-	char *act;
-	char *pos;
-	char *popup;
-	Awiob self;
-} CYCDATA;
-
-typedef struct {
 	char act[256];
 	char text[256];
 	char *mask;

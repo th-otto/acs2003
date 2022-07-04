@@ -69,7 +69,7 @@ messages\pc_help.c
 userdef\userobj.c
 userdef\userobj2.c
 userdef\ftext.c
-userdef\cycle.s [-M-]
+userdef\cycle.c
 userdef\picture.s
 userdef\boxed.s [-M-]
 utility\util.s

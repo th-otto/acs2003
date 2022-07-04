@@ -1504,7 +1504,7 @@ int16 Ame_popup( Awindow *window, OBJECT *popup, int16 x, int16 y );
 /* Build a Popup out of pstr, the Entry chk will be checked,        */
 /* should be a substring of pstr, Width is the Pixel-Width of Popup */
 /* returns the selected Substring or NULL in none                   */
-char *Ame_strpopup( Awindow* wi, char *pstr, const char *chk, int16 width, int16 x, int16 y );
+char *Ame_strpopup( Awindow* wi, const char *pstr, const char *chk, int16 width, int16 x, int16 y );
 
 /******************************************************************************/
 /*                                                                            */
