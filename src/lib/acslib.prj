@@ -53,6 +53,7 @@ window.c
 shelutil.c
 thermo.c
 keytab.c
+
 messages\msgserv.c
 messages\screen.c
 messages\xacc.c
@@ -66,17 +67,22 @@ messages\stguide.c
 messages\seproto.c
 messages\ssp.c
 messages\pc_help.c
+
 userdef\userobj.c
 userdef\userobj2.c
 userdef\ftext.c
 userdef\cycle.c
-userdef\picture.s
+userdef\picture.c
 userdef\boxed.s [-M-]
+
 utility\util.s
 utility\date.s
+
 wdialog\filesel.c
 wdialog\printsel.s
 wdialog\fontsel.s
+
 listen\ulinlist.s
+
 modul\modul.c [-J- -Z- -M- -R-]
 modul\modulold.c [-J- -Z- -M- -R-]
