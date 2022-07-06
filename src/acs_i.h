@@ -420,22 +420,6 @@ typedef struct {
 } a_hcicon;
 
 typedef struct {
-	char act[256];
-	char text[256];
-	char *mask;
-	Awiob wiob;
-	int16 len;
-	int16 *pos;
-	int16 *blklen;
-	int16 prevpos;
-	int16 prevblklen;
-	int16 offset;
-	int16 cw;
-	int16 ch;
-	int16 flag;
-} EDT_DATA;
-
-typedef struct {
 	/*  0 */ const char *title;
 	/*  4 */ int16 x;
 	/*  6 */ int16 y;

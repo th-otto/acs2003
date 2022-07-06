@@ -73,7 +73,7 @@ userdef\userobj2.c
 userdef\ftext.c
 userdef\cycle.c
 userdef\picture.c
-userdef\boxed.s [-M-]
+userdef\boxed.c
 
 utility\util.s
 utility\date.s
