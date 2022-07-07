@@ -1841,6 +1841,8 @@ boolean Ash_cmdParsen( char *options[256], int16 argc, char **argv,
 /*           YYYY - Year with Century                              */
 int16 Adate_getMonth( const char *date, char *out_month );
 
+int16 Adate_ymd2dow(int16 year, int16 month, int16 day);
+
 /******************************************************************************/
 /*                                                                            */
 /* Zeichen-Routinen der Standard-ACS-UserDefs                                 */

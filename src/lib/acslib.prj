@@ -76,7 +76,7 @@ userdef\picture.c
 userdef\boxed.c
 
 utility\util.c
-utility\date.s
+utility\date.c
 
 wdialog\filesel.c
 wdialog\printsel.s

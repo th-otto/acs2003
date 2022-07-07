@@ -1526,5 +1526,4 @@ extern int16 a_dialog_active;
 void Act_save(CONTEXT *ctx);
 void Act_restore(CONTEXT *ctx);
 boolean A_isModDia(void);
-void Adate_ymd2dow(void);
 int16 Awi_sendkey(Awindow *wi, int16 kstate, int16 key);
