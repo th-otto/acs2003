@@ -80,7 +80,7 @@ utility\date.c
 
 wdialog\filesel.c
 wdialog\printsel.s
-wdialog\fontsel.s
+wdialog\fontsel.c
 
 listen\ulinlist.s
 

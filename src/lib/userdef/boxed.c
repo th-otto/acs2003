@@ -15,20 +15,19 @@
 #endif
 
 typedef struct {
-	/*   0 */ char act[BE_MAXLEN + 1];
-	/* 256 */ char text[BE_MAXLEN + 1];
-	/* 512 */ char *mask;
-	/* 516 */ Awiob wiob;
-	/* 526 */ int16 len;
-	/* 528 */ int16 *pos;
-	/* 532 */ int16 *blklen;
-	/* 536 */ int16 prevpos;
-	/* 538 */ int16 prevblklen;
-	/* 540 */ int16 offset;
-	/* 542 */ int16 cw;
-	/* 544 */ int16 ch;
-	/* 546 */ int16 flags;
-	/* 548 */ 
+	char act[BE_MAXLEN + 1];
+	char text[BE_MAXLEN + 1];
+	char *mask;
+	Awiob wiob;
+	int16 len;
+	int16 *pos;
+	int16 *blklen;
+	int16 prevpos;
+	int16 prevblklen;
+	int16 offset;
+	int16 cw;
+	int16 ch;
+	int16 flags;
 } EDT_DATA;
 
 /* flags */

@@ -382,19 +382,6 @@ typedef struct {
 	long len;
 } ddPopStruc;
 
-#if 0
-/* local to editwi */
-typedef struct {
-	int16 xr;
-	int16 yr;
-	int16 x1;
-	int16 x2;
-	int16 y1;
-	int16 y2;
-	int16 m[8];
-} t;
-#endif
-
 typedef struct {
 	Awindow *window;
 	OBJECT *object;
@@ -420,27 +407,26 @@ typedef struct {
 } a_hcicon;
 
 typedef struct {
-	/*  0 */ const char *title;
-	/*  4 */ int16 x;
-	/*  6 */ int16 y;
-	/*  8 */ int16 *handle;
-	/* 12 */ char *path;
-	/* 16 */ int16 pathlen;
-	/* 18 */ char *fname;
-	/* 22 */ int16 fnamelen;
-	/* 24 */ char *patterns;
-	/* 28 */ XFSL_FILTER *filter;
-	/* 32 */ char *paths;
-	/* 36 */ int16 sort_mode;
-	/* 38 */ int16 flags;
-	/* 40 */ void *dialog;
-	/* 44 */ boolean modal;
-	/* 46 */ int16 button;
-	/* 48 */ int16 nfiles;
-	/* 50 */ Awindow *meldung;
-	/* 54 */ Awindow *window;
-	/* 58 */ ULinList *liste;
-	/* 62 */ 
+	const char *title;
+	int16 x;
+	int16 y;
+	int16 *handle;
+	char *path;
+	int16 pathlen;
+	char *fname;
+	int16 fnamelen;
+	char *patterns;
+	XFSL_FILTER *filter;
+	char *paths;
+	int16 sort_mode;
+	int16 flags;
+	void *dialog;
+	boolean modal;
+	int16 button;
+	int16 nfiles;
+	Awindow *meldung;
+	Awindow *window;
+	 ULinList *liste;
 } A_FileSelData;
 
 typedef struct {
@@ -459,27 +445,6 @@ typedef struct {
 	Awindow *meldung;
 	Awindow *window;
 } A_PrintSelData;
-
-typedef struct {
-	int16 x;
-	int16 y;
-	int16 button_flag;
-	void **dialog;
-	const char *sample;
-	const char *opt_button;
-	int16 font_flag;
-	A_FontSel fontData;
-	int16 flags;
-	boolean modal;
-	int16 choosed;
-	int16 toClose;
-	void *para;
-	void (*set)(void);
-	void (*mark)(void);
-	void (*opt)(void);
-	Awindow *meldung;
-	Awindow *window;
-} A_FontSelData;
 
 typedef struct _ACSLinListStruct {
 	ACSLinListElemStruct *Beginn;

@@ -861,7 +861,7 @@ typedef struct
 /******************************************************************************/
 
 /* Zeiger auf Callback-Funktion fÅr Ash_font */
-typedef int16 (*A_FontFkt)(void *para, A_FontSel *font);
+typedef boolean (*A_FontFkt)(void *para, A_FontSel *font);
 
 /******************************************************************************/
 
@@ -2024,16 +2024,16 @@ char *Ash_getenv( const char *var );
 
 /* Die Icons fÅr das Fenster der Druck-Dialoge, Zeichensatz- */
 /* Auswahl und den File-Selector setzen.                     */
-void Ash_printSetIcon( CICONBLK *icon, int16 ghost );
-void Ash_fontSetIcon( CICONBLK *icon, int16 ghost );
-void Ash_fileSetIcon( CICONBLK *icon, int16 ghost );
+void Ash_printSetIcon( CICONBLK *icon, boolean ghost );
+void Ash_fontSetIcon( CICONBLK *icon, boolean ghost );
+void Ash_fileSetIcon( CICONBLK *icon, boolean ghost );
 
 /* Die WDIALOG-Druck-Dialoge aufrufen */
 int16 Ash_print( PRN_SETTINGS *setting, int16 x, int16 y, int16 option, const char *title, Awindow *window );
 
 /* Die Zeichensatz-Auswahl Åber die fnts_xx-Funktionen aufrufen */
-int16 Ash_font( const char *title, int16 x, int16 y, int16 font_flag,
-         int16 button_flag, A_FontSel *font, const char *sample, const char *opt_button,
+int16 Ash_font( const char *title, int16 x, int16 y, int16 font_flags,
+         int16 button_flags, A_FontSel *font, const char *sample, const char *opt_button,
          A_FontFkt set, A_FontFkt mark, A_FontFkt opt, void *para, Awindow *window );
 
 /* Der MagiC-Fileselector - nur Åber FSLX-Funktionen bedient     */

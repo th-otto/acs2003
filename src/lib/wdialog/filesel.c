@@ -1,3 +1,12 @@
+/******************************************************************************/
+/*                                                                            */
+/*    ACS               Application Construction System                       */
+/*    DESCRIPTION:      File selector                                         */
+/*                                                                            */
+/* (c) 1991-2004 Stefan Bachert, Oliver Michalak, Martin Elsaesser            */
+/* (c) 2022 Thorsten Otto                                                     */
+/******************************************************************************/
+
 #include "acs_i.h"
 #include "filesel.ah"
 #include "messages/msgserv.h"
@@ -40,12 +49,16 @@ static boolean hasFslx(void);
 static boolean fslxCreate(A_FileSelData *data);
 static ULinList *fslxMakeListe(A_FileSelData *data);
 
+/******************************************************************************/
+/* -------------------------------------------------------------------------- */
+/******************************************************************************/
 
 static void CDECL fsmesshndler(int16 *msg)
 {
 	Aev_message(msg);
 }
 
+/* -------------------------------------------------------------------------- */
 
 char *Af_select(const char *title, char *path, const char *ext)
 {
@@ -135,6 +148,7 @@ char *Af_select(const char *title, char *path, const char *ext)
 	return result;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static void free_multidata(void)
 {
@@ -150,6 +164,7 @@ static void free_multidata(void)
 	multi_opath[0] = '\0';
 }
 
+/* -------------------------------------------------------------------------- */
 
 char *Af_first_fsel(const char *title, char *path, const char *ext)
 {
@@ -228,6 +243,7 @@ char *Af_first_fsel(const char *title, char *path, const char *ext)
 	return filename;
 }
 
+/* -------------------------------------------------------------------------- */
 
 char *Af_next_fsel(void)
 {
@@ -249,8 +265,9 @@ char *Af_next_fsel(void)
 	return filename;
 }
 
+/* -------------------------------------------------------------------------- */
 
-void Ash_fileSetIcon(CICONBLK *icon, int16 ghost)
+void Ash_fileSetIcon(CICONBLK *icon, boolean ghost)
 {
 	WI_FILESEL.iconblk = icon;
 	if (WI_FILESEL.iconblk == NULL)
@@ -266,6 +283,7 @@ void Ash_fileSetIcon(CICONBLK *icon, int16 ghost)
 	}
 }
 
+/* -------------------------------------------------------------------------- */
 
 ULinList *Ash_fileselect(const char *title, int16 x, int16 y, char *path, char *fname,
 	char *patterns, XFSL_FILTER *filter, char *paths, int16 sort_mode,
@@ -338,6 +356,7 @@ ULinList *Ash_fileselect(const char *title, int16 x, int16 y, char *path, char *
 	return list;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static char *ConvertExt4Use(char *dst, char *src, char sep, boolean shortnames, boolean duplicates, boolean skip)
 {
@@ -433,12 +452,14 @@ static char *ConvertExt4Use(char *dst, char *src, char sep, boolean shortnames, 
 	return dst;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static char *ConvertExt2MagiC(char *dst, char *src)
 {
 	return ConvertExt4Use(dst, src, '\0', FALSE, TRUE, FALSE);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static char *ConvertExt2TOS(char *dst, char *src)
 {
@@ -447,6 +468,7 @@ static char *ConvertExt2TOS(char *dst, char *src)
 	return ConvertExt4Use(dst, src, ',', TRUE, duplicates, skip);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static ULinList *SingleSelect(const char *title, char *path, char *patterns)
 {
@@ -465,6 +487,7 @@ static ULinList *SingleSelect(const char *title, char *path, char *patterns)
 	return list;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static ULinList *MultiSelect(const char *title, char *path, char *patterns)
 {
@@ -487,6 +510,7 @@ static ULinList *MultiSelect(const char *title, char *path, char *patterns)
 	return list;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static ULinList *MagiCSelect(const char *title, char *path, int16 sort_mode, boolean multi, char *ext, Awindow *meldung)
 {
@@ -508,6 +532,7 @@ static ULinList *MagiCSelect(const char *title, char *path, int16 sort_mode, boo
 	return list;
 }
 
+/* -------------------------------------------------------------------------- */
 
 ULinList *Af_fileselect(const char *title, char *path, char *ext, int16 sort_mode, boolean multi, Awindow *window)
 {
@@ -528,6 +553,7 @@ ULinList *Af_fileselect(const char *title, char *path, char *ext, int16 sort_mod
 	return list;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static boolean hasFslx(void)
 {
@@ -545,6 +571,7 @@ static boolean hasFslx(void)
 	return vorhanden != 0;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static ULinList *fslxMakeListe(A_FileSelData *data)
 {
@@ -581,6 +608,7 @@ static ULinList *fslxMakeListe(A_FileSelData *data)
 	return list;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static boolean fslxCreate(A_FileSelData *data)
 {
@@ -592,6 +620,7 @@ static boolean fslxCreate(A_FileSelData *data)
 	return data->dialog != NULL;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static boolean fslxClose(A_FileSelData *data)
 {
@@ -616,13 +645,16 @@ static boolean fslxClose(A_FileSelData *data)
 	return TRUE;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static int16 fslxMessage(A_FileSelData *data, EVNT *event)
 {
 	int16 ret;
 	int16 nfiles;
 	
-	/* BUG: event->msg[1] should be our application ID */
+#if WITH_FIXES
+	event->msg[1] = ACSblk->gl_apid;
+#endif
 	event->msg[3] = *data->handle;
 	Awi_update(RESET_UPDATE);
 	ret = fslx_evnt(data->dialog, event, data->path, data->fname, &data->button, &nfiles, &data->sort_mode, &data->patterns);
@@ -635,6 +667,7 @@ static int16 fslxMessage(A_FileSelData *data, EVNT *event)
 	return ret;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static Awindow *FileCreate(void *a)
 {
@@ -710,10 +743,12 @@ static Awindow *FileCreate(void *a)
 	return window;
 }
 
+/* -------------------------------------------------------------------------- */
 
 #ifdef __PUREC__
 #pragma warn -par
 #endif
+
 static int16 FileService(Awindow *self, int16 task, void *in_out)
 {
 	A_FileSelData *data = (A_FileSelData *)self->user;
@@ -741,10 +776,12 @@ static int16 FileService(Awindow *self, int16 task, void *in_out)
 	}
 	return FALSE;
 }
+
 #ifdef __PUREC__
 #pragma warn .par
 #endif
 
+/* -------------------------------------------------------------------------- */
 
 static int16 FileOpen(Awindow *self)
 {
@@ -766,6 +803,7 @@ static int16 FileOpen(Awindow *self)
 	}
 }
 
+/* -------------------------------------------------------------------------- */
 
 static void FileClosed(Awindow *self)
 {
@@ -781,6 +819,7 @@ static void FileClosed(Awindow *self)
 	fslxMessage(data, &event);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static void FileRedraw(Awindow *self, Axywh *area)
 {
@@ -800,10 +839,12 @@ static void FileRedraw(Awindow *self, Axywh *area)
 	fslxMessage(data, &event);
 }
 
+/* -------------------------------------------------------------------------- */
 
 #ifdef __PUREC__
 #pragma warn -par
 #endif
+
 static void FileArrowed(Awindow *self, int16 which, int16 amount)
 {
 	A_FileSelData *data = (A_FileSelData *)self->user;
@@ -818,22 +859,27 @@ static void FileArrowed(Awindow *self, int16 which, int16 amount)
 	event.msg[4] = which;
 	fslxMessage(data, &event);
 }
+
 #ifdef __PUREC__
 #pragma warn .par
 #endif
 
+/* -------------------------------------------------------------------------- */
 
 #ifdef __PUREC__
 #pragma warn -par
 #endif
+
 static void FileChange(Awindow *self, int16 obnr, int16 new_state)
 {
 	self->redraw(self, &self->wi_work);
 }
+
 #ifdef __PUREC__
 #pragma warn .par
 #endif
 
+/* -------------------------------------------------------------------------- */
 
 static void FileFulled(Awindow *self)
 {
@@ -849,18 +895,22 @@ static void FileFulled(Awindow *self)
 	fslxMessage(data, &event);
 }
 
+/* -------------------------------------------------------------------------- */
 
 #ifdef __PUREC__
 #pragma warn -par
 #endif
+
 static int16 FileInit(Awindow *self)
 {
 	return OK;
 }
+
 #ifdef __PUREC__
 #pragma warn .par
 #endif
 
+/* -------------------------------------------------------------------------- */
 
 static void FileHSlide(Awindow *self, int16 pos)
 {
@@ -877,6 +927,7 @@ static void FileHSlide(Awindow *self, int16 pos)
 	fslxMessage(data, &event);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static void FileVSlide(Awindow *self, int16 pos)
 {
@@ -893,10 +944,12 @@ static void FileVSlide(Awindow *self, int16 pos)
 	fslxMessage(data, &event);
 }
 
+/* -------------------------------------------------------------------------- */
 
 #ifdef __PUREC__
 #pragma warn -par
 #endif
+
 static int16 FileKeys(Awindow *self, int16 kstate, int16 key)
 {
 	A_FileSelData *data = (A_FileSelData *)self->user;
@@ -911,10 +964,12 @@ static int16 FileKeys(Awindow *self, int16 kstate, int16 key)
 	fslxMessage(data, &event);
 	return OK;
 }
+
 #ifdef __PUREC__
 #pragma warn .par
 #endif
 
+/* -------------------------------------------------------------------------- */
 
 static void FileTopped(Awindow *self)
 {
@@ -930,6 +985,7 @@ static void FileTopped(Awindow *self)
 	fslxMessage(data, &event);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static void FileMoved(Awindow *self, Axywh *area)
 {
@@ -953,6 +1009,7 @@ static void FileMoved(Awindow *self, Axywh *area)
 	self->work->ob_height = self->wi_work.h;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static void FileSized(Awindow *self, Axywh *area)
 {
@@ -976,24 +1033,28 @@ static void FileSized(Awindow *self, Axywh *area)
 	self->work->ob_height = self->wi_work.h;
 }
 
+/* -------------------------------------------------------------------------- */
 
 static int16 FileIconify(Awindow *self, boolean all)
 {
 	return Awi_iconify(self, all);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static int16 FileUniconify(Awindow *self)
 {
 	return Awi_uniconify(self);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static int16 FileGEMScript(Awindow *self, int16 anz, char **cmds, A_GSAntwort *answer)
 {
 	return Awi_gemscript(self, anz, cmds, answer);
 }
 
+/* -------------------------------------------------------------------------- */
 
 static void FileClicked(void)
 {
