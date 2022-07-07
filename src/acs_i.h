@@ -434,14 +434,14 @@ typedef struct {
 	int16 x;
 	int16 y;
 	PRN_SETTINGS *printData;
-	void **dialog;
+	PRN_DIALOG *dialog;
 	int16 option;
 	boolean is_my_setting;
 	boolean is_print_dialog;
 	int16 flags;
 	boolean modal;
 	int16 button;
-	int16 choosed;
+	boolean choosed;
 	Awindow *meldung;
 	Awindow *window;
 } A_PrintSelData;
