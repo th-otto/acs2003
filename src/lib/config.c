@@ -731,7 +731,7 @@ double Acfg_setDouble(UConfig *config, const char *category, const char *name, d
 		end[1] = '\0';
 	else if (end == dot)
 		end[0] = '\0';
-	return atof(Acfg_setValue(config, category, name, buf));;
+	return atof(Acfg_setValue(config, category, name, buf));
 }
 #endif
 

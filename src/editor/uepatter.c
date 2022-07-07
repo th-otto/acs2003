@@ -60,7 +60,7 @@ static void edpa_col(void)
 
 static void edpa_frame(void)
 {
-	ACSblk->ev_object[ED_PATTERN_SAMPLE].ob_spec.auserblk->ub_parm ^= ACS_PATTERN_FRAME;;
+	ACSblk->ev_object[ED_PATTERN_SAMPLE].ob_spec.auserblk->ub_parm ^= ACS_PATTERN_FRAME;
 	ACSblk->ev_window->obchange(ACSblk->ev_window, ED_PATTERN_SAMPLE, -1);
 }
 
