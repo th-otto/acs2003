@@ -1277,7 +1277,7 @@ void Awi_update( int16 mode );
 void Awi_layout( int16 flag3D, int16 flagModernMenu, boolean redraw );
 
 /* ST-Guide-Hilfe zum Fenster anzeigen */
-int16 Awi_help( Awindow *window );
+boolean Awi_help( Awindow *window );
 
 /* Redraw-Routine */
 void Awi_redraw( Awindow *window, Axywh *limit );
@@ -1482,7 +1482,7 @@ boolean Aob_gettext( OBJECT *tree, int16 obnr, char *text );
 int16 Aob_scanf( OBJECT *tree, int16 obnr, const char *format, ... ) __attribute__((format(scanf, 3, 4)));
 
 /* Is x/y in Rectangle? */
-int16 Aob_within( const Axywh* rect, int16 x, int16 y );
+boolean Aob_within( const Axywh* rect, int16 x, int16 y );
 
 /* Send a message to an object */
 boolean Aob_service( OBJECT *tree, int16 obnr, int16 task, void *in_out );
@@ -1795,6 +1795,9 @@ int16 A_dialog2( OBJECT* dia );
 /* alert must have the form [X][...%s....][Y] */
 int16 alert_str( const char *alert, const char *para );
 
+/* Display an Alert-Box with only a single line */
+int16 alert(const char *str);
+
 /* Veschneidet beide Rechtecke, TRUE wenn Schnitt existiert */
 boolean intersect( Axywh* to, const Axywh* from );
 
@@ -1972,8 +1975,8 @@ typedef struct
 #define BEM_NEGOCT         (13)  /* - 0-7 */
 #define BEM_DEC            (14)  /* 0-9 */
 #define BEM_NEGDEC         (15)  /* - 0-9 */
-#define BEM_HEX            (16)  /* 0-9A-Z */
-#define BEM_NEGHEX         (17)  /* - 0-9A-Z */
+#define BEM_HEX            (16)  /* 0-9A-F */
+#define BEM_NEGHEX         (17)  /* - 0-9A-F */
 #define BEM_FLOAT          (18)  /* 0-9.0-9 */
 #define BEM_NEGFLOAT       (19)  /* - 0-9.0-9 */
 #define BEM_DATEEURO       (20)  /* Tag(2).Monat(2).Jahr(4) */
@@ -2363,7 +2366,7 @@ void Ascrp_clear( const char *ext );
 /* Reads from clipboard SCRAP."ext" or first Scrap-file  */
 /* If buffer==NULL, only Length will be returned, Buffer */
 /* and real ext are returned and TRUE, if all is ok      */
-boolean Ascrp_get( const char *ext, void **buffer, ssize_t *len );
+boolean Ascrp_get( char *ext, void **buffer, ssize_t *len );
 
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */

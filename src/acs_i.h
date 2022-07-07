@@ -1521,7 +1521,7 @@ void Aud_boxed(void);
 /*
  * lib/util.c
  */
-extern boolean a_dialog_active;
+extern int16 a_dialog_active;
 
 void Act_save(CONTEXT *ctx);
 void Act_restore(CONTEXT *ctx);

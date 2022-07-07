@@ -1078,7 +1078,7 @@ static int16 Awi_nextsel(Awindow *win, int16 oldobnr, boolean vertical)
 
 /* -------------------------------------------------------------------------- */
 
-int16 Awi_help(Awindow *win)
+boolean Awi_help(Awindow *win)
 {
 	AGetSTGuide stguide;
 	

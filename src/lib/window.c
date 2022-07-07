@@ -2190,7 +2190,7 @@ int16 Awi_dialog(Awindow *win)
 	
 	if (win->state & AWS_ICONIZED)
 		return -3;
-	if (a_dialog_active)
+	if (a_dialog_active != 0)
 	{
 		if (win->work == NULL)
 		{

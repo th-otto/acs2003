@@ -75,7 +75,7 @@ userdef\cycle.c
 userdef\picture.c
 userdef\boxed.c
 
-utility\util.s
+utility\util.c
 utility\date.s
 
 wdialog\filesel.c
