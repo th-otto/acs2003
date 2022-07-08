@@ -160,6 +160,7 @@ LIB_OBJS = \
 
 MODUL_OBJS = \
 	lib/modul/modul.o \
+	lib/modul/moduldat.o \
 	lib/modul/modulold.o \
 	$(empty)
 

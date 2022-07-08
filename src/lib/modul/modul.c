@@ -1,5 +1,16 @@
+/******************************************************************************/
+/*                                                                            */
+/*    ACS               Application Construction System                       */
+/*    DESCRIPTION:      Module loader                                         */
+/*                      (compatibily version for old and new style modules)   */
+/*                                                                            */
+/* (c) 1991-2004 Stefan Bachert, Oliver Michalak, Martin Elsaesser            */
+/* (c) 2022 Thorsten Otto                                                     */
+/******************************************************************************/
+
 #include "acs_i.h"
 #include <acsvdi.h>
+#include "version.h"
 
 
 static void *oldbas = NULL;
@@ -10,6 +21,9 @@ struct ACSmod {
 	int32 magic2;
 	int16 (*entry)(void);
 	Ablk *acsblk;
+#if !BETA
+	GlobalArray *global; /* only in 2005 version */
+#endif
 	long funcsAnz;
 	funcVersion funcs[];
 };
@@ -24,7 +38,9 @@ struct ACSoldmod {
 
 static boolean PushFuncLists(struct ACSmod *mod);
 
-
+/******************************************************************************/
+/* -------------------------------------------------------------------------- */
+/******************************************************************************/
 
 void Ax_mterm(void *bas)
 {
@@ -43,6 +59,7 @@ void Ax_mterm(void *bas)
 	oldbas = bas;
 }
 
+/* -------------------------------------------------------------------------- */
 
 /* Load and initialize an ACS-Module (returns OK or FAIL) */
 int16 Ash_module(const char *path)
@@ -135,10 +152,14 @@ int16 Ash_module(const char *path)
 	{
 		entry = mod->entry;
 		mod->acsblk = ACSblk;
+#if !BETA
+		mod->global = _globl;
+#endif
 	}
 	return entry();
 }
 
+/* -------------------------------------------------------------------------- */
 
 static boolean PushFuncLists(struct ACSmod *mod)
 {

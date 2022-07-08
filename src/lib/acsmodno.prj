@@ -1,4 +1,4 @@
-acsmod.lib
+acsmodno.lib
 
 .C[-I..\..\include]
 .C[-I..]
@@ -32,6 +32,4 @@ acsmod.lib
 
 =
 
-modul\modul.c
-modul\moduldat.c
-modul\modulold.c
+modul\modulno.c
