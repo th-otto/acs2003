@@ -6,6 +6,8 @@ WARN = -Wall -Wstrict-prototypes -Wmissing-prototypes -Wundef -Werror
 CFLAGS = -I. -Ilib -I../include $(OPT) $(WARN) $(DEFS)
 CC = $(CROSS)gcc
 AS = $(CROSS)gcc
+AR = $(CROSS)ar
+ARFLAGS = rcs
 
 
 OBJS = \
@@ -84,6 +86,13 @@ OBJS = \
 	list/edstring.o \
 	list/edtedi.o \
 	\
+	acsplus/acsplus.a \
+	lib/acsmod.a \
+	lib/acs.a \
+	\
+	$(empty)
+
+ACSPLUS_OBJS = \
 	acsplus/slider.o \
 	acsplus/wislider.o \
 	acsplus/editor.o \
@@ -95,7 +104,10 @@ OBJS = \
 	acsplus/proto.o \
 	acsplus/plotter.o \
 	acsplus/goodies.o \
-	\
+	$(empty)
+
+LIB_OBJS = \
+	lib/acsinit0.o \
 	lib/main.o \
 	lib/initterm.o \
 	lib/vdi_data.o \
@@ -143,11 +155,12 @@ OBJS = \
 	lib/listen/ulinlist.o \
 	lib/listen/stack.o \
 	lib/listen/queue.o \
+	lib/gemlib.o \
+	$(empty)
+
+MODUL_OBJS = \
 	lib/modul/modul.o \
 	lib/modul/modulold.o \
-	\
-	lib/gemlib.o \
-	\
 	$(empty)
 
 .s.o:
@@ -158,8 +171,19 @@ all: acs.app
 acs.app: $(OBJS) Makefile
 	$(CC) $(CFLAGS) -o $@ $(OBJS) -lgem
 
+acsplus/acsplus.a: $(ACSPLUS_OBJS)
+	@rm -f $@
+	$(AR) $(ARFLAGS) $@ $(ACSPLUS_OBJS)
+
+lib/acs.a: $(LIB_OBJS)
+	@rm -f $@
+	$(AR) $(ARFLAGS) $@ $(LIB_OBJS)
+
+lib/acsmod.a: $(MODUL_OBJS)
+	@rm -f $@
+	$(AR) $(ARFLAGS) $@ $(MODUL_OBJS)
 
 #$(OBJS): acs_i.h
 
 clean::
-	$(RM) $(OBJS) acs.app
+	$(RM) $(OBJS) $(ACSPLUS_OBJS) $(LIB_OBJS) $(MODUL_OBJS) acs.app

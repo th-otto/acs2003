@@ -2432,7 +2432,7 @@ T000046:   MOVEA.L   A3,A1
 T000048:   MOVE.L    D3,D1
 T00004a:   LSL.L     #3,D1
 T00004c:   LEA.L     (A3,D1.L),A0
-T000050:   JSR       memcpy
+T000050:   JSR       memmove
 T000056:   ADD.L     D3,$0028(A2)
 T00005a:   BRA.B     T0000B6
 T00005c:   TST.L     D3
@@ -2455,7 +2455,7 @@ T000082:   MOVE.L    D3,D1
 T000084:   LSL.L     #3,D1
 T000086:   LEA.L     (A3,D1.L),A1
 T00008a:   MOVEA.L   A3,A0
-T00008c:   JSR       memcpy
+T00008c:   JSR       memmove
 T000092:   MOVE.L    D3,D1
 T000094:   LSL.L     #3,D1
 T000096:   CLR.W     D0
@@ -3420,7 +3420,7 @@ T000066:   MOVE.L    D3,D0
 T000068:   MOVEA.L   $002C(A2),A1
 T00006c:   ADDQ.W    #8,A1
 T00006e:   MOVEA.L   $002C(A2),A0
-T000072:   JSR       memcpy
+T000072:   JSR       memmove
 T000078:   MOVE.L    $0028(A2),D0
 T00007c:   LSL.L     #3,D0
 T00007e:   MOVEA.L   $002C(A2),A0
@@ -3764,7 +3764,7 @@ T0002de:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 edit_invers:
 T000000:   MOVEM.L   D3-D5/A2-A3,-(A7)
@@ -3959,7 +3959,7 @@ T0000a6:   MOVEA.L   A3,A0
 T0000a8:   BSR       edit_update
 T0000ac:   MOVEQ.L   #$01,D0
 T0000ae:   MOVEA.L   A3,A0
-T0000b0:   JSR       cleanup
+T0000b0:   JSR       editor_cleanup
 T0000b6:   MOVE.L    _globl,-(A7)
 T0000bc:   PEA.L     (A2)
 T0000be:   PEA.L     $0008(A7)
@@ -4233,7 +4233,7 @@ T000144:   MOVEA.L   A2,A0
 T000146:   BSR       edit_update
 T00014a:   MOVEQ.L   #$01,D0
 T00014c:   MOVEA.L   A2,A0
-T00014e:   JSR       cleanup
+T00014e:   JSR       editor_cleanup
 T000154:   MOVE.L    $0072(A2),D0
 T000158:   BEQ.B     T000168
 T00015a:   LEA.L     ,A1
@@ -4590,7 +4590,7 @@ T000364:   MOVEA.L   A3,A0
 T000366:   BSR       edit_update
 T00036a:   MOVEQ.L   #$01,D0
 T00036c:   MOVEA.L   A3,A0
-T00036e:   JSR       cleanup
+T00036e:   JSR       editor_cleanup
 T000374:   MOVE.L    D7,$0014(A7)
 T000378:   MOVE.L    D6,$0010(A7)
 T00037c:   MOVE.L    _globl,-(A7)
@@ -4861,7 +4861,7 @@ T0002c8:   MOVEA.L   A2,A0
 T0002ca:   BSR       edit_update
 T0002ce:   MOVEQ.L   #$01,D0
 T0002d0:   MOVEA.L   A2,A0
-T0002d2:   JSR       cleanup
+T0002d2:   JSR       editor_cleanup
 T0002d8:   MOVE.L    D6,D7
 T0002da:   MOVE.L    D5,$0004(A7)
 T0002de:   MOVE.L    _globl,-(A7)
@@ -4951,7 +4951,7 @@ T00007c:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 edit_appline:
 T000000:   MOVE.L    A2,-(A7)
@@ -4976,7 +4976,7 @@ T00002e:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 edit_free:
 T000000:   MOVEM.L   D3/A2-A3,-(A7)
@@ -5962,7 +5962,7 @@ T00059c:   BRA       T0008C8
 T0005a0:   MOVE.L    $0030(A3),(A4)
 T0005a4:   BRA       T0008C8
 T0005a8:   MOVEA.L   $001A(A7),A0
-T0005ac:   JSR       create
+T0005ac:   JSR       editor_create
 T0005b2:   TST.W     D0
 T0005b4:   BEQ       T0008C8
 T0005b8:   MOVE.W    #$FFFF,(A4)
@@ -6165,11 +6165,11 @@ T000888:   MOVEA.L   $0008(A2),A2
 T00088c:   JSR       (A2)
 T00088e:   CLR.W     D0
 T000890:   MOVEA.L   A3,A0
-T000892:   JSR       cleanup
+T000892:   JSR       editor_cleanup
 T000898:   BRA.B     T0008C8
 T00089a:   MOVEQ.L   #$01,D0
 T00089c:   MOVEA.L   A3,A0
-T00089e:   JSR       cleanup
+T00089e:   JSR       editor_cleanup
 T0008a4:   BRA.B     T0008C8
 T0008a6:   ORI.W     #$2000,$0012(A3)
 T0008ac:   BRA.B     T0008C8
@@ -6676,7 +6676,7 @@ T00003c:   RTS
 
           .MODULE LOCAL
 
-create:
+editor_create:
 T000000:   MOVE.L    A2,-(A7)
 T000002:   MOVE.L    A3,-(A7)
 T000004:   SUBQ.W    #2,A7
@@ -6722,7 +6722,7 @@ T000090:   RTS
 
           .MODULE LOCAL
 
-cleanup:
+editor_cleanup:
 T000000:   MOVEM.L   D3/A2-A5,-(A7)
 T000004:   SUBQ.W    #4,A7
 T000006:   MOVEA.L   A0,A2
@@ -7110,7 +7110,7 @@ T00000c:   RTS
 Awd_delete:
 T000000:   MOVEA.L   ACSblk,A0
 T000006:   MOVEA.L   $0258(A0),A0
-T00000a:   JSR       delete
+T00000a:   JSR       wd_delete
 T000010:   RTS
 
           .ENDMOD
@@ -7118,7 +7118,7 @@ T000010:   RTS
 
           .MODULE LOCAL
 
-delete:
+wd_delete:
 T000000:   MOVEM.L   D3/A2-A4,-(A7)
 T000004:   MOVEA.L   A0,A3
 T000006:   MOVEA.L   ACSblk,A1
@@ -7298,7 +7298,7 @@ T0000b8:   RTS
 wd_color:
 T000000:   MOVEM.L   D3/A2-A3,-(A7)
 T000004:   SUBQ.W    #8,A7
-T000006:   LEA.L     POP_COLSEL,A0
+T000006:   LEA.L     DPOP_COLSEL,A0
 T00000c:   JSR       Aob_create
 T000012:   MOVEA.L   A0,A2
 T000014:   MOVE.L    A2,D0
@@ -7378,7 +7378,7 @@ wd_pattern:
 T000000:   MOVE.L    A2,-(A7)
 T000002:   MOVE.L    A3,-(A7)
 T000004:   SUBQ.W    #8,A7
-T000006:   LEA.L     POP_PATSEL,A0
+T000006:   LEA.L     DPOP_PATSEL,A0
 T00000c:   JSR       Aob_create
 T000012:   MOVEA.L   A0,A2
 T000014:   MOVE.L    A2,D0
@@ -7589,7 +7589,7 @@ T0001e0:   LEA.L     $60(A2,D0.L),A0
 T0001e4:   MOVE.L    A0,(A7)
 T0001e6:   MOVEQ.L   #$08,D4
 T0001e8:   MOVEQ.L   #$30,D0
-T0001ea:   LEA.L     pro08,A1
+T0001ea:   LEA.L     proto+$000000C0,A1
 T0001f0:   MOVEA.L   A3,A0
 T0001f2:   JSR       memcpy
 T0001f8:   MOVEQ.L   #$26,D0
@@ -10077,7 +10077,7 @@ T000064:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 modul_close:
 T000000:   MOVE.L    A2,-(A7)
@@ -10596,7 +10596,7 @@ T000054:   LSL.L     #3,D0
 T000056:   ADDA.L    D0,A3
 T000058:   MOVE.W    #$0018,$0006(A3)
 T00005e:   ORI.W     #$2000,$000A(A3)
-T000064:   MOVE.L    #+$000010B0,$000C(A3)
+T000064:   MOVE.L    #Sep,$000C(A3)
 T00006c:   BRA.B     T000072
 T00006e:   CLR.W     -$0E68(A4)
 T000072:   MOVEA.L   ACSblk,A0
@@ -18783,7 +18783,7 @@ T00003c:   MOVE.L    A2,D0
 T00003e:   BEQ.B     T000044
 T000040:   MOVEA.L   A2,A5
 T000042:   BRA.B     T000058
-T000044:   LEA.L     +$00000B28,A5
+T000044:   LEA.L     def,A5
 T00004a:   MOVEA.L   (A6),A0
 T00004c:   MOVE.W    $0290(A0),(A5)
 T000050:   MOVEA.L   (A6),A0
@@ -21336,7 +21336,7 @@ D001bfa:   .DC.L   Awi_iconify
 D001bfe:   .DC.L   Awi_uniconify
 D001c02:   .DC.L   Awi_gemscript
 D001c06:   .DC.W   $0000, $0000, $0000, $0000
-_WI_NEW_INFO::
+_WI_NEW_INFO:
 D001c0e:   .DC.W   $0000, $0000
 D001c12:   .DC.L   Awi_service
 D001c16:   .DC.L   Awi_selfcreate
@@ -21365,7 +21365,7 @@ D001c9c:   .DC.L   Awi_iconify
 D001ca0:   .DC.L   Awi_uniconify
 D001ca4:   .DC.L   Awi_gemscript
 D001ca8:   .DC.W   $0000, $0000, $0000, $0000
-_WI_TRASH_INFO::
+_WI_TRASH_INFO:
 D001cb0:   .DC.W   $0000, $0000
 D001cb4:   .DC.L   Awi_service
 D001cb8:   .DC.L   Awi_selfcreate
@@ -21423,7 +21423,7 @@ D001de0:   .DC.L   Awi_iconify
 D001de4:   .DC.L   Awi_uniconify
 D001de8:   .DC.L   Awi_gemscript
 D001dec:   .DC.W   $0000, $0000, $0000, $0000
-colour_txt::
+colour_txt:
 D001df4:   .DC.L   COLOUR00
 D001df8:   .DC.L   COLOUR01
 D001dfc:   .DC.L   COLOUR02

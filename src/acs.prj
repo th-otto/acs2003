@@ -118,6 +118,7 @@ list\edtedi.c
 
 acsplus\acsplus.prj
 lib\acslib.prj
+lib\acsmod.prj
 
 ..\pcgem\pcgem.prj
 ..\pctos\pctos.prj

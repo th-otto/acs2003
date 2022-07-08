@@ -29,7 +29,7 @@ typedef struct memx {
 
 
 #if !WITH_FIXES
-ssize_t _asc_memdebug_in_use = 0;
+ssize_t _acs_memdebug_in_use = 0;
 #endif
 static int MemInit = 0;
 

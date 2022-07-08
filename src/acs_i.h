@@ -374,10 +374,6 @@ typedef struct {
 } xFSL;
 
 typedef struct {
-	int16 v[8];
-} outline;
-
-typedef struct {
 	char *popup;
 	long len;
 } ddPopStruc;
@@ -1373,13 +1369,6 @@ extern funcListe funcs[];
 extern long const funcsAnz;
 extern void *ACS233[];
 extern void *ACS230[];
-
-AUSERBLK *Aus_create23x(const AUSERBLK *user);
-OBJECT *Aob_create23x(const OBJECT *parent);
-Awindow *Awi_create23x(const Awindow *x);
-void Awi_arrowed23x(Awindow *window, int16 which);
-char *Af_first230(const char *start);
-char *Af_next230(void);
 
 
 /*

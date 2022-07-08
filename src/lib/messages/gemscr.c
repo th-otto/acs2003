@@ -63,6 +63,17 @@ boolean Aev_ExitGEMScript(void)
 
 /* -------------------------------------------------------------------------- */
 
+#ifndef __GNUC__ /* unused */
+static boolean CmpID(void *para, void *elem)
+{
+	if (((gs_search *)para)->ap_id == ((gs_con *)elem)->ap_id)
+		return TRUE;
+	return FALSE;
+}
+#endif
+
+/* -------------------------------------------------------------------------- */
+
 static boolean CmpIDKanal(void *para, void *elem)
 {
 	if (((gs_search *)para)->ap_id == ((gs_con *)elem)->ap_id &&
@@ -70,6 +81,19 @@ static boolean CmpIDKanal(void *para, void *elem)
 		return TRUE;
 	return FALSE;
 }
+
+/* -------------------------------------------------------------------------- */
+
+#ifndef __GNUC__ /* unused */
+static boolean CmpIDStatus(void *para, void *elem)
+{
+	if (((gs_search *)para)->ap_id == ((gs_con *)elem)->ap_id &&
+		((gs_search *)para)->status == ((gs_con *)elem)->status)
+		return TRUE;
+	return FALSE;
+}
+
+#endif
 
 /* -------------------------------------------------------------------------- */
 

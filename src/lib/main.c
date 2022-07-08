@@ -17,7 +17,7 @@
 
 ULinList *SentMsg = NULL;
 ULinList *ListOfApps = NULL;
-char const copyright[] = "(c) 1991-" __STRINGIFY(COPYRIGHT_YEAR) " S.Bachert, O.Michalak & M.Els„sser ACS "
+char const _acs_copyright[] = "(c) 1991-" __STRINGIFY(COPYRIGHT_YEAR) " S.Bachert, O.Michalak & M.Els„sser ACS "
 	__STRINGIFY(ACS_VERSION_MAJOR) "." __STRINGIFY(ACS_VERSION_MINOR) "." __STRINGIFY(ACS_VERSION_MICRO)
 #if BETA
 	"\341"

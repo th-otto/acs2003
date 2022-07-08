@@ -1,0 +1,36 @@
+acsmod.lib
+
+.C[-I..\..\include]
+.C[-I..]
+.S[-I..]
+.C[-IC:\pc\include]
+
+.C[ -A- ]		; no strict ANSI
+.C[ -C- ]		; no nested comments
+.C[ -T- ]		; no stack checking
+.C[ -K- ]		; Default Char is signed
+.C[ -P  ]		; Absolute calls
+.C[ -G- ]		; optimize for speed
+.C[ -S- ]		; no standard stack frames
+
+; Flags for the Debug-Version
+;.C[ -D_DEBUG -DDEBUG ]
+;.C[ -J+ ]		; No jump optimization
+;.C[ -Z+ ]		; No register optimization
+;.C[ -M+ ]		; No String Merging
+;.C[ -R+ ]		; No Register Variables
+
+; Flags for the Release-Version
+.C[ -J- ]		; Jump optimization
+.C[ -Z- ]		; Register optimization
+.C[ -M- ]		; String Merging
+.C[ -R- ]		; Register Variables
+
+.S[-U]
+
+.L[-J] ; generate library
+
+=
+
+modul\modul.c
+modul\modulold.c

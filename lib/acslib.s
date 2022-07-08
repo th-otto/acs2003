@@ -1,4 +1,4 @@
-* Object File "acs.lib"
+* Object File "lib/acslib.lib"
 
 
 
@@ -126,7 +126,7 @@ T00000c:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 acs_call:
 T000000:   LEA.L     -$000A(A7),A7
@@ -156,7 +156,7 @@ T00005a:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 get_acsblk:
 T000000:   MOVE.L    #_ACSblk,ACSblk
@@ -1047,10 +1047,10 @@ T0002e4:   JSR       strlen
 T0002ea:   MOVEA.L   ACSblk,A0
 T0002f0:   MOVEA.L   $023C(A0),A1
 T0002f4:   LEA.L     $0010(A1),A1
-T0002f8:   LEA.L     _A_ERR_ACC+$0000001E,A0
+T0002f8:   LEA.L     _ALIB_ERR_ACC+$0000001E,A0
 T0002fe:   JSR       strncpy
 T000304:   MOVEA.L   _globl,A1
-T00030a:   LEA.L     _A_ERR_ACC,A0
+T00030a:   LEA.L     _ALIB_ERR_ACC,A0
 T000310:   MOVEQ.L   #$01,D0
 T000312:   JSR       mt_form_alert
 T000318:   MOVE.W    D0,$0006(A7)
@@ -1463,12 +1463,6 @@ T00002a:   RTS
 
           .MODULE LOCAL
 
-
-          .ENDMOD
-
-
-          .MODULE GLOBAL
-
 ACSInitLineA:
 T000000:   MOVEM.L   D3-D7/A2-A6,-(A7)
 T000004:   LINEA     #$A000
@@ -1506,7 +1500,7 @@ chg1:
 T000028:   MOVEA.L   D0,A0
 T00002a:   MOVE.L    (A0),oldpd
 T000030:   MOVE.L    A0,_run
-T000036:   MOVE.L    _BasPag,(A0)
+T000036:   MOVE.L    __base,(A0)
 T00003c:   MOVE.L    $0002(A7),oldret
 T000044:   MOVE.L    #post,$0002(A7)
 T00004c:   MOVEA.L   oldvec,A0
@@ -1533,7 +1527,7 @@ T000098:   MOVE.W    SR,-(A7)
 T00009a:   JMP       (A1)
 intret:
 T00009c:   MOVEA.L   _run,A0
-T0000a2:   MOVE.L    _BasPag,(A0)
+T0000a2:   MOVE.L    __base,(A0)
 T0000a8:   MOVEM.L   (A7)+,A0-A1
 T0000ac:   RTE
 accgemdos:
@@ -1565,15 +1559,15 @@ T000010:   MOVE.W    #$004E,D1
 T000014:   CMP.B     (A0,D1.W),D0
 T000018:   BEQ.B     T000042
 T00001a:   MOVE.W    #$0063,D1
-.numsearch:
+nk_finds_numsearch:
 T00001e:   CMP.B     (A0,D1.W),D0
 T000022:   BEQ.B     T000042
 T000024:   ADDQ.W    #1,D1
 T000026:   CMP.W     #$0073,D1
 T00002a:   BCS.B     T00001E
-.search:
+nk_finds_search:
 T00002c:   MOVE.W    #$0001,D1
-.mainsearch:
+nk_finds_mainsearch:
 T000030:   CMP.B     (A0,D1.W),D0
 T000034:   BEQ.B     T000042
 T000036:   ADDQ.B    #1,D1
@@ -1581,7 +1575,7 @@ T000038:   CMP.B     #$78,D1
 T00003c:   BCS.B     T000030
 T00003e:   MOVEQ.L   #$00,D1
 T000040:   RTS
-.found:
+nk_finds_found:
 T000042:   TST.W     D1
 T000044:   RTS
 nkc_init:
@@ -1596,7 +1590,6 @@ T000058:   MOVEA.L   D0,A0
 T00005a:   MOVE.L    (A0)+,pkey_unshift
 T000060:   MOVE.L    (A0)+,pkey_shift
 T000066:   MOVE.L    (A0),pkey_caps
-.exit:
 T00006c:   MOVE.W    #$0294,D0
 T000070:   RTS
 nkc_tos2n:
@@ -1614,14 +1607,14 @@ T00008e:   AND.W     #$0300,D3
 T000092:   BEQ.B     T00009C
 T000094:   MOVEA.L   pkey_shift,A0
 T00009a:   BRA.B     T0000B0
-.ktab1:
+nkc_tos2n_ktab1:
 T00009c:   BTST.L    #$000C,D2
 T0000a0:   BEQ.B     T0000AA
 T0000a2:   MOVEA.L   pkey_caps,A0
 T0000a8:   BRA.B     T0000B0
-.ktab2:
+nkc_tos2n_ktab2:
 T0000aa:   MOVEA.L   pkey_unshift,A0
-.ktab3:
+nkc_tos2n_ktab3:
 T0000b0:   CMP.B     #$84,D1
 T0000b4:   BCS.B     T0000DC
 T0000b6:   MOVE.W    D2,D1
@@ -1629,23 +1622,23 @@ T0000b8:   AND.W     #$0C00,D1
 T0000bc:   BEQ.B     T0000C6
 T0000be:   OR.W      #$2000,D0
 T0000c2:   AND.W     #$1300,D2
-.special:
+nkc_tos2n_special:
 T0000c6:   OR.W      D2,D0
 T0000c8:   OR.W      #$C000,D0
 T0000cc:   CMP.B     #$20,D0
 T0000d0:   BCC       T0001D2
 T0000d4:   MOVE.B    #$20,D0
 T0000d8:   BRA       T0001D2
-.ktab4:
+nkc_tos2n_ktab4:
 T0000dc:   CMP.B     #$78,D1
 T0000e0:   BCS.B     T0000F2
 T0000e2:   SUB.B     #$76,D1
 T0000e6:   MOVE.B    (A0,D1.W),D0
 T0000ea:   OR.W      #$0800,D2
 T0000ee:   BRA       T00019A
-.scan1:
+nkc_tos2n_scan1:
 T0000f2:   LEA.L     xscantab,A1
-.search_scan:
+nkc_tos2n_search_scan:
 T0000f8:   MOVE.W    (A1)+,D3
 T0000fa:   BMI.B     T000106
 T0000fc:   CMP.B     D1,D3
@@ -1653,32 +1646,32 @@ T0000fe:   BNE.B     T0000F8
 T000100:   LSR.W     #8,D3
 T000102:   MOVEQ.L   #$00,D0
 T000104:   BRA.B     T000108
-.tabend:
+nkc_tos2n_tabend:
 T000106:   MOVEQ.L   #$00,D3
-.scan2:
+nkc_tos2n_scan2:
 T000108:   MOVE.B    (A0,D1.W),D4
 T00010c:   CMP.B     #$20,D0
 T000110:   BCC.B     T000118
 T000112:   CMP.B     D4,D0
 T000114:   BEQ.B     T000118
 T000116:   MOVEQ.L   #$00,D0
-.scan3:
+nkc_tos2n_scan3:
 T000118:   TST.B     D0
 T00011a:   BEQ.B     T000124
 T00011c:   CMP.B     D4,D0
 T00011e:   BEQ.B     T000124
 T000120:   AND.W     #$F7FF,D2
-.scan4:
+nkc_tos2n_scan4:
 T000124:   TST.B     D0
 T000126:   BNE.B     T00012E
 T000128:   MOVE.B    D3,D0
 T00012a:   BNE.B     T00012E
 T00012c:   MOVE.B    D4,D0
-.scan5:
+nkc_tos2n_scan5:
 T00012e:   CMP.B     #$7F,D0
 T000132:   BNE.B     T000138
 T000134:   MOVE.B    #$1F,D0
-.scan6:
+nkc_tos2n_scan6:
 T000138:   CMP.B     #$4A,D1
 T00013c:   BEQ.B     T000150
 T00013e:   CMP.B     #$4E,D1
@@ -1687,9 +1680,9 @@ T000144:   CMP.B     #$63,D1
 T000148:   BCS.B     T000154
 T00014a:   CMP.B     #$72,D1
 T00014e:   BHI.B     T000154
-.numeric:
+nkc_tos2n_numeric:
 T000150:   OR.W      #$2000,D2
-.scan7:
+nkc_tos2n_scan7:
 T000154:   CMP.B     #$20,D0
 T000158:   BCC.B     T00016C
 T00015a:   OR.W      #$8000,D2
@@ -1698,7 +1691,7 @@ T000162:   BNE.B     T00016C
 T000164:   BTST.L    #$000D,D2
 T000168:   BEQ.B     T00016C
 T00016a:   MOVEQ.L   #$0A,D0
-.scan8:
+nkc_tos2n_scan8:
 T00016c:   CMP.B     #$54,D1
 T000170:   BCS.B     T000188
 T000172:   CMP.B     #$5D,D1
@@ -1708,38 +1701,38 @@ T00017c:   MOVE.W    D2,D3
 T00017e:   AND.W     #$0300,D3
 T000182:   BNE.B     T000188
 T000184:   OR.W      #$0300,D2
-.scan9:
+nkc_tos2n_scan9:
 T000188:   CMP.B     #$3B,D1
 T00018c:   BCS.B     T00019A
 T00018e:   CMP.B     #$44,D1
 T000192:   BHI.B     T00019A
 T000194:   MOVE.B    D1,D0
 T000196:   SUB.B     #$2B,D0
-.cat_codes:
+nkc_tos2n_cat_codes:
 T00019a:   MOVEA.L   pkey_shift,A0
 T0001a0:   MOVE.B    (A0,D1.W),D3
 T0001a4:   OR.W      D2,D0
 T0001a6:   BMI.B     T0001AE
 T0001a8:   AND.W     #$0C00,D2
 T0001ac:   BNE.B     T0001BC
-.scan10:
+nkc_tos2n_scan10:
 T0001ae:   MOVEA.L   pkey_unshift,A0
 T0001b4:   CMP.B     (A0,D1.W),D3
 T0001b8:   BEQ.B     T0001CE
 T0001ba:   BRA.B     T0001D2
-.scan11:
+nkc_tos2n_scan11:
 T0001bc:   OR.W      #$8000,D0
 T0001c0:   MOVEA.L   pkey_caps,A0
 T0001c6:   CMP.B     (A0,D1.W),D3
 T0001ca:   BNE.B     T0001D2
 T0001cc:   MOVE.B    D3,D0
-.scan12:
+nkc_tos2n_scan12:
 T0001ce:   OR.W      #$4000,D0
-.exit:
+nkc_tos2n_exit:
 T0001d2:   TST.W     D0
 T0001d4:   MOVEM.L   (A7)+,D3-D4
 T0001d8:   RTS
-.tos306:
+nkc_tos2n_tos306:
 T0001da:   AND.W     #$1000,D2
 T0001de:   OR.W      D2,D0
 T0001e0:   MOVEM.L   (A7)+,D3-D4
@@ -1756,27 +1749,27 @@ T0001fa:   AND.L     #$00001300,D0
 T000200:   BTST.L    #$000D,D1
 T000204:   BEQ.B     T00020A
 T000206:   OR.W      #$0C00,D0
-.mackey:
+nkc_n2tos_mackey:
 T00020a:   OR.B      #$FF,D0
 T00020e:   SWAP      D0
 T000210:   MOVE.B    D1,D0
 T000212:   BRA       T00033E
-.ktab0:
+nkc_n2tos_ktab0:
 T000216:   MOVE.W    D0,D1
 T000218:   AND.W     #$0300,D1
 T00021c:   BEQ.B     T00022C
 T00021e:   LEA.L     n_to_scan_s,A1
 T000224:   MOVEA.L   pkey_shift,A0
 T00022a:   BRA.B     T000246
-.ktab1:
+nkc_n2tos_ktab1:
 T00022c:   LEA.L     n_to_scan_u,A1
 T000232:   BTST.L    #$000C,D0
 T000236:   BEQ.B     T000240
 T000238:   MOVEA.L   pkey_caps,A0
 T00023e:   BRA.B     T000246
-.ktab2:
+nkc_n2tos_ktab2:
 T000240:   MOVEA.L   pkey_unshift,A0
-.ktab3:
+nkc_n2tos_ktab3:
 T000246:   CMP.B     #$20,D0
 T00024a:   BCS.B     T000280
 T00024c:   BSR       T010000
@@ -1791,19 +1784,19 @@ T000264:   MOVE.B    (A0,D2.W),D0
 T000268:   MOVEA.L   D1,A0
 T00026a:   BSR       T010000
 T00026e:   BNE.B     T0002AC
-.notfound:
+nkc_n2tos_notfound:
 T000270:   MOVEQ.L   #$00,D1
 T000272:   MOVE.B    D0,D1
 T000274:   AND.W     #$1F00,D0
 T000278:   SWAP      D0
 T00027a:   MOVE.W    D1,D0
 T00027c:   BRA       T00033E
-.lowascii:
+nkc_n2tos_lowascii:
 T000280:   BTST.L    #$000F,D0
 T000284:   BNE.B     T00028C
 T000286:   AND.W     #$10FF,D0
 T00028a:   BRA.B     T000270
-.func:
+nkc_n2tos_func:
 T00028c:   MOVEQ.L   #$00,D1
 T00028e:   MOVE.B    D0,D1
 T000290:   MOVE.W    D1,D2
@@ -1811,11 +1804,11 @@ T000292:   MOVE.B    (A1,D1.W),D1
 T000296:   BNE.B     T00029E
 T000298:   MOVEQ.L   #$00,D0
 T00029a:   BRA       T00033E
-.getascii:
+nkc_n2tos_getascii:
 T00029e:   LEA.L     n_to_scan_u,A1
 T0002a4:   MOVE.B    (A1,D2.W),D2
 T0002a8:   MOVE.B    (A0,D2.W),D0
-.found:
+nkc_n2tos_found:
 T0002ac:   MOVE.W    D0,D2
 T0002ae:   AND.W     #$1F00,D0
 T0002b2:   MOVE.B    D1,D0
@@ -1829,20 +1822,20 @@ T0002c4:   BNE.B     T0002D0
 T0002c6:   ADD.L     #$00280000,D0
 T0002cc:   CLR.B     D0
 T0002ce:   BRA.B     T00033E
-.scanchk2:
+nkc_n2tos_scanchk2:
 T0002d0:   CMP.B     #$4D,D1
 T0002d4:   BNE.B     T0002E0
 T0002d6:   ADD.L     #$00270000,D0
 T0002dc:   CLR.B     D0
 T0002de:   BRA.B     T00033E
-.scanchk3:
+nkc_n2tos_scanchk3:
 T0002e0:   CMP.B     #$47,D1
 T0002e4:   BNE.B     T0002EE
 T0002e6:   ADD.L     #$00300000,D0
 T0002ec:   BRA.B     T00033E
-.ascchk:
+nkc_n2tos_ascchk:
 T0002ee:   LEA.L     asc_trans,A0
-.ascloop:
+nkc_n2tos_ascloop:
 T0002f4:   MOVE.W    (A0)+,D1
 T0002f6:   BEQ.B     T000302
 T0002f8:   CMP.B     D0,D1
@@ -1850,10 +1843,10 @@ T0002fa:   BNE.B     T0002F4
 T0002fc:   LSR.W     #8,D1
 T0002fe:   MOVE.B    D1,D0
 T000300:   BRA.B     T00033E
-.noctrlasc:
+nkc_n2tos_noctrlasc:
 T000302:   AND.B     #$1F,D0
 T000306:   BRA.B     T00033E
-.alternate:
+nkc_n2tos_alternate:
 T000308:   BTST.L    #$000B,D2
 T00030c:   BEQ.B     T00033E
 T00030e:   CMP.B     #$02,D1
@@ -1863,7 +1856,7 @@ T000318:   BHI.B     T000324
 T00031a:   ADD.L     #$00760000,D0
 T000320:   CLR.B     D0
 T000322:   BRA.B     T00033E
-.alphachk:
+nkc_n2tos_alphachk:
 T000324:   CMP.B     #$41,D0
 T000328:   BCS.B     T00033E
 T00032a:   CMP.B     #$7A,D0
@@ -1872,9 +1865,9 @@ T000330:   CMP.B     #$5A,D0
 T000334:   BLS.B     T00033C
 T000336:   CMP.B     #$61,D0
 T00033a:   BCS.B     T00033E
-.ascii0:
+nkc_n2tos_ascii0:
 T00033c:   CLR.B     D0
-.exit:
+nkc_n2tos_exit:
 T00033e:   TST.L     D0
 T000340:   RTS
 nkc_toupper:
@@ -5555,7 +5548,7 @@ T000030:   MOVE.L    $0004(A7),D1
 T000034:   SUB.L     (A7),D1
 T000036:   MOVEA.L   $0008(A7),A0
 T00003a:   ADDA.L    D1,A0
-T00003c:   JSR       memcpy
+T00003c:   JSR       memmove
 T000042:   MOVE.L    $0004(A7),D1
 T000046:   SUB.L     (A7),D1
 T000048:   MOVEQ.L   #$20,D0
@@ -10090,7 +10083,7 @@ T000410:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 ev_dobutton:
 T000000:   LEA.L     -$0022(A7),A7
@@ -10261,7 +10254,7 @@ T000250:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 evmwheel:
 T000000:   LEA.L     -$000E(A7),A7
@@ -16268,7 +16261,7 @@ T00023a:   MOVE.W    D0,col
 T000240:   MOVE.W    D0,col+$00000002
 T000246:   PEA.L     col
 T00024c:   MOVE.L    $0030(A7),-(A7)
-T000250:   LEA.L     +$00000022,A1
+T000250:   LEA.L     punkt,A1
 T000256:   LEA.L     $0008(A7),A0
 T00025a:   MOVEQ.L   #$01,D1
 T00025c:   MOVEA.L   ACSblk,A2
@@ -25347,7 +25340,7 @@ T000196:   BGT.B     T00019E
 T000198:   MOVE.W    $000E(A7),D0
 T00019c:   BRA.B     T0001B4
 T00019e:   MOVEA.L   _globl,A1
-T0001a4:   LEA.L     _A_ERR_WINDOW,A0
+T0001a4:   LEA.L     _ALIB_ERR_WINDOW,A0
 T0001aa:   MOVEQ.L   #$01,D0
 T0001ac:   JSR       mt_form_alert
 T0001b2:   MOVEQ.L   #-$01,D0
@@ -26111,7 +26104,7 @@ T0002f8:   ADDQ.W    #1,$0004(A7)
 T0002fc:   CMPI.W    #$0100,$0004(A7)
 T000302:   BLT       T01023C
 T000306:   MOVEA.L   _globl,A1
-T00030c:   LEA.L     _A_ERR_WISLOT,A0
+T00030c:   LEA.L     _ALIB_ERR_WISLOT,A0
 T000312:   MOVEQ.L   #$01,D0
 T000314:   JSR       mt_form_alert
 T00031a:   SUBA.L    A0,A0
@@ -30942,7 +30935,7 @@ T000018:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 gs_str2key:
 T000000:   LEA.L     -$0030(A7),A7
@@ -33142,6 +33135,125 @@ T00004c:   RTS
 
           .MODULE GLOBAL
 
+Akt_getInfoShort:
+T000000:   LEA.L     -$000C(A7),A7
+T000004:   MOVE.W    D0,$000A(A7)
+T000008:   MOVE.W    D1,$0008(A7)
+T00000c:   MOVE.L    A0,$0004(A7)
+T000010:   BSR       Akt_getKeyTab
+T000014:   MOVE.L    A0,(A7)
+T000016:   MOVE.L    (A7),D0
+T000018:   BEQ.B     T000042
+T00001a:   MOVEA.L   (A7),A0
+T00001c:   CMPI.L    #$0000008C,$0004(A0)
+T000024:   BLT.B     T000042
+T000026:   MOVE.L    $0004(A7),-(A7)
+T00002a:   MOVE.W    $000C(A7),-(A7)
+T00002e:   MOVE.W    $0010(A7),-(A7)
+T000032:   MOVEA.L   $0008(A7),A0
+T000036:   MOVEA.L   $0088(A0),A0
+T00003a:   JSR       (A0)
+T00003c:   ADDQ.W    #8,A7
+T00003e:   BRA.B     T000078
+T000040:   BRA.B     T000078
+T000042:   MOVE.W    $0008(A7),D0
+T000046:   SUBQ.W    #1,D0
+T000048:   BEQ.B     T000062
+T00004a:   SUBQ.W    #2,D0
+T00004c:   BEQ.B     T000050
+T00004e:   BRA.B     T000074
+T000050:   MOVE.L    $0004(A7),D0
+T000054:   BEQ.B     T00005E
+T000056:   MOVEA.L   $0004(A7),A0
+T00005a:   MOVE.W    #$FFFF,(A0)
+T00005e:   MOVEQ.L   #$01,D0
+T000060:   BRA.B     T000078
+T000062:   MOVE.L    $0004(A7),D0
+T000066:   BEQ.B     T000070
+T000068:   MOVEA.L   $0004(A7),A0
+T00006c:   MOVE.W    #$FFFF,(A0)
+T000070:   MOVEQ.L   #$01,D0
+T000072:   BRA.B     T000078
+T000074:   CLR.W     D0
+T000076:   NOP
+T000078:   LEA.L     $000C(A7),A7
+T00007c:   RTS
+
+          .ENDMOD
+
+
+          .MODULE GLOBAL
+
+Akt_getInfoString:
+T000000:   LEA.L     -$0012(A7),A7
+T000004:   MOVE.W    D0,$000C(A7)
+T000008:   MOVE.W    D1,$000A(A7)
+T00000c:   MOVE.L    A0,$0006(A7)
+T000010:   MOVE.W    D2,$0004(A7)
+T000014:   BSR       Akt_getKeyTab
+T000018:   MOVE.L    A0,(A7)
+T00001a:   MOVE.L    (A7),D0
+T00001c:   BEQ.B     T000050
+T00001e:   MOVEA.L   (A7),A0
+T000020:   CMPI.L    #$00000090,$0004(A0)
+T000028:   BLT.B     T000050
+T00002a:   MOVE.W    $0004(A7),-(A7)
+T00002e:   MOVE.L    $0008(A7),-(A7)
+T000032:   MOVE.W    $0010(A7),-(A7)
+T000036:   MOVE.W    $0014(A7),-(A7)
+T00003a:   MOVEA.L   $000A(A7),A0
+T00003e:   MOVEA.L   $008C(A0),A0
+T000042:   JSR       (A0)
+T000044:   LEA.L     $000A(A7),A7
+T000048:   BRA       T0000CE
+T00004c:   BRA       T0000CE
+T000050:   MOVE.W    $000A(A7),D0
+T000054:   TST.W     D0
+T000056:   BEQ.B     T00005E
+T000058:   SUBQ.W    #1,D0
+T00005a:   BEQ.B     T00006C
+T00005c:   BRA.B     T00007A
+T00005e:   MOVE.W    $000C(A7),D0
+T000062:   BSR       Akt_getExpNameFromNr
+T000066:   MOVE.L    A0,$000E(A7)
+T00006a:   BRA.B     T00007E
+T00006c:   MOVE.W    $000C(A7),D0
+T000070:   BSR       Akt_getExpShortNameFromNr
+T000074:   MOVE.L    A0,$000E(A7)
+T000078:   BRA.B     T00007E
+T00007a:   CLR.L     $000E(A7)
+T00007e:   MOVE.L    $000E(A7),D0
+T000082:   BEQ.B     T0000C0
+T000084:   MOVE.L    $0006(A7),D0
+T000088:   BEQ.B     T0000C0
+T00008a:   MOVE.W    $0004(A7),D0
+T00008e:   BLE.B     T0000B2
+T000090:   MOVE.W    $0004(A7),D0
+T000094:   EXT.L     D0
+T000096:   MOVEA.L   $000E(A7),A1
+T00009a:   MOVEA.L   $0006(A7),A0
+T00009e:   JSR       strncpy
+T0000a4:   MOVE.W    $0004(A7),D0
+T0000a8:   MOVEA.L   $0006(A7),A0
+T0000ac:   CLR.B     -$01(A0,D0.W)
+T0000b0:   BRA.B     T0000C0
+T0000b2:   MOVEA.L   $000E(A7),A1
+T0000b6:   MOVEA.L   $0006(A7),A0
+T0000ba:   JSR       strcpy
+T0000c0:   MOVE.L    $000E(A7),D0
+T0000c4:   BEQ.B     T0000CA
+T0000c6:   MOVEQ.L   #$01,D0
+T0000c8:   BRA.B     T0000CC
+T0000ca:   CLR.W     D0
+T0000cc:   NOP
+T0000ce:   LEA.L     $0012(A7),A7
+T0000d2:   RTS
+
+          .ENDMOD
+
+
+          .MODULE GLOBAL
+
 Akt_CharAtari2X:
 T000000:   SUBQ.W    #8,A7
 T000002:   MOVE.W    D0,$0006(A7)
@@ -34492,7 +34604,7 @@ T0000e8:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 Aev_SendMsg2all:
 T000000:   MOVE.L    A2,-(A7)
@@ -43001,7 +43113,7 @@ T0000f4:   JSR       Ast_isEmpty
 T0000fa:   TST.W     D0
 T0000fc:   BNE       T0001D8
 T000100:   MOVEA.L   $0008(A7),A0
-T000104:   MOVE.B    (A0),save
+T000104:   MOVE.B    (A0),save2
 T00010a:   MOVEA.L   $0008(A7),A0
 T00010e:   CLR.B     (A0)
 T000110:   MOVEA.L   $0028(A7),A0
@@ -43024,7 +43136,7 @@ T000152:   MOVEA.L   ACSblk,A0
 T000158:   MOVE.W    $0010(A0),D0
 T00015c:   JSR       vst_effects
 T000162:   LEA.L     $0014(A7),A1
-T000166:   LEA.L     save,A0
+T000166:   LEA.L     save2,A0
 T00016c:   MOVEA.L   ACSblk,A2
 T000172:   MOVE.W    $0010(A2),D0
 T000176:   JSR       vqt_extent
@@ -43048,7 +43160,7 @@ T0001c0:   MOVE.W    $0018(A7),D0
 T0001c4:   SUB.W     $0014(A7),D0
 T0001c8:   MOVE.W    D0,$000E(A7)
 T0001cc:   MOVEA.L   $0008(A7),A0
-T0001d0:   MOVE.B    save,(A0)
+T0001d0:   MOVE.B    save2,(A0)
 T0001d6:   BRA.B     T00021E
 T0001d8:   MOVEA.L   $0028(A7),A0
 T0001dc:   JSR       Ast_isEmpty
@@ -43621,7 +43733,7 @@ T0006b2:   BGT.B     T0006E4
 T0006b4:   PEA.L     col2
 T0006ba:   MOVEA.L   ACSblk,A0
 T0006c0:   PEA.L     $026A(A0)
-T0006c4:   LEA.L     +$0000002E,A1
+T0006c4:   LEA.L     rad,A1
 T0006ca:   LEA.L     $003E(A7),A0
 T0006ce:   MOVEQ.L   #$02,D1
 T0006d0:   MOVEA.L   ACSblk,A2
@@ -43662,7 +43774,7 @@ T000770:   BGT.B     T0007A2
 T000772:   PEA.L     col
 T000778:   MOVEA.L   ACSblk,A0
 T00077e:   PEA.L     $026A(A0)
-T000782:   LEA.L     +$0000002E,A1
+T000782:   LEA.L     rad,A1
 T000788:   LEA.L     $003E(A7),A0
 T00078c:   MOVEQ.L   #$02,D1
 T00078e:   MOVEA.L   ACSblk,A2
@@ -43673,7 +43785,7 @@ T0007a0:   BRA.B     T0007D0
 T0007a2:   PEA.L     col
 T0007a8:   MOVEA.L   ACSblk,A0
 T0007ae:   PEA.L     $026A(A0)
-T0007b2:   LEA.L     +$0000002E,A1
+T0007b2:   LEA.L     rad,A1
 T0007b8:   LEA.L     $003E(A7),A0
 T0007bc:   MOVEQ.L   #$02,D1
 T0007be:   MOVEA.L   ACSblk,A2
@@ -47463,7 +47575,7 @@ T000622:   RTS
 
           .MODULE LOCAL
 
-set:
+setit:
 T000000:   LEA.L     -$000E(A7),A7
 T000004:   MOVE.L    A0,$000A(A7)
 T000008:   MOVE.L    A1,$0006(A7)
@@ -47562,7 +47674,7 @@ T000034:   MOVEA.L   $0004(A7),A0
 T000038:   MOVE.L    (A7),$0004(A0)
 T00003c:   MOVEA.L   (A7),A1
 T00003e:   MOVEA.L   $0004(A7),A0
-T000042:   BSR       set
+T000042:   BSR       setit
 T000046:   ADDQ.W    #8,A7
 T000048:   RTS
 
@@ -47753,7 +47865,7 @@ T000124:   JSR       Ax_free
 T00012a:   BRA       T0001FA
 T00012e:   MOVEA.L   $0010(A7),A1
 T000132:   MOVEA.L   (A7),A0
-T000134:   BSR       set
+T000134:   BSR       setit
 T000138:   BRA       T0001FA
 T00013c:   MOVE.L    $0010(A7),$000C(A7)
 T000142:   MOVEA.L   $000C(A7),A0
@@ -48424,7 +48536,7 @@ T0001aa:   MOVEA.L   $000C(A7),A0
 T0001ae:   MOVE.L    $0014(A7),$0004(A0)
 T0001b4:   MOVEA.L   $0014(A7),A1
 T0001b8:   MOVEA.L   $000C(A7),A0
-T0001bc:   BSR       set
+T0001bc:   BSR       setit
 T0001c0:   MOVEA.L   ACSblk,A0
 T0001c6:   MOVE.L    $0258(A0),$0020(A7)
 T0001cc:   MOVE.L    $0018(A7),$0024(A7)
@@ -53742,7 +53854,7 @@ T00000e:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 fitin:
 T000000:   SUBQ.W    #8,A7
@@ -54553,7 +54665,7 @@ T000166:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 fsmesshndler:
 T000000:   MOVE.L    D2,-(A7)
@@ -54737,7 +54849,7 @@ T00029c:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 free_multidata:
 T000000:   SUBQ.W    #2,A7
@@ -59152,7 +59264,7 @@ T00000e:   BNE.B     T000014
 T000010:   SUBA.L    A0,A0
 T000012:   BRA.B     T000050
 T000014:   MOVEQ.L   #$44,D0
-T000016:   LEA.L     ,A1
+T000016:   LEA.L     empty,A1
 T00001c:   MOVEA.L   (A7),A0
 T00001e:   JSR       memcpy
 T000024:   MOVEQ.L   #$14,D0
@@ -59997,19 +60109,418 @@ T000062:   RTS
           .ENDMOD
 
 
+          .MODULE GLOBAL
+
+As_create:
+T000000:   SUBQ.W    #4,A7
+T000002:   MOVEQ.L   #$1C,D0
+T000004:   JSR       Ax_malloc
+T00000a:   MOVE.L    A0,(A7)
+T00000c:   MOVE.L    (A7),D0
+T00000e:   BNE.B     T000014
+T000010:   SUBA.L    A0,A0
+T000012:   BRA.B     T00002A
+T000014:   MOVEQ.L   #$1C,D0
+T000016:   LEA.L     empty_stack,A1
+T00001c:   MOVEA.L   (A7),A0
+T00001e:   JSR       memcpy
+T000024:   MOVEA.L   (A7),A0
+T000026:   CLR.L     (A0)
+T000028:   MOVEA.L   (A7),A0
+T00002a:   ADDQ.W    #4,A7
+T00002c:   RTS
+
+          .ENDMOD
+
+
+          .MODULE GLOBAL
+
+As_delete:
+T000000:   SUBQ.W    #4,A7
+T000002:   MOVE.L    A0,(A7)
+T000004:   MOVE.L    (A7),D0
+T000006:   BEQ.B     T00001C
+T000008:   MOVEA.L   (A7),A0
+T00000a:   MOVEA.L   (A7),A1
+T00000c:   MOVEA.L   $0018(A1),A1
+T000010:   JSR       (A1)
+T000012:   MOVEQ.L   #$1C,D0
+T000014:   MOVEA.L   (A7),A0
+T000016:   JSR       Ax_recycle
+T00001c:   ADDQ.W    #4,A7
+T00001e:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+As_clear:
+T000000:   SUBQ.W    #8,A7
+T000002:   MOVE.L    A0,$0004(A7)
+T000006:   BRA.B     T00002E
+T000008:   MOVEA.L   $0004(A7),A0
+T00000c:   MOVEA.L   $0004(A7),A1
+T000010:   MOVEA.L   $000C(A1),A1
+T000014:   JSR       (A1)
+T000016:   MOVE.L    A0,(A7)
+T000018:   MOVEA.L   $0004(A7),A0
+T00001c:   MOVE.L    $0004(A0),D0
+T000020:   BEQ.B     T00002E
+T000022:   MOVEA.L   (A7),A0
+T000024:   MOVEA.L   $0004(A7),A1
+T000028:   MOVEA.L   $0004(A1),A1
+T00002c:   JSR       (A1)
+T00002e:   MOVEA.L   $0004(A7),A0
+T000032:   MOVEA.L   $0004(A7),A1
+T000036:   MOVEA.L   $0010(A1),A1
+T00003a:   JSR       (A1)
+T00003c:   TST.W     D0
+T00003e:   BEQ.B     T000008
+T000040:   ADDQ.W    #8,A7
+T000042:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+As_push:
+T000000:   LEA.L     -$000C(A7),A7
+T000004:   MOVE.L    A0,$0008(A7)
+T000008:   MOVE.L    A1,$0004(A7)
+T00000c:   CLR.L     (A7)
+T00000e:   MOVEQ.L   #$08,D0
+T000010:   JSR       Ax_malloc
+T000016:   MOVE.L    A0,(A7)
+T000018:   MOVE.L    (A7),D0
+T00001a:   BNE.B     T000020
+T00001c:   CLR.W     D0
+T00001e:   BRA.B     T000038
+T000020:   MOVEA.L   (A7),A0
+T000022:   MOVE.L    $0004(A7),$0004(A0)
+T000028:   MOVEA.L   $0008(A7),A0
+T00002c:   MOVEA.L   (A7),A1
+T00002e:   MOVE.L    (A0),(A1)
+T000030:   MOVEA.L   $0008(A7),A0
+T000034:   MOVE.L    (A7),(A0)
+T000036:   MOVEQ.L   #$01,D0
+T000038:   LEA.L     $000C(A7),A7
+T00003c:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+As_pop:
+T000000:   LEA.L     -$000C(A7),A7
+T000004:   MOVE.L    A0,$0008(A7)
+T000008:   CLR.L     $0004(A7)
+T00000c:   CLR.L     (A7)
+T00000e:   MOVEA.L   $0008(A7),A0
+T000012:   MOVE.L    (A0),D0
+T000014:   BEQ.B     T00003E
+T000016:   MOVEA.L   $0008(A7),A0
+T00001a:   MOVE.L    (A0),$0004(A7)
+T00001e:   MOVEA.L   $0008(A7),A0
+T000022:   MOVEA.L   (A0),A0
+T000024:   MOVEA.L   $0008(A7),A1
+T000028:   MOVE.L    (A0),(A1)
+T00002a:   MOVEA.L   $0004(A7),A0
+T00002e:   MOVE.L    $0004(A0),(A7)
+T000032:   MOVEQ.L   #$08,D0
+T000034:   MOVEA.L   $0004(A7),A0
+T000038:   JSR       Ax_recycle
+T00003e:   MOVEA.L   (A7),A0
+T000040:   LEA.L     $000C(A7),A7
+T000044:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+As_isEmpty:
+T000000:   SUBQ.W    #4,A7
+T000002:   MOVE.L    A0,(A7)
+T000004:   MOVEA.L   (A7),A0
+T000006:   MOVE.L    (A0),D0
+T000008:   BEQ.B     T00000E
+T00000a:   MOVEQ.L   #$01,D0
+T00000c:   BRA.B     T000010
+T00000e:   CLR.W     D0
+T000010:   ADDQ.W    #4,A7
+T000012:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+As_count:
+T000000:   LEA.L     -$000C(A7),A7
+T000004:   MOVE.L    A0,$0008(A7)
+T000008:   CLR.L     $0004(A7)
+T00000c:   MOVEA.L   $0008(A7),A0
+T000010:   MOVE.L    (A0),(A7)
+T000012:   BRA.B     T00001C
+T000014:   ADDQ.L    #1,$0004(A7)
+T000018:   MOVEA.L   (A7),A0
+T00001a:   MOVE.L    (A0),(A7)
+T00001c:   MOVE.L    (A7),D0
+T00001e:   BNE.B     T000014
+T000020:   MOVE.L    $0004(A7),D0
+T000024:   LEA.L     $000C(A7),A7
+T000028:   RTS
+
+          .ENDMOD
+
+
+          .MODULE GLOBAL
+
+Aqu_create:
+T000000:   SUBQ.W    #8,A7
+T000002:   MOVEQ.L   #$1C,D0
+T000004:   JSR       Ax_malloc
+T00000a:   MOVE.L    A0,$0004(A7)
+T00000e:   MOVE.L    $0004(A7),D0
+T000012:   BNE.B     T000018
+T000014:   SUBA.L    A0,A0
+T000016:   BRA.B     T00005A
+T000018:   MOVEQ.L   #$1C,D0
+T00001a:   LEA.L     empty_queue,A1
+T000020:   MOVEA.L   $0004(A7),A0
+T000024:   JSR       memcpy
+T00002a:   MOVEQ.L   #$08,D0
+T00002c:   JSR       Ax_malloc
+T000032:   MOVE.L    A0,(A7)
+T000034:   MOVE.L    (A7),D0
+T000036:   BNE.B     T000048
+T000038:   MOVEQ.L   #$1C,D0
+T00003a:   MOVEA.L   $0004(A7),A0
+T00003e:   JSR       Ax_recycle
+T000044:   SUBA.L    A0,A0
+T000046:   BRA.B     T00005A
+T000048:   MOVEA.L   (A7),A0
+T00004a:   JSR       InitQueue
+T000050:   MOVEA.L   $0004(A7),A0
+T000054:   MOVE.L    (A7),(A0)
+T000056:   MOVEA.L   $0004(A7),A0
+T00005a:   ADDQ.W    #8,A7
+T00005c:   RTS
+
+          .ENDMOD
+
+
+          .MODULE GLOBAL
+
+Aqu_delete:
+T000000:   SUBQ.W    #4,A7
+T000002:   MOVE.L    A0,(A7)
+T000004:   MOVE.L    (A7),D0
+T000006:   BEQ.B     T00001C
+T000008:   MOVEA.L   (A7),A0
+T00000a:   MOVEA.L   (A7),A1
+T00000c:   MOVEA.L   $0018(A1),A1
+T000010:   JSR       (A1)
+T000012:   MOVEQ.L   #$1C,D0
+T000014:   MOVEA.L   (A7),A0
+T000016:   JSR       Ax_recycle
+T00001c:   ADDQ.W    #4,A7
+T00001e:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+InitQueue:
+T000000:   SUBQ.W    #4,A7
+T000002:   MOVE.L    A0,(A7)
+T000004:   MOVEA.L   (A7),A0
+T000006:   CLR.L     (A0)
+T000008:   MOVEA.L   (A7),A0
+T00000a:   CLR.L     $0004(A0)
+T00000e:   ADDQ.W    #4,A7
+T000010:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+Aqu_clear:
+T000000:   SUBQ.W    #8,A7
+T000002:   MOVE.L    A0,$0004(A7)
+T000006:   BRA.B     T00002E
+T000008:   MOVEA.L   $0004(A7),A0
+T00000c:   MOVEA.L   $0004(A7),A1
+T000010:   MOVEA.L   $000C(A1),A1
+T000014:   JSR       (A1)
+T000016:   MOVE.L    A0,(A7)
+T000018:   MOVEA.L   $0004(A7),A0
+T00001c:   MOVE.L    $0004(A0),D0
+T000020:   BEQ.B     T00002E
+T000022:   MOVEA.L   (A7),A0
+T000024:   MOVEA.L   $0004(A7),A1
+T000028:   MOVEA.L   $0004(A1),A1
+T00002c:   JSR       (A1)
+T00002e:   MOVEA.L   $0004(A7),A0
+T000032:   MOVEA.L   $0004(A7),A1
+T000036:   MOVEA.L   $0010(A1),A1
+T00003a:   JSR       (A1)
+T00003c:   TST.W     D0
+T00003e:   BEQ.B     T000008
+T000040:   ADDQ.W    #8,A7
+T000042:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+Aqu_put:
+T000000:   LEA.L     -$0010(A7),A7
+T000004:   MOVE.L    A0,$000C(A7)
+T000008:   MOVE.L    A1,$0008(A7)
+T00000c:   MOVEA.L   $000C(A7),A0
+T000010:   MOVE.L    (A0),$0004(A7)
+T000014:   CLR.L     (A7)
+T000016:   MOVEQ.L   #$08,D0
+T000018:   JSR       Ax_malloc
+T00001e:   MOVE.L    A0,(A7)
+T000020:   MOVE.L    (A7),D0
+T000022:   BNE.B     T000028
+T000024:   CLR.W     D0
+T000026:   BRA.B     T000052
+T000028:   MOVEA.L   (A7),A0
+T00002a:   MOVE.L    $0008(A7),$0004(A0)
+T000030:   MOVEA.L   $0004(A7),A0
+T000034:   MOVEA.L   (A7),A1
+T000036:   MOVE.L    (A0),(A1)
+T000038:   MOVEA.L   $0004(A7),A0
+T00003c:   MOVE.L    (A7),(A0)
+T00003e:   MOVEA.L   $0004(A7),A0
+T000042:   MOVE.L    $0004(A0),D0
+T000046:   BNE.B     T000050
+T000048:   MOVEA.L   $0004(A7),A0
+T00004c:   MOVE.L    (A7),$0004(A0)
+T000050:   MOVEQ.L   #$01,D0
+T000052:   LEA.L     $0010(A7),A7
+T000056:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+Aqu_get:
+T000000:   LEA.L     -$0010(A7),A7
+T000004:   MOVE.L    A0,$000C(A7)
+T000008:   MOVEA.L   $000C(A7),A0
+T00000c:   MOVE.L    (A0),$0008(A7)
+T000010:   CLR.L     $0004(A7)
+T000014:   CLR.L     (A7)
+T000016:   MOVEA.L   $000C(A7),A0
+T00001a:   MOVEA.L   $000C(A7),A1
+T00001e:   MOVEA.L   $0010(A1),A1
+T000022:   JSR       (A1)
+T000024:   TST.W     D0
+T000026:   BNE.B     T00009A
+T000028:   MOVEA.L   $0008(A7),A0
+T00002c:   MOVE.L    (A0),$0004(A7)
+T000030:   MOVEA.L   $0008(A7),A0
+T000034:   MOVEA.L   (A0),A0
+T000036:   MOVEA.L   $0008(A7),A1
+T00003a:   MOVE.L    (A0),(A1)
+T00003c:   MOVEA.L   $0008(A7),A0
+T000040:   MOVEA.L   $0004(A7),A1
+T000044:   CMPA.L    $0004(A0),A1
+T000048:   BNE.B     T000086
+T00004a:   MOVEA.L   $0008(A7),A0
+T00004e:   MOVE.L    (A0),D0
+T000050:   BNE.B     T00005C
+T000052:   MOVEA.L   $0008(A7),A0
+T000056:   CLR.L     $0004(A0)
+T00005a:   BRA.B     T000086
+T00005c:   MOVEA.L   $0008(A7),A0
+T000060:   MOVEA.L   $0008(A7),A1
+T000064:   MOVE.L    (A0),$0004(A1)
+T000068:   BRA.B     T00007A
+T00006a:   MOVEA.L   $0008(A7),A0
+T00006e:   MOVEA.L   $0004(A0),A0
+T000072:   MOVEA.L   $0008(A7),A1
+T000076:   MOVE.L    (A0),$0004(A1)
+T00007a:   MOVEA.L   $0008(A7),A0
+T00007e:   MOVEA.L   $0004(A0),A0
+T000082:   MOVE.L    (A0),D0
+T000084:   BNE.B     T00006A
+T000086:   MOVEA.L   $0004(A7),A0
+T00008a:   MOVE.L    $0004(A0),(A7)
+T00008e:   MOVEQ.L   #$08,D0
+T000090:   MOVEA.L   $0004(A7),A0
+T000094:   JSR       Ax_recycle
+T00009a:   MOVEA.L   (A7),A0
+T00009c:   LEA.L     $0010(A7),A7
+T0000a0:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+Aqu_isEmpty:
+T000000:   SUBQ.W    #4,A7
+T000002:   MOVE.L    A0,(A7)
+T000004:   MOVEA.L   (A7),A0
+T000006:   MOVEA.L   (A0),A0
+T000008:   MOVE.L    (A0),D0
+T00000a:   BEQ.B     T000010
+T00000c:   MOVEQ.L   #$01,D0
+T00000e:   BRA.B     T000012
+T000010:   CLR.W     D0
+T000012:   ADDQ.W    #4,A7
+T000014:   RTS
+
+          .ENDMOD
+
+
+          .MODULE LOCAL
+
+Aqu_count:
+T000000:   LEA.L     -$000C(A7),A7
+T000004:   MOVE.L    A0,$0008(A7)
+T000008:   CLR.L     $0004(A7)
+T00000c:   MOVEA.L   $0008(A7),A0
+T000010:   MOVEA.L   (A0),A0
+T000012:   MOVE.L    (A0),(A7)
+T000014:   BRA.B     T00001E
+T000016:   ADDQ.L    #1,$0004(A7)
+T00001a:   MOVEA.L   (A7),A0
+T00001c:   MOVE.L    (A0),(A7)
+T00001e:   MOVE.L    (A7),D0
+T000020:   BNE.B     T000016
+T000022:   MOVE.L    $0004(A7),D0
+T000026:   LEA.L     $000C(A7),A7
+T00002a:   RTS
+
+          .ENDMOD
+
+
 
           .DATA   
 
           .MODULE LOCAL
 
-_A_ERR_ACC::
+_ALIB_ERR_ACC::
 D000000:   .DC.W   $5B32, $5D5B, $207C, $2053, $6F6C, $6C20, $6461, $7320
 D000010:   .DC.W   $4163, $6365, $7373, $6F72, $7920, $7C20, $3E3E, $2020
 D000020:   .DC.W   $2020, $2020, $2020, $2020, $2020, $2020, $203C, $3C20
 D000030:   .DC.W   $7C20, $6765, $7374, $6172, $7465, $7420, $7765, $7264
 D000040:   .DC.W   $656E, $3F7C, $205D, $5B4A, $617C, $2020, $4E65, $696E
 D000050:   .DC.W   $2020, $5D00
-_A_ERR_MESS::
+_ALIB_ERR_MESS:
 D000054:   .DC.W   $5B32, $5D5B, $2055, $6E62, $656B, $616E, $6E74, $6520
 D000064:   .DC.W   $4745, $4D2D, $4E61, $6368, $7269, $6368, $7420, $7C20
 D000074:   .DC.W   $6572, $6861, $6C74, $656E, $2E7C, $2049, $4420, $3D20
@@ -60017,7 +60528,7 @@ D000084:   .DC.W   $2725, $7327, $7C20, $5765, $6974, $6572, $6869, $6E20
 D000094:   .DC.W   $6265, $7269, $6368, $7465, $6E3F, $5D5B, $4A61, $7C20
 D0000a4:   .DC.W   $204E, $6569, $6E20, $205D
 D0000ac:   .DC.B   $00
-_A_ERR_WINDOW::
+_ALIB_ERR_WINDOW::
 D0000ad:   .DC.W   $5B33, $5D5B, $204B, $6569, $6E65, $2066, $7265, $6965
 D0000bd:   .DC.W   $2047, $454D, $2D46, $656E, $7374, $6572, $2D49, $4420
 D0000cd:   .DC.W   $7C20, $6D65, $6872, $2076, $6F72, $6861, $6E64, $656E
@@ -60026,7 +60537,7 @@ D0000ed:   .DC.W   $6F66, $6665, $6E65, $737C, $2047, $454D, $2D46, $656E
 D0000fd:   .DC.W   $7374, $6572, $2073, $6368, $6C69, $659E, $656E, $2E5D
 D00010d:   .DC.W   $5B20, $2020, $204F, $4B20, $2020, $205D
 D000119:   .DC.B   $00
-_A_ERR_WISLOT::
+_ALIB_ERR_WISLOT::
 D00011a:   .DC.W   $5B33, $5D5B, $204B, $6569, $6E20, $6672, $6569, $6572
 D00012a:   .DC.W   $2041, $4353, $2D46, $656E, $7374, $6572, $2D20, $7C20
 D00013a:   .DC.W   $506C, $6174, $7A20, $6D65, $6872, $2076, $6F72, $6861
@@ -62443,7 +62954,7 @@ D007c24:   .DC.W   $BFFC, $3FFD, $DFFC, $3FFB, $6FFC, $3FF6, $37FC, $3FEC
 D007c34:   .DC.W   $1BFF, $FFD8, $0DFF, $FFB0, $06FC, $3F60, $037C, $3EC0
 D007c44:   .DC.W   $01BC, $3D80, $00DC, $3B00, $006F, $F600, $0037, $EC00
 D007c54:   .DC.W   $001B, $D800, $000D, $B000, $0006, $6000, $0003, $C000
-_IM_EXCLAM::
+_IM_EXCLAM:
 D007c64:   .DC.L   _MSK__IM_EXCLAM
 D007c68:   .DC.L   _DAT__IM_EXCLAM
 D007c6c:   .DC.L   NULL_STRING
@@ -62467,7 +62978,7 @@ D007d4a:   .DC.W   $037C, $3EC0, $017C, $3E80, $01BF, $FD80, $00BF, $FD00
 D007d5a:   .DC.W   $00DC, $3B00, $005C, $3A00, $006C, $3600, $002F, $F400
 D007d6a:   .DC.W   $0037, $EC00, $0017, $E800, $001B, $D800, $000B, $D000
 D007d7a:   .DC.W   $000D, $B000, $0005, $A000, $0006, $6000, $0003, $C000
-_IM_QUEST::
+_IM_QUEST:
 D007d8a:   .DC.L   _MSK__IM_QUEST
 D007d8e:   .DC.L   _DAT__IM_QUEST
 D007d92:   .DC.L   NULL_STRING
@@ -62491,7 +63002,7 @@ D007e70:   .DC.W   $B8E7, $320D, $BCE7, $327D, $A4E7, $327D, $A0E7, $027D
 D007e80:   .DC.W   $B1E7, $867D, $BFFF, $FFFD, $DFFF, $FFFB, $6FFF, $FFF6
 D007e90:   .DC.W   $37FF, $FFEC, $1BFF, $FFD8, $0DFF, $FFB0, $06FF, $FF60
 D007ea0:   .DC.W   $037F, $FEC0, $01BF, $FD80, $00C0, $0300, $007F, $FE00
-_IM_STOP::
+_IM_STOP:
 D007eb0:   .DC.L   _MSK__IM_STOP
 D007eb4:   .DC.L   _DAT__IM_STOP
 D007eb8:   .DC.L   NULL_STRING
@@ -62520,7 +63031,7 @@ D007fac:   .DC.W   $7000, $001C, $7000, $001C, $7000, $001C, $3800, $0038
 D007fbc:   .DC.W   $3800, $0038, $3C00, $0078, $1E00, $00F0, $1F00, $01F0
 D007fcc:   .DC.W   $0F80, $03E0, $07C0, $07C0, $03F0, $1F80, $01FF, $FF00
 D007fdc:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME0::
+_IM_TIME0:
 D007fec:   .DC.L   _MSK__IM_TIME0
 D007ff0:   .DC.L   _DAT__IM_TIME0
 D007ff4:   .DC.L   NULL_STRING
@@ -62550,7 +63061,7 @@ D0080e8:   .DC.W   $7000, $001C, $7000, $001C, $7000, $001C, $3800, $0038
 D0080f8:   .DC.W   $3800, $0038, $3C00, $0078, $1E00, $00F0, $1F00, $01F0
 D008108:   .DC.W   $0F80, $03E0, $07C0, $07C0, $03F0, $1F80, $01FF, $FF00
 D008118:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME1::
+_IM_TIME1:
 D008128:   .DC.L   _MSK__IM_TIME1
 D00812c:   .DC.L   _DAT__IM_TIME1
 D008130:   .DC.L   NULL_STRING
@@ -62580,7 +63091,7 @@ D008224:   .DC.W   $7000, $001C, $7000, $001C, $7000, $001C, $3800, $0038
 D008234:   .DC.W   $3800, $0038, $3C00, $0078, $1E00, $00F0, $1F00, $01F0
 D008244:   .DC.W   $0F80, $03E0, $07C0, $07C0, $03F0, $1F80, $01FF, $FF00
 D008254:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME2::
+_IM_TIME2:
 D008264:   .DC.L   _MSK__IM_TIME2
 D008268:   .DC.L   _DAT__IM_TIME2
 D00826c:   .DC.L   NULL_STRING
@@ -62610,7 +63121,7 @@ D008360:   .DC.W   $7000, $FFDC, $7000, $7FDC, $7000, $3FDC, $3800, $1FB8
 D008370:   .DC.W   $3800, $0FB8, $3C00, $0778, $1E00, $02F0, $1F00, $01F0
 D008380:   .DC.W   $0F80, $03E0, $07C0, $07C0, $03F0, $1F80, $01FF, $FF00
 D008390:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME3::
+_IM_TIME3:
 D0083a0:   .DC.L   _MSK__IM_TIME3
 D0083a4:   .DC.L   _DAT__IM_TIME3
 D0083a8:   .DC.L   NULL_STRING
@@ -62640,7 +63151,7 @@ D00849c:   .DC.W   $7001, $FFDC, $7001, $FFDC, $7001, $FFDC, $3801, $FFB8
 D0084ac:   .DC.W   $3801, $FFB8, $3C01, $FF78, $1E01, $FEF0, $1F01, $FDF0
 D0084bc:   .DC.W   $0F81, $FBE0, $07C1, $E7C0, $03F0, $1F80, $01FF, $FF00
 D0084cc:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME4::
+_IM_TIME4:
 D0084dc:   .DC.L   _MSK__IM_TIME4
 D0084e0:   .DC.L   _DAT__IM_TIME4
 D0084e4:   .DC.L   NULL_STRING
@@ -62670,7 +63181,7 @@ D0085d8:   .DC.W   $7003, $FFDC, $7007, $FFDC, $700F, $FFDC, $381F, $FFB8
 D0085e8:   .DC.W   $383F, $FFB8, $3C7F, $FF78, $1EFF, $FEF0, $1F7F, $FDF0
 D0085f8:   .DC.W   $0FBF, $FBE0, $07CF, $E7C0, $03F0, $1F80, $01FF, $FF00
 D008608:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME5::
+_IM_TIME5:
 D008618:   .DC.L   _MSK__IM_TIME5
 D00861c:   .DC.L   _DAT__IM_TIME5
 D008620:   .DC.L   NULL_STRING
@@ -62700,7 +63211,7 @@ D008714:   .DC.W   $77FF, $FFDC, $77FF, $FFDC, $77FF, $FFDC, $3BFF, $FFB8
 D008724:   .DC.W   $3BFF, $FFB8, $3DFF, $FF78, $1EFF, $FEF0, $1F7F, $FDF0
 D008734:   .DC.W   $0FBF, $FBE0, $07CF, $E7C0, $03F0, $1F80, $01FF, $FF00
 D008744:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME6::
+_IM_TIME6:
 D008754:   .DC.L   _MSK__IM_TIME6
 D008758:   .DC.L   _DAT__IM_TIME6
 D00875c:   .DC.L   NULL_STRING
@@ -62730,7 +63241,7 @@ D008850:   .DC.W   $77FF, $FFDC, $77FF, $FFDC, $77FF, $FFDC, $3BFF, $FFB8
 D008860:   .DC.W   $3BFF, $FFB8, $3DFF, $FF78, $1EFF, $FEF0, $1F7F, $FDF0
 D008870:   .DC.W   $0FBF, $FBE0, $07CF, $E7C0, $03F0, $1F80, $01FF, $FF00
 D008880:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME7::
+_IM_TIME7:
 D008890:   .DC.L   _MSK__IM_TIME7
 D008894:   .DC.L   _DAT__IM_TIME7
 D008898:   .DC.L   NULL_STRING
@@ -62760,7 +63271,7 @@ D00898c:   .DC.W   $77FF, $FFDC, $77FF, $FFDC, $77FF, $FFDC, $3BFF, $FFB8
 D00899c:   .DC.W   $3BFF, $FFB8, $3DFF, $FF78, $1EFF, $FEF0, $1F7F, $FDF0
 D0089ac:   .DC.W   $0FBF, $FBE0, $07CF, $E7C0, $03F0, $1F80, $01FF, $FF00
 D0089bc:   .DC.W   $007F, $FC00, $000F, $E000, $0000, $0000, $0000, $0000
-_IM_TIME8::
+_IM_TIME8:
 D0089cc:   .DC.L   _MSK__IM_TIME8
 D0089d0:   .DC.L   _DAT__IM_TIME8
 D0089d4:   .DC.L   NULL_STRING
@@ -62938,18 +63449,17 @@ D008e9e:   .DC.W   $4000, $0012, $5555, $5552, $4000, $0012, $5555, $5552
 D008eae:   .DC.W   $4000, $0012, $5555, $5552, $4000, $0012, $5555, $5552
 D008ebe:   .DC.W   $4000, $001E, $5555, $5552, $4000, $0012, $7FFF, $FFFE
 D008ece:   .DC.W   $4800, $0092, $4800, $0092, $7FFF, $FFFE, $0000, $0000
-_WIN::
+_WIN:
 D008ede:   .DC.L   _MSK__WIN
 D008ee2:   .DC.L   _DAT__WIN
 D008ee6:   .DC.L   NULL_STRING
 D008eea:   .DC.W   $1000, $0000, $0000, $0010, $0000, $0020, $001C, $0000
 D008efa:   .DC.W   $001C, $0040, $0008
 D008f00:   .DC.L   _C4__WIN
-_ABOUT_ME::
+_ABOUT_ME:
 D008f04:   .DC.W   $FFFF, $0002, $0002, $0018, $0042, $0000
 D008f10:   .DC.L   A_3DBUTTON02
 D008f14:   .DC.W   $0000, $0000, $0017, $000F
-_00a_ABOUT_ME:
 D008f1c:   .DC.L   Awi_diaabort
 D008f20:   .DC.W   $0000, $0000, $8000, $0000, $0000, $0000, $0000, $0000
 D008f30:   .DC.W   $0000, $0000
@@ -63012,7 +63522,7 @@ _16__ABOUT_ME:
 D009084:   .DC.W   $0003, $FFFF, $FFFF, $001C, $0060, $0000
 D009090:   .DC.L   TEXT_16
 D009094:   .DC.W   $0002, $000C, $0010, $0001
-_ALERT::
+_ALERT:
 D00909c:   .DC.W   $FFFF, $0001, $0001, $0019, $0000, $0000, $00FF, $1141
 D0090ac:   .DC.W   $0000, $0000, $002A, $000A
 _01__ALERT:
@@ -63115,7 +63625,7 @@ D009304:   .DC.W   $001D, $0007, $000C, $0002
 _25a_ALERT:
 D00930c:   .DC.W   $0000, $0000, $0000, $0000, $8020, $8012, $0000, $0000
 D00931c:   .DC.W   $0000, $0000, $0000, $0000
-_DDD::
+_DDD:
 D009324:   .DC.W   $FFFF, $0002, $0002, $0014, $0000, $0010, $0002, $1100
 D009334:   .DC.W   $0000, $0000, $0006, $0003
 _00a_DDD:
@@ -63167,7 +63677,7 @@ D00945a:   .DC.L   Awi_iconify
 D00945e:   .DC.L   Awi_uniconify
 D009462:   .DC.L   Awi_gemscript
 D009466:   .DC.W   $0000, $0000, $0000, $0000
-_W_ABOUT::
+_W_ABOUT:
 D00946e:   .DC.W   $0000, $0000
 D009472:   .DC.L   Awi_service
 D009476:   .DC.L   Awi_selfcreate
@@ -64503,7 +65013,7 @@ icn_tmp:
 D000026:   .DC.W   $0000, $0000
 save:
 D00002a:   .DC.W   $2000
-save:
+save2:
 D00002c:   .DC.W   $2000
 rad:
 D00002e:   .DC.W   $0000, $0000, $0010, $0010, $0001, $0001, $0001, $0000
@@ -65246,9 +65756,9 @@ B000000:   .DS.B   256
 
           .MODULE LOCAL
 
-watch_min::
+watch_min:
 B000000:   .DS.B   4
-watch_max::
+watch_max:
 B000004:   .DS.B   4
 check:
 B000008:   .DS.B   48
@@ -65326,7 +65836,7 @@ _ACSv_winds::
 B000440:   .DS.B   1024
 _ACSv_wiicons::
 B000840:   .DS.B   512
-_ACSv_wwork::
+_ACSv_wwork:
 B000A40:   .DS.B   2
 _ACSv_wmenu::
 B000A42:   .DS.B   2

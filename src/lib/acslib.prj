@@ -1,4 +1,4 @@
-acslib.lib
+acs.lib
 
 .C[-I..\..\include]
 .C[-I..]
@@ -31,6 +31,7 @@ acslib.lib
 .L[-J] ; generate library
 
 =
+acsinit0.c
 main.c
 initterm.c
 vdi_data.c
@@ -85,6 +86,3 @@ wdialog\fontsel.c
 listen\ulinlist.c
 listen\stack.c
 listen\queue.c
-
-modul\modul.c [-J- -Z- -M- -R-]
-modul\modulold.c [-J- -Z- -M- -R-]

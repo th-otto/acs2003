@@ -1,4 +1,4 @@
-* Object File "acsmod.lib"
+* Object File "lib/acsmod.lib"
 
 
 
@@ -29,14 +29,6 @@ T000040:   MOVE.L    A3,(A2)
 T000042:   MOVEA.L   (A7)+,A3
 T000044:   MOVEA.L   (A7)+,A2
 T000046:   RTS
-
-          .ENDMOD
-
-
-          .MODULE LOCAL
-
-noop:
-T000000:   RTS
 
           .ENDMOD
 
@@ -222,7 +214,7 @@ T000000:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 Aus_create23x:
 T000000:   MOVE.L    A2,-(A7)
@@ -251,7 +243,7 @@ T00003e:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 Aob_create23x:
 T000000:   MOVEM.L   D3/A2-A6,-(A7)
@@ -472,7 +464,7 @@ T0001b8:   ADDQ.W    #1,D3
 T0001ba:   CMP.W     #$0100,D3
 T0001be:   BLT       T010142
 T0001c2:   MOVEA.L   _globl,A1
-T0001c8:   LEA.L     _A_ERR_WISLOT,A0
+T0001c8:   LEA.L     _ALIB_ERR_WISLOT,A0
 T0001ce:   MOVEQ.L   #$01,D0
 T0001d0:   JSR       mt_form_alert
 T0001d6:   SUBA.L    A0,A0
@@ -482,7 +474,7 @@ T0001dc:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 Awi_arrowed23x:
 T000000:   MOVEQ.L   #$01,D1
@@ -492,7 +484,7 @@ T000008:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 Af_first230:
 T000000:   SUBA.L    A1,A1
@@ -502,7 +494,7 @@ T000008:   RTS
           .ENDMOD
 
 
-          .MODULE GLOBAL
+          .MODULE LOCAL
 
 Af_next230:
 T000000:   SUBA.L    A0,A0
@@ -960,7 +952,7 @@ D000560:   .DC.L   vsf_style
 D000564:   .DC.L   vsf_color
 D000568:   .DC.L   vsf_perimeter
 D00056c:   .DC.L   vsf_udpat
-D000570:   .DC.L   vsf_udpat
+D000570:   .DC.L   vsf_updat
 D000574:   .DC.L   vs_color
 D000578:   .DC.L   vr_trnfm
 D00057c:   .DC.L   vro_cpyfm

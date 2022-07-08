@@ -13,6 +13,13 @@ void (v_curaddress)( int16 handle, int16 row, int16 col );
 void CDECL pc_aes( int16 *contrl, GlobalArray *global, int16 *intin, int16 *intout, void *addrin, void *addrout );
 #endif
 
+static AUSERBLK *Aus_create23x(const AUSERBLK *user);
+static OBJECT *Aob_create23x(const OBJECT *parent);
+static Awindow *Awi_create23x(const Awindow *x);
+static void Awi_arrowed23x(Awindow *window, int16 which);
+static char *Af_first230(const char *start);
+static char *Af_next230(void);
+
 
 #define NUMFUNCS(a) ((int)(sizeof(a) / sizeof(a[0])))
 
@@ -1613,7 +1620,7 @@ void *ACS230[] = {
 };
 
 
-AUSERBLK *Aus_create23x(const AUSERBLK *user)
+static AUSERBLK *Aus_create23x(const AUSERBLK *user)
 {
 	AUSERBLK *newuser;
 	
@@ -1629,7 +1636,7 @@ AUSERBLK *Aus_create23x(const AUSERBLK *user)
 }
 
 
-OBJECT *Aob_create23x(const OBJECT *parent)
+static OBJECT *Aob_create23x(const OBJECT *parent)
 {
 	size_t size;
 	OBJECT *ob;
@@ -1702,7 +1709,7 @@ OBJECT *Aob_create23x(const OBJECT *parent)
 }
 
 
-Awindow *Awi_create23x(const Awindow *parent)
+static Awindow *Awi_create23x(const Awindow *parent)
 {
 	Awindow *newwin;
 	int16 i;
@@ -1797,19 +1804,19 @@ Awindow *Awi_create23x(const Awindow *parent)
 }
 
 
-void Awi_arrowed23x(Awindow *window, int16 which)
+static void Awi_arrowed23x(Awindow *window, int16 which)
 {
 	Awi_arrowed(window, which, 1);
 }
 
 
-char *Af_first230(const char *start)
+static char *Af_first230(const char *start)
 {
 	return Af_first(start, NULL);
 }
 
 
-char *Af_next230(void)
+static char *Af_next230(void)
 {
 	return Af_next(NULL);
 }
