@@ -141,11 +141,12 @@ OBJS = \
 	lib/wdialog/printsel.o \
 	lib/wdialog/fontsel.o \
 	lib/listen/ulinlist.o \
+	lib/listen/stack.o \
+	lib/listen/queue.o \
 	lib/modul/modul.o \
 	lib/modul/modulold.o \
 	\
 	lib/gemlib.o \
-	rest.o \
 	\
 	$(empty)
 

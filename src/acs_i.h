@@ -397,7 +397,7 @@ typedef struct _ACSLinListElemStruct ACSLinListElemStruct;
 struct _ACSLinListElemStruct
 {
 	ACSLinListElemStruct *next;
-	ACSLinListElemStruct *last;
+	ACSLinListElemStruct *prev;
 	void *data;
 };
 
@@ -445,14 +445,6 @@ typedef struct {
 	Awindow *meldung;
 	Awindow *window;
 } A_PrintSelData;
-
-typedef struct _ACSLinListStruct {
-	ACSLinListElemStruct *Beginn;
-	ACSLinListElemStruct *Ende;
-	long Anzahl;
-	ACSLinListElemStruct *LaufVar;
-	long LaufVarNr;
-} ACSLinListStruct;
 
 typedef struct {
 	void **funcs;

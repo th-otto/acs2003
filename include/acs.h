@@ -472,7 +472,7 @@ typedef struct _ULinList
    /*  12 */ boolean (*append)( struct _ULinList *liste, void *new_data );
 
    /* EinfÅgen neuer Daten in die Liste */
-   /*  16 */ int16 (*insert)( struct _ULinList *liste, void *new_data, int16 before_obj );
+   /*  16 */ boolean (*insert)( struct _ULinList *liste, void *new_data, int16 before_obj );
 
    /* Daten aus der Liste lîschen und zurÅckgeben */
    /*  20 */ void *(*delete)( struct _ULinList *liste, int16 data_nr );
@@ -531,9 +531,9 @@ typedef struct _ULinList
 /******************************************************************************/
 
 /* AbkÅrzung, da Zeiger auf Struktur in deren Deklaration benîtigt werden */
-#define _ss struct _Stack
+typedef struct _Stack Stack;
 
-typedef struct _Stack
+struct _Stack
 {
    /* Der Zeiger auf die Elemente des Stacks (sollte nur ACS-intern verwendet werden!) */
    A_ListNextStruct *StackData;
@@ -542,22 +542,20 @@ typedef struct _Stack
    void (*freeElem)( void *elem );
 
    /* Ein Element auf den Stack legen */
-   boolean (*push)( _ss *stack, void *elem );
+   boolean (*push)( Stack *stack, void *elem );
 
    /* Das oberste ELement vom Stack holen */
-   void *(*pop)( _ss *stack );
+   void *(*pop)( Stack *stack );
 
    /* PrÅfen, ob der Stack leer ist */
-   boolean (*isEmpty)( _ss *stack );
+   boolean (*isEmpty)( Stack *stack );
 
    /* Die Anzahl der Elemente auf dem Stack ermitteln */
-   int32 (*count)( _ss *stack );
+   int32 (*count)( Stack *stack );
 
    /* Den Stack komplett lîschen */
-   void (*clear)( _ss *stack );
-} Stack;
-
-#undef _ss
+   void (*clear)( Stack *stack );
+};
 
 /******************************************************************************/
 /*                                                                            */
@@ -575,7 +573,7 @@ struct _Queue
    void (*freeElem)( void *elem );
 
    /* Ein Element in die Queue stellen */
-   boolean (*put)( Queue *queue, void *elem );
+   boolean (*put)( Queue *queue, void *data );
 
    /* Das erste Element aus der Queue holen */
    void *(*get)( Queue *queue );

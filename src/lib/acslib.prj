@@ -82,7 +82,9 @@ wdialog\filesel.c
 wdialog\printsel.c
 wdialog\fontsel.c
 
-listen\ulinlist.s
+listen\ulinlist.c
+listen\stack.c
+listen\queue.c
 
 modul\modul.c [-J- -Z- -M- -R-]
 modul\modulold.c [-J- -Z- -M- -R-]
