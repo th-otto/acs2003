@@ -141,7 +141,7 @@ void DEBUG_MEM(void *defective)
 
 /* -------------------------------------------------------------------------- */
 
-static int acs_call(int argc, char **argv, char **envp)
+int acs_call(int argc, char **argv, char **envp)
 {
 	ACSblk->argc = argc;
 	ACSblk->argv = argv;
@@ -160,7 +160,7 @@ static int acs_call(int argc, char **argv, char **envp)
 
 /* -------------------------------------------------------------------------- */
 
-static Ablk *get_acsblk(void)
+Ablk *get_acsblk(void)
 {
 	ACSblk = &_ACSblk;
 	memset(ACSblk, 0, sizeof(*ACSblk));

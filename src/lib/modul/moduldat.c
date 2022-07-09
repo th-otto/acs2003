@@ -12,6 +12,7 @@
 #include "acsvdi.h"
 #include "acsplus.h"
 #include "version.h"
+#include "messages/msgserv.h"
 
 #ifdef __PUREC__
 /* misnamed functions no longer declared in header */
@@ -109,7 +110,11 @@ static void *func1Aev[] = {
 	Aev_unhidepointer,
 	Aev_DhstAdd,
 	Aev_DhstSaved,
-	Aev_WmRedraw
+	Aev_WmRedraw,
+#if WITH_FIXES
+	Aev_FontBubbleGEM,
+	Aev_HideBubbleGEM,
+#endif
 };
 static funcVersion const funcAev[] = { { func1Aev, 0 } };
 static int16 const funcAnzAev = NUMFUNCS(funcAev);
@@ -132,7 +137,11 @@ static void *func1Af[] = {
 	Af_freedir,
 	Af_fileselect,
 	Af_quote,
-	Af_unquote
+	Af_unquote,
+#if WITH_FIXES
+	Af_chgExt,
+	Af_pathconf,
+#endif
 };
 static funcVersion const funcAf[] = { { func1Af, 0 } };
 static int16 const funcAnzAf = NUMFUNCS(funcAf);
@@ -154,11 +163,19 @@ static int16 const funcAnzAim = NUMFUNCS(funcAim);
 static void *func1Alu[] = {
 	Alu_create,
 	Alu_delete,
-#if !BETA
+#if !BETA || WITH_FIXES
 	As_create,
 	As_delete,
 	Aqu_create,
 	Aqu_delete,
+#endif
+#if WITH_FIXES
+	Alu_ptrCmp,
+	Alu_longCmp,
+	Alu_intCmp,
+	Alu_charCmp,
+	Alu_strCmp,
+	Alu_striCmp,
 #endif
 };
 static funcVersion const funcAlu[] = { { func1Alu, 0 } };
@@ -202,7 +219,10 @@ static void *func1Aob[] = {
 	Aob_state,
 	Aob_service,
 	Aob_visible,
-	Aob_count
+	Aob_count,
+#if WITH_FIXES
+	Aob_help,
+#endif
 };
 static funcVersion const funcAob[] = { { func1Aob, 0 } };
 static int16 const funcAnzAob = NUMFUNCS(funcAob);
@@ -238,7 +258,11 @@ static void *func1Ash[] = {
 	Ash_getMagiC,
 	Ash_getNAES,
 	Ash_getMagiCVersion,
-	Ash_getMagiCAESVars
+	Ash_getMagiCAESVars,
+#if WITH_FIXES
+	Ash_cmdParsen,
+	Ash_sendmsg,
+#endif
 };
 static funcVersion const funcAsh[] = { { func1Ash, 0 } };
 static int16 const funcAnzAsh = NUMFUNCS(funcAsh);
@@ -289,7 +313,10 @@ static void *func1Aus[] = {
 	Aus_create,
 	Aus_delete,
 	Aus_boxed,
-	Aus_cycle
+	Aus_cycle,
+#if WITH_FIXES
+	Aus_help,
+#endif
 };
 static funcVersion const funcAus[] = { { func1Aus, 0 } };
 static int16 const funcAnzAus = NUMFUNCS(funcAus);
@@ -337,7 +364,11 @@ static void *func1Awi[] = {
 	Awi_observice,
 	Awi_ontop,
 	Awi_layout,
-	Awi_obvisible
+	Awi_obvisible,
+#if WITH_FIXES
+	Awi_saved,
+	Awi_sendkey,
+#endif
 };
 static funcVersion const funcAwi[] = { { func1Awi, 0 } };
 static int16 const funcAnzAwi = NUMFUNCS(funcAwi);
@@ -356,7 +387,7 @@ static void *func1A[] = {
 	A_cycle,
 	A_picture,
 	A_dialog2,
-	A_boxed
+	A_boxed,
 };
 static funcVersion const funcA[] = { { func1A, 0 } };
 static int16 const funcAnzA = NUMFUNCS(funcA);
@@ -390,8 +421,12 @@ static void *func1Sonst[] = {
 	Ax_getRecycleStat,
 	Ax_recycle,
 	Avdi_getRGB,
-#if !BETA
+#if !BETA || WITH_FIXES
 	Ax_memCheck,
+#endif
+#if WITH_FIXES
+	Adate_getMonth,
+	Adate_ymd2dow,
 #endif
 };
 static funcVersion const funcSonst[] = { { func1Sonst, 0 } };
@@ -1185,9 +1220,13 @@ static void *func1Keytab[] = {
 	Akt_BlockXUtf2XUtf,
 	Akt_StringXUtf2U2XUtf,
 	Akt_StringXUtf2XUtf,
-#if !BETA
+#if !BETA || WITH_FIXES
 	Akt_getInfoShort,
 	Akt_getInfoString,
+#endif
+#if WITH_FIXES
+	Akt_CharXUtf2Unicode,
+	Akt_CharUnicode2XUtf,
 #endif
 };
 static funcVersion const funcKeytab[] = { { func1Keytab, 0 } };
@@ -1197,26 +1236,15 @@ static int16 const funcAnzKeytab = NUMFUNCS(funcKeytab);
 /*
 missing exports:
 
-Af_chgExt
-Af_pathconf
-Akt_CharXUtf2Unicode
-Akt_CharUnicode2XUtf
-Ash_cmdParsen
-Aus_help
-Aob_help
 Aev_SearchMsg
 Aev_DeleteMsg
-Ash_sendmsg
 Aev_AccKey
 Aev_AccText
 Aev_APDragDropMemory
 Aev_GetAskFontBubbleGEM
-Aev_FontBubbleGEM
-Aev_HideBubbleGEM
 Aev_VaProtoStatus
 A_OlgaCreate
 A_OlgaDelete
-Awi_saved
 Aev_OlgaIdle
 Aev_OlgaGetInfo
 Aev_OlgaRename
@@ -1225,13 +1253,6 @@ Aev_PCHelpVersion
 Aev_AcVersion
 Aev_AcCopy
 Aud_boxed
-Awi_sendkey
-Adate_ymd2dow
-Alu_longCmp
-Alu_intCmp
-Alu_charCmp
-Alu_strCmp
-Alu_striCmp
 */
 
 

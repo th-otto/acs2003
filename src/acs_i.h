@@ -1308,6 +1308,9 @@ extern ULinList *SentMsg;
 /* element is A_dd_int * */
 extern ULinList *ListOfApps;
 
+int acs_call(int argc, char **argv, char **envp);
+Ablk *get_acsblk(void);
+
 
 /*
  * lib/nkcc.c

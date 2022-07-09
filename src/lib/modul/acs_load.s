@@ -10,6 +10,10 @@
 	.globl ACSblk
 	.xref ACSinit
 
+WITH_EXTENSIONS equ 1
+
+	.text
+
 /*
  * ACSmod header structure
  */
@@ -62,7 +66,7 @@ aess:        dc.l 0
 vdis:        dc.l 0
 
 /*
- * jump indirictly to function from application.
+ * jump indirectly to function from application.
  * This must not modify any registers.
  */
 indirect:
@@ -383,6 +387,22 @@ ACFG_ISSTRINGPRESENT:
 		move.l     #0x00000090,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Acfg_getDouble
+		.globl ACFG_GETDOUBLE
+Acfg_getDouble:
+ACFG_GETDOUBLE:
+		move.l     #0x00000094,-(a7)
+		move.l     funcAcfg(pc),-(a7)
+		bra        indirect
+		.globl Acfg_setDouble
+		.globl ACFG_SETDOUBLE
+Acfg_setDouble:
+ACFG_SETDOUBLE:
+		move.l     #0x00000098,-(a7)
+		move.l     funcAcfg(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* character */
 	.globl Ach_tolower
@@ -636,6 +656,22 @@ AF_UNQUOTE:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Af_chgExt
+		.globl AF_CHGEXT
+Af_chgExt:
+AF_CHGEXT:
+		move.l     #0x00000048,-(a7)
+		move.l     funcAf(pc),-(a7)
+		bra        indirect
+		.globl Af_pathconf
+		.globl AF_PATHCONF
+Af_pathconf:
+AF_PATHCONF:
+		move.l     #0x0000004C,-(a7)
+		move.l     funcAf(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* icons */
 	.globl Aic_create
@@ -684,6 +720,78 @@ ALU_DELETE:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl As_create
+		.globl AS_CREATE
+As_create:
+AS_CREATE:
+		move.l     #0x00000008,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl As_delete
+		.globl AS_DELETE
+As_delete:
+AS_DELETE:
+		move.l     #0x0000000C,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Aqu_create
+		.globl AQU_CREATE
+Aqu_create:
+AQU_CREATE:
+		move.l     #0x00000010,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Aqu_delete
+		.globl AQU_DELETE
+Aqu_delete:
+AQU_DELETE:
+		move.l     #0x00000014,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Alu_ptrCmp
+		.globl ALU_PTRCMP
+Alu_ptrCmp:
+ALU_PTRCMP:
+		move.l     #0x00000018,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Alu_longCmp
+		.globl ALU_LONGCMP
+Alu_longCmp:
+ALU_LONGCMP:
+		move.l     #0x0000001C,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Alu_intCmp
+		.globl ALU_INTCMP
+Alu_intCmp:
+ALU_INTCMP:
+		move.l     #0x00000020,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Alu_charCmp
+		.globl ALU_CHARCMP
+Alu_charCmp:
+ALU_CHARCMP:
+		move.l     #0x00000024,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Alu_strCmp
+		.globl ALU_STRCMP
+Alu_strCmp:
+ALU_STRCMP:
+		move.l     #0x00000028,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.globl Alu_striCmp
+		.globl ALU_STRICMP
+Alu_striCmp:
+ALU_STRICMP:
+		move.l     #0x0000002C,-(a7)
+		move.l     funcAlu(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* menus */
 	.globl Ame_namefix
@@ -886,6 +994,13 @@ AOB_COUNT:
 		move.l     #0x00000050,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Aob_help
+Aob_help:
+		move.l     #0x00000054,-(a7)
+		move.l     funcAob(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 
 /* clipboard */
@@ -1073,6 +1188,18 @@ ASH_GETMAGICAESVARS:
 		move.l     #0x00000058,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Ash_cmdParsen
+Ash_cmdParsen:
+		move.l     #0x0000005C,-(a7)
+		move.l     funcAsh(pc),-(a7)
+		bra        indirect
+		.globl Ash_sendmsg
+Ash_sendmsg:
+		move.l     #0x00000060,-(a7)
+		move.l     funcAsh(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* strings */
 	.globl Ast_create
@@ -1298,6 +1425,13 @@ AUS_CYCLE:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Aus_help
+Aus_help:
+		move.l     #0x00000010,-(a7)
+		move.l     funcAus(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* windows */
 	.globl Awi_wid
@@ -1601,6 +1735,18 @@ AWI_OBVISIBLE:
 		move.l     #0x000000A8,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Awi_saved
+Awi_saved:
+		move.l     #0x000000AC,-(a7)
+		move.l     funcAwi(pc),-(a7)
+		bra        indirect
+		.globl Awi_sendkey
+Awi_sendkey:
+		move.l     #0x000000B0,-(a7)
+		move.l     funcAwi(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* drawing callbacks */
 	.globl A_dialog
@@ -1660,9 +1806,9 @@ A_FTEXT:
 		move.l     funcA(pc),-(a7)
 		bra        indirect
 		.globl A_title
-		.globl A_TITLEACSFkt
+		.globl A_TITLE
 A_title:
-A_TITLEACSFKt:
+A_TITLE:
 		move.l     #0x00000020,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
@@ -1902,6 +2048,23 @@ AVDI_GETRGB:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Ax_memCheck
+Ax_memCheck:
+		move.l     #0x00000070,-(a7)
+		move.l     funcSonst(pc),-(a7)
+		bra        indirect
+		.globl Adate_getMonth
+Adate_getMonth:
+		move.l     #0x00000074,-(a7)
+		move.l     funcSonst(pc),-(a7)
+		bra        indirect
+		.globl Adate_ymd2dow
+Adate_ymd2dow:
+		move.l     #0x00000078,-(a7)
+		move.l     funcSonst(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* VDI */
 	.globl vdi
@@ -5331,6 +5494,36 @@ AKT_STRINGXUTF2XUTF:
 		move.l     #0x00000098,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+		.globl Akt_getInfoShort
+		.globl AKT_GETINFOSHORT
+Akt_getInfoShort:
+AKT_GETINFOSHORT:
+		move.l     #0x0000009C,-(a7)
+		move.l     funcKeytab(pc),-(a7)
+		bra        indirect
+		.globl Akt_getInfoString
+		.globl AKT_GETINFOSTRING
+Akt_getInfoString:
+AKT_GETINFOSTRING:
+		move.l     #0x000000A0,-(a7)
+		move.l     funcKeytab(pc),-(a7)
+		bra        indirect
+		.globl Akt_CharXUtf2Unicode
+		.globl AKT_CHARXUTF2UNICODE
+Akt_CharXUtf2Unicode:
+AKT_CHARXUTF2UNICODE:
+		move.l     #0x000000A4,-(a7)
+		move.l     funcKeytab(pc),-(a7)
+		bra        indirect
+		.globl Akt_CharUnicode2XUtf
+		.globl AKT_CHARUNICODE2XUTF
+Akt_CharUnicode2XUtf:
+AKT_CHARUNICODE2XUTF:
+		move.l     #0x000000A8,-(a7)
+		move.l     funcKeytab(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* Multi-threading AES */
 	.globl mt_appl_init

@@ -37,7 +37,7 @@ type
 	Aaction = Procedure;
 	Acreate = Function (x: Pointer): AwindowPtr;
 	AcreatePtr = ^Acreate;
-	Aretint = Function: Integer;
+	Aretint = Function: smallint;
 
 	AOBJECTPtr = ^AOBJECT;
 	AOBJECT = Record
@@ -48,9 +48,9 @@ type
 		key:		Word;			{ key for selecting }
 		userp1:	Pointer;	{ user pointers }
 		userp2:	Pointer;
-		mo_index:	Integer;	{ mouse index upon this field }
+		mo_index:	smallint;	{ mouse index upon this field }
 								{ contains title number for menues }
-		aob_type:	Integer;	{ Object type (not AES type) }
+		aob_type:	smallint;	{ Object type (not AES type) }
 	End;
 
 	ACSOBJECTPtr = ^ACSOBJECT;
@@ -65,9 +65,9 @@ type
 
 	AUSERBLKPtr = ^AUSERBLK;
 	AUSERBLK = Record
-		ub_code:	Function (dummy1, dummy2: Pointer; pb: PARMBLKPtr): Integer;
+		ub_code:	Function (dummy1, dummy2: Pointer; pb: PARMBLKPtr): smallint;
 		ub_parm:	LongInt;
-		ub_serv:	Function (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer): Boolean;
+		ub_serv:	Function (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer): Boolean;
 		ub_ptr1:	Pointer;
 		ub_ptr2:	Pointer;
 		ub_ptr3:	Pointer;
@@ -75,69 +75,83 @@ type
 
 	AmousePtr = ^Amouse;
 	Amouse = Record
-		number: Integer;		{ Mousenumber 255=Userdef }
+		number: smallint;		{ Mousenumber 255=Userdef }
 		form:	MFORMPtr;		{ Mouseform or NULL }
 	End;
 
 	AxywhPtr = ^Axywh;
 	Axywh = Record
-		x: Integer;
-		y: Integer;
-		w: Integer;
-		h: Integer;
+		x: smallint;
+		y: smallint;
+		w: smallint;
+		h: smallint;
 	End;
 
+	(* structure for answers to GEMscript commands *)
+	A_GSAntwortPtr = ^A_GSAntwort;
+	A_GSAntwort = Record
+		antwort: PCharPtr;
+		anzahl: smallint;
+		ret_wert: smallint;
+	End;
+	
 	Awindow = Record
 		user:		Pointer;			{ Users pointer }
-		service:	Function (w: AwindowPtr; task: Integer; in_out: Pointer): Boolean;
+		service:	Function (w: AwindowPtr; task: smallint; in_out: Pointer): Boolean;
 		create:		Function (a: Pointer): AwindowPtr;
-		open:		Function (w: AwindowPtr): Integer;
-		init:		Function (w: AwindowPtr): Integer;
+		open:		Function (w: AwindowPtr): smallint;
+		init:		Function (w: AwindowPtr): smallint;
 		work:		ACSTreePtr;			{ Object within window }
 		toolbar:	ACSTreePtr;			{ Toolbar }
-		ob_edit, ob_col: Integer;		{ ob nr and act column }
+		ob_edit, ob_col: smallint;		{ ob nr and act column }
 			{ GEM attributes }
-		wi_id:		Integer;			{ gem window id or -1 }
-		wi_kind:	Integer;			{ window attributes }
+		wi_id:		smallint;			{ gem window id or -1 }
+		wi_kind:	smallint;			{ window attributes }
 	    wi_act:		Axywh;				{ actual outer coordinates }
 		wi_normal:	Axywh;				{ normal outer0coordinates }
 		wi_work:	Axywh;				{ inner size without menu }
 		wi_slider:	Axywh;				{ last set slider˙(init -1) }
-		wi_nx, wi_ny:	Integer;		{ normal offset zero or negative }
+		wi_nx, wi_ny:	smallint;		{ normal offset zero or negative }
 		snap_mask:	Word;				{ snap mask due to pattern offset }
 		name:		PChar;				{ points to name }
 		info:		PChar;				{ points to info }
 			{ ACS attributes }
-		ob_len:	Integer;			{ type of this window }
-		kind:		Integer;			{ own attributes }
-		state:		Integer;			{ state of window }
-		icon:		Integer;			{ objectnr in root window, -1 if not }
+		ob_len:	smallint;			{ type of this window }
+		kind:		smallint;			{ own attributes }
+		state:		smallint;			{ state of window }
+		icon:		smallint;			{ objectnr in root window, -1 if not }
 		iconblk:	CICONBLKPtr;			{ defines the Iconimage, NULL means default Iconz}
 			{ Menue }
 		menu:		ACSTreePtr;			{ menuetree OBJECT }
 		{ Keyboard }
-		keys:		Function (w: AwindowPtr; kstate: Integer; key: Integer): Integer;
+		keys:		Function (w: AwindowPtr; kstate: smallint; key: smallint): smallint;
 		{ mouse select }
-		obchange:	Procedure (w: AwindowPtr; obnr: Integer; new_state: Integer);	{ change state of this ob }
+		obchange:	Procedure (w: AwindowPtr; obnr: smallint; new_state: smallint);	{ change state of this ob }
 
 		{ window attribute reactions }
 		redraw:		Procedure (w: AwindowPtr; r: AxywhPtr);		{ Redraw }
 		topped:		Procedure (w: AwindowPtr);					{ Topped }
 		closed:		Procedure (w: AwindowPtr);					{ closed }
 		fulled:		Procedure (w: AwindowPtr);					{ fulled }
-		arrowed:	Procedure (w: AwindowPtr; wh: Integer);		{ arrowed }
-		hslid:		Procedure (w: AwindowPtr; p: Integer);		{ hslide }
-		vslid:		Procedure (w: AwindowPtr; p: Integer);		{ vslide }
+		arrowed:	Procedure (w: AwindowPtr; which: smallint; amount: smallint);	{ arrowed }
+		hslid:		Procedure (w: AwindowPtr; p: smallint);		{ hslide }
+		vslid:		Procedure (w: AwindowPtr; p: smallint);		{ vslide }
 		sized:		Procedure (w: AwindowPtr; r: AxywhPtr);		{ size }
 		moved:		Procedure (w: AwindowPtr; r: AxywhPtr);		{ move }
+
+		iconify:	Function (w: AwindowPtr; all: smallint): smallint;
+		uniconify:	Function (w: AwindowPtr): smallint;
+		gemscript:	Function (w: AwindowPtr; anz: smallint; cmds: PCharPtr; antwort: A_GSAntWortPtr): smallint;
+		help_title: PChar;
+		help_file:  PChar;
 	End;
 
 	AdescrPtr = ^Adescr;
 	Adescr = Record					{ Description start }
 		magic:		packed array [0..7] of char;	{ Magic "ACS 102" }
-		version:	Integer;		{ Version * 102 }
-		dx,dy:		Integer;		{ virtuell desktop increments }
-		flags:		Integer;		{ commom flags }
+		version:	smallint;		{ Version * 102 }
+		dx,dy:		smallint;		{ virtuell desktop increments }
+		flags:		smallint;		{ common flags }
 		acc_reg:	packed array [0..31] of char;	{ Accessory register message }
 		root:			AwindowPtr;		{ Root window }
 		acc:			AwindowPtr;		{ Accessory first window }
@@ -148,96 +162,106 @@ type
 	AselPtr = ^Asel;
 	Asel = Record				{ list of selected Objects }
 		window:	AwindowPtr;	{ the objects belong to this window }
-		maxlen:	Integer;		{ max entries in list }
-		actlen:	Integer;		{ actual count }
-		next:	Integer;		{ next entry return by Adr_next }
-		dragback:	Integer;	{ drag still selected ob back to origin }
-		x, y:	Integer;		{ position during pick up }
-		rx, ry:	Integer;		{ relativ dragged distance }
-		parray:	PInteger;		{ points to array of obnr's (Integer) }
+		maxlen:	smallint;		{ max entries in list }
+		actlen:	smallint;		{ actual count }
+		next:	smallint;		{ next entry return by Adr_next }
+		dragback:	smallint;	{ drag still selected ob back to origin }
+		x, y:	smallint;		{ position during pick up }
+		rx, ry:	smallint;		{ relativ dragged distance }
+		parray:	Psmallint;		{ points to array of obnr's (smallint) }
 	End;
 
 	AwiobPtr = ^Awiob;
 	Awiob = Record
 		window:	AwindowPtr;
 		entry:	ACSOBJECTPtr;
-		obnr:		Integer;
+		obnr:		smallint;
 	End;
+
+	UConfig = Pointer;
+	UConfigPtr = ^UConfig;
 
 	AblkPtr = ^Ablk;
 	Ablk = Record
-		gl_apid:		Integer;
-		phys_handle:	Integer;
-		gl_wattr:		Integer;
-		gl_hattr:		Integer;
+		gl_apid:		smallint;
+		phys_handle:	smallint;
+		gl_wattr:		smallint;
+		gl_hattr:		smallint;
 		desk:			Axywh;
-		vdi_handle:		Integer;
-		gl_wbox:		Integer;
-		gl_hbox:		Integer;
-		gl_wchar:		Integer;
-		gl_hchar:		Integer;
-		ncolors:		Integer;
-		nplanes:		Integer;
+		vdi_handle:		smallint;
+		gl_wbox:		smallint;
+		gl_hbox:		smallint;
+		gl_wchar:		smallint;
+		gl_hchar:		smallint;
+		ncolors:		smallint;
+		nplanes:		smallint;
 		appname:		packed array [1..__PS__] of char;
 		apppath:		packed array [1..__PS__] of char;
 		apppara:		packed array [1..__PS__] of char;
 		appfrom:		packed array [1..__PS__] of char;
 		basename:		packed array [1..20] of char;
 		ev_mtcount:		LongInt;
-		application:	Integer;
-		multitask:		Integer;
-		appexit:		Integer;
+		application:	smallint;
+		multitask:		smallint;
+		appexit:		smallint;
 		description:	AdescrPtr;
 		Aselect:		Asel;
 		ev_window:		AwindowPtr;
 		ev_object:		ACSTreePtr;
-		ev_obnr:			Integer;
-		ev_mmox, ev_mmoy:	Integer;
-		ev_mmokstate:	Integer;
-		dia_abort:		Integer;
+		ev_obnr:			smallint;
+		ev_mmox, ev_mmoy:	smallint;
+		ev_mmokstate:	smallint;
+		dia_abort:		smallint;
 		screenMFDB:		MFDB;
-		apterm:			Integer;
+		apterm:			smallint;
 		AESglobal:		Pointer;
-		fonts:			Integer;
-		argc:			Integer;
+		fonts:			smallint;
+		argc:			smallint;
 		argv:			PCharPtr;
 		env:			PCharPtr;
-		fontid:			Integer;
-		fheight:		Integer;
-		fontsid:		Integer;
-		fsheight:		Integer;
+		fontid:			smallint;
+		fheight:		smallint;
+		fontsid:		smallint;
+		fsheight:		smallint;
 		ACSterm:		Procedure;
 		ACSaboutme:		Procedure;
 		ACSclose:		Procedure;
 		ACSmessage:		Procedure (var ev_mgpbuff : ARRAY_8);
 		ACSmproto:		Procedure (var ev_mgpbuff : ARRAY_8);
 		ACStimer:		Procedure;
-		ACSinit0:		Function: Integer;
-		dither:			Integer;
-		ACSkey:			Procedure (var kstate, key: Integer);
-		ACSbutton:		Procedure (var button, breturn: Integer);
+		ACSinit0:		Function: smallint;
+		dither:			smallint;
+		ACSkey:			Procedure (var kstate, key: smallint);
+		ACSbutton:		Procedure (var button, breturn: smallint);
 		ACSmouse:		Procedure;
-		ACSwikey:		Procedure (var kstate, key: Integer);
-		ev_bmask:		Integer;
-		ev_bstate:		Integer;
-		ev_mmobutton: 	Integer;
-		ev_mbreturn:	Integer;
-		ev_mkreturn:	Integer;
-		ev_mbclicks:	Integer;
+		ACSwikey:		Procedure (var kstate, key: smallint);
+		ev_bmask:		smallint;
+		ev_bstate:		smallint;
+		ev_mmobutton: 	smallint;
+		ev_mbreturn:	smallint;
+		ev_mkreturn:	smallint;
+		ev_mbclicks:	smallint;
 		DEBUG_MEM:		Procedure (defective: Pointer);
 		cfg_path:		packed array [1..__PS__] of char;
 		scrp_path:		packed array [1..__PS__]of char;
-		ACSerror:		Procedure (mess: Integer; para: Pointer);
-		menu_id:		Integer;
+		ACSerror:		Procedure (mess: smallint; para: Pointer);
+		menu_id:		smallint;
 		dd_name:		PChar;
 		alert_name:	PChar;
-		mfsel_count:	Integer;
+		mfsel_count:	smallint;
 		separator: packed array [1..256] of char;
+		AppLongName:	PChar;
+		cfg:			UConfigPtr;
+		GEMScript:		Function(anz: smallint; cmd: PCharPtr; antwort: A_GSAntwort): smallint;
+		ev_mkdead:      packed array[0..9] of char;
+		keyAltCtrlSwitch: smallint;
+		MagiCCookie:	Pointer;
+		NAesCookie:     Pointer;
 	End;
 
 	A_ddPtr = ^A_dd;			{ OM: A_dd_Struktur }
 	A_dd = Record
-		id:			Integer;
+		id:			smallint;
 		dd_type:		Longint;
 		xacc_val:		Word;
 		xacc_name:	PChar;
@@ -247,14 +271,14 @@ type
 
 	IMG_HEADERPTR = ^IMG_HEADER;
 	IMG_HEADER = Record
-		version:	Integer;
-		headlen:	Integer;
-		planes:		Integer;
-		pat_run:	Integer;
-		pix_width:	Integer;
-		pix_height:	Integer;
-		slwidth:	Integer;
-		slheight:	Integer;
+		version:	smallint;
+		headlen:	smallint;
+		planes:		smallint;
+		pat_run:	smallint;
+		pix_width:	smallint;
+		pix_height:	smallint;
+		slwidth:	smallint;
+		slheight:	smallint;
 	End;
 
 	RGB_LISTPTR = ^RGB_LIST;
@@ -266,16 +290,16 @@ type
 
 	XIMG_HEADERPTR = ^IMG_HEADER;
 	XIMG_HEADER = Record
-		version:	Integer;
-		headlen:	Integer;
-		planes:		Integer;
-		pat_run:	Integer;
-		pix_width:	Integer;
-		pix_height:	Integer;
-		sl_width:	Integer;
-		sl_height:	Integer;
+		version:	smallint;
+		headlen:	smallint;
+		planes:		smallint;
+		pat_run:	smallint;
+		pix_width:	smallint;
+		pix_height:	smallint;
+		sl_width:	smallint;
+		sl_height:	smallint;
 		x_id:		packed array[1..4] of Byte;
-		color_model:	Integer;
+		color_model:	smallint;
 		color_table:	RGB_LISTPTR;
 	End;
 
@@ -317,22 +341,22 @@ type
 
 	PROTOCOLDATAPtr = ^PROTOCOLDATA;
 	PROTOCOLDATA = Record
-		fontid: Integer;
-		height: Integer;
-		col:		Integer;
-		row:		Integer;
-		tabsize:Integer;
-		wrap:		Integer;
-		x:			Integer;
-		y:			Integer;
+		fontid: smallint;
+		height: smallint;
+		col:		smallint;
+		row:		smallint;
+		tabsize:smallint;
+		wrap:		smallint;
+		x:			smallint;
+		y:			smallint;
 	End;
 
 	PLOTTERDATAPtr = ^PLOTTERDATA;
 	PLOTTERDATA = Record
-		x:	Integer;
-		y:	Integer;
-		w:	Integer;
-		h:	Integer;
+		x:	smallint;
+		y:	smallint;
+		w:	smallint;
+		h:	smallint;
 	End;
 
 	LISTITEMPtr = ^LISTITEM;
@@ -348,33 +372,33 @@ type
 		winsize:	Axywh;
 		icon:			CICONBLKPtr;
 		len:			LongInt;
-		comp_item:	Function (org: Pointer; new: Pointer; expara: Pointer):Integer;
-		drag_item:	Function (aob: AOBJECTPtr; item: Pointer; expara: Pointer):Integer;
-		edit_item:	Function (item: Pointer; expara: Pointer):Integer;
-		key_item:		Function (key: Integer; expara: Pointer): LongInt;
-		message:		Function (mess: Integer; expara: Pointer):Integer;
-		print_item:	Function (line: Pointer; item: Pointer; expara: Pointer):Integer;
-		term_list:	Function (expara: Pointer):Integer;
+		comp_item:	Function (org: Pointer; new: Pointer; expara: Pointer):smallint;
+		drag_item:	Function (aob: AOBJECTPtr; item: Pointer; expara: Pointer):smallint;
+		edit_item:	Function (item: Pointer; expara: Pointer):smallint;
+		key_item:		Function (key: smallint; expara: Pointer): LongInt;
+		message:		Function (mess: smallint; expara: Pointer):smallint;
+		print_item:	Function (line: Pointer; item: Pointer; expara: Pointer):smallint;
+		term_list:	Function (expara: Pointer):smallint;
 	End;
 	
-	ULinListFktPtr = Function( para, elem: Pointer) : Integer;
+	ULinListFktPtr = Function( para, elem: Pointer) : smallint;
 	ULinListProPtr = Procedure( para, elem: Pointer);
 	ULinListPtr = ^ULinList;
 	ULinList = Record
 		data		: Pointer;
 		freeElem	: Procedure( elem: Pointer);
 		clear		: Procedure( liste: ULinListPtr );
-		append	: Function( liste: ULinListPtr; new_data: Pointer ) : Integer;
-		insert	: Function( liste: ULinListPtr; new_data: Pointer; before_obj: Integer) : Integer;
-		delete	: Function( liste: ULinListPtr; data_nr: Integer) : Integer;
-		deleteFor: Function( liste: ULinListPtr; para: Pointer; to_delete: ULinListFktPtr) : Integer;
+		append	: Function( liste: ULinListPtr; new_data: Pointer ) : smallint;
+		insert	: Function( liste: ULinListPtr; new_data: Pointer; before_obj: smallint) : smallint;
+		delete	: Function( liste: ULinListPtr; data_nr: smallint) : smallint;
+		deleteFor: Function( liste: ULinListPtr; para: Pointer; to_delete: ULinListFktPtr) : smallint;
 		search	: Function( liste: ULinListPtr; nr: LongInt ) : Pointer;
 		searchFor: Function( liste: ULinListPtr; para: Pointer; found: ULinListFktPtr ) : Pointer;
 		first		: Function( liste: ULinListPtr ) : Pointer;
 		last		: Function( liste: ULinListPtr ) : Pointer;
 		akt		: Function( liste: ULinListPtr ) : Pointer;
 		aktNr		: Function( liste: ULinListPtr ) : LongInt;
-		skip		: Function( liste: ULinListPtr; vorwaerts: Integer; amount: LongInt ) : Pointer;
+		skip		: Function( liste: ULinListPtr; vorwaerts: smallint; amount: LongInt ) : Pointer;
 		count		: Function( liste: ULinListPtr ) : LongInt;
 		countFor	: Function( liste: ULinListPtr; para: Pointer; count: ULinListFktPtr ) : LongInt;
 		doFor		: Procedure( liste: ULinListPtr; para: Pointer; to_work: ULinListFktPtr; work: ULinListProPtr );
@@ -384,19 +408,114 @@ type
 	ULinListe = ULinList;
 	ULinListePtr = ULinListPtr;
     
+    (* the stack *)
+    A_ListNextStructPtr = ^A_ListNextStruct;
+    A_ListNextStruct = Record
+    	next: A_ListNextStructPtr;
+    	data: Pointer;
+    End;
+    
+    StackPtr = ^Stack;
+    Stack = Record
+    	StackData: A_ListNextStructPtr;
+    	freeElem: Procedure(elem: Pointer);
+    	push: Function(stack: StackPtr; elem: Pointer): smallint;
+    	pop: Function(stack: StackPtr): Pointer;
+    	isEmpty: Function(stack: StackPtr): smallint;
+    	count: Function(stack: StackPtr): LongInt;
+    	clear: Procedure(stack: StackPtr);
+    End;
+    
+    (* a queue *)
+    QueuePtr = ^Queue;
+    Queue = Record
+    	QueueData: pointer;
+    	freeElem: Procedure(elem: Pointer);
+    	put: Function(queue: QueuePtr; data: Pointer): smallint;
+    	get: Function(queue: QueuePtr): Pointer;
+    	isEmpty: Function(queue: QueuePtr): smallint;
+    	count: Function(queue: QueuePtr): LongInt;
+    	clear: Procedure(queue: QueuePtr);
+    End;
+    
 	UCfgInfoPtr = ^UCfgInfo;
 	UCfgInfo = Record
 			dateiname		: PChar;
 			comment			: PChar;
 			env_praefix		: PChar;
-			casesensitiv	: Integer;
-			file_sensitiv	: Integer;
-			file_buffer		: Integer;
+			casesensitiv	: smallint;
+			file_sensitiv	: smallint;
+			file_buffer		: smallint;
 		End;
 	
-	UConfig = Pointer;
-	UConfigPtr = ^UConfig;
+	AconfigPtr = ^Aconfig;
+	Aconfig = Record
+		CfgInfo: UCfgInfo;
+		BaseName: PChar;
+		ACSterm:		Procedure;
+		ACSaboutme:		Procedure;
+		ACSclose:		Procedure;
+		ACSmessage:		Procedure (var ev_mgpbuff : ARRAY_8);
+		ACSmproto:		Procedure (var ev_mgpbuff : ARRAY_8);
+		ACStimer:		Procedure;
+		ACSkey:			Procedure (var kstate, key: smallint);
+		ACSbutton:		Procedure (var button, breturn: smallint);
+		ACSmouse:		Procedure;
+		ACSwikey:		Procedure (var kstate, key: smallint);
+		init_prot:		smallint;
+		XAccType:		smallint;
+		ACSGEMScript:	Function(anz: smallint; cmd: PCharPtr; antwort: A_GSAntwort): smallint;
+		ACSinit0:		Function: smallint;
+		ACSinit:		Function: smallint;
+	End;
+	
+	A_PrintSelPtr = ^A_PrintSel;
+	A_PrintSel = Record
+		settings: Pointer;
+		option: smallint;
+		button: smallint;
+	End;
+	
+	(* Struktur zu AS_PRN_UPDATE *)
+	A_PrnUpdPtr = ^A_PrnUpd;
+	A_PrnUpd = Record
+		driver: smallint;
+		change: smallint;
+	End;
+	
+	A_FontSelPtr = ^A_FontSelStruct;
+	A_FontSelStruct = Record
+		button: smallint;
+		check_boxes: smallint;
+		font_id: LongInt;
+		pt: LongInt;
+		ratio: LongInt;
+	End;
+	A_FontFkt = Function(para: Pointer; font: A_FontSelPtr): smallint;
+	A_FontFktPtr = ^A_FontFkt;
 
+	AGetObjTextPtr = ^AGetObjText;
+	AGetObjText = Record
+		obnr: smallint;
+		text: PChar;
+	End;
+	
+	AGetSTGuidePtr = ^AGetSTGuide;
+	AGetSTGuide = Record
+		hyp_file: Pchar;
+		hyp_title: Pchar;
+	End;
+	
+	OLGA_InfosPtr = ^OLGA_Infos;
+	OLGA_Infos = Record
+		window: AwindowPtr;
+		id: smallint;
+		datei: PChar;
+		info_id: smallint;
+		info_datei: PChar;
+		olga_flags: smallint;
+	End;
+	
 Const
 	OK = 0;
 	FAIL = -1;
@@ -441,7 +560,20 @@ Const
 	DD_XACC		= ($2);				{ XACC-D&D }
 	DD_VA		= ($4);				{ VA-Server }
 
-	AV_PROTOKOLL		= $4700;		{ AV-Messages }
+	(* XACC-Messages *)
+	ACC_ID             = $400;
+	ACC_OPEN           = $401;
+	ACC_CLOSE          = $402;
+	ACC_ACC            = $403;
+	ACC_EXIT           = $404;
+	ACC_ACK            = $500;
+	ACC_TEXT           = $501;
+	ACC_KEY            = $502;
+	ACC_META           = $503;
+	ACC_IMG            = $504;
+
+	{ AV-Messages }
+	AV_PROTOKOLL		= $4700;
 	VA_PROTOSTATUS		= $4701;
 	AV_GETSTATUS		= $4703;
 	AV_STATUS			= $4704;
@@ -478,6 +610,8 @@ Const
 	VA_THAT_IZIT		= $4733;
 	AV_DRAG_ON_WINDOW	= $4734;
 	VA_DRAG_COMPLETE	= $4735;
+	AV_EXIT	            = $4736;
+	AV_STARTED          = $4738;
 
 	{ USERDEF. serv }
 	AUO_CREATE		=	(1);
@@ -495,7 +629,10 @@ Const
 	AUO_END			=	(15);
 	AUO_POS			=	(17);
 	AUO_OWNER		=	(18);
-
+	AUO_GETBUBBLE   =   (19);
+	AUO_GETCONTEXT  =   (20);
+	AUO_CONTEXT     =   (21);
+	
 	AUO_SLFULL		=		(100);
 	AUO_SLSIZE		=		(101);
 	AUO_SLSTEP		=		(102);
@@ -602,7 +739,7 @@ Const
 	AUO_BEDELLINE		= (713);
 	AUO_BEDELALL		= (714);
 	AUO_BEMASK			= (715);
-	AUO_BECHARLIST	= (716);
+	AUO_BECHARLIST		= (716);
 { ** Masken ** }
 	BEM_ALL				= (0);		{  alles  }
 	BEM_PATH			= (1);		{  alles  }
@@ -646,6 +783,7 @@ Const
 	AB_LAZYEVAL		=	($0200);
 	AB_NOMEMCHECK	=	($0400);
 	AB_NOTRANSICON	=	($0800);
+	AB_OLDMENU      =   ($1000);
 
 		{ Awindow. service }	{ generic }
 	AS_ACCLOSED		=	(1);		{ accessory closed, initialize correctly }
@@ -659,7 +797,7 @@ Const
 	AS_CHECKDRAG	=	(9);		{ check if window will accept draglist }
 
 	AS_OPEN				=	(10);		{ Open the selected list of objects }
-	AS_DELETE			=	(11);		{ delete selected list }
+	AS_DELETESEL		=	(11);		{ delete selected list }
 	AS_CHECKDELETE		=	(12);		{ is list deleteable }
 	AS_WIAUTOPOS		=	(14);		{ Autopos }
 	AS_INFO				=	(15);		{ Info about Window }
@@ -681,7 +819,28 @@ Const
 	AS_REALMENU_START	=	(31); { Start der MenÅfÅhrung }
 	AS_REALMENU_UPDATE	=	(32);	{ neuer Eintrag }
 	AS_REALMENU_END		=	(33);	{ Ende }
-
+	AS_SHADED			=	(34);	{ Fenster wurde gerade shaded (WINX, MagiC) }
+	AS_UNSHADED			=	(35);	{ Fenster wurde gerade unshaded (WINX, MagiC) }
+	AS_ALLOWBUBBLE		=	(36);	{ Soll fÅr dieses Fenster BubbleGEM unterstÅtzt werden? in_out: boolean * }
+	AS_GETBUBBLE		=	(37);	{ Text fÅr BubbleGEM-Hilfe wird gefragt, in_out: AGetObjText * }
+	AS_ALLOWCONTEXT     =	(38);
+	AS_GETCONTEXT       =	(39);
+	AS_CONTEXT          =	(40);
+	AS_ASK_STGUIDE      =	(41);
+	
+	AS_OLGA_CONNECT     =	(42);
+	AS_OLGA_UPDATED     =	(43);
+	AS_OLGA_DISCONNECT  =	(44);
+	AS_OLGA_MAKE_INFO   =	(45);
+	AS_OLGA_INFO		=	(46);
+	AS_OLGA_CLEAR_INFO 	=	(47);
+	AS_FILESELECT       =	(48);
+	AS_PRINT            =	(49);
+	AS_FONT_UPDATE      =	(50);
+	AS_PRN_UPDATE       =	(51);
+	AS_FONT             =	(52);
+	AS_CHANGE_LAYOUT    =	(53);
+	
 	AS_ASKHELP			=	(1000);	{ Kann ein Fenster AS_HELP verstehen? }
 									{ in in_out ist dann Fensterzeiger }
 	AS_HELP				=	(1001);	{ Hilfe anzeigen lassen }
@@ -787,6 +946,7 @@ Const
 	AWS_MODAL_WIN	=	($0400);	{	modal, window dialog }
 	AWS_ICONIZED	=	($0800);	{ GEM-iconified }
 	AWS_ALLICONIZED	=	($1000);	{ Main-GEM-iconified }
+	AWS_SHADED      =	($2000);	{ window is shaded (MagiC,WINX) }
 
 	A_TOOLBAR = ($1000);	{ obnr belongs to the toolbar }
 	A_MASK = ($0fff);			{ mask for gaining pure obnr without object tree flags}
@@ -802,7 +962,7 @@ Const
 	AOS_FIXED	=	($8000);	{ Object tree is already fixed }
 	AOS_DCLICK	=	($4000);	{ last selection was a double click }
 	AOS_CONST	=	($2000);	{ Do not copy substructure, do not release (free); substructure }
-	AOS_LOCKED	=	($1000);	{ subtree is locked */
+	AOS_LOCKED	=	($1000);	{ subtree is locked }
 	AOS_CLTOP	=	($0800);	{ Counterlock Top; is bound to Bottom of parent }
 	AOS_CLBOTTOM=	($0400);	{ Counterlock Bottom }
 	AOS_CLLEFT	=	($0200);	{ Counterlock Left }
@@ -820,6 +980,11 @@ Const
 	AT_TEXT			=	(31);		{ '\n'-seperated Strings with final zero }
 	AT_TURNUS		=	(32);		{ TurnUs-intern }
 	AT_NOTIO        =	(33);       { Notio-intern }
+
+	(* Ein paar Konstanten fÅr die OLGA-Infos *)
+	OLGA_INF_SENSITIV  = $0001;     (* Dateinamen case-sensitiv vergleichen? *)
+	OLGA_INF_SERVER    = $0002;     (* Das Fenster ist der OLGA-Server *)
+	OLGA_INF_CONNECTED = $0004;     (* Kennt der OLGA-Manager diese Verbindung eigentlich? *)
 
 { VAMOS }
 AT_DLO=(20000); { DainÑmik Link Obdschekt }
@@ -944,36 +1109,48 @@ AT_JOBITEM=(20005); { Objekt fÅr Joblauf }
 	RS           = $1e;	{ Record Separator }
 	US           = $1f;	{ Unit Separator }
 
+	(* Die Flags fÅr die Behandlung von nicht bearbeiteten "normalen"  *)
+	(* TastendrÅcken zum Setzen der Variablen ACSblk->keyAltCtrlSwitch *)
+	KEY_AC_NONE              = $0000;
+	KEY_AC_ALT_WORK          = $0001;
+	KEY_AC_CTRL_WORK         = $0002;
+	KEY_AC_ALT_CTRL_WORK     = $0004;
+	KEY_AC_CTRL_FIRST_WORK   = $0008;
+	KEY_AC_ALT_TOOL          = $0010;
+	KEY_AC_CTRL_TOOL         = $0020;
+	KEY_AC_ALT_CTRL_TOOL     = $0040;
+	KEY_AC_CTRL_FIRST_TOOL   = $0080;
+	KEY_AC_TOOL_FIRST        = $0100;
 
 (* Konstanten fÅr 'mode' der Struktur XATTR *)
 const 
-	S_IFMT          = &0170000;       /* mask to select file type */
-	S_IFCHR         = &0020000;       /* BIOS special file        */
-	S_IFDIR         = &0040000;       /* directory file           */
-	S_IFREG         = &0100000;       /* regular file             */
-	S_IFIFO         = &0120000;       /* FIFO                     */
-	S_IMEM          = &0140000;       /* memory region or process */
-	S_IFLNK         = &0160000;       /* symbolic link            */
+	S_IFMT          = $f000;       (* mask to select file type *)
+	S_IFCHR         = $2000;       (* BIOS special file        *)
+	S_IFDIR         = $4000;       (* directory file           *)
+	S_IFREG         = $8000;       (* regular file             *)
+	S_IFIFO         = $a000;       (* FIFO                     *)
+	S_IMEM          = $c000;       (* memory region or process *)
+	S_IFLNK         = $e000;       (* symbolic link            *)
 
-/* special bits: setuid, setgid, sticky bit */
-	S_ISUID         = &04000;
-	S_ISGID         = &02000;
-	S_ISVTX         = &01000;
+(* special bits: setuid, setgid, sticky bit *)
+	S_ISUID         = $0800;
+	S_ISGID         = $0400;
+	S_ISVTX         = $0200;
 
-/* file access modes for user, group, and other*/
-	S_IRUSR         = &0400;
-	S_IWUSR         = &0200;
-	S_IXUSR         = &0100;
-	S_IRGRP         = &0040;
-	S_IWGRP         = &0020;
-	S_IXGRP         = &0010;
-	S_IROTH         = &0004;
-	S_IWOTH         = &0002;
-	S_IXOTH         = &0001;
-	DEFAULT_DIRMODE = &0777;
-	DEFAULT_MODE    = &0666;
+(* file access modes for user, group, and other *)
+	S_IRUSR         = $0100;
+	S_IWUSR         = $0080;
+	S_IXUSR         = $0040;
+	S_IRGRP         = $0020;
+	S_IWGRP         = $0010;
+	S_IXGRP         = $0008;
+	S_IROTH         = $0004;
+	S_IWOTH         = $0002;
+	S_IXOTH         = $0001;
+	DEFAULT_DIRMODE = $01ff;
+	DEFAULT_MODE    = $01B6;
 
-
+Type
     PXATTR = ^TXATTR;
     XATTRPtr = ^TXATTR;
     TXATTR = record
@@ -1002,25 +1179,25 @@ const
 
 Var
 	ACSblk: AblkPtr;
-	PUR_DESK, DESKTOP: AwindowPtr;
+	__base: PDPtr;
 
 {
 	Just to support ACS 1.xx Programs, warning Functions are readonly Vars
 }
-	Function	gl_apid:	Integer;
-	Function	phys_handle:Integer;		{ workstation for aes }
-	Function	gl_wattr:	Integer;		{ attribut width }
-	Function	gl_hattr:	Integer;		{ attribut height }
+	Function	gl_apid:	smallint;
+	Function	phys_handle:smallint;		{ workstation for aes }
+	Function	gl_wattr:	smallint;		{ attribut width }
+	Function	gl_hattr:	smallint;		{ attribut height }
 
-	Function	desk:	AxywhPtr;				{ desktop limits XYWH }
+	Function	desk:	AxywhPtr;			{ desktop limits XYWH }
 	{ VDI }
-	Function	vdi_handle:	Integer;		{ virtual VDI workstation for ACS }
-	Function	gl_wbox:	Integer;		{ cell width of standard char }
-	Function	gl_hbox:	Integer;		{ cell height of standard char }
-	Function	gl_wchar:	Integer;		{ max width of standard char}
-	Function	gl_hchar:	Integer;		{ max height of standard char }
-	Function	ncolors:	Integer;		{ number of colors (2=mono) }
-	Function	nplanes:	Integer;		{ number of colors expressed in planes }
+	Function	vdi_handle:	smallint;		{ virtual VDI workstation for ACS }
+	Function	gl_wbox:	smallint;		{ cell width of standard char }
+	Function	gl_hbox:	smallint;		{ cell height of standard char }
+	Function	gl_wchar:	smallint;		{ max width of standard char}
+	Function	gl_hchar:	smallint;		{ max height of standard char }
+	Function	ncolors:	smallint;		{ number of colors (2=mono) }
+	Function	nplanes:	smallint;		{ number of colors expressed in planes }
 	{ Pathes }
 	Function	appname:	PChar;			{ application complete name˙}
 	Function	apppath:	PChar;			{ application path }
@@ -1029,88 +1206,106 @@ Var
 	Function	basename:	PChar;			{ basename appname without extention }
 	{ others }
 	Function	ev_mtcount:		Longint;		{ Timerintervall in milli sec (initial 500 ms) }
-	Function	application:	Integer;		{ runs as an application }
-	Function	multitask:		Integer;		{ more than 1 applications possible }
-	Function	appexit:		Integer;		{ application is in system termination mode }
+	Function	application:	smallint;		{ runs as an application }
+	Function	multitask:		smallint;		{ more than 1 applications possible }
+	Function	appexit:		smallint;		{ application is in system termination mode }
 	Function	description:	AdescrPtr;		{ surface description, pointer for late assignment }
 	Function	Aselect:			AselPtr;			{ list of selected objects }
 	{ context during callback pointer values }
 	Function	ev_window:		AwindowPtr;		{ actual window }
 	Function	ev_object:		ACSTreePtr;		{ actual ob tree }
-	Function	ev_obnr:		Integer;		{ actaul objectnumber, index }
-	Function	ev_mmox:	Integer;
-	Function	ev_mmoy:	Integer;	{ Mouse position }
-	Function	ev_mmokstate:	Integer;		{ Keyboard state }
-	Function	dia_abort:		Integer;		{ Abort modal dialog }
+	Function	ev_obnr:		smallint;		{ actaul objectnumber, index }
+	Function	ev_mmox:	smallint;
+	Function	ev_mmoy:	smallint;	{ Mouse position }
+	Function	ev_mmokstate:	smallint;		{ Keyboard state }
+	Function	dia_abort:		smallint;		{ Abort modal dialog }
 	Function	screenMFDB:		MFDBPtr;		{ exactly this }
 
 {
  *	Windowhandling common Routines
 }
 
-	Function Awi_wid (wid: Integer): AwindowPtr; external;	{ get window for gem window id }
+	Function Awi_wid (wid: smallint): AwindowPtr; external;	{ get window for gem window id }
 	Function Awi_root: AwindowPtr; external;				{ return root window }
 	Function Awi_list: AwindowPtr; external;				{ next window from total set }
 	Procedure Awi_sendall									{ sends message to all windows }
-		(task: Integer; in_out: Pointer); external;
+		(task: smallint; in_out: Pointer); external;
 	Procedure Awi_down; external;							{ cycle down windows }
 	Procedure Awi_up; external;								{ cycle up windows }
 	Procedure Awi_show (w: AwindowPtr); external;			{ show window }
-	Function  Awi_init (w: AwindowPtr): Integer; external;	{ Dummy init routine }
+	Function  Awi_init (w: AwindowPtr): smallint; external;	{ Dummy init routine }
 	Function  Awi_create (w: AwindowPtr): AwindowPtr; external;	{ create a copy of window x }
-	Function  Awi_open (w: AwindowPtr): Integer; external;	{ open window }
+	Function  Awi_open (w: AwindowPtr): smallint; external;	{ open window }
 	Procedure Awi_closed (w: AwindowPtr); external;			{ close window }
 	Procedure Awi_delete (w: AwindowPtr); external;			{ free window }
 	Procedure Awi_topped (w: AwindowPtr); external;			{ top this window }
+	Function  Awi_ontop: AwindowPtr; external;              { return topmost own window }
 	Procedure Awi_fulled (w: AwindowPtr); external;			{ fullsize window }
 	Procedure Awi_sized (w: AwindowPtr;						{ move/resize window }
 			new: AxywhPtr); external;
 	Procedure Awi_moved (w: AwindowPtr;						{ move/resize window }
 			new: AxywhPtr); external;
+	Function Awi_iconify(w: AwindowPtr; all: smallint): smallint; external;
+	Function Awi_uniconify(w: AwindowPtr): smallint; external;
+	Function Aev_GEMScript(anz: smallint; cmd: PCharPtr; answer: A_GSAntwortPtr): smallint; external;
+	Function Awi_gemscript(w: AwindowPtr; anz: smallint; cmd: PCharPtr; answer: A_GSAntwortPtr): smallint; external;
+	Function Awi_name(title: PChar; sensitiv: smallint): AwindowPtr; external;
+	
 	Procedure Awi_diaend; external;							{ finish open dialog }
 	Procedure Awi_diastart; external;						{ start dialog }
 	Function Awi_keys (w: AwindowPtr;						{ key input for dialog }
-		kstate: Integer; key: Integer):Integer; external;
+		kstate: smallint; key: smallint):smallint; external;
+	Function Awi_keysend(w: AwindowPtr; kstate, key: smallint): smallint; external;
+	
 	Procedure Awi_obview (w: AwindowPtr;					{ show area in work ob coordinates }
 		xywh: AxywhPtr); external;
 	Function Awi_service (w: AwindowPtr;					{ very simple service routine }
-		task: Integer; in_out: Pointer): Boolean; external;
+		task: smallint; in_out: Pointer): Boolean; external;
 	Procedure Awi_scroll (w: AwindowPtr;					{ intelligent scroll/update, x,y upper left edge BEFORE scrolling }
-		x: Integer; y: Integer); external;
+		x: smallint; y: smallint); external;
 	{ NEW }
 	Function Awi_modal: AwindowPtr; external;				{ modal dialog on top?, returns NULL if not }
-	Function Awi_dialog (w: AwindowPtr): Integer; external;	{ complete modal-window-dialog-handler }
-	Function Awi_alert (but: Integer;
-		text: PChar):Integer; external;					{ shows window-alert }
+	Function Awi_dialog (w: AwindowPtr): smallint; external;	{ complete modal-window-dialog-handler }
+	Function Awi_alert (but: smallint;
+		text: PChar):smallint; external;					{ shows window-alert }
+	Procedure Awi_diaabort; external;
 	Function Awi_selfcreate (w: Pointer): AwindowPtr; external;
 															{ creates a copy of Awindow x }
 	Procedure Awi_uoself (wi:AwindowPtr); External;
-	Procedure Awi_update (mode: Integer); External;
+	Procedure Awi_update (mode: smallint); External;
+	Procedure Awi_layout(flag3D, flagModernMenu, redraw: smallint); external;
 
-	Function Awi_nokey(w: AwindowPtr; kstate: Integer; key: Integer): Integer; external;
-	Function Awi_sendkey(w: AwindowPtr; kstate: Integer; key: Integer): Integer; external;
+	Function Awi_nokey(w: AwindowPtr; kstate: smallint; key: smallint): smallint; external;
+	Function Awi_sendkey(w: AwindowPtr; kstate: smallint; key: smallint): smallint; external;
 
-	(* Send a message zu the window-object *)
-	Function Awi_observice( wind: AwindowPtr; obnr, task: Integer; in_out: Pointer ) : Integer;
+	(* Send a message to the window-object *)
+	Function Awi_observice( wind: AwindowPtr; obnr, task: smallint; in_out: Pointer ) : smallint;
 		External;
+	
+	Function Awi_help(w: AwindowPtr): smallint; external;
+	
+	Function Awi_obfind(w: AwindowPtr; x, y: smallint; var tree: ACSTreePtr; var obnr: smallint): ACSOBJECTPtr; external;
+	Function Awi_obvisible(w: AwindowPtr; obnr: smallint): smallint; external;
+	Function Awi_context(w: AwindowPtr; mx, my: smallint): smallint; external;
 
 {
  * Window: inner Objects
  }
 
 	Procedure Awi_obchange (wi: AwindowPtr;				{ change the state of this ob in work tree }
-			obnr: Integer; new_state: Integer); external;	{ ! changed behaviour to 1.0 }
+			obnr: smallint; new_state: smallint); external;	{ ! changed behaviour to 1.0 }
 	Procedure Awi_obredraw (wi: AwindowPtr;				{ redraws everthing in the area of obnr }
-		obnr: Integer); external;						{ uses window-> redraw }
+		obnr: smallint); external;						{ uses window-> redraw }
 	Procedure Awi_redraw (w: AwindowPtr;				{ redraw routine }
 		limit: AxywhPtr); external;
 	Procedure Awi_arrowed (w: AwindowPtr;				{ arrows }
-		which: Integer); external;
+		which: smallint; amount: smallint); external;
 	Procedure Awi_hslid (w: AwindowPtr;					{ horizontal slider }
-		pos: Integer); external;
+		pos: smallint); external;
 	Procedure Awi_vslid (w: AwindowPtr; 				{ vertical slider }
-		pos: Integer); external;
-
+		pos: smallint); external;
+	Function Awi_wheeled(w: AwindowPtr; var wheels: ARRAY_16; mx, my: smallint): smallint; external;
+	Procedure Awi_saved(w: AwindowPtr; filename: PChar); external;
 {
  * Events
  }
@@ -1119,7 +1314,6 @@ Var
 	Procedure Aev_mess; external;				{ Accept and handle messages eg redraw }
 	Procedure Aev_unhidepointer; external;		{ unhides hidden pointer }
 	Procedure Aev_release; external;			{ waits for release of mouse }
-
 {
  *	Mousehandling
  }
@@ -1137,33 +1331,37 @@ Var
 	Function Aob_create (						{ creates a copy of parent }
 		parent: ACSTreePtr): ACSTreePtr; external;
 	Procedure Aob_delete (ob: ACSTreePtr); external;{ frees ob generated by Aob_create }
+	Procedure Aob_icon(ob: ACSTreePtr); external;	{ Changes G_ICON to G_CICON, if possible }
 	Procedure Aob_fix (ob: ACSTreePtr); external;	{ fixes ob }
 	Procedure Aob_offset (redraw: AxywhPtr;			{ calculate redraw rectangle for ob }
-		ob: ACSTreePtr; entry: Integer); external;
+		ob: ACSTreePtr; entry: smallint); external;
+	Function Aob_count(ob: ACSTreePtr; count_aobject: smallint): smallint; external;
 	Function Aob_save (rect: AxywhPtr): MFDBPtr; external;	{ save rectangle of desktop }
 	Procedure Aob_restore (save: MFDBPtr;			{ restore desktop previously save with Aob_save }
 		rect: AxywhPtr); external;
 	Function Aob_watch (w: AwindowPtr;				{ watched ob, select if pointer upon obnr }
-		obnr: Integer): Boolean; external;			{ returns TRUE if button was release upon obnr }
+		obnr: smallint): Boolean; external;			{ returns TRUE if button was release upon obnr }
+	Procedure Aob_help; external;
 	Function Aob_findflag (ob: ACSTreePtr;			{ find obnr for which flagmask becomes true, obnr is start ob }
-		obnr: Integer; flag: Integer): Integer; external;
-	Function Aob_up (ob: ACSTreePtr; obnr: Integer): Integer; external;	{ find parent objectnr, returns -1 on top level }
+		obnr: smallint; flag: smallint): smallint; external;
+	Function Aob_visible(ob: ACSTreePtr; obnr: smallint): smallint; external;
+	Function Aob_up (ob: ACSTreePtr; obnr: smallint): smallint; external;	{ find parent objectnr, returns -1 on top level }
 
 	Procedure Ame_namefix (menu: ACSTreePtr); external;		{ fixes tree on different length of first title (name) }
 
 	Function Ame_popup (w: AwindowPtr;				{ pop up a popup menu, x/y determs upper left edge }
-		popup: ACSTreePtr;x: Integer; y: Integer): Integer; external;	{ returns selected Obnr, If a callback is defined it will be called }
+		popup: ACSTreePtr;x: smallint; y: smallint): smallint; external;	{ returns selected Obnr, If a callback is defined it will be called }
 
 	Function Ame_strpopup (w: AwindowPtr;				{ pop up a popup menu, x/y determs upper left edge }
-		popup, chk: PChar; width: Integer; x: Integer; y: Integer): PChar; external;
+		popup, chk: PChar; width: smallint; x: smallint; y: smallint): PChar; external;
 
 	{ NEW }
 	Procedure Aob_puttext (ob: ACSTreePtr;
-		obnr: Integer; text: PChar); external;	{ OM: setzt TEXT in das Objekt ein, betrachtet die Typen! }
+		obnr: smallint; text: PChar); external;	{ OM: setzt TEXT in das Objekt ein, betrachtet die Typen! }
 													{ nur fÅr die USERDEFS wird in UB_PTR1 dynamisch Speicher }
 
 	Function Aob_gettext (ob: ACSTreePtr;
-		obnr: Integer; text: PChar): Integer; external;
+		obnr: smallint; text: PChar): smallint; external;
 													{ OM: holt Text aus Objekt, TEXT muû lang genug sein! }
 													{ zurÅckgeleifert wird die LÑnge des Textes oder -1	}
 													{ wenn die LÑnge nicht ermittelt werden konnte. }
@@ -1171,45 +1369,81 @@ Var
 													{ was dazu dienen kann, die TextlÑnge dynamisch zu erfragen	}
 
 	Function Aob_within (rect: AxywhPtr;
-		x, y: Integer): Integer; External; 			{ is x/y in rect? }
+		x, y: smallint): smallint; External; 			{ is x/y in rect? }
 
 	(* Bits aus ob_flags und ob_state setzen oder lîschen *)
-	Function Aob_flags( window: AwindowPtr; obnr, flag, setflag: Integer ) : Integer;
+	Function Aob_flags( window: AwindowPtr; obnr, flag, setflag: smallint ) : smallint;
 		External;
-	Function Aob_state( window: AwindowPtr; obnr, flag, setflag: Integer ) : Integer;
+	Function Aob_state( window: AwindowPtr; obnr, flag, setflag: smallint ) : smallint;
 		External;
 	
 	(* Send a message to an object *)
-	Function Aob_service( tree: ACSTreePtr; obnr, tast: Integer; in_out: Pointer ) : Integer;
+	Function Aob_service( tree: ACSTreePtr; obnr, tast: smallint; in_out: Pointer ) : smallint;
 		External;
 
+(* sending messages *)
+	Function Aev_WmRedraw(dest_id, wind_id: smallint; area: AxywhPtr): smallint; external;
+	Function Aev_AvProtokoll(dest_id: smallint; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_AvExit(dest_id: smallint; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_VaProtoStatus(dest_id: smallint; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_VaStart(dest_id: smallint; cmd: PChar; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_AvStarted(dest_id: smallint; ok: smallint; cmd: PChar): smallint; external;
+	Function Aev_AccID(dest_id: smallint; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_AccExit(dest_id: smallint; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_AccAck(dest_id: smallint; ok: smallint): smallint; external;
+	Function Aev_AccAcc(dest_id: smallint; var message: ARRAY_8; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_AccKey(dest_id: smallint; key: smallint; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_AccText(dest_id: smallint; text: PChar; w: AwindowPtr; timeout: smallint): smallint; external;
+	Function Aev_STGuideHelp(hyp_text: PChar; reference: PChar; w: AwindowPtr): smallint; external;
 	
+(* BubbleGEM *)
+	Function Awi_bubblegem(w: AwindowPtr; mx, my: smallint): smallint; external;
+	Function Aev_FontBubbleGEM(font_id, points: smallint): smallint; external;
+
+(* OLGA-Protokoll *)
+	Function Aev_OlgaIdle: smallint; external;
+	Function Aev_OlgaUpdate(filename: PChar): smallint; external;
+	Function Aev_OlgaGetInfo(id: smallint): smallint; external;
+	Function Aev_OlgaRename(old_filename, new_filename: PChar): smallint; external;
+	Function Aev_OlgaBreaklink(filename: PChar): smallint; external;
+
+(* DHST-Protokoll *)
+	Function Aev_DhstAdd(docname, docpath: PChar): smallint; external;
+	Function Aev_DhstSaved(filename: Pchar): smallint; external;
 
 { Backplane Support }
 
-	Function Abp_create (w: Integer; h: Integer): MFDBPtr; external;	{ Create Backplane with width w and height h }
+	Function Abp_create (w: smallint; h: smallint): MFDBPtr; external;	{ Create Backplane with width w and height h }
 	Procedure Abp_delete (bp: MFDBPtr); external;						{ free Backplane }
 	Procedure Abp_start (bp: MFDBPtr); external;						{ start writing on backplane (all vdi and aes calls) }
 	Procedure Abp_end; external;										{ stop writing on backplane, resume to screen }
 	{ NEW }
 	Function Abp_img2mfdb (org: IMG_HEADERPTR;				{ converts IMAGE to MFDB, transform into dev-fmt if do_trnsfm=TRUE }
-		var dest: Pointer; trnsfm: Integer): Integer; external;	{ OK on success }
+		var dest: Pointer; trnsfm: smallint): smallint; external;	{ OK on success }
 	Function Abp_mfdb2img (org: MFDBPTR;					{ converts dev-depend. MFDB to IMG-Format, gives IMG-DATA-length }
-		var dest: Pointer; var len: Longint): Integer; external;	{ dest=NULL serves ONLY img_len, returns OK on sucess }
+		var dest: Pointer; var len: Longint): smallint; external;	{ dest=NULL serves ONLY img_len, returns OK on sucess }
 
 {
  * Drag support functions
  }
 
-	Procedure Adr_box (x: Integer; y: Integer); external;	{ start drawing a box which select intersected objects }
-	Procedure Adr_drag (x: Integer; y: Integer); external;	{ drag ob list }
+	Function Adr_find(work: ACSTreePtr; start, depth, x, y: smallint): smallint; external;
+	Procedure Adr_box (x: smallint; y: smallint); external;	{ start drawing a box which select intersected objects }
+	Procedure Adr_drag (x: smallint; y: smallint); external;	{ drag ob list }
 	Procedure Adr_start; external;								{ begin reading select with Adr_next }
-	Function Adr_next: Integer; external;					{ returns next obnr from list }
+	Function Adr_next: smallint; external;					{ returns next obnr from list }
 	Procedure Adr_add (w: AwindowPtr;					{ add ob in Aselect list }
-			obnr: Integer); external;
+			obnr: smallint); external;
 	Procedure Adr_del (w: AwindowPtr;					{ delete ob from Aselect list, did not update on screen ! }
-			obnr: Integer); external;
+			obnr: smallint); external;
 	Procedure Adr_unselect; external;					{ unselect all ob in list, update screen ! }
+
+{
+ *	Char support
+ }
+	Function Ach_toupper(ch: char): char; external;
+	Function Ach_tolower(ch: char): char; external;
+	Function Ach_isWhite(ch: char): boolean; external;
 
 {
  *	String support
@@ -1217,6 +1451,29 @@ Var
 
 	Function Ast_create (parent: PChar): PChar; external;	{ create a copy of parent string }
 	Procedure Ast_delete (str: PChar); external;		{ release this copy }
+	Function Ast_tolower (str: PChar): PChar; external;
+	Function Ast_toupper (str: PChar): PChar; external;
+	Function Ast_ltrim (str: PChar): PChar; external;
+	Function Ast_rtrim (str: PChar): PChar; external;
+	Function Ast_alltrim (str: PChar): PChar; external;
+	Function Ast_cmp(str1, str1: PChar): smallint; external;
+	Function Ast_icmp(str1, str1: PChar): smallint; external;
+	Function Ast_ncmp(str1, str1: PChar; max_char: smallint): smallint; external;
+	Function Ast_incmp(str1, str1: PChar; max_char: smallint): smallint; external;
+	Function Ast_istr (str1, str2: PChar): PChar; external;
+	Function Ast_isEmpty (str1: PChar): boolean; external;
+	Function Ast_adl (str: PChar; len: LongInt): PChar; external;
+	Function Ast_adr (str: PChar; len: LongInt): PChar; external;
+	Function Ast_adc (str: PChar; len: LongInt): PChar; external;
+	Function Ast_filter(stringptr, wrong_char, right_char: PChar): PChar; external;
+	Function Ast_count(stringptr, zeichen: PChar): longint; external;
+	Function Ast_fcmp(filename1, filename2: PChar): smallint; external;
+	Function Ast_reverse(reverse, stringptr: PChar): Pchar; external;
+	Function Ast_countASCIZZ(asciizz: Pchar): smallint; external;
+	Function Ast_splitASCIIZZ(asciizz: Pchar; var strings: PCharPtr; var anz: smallint): boolean; external;
+	Function Ast_mergeASCIIZZ(strings: PCharPtr; anzahl: smallint; global: boolean): Pchar; external;
+	Procedure Ast_deleteAry(strings: PCharPtr; anzahl: smallint); external;
+	Function Ast_copy(str: PChar; global: boolean): Pchar; external;
 
 {
  * ICON, Image Support
@@ -1237,6 +1494,7 @@ Var
 	Function Aus_create 						{ create a copy }
 			(user: USERBLKPtr): USERBLKPtr; external;
 	Procedure Aus_delete (user: USERBLKPtr); external;	{ release this copy }
+	Procedure Aus_help; external;
 
 {
  *	TEDINFO Support
@@ -1251,79 +1509,86 @@ Var
  }
 
 	Function Ax_malloc (size: LongInt): Pointer; external;	{ ACS Malloc can be overwritten if linked before library }
+	Function Ax_glmalloc (size: LongInt): Pointer; external;
 	Procedure Ax_free (memory: Pointer); external;			{ Mark memory as free }
 	Procedure Ax_ifree (memory: Pointer); external;			{ give memory immediate free (be very carefully) }
+	Procedure Ax_glfree (memory: Pointer); external;
 
 {
  *	Utilities
  }
 	Procedure Aob_alias; external;				{ Alias ob, number in userp1 }
-	Function A_dialog2 (dia: ACSTreePtr): Integer; external;	{ Draw a dialogbox }
-	Function A_dialog (dia: ACSTreePtr): Integer; external;		{ Draw a dialogbox near the pointer, handle draw and redraw }
+	Function A_dialog2 (dia: ACSTreePtr): smallint; external;	{ Draw a dialogbox }
+	Function A_dialog (dia: ACSTreePtr): smallint; external;		{ Draw a dialogbox near the pointer, handle draw and redraw }
 											{ returns buttonnumber }
 	Function alert_str						{ display an alert box with one string parameter }
 		(alert: PChar;					{ alert must have the form [X][...%s....][Y] }
-		 para: Pointer): Integer; external;
+		 para: Pointer): smallint; external;
 	Procedure intersect (troa, froma: AxywhPtr); external;
 	Procedure xywh2array (tro: Pointer; from: AxywhPtr); external;
 	Procedure array2xywh (tro: AxywhPtr; from: Pointer); external;
-	Procedure dotted_xline (x1, x2, y: Integer);external;
-	Procedure dotted_yline (y1, y2, x: Integer);external;
-
+	Procedure dotted_xline (x1, x2, y: smallint);external;
+	Procedure dotted_yline (y1, y2, x: smallint);external;
+	Function Ash_gettimer: LongInt; external;
+	Function Adate_getMonth(date: PChar; out_month: Pchar): smallint; external;
+	Function Adate_ymd2dow(year, month, day: smallint): smallint; external;
 
 {
  *	Predefined "Userdefined Objects"
  }
-	function A_boxed( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ BoxEdit }
-	function A_checkbox( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ checkboxes, parm simular to ob_spec for boxes ! }
-	function A_radiobutton( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;	{ rounded selectable elements, parm simular to ob_spec for boxes ! }
-	function A_innerframe( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;	{ draws a frames half a character inside ! }
-	function A_pattern( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ draws general patterns }
-	function A_arrows( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ draws arrows }
-	function A_3Dbutton ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ draws 3D Button }
-	function A_cycle ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;
-	function A_picture ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;
-	function A_ftext ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;
-	function A_select( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ select in a frame instead of reverse }
-	function A_title( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ underscored text }
+	function A_boxed( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ BoxEdit }
+	function A_checkbox( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ checkboxes, parm simular to ob_spec for boxes ! }
+	function A_radiobutton( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;	{ rounded selectable elements, parm simular to ob_spec for boxes ! }
+	function A_innerframe( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;	{ draws a frames half a character inside ! }
+	function A_pattern( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ draws general patterns }
+	function A_arrows( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ draws arrows }
+	function A_3Dbutton ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ draws 3D Button }
+	function A_cycle ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;
+	function A_picture ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;
+	function A_ftext ( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;
+	function A_select( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ select in a frame instead of reverse }
+	function A_title( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ underscored text }
 
-	function Auo_boxed (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer) : Boolean; external;
-	function Auo_string (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer) : Boolean; external;
-	function Auo_ftext (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer) : Boolean; external;
-	function Auo_picture (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer) : Boolean; external;
-	function Auo_cycle (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer) : Boolean; external;
+	function Auo_boxed (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer) : Boolean; external;
+	function Auo_string (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer) : Boolean; external;
+	function Auo_ftext (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer) : Boolean; external;
+	function Auo_picture (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer) : Boolean; external;
+	function Auo_cycle (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer) : Boolean; external;
 
 	Procedure Aus_boxed; external;
 	Procedure Aus_cycle; external;
 	Function Ash_prog (path, command, env: Pointer): LongInt; external;
-	Function Ash_module (path: PChar): Integer; external;
+	Function Ash_module (path: PChar): smallint; external;
 
 	{ NEW }
-	Procedure Ash_error (mess: Integer;		{ standard-error-handler }
+	Procedure Ash_error (mess: smallint;		{ standard-error-handler }
 		para: Pointer); external;
 	Function Ash_nextdd (act: A_ddPtr): A_ddPtr; external;	{ returns cyclic D&D-partners, init act with NULL, end is NULL }
 	Function Ash_sendall (mess: Pointer;
-		typ: Longint): Integer; external;	{ sendet DD-Partnern (mit Typ type) oder unter MTOS/MagiC }
+		typ: Longint): smallint; external;	{ sendet DD-Partnern (mit Typ type) oder unter MTOS/MagiC }
 											{ allen (type<0) den 8 INT16-langen Messageblock }
 	Function Ash_getcookie (cookie: Longint;
-		value: Pointer): Integer; external;	{ looks for 'cookie' and writes its value in val }
+		value: Pointer): smallint; external;	{ looks for 'cookie' and writes its value in val }
 											{ returns TRUE on success }
 	Function Ash_getenv (look: PChar): PChar; external;
 											{ looks for 'char' in Env and returns value }
 
-	Function Af_2drv (f: PChar): Integer; external;		{ returns filedrv or Dgetdrv if non-exist }
+	Function Af_2drv (f: PChar): smallint; external;		{ returns filedrv or Dgetdrv if non-exist }
 	Function Af_2path (d, f: PChar): PChar; external;	{ returns path of file or "\\"	in dest and back }
 	Function Af_2name (d, f: PChar): PChar; external;	{ returns DEMO from [d:][bla\\bli]\\DEMO[.EXT] or "" in dest and back }
 	Function Af_2fullname (d, f: PChar): PChar; external;	{ return DEMO.TXT }
 	Function Af_2ext (d, f: PChar): PChar; external;	{ returns Extension from the filename(!) or "" in dest and back }
 	Function Af_buildname (d: PChar;
-		drv: Integer; p, n, e: PChar): PChar; external;	{ builds full pathfilename, missing parts were added to dest and back }
+		drv: smallint; p, n, e: PChar): PChar; external;	{ builds full pathfilename, missing parts were added to dest and back }
+	Function Af_chgExt(filename: PChar; new_ext: Pchar): PChar; external;
 	Function Af_length (f: PChar): Longint; external;	{ ermittelt DateilÑnge }
 
 	Function Af_select (title, path, ext: PChar): PChar; external;		{ Fileselector }
 	{ NEW }
 	Function Af_first_fsel (title, path, ext: PChar): PChar; external;
 	Function Af_next_fsel: PChar; external;
+	Function Ash_fileselect(title: PChar; x, y: smallint; path, fname, patterns: PChar; filter: Pointer; path: PChar;
+		sort_mode, flags: smallint; meldung: AwindowPtr): ULinListPtr; external;
 	Function Af_cfgfile (files: PChar): PChar; external;		{ cfg files }
 
 	Function Af_first (start: PChar; fileinfo: XATTRPtr): PChar; External;
@@ -1332,21 +1597,29 @@ Var
 	Procedure Af_freedir (list: A_FileListPtr); External;
 
 	Procedure Ascrp_clear (f: PChar); external;			{ lîscht im Klemmbrett mit Ext f oder alles nei NULL }
-	Function Ascrp_get (e: PChar; b, l: Pointer): Integer; external;	{ holt aus Klemmbrett in b die Ext e }
+	Function Ascrp_get (e: PChar; b, l: Pointer): smallint; external;	{ holt aus Klemmbrett in b die Ext e }
 	Function Ascrp_put (e: PChar; b, l: Pointer;
-		appe: Integer): Integer; external;					{ schreibt Daten ins Klemmbrett }
+		appe: smallint): smallint; external;					{ schreibt Daten ins Klemmbrett }
+
+	Procedure Ash_printSetIcon(icon: CICONBLKPtr; ghost: boolean); external;
+	Procedure Ash_fontSetIcon(icon: CICONBLKPtr; ghost: boolean); external;
+	Procedure Ash_fileSetIcon(icon: CICONBLKPtr; ghost: boolean); external;
+
+	Function Ash_print(settings: pointer; x, y, option: smallint; title: PChar; window: AwindowPtr): smallint; external;
+	Function Ash_font(title: PChar; x, y, font_flags, button_flags: smallint; font: A_FontSelPtr; sample, opt_button: PChar;
+		setit, mark, opt: A_FontFktPtr; para: Pointer; window: AwindowPtr): smallint; external;
 
 { ACSPLUS }
 
-	Function A_editor( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;		{ checkboxes, parm simular to ob_spec for boxes ! }
-	function A_slider( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;	{ rounded selectable elements, parm simular to ob_spec for boxes ! }
-	function A_wislider( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : Integer; external;	{ draws a frames half a character inside ! }
+	Function A_editor( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;		{ checkboxes, parm simular to ob_spec for boxes ! }
+	function A_slider( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;	{ rounded selectable elements, parm simular to ob_spec for boxes ! }
+	function A_wislider( dummy1, dummy2 : Pointer; parm: PARMBLKPtr) : smallint; external;	{ draws a frames half a character inside ! }
 
-	function Auo_editor (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer) : Boolean; external;
-	function Auo_slider (entry: ACSOBJECTPtr; task: Integer; in_out: Pointer) : Boolean; external;
+	function Auo_editor (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer) : Boolean; external;
+	function Auo_slider (entry: ACSOBJECTPtr; task: smallint; in_out: Pointer) : Boolean; external;
 	Procedure Aus_editor; external;
 	Procedure Aus_slider; external;
-{	Procedure Auok_editor (entry: ACSOBJECTPtr; kstate, key: Integer); external;	}
+{	Procedure Auok_editor (entry: ACSOBJECTPtr; kstate, key: smallint); external;	}
 
 	Procedure Awd_quit; External;
 	Procedure Awd_open; External;
@@ -1406,24 +1679,24 @@ Var
 	Procedure Aed_option; External;
 	Procedure Aed_undo; External;
 	Function get_editor: AwindowPtr; external;
-	Procedure w_pline (wi: AwindowPtr; count: Integer; var pxy: ptsin_Array); External;
-	Procedure w_pmarker (wi: AwindowPtr; count: Integer; var pxy: ptsin_Array); External;
-	Procedure w_gtext (wi: AwindowPtr; x: Integer; y: Integer; strng: PChar); External;
-	Procedure w_fillarea (wi: AwindowPtr; count: Integer; var pxy: ptsin_Array); External;
-	Procedure w_contourfill (wi: AwindowPtr; x: Integer; y: Integer; index: Integer); External;
+	Procedure w_pline (wi: AwindowPtr; count: smallint; var pxy: ptsin_Array); External;
+	Procedure w_pmarker (wi: AwindowPtr; count: smallint; var pxy: ptsin_Array); External;
+	Procedure w_gtext (wi: AwindowPtr; x: smallint; y: smallint; strng: PChar); External;
+	Procedure w_fillarea (wi: AwindowPtr; count: smallint; var pxy: ptsin_Array); External;
+	Procedure w_contourfill (wi: AwindowPtr; x: smallint; y: smallint; index: smallint); External;
 	Procedure wr_recfl (wi: AwindowPtr; var pxy: Array_4); External;
 	Procedure w_bar (wi: AwindowPtr; var pxy: Array_4); External;
-	Procedure w_arc (wi: AwindowPtr; x: Integer; y: Integer; rad: Integer; begang: Integer; endang: Integer); External;
-	Procedure w_pieslice (wi: AwindowPtr; x: Integer; y: Integer; rad: Integer; begang: Integer; endang: Integer); External;
-	Procedure w_circle (wi: AwindowPtr; x: Integer; y: Integer; rad: Integer); External;
-	Procedure w_ellipse (wi: AwindowPtr; x: Integer; y: Integer; xrad: Integer; yrad: Integer); External;
-	Procedure w_ellarc (wi: AwindowPtr; x: Integer; y: Integer; xrad: Integer; yrad: Integer; begang: Integer; endang: Integer); External;
-	Procedure w_ellpie (wi: AwindowPtr; x: Integer; y: Integer; xrad: Integer; yrad: Integer; begang: Integer; endang: Integer); External;
+	Procedure w_arc (wi: AwindowPtr; x: smallint; y: smallint; rad: smallint; begang: smallint; endang: smallint); External;
+	Procedure w_pieslice (wi: AwindowPtr; x: smallint; y: smallint; rad: smallint; begang: smallint; endang: smallint); External;
+	Procedure w_circle (wi: AwindowPtr; x: smallint; y: smallint; rad: smallint); External;
+	Procedure w_ellipse (wi: AwindowPtr; x: smallint; y: smallint; xrad: smallint; yrad: smallint); External;
+	Procedure w_ellarc (wi: AwindowPtr; x: smallint; y: smallint; xrad: smallint; yrad: smallint; begang: smallint; endang: smallint); External;
+	Procedure w_ellpie (wi: AwindowPtr; x: smallint; y: smallint; xrad: smallint; yrad: smallint; begang: smallint; endang: smallint); External;
 	Procedure w_rbox (wi: AwindowPtr; var pxy: Array_4); External;
 	Procedure w_rfbox (wi: AwindowPtr; var pxy: Array_4); External;
-	Procedure w_justified (wi: AwindowPtr; x: Integer; y: Integer; strng: PChar; length: Integer; word_space: Integer; char_space: Integer); External;
+	Procedure w_justified (wi: AwindowPtr; x: smallint; y: smallint; strng: PChar; length: smallint; word_space: smallint; char_space: smallint); External;
 
-	Procedure w_draw (wi: AwindowPtr; x1: Integer; y1: Integer; x2: Integer; y2: Integer); External;
+	Procedure w_draw (wi: AwindowPtr; x1: smallint; y1: smallint; x2: smallint; y2: smallint); External;
 	Procedure w_update (wi: AwindowPtr); External;
 	Procedure w_clr (wi: AwindowPtr); External;
 	Procedure w_inv (wi: AwindowPtr); External;
@@ -1431,9 +1704,9 @@ Var
 
 	Function get_list: AwindowPtr; External;
 
-	Function A_fontsel (var fontid: Integer; var height: Integer; prop: Integer): Integer; External;
-	Procedure read_multiline (dest: PChar; len: Integer; from: PCharPtr; lines: Integer); External;
-	Procedure write_multiline (dest: PChar; len: Integer; from: PCharPtr;lines: Integer); External;
+	Function A_fontsel (var fontid: smallint; var height: smallint; prop: smallint): smallint; External;
+	Procedure read_multiline (dest: PChar; len: smallint; from: PCharPtr; lines: smallint); External;
+	Procedure write_multiline (dest: PChar; len: smallint; from: PCharPtr;lines: smallint); External;
 
 	Procedure start_acs (ini: Aretint; descr: AdescrPtr);
 	
@@ -1442,29 +1715,53 @@ Var
 	Function Alu_create : ULinListPtr; external;
 	Procedure Alu_delete( liste: ULinListPtr ); external;
 
+	Function Alu_ptrCmp(para, elem: Pointer): smallint; external;
+	Function Alu_longCmp(para, elem: Pointer): smallint; external;
+	Function Alu_intCmp(para, elem: Pointer): smallint; external;
+	Function Alu_charCmp(para, elem: Pointer): smallint; external;
+	Function Alu_strCmp(para, elem: Pointer): smallint; external;
+	Function Alu_striCmp(para, elem: Pointer): smallint; external;
+
+(* Stack functions *)
+	Function As_create: StackPtr; external;
+	Procedure As_delete(stack: StackPtr); external;
+
+(* Queue functions *)
+	Function Aqu_create: QueuePtr; external;
+	Procedure Aqu_delete(queue: QueuePtr); external;
+
 (* Functions for the Config-Strings *)
 
-	Function Acfg_create( info: UCfgInfoPtr; load: Integer ) : UConfigPtr; external;
+	Function Acfg_create( info: UCfgInfoPtr; load: smallint ) : UConfigPtr; external;
 	Procedure Acfg_delete( config: UConfig ); external;
 	Procedure Acfg_clear( cfg: UConfig; info: UConfigPtr ); external;
 	Procedure Acfg_clearGroup( config: UConfigPtr ); external;
-	Function Acfg_load( config: UConfig; filename: PChar ) : Integer; external;
-	Function Acfg_save( config: UConfig; filename: PChar ) : Integer; external;
-	Function Acfg_isChanged( config: UConfig ) : Integer; external;
+	Function Acfg_load( config: UConfig; filename: PChar ) : smallint; external;
+	Function Acfg_save( config: UConfig; filename: PChar ) : smallint; external;
+	Function Acfg_isChanged( config: UConfig ) : smallint; external;
+	Function Acfg_getString( config: UConfig; kategorie, name : PChar) : PChar; external;
 	Function Acfg_getValue( config: UConfig; kategorie, name, value: PChar ) : PChar; external;
 	Function Acfg_setValue( config: UConfig; kategorie, name, value: PChar ) : PChar; external;
+	Function Acfg_getLong( config: UConfig; kategorie, name: PChar ) : LongInt; external;
+	Function Acfg_setLong( config: UConfig; kategorie, name: PChar; value: LongInt ) : LongInt; external;
+	Function Acfg_getChar( config: UConfig; kategorie, name: PChar ) : char; external;
+	Function Acfg_setChar( config: UConfig; kategorie, name: PChar; value: char ) : char; external;
+	Function Acfg_getBool( config: UConfig; kategorie, name: PChar ) : smallint; external;
+	Function Acfg_setBool( config: UConfig; kategorie, name: PChar; value: smallint ) : smallint; external;
 	Function Acfg_clearValue( config: UConfig; kategorie, name, value: PChar ) : PChar; external;
 	Procedure Acfg_clearHeader( config: UConfig ); external;
-	Function Acfg_headAnzahl( config: UConfig ) : Integer; external;
-	Function Acfg_setHeader( config: UConfig; anzahl: Integer; head_lines: array of PChar ) : PCharPtr; external;
+	Function Acfg_headAnzahl( config: UConfig ) : smallint; external;
+	Function Acfg_setHeader( config: UConfig; anzahl: smallint; head_lines: array of PChar ) : PCharPtr; external;
 	Function Acfg_getHeader( config: UConfig; head_lines: array of PChar ) : PCharPtr; external;
-	Function Acfg_grpAnzahl( config: UConfig ) : Integer; external;
-	Function Acfg_grpName( config: UConfig; grp_nr: Integer; name: PChar ) : PChar; external;
-	Function Acfg_strAnzahl( config: UConfig; grp_nr: Integer ) : Integer; external;
-	Function Acfg_strName( config: UConfig; grp_nr, str_nr: Integer; name: PChar ) : PChar; external;
-	Function Acfg_strValue( config: UConfig; grp_nr, str_nr: Integer; value: PChar ) : PChar; external;
-	Function Acfg_strIsComment( config: UConfig; grp_nr, str_nr: Integer ) : Integer; external;
-	Function Acfg_isCfgfile( config: UConfig; filename: PChar ) : Integer; external;
+	Function Acfg_grpAnzahl( config: UConfig ) : smallint; external;
+	Function Acfg_grpName( config: UConfig; grp_nr: smallint; name: PChar ) : PChar; external;
+	Function Acfg_strAnzahl( config: UConfig; grp_nr: smallint ) : smallint; external;
+	Function Acfg_strName( config: UConfig; grp_nr, str_nr: smallint; name: PChar ) : PChar; external;
+	Function Acfg_strValue( config: UConfig; grp_nr, str_nr: smallint; value: PChar ) : PChar; external;
+	Function Acfg_strIsComment( config: UConfig; grp_nr, str_nr: smallint ) : smallint; external;
+	Function Acfg_isCfgfile( config: UConfig; filename: PChar ) : smallint; external;
+	Function Acfg_isStringPresent(config: UConfig; category, name: PChar): boolean; external;
+	Function Acfg_isGroupPresent(config: UConfig; category: PChar): boolean; external;
 
 	Function Acfg_createInfo : UCfgInfoPtr; external;
 	Procedure Acfg_deleteInfo( info: UCfgInfoPtr ); external;
@@ -1476,12 +1773,15 @@ IMPLEMENTATION
 
 VAR
 	ACSdescr: Adescr;
-	Errno: Integer;
-	_baspag: PDPtr;
-	_app: Integer;
+	ACSconfig: Aconfig;
+	Errno: smallint;
+	_baspag: PDPtr absolute __base;
+	_app: smallint;
 	_FilSysV: Pointer;
 	init_call: Aretint;
 	
+	PUR_DESKPtr, DESKTOPPtr: AwindowPtr;
+
 	Function	gl_apid;
 	Begin
 		gl_apid := ACSBlk^.gl_apid;
@@ -1640,10 +1940,10 @@ VAR
 		screenMFDB := @ACSBlk^.screenMFDB;
 	End;
 
-	Procedure acs_call(argc: Integer; argv, env: PCharPtr); external;
+	Procedure acs_call(argc: smallint; argv, env: PCharPtr); external;
 	Function get_acsblk: AblkPtr; external;
 
-	Function ACSinit: Integer;
+	Function ACSinit: smallint;
 	Begin
 		ACSinit := init_call;
 	end;
@@ -1658,8 +1958,8 @@ VAR
 		ACSblk := get_acsblk;
 		ACSblk^.description := descr;
 		
-		PUR_DESK:=get_pur_desk;
-		DESKTOP:=get_desktop;
+		PUR_DESKPtr:=get_pur_desk;
+		DESKTOPPtr:=get_desktop;
 		
 		_baspag := BasePage;
 		IF AppFlag

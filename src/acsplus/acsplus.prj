@@ -1,4 +1,4 @@
-acsplus.lib
+..\..\lib\acsplus.lib
 
 .C[-I..\..\include]
 .C[-I..]

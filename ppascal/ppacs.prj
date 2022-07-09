@@ -1,0 +1,9 @@
+..\ppascal\ppacs.lib
+.L[-J]
+=
+..\src\lib\acsmod.prj
+..\src\lib\acslib.prj
+..\src\acsplus\acsplus.prj
+..\pctos\pctos.prj
+..\pcgem\pcgem.prj
+..\lib\pcstdlib.lib

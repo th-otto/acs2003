@@ -1,4 +1,4 @@
-acsmodno.lib
+..\..\lib\acsmodno.lib
 
 .C[-I..\..\include]
 .C[-I..]

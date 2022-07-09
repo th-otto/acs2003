@@ -429,7 +429,7 @@ boolean Ash_sendall(int16 *mess, int32 type)
 		all.message = mess;
 		all.wd = NULL;
 		all.timeout = -1;
-		all.type = type;
+		all.type = (int16)type;
 		ListOfApps->doFor(ListOfApps, &all, Ash_chkDDtype, Aev_SendMsg2all);
 #else
 		/* BUG: wrong type for para to both callbacks */
