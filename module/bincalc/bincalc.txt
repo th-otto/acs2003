@@ -1,0 +1,10 @@
+
+	Willkommen zu Bin„r-Calculator
+	ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+	Dieses kleine Modul stellt Zahlen in vier Formaten dar und rechnet
+	automatisch je nach aktuellem Quellformat in die diversen Zielformate
+	um - also vor allem fr Programmierer ntzlich.
+
+	Die Quellen sind zum freien Gebrauch freigegeben.
+
+	Viel Spa wnscht ... Martin Els„sser

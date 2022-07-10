@@ -2,12 +2,12 @@ top_srcdir=../..
 EXTRA_DEFS = -D__ACS_MODULE__
 include $(top_srcdir)/make.config
 
-all:: ab_cfg.am
+all:: bincalc.am
 
-OBJS = acs_load.o ab_cfg.o
+OBJS = acs_load.o bincalc.o
 
-ab_cfg.am: $(OBJS)
+bincalc.am: $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
 
 clean::
-	$(RM) $(OBJS) ab_cfg.am
+	$(RM) $(OBJS) bincalc.am

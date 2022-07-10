@@ -1,0 +1,313 @@
+/*********************************************************************/
+/*                                                                   */
+/* This file was created with ACS3.00 at Sun Jul 10 14:28:44 2022    */
+/*                                                                   */
+/* The contents are based on file:                                   */
+/*    C:\SRC\ACS\MODULE\BINCALC\BINCALC.ACS                          */
+/*                                                                   */
+/* (c) 1991-2003 by Stefan Bachert, Oliver Michalak, Martin Els„sser */
+/*********************************************************************/
+
+/*		GUI-LANGUAGE		*/
+#if defined(ACS_LANG1) && defined(ACS_LANG2)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG1) && defined(ACS_LANG3)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG1) && defined(ACS_LANG4)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG2) && defined(ACS_LANG3)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG2) && defined(ACS_LANG4)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG3) && defined(ACS_LANG4)
+	#error "More than one language macros defined!"
+#endif
+
+#if !defined(ACS_LANG1) && !defined(ACS_LANG2) && !defined(ACS_LANG3) && !defined(ACS_LANG4)
+	#define ACS_LANG1
+#endif
+
+
+/*		ANSI-C Prototypes		*/
+
+static int16 calc_key( Awindow *wind, int16 kstate, int16 key );
+static Awindow *calc_make( void *para );
+static int16 calc_serv( Awindow *wind, int16 task, void *in_out );
+
+
+
+
+/*		ALERT BOXES		*/
+
+
+#if defined(ACS_LANG1)			/*		Alerts: ACS_LANG1		*/
+
+
+#elif defined(ACS_LANG2)			/*		Alerts: ACS_LANG2		*/
+
+
+#elif defined(ACS_LANG3)			/*		Alerts: ACS_LANG3		*/
+
+
+#elif defined(ACS_LANG4)			/*		Alerts: ACS_LANG4		*/
+
+
+#else
+
+	#error "Wrong Language Macro defined"
+
+#endif
+
+
+
+/*		STRINGS		*/
+
+
+#if defined(ACS_LANG1)				/*		Strings: ACS_LANG1		*/
+
+static char TEXT_01 [] = " Umrechnung ";
+static char TEXT_02 [] = "";
+static char TEXT_03 [] = "Bin„r:";
+static char TEXT_04 [] = "";
+static char TEXT_05 [] = "Oktal:";
+static char TEXT_06 [] = "Hexadezimal:";
+static char TEXT_07 [] = "Dezimal:";
+
+#elif defined(ACS_LANG2)			/*		Strings: ACS_LANG2		*/
+
+static char TEXT_01 [] = " FENSTER NAME ";
+static char TEXT_02 [] = " Fenster Info ";
+static char TEXT_03 [] = "Bin„r:";
+static char TEXT_04 [] = "";
+static char TEXT_05 [] = "Oktal:";
+static char TEXT_06 [] = "Hexadezimal:";
+static char TEXT_07 [] = "Dezimal:";
+
+#elif defined(ACS_LANG3)			/*		Strings: ACS_LANG3		*/
+
+static char TEXT_01 [] = " FENSTER NAME ";
+static char TEXT_02 [] = " Fenster Info ";
+static char TEXT_03 [] = "Bin„r:";
+static char TEXT_04 [] = "";
+static char TEXT_05 [] = "Oktal:";
+static char TEXT_06 [] = "Hexadezimal:";
+static char TEXT_07 [] = "Dezimal:";
+
+#elif defined(ACS_LANG4)			/*		Strings: ACS_LANG4		*/
+
+static char TEXT_01 [] = " FENSTER NAME ";
+static char TEXT_02 [] = " Fenster Info ";
+static char TEXT_03 [] = "Bin„r:";
+static char TEXT_04 [] = "";
+static char TEXT_05 [] = "Oktal:";
+static char TEXT_06 [] = "Hexadezimal:";
+static char TEXT_07 [] = "Dezimal:";
+
+#else
+
+	#error "Wrong Language Macro defined"
+
+#endif
+
+
+
+/*		TEDINFOS		*/
+
+static TEDINFO TEDINFO_01   = {TEXT_03, TEXT_04, TEXT_04, 5, 6, 0, 0x1100, 0, -1, 7, 1};
+static TEDINFO TEDINFO_02   = {TEXT_05, TEXT_04, TEXT_04, 5, 6, 0, 0x1100, 0, -1, 7, 1};
+static TEDINFO TEDINFO_03   = {TEXT_06, TEXT_04, TEXT_04, 5, 6, 0, 0x1100, 0, -1, 13, 1};
+static TEDINFO TEDINFO_04   = {TEXT_07, TEXT_04, TEXT_04, 5, 6, 0, 0x1100, 0, -1, 9, 1};
+
+
+/*		AUSERBLK		*/
+
+static AUSERBLK230 A_3DBUTTON01 = {A_3Dbutton, 0x29019178L , Auo_string  , NULL, NULL, NULL};
+static AUSERBLK230 A_BOXED01    = {A_boxed, 0x90506412L , Auo_boxed   , NULL, NULL, NULL};
+static AUSERBLK230 A_BOXED02    = {A_boxed, 0x90606412L , Auo_boxed   , NULL, NULL, NULL};
+static AUSERBLK230 A_BOXED03    = {A_boxed, 0x90806412L , Auo_boxed   , NULL, NULL, NULL};
+static AUSERBLK230 A_BOXED04    = {A_boxed, 0x90706412L , Auo_boxed   , NULL, NULL, NULL};
+
+
+/*		OBJECT TREES		*/
+
+#define C_0            (  2)
+#define C_1            (  5)
+#define C_2            (  8)
+#define C_3            ( 11)
+static struct {
+	OBJECT root;
+	OBJECT  _01_D_CALC;
+	OBJECT  _02_D_CALC;
+	AOBJECT _02aD_CALC;
+	OBJECT  _04_D_CALC;
+	OBJECT  _05_D_CALC;
+	AOBJECT _05aD_CALC;
+	OBJECT  _07_D_CALC;
+	OBJECT  _08_D_CALC;
+	AOBJECT _08aD_CALC;
+	OBJECT  _10_D_CALC;
+	OBJECT  _11_D_CALC;
+	AOBJECT _11aD_CALC;
+} D_CALC = {
+	{ -1,  1, 11, 24,   0x40,    0x0, C_UNION(&A_3DBUTTON01) ,  0,  0, 34,  9 },
+	{  2, -1, -1, 21,   0x40,    0x0, C_UNION(&TEDINFO_01  ) ,  1,  0,  6,  1 },
+	{  4, -1, -1, 24, 0x2008,   0x10, C_UNION(&A_BOXED01   ) ,  1,  1, 32,  1 },
+	{NULL		 , NULL		 , 0x8000,    0x0, NULL				, NULL				,    0x0, AT_STRING   },
+	{  5, -1, -1, 21,   0x40,    0x0, C_UNION(&TEDINFO_02  ) ,  1,  2,  6,  1 },
+	{  7, -1, -1, 24, 0x2008,   0x10, C_UNION(&A_BOXED02   ) ,  1,  3, 32,  1 },
+	{NULL		 , NULL		 , 0x8000,    0x0, NULL				, NULL				,    0x0, AT_STRING   },
+	{  8, -1, -1, 21,   0x40,    0x0, C_UNION(&TEDINFO_03  ) ,  1,  4, 12,  1 },
+	{ 10, -1, -1, 24, 0x2008,   0x10, C_UNION(&A_BOXED03   ) ,  1,  5, 32,  1 },
+	{NULL		 , NULL		 , 0x8000,    0x0, NULL				, NULL				,    0x0, AT_STRING   },
+	{ 11, -1, -1, 21,   0x40,    0x0, C_UNION(&TEDINFO_04  ) ,  1,  6,  8,  1 },
+	{  0, -1, -1, 24, 0x2008,   0x10, C_UNION(&A_BOXED04   ) ,  1,  7, 32,  1 },
+	{NULL		 , NULL		 , 0x8020,    0x0, NULL				, NULL				,    0x0, AT_STRING   },
+};
+
+
+
+/*		WINDOWS		*/
+
+Awindow23x F_CALC       =
+	{
+		NULL,
+		calc_serv   ,
+		calc_make   ,
+		Awi_open,
+		Awi_init,
+		&D_CALC.root, NULL, 0, 0, -1,
+		0x400b, { 0,  0, 120, 50},
+		{0, 0, 0, 0}, {0, 0, 0, 0}, {-1, -1, -1, -1}, 0, 0,
+		0xf8f8,
+		TEXT_01     ,
+		TEXT_02     ,
+		   0,  0x103, 0, -1,
+		NULL,
+		NULL,
+		calc_key    ,
+		Awi_obchange,
+		Awi_redraw,
+		Awi_topped,
+		Awi_closed,
+		Awi_fulled,
+		Awi_arrowed,
+		Awi_hslid,
+		Awi_vslid,
+		Awi_sized,
+		Awi_moved,
+	};
+
+
+
+
+/*		ANSI-C Routines		*/
+
+static void sout (Awindow *wi, INT16 obnr, char *text)
+{	AOBJECT	*aob;
+
+	aob = (AOBJECT*) wi->work + obnr +1;
+	Aob_puttext (wi->work, obnr, text);
+	(wi->obchange) (wi, obnr, -1);
+	if (aob->userp1)	Ast_delete (aob->userp1);
+	aob->userp1 = Ast_create (text);
+}
+
+static void calc_upd (Awindow *wi)
+{	char		out[128];
+	INT16		i, ob, col, len;
+	unsigned long		val=0L;
+
+	ob = wi->ob_edit;
+	col = wi->ob_col;
+	len = wi->ob_len;
+	switch (ob)
+	{	case C_0:
+			Aob_scanf (wi->work, C_0, "%s", out);
+			strrev (out);
+			for (i=(INT16)strlen(out)-1; i>=0; i--)
+				if (out[i]=='1')
+					val |= (1L << i);
+			break;
+		case C_2:
+			Aob_scanf (wi->work, wi->ob_edit, "%lx", &val);
+			break;
+		default:
+			Aob_scanf (wi->work, wi->ob_edit, "%ld", &val);
+	}
+	*out = EOS;
+	for (i=31; i>=0; i--)
+		if (val & (1L<<i))	strcat (out, "1");
+		else								strcat (out, "0");
+	if (ob != C_0)	sout (wi, C_0, out);
+	sprintf (out, "%lo", val);
+	if (ob != C_1)	sout (wi, C_1, out);
+	sprintf (out, "%lx", val);
+	if (ob != C_2)	sout (wi, C_2, out);
+	sprintf (out, "%lu", val);
+	if (ob != C_3)	sout (wi, C_3, out);
+	wi->ob_col = col;
+	wi->ob_len = len;
+	Awi_diastart ();
+}
+
+
+
+
+
+
+
+
+
+
+
+static INT16 calc_key (Awindow *wi, INT16 kstate, INT16 key)
+{	INT16	ret = Awi_keys (wi, kstate, key);
+	if (key>0)	calc_upd (wi);
+	return ret;
+}
+
+
+#ifdef __PUREC__
+#pragma warn -par
+#endif
+
+static Awindow *calc_make (void *para)
+{	Awindow	*wi;
+
+	if (NULL == (wi = Awi_create ((Awindow *)&F_CALC)))
+		return NULL;
+	Aob_puttext (wi->work, C_0, "");
+	Aob_puttext (wi->work, C_1, "");
+	Aob_puttext (wi->work, C_2, "");
+	Aob_puttext (wi->work, C_3, "");
+	return wi;
+}
+
+#ifdef __PUREC__
+#pragma warn .par
+#endif
+
+
+static INT16 calc_serv (Awindow *wi, INT16 task, void *in_out)
+{
+	switch (task)
+	{	case AS_TERM:
+			sout (wi, C_0, NULL);
+			sout (wi, C_1, NULL);
+			sout (wi, C_2, NULL);
+			sout (wi, C_3, NULL);
+			Awi_delete (wi);
+			ACSmoduleterm ();
+			break;
+		default:
+			return Awi_service (wi, task, in_out);
+	}
+	return TRUE;
+}
+
+
