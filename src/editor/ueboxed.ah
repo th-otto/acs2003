@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char BUBBLE_01[] = "Die énderungen werden Åbernommen und Åberschreiben die alten Einstellungen.";
 static char BUBBLE_02[] = "Die énderungen werden verworfen, die alten Einstellungen bleiben erhalten.";

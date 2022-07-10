@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 char DRAFT_OFF[] = "  Quality";
 char DRAFT_ON[] = "  Draft";
 static char TEXT_001[] = "";

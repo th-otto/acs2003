@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char ERR_MUST[] = "[3][ | Es mÅssen Werte | eingegeben werden ][ OK ]";
 static char TEXT_003[] = "OK";

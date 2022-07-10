@@ -39,10 +39,6 @@ static Obj_Head anystr = {
 	{ 0, 0, 0, 0 }
 };
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static OBJ_ENTRY protomen[] = {
 	{ NULL, NULL,
 	{ -1,  1,  4, G_IBOX, 0, 0, C_UNION(0x00000000L), 0, 0, 90, 25 },

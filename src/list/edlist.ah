@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 /* FIXME: size needed by protoalert in edalert.c */
 char proto_alert[20] = "[1][Alarmbox][ OK ]";

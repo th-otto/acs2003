@@ -8,10 +8,6 @@ static void edse_minsize(AUSERBLK *user, int16 *w, int16 *h);
 static OBJECT *edse_object_tree(AUSER_DEF *user, OBJECT *obj);
 static void edse_test_it(AUSER_DEF *user, AUSERBLK *userblk);
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static OBJECT visual = { -1, -1, -1, G_BUTTON, 0x0000, 0x0000, C_UNION("SELECT"), 0, 0, 8, 2 };
 static OBJECT logical = { -1, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(0L), 0, 0, 8, 2 };
 

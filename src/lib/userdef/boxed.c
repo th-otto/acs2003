@@ -10,10 +10,6 @@
 #include "acs_i.h"
 #include <ctype.h>
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 typedef struct {
 	char act[BE_MAXLEN + 1];
 	char text[BE_MAXLEN + 1];

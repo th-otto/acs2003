@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 char _ALIB_ERR_ACC[] = "[2][ | Soll das Accessory | >>               << | gestartet werden?| ][Ja|  Nein  ]";
 #if WITH_UNUSED_ICONS

@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char A_NOSTD[] = "[1][ Die Grafik liegt nicht im | Standard-Format vor, eine | šbernahme ist unm”glich! ][ Abbruch ]";
 static char BUBBLE_01[] = "Die Žnderungen werden verworfen.";

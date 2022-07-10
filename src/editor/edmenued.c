@@ -10,10 +10,6 @@ static void tdragged(Awindow *self, int16 obnr);
 static void ti_delete(Awindow *self);
 static void title_dragsize(Awindow *self, int16 obnr);
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static OBJ_ENTRY droptree = {
 	NULL, NULL,
 	{ -1, -1, -1, G_BOX, 0, 0, C_UNION(0x00ff1101L), 0, 0, 12, 1 },

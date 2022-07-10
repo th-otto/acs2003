@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char ASK_SELECT[] = "[2][ | Nur den selektierten | Block speichern?| ][Ja|   Nein   ]";
 static char A_FKEYDBL[] = "[2][ Diese Funktionstaste ist| bereits belegt. Soll der| neue Text Åbernommen werden? ][Ja|  Nein  ]";

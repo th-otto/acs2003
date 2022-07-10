@@ -8,10 +8,6 @@
 /* (c) 1991-2003 by Stefan Bachert, Oliver Michalak, Martin Els„sser */
 /*********************************************************************/
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 /*		GUI-LANGUAGE		*/
 #if defined(ACS_LANG1) && defined(ACS_LANG2)
 	#error "More than one language macros defined!"

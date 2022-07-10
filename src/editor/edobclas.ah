@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 char NEW_POPUP[] = "[2][ Wollen Sie ein neues | PopUp-MenÅ erzeugen? ][OK| Abbruch ]";
 char WARN_SAME[] = "[2][| Das Objekt soll auf sich| selbst kopiert werden!| Operation abbrechen?][ JA | NEIN ]";

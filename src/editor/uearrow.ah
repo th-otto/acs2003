@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char BUBBLE_01[] = "Hier wird angegeben, ob eine 3D-Darstellung verwendet werden soll.";
 static char BUBBLE_02[] = "Hier wird angegeben, ob die Linie breit sein soll oder normal.";

@@ -2,10 +2,6 @@
 #include <ctype.h>
 #include "messages/msgserv.h"
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static int ProtInit = 0;
 static int VdiInit = 0;
 static int AesInit = 0;

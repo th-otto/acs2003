@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char ERR_LARGE[] = "[3][ Die Bilddaten umspannen| einen zu grossen Bereich | (Limit 196 x 196), oder| liegen nicht im| Standardformat vor.][ OK ]";
 static char TEXT_002[] = "";

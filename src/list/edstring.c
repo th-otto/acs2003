@@ -1,9 +1,5 @@
 #include "acs_i.h"
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static struct {
 	OBJECT inner;
 	AOBJECT pra00;

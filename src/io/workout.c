@@ -2,10 +2,6 @@
 #include "workout.h"
 #include "country.h"
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #ifdef __PUREC__
 #pragma warn -use
 #endif

@@ -15,10 +15,6 @@
 #include "messages/msgserv.h"
 #include "messages/vaproto.h"
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static int16 init = 0;
 static int16 cycle = 0;
 static int16 menu_width = -1;

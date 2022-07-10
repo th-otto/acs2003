@@ -3,10 +3,6 @@
 
 extern OBJECT REF_TYPE;
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static struct {
 	OBJECT inner;
 	AOBJECT pra00;

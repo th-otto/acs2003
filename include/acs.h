@@ -106,68 +106,67 @@ typedef struct
 typedef struct wd
 {
    /* Users part */
-   /*   0 */ void *user;                      /* Users object pointer */
-   /*   4 */ boolean (*service)(swd *a,         /* Service call */
+   void *user;                      /* Users object pointer */
+   boolean (*service)(swd *a,         /* Service call */
                   int16 task, void *in_out);
-   /*   8 */ swd *(*create)(void *a);         /* create window passing window specific parameters */
-   /*  12 */ int16 (*open)(swd *a);           /* open window return success */
-   /*  16 */ int16 (*init)(swd *a);           /* init window return success */
-   /*  20 */ OBJECT *work;                    /* Object within window */
-   /*  24 */ OBJECT *toolbar;                 /* Toolbar */
-   /*  28 */ int16 ob_edit, ob_col;           /* object nr and act column */
+   swd *(*create)(void *a);         /* create window passing window specific parameters */
+   int16 (*open)(swd *a);           /* open window return success */
+   int16 (*init)(swd *a);           /* init window return success */
+   OBJECT *work;                    /* Object within window */
+   OBJECT *toolbar;                 /* Toolbar */
+   int16 ob_edit, ob_col;           /* object nr and act column */
 
    /* GEM attributes */
-   /*  32 */ int16 wi_id;                     /* gem window id or -1 */
-   /*  34 */ int16 wi_kind;                   /* window attributes */
-   /*  36 */ Axywh wi_act;                    /* actual outer coordinates */
-   /*  44 */ Axywh wi_normal;                 /* normal outer coordinates */
-   /*  52 */ Axywh wi_work;                   /* inner size without menu */
-   /*  60 */ Axywh wi_slider;                 /* last set slider (init -1) */
-   /*  68 */ int16 wi_nx, wi_ny;              /* normal offset zero or negative */
-   /*  72 */ int16 snap_mask;                 /* hi y lo x, snap mask due to pattern offset */
-   /*  74 */ char *name;                      /* points to name */
-   /*  78 */ char *info;                      /* points to info */
+   int16 wi_id;                     /* gem window id or -1 */
+   int16 wi_kind;                   /* window attributes */
+   Axywh wi_act;                    /* actual outer coordinates */
+   Axywh wi_normal;                 /* normal outer coordinates */
+   Axywh wi_work;                   /* inner size without menu */
+   Axywh wi_slider;                 /* last set slider (init -1) */
+   int16 wi_nx, wi_ny;              /* normal offset zero or negative */
+   int16 snap_mask;                 /* hi y lo x, snap mask due to pattern offset */
+   char *name;                      /* points to name */
+   char *info;                      /* points to info */
 
    /* ACS attributes */
-   /*  82 */ int16 ob_len;                    /* len of edit-block-text, 0 if no selection */
-   /*  84 */ int16 kind;                      /* own attributes */
-   /*  86 */ int16 state;                     /* state of window */
-   /*  88 */ int16 icon;                      /* objectnr in root window, -1 if not */
-   /*  90 */ CICONBLK *iconblk;               /* defines the Iconimage, NULL means default Icon */
+   int16 ob_len;                    /* len of edit-block-text, 0 if no selection */
+   int16 kind;                      /* own attributes */
+   int16 state;                     /* state of window */
+   int16 icon;                      /* objectnr in root window, -1 if not */
+   CICONBLK *iconblk;               /* defines the Iconimage, NULL means default Icon */
 
    /* Menue */
-   /*  94 */ OBJECT *menu;                    /* Menu-Tree OBJECT */
+   OBJECT *menu;                    /* Menu-Tree OBJECT */
 
    /* Keyboard */
-   /*  98 */ int16 (*keys)(swd *x,            /* unknown key actions */
+   int16 (*keys)(swd *x,            /* unknown key actions */
                   int16 kstate, int16 key);
 
    /* mouse select */
-   /* 102 */ void (*obchange)(swd *a,         /* change state of this object */
+   void (*obchange)(swd *a,         /* change state of this object */
                   int16 obnr, int16 new_state);
 
    /* window attribute reactions */
-   /* 106 */ void (*redraw)(swd *a, Axywh *b);      /* Redraw */
-   /* 110 */ void (*topped)(swd *a);                /* Topped */
-   /* 114 */ void (*closed)(swd *a);                /* Closed */
-   /* 118 */ void (*fulled)(swd *a);                /* Fulled */
-   /* 122 */ void (*arrowed)(swd *a, int16 which,   /* Arrowed */
+   void (*redraw)(swd *a, Axywh *b);      /* Redraw */
+   void (*topped)(swd *a);                /* Topped */
+   void (*closed)(swd *a);                /* Closed */
+   void (*fulled)(swd *a);                /* Fulled */
+   void (*arrowed)(swd *a, int16 which,   /* Arrowed */
                   int16 amount);
-   /* 126 */ void (*hslid)(swd *a, int16 pos);      /* HSlide */
-   /* 130 */ void (*vslid)(swd *a, int16 pos);      /* VSlide */
-   /* 134 */ void (*sized)(swd *a, Axywh *b);       /* Sized */
-   /* 138 */ void (*moved)(swd *a, Axywh *b);       /* Moved */
+   void (*hslid)(swd *a, int16 pos);      /* HSlide */
+   void (*vslid)(swd *a, int16 pos);      /* VSlide */
+   void (*sized)(swd *a, Axywh *b);       /* Sized */
+   void (*moved)(swd *a, Axywh *b);       /* Moved */
 
    /* new in 3.0.0: */
-   /* 142 */ int16 (*iconify)(swd *a, int16 all);   /* Iconify, Iconify All */
-   /* 146 */ int16 (*uniconify)(swd *a);            /* Uniconify */
+   int16 (*iconify)(swd *a, int16 all);   /* Iconify, Iconify All */
+   int16 (*uniconify)(swd *a);            /* Uniconify */
 
-   /* 150 */ int16 (*gemscript)(swd *a, int16 anz,  /* GEMScript */
+   int16 (*gemscript)(swd *a, int16 anz,  /* GEMScript */
                   char **cmds, A_GSAntwort *antwort );
 
-   /* 154 */ char *help_title;                      /* Titel der Hilfe-Seite */
-   /* 158 */ char *help_file;                       /* Name der Hilfe-Datei */
-   /* 162 */ 
+   char *help_title;                      /* Titel der Hilfe-Seite */
+   char *help_file;                       /* Name der Hilfe-Datei */
 } Awindow;
 
 /******************************************************************************/
@@ -226,13 +225,12 @@ typedef struct wd
 
 typedef struct
 {
-   /*  0 */ char *dateiname;
-   /*  4 */ char *comment;
-   /*  8 */ char *env_praefix;
-   /* 12 */ int16 casesensitiv;
-   /* 14 */ int16 file_sensitiv;
-   /* 16 */ int16 file_buffer;
-   /* 18 */ 
+   char *dateiname;
+   char *comment;
+   char *env_praefix;
+   int16 casesensitiv;
+   int16 file_sensitiv;
+   int16 file_buffer;
 } UCfgInfo;
 
 /******************************************************************************/
@@ -243,16 +241,15 @@ typedef struct
 
 typedef struct
 {
-   /*   0 */ char     magic[8];            /* Magic "ACS 2.0" */
-   /*   8 */ int16    version;             /* Version * 200 */
-   /*  10 */ int16    dx,dy;               /* virtuell desktop increments */
-   /*  14 */ uint16   flags;               /* commom flags */
-   /*  16 */ char     acc_reg[32];         /* Accessory register message */
-   /*  48 */ Awindow  *root;               /* Root window */
-   /*  52 */ Awindow  *acc;                /* Accessory first window */
-   /*  56 */ Amouse   mouse[32];           /* 32 Mouseforms */
-   /* 248 */ char     *mess[AD_COUNT];     /* multilinguale Strings */
-   /* 384 */
+   char     magic[8];            /* Magic "ACS 2.0" */
+   int16    version;             /* Version * 200 */
+   int16    dx,dy;               /* virtuell desktop increments */
+   uint16   flags;               /* commom flags */
+   char     acc_reg[32];         /* Accessory register message */
+   Awindow  *root;               /* Root window */
+   Awindow  *acc;                /* Accessory first window */
+   Amouse   mouse[32];           /* 32 Mouseforms */
+   char     *mess[AD_COUNT];     /* multilinguale Strings */
 } Adescr;
 
 /******************************************************************************/
@@ -260,34 +257,33 @@ typedef struct
 /* Initialisierungs-Infos fr den Anwendungsstart */
 typedef struct
 {
-   /*   0 */ UCfgInfo CfgInfo;                                     /* Infos zum Laden der Cfg-Strings */
-   /*  18 */ char *BaseName;                                       /* Zu verwendender Name fr basename */
+   UCfgInfo CfgInfo;                                     /* Infos zum Laden der Cfg-Strings */
+   char *BaseName;                                       /* Zu verwendender Name fr basename */
 
    /* Initialisierungszeiger in ACSblk fr ACS-Interna */
-   /*  22 */ void (*ACSterm)( void );                              /* called before terminating ACS */
-   /*  26 */ void (*ACSaboutme)( void );                           /* call used for 'about me' */
-   /*  30 */ void (*ACSclose)( void );                             /* call used for 'Quit' */
-   /*  34 */ void (*ACSmessage)( int16 *ev_mmgpbuf );              /* handle unprocessed messages */
-   /*  38 */ void (*ACSmproto)( int16 *ev_mmgpbuf );               /* filter unprocessed messages */
-   /*  42 */ void (*ACStimer)( void );                             /* called at end of event loop */
-   /*  46 */ void (*ACSkey)( int16 *kstate, int16 *key );          /* filter keys */
-   /*  50 */ void (*ACSbutton)( int16 *button, int16 *breturn );   /* filter mouse buttons */
-   /*  54 */ void (*ACSmouse)( void );                             /* filter mouse moves (ev_mmox/y) */
-   /*  58 */ void (*ACSwikey)( int16 *kstate, int16 *key );        /* filter keystroke before wi->keys call */
+   void (*ACSterm)( void );                              /* called before terminating ACS */
+   void (*ACSaboutme)( void );                           /* call used for 'about me' */
+   void (*ACSclose)( void );                             /* call used for 'Quit' */
+   void (*ACSmessage)( int16 *ev_mmgpbuf );              /* handle unprocessed messages */
+   void (*ACSmproto)( int16 *ev_mmgpbuf );               /* filter unprocessed messages */
+   void (*ACStimer)( void );                             /* called at end of event loop */
+   void (*ACSkey)( int16 *kstate, int16 *key );          /* filter keys */
+   void (*ACSbutton)( int16 *button, int16 *breturn );   /* filter mouse buttons */
+   void (*ACSmouse)( void );                             /* filter mouse moves (ev_mmox/y) */
+   void (*ACSwikey)( int16 *kstate, int16 *key );        /* filter keystroke before wi->keys call */
 
-   /*  62 */ int16 init_prot;                                      /* Welche Protokolle sollen (komplett) initialisiert werden? */
-   /*  64 */ int16 XAccType;                                       /* Maschinenlesbarer XAcc-Programmtyp */
+   int16 init_prot;                                      /* Welche Protokolle sollen (komplett) initialisiert werden? */
+   int16 XAccType;                                       /* Maschinenlesbarer XAcc-Programmtyp */
 
    /* Initialisierungszeiger in ACSblk fr GEMScript */
-   /*  66 */ int16 (*ACSGEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );   /* Allgemeine GEMScript-Funktion */
+   int16 (*ACSGEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );   /* Allgemeine GEMScript-Funktion */
 
    /* Start-Funktionen fr ACS */
-   /*  70 */ int16 (*ACSinit0)( void );                            /* Initialisierung nach GEM-Initialisierung */
-   /*  74 */ int16 (*ACSinit)( void );                             /* Initialisierung nach der ACS-Initialisierung */
+   int16 (*ACSinit0)( void );                            /* Initialisierung nach GEM-Initialisierung */
+   int16 (*ACSinit)( void );                             /* Initialisierung nach der ACS-Initialisierung */
 
    /* Initialisierungszeiger in ACSblk fr AV-Protokoll */
    /* Noch nicht implementiert */
-   /*  78 */ 
 } Aconfig;
 
 /******************************************************************************/
@@ -460,63 +456,63 @@ typedef void (*A_ListWork)(void *para, void *elem);
 typedef struct _ULinList
 {
    /* Der Zeiger auf die lineare Liste (soll nur ACS-intern verwendet werden!) */
-   /*   0 */ void *ListData;
+   void *ListData;
 
    /* Zeiger auf Funktion, die die Elemente der Liste freigeben kann */
-   /*   4 */ void (*freeElem)( void *elem );
+   void (*freeElem)( void *elem );
 
    /* Die lineare Liste leeren, alle Daten freigeben */
-   /*   8 */ void (*clear)( struct _ULinList *liste );
+   void (*clear)( struct _ULinList *liste );
 
    /* Anh„ngen neuer Daten an die Liste */
-   /*  12 */ boolean (*append)( struct _ULinList *liste, void *new_data );
+   boolean (*append)( struct _ULinList *liste, void *new_data );
 
    /* Einfgen neuer Daten in die Liste */
-   /*  16 */ boolean (*insert)( struct _ULinList *liste, void *new_data, int16 before_obj );
+   boolean (*insert)( struct _ULinList *liste, void *new_data, int16 before_obj );
 
    /* Daten aus der Liste l”schen und zurckgeben */
-   /*  20 */ void *(*delete)( struct _ULinList *liste, int16 data_nr );
+   void *(*delete)( struct _ULinList *liste, int16 data_nr );
 
    /* Alle Daten aus der Liste l”schen, die eine bestimmte Bedingung erfllen     */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_delete     */
    /* bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
-   /*  24 */ int32 (*deleteFor)( struct _ULinList *liste, void *para, boolean (*to_delete)(void *para, void *elem) );
+   int32 (*deleteFor)( struct _ULinList *liste, void *para, boolean (*to_delete)(void *para, void *elem) );
 
    /* Die Daten Nummer nr holen */
-   /*  28 */ void *(*search)( struct _ULinList *liste, int32 nr );
+   void *(*search)( struct _ULinList *liste, int32 nr );
 
    /* Daten suchen, die eine Bedingung erfllen                                 */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
    /* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
-   /*  32 */ void *(*searchFor)( struct _ULinList *liste, void *para, boolean (*found)(void *para, void *elem) );
+   void *(*searchFor)( struct _ULinList *liste, void *para, boolean (*found)(void *para, void *elem) );
 
    /* Das erste Element der Liste */
-   /*  36 */ void *(*first)( struct _ULinList *liste );
+   void *(*first)( struct _ULinList *liste );
 
    /* Das letzte Element der Liste */
-   /*  40 */ void *(*last)( struct _ULinList *liste );
+   void *(*last)( struct _ULinList *liste );
 
    /* Das aktuelle Element der Liste */
-   /*  44 */ void *(*akt)( struct _ULinList *liste );
+   void *(*akt)( struct _ULinList *liste );
 
    /* Die Nummer des aktuellen Elementes der Liste */
-   /*  48 */ int32 (*aktNr)( struct _ULinList *liste );
+   int32 (*aktNr)( struct _ULinList *liste );
 
    /* Das aktuelle Element vorw„rts/rckw„rts bewegen */
-   /*  52 */ void *(*skip)( struct _ULinList *liste, boolean forwards, int32 amount );
+   void *(*skip)( struct _ULinList *liste, boolean forwards, int32 amount );
 
    /* Die Anzahl der verwalteten Daten */
-   /*  56 */ int32 (*count)( struct _ULinList *liste);
+   int32 (*count)( struct _ULinList *liste);
 
    /* Die Anzahl der Daten ermitteln, die eine Bedingung erfllen */
    /* Der Parameter para wird an den gleichnamigen Parameter der in found ber- */
    /* gebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien)   */
-   /*  60 */ int32 (*countFor)( struct _ULinList *liste, void *para, boolean (*count)(void *para, void *elem) );
+   int32 (*countFor)( struct _ULinList *liste, void *para, boolean (*count)(void *para, void *elem) );
 
    /* Fr alle Daten, die eine Bedingung erfllen, eine Aktion ausfhren               */
    /* Der Parameter para wird an den gleichnamigen Parameter der in to_work und        */
    /* work bergebenen Funktion weitergereicht (z.B. šbergabe der Vergleichskriterien) */
-   /*  64 */ void (*doFor)( struct _ULinList *liste, void *para,
+   void (*doFor)( struct _ULinList *liste, void *para,
             boolean (*to_work)(void *para, void *elem),
             void (*work)(void *para, void *elem) );
 } ULinList;
@@ -603,106 +599,105 @@ struct _Queue
 typedef struct
 {
     /* AES */
-    /*    0 */ int16 gl_apid;                            /* AES application ID */
-    /*    2 */ int16 phys_handle;                        /* workstation for aes */
-    /*    4 */ int16 gl_wattr;                           /* attribut width */
-    /*    6 */ int16 gl_hattr;                           /* attribut height */
-    /*    8 */ Axywh desk;                               /* desktop limits XYWH */
+    int16 gl_apid;                            /* AES application ID */
+    int16 phys_handle;                        /* workstation for aes */
+    int16 gl_wattr;                           /* attribut width */
+    int16 gl_hattr;                           /* attribut height */
+    Axywh desk;                               /* desktop limits XYWH */
 
     /* VDI */
-    /*   16 */ int16 vdi_handle;                         /* virtual VDI workstation for ACS */
-    /*   18 */ int16 gl_wbox;                            /* cell width of standard char */
-    /*   20 */ int16 gl_hbox;                            /* cell height of standard char */
-    /*   22 */ int16 gl_wchar;                           /* max width of standard char */
-    /*   24 */ int16 gl_hchar;                           /* max height of standard char */
-    /*   26 */ int16 ncolors;                            /* number of colors (2=mono) */
-    /*   28 */ int16 nplanes;                            /* number of colors expressed in planes */
+    int16 vdi_handle;                         /* virtual VDI workstation for ACS */
+    int16 gl_wbox;                            /* cell width of standard char */
+    int16 gl_hbox;                            /* cell height of standard char */
+    int16 gl_wchar;                           /* max width of standard char */
+    int16 gl_hchar;                           /* max height of standard char */
+    int16 ncolors;                            /* number of colors (2=mono) */
+    int16 nplanes;                            /* number of colors expressed in planes */
 
     /* Pathes */
-    /*   30 */ char appname [__PS__];                    /* application complete name */
-    /*  158 */ char apppath [__PS__];                    /* application path */
-    /*  286 */ char apppara [__PS__];                    /* application parameter */
-    /*  414 */ char appfrom [__PS__];                    /* application called from */
-    /*  542 */ char basename[20];                        /* basename appname without extention */
+    char appname [__PS__];                    /* application complete name */
+    char apppath [__PS__];                    /* application path */
+    char apppara [__PS__];                    /* application parameter */
+    char appfrom [__PS__];                    /* application called from */
+    char basename[20];                        /* basename appname without extention */
 
     /* others */
-    /*  562 */ int32 ev_mtcount;                         /* Timerintervall in milli sec (initial 500 ms) */
-    /*  566 */ boolean application;                      /* runs as an application */
-    /*  568 */ boolean multitask;                        /* more than 1 applications possible */
-    /*  570 */ boolean appexit;                          /* application is in system termination mode */
-    /*  572 */ Adescr *description;                      /* surface description, pointer for late assignment */
-    /*  576 */ Asel Aselect;                             /* list of selected objects */
+    int32 ev_mtcount;                         /* Timerintervall in milli sec (initial 500 ms) */
+    boolean application;                      /* runs as an application */
+    boolean multitask;                        /* more than 1 applications possible */
+    boolean appexit;                          /* application is in system termination mode */
+    Adescr *description;                      /* surface description, pointer for late assignment */
+    Asel Aselect;                             /* list of selected objects */
 
     /* context during callback pointer values */
-    /*  600 */ Awindow *ev_window;                       /* actual window */
-    /*  604 */ OBJECT *ev_object;                        /* actual object tree */
-    /*  608 */ int16 ev_obnr;                            /* actual objectnumber, index */
-    /*  610 */ int16 ev_mmox, ev_mmoy;                   /* Mouse position */
-    /*  614 */ int16 ev_mmokstate;                       /* Keyboard state */
-    /*  616 */ int16 dia_abort;                          /* Abort modal dialog */
-    /*  618 */ MFDB screenMFDB;                          /* exactly this */
-    /*  638 */ boolean apterm;                           /* AP_TERM received */
-    /*  640 */ int16 *AESglobal;                         /* points to initialized (AES) global */
-    /*  644 */ int16 fonts;                              /* count of available fonts */
-    /*  646 */ int16 argc;                               /* parameter passed to main routine */
-    /*  648 */ char **argv;                              /* argument list */
-    /*  652 */ char **env;                               /* environment */
-    /*  656 */ int16 fontid;                             /* Fontid for Userdefs */
-    /*  658 */ int16 fheight;                            /* Height for Userdeffonts */
-    /*  660 */ int16 fontsid;                            /* Fontid for Userdef (small) */
-    /*  662 */ int16 fsheight;                           /* Height for Userdeffonts (small) */
-    /*  664 */ void (*ACSterm) (void);                   /* called before terminating ACS */
-    /*  668 */ void (*ACSaboutme) (void);                /* call used for 'about me' */
-    /*  672 */ void (*ACSclose) (void);                  /* call used for 'Quit' */
-    /*  676 */ void (*ACSmessage)(int16 *ev_mmgpbuf);    /* handle unprocessed messages */
-    /*  680 */ void (*ACSmproto)(int16 *ev_mmgpbuf);     /* filter unprocessed messages */
-    /*  684 */ void (*ACStimer)(void);                   /* called at end of event loop */
-    /*  688 */ int16 (*ACSinit0)(void);                  /* pre init */
-    /*  692 */ int16 dither;                             /* dither config */
-    /*  694 */ void (*ACSkey)(int16 *kstate, int16 *key);/* filter keys */
-    /*  698 */ void (*ACSbutton)(int16 *button, int16 *breturn);  /* filter mouse buttons */
-    /*  702 */ void (*ACSmouse)(void);                   /* filter mouse moves (ev_mmox/y) */
-    /*  706 */ void (*ACSwikey)(int16 *kstate, int16 *key);    /* filter keystroke before wi->keys call */
-    /*  710 */ int16 ev_bmask;                           /* evnt_multi */
-    /*  712 */ int16 ev_bstate;                          /* evnt_multi */
-    /*  714 */ int16 ev_mmobutton;                       /* evnt_multi */
-    /*  716 */ int16 ev_mbreturn;                        /* evnt_multi */
-    /*  718 */ int16 ev_mkreturn;                        /* evnt_multi */
-    /*  720 */ int16 ev_mbclicks;                        /* evnt_multi default 2 */
-    /*  722 */ void (*DEBUG_MEM)(void *defective);       /* Debuggable */
-    /*  726 */ char cfg_path [__PS__];                   /* config path initially = apppath*/
-    /*  854 */ char scrp_path [__PS__];                  /* initialised scrap-path */
-    /*  982 */ void (*ACSerror)(int16 errmess, const void *para);    /* error-Routine */
-    /*  986 */ int16 menu_id;                            /* ACC-Menu-ID or -1 */
-    /*  988 */ char *dd_name;                            /* global available name for DD-Protos */
-    /*  992 */ char *alert_name;                         /* own WinAlert-Name */
-    /*  996 */ int16 mfsel_count;                        /* multi-Fsel-Counter */
-    /*  998 */ char separator[256];                      /* Worttrenner */
+    Awindow *ev_window;                       /* actual window */
+    OBJECT *ev_object;                        /* actual object tree */
+    int16 ev_obnr;                            /* actual objectnumber, index */
+    int16 ev_mmox, ev_mmoy;                   /* Mouse position */
+    int16 ev_mmokstate;                       /* Keyboard state */
+    int16 dia_abort;                          /* Abort modal dialog */
+    MFDB screenMFDB;                          /* exactly this */
+    boolean apterm;                           /* AP_TERM received */
+    int16 *AESglobal;                         /* points to initialized (AES) global */
+    int16 fonts;                              /* count of available fonts */
+    int16 argc;                               /* parameter passed to main routine */
+    char **argv;                              /* argument list */
+    char **env;                               /* environment */
+    int16 fontid;                             /* Fontid for Userdefs */
+    int16 fheight;                            /* Height for Userdeffonts */
+    int16 fontsid;                            /* Fontid for Userdef (small) */
+    int16 fsheight;                           /* Height for Userdeffonts (small) */
+    void (*ACSterm) (void);                   /* called before terminating ACS */
+    void (*ACSaboutme) (void);                /* call used for 'about me' */
+    void (*ACSclose) (void);                  /* call used for 'Quit' */
+    void (*ACSmessage)(int16 *ev_mmgpbuf);    /* handle unprocessed messages */
+    void (*ACSmproto)(int16 *ev_mmgpbuf);     /* filter unprocessed messages */
+    void (*ACStimer)(void);                   /* called at end of event loop */
+    int16 (*ACSinit0)(void);                  /* pre init */
+    int16 dither;                             /* dither config */
+    void (*ACSkey)(int16 *kstate, int16 *key);/* filter keys */
+    void (*ACSbutton)(int16 *button, int16 *breturn);  /* filter mouse buttons */
+    void (*ACSmouse)(void);                   /* filter mouse moves (ev_mmox/y) */
+    void (*ACSwikey)(int16 *kstate, int16 *key);    /* filter keystroke before wi->keys call */
+    int16 ev_bmask;                           /* evnt_multi */
+    int16 ev_bstate;                          /* evnt_multi */
+    int16 ev_mmobutton;                       /* evnt_multi */
+    int16 ev_mbreturn;                        /* evnt_multi */
+    int16 ev_mkreturn;                        /* evnt_multi */
+    int16 ev_mbclicks;                        /* evnt_multi default 2 */
+    void (*DEBUG_MEM)(void *defective);       /* Debuggable */
+    char cfg_path [__PS__];                   /* config path initially = apppath*/
+    char scrp_path [__PS__];                  /* initialised scrap-path */
+    void (*ACSerror)(int16 errmess, const void *para);    /* error-Routine */
+    int16 menu_id;                            /* ACC-Menu-ID or -1 */
+    char *dd_name;                            /* global available name for DD-Protos */
+    char *alert_name;                         /* own WinAlert-Name */
+    int16 mfsel_count;                        /* multi-Fsel-Counter */
+    char separator[256];                      /* Worttrenner */
 
     /* Langer Name der Applikation (u.a. fr GEMScript) */
-    /* 1254 */ char *AppLongName;
+    char *AppLongName;
 
     /* Die Config-Strings der Anwendung */
-    /* 1258 */ UConfig *cfg;
+    UConfig *cfg;
 
     /* Allgemeine GEMScript-Funktion der Applikation */
-    /* 1262 */ int16 (*GEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );
+    int16 (*GEMScript)( int16 anz, char **cmd, A_GSAntwort *antwort );
 
     /* new in 3.0.0: */
     /* Erlaubte, d.h. freigeschaltete Dead-Keys aus der Menge ^'`¹\"ø,/~ */
-    /* 1266 */ char ev_mkdead[10];
+    char ev_mkdead[10];
 
     /* Einstellung, ob eine nicht verarbeitete "normale" Taste zusammen mit */
     /* ALT oder CTRL als Tastenkrzel fr Toolbar/Work-Objekt ausprobiert   */
     /* werden soll */
-    /* 1276 */ int16 keyAltCtrlSwitch;
+    int16 keyAltCtrlSwitch;
 
     /* Der MagiC-Cookie */
-    /* 1278 */ MAGX_COOKIE *MagiCCookie;
+    MAGX_COOKIE *MagiCCookie;
 
     /* Der N.AES-Cookie */
-    /* 1282 */ N_AESINFO *NAesCookie;
-    /* 1286 */
+    N_AESINFO *NAesCookie;
 } Ablk;
 
 /******************************************************************************/
@@ -1148,6 +1143,10 @@ extern Ablk *ACSblk;
    #define screenMFDB      (ACSblk-> screenMFDB)
    #define apterm          (ACSblk-> apterm)
    #define AESglobal       (ACSblk-> AESglobal)
+#endif
+
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
 #endif
 
 /******************************************************************************/

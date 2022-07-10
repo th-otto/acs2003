@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char ERR_IM_DEL[] = "[3][ Das Bild| '%s' | ist nicht (mehr) Teil | dieser Datei][ OK ]";
 static char TEXT_001[] = "Abbruch";

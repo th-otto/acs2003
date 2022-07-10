@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char TEXT_002[] = "";
 static char TEXT_003[] = "Datenbl”cke werden von USERDEFs benutzt, und sind daher von den entsprechenden Editoren zu bearbeiten.";

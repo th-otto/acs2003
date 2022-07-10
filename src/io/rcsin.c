@@ -12,10 +12,6 @@ typedef struct {
 static dfn *dfna;
 static short dfn_size;
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static OBJ_ENTRY const obsproto = {
 	NULL,
 	NULL,

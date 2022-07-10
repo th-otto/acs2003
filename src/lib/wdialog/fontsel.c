@@ -12,10 +12,6 @@
 static char TEXT_01[] = "";
 static char TEXT_02[] = "";
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static void FontClicked(void);
 
 static struct {

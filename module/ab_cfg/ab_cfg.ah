@@ -11,10 +11,6 @@
 /*		GUI-LANGUAGE		*/
 #define ACS_LANG1
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 
 /*		ANSI-C Prototypes		*/
 

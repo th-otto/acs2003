@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #if COUNTRY == COUNTRY_DE
 static char A_ADAPTCYC[] = "[2][ Dies ist wahrscheinlich ein| Objekt nach alter Definition.| Soll es auf den Standardwert| gesetzt werden?][OK| Abbruch ]";
 static char BUBBLE_01[] = "Die énderungen werden Åbernommen und Åberschreiben die alten Einstellungen.";

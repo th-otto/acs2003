@@ -1,7 +1,3 @@
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 #define BASE_USERNAME     5
 #define BASE_USERSERIAL   6
 #define BASE_USERKEY      7

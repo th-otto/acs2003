@@ -9,10 +9,6 @@ static void editor_minsize(AUSERBLK *user, int16 *x, int16 *y);
 static OBJECT *editor_object_tree(AUSER_DEF *user, OBJECT *obj);
 static void editor_test_it(AUSER_DEF *user, AUSERBLK *userblk);
 
-#ifndef C_UNION
-#  define C_UNION(x) { (int32)(x) }
-#endif
-
 static OBJECT visual = { -1, -1, -1, G_BUTTON, 0x0000, 0x0000, C_UNION("EDITOR"), 0, 0, 10, 2 };
 static OBJECT logical = { -1, -1, -1, G_USERDEF, 0x0000, 0x0000, C_UNION(0L), 0, 0, 8, 2 };
 
