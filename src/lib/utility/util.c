@@ -700,7 +700,7 @@ boolean Ascrp_get(char *ext, void **buffer, ssize_t *len)
 
 /* -------------------------------------------------------------------------- */
 
-boolean Ascrp_put(const char *ext, void *buffer, long len, boolean append)
+boolean Ascrp_put(const char *ext, const void *buffer, long len, boolean append)
 {
 	char filename[__PS__];
 	char path[__PS__];

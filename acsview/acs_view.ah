@@ -1,0 +1,648 @@
+/*********************************************************************/
+/*                                                                   */
+/* This file was created with ACS3.00 at Sun Jul 10 10:43:18 2022    */
+/*                                                                   */
+/* The contents are based on file:                                   */
+/*    C:\SRC\ACS\ACSVIEW\ACS_VIEW.ACS                                */
+/*                                                                   */
+/* (c) 1991-2003 by Stefan Bachert, Oliver Michalak, Martin Els„sser */
+/*********************************************************************/
+
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+/*		GUI-LANGUAGE		*/
+#if defined(ACS_LANG1) && defined(ACS_LANG2)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG1) && defined(ACS_LANG3)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG1) && defined(ACS_LANG4)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG2) && defined(ACS_LANG3)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG2) && defined(ACS_LANG4)
+	#error "More than one language macros defined!"
+#endif
+#if defined(ACS_LANG3) && defined(ACS_LANG4)
+	#error "More than one language macros defined!"
+#endif
+
+#if !defined(ACS_LANG1) && !defined(ACS_LANG2) && !defined(ACS_LANG3) && !defined(ACS_LANG4)
+	#define ACS_LANG2
+#endif
+
+
+/*		ANSI-C Prototypes		*/
+
+static int16 open_img( Awindow* wind );
+static void save_simple( void );
+
+
+
+
+/*		ALERT BOXES		*/
+
+
+#if defined(ACS_LANG1)			/*		Alerts: ACS_LANG1		*/
+
+static char A_STOP [] = "[2][ Soll die Ausgabe | abgebrochen werden? ][ Abbruch |Weiter]";
+
+#elif defined(ACS_LANG2)			/*		Alerts: ACS_LANG2		*/
+
+static char A_STOP [] = "[2][ Should the output | be aborted? ][ Cancel |Continue]";
+
+#elif defined(ACS_LANG3)			/*		Alerts: ACS_LANG3		*/
+
+static char A_STOP [] = "[2][ Soll die Ausgabe | abgebrochen werden? ][ Abbruch |Weiter]";
+
+#elif defined(ACS_LANG4)			/*		Alerts: ACS_LANG4		*/
+
+static char A_STOP [] = "[2][ Soll die Ausgabe | abgebrochen werden? ][ Abbruch |Weiter]";
+
+#else
+
+	#error "Wrong Language Macro defined"
+
+#endif
+
+
+
+/*		STRINGS		*/
+
+
+#if defined(ACS_LANG1)				/*		Strings: ACS_LANG1		*/
+
+static char MF_TITLE [] = "Dateien laden";
+static char TEXT_01 [] = "";
+static char TEXT_03 [] = " Bild ";
+static char TEXT_10 [] = "ACS-VIEW";
+
+#elif defined(ACS_LANG2)			/*		Strings: ACS_LANG2		*/
+
+static char MF_TITLE [] = "Load files";
+static char TEXT_01 [] = "";
+static char TEXT_03 [] = " Picture ";
+static char TEXT_10 [] = "ACS-VIEW";
+
+#elif defined(ACS_LANG3)			/*		Strings: ACS_LANG3		*/
+
+static char MF_TITLE [] = "Freier String";
+static char TEXT_01 [] = "";
+static char TEXT_03 [] = " Bild ";
+static char TEXT_10 [] = "ACS-VIEW";
+
+#elif defined(ACS_LANG4)			/*		Strings: ACS_LANG4		*/
+
+static char MF_TITLE [] = "Freier String";
+static char TEXT_01 [] = "";
+static char TEXT_03 [] = " Bild ";
+static char TEXT_10 [] = "ACS-VIEW";
+
+#else
+
+	#error "Wrong Language Macro defined"
+
+#endif
+
+
+
+/*		DATAS		*/
+
+static int16 DATAS_02     [] =
+	{
+			0x00a1, 0x9302, 0x0030, 0x0020, 0x0003, 0x0001, 0x0001, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x2110, 0x0000, 0x0000, 0x2110, 0x3700, 0x0001, 0x1020, 
+			0x4880, 0x6c00, 0x8782, 0x3700, 0x1000, 0x1864, 0x0000, 0x000c, 
+			0x2010, 0xc000, 0x0002, 0x4009, 0x0000, 0x0000, 0x4008, 0x0000, 
+			0x0000, 0x8004, 0x0000, 0x000e, 0x8005, 0xc000, 0x0000, 0x8004, 
+			0x0000, 0x0000, 0x8004, 0x0000, 0x3f1c, 0x7878, 0x70f0, 0x00e3, 
+			0x8787, 0x8f0c, 0xfe18, 0x0000, 0x0000, 0x01e7, 0x3870, 0x3c60, 
+			0x0000, 0x0787, 0xc39f, 0xfe1c, 0x0000, 0x0000, 0x01e3, 0x9ce0, 
+			0xe1e0, 0x0000, 0x030f, 0x1e1f, 0x0f07, 0xe000, 0x70c0, 0x30f8, 
+			0x0ccf, 0x8f3c, 0x0000, 0x0300, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	};
+
+static int16 DATAS_04     [] =
+	{
+			0x0000, 0x0000, 0x0308, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0010, 
+			0xa783, 0xe000, 0x0183, 0x4f1c, 0xfc00, 0x0000, 0x0078, 0x2f00, 
+			0x0000, 0x009e, 0xc780, 0x008e, 0x7904, 0x0bc0, 0x0000, 0x01e2, 
+			0x4780, 0x0000, 0x0320, 0x2b00, 0x0048, 0x3b10, 0x0400, 0x0000, 
+			0x0300, 0x0a20, 0x0000, 0x0200, 0x0070, 0x0010, 0x7580, 0x0070, 
+			0x0000, 0x0500, 0x00f0, 0x0000, 0x0600, 0x04f0, 0x0000, 0x0600, 
+			0x08f0, 0x01c0, 0xf6a0, 0x2c70, 0x0000, 0x0382, 0x0060, 0x0000, 
+			0x0310, 0xaa20, 0x0000, 0x03c2, 0x1600, 0x0700, 0xf998, 0x4f00, 
+			0x0000, 0x01f1, 0xbf80, 0x0000, 0x00fa, 0xfe00, 0x1e10, 0x0e5f, 
+			0xf800, 0x00c0, 0x0701, 0xa000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0010, 
+			0xa783, 0xe000, 0x0183, 0x4f1c, 0xfc00, 0x0000, 0x0078, 0x0f00, 
+			0x0000, 0x0086, 0x8780, 0x008e, 0x7900, 0x0bc0, 0x0000, 0x01a0, 
+			0x47c0, 0x0000, 0x0300, 0x2be0, 0x0048, 0x3b00, 0x04e0, 0x0000, 
+			0x0300, 0x0ba0, 0x0000, 0x0200, 0x01f0, 0x0010, 0x7580, 0x03f0, 
+			0x0000, 0x0500, 0x03f0, 0x0000, 0x0600, 0x07f0, 0x0000, 0x0600, 
+			0x0bf0, 0x01c0, 0xf680, 0x2f70, 0x0000, 0x0302, 0x03e0, 0x0000, 
+			0x0210, 0xaba0, 0x0000, 0x03c2, 0x17e0, 0x0700, 0xf988, 0x4fe0, 
+			0x0000, 0x01e1, 0xbfc0, 0x0000, 0x00da, 0xfe00, 0x1e10, 0x0e5f, 
+			0xf800, 0x00c0, 0x0701, 0xa000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0010, 
+			0xa783, 0xe000, 0x0183, 0x4f1c, 0xfc00, 0x0000, 0x0078, 0x0f00, 
+			0x0000, 0x0086, 0x8780, 0x008e, 0x7900, 0x0bc0, 0x0000, 0x01a0, 
+			0x4780, 0x0000, 0x0300, 0x2b00, 0x0048, 0x3b00, 0x0400, 0x0000, 
+			0x0300, 0x0a60, 0x0000, 0x0200, 0x0070, 0x0010, 0x7580, 0x0070, 
+			0x0000, 0x0500, 0x00f0, 0x0000, 0x0600, 0x04f0, 0x0000, 0x0600, 
+			0x08f0, 0x01c0, 0xf680, 0x2cf0, 0x0000, 0x0302, 0x0060, 0x0000, 
+			0x0210, 0xaa60, 0x0000, 0x03c2, 0x1600, 0x0700, 0xf988, 0x4f00, 
+			0x0000, 0x01e1, 0xbf80, 0x0000, 0x00da, 0xfe00, 0x1e10, 0x0e5f, 
+			0xf800, 0x00c0, 0x0701, 0xa000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x048c, 
+			0x6180, 0x0000, 0x0040, 0xc700, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0041, 0xf800, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0040, 0x0003, 0xb800, 0x0000, 0x0000, 
+			0x0000, 0x0160, 0x0000, 0x0000, 0x01f0, 0x0007, 0x7000, 0x01f0, 
+			0x0000, 0x0000, 0x00f0, 0x0000, 0x0000, 0x03f0, 0x0000, 0x0000, 
+			0x03f0, 0x001e, 0xf000, 0x02f0, 0x0000, 0x0000, 0x00e0, 0x0000, 
+			0x0000, 0x01e0, 0x0000, 0x0000, 0x0120, 0x00e7, 0xf800, 0x0060, 
+			0x0000, 0x0000, 0x0040, 0x0000, 0x0000, 0x0180, 0x000f, 0x1e20, 
+			0x0700, 0x003c, 0x3f1e, 0x5c00, 0x0000, 0x0003, 0xe000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000
+	};
+
+static int16 DATAS_05     [] =
+	{
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x049c, 0xe783, 0xe000, 0x01c3, 
+			0xcf1f, 0xfc00, 0x0000, 0x007f, 0xff00, 0x0000, 0x00ff, 0xff80, 
+			0x00cf, 0xf9ff, 0xffc0, 0x0000, 0x01ff, 0xffc0, 0x0000, 0x03ff, 
+			0xffe0, 0x004b, 0xbbff, 0xffe0, 0x0000, 0x03ff, 0xffe0, 0x0000, 
+			0x03ff, 0xfff0, 0x0017, 0x77ff, 0xfff0, 0x0000, 0x07ff, 0xfff0, 
+			0x0000, 0x07ff, 0xfff0, 0x0000, 0x07ff, 0xfff0, 0x01de, 0xf7ff, 
+			0xfff0, 0x0000, 0x03ff, 0xffe0, 0x0000, 0x03ff, 0xffe0, 0x0000, 
+			0x03ff, 0xffe0, 0x07e7, 0xf9ff, 0xffe0, 0x0000, 0x01ff, 0xffc0, 
+			0x0000, 0x00ff, 0xff80, 0x1e1f, 0x1e7f, 0xff00, 0x00fc, 0x3f1f, 
+			0xfc00, 0x0000, 0x0003, 0xe000, 0x0000, 0x0000, 0x0000, 0x0000, 
+			0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	};
+
+
+
+/*		AUSERBLK		*/
+
+static AUSERBLK A_PICTURE02  = {A_picture, 0x20690L    , Auo_picture , DATAS_02    , NULL, NULL, NULL, NULL};
+
+
+/*		ICONS		*/
+
+static CICON _C4_I_DESK = {
+		4,
+		&DATAS_04    [3],
+		DATAS_05    ,
+		NULL,
+		NULL,
+		NULL};
+static int16 _MSK_I_DESK [] = {
+		0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+		0x0000, 0x0000, 0x0000, 0x0000, 0x0931, 0xcf07, 0xc000, 0x0387, 
+		0x9e3f, 0xf800, 0x0000, 0x00ff, 0xfe00, 0x0000, 0x01ff, 0xff00, 
+		0x019e, 0xf3ff, 0xff80, 0x0000, 0x03ff, 0xff80, 0x0000, 0x07ff, 
+		0xffc0, 0x0093, 0x77ff, 0xffc0, 0x0000, 0x07ff, 0xffc0, 0x0000, 
+		0x0fff, 0xffe0, 0x002e, 0xefff, 0xffe0, 0x0000, 0x0fff, 0xffe0, 
+		0x0000, 0x0fff, 0xffe0, 0x0000, 0x0fff, 0xffe0, 0x01bd, 0xefff, 
+		0xffe0, 0x0000, 0x07ff, 0xffc0, 0x0000, 0x07ff, 0xffc0, 0x0000, 
+		0x07ff, 0xffc0, 0x0bc7, 0xf3ff, 0xff80, 0x0000, 0x03ff, 0xff80, 
+		0x0000, 0x01ff, 0xff00, 0x3c3e, 0x3cff, 0xfe00, 0x01f8, 0x7e3f, 
+		0xf800, 0x0000, 0x0007, 0xc000, 0x0000, 0x0000, 0x0000, 0x0000, 
+		0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000};
+static int16 _DAT_I_DESK [] = {
+		0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+		0x0000, 0x0000, 0x0000, 0x0000, 0x0931, 0xcf07, 0xc000, 0x0387, 
+		0x9e38, 0x7800, 0x0000, 0x00c0, 0x4e00, 0x0000, 0x01b0, 0x8300, 
+		0x019e, 0xf308, 0x0180, 0x0000, 0x0280, 0x0180, 0x0000, 0x0642, 
+		0x02c0, 0x0093, 0x7400, 0x0140, 0x0000, 0x0400, 0x02c0, 0x0000, 
+		0x0c00, 0x05e0, 0x002e, 0xe840, 0x03e0, 0x0000, 0x0900, 0x05e0, 
+		0x0000, 0x0a00, 0x03e0, 0x0000, 0x0a00, 0x05e0, 0x01bd, 0xec10, 
+		0x02e0, 0x0000, 0x0420, 0x01c0, 0x0000, 0x06c0, 0x02c0, 0x0000, 
+		0x0602, 0x0140, 0x0bc7, 0xf200, 0x0080, 0x0000, 0x0304, 0x0180, 
+		0x0000, 0x0180, 0x0300, 0x3c3e, 0x3ce0, 0x0e00, 0x01f8, 0x7e3c, 
+		0x7800, 0x0000, 0x0007, 0xc000, 0x0000, 0x0000, 0x0000, 0x0000, 
+		0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000};
+static CICONBLK I_DESK = {{
+		_MSK_I_DESK, _DAT_I_DESK, TEXT_10,
+		0x1000,  0,  0, 12,  0, 48, 32,  0, 32, 72,  8},&_C4_I_DESK};
+
+
+
+/*		OBJECT TREES		*/
+
+static struct {
+	OBJECT root;
+	AOBJECT _00aD_IMG;
+} D_IMG = {
+	{ -1, -1, -1, 24, 0x2005,    0x0, C_UNION(&A_PICTURE02)  ,  0,  0, 10,  4 },
+	{save_simple , NULL		 , 0x8020,    0x0, NULL				, NULL				,    0x0, 0					}
+};
+
+
+/*		WINDOWS		*/
+
+Awindow F_IMG        =
+	{
+		NULL,
+		Awi_service,
+		make_img    ,
+		open_img    ,
+		Awi_init,
+		&D_IMG.root       , NULL, 0, 0, -1,
+		0x4fef, { 0,  0, 120, 50},
+		{0, 0, 0, 0}, {0, 0, 0, 0}, {-1, -1, -1, -1}, 0, 0,
+		0xf8f8,
+		TEXT_03     ,
+		TEXT_01     ,
+		10000,  0x100, 0, -1,
+		&I_DESK,
+		NULL,
+		Awi_keys,
+		Awi_obchange,
+		Awi_redraw,
+		Awi_topped,
+		Awi_closed,
+		Awi_fulled,
+		Awi_arrowed,
+		Awi_hslid,
+		Awi_vslid,
+		Awi_sized,
+		Awi_moved,
+		Awi_iconify,
+		Awi_uniconify,
+		Awi_gemscript,
+		NULL,
+		NULL
+	};
+
+
+
+
+Adescr ACSdescr =
+	{
+		"ACS3.00", 300,
+		-99, -99,
+		0x77,
+		"  ACS-Viewer",
+		&PUR_DESK, NULL,
+		{
+			{  0, NULL},
+			{  2, NULL},
+			{  3, NULL},
+			{  4, NULL},
+			{  1, NULL},
+			{  5, NULL},
+			{  6, NULL},
+			{  7, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL},
+			{  0, NULL}
+		},
+		{
+		"[3][ Es ist ein allgemeiner | Fehler aufgetreten! ][ Abbruch ]",
+		"[1][ Ein Fehler ist aufgetreten! | %s][ Abbruch ]",
+		"[1][ Die Anzahl der momentan| darstellbaren Farben oder| die aktuelle Bildaufl”sung | ist nicht korrekt!][ Abbruch ]",
+		"[1][ Eine Datei liež sich | nicht erzeugen!][ Abbruch ]",
+		"[3][ Die Datei '%s'| l„žt sich nicht erzeugen! ][ Abbruch ]",
+		"[1][ Auf fremden Speicher | wurde zugegriffen!][ Abbruch ]",
+		"[2][ | Soll das Accessory | >>               << | gestartet werden?| ][Ja|  Nein  ]",
+		"[2][ Unbekannte GEM-Nachricht | erhalten.| ID = '%s'| Weiterhin berichten?][Ja|  Nein  ]",
+		"[3][ Keine freie GEM-Fenster-ID | mehr vorhanden!| Abhilfe: Ein offenes| GEM-Fenster schliežen.][    OK    ]",
+		"[3][ Kein freier ACS-Fenster- | Platz mehr vorhanden!| Abhilfe: Ein ACS-Fenster| l”schen.][    OK    ]",
+		"[1][ Es ist ein Fehler bei der | Ein-/Ausgabe aufgetreten!][ Abbruch ]",
+		"[1][ Es ist ein Fehler in| der Speicherverwaltung | aufgetreten!][ Abbruch ]",
+		"[1][ Das Modul konnte nicht | geladen werden!][ Abbruch ]",
+		"[1][ Das Modul '%s' | konnte nicht geladen werden! ][ Abbruch ]",
+		"[1][ Beim Laden des Moduls | (mit Pexec-3) ist ein| Fehler aufgetreten!][ Abbruch ]",
+		"[1][ Beim Laden des Moduls | '%s' ist ein | Fehler aufgetreten!][ Abbruch ]",
+		"[1][ Der dem Modul folgende| Restspeicher kann nicht | freigegeben werden!][ Abbruch ]",
+		"[1][ Der dem Modul '%s' | folgenden Restspeicher kann | nicht freigegeben werden!][ Abbruch ]",
+		"[1][ Die Adresse eines Speicher- | blocks ist ungerade!][ Abbruch ]",
+		"[1][ Eine Datei liež sich| nicht korrekt ”ffnen! ][ Abbruch ]",
+		"[1][ Die Datei '%s' | l„žt sich nicht ”ffnen!][ Abbruch ]",
+		"[1][ Es steht nicht gengend | Speicher zur Verfgung!][ Abbruch ]",
+		"[1][ Ein Fehler trat auf einem| Ein-/Ausgabekanal auf!][ Abbruch ]",
+		"[1][ Ein Speicherblock| befindet sich aužerhalb | der legalen Bereiche!][ Abbruch ]",
+		"[1][ Beim Lesen aus einer Datei| ist ein Fehler aufgetreten! ][ Abbruch ]",
+		"[1][ Beim Lesen aus der Datei | '%s' ist ein | Fehler aufgetreten!][ Abbruch ]",
+		"[1][ Das Modul hat leider eine | falsche Versionsnummer!][ Abbruch ]",
+		"[1][ Das Modul '%s' hat | eine falsche Versionsnummer!][ Abbruch ]",
+		"[1][ Beim Schreiben in eine Datei | ist ein Fehler aufgetreten!][ Abbruch ]",
+		"[1][ Beim Schreiben in die Datei | '%s' ist ein | Fehler aufgetreten!][ Abbruch ]",
+#if defined(ACS_LANG1)
+		" Achtung ",
+		" Frage ",
+		" Stop ",
+		" Meldung "
+#elif defined(ACS_LANG2)
+		" Attention ",
+		" Question ",
+		" Stop ",
+		" Message "
+#endif
+		}
+	};
+
+
+ Aconfig ACSconfig =
+	{
+		{"", "%;", NULL, FALSE, FALSE, 32},
+		"PUR_DESK",
+		NULL, NULL, NULL, NULL, NULL, 
+		NULL, NULL, NULL, NULL, NULL, 13, 0, NULL, NULL, ACSinit
+	};
+
+
+/*		ANSI-C Routines		*/
+
+Awindow *new_view( void *para );
+static void exec_cmd( char *file );
+
+
+
+#define LINE_SKIP 	(80L)
+
+void exec_cmd (char *file)
+{
+	Awindow	*wi;
+	char		ext[11], *buffer, *ptr, out[128];
+	long		f_id, i, len, reallen, counter;
+	INT16		keys;
+	
+	if (NULL==file || EOS==*file || Af_length (file)<0L)
+	{	if (NULL != (wi = EDITOR.create (NULL)))
+			(wi->open) (wi);
+		return;
+	}
+	
+	Af_2ext(ext, file);
+	vq_key_s(ACSblk->vdi_handle, &keys);
+	
+	/* Datei in ASCII-Editor laden */
+	if( (keys & (K_RSHIFT|K_LSHIFT) ||
+			!strcmp(ext, "TXT") ||
+			!strcmp(ext, "DOC") ||
+			!strcmp(ext, "ASC")) &&
+			(wi=EDITOR.create(NULL))!=NULL )
+	{
+		(wi->service)(wi, AS_EDLOADFILE, file);
+		(wi->open)(wi);
+		return;
+	}
+	
+	/* BIlder anzeigen */
+	if (!strcmp(ext, "IMG") && (wi=F_IMG.create(file))!=NULL )
+	{
+		(wi->open)(wi);
+		return;
+	}
+	
+	/* Module werden geladen und gestartet */
+	if( !strcmp(ext, "AM") || !strcmp(ext, "AMA") )
+	{
+		Ash_module (file);
+		return;
+	}
+	
+	if( wproto && (buffer=Ax_malloc(BUFF_LEN))!=NULL )
+	{
+		if( (f_id=Fopen(file, FO_READ))<0 )
+			return;
+		
+		reallen = Fseek(0L, (INT16)f_id, 2);
+		Fseek (0L, (INT16) f_id, 0);
+		wprintf (wproto, "Viewer: %s:\n\n", file);
+		do
+		{
+			len = min(reallen, BUFF_LEN);
+			if( Fread((INT16)f_id, len, buffer)!=len )
+			{
+				Ax_free(buffer);
+				Fclose((INT16)f_id);
+				return;
+			}
+			
+			ptr = buffer;
+			do
+			{
+				counter = min(len, LINE_SKIP);
+				for( i=0l ; i<counter ; i++, ptr++ )
+					if( *ptr<' ' )
+						out[i]='.';
+					else
+						out[i]=*ptr;
+				out[counter]=EOS;
+				wputs(out, wproto);
+				vq_key_s(ACSblk->vdi_handle, &keys);
+				if (keys & (K_RSHIFT|K_LSHIFT))
+					if( Awi_alert(1, A_STOP)==1 )
+					{
+						Ax_free(buffer);
+						Fclose((INT16)f_id);
+						return;
+					}
+				len -= LINE_SKIP;
+			}
+			while( len>0l );
+			reallen -= BUFF_LEN;
+		}
+		while( reallen>0l );
+		wprintf(wproto, "\n");
+		Ax_free(buffer);
+		Fclose((INT16) f_id);
+		Awi_show(wproto);
+	}
+}
+
+Awindow *make_img (void *para)
+{	Awindow		*wi;
+	Awiob			wiob;
+	char			*file, *buffer;
+	long			f_id, len;
+	MFDB			*pic;
+
+	wi = Awi_create(&F_IMG);
+	if( wi==NULL )
+		return NULL;
+	
+	wiob.window = wi;
+	wiob.entry = wi->work;
+	wiob.obnr = 0;
+	Auo_picture(wi->work, AUO_SELF, &wiob);
+	if( (file=para)!=NULL )
+	{
+		buffer = wi->name;
+		wi->name = Ast_create(file);
+		if( wi->name==NULL )
+			wi->name = buffer;
+		f_id = Fopen(file, FO_READ);
+		if( f_id<0 )
+			return wi;
+		len = Fseek(0L, (INT16) f_id, 2);			/* L„nge */
+		Fseek(0L, (INT16) f_id, 0);						/* zurck */
+		
+		buffer = Ax_malloc(len);
+		if( buffer==NULL )
+		{
+			Fclose((INT16) f_id);
+			if( wproto )
+				wprintf(wproto, "Viewer: Bild zu grož.\n");
+			return wi;
+		}
+		if( Fread((INT16)f_id, len, buffer)!=len )
+		{
+			Ax_ifree(buffer);
+			Fclose((INT16) f_id);
+			if( wproto )
+				wprintf(wproto, "Viewer: Fehler beim Laden des Bildes.\n");
+			return wi;
+		}
+		Fclose((INT16) f_id);
+		if( Abp_img2mfdb((IMG_HEADER*)buffer, &pic, TRUE)!=OK )
+		{
+			Ax_ifree(buffer);
+			if( wproto )
+				wprintf(wproto, "Viewer: Fehler beim Konvertieren.\n");
+			return wi;
+		}
+		Ax_free(buffer);
+		wi->work->ob_width = max(pic->fd_w, 140);
+		wi->work->ob_height = max(pic->fd_h, 64);
+
+		Auo_picture(wi->work, AUO_PICMFDB, pic);
+	}
+	return wi;
+}
+
+static void md_proto (void)
+{
+	OBJECT		*edi;
+	long			sel[] = {-1, -1, 0, 0};
+	EDITGETS	gets;
+	
+	if( wproto==NULL ||
+			!(wproto->service)(wproto, AS_EDGETENTRY, &edi) ||
+			edi==NULL )
+		return;
+	
+	if( ACSblk->ev_object->ob_state & AOS_DCLICK )
+		Auo_editor(edi, AUO_EDDELETE, NULL);
+	else
+	{
+		Aus_editor();
+		Auo_editor(edi, AUO_EDGETSELECT, sel);
+		if( sel[0]>=0l )
+		{
+			for( gets.row=sel[0] ; gets.row<=sel[2] ; gets.row++ )
+			{
+				Auo_editor(edi, AUO_EDGETROW, &gets);
+				Ascrp_put("TXT", gets.text, gets.size, (gets.row==sel[0]?0:1));
+			}
+			Auo_editor(edi, AUO_EDUNSELECT, NULL);
+		}
+	}
+	Auo_editor(edi, AUO_FULLUPDATE, NULL);
+}
+
+Awindow *new_view( void *para )
+{
+	char	*file, path[256];
+	
+	file = para;
+	if( file && *file )
+		exec_cmd(file);
+	else
+	{
+		if( last_path )
+			strcpy (path, last_path);
+		else
+			strcpy (path, "C:\\*.*");
+		
+		file = Af_first_fsel(MF_TITLE, path, "*");
+		if( file!=NULL )
+		{
+			if( last_path )
+				Ast_delete (last_path);
+			last_path = Ast_create(file);
+			while( file )
+			{
+				exec_cmd(file);
+				file = Af_next_fsel();
+			}
+		}
+	}
+	return NULL;
+}
+
+static INT16 open_img (Awindow *wi)
+{
+	wi->wi_act.x = max(wi->wi_act.x, ACSblk->desk.x+1);
+	wi->wi_act.y = max(wi->wi_act.y, ACSblk->desk.y+1);
+	Awi_open(wi);
+	return OK;
+}
+
+
+static void save_simple (void)
+{
+	MFDB	*src, *dest;
+	
+	if( ACSblk->ev_mmokstate & K_CTRL )
+	{
+		src = ((AUSERBLK*) ACSblk->ev_object[ACSblk->ev_obnr].ob_spec.userblk)->ub_ptr3;
+		dest = Abp_create(src->fd_w, src->fd_h);
+		if( dest!=NULL )
+		{
+			dest->fd_stand = 1;
+			dest->fd_h = src->fd_h;
+			dest->fd_w = src->fd_w;
+			dest->fd_wdwidth = src->fd_wdwidth;
+			vr_trnfm(ACSblk->vdi_handle, src, dest);
+			Ascrp_put("img", dest->fd_addr, (long) dest->fd_wdwidth * (long) dest->fd_h * (long) ACSblk->nplanes * 2L, FALSE);
+			Abp_delete(dest);
+		}
+	}
+}
+
+

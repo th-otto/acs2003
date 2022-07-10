@@ -659,7 +659,7 @@ boolean Ascrp_get( const char *ext, void **buffer, ssize_t *len );
 /* Writes to SCRAP."ext" the len-bytes len buffer    */
 /* If append==TRUE, the Buffer will be appendended   */
 /* to a possibly existing file. -> TRUE if all is ok */
-boolean Ascrp_put (const char *ext, void *buffer, ssize_t len, boolean append );
+boolean Ascrp_put (const char *ext, const void *buffer, ssize_t len, boolean append );
 
 /******************************************************************************/
 /*                                                                            */
