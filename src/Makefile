@@ -1,13 +1,6 @@
-CROSS=m68k-atari-mint-
-
-OPT = -O2 -fomit-frame-pointer
-DEFS =
-WARN = -Wall -Wstrict-prototypes -Wmissing-prototypes -Wundef -Werror
-CFLAGS = -I. -Ilib -I../include $(OPT) $(WARN) $(DEFS)
-CC = $(CROSS)gcc
-AS = $(CROSS)gcc
-AR = $(CROSS)ar
-ARFLAGS = rcs
+top_srcdir=..
+INCLUDES = -Ilib
+include $(top_srcdir)/make.config
 
 
 OBJS = \
@@ -164,10 +157,7 @@ MODUL_OBJS = \
 	lib/modul/modulold.o \
 	$(empty)
 
-.s.o:
-	$(CC) -c -o $@ $(CFLAGS) $<
-
-all: acs.app
+all:: acs.app $(ACS_LOAD)
 
 acs.app: $(OBJS) Makefile
 	$(CC) $(CFLAGS) -o $@ $(OBJS) -lgem
@@ -186,5 +176,8 @@ lib/acsmod.a: $(MODUL_OBJS)
 
 #$(OBJS): acs_i.h
 
+$(ACS_LOAD): lib/modul/acs_load.s
+	$(CC) -c -o $@ $(CFLAGS) $<
+	
 clean::
-	$(RM) $(OBJS) $(ACSPLUS_OBJS) $(LIB_OBJS) $(MODUL_OBJS) acs.app
+	$(RM) $(OBJS) $(ACSPLUS_OBJS) $(LIB_OBJS) $(MODUL_OBJS) $(ACS_LOAD) acs.app

@@ -7,8 +7,10 @@
 /* (c) 2022 Thorsten Otto                                                     */
 /******************************************************************************/
 
-	.globl ACSblk
-	.xref ACSinit
+	.globl _ACSblk
+	.globl __globl
+	.globl _main
+	.xref _ACSinit
 
 WITH_EXTENSIONS = 0
 
@@ -17,13 +19,16 @@ WITH_EXTENSIONS = 0
 /*
  * ACSmod header structure
  */
+_main:
 compiler:
 	clr.w      -(a7)
 	trap       #1
 	dc.l       0x41435339    /* magic2 */
 init_modul:
-	dc.l       ACSinit       /* entry */
-ACSblk:
+	dc.l       _ACSinit      /* entry */
+_ACSblk:
+	dc.l       0             /* filled in by loader */
+__globl:
 	dc.l       0             /* filled in by loader */
 	dc.l       (funcsend-funcs)/6  /* funcsAnz */
 
@@ -84,667 +89,667 @@ indirect:
  */
  
 /* backplan */
-	.globl Abp_create
-Abp_create:
+	.globl _Abp_create
+_Abp_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAbp(pc),-(a7)
 		bra.s      indirect
-	.globl Abp_delete
-Abp_delete:
+	.globl _Abp_delete
+_Abp_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAbp(pc),-(a7)
 		bra.s      indirect
-	.globl Abp_start
-Abp_start:
+	.globl _Abp_start
+_Abp_start:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAbp(pc),-(a7)
 		bra.s      indirect
-	.globl Abp_end
-Abp_end:
+	.globl _Abp_end
+_Abp_end:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAbp(pc),-(a7)
 		bra.s      indirect
-	.globl Abp_mfdb2img
-Abp_mfdb2img:
+	.globl _Abp_mfdb2img
+_Abp_mfdb2img:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAbp(pc),-(a7)
 		bra.s      indirect
-	.globl Abp_img2mfdb
-Abp_img2mfdb:
+	.globl _Abp_img2mfdb
+_Abp_img2mfdb:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAbp(pc),-(a7)
 		bra.s      indirect
 
 /* config */
-	.globl Acfg_create
-Acfg_create:
+	.globl _Acfg_create
+_Acfg_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra.s      indirect
-	.globl Acfg_delete
-Acfg_delete:
+	.globl _Acfg_delete
+_Acfg_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra.s      indirect
-	.globl Acfg_clear
-Acfg_clear:
+	.globl _Acfg_clear
+_Acfg_clear:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra.s      indirect
-	.globl Acfg_clearAllGroups
-Acfg_clearAllGroups:
+	.globl _Acfg_clearAllGroups
+_Acfg_clearAllGroups:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_clearGroup
-Acfg_clearGroup:
+	.globl _Acfg_clearGroup
+_Acfg_clearGroup:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_load
-Acfg_load:
+	.globl _Acfg_load
+_Acfg_load:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_save
-Acfg_save:
+	.globl _Acfg_save
+_Acfg_save:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_isChanged
-Acfg_isChanged:
+	.globl _Acfg_isChanged
+_Acfg_isChanged:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_getValue
-Acfg_getValue:
+	.globl _Acfg_getValue
+_Acfg_getValue:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_setValue
-Acfg_setValue:
+	.globl _Acfg_setValue
+_Acfg_setValue:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_clearValue
-Acfg_clearValue:
+	.globl _Acfg_clearValue
+_Acfg_clearValue:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_getChar
-Acfg_getChar:
+	.globl _Acfg_getChar
+_Acfg_getChar:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_setChar
-Acfg_setChar:
+	.globl _Acfg_setChar
+_Acfg_setChar:
 		move.l     #0x00000030,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_getLong
-Acfg_getLong:
+	.globl _Acfg_getLong
+_Acfg_getLong:
 		move.l     #0x00000034,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_setLong
-Acfg_setLong:
+	.globl _Acfg_setLong
+_Acfg_setLong:
 		move.l     #0x00000038,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_getString
-Acfg_getString:
+	.globl _Acfg_getString
+_Acfg_getString:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_getBool
-Acfg_getBool:
+	.globl _Acfg_getBool
+_Acfg_getBool:
 		move.l     #0x00000040,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_setBool
-Acfg_setBool:
+	.globl _Acfg_setBool
+_Acfg_setBool:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_clearHeader
-Acfg_clearHeader:
+	.globl _Acfg_clearHeader
+_Acfg_clearHeader:
 		move.l     #0x00000048,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_headAnzahl
-Acfg_headAnzahl:
+	.globl _Acfg_headAnzahl
+_Acfg_headAnzahl:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_setHeader
-Acfg_setHeader:
+	.globl _Acfg_setHeader
+_Acfg_setHeader:
 		move.l     #0x00000050,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_getHeader
-Acfg_getHeader:
+	.globl _Acfg_getHeader
+_Acfg_getHeader:
 		move.l     #0x00000054,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_grpAnzahl
-Acfg_grpAnzahl:
+	.globl _Acfg_grpAnzahl
+_Acfg_grpAnzahl:
 		move.l     #0x00000058,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_grpName
-Acfg_grpName:
+	.globl _Acfg_grpName
+_Acfg_grpName:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_strAnzahl
-Acfg_strAnzahl:
+	.globl _Acfg_strAnzahl
+_Acfg_strAnzahl:
 		move.l     #0x00000060,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_strName
-Acfg_strName:
+	.globl _Acfg_strName
+_Acfg_strName:
 		move.l     #0x00000064,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_strValue
-Acfg_strValue:
+	.globl _Acfg_strValue
+_Acfg_strValue:
 		move.l     #0x00000068,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_strIsComment
-Acfg_strIsComment:
+	.globl _Acfg_strIsComment
+_Acfg_strIsComment:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_isCfgfile
-Acfg_isCfgfile:
+	.globl _Acfg_isCfgfile
+_Acfg_isCfgfile:
 		move.l     #0x00000070,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_createInfo
-Acfg_createInfo:
+	.globl _Acfg_createInfo
+_Acfg_createInfo:
 		move.l     #0x00000074,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_deleteInfo
-Acfg_deleteInfo:
+	.globl _Acfg_deleteInfo
+_Acfg_deleteInfo:
 		move.l     #0x00000078,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_setInfo
-Acfg_setInfo:
+	.globl _Acfg_setInfo
+_Acfg_setInfo:
 		move.l     #0x0000007C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_getInfo
-Acfg_getInfo:
+	.globl _Acfg_getInfo
+_Acfg_getInfo:
 		move.l     #0x00000080,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_copyInfo
-Acfg_copyInfo:
+	.globl _Acfg_copyInfo
+_Acfg_copyInfo:
 		move.l     #0x00000084,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_flags
-Acfg_flags:
+	.globl _Acfg_flags
+_Acfg_flags:
 		move.l     #0x00000088,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_isGroupPresent
-Acfg_isGroupPresent:
+	.globl _Acfg_isGroupPresent
+_Acfg_isGroupPresent:
 		move.l     #0x0000008C,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_isStringPresent
-Acfg_isStringPresent:
+	.globl _Acfg_isStringPresent
+_Acfg_isStringPresent:
 		move.l     #0x00000090,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl Acfg_getDouble
-Acfg_getDouble:
+	.globl _Acfg_getDouble
+_Acfg_getDouble:
 		move.l     #0x00000094,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
-	.globl Acfg_setDouble
-Acfg_setDouble:
+	.globl _Acfg_setDouble
+_Acfg_setDouble:
 		move.l     #0x00000098,-(a7)
 		move.l     funcAcfg(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* character */
-	.globl Ach_tolower
-Ach_tolower:
+	.globl _Ach_tolower
+_Ach_tolower:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAch(pc),-(a7)
 		bra        indirect
-	.globl Ach_toupper
-Ach_toupper:
+	.globl _Ach_toupper
+_Ach_toupper:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAch(pc),-(a7)
 		bra        indirect
-	.globl Ach_isWhite
-Ach_isWhite:
+	.globl _Ach_isWhite
+_Ach_isWhite:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAch(pc),-(a7)
 		bra        indirect
 
 /* selection */
-	.globl Adr_box
-Adr_box:
+	.globl _Adr_box
+_Adr_box:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAdr(pc),-(a7)
 		bra        indirect
-	.globl Adr_drag
-Adr_drag:
+	.globl _Adr_drag
+_Adr_drag:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAdr(pc),-(a7)
 		bra        indirect
-	.globl Adr_next
-Adr_next:
+	.globl _Adr_next
+_Adr_next:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAdr(pc),-(a7)
 		bra        indirect
-	.globl Adr_add
-Adr_add:
+	.globl _Adr_add
+_Adr_add:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAdr(pc),-(a7)
 		bra        indirect
-	.globl Adr_del
-Adr_del:
+	.globl _Adr_del
+_Adr_del:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAdr(pc),-(a7)
 		bra        indirect
-	.globl Adr_unselect
-Adr_unselect:
+	.globl _Adr_unselect
+_Adr_unselect:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAdr(pc),-(a7)
 		bra        indirect
-	.globl Adr_start
-Adr_start:
+	.globl _Adr_start
+_Adr_start:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAdr(pc),-(a7)
 		bra        indirect
 
 /* event */
-	.globl Aev_quit
-Aev_quit:
+	.globl _Aev_quit
+_Aev_quit:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAev(pc),-(a7)
 		bra        indirect
-	.globl Aev_release
-Aev_release:
+	.globl _Aev_release
+_Aev_release:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAev(pc),-(a7)
 		bra        indirect
-	.globl Aev_mess
-Aev_mess:
+	.globl _Aev_mess
+_Aev_mess:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAev(pc),-(a7)
 		bra        indirect
-	.globl Aev_unhidepointer
-Aev_unhidepointer:
+	.globl _Aev_unhidepointer
+_Aev_unhidepointer:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAev(pc),-(a7)
 		bra        indirect
-	.globl Aev_DhstAdd
-Aev_DhstAdd:
+	.globl _Aev_DhstAdd
+_Aev_DhstAdd:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAev(pc),-(a7)
 		bra        indirect
-	.globl Aev_DhstSaved
-Aev_DhstSaved:
+	.globl _Aev_DhstSaved
+_Aev_DhstSaved:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAev(pc),-(a7)
 		bra        indirect
-	.globl Aev_WmRedraw
-Aev_WmRedraw:
+	.globl _Aev_WmRedraw
+_Aev_WmRedraw:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAev(pc),-(a7)
 		bra        indirect
 
 /* file utilities */
-	.globl Af_cfgfile
-Af_cfgfile:
+	.globl _Af_cfgfile
+_Af_cfgfile:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_select
-Af_select:
+	.globl _Af_select
+_Af_select:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_2drv
-Af_2drv:
+	.globl _Af_2drv
+_Af_2drv:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_2path
-Af_2path:
+	.globl _Af_2path
+_Af_2path:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_2name
-Af_2name:
+	.globl _Af_2name
+_Af_2name:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_2fullname
-Af_2fullname:
+	.globl _Af_2fullname
+_Af_2fullname:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_2ext
-Af_2ext:
+	.globl _Af_2ext
+_Af_2ext:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_buildname
-Af_buildname:
+	.globl _Af_buildname
+_Af_buildname:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_length
-Af_length:
+	.globl _Af_length
+_Af_length:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_first_fsel
-Af_first_fsel:
+	.globl _Af_first_fsel
+_Af_first_fsel:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_next_fsel
-Af_next_fsel:
+	.globl _Af_next_fsel
+_Af_next_fsel:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_first
-Af_first:
+	.globl _Af_first
+_Af_first:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_next
-Af_next:
+	.globl _Af_next
+_Af_next:
 		move.l     #0x00000030,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_readdir
-Af_readdir:
+	.globl _Af_readdir
+_Af_readdir:
 		move.l     #0x00000034,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_freedir
-Af_freedir:
+	.globl _Af_freedir
+_Af_freedir:
 		move.l     #0x00000038,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_fileselect
-Af_fileselect:
+	.globl _Af_fileselect
+_Af_fileselect:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_quote
-Af_quote:
+	.globl _Af_quote
+_Af_quote:
 		move.l     #0x00000040,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_unquote
-Af_unquote:
+	.globl _Af_unquote
+_Af_unquote:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl Af_chgExt
-Af_chgExt:
+	.globl _Af_chgExt
+_Af_chgExt:
 		move.l     #0x00000048,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
-	.globl Af_pathconf
-Af_pathconf:
+	.globl _Af_pathconf
+_Af_pathconf:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcAf(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* icons */
-	.globl Aic_create
-Aic_create:
+	.globl _Aic_create
+_Aic_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAic(pc),-(a7)
 		bra        indirect
-	.globl Aic_delete
-Aic_delete:
+	.globl _Aic_delete
+_Aic_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAic(pc),-(a7)
 		bra        indirect
 
 /* images */
-	.globl Aim_create
-Aim_create:
+	.globl _Aim_create
+_Aim_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAim(pc),-(a7)
 		bra        indirect
-	.globl Aim_delete
-Aim_delete:
+	.globl _Aim_delete
+_Aim_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAim(pc),-(a7)
 		bra        indirect
 
 /* lists */
-	.globl Alu_create
-Alu_create:
+	.globl _Alu_create
+_Alu_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Alu_delete
-Alu_delete:
+	.globl _Alu_delete
+_Alu_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl As_create
-As_create:
+	.globl _As_create
+_As_create:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl As_delete
-As_delete:
+	.globl _As_delete
+_As_delete:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Aqu_create
-Aqu_create:
+	.globl _Aqu_create
+_Aqu_create:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Aqu_delete
-Aqu_delete:
+	.globl _Aqu_delete
+_Aqu_delete:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Alu_ptrCmp
-Alu_ptrCmp:
+	.globl _Alu_ptrCmp
+_Alu_ptrCmp:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Alu_longCmp
-Alu_longCmp:
+	.globl _Alu_longCmp
+_Alu_longCmp:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Alu_intCmp
-Alu_intCmp:
+	.globl _Alu_intCmp
+_Alu_intCmp:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Alu_charCmp
-Alu_charCmp:
+	.globl _Alu_charCmp
+_Alu_charCmp:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Alu_strCmp
-Alu_strCmp:
+	.globl _Alu_strCmp
+_Alu_strCmp:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
-	.globl Alu_striCmp
-Alu_striCmp:
+	.globl _Alu_striCmp
+_Alu_striCmp:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAlu(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* menus */
-	.globl Ame_namefix
-Ame_namefix:
+	.globl _Ame_namefix
+_Ame_namefix:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAme(pc),-(a7)
 		bra        indirect
-	.globl Ame_popup
-Ame_popup:
+	.globl _Ame_popup
+_Ame_popup:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAme(pc),-(a7)
 		bra        indirect
 
 /* mouse */
-	.globl Amo_new
-Amo_new:
+	.globl _Amo_new
+_Amo_new:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAmo(pc),-(a7)
 		bra        indirect
-	.globl Amo_busy
-Amo_busy:
+	.globl _Amo_busy
+_Amo_busy:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAmo(pc),-(a7)
 		bra        indirect
-	.globl Amo_unbusy
-Amo_unbusy:
+	.globl _Amo_unbusy
+_Amo_unbusy:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAmo(pc),-(a7)
 		bra        indirect
-	.globl Amo_hide
-Amo_hide:
+	.globl _Amo_hide
+_Amo_hide:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAmo(pc),-(a7)
 		bra        indirect
-	.globl Amo_show
-Amo_show:
+	.globl _Amo_show
+_Amo_show:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAmo(pc),-(a7)
 		bra        indirect
 
 /* objects */
-	.globl Aob_create
-Aob_create:
+	.globl _Aob_create
+_Aob_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_delete
-Aob_delete:
+	.globl _Aob_delete
+_Aob_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_fix
-Aob_fix:
+	.globl _Aob_fix
+_Aob_fix:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_offset
-Aob_offset:
+	.globl _Aob_offset
+_Aob_offset:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_save
-Aob_save:
+	.globl _Aob_save
+_Aob_save:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_restore
-Aob_restore:
+	.globl _Aob_restore
+_Aob_restore:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_watch
-Aob_watch:
+	.globl _Aob_watch
+_Aob_watch:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_findflag
-Aob_findflag:
+	.globl _Aob_findflag
+_Aob_findflag:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_alias
-Aob_alias:
+	.globl _Aob_alias
+_Aob_alias:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_up
-Aob_up:
+	.globl _Aob_up
+_Aob_up:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_icon
-Aob_icon:
+	.globl _Aob_icon
+_Aob_icon:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_puttext
-Aob_puttext:
+	.globl _Aob_puttext
+_Aob_puttext:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_gettext
-Aob_gettext:
+	.globl _Aob_gettext
+_Aob_gettext:
 		move.l     #0x00000030,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_within
-Aob_within:
+	.globl _Aob_within
+_Aob_within:
 		move.l     #0x00000034,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_printf
-Aob_printf:
+	.globl _Aob_printf
+_Aob_printf:
 		move.l     #0x00000038,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_scanf
-Aob_scanf:
+	.globl _Aob_scanf
+_Aob_scanf:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_flags
-Aob_flags:
+	.globl _Aob_flags
+_Aob_flags:
 		move.l     #0x00000040,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_state
-Aob_state:
+	.globl _Aob_state
+_Aob_state:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_service
-Aob_service:
+	.globl _Aob_service
+_Aob_service:
 		move.l     #0x00000048,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_visible
-Aob_visible:
+	.globl _Aob_visible
+_Aob_visible:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
-	.globl Aob_count
-Aob_count:
+	.globl _Aob_count
+_Aob_count:
 		move.l     #0x00000050,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl Aob_help
-Aob_help:
+	.globl _Aob_help
+_Aob_help:
 		move.l     #0x00000054,-(a7)
 		move.l     funcAob(pc),-(a7)
 		bra        indirect
@@ -752,645 +757,645 @@ Aob_help:
 
 
 /* clipboard */
-	.globl Ascrp_clear
-Ascrp_clear:
+	.globl _Ascrp_clear
+_Ascrp_clear:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAscrp(pc),-(a7)
 		bra        indirect
-	.globl Ascrp_get
-Ascrp_get:
+	.globl _Ascrp_get
+_Ascrp_get:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAscrp(pc),-(a7)
 		bra        indirect
-	.globl Ascrp_put
-Ascrp_put:
+	.globl _Ascrp_put
+_Ascrp_put:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAscrp(pc),-(a7)
 		bra        indirect
 
 /* shell */
-	.globl Ash_prog
-Ash_prog:
+	.globl _Ash_prog
+_Ash_prog:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_error
-Ash_error:
+	.globl _Ash_error
+_Ash_error:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_getcookie
-Ash_getcookie:
+	.globl _Ash_getcookie
+_Ash_getcookie:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_getenv
-Ash_getenv:
+	.globl _Ash_getenv
+_Ash_getenv:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_nextdd
-Ash_nextdd:
+	.globl _Ash_nextdd
+_Ash_nextdd:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_sendall
-Ash_sendall:
+	.globl _Ash_sendall
+_Ash_sendall:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_CallEdDI
-Ash_CallEdDI:
+	.globl _Ash_CallEdDI
+_Ash_CallEdDI:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_NVDICookie
-Ash_NVDICookie:
+	.globl _Ash_NVDICookie
+_Ash_NVDICookie:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_NVDIVersion
-Ash_NVDIVersion:
+	.globl _Ash_NVDIVersion
+_Ash_NVDIVersion:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_NVDIDatum
-Ash_NVDIDatum:
+	.globl _Ash_NVDIDatum
+_Ash_NVDIDatum:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_thermometer
-Ash_thermometer:
+	.globl _Ash_thermometer
+_Ash_thermometer:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_fileselect
-Ash_fileselect:
+	.globl _Ash_fileselect
+_Ash_fileselect:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_font
-Ash_font:
+	.globl _Ash_font
+_Ash_font:
 		move.l     #0x00000030,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_print
-Ash_print:
+	.globl _Ash_print
+_Ash_print:
 		move.l     #0x00000034,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_gettimer
-Ash_gettimer:
+	.globl _Ash_gettimer
+_Ash_gettimer:
 		move.l     #0x00000038,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_printSetIcon
-Ash_printSetIcon:
+	.globl _Ash_printSetIcon
+_Ash_printSetIcon:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_fontSetIcon
-Ash_fontSetIcon:
+	.globl _Ash_fontSetIcon
+_Ash_fontSetIcon:
 		move.l     #0x00000040,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_fileSetIcon
-Ash_fileSetIcon:
+	.globl _Ash_fileSetIcon
+_Ash_fileSetIcon:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_getOSHeader
-Ash_getOSHeader:
+	.globl _Ash_getOSHeader
+_Ash_getOSHeader:
 		move.l     #0x00000048,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_getMagiC
-Ash_getMagiC:
+	.globl _Ash_getMagiC
+_Ash_getMagiC:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_getNAES
-Ash_getNAES:
+	.globl _Ash_getNAES
+_Ash_getNAES:
 		move.l     #0x00000050,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_getMagiCVersion
-Ash_getMagiCVersion:
+	.globl _Ash_getMagiCVersion
+_Ash_getMagiCVersion:
 		move.l     #0x00000054,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_getMagiCAESVars
-Ash_getMagiCAESVars:
+	.globl _Ash_getMagiCAESVars
+_Ash_getMagiCAESVars:
 		move.l     #0x00000058,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl Ash_cmdParsen
-Ash_cmdParsen:
+	.globl _Ash_cmdParsen
+_Ash_cmdParsen:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
-	.globl Ash_sendmsg
-Ash_sendmsg:
+	.globl _Ash_sendmsg
+_Ash_sendmsg:
 		move.l     #0x00000060,-(a7)
 		move.l     funcAsh(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* strings */
-	.globl Ast_create
-Ast_create:
+	.globl _Ast_create
+_Ast_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_delete
-Ast_delete:
+	.globl _Ast_delete
+_Ast_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_tolower
-Ast_tolower:
+	.globl _Ast_tolower
+_Ast_tolower:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_toupper
-Ast_toupper:
+	.globl _Ast_toupper
+_Ast_toupper:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_ltrim
-Ast_ltrim:
+	.globl _Ast_ltrim
+_Ast_ltrim:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_rtrim
-Ast_rtrim:
+	.globl _Ast_rtrim
+_Ast_rtrim:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_alltrim
-Ast_alltrim:
+	.globl _Ast_alltrim
+_Ast_alltrim:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_cmp
-Ast_cmp:
+	.globl _Ast_cmp
+_Ast_cmp:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_icmp
-Ast_icmp:
+	.globl _Ast_icmp
+_Ast_icmp:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_isEmpty
-Ast_isEmpty:
+	.globl _Ast_isEmpty
+_Ast_isEmpty:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_add
-Ast_add:
+	.globl _Ast_add
+_Ast_add:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_adl
-Ast_adl:
+	.globl _Ast_adl
+_Ast_adl:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_adr
-Ast_adr:
+	.globl _Ast_adr
+_Ast_adr:
 		move.l     #0x00000030,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_adc
-Ast_adc:
+	.globl _Ast_adc
+_Ast_adc:
 		move.l     #0x00000034,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_filter
-Ast_filter:
+	.globl _Ast_filter
+_Ast_filter:
 		move.l     #0x00000038,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_count
-Ast_count:
+	.globl _Ast_count
+_Ast_count:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_fcmp
-Ast_fcmp:
+	.globl _Ast_fcmp
+_Ast_fcmp:
 		move.l     #0x00000040,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_ncmp
-Ast_ncmp:
+	.globl _Ast_ncmp
+_Ast_ncmp:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_incmp
-Ast_incmp:
+	.globl _Ast_incmp
+_Ast_incmp:
 		move.l     #0x00000048,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
-	.globl Ast_istr
-Ast_istr:
+	.globl _Ast_istr
+_Ast_istr:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcAst(pc),-(a7)
 		bra        indirect
 
 /* tedinfos */
-	.globl Ate_create
-Ate_create:
+	.globl _Ate_create
+_Ate_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAte(pc),-(a7)
 		bra        indirect
-	.globl Ate_delete
-Ate_delete:
+	.globl _Ate_delete
+_Ate_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAte(pc),-(a7)
 		bra        indirect
 
 /* user objects */
-	.globl Auo_ftext
-Auo_ftext:
+	.globl _Auo_ftext
+_Auo_ftext:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
-	.globl Auo_string
-Auo_string:
+	.globl _Auo_string
+_Auo_string:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
-	.globl Auo_cycle
-Auo_cycle:
+	.globl _Auo_cycle
+_Auo_cycle:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
-	.globl Auo_picture
-Auo_picture:
+	.globl _Auo_picture
+_Auo_picture:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
-	.globl Auo_boxed
-Auo_boxed:
+	.globl _Auo_boxed
+_Auo_boxed:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
 
 /* user services */
-	.globl Aus_create
-Aus_create:
+	.globl _Aus_create
+_Aus_create:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
-	.globl Aus_delete
-Aus_delete:
+	.globl _Aus_delete
+_Aus_delete:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
-	.globl Aus_boxed
-Aus_boxed:
+	.globl _Aus_boxed
+_Aus_boxed:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
-	.globl Aus_cycle
-Aus_cycle:
+	.globl _Aus_cycle
+_Aus_cycle:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl Aus_help
-Aus_help:
+	.globl _Aus_help
+_Aus_help:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* windows */
-	.globl Awi_wid
-Awi_wid:
+	.globl _Awi_wid
+_Awi_wid:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_root
-Awi_root:
+	.globl _Awi_root
+_Awi_root:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_list
-Awi_list:
+	.globl _Awi_list
+_Awi_list:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_sendall
-Awi_sendall:
+	.globl _Awi_sendall
+_Awi_sendall:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_down
-Awi_down:
+	.globl _Awi_down
+_Awi_down:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_up
-Awi_up:
+	.globl _Awi_up
+_Awi_up:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_show
-Awi_show:
+	.globl _Awi_show
+_Awi_show:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_init
-Awi_init:
+	.globl _Awi_init
+_Awi_init:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_create
-Awi_create:
+	.globl _Awi_create
+_Awi_create:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_open
-Awi_open:
+	.globl _Awi_open
+_Awi_open:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_closed
-Awi_closed:
+	.globl _Awi_closed
+_Awi_closed:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_delete
-Awi_delete:
+	.globl _Awi_delete
+_Awi_delete:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_topped
-Awi_topped:
+	.globl _Awi_topped
+_Awi_topped:
 		move.l     #0x00000030,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_fulled
-Awi_fulled:
+	.globl _Awi_fulled
+_Awi_fulled:
 		move.l     #0x00000034,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_sized
-Awi_sized:
+	.globl _Awi_sized
+_Awi_sized:
 		move.l     #0x00000038,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_moved
-Awi_moved:
+	.globl _Awi_moved
+_Awi_moved:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_diaend
-Awi_diaend:
+	.globl _Awi_diaend
+_Awi_diaend:
 		move.l     #0x00000040,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_diastart
-Awi_diastart:
+	.globl _Awi_diastart
+_Awi_diastart:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_keys
-Awi_keys:
+	.globl _Awi_keys
+_Awi_keys:
 		move.l     #0x00000048,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_obview
-Awi_obview:
+	.globl _Awi_obview
+_Awi_obview:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_service
-Awi_service:
+	.globl _Awi_service
+_Awi_service:
 		move.l     #0x00000050,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_scroll
-Awi_scroll:
+	.globl _Awi_scroll
+_Awi_scroll:
 		move.l     #0x00000054,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_obchange
-Awi_obchange:
+	.globl _Awi_obchange
+_Awi_obchange:
 		move.l     #0x00000058,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_obredraw
-Awi_obredraw:
+	.globl _Awi_obredraw
+_Awi_obredraw:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_redraw
-Awi_redraw:
+	.globl _Awi_redraw
+_Awi_redraw:
 		move.l     #0x00000060,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_arrowed
-Awi_arrowed:
+	.globl _Awi_arrowed
+_Awi_arrowed:
 		move.l     #0x00000064,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_hslid
-Awi_hslid:
+	.globl _Awi_hslid
+_Awi_hslid:
 		move.l     #0x00000068,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_vslid
-Awi_vslid:
+	.globl _Awi_vslid
+_Awi_vslid:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_iconify
-Awi_iconify:
+	.globl _Awi_iconify
+_Awi_iconify:
 		move.l     #0x00000070,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_uniconify
-Awi_uniconify:
+	.globl _Awi_uniconify
+_Awi_uniconify:
 		move.l     #0x00000074,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_gemscript
-Awi_gemscript:
+	.globl _Awi_gemscript
+_Awi_gemscript:
 		move.l     #0x00000078,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_modal
-Awi_modal:
+	.globl _Awi_modal
+_Awi_modal:
 		move.l     #0x0000007C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_dialog
-Awi_dialog:
+	.globl _Awi_dialog
+_Awi_dialog:
 		move.l     #0x00000080,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_alert
-Awi_alert:
+	.globl _Awi_alert
+_Awi_alert:
 		move.l     #0x00000084,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_selfcreate
-Awi_selfcreate:
+	.globl _Awi_selfcreate
+_Awi_selfcreate:
 		move.l     #0x00000088,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_nokey
-Awi_nokey:
+	.globl _Awi_nokey
+_Awi_nokey:
 		move.l     #0x0000008C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_update
-Awi_update:
+	.globl _Awi_update
+_Awi_update:
 		move.l     #0x00000090,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_uoself
-Awi_uoself:
+	.globl _Awi_uoself
+_Awi_uoself:
 		move.l     #0x00000094,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_doform
-Awi_doform:
+	.globl _Awi_doform
+_Awi_doform:
 		move.l     #0x00000098,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_observice
-Awi_observice:
+	.globl _Awi_observice
+_Awi_observice:
 		move.l     #0x0000009C,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_ontop
-Awi_ontop:
+	.globl _Awi_ontop
+_Awi_ontop:
 		move.l     #0x000000A0,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_layout
-Awi_layout:
+	.globl _Awi_layout
+_Awi_layout:
 		move.l     #0x000000A4,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_obvisible
-Awi_obvisible:
+	.globl _Awi_obvisible
+_Awi_obvisible:
 		move.l     #0x000000A8,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl Awi_saved
-Awi_saved:
+	.globl _Awi_saved
+_Awi_saved:
 		move.l     #0x000000AC,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
-	.globl Awi_sendkey
-Awi_sendkey:
+	.globl _Awi_sendkey
+_Awi_sendkey:
 		move.l     #0x000000B0,-(a7)
 		move.l     funcAwi(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* drawing callbacks */
-	.globl A_dialog
-A_dialog:
+	.globl _A_dialog
+_A_dialog:
 		move.l     #0x00000000,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_checkbox
-A_checkbox:
+	.globl _A_checkbox
+_A_checkbox:
 		move.l     #0x00000004,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_radiobutton
-A_radiobutton:
+	.globl _A_radiobutton
+_A_radiobutton:
 		move.l     #0x00000008,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_innerframe
-A_innerframe:
+	.globl _A_innerframe
+_A_innerframe:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_pattern
-A_pattern:
+	.globl _A_pattern
+_A_pattern:
 		move.l     #0x00000010,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_arrows
-A_arrows:
+	.globl _A_arrows
+_A_arrows:
 		move.l     #0x00000014,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_select
-A_select:
+	.globl _A_select
+_A_select:
 		move.l     #0x00000018,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_ftext
-A_ftext:
+	.globl _A_ftext
+_A_ftext:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_title
-A_title:
+	.globl _A_title
+_A_title:
 		move.l     #0x00000020,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_3Dbutton
-A_3Dbutton:
+	.globl _A_3Dbutton
+_A_3Dbutton:
 		move.l     #0x00000024,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_cycle
-A_cycle:
+	.globl _A_cycle
+_A_cycle:
 		move.l     #0x00000028,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_picture
-A_picture:
+	.globl _A_picture
+_A_picture:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_dialog2
-A_dialog2:
+	.globl _A_dialog2
+_A_dialog2:
 		move.l     #0x00000030,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
-	.globl A_boxed
-A_boxed:
+	.globl _A_boxed
+_A_boxed:
 		move.l     #0x00000034,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
 
 /* misc */
-	.globl Ax_malloc
-Ax_malloc:
+	.globl _Ax_malloc
+_Ax_malloc:
 		move.l     #0x00000000,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Ax_free
-Ax_free:
+	.globl _Ax_free
+_Ax_free:
 		move.l     #0x00000004,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Ax_ifree
-Ax_ifree:
+	.globl _Ax_ifree
+_Ax_ifree:
 		move.l     #0x00000008,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Ax_glmalloc
-Ax_glmalloc:
+	.globl _Ax_glmalloc
+_Ax_glmalloc:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Ax_glfree
-Ax_glfree:
+	.globl _Ax_glfree
+_Ax_glfree:
 		move.l     #0x00000010,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
@@ -1399,3635 +1404,3644 @@ Ax_glfree:
  * ACSmoduleterm is different, because we need
  * to pass the BASEPAGE pointer to Ax_mterm()
  */
-	.globl ACSmoduleterm
-ACSmoduleterm:
+	.globl _ACSmoduleterm
+_ACSmoduleterm:
 		movea.l    #compiler-256,a0
-		move.l     #0x00000014,-(a7)  /* Ax_mterm */
-		move.l     funcSonst(pc),-(a7)
-		bra        indirect
+		cmp.l      #0x203a001a,228(a0)
+		bne.s      ACSmoduleterm1
+		cmp.l      #0x4efb08fa,232(a0)
+		bne.s      ACSmoduleterm1
+		lea        -228(a0),a0
+ACSmoduleterm1:
+		move.l     a0,-(a7)
+		move.l     funcSonst(pc),a1
+		move.l     20(a1),a1  /* Ax_mterm */
+		jsr        (a1)
+		addq.l     #4,a7
+		rts
 
-	.globl alert_str
-alert_str:
+	.globl _alert_str
+_alert_str:
 		move.l     #0x00000018,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl intersect
-intersect:
+	.globl _intersect
+_intersect:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl xywh2array
-xywh2array:
+	.globl _xywh2array
+_xywh2array:
 		move.l     #0x00000020,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl array2xywh
-array2xywh:
+	.globl _array2xywh
+_array2xywh:
 		move.l     #0x00000024,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl dotted_xline
-dotted_xline:
+	.globl _dotted_xline
+_dotted_xline:
 		move.l     #0x00000028,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl dotted_yline
-dotted_yline:
+	.globl _dotted_yline
+_dotted_yline:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_tos2n
-nkc_tos2n:
+	.globl _nkc_tos2n
+_nkc_tos2n:
 		move.l     #0x00000030,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_n2tos
-nkc_n2tos:
+	.globl _nkc_n2tos
+_nkc_n2tos:
 		move.l     #0x00000034,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_gem2n
-nkc_gem2n:
+	.globl _nkc_gem2n
+_nkc_gem2n:
 		move.l     #0x00000038,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_n2gem
-nkc_n2gem:
+	.globl _nkc_n2gem
+_nkc_n2gem:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_gemks2n
-nkc_gemks2n:
+	.globl _nkc_gemks2n
+_nkc_gemks2n:
 		move.l     #0x00000040,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_n2gemks
-nkc_n2gemks:
+	.globl _nkc_n2gemks
+_nkc_n2gemks:
 		move.l     #0x00000044,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_n2kstate
-nkc_n2kstate:
+	.globl _nkc_n2kstate
+_nkc_n2kstate:
 		move.l     #0x00000048,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_kstate
-nkc_kstate:
+	.globl _nkc_kstate
+_nkc_kstate:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_cmp
-nkc_cmp:
+	.globl _nkc_cmp
+_nkc_cmp:
 		move.l     #0x00000050,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_tolower
-nkc_tolower:
+	.globl _nkc_tolower
+_nkc_tolower:
 		move.l     #0x00000054,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl nkc_toupper
-nkc_toupper:
+	.globl _nkc_toupper
+_nkc_toupper:
 		move.l     #0x00000058,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl appl_xgetinfo
-appl_xgetinfo:
+	.globl _appl_xgetinfo
+_appl_xgetinfo:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Ax_setRecycleSize
-Ax_setRecycleSize:
+	.globl _Ax_setRecycleSize
+_Ax_setRecycleSize:
 		move.l     #0x00000060,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Ax_getRecycleStat
-Ax_getRecycleStat:
+	.globl _Ax_getRecycleStat
+_Ax_getRecycleStat:
 		move.l     #0x00000064,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Ax_recycle
-Ax_recycle:
+	.globl _Ax_recycle
+_Ax_recycle:
 		move.l     #0x00000068,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Avdi_getRGB
-Avdi_getRGB:
+	.globl _Avdi_getRGB
+_Avdi_getRGB:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-	.globl Ax_memCheck
-Ax_memCheck:
+	.globl _Ax_memCheck
+_Ax_memCheck:
 		move.l     #0x00000070,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Adate_getMonth
-Adate_getMonth:
+	.globl _Adate_getMonth
+_Adate_getMonth:
 		move.l     #0x00000074,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
-	.globl Adate_ymd2dow
-Adate_ymd2dow:
+	.globl _Adate_ymd2dow
+_Adate_ymd2dow:
 		move.l     #0x00000078,-(a7)
 		move.l     funcSonst(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* VDI */
-	.globl vdi
-vdi:
+	.globl _vdi
+_vdi:
 		move.l     #0x00000000,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vdi_
-vdi_:
+	.globl _vdi_
+_vdi_:
 		move.l     #0x00000004,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_opnwk
-v_opnwk:
+	.globl _v_opnwk
+_v_opnwk:
 		move.l     #0x00000008,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_clswk
-v_clswk:
+	.globl _v_clswk
+_v_clswk:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_opnvwk
-v_opnvwk:
+	.globl _v_opnvwk
+_v_opnvwk:
 		move.l     #0x00000010,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_clsvwk
-v_clsvwk:
+	.globl _v_clsvwk
+_v_clsvwk:
 		move.l     #0x00000014,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_clrwk
-v_clrwk:
+	.globl _v_clrwk
+_v_clrwk:
 		move.l     #0x00000018,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_updwk
-v_updwk:
+	.globl _v_updwk
+_v_updwk:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_opnbm
-v_opnbm:
+	.globl _v_opnbm
+_v_opnbm:
 		move.l     #0x00000020,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_clsbm
-v_clsbm:
+	.globl _v_clsbm
+_v_clsbm:
 		move.l     #0x00000024,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_load_fonts
-vst_load_fonts:
+	.globl _vst_load_fonts
+_vst_load_fonts:
 		move.l     #0x00000028,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_unload_fonts
-vst_unload_fonts:
+	.globl _vst_unload_fonts
+_vst_unload_fonts:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_clip
-vs_clip:
+	.globl _vs_clip
+_vs_clip:
 		move.l     #0x00000030,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_pline
-v_pline:
+	.globl _v_pline
+_v_pline:
 		move.l     #0x00000034,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_pmarker
-v_pmarker:
+	.globl _v_pmarker
+_v_pmarker:
 		move.l     #0x00000038,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_gtext
-v_gtext:
+	.globl _v_gtext
+_v_gtext:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_fillarea
-v_fillarea:
+	.globl _v_fillarea
+_v_fillarea:
 		move.l     #0x00000040,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_cellarray
-v_cellarray:
+	.globl _v_cellarray
+_v_cellarray:
 		move.l     #0x00000044,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_contourfill
-v_contourfill:
+	.globl _v_contourfill
+_v_contourfill:
 		move.l     #0x00000048,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_bar
-v_bar:
+	.globl _v_bar
+_v_bar:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_arc
-v_arc:
+	.globl _v_arc
+_v_arc:
 		move.l     #0x00000050,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_pieslice
-v_pieslice:
+	.globl _v_pieslice
+_v_pieslice:
 		move.l     #0x00000054,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_circle
-v_circle:
+	.globl _v_circle
+_v_circle:
 		move.l     #0x00000058,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ellipse
-v_ellipse:
+	.globl _v_ellipse
+_v_ellipse:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ellarc
-v_ellarc:
+	.globl _v_ellarc
+_v_ellarc:
 		move.l     #0x00000060,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ellpie
-v_ellpie:
+	.globl _v_ellpie
+_v_ellpie:
 		move.l     #0x00000064,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_justified
-v_justified:
+	.globl _v_justified
+_v_justified:
 		move.l     #0x00000068,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vr_recfl
-vr_recfl:
+	.globl _vr_recfl
+_vr_recfl:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_rfbox
-v_rfbox:
+	.globl _v_rfbox
+_v_rfbox:
 		move.l     #0x00000070,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_rbox
-v_rbox:
+	.globl _v_rbox
+_v_rbox:
 		move.l     #0x00000074,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_gdos
-vq_gdos:
+	.globl _vq_gdos
+_vq_gdos:
 		move.l     #0x00000078,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vswr_mode
-vswr_mode:
+	.globl _vswr_mode
+_vswr_mode:
 		move.l     #0x0000007C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsl_type
-vsl_type:
+	.globl _vsl_type
+_vsl_type:
 		move.l     #0x00000080,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsl_udsty
-vsl_udsty:
+	.globl _vsl_udsty
+_vsl_udsty:
 		move.l     #0x00000084,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsl_width
-vsl_width:
+	.globl _vsl_width
+_vsl_width:
 		move.l     #0x00000088,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsl_color
-vsl_color:
+	.globl _vsl_color
+_vsl_color:
 		move.l     #0x0000008C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsl_ends
-vsl_ends:
+	.globl _vsl_ends
+_vsl_ends:
 		move.l     #0x00000090,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_type
-vsm_type:
+	.globl _vsm_type
+_vsm_type:
 		move.l     #0x00000094,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_height
-vsm_height:
+	.globl _vsm_height
+_vsm_height:
 		move.l     #0x00000098,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_color
-vsm_color:
+	.globl _vsm_color
+_vsm_color:
 		move.l     #0x0000009C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_height
-vst_height:
+	.globl _vst_height
+_vst_height:
 		move.l     #0x000000A0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_point
-vst_point:
+	.globl _vst_point
+_vst_point:
 		move.l     #0x000000A4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_rotation
-vst_rotation:
+	.globl _vst_rotation
+_vst_rotation:
 		move.l     #0x000000A8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_font
-vst_font:
+	.globl _vst_font
+_vst_font:
 		move.l     #0x000000AC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_color
-vst_color:
+	.globl _vst_color
+_vst_color:
 		move.l     #0x000000B0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_effects
-vst_effects:
+	.globl _vst_effects
+_vst_effects:
 		move.l     #0x000000B4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_alignment
-vst_alignment:
+	.globl _vst_alignment
+_vst_alignment:
 		move.l     #0x000000B8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_interior
-vsf_interior:
+	.globl _vsf_interior
+_vsf_interior:
 		move.l     #0x000000BC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_style
-vsf_style:
+	.globl _vsf_style
+_vsf_style:
 		move.l     #0x000000C0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_color
-vsf_color:
+	.globl _vsf_color
+_vsf_color:
 		move.l     #0x000000C4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_perimeter
-vsf_perimeter:
+	.globl _vsf_perimeter
+_vsf_perimeter:
 		move.l     #0x000000C8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_udpat
-vsf_udpat:
+	.globl _vsf_udpat
+_vsf_udpat:
 		move.l     #0x000000CC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_updat
-vsf_updat:
+	.globl _vsf_updat
+_vsf_updat:
 		move.l     #0x000000D0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_color
-vs_color:
+	.globl _vs_color
+_vs_color:
 		move.l     #0x000000D4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vr_trnfm
-vr_trnfm:
+	.globl _vr_trnfm
+_vr_trnfm:
 		move.l     #0x000000D8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vro_cpyfm
-vro_cpyfm:
+	.globl _vro_cpyfm
+_vro_cpyfm:
 		move.l     #0x000000DC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vrt_cpyfm
-vrt_cpyfm:
+	.globl _vrt_cpyfm
+_vrt_cpyfm:
 		move.l     #0x000000E0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_get_pixel
-v_get_pixel:
+	.globl _v_get_pixel
+_v_get_pixel:
 		move.l     #0x000000E4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsin_mode
-vsin_mode:
+	.globl _vsin_mode
+_vsin_mode:
 		move.l     #0x000000E8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vrq_locator
-vrq_locator:
+	.globl _vrq_locator
+_vrq_locator:
 		move.l     #0x000000EC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_locator
-vsm_locator:
+	.globl _vsm_locator
+_vsm_locator:
 		move.l     #0x000000F0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vrq_valuator
-vrq_valuator:
+	.globl _vrq_valuator
+_vrq_valuator:
 		move.l     #0x000000F4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_valuator
-vsm_valuator:
+	.globl _vsm_valuator
+_vsm_valuator:
 		move.l     #0x000000F8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vrq_choice
-vrq_choice:
+	.globl _vrq_choice
+_vrq_choice:
 		move.l     #0x000000FC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_choice
-vsm_choice:
+	.globl _vsm_choice
+_vsm_choice:
 		move.l     #0x00000100,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vrq_string
-vrq_string:
+	.globl _vrq_string
+_vrq_string:
 		move.l     #0x00000104,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_string
-vsm_string:
+	.globl _vsm_string
+_vsm_string:
 		move.l     #0x00000108,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vex_timv
-vex_timv:
+	.globl _vex_timv
+_vex_timv:
 		move.l     #0x0000010C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_show_c
-v_show_c:
+	.globl _v_show_c
+_v_show_c:
 		move.l     #0x00000110,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_hide_c
-v_hide_c:
+	.globl _v_hide_c
+_v_hide_c:
 		move.l     #0x00000114,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_mouse
-vq_mouse:
+	.globl _vq_mouse
+_vq_mouse:
 		move.l     #0x00000118,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vex_butv
-vex_butv:
+	.globl _vex_butv
+_vex_butv:
 		move.l     #0x0000011C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vex_motv
-vex_motv:
+	.globl _vex_motv
+_vex_motv:
 		move.l     #0x00000120,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vex_curv
-vex_curv:
+	.globl _vex_curv
+_vex_curv:
 		move.l     #0x00000124,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_key_s
-vq_key_s:
+	.globl _vq_key_s
+_vq_key_s:
 		move.l     #0x00000128,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_extnd
-vq_extnd:
+	.globl _vq_extnd
+_vq_extnd:
 		move.l     #0x0000012C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vql_attributes
-vql_attributes:
+	.globl _vql_attributes
+_vql_attributes:
 		move.l     #0x00000130,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqm_attributes
-vqm_attributes:
+	.globl _vqm_attributes
+_vqm_attributes:
 		move.l     #0x00000134,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqf_attributes
-vqf_attributes:
+	.globl _vqf_attributes
+_vqf_attributes:
 		move.l     #0x00000138,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_attributes
-vqt_attributes:
+	.globl _vqt_attributes
+_vqt_attributes:
 		move.l     #0x0000013C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_extent
-vqt_extent:
+	.globl _vqt_extent
+_vqt_extent:
 		move.l     #0x00000140,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_width
-vqt_width:
+	.globl _vqt_width
+_vqt_width:
 		move.l     #0x00000144,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_name
-vqt_name:
+	.globl _vqt_name
+_vqt_name:
 		move.l     #0x00000148,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqin_mode
-vqin_mode:
+	.globl _vqin_mode
+_vqin_mode:
 		move.l     #0x0000014C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_fontinfo
-vqt_fontinfo:
+	.globl _vqt_fontinfo
+_vqt_fontinfo:
 		move.l     #0x00000150,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_scrninfo
-vq_scrninfo:
+	.globl _vq_scrninfo
+_vq_scrninfo:
 		move.l     #0x00000154,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_color
-vq_color:
+	.globl _vq_color
+_vq_color:
 		move.l     #0x00000158,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_cellarray
-vq_cellarray:
+	.globl _vq_cellarray
+_vq_cellarray:
 		move.l     #0x0000015C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_chcells
-vq_chcells:
+	.globl _vq_chcells
+_vq_chcells:
 		move.l     #0x00000160,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_exit_cur
-v_exit_cur:
+	.globl _v_exit_cur
+_v_exit_cur:
 		move.l     #0x00000164,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_enter_cur
-v_enter_cur:
+	.globl _v_enter_cur
+_v_enter_cur:
 		move.l     #0x00000168,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_curup
-v_curup:
+	.globl _v_curup
+_v_curup:
 		move.l     #0x0000016C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_curdown
-v_curdown:
+	.globl _v_curdown
+_v_curdown:
 		move.l     #0x00000170,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_curright
-v_curright:
+	.globl _v_curright
+_v_curright:
 		move.l     #0x00000174,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_curleft
-v_curleft:
+	.globl _v_curleft
+_v_curleft:
 		move.l     #0x00000178,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_curhome
-v_curhome:
+	.globl _v_curhome
+_v_curhome:
 		move.l     #0x0000017C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_eeos
-v_eeos:
+	.globl _v_eeos
+_v_eeos:
 		move.l     #0x00000180,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_eeol
-v_eeol:
+	.globl _v_eeol
+_v_eeol:
 		move.l     #0x00000184,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_curaddress
-v_curaddress:
+	.globl _v_curaddress
+_v_curaddress:
 		move.l     #0x00000188,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_curtext
-v_curtext:
+	.globl _v_curtext
+_v_curtext:
 		move.l     #0x0000018C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_rvon
-v_rvon:
+	.globl _v_rvon
+_v_rvon:
 		move.l     #0x00000190,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_rvoff
-v_rvoff:
+	.globl _v_rvoff
+_v_rvoff:
 		move.l     #0x00000194,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_curaddress
-vq_curaddress:
+	.globl _vq_curaddress
+_vq_curaddress:
 		move.l     #0x00000198,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_tabstatus
-vq_tabstatus:
+	.globl _vq_tabstatus
+_vq_tabstatus:
 		move.l     #0x0000019C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_hardcopy
-v_hardcopy:
+	.globl _v_hardcopy
+_v_hardcopy:
 		move.l     #0x000001A0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_dspcur
-v_dspcur:
+	.globl _v_dspcur
+_v_dspcur:
 		move.l     #0x000001A4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_rmcur
-v_rmcur:
+	.globl _v_rmcur
+_v_rmcur:
 		move.l     #0x000001A8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_form_adv
-v_form_adv:
+	.globl _v_form_adv
+_v_form_adv:
 		move.l     #0x000001AC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_clear_disp_list
-v_clear_disp_list:
+	.globl _v_clear_disp_list
+_v_clear_disp_list:
 		move.l     #0x000001B0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_scan
-vq_scan:
+	.globl _vq_scan
+_vq_scan:
 		move.l     #0x000001B4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_alpha_text
-v_alpha_text:
+	.globl _v_alpha_text
+_v_alpha_text:
 		move.l     #0x000001B8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_palette
-vs_palette:
+	.globl _vs_palette
+_vs_palette:
 		move.l     #0x000001BC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_sound
-v_sound:
+	.globl _v_sound
+_v_sound:
 		move.l     #0x000001C0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_mute
-vs_mute:
+	.globl _vs_mute
+_vs_mute:
 		move.l     #0x000001C4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vt_resolution
-vt_resolution:
+	.globl _vt_resolution
+_vt_resolution:
 		move.l     #0x000001C8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vt_axis
-vt_axis:
+	.globl _vt_axis
+_vt_axis:
 		move.l     #0x000001CC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vt_origin
-vt_origin:
+	.globl _vt_origin
+_vt_origin:
 		move.l     #0x000001D0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_tdimensions
-vq_tdimensions:
+	.globl _vq_tdimensions
+_vq_tdimensions:
 		move.l     #0x000001D4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vt_alignment
-vt_alignment:
+	.globl _vt_alignment
+_vt_alignment:
 		move.l     #0x000001D8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsp_film
-vsp_film:
+	.globl _vsp_film
+_vsp_film:
 		move.l     #0x000001DC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqp_filmname
-vqp_filmname:
+	.globl _vqp_filmname
+_vqp_filmname:
 		move.l     #0x000001E0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsc_expose
-vsc_expose:
+	.globl _vsc_expose
+_vsc_expose:
 		move.l     #0x000001E4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_meta_extents
-v_meta_extents:
+	.globl _v_meta_extents
+_v_meta_extents:
 		move.l     #0x000001E8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_write_meta
-v_write_meta:
+	.globl _v_write_meta
+_v_write_meta:
 		move.l     #0x000001EC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vm_pagesize
-vm_pagesize:
+	.globl _vm_pagesize
+_vm_pagesize:
 		move.l     #0x000001F0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vm_coords
-vm_coords:
+	.globl _vm_coords
+_vm_coords:
 		move.l     #0x000001F4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vm_filename
-vm_filename:
+	.globl _vm_filename
+_vm_filename:
 		move.l     #0x000001F8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_offset
-v_offset:
+	.globl _v_offset
+_v_offset:
 		move.l     #0x000001FC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_fontinit
-v_fontinit:
+	.globl _v_fontinit
+_v_fontinit:
 		move.l     #0x00000200,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_escape2000
-v_escape2000:
+	.globl _v_escape2000
+_v_escape2000:
 		move.l     #0x00000204,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_output_window
-v_output_window:
+	.globl _v_output_window
+_v_output_window:
 		move.l     #0x00000208,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_bit_image
-v_bit_image:
+	.globl _v_bit_image
+_v_bit_image:
 		move.l     #0x0000020C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl fix31ToPixel
-fix31ToPixel:
+	.globl _fix31ToPixel
+_fix31ToPixel:
 		move.l     #0x00000210,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_opnprn
-v_opnprn:
+	.globl _v_opnprn
+_v_opnprn:
 		move.l     #0x00000214,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_opnmeta
-v_opnmeta:
+	.globl _v_opnmeta
+_v_opnmeta:
 		move.l     #0x00000218,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_devinfo
-vq_devinfo:
+	.globl _vq_devinfo
+_vq_devinfo:
 		move.l     #0x0000021C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_ext_devinfo
-vq_ext_devinfo:
+	.globl _vq_ext_devinfo
+_vq_ext_devinfo:
 		move.l     #0x00000220,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_calibrate
-vs_calibrate:
+	.globl _vs_calibrate
+_vs_calibrate:
 		move.l     #0x00000224,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_calibrate
-vq_calibrate:
+	.globl _vq_calibrate
+_vq_calibrate:
 		move.l     #0x00000228,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_bez
-v_bez:
+	.globl _v_bez
+_v_bez:
 		move.l     #0x0000022C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_bez_on
-v_bez_on:
+	.globl _v_bez_on
+_v_bez_on:
 		move.l     #0x00000230,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_bez_off
-v_bez_off:
+	.globl _v_bez_off
+_v_bez_off:
 		move.l     #0x00000234,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_bez_qual
-v_bez_qual:
+	.globl _v_bez_qual
+_v_bez_qual:
 		move.l     #0x00000238,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_bez_fill
-v_bez_fill:
+	.globl _v_bez_fill
+_v_bez_fill:
 		move.l     #0x0000023C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_ext_name
-vqt_ext_name:
+	.globl _vqt_ext_name
+_vqt_ext_name:
 		move.l     #0x00000240,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_char_index
-vqt_char_index:
+	.globl _vqt_char_index
+_vqt_char_index:
 		move.l     #0x00000244,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_isCharAvailable
-vqt_isCharAvailable:
+	.globl _vqt_isCharAvailable
+_vqt_isCharAvailable:
 		move.l     #0x00000248,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_xfntinfo
-vqt_xfntinfo:
+	.globl _vqt_xfntinfo
+_vqt_xfntinfo:
 		move.l     #0x0000024C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_name
-vst_name:
+	.globl _vst_name
+_vst_name:
 		move.l     #0x00000250,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_name_and_id
-vqt_name_and_id:
+	.globl _vqt_name_and_id
+_vqt_name_and_id:
 		move.l     #0x00000254,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_fontheader
-vqt_fontheader:
+	.globl _vqt_fontheader
+_vqt_fontheader:
 		move.l     #0x00000258,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_trackkern
-vqt_trackkern:
+	.globl _vqt_trackkern
+_vqt_trackkern:
 		move.l     #0x0000025C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_pairkern
-vqt_pairkern:
+	.globl _vqt_pairkern
+_vqt_pairkern:
 		move.l     #0x00000260,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_charmap
-vst_charmap:
+	.globl _vst_charmap
+_vst_charmap:
 		move.l     #0x00000264,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_kern
-vst_kern:
+	.globl _vst_kern
+_vst_kern:
 		move.l     #0x00000268,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_kern_offset
-vst_kern_offset:
+	.globl _vst_kern_offset
+_vst_kern_offset:
 		move.l     #0x0000026C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_getbitmap_info
-v_getbitmap_info:
+	.globl _v_getbitmap_info
+_v_getbitmap_info:
 		move.l     #0x00000270,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_f_extent
-vqt_f_extent:
+	.globl _vqt_f_extent
+_vqt_f_extent:
 		move.l     #0x00000274,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_real_extent
-vqt_real_extent:
+	.globl _vqt_real_extent
+_vqt_real_extent:
 		move.l     #0x00000278,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ftext
-v_ftext:
+	.globl _v_ftext
+_v_ftext:
 		move.l     #0x0000027C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ftext_offset
-v_ftext_offset:
+	.globl _v_ftext_offset
+_v_ftext_offset:
 		move.l     #0x00000280,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_getoutline
-v_getoutline:
+	.globl _v_getoutline
+_v_getoutline:
 		move.l     #0x00000284,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_arbpt32
-vst_arbpt32:
+	.globl _vst_arbpt32
+_vst_arbpt32:
 		move.l     #0x00000288,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_advance32
-vqt_advance32:
+	.globl _vqt_advance32
+_vqt_advance32:
 		move.l     #0x0000028C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_setsize32
-vst_setsize32:
+	.globl _vst_setsize32
+_vst_setsize32:
 		move.l     #0x00000290,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_skew
-vst_skew:
+	.globl _vst_skew
+_vst_skew:
 		move.l     #0x00000294,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_orient
-v_orient:
+	.globl _v_orient
+_v_orient:
 		move.l     #0x00000298,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_trays
-v_trays:
+	.globl _v_trays
+_v_trays:
 		move.l     #0x0000029C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_tray_names
-vq_tray_names:
+	.globl _vq_tray_names
+_vq_tray_names:
 		move.l     #0x000002A0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_page_size
-v_page_size:
+	.globl _v_page_size
+_v_page_size:
 		move.l     #0x000002A4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_page_name
-vq_page_name:
+	.globl _vq_page_name
+_vq_page_name:
 		move.l     #0x000002A8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_fg_color
-vst_fg_color:
+	.globl _vst_fg_color
+_vst_fg_color:
 		move.l     #0x000002AC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_fg_color
-vsf_fg_color:
+	.globl _vsf_fg_color
+_vsf_fg_color:
 		move.l     #0x000002B0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsl_fg_color
-vsl_fg_color:
+	.globl _vsl_fg_color
+_vsl_fg_color:
 		move.l     #0x000002B4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_fg_color
-vsm_fg_color:
+	.globl _vsm_fg_color
+_vsm_fg_color:
 		move.l     #0x000002B8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsr_fg_color
-vsr_fg_color:
+	.globl _vsr_fg_color
+_vsr_fg_color:
 		move.l     #0x000002BC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_bg_color
-vst_bg_color:
+	.globl _vst_bg_color
+_vst_bg_color:
 		move.l     #0x000002C0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_bg_color
-vsf_bg_color:
+	.globl _vsf_bg_color
+_vsf_bg_color:
 		move.l     #0x000002C4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsl_bg_color
-vsl_bg_color:
+	.globl _vsl_bg_color
+_vsl_bg_color:
 		move.l     #0x000002C8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsm_bg_color
-vsm_bg_color:
+	.globl _vsm_bg_color
+_vsm_bg_color:
 		move.l     #0x000002CC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsr_bg_color
-vsr_bg_color:
+	.globl _vsr_bg_color
+_vsr_bg_color:
 		move.l     #0x000002D0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_fg_color
-vqt_fg_color:
+	.globl _vqt_fg_color
+_vqt_fg_color:
 		move.l     #0x000002D4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqf_fg_color
-vqf_fg_color:
+	.globl _vqf_fg_color
+_vqf_fg_color:
 		move.l     #0x000002D8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vql_fg_color
-vql_fg_color:
+	.globl _vql_fg_color
+_vql_fg_color:
 		move.l     #0x000002DC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqm_fg_color
-vqm_fg_color:
+	.globl _vqm_fg_color
+_vqm_fg_color:
 		move.l     #0x000002E0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqr_fg_color
-vqr_fg_color:
+	.globl _vqr_fg_color
+_vqr_fg_color:
 		move.l     #0x000002E4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_bg_color
-vqt_bg_color:
+	.globl _vqt_bg_color
+_vqt_bg_color:
 		move.l     #0x000002E8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqf_bg_color
-vqf_bg_color:
+	.globl _vqf_bg_color
+_vqf_bg_color:
 		move.l     #0x000002EC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vql_bg_color
-vql_bg_color:
+	.globl _vql_bg_color
+_vql_bg_color:
 		move.l     #0x000002F0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqm_bg_color
-vqm_bg_color:
+	.globl _vqm_bg_color
+_vqm_bg_color:
 		move.l     #0x000002F4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqr_bg_color
-vqr_bg_color:
+	.globl _vqr_bg_color
+_vqr_bg_color:
 		move.l     #0x000002F8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_color2value
-v_color2value:
+	.globl _v_color2value
+_v_color2value:
 		move.l     #0x000002FC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_value2color
-v_value2color:
+	.globl _v_value2color
+_v_value2color:
 		move.l     #0x00000300,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_color2nearest
-v_color2nearest:
+	.globl _v_color2nearest
+_v_color2nearest:
 		move.l     #0x00000304,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_px_format
-vq_px_format:
+	.globl _vq_px_format
+_vq_px_format:
 		move.l     #0x00000308,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_ctab
-vs_ctab:
+	.globl _vs_ctab
+_vs_ctab:
 		move.l     #0x0000030C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_ctab_entry
-vs_ctab_entry:
+	.globl _vs_ctab_entry
+_vs_ctab_entry:
 		move.l     #0x00000310,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_dflt_ctab
-vs_dflt_ctab:
+	.globl _vs_dflt_ctab
+_vs_dflt_ctab:
 		move.l     #0x00000314,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_ctab
-vq_ctab:
+	.globl _vq_ctab
+_vq_ctab:
 		move.l     #0x00000318,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_ctab_entry
-vq_ctab_entry:
+	.globl _vq_ctab_entry
+_vq_ctab_entry:
 		move.l     #0x0000031C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_ctab_id
-vq_ctab_id:
+	.globl _vq_ctab_id
+_vq_ctab_id:
 		move.l     #0x00000320,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ctab_idx2vdi
-v_ctab_idx2vdi:
+	.globl _v_ctab_idx2vdi
+_v_ctab_idx2vdi:
 		move.l     #0x00000324,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ctab_vdi2idx
-v_ctab_vdi2idx:
+	.globl _v_ctab_vdi2idx
+_v_ctab_vdi2idx:
 		move.l     #0x00000328,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_ctab_idx2value
-v_ctab_idx2value:
+	.globl _v_ctab_idx2value
+_v_ctab_idx2value:
 		move.l     #0x0000032C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_get_ctab_id
-v_get_ctab_id:
+	.globl _v_get_ctab_id
+_v_get_ctab_id:
 		move.l     #0x00000330,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_dflt_ctab
-vq_dflt_ctab:
+	.globl _vq_dflt_ctab
+_vq_dflt_ctab:
 		move.l     #0x00000334,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_create_itab
-v_create_itab:
+	.globl _v_create_itab
+_v_create_itab:
 		move.l     #0x00000338,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_delete_itab
-v_delete_itab:
+	.globl _v_delete_itab
+_v_delete_itab:
 		move.l     #0x0000033C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vr_transfer_bits
-vr_transfer_bits:
+	.globl _vr_transfer_bits
+_vr_transfer_bits:
 		move.l     #0x00000340,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_hilite_color
-vs_hilite_color:
+	.globl _vs_hilite_color
+_vs_hilite_color:
 		move.l     #0x00000344,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_min_color
-vs_min_color:
+	.globl _vs_min_color
+_vs_min_color:
 		move.l     #0x00000348,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_max_color
-vs_max_color:
+	.globl _vs_max_color
+_vs_max_color:
 		move.l     #0x0000034C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_weight_color
-vs_weight_color:
+	.globl _vs_weight_color
+_vs_weight_color:
 		move.l     #0x00000350,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_hilite_color
-vq_hilite_color:
+	.globl _vq_hilite_color
+_vq_hilite_color:
 		move.l     #0x00000354,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_min_color
-vq_min_color:
+	.globl _vq_min_color
+_vq_min_color:
 		move.l     #0x00000358,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_max_color
-vq_max_color:
+	.globl _vq_max_color
+_vq_max_color:
 		move.l     #0x0000035C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_weight_color
-vq_weight_color:
+	.globl _vq_weight_color
+_vq_weight_color:
 		move.l     #0x00000360,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_document_info
-vs_document_info:
+	.globl _vs_document_info
+_vs_document_info:
 		move.l     #0x00000364,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_prn_scaling
-vq_prn_scaling:
+	.globl _vq_prn_scaling
+_vq_prn_scaling:
 		move.l     #0x00000368,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_open_bm
-v_open_bm:
+	.globl _v_open_bm
+_v_open_bm:
 		move.l     #0x0000036C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_resize_bm
-v_resize_bm:
+	.globl _v_resize_bm
+_v_resize_bm:
 		move.l     #0x00000370,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_get_outline
-v_get_outline:
+	.globl _v_get_outline
+_v_get_outline:
 		move.l     #0x00000374,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_track_offset
-vst_track_offset:
+	.globl _vst_track_offset
+_vst_track_offset:
 		move.l     #0x00000378,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_arbpt
-vst_arbpt:
+	.globl _vst_arbpt
+_vst_arbpt:
 		move.l     #0x0000037C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_advance
-vqt_advance:
+	.globl _vqt_advance
+_vqt_advance:
 		move.l     #0x00000380,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_setsize
-vst_setsize:
+	.globl _vst_setsize
+_vst_setsize:
 		move.l     #0x00000384,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vq_vgdos
-vq_vgdos:
+	.globl _vq_vgdos
+_vq_vgdos:
 		move.l     #0x00000388,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_width
-vst_width:
+	.globl _vst_width
+_vst_width:
 		move.l     #0x0000038C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_scratch
-vst_scratch:
+	.globl _vst_scratch
+_vst_scratch:
 		move.l     #0x00000390,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vst_error
-vst_error:
+	.globl _vst_error
+_vst_error:
 		move.l     #0x00000394,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_savecache
-v_savecache:
+	.globl _v_savecache
+_v_savecache:
 		move.l     #0x00000398,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_loadcache
-v_loadcache:
+	.globl _v_loadcache
+_v_loadcache:
 		move.l     #0x0000039C,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_flushcache
-v_flushcache:
+	.globl _v_flushcache
+_v_flushcache:
 		move.l     #0x000003A0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_cachesize
-vqt_cachesize:
+	.globl _vqt_cachesize
+_vqt_cachesize:
 		move.l     #0x000003A4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_get_table
-vqt_get_table:
+	.globl _vqt_get_table
+_vqt_get_table:
 		move.l     #0x000003A8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vs_curaddress
-vs_curaddress:
+	.globl _vs_curaddress
+_vs_curaddress:
 		move.l     #0x000003AC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vsf_perimeter3
-vsf_perimeter3:
+	.globl _vsf_perimeter3
+_vsf_perimeter3:
 		move.l     #0x000003B0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_justified
-vqt_justified:
+	.globl _vqt_justified
+_vqt_justified:
 		move.l     #0x000003B4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_opnprnwrk
-v_opnprnwrk:
+	.globl _v_opnprnwrk
+_v_opnprnwrk:
 		move.l     #0x000003B8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_opnmatrixprn
-v_opnmatrixprn:
+	.globl _v_opnmatrixprn
+_v_opnmatrixprn:
 		move.l     #0x000003BC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_set_app_buff
-v_set_app_buff:
+	.globl _v_set_app_buff
+_v_set_app_buff:
 		move.l     #0x000003C0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl vqt_devinfo
-vqt_devinfo:
+	.globl _vqt_devinfo
+_vqt_devinfo:
 		move.l     #0x000003C4,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_create_ctab
-v_create_ctab:
+	.globl _v_create_ctab
+_v_create_ctab:
 		move.l     #0x000003C8,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_delete_ctab
-v_delete_ctab:
+	.globl _v_delete_ctab
+_v_delete_ctab:
 		move.l     #0x000003CC,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
-	.globl v_setrgb
-v_setrgb:
+	.globl _v_setrgb
+_v_setrgb:
 		move.l     #0x000003D0,-(a7)
 		move.l     funcVdi(pc),-(a7)
 		bra        indirect
 
 /* AES */
-	.globl aes
-aes:
+	.globl _aes
+_aes:
 		move.l     #0x00000000,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_init
-appl_init:
+	.globl _appl_init
+_appl_init:
 		move.l     #0x00000004,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_read
-appl_read:
+	.globl _appl_read
+_appl_read:
 		move.l     #0x00000008,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_write
-appl_write:
+	.globl _appl_write
+_appl_write:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_find
-appl_find:
+	.globl _appl_find
+_appl_find:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_search
-appl_search:
+	.globl _appl_search
+_appl_search:
 		move.l     #0x00000014,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_tplay
-appl_tplay:
+	.globl _appl_tplay
+_appl_tplay:
 		move.l     #0x00000018,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_trecord
-appl_trecord:
+	.globl _appl_trecord
+_appl_trecord:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_yield
-appl_yield:
+	.globl _appl_yield
+_appl_yield:
 		move.l     #0x00000020,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_exit
-appl_exit:
+	.globl _appl_exit
+_appl_exit:
 		move.l     #0x00000024,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_getinfo
-appl_getinfo:
+	.globl _appl_getinfo
+_appl_getinfo:
 		move.l     #0x00000028,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl appl_control
-appl_control:
+	.globl _appl_control
+_appl_control:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_keybd
-evnt_keybd:
+	.globl _evnt_keybd
+_evnt_keybd:
 		move.l     #0x00000030,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_button
-evnt_button:
+	.globl _evnt_button
+_evnt_button:
 		move.l     #0x00000034,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_mouse
-evnt_mouse:
+	.globl _evnt_mouse
+_evnt_mouse:
 		move.l     #0x00000038,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_mesag
-evnt_mesag:
+	.globl _evnt_mesag
+_evnt_mesag:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_timer
-evnt_timer:
+	.globl _evnt_timer
+_evnt_timer:
 		move.l     #0x00000040,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_event
-evnt_event:
+	.globl _evnt_event
+_evnt_event:
 		move.l     #0x00000044,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_multi
-evnt_multi:
+	.globl _evnt_multi
+_evnt_multi:
 		move.l     #0x00000048,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl evnt_dclick
-evnt_dclick:
+	.globl _evnt_dclick
+_evnt_dclick:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_bar
-menu_bar:
+	.globl _menu_bar
+_menu_bar:
 		move.l     #0x00000050,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_icheck
-menu_icheck:
+	.globl _menu_icheck
+_menu_icheck:
 		move.l     #0x00000054,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_ienable
-menu_ienable:
+	.globl _menu_ienable
+_menu_ienable:
 		move.l     #0x00000058,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_tnormal
-menu_tnormal:
+	.globl _menu_tnormal
+_menu_tnormal:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_text
-menu_text:
+	.globl _menu_text
+_menu_text:
 		move.l     #0x00000060,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_register
-menu_register:
+	.globl _menu_register
+_menu_register:
 		move.l     #0x00000064,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_unregister
-menu_unregister:
+	.globl _menu_unregister
+_menu_unregister:
 		move.l     #0x00000068,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_click
-menu_click:
+	.globl _menu_click
+_menu_click:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_attach
-menu_attach:
+	.globl _menu_attach
+_menu_attach:
 		move.l     #0x00000070,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_istart
-menu_istart:
+	.globl _menu_istart
+_menu_istart:
 		move.l     #0x00000074,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_popup
-menu_popup:
+	.globl _menu_popup
+_menu_popup:
 		move.l     #0x00000078,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl menu_settings
-menu_settings:
+	.globl _menu_settings
+_menu_settings:
 		move.l     #0x0000007C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_add
-objc_add:
+	.globl _objc_add
+_objc_add:
 		move.l     #0x00000080,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_delete
-objc_delete:
+	.globl _objc_delete
+_objc_delete:
 		move.l     #0x00000084,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_draw
-objc_draw:
+	.globl _objc_draw
+_objc_draw:
 		move.l     #0x00000088,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_find
-objc_find:
+	.globl _objc_find
+_objc_find:
 		move.l     #0x0000008C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_offset
-objc_offset:
+	.globl _objc_offset
+_objc_offset:
 		move.l     #0x00000090,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_order
-objc_order:
+	.globl _objc_order
+_objc_order:
 		move.l     #0x00000094,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_edit
-objc_edit:
+	.globl _objc_edit
+_objc_edit:
 		move.l     #0x00000098,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_change
-objc_change:
+	.globl _objc_change
+_objc_change:
 		move.l     #0x0000009C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_sysvar
-objc_sysvar:
+	.globl _objc_sysvar
+_objc_sysvar:
 		move.l     #0x000000A0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_do
-form_do:
+	.globl _form_do
+_form_do:
 		move.l     #0x000000A4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_dial
-form_dial:
+	.globl _form_dial
+_form_dial:
 		move.l     #0x000000A8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_alert
-form_alert:
+	.globl _form_alert
+_form_alert:
 		move.l     #0x000000AC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_error
-form_error:
+	.globl _form_error
+_form_error:
 		move.l     #0x000000B0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_center
-form_center:
+	.globl _form_center
+_form_center:
 		move.l     #0x000000B4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_keybd
-form_keybd:
+	.globl _form_keybd
+_form_keybd:
 		move.l     #0x000000B8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_button
-form_button:
+	.globl _form_button
+_form_button:
 		move.l     #0x000000BC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_rubbox
-graf_rubbox:
+	.globl _graf_rubbox
+_graf_rubbox:
 		move.l     #0x000000C0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_rubberbox
-graf_rubberbox:
+	.globl _graf_rubberbox
+_graf_rubberbox:
 		move.l     #0x000000C4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_dragbox
-graf_dragbox:
+	.globl _graf_dragbox
+_graf_dragbox:
 		move.l     #0x000000C8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_mbox
-graf_mbox:
+	.globl _graf_mbox
+_graf_mbox:
 		move.l     #0x000000CC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_movebox
-graf_movebox:
+	.globl _graf_movebox
+_graf_movebox:
 		move.l     #0x000000D0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_growbox
-graf_growbox:
+	.globl _graf_growbox
+_graf_growbox:
 		move.l     #0x000000D4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_shrinkbox
-graf_shrinkbox:
+	.globl _graf_shrinkbox
+_graf_shrinkbox:
 		move.l     #0x000000D8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_watchbox
-graf_watchbox:
+	.globl _graf_watchbox
+_graf_watchbox:
 		move.l     #0x000000DC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_slidebox
-graf_slidebox:
+	.globl _graf_slidebox
+_graf_slidebox:
 		move.l     #0x000000E0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_handle
-graf_handle:
+	.globl _graf_handle
+_graf_handle:
 		move.l     #0x000000E4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_mouse
-graf_mouse:
+	.globl _graf_mouse
+_graf_mouse:
 		move.l     #0x000000E8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_mkstate
-graf_mkstate:
+	.globl _graf_mkstate
+_graf_mkstate:
 		move.l     #0x000000EC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_multirubber
-graf_multirubber:
+	.globl _graf_multirubber
+_graf_multirubber:
 		move.l     #0x000000F0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl scrp_read
-scrp_read:
+	.globl _scrp_read
+_scrp_read:
 		move.l     #0x000000F4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl scrp_write
-scrp_write:
+	.globl _scrp_write
+_scrp_write:
 		move.l     #0x000000F8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fsel_input
-fsel_input:
+	.globl _fsel_input
+_fsel_input:
 		move.l     #0x000000FC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fsel_exinput
-fsel_exinput:
+	.globl _fsel_exinput
+_fsel_exinput:
 		move.l     #0x00000100,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fsel_boxinput
-fsel_boxinput:
+	.globl _fsel_boxinput
+_fsel_boxinput:
 		move.l     #0x00000104,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fslx_open
-fslx_open:
+	.globl _fslx_open
+_fslx_open:
 		move.l     #0x00000108,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fslx_close
-fslx_close:
+	.globl _fslx_close
+_fslx_close:
 		move.l     #0x0000010C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fslx_getnxtfile
-fslx_getnxtfile:
+	.globl _fslx_getnxtfile
+_fslx_getnxtfile:
 		move.l     #0x00000110,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fslx_evnt
-fslx_evnt:
+	.globl _fslx_evnt
+_fslx_evnt:
 		move.l     #0x00000114,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fslx_do
-fslx_do:
+	.globl _fslx_do
+_fslx_do:
 		move.l     #0x00000118,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fslx_set_flags
-fslx_set_flags:
+	.globl _fslx_set_flags
+_fslx_set_flags:
 		move.l     #0x0000011C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_create
-wind_create:
+	.globl _wind_create
+_wind_create:
 		move.l     #0x00000120,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_open
-wind_open:
+	.globl _wind_open
+_wind_open:
 		move.l     #0x00000124,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_close
-wind_close:
+	.globl _wind_close
+_wind_close:
 		move.l     #0x00000128,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_delete
-wind_delete:
+	.globl _wind_delete
+_wind_delete:
 		move.l     #0x0000012C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_get
-wind_get:
+	.globl _wind_get
+_wind_get:
 		move.l     #0x00000130,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_getQSB
-wind_getQSB:
+	.globl _wind_getQSB
+_wind_getQSB:
 		move.l     #0x00000134,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_set
-wind_set:
+	.globl _wind_set
+_wind_set:
 		move.l     #0x00000138,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_find
-wind_find:
+	.globl _wind_find
+_wind_find:
 		move.l     #0x0000013C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_update
-wind_update:
+	.globl _wind_update
+_wind_update:
 		move.l     #0x00000140,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_calc
-wind_calc:
+	.globl _wind_calc
+_wind_calc:
 		move.l     #0x00000144,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_new
-wind_new:
+	.globl _wind_new
+_wind_new:
 		move.l     #0x00000148,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl rsrc_load
-rsrc_load:
+	.globl _rsrc_load
+_rsrc_load:
 		move.l     #0x0000014C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl rsrc_free
-rsrc_free:
+	.globl _rsrc_free
+_rsrc_free:
 		move.l     #0x00000150,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl rsrc_gaddr
-rsrc_gaddr:
+	.globl _rsrc_gaddr
+_rsrc_gaddr:
 		move.l     #0x00000154,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl rsrc_saddr
-rsrc_saddr:
+	.globl _rsrc_saddr
+_rsrc_saddr:
 		move.l     #0x00000158,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl rsrc_obfix
-rsrc_obfix:
+	.globl _rsrc_obfix
+_rsrc_obfix:
 		move.l     #0x0000015C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl rsrc_rcfix
-rsrc_rcfix:
+	.globl _rsrc_rcfix
+_rsrc_rcfix:
 		move.l     #0x00000160,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl shel_read
-shel_read:
+	.globl _shel_read
+_shel_read:
 		move.l     #0x00000164,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl shel_write
-shel_write:
+	.globl _shel_write
+_shel_write:
 		move.l     #0x00000168,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl shel_get
-shel_get:
+	.globl _shel_get
+_shel_get:
 		move.l     #0x0000016C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl shel_put
-shel_put:
+	.globl _shel_put
+_shel_put:
 		move.l     #0x00000170,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl shel_find
-shel_find:
+	.globl _shel_find
+_shel_find:
 		move.l     #0x00000174,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl shel_envrn
-shel_envrn:
+	.globl _shel_envrn
+_shel_envrn:
 		move.l     #0x00000178,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl shel_help
-shel_help:
+	.globl _shel_help
+_shel_help:
 		move.l     #0x0000017C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_add
-fnts_add:
+	.globl _fnts_add
+_fnts_add:
 		move.l     #0x00000180,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_close
-fnts_close:
+	.globl _fnts_close
+_fnts_close:
 		move.l     #0x00000184,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_create
-fnts_create:
+	.globl _fnts_create
+_fnts_create:
 		move.l     #0x00000188,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_delete
-fnts_delete:
+	.globl _fnts_delete
+_fnts_delete:
 		move.l     #0x0000018C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_do
-fnts_do:
+	.globl _fnts_do
+_fnts_do:
 		move.l     #0x00000190,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_evnt
-fnts_evnt:
+	.globl _fnts_evnt
+_fnts_evnt:
 		move.l     #0x00000194,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_get_info
-fnts_get_info:
+	.globl _fnts_get_info
+_fnts_get_info:
 		move.l     #0x00000198,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_get_name
-fnts_get_name:
+	.globl _fnts_get_name
+_fnts_get_name:
 		move.l     #0x0000019C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_get_no_styles
-fnts_get_no_styles:
+	.globl _fnts_get_no_styles
+_fnts_get_no_styles:
 		move.l     #0x000001A0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_get_style
-fnts_get_style:
+	.globl _fnts_get_style
+_fnts_get_style:
 		move.l     #0x000001A4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_open
-fnts_open:
+	.globl _fnts_open
+_fnts_open:
 		move.l     #0x000001A8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_remove
-fnts_remove:
+	.globl _fnts_remove
+_fnts_remove:
 		move.l     #0x000001AC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl fnts_update
-fnts_update:
+	.globl _fnts_update
+_fnts_update:
 		move.l     #0x000001B0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_ascroll_to
-lbox_ascroll_to:
+	.globl _lbox_ascroll_to
+_lbox_ascroll_to:
 		move.l     #0x000001B4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_scroll_to
-lbox_scroll_to:
+	.globl _lbox_scroll_to
+_lbox_scroll_to:
 		move.l     #0x000001B8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_bscroll_to
-lbox_bscroll_to:
+	.globl _lbox_bscroll_to
+_lbox_bscroll_to:
 		move.l     #0x000001BC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_cnt_items
-lbox_cnt_items:
+	.globl _lbox_cnt_items
+_lbox_cnt_items:
 		move.l     #0x000001C0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_create
-lbox_create:
+	.globl _lbox_create
+_lbox_create:
 		move.l     #0x000001C4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_delete
-lbox_delete:
+	.globl _lbox_delete
+_lbox_delete:
 		move.l     #0x000001C8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_do
-lbox_do:
+	.globl _lbox_do
+_lbox_do:
 		move.l     #0x000001CC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_free_items
-lbox_free_items:
+	.globl _lbox_free_items
+_lbox_free_items:
 		move.l     #0x000001D0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_free_list
-lbox_free_list:
+	.globl _lbox_free_list
+_lbox_free_list:
 		move.l     #0x000001D4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_afirst
-lbox_get_afirst:
+	.globl _lbox_get_afirst
+_lbox_get_afirst:
 		move.l     #0x000001D8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_first
-lbox_get_first:
+	.globl _lbox_get_first
+_lbox_get_first:
 		move.l     #0x000001DC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_avis
-lbox_get_avis:
+	.globl _lbox_get_avis
+_lbox_get_avis:
 		move.l     #0x000001E0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_visible
-lbox_get_visible:
+	.globl _lbox_get_visible
+_lbox_get_visible:
 		move.l     #0x000001E4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_bentries
-lbox_get_bentries:
+	.globl _lbox_get_bentries
+_lbox_get_bentries:
 		move.l     #0x000001E8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_bfirst
-lbox_get_bfirst:
+	.globl _lbox_get_bfirst
+_lbox_get_bfirst:
 		move.l     #0x000001EC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_idx
-lbox_get_idx:
+	.globl _lbox_get_idx
+_lbox_get_idx:
 		move.l     #0x000001F0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_item
-lbox_get_item:
+	.globl _lbox_get_item
+_lbox_get_item:
 		move.l     #0x000001F4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_items
-lbox_get_items:
+	.globl _lbox_get_items
+_lbox_get_items:
 		move.l     #0x000001F8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_slct_idx
-lbox_get_slct_idx:
+	.globl _lbox_get_slct_idx
+_lbox_get_slct_idx:
 		move.l     #0x000001FC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_slct_item
-lbox_get_slct_item:
+	.globl _lbox_get_slct_item
+_lbox_get_slct_item:
 		move.l     #0x00000200,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_tree
-lbox_get_tree:
+	.globl _lbox_get_tree
+_lbox_get_tree:
 		move.l     #0x00000204,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_get_udata
-lbox_get_udata:
+	.globl _lbox_get_udata
+_lbox_get_udata:
 		move.l     #0x00000208,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_set_asldr
-lbox_set_asldr:
+	.globl _lbox_set_asldr
+_lbox_set_asldr:
 		move.l     #0x0000020C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_set_slider
-lbox_set_slider:
+	.globl _lbox_set_slider
+_lbox_set_slider:
 		move.l     #0x00000210,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_set_bentries
-lbox_set_bentries:
+	.globl _lbox_set_bentries
+_lbox_set_bentries:
 		move.l     #0x00000214,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_set_bsldr
-lbox_set_bsldr:
+	.globl _lbox_set_bsldr
+_lbox_set_bsldr:
 		move.l     #0x00000218,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_set_items
-lbox_set_items:
+	.globl _lbox_set_items
+_lbox_set_items:
 		move.l     #0x0000021C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl lbox_update
-lbox_update:
+	.globl _lbox_update
+_lbox_update:
 		move.l     #0x00000220,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_add_printers
-pdlg_add_printers:
+	.globl _pdlg_add_printers
+_pdlg_add_printers:
 		move.l     #0x00000224,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_add_sub_dialogs
-pdlg_add_sub_dialogs:
+	.globl _pdlg_add_sub_dialogs
+_pdlg_add_sub_dialogs:
 		move.l     #0x00000228,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_close
-pdlg_close:
+	.globl _pdlg_close
+_pdlg_close:
 		move.l     #0x0000022C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_create
-pdlg_create:
+	.globl _pdlg_create
+_pdlg_create:
 		move.l     #0x00000230,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_delete
-pdlg_delete:
+	.globl _pdlg_delete
+_pdlg_delete:
 		move.l     #0x00000234,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_dflt_settings
-pdlg_dflt_settings:
+	.globl _pdlg_dflt_settings
+_pdlg_dflt_settings:
 		move.l     #0x00000238,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_do
-pdlg_do:
+	.globl _pdlg_do
+_pdlg_do:
 		move.l     #0x0000023C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_evnt
-pdlg_evnt:
+	.globl _pdlg_evnt
+_pdlg_evnt:
 		move.l     #0x00000240,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_free_settings
-pdlg_free_settings:
+	.globl _pdlg_free_settings
+_pdlg_free_settings:
 		move.l     #0x00000244,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_get_setsize
-pdlg_get_setsize:
+	.globl _pdlg_get_setsize
+_pdlg_get_setsize:
 		move.l     #0x00000248,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_new_settings
-pdlg_new_settings:
+	.globl _pdlg_new_settings
+_pdlg_new_settings:
 		move.l     #0x0000024C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_open
-pdlg_open:
+	.globl _pdlg_open
+_pdlg_open:
 		move.l     #0x00000250,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_remove_printers
-pdlg_remove_printers:
+	.globl _pdlg_remove_printers
+_pdlg_remove_printers:
 		move.l     #0x00000254,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_remove_sub_dialogs
-pdlg_remove_sub_dialogs:
+	.globl _pdlg_remove_sub_dialogs
+_pdlg_remove_sub_dialogs:
 		move.l     #0x00000258,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_update
-pdlg_update:
+	.globl _pdlg_update
+_pdlg_update:
 		move.l     #0x0000025C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_use_settings
-pdlg_use_settings:
+	.globl _pdlg_use_settings
+_pdlg_use_settings:
 		move.l     #0x00000260,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl pdlg_validate_settings
-pdlg_validate_settings:
+	.globl _pdlg_validate_settings
+_pdlg_validate_settings:
 		move.l     #0x00000264,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_create
-edit_create:
+	.globl _edit_create
+_edit_create:
 		move.l     #0x00000268,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_set_buf
-edit_set_buf:
+	.globl _edit_set_buf
+_edit_set_buf:
 		move.l     #0x0000026C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_open
-edit_open:
+	.globl _edit_open
+_edit_open:
 		move.l     #0x00000270,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_close
-edit_close:
+	.globl _edit_close
+_edit_close:
 		move.l     #0x00000274,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_delete
-edit_delete:
+	.globl _edit_delete
+_edit_delete:
 		move.l     #0x00000278,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_cursor
-edit_cursor:
+	.globl _edit_cursor
+_edit_cursor:
 		move.l     #0x0000027C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_evnt
-edit_evnt:
+	.globl _edit_evnt
+_edit_evnt:
 		move.l     #0x00000280,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_buf
-edit_get_buf:
+	.globl _edit_get_buf
+_edit_get_buf:
 		move.l     #0x00000284,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_format
-edit_get_format:
+	.globl _edit_get_format
+_edit_get_format:
 		move.l     #0x00000288,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_colour
-edit_get_colour:
+	.globl _edit_get_colour
+_edit_get_colour:
 		move.l     #0x0000028C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_color
-edit_get_color:
+	.globl _edit_get_color
+_edit_get_color:
 		move.l     #0x00000290,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_font
-edit_get_font:
+	.globl _edit_get_font
+_edit_get_font:
 		move.l     #0x00000294,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_cursor
-edit_get_cursor:
+	.globl _edit_get_cursor
+_edit_get_cursor:
 		move.l     #0x00000298,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_dirty
-edit_get_dirty:
+	.globl _edit_get_dirty
+_edit_get_dirty:
 		move.l     #0x0000029C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_sel
-edit_get_sel:
+	.globl _edit_get_sel
+_edit_get_sel:
 		move.l     #0x000002A0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_get_scrollinfo
-edit_get_scrollinfo:
+	.globl _edit_get_scrollinfo
+_edit_get_scrollinfo:
 		move.l     #0x000002A4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_set_format
-edit_set_format:
+	.globl _edit_set_format
+_edit_set_format:
 		move.l     #0x000002A8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_set_colour
-edit_set_colour:
+	.globl _edit_set_colour
+_edit_set_colour:
 		move.l     #0x000002AC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_set_color
-edit_set_color:
+	.globl _edit_set_color
+_edit_set_color:
 		move.l     #0x000002B0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_set_font
-edit_set_font:
+	.globl _edit_set_font
+_edit_set_font:
 		move.l     #0x000002B4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_set_cursor
-edit_set_cursor:
+	.globl _edit_set_cursor
+_edit_set_cursor:
 		move.l     #0x000002B8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_resized
-edit_resized:
+	.globl _edit_resized
+_edit_resized:
 		move.l     #0x000002BC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_set_dirty
-edit_set_dirty:
+	.globl _edit_set_dirty
+_edit_set_dirty:
 		move.l     #0x000002C0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl edit_scroll
-edit_scroll:
+	.globl _edit_scroll
+_edit_scroll:
 		move.l     #0x000002C4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl EvntMulti
-EvntMulti:
+	.globl _EvntMulti
+_EvntMulti:
 		move.l     #0x000002C8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_wbutton
-form_wbutton:
+	.globl _form_wbutton
+_form_wbutton:
 		move.l     #0x000002CC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_xdial
-form_xdial:
+	.globl _form_xdial
+_form_xdial:
 		move.l     #0x000002D0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_xdo
-form_xdo:
+	.globl _form_xdo
+_form_xdo:
 		move.l     #0x000002D4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl form_xerr
-form_xerr:
+	.globl _form_xerr
+_form_xerr:
 		move.l     #0x000002D8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl _crystal
-_crystal:
+	.globl __crystal
+__crystal:
 		move.l     #0x000002DC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_wwatchbox
-graf_wwatchbox:
+	.globl _graf_wwatchbox
+_graf_wwatchbox:
 		move.l     #0x000002E0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_xhandle
-graf_xhandle:
+	.globl _graf_xhandle
+_graf_xhandle:
 		move.l     #0x000002E4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_create
-wdlg_create:
+	.globl _wdlg_create
+_wdlg_create:
 		move.l     #0x000002E8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_open
-wdlg_open:
+	.globl _wdlg_open
+_wdlg_open:
 		move.l     #0x000002EC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_close
-wdlg_close:
+	.globl _wdlg_close
+_wdlg_close:
 		move.l     #0x000002F0,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_delete
-wdlg_delete:
+	.globl _wdlg_delete
+_wdlg_delete:
 		move.l     #0x000002F4,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_get_tree
-wdlg_get_tree:
+	.globl _wdlg_get_tree
+_wdlg_get_tree:
 		move.l     #0x000002F8,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_get_edit
-wdlg_get_edit:
+	.globl _wdlg_get_edit
+_wdlg_get_edit:
 		move.l     #0x000002FC,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_get_udata
-wdlg_get_udata:
+	.globl _wdlg_get_udata
+_wdlg_get_udata:
 		move.l     #0x00000300,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_get_handle
-wdlg_get_handle:
+	.globl _wdlg_get_handle
+_wdlg_get_handle:
 		move.l     #0x00000304,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_set_edit
-wdlg_set_edit:
+	.globl _wdlg_set_edit
+_wdlg_set_edit:
 		move.l     #0x00000308,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_set_tree
-wdlg_set_tree:
+	.globl _wdlg_set_tree
+_wdlg_set_tree:
 		move.l     #0x0000030C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_set_size
-wdlg_set_size:
+	.globl _wdlg_set_size
+_wdlg_set_size:
 		move.l     #0x00000310,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_set_iconify
-wdlg_set_iconify:
+	.globl _wdlg_set_iconify
+_wdlg_set_iconify:
 		move.l     #0x00000314,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_set_uniconify
-wdlg_set_uniconify:
+	.globl _wdlg_set_uniconify
+_wdlg_set_uniconify:
 		move.l     #0x00000318,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_evnt
-wdlg_evnt:
+	.globl _wdlg_evnt
+_wdlg_evnt:
 		move.l     #0x0000031C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wdlg_redraw
-wdlg_redraw:
+	.globl _wdlg_redraw
+_wdlg_redraw:
 		move.l     #0x00000320,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl wind_draw
-wind_draw:
+	.globl _wind_draw
+_wind_draw:
 		move.l     #0x00000324,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl scrp_clear
-scrp_clear:
+	.globl _scrp_clear
+_scrp_clear:
 		move.l     #0x00000328,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl objc_xedit
-objc_xedit:
+	.globl _objc_xedit
+_objc_xedit:
 		move.l     #0x0000032C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl graf_rubbbox
-graf_rubbbox:
+	.globl _graf_rubbbox
+_graf_rubbbox:
 		move.l     #0x00000330,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
 
 /* keytab */
-	.globl Akt_getKeyTab
-Akt_getKeyTab:
+	.globl _Akt_getKeyTab
+_Akt_getKeyTab:
 		move.l     #0x00000000,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getRelease
-Akt_getRelease:
+	.globl _Akt_getRelease
+_Akt_getRelease:
 		move.l     #0x00000004,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getEuro
-Akt_getEuro:
+	.globl _Akt_getEuro
+_Akt_getEuro:
 		move.l     #0x00000008,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getExpMaxNr
-Akt_getExpMaxNr:
+	.globl _Akt_getExpMaxNr
+_Akt_getExpMaxNr:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getImpMaxNr
-Akt_getImpMaxNr:
+	.globl _Akt_getImpMaxNr
+_Akt_getImpMaxNr:
 		move.l     #0x00000010,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getExpNameFromNr
-Akt_getExpNameFromNr:
+	.globl _Akt_getExpNameFromNr
+_Akt_getExpNameFromNr:
 		move.l     #0x00000014,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getImpNameFromNr
-Akt_getImpNameFromNr:
+	.globl _Akt_getImpNameFromNr
+_Akt_getImpNameFromNr:
 		move.l     #0x00000018,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getExpShortNameFromNr
-Akt_getExpShortNameFromNr:
+	.globl _Akt_getExpShortNameFromNr
+_Akt_getExpShortNameFromNr:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getImpShortNameFromNr
-Akt_getImpShortNameFromNr:
+	.globl _Akt_getImpShortNameFromNr
+_Akt_getImpShortNameFromNr:
 		move.l     #0x00000020,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getExpNrFromId
-Akt_getExpNrFromId:
+	.globl _Akt_getExpNrFromId
+_Akt_getExpNrFromId:
 		move.l     #0x00000024,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getImpNrFromId
-Akt_getImpNrFromId:
+	.globl _Akt_getImpNrFromId
+_Akt_getImpNrFromId:
 		move.l     #0x00000028,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getExpIdFromNr
-Akt_getExpIdFromNr:
+	.globl _Akt_getExpIdFromNr
+_Akt_getExpIdFromNr:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getImpIdFromNr
-Akt_getImpIdFromNr:
+	.globl _Akt_getImpIdFromNr
+_Akt_getImpIdFromNr:
 		move.l     #0x00000030,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getExpNrFromName
-Akt_getExpNrFromName:
+	.globl _Akt_getExpNrFromName
+_Akt_getExpNrFromName:
 		move.l     #0x00000034,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getImpNrFromName
-Akt_getImpNrFromName:
+	.globl _Akt_getImpNrFromName
+_Akt_getImpNrFromName:
 		move.l     #0x00000038,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_CharAtari2X
-Akt_CharAtari2X:
+	.globl _Akt_CharAtari2X
+_Akt_CharAtari2X:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_CharX2Atari
-Akt_CharX2Atari:
+	.globl _Akt_CharX2Atari
+_Akt_CharX2Atari:
 		move.l     #0x00000040,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockAtari2X
-Akt_BlockAtari2X:
+	.globl _Akt_BlockAtari2X
+_Akt_BlockAtari2X:
 		move.l     #0x00000044,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockX2Atari
-Akt_BlockX2Atari:
+	.globl _Akt_BlockX2Atari
+_Akt_BlockX2Atari:
 		move.l     #0x00000048,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_StringAtari2X
-Akt_StringAtari2X:
+	.globl _Akt_StringAtari2X
+_Akt_StringAtari2X:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_StringX2Atari
-Akt_StringX2Atari:
+	.globl _Akt_StringX2Atari
+_Akt_StringX2Atari:
 		move.l     #0x00000050,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_CharX2Unicode
-Akt_CharX2Unicode:
+	.globl _Akt_CharX2Unicode
+_Akt_CharX2Unicode:
 		move.l     #0x00000054,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_CharUnicode2X
-Akt_CharUnicode2X:
+	.globl _Akt_CharUnicode2X
+_Akt_CharUnicode2X:
 		move.l     #0x00000058,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockX2Unicode
-Akt_BlockX2Unicode:
+	.globl _Akt_BlockX2Unicode
+_Akt_BlockX2Unicode:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockUnicode2X
-Akt_BlockUnicode2X:
+	.globl _Akt_BlockUnicode2X
+_Akt_BlockUnicode2X:
 		move.l     #0x00000060,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_StringX2Unicode
-Akt_StringX2Unicode:
+	.globl _Akt_StringX2Unicode
+_Akt_StringX2Unicode:
 		move.l     #0x00000064,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_popExpName
-Akt_popExpName:
+	.globl _Akt_popExpName
+_Akt_popExpName:
 		move.l     #0x00000068,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_popImpName
-Akt_popImpName:
+	.globl _Akt_popImpName
+_Akt_popImpName:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_chooseExpNr
-Akt_chooseExpNr:
+	.globl _Akt_chooseExpNr
+_Akt_chooseExpNr:
 		move.l     #0x00000070,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_chooseImpNr
-Akt_chooseImpNr:
+	.globl _Akt_chooseImpNr
+_Akt_chooseImpNr:
 		move.l     #0x00000074,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getExpMinNr
-Akt_getExpMinNr:
+	.globl _Akt_getExpMinNr
+_Akt_getExpMinNr:
 		move.l     #0x00000078,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getImpMinNr
-Akt_getImpMinNr:
+	.globl _Akt_getImpMinNr
+_Akt_getImpMinNr:
 		move.l     #0x0000007C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockXUtf2Unicode
-Akt_BlockXUtf2Unicode:
+	.globl _Akt_BlockXUtf2Unicode
+_Akt_BlockXUtf2Unicode:
 		move.l     #0x00000080,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockUnicode2XUtf
-Akt_BlockUnicode2XUtf:
+	.globl _Akt_BlockUnicode2XUtf
+_Akt_BlockUnicode2XUtf:
 		move.l     #0x00000084,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_StringXUtf2Unicode
-Akt_StringXUtf2Unicode:
+	.globl _Akt_StringXUtf2Unicode
+_Akt_StringXUtf2Unicode:
 		move.l     #0x00000088,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockXUtf2U2XUtf
-Akt_BlockXUtf2U2XUtf:
+	.globl _Akt_BlockXUtf2U2XUtf
+_Akt_BlockXUtf2U2XUtf:
 		move.l     #0x0000008C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_BlockXUtf2XUtf
-Akt_BlockXUtf2XUtf:
+	.globl _Akt_BlockXUtf2XUtf
+_Akt_BlockXUtf2XUtf:
 		move.l     #0x00000090,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_StringXUtf2U2XUtf
-Akt_StringXUtf2U2XUtf:
+	.globl _Akt_StringXUtf2U2XUtf
+_Akt_StringXUtf2U2XUtf:
 		move.l     #0x00000094,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_StringXUtf2XUtf
-Akt_StringXUtf2XUtf:
+	.globl _Akt_StringXUtf2XUtf
+_Akt_StringXUtf2XUtf:
 		move.l     #0x00000098,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
 		.IFNE WITH_EXTENSIONS
-		.globl Akt_getInfoShort
-Akt_getInfoShort:
+		.globl _Akt_getInfoShort
+_Akt_getInfoShort:
 		move.l     #0x0000009C,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_getInfoString
-Akt_getInfoString:
+	.globl _Akt_getInfoString
+_Akt_getInfoString:
 		move.l     #0x000000A0,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_CharXUtf2Unicode
-Akt_CharXUtf2Unicode:
+	.globl _Akt_CharXUtf2Unicode
+_Akt_CharXUtf2Unicode:
 		move.l     #0x000000A4,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
-	.globl Akt_CharUnicode2XUtf
-Akt_CharUnicode2XUtf:
+	.globl _Akt_CharUnicode2XUtf
+_Akt_CharUnicode2XUtf:
 		move.l     #0x000000A8,-(a7)
 		move.l     funcKeytab(pc),-(a7)
 		bra        indirect
 		.ENDC
 
 /* Multi-threading AES */
-	.globl mt_appl_init
-mt_appl_init:
+	.globl _mt_appl_init
+_mt_appl_init:
 		move.l     #0x00000000,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_read
-mt_appl_read:
+	.globl _mt_appl_read
+_mt_appl_read:
 		move.l     #0x00000004,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_write
-mt_appl_write:
+	.globl _mt_appl_write
+_mt_appl_write:
 		move.l     #0x00000008,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_find
-mt_appl_find:
+	.globl _mt_appl_find
+_mt_appl_find:
 		move.l     #0x0000000C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_search
-mt_appl_search:
+	.globl _mt_appl_search
+_mt_appl_search:
 		move.l     #0x00000010,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_tplay
-mt_appl_tplay:
+	.globl _mt_appl_tplay
+_mt_appl_tplay:
 		move.l     #0x00000014,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_trecord
-mt_appl_trecord:
+	.globl _mt_appl_trecord
+_mt_appl_trecord:
 		move.l     #0x00000018,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_yield
-mt_appl_yield:
+	.globl _mt_appl_yield
+_mt_appl_yield:
 		move.l     #0x0000001C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_exit
-mt_appl_exit:
+	.globl _mt_appl_exit
+_mt_appl_exit:
 		move.l     #0x00000020,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_getinfo
-mt_appl_getinfo:
+	.globl _mt_appl_getinfo
+_mt_appl_getinfo:
 		move.l     #0x00000024,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_appl_control
-mt_appl_control:
+	.globl _mt_appl_control
+_mt_appl_control:
 		move.l     #0x00000028,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_keybd
-mt_evnt_keybd:
+	.globl _mt_evnt_keybd
+_mt_evnt_keybd:
 		move.l     #0x00000334,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_button
-mt_evnt_button:
+	.globl _mt_evnt_button
+_mt_evnt_button:
 		move.l     #0x0000002C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_mouse
-mt_evnt_mouse:
+	.globl _mt_evnt_mouse
+_mt_evnt_mouse:
 		move.l     #0x00000030,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_mesag
-mt_evnt_mesag:
+	.globl _mt_evnt_mesag
+_mt_evnt_mesag:
 		move.l     #0x00000034,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_timer
-mt_evnt_timer:
+	.globl _mt_evnt_timer
+_mt_evnt_timer:
 		move.l     #0x00000038,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_event
-mt_evnt_event:
+	.globl _mt_evnt_event
+_mt_evnt_event:
 		move.l     #0x0000003C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_multi
-mt_evnt_multi:
+	.globl _mt_evnt_multi
+_mt_evnt_multi:
 		move.l     #0x00000040,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_evnt_dclick
-mt_evnt_dclick:
+	.globl _mt_evnt_dclick
+_mt_evnt_dclick:
 		move.l     #0x00000044,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_bar
-mt_menu_bar:
+	.globl _mt_menu_bar
+_mt_menu_bar:
 		move.l     #0x00000048,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_icheck
-mt_menu_icheck:
+	.globl _mt_menu_icheck
+_mt_menu_icheck:
 		move.l     #0x0000004C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_ienable
-mt_menu_ienable:
+	.globl _mt_menu_ienable
+_mt_menu_ienable:
 		move.l     #0x00000050,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_tnormal
-mt_menu_tnormal:
+	.globl _mt_menu_tnormal
+_mt_menu_tnormal:
 		move.l     #0x00000054,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_text
-mt_menu_text:
+	.globl _mt_menu_text
+_mt_menu_text:
 		move.l     #0x00000058,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_register
-mt_menu_register:
+	.globl _mt_menu_register
+_mt_menu_register:
 		move.l     #0x0000005C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_unregister
-mt_menu_unregister:
+	.globl _mt_menu_unregister
+_mt_menu_unregister:
 		move.l     #0x00000060,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_click
-mt_menu_click:
+	.globl _mt_menu_click
+_mt_menu_click:
 		move.l     #0x00000064,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_attach
-mt_menu_attach:
+	.globl _mt_menu_attach
+_mt_menu_attach:
 		move.l     #0x00000068,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_istart
-mt_menu_istart:
+	.globl _mt_menu_istart
+_mt_menu_istart:
 		move.l     #0x0000006C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_popup
-mt_menu_popup:
+	.globl _mt_menu_popup
+_mt_menu_popup:
 		move.l     #0x00000070,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_menu_settings
-mt_menu_settings:
+	.globl _mt_menu_settings
+_mt_menu_settings:
 		move.l     #0x00000074,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_add
-mt_objc_add:
+	.globl _mt_objc_add
+_mt_objc_add:
 		move.l     #0x00000078,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_delete
-mt_objc_delete:
+	.globl _mt_objc_delete
+_mt_objc_delete:
 		move.l     #0x0000007C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_draw
-mt_objc_draw:
+	.globl _mt_objc_draw
+_mt_objc_draw:
 		move.l     #0x00000338,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_find
-mt_objc_find:
+	.globl _mt_objc_find
+_mt_objc_find:
 		move.l     #0x00000080,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_offset
-mt_objc_offset:
+	.globl _mt_objc_offset
+_mt_objc_offset:
 		move.l     #0x00000084,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_order
-mt_objc_order:
+	.globl _mt_objc_order
+_mt_objc_order:
 		move.l     #0x00000088,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_edit
-mt_objc_edit:
+	.globl _mt_objc_edit
+_mt_objc_edit:
 		move.l     #0x0000008C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_change
-mt_objc_change:
+	.globl _mt_objc_change
+_mt_objc_change:
 		move.l     #0x00000090,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_sysvar
-mt_objc_sysvar:
+	.globl _mt_objc_sysvar
+_mt_objc_sysvar:
 		move.l     #0x00000094,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_do
-mt_form_do:
+	.globl _mt_form_do
+_mt_form_do:
 		move.l     #0x00000098,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_dial
-mt_form_dial:
+	.globl _mt_form_dial
+_mt_form_dial:
 		move.l     #0x0000009C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_alert
-mt_form_alert:
+	.globl _mt_form_alert
+_mt_form_alert:
 		move.l     #0x000000A0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_error
-mt_form_error:
+	.globl _mt_form_error
+_mt_form_error:
 		move.l     #0x000000A4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_center
-mt_form_center:
+	.globl _mt_form_center
+_mt_form_center:
 		move.l     #0x000000A8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_keybd
-mt_form_keybd:
+	.globl _mt_form_keybd
+_mt_form_keybd:
 		move.l     #0x000000AC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_button
-mt_form_button:
+	.globl _mt_form_button
+_mt_form_button:
 		move.l     #0x000000B0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_rubbox
-mt_graf_rubbox:
+	.globl _mt_graf_rubbox
+_mt_graf_rubbox:
 		move.l     #0x000000B4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_rubberbox
-mt_graf_rubberbox:
+	.globl _mt_graf_rubberbox
+_mt_graf_rubberbox:
 		move.l     #0x000000B8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_dragbox
-mt_graf_dragbox:
+	.globl _mt_graf_dragbox
+_mt_graf_dragbox:
 		move.l     #0x000000BC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_mbox
-mt_graf_mbox:
+	.globl _mt_graf_mbox
+_mt_graf_mbox:
 		move.l     #0x000000C0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_movebox
-mt_graf_movebox:
+	.globl _mt_graf_movebox
+_mt_graf_movebox:
 		move.l     #0x000000C4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_growbox
-mt_graf_growbox:
+	.globl _mt_graf_growbox
+_mt_graf_growbox:
 		move.l     #0x000000C8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_shrinkbox
-mt_graf_shrinkbox:
+	.globl _mt_graf_shrinkbox
+_mt_graf_shrinkbox:
 		move.l     #0x000000CC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_watchbox
-mt_graf_watchbox:
+	.globl _mt_graf_watchbox
+_mt_graf_watchbox:
 		move.l     #0x000000D0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_slidebox
-mt_graf_slidebox:
+	.globl _mt_graf_slidebox
+_mt_graf_slidebox:
 		move.l     #0x000000D4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_handle
-mt_graf_handle:
+	.globl _mt_graf_handle
+_mt_graf_handle:
 		move.l     #0x000000D8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_mouse
-mt_graf_mouse:
+	.globl _mt_graf_mouse
+_mt_graf_mouse:
 		move.l     #0x000000DC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_mkstate
-mt_graf_mkstate:
+	.globl _mt_graf_mkstate
+_mt_graf_mkstate:
 		move.l     #0x000000E0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_multirubber
-mt_graf_multirubber:
+	.globl _mt_graf_multirubber
+_mt_graf_multirubber:
 		move.l     #0x000000E4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_scrp_read
-mt_scrp_read:
+	.globl _mt_scrp_read
+_mt_scrp_read:
 		move.l     #0x000000E8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_scrp_write
-mt_scrp_write:
+	.globl _mt_scrp_write
+_mt_scrp_write:
 		move.l     #0x000000EC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fsel_input
-mt_fsel_input:
+	.globl _mt_fsel_input
+_mt_fsel_input:
 		move.l     #0x000000F0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fsel_exinput
-mt_fsel_exinput:
+	.globl _mt_fsel_exinput
+_mt_fsel_exinput:
 		move.l     #0x000000F4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fsel_boxinput
-mt_fsel_boxinput:
+	.globl _mt_fsel_boxinput
+_mt_fsel_boxinput:
 		move.l     #0x000000F8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fslx_open
-mt_fslx_open:
+	.globl _mt_fslx_open
+_mt_fslx_open:
 		move.l     #0x000000FC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fslx_close
-mt_fslx_close:
+	.globl _mt_fslx_close
+_mt_fslx_close:
 		move.l     #0x00000100,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fslx_getnxtfile
-mt_fslx_getnxtfile:
+	.globl _mt_fslx_getnxtfile
+_mt_fslx_getnxtfile:
 		move.l     #0x00000104,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fslx_evnt
-mt_fslx_evnt:
+	.globl _mt_fslx_evnt
+_mt_fslx_evnt:
 		move.l     #0x00000108,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fslx_do
-mt_fslx_do:
+	.globl _mt_fslx_do
+_mt_fslx_do:
 		move.l     #0x0000010C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fslx_set_flags
-mt_fslx_set_flags:
+	.globl _mt_fslx_set_flags
+_mt_fslx_set_flags:
 		move.l     #0x00000110,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_create
-mt_wind_create:
+	.globl _mt_wind_create
+_mt_wind_create:
 		move.l     #0x0000033C,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_open
-mt_wind_open:
+	.globl _mt_wind_open
+_mt_wind_open:
 		move.l     #0x00000114,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_close
-mt_wind_close:
+	.globl _mt_wind_close
+_mt_wind_close:
 		move.l     #0x00000118,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_delete
-mt_wind_delete:
+	.globl _mt_wind_delete
+_mt_wind_delete:
 		move.l     #0x0000011C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_get
-mt_wind_get:
+	.globl _mt_wind_get
+_mt_wind_get:
 		move.l     #0x00000120,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_getQSB
-mt_wind_getQSB:
+	.globl _mt_wind_getQSB
+_mt_wind_getQSB:
 		move.l     #0x00000124,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_set
-mt_wind_set:
+	.globl _mt_wind_set
+_mt_wind_set:
 		move.l     #0x00000128,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_find
-mt_wind_find:
+	.globl _mt_wind_find
+_mt_wind_find:
 		move.l     #0x0000012C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_update
-mt_wind_update:
+	.globl _mt_wind_update
+_mt_wind_update:
 		move.l     #0x00000130,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_calc
-mt_wind_calc:
+	.globl _mt_wind_calc
+_mt_wind_calc:
 		move.l     #0x00000134,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_new
-mt_wind_new:
+	.globl _mt_wind_new
+_mt_wind_new:
 		move.l     #0x00000138,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_rsrc_load
-mt_rsrc_load:
+	.globl _mt_rsrc_load
+_mt_rsrc_load:
 		move.l     #0x0000013C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_rsrc_free
-mt_rsrc_free:
+	.globl _mt_rsrc_free
+_mt_rsrc_free:
 		move.l     #0x00000140,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_rsrc_gaddr
-mt_rsrc_gaddr:
+	.globl _mt_rsrc_gaddr
+_mt_rsrc_gaddr:
 		move.l     #0x00000144,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_rsrc_saddr
-mt_rsrc_saddr:
+	.globl _mt_rsrc_saddr
+_mt_rsrc_saddr:
 		move.l     #0x00000148,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_rsrc_obfix
-mt_rsrc_obfix:
+	.globl _mt_rsrc_obfix
+_mt_rsrc_obfix:
 		move.l     #0x0000014C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_rsrc_rcfix
-mt_rsrc_rcfix:
+	.globl _mt_rsrc_rcfix
+_mt_rsrc_rcfix:
 		move.l     #0x00000150,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_shel_read
-mt_shel_read:
+	.globl _mt_shel_read
+_mt_shel_read:
 		move.l     #0x00000154,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_shel_write
-mt_shel_write:
+	.globl _mt_shel_write
+_mt_shel_write:
 		move.l     #0x00000158,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_shel_get
-mt_shel_get:
+	.globl _mt_shel_get
+_mt_shel_get:
 		move.l     #0x0000015C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_shel_put
-mt_shel_put:
+	.globl _mt_shel_put
+_mt_shel_put:
 		move.l     #0x00000160,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_shel_find
-mt_shel_find:
+	.globl _mt_shel_find
+_mt_shel_find:
 		move.l     #0x00000164,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_shel_envrn
-mt_shel_envrn:
+	.globl _mt_shel_envrn
+_mt_shel_envrn:
 		move.l     #0x00000168,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_shel_help
-mt_shel_help:
+	.globl _mt_shel_help
+_mt_shel_help:
 		move.l     #0x0000016C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_add
-mt_fnts_add:
+	.globl _mt_fnts_add
+_mt_fnts_add:
 		move.l     #0x00000170,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_close
-mt_fnts_close:
+	.globl _mt_fnts_close
+_mt_fnts_close:
 		move.l     #0x00000174,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_create
-mt_fnts_create:
+	.globl _mt_fnts_create
+_mt_fnts_create:
 		move.l     #0x00000178,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_delete
-mt_fnts_delete:
+	.globl _mt_fnts_delete
+_mt_fnts_delete:
 		move.l     #0x0000017C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_do
-mt_fnts_do:
+	.globl _mt_fnts_do
+_mt_fnts_do:
 		move.l     #0x00000180,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_evnt
-mt_fnts_evnt:
+	.globl _mt_fnts_evnt
+_mt_fnts_evnt:
 		move.l     #0x00000184,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_get_info
-mt_fnts_get_info:
+	.globl _mt_fnts_get_info
+_mt_fnts_get_info:
 		move.l     #0x00000188,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_get_name
-mt_fnts_get_name:
+	.globl _mt_fnts_get_name
+_mt_fnts_get_name:
 		move.l     #0x0000018C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_get_no_styles
-mt_fnts_get_no_styles:
+	.globl _mt_fnts_get_no_styles
+_mt_fnts_get_no_styles:
 		move.l     #0x00000190,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_get_style
-mt_fnts_get_style:
+	.globl _mt_fnts_get_style
+_mt_fnts_get_style:
 		move.l     #0x00000194,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_open
-mt_fnts_open:
+	.globl _mt_fnts_open
+_mt_fnts_open:
 		move.l     #0x00000198,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_remove
-mt_fnts_remove:
+	.globl _mt_fnts_remove
+_mt_fnts_remove:
 		move.l     #0x0000019C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_fnts_update
-mt_fnts_update:
+	.globl _mt_fnts_update
+_mt_fnts_update:
 		move.l     #0x000001A0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_ascroll_to
-mt_lbox_ascroll_to:
+	.globl _mt_lbox_ascroll_to
+_mt_lbox_ascroll_to:
 		move.l     #0x000001A4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_scroll_to
-mt_lbox_scroll_to:
+	.globl _mt_lbox_scroll_to
+_mt_lbox_scroll_to:
 		move.l     #0x000001A8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_bscroll_to
-mt_lbox_bscroll_to:
+	.globl _mt_lbox_bscroll_to
+_mt_lbox_bscroll_to:
 		move.l     #0x000001AC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_cnt_items
-mt_lbox_cnt_items:
+	.globl _mt_lbox_cnt_items
+_mt_lbox_cnt_items:
 		move.l     #0x000001B0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_create
-mt_lbox_create:
+	.globl _mt_lbox_create
+_mt_lbox_create:
 		move.l     #0x000001B4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_delete
-mt_lbox_delete:
+	.globl _mt_lbox_delete
+_mt_lbox_delete:
 		move.l     #0x000001B8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_do
-mt_lbox_do:
+	.globl _mt_lbox_do
+_mt_lbox_do:
 		move.l     #0x000001BC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_free_items
-mt_lbox_free_items:
+	.globl _mt_lbox_free_items
+_mt_lbox_free_items:
 		move.l     #0x000001C0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_free_list
-mt_lbox_free_list:
+	.globl _mt_lbox_free_list
+_mt_lbox_free_list:
 		move.l     #0x000001C4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_afirst
-mt_lbox_get_afirst:
+	.globl _mt_lbox_get_afirst
+_mt_lbox_get_afirst:
 		move.l     #0x000001C8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_first
-mt_lbox_get_first:
+	.globl _mt_lbox_get_first
+_mt_lbox_get_first:
 		move.l     #0x000001CC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_avis
-mt_lbox_get_avis:
+	.globl _mt_lbox_get_avis
+_mt_lbox_get_avis:
 		move.l     #0x000001D0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_visible
-mt_lbox_get_visible:
+	.globl _mt_lbox_get_visible
+_mt_lbox_get_visible:
 		move.l     #0x000001D4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_bentries
-mt_lbox_get_bentries:
+	.globl _mt_lbox_get_bentries
+_mt_lbox_get_bentries:
 		move.l     #0x000001D8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_bfirst
-mt_lbox_get_bfirst:
+	.globl _mt_lbox_get_bfirst
+_mt_lbox_get_bfirst:
 		move.l     #0x000001DC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_idx
-mt_lbox_get_idx:
+	.globl _mt_lbox_get_idx
+_mt_lbox_get_idx:
 		move.l     #0x000001E0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_item
-mt_lbox_get_item:
+	.globl _mt_lbox_get_item
+_mt_lbox_get_item:
 		move.l     #0x000001E4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_items
-mt_lbox_get_items:
+	.globl _mt_lbox_get_items
+_mt_lbox_get_items:
 		move.l     #0x000001E8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_slct_idx
-mt_lbox_get_slct_idx:
+	.globl _mt_lbox_get_slct_idx
+_mt_lbox_get_slct_idx:
 		move.l     #0x000001EC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_slct_item
-mt_lbox_get_slct_item:
+	.globl _mt_lbox_get_slct_item
+_mt_lbox_get_slct_item:
 		move.l     #0x000001F0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_tree
-mt_lbox_get_tree:
+	.globl _mt_lbox_get_tree
+_mt_lbox_get_tree:
 		move.l     #0x000001F4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_get_udata
-mt_lbox_get_udata:
+	.globl _mt_lbox_get_udata
+_mt_lbox_get_udata:
 		move.l     #0x000001F8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_set_asldr
-mt_lbox_set_asldr:
+	.globl _mt_lbox_set_asldr
+_mt_lbox_set_asldr:
 		move.l     #0x000001FC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_set_slider
-mt_lbox_set_slider:
+	.globl _mt_lbox_set_slider
+_mt_lbox_set_slider:
 		move.l     #0x00000200,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_set_bentries
-mt_lbox_set_bentries:
+	.globl _mt_lbox_set_bentries
+_mt_lbox_set_bentries:
 		move.l     #0x00000204,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_set_bsldr
-mt_lbox_set_bsldr:
+	.globl _mt_lbox_set_bsldr
+_mt_lbox_set_bsldr:
 		move.l     #0x00000208,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_set_items
-mt_lbox_set_items:
+	.globl _mt_lbox_set_items
+_mt_lbox_set_items:
 		move.l     #0x0000020C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_lbox_update
-mt_lbox_update:
+	.globl _mt_lbox_update
+_mt_lbox_update:
 		move.l     #0x00000210,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_add_printers
-mt_pdlg_add_printers:
+	.globl _mt_pdlg_add_printers
+_mt_pdlg_add_printers:
 		move.l     #0x00000214,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_add_sub_dialogs
-mt_pdlg_add_sub_dialogs:
+	.globl _mt_pdlg_add_sub_dialogs
+_mt_pdlg_add_sub_dialogs:
 		move.l     #0x00000218,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_close
-mt_pdlg_close:
+	.globl _mt_pdlg_close
+_mt_pdlg_close:
 		move.l     #0x0000021C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_create
-mt_pdlg_create:
+	.globl _mt_pdlg_create
+_mt_pdlg_create:
 		move.l     #0x00000220,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_delete
-mt_pdlg_delete:
+	.globl _mt_pdlg_delete
+_mt_pdlg_delete:
 		move.l     #0x00000224,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_dflt_settings
-mt_pdlg_dflt_settings:
+	.globl _mt_pdlg_dflt_settings
+_mt_pdlg_dflt_settings:
 		move.l     #0x00000228,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_do
-mt_pdlg_do:
+	.globl _mt_pdlg_do
+_mt_pdlg_do:
 		move.l     #0x0000022C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_evnt
-mt_pdlg_evnt:
+	.globl _mt_pdlg_evnt
+_mt_pdlg_evnt:
 		move.l     #0x00000230,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_free_settings
-mt_pdlg_free_settings:
+	.globl _mt_pdlg_free_settings
+_mt_pdlg_free_settings:
 		move.l     #0x00000234,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_get_setsize
-mt_pdlg_get_setsize:
+	.globl _mt_pdlg_get_setsize
+_mt_pdlg_get_setsize:
 		move.l     #0x00000238,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_new_settings
-mt_pdlg_new_settings:
+	.globl _mt_pdlg_new_settings
+_mt_pdlg_new_settings:
 		move.l     #0x0000023C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_open
-mt_pdlg_open:
+	.globl _mt_pdlg_open
+_mt_pdlg_open:
 		move.l     #0x00000240,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_remove_printers
-mt_pdlg_remove_printers:
+	.globl _mt_pdlg_remove_printers
+_mt_pdlg_remove_printers:
 		move.l     #0x00000244,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_remove_sub_dialogs
-mt_pdlg_remove_sub_dialogs:
+	.globl _mt_pdlg_remove_sub_dialogs
+_mt_pdlg_remove_sub_dialogs:
 		move.l     #0x00000248,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_update
-mt_pdlg_update:
+	.globl _mt_pdlg_update
+_mt_pdlg_update:
 		move.l     #0x0000024C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_use_settings
-mt_pdlg_use_settings:
+	.globl _mt_pdlg_use_settings
+_mt_pdlg_use_settings:
 		move.l     #0x00000250,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_pdlg_validate_settings
-mt_pdlg_validate_settings:
+	.globl _mt_pdlg_validate_settings
+_mt_pdlg_validate_settings:
 		move.l     #0x00000254,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_create
-mt_edit_create:
+	.globl _mt_edit_create
+_mt_edit_create:
 		move.l     #0x00000258,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_set_buf
-mt_edit_set_buf:
+	.globl _mt_edit_set_buf
+_mt_edit_set_buf:
 		move.l     #0x0000025C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_open
-mt_edit_open:
+	.globl _mt_edit_open
+_mt_edit_open:
 		move.l     #0x00000260,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_close
-mt_edit_close:
+	.globl _mt_edit_close
+_mt_edit_close:
 		move.l     #0x00000264,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_delete
-mt_edit_delete:
+	.globl _mt_edit_delete
+_mt_edit_delete:
 		move.l     #0x00000268,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_cursor
-mt_edit_cursor:
+	.globl _mt_edit_cursor
+_mt_edit_cursor:
 		move.l     #0x0000026C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_evnt
-mt_edit_evnt:
+	.globl _mt_edit_evnt
+_mt_edit_evnt:
 		move.l     #0x00000270,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_buf
-mt_edit_get_buf:
+	.globl _mt_edit_get_buf
+_mt_edit_get_buf:
 		move.l     #0x00000274,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_format
-mt_edit_get_format:
+	.globl _mt_edit_get_format
+_mt_edit_get_format:
 		move.l     #0x00000278,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_colour
-mt_edit_get_colour:
+	.globl _mt_edit_get_colour
+_mt_edit_get_colour:
 		move.l     #0x0000027C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_color
-mt_edit_get_color:
+	.globl _mt_edit_get_color
+_mt_edit_get_color:
 		move.l     #0x00000280,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_font
-mt_edit_get_font:
+	.globl _mt_edit_get_font
+_mt_edit_get_font:
 		move.l     #0x00000284,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_cursor
-mt_edit_get_cursor:
+	.globl _mt_edit_get_cursor
+_mt_edit_get_cursor:
 		move.l     #0x00000288,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_dirty
-mt_edit_get_dirty:
+	.globl _mt_edit_get_dirty
+_mt_edit_get_dirty:
 		move.l     #0x0000028C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_sel
-mt_edit_get_sel:
+	.globl _mt_edit_get_sel
+_mt_edit_get_sel:
 		move.l     #0x00000290,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_get_scrollinfo
-mt_edit_get_scrollinfo:
+	.globl _mt_edit_get_scrollinfo
+_mt_edit_get_scrollinfo:
 		move.l     #0x00000294,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_set_format
-mt_edit_set_format:
+	.globl _mt_edit_set_format
+_mt_edit_set_format:
 		move.l     #0x00000298,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_set_colour
-mt_edit_set_colour:
+	.globl _mt_edit_set_colour
+_mt_edit_set_colour:
 		move.l     #0x0000029C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_set_color
-mt_edit_set_color:
+	.globl _mt_edit_set_color
+_mt_edit_set_color:
 		move.l     #0x000002A0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_set_font
-mt_edit_set_font:
+	.globl _mt_edit_set_font
+_mt_edit_set_font:
 		move.l     #0x000002A4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_set_cursor
-mt_edit_set_cursor:
+	.globl _mt_edit_set_cursor
+_mt_edit_set_cursor:
 		move.l     #0x000002A8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_resized
-mt_edit_resized:
+	.globl _mt_edit_resized
+_mt_edit_resized:
 		move.l     #0x000002AC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_set_dirty
-mt_edit_set_dirty:
+	.globl _mt_edit_set_dirty
+_mt_edit_set_dirty:
 		move.l     #0x000002B0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_edit_scroll
-mt_edit_scroll:
+	.globl _mt_edit_scroll
+_mt_edit_scroll:
 		move.l     #0x000002B4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_EvntMulti
-mt_EvntMulti:
+	.globl _mt_EvntMulti
+_mt_EvntMulti:
 		move.l     #0x000002B8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_wbutton
-mt_form_wbutton:
+	.globl _mt_form_wbutton
+_mt_form_wbutton:
 		move.l     #0x000002BC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_xdial
-mt_form_xdial:
+	.globl _mt_form_xdial
+_mt_form_xdial:
 		move.l     #0x000002C0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_xdo
-mt_form_xdo:
+	.globl _mt_form_xdo
+_mt_form_xdo:
 		move.l     #0x000002C4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_form_xerr
-mt_form_xerr:
+	.globl _mt_form_xerr
+_mt_form_xerr:
 		move.l     #0x000002C8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_wwatchbox
-mt_graf_wwatchbox:
+	.globl _mt_graf_wwatchbox
+_mt_graf_wwatchbox:
 		move.l     #0x000002CC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_xhandle
-mt_graf_xhandle:
+	.globl _mt_graf_xhandle
+_mt_graf_xhandle:
 		move.l     #0x000002D0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_create
-mt_wdlg_create:
+	.globl _mt_wdlg_create
+_mt_wdlg_create:
 		move.l     #0x000002D4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_open
-mt_wdlg_open:
+	.globl _mt_wdlg_open
+_mt_wdlg_open:
 		move.l     #0x000002D8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_close
-mt_wdlg_close:
+	.globl _mt_wdlg_close
+_mt_wdlg_close:
 		move.l     #0x000002DC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_delete
-mt_wdlg_delete:
+	.globl _mt_wdlg_delete
+_mt_wdlg_delete:
 		move.l     #0x000002E0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_get_tree
-mt_wdlg_get_tree:
+	.globl _mt_wdlg_get_tree
+_mt_wdlg_get_tree:
 		move.l     #0x000002E4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_get_edit
-mt_wdlg_get_edit:
+	.globl _mt_wdlg_get_edit
+_mt_wdlg_get_edit:
 		move.l     #0x000002E8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_get_udata
-mt_wdlg_get_udata:
+	.globl _mt_wdlg_get_udata
+_mt_wdlg_get_udata:
 		move.l     #0x000002EC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_get_handle
-mt_wdlg_get_handle:
+	.globl _mt_wdlg_get_handle
+_mt_wdlg_get_handle:
 		move.l     #0x000002F0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_set_edit
-mt_wdlg_set_edit:
+	.globl _mt_wdlg_set_edit
+_mt_wdlg_set_edit:
 		move.l     #0x000002F4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_set_tree
-mt_wdlg_set_tree:
+	.globl _mt_wdlg_set_tree
+_mt_wdlg_set_tree:
 		move.l     #0x000002F8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_set_size
-mt_wdlg_set_size:
+	.globl _mt_wdlg_set_size
+_mt_wdlg_set_size:
 		move.l     #0x000002FC,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_set_iconify
-mt_wdlg_set_iconify:
+	.globl _mt_wdlg_set_iconify
+_mt_wdlg_set_iconify:
 		move.l     #0x00000300,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_set_uniconify
-mt_wdlg_set_uniconify:
+	.globl _mt_wdlg_set_uniconify
+_mt_wdlg_set_uniconify:
 		move.l     #0x00000304,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_evnt
-mt_wdlg_evnt:
+	.globl _mt_wdlg_evnt
+_mt_wdlg_evnt:
 		move.l     #0x00000308,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wdlg_redraw
-mt_wdlg_redraw:
+	.globl _mt_wdlg_redraw
+_mt_wdlg_redraw:
 		move.l     #0x0000030C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_wind_draw
-mt_wind_draw:
+	.globl _mt_wind_draw
+_mt_wind_draw:
 		move.l     #0x00000310,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_scrp_clear
-mt_scrp_clear:
+	.globl _mt_scrp_clear
+_mt_scrp_clear:
 		move.l     #0x00000314,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_objc_xedit
-mt_objc_xedit:
+	.globl _mt_objc_xedit
+_mt_objc_xedit:
 		move.l     #0x00000318,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
-	.globl mt_graf_rubbbox
-mt_graf_rubbbox:
+	.globl _mt_graf_rubbbox
+_mt_graf_rubbbox:
 		move.l     #0x0000031C,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 
 	.data
 
-	.globl errno
-errno: dc.w 0
-	.globl _FilSysVec
-_FilSysVec:
+	.globl _errno
+_errno: dc.l 0
+	.globl __FilSysVec
+__FilSysVec:
 	dc.l 0

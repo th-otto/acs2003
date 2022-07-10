@@ -1,0 +1,327 @@
+/*********************************************************************/
+/*                                                                   */
+/* This file was created with ACS3.00 at Sat Jul 09 19:41:08 2022    */
+/*                                                                   */
+/* The contents are based on file:                                   */
+/*    C:\SRC\ACS\MODULE\AB_CFG\AB_CFG.ACS                            */
+/*                                                                   */
+/* (c) 1991-2003 by Stefan Bachert, Oliver Michalak, Martin Els„sser */
+/*********************************************************************/
+
+/*		GUI-LANGUAGE		*/
+#define ACS_LANG1
+
+#ifndef C_UNION
+#  define C_UNION(x) { (int32)(x) }
+#endif
+
+
+/*		ANSI-C Prototypes		*/
+
+static INT16 ab_init( Awindow* wind );
+static Awindow *ab_make( void *para );
+static void exflagit( void );
+static void flagit( void );
+
+
+
+
+/*		STRINGS		*/
+
+static char TEXT_01      [] = " AB-Konfig ";
+static char TEXT_02      [] = "";
+static char TEXT_03      [] = "Maustaste ”ffnet Men";
+static char TEXT_05      [] = "optische Rckmeldung";
+static char TEXT_06      [] = "akustische Fehlermeldung";
+static char TEXT_07      [] = "verstecke Mauszeiger";
+static char TEXT_08      [] = "zentriere Dialoge";
+static char TEXT_09      [] = "Lade GDOS-Fonts";
+static char TEXT_10      [] = "Smart-Redraw";
+static char TEXT_11      [] = "Taste zuerst an Mens";
+static char TEXT_12      [] = "3D-Darstellung";
+static char TEXT_13      [] = "Lazy-Evaluation";
+static char TEXT_14      [] = "prfe Speicherbl”cke";
+static char TEXT_15      [] = "Transformiere Icons";
+static char TO0          [] = "Fenstermens klappen erst nach Mausklick auf - sonst beim šberstreichen mit der Maus.";
+static char TO1          [] = "Sich ”ffnende und zu schliežende Fenster werden durch schrumpfende oder wachsende Geist-Rahmen animiert.";
+static char TO10         [] = "Die šberprfung der Bereiche und des Umfangs der benutzten Speicherbl”cke wird unterbunden.";
+static char TO11         [] = "Im Orginal-TOS muž ACS die Transformation der Icons selber bernehmen - fr neue Betriebssysteme nicht n”tig.";
+static char TO2          [] = "Fehler im Texteditor oder beim Mausklick aužerhalb eines modalen Dialoges werden mit einem Signal untermalt.";
+static char TO3          [] = "Bei Texteingaben soll der Mauszeiger verschwinden, das kann unsch”nes Flimmern unterbinden.";
+static char TO4          [] = "Die Dialoge sollen zentriert werden, auch die Meldungen in Alert-Boxen wird zentriert.";
+static char TO5          [] = "Zum Programmstart sollen automatisch alle GDOS-Fonts geladen werden, was u.U. viel Zeit in Anspruch nimmt.";
+static char TO6          [] = "Bei Betriebssystemen mit optimierten Redraw mssen einige interne Routinen mit diesem Schalter zum Neuzeichnen gezwungen werden.";
+static char TO7          [] = "Tastenkrzel sollen erst von der Menleiste und dann vom Dialog konsumiert werden - sonst umgekehrt.";
+static char TO8          [] = "Die ACS-Oberfl„che soll im 3D-Modus oder flach erscheinen.";
+static char TO9          [] = "Einige ACS-Routinen fangen zum Komfort einige Fallstricke des Systems ab. Ist dieser Schalter aktiviert, wird das unterbunden.";
+
+
+/*		AUSERBLK		*/
+
+static AUSERBLK230 A_3DBUTTON01 = {A_3Dbutton, 0x29019178L , Auo_string  , NULL, NULL, NULL};
+static AUSERBLK230 A_3DBUTTON02 = {A_3Dbutton, 0x29f19178L , Auo_string  , NULL, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX01 = {A_checkbox, 0x1L        , Auo_string  , TEXT_03, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX03 = {A_checkbox, 0x1L        , Auo_string  , TEXT_05, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX04 = {A_checkbox, 0x1L        , Auo_string  , TEXT_06, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX05 = {A_checkbox, 0x1L        , Auo_string  , TEXT_07, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX06 = {A_checkbox, 0x1L        , Auo_string  , TEXT_08, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX07 = {A_checkbox, 0x1L        , Auo_string  , TEXT_09, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX08 = {A_checkbox, 0x1L        , Auo_string  , TEXT_10, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX09 = {A_checkbox, 0x1L        , Auo_string  , TEXT_11, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX10 = {A_checkbox, 0x1L        , Auo_string  , TEXT_12, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX11 = {A_checkbox, 0x1L        , Auo_string  , TEXT_13, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX12 = {A_checkbox, 0x1L        , Auo_string  , TEXT_14, NULL, NULL};
+static AUSERBLK230 A_CHECKBOX13 = {A_checkbox, 0x1L        , Auo_string  , TEXT_15, NULL, NULL};
+static AUSERBLK230 A_FTEXT01    = {A_ftext, 0x10006L    , Auo_ftext, NULL};
+
+
+/*		OBJECT TREES		*/
+
+#define BACK           (  0)
+#define CFG0           (  1)
+#define CFG1           (  3)
+#define CFG2           (  5)
+#define CFG3           (  7)
+#define CFG4           (  9)
+#define CFG5           ( 11)
+#define CFG6           ( 13)
+#define CFG7           ( 15)
+#define CFG8           ( 17)
+#define CFG9           ( 19)
+#define CFG10          ( 21)
+#define CFG11          ( 23)
+
+static struct {
+	OBJECT root;
+	OBJECT _01_D_MAIN;
+	AOBJECT _01aD_MAIN;
+	OBJECT  _03_D_MAIN;
+	AOBJECT _03aD_MAIN;
+	OBJECT  _05_D_MAIN;
+	AOBJECT _05aD_MAIN;
+	OBJECT  _07_D_MAIN;
+	AOBJECT _07aD_MAIN;
+	OBJECT  _09_D_MAIN;
+	AOBJECT _09aD_MAIN;
+	OBJECT  _11_D_MAIN;
+	AOBJECT _11aD_MAIN;
+	OBJECT  _13_D_MAIN;
+	AOBJECT _13aD_MAIN;
+	OBJECT  _15_D_MAIN;
+	AOBJECT _15aD_MAIN;
+	OBJECT  _17_D_MAIN;
+	AOBJECT _17aD_MAIN;
+	OBJECT  _19_D_MAIN;
+	AOBJECT _19aD_MAIN;
+	OBJECT  _21_D_MAIN;
+	AOBJECT _21aD_MAIN;
+	OBJECT  _23_D_MAIN;
+	AOBJECT _23aD_MAIN;
+} D_MAIN = {
+	{ -1,  1, 23, 24,   0x40,    0x0, C_UNION(&A_3DBUTTON01) ,  0,  0, 29, 14 },
+	{  3, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX01) ,  1,  1, 24,  1 },
+	{flagit      , NULL		 , 0x8000, 0x884d, (void*)0x1L , NULL				,    0x0, 0					},
+	{  5, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX03) ,  1,  2, 23,  1 },
+	{flagit      , NULL		 , 0x8000, 0x884f, (void*)0x2L , NULL				,    0x0, 0					},
+	{  7, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX04) ,  1,  3, 27,  1 },
+	{flagit      , NULL		 , 0x8000, 0x8841, (void*)0x4L , NULL				,    0x0, 0					},
+	{  9, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX05) ,  1,  4, 23,  1 },
+	{flagit      , NULL		 , 0x8000, 0x8856, (void*)0x8L , NULL				,    0x0, 0					},
+	{ 11, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX06) ,  1,  5, 20,  1 },
+	{flagit      , NULL		 , 0x8000, 0x885a, (void*)0x10L, NULL				,    0x0, 0					},
+	{ 13, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX07) ,  1,  6, 18,  1 },
+	{flagit      , NULL		 , 0x8000, 0x8847, (void*)0x20L, NULL				,    0x0, 0					},
+	{ 15, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX08) ,  1,  7, 15,  1 },
+	{flagit      , NULL		 , 0x8000, 0x8853, (void*)0x40L, NULL				,    0x0, 0					},
+	{ 17, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX09) ,  1,  8, 24,  1 },
+	{flagit      , NULL		 , 0x8000, 0x8854, (void*)0x80L, NULL				,    0x0, 0					},
+	{ 19, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX10) ,  1,  9, 17,  1 },
+	{exflagit    , NULL		 , 0x8000, 0x8844, (void*)0x100L, (void*)0x1L ,    0x0, 0					},
+	{ 21, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX11) ,  1, 10, 18,  1 },
+	{flagit      , NULL		 , 0x8000, 0x884c, (void*)0x200L, NULL				,    0x0, 0					},
+	{ 23, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX12) ,  1, 11, 23,  1 },
+	{flagit      , NULL		 , 0x8000, 0x8850, (void*)0x400L, (void*)0x1L ,    0x0, 0					},
+	{  0, -1, -1, 24,   0x41,    0x0, C_UNION(&A_CHECKBOX13) ,  1, 12, 22,  1 },
+	{flagit      , NULL		 , 0x8020, 0x8846, (void*)0x800L, (void*)0x1L ,    0x0, 0					}
+};
+
+#define MSG            (  1)
+static struct {
+	OBJECT root;
+	OBJECT _01_D_TOOL;
+} D_TOOL = {
+	{ -1,  1,  1, 24,   0x40,    0x0, C_UNION(&A_3DBUTTON02) ,  0,  0, 29,  4 },
+	{  0, -1, -1, 24,   0x60,    0x0, C_UNION(&A_FTEXT01)    ,  1, 2048, 27,  3 }
+};
+
+
+/*		WINDOWS		*/
+
+Awindow23x F_CFG        =
+	{
+		NULL,
+		Awi_service,
+		ab_make     ,
+		Awi_open,
+		ab_init     ,
+		&D_MAIN.root      , &D_TOOL.root      , 0, 0, -1,
+		0x41ef, { 0,  0, 120, 50},
+		{0, 0, 0, 0}, {0, 0, 0, 0}, {-1, -1, -1, -1}, 0, 0,
+		0xf8f8,
+		TEXT_01     ,
+		TEXT_02     ,
+		   0,  0x103, 0, -1,
+		NULL,
+		NULL,
+		Awi_keys,
+		Awi_obchange,
+		Awi_redraw,
+		Awi_topped,
+		Awi_closed,
+		Awi_fulled,
+		Awi_arrowed,
+		Awi_hslid,
+		Awi_vslid,
+		Awi_sized,
+		Awi_moved,
+	};
+
+
+
+
+/*		ANSI-C Routines		*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+static INT16 ab_init (Awindow *wi)
+{	INT16	wid, t, result;
+static INT16	preres=-1;
+
+	wind_get (0, WF_TOP, &wid, &t, &t, &t);
+	wi->state |= AWS_LATEUPDATE;
+	if (wi->wi_id>0 && wid==wi->wi_id)
+	{
+#ifdef __ACS_MODULE__
+		result = objc_find (wi->work, 0, 8, ACSblk->ev_mmox - wi->wi_work.x, ACSblk->ev_mmoy - wi->wi_work.y);
+#else
+		result = Adr_find (wi->work, 0, 8, ACSblk->ev_mmox - wi->wi_work.x, ACSblk->ev_mmoy - wi->wi_work.y);
+#endif
+		if (ACSblk->ev_mmoy > wi->wi_work.y && preres!=result)
+		{	preres=result;
+			switch (result)
+			{	
+#ifdef __GNUC__
+				case BACK:	Aob_printf (wi->toolbar, MSG, TEXT_02);	break;
+#else
+				case BACK:	Aob_printf (wi->toolbar, MSG, "");	break;
+#endif
+				case CFG0:	Aob_printf (wi->toolbar, MSG, TO0);	break;
+				case CFG1:	Aob_printf (wi->toolbar, MSG, TO1);	break;
+				case CFG2:	Aob_printf (wi->toolbar, MSG, TO2);	break;
+				case CFG3:	Aob_printf (wi->toolbar, MSG, TO3);	break;
+				case CFG4:	Aob_printf (wi->toolbar, MSG, TO4);	break;
+				case CFG5:	Aob_printf (wi->toolbar, MSG, TO5);	break;
+				case CFG6:	Aob_printf (wi->toolbar, MSG, TO6);	break;
+				case CFG7:	Aob_printf (wi->toolbar, MSG, TO7);	break;
+				case CFG8:	Aob_printf (wi->toolbar, MSG, TO8);	break;
+				case CFG9:	Aob_printf (wi->toolbar, MSG, TO9);	break;
+				case CFG10:	Aob_printf (wi->toolbar, MSG, TO10);	break;
+				case CFG11:	Aob_printf (wi->toolbar, MSG, TO11);	break;
+				default:	return OK;
+			}
+			(wi->obchange) (wi, A_TOOLBAR, -1);
+		}
+	}
+	return OK;
+}
+
+static void setflag (OBJECT *obj, INT16 flag)
+{	if (flag)	obj->ob_state |= SELECTED;
+	else			obj->ob_state &= ~SELECTED;
+}
+
+#ifdef __PUREC__
+#pragma warn -par
+#endif
+
+static Awindow *ab_make (void *para)
+{	Awindow	*wi;
+
+	if (NULL == (wi = Awi_create ((Awindow *)&F_CFG)))
+		return NULL;
+	setflag (wi->work+CFG0, ACSblk->description->flags & AB_CLICKMENU);
+	setflag (wi->work+CFG1, ACSblk->description->flags & AB_MOVIES);
+	setflag (wi->work+CFG2, ACSblk->description->flags & AB_ACUSTIC);
+	setflag (wi->work+CFG3, ACSblk->description->flags & AB_HIDEPOINTER);
+	setflag (wi->work+CFG4, ACSblk->description->flags & AB_CENTERDIALOG);
+	setflag (wi->work+CFG5, ACSblk->description->flags & AB_GDOSFONT);
+	setflag (wi->work+CFG6, ACSblk->description->flags & AB_SMARTREDRAW);
+	setflag (wi->work+CFG7, ACSblk->description->flags & AB_MENUFIRST);
+	setflag (wi->work+CFG8, !(ACSblk->description->flags & AB_NO3D));
+	setflag (wi->work+CFG9, ACSblk->description->flags & AB_LAZYEVAL);
+	setflag (wi->work+CFG10, !(ACSblk->description->flags & AB_NOMEMCHECK));
+	setflag (wi->work+CFG11, !(ACSblk->description->flags & AB_NOTRANSICON));
+	return wi;
+}
+
+#ifdef __PUREC__
+#pragma warn .par
+#endif
+
+
+static void exflagit (void)
+{	INT16	buff[8];
+
+	flagit();
+	buff[0] = WM_REDRAW;
+	buff[1] = ACSblk->gl_apid;
+	buff[4] = ACSblk->desk.x;
+	buff[5] = ACSblk->desk.y;
+	buff[6] = ACSblk->desk.w;
+	buff[7] = ACSblk->desk.h;
+	appl_write (ACSblk->gl_apid, 16, buff);
+	form_dial (FMD_FINISH,	ACSblk->desk.x, ACSblk->desk.y, ACSblk->desk.w, ACSblk->desk.h,
+													ACSblk->desk.x, ACSblk->desk.y, ACSblk->desk.w, ACSblk->desk.h);
+}
+
+static void flagit (void)
+{	AOBJECT	*aob;
+	long		invert, val;
+
+	aob = (AOBJECT*) ACSblk->ev_object + ACSblk->ev_obnr + 1;
+	val = (long) aob->userp1;
+	invert = (long) aob->userp2;
+	if (ACSblk->ev_object[ACSblk->ev_obnr].ob_state & SELECTED)
+	{	if (invert)
+			ACSblk->description->flags &= ~val;
+		else
+			ACSblk->description->flags |= val;
+	}
+	else
+	{	if (invert)
+			ACSblk->description->flags |= val;
+		else
+			ACSblk->description->flags &= ~val;
+	}
+	Aev_release();
+}
+

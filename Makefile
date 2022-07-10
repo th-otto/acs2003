@@ -1,2 +1,2 @@
 all clean::
-	for i in src; do ${MAKE} -C $$i $@; done
+	for i in src module; do ${MAKE} -C $$i $@ || exit 1; done

@@ -1,6 +1,4 @@
 autom4te.cache
-Makefile
-Makefile.in
 aclocal.m4
 config.h
 config.h.in
@@ -45,6 +43,8 @@ build
 *.srec
 *.log
 *.trs
+*.am
+*.ama
 lt-*.c
 stamp-*
 .stamp.*
