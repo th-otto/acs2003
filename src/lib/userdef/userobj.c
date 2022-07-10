@@ -43,8 +43,8 @@ int16 INuserobj(void)
 	planes = ACSblk->nplanes;
 #if !WITH_FIXES
 	if (ACSblk->nplanes > 8)
-#endif
 		ACSblk->nplanes = 4;
+#endif
 #if !WITH_FIXES
 	if ((icn_mask = Abp_create(16, 16)) == NULL)
 		return FAIL;
@@ -116,9 +116,7 @@ int16 INuserobj(void)
 		for (i = 0; i < -16; i++)
 			_CHK_3D_S.monoblk.ib_pmask[i] ^= -1;
 	}
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _CHK_3D_S.mainlist->col_data, 16 * 2 * 4);
 	icn_tmp->fd_stand = TRUE;
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_chk_sel);
@@ -131,9 +129,7 @@ int16 INuserobj(void)
 		for (i = 0; i < -16; i++)
 			_CHK_3D_U.monoblk.ib_pmask[i] ^= -1;
 	}
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _CHK_3D_U.mainlist->col_data, 16 * 2 * 4);
 	icn_tmp->fd_stand = TRUE;
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_chk_un);
@@ -146,9 +142,7 @@ int16 INuserobj(void)
 		for (i = 0; i < -16; i++)
 			_CHK_3D_DS.monoblk.ib_pmask[i] ^= -1;
 	}
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _CHK_3D_DS.mainlist->col_data, 16 * 2 * 4);
 	icn_tmp->fd_stand = TRUE;
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_chk_dissel);
@@ -161,35 +155,25 @@ int16 INuserobj(void)
 		for (i = 0; i < -16; i++)
 			_CHK_3D_DU.monoblk.ib_pmask[i] ^= -1;
 	}
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _CHK_3D_DU.mainlist->col_data, 16 * 2 * 4);
 	icn_tmp->fd_stand = TRUE;
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_chk_disun);
 	
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _RD_3D_S.mainlist->col_data, 16 * 2 * 4);
 	icn_tmp->fd_stand = TRUE;
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_rad_sel);
 	
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _RD_3D_U.mainlist->col_data, 16 * 2 * 4);
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_rad_un);
 	
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _RD_3D_DS.mainlist->col_data, 16 * 2 * 4);
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_rad_dissel);
 	
-#if !WITH_FIXES
 	memset(icn_tmp->fd_addr, 0, ACSblk->nplanes * 32L);
-#endif
 	memcpy(icn_tmp->fd_addr, _RD_3D_DU.mainlist->col_data, 16 * 2 * 4);
 	vr_trnfm(ACSblk->vdi_handle, icn_tmp, icn_rad_disun);
 	
