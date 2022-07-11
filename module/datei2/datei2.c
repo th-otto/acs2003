@@ -892,7 +892,9 @@ static int16 info(char *src)
 	DOSTIME dattime;
 	int16 newattr;
 	int16 attr;
+#ifndef __GNUC__
 	int16 temp;
+#endif
 	int16 ret = 0;
 	int16 dir_flag = TRUE;
 	long len;
@@ -931,7 +933,11 @@ static int16 info(char *src)
 			Aob_puttext(dia->work, I_DATE, "---------");
 			Aob_printf(dia->work, I_TIME, "------");
 		}
+#ifdef __GNUC__
+		attr = Fattrib(src, 0, 0);
+#else
 		attr = Fattrib(src, 0, temp);
+#endif
 		Af_2fullname(name, src);
 		Aob_puttext(dia->work, I_NAME, name);
 		if (attr & FA_READONLY)
@@ -966,11 +972,11 @@ static int16 info(char *src)
 			if (dia->work[S_ARCHIV].ob_state & SELECTED)
 				newattr |= FA_ARCHIVE;
 			if (newattr != attr)
-				Fattrib(src, 1, newattr);
+				(void) Fattrib(src, 1, newattr);
 				/*** Name ***/
 			Aob_gettext(dia->work, I_NAME, new);
 			if (*new && strcmp(name, new))
-				Frename(0, src, new);
+				(void) Frename(0, src, new);
 			ret = 0;
 			break;
 		}
