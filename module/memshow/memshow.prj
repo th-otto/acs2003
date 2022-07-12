@@ -1,0 +1,14 @@
+memshow.am
+.C[-I..\..\include]
+.C[-IC:\pc\include]
+.C[-D__ACS_MODULE__]
+.C[-D__COMPATIBLE_FKT__]
+.L[-S=16384]
+.C[-A- -C- -T- -K- -P -G- -S-]
+.C[-J- -Z- -M -R-]
+=
+acs1load.s
+memshow.c
+mavail.s
+..\..\lib\pcstdlib.lib ; only for _ldiv
+tos.s
