@@ -17,6 +17,10 @@ static void Awi_arrowed23x(Awindow *window, int16 which);
 static char *Af_first230(const char *start);
 static char *Af_next230(void);
 
+#if WITH_FIXES
+Awindow *Awi_selfcreate23x(void *x);
+#endif
+
 
 /******************************************************************************/
 /* -------------------------------------------------------------------------- */
@@ -128,7 +132,11 @@ void *ACS233[] = {
 	Awi_modal,
 	Awi_dialog,
 	Awi_alert,
+#if WITH_FIXES
+	Awi_selfcreate23x,
+#else
 	Awi_selfcreate,
+#endif
 	Aev_release,
 	Aob_puttext,
 	Aob_gettext,
@@ -336,7 +344,11 @@ void *ACS230[] = {
 	Awi_modal,
 	Awi_dialog,
 	Awi_alert,
+#if WITH_FIXES
+	Awi_selfcreate23x,
+#else
 	Awi_selfcreate,
+#endif
 	Aev_release,
 	Aob_puttext,
 	Aob_gettext,
@@ -539,7 +551,13 @@ static Awindow *Awi_create23x(const Awindow *parent)
 	int16 i;
 	
 	newwin = (Awindow *)Ax_malloc(sizeof(*newwin));
-	/* BUG: no check for NULL */
+#if WITH_FIXES
+	if (newwin == NULL)
+	{
+		ACSblk->ACSerror(AE_OUT_OF_MEM, NULL);
+		return NULL;
+	}
+#endif
 	memcpy(newwin, parent, sizeof(*newwin) - 5 * sizeof(void *));
 	/*
 	 * create the 5 new members that were added in 3.0.0
@@ -626,6 +644,17 @@ static Awindow *Awi_create23x(const Awindow *parent)
 	form_alert(1, _ALIB_ERR_WISLOT);
 	return NULL;
 }
+
+/* -------------------------------------------------------------------------- */
+
+#if WITH_FIXES
+static Awindow *Awi_selfcreate23x(void *x)
+{
+	if (x != NULL)
+		return Awi_create23x(x);
+	return NULL;
+}
+#endif
 
 /* -------------------------------------------------------------------------- */
 
