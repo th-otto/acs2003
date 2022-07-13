@@ -1,0 +1,290 @@
+#if COUNTRY == COUNTRY_DE
+static char TEXT_001[] = "DIVISION DURCH 0";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "AC";
+static char TEXT_004[] = " RECHNER ";
+static char TEXT_005[] = "RECHNER";
+static char TEXT_006[] = "12345678901234";
+static char TEXT_007[] = "\004";
+static char TEXT_008[] = "\361";
+static char TEXT_009[] = "*";
+static char TEXT_010[] = "7";
+static char TEXT_011[] = "8";
+static char TEXT_012[] = "9";
+static char TEXT_013[] = "4";
+static char TEXT_014[] = "5";
+static char TEXT_015[] = "6";
+static char TEXT_016[] = "1";
+static char TEXT_017[] = "2";
+static char TEXT_018[] = "3";
+static char TEXT_019[] = "/";
+static char TEXT_020[] = "+";
+static char TEXT_021[] = "-";
+static char TEXT_022[] = "0";
+static char TEXT_023[] = ".";
+static char TEXT_024[] = "=";
+static char TEXT_025[] = "Dieser Taschenrechner ist ein nachladbares Modul des ACS 2.00. Seine Anzeige ist ziehbar.";
+static char TEXT_026[] = " Information ";
+#endif
+
+#if COUNTRY == COUNTRY_US
+static char TEXT_001[] = "DIVISION BY 0";
+static char TEXT_002[] = "";
+static char TEXT_003[] = "AC";
+static char TEXT_004[] = " CALCULATOR ";
+static char TEXT_005[] = "CALCULATOR";
+static char TEXT_006[] = "12345678901234";
+static char TEXT_007[] = "\004";
+static char TEXT_008[] = "\361";
+static char TEXT_009[] = "*";
+static char TEXT_010[] = "7";
+static char TEXT_011[] = "8";
+static char TEXT_012[] = "9";
+static char TEXT_013[] = "4";
+static char TEXT_014[] = "5";
+static char TEXT_015[] = "6";
+static char TEXT_016[] = "1";
+static char TEXT_017[] = "2";
+static char TEXT_018[] = "3";
+static char TEXT_019[] = "/";
+static char TEXT_020[] = "+";
+static char TEXT_021[] = "-";
+static char TEXT_022[] = "0";
+static char TEXT_023[] = ".";
+static char TEXT_024[] = "=";
+static char TEXT_025[] = "This calculator is a loadable module for ACSpro. Its display is dragable.";
+static char TEXT_026[] = " Information ";
+#endif
+
+
+static TEDINFO TEDINFO_01 = { TEXT_006, TEXT_002, TEXT_002, 3, 6, 2, 0x0180, 0, 0, 15, 1 };
+
+static AUSERBLK230 A_3DBUTTON01 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_007, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON02 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_013, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON03 = { A_3Dbutton, 0xa9610178L, Auo_string, 0x00000000, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON04 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_019, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON05 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_020, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON06 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_014, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON07 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_017, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON08 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_012, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON09 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_015, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON10 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_018, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON11 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_011, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON12 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_022, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON13 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_023, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON14 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_009, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON15 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_016, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON16 = { A_3Dbutton, 0xa02191a1L, Auo_string, 0x00000000, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON17 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_003, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON18 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_010, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON19 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_024, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON20 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_021, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON21 = { A_3Dbutton, 0x29c10178L, Auo_string, TEXT_008, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON22 = { A_3Dbutton, 0xa0419178L, Auo_string, 0x00000000, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON23 = { A_3Dbutton, 0x29f10178L, Auo_string, 0x00000000, NULL, NULL };
+static AUSERBLK230 A_3DBUTTON24 = { A_3Dbutton, 0x29e201f8L, Auo_string, 0x00000000, NULL, NULL };
+static AUSERBLK230 A_FTEXT01 = { A_ftext, 0x0001000dL, Auo_ftext, TEXT_025, NULL, NULL };
+
+static int16 icon_mask[] = {
+	0x3fff, 0xfffc, 0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe,
+	0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe,
+	0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe,
+	0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe,
+	0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe,
+	0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe, 0x3fff, 0xfffe,
+	0x3fff, 0xfffe, 0x1fff, 0xfffe
+};
+
+static int16 icon_data[] = {
+	0x3fff, 0xfffc, 0x2000, 0x0006, 0x2000, 0x0006, 0x2fff, 0xfff6,
+	0x2800, 0x0016, 0x2800, 0x00d6, 0x2800, 0x0016, 0x2fff, 0xfff6,
+	0x2000, 0x0006, 0x279e, 0x79e6, 0x2492, 0x4926, 0x2492, 0x4926,
+	0x279e, 0x79e6, 0x2000, 0x0006, 0x279e, 0x79e6, 0x2492, 0x4926,
+	0x2492, 0x4926, 0x279e, 0x79e6, 0x2000, 0x0006, 0x279e, 0x7fe6,
+	0x2492, 0x4026, 0x2492, 0x4026, 0x279e, 0x7fe6, 0x2000, 0x0006,
+	0x3fff, 0xfffe, 0x1fff, 0xfffe
+};
+
+static CICONBLK icon = { { icon_mask, icon_data, TEXT_005, 0x1000, 0, 0, 19, 0, 32, 26, 0, 28, 72, 8 }, NULL };
+
+static struct {
+	OBJECT root;
+	OBJECT button24;
+	OBJECT button16;
+	OBJECT box01;
+	OBJECT ftext;
+} info_work = {
+	{ 0xffff, 0x0001, 0x0001, 0x0019, 0x0040, 0x0000, C_UNION(0x00ff1141L), 0x0000, 0x0000, 0x001c, 0x0007 },
+	{ 0x0000, 0x0002, 0x0002, 0x0018, 0x0040, 0x0510, C_UNION(&A_3DBUTTON24), 0x0000, 0x0000, 0x001c, 0x0007 },
+	{ 0x0001, 0x0003, 0x0003, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON16), 0x0002, 0x0001, 0x0018, 0x0005 },
+	{ 0x0002, 0x0004, 0x0004, 0x0014, 0x0040, 0x0000, C_UNION(0x00001101L), 0x0000, 0x0000, 0x0018, 0x0005 },
+	{ 0x0003, 0xffff, 0xffff, 0x0018, 0x0060, 0x0000, C_UNION(&A_FTEXT01), 0x0001, 0x0000, 0x0016, 0x0005 }
+};
+
+static struct {
+	OBJECT root;
+	OBJECT button03;
+	OBJECT button22;
+	OBJECT input;
+	AOBJECT _a_input;
+	OBJECT clear;
+	AOBJECT _a_clear;
+	OBJECT backspace;
+	AOBJECT _a_backspace;
+	OBJECT plusminus;
+	AOBJECT _a_plusminus;
+	OBJECT mul;
+	AOBJECT _a_mul;
+	OBJECT insert7;
+	AOBJECT _a_insert7;
+	OBJECT insert8;
+	AOBJECT _a_insert8;
+	OBJECT insert9;
+	AOBJECT _a_insert9;
+	OBJECT div;
+	AOBJECT _a_div;
+	OBJECT insert4;
+	AOBJECT _a_insert4;
+	OBJECT insert5;
+	AOBJECT _a_insert5;
+	OBJECT insert6;
+	AOBJECT _a_insert6;
+	OBJECT add;
+	AOBJECT _a_add;
+	OBJECT insert1;
+	AOBJECT _a_insert1;
+	OBJECT insert2;
+	AOBJECT _a_insert2;
+	OBJECT insert3;
+	AOBJECT _a_insert3;
+	OBJECT sub;
+	AOBJECT _a_sub;
+	OBJECT insert0;
+	AOBJECT _a_insert0;
+	OBJECT insert_dot;
+	AOBJECT _a_insert_dot;
+	OBJECT equal;
+	AOBJECT _a_equal;
+} calc_work = {
+	{ 0xffff, 0x0001, 0x0029, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON23), 0x0000, 0x0000, 0x0010, 0x000d },
+	{ 0x0005, 0x0002, 0x0002, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON03), 0x0001, 0x0001, 0x000e, 0x0001 },
+	{ 0x0001, 0x0003, 0x0003, 0x0018, 0x0040, 0x0010, C_UNION(&A_3DBUTTON22), 0x0000, 0x0000, 0x000e, 0x0001 },
+	{ 0x0002, 0xffff, 0xffff, 0x0016, 0x3000, 0x0000, C_UNION(&TEDINFO_01), 0x0000, 0x0000, 0x000e, 0x0001 },
+	{ NULL, calc_drag, 0x8000, 0x0000, NULL, NULL, 0, 11 },
+	{ 0x0007, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON17), 0x0000, 0x0003, 0x0004, 0x0002 },
+	{ calc_clear, NULL, 0x8000, 0x801b, NULL, NULL, 0, 0 },
+	{ 0x0009, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON01), 0x0004, 0x0003, 0x0004, 0x0002 },
+	{ calc_backspace, NULL, 0x8000, 0x8008, NULL, NULL, 0, 0 },
+	{ 0x000b, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON21), 0x0008, 0x0003, 0x0004, 0x0002 },
+	{ calc_plusminus, NULL, 0x8000, 0x007e, NULL, NULL, 0, 0 },
+	{ 0x000d, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON14), 0x000c, 0x0003, 0x0004, 0x0002 },
+	{ calc_mul, NULL, 0x8000, 0x002a, NULL, NULL, 0, 0 },
+	{ 0x000f, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON18), 0x0000, 0x0005, 0x0004, 0x0002 },
+	{ calc_insert7, NULL, 0x8000, 0x0037, NULL, NULL, 0, 0 },
+	{ 0x0011, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON11), 0x0004, 0x0005, 0x0004, 0x0002 },
+	{ calc_insert8, NULL, 0x8000, 0x0038, NULL, NULL, 0, 0 },
+	{ 0x0013, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON08), 0x0008, 0x0005, 0x0004, 0x0002 },
+	{ calc_insert9, NULL, 0x8000, 0x0039, NULL, NULL, 0, 0 },
+	{ 0x0015, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON04), 0x000c, 0x0005, 0x0004, 0x0002 },
+	{ calc_div, NULL, 0x8000, 0x002f, NULL, NULL, 0, 0 },
+	{ 0x0017, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON02), 0x0000, 0x0007, 0x0004, 0x0002 },
+	{ calc_insert4, NULL, 0x8000, 0x0034, NULL, NULL, 0, 0 },
+	{ 0x0019, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON06), 0x0004, 0x0007, 0x0004, 0x0002 },
+	{ calc_insert5, NULL, 0x8000, 0x0035, NULL, NULL, 0, 0 },
+	{ 0x001b, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON09), 0x0008, 0x0007, 0x0004, 0x0002 },
+	{ calc_insert6, NULL, 0x8000, 0x0036, NULL, NULL, 0, 0 },
+	{ 0x001d, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON05), 0x000c, 0x0007, 0x0004, 0x0002 },
+	{ calc_add, NULL, 0x8000, 0x002b, NULL, NULL, 0, 0 },
+	{ 0x001f, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON15), 0x0000, 0x0009, 0x0004, 0x0002 },
+	{ calc_insert1, NULL, 0x8000, 0x0031, NULL, NULL, 0, 0 },
+	{ 0x0021, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON07), 0x0004, 0x0009, 0x0004, 0x0002 },
+	{ calc_insert2, NULL, 0x8000, 0x0032, NULL, NULL, 0, 0 },
+	{ 0x0023, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON10), 0x0008, 0x0009, 0x0004, 0x0002 },
+	{ calc_insert3, NULL, 0x8000, 0x0033, NULL, NULL, 0, 0 },
+	{ 0x0025, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON20), 0x000c, 0x0009, 0x0004, 0x0002 },
+	{ calc_sub, NULL, 0x8000, 0x002d, NULL, NULL, 0, 0 },
+	{ 0x0027, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON12), 0x0000, 0x000b, 0x0004, 0x0002 },
+	{ calc_insert0, NULL, 0x8000, 0x0030, NULL, NULL, 0, 0 },
+	{ 0x0029, 0xffff, 0xffff, 0x0018, 0x0005, 0x0010, C_UNION(&A_3DBUTTON13), 0x0004, 0x000b, 0x0004, 0x0002 },
+	{ calc_insert_dot, NULL, 0x8000, 0x002e, NULL, NULL, 0, 0 },
+	{ 0x0000, 0xffff, 0xffff, 0x0018, 0x0007, 0x0010, C_UNION(&A_3DBUTTON19), 0x0008, 0x000b, 0x0008, 0x0002 },
+	{ calc_equal, NULL, 0x8020, 0x800a, NULL, NULL, 0, 0 }
+};
+
+static Awindow23x calc_win = {
+	NULL,
+	calc_service,
+	calc_create,
+	Awi_open,
+	Awi_init,
+	&calc_work.root,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | MOVER | ICONIFIER,
+	{ 0, 0, 34, 20 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_004,
+	TEXT_002,
+	10000,
+	AW_ICON | AW_GHOSTICON,
+	0,
+	-1,
+	&icon,
+	NULL,
+	calc_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+};
+
+
+static Awindow23x info_win = {
+	NULL,
+	Awi_service,
+	Awi_selfcreate,
+	Awi_open,
+	Awi_init,
+	&info_work.root,
+	NULL,
+	0, 0,
+	-1,
+	NAME | CLOSER | MOVER,
+	{ 0, 0, 120, 50 },
+	{ 0, 0, 0, 0 },
+	{ 0, 0, 0, 0 },
+	{ -1, -1, -1, -1 },
+	0, 0,
+	0xf8f8,
+	TEXT_026,
+	TEXT_002,
+	10000,
+	0,
+	0,
+	-1,
+	NULL,
+	NULL,
+	Awi_keys,
+	Awi_obchange,
+	Awi_redraw,
+	Awi_topped,
+	Awi_closed,
+	Awi_fulled,
+	Awi_arrowed,
+	Awi_hslid,
+	Awi_vslid,
+	Awi_sized,
+	Awi_moved,
+};
+

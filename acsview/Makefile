@@ -7,7 +7,7 @@ OBJS = acs_view.o
 all:: acs-view.app
 
 acs-view.app: $(OBJS) Makefile
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) -lgem
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS) -lgem
 
 clean::
 	$(RM) *.o *.app

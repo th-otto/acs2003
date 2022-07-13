@@ -160,7 +160,7 @@ MODUL_OBJS = \
 all:: acs.app lib/modul/acsload.o
 
 acs.app: $(OBJS) Makefile
-	$(CC) $(CFLAGS) -o $@ $(OBJS) -lgem
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) -lgem
 
 acsplus/acsplus.a: $(ACSPLUS_OBJS)
 	@rm -f $@
@@ -176,7 +176,7 @@ lib/acsmod.a: $(MODUL_OBJS)
 
 #$(OBJS): acs_i.h
 
-lib/modul/acsload.o: lib/modul/acs_load.S
+lib/modul/acsload.o: lib/modul/acs_lgnu.s
 	$(CC) -c -o $@ $(CFLAGS) $<
 	
 clean::
