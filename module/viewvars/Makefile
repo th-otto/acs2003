@@ -6,7 +6,7 @@ LDFLAGS += -nostartfiles
 
 all:: viewvars.am
 
-OBJS = acs_load.o viewvars.o wislider.o editor.o proto.o
+OBJS = acs_load.o viewvars.o
 
 viewvars.am: $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS)

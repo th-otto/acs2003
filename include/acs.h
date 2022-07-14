@@ -1095,6 +1095,14 @@ extern Ablk *ACSblk;
    void ACSmoduleterm (void);
 #endif
 
+Awindow *get_desktop(void);
+Awindow *get_pur_desk(void);
+Awindow *get_module_window(void);
+Awindow *get_editor(void);
+Awindow *get_list(void);
+Awindow *get_protocol(void);
+Awindow *get_plotter(void);
+
 /******************************************************************************/
 /*                                                                            */
 /* Zugriffs-Makros: abw„rtskompatiblen Zugriff auf die Variablen von ACS 1.x  */

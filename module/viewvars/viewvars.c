@@ -13,7 +13,18 @@
 static boolean proto_service(Awindow *self, int16 task, void *in_out)
 {
 	boolean ret;
+#ifdef __GNUC__
+	boolean (*serv)(Awindow *self, int16 task, void *in_out);
 	
+	serv = get_protocol()->service;
+	if (task == AS_TERM)
+	{
+		ret = serv(self, AS_TERM, in_out);
+		ACSmoduleterm();
+		return ret;
+	}
+	return serv(self, task, in_out);
+#else	
 	if (task == AS_TERM)
 	{
 		ret = PROTOCOL.service(self, AS_TERM, self);
@@ -21,6 +32,7 @@ static boolean proto_service(Awindow *self, int16 task, void *in_out)
 		return ret;
 	}
 	return PROTOCOL.service(self, task, in_out);
+#endif
 }
 
 /* -------------------------------------------------------------------------- */
@@ -45,12 +57,22 @@ int16 ACSinit(void)
 	A_dd *dd;
 	
 	syshdr = (SYSHDR *)Supexec(get_syshdr);
+#ifdef __GNUC__
+	win = get_protocol()->create(NULL);
+#else
 	PROTOCOL.name = " ACSblk Vars ";
 	
 	win = PROTOCOL.create(NULL);
+#endif
 	if (win == NULL)
 		return FAIL;
 	win->service = proto_service;
+#ifdef __GNUC__
+	Ast_delete(win->name);
+	win->name = Ast_create(" ACSblk Vars ");
+	Ast_delete(win->iconblk->monoblk.ib_ptext);
+	win->iconblk->monoblk.ib_ptext = Ast_create("ViewVars");
+#endif
 	
 	wprintf(win, "ap_version: $%04x\n", ACSblk->AESglobal[0]);
 	wprintf(win, "ap_count:   %4d\n", ACSblk->AESglobal[1]);
