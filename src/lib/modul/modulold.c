@@ -18,7 +18,7 @@ static char *Af_first230(const char *start);
 static char *Af_next230(void);
 
 #if WITH_FIXES
-Awindow *Awi_selfcreate23x(void *x);
+static Awindow *Awi_selfcreate23x(void *x);
 #endif
 
 

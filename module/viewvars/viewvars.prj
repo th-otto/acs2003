@@ -1,0 +1,18 @@
+viewvars.am
+.C[-I..\..\include]
+.C[-IC:\pc\include]
+.C[-D__ACS_MODULE__]
+.C[-D__COMPATIBLE_FKT__]
+.L[-S=0]
+.C[-A- -C- -T- -K- -P -G- -S-]
+.C[-J- -Z- -M -R-]
+=
+acs1load.s
+viewvars.c
+wislider.c
+editor.c
+proto.c
+pcstdli2.lib
+tos.s
+aes.s
+vdi.s
