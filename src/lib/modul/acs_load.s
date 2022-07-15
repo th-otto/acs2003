@@ -1037,6 +1037,18 @@ Auo_boxed:
 		move.l     #0x00000010,-(a7)
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+	.globl Auo_wislider
+Auo_wislider:
+		pea        20
+		move.l     funcAuo(pc),-(a7)
+		bra        indirect
+	.globl Auo_editor
+Auo_editor:
+		pea        24
+		move.l     funcAuo(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* user services */
 	.globl Aus_create
@@ -1063,6 +1075,16 @@ Aus_cycle:
 	.globl Aus_help
 Aus_help:
 		move.l     #0x00000010,-(a7)
+		move.l     funcAus(pc),-(a7)
+		bra        indirect
+	.globl Aus_slider
+Aus_slider:
+		pea        20
+		move.l     funcAus(pc),-(a7)
+		bra        indirect
+		.globl Aus_editor
+Aus_editor:
+		pea        24
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
 		.ENDC
@@ -1367,6 +1389,23 @@ A_boxed:
 		move.l     #0x00000034,-(a7)
 		move.l     funcA(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+	.globl A_slider
+A_slider:
+		pea        56
+		move.l     funcA(pc),-(a7)
+		bra        indirect
+	.globl A_wislider
+A_wislider:
+		pea        60
+		move.l     funcA(pc),-(a7)
+		bra        indirect
+	.globl A_editor
+A_editor:
+		pea        64
+		move.l     funcA(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* misc */
 	.globl Ax_malloc

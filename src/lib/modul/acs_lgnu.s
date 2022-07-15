@@ -1036,6 +1036,11 @@ _Auo_wislider:
 		pea        20
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
+	.globl _Auo_editor
+_Auo_editor:
+		pea        24
+		move.l     funcAuo(pc),-(a7)
+		bra        indirect
 
 /* user services */
 	.globl _Aus_create
@@ -1066,6 +1071,11 @@ _Aus_help:
 	.globl _Aus_slider
 _Aus_slider:
 		pea        20
+		move.l     funcAus(pc),-(a7)
+		bra        indirect
+		.globl _Aus_editor
+_Aus_editor:
+		pea        24
 		move.l     funcAus(pc),-(a7)
 		bra        indirect
 
@@ -1370,6 +1380,16 @@ _A_boxed:
 	.globl _A_slider
 _A_slider:
 		pea        56
+		move.l     funcA(pc),-(a7)
+		bra        indirect
+	.globl _A_wislider
+_A_wislider:
+		pea        60
+		move.l     funcA(pc),-(a7)
+		bra        indirect
+	.globl _A_editor
+_A_editor:
+		pea        64
 		move.l     funcA(pc),-(a7)
 		bra        indirect
 

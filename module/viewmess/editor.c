@@ -7,9 +7,17 @@
 /* (c) 2022 Thorsten Otto                                                     */
 /******************************************************************************/
 
-#include "acs_i.h"
+#include <stdio.h>
+#include <string.h>
+#include "acs.h"
 #include "acsplus.h"
-#include "country.h"
+#include "../src/country.h"
+
+#ifdef __GNUC__
+#define WITH_FIXES 1
+#else
+#define WITH_FIXES 0
+#endif
 
 #if WITH_FIXES && COUNTRY != COUNTRY_DE
 #  define NOTHING_FOUND "Nothing found."
@@ -77,8 +85,8 @@ typedef struct {
 	/* 154 */ int16 tabsize;
 	/* 156 */ int16 cursor;
 	/* 158 */ int16 err;
-	/* 160 */ char separator[257];
-	/* 418 */
+	/* 160 */ Awiob toolself;
+	/* 170 */ long infopos;
 } EDITTEXT;
 
 /* EDITTEXT.flags */
@@ -151,8 +159,10 @@ static EDITTEXT proto = {
 	0,
 	0,
 	0,
-	" \t=+-*/()!&|[]{}<>,.;:\335$%?`'^#~@\\\""
+	{ NULL, NULL, 0 },
+	0,
 };
+static char proto_separator[] = " \t=+-*/()!&|[]{}<>,.;:\335$%?`'^#~@\\\"";
 
 static char buffer[MAX_COLS * 2];
 static char line[MAX_COLS + 2];
@@ -686,6 +696,7 @@ static void edit_insblk(EDITTEXT *editor, EDITSUBS *subs)
 {
 	long start;
 	long lineno;
+	char **undos;
 	char **text;
 	ssize_t size;
 	long nrow;
@@ -694,7 +705,6 @@ static void edit_insblk(EDITTEXT *editor, EDITSUBS *subs)
 	long endrow;
 	int16 col;
 	int16 textlen;
-	char **undos;
 	int16 tabsize;
 	int16 offset;
 	int16 spaces;
@@ -715,8 +725,7 @@ static void edit_insblk(EDITTEXT *editor, EDITSUBS *subs)
 		editor->t_act = end;
 	}
 	nrow = endrow - start + 1;
-	undos = edit_makeundo(editor, start, endrow);
-	if (undos == NULL)
+	if ((undos = edit_makeundo(editor, start, endrow)) == NULL)
 		return;
 	edit_freeundo(editor->text, editor->nrow);
 	editor->text = NULL;
@@ -733,34 +742,21 @@ static void edit_insblk(EDITTEXT *editor, EDITSUBS *subs)
 			str = "";
 		offset = posv(str, tabsize, col);
 		spaces = col - vpos(str, tabsize, offset);
-		size = strlen(*text) + lineptr->size + spaces;
+		size = lineptr->size + strlen(*text);
+		size += spaces;
 		dst = Ax_malloc(size + 1);
-		if (dst != NULL)
+		if (dst == NULL)
+			goto error;
 		{
 			strncpy(dst, str, offset);
 			if (spaces != 0)
 				memset(&dst[offset], ' ', spaces);
 			strcpy(&dst[offset] + spaces, *text);
 			strcat(&dst[offset] + spaces, &str[offset]);
-		} else
-		{
-			editor->err |= 1;
-			for (i = start; i <= lineno; i++)
-			{
-				lineptr = editor->table + i;
-				Ax_ifree(lineptr->text);
-				lineptr->text = undos[i - start];
-				if (lineptr->text != NULL)
-					lineptr->size = (int16)strlen(lineptr->text) + 1;
-				else
-					lineptr->size = 0;
-			}
-			Ax_ifree(undos);
-			return;
+			lineptr->text = dst;
+			lineptr->size = (int16)size;
+			lineptr->flags = 0;
 		}
-		lineptr->text = dst;
-		lineptr->size = (int16)size;
-		lineptr->flags = 0;
 	}
 	
 	editor->text = undos;
@@ -775,6 +771,21 @@ static void edit_insblk(EDITTEXT *editor, EDITSUBS *subs)
 	editor->sel1row = start;
 	editor->sel1col = editor->ins2col;
 	editor->curv1 = vpos(editor->table[start].text, tabsize, (int16)editor->sel1col);
+	return;
+
+error:
+	editor->err |= 1;
+	for (i = start; i <= lineno; i++)
+	{
+		lineptr = editor->table + i;
+		Ax_ifree(lineptr->text);
+		if ((lineptr->text = undos[i - start]) != NULL)
+			lineptr->size = (int16)strlen(lineptr->text) + 1;
+		else
+			lineptr->size = 0;
+	}
+	Ax_ifree(undos);
+	return;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -832,24 +843,11 @@ static void edit_cutblk(EDITTEXT *editor, EDITSUBS *subs)
 						if (cut > 0)
 						{
 							newtext = Ax_malloc(cut + 1);
-							if (newtext != NULL)
+							if (newtext == NULL)
+								goto error;
 							{
 								strncpy(newtext, str, offsetstart);
 								strcpy(&newtext[offsetstart], &str[offsetend]);
-							} else
-							{
-								for (i = subs->row1; i < lineno; i++)
-								{
-									lineptr = editor->table + i;
-									Ax_ifree(lineptr->text);
-									lineptr->text = undos[i - subs->row1];
-									if (lineptr->text != NULL)
-										lineptr->size = (int16)strlen(lineptr->text) + 1;
-									else
-										lineptr->size = 0;
-								}
-								Ax_ifree(undos);
-								return;
 							}
 						} else
 						{
@@ -873,6 +871,20 @@ static void edit_cutblk(EDITTEXT *editor, EDITSUBS *subs)
 			editor->flags |= EDITTEXT_FULLUPDATE;
 		}
 	}
+	return;
+
+error:
+	for (i = subs->row1; i < lineno; i++)
+	{
+		lineptr = editor->table + i;
+		Ax_ifree(lineptr->text);
+		lineptr->text = undos[i - subs->row1];
+		if (lineptr->text != NULL)
+			lineptr->size = (int16)strlen(lineptr->text) + 1;
+		else
+			lineptr->size = 0;
+	}
+	Ax_ifree(undos);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1236,9 +1248,9 @@ static int16 edit_newline(OBJECT *obj)
 	if (editor->t_size <= editor->t_act + 1)
 	{
 		wrap = editor->wrap - editor->t_size;
-		if (wrap > 0)
+		if (wrap > 0 && wrap >= editor->t_size + 25)
 		{
-			if (edit_exmem(editor, editor->wrap < editor->t_size + 25 ? editor->wrap : editor->t_size + 25) != OK)
+			if (edit_exmem(editor, editor->t_size + 25) != OK)
 				return FAIL;
 			editor->t_act += 1;
 		} else
@@ -1291,7 +1303,9 @@ static void edit_update(EDITTEXT *editor)
 	if (win != NULL)
 	{
 		obnr = editor->self.obnr;
+#if 0
 		if (Awi_obvisible(win, obnr))
+#endif
 		{
 			diffx = (int16)(editor->start_col - editor->ocol) * editor->width;
 			diffy = (int16)(editor->start_row - editor->orow) * editor->height;
@@ -2317,6 +2331,7 @@ static void edit_find(EDITTEXT *editor, const char *str)
 	char otherc;
 	ssize_t searchlen;
 	char *text;
+	const char *separator;
 	
 	if (*str == '\0')
 		return;
@@ -2339,6 +2354,7 @@ static void edit_find(EDITTEXT *editor, const char *str)
 	row = editor->sel1row;
 	col = editor->sel1col;
 	
+	separator = proto_separator;
 	if (editor->flags & EDITTEXT_BACKWARD)
 	{
 		while (row >= 0)
@@ -2356,13 +2372,12 @@ static void edit_find(EDITTEXT *editor, const char *str)
 				text = lineptr->text + offset;
 				while (offset >= 0)
 				{
-					/* FIXME: wrong logic */
 					if ((*text == c || *text == otherc) &&
 						((casesensitive && strncmp(str, text, searchlen) == 0) ||
 						 strnicmp(str, text, searchlen) == 0) &&
-						(charselect ||
-						 (offset == 0 && strchr(editor->separator, text[searchlen]) != NULL) ||
-						  (strchr(editor->separator, text[-1]) != NULL && strchr(editor->separator, text[searchlen]) != NULL)))
+						(charselect || offset == 0 ||
+						 ((strchr(separator, text[-1]) != NULL) &&
+						  (strchr(separator, text[searchlen]) != NULL))))
 					{
 						sel.row1 = row;
 						sel.row2 = row;
@@ -2391,13 +2406,12 @@ static void edit_find(EDITTEXT *editor, const char *str)
 				offset = col;
 				while (*text != '\0')
 				{
-					/* FIXME: wrong logic */
 					if ((*text == c || *text == otherc) &&
 						((casesensitive && strncmp(str, text, searchlen) == 0) ||
 						 strnicmp(str, text, searchlen) == 0) &&
-						(charselect ||
-						 (offset == 0 && strchr(editor->separator, text[searchlen]) != NULL) ||
-						  (strchr(editor->separator, text[-1]) != NULL && strchr(editor->separator, text[searchlen]) != NULL)))
+						(charselect || offset == 0 ||
+						 ((strchr(separator, text[-1]) != NULL) &&
+						  (strchr(separator, text[searchlen]) != NULL))))
 					{
 						sel.row1 = row;
 						sel.row2 = row;
@@ -2449,14 +2463,16 @@ static void edit_selectword(EDITTEXT *editor, long lineno, long col)
 	char *text;
 	int16 col1, col2;
 	EDITSEL sel;
+	const char *separator;
 	
 	lineptr = &editor->table[lineno];
 	size = lineptr->size;
 	text = lineptr->text;
 	col1 = col2 = (int16)col;
-	while (col1 > 0 && strchr(editor->separator, text[col1 - 1]) == NULL)
+	separator = proto_separator;
+	while (col1 > 0 && strchr(separator, text[col1 - 1]) == NULL)
 		col1--;
-	while (col2 < size && strchr(editor->separator, text[col2]) == NULL)
+	while (col2 < size && strchr(separator, text[col2]) == NULL)
 		col2++;
 	
 	if (col1 < col2)
@@ -2647,17 +2663,15 @@ boolean Auo_editor(OBJECT *entry, int16 task, void* in_out)
 		if (editor->live.call)
 		{
 			lineptr = &editor->table[editor->sel1row];
-			if (editor->select != EDIT_SELECT_1 && editor->select != EDIT_SELECT_01)
-			{
-				str = "";
-			} else if ((lineptr->flags & EDITLINE_SELECTED) == 0)
-			{
-				str = "";
-			} else
+			if ((editor->select == EDIT_SELECT_1 || editor->select == EDIT_SELECT_01) &&
+				(lineptr->flags & EDITLINE_SELECTED) != 0)
 			{
 				str = lineptr->text;
 				if (str == NULL)
 					str = "";
+			} else
+			{
+				str = "";
 			}
 			editor->live.call(editor->live.obj, str);
 		}
@@ -2690,9 +2704,17 @@ boolean Auo_editor(OBJECT *entry, int16 task, void* in_out)
 	case AUO_SELF:
 		self = in_out;
 		/* editor->self = *self */
-		editor->self.window = self->window;
-		editor->self.entry = self->entry;
-		editor->self.obnr = self->obnr;
+		if (self->obnr & A_TOOLBAR)
+		{
+			editor->toolself.window = self->window;
+			editor->toolself.entry = self->entry;
+			editor->toolself.obnr = self->obnr;
+		} else
+		{
+			editor->self.window = self->window;
+			editor->self.entry = self->entry;
+			editor->self.obnr = self->obnr;
+		}
 		break;
 	
 	case AUO_OWNER:
@@ -2733,8 +2755,7 @@ boolean Auo_editor(OBJECT *entry, int16 task, void* in_out)
 		break;
 	
 	case AUO_EDCURPOS:
-		editor->sel1col = *((long *)in_out);
-		editor->sel2col = editor->sel1col;
+		editor->sel2col = editor->sel1col = *((long *)in_out);
 		editor->curv2 = editor->curv1 = vpos(editor->table[editor->sel1row].text, editor->tabsize, (int16)editor->sel1col);
 		break;
 	
@@ -2929,23 +2950,25 @@ boolean Auo_editor(OBJECT *entry, int16 task, void* in_out)
 		editor_cleanup(editor, TRUE);
 		break;
 	
-	case AUO_EDDIRTY:
-		editor->flags |= EDITTEXT_CHANGED;
-		break;
-	
-	case AUO_EDSETSEPARATOR:
-		strcpy(editor->separator, in_out);
-		break;
-	
-	case AUO_EDGETSEPARATOR:
-		*((char **)in_out) = editor->separator;
-		break;
-	
-	case AUO_GETBUBBLE:
-	case AUO_GETCONTEXT:
-		break;
-	
 	case AUO_EDPUTINFO:
+		if (editor->toolself.window != NULL)
+		{
+			if (in_out == NULL)
+			{
+				if (editor->infopos-- == 0)
+				{
+					Aob_puttext(editor->toolself.window->toolbar, editor->toolself.obnr & A_MASK, "");
+					editor->toolself.window->obchange(editor->toolself.window, editor->toolself.obnr, -1);
+				}
+			} else
+			{
+				Aob_puttext(editor->toolself.window->toolbar, editor->toolself.obnr & A_MASK, untab(in_out, editor->tabsize, strlen(in_out)));
+				editor->infopos = 5;
+				editor->toolself.window->obchange(editor->toolself.window, editor->toolself.obnr, -1);
+			}
+		}
+		break;
+	
 	default:
 		return FALSE;
 	}
@@ -3202,7 +3225,7 @@ static void edit_click(EDITTEXT *editor, int16 mox, int16 moy, int16 kstate)
 					edit_backbracket(editor, row, offset, c);
 					break;
 				default:
-					if (strchr(editor->separator, c) != NULL)
+					if (strchr(proto_separator, c) != NULL)
 					{
 						goto error;
 					} else
