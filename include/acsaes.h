@@ -2035,7 +2035,7 @@ typedef struct rshdr
 /******************************************************************************/
 
 /* Die Filter-Funktion fÅr fslx_open */
-typedef int16 (cdecl XFSL_FILTER)(UCHAR *path, UCHAR *name, GEMLIB_XATTR *xa);
+typedef int16 (cdecl XFSL_FILTER)(char *path, char *name, GEMLIB_XATTR *xa);
 
 /* Filter-Funktion fÅr fsel_boxinput */
 typedef void cdecl (*FSEL_CALLBACK)( int16 *msg );
@@ -2200,7 +2200,7 @@ typedef struct _prn_settings
 #else
    struct
    {
-      UCHAR inside[120];
+      unsigned char inside[120];
    } mac_settings;
 #endif
 } PRN_SETTINGS;

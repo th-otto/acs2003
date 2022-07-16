@@ -1,0 +1,18 @@
+;
+;	 X-CEWS PRJ-Export fÅr 'CEWS.EWS'
+;
+cews.app
+.C[-I..\..\include]
+.C[-IC:\pc\include]
+.C[-A- -C- -T- -K- -P -G- -S-]
+.C[-J- -Z- -M -R-]
+.L[-S=40960]
+=
+..\..\lib\stupargv.s
+cews.c
+..\..\lib\acs.lib
+..\..\lib\acsplus.lib
+..\..\lib\acsmodno.lib
+..\..\lib\pcgem.lib
+..\..\lib\pcstdlib.lib
+..\..\lib\pctos.lib

@@ -307,6 +307,7 @@ static void *func1Auo[] = {
 	Auo_boxed,
 #if WITH_FIXES
 	Auo_wislider,
+	Auo_slider,
 	Auo_editor,
 #endif
 };

@@ -215,7 +215,7 @@
       #define CHAR   int8
    #endif
    #ifndef UCHAR
-      #define UCHAR  int8
+      #define UCHAR  uint8
    #endif
    #ifndef VOID
       #define VOID   void

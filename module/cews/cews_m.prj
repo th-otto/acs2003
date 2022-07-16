@@ -1,0 +1,19 @@
+; CEWS-Modul-PRJ
+cews.ama
+.C[-I..\..\include]
+.C[-IC:\pc\include]
+.C[-D__COMPATIBLE_FKT__]
+.C[-A- -C- -T- -K- -P -G- -S-]
+.C[-J- -Z- -M -R-]
+.L[-S=0]
+=                   ; list of modules follows...
+acs1load.s
+cews_m.c
+
+slider.c
+
+pcstdli2.lib
+
+tos.s        ; TOS library
+aes.s        ; AES and VDI library
+vdi.s

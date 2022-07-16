@@ -1043,9 +1043,14 @@ Auo_wislider:
 		pea        20
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
+	.globl Auo_slider
+Auo_slider:
+		pea        24
+		move.l     funcAuo(pc),-(a7)
+		bra        indirect
 	.globl Auo_editor
 Auo_editor:
-		pea        24
+		pea        28
 		move.l     funcAuo(pc),-(a7)
 		bra        indirect
 		.ENDC

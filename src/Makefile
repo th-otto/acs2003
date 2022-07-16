@@ -79,8 +79,8 @@ OBJS = \
 	list/edstring.o \
 	list/edtedi.o \
 	\
-	acsplus/acsplus.a \
 	lib/acsmod.a \
+	acsplus/acsplus.a \
 	lib/acs.a \
 	\
 	$(empty)
@@ -157,7 +157,11 @@ MODUL_OBJS = \
 	lib/modul/modulold.o \
 	$(empty)
 
-all:: acs.app lib/modul/acsload.o
+MODULNO_OBJS = \
+	lib/modul/modulno.o \
+	$(empty)
+
+all:: acs.app lib/modul/acsload.o lib/acsmodno.a
 
 acs.app: $(OBJS) Makefile
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) -lgem
@@ -174,10 +178,14 @@ lib/acsmod.a: $(MODUL_OBJS)
 	@rm -f $@
 	$(AR) $(ARFLAGS) $@ $(MODUL_OBJS)
 
+lib/acsmodno.a: $(MODULNO_OBJS)
+	@rm -f $@
+	$(AR) $(ARFLAGS) $@ $(MODULNO_OBJS)
+
 #$(OBJS): acs_i.h
 
 lib/modul/acsload.o: lib/modul/acs_lgnu.s
 	$(CC) -c -o $@ $(CFLAGS) $<
 	
 clean::
-	$(RM) $(OBJS) $(ACSPLUS_OBJS) $(LIB_OBJS) $(MODUL_OBJS) lib/modul/acsload.o acs.app
+	$(RM) $(OBJS) $(ACSPLUS_OBJS) $(LIB_OBJS) $(MODUL_OBJS) $(MODULNO_OBJS) lib/modul/acsload.o lib/acsmodno.a acs.app

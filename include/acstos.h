@@ -392,8 +392,8 @@ typedef struct
 /* Struktur fÅr Cconrs */
 typedef struct
 {
-   UCHAR maxlen;
-   UCHAR actuallen;
+   uint8 maxlen;
+   uint8 actuallen;
    char buffer[255];
 } LINE;
 
@@ -403,7 +403,7 @@ typedef struct
 typedef struct
 {
    CHAR     d_reserved[21];
-   UCHAR    d_attrib;
+   uint8    d_attrib;
    uint16   d_time;
    uint16   d_date;
    uint32   d_length;
@@ -679,8 +679,8 @@ typedef struct
 /* Kommandozeile zum Start von Programmen (siehe Pexec) */
 typedef struct
 {
-   UCHAR length;
-   CHAR command[126];
+   uint8 length;
+   char command_tail[128];
 } COMMAND;
 
 /******************************************************************************/
