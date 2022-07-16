@@ -3828,9 +3828,21 @@ objc_xedit:
 		bra        indirect
 	.globl graf_rubbbox
 graf_rubbbox:
-		move.l     #0x00000330,-(a7)
+		move.l     #816,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+	.globl wind_set_str
+wind_set_str:
+		pea        820
+		move.l     funcAes(pc),-(a7)
+		bra        indirect
+	.globl wind_set_int
+wind_set_int:
+		pea        824
+		move.l     funcAes(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 /* keytab */
 	.globl Akt_getKeyTab
@@ -4054,1019 +4066,1031 @@ Akt_CharUnicode2XUtf:
 /* Multi-threading AES */
 	.globl mt_appl_init
 mt_appl_init:
-		move.l     #0x00000000,-(a7)
+		move.l     #0,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_read
 mt_appl_read:
-		move.l     #0x00000004,-(a7)
+		move.l     #4,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_write
 mt_appl_write:
-		move.l     #0x00000008,-(a7)
+		move.l     #8,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_find
 mt_appl_find:
-		move.l     #0x0000000C,-(a7)
+		move.l     #12,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_search
 mt_appl_search:
-		move.l     #0x00000010,-(a7)
+		move.l     #16,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_tplay
 mt_appl_tplay:
-		move.l     #0x00000014,-(a7)
+		move.l     #20,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_trecord
 mt_appl_trecord:
-		move.l     #0x00000018,-(a7)
+		move.l     #24,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_yield
 mt_appl_yield:
-		move.l     #0x0000001C,-(a7)
+		move.l     #28,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_exit
 mt_appl_exit:
-		move.l     #0x00000020,-(a7)
+		move.l     #32,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_getinfo
 mt_appl_getinfo:
-		move.l     #0x00000024,-(a7)
+		move.l     #36,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_appl_control
 mt_appl_control:
-		move.l     #0x00000028,-(a7)
+		move.l     #40,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_keybd
 mt_evnt_keybd:
-		move.l     #0x00000334,-(a7)
+		move.l     #44,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_button
 mt_evnt_button:
-		move.l     #0x0000002C,-(a7)
+		move.l     #48,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_mouse
 mt_evnt_mouse:
-		move.l     #0x00000030,-(a7)
+		move.l     #52,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_mesag
 mt_evnt_mesag:
-		move.l     #0x00000034,-(a7)
+		move.l     #56,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_timer
 mt_evnt_timer:
-		move.l     #0x00000038,-(a7)
+		move.l     #60,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_event
 mt_evnt_event:
-		move.l     #0x0000003C,-(a7)
+		move.l     #64,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_multi
 mt_evnt_multi:
-		move.l     #0x00000040,-(a7)
+		move.l     #68,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_evnt_dclick
 mt_evnt_dclick:
-		move.l     #0x00000044,-(a7)
+		move.l     #72,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_bar
 mt_menu_bar:
-		move.l     #0x00000048,-(a7)
+		move.l     #76,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_icheck
 mt_menu_icheck:
-		move.l     #0x0000004C,-(a7)
+		move.l     #80,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_ienable
 mt_menu_ienable:
-		move.l     #0x00000050,-(a7)
+		move.l     #84,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_tnormal
 mt_menu_tnormal:
-		move.l     #0x00000054,-(a7)
+		move.l     #88,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_text
 mt_menu_text:
-		move.l     #0x00000058,-(a7)
+		move.l     #92,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_register
 mt_menu_register:
-		move.l     #0x0000005C,-(a7)
+		move.l     #96,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_unregister
 mt_menu_unregister:
-		move.l     #0x00000060,-(a7)
+		move.l     #100,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_click
 mt_menu_click:
-		move.l     #0x00000064,-(a7)
+		move.l     #104,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_attach
 mt_menu_attach:
-		move.l     #0x00000068,-(a7)
+		move.l     #108,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_istart
 mt_menu_istart:
-		move.l     #0x0000006C,-(a7)
+		move.l     #112,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_popup
 mt_menu_popup:
-		move.l     #0x00000070,-(a7)
+		move.l     #116,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_menu_settings
 mt_menu_settings:
-		move.l     #0x00000074,-(a7)
+		move.l     #120,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_add
 mt_objc_add:
-		move.l     #0x00000078,-(a7)
+		move.l     #124,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_delete
 mt_objc_delete:
-		move.l     #0x0000007C,-(a7)
+		move.l     #128,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_draw
 mt_objc_draw:
-		move.l     #0x00000338,-(a7)
+		move.l     #132,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_find
 mt_objc_find:
-		move.l     #0x00000080,-(a7)
+		move.l     #136,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_offset
 mt_objc_offset:
-		move.l     #0x00000084,-(a7)
+		move.l     #140,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_order
 mt_objc_order:
-		move.l     #0x00000088,-(a7)
+		move.l     #144,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_edit
 mt_objc_edit:
-		move.l     #0x0000008C,-(a7)
+		move.l     #148,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_change
 mt_objc_change:
-		move.l     #0x00000090,-(a7)
+		move.l     #152,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_sysvar
 mt_objc_sysvar:
-		move.l     #0x00000094,-(a7)
+		move.l     #156,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_do
 mt_form_do:
-		move.l     #0x00000098,-(a7)
+		move.l     #160,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_dial
 mt_form_dial:
-		move.l     #0x0000009C,-(a7)
+		move.l     #164,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_alert
 mt_form_alert:
-		move.l     #0x000000A0,-(a7)
+		move.l     #168,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_error
 mt_form_error:
-		move.l     #0x000000A4,-(a7)
+		move.l     #172,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_center
 mt_form_center:
-		move.l     #0x000000A8,-(a7)
+		move.l     #176,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_keybd
 mt_form_keybd:
-		move.l     #0x000000AC,-(a7)
+		move.l     #180,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_button
 mt_form_button:
-		move.l     #0x000000B0,-(a7)
+		move.l     #184,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_rubbox
 mt_graf_rubbox:
-		move.l     #0x000000B4,-(a7)
+		move.l     #188,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_rubberbox
 mt_graf_rubberbox:
-		move.l     #0x000000B8,-(a7)
+		move.l     #192,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_dragbox
 mt_graf_dragbox:
-		move.l     #0x000000BC,-(a7)
+		move.l     #196,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_mbox
 mt_graf_mbox:
-		move.l     #0x000000C0,-(a7)
+		move.l     #200,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_movebox
 mt_graf_movebox:
-		move.l     #0x000000C4,-(a7)
+		move.l     #204,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_growbox
 mt_graf_growbox:
-		move.l     #0x000000C8,-(a7)
+		move.l     #208,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_shrinkbox
 mt_graf_shrinkbox:
-		move.l     #0x000000CC,-(a7)
+		move.l     #212,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_watchbox
 mt_graf_watchbox:
-		move.l     #0x000000D0,-(a7)
+		move.l     #216,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_slidebox
 mt_graf_slidebox:
-		move.l     #0x000000D4,-(a7)
+		move.l     #220,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_handle
 mt_graf_handle:
-		move.l     #0x000000D8,-(a7)
+		move.l     #224,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_mouse
 mt_graf_mouse:
-		move.l     #0x000000DC,-(a7)
+		move.l     #228,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_mkstate
 mt_graf_mkstate:
-		move.l     #0x000000E0,-(a7)
+		move.l     #232,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_multirubber
 mt_graf_multirubber:
-		move.l     #0x000000E4,-(a7)
+		move.l     #236,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_scrp_read
 mt_scrp_read:
-		move.l     #0x000000E8,-(a7)
+		move.l     #240,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_scrp_write
 mt_scrp_write:
-		move.l     #0x000000EC,-(a7)
+		move.l     #244,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fsel_input
 mt_fsel_input:
-		move.l     #0x000000F0,-(a7)
+		move.l     #248,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fsel_exinput
 mt_fsel_exinput:
-		move.l     #0x000000F4,-(a7)
+		move.l     #252,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fsel_boxinput
 mt_fsel_boxinput:
-		move.l     #0x000000F8,-(a7)
+		move.l     #256,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fslx_open
 mt_fslx_open:
-		move.l     #0x000000FC,-(a7)
+		move.l     #260,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fslx_close
 mt_fslx_close:
-		move.l     #0x00000100,-(a7)
+		move.l     #264,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fslx_getnxtfile
 mt_fslx_getnxtfile:
-		move.l     #0x00000104,-(a7)
+		move.l     #268,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fslx_evnt
 mt_fslx_evnt:
-		move.l     #0x00000108,-(a7)
+		move.l     #272,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fslx_do
 mt_fslx_do:
-		move.l     #0x0000010C,-(a7)
+		move.l     #276,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fslx_set_flags
 mt_fslx_set_flags:
-		move.l     #0x00000110,-(a7)
+		move.l     #280,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_create
 mt_wind_create:
-		move.l     #0x0000033C,-(a7)
+		move.l     #284,-(a7)
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_open
 mt_wind_open:
-		move.l     #0x00000114,-(a7)
+		move.l     #288,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_close
 mt_wind_close:
-		move.l     #0x00000118,-(a7)
+		move.l     #292,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_delete
 mt_wind_delete:
-		move.l     #0x0000011C,-(a7)
+		move.l     #296,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_get
 mt_wind_get:
-		move.l     #0x00000120,-(a7)
+		move.l     #300,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_getQSB
 mt_wind_getQSB:
-		move.l     #0x00000124,-(a7)
+		move.l     #304,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_set
 mt_wind_set:
-		move.l     #0x00000128,-(a7)
+		move.l     #308,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_find
 mt_wind_find:
-		move.l     #0x0000012C,-(a7)
+		move.l     #312,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_update
 mt_wind_update:
-		move.l     #0x00000130,-(a7)
+		move.l     #316,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_calc
 mt_wind_calc:
-		move.l     #0x00000134,-(a7)
+		move.l     #320,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_new
 mt_wind_new:
-		move.l     #0x00000138,-(a7)
+		move.l     #324,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_rsrc_load
 mt_rsrc_load:
-		move.l     #0x0000013C,-(a7)
+		move.l     #328,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_rsrc_free
 mt_rsrc_free:
-		move.l     #0x00000140,-(a7)
+		move.l     #332,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_rsrc_gaddr
 mt_rsrc_gaddr:
-		move.l     #0x00000144,-(a7)
+		move.l     #336,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_rsrc_saddr
 mt_rsrc_saddr:
-		move.l     #0x00000148,-(a7)
+		move.l     #340,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_rsrc_obfix
 mt_rsrc_obfix:
-		move.l     #0x0000014C,-(a7)
+		move.l     #344,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_rsrc_rcfix
 mt_rsrc_rcfix:
-		move.l     #0x00000150,-(a7)
+		move.l     #348,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_shel_read
 mt_shel_read:
-		move.l     #0x00000154,-(a7)
+		move.l     #352,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_shel_write
 mt_shel_write:
-		move.l     #0x00000158,-(a7)
+		move.l     #356,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_shel_get
 mt_shel_get:
-		move.l     #0x0000015C,-(a7)
+		move.l     #360,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_shel_put
 mt_shel_put:
-		move.l     #0x00000160,-(a7)
+		move.l     #364,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_shel_find
 mt_shel_find:
-		move.l     #0x00000164,-(a7)
+		move.l     #368,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_shel_envrn
 mt_shel_envrn:
-		move.l     #0x00000168,-(a7)
+		move.l     #372,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_shel_help
 mt_shel_help:
-		move.l     #0x0000016C,-(a7)
+		move.l     #376,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_add
 mt_fnts_add:
-		move.l     #0x00000170,-(a7)
+		move.l     #380,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_close
 mt_fnts_close:
-		move.l     #0x00000174,-(a7)
+		move.l     #384,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_create
 mt_fnts_create:
-		move.l     #0x00000178,-(a7)
+		move.l     #388,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_delete
 mt_fnts_delete:
-		move.l     #0x0000017C,-(a7)
+		move.l     #392,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_do
 mt_fnts_do:
-		move.l     #0x00000180,-(a7)
+		move.l     #396,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_evnt
 mt_fnts_evnt:
-		move.l     #0x00000184,-(a7)
+		move.l     #400,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_get_info
 mt_fnts_get_info:
-		move.l     #0x00000188,-(a7)
+		move.l     #404,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_get_name
 mt_fnts_get_name:
-		move.l     #0x0000018C,-(a7)
+		move.l     #408,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_get_no_styles
 mt_fnts_get_no_styles:
-		move.l     #0x00000190,-(a7)
+		move.l     #412,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_get_style
 mt_fnts_get_style:
-		move.l     #0x00000194,-(a7)
+		move.l     #416,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_open
 mt_fnts_open:
-		move.l     #0x00000198,-(a7)
+		move.l     #420,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_remove
 mt_fnts_remove:
-		move.l     #0x0000019C,-(a7)
+		move.l     #424,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_fnts_update
 mt_fnts_update:
-		move.l     #0x000001A0,-(a7)
+		move.l     #428,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_ascroll_to
 mt_lbox_ascroll_to:
-		move.l     #0x000001A4,-(a7)
+		move.l     #432,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_scroll_to
 mt_lbox_scroll_to:
-		move.l     #0x000001A8,-(a7)
+		move.l     #436,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_bscroll_to
 mt_lbox_bscroll_to:
-		move.l     #0x000001AC,-(a7)
+		move.l     #440,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_cnt_items
 mt_lbox_cnt_items:
-		move.l     #0x000001B0,-(a7)
+		move.l     #444,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_create
 mt_lbox_create:
-		move.l     #0x000001B4,-(a7)
+		move.l     #448,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_delete
 mt_lbox_delete:
-		move.l     #0x000001B8,-(a7)
+		move.l     #452,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_do
 mt_lbox_do:
-		move.l     #0x000001BC,-(a7)
+		move.l     #456,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_free_items
 mt_lbox_free_items:
-		move.l     #0x000001C0,-(a7)
+		move.l     #460,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_free_list
 mt_lbox_free_list:
-		move.l     #0x000001C4,-(a7)
+		move.l     #464,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_afirst
 mt_lbox_get_afirst:
-		move.l     #0x000001C8,-(a7)
+		move.l     #468,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_first
 mt_lbox_get_first:
-		move.l     #0x000001CC,-(a7)
+		move.l     #472,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_avis
 mt_lbox_get_avis:
-		move.l     #0x000001D0,-(a7)
+		move.l     #476,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_visible
 mt_lbox_get_visible:
-		move.l     #0x000001D4,-(a7)
+		move.l     #480,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_bentries
 mt_lbox_get_bentries:
-		move.l     #0x000001D8,-(a7)
+		move.l     #484,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_bfirst
 mt_lbox_get_bfirst:
-		move.l     #0x000001DC,-(a7)
+		move.l     #488,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_idx
 mt_lbox_get_idx:
-		move.l     #0x000001E0,-(a7)
+		move.l     #492,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_item
 mt_lbox_get_item:
-		move.l     #0x000001E4,-(a7)
+		move.l     #496,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_items
 mt_lbox_get_items:
-		move.l     #0x000001E8,-(a7)
+		move.l     #500,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_slct_idx
 mt_lbox_get_slct_idx:
-		move.l     #0x000001EC,-(a7)
+		move.l     #504,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_slct_item
 mt_lbox_get_slct_item:
-		move.l     #0x000001F0,-(a7)
+		move.l     #508,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_tree
 mt_lbox_get_tree:
-		move.l     #0x000001F4,-(a7)
+		move.l     #512,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_get_udata
 mt_lbox_get_udata:
-		move.l     #0x000001F8,-(a7)
+		move.l     #516,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_set_asldr
 mt_lbox_set_asldr:
-		move.l     #0x000001FC,-(a7)
+		move.l     #520,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_set_slider
 mt_lbox_set_slider:
-		move.l     #0x00000200,-(a7)
+		move.l     #524,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_set_bentries
 mt_lbox_set_bentries:
-		move.l     #0x00000204,-(a7)
+		move.l     #528,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_set_bsldr
 mt_lbox_set_bsldr:
-		move.l     #0x00000208,-(a7)
+		move.l     #532,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_set_items
 mt_lbox_set_items:
-		move.l     #0x0000020C,-(a7)
+		move.l     #536,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_lbox_update
 mt_lbox_update:
-		move.l     #0x00000210,-(a7)
+		move.l     #540,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_add_printers
 mt_pdlg_add_printers:
-		move.l     #0x00000214,-(a7)
+		move.l     #544,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_add_sub_dialogs
 mt_pdlg_add_sub_dialogs:
-		move.l     #0x00000218,-(a7)
+		move.l     #548,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_close
 mt_pdlg_close:
-		move.l     #0x0000021C,-(a7)
+		move.l     #552,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_create
 mt_pdlg_create:
-		move.l     #0x00000220,-(a7)
+		move.l     #556,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_delete
 mt_pdlg_delete:
-		move.l     #0x00000224,-(a7)
+		move.l     #560,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_dflt_settings
 mt_pdlg_dflt_settings:
-		move.l     #0x00000228,-(a7)
+		move.l     #564,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_do
 mt_pdlg_do:
-		move.l     #0x0000022C,-(a7)
+		move.l     #568,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_evnt
 mt_pdlg_evnt:
-		move.l     #0x00000230,-(a7)
+		move.l     #572,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_free_settings
 mt_pdlg_free_settings:
-		move.l     #0x00000234,-(a7)
+		move.l     #576,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_get_setsize
 mt_pdlg_get_setsize:
-		move.l     #0x00000238,-(a7)
+		move.l     #580,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_new_settings
 mt_pdlg_new_settings:
-		move.l     #0x0000023C,-(a7)
+		move.l     #584,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_open
 mt_pdlg_open:
-		move.l     #0x00000240,-(a7)
+		move.l     #588,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_remove_printers
 mt_pdlg_remove_printers:
-		move.l     #0x00000244,-(a7)
+		move.l     #592,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_remove_sub_dialogs
 mt_pdlg_remove_sub_dialogs:
-		move.l     #0x00000248,-(a7)
+		move.l     #596,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_update
 mt_pdlg_update:
-		move.l     #0x0000024C,-(a7)
+		move.l     #600,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_use_settings
 mt_pdlg_use_settings:
-		move.l     #0x00000250,-(a7)
+		move.l     #604,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_pdlg_validate_settings
 mt_pdlg_validate_settings:
-		move.l     #0x00000254,-(a7)
+		move.l     #608,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_create
 mt_edit_create:
-		move.l     #0x00000258,-(a7)
+		move.l     #612,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_set_buf
 mt_edit_set_buf:
-		move.l     #0x0000025C,-(a7)
+		move.l     #616,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_open
 mt_edit_open:
-		move.l     #0x00000260,-(a7)
+		move.l     #620,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_close
 mt_edit_close:
-		move.l     #0x00000264,-(a7)
+		move.l     #624,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_delete
 mt_edit_delete:
-		move.l     #0x00000268,-(a7)
+		move.l     #628,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_cursor
 mt_edit_cursor:
-		move.l     #0x0000026C,-(a7)
+		move.l     #632,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_evnt
 mt_edit_evnt:
-		move.l     #0x00000270,-(a7)
+		move.l     #636,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_buf
 mt_edit_get_buf:
-		move.l     #0x00000274,-(a7)
+		move.l     #640,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_format
 mt_edit_get_format:
-		move.l     #0x00000278,-(a7)
+		move.l     #644,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_colour
 mt_edit_get_colour:
-		move.l     #0x0000027C,-(a7)
+		move.l     #648,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_color
 mt_edit_get_color:
-		move.l     #0x00000280,-(a7)
+		move.l     #652,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_font
 mt_edit_get_font:
-		move.l     #0x00000284,-(a7)
+		move.l     #656,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_cursor
 mt_edit_get_cursor:
-		move.l     #0x00000288,-(a7)
+		move.l     #660,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_dirty
 mt_edit_get_dirty:
-		move.l     #0x0000028C,-(a7)
+		move.l     #664,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_sel
 mt_edit_get_sel:
-		move.l     #0x00000290,-(a7)
+		move.l     #668,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_get_scrollinfo
 mt_edit_get_scrollinfo:
-		move.l     #0x00000294,-(a7)
+		move.l     #672,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_set_format
 mt_edit_set_format:
-		move.l     #0x00000298,-(a7)
+		move.l     #676,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_set_colour
 mt_edit_set_colour:
-		move.l     #0x0000029C,-(a7)
+		move.l     #680,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_set_color
 mt_edit_set_color:
-		move.l     #0x000002A0,-(a7)
+		move.l     #684,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_set_font
 mt_edit_set_font:
-		move.l     #0x000002A4,-(a7)
+		move.l     #688,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_set_cursor
 mt_edit_set_cursor:
-		move.l     #0x000002A8,-(a7)
+		move.l     #692,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_resized
 mt_edit_resized:
-		move.l     #0x000002AC,-(a7)
+		move.l     #696,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_set_dirty
 mt_edit_set_dirty:
-		move.l     #0x000002B0,-(a7)
+		move.l     #700,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_edit_scroll
 mt_edit_scroll:
-		move.l     #0x000002B4,-(a7)
+		move.l     #704,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_EvntMulti
 mt_EvntMulti:
-		move.l     #0x000002B8,-(a7)
+		move.l     #708,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_wbutton
 mt_form_wbutton:
-		move.l     #0x000002BC,-(a7)
+		move.l     #712,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_xdial
 mt_form_xdial:
-		move.l     #0x000002C0,-(a7)
+		move.l     #716,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_xdo
 mt_form_xdo:
-		move.l     #0x000002C4,-(a7)
+		move.l     #720,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_form_xerr
 mt_form_xerr:
-		move.l     #0x000002C8,-(a7)
+		move.l     #724,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_wwatchbox
 mt_graf_wwatchbox:
-		move.l     #0x000002CC,-(a7)
+		move.l     #728,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_xhandle
 mt_graf_xhandle:
-		move.l     #0x000002D0,-(a7)
+		move.l     #732,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_create
 mt_wdlg_create:
-		move.l     #0x000002D4,-(a7)
+		move.l     #736,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_open
 mt_wdlg_open:
-		move.l     #0x000002D8,-(a7)
+		move.l     #740,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_close
 mt_wdlg_close:
-		move.l     #0x000002DC,-(a7)
+		move.l     #744,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_delete
 mt_wdlg_delete:
-		move.l     #0x000002E0,-(a7)
+		move.l     #748,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_get_tree
 mt_wdlg_get_tree:
-		move.l     #0x000002E4,-(a7)
+		move.l     #752,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_get_edit
 mt_wdlg_get_edit:
-		move.l     #0x000002E8,-(a7)
+		move.l     #756,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_get_udata
 mt_wdlg_get_udata:
-		move.l     #0x000002EC,-(a7)
+		move.l     #760,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_get_handle
 mt_wdlg_get_handle:
-		move.l     #0x000002F0,-(a7)
+		move.l     #764,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_set_edit
 mt_wdlg_set_edit:
-		move.l     #0x000002F4,-(a7)
+		move.l     #768,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_set_tree
 mt_wdlg_set_tree:
-		move.l     #0x000002F8,-(a7)
+		move.l     #772,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_set_size
 mt_wdlg_set_size:
-		move.l     #0x000002FC,-(a7)
+		move.l     #776,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_set_iconify
 mt_wdlg_set_iconify:
-		move.l     #0x00000300,-(a7)
+		move.l     #780,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_set_uniconify
 mt_wdlg_set_uniconify:
-		move.l     #0x00000304,-(a7)
+		move.l     #784,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_evnt
 mt_wdlg_evnt:
-		move.l     #0x00000308,-(a7)
+		move.l     #788,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wdlg_redraw
 mt_wdlg_redraw:
-		move.l     #0x0000030C,-(a7)
+		move.l     #792,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_wind_draw
 mt_wind_draw:
-		move.l     #0x00000310,-(a7)
+		move.l     #796,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_scrp_clear
 mt_scrp_clear:
-		move.l     #0x00000314,-(a7)
+		move.l     #800,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_objc_xedit
 mt_objc_xedit:
-		move.l     #0x00000318,-(a7)
+		move.l     #804,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl mt_graf_rubbbox
 mt_graf_rubbbox:
-		move.l     #0x0000031C,-(a7)
+		move.l     #808,-(a7)
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
+		.IFNE WITH_EXTENSIONS
+	.globl mt_wind_set_str
+mt_wind_set_str:
+		pea        812
+		move.l     funcAes(pc),-(a7)
+		bra        indirect
+	.globl mt_wind_set_int
+mt_wind_set_int:
+		pea        816
+		move.l     funcAes(pc),-(a7)
+		bra        indirect
+		.ENDC
 
 	.data
 

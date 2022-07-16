@@ -454,6 +454,13 @@ static void *func1Sonst[] = {
 static funcVersion const funcSonst[] = { { func1Sonst, 0 } };
 static int16 const funcAnzSonst = NUMFUNCS(funcSonst);
 
+#ifdef __PUREC__
+#else
+#define vsf_updat vsf_udpat
+#undef v_curaddress
+#define v_curaddress vs_curaddress
+#endif
+
 static void *func1Vdi[] = {
 	vdi,
 	vdi_,
@@ -507,11 +514,7 @@ static void *func1Vdi[] = {
 	vsf_color,
 	vsf_perimeter,
 	vsf_udpat,
-#ifdef __PUREC__
 	vsf_updat,
-#else
-	vsf_udpat,
-#endif
 	vs_color,
 	vr_trnfm,
 	vro_cpyfm,
@@ -557,11 +560,7 @@ static void *func1Vdi[] = {
 	v_curhome,
 	v_eeos,
 	v_eeol,
-#ifdef __PUREC__
 	v_curaddress,
-#else
-	vs_curaddress,
-#endif
 	v_curtext,
 	v_rvon,
 	v_rvoff,
@@ -712,12 +711,48 @@ static void *func1Vdi[] = {
 static funcVersion const funcVdi[] = { { func1Vdi, 0 } };
 static int16 const funcAnzVdi = NUMFUNCS(funcVdi);
 
-static void *func1Aes[] = {
+
+/*
+ * some functions are defined as macros only in gem.h, and have to be redirected
+ */
 #ifdef __GNUC__
-	pc_aes,
+#undef graf_rubbox
+#define graf_rubbox graf_rubberbox
+#define graf_rubbbox graf_rubberbox
+#undef mt_graf_rubbox
+#define mt_graf_rubbox mt_graf_rubberbox
+#define mt_graf_rubbbox mt_graf_rubberbox
+#undef graf_movebox
+#define graf_movebox graf_mbox
+#undef mt_graf_movebox
+#define mt_graf_movebox mt_graf_mbox
+#undef lbox_scroll_to
+#define lbox_scroll_to lbox_ascroll_to
+#undef mt_lbox_scroll_to
+#define mt_lbox_scroll_to mt_lbox_ascroll_to
+#undef lbox_get_first
+#define lbox_get_first lbox_get_afirst
+#undef mt_lbox_get_first
+#define mt_lbox_get_first mt_lbox_get_afirst
+#undef lbox_get_avis
+#define lbox_get_avis lbox_get_visible
+#undef mt_lbox_get_avis
+#define mt_lbox_get_avis mt_lbox_get_visible
+#undef lbox_set_slider
+#define lbox_set_slider lbox_set_asldr
+#undef mt_lbox_set_slider
+#define mt_lbox_set_slider mt_lbox_set_asldr
+#undef edit_get_color
+#define edit_get_color edit_get_colour
+#undef mt_edit_get_color
+#define mt_edit_get_color mt_edit_get_colour
+#define _crystal aes
 #else
-	aes,
+#define pc_aes aes
 #endif
+
+static void *func1Aes[] = {
+	pc_aes,
 	appl_init,
 	appl_read,
 	appl_write,
@@ -765,19 +800,11 @@ static void *func1Aes[] = {
 	form_center,
 	form_keybd,
 	form_button,
-#ifdef __GNUC__
-	graf_rubberbox,
-#else
 	graf_rubbox,
-#endif
 	graf_rubberbox,
 	graf_dragbox,
 	graf_mbox,
-#ifdef __GNUC__
-	graf_mbox,
-#else
 	graf_movebox,
-#endif
 	graf_growbox,
 	graf_shrinkbox,
 	graf_watchbox,
@@ -835,11 +862,7 @@ static void *func1Aes[] = {
 	fnts_remove,
 	fnts_update,
 	lbox_ascroll_to,
-#ifdef __GNUC__
-	lbox_ascroll_to,
-#else
 	lbox_scroll_to,
-#endif
 	lbox_bscroll_to,
 	lbox_cnt_items,
 	lbox_create,
@@ -848,16 +871,8 @@ static void *func1Aes[] = {
 	lbox_free_items,
 	lbox_free_list,
 	lbox_get_afirst,
-#ifdef __GNUC__
-	lbox_get_afirst,
-#else
 	lbox_get_first,
-#endif
-#ifdef __GNUC__
-	lbox_get_visible,
-#else
 	lbox_get_avis,
-#endif
 	lbox_get_visible,
 	lbox_get_bentries,
 	lbox_get_bfirst,
@@ -869,11 +884,7 @@ static void *func1Aes[] = {
 	lbox_get_tree,
 	lbox_get_udata,
 	lbox_set_asldr,
-#ifdef __GNUC__
-	lbox_set_asldr,
-#else
 	lbox_set_slider,
-#endif
 	lbox_set_bentries,
 	lbox_set_bsldr,
 	lbox_set_items,
@@ -905,11 +916,7 @@ static void *func1Aes[] = {
 	edit_get_buf,
 	edit_get_format,
 	edit_get_colour,
-#ifdef __GNUC__
-	edit_get_colour,
-#else
 	edit_get_color,
-#endif
 	edit_get_font,
 	edit_get_cursor,
 	edit_get_dirty,
@@ -928,11 +935,7 @@ static void *func1Aes[] = {
 	form_xdial,
 	form_xdo,
 	form_xerr,
-#ifdef __GNUC__
-	aes,
-#else
 	_crystal,
-#endif
 	graf_wwatchbox,
 	graf_xhandle,
 	wdlg_create,
@@ -953,10 +956,10 @@ static void *func1Aes[] = {
 	wind_draw,
 	scrp_clear,
 	objc_xedit,
-#ifdef __GNUC__
-	graf_rubberbox,
-#else
 	graf_rubbbox,
+#if WITH_FIXES
+	wind_set_str,
+	wind_set_int,
 #endif
 };
 static funcVersion const funcAes[] = { { func1Aes, 0 } };
@@ -1010,19 +1013,11 @@ static void *func1MtAes[] = {
 	mt_form_center,
 	mt_form_keybd,
 	mt_form_button,
-#ifdef __GNUC__
-	mt_graf_rubberbox,
-#else
 	mt_graf_rubbox,
-#endif
 	mt_graf_rubberbox,
 	mt_graf_dragbox,
 	mt_graf_mbox,
-#ifdef __GNUC__
-	mt_graf_mbox,
-#else
 	mt_graf_movebox,
-#endif
 	mt_graf_growbox,
 	mt_graf_shrinkbox,
 	mt_graf_watchbox,
@@ -1080,11 +1075,7 @@ static void *func1MtAes[] = {
 	mt_fnts_remove,
 	mt_fnts_update,
 	mt_lbox_ascroll_to,
-#ifdef __GNUC__
-	mt_lbox_ascroll_to,
-#else
 	mt_lbox_scroll_to,
-#endif
 	mt_lbox_bscroll_to,
 	mt_lbox_cnt_items,
 	mt_lbox_create,
@@ -1093,16 +1084,8 @@ static void *func1MtAes[] = {
 	mt_lbox_free_items,
 	mt_lbox_free_list,
 	mt_lbox_get_afirst,
-#ifdef __GNUC__
-	mt_lbox_get_afirst,
-#else
 	mt_lbox_get_first,
-#endif
-#ifdef __GNUC__
-	mt_lbox_get_visible,
-#else
 	mt_lbox_get_avis,
-#endif
 	mt_lbox_get_visible,
 	mt_lbox_get_bentries,
 	mt_lbox_get_bfirst,
@@ -1114,11 +1097,7 @@ static void *func1MtAes[] = {
 	mt_lbox_get_tree,
 	mt_lbox_get_udata,
 	mt_lbox_set_asldr,
-#ifdef __GNUC__
-	mt_lbox_set_asldr,
-#else
 	mt_lbox_set_slider,
-#endif
 	mt_lbox_set_bentries,
 	mt_lbox_set_bsldr,
 	mt_lbox_set_items,
@@ -1150,11 +1129,7 @@ static void *func1MtAes[] = {
 	mt_edit_get_buf,
 	mt_edit_get_format,
 	mt_edit_get_colour,
-#ifdef __GNUC__
-	mt_edit_get_colour,
-#else
 	mt_edit_get_color,
-#endif
 	mt_edit_get_font,
 	mt_edit_get_cursor,
 	mt_edit_get_dirty,
@@ -1193,10 +1168,10 @@ static void *func1MtAes[] = {
 	mt_wind_draw,
 	mt_scrp_clear,
 	mt_objc_xedit,
-#ifdef __GNUC__
-	mt_graf_rubberbox,
-#else
 	mt_graf_rubbbox,
+#if WITH_FIXES
+	mt_wind_set_str,
+	mt_wind_set_int,
 #endif
 };
 static funcVersion const funcMtAes[] = { { func1MtAes, 0 } };

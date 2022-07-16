@@ -3875,6 +3875,16 @@ _graf_rubbbox:
 		pea        816
 		move.l     funcAes(pc),-(a7)
 		bra        indirect
+	.globl _wind_set_str
+_wind_set_str:
+		pea        820
+		move.l     funcAes(pc),-(a7)
+		bra        indirect
+	.globl _wind_set_int
+_wind_set_int:
+		pea        824
+		move.l     funcAes(pc),-(a7)
+		bra        indirect
 
 /* keytab */
 	.globl _Akt_getKeyTab
@@ -4616,7 +4626,7 @@ _mt_fnts_get_no_styles:
 		bra        indirect
 	.globl _mt_fnts_get_style
 _mt_fnts_get_style:
-		pea        406
+		pea        416
 		move.l     funcMtAes(pc),-(a7)
 		bra        indirect
 	.globl _mt_fnts_open
@@ -5108,6 +5118,16 @@ _mt_objc_xedit:
 _mt_graf_rubbbox:
 		pea        808
 		move.l     funcMtAes(pc),-(a7)
+		bra        indirect
+	.globl _mt_wind_set_str
+_mt_wind_set_str:
+		pea        812
+		move.l     funcAes(pc),-(a7)
+		bra        indirect
+	.globl _mt_wind_set_int
+_mt_wind_set_int:
+		pea        816
+		move.l     funcAes(pc),-(a7)
 		bra        indirect
 
 	.data
